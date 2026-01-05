@@ -2597,22 +2597,22 @@
   "metadata": {
     "files": [
       "src/main/java/net/mcreator/ssc/init/Ssc14ModAttributes.java",
+      "src/main/java/net/mcreator/ssc/network/MenuStateUpdateMessage.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModScreens.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModMenus.java",
-      "src/main/java/net/mcreator/ssc/network/MenuStateUpdateMessage.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModBlocks.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModBlockEntities.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModItems.java",
-      "src/main/java/net/mcreator/ssc/init/Ssc14ModEntities.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModEntityRenderers.java",
-      "src/main/resources/pack.mcmeta",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModEntities.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModSounds.java",
       "src/main/resources/META-INF/neoforge.mods.toml",
-      "src/main/java/net/mcreator/ssc/init/Ssc14ModTabs.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModModels.java",
       "src/main/resources/assets/ssc_14/sounds.json",
-      "src/main/java/net/mcreator/ssc/Ssc14Mod.java"
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModTabs.java",
+      "src/main/java/net/mcreator/ssc/Ssc14Mod.java",
+      "src/main/resources/pack.mcmeta"
     ]
   },
   "foldersRoot": {
@@ -2689,6 +2689,10 @@
             "children": []
           }
         ]
+      },
+      {
+        "name": "Uplink",
+        "children": []
       }
     ]
   },

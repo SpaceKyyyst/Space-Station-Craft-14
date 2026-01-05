@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/rod_floor",
+  "textures": {
+    "all": "ssc_14:block/rodfloor",
+    "particle": "ssc_14:block/rodfloor",
+    "0": "ssc_14:block/rodfloor"
+  },
+  "render_type": "cutout"
+}

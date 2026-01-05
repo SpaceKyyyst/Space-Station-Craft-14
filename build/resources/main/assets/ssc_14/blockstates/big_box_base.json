@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/big_box_base"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/big_box_base",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/big_box_base",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/big_box_base",
+      "y": 270
+    }
+  }
+}
