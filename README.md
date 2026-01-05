@@ -14,4 +14,4 @@ Space-Station-Craft-14 - это мод на Minecraft, реализовываю�
 ---
 ## Лицензия
 <p>Содержимое репозитория лицензируется под AGPLv3. </p>
-<p>MCreator лицензируется под GPL-3.0 ( [Подробнее](https://github.com/MCreator/MCreator?tab=readme-ov-file) ). </p>
+<p>MCreator лицензируется под GPL-3.0 (Подробнее: https://github.com/MCreator/MCreator?tab=readme-ov-file). </p>
