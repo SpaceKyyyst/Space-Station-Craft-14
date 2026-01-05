@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "texture_of_spanner"
+      }
+    }
+  }
+}

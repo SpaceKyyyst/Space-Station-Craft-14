@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/gas_analyzer",
+  "textures": {
+    "1": "ssc_14:block/gas_analyzer_texture",
+    "particle": "ssc_14:item/gas_analyset_item"
+  }
+}

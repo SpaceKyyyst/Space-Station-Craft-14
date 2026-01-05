@@ -1,0 +1,14 @@
+{
+  "_fv": 79,
+  "_type": "attribute",
+  "definition": {
+    "name": "Progress Bar",
+    "minValue": 0.0,
+    "maxValue": 7.0,
+    "defaultValue": 0.0,
+    "sentiment": "NEUTRAL",
+    "addToAllEntities": false,
+    "addToPlayers": true,
+    "entities": []
+  }
+}

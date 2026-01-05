@@ -1,0 +1,14 @@
+{
+  "_fv": 79,
+  "_type": "attribute",
+  "definition": {
+    "name": "XYZ player",
+    "minValue": -3.0E7,
+    "maxValue": 3.0E7,
+    "defaultValue": 0.0,
+    "sentiment": "NEUTRAL",
+    "addToAllEntities": false,
+    "addToPlayers": true,
+    "entities": []
+  }
+}

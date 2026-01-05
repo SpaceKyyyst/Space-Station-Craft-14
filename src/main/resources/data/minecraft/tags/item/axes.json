@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:screwdriver",
+    "ssc_14:fire_axe",
+    "ssc_14:nippers",
+    "ssc_14:spanner",
+    "ssc_14:active_welder",
+    "ssc_14:welding",
+    "ssc_14:scrap"
+  ]
+}

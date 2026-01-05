@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:sheathing_mvc",
+    "ssc_14:sheathing_mhvc",
+    "ssc_14:sheathing_lhvc",
+    "ssc_14:sheathing",
+    "ssc_14:sheathing_lvc",
+    "ssc_14:steel_wall",
+    "ssc_14:sheathing_lmhvc",
+    "ssc_14:uper_sheathing",
+    "ssc_14:sheathing_hvc",
+    "ssc_14:sheathing_lmvc"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/plazma_win_dor_o_3"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/plazma_win_dor_o_3",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/plazma_win_dor_o_3",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/plazma_win_dor_o_3",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "space_station_craft_14:block/plazma_win_dor_o_3",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "space_station_craft_14:block/plazma_win_dor_o_3",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "block/grass_block",
+  "textures": {
+    "bottom": "ssc_14:block/floor",
+    "top": "ssc_14:block/vv_floor",
+    "side": "ssc_14:block/floor",
+    "overlay": "ssc_14:block/floor",
+    "particle": "ssc_14:block/floor"
+  },
+  "render_type": "solid"
+}

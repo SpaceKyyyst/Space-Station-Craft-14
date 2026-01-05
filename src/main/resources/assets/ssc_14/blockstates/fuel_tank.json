@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/fuel_tank"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/fuel_tank",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/fuel_tank",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/fuel_tank",
+      "y": 270
+    }
+  }
+}

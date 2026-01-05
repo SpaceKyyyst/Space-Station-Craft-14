@@ -1,0 +1,103 @@
+{
+  "_fv": 79,
+  "_type": "overlay",
+  "definition": {
+    "priority": "NORMAL",
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "gas_anal_menu.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "GasAnalyserGUI_pr_1"
+          },
+          "anchorPoint": "CENTER",
+          "x": 45,
+          "y": 14,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "o2_icon.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 51,
+          "y": 99,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "n2_icon.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 51,
+          "y": 116,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "co2_icon.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 51,
+          "y": 133,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_kislorod",
+          "text": {
+            "fixedValue": "Кислород:  "
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 68,
+          "y": 103,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_empty",
+          "text": {
+            "fixedValue": "%:  ",
+            "name": "O2textRedact"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 125,
+          "y": 103,
+          "locked": false
+        }
+      }
+    ],
+    "baseTexture": "",
+    "overlayTarget": "Ingame",
+    "displayCondition": {
+      "name": "GasAnalyserGUI_pr_1"
+    },
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

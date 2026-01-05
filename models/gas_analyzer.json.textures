@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "gas_analyzer_texture"
+      }
+    }
+  }
+}
