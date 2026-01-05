@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "ssc_14:block/spaced_portal_ew"
+    },
+    "axis=x": {
+      "model": "ssc_14:block/spaced_portal_ns"
+    }
+  }
+}

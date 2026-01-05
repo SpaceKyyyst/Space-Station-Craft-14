@@ -1,0 +1,102 @@
+{
+  "_fv": 79,
+  "_type": "overlay",
+  "definition": {
+    "priority": "HIGH",
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "progress_bar_1.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "ActGUIProcedure"
+          },
+          "anchorPoint": "CENTER",
+          "x": 205,
+          "y": 104,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progress_bar_2.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "ActGUIProcedure2"
+          },
+          "anchorPoint": "CENTER",
+          "x": 205,
+          "y": 104,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progress_bar_3.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "ActGUIProcedure3"
+          },
+          "anchorPoint": "CENTER",
+          "x": 205,
+          "y": 104,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progress_bar_4.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "ActGUIProcedure4"
+          },
+          "anchorPoint": "CENTER",
+          "x": 205,
+          "y": 104,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progress_bar_5.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "ActGUIProcedure5"
+          },
+          "anchorPoint": "CENTER",
+          "x": 205,
+          "y": 104,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progress_bar_6.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "ActGUIProcedure6"
+          },
+          "anchorPoint": "CENTER",
+          "x": 205,
+          "y": 104,
+          "locked": false
+        }
+      }
+    ],
+    "baseTexture": "",
+    "overlayTarget": "Ingame",
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

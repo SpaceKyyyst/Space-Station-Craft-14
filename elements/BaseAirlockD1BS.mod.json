@@ -1,0 +1,376 @@
+{
+  "_fv": 79,
+  "_type": "blockstates",
+  "definition": {
+    "block": "BaseAirlockD1",
+    "blockstateList": [
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "airlock_down__ao_2:default",
+        "luminance": 4,
+        "boundingBoxes": [
+          {
+            "mx": 10.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 8.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 8.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 9.0,
+            "my": 8.0,
+            "mz": 7.0,
+            "Mx": 15.0,
+            "My": 16.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 9.0,
+            "my": 0.0,
+            "mz": 9.0,
+            "Mx": 11.0,
+            "My": 17.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 12.0,
+            "mz": 7.0,
+            "Mx": 7.0,
+            "My": 16.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.5,
+            "my": 13.5,
+            "mz": 6.0,
+            "Mx": 3.5,
+            "My": 16.5,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 8.0,
+            "My": 12.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 7.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 9.0,
+            "My": 17.0,
+            "Mz": 7.0,
+            "subtract": false
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "airlock_down__ao_3:default",
+        "luminance": 4,
+        "boundingBoxes": [
+          {
+            "mx": 11.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 8.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 10.0,
+            "my": 8.0,
+            "mz": 7.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 10.0,
+            "my": 0.0,
+            "mz": 9.0,
+            "Mx": 12.0,
+            "My": 17.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 12.0,
+            "mz": 7.0,
+            "Mx": 5.0,
+            "My": 16.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 13.5,
+            "mz": 6.0,
+            "Mx": 1.5,
+            "My": 16.5,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 6.0,
+            "My": 12.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 5.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 7.0,
+            "My": 17.0,
+            "Mz": 7.0,
+            "subtract": false
+          },
+          {
+            "mx": 16.0,
+            "my": 8.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 10.0,
+            "subtract": false
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "airlock_down__ao_4:default",
+        "luminance": 4,
+        "boundingBoxes": [
+          {
+            "mx": 13.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 8.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 12.0,
+            "my": 8.0,
+            "mz": 7.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 12.0,
+            "my": 0.0,
+            "mz": 9.0,
+            "Mx": 14.0,
+            "My": 17.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 12.0,
+            "mz": 7.0,
+            "Mx": 3.0,
+            "My": 16.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 4.0,
+            "My": 12.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 3.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 5.0,
+            "My": 17.0,
+            "Mz": 7.0,
+            "subtract": false
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "airlock_down__ao_5:default",
+        "luminance": 4,
+        "boundingBoxes": [
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 8.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 14.0,
+            "my": 8.0,
+            "mz": 7.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 9.0,
+            "Mx": 16.0,
+            "My": 17.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 12.0,
+            "mz": 7.0,
+            "Mx": 1.0,
+            "My": 16.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 2.0,
+            "My": 12.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 3.0,
+            "My": 17.0,
+            "Mz": 7.0,
+            "subtract": false
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "airlock_down__ao_6:default",
+        "luminance": 4,
+        "boundingBoxes": [
+          {
+            "mx": 15.0,
+            "my": 8.0,
+            "mz": 7.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 9.0,
+            "Mx": 16.0,
+            "My": 17.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 1.0,
+            "My": 12.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 2.0,
+            "My": 17.0,
+            "Mz": 7.0,
+            "subtract": false
+          },
+          {
+            "mx": 16.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 8.0,
+            "Mz": 10.0,
+            "subtract": false
+          }
+        ]
+      }
+    ]
+  }
+}

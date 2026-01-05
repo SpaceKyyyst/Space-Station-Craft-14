@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "id_console_texture_anim"
+      }
+    }
+  }
+}

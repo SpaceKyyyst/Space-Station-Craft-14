@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "ssc_14:block/debus_atmos_check",
+    "particle": "ssc_14:block/no_texture"
+  },
+  "render_type": "cutout"
+}

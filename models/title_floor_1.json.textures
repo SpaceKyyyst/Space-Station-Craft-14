@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "texture_of_steel_flor_1"
+      }
+    }
+  }
+}

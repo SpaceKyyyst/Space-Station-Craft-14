@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "airlock_up_ao_1_t"
+      }
+    }
+  }
+}

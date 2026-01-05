@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/apc"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/apc",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/apc",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/apc",
+      "y": 270
+    }
+  }
+}

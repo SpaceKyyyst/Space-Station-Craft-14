@@ -1,0 +1,14 @@
+{
+  "_fv": 79,
+  "_type": "attribute",
+  "definition": {
+    "name": "Gas An GU Iatrib",
+    "minValue": 0.0,
+    "maxValue": 1.0,
+    "defaultValue": 0.0,
+    "sentiment": "NEUTRAL",
+    "addToAllEntities": false,
+    "addToPlayers": true,
+    "entities": []
+  }
+}

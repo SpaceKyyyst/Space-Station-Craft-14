@@ -1,0 +1,15 @@
+{
+  "_fv": 79,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "F",
+    "keyBindingName": "Pull the Object",
+    "keyBindingCategoryKey": "gameplay",
+    "onKeyPressed": {
+      "name": "PulltheObject_Pr"
+    },
+    "onKeyReleased": {
+      "name": "PulltheObject_Pr2"
+    }
+  }
+}

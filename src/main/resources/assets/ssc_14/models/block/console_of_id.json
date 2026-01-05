@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/console_of_id",
+  "textures": {
+    "all": "ssc_14:block/id_console_texture",
+    "particle": "ssc_14:block/id_console_texture",
+    "1": "ssc_14:block/id_console_texture_anim"
+  },
+  "render_type": "cutout"
+}

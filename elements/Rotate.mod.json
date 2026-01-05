@@ -1,0 +1,12 @@
+{
+  "_fv": 79,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "R",
+    "keyBindingName": "Rotate",
+    "keyBindingCategoryKey": "gameplay",
+    "onKeyPressed": {
+      "name": "Objects_Rotate_RRR"
+    }
+  }
+}

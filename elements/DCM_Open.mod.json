@@ -1,0 +1,8 @@
+{
+  "_fv": 79,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"controls_if\"><mutation else=\"1\"></mutation><value name=\"IF0\"><block type=\"entity_has_screen_open\"><field name=\"guiname\">DopCraftMenu</field><value name=\"entity\"><block type=\"entity_from_deps\"></block></value></block></value><statement name=\"DO0\"><block type=\"entity_close_gui\"><value name=\"entity\"><block type=\"entity_from_deps\"></block></value></block></statement><statement name=\"ELSE\"><block type=\"entity_open_gui\"><field name=\"guiname\">DopCraftMenu</field><value name=\"entity\"><block type=\"entity_from_deps\"></block></value><value name=\"x\"><block type=\"coord_x\"></block></value><value name=\"y\"><block type=\"coord_y\"></block></value><value name=\"z\"><block type=\"coord_z\"></block></value></block></statement></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

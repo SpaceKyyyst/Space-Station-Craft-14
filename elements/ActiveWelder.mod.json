@@ -1,0 +1,44 @@
+{
+  "_fv": 79,
+  "_type": "tool",
+  "definition": {
+    "toolType": "MultiTool",
+    "renderType": 1,
+    "blockingRenderType": 0,
+    "texture": "fire_w_an",
+    "customModelName": "welder_2:default",
+    "blockingModelName": "Normal blocking",
+    "guiTexture": "fire_w_an",
+    "name": "Active Welder",
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "creativeTabs": [],
+    "efficiency": 4.0,
+    "attackSpeed": 1.0,
+    "enchantability": 1,
+    "damageVsEntity": 5.0,
+    "usageCount": 0,
+    "glowCondition": {
+      "fixedValue": false
+    },
+    "repairItems": [],
+    "immuneToFire": true,
+    "blockDropsTier": "WOOD",
+    "blocksAffected": [],
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "ActiveWelder_Use"
+    },
+    "onRightClickedOnBlock": {
+      "name": "ActiveWelder_Use"
+    },
+    "onItemInInventoryTick": {
+      "name": "ActiveWelder_FuelMin"
+    },
+    "onItemInUseTick": {
+      "name": "Welding_Fuel_chek"
+    }
+  }
+}

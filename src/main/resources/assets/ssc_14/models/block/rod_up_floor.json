@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/rod_upfloor",
+  "textures": {
+    "all": "ssc_14:block/rood_upflor",
+    "particle": "ssc_14:block/rood_upflor",
+    "0": "ssc_14:block/rood_upflor"
+  },
+  "render_type": "cutout"
+}
