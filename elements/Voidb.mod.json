@@ -44,11 +44,11 @@
       "fixedValue": []
     },
     "hardness": 0.0,
-    "resistance": 10.0,
+    "resistance": 0.0,
     "hasGravity": false,
     "isWaterloggable": false,
     "hasBlockItem": false,
-    "maxStackSize": 64,
+    "maxStackSize": 1,
     "rarity": "COMMON",
     "immuneToFire": false,
     "creativeTabs": [],
@@ -66,13 +66,13 @@
     "canRedstoneConnect": false,
     "lightOpacity": 0,
     "tickRate": 0,
-    "tickRandomly": false,
+    "tickRandomly": true,
     "isReplaceable": false,
     "canProvidePower": false,
     "emittedRedstonePower": {
       "fixedValue": 15.0
     },
-    "colorOnMap": "DEFAULT",
+    "colorOnMap": "SNOW",
     "noteBlockInstrument": "harp",
     "creativePickItem": {
       "value": ""
@@ -136,6 +136,9 @@
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
     "onNeighbourBlockChanges": {
+      "name": "Void_autoDelete"
+    },
+    "onTickUpdate": {
       "name": "Void_autoDelete"
     },
     "onEntityCollides": {

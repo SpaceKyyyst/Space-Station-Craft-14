@@ -2,14 +2,14 @@
   "_fv": 79,
   "_type": "block",
   "definition": {
-    "texture": "floor",
+    "texture": "sv_floor",
     "textureTop": "sv_floor",
     "textureLeft": "floor",
     "textureFront": "floor",
     "textureRight": "",
     "textureBack": "",
-    "renderType": 14,
-    "customModelName": "Grass block",
+    "renderType": 2,
+    "customModelName": "cabels_mv_block:default",
     "rotationMode": 0,
     "enablePitch": false,
     "emissiveRendering": false,
@@ -24,8 +24,8 @@
     "tintType": "No tint",
     "isItemTinted": false,
     "hasTransparency": true,
-    "connectedSides": false,
-    "transparencyType": "SOLID",
+    "connectedSides": true,
+    "transparencyType": "CUTOUT",
     "disableOffset": false,
     "boundingBoxes": [
       {

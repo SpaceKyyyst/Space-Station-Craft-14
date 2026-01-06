@@ -2,7 +2,7 @@
   "_fv": 79,
   "_type": "tool",
   "definition": {
-    "toolType": "Special",
+    "toolType": "MultiTool",
     "renderType": 1,
     "blockingRenderType": 0,
     "texture": "gas_analyset_item",
@@ -15,7 +15,7 @@
     },
     "creativeTabs": [
       {
-        "value": "CUSTOM:SSC14creativev"
+        "value": "CUSTOM:SSC14creativev3item"
       }
     ],
     "efficiency": 1.0,

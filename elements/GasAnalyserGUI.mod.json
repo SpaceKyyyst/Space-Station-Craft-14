@@ -13,8 +13,25 @@
             "name": "GasAnalyserGUI_pr_1"
           },
           "anchorPoint": "CENTER",
-          "x": 45,
-          "y": 14,
+          "x": 6,
+          "y": 19,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_1000",
+          "text": {
+            "fixedValue": "1000"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 111,
+          "y": 24,
           "locked": false
         }
       },
@@ -24,47 +41,8 @@
           "image": "o2_icon.png",
           "use1Xscale": false,
           "anchorPoint": "CENTER",
-          "x": 51,
-          "y": 99,
-          "locked": false
-        }
-      },
-      {
-        "type": "image",
-        "data": {
-          "image": "n2_icon.png",
-          "use1Xscale": false,
-          "anchorPoint": "CENTER",
-          "x": 51,
-          "y": 116,
-          "locked": false
-        }
-      },
-      {
-        "type": "image",
-        "data": {
-          "image": "co2_icon.png",
-          "use1Xscale": false,
-          "anchorPoint": "CENTER",
-          "x": 51,
-          "y": 133,
-          "locked": false
-        }
-      },
-      {
-        "type": "label",
-        "data": {
-          "name": "label_kislorod",
-          "text": {
-            "fixedValue": "Кислород:  "
-          },
-          "color": {
-            "value": -1,
-            "falpha": 0.0
-          },
-          "anchorPoint": "CENTER",
-          "x": 68,
-          "y": 103,
+          "x": 10,
+          "y": 70,
           "locked": false
         }
       },
@@ -81,8 +59,132 @@
             "falpha": 0.0
           },
           "anchorPoint": "CENTER",
-          "x": 125,
-          "y": 103,
+          "x": 82,
+          "y": 74,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "n2_icon.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 10,
+          "y": 86,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "co2_icon.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 10,
+          "y": 102,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "water_vapor_icon.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 10,
+          "y": 118,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "plasma_icon.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 10,
+          "y": 134,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "miasm_icon.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 10,
+          "y": 150,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "no2_icon.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 10,
+          "y": 166,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "tritium_icon.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 10,
+          "y": 182,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "frezon_icon.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 10,
+          "y": 198,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_t",
+          "text": {
+            "fixedValue": "",
+            "name": "TemperatureTextRedact"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 111,
+          "y": 46,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_kpa",
+          "text": {
+            "fixedValue": "kPa",
+            "name": "KPaTextRedact"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 111,
+          "y": 35,
           "locked": false
         }
       }

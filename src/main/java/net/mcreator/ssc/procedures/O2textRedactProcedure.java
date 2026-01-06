@@ -23,7 +23,7 @@ public class O2textRedactProcedure {
 	}
 
 	private static String execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		return "\u043A\u041F\u0430 :  " + getBlockNBTNumber(world, BlockPos.containing(x, y, z), "O2") / 10;
+		return "" + Math.round(getBlockNBTNumber(world, BlockPos.containing(x, y, z), "O2") * 10) / 10d;
 	}
 
 	private static double getBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag) {

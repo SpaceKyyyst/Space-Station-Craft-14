@@ -195,6 +195,12 @@
     "onNeighbourBlockChanges": {
       "name": "BaseAirlockU1_Chek"
     },
+    "onDestroyedByPlayer": {
+      "name": "BaseAirlock_U_D_autoDESTROY"
+    },
+    "onDestroyedByExplosion": {
+      "name": "BaseAirlock_U_D_autoDESTROY"
+    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [

@@ -210,5 +210,10 @@
   "item.ssc_14.heater_debu_ghandgenerator": "[DEBUG] Heat HandGenerator",
   "item.ssc_14.cooler_debu_ghandgenerator": "[DEBUG] Cool down HandGenerator",
   "item.ssc_14.cooler_debu_ghandgenerator.description_0": "Охлаждает блок атмосферы, в котором вы находитесь на 20 градусов",
-  "item.ssc_14.portable_sheater": "Portable Sheater"
+  "item.ssc_14.portable_sheater": "Portable Sheater",
+  "item.ssc_14.silver": "Silver",
+  "item.ssc_14.ssc_14_gold": "Gold",
+  "item.ssc_14.uran": "Uran",
+  "item.ssc_14.plasma": "Plasma",
+  "item.ssc_14.plastic": "Plastic"
 }

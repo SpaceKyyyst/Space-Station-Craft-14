@@ -19,6 +19,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.Containers;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
@@ -27,6 +28,11 @@ import net.mcreator.ssc.block.entity.SheathingMVCBlockEntity;
 public class SheathingMVCBlock extends Block implements EntityBlock {
 	public SheathingMVCBlock(BlockBehaviour.Properties properties) {
 		super(properties.mapColor(MapColor.COLOR_GRAY).sound(SoundType.IRON).strength(-1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+	}
+
+	@Override
+	public boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction side) {
+		return adjacentBlockState.getBlock() == this ? true : super.skipRendering(state, adjacentBlockState, side);
 	}
 
 	@Override

@@ -1,3 +1,50 @@
-/give Dev ssc_14:base_uplink_radio[balance={20}]
-/give Dev ssc_14:base_uplink_radio[balance:{20}]
-/give Dev ssc_14:base_uplink_radio[balance:20]
+/tpssc14space
+/setblock ~ ~ ~ minecraft:bedrock
+/kill @n
+/tpssc14space
+/setblock ~ ~ ~ minecraft:stone
+/summon ssc_14:wall_carcase_ent
+/kill @e[type=ssc_14:wall_carcase_ent]
+/summon ssc_14:wall_carcase_ent
+/kill @e[type=ssc_14:wall_carcase_ent]
+/summon ssc_14:wall_carcase_entit
+/kill @e[type=ssc_14:wall_carcase_entit]
+/summon ssc_14:wall_carcase_entit
+/kill @e[type=ssc_14:wall_carcase_entit]
+/summon ssc_14:wall_carcase_entit
+/kill @e[type=ssc_14:wall_carcase_entit]
+/summon ssc_14:wall_carcase_entit
+/kill @e[type=ssc_14:wall_carcase_entit]
+/kill @e[type=ssc_14:testtest ]
+/kill @e[type=ssc_14:wall_carcase_entit]
+/setblock ~ ~ ~ ssc_14:base_airlock_u_1
+/setblock -137 38 24 air
+/msg Dev 1
+/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 ssc_14:atmos_block replace air
+/gamerule commandModificationBlockLimit 500000
+/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 ssc_14:atmos_block replace air
+/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
+/tick freeze
+/tick step 1t
+/tick step 1s
+/tick step 1t
+/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
+/tick unfreeze
+/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
+/tpssc14space
+/execute in ssc_14:spaced run tp ~ ~ ~
+/execute in ssc_14:spaced run tp ~ ~1 ~
+/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
+/cmdconfig
+/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
+/cmdconfig
+/effect give Dev minecraft:night_vision infinite 0 true
+/fill ~-22 ~ ~-22 ~22 ~ ~22
+/fill ~-22 ~ ~-22 ~22 ~ ~22 ssc_14:sheathing
+/fill ~-22 ~ ~-22 ~22 ~ ~22 ssc_14:uper_sheathing
+/fill ~-22 ~-2 ~-22 ~22 ~2 ~22 ssc_14:steel_wall
+/fill ~-21 ~-2 ~-21 ~21 ~2 ~21 air
+/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
+/tick freeze
+/tick unfreeze
+/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block

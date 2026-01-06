@@ -311,65 +311,6 @@
             "subtract": false
           }
         ]
-      },
-      {
-        "texture": "airlock_base_item",
-        "textureTop": "",
-        "textureLeft": "",
-        "textureFront": "",
-        "textureRight": "",
-        "textureBack": "",
-        "particleTexture": "",
-        "renderType": 2,
-        "customModelName": "airlock_down__ao_6:default",
-        "luminance": 4,
-        "boundingBoxes": [
-          {
-            "mx": 15.0,
-            "my": 8.0,
-            "mz": 7.0,
-            "Mx": 16.0,
-            "My": 16.0,
-            "Mz": 9.0,
-            "subtract": false
-          },
-          {
-            "mx": 15.0,
-            "my": 0.0,
-            "mz": 9.0,
-            "Mx": 16.0,
-            "My": 17.0,
-            "Mz": 11.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 1.0,
-            "My": 12.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 0.0,
-            "mz": 5.0,
-            "Mx": 2.0,
-            "My": 17.0,
-            "Mz": 7.0,
-            "subtract": false
-          },
-          {
-            "mx": 16.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 16.0,
-            "My": 8.0,
-            "Mz": 10.0,
-            "subtract": false
-          }
-        ]
       }
     ]
   }

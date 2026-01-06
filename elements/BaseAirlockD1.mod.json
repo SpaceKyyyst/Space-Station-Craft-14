@@ -101,13 +101,7 @@
         "subtract": false
       }
     ],
-    "customProperties": [
-      {
-        "name": "CUSTOM:open",
-        "type": "logic",
-        "value": false
-      }
-    ],
+    "customProperties": [],
     "name": "Base Airlock",
     "specialInformation": {
       "fixedValue": []
@@ -122,7 +116,7 @@
     "immuneToFire": true,
     "creativeTabs": [
       {
-        "value": "CUSTOM:SSC14creativev"
+        "value": "CUSTOM:SSC14creativev2"
       }
     ],
     "destroyTool": "Not specified",
@@ -193,10 +187,11 @@
       "fixedValue": 7.0
     },
     "hasInventory": true,
+    "guiBoundTo": "AccessConfigMENU",
     "openGUIOnRightClick": false,
     "inventorySize": 9,
     "inventoryStackSize": 99,
-    "inventoryDropWhenDestroyed": true,
+    "inventoryDropWhenDestroyed": false,
     "inventoryComparatorPower": true,
     "inventoryOutSlotIDs": [],
     "inventoryInSlotIDs": [],

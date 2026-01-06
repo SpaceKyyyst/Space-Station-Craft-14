@@ -59,7 +59,7 @@
     "plantsGrowOn": false,
     "canRedstoneConnect": false,
     "lightOpacity": 0,
-    "tickRate": 2,
+    "tickRate": 1,
     "tickRandomly": false,
     "isReplaceable": true,
     "canProvidePower": false,

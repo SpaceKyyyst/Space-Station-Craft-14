@@ -210,5 +210,10 @@
   "item.ssc_14.heater_debu_ghandgenerator": "[DEBUG] Ручной нагреватель",
   "item.ssc_14.cooler_debu_ghandgenerator": "[DEBUG] Ручной охладитель",
   "item.ssc_14.cooler_debu_ghandgenerator.description_0": "Охлаждает блок атмосферы, в котором вы находитесь на 20 градусов",
-  "item.ssc_14.portable_sheater": "Portable Sheater"
+  "item.ssc_14.portable_sheater": "Термостат",
+  "item.ssc_14.silver": "Серебро",
+  "item.ssc_14.ssc_14_gold": "Золото",
+  "item.ssc_14.uran": "Уран",
+  "item.ssc_14.plasma": "Плазма",
+  "item.ssc_14.plastic": "Пластик"
 }

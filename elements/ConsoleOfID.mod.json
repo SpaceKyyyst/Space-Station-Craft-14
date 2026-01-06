@@ -125,7 +125,7 @@
     "immuneToFire": true,
     "creativeTabs": [
       {
-        "value": "CUSTOM:SSC14creativev"
+        "value": "CUSTOM:SSC14creativev2"
       }
     ],
     "destroyTool": "Not specified",
@@ -198,9 +198,9 @@
     "hasInventory": true,
     "guiBoundTo": "IDcode",
     "openGUIOnRightClick": false,
-    "inventorySize": 9,
+    "inventorySize": 2,
     "inventoryStackSize": 1,
-    "inventoryDropWhenDestroyed": false,
+    "inventoryDropWhenDestroyed": true,
     "inventoryComparatorPower": false,
     "inventoryOutSlotIDs": [],
     "inventoryInSlotIDs": [],

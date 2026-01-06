@@ -1,0 +1,32 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"parent": "cabels_lv_mv_hv_block",
+	"texture_size": [32, 32],
+	"textures": {
+		"8": "cabels_lv_mv_hv_texture"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 8, 8], "texture": "#8"},
+				"east": {"uv": [0, 0, 8, 8], "texture": "#8"},
+				"south": {"uv": [0, 0, 8, 8], "texture": "#8"},
+				"west": {"uv": [0, 0, 8, 8], "texture": "#8"},
+				"up": {"uv": [16, 8, 8, 0], "rotation": 180, "texture": "#8"},
+				"down": {"uv": [8, 8, 16, 16], "texture": "#8"}
+			}
+		},
+		{
+			"from": [0, 16.25, 0],
+			"to": [16, 16.25, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 16.25, 0]},
+			"faces": {
+				"up": {"uv": [0, 8, 8, 16], "texture": "#8"},
+				"down": {"uv": [0, 16, 8, 8], "texture": "#8"}
+			}
+		}
+	]
+}

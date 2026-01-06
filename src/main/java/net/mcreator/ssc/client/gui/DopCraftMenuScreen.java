@@ -51,6 +51,7 @@ public class DopCraftMenuScreen extends AbstractContainerScreen<DopCraftMenuMenu
 	@Override
 	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/dop_craft_menu__copy.png"), this.leftPos + 0, this.topPos + 0, 0, 0, 176, 166, 176, 166);
 	}
 
 	@Override

@@ -5,10 +5,6 @@ Space-Station-Craft-14 - это мод на Minecraft, реализовываю�
 
 <div class="header" align="center">
 
-Если вам вдруг нужны именно скомпилированный в готовый .jar файл мод, то я сохраняю их тут:
-[Все версии в ".jar"](https://drive.google.com/drive/folders/1EefXGtH3r6empLspdaSVUujqaLtKnbtZ?usp=sharing)
-
-Дискорд проекта: 
 [Discord](https://discord.gg/dCtBN6EBAv)
 
 </div>

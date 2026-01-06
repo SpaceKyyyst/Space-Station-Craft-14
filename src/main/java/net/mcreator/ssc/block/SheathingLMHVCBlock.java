@@ -1,5 +1,8 @@
 package net.mcreator.ssc.block;
 
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -9,12 +12,14 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.Containers;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
@@ -22,12 +27,27 @@ import net.mcreator.ssc.block.entity.SheathingLMHVCBlockEntity;
 
 public class SheathingLMHVCBlock extends Block implements EntityBlock {
 	public SheathingLMHVCBlock(BlockBehaviour.Properties properties) {
-		super(properties.mapColor(MapColor.COLOR_GRAY).sound(SoundType.IRON).strength(-1f, 10f));
+		super(properties.mapColor(MapColor.COLOR_GRAY).sound(SoundType.IRON).strength(-1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+	}
+
+	@Override
+	public boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction side) {
+		return adjacentBlockState.getBlock() == this ? true : super.skipRendering(state, adjacentBlockState, side);
+	}
+
+	@Override
+	public boolean propagatesSkylightDown(BlockState state) {
+		return true;
 	}
 
 	@Override
 	public int getLightBlock(BlockState state) {
-		return 15;
+		return 0;
+	}
+
+	@Override
+	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return Shapes.empty();
 	}
 
 	@Override

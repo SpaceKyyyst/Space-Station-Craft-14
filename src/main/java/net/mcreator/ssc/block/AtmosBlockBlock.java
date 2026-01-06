@@ -54,14 +54,14 @@ public class AtmosBlockBlock extends Block implements EntityBlock {
 	@Override
 	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
 		super.onPlace(blockstate, world, pos, oldState, moving);
-		world.scheduleTick(pos, this, 2);
+		world.scheduleTick(pos, this, 1);
 	}
 
 	@Override
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
 		AtmosBlock__TICProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
-		world.scheduleTick(pos, this, 2);
+		world.scheduleTick(pos, this, 1);
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.level.redstone.Orientation;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.ItemStack;
@@ -26,13 +28,14 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import net.mcreator.ssc.procedures.BaseAirlock_U_D_autoDESTROYProcedure;
 import net.mcreator.ssc.procedures.BaseAirlockU1_ChekProcedure;
 import net.mcreator.ssc.block.entity.BaseAirlockU1BlockEntity;
 
 import javax.annotation.Nullable;
 
 public class BaseAirlockU1Block extends Block implements EntityBlock {
-	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 5);
+	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 4);
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 	private static final VoxelShape SHAPE_1_NORTH = Shapes.or(box(15, 0, 6, 16, 14, 10), box(9, 0, 7, 15, 14, 9), box(7, -1, 9, 9, 16, 11), box(8, 14, 6, 16, 16, 10), box(0, 2, 6, 7, 16, 10), box(5, -1, 5, 7, 16, 7), box(0, 0, 7, 7, 2, 9));
 	private static final VoxelShape SHAPE_1_SOUTH = Shapes.or(box(0, 0, 6, 1, 14, 10), box(1, 0, 7, 7, 14, 9), box(7, -1, 5, 9, 16, 7), box(0, 14, 6, 8, 16, 10), box(9, 2, 6, 16, 16, 10), box(9, -1, 9, 11, 16, 11), box(9, 0, 7, 16, 2, 9));
@@ -50,10 +53,6 @@ public class BaseAirlockU1Block extends Block implements EntityBlock {
 	private static final VoxelShape SHAPE_4_SOUTH = Shapes.or(box(0, 0, 7, 2, 14, 9), box(2, -1, 5, 4, 16, 7), box(0, 14, 6, 3, 16, 10), box(15, 2, 6, 16, 16, 10), box(15, -1, 9, 16, 16, 11), box(15, 0, 7, 16, 2, 9));
 	private static final VoxelShape SHAPE_4_EAST = Shapes.or(box(7, 0, 14, 9, 14, 16), box(5, -1, 12, 7, 16, 14), box(6, 14, 13, 10, 16, 16), box(6, 2, 0, 10, 16, 1), box(9, -1, 0, 11, 16, 1), box(7, 0, 0, 9, 2, 1));
 	private static final VoxelShape SHAPE_4_WEST = Shapes.or(box(7, 0, 0, 9, 14, 2), box(9, -1, 2, 11, 16, 4), box(6, 14, 0, 10, 16, 3), box(6, 2, 15, 10, 16, 16), box(5, -1, 15, 7, 16, 16), box(7, 0, 15, 9, 2, 16));
-	private static final VoxelShape SHAPE_5_NORTH = Shapes.or(box(15, 0, 7, 16, 14, 9), box(13, -1, 9, 15, 16, 11), box(14, 14, 6, 16, 16, 10));
-	private static final VoxelShape SHAPE_5_SOUTH = Shapes.or(box(0, 0, 7, 1, 14, 9), box(1, -1, 5, 3, 16, 7), box(0, 14, 6, 2, 16, 10));
-	private static final VoxelShape SHAPE_5_EAST = Shapes.or(box(7, 0, 15, 9, 14, 16), box(5, -1, 13, 7, 16, 15), box(6, 14, 14, 10, 16, 16));
-	private static final VoxelShape SHAPE_5_WEST = Shapes.or(box(7, 0, 0, 9, 14, 1), box(9, -1, 1, 11, 16, 3), box(6, 14, 0, 10, 16, 2));
 	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(14, 0, 6, 16, 14, 10), box(8, 0, 7, 14, 14, 9), box(6, -1, 9, 8, 16, 11), box(7, 14, 6, 16, 16, 10), box(0, 2, 6, 8, 16, 10), box(6, -1, 5, 8, 16, 7), box(0, 0, 7, 8, 2, 9));
 	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(0, 0, 6, 2, 14, 10), box(2, 0, 7, 8, 14, 9), box(8, -1, 5, 10, 16, 7), box(0, 14, 6, 9, 16, 10), box(8, 2, 6, 16, 16, 10), box(8, -1, 9, 10, 16, 11), box(8, 0, 7, 16, 2, 9));
 	private static final VoxelShape SHAPE_EAST = Shapes.or(box(6, 0, 14, 10, 14, 16), box(7, 0, 8, 9, 14, 14), box(5, -1, 6, 7, 16, 8), box(6, 14, 7, 10, 16, 16), box(6, 2, 0, 10, 16, 8), box(9, -1, 6, 11, 16, 8), box(7, 0, 0, 9, 2, 8));
@@ -69,8 +68,6 @@ public class BaseAirlockU1Block extends Block implements EntityBlock {
 				if (s.getValue(BLOCKSTATE) == 3)
 					return 0;
 				if (s.getValue(BLOCKSTATE) == 4)
-					return 0;
-				if (s.getValue(BLOCKSTATE) == 5)
 					return 0;
 				return 0;
 			}
@@ -131,15 +128,6 @@ public class BaseAirlockU1Block extends Block implements EntityBlock {
 				default -> SHAPE_4_NORTH;
 			});
 		}
-		if (state.getValue(BLOCKSTATE) == 5) {
-			return (switch (state.getValue(FACING)) {
-				case NORTH -> SHAPE_5_NORTH;
-				case SOUTH -> SHAPE_5_SOUTH;
-				case EAST -> SHAPE_5_EAST;
-				case WEST -> SHAPE_5_WEST;
-				default -> SHAPE_5_NORTH;
-			});
-		}
 		return (switch (state.getValue(FACING)) {
 			case NORTH -> SHAPE_NORTH;
 			case SOUTH -> SHAPE_SOUTH;
@@ -183,6 +171,19 @@ public class BaseAirlockU1Block extends Block implements EntityBlock {
 	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, @Nullable Orientation orientation, boolean moving) {
 		super.neighborChanged(blockstate, world, pos, neighborBlock, orientation, moving);
 		BaseAirlockU1_ChekProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+	}
+
+	@Override
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+		BaseAirlock_U_D_autoDESTROYProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		return retval;
+	}
+
+	@Override
+	public void wasExploded(ServerLevel world, BlockPos pos, Explosion e) {
+		super.wasExploded(world, pos, e);
+		BaseAirlock_U_D_autoDESTROYProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override

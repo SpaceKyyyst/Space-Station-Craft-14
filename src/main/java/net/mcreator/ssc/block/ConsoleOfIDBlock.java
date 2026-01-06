@@ -18,6 +18,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.Containers;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
@@ -111,5 +113,10 @@ public class ConsoleOfIDBlock extends Block implements EntityBlock {
 		super.triggerEvent(state, world, pos, eventID, eventParam);
 		BlockEntity blockEntity = world.getBlockEntity(pos);
 		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
+	}
+
+	@Override
+	protected void affectNeighborsAfterRemoval(BlockState blockstate, ServerLevel world, BlockPos blockpos, boolean flag) {
+		Containers.updateNeighboursAfterDestroy(blockstate, world, blockpos);
 	}
 }
