@@ -3,7 +3,7 @@
   "_type": "item",
   "definition": {
     "renderType": 0,
-    "texture": "old-radio",
+    "texture": "ssc-old-radio",
     "customModelName": "Normal",
     "guiTexture": "",
     "customProperties": {},

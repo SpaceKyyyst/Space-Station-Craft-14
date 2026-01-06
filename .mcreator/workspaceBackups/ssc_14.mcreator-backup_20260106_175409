@@ -2123,21 +2123,6 @@
       "path": "~/ATMOS sistem/DEBUG"
     },
     {
-      "name": "BaseUplinkUI",
-      "type": "gui",
-      "compiles": false,
-      "locked_code": false,
-      "registry_name": "base_uplink_ui",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/ssc/network/BaseUplinkUIButtonMessage.java",
-          "src/main/java/net/mcreator/ssc/world/inventory/BaseUplinkUIMenu.java",
-          "src/main/java/net/mcreator/ssc/client/gui/BaseUplinkUIScreen.java"
-        ]
-      },
-      "path": "~/Uplink"
-    },
-    {
       "name": "BaseUplinkRadio",
       "type": "item",
       "compiles": true,
@@ -2236,16 +2221,12 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "itemstack",
-            "type": "itemstack"
           }
         ],
-        "return_type": "string",
         "files": [
           "src/main/java/net/mcreator/ssc/procedures/UplinkBalanceSystemProcedure.java"
-        ]
+        ],
+        "return_type": "string"
       },
       "path": "~/Uplink"
     },
@@ -2260,10 +2241,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "itemstack",
-            "type": "itemstack"
           }
         ],
         "files": [
@@ -2283,6 +2260,21 @@
           "src/main/java/net/mcreator/ssc/item/TelecrystalItem.java",
           "src/main/resources/assets/ssc_14/items/telecrystal.json",
           "src/main/resources/assets/ssc_14/models/item/telecrystal.json"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "UplinkUI",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "uplink_ui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/gui/UplinkUIScreen.java",
+          "src/main/java/net/mcreator/ssc/world/inventory/UplinkUIMenu.java",
+          "src/main/java/net/mcreator/ssc/network/UplinkUIButtonMessage.java"
         ]
       },
       "path": "~/Uplink"
@@ -2679,8 +2671,8 @@
       "gui.ssc_14.base_uplink_ui.label_hand_is_free_before_use": "hand is free before use.",
       "gui.ssc_14.base_uplink_ui.tooltip_before_use_make_sure_the_additi": "Before use, make sure the additional handle is free!",
       "gui.ssc_14.base_uplink_ui.label_proc_base_uplink_item_diamond_sw": "Price: 4",
-      "gui.ssc_14.base_uplink_ui.tooltip_diamond_sword_price_4_tc": "Diamond Sword. Price: 4 TC.",
-      "item.ssc_14.telecrystal": "Telecrystal"
+      "item.ssc_14.telecrystal": "Telecrystal",
+      "gui.ssc_14.uplink_ui.tooltip_diamond_sword_price_4_tc": "Diamond Sword. Price: 4 TC"
     },
     "ru_ru": {
       "item_group.ssc_14.ssc_14creativev": "Space Station Craft 14",
@@ -2777,8 +2769,8 @@
       "gui.ssc_14.base_uplink_ui.label_hand_is_free_before_use": "hand is free before use.",
       "gui.ssc_14.base_uplink_ui.tooltip_before_use_make_sure_the_additi": "Before use, make sure the additional handle is free!",
       "gui.ssc_14.base_uplink_ui.label_proc_base_uplink_item_diamond_sw": "Price: 4",
-      "gui.ssc_14.base_uplink_ui.tooltip_diamond_sword_price_4_tc": "Diamond Sword. Price: 4 TC.",
-      "item.ssc_14.telecrystal": "Telecrystal"
+      "item.ssc_14.telecrystal": "Telecrystal",
+      "gui.ssc_14.uplink_ui.tooltip_diamond_sword_price_4_tc": "Diamond Sword. Price: 4 TC"
     }
   },
   "metadata": {
