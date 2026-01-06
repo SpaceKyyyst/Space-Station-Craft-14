@@ -56,6 +56,8 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> ATMOS_BLOCK;
 	public static final DeferredItem<Item> GAS_ANALYSER;
 	public static final DeferredItem<Item> O_2_DEBU_GHANDGENERATOR;
+	public static final DeferredItem<Item> BASE_UPLINK_RADIO;
+	public static final DeferredItem<Item> TELECRYSTAL;
 	static {
 		SSCLOGO = register("ssclogo", SsclogoItem::new);
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
@@ -87,6 +89,8 @@ public class Ssc14ModItems {
 		ATMOS_BLOCK = block(Ssc14ModBlocks.ATMOS_BLOCK, new Item.Properties().stacksTo(1));
 		GAS_ANALYSER = register("gas_analyser", GasAnalyserItem::new);
 		O_2_DEBU_GHANDGENERATOR = register("o_2_debu_ghandgenerator", O2DEBUGhandgeneratorItem::new);
+		BASE_UPLINK_RADIO = register("base_uplink_radio", BaseUplinkRadioItem::new);
+		TELECRYSTAL = register("telecrystal", TelecrystalItem::new);
 	}
 
 	// Start of user code block custom items

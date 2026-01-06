@@ -84,5 +84,15 @@
   "gui.ssc_14.gas_analyser_gui.label_kpa": "кПа:  ",
   "gui.ssc_14.gas_analyser_gui.label_empty": "%:  ",
   "item.ssc_14.o_2_debu_ghandgenerator.description_0": "При нажатии ПКМ создаёт 100 кПа O2 в блоке, где вы находитесь",
-  "item.ssc_14.o_2_debu_ghandgenerator": "O 2 DEBU Ghandgenerator"
+  "item.ssc_14.o_2_debu_ghandgenerator": "O 2 DEBU Ghandgenerator",
+  "item.ssc_14.base_uplink_radio": "Base Uplink Radio",
+  "gamerule.sSCdebugmode.description": "DebugModeSSC14",
+  "gamerule.sSCdebugmode": "DebugModeSSC14",
+  "gui.ssc_14.base_uplink_ui.button_diamond_sword": "Diamond Sword",
+  "gui.ssc_14.base_uplink_ui.label_make_sure_your_other": "Make sure your other",
+  "gui.ssc_14.base_uplink_ui.label_hand_is_free_before_use": "hand is free before use.",
+  "gui.ssc_14.base_uplink_ui.tooltip_before_use_make_sure_the_additi": "Before use, make sure the additional handle is free!",
+  "gui.ssc_14.base_uplink_ui.label_proc_base_uplink_item_diamond_sw": "Price: 4",
+  "gui.ssc_14.base_uplink_ui.tooltip_diamond_sword_price_4_tc": "Diamond Sword. Price: 4 TC.",
+  "item.ssc_14.telecrystal": "Telecrystal"
 }

@@ -10,6 +10,13 @@ java.base/java.lang.invoke=cpw.mods.securejarhandler
 java.base/sun.security.util=cpw.mods.securejarhandler
 --add-exports
 jdk.naming.dns/com.sun.jndi.dns=java.naming
+
+# User JVM Arguments
+-Dcom.sun.management.jmxremote.port=1099
+-Dcom.sun.management.jmxremote.local.only=true
+-Dcom.sun.management.jmxremote.ssl=false
+-Dcom.sun.management.jmxremote.authenticate=false
+
 -Dlog4j2.configurationFile=C:\\ss14Builds\\Space-Station-Craft-14\\build\\moddev\\clientLog4j2.xml
 -Djava.net.preferIPv6Addresses=system
 -DignoreList=mixinextras-neoforge-0.5.0.jar,client-extra,neoforge-

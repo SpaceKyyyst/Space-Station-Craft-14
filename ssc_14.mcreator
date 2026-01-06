@@ -18,9 +18,9 @@
       "registry_name": "ssclogo",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/items/ssclogo.json",
           "src/main/resources/assets/ssc_14/models/item/ssclogo.json",
-          "src/main/java/net/mcreator/ssc/item/SsclogoItem.java"
+          "src/main/java/net/mcreator/ssc/item/SsclogoItem.java",
+          "src/main/resources/assets/ssc_14/items/ssclogo.json"
         ]
       }
     },
@@ -77,9 +77,9 @@
       "metadata": {
         "files": [
           "src/main/resources/data/ssc_14/loot_table/blocks/voidb.json",
-          "src/main/resources/assets/ssc_14/blockstates/voidb.json",
           "src/main/java/net/mcreator/ssc/block/VoidbBlock.java",
-          "src/main/resources/assets/ssc_14/models/block/voidb.json"
+          "src/main/resources/assets/ssc_14/models/block/voidb.json",
+          "src/main/resources/assets/ssc_14/blockstates/voidb.json"
         ]
       },
       "path": "~/Dimension"
@@ -92,15 +92,15 @@
       "registry_name": "spaced",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/block/SpacedPortalBlock.java",
-          "src/main/resources/assets/ssc_14/models/block/spaced_portal_ew.json",
-          "src/main/java/net/mcreator/ssc/world/teleporter/SpacedPortalShape.java",
-          "src/main/java/net/mcreator/ssc/world/teleporter/SpacedTeleporter.java",
-          "src/main/resources/data/ssc_14/dimension/spaced.json",
           "src/main/resources/assets/ssc_14/blockstates/spaced_portal.json",
+          "src/main/resources/data/ssc_14/dimension/spaced.json",
+          "src/main/java/net/mcreator/ssc/world/teleporter/SpacedPortalShape.java",
+          "src/main/resources/data/ssc_14/dimension_type/spaced.json",
+          "src/main/resources/assets/ssc_14/models/block/spaced_portal_ew.json",
           "src/main/resources/assets/ssc_14/models/block/spaced_portal_ns.json",
+          "src/main/java/net/mcreator/ssc/block/SpacedPortalBlock.java",
           "src/main/java/net/mcreator/ssc/world/dimension/SpacedDimension.java",
-          "src/main/resources/data/ssc_14/dimension_type/spaced.json"
+          "src/main/java/net/mcreator/ssc/world/teleporter/SpacedTeleporter.java"
         ]
       },
       "path": "~/Dimension"
@@ -145,12 +145,12 @@
       "registry_name": "rod_floor",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/blockstates/rod_floor.json",
-          "src/main/resources/assets/ssc_14/models/item/rod_floor.json",
-          "src/main/java/net/mcreator/ssc/block/RodFloorBlock.java",
-          "src/main/resources/assets/ssc_14/models/block/rod_floor.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor.json",
-          "src/main/resources/assets/ssc_14/items/rod_floor.json"
+          "src/main/resources/assets/ssc_14/items/rod_floor.json",
+          "src/main/resources/assets/ssc_14/models/block/rod_floor.json",
+          "src/main/java/net/mcreator/ssc/block/RodFloorBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor.json",
+          "src/main/resources/assets/ssc_14/models/item/rod_floor.json"
         ]
       },
       "path": "~/Blocks/Rod Floor"
@@ -163,9 +163,9 @@
       "registry_name": "rood",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/item/RoodItem.java",
           "src/main/resources/assets/ssc_14/models/item/rood.json",
-          "src/main/resources/assets/ssc_14/items/rood.json"
+          "src/main/resources/assets/ssc_14/items/rood.json",
+          "src/main/java/net/mcreator/ssc/item/RoodItem.java"
         ]
       },
       "path": "~/Items"
@@ -178,12 +178,12 @@
       "registry_name": "sheathing",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/blockstates/sheathing.json",
-          "src/main/java/net/mcreator/ssc/block/SheathingBlock.java",
           "src/main/resources/data/ssc_14/loot_table/blocks/sheathing.json",
+          "src/main/resources/assets/ssc_14/items/sheathing.json",
+          "src/main/resources/assets/ssc_14/blockstates/sheathing.json",
           "src/main/resources/assets/ssc_14/models/item/sheathing.json",
           "src/main/resources/assets/ssc_14/models/block/sheathing.json",
-          "src/main/resources/assets/ssc_14/items/sheathing.json"
+          "src/main/java/net/mcreator/ssc/block/SheathingBlock.java"
         ]
       },
       "path": "~/Blocks"
@@ -196,8 +196,8 @@
       "registry_name": "steel",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/items/steel.json",
           "src/main/resources/assets/ssc_14/models/item/steel.json",
+          "src/main/resources/assets/ssc_14/items/steel.json",
           "src/main/java/net/mcreator/ssc/item/SteelItem.java"
         ]
       },
@@ -212,8 +212,8 @@
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/ssc/item/PlasteelItem.java",
-          "src/main/resources/assets/ssc_14/models/item/plasteel.json",
-          "src/main/resources/assets/ssc_14/items/plasteel.json"
+          "src/main/resources/assets/ssc_14/items/plasteel.json",
+          "src/main/resources/assets/ssc_14/models/item/plasteel.json"
         ]
       },
       "path": "~/Items"
@@ -226,9 +226,9 @@
       "registry_name": "low_voltage_cable",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/items/low_voltage_cable.json",
           "src/main/resources/assets/ssc_14/models/item/low_voltage_cable.json",
-          "src/main/java/net/mcreator/ssc/item/LowVoltageCableItem.java"
+          "src/main/java/net/mcreator/ssc/item/LowVoltageCableItem.java",
+          "src/main/resources/assets/ssc_14/items/low_voltage_cable.json"
         ]
       },
       "path": "~/Items"
@@ -272,8 +272,8 @@
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/ssc/block/SheathingLVCBlock.java",
-          "src/main/resources/assets/ssc_14/blockstates/sheathing_lvc.json",
           "src/main/resources/assets/ssc_14/models/block/sheathing_lvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/sheathing_lvc.json",
           "src/main/java/net/mcreator/ssc/block/entity/SheathingLVCBlockEntity.java",
           "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_lvc.json"
         ]
@@ -323,11 +323,11 @@
       "registry_name": "sheathing_mvc",
       "metadata": {
         "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingMVCBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_mvc.json",
           "src/main/resources/assets/ssc_14/blockstates/sheathing_mvc.json",
           "src/main/resources/assets/ssc_14/models/block/sheathing_mvc.json",
-          "src/main/java/net/mcreator/ssc/block/SheathingMVCBlock.java",
-          "src/main/java/net/mcreator/ssc/block/entity/SheathingMVCBlockEntity.java",
-          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_mvc.json"
+          "src/main/java/net/mcreator/ssc/block/SheathingMVCBlock.java"
         ]
       },
       "path": "~/Blocks"
@@ -340,11 +340,11 @@
       "registry_name": "sheathing_hvc",
       "metadata": {
         "files": [
-          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_hvc.json",
-          "src/main/java/net/mcreator/ssc/block/entity/SheathingHVCBlockEntity.java",
-          "src/main/resources/assets/ssc_14/blockstates/sheathing_hvc.json",
           "src/main/resources/assets/ssc_14/models/block/sheathing_hvc.json",
-          "src/main/java/net/mcreator/ssc/block/SheathingHVCBlock.java"
+          "src/main/resources/assets/ssc_14/blockstates/sheathing_hvc.json",
+          "src/main/java/net/mcreator/ssc/block/SheathingHVCBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingHVCBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_hvc.json"
         ]
       },
       "path": "~/Blocks"
@@ -357,10 +357,10 @@
       "registry_name": "sheathing_lmvc",
       "metadata": {
         "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingLMVCBlockEntity.java",
           "src/main/resources/assets/ssc_14/blockstates/sheathing_lmvc.json",
-          "src/main/java/net/mcreator/ssc/block/SheathingLMVCBlock.java",
           "src/main/resources/assets/ssc_14/models/block/sheathing_lmvc.json",
-          "src/main/java/net/mcreator/ssc/block/entity/SheathingLMVCBlockEntity.java"
+          "src/main/java/net/mcreator/ssc/block/SheathingLMVCBlock.java"
         ]
       },
       "path": "~/Blocks"
@@ -386,10 +386,10 @@
       "registry_name": "sheathing_lhvc",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/blockstates/sheathing_lhvc.json",
           "src/main/java/net/mcreator/ssc/block/SheathingLHVCBlock.java",
-          "src/main/java/net/mcreator/ssc/block/entity/SheathingLHVCBlockEntity.java",
-          "src/main/resources/assets/ssc_14/models/block/sheathing_lhvc.json"
+          "src/main/resources/assets/ssc_14/models/block/sheathing_lhvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/sheathing_lhvc.json",
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingLHVCBlockEntity.java"
         ]
       },
       "path": "~/Blocks"
@@ -415,10 +415,10 @@
       "registry_name": "sheathing_mhvc",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/models/block/sheathing_mhvc.json",
-          "src/main/java/net/mcreator/ssc/block/entity/SheathingMHVCBlockEntity.java",
           "src/main/java/net/mcreator/ssc/block/SheathingMHVCBlock.java",
-          "src/main/resources/assets/ssc_14/blockstates/sheathing_mhvc.json"
+          "src/main/resources/assets/ssc_14/blockstates/sheathing_mhvc.json",
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingMHVCBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/sheathing_mhvc.json"
         ]
       },
       "path": "~/Blocks"
@@ -444,9 +444,9 @@
       "registry_name": "sheathing_lmhvc",
       "metadata": {
         "files": [
+          "src/main/java/net/mcreator/ssc/block/SheathingLMHVCBlock.java",
           "src/main/java/net/mcreator/ssc/block/entity/SheathingLMHVCBlockEntity.java",
           "src/main/resources/assets/ssc_14/models/block/sheathing_lmhvc.json",
-          "src/main/java/net/mcreator/ssc/block/SheathingLMHVCBlock.java",
           "src/main/resources/assets/ssc_14/blockstates/sheathing_lmhvc.json"
         ]
       },
@@ -473,11 +473,11 @@
       "registry_name": "rod_floor_lvc",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/block/entity/RodFloorLvcBlockEntity.java",
-          "src/main/java/net/mcreator/ssc/block/RodFloorLvcBlock.java",
           "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_lvc.json",
           "src/main/resources/assets/ssc_14/blockstates/rod_floor_lvc.json",
-          "src/main/resources/assets/ssc_14/models/block/rod_floor_lvc.json"
+          "src/main/java/net/mcreator/ssc/block/RodFloorLvcBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_lvc.json",
+          "src/main/java/net/mcreator/ssc/block/entity/RodFloorLvcBlockEntity.java"
         ]
       },
       "path": "~/Blocks/Rod Floor"
@@ -491,10 +491,10 @@
       "metadata": {
         "files": [
           "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_mvc.json",
-          "src/main/java/net/mcreator/ssc/block/entity/RodFloorMvcBlockEntity.java",
-          "src/main/java/net/mcreator/ssc/block/RodFloorMvcBlock.java",
           "src/main/resources/assets/ssc_14/blockstates/rod_floor_mvc.json",
-          "src/main/resources/assets/ssc_14/models/block/rod_floor_mvc.json"
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_mvc.json",
+          "src/main/java/net/mcreator/ssc/block/RodFloorMvcBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/RodFloorMvcBlockEntity.java"
         ]
       },
       "path": "~/Blocks/Rod Floor"
@@ -507,11 +507,11 @@
       "registry_name": "rod_floor_hvc",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/block/entity/RodFloorHvcBlockEntity.java",
           "src/main/java/net/mcreator/ssc/block/RodFloorHvcBlock.java",
           "src/main/resources/assets/ssc_14/blockstates/rod_floor_hvc.json",
-          "src/main/resources/assets/ssc_14/models/block/rod_floor_hvc.json",
-          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_hvc.json"
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_hvc.json",
+          "src/main/java/net/mcreator/ssc/block/entity/RodFloorHvcBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_hvc.json"
         ]
       },
       "path": "~/Blocks/Rod Floor"
@@ -524,11 +524,11 @@
       "registry_name": "rod_floor_l_mvc",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/blockstates/rod_floor_l_mvc.json",
-          "src/main/resources/assets/ssc_14/models/block/rod_floor_l_mvc.json",
-          "src/main/java/net/mcreator/ssc/block/RodFloorLMvcBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_l_mvc.json",
           "src/main/java/net/mcreator/ssc/block/entity/RodFloorLMvcBlockEntity.java",
-          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_l_mvc.json"
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_l_mvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor_l_mvc.json",
+          "src/main/java/net/mcreator/ssc/block/RodFloorLMvcBlock.java"
         ]
       },
       "path": "~/Blocks/Rod Floor"
@@ -541,11 +541,11 @@
       "registry_name": "rod_floor_l_hvc",
       "metadata": {
         "files": [
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_l_hvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor_l_hvc.json",
           "src/main/java/net/mcreator/ssc/block/RodFloorLHvcBlock.java",
           "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_l_hvc.json",
-          "src/main/java/net/mcreator/ssc/block/entity/RodFloorLHvcBlockEntity.java",
-          "src/main/resources/assets/ssc_14/blockstates/rod_floor_l_hvc.json",
-          "src/main/resources/assets/ssc_14/models/block/rod_floor_l_hvc.json"
+          "src/main/java/net/mcreator/ssc/block/entity/RodFloorLHvcBlockEntity.java"
         ]
       },
       "path": "~/Blocks/Rod Floor"
@@ -558,11 +558,11 @@
       "registry_name": "rod_floor_m_hvc",
       "metadata": {
         "files": [
-          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_m_hvc.json",
           "src/main/java/net/mcreator/ssc/block/RodFloorMHvcBlock.java",
-          "src/main/resources/assets/ssc_14/models/block/rod_floor_m_hvc.json",
           "src/main/java/net/mcreator/ssc/block/entity/RodFloorMHvcBlockEntity.java",
-          "src/main/resources/assets/ssc_14/blockstates/rod_floor_m_hvc.json"
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_m_hvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor_m_hvc.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_m_hvc.json"
         ]
       },
       "path": "~/Blocks/Rod Floor"
@@ -575,10 +575,10 @@
       "registry_name": "rod_floor_lm_hvc",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/blockstates/rod_floor_lm_hvc.json",
-          "src/main/java/net/mcreator/ssc/block/RodFloorLMHvcBlock.java",
           "src/main/resources/assets/ssc_14/models/block/rod_floor_lm_hvc.json",
+          "src/main/java/net/mcreator/ssc/block/RodFloorLMHvcBlock.java",
           "src/main/java/net/mcreator/ssc/block/entity/RodFloorLMHvcBlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor_lm_hvc.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_lm_hvc.json"
         ]
       },
@@ -594,8 +594,8 @@
         "files": [
           "src/main/resources/assets/ssc_14/models/item/scrap_gui.json",
           "src/main/resources/assets/ssc_14/models/item/scrap.json",
-          "src/main/resources/assets/ssc_14/items/scrap.json",
-          "src/main/java/net/mcreator/ssc/item/ScrapItem.java"
+          "src/main/java/net/mcreator/ssc/item/ScrapItem.java",
+          "src/main/resources/assets/ssc_14/items/scrap.json"
         ]
       },
       "path": "~/Items/Instruments"
@@ -643,12 +643,12 @@
       "registry_name": "title_steel",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/blockstates/title_steel.json",
+          "src/main/resources/assets/ssc_14/models/item/title_steel.json",
           "src/main/resources/assets/ssc_14/items/title_steel.json",
-          "src/main/java/net/mcreator/ssc/block/TitleSteelBlock.java",
           "src/main/resources/assets/ssc_14/models/block/title_steel.json",
-          "src/main/resources/data/ssc_14/loot_table/blocks/title_steel.json",
-          "src/main/resources/assets/ssc_14/models/item/title_steel.json"
+          "src/main/java/net/mcreator/ssc/block/TitleSteelBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/title_steel.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_steel.json"
         ]
       },
       "path": "~/Blocks"
@@ -696,12 +696,12 @@
       "registry_name": "steel_wall",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/blockstates/steel_wall.json",
-          "src/main/resources/assets/ssc_14/models/item/steel_wall.json",
-          "src/main/java/net/mcreator/ssc/block/SteelWallBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/steel_wall.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/steel_wall.json",
           "src/main/resources/assets/ssc_14/items/steel_wall.json",
-          "src/main/resources/assets/ssc_14/models/block/steel_wall.json"
+          "src/main/java/net/mcreator/ssc/block/SteelWallBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/steel_wall.json",
+          "src/main/resources/assets/ssc_14/blockstates/steel_wall.json"
         ]
       },
       "path": "~/Blocks/Walls"
@@ -714,12 +714,12 @@
       "registry_name": "wall_carcase",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/items/wall_carcase.json",
-          "src/main/resources/assets/ssc_14/models/item/wall_carcase.json",
-          "src/main/java/net/mcreator/ssc/block/WallCarcaseBlock.java",
           "src/main/resources/data/ssc_14/loot_table/blocks/wall_carcase.json",
           "src/main/resources/assets/ssc_14/models/block/wall_carcase.json",
-          "src/main/resources/assets/ssc_14/blockstates/wall_carcase.json"
+          "src/main/resources/assets/ssc_14/items/wall_carcase.json",
+          "src/main/resources/assets/ssc_14/blockstates/wall_carcase.json",
+          "src/main/java/net/mcreator/ssc/block/WallCarcaseBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/wall_carcase.json"
         ]
       },
       "path": "~/Blocks/Walls"
@@ -922,10 +922,10 @@
       "registry_name": "welding",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/models/item/welding.json",
-          "src/main/resources/assets/ssc_14/items/welding.json",
           "src/main/resources/assets/ssc_14/models/item/welding_gui.json",
-          "src/main/java/net/mcreator/ssc/item/WeldingItem.java"
+          "src/main/resources/assets/ssc_14/items/welding.json",
+          "src/main/java/net/mcreator/ssc/item/WeldingItem.java",
+          "src/main/resources/assets/ssc_14/models/item/welding.json"
         ]
       },
       "path": "~/Items/Instruments"
@@ -939,9 +939,9 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/ssc_14/items/active_welder.json",
-          "src/main/resources/assets/ssc_14/models/item/active_welder.json",
+          "src/main/java/net/mcreator/ssc/item/ActiveWelderItem.java",
           "src/main/resources/assets/ssc_14/models/item/active_welder_gui.json",
-          "src/main/java/net/mcreator/ssc/item/ActiveWelderItem.java"
+          "src/main/resources/assets/ssc_14/models/item/active_welder.json"
         ]
       },
       "path": "~/Items/Instruments"
@@ -1051,10 +1051,10 @@
       "registry_name": "nippers",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/item/NippersItem.java",
           "src/main/resources/assets/ssc_14/items/nippers.json",
           "src/main/resources/assets/ssc_14/models/item/nippers.json",
-          "src/main/resources/assets/ssc_14/models/item/nippers_gui.json"
+          "src/main/resources/assets/ssc_14/models/item/nippers_gui.json",
+          "src/main/java/net/mcreator/ssc/item/NippersItem.java"
         ]
       },
       "path": "~/Items/Instruments"
@@ -1102,10 +1102,10 @@
       "registry_name": "fire_axe",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/models/item/fire_axe.json",
           "src/main/resources/assets/ssc_14/items/fire_axe.json",
-          "src/main/resources/assets/ssc_14/models/item/fire_axe_gui.json",
-          "src/main/java/net/mcreator/ssc/item/FireAxeItem.java"
+          "src/main/java/net/mcreator/ssc/item/FireAxeItem.java",
+          "src/main/resources/assets/ssc_14/models/item/fire_axe.json",
+          "src/main/resources/assets/ssc_14/models/item/fire_axe_gui.json"
         ]
       },
       "path": "~/Items/Instruments"
@@ -1153,12 +1153,12 @@
       "registry_name": "uper_sheathing",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/blockstates/uper_sheathing.json",
-          "src/main/resources/assets/ssc_14/items/uper_sheathing.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/uper_sheathing.json",
+          "src/main/resources/assets/ssc_14/models/block/uper_sheathing.json",
           "src/main/java/net/mcreator/ssc/block/UperSheathingBlock.java",
+          "src/main/resources/assets/ssc_14/items/uper_sheathing.json",
           "src/main/resources/assets/ssc_14/models/item/uper_sheathing.json",
-          "src/main/resources/assets/ssc_14/models/block/uper_sheathing.json"
+          "src/main/resources/assets/ssc_14/blockstates/uper_sheathing.json"
         ]
       },
       "path": "~/Blocks"
@@ -1171,12 +1171,12 @@
       "registry_name": "rod_up_floor",
       "metadata": {
         "files": [
+          "src/main/java/net/mcreator/ssc/block/RodUpFloorBlock.java",
           "src/main/resources/assets/ssc_14/models/item/rod_up_floor.json",
-          "src/main/resources/data/ssc_14/loot_table/blocks/rod_up_floor.json",
           "src/main/resources/assets/ssc_14/models/block/rod_up_floor.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_up_floor.json",
           "src/main/resources/assets/ssc_14/items/rod_up_floor.json",
-          "src/main/resources/assets/ssc_14/blockstates/rod_up_floor.json",
-          "src/main/java/net/mcreator/ssc/block/RodUpFloorBlock.java"
+          "src/main/resources/assets/ssc_14/blockstates/rod_up_floor.json"
         ]
       },
       "path": "~/Blocks/Rod Up-Floor"
@@ -1225,8 +1225,8 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/ssc_14/items/screwdriver.json",
-          "src/main/resources/assets/ssc_14/models/item/screwdriver_gui.json",
           "src/main/resources/assets/ssc_14/models/item/screwdriver.json",
+          "src/main/resources/assets/ssc_14/models/item/screwdriver_gui.json",
           "src/main/java/net/mcreator/ssc/item/ScrewdriverItem.java"
         ]
       },
@@ -1277,8 +1277,8 @@
         "files": [
           "src/main/resources/assets/ssc_14/items/spanner.json",
           "src/main/java/net/mcreator/ssc/item/SpannerItem.java",
-          "src/main/resources/assets/ssc_14/models/item/spanner.json",
-          "src/main/resources/assets/ssc_14/models/item/spanner_gui.json"
+          "src/main/resources/assets/ssc_14/models/item/spanner_gui.json",
+          "src/main/resources/assets/ssc_14/models/item/spanner.json"
         ]
       },
       "path": "~/Items/Instruments"
@@ -1419,13 +1419,13 @@
       "registry_name": "base_airlock_d_1",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/block/entity/BaseAirlockD1BlockEntity.java",
-          "src/main/resources/assets/ssc_14/models/item/base_airlock_d_1.json",
-          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1.json",
-          "src/main/java/net/mcreator/ssc/block/BaseAirlockD1Block.java",
           "src/main/resources/assets/ssc_14/blockstates/base_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/item/base_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/items/base_airlock_d_1.json",
+          "src/main/java/net/mcreator/ssc/block/BaseAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/base_airlock_d_1.json",
-          "src/main/resources/assets/ssc_14/items/base_airlock_d_1.json"
+          "src/main/java/net/mcreator/ssc/block/entity/BaseAirlockD1BlockEntity.java"
         ]
       },
       "path": "~/Blocks/Base Airlock"
@@ -1473,11 +1473,11 @@
       "registry_name": "base_airlock_u_1",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/block/entity/BaseAirlockU1BlockEntity.java",
-          "src/main/java/net/mcreator/ssc/block/BaseAirlockU1Block.java",
           "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1.json",
+          "src/main/resources/assets/ssc_14/blockstates/base_airlock_u_1.json",
+          "src/main/java/net/mcreator/ssc/block/BaseAirlockU1Block.java",
           "src/main/resources/data/ssc_14/loot_table/blocks/base_airlock_u_1.json",
-          "src/main/resources/assets/ssc_14/blockstates/base_airlock_u_1.json"
+          "src/main/java/net/mcreator/ssc/block/entity/BaseAirlockU1BlockEntity.java"
         ]
       },
       "path": "~/Blocks/Base Airlock"
@@ -1556,12 +1556,12 @@
       "registry_name": "up_title",
       "metadata": {
         "files": [
-          "src/main/resources/data/ssc_14/loot_table/blocks/up_title.json",
-          "src/main/resources/assets/ssc_14/blockstates/up_title.json",
-          "src/main/resources/assets/ssc_14/models/block/up_title.json",
-          "src/main/resources/assets/ssc_14/models/item/up_title.json",
           "src/main/java/net/mcreator/ssc/block/UpTitleBlock.java",
-          "src/main/resources/assets/ssc_14/items/up_title.json"
+          "src/main/resources/assets/ssc_14/models/block/up_title.json",
+          "src/main/resources/assets/ssc_14/items/up_title.json",
+          "src/main/resources/assets/ssc_14/models/item/up_title.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/up_title.json",
+          "src/main/resources/assets/ssc_14/blockstates/up_title.json"
         ]
       },
       "path": "~/Blocks"
@@ -1576,8 +1576,8 @@
         "files": [
           "src/main/java/net/mcreator/ssc/client/renderer/WallCarcaseEntitRenderer.java",
           "src/main/java/net/mcreator/ssc/entity/WallCarcaseEntitEntity.java",
-          "src/main/resources/assets/ssc_14/models/item/wall_carcase_entit_spawn_egg.json",
-          "src/main/resources/assets/ssc_14/items/wall_carcase_entit_spawn_egg.json"
+          "src/main/resources/assets/ssc_14/items/wall_carcase_entit_spawn_egg.json",
+          "src/main/resources/assets/ssc_14/models/item/wall_carcase_entit_spawn_egg.json"
         ]
       },
       "path": "~/Unpinned Objects"
@@ -1629,10 +1629,10 @@
       "registry_name": "id_card_passanger",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/item/inventory/IDCardPassangerInventoryCapability.java",
           "src/main/resources/assets/ssc_14/models/item/id_card_passanger.json",
-          "src/main/java/net/mcreator/ssc/item/IDCardPassangerItem.java",
-          "src/main/resources/assets/ssc_14/items/id_card_passanger.json"
+          "src/main/resources/assets/ssc_14/items/id_card_passanger.json",
+          "src/main/java/net/mcreator/ssc/item/inventory/IDCardPassangerInventoryCapability.java",
+          "src/main/java/net/mcreator/ssc/item/IDCardPassangerItem.java"
         ]
       },
       "path": "~/Items/ID cards"
@@ -1645,8 +1645,8 @@
       "registry_name": "i_dcode",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/client/gui/IDcodeScreen.java",
-          "src/main/java/net/mcreator/ssc/world/inventory/IDcodeMenu.java"
+          "src/main/java/net/mcreator/ssc/world/inventory/IDcodeMenu.java",
+          "src/main/java/net/mcreator/ssc/client/gui/IDcodeScreen.java"
         ]
       },
       "path": "~/Blocks/Consoles"
@@ -1659,13 +1659,13 @@
       "registry_name": "console_of_id",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/block/entity/ConsoleOfIDBlockEntity.java",
-          "src/main/resources/assets/ssc_14/models/item/console_of_id.json",
           "src/main/resources/assets/ssc_14/models/block/console_of_id.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/console_of_id.json",
           "src/main/java/net/mcreator/ssc/block/ConsoleOfIDBlock.java",
-          "src/main/resources/assets/ssc_14/blockstates/console_of_id.json",
           "src/main/resources/assets/ssc_14/items/console_of_id.json",
-          "src/main/resources/data/ssc_14/loot_table/blocks/console_of_id.json"
+          "src/main/resources/assets/ssc_14/blockstates/console_of_id.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ConsoleOfIDBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/console_of_id.json"
         ]
       },
       "path": "~/Blocks/Consoles"
@@ -1713,10 +1713,10 @@
       "registry_name": "id_console_entity",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/models/item/id_console_entity_spawn_egg.json",
           "src/main/java/net/mcreator/ssc/entity/IDConsoleENTITYEntity.java",
-          "src/main/java/net/mcreator/ssc/client/renderer/IDConsoleENTITYRenderer.java",
-          "src/main/resources/assets/ssc_14/items/id_console_entity_spawn_egg.json"
+          "src/main/resources/assets/ssc_14/items/id_console_entity_spawn_egg.json",
+          "src/main/resources/assets/ssc_14/models/item/id_console_entity_spawn_egg.json",
+          "src/main/java/net/mcreator/ssc/client/renderer/IDConsoleENTITYRenderer.java"
         ]
       },
       "path": "~/Unpinned Objects"
@@ -1871,11 +1871,11 @@
       "registry_name": "base_airlock_d_1_bs",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_4.json",
-          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_1.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_3.json",
           "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_0.json",
-          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_2.json",
-          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_3.json"
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_1.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_4.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_2.json"
         ]
       },
       "path": "~/Blocks/Base Airlock"
@@ -1888,11 +1888,11 @@
       "registry_name": "base_airlock_u_1_bs",
       "metadata": {
         "files": [
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_1.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_4.json",
           "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_2.json",
           "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_3.json",
-          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_0.json",
-          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_4.json",
-          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_1.json"
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_0.json"
         ]
       },
       "path": "~/Blocks/Base Airlock"
@@ -1905,13 +1905,13 @@
       "registry_name": "atmos_block",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/models/block/atmos_block.json",
-          "src/main/resources/data/ssc_14/loot_table/blocks/atmos_block.json",
-          "src/main/resources/assets/ssc_14/models/item/atmos_block.json",
-          "src/main/java/net/mcreator/ssc/block/entity/AtmosBlockBlockEntity.java",
           "src/main/java/net/mcreator/ssc/block/AtmosBlockBlock.java",
           "src/main/resources/assets/ssc_14/blockstates/atmos_block.json",
-          "src/main/resources/assets/ssc_14/items/atmos_block.json"
+          "src/main/resources/data/ssc_14/loot_table/blocks/atmos_block.json",
+          "src/main/java/net/mcreator/ssc/block/entity/AtmosBlockBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/atmos_block.json",
+          "src/main/resources/assets/ssc_14/items/atmos_block.json",
+          "src/main/resources/assets/ssc_14/models/block/atmos_block.json"
         ]
       },
       "path": "~/ATMOS sistem"
@@ -1955,10 +1955,10 @@
       "registry_name": "gas_analyser",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/models/item/gas_analyser_gui.json",
+          "src/main/resources/assets/ssc_14/models/item/gas_analyser.json",
           "src/main/resources/assets/ssc_14/items/gas_analyser.json",
-          "src/main/java/net/mcreator/ssc/item/GasAnalyserItem.java",
-          "src/main/resources/assets/ssc_14/models/item/gas_analyser.json"
+          "src/main/resources/assets/ssc_14/models/item/gas_analyser_gui.json",
+          "src/main/java/net/mcreator/ssc/item/GasAnalyserItem.java"
         ]
       },
       "path": "~/Items/Instruments/Gas Analyser"
@@ -2084,9 +2084,9 @@
       "registry_name": "o_2_debu_ghandgenerator",
       "metadata": {
         "files": [
-          "src/main/resources/assets/ssc_14/items/o_2_debu_ghandgenerator.json",
           "src/main/java/net/mcreator/ssc/item/O2DEBUGhandgeneratorItem.java",
-          "src/main/resources/assets/ssc_14/models/item/o_2_debu_ghandgenerator.json"
+          "src/main/resources/assets/ssc_14/models/item/o_2_debu_ghandgenerator.json",
+          "src/main/resources/assets/ssc_14/items/o_2_debu_ghandgenerator.json"
         ]
       },
       "path": "~/ATMOS sistem/DEBUG"
@@ -2121,6 +2121,171 @@
         ]
       },
       "path": "~/ATMOS sistem/DEBUG"
+    },
+    {
+      "name": "BaseUplinkUI",
+      "type": "gui",
+      "compiles": false,
+      "locked_code": false,
+      "registry_name": "base_uplink_ui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/network/BaseUplinkUIButtonMessage.java",
+          "src/main/java/net/mcreator/ssc/world/inventory/BaseUplinkUIMenu.java",
+          "src/main/java/net/mcreator/ssc/client/gui/BaseUplinkUIScreen.java"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "BaseUplinkRadio",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_uplink_radio",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/BaseUplinkRadioItem.java",
+          "src/main/resources/assets/ssc_14/items/base_uplink_radio.json",
+          "src/main/resources/assets/ssc_14/models/item/base_uplink_radio.json"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "SSCdebugmode",
+      "type": "gamerule",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ss_cdebugmode",
+      "metadata": {
+        "type": "logic",
+        "files": []
+      }
+    },
+    {
+      "name": "UplinkSystem",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "uplink_system",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/UplinkSystemProcedure.java"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "BaseUplinkItemDiamondSword",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_uplink_item_diamond_sword",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/BaseUplinkItemDiamondSwordProcedure.java"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "UplinkBalance",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "uplink_balance",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/UplinkBalance.java"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "UplinkBalanceSystem",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "uplink_balance_system",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/UplinkBalanceSystemProcedure.java"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "ItemUplinkDiamondSword",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "item_uplink_diamond_sword",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ItemUplinkDiamondSwordProcedure.java"
+        ]
+      },
+      "path": "~/Uplink/UplinkItems"
+    },
+    {
+      "name": "Telecrystal",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "telecrystal",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/TelecrystalItem.java",
+          "src/main/resources/assets/ssc_14/items/telecrystal.json",
+          "src/main/resources/assets/ssc_14/models/item/telecrystal.json"
+        ]
+      },
+      "path": "~/Uplink"
     }
   ],
   "variable_elements": [],
@@ -2413,7 +2578,9 @@
       "Welding",
       "GasAnalyser",
       "FireAxe",
-      "IDCardPassanger"
+      "IDCardPassanger",
+      "BaseUplinkRadio",
+      "Telecrystal"
     ]
   },
   "language_map": {
@@ -2503,7 +2670,17 @@
       "gui.ssc_14.gas_analyser_gui.label_kpa": "кПа:  ",
       "gui.ssc_14.gas_analyser_gui.label_empty": "%:  ",
       "item.ssc_14.o_2_debu_ghandgenerator.description_0": "При нажатии ПКМ добавляет 100 кПа O2 к блоку, где вы находитесь",
-      "item.ssc_14.o_2_debu_ghandgenerator": "[DEBUG] O2 HandGenerator"
+      "item.ssc_14.o_2_debu_ghandgenerator": "[DEBUG] O2 HandGenerator",
+      "item.ssc_14.base_uplink_radio": "Base Uplink Radio",
+      "gamerule.sSCdebugmode.description": "DebugModeSSC14",
+      "gamerule.sSCdebugmode": "DebugModeSSC14",
+      "gui.ssc_14.base_uplink_ui.button_diamond_sword": "Diamond Sword",
+      "gui.ssc_14.base_uplink_ui.label_make_sure_your_other": "Make sure your other",
+      "gui.ssc_14.base_uplink_ui.label_hand_is_free_before_use": "hand is free before use.",
+      "gui.ssc_14.base_uplink_ui.tooltip_before_use_make_sure_the_additi": "Before use, make sure the additional handle is free!",
+      "gui.ssc_14.base_uplink_ui.label_proc_base_uplink_item_diamond_sw": "Price: 4",
+      "gui.ssc_14.base_uplink_ui.tooltip_diamond_sword_price_4_tc": "Diamond Sword. Price: 4 TC.",
+      "item.ssc_14.telecrystal": "Telecrystal"
     },
     "ru_ru": {
       "item_group.ssc_14.ssc_14creativev": "Space Station Craft 14",
@@ -2591,12 +2768,23 @@
       "gui.ssc_14.gas_analyser_gui.label_kpa": "кПа:  ",
       "gui.ssc_14.gas_analyser_gui.label_empty": "%:  ",
       "item.ssc_14.o_2_debu_ghandgenerator.description_0": "При нажатии ПКМ создаёт 100 кПа O2 в блоке, где вы находитесь",
-      "item.ssc_14.o_2_debu_ghandgenerator": "O 2 DEBU Ghandgenerator"
+      "item.ssc_14.o_2_debu_ghandgenerator": "O 2 DEBU Ghandgenerator",
+      "item.ssc_14.base_uplink_radio": "Base Uplink Radio",
+      "gamerule.sSCdebugmode.description": "DebugModeSSC14",
+      "gamerule.sSCdebugmode": "DebugModeSSC14",
+      "gui.ssc_14.base_uplink_ui.button_diamond_sword": "Diamond Sword",
+      "gui.ssc_14.base_uplink_ui.label_make_sure_your_other": "Make sure your other",
+      "gui.ssc_14.base_uplink_ui.label_hand_is_free_before_use": "hand is free before use.",
+      "gui.ssc_14.base_uplink_ui.tooltip_before_use_make_sure_the_additi": "Before use, make sure the additional handle is free!",
+      "gui.ssc_14.base_uplink_ui.label_proc_base_uplink_item_diamond_sw": "Price: 4",
+      "gui.ssc_14.base_uplink_ui.tooltip_diamond_sword_price_4_tc": "Diamond Sword. Price: 4 TC.",
+      "item.ssc_14.telecrystal": "Telecrystal"
     }
   },
   "metadata": {
     "files": [
       "src/main/java/net/mcreator/ssc/init/Ssc14ModAttributes.java",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModGameRules.java",
       "src/main/java/net/mcreator/ssc/network/MenuStateUpdateMessage.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModScreens.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModMenus.java",
@@ -2692,7 +2880,12 @@
       },
       {
         "name": "Uplink",
-        "children": []
+        "children": [
+          {
+            "name": "UplinkItems",
+            "children": []
+          }
+        ]
       }
     ]
   },

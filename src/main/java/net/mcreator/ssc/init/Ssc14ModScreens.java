@@ -10,6 +10,7 @@ import net.neoforged.api.distmarker.Dist;
 
 import net.mcreator.ssc.client.gui.IDcodeScreen;
 import net.mcreator.ssc.client.gui.DopCraftMenuScreen;
+import net.mcreator.ssc.client.gui.BaseUplinkUIScreen;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Ssc14ModScreens {
@@ -17,6 +18,7 @@ public class Ssc14ModScreens {
 	public static void clientLoad(RegisterMenuScreensEvent event) {
 		event.register(Ssc14ModMenus.DOP_CRAFT_MENU.get(), DopCraftMenuScreen::new);
 		event.register(Ssc14ModMenus.I_DCODE.get(), IDcodeScreen::new);
+		event.register(Ssc14ModMenus.BASE_UPLINK_UI.get(), BaseUplinkUIScreen::new);
 	}
 
 	public interface ScreenAccessor {
