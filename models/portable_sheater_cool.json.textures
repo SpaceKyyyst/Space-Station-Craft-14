@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "portable_sheater_cool_texture"
+      }
+    }
+  }
+}

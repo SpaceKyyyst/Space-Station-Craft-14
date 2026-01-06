@@ -1,0 +1,29 @@
+--------------------------------------------------------------------------------
+
+Command-Line:
+ - D:\Program\MCreator\jdk\bin\java.exe
+ - -jar
+ - C:\Users\Admin\.mcreator\gradle\caches\modules-2\files-2.1\io.codechicken\DiffPatch\2.0.0.36\5b32f9baa0c0371c0dc80a3b88794960af0c6b44\DiffPatch-2.0.0.36-all.jar
+ - C:\Users\Admin\.mcreator\gradle\caches\neoformruntime\intermediate_results\inject_aa5093b4c7a9b4ad2787ad2772dc4c7b0b9fc6e6_output.jar
+ - C:\Users\Admin\.mcreator\gradle\caches\modules-2\files-2.1\net.neoforged\neoform\1.21.8-20250717.133445\1b2bb7418b0ccf190086a28c8b78f94acca7e1b1\neoform-1.21.8-20250717.133445.zip
+ - --prefix
+ - patches/joined/
+ - --patch
+ - --archive
+ - ZIP
+ - --output
+ - ./output.zip
+ - --log-level
+ - WARN
+ - --mode
+ - OFFSET
+ - --archive-rejects
+ - ZIP
+ - --reject
+ - ./outputRejects.zip
+ - --base-path-prefix
+ - a/
+ - --modified-path-prefix
+ - b/
+--------------------------------------------------------------------------------
+

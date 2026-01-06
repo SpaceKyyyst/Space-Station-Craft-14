@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blockstate=0": {
+      "model": "ssc_14:block/base_window"
+    },
+    "blockstate=1": {
+      "model": "ssc_14:block/base_window_bs_blockstate_0"
+    }
+  }
+}
