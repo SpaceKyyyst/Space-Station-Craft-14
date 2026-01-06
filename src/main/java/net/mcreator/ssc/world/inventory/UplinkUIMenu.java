@@ -2,9 +2,6 @@ package net.mcreator.ssc.world.inventory;
 
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.Level;
@@ -18,7 +15,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.UplinkBalanceSystemProcedure;
 import net.mcreator.ssc.init.Ssc14ModMenus;
 
 import java.util.function.Supplier;
@@ -26,12 +22,11 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-@EventBusSubscriber
-public class BaseUplinkUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class UplinkUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
-			if (!this.containsKey(key) && this.size() >= 4)
+			if (!this.containsKey(key) && this.size() >= 3)
 				return null;
 			return super.put(key, value);
 		}
@@ -47,8 +42,8 @@ public class BaseUplinkUIMenu extends AbstractContainerMenu implements Ssc14ModM
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
 
-	public BaseUplinkUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.BASE_UPLINK_UI.get(), id);
+	public UplinkUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+		super(Ssc14ModMenus.UPLINK_UI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStackHandler(0);
@@ -88,17 +83,5 @@ public class BaseUplinkUIMenu extends AbstractContainerMenu implements Ssc14ModM
 	@Override
 	public Map<String, Object> getMenuState() {
 		return menuState;
-	}
-
-	@SubscribeEvent
-	public static void onPlayerTick(PlayerTickEvent.Post event) {
-		Player entity = event.getEntity();
-		if (entity.containerMenu instanceof BaseUplinkUIMenu menu) {
-			Level world = menu.world;
-			double x = menu.x;
-			double y = menu.y;
-			double z = menu.z;
-			UplinkBalanceSystemProcedure.execute(entity, itemstack);
-		}
 	}
 }

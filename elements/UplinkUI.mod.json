@@ -1,0 +1,57 @@
+{
+  "_fv": 79,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 176,
+    "height": 166,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_diamond_sword",
+          "image": "diamond_sword.png",
+          "hoveredImage": "",
+          "x": 135,
+          "y": 74,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "old-radio.png",
+          "use1Xscale": false,
+          "x": 128,
+          "y": 35,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_diamond_sword_price_4_tc",
+          "text": {
+            "fixedValue": "Diamond Sword. Price: 4 TC"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 131,
+          "y": 70,
+          "locked": false
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

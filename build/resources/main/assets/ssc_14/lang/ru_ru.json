@@ -93,6 +93,5 @@
   "gui.ssc_14.base_uplink_ui.label_hand_is_free_before_use": "hand is free before use.",
   "gui.ssc_14.base_uplink_ui.tooltip_before_use_make_sure_the_additi": "Before use, make sure the additional handle is free!",
   "gui.ssc_14.base_uplink_ui.label_proc_base_uplink_item_diamond_sw": "Price: 4",
-  "gui.ssc_14.base_uplink_ui.tooltip_diamond_sword_price_4_tc": "Diamond Sword. Price: 4 TC.",
   "item.ssc_14.telecrystal": "Telecrystal"
 }

@@ -2125,7 +2125,7 @@
     {
       "name": "BaseUplinkUI",
       "type": "gui",
-      "compiles": true,
+      "compiles": false,
       "locked_code": false,
       "registry_name": "base_uplink_ui",
       "metadata": {
@@ -2236,6 +2236,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
           }
         ],
         "return_type": "string",
@@ -2256,30 +2260,14 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
           }
         ],
         "files": [
           "src/main/java/net/mcreator/ssc/procedures/ItemUplinkDiamondSwordProcedure.java"
-        ]
-      },
-      "path": "~/Uplink/UplinkItems"
-    },
-    {
-      "name": "ItemUplinkIronSword",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "item_uplink_iron_sword",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ],
-        "return_type": "string",
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/ItemUplinkIronSwordProcedure.java"
         ]
       },
       "path": "~/Uplink/UplinkItems"
@@ -2295,25 +2283,6 @@
           "src/main/java/net/mcreator/ssc/item/TelecrystalItem.java",
           "src/main/resources/assets/ssc_14/items/telecrystal.json",
           "src/main/resources/assets/ssc_14/models/item/telecrystal.json"
-        ]
-      },
-      "path": "~/Uplink"
-    },
-    {
-      "name": "TelecrystalSystem",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "telecrystal_system",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/TelecrystalSystemProcedure.java"
         ]
       },
       "path": "~/Uplink"

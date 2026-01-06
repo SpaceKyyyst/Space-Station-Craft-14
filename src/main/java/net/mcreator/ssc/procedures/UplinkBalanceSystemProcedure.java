@@ -9,9 +9,9 @@ import net.minecraft.core.component.DataComponents;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 public class UplinkBalanceSystemProcedure {
-	public static String execute(Entity entity, ItemStack itemstack) {
+	public static void execute(Entity entity, ItemStack itemstack) {
 		if (entity == null)
-			return "";
+			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.TELECRYSTAL.get()) {
 			{
 				final String _tagName = "UplinkBalance";
@@ -21,6 +21,5 @@ public class UplinkBalanceSystemProcedure {
 			}
 			(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).shrink((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getCount());
 		}
-		return "Balance: " + itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("UplinkBalance", 0);
 	}
 }
