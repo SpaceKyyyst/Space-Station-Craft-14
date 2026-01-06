@@ -1,0 +1,2907 @@
+{
+  "mod_elements": [
+    {
+      "name": "SSC14creativev",
+      "type": "tab",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ssc_14creativev",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "Ssclogo",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ssclogo",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/ssclogo.json",
+          "src/main/java/net/mcreator/ssc/item/SsclogoItem.java",
+          "src/main/resources/assets/ssc_14/items/ssclogo.json"
+        ]
+      }
+    },
+    {
+      "name": "Spaceb",
+      "type": "biome",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spaceb",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/worldgen/biome/spaceb.json"
+        ]
+      },
+      "path": "~/Dimension"
+    },
+    {
+      "name": "Void_autoDelete",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "void_auto_delete",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Void_autoDeleteProcedure.java"
+        ]
+      },
+      "path": "~/Dimension"
+    },
+    {
+      "name": "Voidb",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "voidb",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/voidb.json",
+          "src/main/java/net/mcreator/ssc/block/VoidbBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/voidb.json",
+          "src/main/resources/assets/ssc_14/blockstates/voidb.json"
+        ]
+      },
+      "path": "~/Dimension"
+    },
+    {
+      "name": "Spaced",
+      "type": "dimension",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spaced",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/spaced_portal.json",
+          "src/main/resources/data/ssc_14/dimension/spaced.json",
+          "src/main/java/net/mcreator/ssc/world/teleporter/SpacedPortalShape.java",
+          "src/main/resources/data/ssc_14/dimension_type/spaced.json",
+          "src/main/resources/assets/ssc_14/models/block/spaced_portal_ew.json",
+          "src/main/resources/assets/ssc_14/models/block/spaced_portal_ns.json",
+          "src/main/java/net/mcreator/ssc/block/SpacedPortalBlock.java",
+          "src/main/java/net/mcreator/ssc/world/dimension/SpacedDimension.java",
+          "src/main/java/net/mcreator/ssc/world/teleporter/SpacedTeleporter.java"
+        ]
+      },
+      "path": "~/Dimension"
+    },
+    {
+      "name": "TpSSC14space",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tp_ssc_14space",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/command/TpSSC14spaceCommand.java"
+        ]
+      },
+      "path": "~/Dimension"
+    },
+    {
+      "name": "TpSSC14spacepr",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tp_ssc_14spacepr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/TpSSC14spaceprProcedure.java"
+        ]
+      },
+      "path": "~/Dimension"
+    },
+    {
+      "name": "RodFloor",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rod_floor",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor.json",
+          "src/main/resources/assets/ssc_14/items/rod_floor.json",
+          "src/main/resources/assets/ssc_14/models/block/rod_floor.json",
+          "src/main/java/net/mcreator/ssc/block/RodFloorBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor.json",
+          "src/main/resources/assets/ssc_14/models/item/rod_floor.json"
+        ]
+      },
+      "path": "~/Blocks/Rod Floor"
+    },
+    {
+      "name": "Rood",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rood",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/rood.json",
+          "src/main/resources/assets/ssc_14/items/rood.json",
+          "src/main/java/net/mcreator/ssc/item/RoodItem.java"
+        ]
+      },
+      "path": "~/Items"
+    },
+    {
+      "name": "Sheathing",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathing",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing.json",
+          "src/main/resources/assets/ssc_14/items/sheathing.json",
+          "src/main/resources/assets/ssc_14/blockstates/sheathing.json",
+          "src/main/resources/assets/ssc_14/models/item/sheathing.json",
+          "src/main/resources/assets/ssc_14/models/block/sheathing.json",
+          "src/main/java/net/mcreator/ssc/block/SheathingBlock.java"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "Steel",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "steel",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/steel.json",
+          "src/main/resources/assets/ssc_14/items/steel.json",
+          "src/main/java/net/mcreator/ssc/item/SteelItem.java"
+        ]
+      },
+      "path": "~/Items"
+    },
+    {
+      "name": "Plasteel",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "plasteel",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/PlasteelItem.java",
+          "src/main/resources/assets/ssc_14/items/plasteel.json",
+          "src/main/resources/assets/ssc_14/models/item/plasteel.json"
+        ]
+      },
+      "path": "~/Items"
+    },
+    {
+      "name": "LowVoltageCable",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "low_voltage_cable",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/low_voltage_cable.json",
+          "src/main/java/net/mcreator/ssc/item/LowVoltageCableItem.java",
+          "src/main/resources/assets/ssc_14/items/low_voltage_cable.json"
+        ]
+      },
+      "path": "~/Items"
+    },
+    {
+      "name": "MediumVoltageCable",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "medium_voltage_cable",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/medium_voltage_cable.json",
+          "src/main/java/net/mcreator/ssc/item/MediumVoltageCableItem.java",
+          "src/main/resources/assets/ssc_14/items/medium_voltage_cable.json"
+        ]
+      },
+      "path": "~/Items"
+    },
+    {
+      "name": "HighVoltageCable",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "high_voltage_cable",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/HighVoltageCableItem.java",
+          "src/main/resources/assets/ssc_14/models/item/high_voltage_cable.json",
+          "src/main/resources/assets/ssc_14/items/high_voltage_cable.json"
+        ]
+      },
+      "path": "~/Items"
+    },
+    {
+      "name": "SheathingLVC",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathing_lvc",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/SheathingLVCBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/sheathing_lvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/sheathing_lvc.json",
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingLVCBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_lvc.json"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "Sheathing_Cab_Instal",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathing_cab_instal",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Sheathing_Cab_InstalProcedure.java"
+        ]
+      },
+      "path": "~/Items"
+    },
+    {
+      "name": "SheathingMVC",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathing_mvc",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingMVCBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_mvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/sheathing_mvc.json",
+          "src/main/resources/assets/ssc_14/models/block/sheathing_mvc.json",
+          "src/main/java/net/mcreator/ssc/block/SheathingMVCBlock.java"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "SheathingHVC",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathing_hvc",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/sheathing_hvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/sheathing_hvc.json",
+          "src/main/java/net/mcreator/ssc/block/SheathingHVCBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingHVCBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_hvc.json"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "SheathingLMVC",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathing_lmvc",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingLMVCBlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/sheathing_lmvc.json",
+          "src/main/resources/assets/ssc_14/models/block/sheathing_lmvc.json",
+          "src/main/java/net/mcreator/ssc/block/SheathingLMVCBlock.java"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "Sheathinglmvcdr",
+      "type": "loottable",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathinglmvcdr",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_lmvc.json"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "SheathingLHVC",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathing_lhvc",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/SheathingLHVCBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/sheathing_lhvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/sheathing_lhvc.json",
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingLHVCBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "Sheathinglhvcdr",
+      "type": "loottable",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathinglhvcdr",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_lhvc.json"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "SheathingMHVC",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathing_mhvc",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/SheathingMHVCBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/sheathing_mhvc.json",
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingMHVCBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/sheathing_mhvc.json"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "Sheathingmhvcdr",
+      "type": "loottable",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathingmhvcdr",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_mhvc.json"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "SheathingLMHVC",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathing_lmhvc",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/SheathingLMHVCBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingLMHVCBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/sheathing_lmhvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/sheathing_lmhvc.json"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "Sheathinglmhvcdr",
+      "type": "loottable",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sheathinglmhvcdr",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/sheathing_lmhvc.json"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "RodFloorLvc",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rod_floor_lvc",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_lvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor_lvc.json",
+          "src/main/java/net/mcreator/ssc/block/RodFloorLvcBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_lvc.json",
+          "src/main/java/net/mcreator/ssc/block/entity/RodFloorLvcBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Rod Floor"
+    },
+    {
+      "name": "RodFloorMvc",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rod_floor_mvc",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_mvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor_mvc.json",
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_mvc.json",
+          "src/main/java/net/mcreator/ssc/block/RodFloorMvcBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/RodFloorMvcBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Rod Floor"
+    },
+    {
+      "name": "RodFloorHvc",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rod_floor_hvc",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/RodFloorHvcBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor_hvc.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_hvc.json",
+          "src/main/java/net/mcreator/ssc/block/entity/RodFloorHvcBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_hvc.json"
+        ]
+      },
+      "path": "~/Blocks/Rod Floor"
+    },
+    {
+      "name": "RodFloorLMvc",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rod_floor_l_mvc",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_l_mvc.json",
+          "src/main/java/net/mcreator/ssc/block/entity/RodFloorLMvcBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_l_mvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor_l_mvc.json",
+          "src/main/java/net/mcreator/ssc/block/RodFloorLMvcBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Rod Floor"
+    },
+    {
+      "name": "RodFloorLHvc",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rod_floor_l_hvc",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_l_hvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor_l_hvc.json",
+          "src/main/java/net/mcreator/ssc/block/RodFloorLHvcBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_l_hvc.json",
+          "src/main/java/net/mcreator/ssc/block/entity/RodFloorLHvcBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Rod Floor"
+    },
+    {
+      "name": "RodFloorMHvc",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rod_floor_m_hvc",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/RodFloorMHvcBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/RodFloorMHvcBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_m_hvc.json",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor_m_hvc.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_m_hvc.json"
+        ]
+      },
+      "path": "~/Blocks/Rod Floor"
+    },
+    {
+      "name": "RodFloorLMHvc",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rod_floor_lm_hvc",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/rod_floor_lm_hvc.json",
+          "src/main/java/net/mcreator/ssc/block/RodFloorLMHvcBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/RodFloorLMHvcBlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/rod_floor_lm_hvc.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_floor_lm_hvc.json"
+        ]
+      },
+      "path": "~/Blocks/Rod Floor"
+    },
+    {
+      "name": "Scrap",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "scrap",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/scrap_gui.json",
+          "src/main/resources/assets/ssc_14/models/item/scrap.json",
+          "src/main/java/net/mcreator/ssc/item/ScrapItem.java",
+          "src/main/resources/assets/ssc_14/items/scrap.json"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "Scrap_Procedure",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "scrap_procedure",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Scrap_ProcedureProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "TitleSteel",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_steel",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/title_steel.json",
+          "src/main/resources/assets/ssc_14/items/title_steel.json",
+          "src/main/resources/assets/ssc_14/models/block/title_steel.json",
+          "src/main/java/net/mcreator/ssc/block/TitleSteelBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/title_steel.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_steel.json"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "SteelWall_Destroy",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "steel_wall_destroy",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/SteelWall_DestroyProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Walls"
+    },
+    {
+      "name": "SteelWall",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "steel_wall",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/steel_wall.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/steel_wall.json",
+          "src/main/resources/assets/ssc_14/items/steel_wall.json",
+          "src/main/java/net/mcreator/ssc/block/SteelWallBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/steel_wall.json",
+          "src/main/resources/assets/ssc_14/blockstates/steel_wall.json"
+        ]
+      },
+      "path": "~/Blocks/Walls"
+    },
+    {
+      "name": "WallCarcase",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wall_carcase",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/wall_carcase.json",
+          "src/main/resources/assets/ssc_14/models/block/wall_carcase.json",
+          "src/main/resources/assets/ssc_14/items/wall_carcase.json",
+          "src/main/resources/assets/ssc_14/blockstates/wall_carcase.json",
+          "src/main/java/net/mcreator/ssc/block/WallCarcaseBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/wall_carcase.json"
+        ]
+      },
+      "path": "~/Blocks/Walls"
+    },
+    {
+      "name": "ActionIndicator",
+      "type": "overlay",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "action_indicator",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/screens/ActionIndicatorOverlay.java"
+        ]
+      },
+      "path": "~/Progress Bar"
+    },
+    {
+      "name": "ActGUIProcedure",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "act_gui_procedure",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ActGUIProcedureProcedure.java"
+        ]
+      },
+      "path": "~/Progress Bar"
+    },
+    {
+      "name": "ProgressBarAtrb",
+      "type": "attribute",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "progress_bar_atrb",
+      "metadata": {
+        "files": []
+      },
+      "path": "~/Progress Bar"
+    },
+    {
+      "name": "ActGUIProcedure2",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "act_gui_procedure_2",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ActGUIProcedure2Procedure.java"
+        ]
+      },
+      "path": "~/Progress Bar"
+    },
+    {
+      "name": "ActGUIProcedure3",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "act_gui_procedure_3",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ActGUIProcedure3Procedure.java"
+        ]
+      },
+      "path": "~/Progress Bar"
+    },
+    {
+      "name": "ActGUIProcedure4",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "act_gui_procedure_4",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ActGUIProcedure4Procedure.java"
+        ]
+      },
+      "path": "~/Progress Bar"
+    },
+    {
+      "name": "ActGUIProcedure5",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "act_gui_procedure_5",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ActGUIProcedure5Procedure.java"
+        ]
+      },
+      "path": "~/Progress Bar"
+    },
+    {
+      "name": "ActGUIProcedure6",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "act_gui_procedure_6",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ActGUIProcedure6Procedure.java"
+        ]
+      },
+      "path": "~/Progress Bar"
+    },
+    {
+      "name": "XYZplayer",
+      "type": "attribute",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "xy_zplayer",
+      "metadata": {
+        "files": []
+      },
+      "path": "~/Progress Bar"
+    },
+    {
+      "name": "Steeluse",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "steeluse",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/SteeluseProcedure.java"
+        ]
+      },
+      "path": "~/Items"
+    },
+    {
+      "name": "Welding",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "welding",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/welding_gui.json",
+          "src/main/resources/assets/ssc_14/items/welding.json",
+          "src/main/java/net/mcreator/ssc/item/WeldingItem.java",
+          "src/main/resources/assets/ssc_14/models/item/welding.json"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "ActiveWelder",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "active_welder",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/active_welder.json",
+          "src/main/java/net/mcreator/ssc/item/ActiveWelderItem.java",
+          "src/main/resources/assets/ssc_14/models/item/active_welder_gui.json",
+          "src/main/resources/assets/ssc_14/models/item/active_welder.json"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "ActiveWelder_Use",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "active_welder_use",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ActiveWelder_UseProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "Welding_Fuel_chek",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "welding_fuel_chek",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Welding_Fuel_chekProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "ActiveWelder_FuelMin",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "active_welder_fuel_min",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ActiveWelder_FuelMinProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "Nippers",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nippers",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/nippers.json",
+          "src/main/resources/assets/ssc_14/models/item/nippers.json",
+          "src/main/resources/assets/ssc_14/models/item/nippers_gui.json",
+          "src/main/java/net/mcreator/ssc/item/NippersItem.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "Nippers_Use",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nippers_use",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Nippers_UseProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "FireAxe",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fire_axe",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/fire_axe.json",
+          "src/main/java/net/mcreator/ssc/item/FireAxeItem.java",
+          "src/main/resources/assets/ssc_14/models/item/fire_axe.json",
+          "src/main/resources/assets/ssc_14/models/item/fire_axe_gui.json"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "FireAxe_Use",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fire_axe_use",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/FireAxe_UseProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "UperSheathing",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "uper_sheathing",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/uper_sheathing.json",
+          "src/main/resources/assets/ssc_14/models/block/uper_sheathing.json",
+          "src/main/java/net/mcreator/ssc/block/UperSheathingBlock.java",
+          "src/main/resources/assets/ssc_14/items/uper_sheathing.json",
+          "src/main/resources/assets/ssc_14/models/item/uper_sheathing.json",
+          "src/main/resources/assets/ssc_14/blockstates/uper_sheathing.json"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "RodUpFloor",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rod_up_floor",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/RodUpFloorBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/rod_up_floor.json",
+          "src/main/resources/assets/ssc_14/models/block/rod_up_floor.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/rod_up_floor.json",
+          "src/main/resources/assets/ssc_14/items/rod_up_floor.json",
+          "src/main/resources/assets/ssc_14/blockstates/rod_up_floor.json"
+        ]
+      },
+      "path": "~/Blocks/Rod Up-Floor"
+    },
+    {
+      "name": "TitleInstallPr",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_install_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/TitleInstallPrProcedure.java"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "Screwdriver",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "screwdriver",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/screwdriver.json",
+          "src/main/resources/assets/ssc_14/models/item/screwdriver.json",
+          "src/main/resources/assets/ssc_14/models/item/screwdriver_gui.json",
+          "src/main/java/net/mcreator/ssc/item/ScrewdriverItem.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "Screwdriver_Use",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "screwdriver_use",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Screwdriver_UseProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "Spanner",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spanner",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/spanner.json",
+          "src/main/java/net/mcreator/ssc/item/SpannerItem.java",
+          "src/main/resources/assets/ssc_14/models/item/spanner_gui.json",
+          "src/main/resources/assets/ssc_14/models/item/spanner.json"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "Spanner_Use",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spanner_use",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Spanner_UseProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "DopCraftMenu",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dop_craft_menu",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/world/inventory/DopCraftMenuMenu.java",
+          "src/main/java/net/mcreator/ssc/client/gui/DopCraftMenuScreen.java"
+        ]
+      },
+      "path": "~/Craft Menu"
+    },
+    {
+      "name": "DCM_Open",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dcm_open",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/DCM_OpenProcedure.java"
+        ]
+      },
+      "path": "~/Craft Menu"
+    },
+    {
+      "name": "DCMopen",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dc_mopen",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/network/DCMopenMessage.java"
+        ]
+      },
+      "path": "~/Craft Menu"
+    },
+    {
+      "name": "TitleSteel_Chek",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_steel_chek",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/TitleSteel_ChekProcedure.java"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "BaseAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/base_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/item/base_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/items/base_airlock_d_1.json",
+          "src/main/java/net/mcreator/ssc/block/BaseAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/base_airlock_d_1.json",
+          "src/main/java/net/mcreator/ssc/block/entity/BaseAirlockD1BlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Base Airlock"
+    },
+    {
+      "name": "BaseAirlockOpenClose",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_airlock_open_close",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/BaseAirlockOpenCloseProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Base Airlock"
+    },
+    {
+      "name": "BaseAirlockU1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_airlock_u_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1.json",
+          "src/main/resources/assets/ssc_14/blockstates/base_airlock_u_1.json",
+          "src/main/java/net/mcreator/ssc/block/BaseAirlockU1Block.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/base_airlock_u_1.json",
+          "src/main/java/net/mcreator/ssc/block/entity/BaseAirlockU1BlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Base Airlock"
+    },
+    {
+      "name": "BaseAirlockU1_Chek",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_airlock_u_1_chek",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/BaseAirlockU1_ChekProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Base Airlock"
+    },
+    {
+      "name": "BaseAirlockD1_Put",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_airlock_d_1_put",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/BaseAirlockD1_PutProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Base Airlock"
+    },
+    {
+      "name": "UpTitle",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "up_title",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/UpTitleBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/up_title.json",
+          "src/main/resources/assets/ssc_14/items/up_title.json",
+          "src/main/resources/assets/ssc_14/models/item/up_title.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/up_title.json",
+          "src/main/resources/assets/ssc_14/blockstates/up_title.json"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "WallCarcaseEntit",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wall_carcase_entit",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/WallCarcaseEntitRenderer.java",
+          "src/main/java/net/mcreator/ssc/entity/WallCarcaseEntitEntity.java",
+          "src/main/resources/assets/ssc_14/items/wall_carcase_entit_spawn_egg.json",
+          "src/main/resources/assets/ssc_14/models/item/wall_carcase_entit_spawn_egg.json"
+        ]
+      },
+      "path": "~/Unpinned Objects"
+    },
+    {
+      "name": "SpannerEntUse",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spanner_ent_use",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/SpannerEntUseProcedure.java"
+        ]
+      },
+      "path": "~/Unpinned Objects"
+    },
+    {
+      "name": "IDCardPassanger",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "id_card_passanger",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/id_card_passanger.json",
+          "src/main/resources/assets/ssc_14/items/id_card_passanger.json",
+          "src/main/java/net/mcreator/ssc/item/inventory/IDCardPassangerInventoryCapability.java",
+          "src/main/java/net/mcreator/ssc/item/IDCardPassangerItem.java"
+        ]
+      },
+      "path": "~/Items/ID cards"
+    },
+    {
+      "name": "IDcode",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "i_dcode",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/world/inventory/IDcodeMenu.java",
+          "src/main/java/net/mcreator/ssc/client/gui/IDcodeScreen.java"
+        ]
+      },
+      "path": "~/Blocks/Consoles"
+    },
+    {
+      "name": "ConsoleOfID",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "console_of_id",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/console_of_id.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/console_of_id.json",
+          "src/main/java/net/mcreator/ssc/block/ConsoleOfIDBlock.java",
+          "src/main/resources/assets/ssc_14/items/console_of_id.json",
+          "src/main/resources/assets/ssc_14/blockstates/console_of_id.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ConsoleOfIDBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/console_of_id.json"
+        ]
+      },
+      "path": "~/Blocks/Consoles"
+    },
+    {
+      "name": "ConsoleID_openMenu",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "console_id_open_menu",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ConsoleID_openMenuProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Consoles"
+    },
+    {
+      "name": "IDConsoleENTITY",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "id_console_entity",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/entity/IDConsoleENTITYEntity.java",
+          "src/main/resources/assets/ssc_14/items/id_console_entity_spawn_egg.json",
+          "src/main/resources/assets/ssc_14/models/item/id_console_entity_spawn_egg.json",
+          "src/main/java/net/mcreator/ssc/client/renderer/IDConsoleENTITYRenderer.java"
+        ]
+      },
+      "path": "~/Unpinned Objects"
+    },
+    {
+      "name": "UpTitle_Check",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "up_title_check",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/UpTitle_CheckProcedure.java"
+        ]
+      },
+      "path": "~/Blocks"
+    },
+    {
+      "name": "Rotate",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rotate",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/network/RotateMessage.java"
+        ]
+      },
+      "path": "~/Control F"
+    },
+    {
+      "name": "Objects_Rotate_RRR",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "objects_rotate_rrr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Objects_Rotate_RRRProcedure.java"
+        ]
+      },
+      "path": "~/Control F"
+    },
+    {
+      "name": "PulltheObject",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "pullthe_object",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/network/PulltheObjectMessage.java"
+        ]
+      },
+      "path": "~/Control F"
+    },
+    {
+      "name": "PulltheObject_Pr",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "pullthe_object_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/PulltheObject_PrProcedure.java"
+        ]
+      },
+      "path": "~/Control F"
+    },
+    {
+      "name": "EntPull",
+      "type": "attribute",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ent_pull",
+      "metadata": {
+        "files": []
+      },
+      "path": "~/Control F"
+    },
+    {
+      "name": "DEBUGCHECK",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "debugcheck",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/DEBUGCHECKProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "PulltheObject_Pr2",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "pullthe_object_pr_2",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/PulltheObject_Pr2Procedure.java"
+        ]
+      },
+      "path": "~/Control F"
+    },
+    {
+      "name": "BaseAirlockD1BS",
+      "type": "blockstates",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_airlock_d_1_bs",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_3.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_0.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_1.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_4.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_bs_blockstate_2.json"
+        ]
+      },
+      "path": "~/Blocks/Base Airlock"
+    },
+    {
+      "name": "BaseAirlockU1BS",
+      "type": "blockstates",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_airlock_u_1_bs",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_1.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_4.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_2.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_3.json",
+          "src/main/resources/assets/ssc_14/models/block/base_airlock_u_1_bs_blockstate_0.json"
+        ]
+      },
+      "path": "~/Blocks/Base Airlock"
+    },
+    {
+      "name": "AtmosBlock",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "atmos_block",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/AtmosBlockBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/atmos_block.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/atmos_block.json",
+          "src/main/java/net/mcreator/ssc/block/entity/AtmosBlockBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/atmos_block.json",
+          "src/main/resources/assets/ssc_14/items/atmos_block.json",
+          "src/main/resources/assets/ssc_14/models/block/atmos_block.json"
+        ]
+      },
+      "path": "~/ATMOS sistem"
+    },
+    {
+      "name": "AtmosBlock__TIC",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "atmos_block__tic",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/AtmosBlock__TICProcedure.java"
+        ]
+      },
+      "path": "~/ATMOS sistem"
+    },
+    {
+      "name": "GasAnalyser",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gas_analyser",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/gas_analyser.json",
+          "src/main/resources/assets/ssc_14/items/gas_analyser.json",
+          "src/main/resources/assets/ssc_14/models/item/gas_analyser_gui.json",
+          "src/main/java/net/mcreator/ssc/item/GasAnalyserItem.java"
+        ]
+      },
+      "path": "~/Items/Instruments/Gas Analyser"
+    },
+    {
+      "name": "GasAnalyserGUI",
+      "type": "overlay",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gas_analyser_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/screens/GasAnalyserGUIOverlay.java"
+        ]
+      },
+      "path": "~/Items/Instruments/Gas Analyser"
+    },
+    {
+      "name": "GasAnalyserGUI_pr_1",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gas_analyser_gui_pr_1",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/GasAnalyserGUI_pr_1Procedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/Gas Analyser"
+    },
+    {
+      "name": "GasAnalyser_Activ",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gas_analyser_activ",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/GasAnalyser_ActivProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/Gas Analyser"
+    },
+    {
+      "name": "GasAnGUIatrib",
+      "type": "attribute",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gas_an_gu_iatrib",
+      "metadata": {
+        "files": []
+      },
+      "path": "~/Items/Instruments/Gas Analyser"
+    },
+    {
+      "name": "PlayerTICKCheck",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "player_tick_check",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/PlayerTICKCheckProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "O2textRedact",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "o_2text_redact",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/O2textRedactProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/Gas Analyser"
+    },
+    {
+      "name": "O2DEBUGhandgenerator",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "o_2_debu_ghandgenerator",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/O2DEBUGhandgeneratorItem.java",
+          "src/main/resources/assets/ssc_14/models/item/o_2_debu_ghandgenerator.json",
+          "src/main/resources/assets/ssc_14/items/o_2_debu_ghandgenerator.json"
+        ]
+      },
+      "path": "~/ATMOS sistem/DEBUG"
+    },
+    {
+      "name": "O2_DEBUG_handgenerator_Pr",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "o_2_debug_handgenerator_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/O2_DEBUG_handgenerator_PrProcedure.java"
+        ]
+      },
+      "path": "~/ATMOS sistem/DEBUG"
+    },
+    {
+      "name": "BaseUplinkRadio",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_uplink_radio",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/BaseUplinkRadioItem.java",
+          "src/main/resources/assets/ssc_14/items/base_uplink_radio.json",
+          "src/main/resources/assets/ssc_14/models/item/base_uplink_radio.json"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "SSCdebugmode",
+      "type": "gamerule",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ss_cdebugmode",
+      "metadata": {
+        "type": "logic",
+        "files": []
+      }
+    },
+    {
+      "name": "UplinkSystem",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "uplink_system",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/UplinkSystemProcedure.java"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "BaseUplinkItemDiamondSword",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_uplink_item_diamond_sword",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/BaseUplinkItemDiamondSwordProcedure.java"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "UplinkBalance",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "uplink_balance",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/UplinkBalance.java"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "UplinkBalanceSystem",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "uplink_balance_system",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/UplinkBalanceSystemProcedure.java"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "ItemUplinkDiamondSword",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "item_uplink_diamond_sword",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ItemUplinkDiamondSwordProcedure.java"
+        ]
+      },
+      "path": "~/Uplink/UplinkItems"
+    },
+    {
+      "name": "Telecrystal",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "telecrystal",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/TelecrystalItem.java",
+          "src/main/resources/assets/ssc_14/items/telecrystal.json",
+          "src/main/resources/assets/ssc_14/models/item/telecrystal.json"
+        ]
+      },
+      "path": "~/Uplink"
+    },
+    {
+      "name": "UplinkUI",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "uplink_ui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/gui/UplinkUIScreen.java",
+          "src/main/java/net/mcreator/ssc/world/inventory/UplinkUIMenu.java"
+        ]
+      },
+      "path": "~/Uplink"
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [
+    {
+      "name": "title_on",
+      "files": [
+        "ustanovka-plitki"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "title_off",
+      "files": [
+        "otkovyrivaniie-plitki"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "wall_destroy",
+      "files": [
+        "wall_destroy"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "device_destroy",
+      "files": [
+        "device_destroy"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "walldevice_destroy",
+      "files": [
+        "walldevice_destroy"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "welder_use",
+      "files": [
+        "ispolzovaniie-ghorielki"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "welder_off",
+      "files": [
+        "potukhaniie-ghorielki"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "welder_refueling",
+      "files": [
+        "zapravka-svarki"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "welder_on",
+      "files": [
+        "zazhighaniie-ghorielki"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "nippers_use",
+      "files": [
+        "kusachki_zvuk"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "spanner_use",
+      "files": [
+        "gaiechnyikliuch_zvuk"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "screwdriver",
+      "files": [
+        "otviortka_zvuk"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "airlock_open",
+      "files": [
+        "shliuz-otkrytiie"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "airlock_close",
+      "files": [
+        "shliuz-zakrytiie"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "airlock_no_access",
+      "files": [
+        "shliuz-niet-dostupa"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "console_use_1",
+      "files": [
+        "console_use_1"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "console_use_2",
+      "files": [
+        "console_use_2"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "console_use_3",
+      "files": [
+        "console_use_3"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "lock_close",
+      "files": [
+        "lock_close"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "lock_open",
+      "files": [
+        "lock_open"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "locker_close",
+      "files": [
+        "locker_close"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "locker_open",
+      "files": [
+        "locker_open"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    }
+  ],
+  "tag_elements": {
+    "ITEMS:minecraft:pickaxes": [
+      "~CUSTOM:GasAnalyser",
+      "~CUSTOM:Spanner",
+      "~CUSTOM:Screwdriver",
+      "~CUSTOM:FireAxe",
+      "~CUSTOM:Nippers",
+      "~CUSTOM:ActiveWelder",
+      "~CUSTOM:Welding",
+      "~CUSTOM:Scrap"
+    ],
+    "ITEMS:minecraft:axes": [
+      "~CUSTOM:Spanner",
+      "~CUSTOM:Screwdriver",
+      "~CUSTOM:FireAxe",
+      "~CUSTOM:Nippers",
+      "~CUSTOM:ActiveWelder",
+      "~CUSTOM:Welding",
+      "~CUSTOM:Scrap"
+    ],
+    "ITEMS:minecraft:swords": [
+      "~CUSTOM:Spanner",
+      "~CUSTOM:Screwdriver",
+      "~CUSTOM:FireAxe",
+      "~CUSTOM:Nippers",
+      "~CUSTOM:ActiveWelder",
+      "~CUSTOM:Welding",
+      "~CUSTOM:Scrap"
+    ],
+    "BLOCKS:ssc14:sheating": [
+      "CUSTOM:Sheathing",
+      "CUSTOM:SheathingLVC",
+      "CUSTOM:SheathingMVC",
+      "CUSTOM:SheathingHVC",
+      "CUSTOM:SheathingLMVC",
+      "CUSTOM:SheathingLHVC",
+      "CUSTOM:SheathingMHVC",
+      "CUSTOM:SheathingLMHVC"
+    ],
+    "BLOCKS:ssc14:airs": [
+      "CUSTOM:Voidb",
+      "Blocks.AIR",
+      "Blocks.VOID_AIR",
+      "Blocks.CAVE_AIR"
+    ],
+    "BLOCKS:minecraft:overworld_carver_replaceables": [
+      "~Blocks.AIR",
+      "~CUSTOM:Voidb"
+    ],
+    "ENTITIES:ssc14:pulled": [
+      "CUSTOM:WallCarcaseEntit",
+      "CUSTOM:IDConsoleENTITY"
+    ],
+    "BLOCKS:ssc14:up_sheating": [
+      "CUSTOM:UperSheathing"
+    ],
+    "BLOCKS:minecraft:replaceable": [
+      "~CUSTOM:AtmosBlock"
+    ],
+    "BLOCKS:ssc14:germetic_blocks": [
+      "CUSTOM:Sheathing",
+      "CUSTOM:SheathingLVC",
+      "CUSTOM:SheathingMVC",
+      "CUSTOM:SheathingHVC",
+      "CUSTOM:SheathingLMVC",
+      "CUSTOM:SheathingLHVC",
+      "CUSTOM:SheathingMHVC",
+      "CUSTOM:SheathingLMHVC",
+      "CUSTOM:SteelWall",
+      "CUSTOM:UperSheathing"
+    ],
+    "BLOCKS:ssc14:permeable_to_gases": [
+      "CUSTOM:WallCarcase",
+      "CUSTOM:ConsoleOfID",
+      "CUSTOM:AtmosBlock",
+      "CUSTOM:RodFloor",
+      "CUSTOM:RodFloorLvc",
+      "CUSTOM:RodFloorMvc",
+      "CUSTOM:RodFloorHvc",
+      "CUSTOM:RodFloorLMvc",
+      "CUSTOM:RodFloorLHvc",
+      "CUSTOM:RodFloorMHvc",
+      "CUSTOM:RodFloorLMHvc",
+      "CUSTOM:RodUpFloor"
+    ]
+  },
+  "tab_element_order": {
+    "CUSTOM:SSC14creativev": [
+      "RodFloor",
+      "Sheathing",
+      "TitleSteel",
+      "RodUpFloor",
+      "UperSheathing",
+      "UpTitle",
+      "SteelWall",
+      "WallCarcase",
+      "BaseAirlockD1",
+      "Rood",
+      "Steel",
+      "Plasteel",
+      "LowVoltageCable",
+      "MediumVoltageCable",
+      "HighVoltageCable",
+      "ConsoleOfID",
+      "Scrap",
+      "Spanner",
+      "Nippers",
+      "Screwdriver",
+      "Welding",
+      "GasAnalyser",
+      "FireAxe",
+      "IDCardPassanger",
+      "BaseUplinkRadio",
+      "Telecrystal"
+    ]
+  },
+  "language_map": {
+    "en_us": {
+      "item_group.ssc_14.ssc_14creativev": "Space Station Craft 14",
+      "item.ssc_14.ssclogo": "Ssclogo",
+      "biome.ssc_14.spaceb": "Space",
+      "item.ssc_14.voidb": "Void",
+      "subtitles.ssc14_sounds": "",
+      "item.ssc_14.rod_floor": "Rod Floor",
+      "item.ssc_14.rood": "Rood",
+      "item.ssc_14.sheathing": "Sheathing",
+      "item.ssc_14.steel": "Steel",
+      "item.ssc_14.plasteel": "Plasteel",
+      "item.ssc_14.low_voltage_cable": "Low Voltage Cable",
+      "item.ssc_14.medium_voltage_cable": "Medium Voltage Cable",
+      "item.ssc_14.high_voltage_cable": "High Voltage Cable",
+      "item.ssc_14.sheathing_lvc": "Sheathing",
+      "item.ssc_14.sheathing_mvc": "Sheathing",
+      "item.ssc_14.sheathing_hvc": "Sheathing",
+      "item.ssc_14.sheathing_lmvc": "Sheathing",
+      "item.ssc_14.sheathing_lhvc": "Sheathing",
+      "item.ssc_14.sheathing_mhvc": "Sheathing",
+      "item.ssc_14.sheathing_lmhvc": "Sheathing",
+      "item.ssc_14.rod_floor_lvc": "Rod Floor",
+      "item.ssc_14.rod_floor_mvc": "Rod Floor",
+      "item.ssc_14.rod_floor_hvc": "Rod Floor",
+      "item.ssc_14.rod_floor_l_mvc": "Rod Floor",
+      "item.ssc_14.rod_floor_l_hvc": "Rod Floor",
+      "item.ssc_14.rod_floor_m_hvc": "Rod Floor",
+      "item.ssc_14.rod_floor_lm_hvc": "Rod Floor",
+      "item.ssc_14.scrap": "Scrap",
+      "subtitles.title_on": "",
+      "subtitles.title_off": "",
+      "item.ssc_14.title_steel": "Steel Title",
+      "item.ssc_14.steel_wall": "Steel Wall",
+      "item.ssc_14.wall_carcase": "Wall Frame",
+      "subtitles.wall_destroy": "",
+      "subtitles.device_destroy": "",
+      "subtitles.walldevice_destroy": "",
+      "attribute.ssc_14.progress_bar_atrb": "Progress Bar",
+      "attribute.ssc_14.xy_zplayer": "XYZ player",
+      "item.ssc_14.welding": "Welder",
+      "item.ssc_14.active_welder": "Active Welder",
+      "subtitles.welder_use": "",
+      "subtitles.welder_off": "",
+      "subtitles.welder_refueling": "",
+      "subtitles.welder_on": "",
+      "item.ssc_14.nippers": "Nippers",
+      "subtitles.nippers_use": "",
+      "item.ssc_14.fire_axe": "Fire Axe",
+      "item.ssc_14.uper_sheathing": "Uper Sheathing",
+      "item.ssc_14.rod_up_floor": "Rood Uper Floor",
+      "subtitles.spanner_use": "",
+      "subtitles.screwdriver": "",
+      "item.ssc_14.screwdriver": "Screwdriver",
+      "item.ssc_14.spanner": "Spanner",
+      "key.ssc_14.dc_mopen": "Open crft menu",
+      "item.ssc_14.base_airlock_d_1": "Base Airlock",
+      "subtitles.airlock_open": "",
+      "subtitles.airlock_close": "",
+      "subtitles.airlock_no_access": "",
+      "item.ssc_14.base_airlock_u_1": "Base Airlock",
+      "item.ssc_14.up_title": "Uper Title",
+      "entity.ssc_14.wall_carcase_entit": "Wall Carcase Ent",
+      "item.ssc_14.wall_carcase_entit_spawn_egg": "Wall Carcase Ent Spawn Egg",
+      "item.ssc_14.id_card_passanger": "ID Card (Passanger)",
+      "gui.ssc_14.i_dcode.label_tiest_tieksta": "Тест текста Text test",
+      "subtitles.console_use_1": "",
+      "subtitles.console_use_2": "",
+      "subtitles.console_use_3": "",
+      "subtitles.lock_close": "",
+      "subtitles.lock_open": "",
+      "subtitles.locker_close": "",
+      "subtitles.locker_open": "",
+      "item.ssc_14.console_of_id": "Console Of ID-card",
+      "gui.ssc_14.i_dcode.label_zdies_dolzhny_byli_byt_dostupy": "здесь должны были быть доступы, но сейчас их украл Синдикат",
+      "item.ssc_14.id_console_entity_spawn_egg": "ID Console Entity Spawn Egg",
+      "entity.ssc_14.id_console_entity": "ID Console Entity",
+      "key.ssc_14.rotate": "Rotate",
+      "key.ssc_14.pullthe_object": "Pull the Object",
+      "attribute.ssc_14.ent_pull": "Ent Pull",
+      "item.ssc_14.atmos_block": "Atmos Block",
+      "item.ssc_14.gas_analyser": "Gas Analyser",
+      "attribute.ssc_14.gas_an_gu_iatrib": "Gas An GU Iatrib",
+      "gui.ssc_14.gas_analyser_gui.label_kislorod": "Кислород:  ",
+      "gui.ssc_14.gas_analyser_gui.label_kpa": "кПа:  ",
+      "gui.ssc_14.gas_analyser_gui.label_empty": "%:  ",
+      "item.ssc_14.o_2_debu_ghandgenerator.description_0": "При нажатии ПКМ добавляет 100 кПа O2 к блоку, где вы находитесь",
+      "item.ssc_14.o_2_debu_ghandgenerator": "[DEBUG] O2 HandGenerator",
+      "item.ssc_14.base_uplink_radio": "Base Uplink Radio",
+      "gamerule.sSCdebugmode.description": "DebugModeSSC14",
+      "gamerule.sSCdebugmode": "DebugModeSSC14",
+      "gui.ssc_14.base_uplink_ui.button_diamond_sword": "Diamond Sword",
+      "gui.ssc_14.base_uplink_ui.label_make_sure_your_other": "Make sure your other",
+      "gui.ssc_14.base_uplink_ui.label_hand_is_free_before_use": "hand is free before use.",
+      "gui.ssc_14.base_uplink_ui.tooltip_before_use_make_sure_the_additi": "Before use, make sure the additional handle is free!",
+      "gui.ssc_14.base_uplink_ui.label_proc_base_uplink_item_diamond_sw": "Price: 4",
+      "item.ssc_14.telecrystal": "Telecrystal",
+      "gui.ssc_14.uplink_ui.tooltip_diamond_sword_price_4_tc": "Diamond Sword. Price: 4 TC"
+    },
+    "ru_ru": {
+      "item_group.ssc_14.ssc_14creativev": "Space Station Craft 14",
+      "item.ssc_14.ssclogo": "Ssclogo",
+      "biome.ssc_14.spaceb": "Космос",
+      "item.ssc_14.voidb": "Void",
+      "subtitles.ssc14_sounds": "",
+      "item.ssc_14.rod_floor": "Внешний каркас",
+      "item.ssc_14.rood": "Стержень",
+      "item.ssc_14.sheathing": "Обшивка",
+      "item.ssc_14.steel": "Сталь",
+      "item.ssc_14.plasteel": "Пласталь",
+      "item.ssc_14.low_voltage_cable": "Низковольтный кабель",
+      "item.ssc_14.medium_voltage_cable": "Средневольтный кабель",
+      "item.ssc_14.high_voltage_cable": "Высоковольтный кабель",
+      "item.ssc_14.sheathing_lvc": "Sheathing",
+      "item.ssc_14.sheathing_mvc": "Sheathing",
+      "item.ssc_14.sheathing_hvc": "Sheathing",
+      "item.ssc_14.sheathing_lmvc": "Sheathing",
+      "item.ssc_14.sheathing_lhvc": "Sheathing",
+      "item.ssc_14.sheathing_mhvc": "Sheathing",
+      "item.ssc_14.sheathing_lmhvc": "Sheathing",
+      "item.ssc_14.rod_floor_lvc": "Rod Floor",
+      "item.ssc_14.rod_floor_mvc": "Rod Floor",
+      "item.ssc_14.rod_floor_hvc": "Rod Floor",
+      "item.ssc_14.rod_floor_l_mvc": "Rod Floor",
+      "item.ssc_14.rod_floor_l_hvc": "Rod Floor",
+      "item.ssc_14.rod_floor_m_hvc": "Rod Floor",
+      "item.ssc_14.rod_floor_lm_hvc": "Rod Floor",
+      "item.ssc_14.scrap": "Лом",
+      "subtitles.title_on": "",
+      "subtitles.title_off": "",
+      "item.ssc_14.title_steel": "Стальная плитка",
+      "item.ssc_14.steel_wall": "Стальная стена",
+      "item.ssc_14.wall_carcase": "Каркас стены",
+      "subtitles.wall_destroy": "",
+      "subtitles.device_destroy": "",
+      "subtitles.walldevice_destroy": "",
+      "attribute.ssc_14.progress_bar_atrb": "Progress Bar",
+      "attribute.ssc_14.xy_zplayer": "XYZ player",
+      "item.ssc_14.welding": "Сварочный аппарат",
+      "item.ssc_14.active_welder": "Сварочный аппарат",
+      "subtitles.welder_use": "",
+      "subtitles.welder_off": "",
+      "subtitles.welder_refueling": "",
+      "subtitles.welder_on": "",
+      "item.ssc_14.nippers": "Кусачки",
+      "subtitles.nippers_use": "",
+      "item.ssc_14.fire_axe": "Пожарный топор",
+      "item.ssc_14.uper_sheathing": "Верхняя обшивка",
+      "item.ssc_14.rod_up_floor": "Верхний внешний каркас",
+      "subtitles.spanner_use": "",
+      "subtitles.screwdriver": "",
+      "item.ssc_14.screwdriver": "Отвёртка",
+      "item.ssc_14.spanner": "Гаечный ключ",
+      "key.ssc_14.dc_mopen": "Открыть меню создания",
+      "item.ssc_14.base_airlock_d_1": "Шлюз",
+      "subtitles.airlock_open": "",
+      "subtitles.airlock_close": "",
+      "subtitles.airlock_no_access": "",
+      "item.ssc_14.base_airlock_u_1": "Base Airlock",
+      "item.ssc_14.up_title": "Потолочная плитка",
+      "entity.ssc_14.wall_carcase_entit": "Wall Carcase Ent",
+      "item.ssc_14.wall_carcase_entit_spawn_egg": "Wall Carcase Ent Spawn Egg",
+      "item.ssc_14.id_card_passanger": "ID карта (Пассажир)",
+      "gui.ssc_14.i_dcode.label_tiest_tieksta": "Тест текста Text test",
+      "subtitles.console_use_1": "",
+      "subtitles.console_use_2": "",
+      "subtitles.console_use_3": "",
+      "subtitles.lock_close": "",
+      "subtitles.lock_open": "",
+      "subtitles.locker_close": "",
+      "subtitles.locker_open": "",
+      "item.ssc_14.console_of_id": "Консоль ID-карт",
+      "gui.ssc_14.i_dcode.label_zdies_dolzhny_byli_byt_dostupy": "здесь должны были быть доступы, но сейчас их украл Синдикат",
+      "item.ssc_14.id_console_entity_spawn_egg": "Wall Carcase Ent Spawn Egg",
+      "entity.ssc_14.id_console_entity": "Wall Carcase Ent",
+      "key.ssc_14.rotate": "Повернуть объект в мире",
+      "key.ssc_14.pullthe_object": "Тянуть объект  (+ПКМ)",
+      "attribute.ssc_14.ent_pull": "Ent Pull",
+      "item.ssc_14.atmos_block": "Atmos Block",
+      "item.ssc_14.gas_analyser": "Газоанализатор",
+      "attribute.ssc_14.gas_an_gu_iatrib": "Gas An GU Iatrib",
+      "gui.ssc_14.gas_analyser_gui.label_kislorod": "Кислород:  ",
+      "gui.ssc_14.gas_analyser_gui.label_kpa": "кПа:  ",
+      "gui.ssc_14.gas_analyser_gui.label_empty": "%:  ",
+      "item.ssc_14.o_2_debu_ghandgenerator.description_0": "При нажатии ПКМ создаёт 100 кПа O2 в блоке, где вы находитесь",
+      "item.ssc_14.o_2_debu_ghandgenerator": "O 2 DEBU Ghandgenerator",
+      "item.ssc_14.base_uplink_radio": "Base Uplink Radio",
+      "gamerule.sSCdebugmode.description": "DebugModeSSC14",
+      "gamerule.sSCdebugmode": "DebugModeSSC14",
+      "gui.ssc_14.base_uplink_ui.button_diamond_sword": "Diamond Sword",
+      "gui.ssc_14.base_uplink_ui.label_make_sure_your_other": "Make sure your other",
+      "gui.ssc_14.base_uplink_ui.label_hand_is_free_before_use": "hand is free before use.",
+      "gui.ssc_14.base_uplink_ui.tooltip_before_use_make_sure_the_additi": "Before use, make sure the additional handle is free!",
+      "gui.ssc_14.base_uplink_ui.label_proc_base_uplink_item_diamond_sw": "Price: 4",
+      "item.ssc_14.telecrystal": "Telecrystal",
+      "gui.ssc_14.uplink_ui.tooltip_diamond_sword_price_4_tc": "Diamond Sword. Price: 4 TC"
+    }
+  },
+  "metadata": {
+    "files": [
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModAttributes.java",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModGameRules.java",
+      "src/main/java/net/mcreator/ssc/network/MenuStateUpdateMessage.java",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModScreens.java",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModMenus.java",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModBlocks.java",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModBlockEntities.java",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModItems.java",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModEntityRenderers.java",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModEntities.java",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModSounds.java",
+      "src/main/resources/META-INF/neoforge.mods.toml",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModModels.java",
+      "src/main/resources/assets/ssc_14/sounds.json",
+      "src/main/java/net/mcreator/ssc/init/Ssc14ModTabs.java",
+      "src/main/java/net/mcreator/ssc/Ssc14Mod.java",
+      "src/main/resources/pack.mcmeta"
+    ]
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": [
+      {
+        "name": "Dimension",
+        "children": []
+      },
+      {
+        "name": "Blocks",
+        "children": [
+          {
+            "name": "Rod Floor",
+            "children": []
+          },
+          {
+            "name": "Walls",
+            "children": []
+          },
+          {
+            "name": "Rod Up-Floor",
+            "children": []
+          },
+          {
+            "name": "Base Airlock",
+            "children": []
+          },
+          {
+            "name": "Consoles",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Items",
+        "children": [
+          {
+            "name": "Instruments",
+            "children": [
+              {
+                "name": "Gas Analyser",
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "ID cards",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Progress Bar",
+        "children": []
+      },
+      {
+        "name": "Craft Menu",
+        "children": []
+      },
+      {
+        "name": "Unpinned Objects",
+        "children": []
+      },
+      {
+        "name": "Control F",
+        "children": []
+      },
+      {
+        "name": "ATMOS sistem",
+        "children": [
+          {
+            "name": "DEBUG",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Uplink",
+        "children": [
+          {
+            "name": "UplinkItems",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "workspaceSettings": {
+    "modid": "ssc_14",
+    "modName": "Space Station Craft 14",
+    "version": "0.1.3",
+    "description": "Повторённая в Minecraft игра Space Station 14. Мой личный проект, разрабатывается 1 человеком, не факт, что доживёт до полноценного использования. ",
+    "author": "Space_Kyyyst",
+    "websiteURL": "https://www.youtube.com/@Space.kyyyst",
+    "license": "Not specified",
+    "serverSideOnly": false,
+    "modPicture": "ssc14_newlogo",
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [
+      "mcreator_link"
+    ],
+    "currentGenerator": "neoforge-1.21.8",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
+    "modElementsPackage": "net.mcreator.ssc"
+  },
+  "mcreatorVersion": 202500345720
+}
