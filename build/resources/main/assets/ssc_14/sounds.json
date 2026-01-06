@@ -1,0 +1,178 @@
+{
+  "title_on": {
+    "sounds": [
+      {
+        "name": "ssc_14:ustanovka-plitki",
+        "stream": false
+      }
+    ]
+  },
+  "title_off": {
+    "sounds": [
+      {
+        "name": "ssc_14:otkovyrivaniie-plitki",
+        "stream": false
+      }
+    ]
+  },
+  "wall_destroy": {
+    "sounds": [
+      {
+        "name": "ssc_14:wall_destroy",
+        "stream": false
+      }
+    ]
+  },
+  "device_destroy": {
+    "sounds": [
+      {
+        "name": "ssc_14:device_destroy",
+        "stream": false
+      }
+    ]
+  },
+  "walldevice_destroy": {
+    "sounds": [
+      {
+        "name": "ssc_14:walldevice_destroy",
+        "stream": false
+      }
+    ]
+  },
+  "welder_use": {
+    "sounds": [
+      {
+        "name": "ssc_14:ispolzovaniie-ghorielki",
+        "stream": false
+      }
+    ]
+  },
+  "welder_off": {
+    "sounds": [
+      {
+        "name": "ssc_14:potukhaniie-ghorielki",
+        "stream": false
+      }
+    ]
+  },
+  "welder_refueling": {
+    "sounds": [
+      {
+        "name": "ssc_14:zapravka-svarki",
+        "stream": false
+      }
+    ]
+  },
+  "welder_on": {
+    "sounds": [
+      {
+        "name": "ssc_14:zazhighaniie-ghorielki",
+        "stream": false
+      }
+    ]
+  },
+  "nippers_use": {
+    "sounds": [
+      {
+        "name": "ssc_14:kusachki_zvuk",
+        "stream": false
+      }
+    ]
+  },
+  "spanner_use": {
+    "sounds": [
+      {
+        "name": "ssc_14:gaiechnyikliuch_zvuk",
+        "stream": false
+      }
+    ]
+  },
+  "screwdriver": {
+    "sounds": [
+      {
+        "name": "ssc_14:otviortka_zvuk",
+        "stream": false
+      }
+    ]
+  },
+  "airlock_open": {
+    "sounds": [
+      {
+        "name": "ssc_14:shliuz-otkrytiie",
+        "stream": false
+      }
+    ]
+  },
+  "airlock_close": {
+    "sounds": [
+      {
+        "name": "ssc_14:shliuz-zakrytiie",
+        "stream": false
+      }
+    ]
+  },
+  "airlock_no_access": {
+    "sounds": [
+      {
+        "name": "ssc_14:shliuz-niet-dostupa",
+        "stream": false
+      }
+    ]
+  },
+  "console_use_1": {
+    "sounds": [
+      {
+        "name": "ssc_14:console_use_1",
+        "stream": false
+      }
+    ]
+  },
+  "console_use_2": {
+    "sounds": [
+      {
+        "name": "ssc_14:console_use_2",
+        "stream": false
+      }
+    ]
+  },
+  "console_use_3": {
+    "sounds": [
+      {
+        "name": "ssc_14:console_use_3",
+        "stream": false
+      }
+    ]
+  },
+  "lock_close": {
+    "sounds": [
+      {
+        "name": "ssc_14:lock_close",
+        "stream": false
+      }
+    ]
+  },
+  "lock_open": {
+    "sounds": [
+      {
+        "name": "ssc_14:lock_open",
+        "stream": false
+      }
+    ]
+  },
+  "locker_close": {
+    "sounds": [
+      {
+        "name": "ssc_14:locker_close",
+        "stream": false
+      }
+    ]
+  },
+  "locker_open": {
+    "sounds": [
+      {
+        "name": "ssc_14:locker_open",
+        "stream": false
+      }
+    ]
+  }
+}

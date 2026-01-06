@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/title_up",
+  "textures": {
+    "all": "ssc_14:block/up_title_t",
+    "particle": "ssc_14:block/up_title_t",
+    "2": "ssc_14:block/up_title_t"
+  },
+  "render_type": "cutout"
+}

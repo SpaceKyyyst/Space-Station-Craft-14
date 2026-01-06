@@ -1,0 +1,79 @@
+{
+  "variants": {
+    "facing=north,blockstate=0": {
+      "model": "ssc_14:block/base_airlock_u_1"
+    },
+    "facing=east,blockstate=0": {
+      "model": "ssc_14:block/base_airlock_u_1",
+      "y": 90
+    },
+    "facing=south,blockstate=0": {
+      "model": "ssc_14:block/base_airlock_u_1",
+      "y": 180
+    },
+    "facing=west,blockstate=0": {
+      "model": "ssc_14:block/base_airlock_u_1",
+      "y": 270
+    },
+    "facing=north,blockstate=1": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_0"
+    },
+    "facing=east,blockstate=1": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_0",
+      "y": 90
+    },
+    "facing=south,blockstate=1": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_0",
+      "y": 180
+    },
+    "facing=west,blockstate=1": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_0",
+      "y": 270
+    },
+    "facing=north,blockstate=2": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_1"
+    },
+    "facing=east,blockstate=2": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_1",
+      "y": 90
+    },
+    "facing=south,blockstate=2": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_1",
+      "y": 180
+    },
+    "facing=west,blockstate=2": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_1",
+      "y": 270
+    },
+    "facing=north,blockstate=3": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_2"
+    },
+    "facing=east,blockstate=3": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_2",
+      "y": 90
+    },
+    "facing=south,blockstate=3": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_2",
+      "y": 180
+    },
+    "facing=west,blockstate=3": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_2",
+      "y": 270
+    },
+    "facing=north,blockstate=4": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_3"
+    },
+    "facing=east,blockstate=4": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_3",
+      "y": 90
+    },
+    "facing=south,blockstate=4": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_3",
+      "y": 180
+    },
+    "facing=west,blockstate=4": {
+      "model": "ssc_14:block/base_airlock_u_1_bs_blockstate_3",
+      "y": 270
+    }
+  }
+}

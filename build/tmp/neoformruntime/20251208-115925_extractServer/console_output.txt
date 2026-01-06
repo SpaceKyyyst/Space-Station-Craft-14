@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+
+Command-Line:
+ - D:\Program\MCreator\jdk\bin\java.exe
+ - -jar
+ - C:\Users\Admin\.mcreator\gradle\caches\modules-2\files-2.1\net.neoforged.installertools\installertools\2.1.2\62740d5aa8f75f4a4d542d363bdda5b64a198f7a\installertools-2.1.2-fatjar.jar
+ - --task
+ - bundler_extract
+ - --input
+ - C:\Users\Admin\.mcreator\gradle\caches\neoformruntime\artifacts\minecraft_1.21.8_server.jar
+ - --output
+ - ./output.jar
+ - --jar-only
+--------------------------------------------------------------------------------
+
+Task: BUNDLER_EXTRACT
+Input:   C:\Users\Admin\.mcreator\gradle\caches\neoformruntime\artifacts\minecraft_1.21.8_server.jar
+Output:  D:\Space_Station_Craft_14_[recovery]\build\tmp\neoformruntime\20251208-115925_extractServer\.\output.jar
+All:     false
+JarOnly: true
+Libs:    false
+Extracted: versions/1.21.8/server-1.21.8.jar

@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/portable_sheater_cool",
+  "textures": {
+    "all": "ssc_14:block/portable_sheater_cool_texture",
+    "particle": "ssc_14:block/portable_sheater_item",
+    "0": "ssc_14:block/portable_sheater_cool_texture"
+  },
+  "render_type": "cutout"
+}

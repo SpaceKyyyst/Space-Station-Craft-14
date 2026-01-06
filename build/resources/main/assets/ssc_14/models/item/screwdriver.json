@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/screwdriver",
+  "textures": {
+    "0": "ssc_14:block/texture_of_screwdriver",
+    "particle": "ssc_14:item/screwdriver"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "_fv": 79,
+  "_type": "blockstates",
+  "definition": {
+    "block": "PortableSheater",
+    "blockstateList": [
+      {
+        "texture": "portable_sheater_cool_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "portable_sheater_cool:default",
+        "luminance": 2,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "portable_sheater_heat_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "portable_sheater_heat:default",
+        "luminance": 2,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "portable_sheater_off_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "portable_sheater_off:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "portable_sheater_panelopen_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "portable_sheater_open_panel:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      }
+    ]
+  }
+}

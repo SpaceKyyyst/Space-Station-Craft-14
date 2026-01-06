@@ -1,0 +1,358 @@
+{
+  "_fv": 79,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 416,
+    "height": 153,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "access_config_menu__copy.png",
+          "use1Xscale": false,
+          "x": 6,
+          "y": 44,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "gun_room",
+          "text": "",
+          "x": 11,
+          "y": 49,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "HoS",
+          "text": "",
+          "x": 11,
+          "y": 70,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Brig",
+          "text": "",
+          "x": 11,
+          "y": 91,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Security",
+          "text": "",
+          "x": 11,
+          "y": 112,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Detective",
+          "text": "",
+          "x": 11,
+          "y": 133,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "PNT",
+          "text": "",
+          "x": 11,
+          "y": 154,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Crio",
+          "text": "",
+          "x": 11,
+          "y": 175,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "CE",
+          "text": "",
+          "x": 89,
+          "y": 49,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Atmos",
+          "text": "",
+          "x": 89,
+          "y": 70,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Ingeneer",
+          "text": "",
+          "x": 89,
+          "y": 91,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Out",
+          "text": "",
+          "x": 89,
+          "y": 112,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Qm",
+          "text": "",
+          "x": 89,
+          "y": 133,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Utilizat",
+          "text": "",
+          "x": 89,
+          "y": 154,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Supply_Deportament",
+          "text": "",
+          "x": 89,
+          "y": 175,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "CMO",
+          "text": "",
+          "x": 176,
+          "y": 49,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Chemistry",
+          "text": "",
+          "x": 176,
+          "y": 70,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Medical",
+          "text": "",
+          "x": 176,
+          "y": 91,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "RD",
+          "text": "",
+          "x": 176,
+          "y": 112,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Scientist",
+          "text": "",
+          "x": 176,
+          "y": 133,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Technical",
+          "text": "",
+          "x": 176,
+          "y": 154,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Church",
+          "text": "",
+          "x": 176,
+          "y": 175,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "HoP",
+          "text": "",
+          "x": 263,
+          "y": 49,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Service",
+          "text": "",
+          "x": 263,
+          "y": 70,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Kitchen",
+          "text": "",
+          "x": 263,
+          "y": 91,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Gidroponic",
+          "text": "",
+          "x": 263,
+          "y": 112,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Bar",
+          "text": "",
+          "x": 263,
+          "y": 133,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Teatre",
+          "text": "",
+          "x": 263,
+          "y": 154,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Cleaner",
+          "text": "",
+          "x": 263,
+          "y": 175,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Capitan",
+          "text": "",
+          "x": 341,
+          "y": 49,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Command",
+          "text": "",
+          "x": 341,
+          "y": 70,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Blue_Sh",
+          "text": "",
+          "x": 341,
+          "y": 91,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Uridic",
+          "text": "",
+          "x": 341,
+          "y": 112,
+          "locked": false
+        }
+      }
+    ],
+    "onOpen": {
+      "name": "AccessConfigMENU_Open_PR"
+    },
+    "onTick": {
+      "name": "AcsConfigMenuCHECK"
+    },
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

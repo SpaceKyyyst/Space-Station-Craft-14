@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/fire_axe",
+  "textures": {
+    "0": "ssc_14:block/texture_of_fire_axe",
+    "particle": "ssc_14:item/fire_axe"
+  }
+}

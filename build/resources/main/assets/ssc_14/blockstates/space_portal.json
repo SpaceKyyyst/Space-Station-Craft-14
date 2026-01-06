@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "space_station_craft_14:block/space_portal_ew"
+    },
+    "axis=x": {
+      "model": "space_station_craft_14:block/space_portal_ns"
+    }
+  }
+}

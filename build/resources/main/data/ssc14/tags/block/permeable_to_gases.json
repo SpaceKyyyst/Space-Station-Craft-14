@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:rod_floor_m_hvc",
+    "ssc_14:rod_floor_l_hvc",
+    "ssc_14:rod_floor",
+    "ssc_14:rod_floor_l_mvc",
+    "ssc_14:console_of_id",
+    "ssc_14:wall_carcase",
+    "ssc_14:base_airlock_u_1open",
+    "ssc_14:rod_floor_lvc",
+    "ssc_14:atmos_block",
+    "ssc_14:rod_up_floor",
+    "ssc_14:rod_floor_lm_hvc",
+    "ssc_14:rod_floor_mvc",
+    "ssc_14:base_airlock_d_1open",
+    "ssc_14:rod_floor_hvc"
+  ]
+}
