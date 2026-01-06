@@ -1,0 +1,3 @@
+/give Dev ssc_14:base_uplink_radio[balance={20}]
+/give Dev ssc_14:base_uplink_radio[balance:{20}]
+/give Dev ssc_14:base_uplink_radio[balance:20]

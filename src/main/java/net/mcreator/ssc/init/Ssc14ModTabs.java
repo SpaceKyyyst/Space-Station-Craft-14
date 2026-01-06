@@ -46,6 +46,8 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.GAS_ANALYSER.get());
 				tabData.accept(Ssc14ModItems.FIRE_AXE.get());
 				tabData.accept(Ssc14ModItems.ID_CARD_PASSANGER.get());
+				tabData.accept(Ssc14ModItems.BASE_UPLINK_RADIO.get());
+				tabData.accept(Ssc14ModItems.TELECRYSTAL.get());
 			}).build());
 
 	@SubscribeEvent
