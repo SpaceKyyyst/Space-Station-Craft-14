@@ -95,5 +95,6 @@
   "gui.ssc_14.base_uplink_ui.label_proc_base_uplink_item_diamond_sw": "Price: 4",
   "item.ssc_14.telecrystal": "Telecrystal",
   "gui.ssc_14.uplink_ui.tooltip_diamond_sword_price_4_tc": "Diamond Sword. Price: 4 TC",
-  "gui.ssc_14.uplink_ui.label_price_4": "Price: 4"
+  "gui.ssc_14.uplink_ui.label_price_4": "Price: 4",
+  "key.ssc_14.uplinkbalancesystem.balance": "Balance: "
 }
