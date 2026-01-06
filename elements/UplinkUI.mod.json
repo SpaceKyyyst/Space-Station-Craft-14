@@ -16,6 +16,9 @@
           "name": "imagebutton_diamond_sword",
           "image": "diamond_sword.png",
           "hoveredImage": "",
+          "onClick": {
+            "name": "ItemUplinkDiamondSword"
+          },
           "x": 135,
           "y": 74,
           "locked": false
@@ -44,8 +47,28 @@
           "y": 70,
           "locked": false
         }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_uplink_balance_system",
+          "text": {
+            "fixedValue": "",
+            "name": "UplinkBalanceSystem"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 174,
+          "y": 45,
+          "locked": false
+        }
       }
     ],
+    "onTick": {
+      "name": "UplinkBalanceSystem"
+    },
     "gridSettings": {
       "sx": 18,
       "sy": 18,

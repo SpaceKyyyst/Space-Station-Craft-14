@@ -2221,15 +2221,12 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "itemstack",
-            "type": "itemstack"
           }
         ],
         "files": [
           "src/main/java/net/mcreator/ssc/procedures/UplinkBalanceSystemProcedure.java"
-        ]
+        ],
+        "return_type": "string"
       },
       "path": "~/Uplink"
     },
@@ -2244,10 +2241,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "itemstack",
-            "type": "itemstack"
           }
         ],
         "files": [
@@ -2280,7 +2273,8 @@
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/ssc/client/gui/UplinkUIScreen.java",
-          "src/main/java/net/mcreator/ssc/world/inventory/UplinkUIMenu.java"
+          "src/main/java/net/mcreator/ssc/world/inventory/UplinkUIMenu.java",
+          "src/main/java/net/mcreator/ssc/network/UplinkUIButtonMessage.java"
         ]
       },
       "path": "~/Uplink"

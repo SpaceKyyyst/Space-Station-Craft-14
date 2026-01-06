@@ -1,5 +1,7 @@
 package net.mcreator.ssc.client.gui;
 
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -12,6 +14,8 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphics;
 
 import net.mcreator.ssc.world.inventory.UplinkUIMenu;
+import net.mcreator.ssc.procedures.UplinkBalanceSystemProcedure;
+import net.mcreator.ssc.network.UplinkUIButtonMessage;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 public class UplinkUIScreen extends AbstractContainerScreen<UplinkUIMenu> implements Ssc14ModScreens.ScreenAccessor {
@@ -69,6 +73,7 @@ public class UplinkUIScreen extends AbstractContainerScreen<UplinkUIMenu> implem
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+		guiGraphics.drawString(this.font, UplinkBalanceSystemProcedure.execute(entity), 48, 8, -12829636, false);
 	}
 
 	@Override
@@ -76,6 +81,12 @@ public class UplinkUIScreen extends AbstractContainerScreen<UplinkUIMenu> implem
 		super.init();
 		imagebutton_diamond_sword = new ImageButton(this.leftPos + 9, this.topPos + 37, 16, 16,
 				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/diamond_sword.png"), ResourceLocation.parse("ssc_14:textures/screens/diamond_sword.png")), e -> {
+					int x = UplinkUIScreen.this.x;
+					int y = UplinkUIScreen.this.y;
+					if (true) {
+						ClientPacketDistributor.sendToServer(new UplinkUIButtonMessage(0, x, y, z));
+						UplinkUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+					}
 				}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
