@@ -28,14 +28,10 @@ import java.util.stream.IntStream;
 import io.netty.buffer.Unpooled;
 
 public class ConsoleOfIDBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.withSize(9, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(2, ItemStack.EMPTY);
 
 	public ConsoleOfIDBlockEntity(BlockPos position, BlockState state) {
 		super(Ssc14ModBlockEntities.CONSOLE_OF_ID.get(), position, state);
-	}
-
-	@Override
-	public void preRemoveSideEffects(BlockPos blockpos, BlockState blockstate) {
 	}
 
 	@Override

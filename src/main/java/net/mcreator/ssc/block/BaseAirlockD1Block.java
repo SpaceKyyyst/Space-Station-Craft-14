@@ -9,7 +9,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -22,8 +21,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.Containers;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
@@ -34,9 +31,8 @@ import net.mcreator.ssc.block.entity.BaseAirlockD1BlockEntity;
 import javax.annotation.Nullable;
 
 public class BaseAirlockD1Block extends Block implements EntityBlock {
-	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 5);
+	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 4);
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-	public static final BooleanProperty OPEN = BooleanProperty.create("open");
 	private static final VoxelShape SHAPE_1_NORTH = Shapes.or(box(10, 0, 6, 16, 8, 10), box(15, 8, 6, 16, 16, 10), box(9, 8, 7, 15, 16, 9), box(9, 0, 9, 11, 17, 11), box(0, 12, 7, 7, 16, 9), box(0.5, 13.5, 6, 3.5, 16.5, 10), box(0, 0, 6, 8, 12, 10),
 			box(7, 0, 5, 9, 17, 7));
 	private static final VoxelShape SHAPE_1_SOUTH = Shapes.or(box(0, 0, 6, 6, 8, 10), box(0, 8, 6, 1, 16, 10), box(1, 8, 7, 7, 16, 9), box(5, 0, 5, 7, 17, 7), box(9, 12, 7, 16, 16, 9), box(12.5, 13.5, 6, 15.5, 16.5, 10), box(8, 0, 6, 16, 12, 10),
@@ -57,10 +53,6 @@ public class BaseAirlockD1Block extends Block implements EntityBlock {
 	private static final VoxelShape SHAPE_4_SOUTH = Shapes.or(box(0, 0, 6, 1, 8, 10), box(0, 8, 7, 2, 16, 9), box(0, 0, 5, 2, 17, 7), box(15, 12, 7, 16, 16, 9), box(14, 0, 6, 16, 12, 10), box(13, 0, 9, 15, 17, 11));
 	private static final VoxelShape SHAPE_4_EAST = Shapes.or(box(6, 0, 15, 10, 8, 16), box(7, 8, 14, 9, 16, 16), box(5, 0, 14, 7, 17, 16), box(7, 12, 0, 9, 16, 1), box(6, 0, 0, 10, 12, 2), box(9, 0, 1, 11, 17, 3));
 	private static final VoxelShape SHAPE_4_WEST = Shapes.or(box(6, 0, 0, 10, 8, 1), box(7, 8, 0, 9, 16, 2), box(9, 0, 0, 11, 17, 2), box(7, 12, 15, 9, 16, 16), box(6, 0, 14, 10, 12, 16), box(5, 0, 13, 7, 17, 15));
-	private static final VoxelShape SHAPE_5_NORTH = Shapes.or(box(15, 8, 7, 16, 16, 9), box(15, 0, 9, 16, 17, 11), box(0, 0, 6, 1, 12, 10), box(0, 0, 5, 2, 17, 7));
-	private static final VoxelShape SHAPE_5_SOUTH = Shapes.or(box(0, 8, 7, 1, 16, 9), box(0, 0, 5, 1, 17, 7), box(15, 0, 6, 16, 12, 10), box(14, 0, 9, 16, 17, 11));
-	private static final VoxelShape SHAPE_5_EAST = Shapes.or(box(7, 8, 15, 9, 16, 16), box(5, 0, 15, 7, 17, 16), box(6, 0, 0, 10, 12, 1), box(9, 0, 0, 11, 17, 2));
-	private static final VoxelShape SHAPE_5_WEST = Shapes.or(box(7, 8, 0, 9, 16, 1), box(9, 0, 0, 11, 17, 1), box(6, 0, 15, 10, 12, 16), box(5, 0, 14, 7, 17, 16));
 	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(9, 0, 6, 16, 8, 10), box(14, 8, 6, 16, 16, 10), box(8, 8, 7, 14, 16, 9), box(8, 0, 9, 10, 17, 11), box(0, 12, 7, 8, 16, 9), box(1.5, 13.5, 6, 4.5, 16.5, 10), box(0, 0, 6, 9, 12, 10),
 			box(8, 0, 5, 10, 17, 7));
 	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(0, 0, 6, 7, 8, 10), box(0, 8, 6, 2, 16, 10), box(2, 8, 7, 8, 16, 9), box(6, 0, 5, 8, 17, 7), box(8, 12, 7, 16, 16, 9), box(11.5, 13.5, 6, 14.5, 16.5, 10), box(7, 0, 6, 16, 12, 10),
@@ -81,12 +73,10 @@ public class BaseAirlockD1Block extends Block implements EntityBlock {
 					return 4;
 				if (s.getValue(BLOCKSTATE) == 4)
 					return 4;
-				if (s.getValue(BLOCKSTATE) == 5)
-					return 4;
 				return 4;
 			}
 		}.getLightLevel())).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
 	@Override
@@ -142,15 +132,6 @@ public class BaseAirlockD1Block extends Block implements EntityBlock {
 				default -> SHAPE_4_NORTH;
 			});
 		}
-		if (state.getValue(BLOCKSTATE) == 5) {
-			return (switch (state.getValue(FACING)) {
-				case NORTH -> SHAPE_5_NORTH;
-				case SOUTH -> SHAPE_5_SOUTH;
-				case EAST -> SHAPE_5_EAST;
-				case WEST -> SHAPE_5_WEST;
-				default -> SHAPE_5_NORTH;
-			});
-		}
 		return (switch (state.getValue(FACING)) {
 			case NORTH -> SHAPE_NORTH;
 			case SOUTH -> SHAPE_SOUTH;
@@ -163,12 +144,12 @@ public class BaseAirlockD1Block extends Block implements EntityBlock {
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
-		builder.add(FACING, OPEN, BLOCKSTATE);
+		builder.add(FACING, BLOCKSTATE);
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(OPEN, false);
+		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -201,7 +182,7 @@ public class BaseAirlockD1Block extends Block implements EntityBlock {
 		double hitY = hit.getLocation().y;
 		double hitZ = hit.getLocation().z;
 		Direction direction = hit.getDirection();
-		BaseAirlockOpenCloseProcedure.execute(world, x, y, z, blockstate);
+		BaseAirlockOpenCloseProcedure.execute(world, x, y, z, blockstate, entity);
 		return InteractionResult.SUCCESS;
 	}
 
@@ -221,11 +202,6 @@ public class BaseAirlockD1Block extends Block implements EntityBlock {
 		super.triggerEvent(state, world, pos, eventID, eventParam);
 		BlockEntity blockEntity = world.getBlockEntity(pos);
 		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
-	}
-
-	@Override
-	protected void affectNeighborsAfterRemoval(BlockState blockstate, ServerLevel world, BlockPos blockpos, boolean flag) {
-		Containers.updateNeighboursAfterDestroy(blockstate, world, blockpos);
 	}
 
 	@Override

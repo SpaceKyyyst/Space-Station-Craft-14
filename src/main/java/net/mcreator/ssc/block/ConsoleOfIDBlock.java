@@ -18,6 +18,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.Containers;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
@@ -26,6 +28,10 @@ import net.mcreator.ssc.block.entity.ConsoleOfIDBlockEntity;
 
 public class ConsoleOfIDBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
+	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(2, 0, 12, 14, 18, 16), box(1, 0, 4, 15, 13, 11), box(1, 13, 1, 15, 16, 13), box(0.5, 13.77111, 7.39283, 15.5, 24.77111, 15));
+	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(2, 0, 0, 14, 18, 4), box(1, 0, 5, 15, 13, 12), box(1, 13, 3, 15, 16, 15), box(0.5, 13.77111, 1, 15.5, 24.77111, 8.60717));
+	private static final VoxelShape SHAPE_EAST = Shapes.or(box(0, 0, 2, 4, 18, 14), box(5, 0, 1, 12, 13, 15), box(3, 13, 1, 15, 16, 15), box(1, 13.77111, 0.5, 8.60717, 24.77111, 15.5));
+	private static final VoxelShape SHAPE_WEST = Shapes.or(box(12, 0, 2, 16, 18, 14), box(4, 0, 1, 11, 13, 15), box(1, 13, 1, 13, 16, 15), box(7.39283, 13.77111, 0.5, 15, 24.77111, 15.5));
 
 	public ConsoleOfIDBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.ANVIL).strength(20f, 10f).lightLevel(s -> 3).noOcclusion().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
@@ -49,12 +55,13 @@ public class ConsoleOfIDBlock extends Block implements EntityBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return switch (state.getValue(FACING)) {
-			default -> Shapes.or(box(2, 0, 0, 14, 18, 4), box(1, 0, 5, 15, 13, 12), box(1, 13, 3, 15, 16, 15), box(0.5, 13.77111, 1, 15.5, 24.77111, 8.60717));
-			case NORTH -> Shapes.or(box(2, 0, 12, 14, 18, 16), box(1, 0, 4, 15, 13, 11), box(1, 13, 1, 15, 16, 13), box(0.5, 13.77111, 7.39283, 15.5, 24.77111, 15));
-			case EAST -> Shapes.or(box(0, 0, 2, 4, 18, 14), box(5, 0, 1, 12, 13, 15), box(3, 13, 1, 15, 16, 15), box(1, 13.77111, 0.5, 8.60717, 24.77111, 15.5));
-			case WEST -> Shapes.or(box(12, 0, 2, 16, 18, 14), box(4, 0, 1, 11, 13, 15), box(1, 13, 1, 13, 16, 15), box(7.39283, 13.77111, 0.5, 15, 24.77111, 15.5));
-		};
+		return (switch (state.getValue(FACING)) {
+			case NORTH -> SHAPE_NORTH;
+			case SOUTH -> SHAPE_SOUTH;
+			case EAST -> SHAPE_EAST;
+			case WEST -> SHAPE_WEST;
+			default -> SHAPE_NORTH;
+		});
 	}
 
 	@Override
@@ -106,5 +113,10 @@ public class ConsoleOfIDBlock extends Block implements EntityBlock {
 		super.triggerEvent(state, world, pos, eventID, eventParam);
 		BlockEntity blockEntity = world.getBlockEntity(pos);
 		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
+	}
+
+	@Override
+	protected void affectNeighborsAfterRemoval(BlockState blockstate, ServerLevel world, BlockPos blockpos, boolean flag) {
+		Containers.updateNeighboursAfterDestroy(blockstate, world, blockpos);
 	}
 }

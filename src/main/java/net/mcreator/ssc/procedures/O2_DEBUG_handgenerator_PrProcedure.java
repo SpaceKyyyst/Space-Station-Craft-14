@@ -13,7 +13,8 @@ public class O2_DEBUG_handgenerator_PrProcedure {
 			BlockEntity _blockEntity = world.getBlockEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
 			if (_blockEntity != null) {
-				_blockEntity.getPersistentData().putDouble("O2", (getBlockNBTNumber(world, BlockPos.containing(x, y, z), "O2") + 1000));
+				_blockEntity.getPersistentData().putDouble("O2", (getBlockNBTNumber(world, BlockPos.containing(x, y, z), "O2") + 100));
+				_blockEntity.getPersistentData().putDouble("t_K", ((getBlockNBTNumber(world, BlockPos.containing(x, y, z), "t_K") + 273.15) / 2));
 			}
 			if (world instanceof Level _level)
 				_level.sendBlockUpdated(_bp, _bs, _bs, 3);

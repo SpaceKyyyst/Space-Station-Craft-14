@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ssc_14:block/base_airlock_u_1open"
+    },
+    "facing=east": {
+      "model": "ssc_14:block/base_airlock_u_1open",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ssc_14:block/base_airlock_u_1open",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ssc_14:block/base_airlock_u_1open",
+      "y": 270
+    }
+  }
+}

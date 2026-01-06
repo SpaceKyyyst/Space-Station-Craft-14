@@ -13,10 +13,6 @@
       {
         "type": "outputslot",
         "data": {
-          "color": {
-            "value": -8355712,
-            "falpha": 0.0
-          },
           "id": 1,
           "disablePickup": {
             "fixedValue": false
@@ -73,10 +69,6 @@
       {
         "type": "outputslot",
         "data": {
-          "color": {
-            "value": -8355712,
-            "falpha": 0.0
-          },
           "id": 5,
           "disablePickup": {
             "fixedValue": false
@@ -132,11 +124,21 @@
           "y": 47,
           "locked": false
         }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "dop_craft_menu__copy.png",
+          "use1Xscale": false,
+          "x": 126,
+          "y": 37,
+          "locked": false
+        }
       }
     ],
     "gridSettings": {
-      "sx": 18,
-      "sy": 18,
+      "sx": 1,
+      "sy": 1,
       "ox": 11,
       "oy": 15,
       "snapOnGrid": false

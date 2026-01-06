@@ -12,11 +12,11 @@ darknessEffectScale:1.0
 glintSpeed:0.5
 glintStrength:0.75
 prioritizeChunkUpdates:0
-fullscreen:true
-gamma:0.5052816901408451
+fullscreen:false
+gamma:0.5
 graphicsMode:2
 guiScale:0
-maxFps:100
+maxFps:260
 inactivityFpsLimit:"afk"
 mipmapLevels:4
 narrator:0
@@ -54,7 +54,7 @@ highContrastBlockOutline:false
 narratorHotkey:true
 resourcePacks:[]
 incompatibleResourcePacks:[]
-lastServer:localhost:25463
+lastServer:46.173.16.182
 lang:ru_ru
 chatVisibility:0
 chatOpacity:1.0
@@ -62,14 +62,14 @@ chatLineSpacing:0.0
 textBackgroundOpacity:0.5
 backgroundForChatOnly:true
 hideServerAddress:false
-advancedItemTooltips:false
+advancedItemTooltips:true
 pauseOnLostFocus:true
 overrideWidth:0
 overrideHeight:0
 chatHeightFocused:1.0
 chatDelay:0.0
 chatHeightUnfocused:0.4375
-chatScale:0.6584507042253521
+chatScale:0.8028169014084507
 chatWidth:1.0
 notificationDisplayTime:1.0
 useNativeTransport:true
@@ -79,7 +79,7 @@ tutorialStep:none
 mouseWheelSensitivity:1.0
 rawMouseInput:true
 glDebugVerbosity:1
-skipMultiplayerWarning:false
+skipMultiplayerWarning:true
 hideMatchedNames:true
 joinedFirstServer:false
 syncChunkWrites:true
@@ -111,7 +111,7 @@ key_key.command:key.keyboard.slash
 key_key.socialInteractions:key.keyboard.p
 key_key.screenshot:key.keyboard.f2
 key_key.togglePerspective:key.keyboard.f5
-key_key.smoothCamera:key.keyboard.unknown
+key_key.smoothCamera:key.keyboard.f4
 key_key.fullscreen:key.keyboard.f11
 key_key.spectatorOutlines:key.keyboard.unknown
 key_key.swapOffhand:key.keyboard.x
@@ -131,6 +131,7 @@ key_key.hotbar.9:key.keyboard.9
 key_key.ssc_14.dc_mopen:key.keyboard.t
 key_key.ssc_14.rotate:key.keyboard.r
 key_key.ssc_14.pullthe_object:key.keyboard.f
+key_key.pickup.item:key.keyboard.unknown
 soundCategory_master:1.0
 soundCategory_music:0.0
 soundCategory_record:1.0

@@ -44,6 +44,10 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> UP_TITLE;
 	public static final DeferredBlock<Block> CONSOLE_OF_ID;
 	public static final DeferredBlock<Block> ATMOS_BLOCK;
+	public static final DeferredBlock<Block> BASE_WINDOW;
+	public static final DeferredBlock<Block> BASE_AIRLOCK_D_1OPEN;
+	public static final DeferredBlock<Block> BASE_AIRLOCK_U_1OPEN;
+	public static final DeferredBlock<Block> PORTABLE_SHEATER;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
 		SPACED_PORTAL = register("spaced_portal", SpacedPortalBlock::new);
@@ -73,6 +77,10 @@ public class Ssc14ModBlocks {
 		UP_TITLE = register("up_title", UpTitleBlock::new);
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
 		ATMOS_BLOCK = register("atmos_block", AtmosBlockBlock::new);
+		BASE_WINDOW = register("base_window", BaseWindowBlock::new);
+		BASE_AIRLOCK_D_1OPEN = register("base_airlock_d_1open", BaseAirlockD1openBlock::new);
+		BASE_AIRLOCK_U_1OPEN = register("base_airlock_u_1open", BaseAirlockU1openBlock::new);
+		PORTABLE_SHEATER = register("portable_sheater", PortableSheaterBlock::new);
 	}
 
 	// Start of user code block custom blocks

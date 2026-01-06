@@ -2,34 +2,1561 @@
   "_fv": 79,
   "_type": "gui",
   "definition": {
-    "type": 0,
-    "width": 324,
-    "height": 166,
-    "inventoryOffsetX": 0,
-    "inventoryOffsetY": 0,
+    "type": 1,
+    "width": 416,
+    "height": 235,
+    "inventoryOffsetX": 120,
+    "inventoryOffsetY": 37,
     "renderBgLayer": true,
     "doesPauseGame": false,
     "components": [
       {
-        "type": "label",
+        "type": "inputslot",
         "data": {
-          "name": "label_zdies_dolzhny_byli_byt_dostupy",
+          "inputLimit": {
+            "value": "TAG:ssc14:id"
+          },
+          "disablePlacement": {
+            "fixedValue": false
+          },
+          "id": 0,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": false,
+          "onSlotChanged": {
+            "name": "IDCode0Cellpr"
+          },
+          "x": 92,
+          "y": 165,
+          "locked": false
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": "TAG:ssc14:id"
+          },
+          "disablePlacement": {
+            "fixedValue": false
+          },
+          "id": 1,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": false,
+          "onSlotChanged": {
+            "name": "IDCode0Cellpr"
+          },
+          "x": 92,
+          "y": 201,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "gun_room",
+          "text": "",
+          "x": 11,
+          "y": 8,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "HoS",
+          "text": "",
+          "x": 11,
+          "y": 29,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Brig",
+          "text": "",
+          "x": 11,
+          "y": 50,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Security",
+          "text": "",
+          "x": 11,
+          "y": 71,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Detective",
+          "text": "",
+          "x": 11,
+          "y": 92,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Blue_Sh",
+          "text": "",
+          "x": 341,
+          "y": 50,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "CE",
+          "text": "",
+          "x": 89,
+          "y": 8,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "CMO",
+          "text": "",
+          "x": 176,
+          "y": 8,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "RD",
+          "text": "",
+          "x": 176,
+          "y": 71,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "PNT",
+          "text": "",
+          "x": 11,
+          "y": 113,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "HoP",
+          "text": "",
+          "x": 263,
+          "y": 8,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Atmos",
+          "text": "",
+          "x": 89,
+          "y": 29,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Ingeneer",
+          "text": "",
+          "x": 89,
+          "y": 50,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Qm",
+          "text": "",
+          "x": 89,
+          "y": 92,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Utilizat",
+          "text": "",
+          "x": 89,
+          "y": 113,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Supply_Deportament",
+          "text": "",
+          "x": 89,
+          "y": 134,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Technical",
+          "text": "",
+          "x": 176,
+          "y": 113,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Chemistry",
+          "text": "",
+          "x": 176,
+          "y": 29,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Medical",
+          "text": "",
+          "x": 176,
+          "y": 50,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Scientist",
+          "text": "",
+          "x": 176,
+          "y": 92,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Out",
+          "text": "",
+          "x": 89,
+          "y": 71,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Crio",
+          "text": "",
+          "x": 11,
+          "y": 134,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Capitan",
+          "text": "",
+          "x": 341,
+          "y": 8,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Service",
+          "text": "",
+          "x": 263,
+          "y": 29,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Kitchen",
+          "text": "",
+          "x": 263,
+          "y": 50,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Gidroponic",
+          "text": "",
+          "x": 263,
+          "y": 71,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Bar",
+          "text": "",
+          "x": 263,
+          "y": 92,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Teatre",
+          "text": "",
+          "x": 263,
+          "y": 113,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Cleaner",
+          "text": "",
+          "x": 263,
+          "y": 134,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Command",
+          "text": "",
+          "x": 341,
+          "y": 29,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Uridic",
+          "text": "",
+          "x": 341,
+          "y": 71,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Church",
+          "text": "",
+          "x": 176,
+          "y": 134,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "i_dcode___copy.png",
+          "use1Xscale": false,
+          "x": 6,
+          "y": 3,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "id_code_menu_decor1.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "IDcmdecor1"
+          },
+          "x": 93,
+          "y": 183,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "id_code_menu_decor2.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "IDcmdecor2"
+          },
+          "x": 96,
+          "y": 187,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "id_code_menu_decor3.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "IDcmdecor3"
+          },
+          "x": 96,
+          "y": 187,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "GunroomIDCLockGUI"
+          },
+          "x": 10,
+          "y": 7,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "HoSIDCLockGUI"
+          },
+          "x": 10,
+          "y": 28,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "BrigIDCLockGUI"
+          },
+          "x": 10,
+          "y": 49,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "SecurityIDCLockGUI"
+          },
+          "x": 10,
+          "y": 70,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "DetectiveIDCLockGUI"
+          },
+          "x": 10,
+          "y": 91,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "PNTIDCLockGUI"
+          },
+          "x": 10,
+          "y": 112,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CrioIDCLockGUI"
+          },
+          "x": 10,
+          "y": 133,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CEIDCLockGUI"
+          },
+          "x": 88,
+          "y": 7,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "AtmosIDCLockGUI"
+          },
+          "x": 88,
+          "y": 28,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "IngeneerIDCLockGUI"
+          },
+          "x": 88,
+          "y": 49,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "OutIDCLockGUI"
+          },
+          "x": 88,
+          "y": 70,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "QmIDCLockGUI"
+          },
+          "x": 88,
+          "y": 91,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "UtilizatIDCLockGUI"
+          },
+          "x": 88,
+          "y": 112,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "SupplyDeportamentIDCLockGUI"
+          },
+          "x": 88,
+          "y": 133,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CMOIDCLockGUI"
+          },
+          "x": 175,
+          "y": 7,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "ChemistryIDCLockGUI"
+          },
+          "x": 175,
+          "y": 28,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "MedicalIDCLockGUI"
+          },
+          "x": 175,
+          "y": 49,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "RDIDCLockGUI"
+          },
+          "x": 175,
+          "y": 70,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "ScientistIDCLockGUI"
+          },
+          "x": 175,
+          "y": 91,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "TechnicalIDCLockGUI"
+          },
+          "x": 175,
+          "y": 112,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "ChurchIDCLockGUI"
+          },
+          "x": 175,
+          "y": 133,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "HoPIDCLockGUI"
+          },
+          "x": 262,
+          "y": 7,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "ServiceIDCLockGUI"
+          },
+          "x": 262,
+          "y": 28,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "KitchenIDCLockGUI"
+          },
+          "x": 262,
+          "y": 49,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "GidroponicIDCLockGUI"
+          },
+          "x": 262,
+          "y": 70,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "BarIDCLockGUI"
+          },
+          "x": 262,
+          "y": 91,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "TeatreIDCLockGUI"
+          },
+          "x": 262,
+          "y": 112,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CleanerIDCLockGUI"
+          },
+          "x": 262,
+          "y": 133,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CapitanIDCLockGUI"
+          },
+          "x": 340,
+          "y": 7,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CommandIDCLockGUI"
+          },
+          "x": 340,
+          "y": 28,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "BlueShIDCLockGUI"
+          },
+          "x": 340,
+          "y": 49,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lock_gui.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "UridicIDCLockGUI"
+          },
+          "x": 340,
+          "y": 70,
+          "locked": false
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "",
+          "name": "Job_Name",
+          "width": 120,
+          "height": 20,
+          "x": 111,
+          "y": 182,
+          "locked": false
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "Job_Name_Readact",
+          "text": "",
+          "x": 232,
+          "y": 183,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_kapitan",
+          "image": "kapitan.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CapitanJOB"
+          },
+          "x": 19,
+          "y": 166,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_nt",
+          "image": "nt.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "PNTJOB"
+          },
+          "x": 28,
+          "y": 166,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_gp",
+          "image": "gp.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "HoPJOB"
+          },
+          "x": 19,
+          "y": 175,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_gsb",
+          "image": "gsb.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "HoSJOB"
+          },
+          "x": 19,
+          "y": 202,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_gv",
+          "image": "gv.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CMOJOB"
+          },
+          "x": 19,
+          "y": 211,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_km",
+          "image": "km.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "QmJOB"
+          },
+          "x": 19,
+          "y": 184,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_gruzchik",
+          "image": "gruzchik.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "LoaderJOB"
+          },
+          "x": 37,
+          "y": 184,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_utilizator",
+          "image": "utilizator.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "UtilizatorJOB"
+          },
+          "x": 28,
+          "y": 184,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_passazhir",
+          "image": "passazhir.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "PassangerJOB"
+          },
+          "x": 64,
+          "y": 193,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_nr",
+          "image": "nr.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RDJOB"
+          },
+          "x": 19,
+          "y": 220,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_viedushchii_uchionyi",
+          "image": "viedushchii_uchionyi.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "VSJOB"
+          },
+          "x": 28,
+          "y": 220,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_uchionyi",
+          "image": "uchionyi.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "ScientistJOB"
+          },
+          "x": 37,
+          "y": 220,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_nauchnyi_assistient",
+          "image": "nauchnyi_assistient.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "ScienceAssistentJOB"
+          },
+          "x": 46,
+          "y": 220,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_si",
+          "image": "si.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CEJOB"
+          },
+          "x": 19,
+          "y": 193,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_atmos",
+          "image": "atmos.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "AtmosJOB"
+          },
+          "x": 37,
+          "y": 193,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_viedushchii_inzhienier",
+          "image": "viedushchii_inzhienier.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "VEJOB"
+          },
+          "x": 28,
+          "y": 193,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_tiekhnichieskii_assistient",
+          "image": "tiekhnichieskii_assistient.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "TechicalAssistentJOB"
+          },
+          "x": 55,
+          "y": 193,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_inzhienier",
+          "image": "inzhienier.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "EngeneerJOB"
+          },
+          "x": 46,
+          "y": 193,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_paramiedik",
+          "image": "paramiedik.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "ParamedJOB"
+          },
+          "x": 46,
+          "y": 211,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_khimik",
+          "image": "khimik.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "ChemistJOB"
+          },
+          "x": 37,
+          "y": 211,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vrach",
+          "image": "vrach.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MedicJOB"
+          },
+          "x": 55,
+          "y": 211,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_viedushchii_vrach",
+          "image": "viedushchii_vrach.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "VVJOB"
+          },
+          "x": 28,
+          "y": 211,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_intiern",
+          "image": "intiern.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "InternJOB"
+          },
+          "x": 73,
+          "y": 211,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_kadiet",
+          "image": "kadiet.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "KadetJOB"
+          },
+          "x": 73,
+          "y": 202,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_instruktor_sb",
+          "image": "instruktor_sb.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "ISBJOB"
+          },
+          "x": 28,
+          "y": 202,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_ofitsier",
+          "image": "ofitsier.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "OficerJOB"
+          },
+          "x": 64,
+          "y": 202,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_dietiektiv",
+          "image": "dietiektiv.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "DetectiveJOB"
+          },
+          "x": 46,
+          "y": 202,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_psikhologh",
+          "image": "psikhologh.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "PsichologJOB"
+          },
+          "x": 64,
+          "y": 211,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_brighmied",
+          "image": "brighmied.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "BrigMedJOB"
+          },
+          "x": 55,
+          "y": 202,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_mim",
+          "image": "mim.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MimeJOB"
+          },
+          "x": 64,
+          "y": 166,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_smotritiel",
+          "image": "smotritiel.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "WardJOB"
+          },
+          "x": 37,
+          "y": 202,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_osh",
+          "image": "osh.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "BlueShJOB"
+          },
+          "x": 55,
+          "y": 166,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_adutant",
+          "image": "adutant.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "AdutantJOB"
+          },
+          "x": 37,
+          "y": 166,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_kloun",
+          "image": "kloun.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "ClownJOB"
+          },
+          "x": 73,
+          "y": 166,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_muzykant",
+          "image": "muzykant.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MusicantJOB"
+          },
+          "x": 73,
+          "y": 193,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_zootiekhnik",
+          "image": "zootiekhnik.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "ZootechnikJOB"
+          },
+          "x": 73,
+          "y": 184,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_bibliotiekar",
+          "image": "bibliotiekar.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "BibliotecarJOB"
+          },
+          "x": 64,
+          "y": 184,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_siervisnyi_rabotnik",
+          "image": "siervisnyi_rabotnik.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "ServicerJOB"
+          },
+          "x": 28,
+          "y": 175,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_uborshchik",
+          "image": "uborshchik.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CleanerJOB"
+          },
+          "x": 37,
+          "y": 175,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_povar",
+          "image": "povar.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "ChiefPovarJOB"
+          },
+          "x": 46,
+          "y": 175,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_botanik",
+          "image": "botanik.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "BotanicJOB"
+          },
+          "x": 55,
+          "y": 175,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_barmien",
+          "image": "barmien.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "BarmenJOB"
+          },
+          "x": 64,
+          "y": 175,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_boksior",
+          "image": "boksior.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "BoxerJOB"
+          },
+          "x": 55,
+          "y": 184,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_sviashchiennik",
+          "image": "sviashchiennik.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CharchManJOB"
+          },
+          "x": 73,
+          "y": 175,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_rieportior",
+          "image": "rieportior.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "ReporterJOB"
+          },
+          "x": 46,
+          "y": 184,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_avd",
+          "image": "avd.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "AVDJOB"
+          },
+          "x": 46,
+          "y": 166,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_riedaktirovat_imia_dolzhnosti",
           "text": {
-            "fixedValue": "здесь должны были быть доступы, но сейчас их украл Синдикат"
+            "fixedValue": "Редактировать имя должности?"
           },
-          "color": {
-            "value": -16777216,
-            "falpha": 0.0
+          "width": 24,
+          "height": 24,
+          "x": 230,
+          "y": 180,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_idcode_all_on",
+          "image": "idcode_all_on.png",
+          "hoveredImage": "idcode_all_on_2.png",
+          "onClick": {
+            "name": "IDCodeALLON"
           },
-          "x": 59,
-          "y": 110,
+          "x": 92,
+          "y": 223,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_idcode_all_off",
+          "image": "idcode_all_off.png",
+          "hoveredImage": "idcode_all_off_2.png",
+          "onClick": {
+            "name": "IDCodeALLOFF"
+          },
+          "x": 119,
+          "y": 223,
           "locked": false
         }
       }
     ],
+    "onOpen": {
+      "name": "IDconsole_OPENMENU"
+    },
+    "onTick": {
+      "name": "ID_Code_CHECK"
+    },
     "gridSettings": {
-      "sx": 18,
-      "sy": 18,
+      "sx": 10,
+      "sy": 14,
       "ox": 11,
       "oy": 15,
       "snapOnGrid": false

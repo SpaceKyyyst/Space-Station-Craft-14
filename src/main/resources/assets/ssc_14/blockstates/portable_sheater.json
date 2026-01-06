@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "blockstate=0": {
+      "model": "ssc_14:block/portable_sheater"
+    },
+    "blockstate=1": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_0"
+    },
+    "blockstate=2": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_1"
+    },
+    "blockstate=3": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_2"
+    },
+    "blockstate=4": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_3"
+    }
+  }
+}

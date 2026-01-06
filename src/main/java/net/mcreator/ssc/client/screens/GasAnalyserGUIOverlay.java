@@ -15,7 +15,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
+import net.mcreator.ssc.procedures.TemperatureTextRedactProcedure;
 import net.mcreator.ssc.procedures.O2textRedactProcedure;
+import net.mcreator.ssc.procedures.KPaTextRedactProcedure;
 import net.mcreator.ssc.procedures.GasAnalyserGUI_pr_1Procedure;
 
 @EventBusSubscriber(Dist.CLIENT)
@@ -37,18 +39,36 @@ public class GasAnalyserGUIOverlay {
 		}
 		if (GasAnalyserGUI_pr_1Procedure.execute(entity)) {
 			if (GasAnalyserGUI_pr_1Procedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/gas_anal_menu.png"), w / 2 + -168, h / 2 + -106, 0, 0, 160, 200, 160, 200);
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/gas_anal_menu.png"), w / 2 + -207, h / 2 + -101, 0, 0, 200, 200, 200, 200);
 			}
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/o2_icon.png"), w / 2 + -162, h / 2 + -21, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/o2_icon.png"), w / 2 + -203, h / 2 + -50, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/n2_icon.png"), w / 2 + -162, h / 2 + -4, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/n2_icon.png"), w / 2 + -203, h / 2 + -34, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/co2_icon.png"), w / 2 + -162, h / 2 + 13, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/co2_icon.png"), w / 2 + -203, h / 2 + -18, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_kislorod"), w / 2 + -145, h / 2 + -17, -1, false);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/water_vapor_icon.png"), w / 2 + -203, h / 2 + -2, 0, 0, 14, 15, 14, 15);
+
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/plasma_icon.png"), w / 2 + -203, h / 2 + 14, 0, 0, 14, 15, 14, 15);
+
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/miasm_icon.png"), w / 2 + -203, h / 2 + 30, 0, 0, 14, 15, 14, 15);
+
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/no2_icon.png"), w / 2 + -203, h / 2 + 46, 0, 0, 14, 15, 14, 15);
+
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/tritium_icon.png"), w / 2 + -203, h / 2 + 62, 0, 0, 14, 15, 14, 15);
+
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/frezon_icon.png"), w / 2 + -203, h / 2 + 78, 0, 0, 14, 15, 14, 15);
+
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_1000"), w / 2 + -102, h / 2 + -96, -1, false);
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 
-					O2textRedactProcedure.execute(world, x, y, z), w / 2 + -88, h / 2 + -17, -1, false);
+					O2textRedactProcedure.execute(world, x, y, z), w / 2 + -131, h / 2 + -46, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+
+					TemperatureTextRedactProcedure.execute(world, x, y, z), w / 2 + -102, h / 2 + -74, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+
+					KPaTextRedactProcedure.execute(world, x, y, z), w / 2 + -102, h / 2 + -85, -1, false);
 		}
 	}
 }
