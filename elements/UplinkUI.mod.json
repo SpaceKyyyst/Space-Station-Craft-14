@@ -64,6 +64,22 @@
           "y": 45,
           "locked": false
         }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_price_4",
+          "text": {
+            "fixedValue": "Price: 4"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 160,
+          "y": 75,
+          "locked": false
+        }
       }
     ],
     "onTick": {

@@ -74,6 +74,7 @@ public class UplinkUIScreen extends AbstractContainerScreen<UplinkUIMenu> implem
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font, UplinkBalanceSystemProcedure.execute(entity), 48, 8, -12829636, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.uplink_ui.label_price_4"), 34, 38, -12829636, false);
 	}
 
 	@Override
