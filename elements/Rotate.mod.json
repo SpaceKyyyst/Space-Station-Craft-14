@@ -4,7 +4,7 @@
   "definition": {
     "triggerKey": "R",
     "keyBindingName": "Rotate",
-    "keyBindingCategoryKey": "gameplay",
+    "keyBindingCategoryKey": "ssc14",
     "onKeyPressed": {
       "name": "Objects_Rotate_RRR"
     }

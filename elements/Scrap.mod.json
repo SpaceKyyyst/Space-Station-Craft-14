@@ -8,7 +8,7 @@
     "texture": "scrap",
     "customModelName": "scrap:default",
     "blockingModelName": "Normal blocking",
-    "guiTexture": "scrap",
+    "guiTexture": "",
     "name": "Scrap",
     "specialInformation": {
       "fixedValue": []

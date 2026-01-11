@@ -101,7 +101,18 @@
         "subtract": false
       }
     ],
-    "customProperties": [],
+    "customProperties": [
+      {
+        "name": "CUSTOM:bolted",
+        "type": "logic",
+        "value": false
+      },
+      {
+        "name": "CUSTOM:emergency_acs",
+        "type": "logic",
+        "value": false
+      }
+    ],
     "name": "Base Airlock",
     "specialInformation": {
       "fixedValue": []

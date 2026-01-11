@@ -4,7 +4,7 @@
   "definition": {
     "triggerKey": "F",
     "keyBindingName": "Pull the Object",
-    "keyBindingCategoryKey": "gameplay",
+    "keyBindingCategoryKey": "ssc14",
     "onKeyPressed": {
       "name": "PulltheObject_Pr"
     },

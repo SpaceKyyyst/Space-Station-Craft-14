@@ -174,5 +174,85 @@
         "stream": false
       }
     ]
+  },
+  "eating_sounds": {
+    "sounds": [
+      {
+        "name": "ssc_14:eating_sound_3",
+        "stream": false
+      },
+      {
+        "name": "ssc_14:eating_sound_2",
+        "stream": false
+      },
+      {
+        "name": "ssc_14:eating_sound_1",
+        "stream": false
+      }
+    ]
+  },
+  "drink_sounds": {
+    "sounds": [
+      {
+        "name": "ssc_14:drink_sound_1",
+        "stream": false
+      },
+      {
+        "name": "ssc_14:drink_sound_2",
+        "stream": false
+      },
+      {
+        "name": "ssc_14:drink_sound_3",
+        "stream": false
+      }
+    ]
+  },
+  "can_open_sound": {
+    "sounds": [
+      {
+        "name": "ssc_14:can_open_sound",
+        "stream": false
+      }
+    ]
+  },
+  "bottle_sound": {
+    "sounds": [
+      {
+        "name": "ssc_14:bottle_sound",
+        "stream": false
+      }
+    ]
+  },
+  "airlock_bolt_off": {
+    "sounds": [
+      {
+        "name": "ssc_14:airlock_bolt_off",
+        "stream": false
+      }
+    ]
+  },
+  "airlock_bolt_on": {
+    "sounds": [
+      {
+        "name": "ssc_14:airlock_bolt_on",
+        "stream": false
+      }
+    ]
+  },
+  "airlock_emergency_off": {
+    "sounds": [
+      {
+        "name": "ssc_14:airlock_emergency_off",
+        "stream": false
+      }
+    ]
+  },
+  "airlock_emergency_on": {
+    "sounds": [
+      {
+        "name": "ssc_14:airlock_emergency_on",
+        "stream": false
+      }
+    ]
   }
 }

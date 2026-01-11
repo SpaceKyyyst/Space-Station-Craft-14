@@ -1,19 +1,79 @@
 {
   "variants": {
-    "blockstate=0": {
+    "facing=north,blockstate=0": {
       "model": "ssc_14:block/portable_sheater"
     },
-    "blockstate=1": {
+    "facing=east,blockstate=0": {
+      "model": "ssc_14:block/portable_sheater",
+      "y": 90
+    },
+    "facing=south,blockstate=0": {
+      "model": "ssc_14:block/portable_sheater",
+      "y": 180
+    },
+    "facing=west,blockstate=0": {
+      "model": "ssc_14:block/portable_sheater",
+      "y": 270
+    },
+    "facing=north,blockstate=1": {
       "model": "ssc_14:block/portable_sheater_bs_blockstate_0"
     },
-    "blockstate=2": {
+    "facing=east,blockstate=1": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_0",
+      "y": 90
+    },
+    "facing=south,blockstate=1": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_0",
+      "y": 180
+    },
+    "facing=west,blockstate=1": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_0",
+      "y": 270
+    },
+    "facing=north,blockstate=2": {
       "model": "ssc_14:block/portable_sheater_bs_blockstate_1"
     },
-    "blockstate=3": {
+    "facing=east,blockstate=2": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_1",
+      "y": 90
+    },
+    "facing=south,blockstate=2": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_1",
+      "y": 180
+    },
+    "facing=west,blockstate=2": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_1",
+      "y": 270
+    },
+    "facing=north,blockstate=3": {
       "model": "ssc_14:block/portable_sheater_bs_blockstate_2"
     },
-    "blockstate=4": {
+    "facing=east,blockstate=3": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_2",
+      "y": 90
+    },
+    "facing=south,blockstate=3": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_2",
+      "y": 180
+    },
+    "facing=west,blockstate=3": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_2",
+      "y": 270
+    },
+    "facing=north,blockstate=4": {
       "model": "ssc_14:block/portable_sheater_bs_blockstate_3"
+    },
+    "facing=east,blockstate=4": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_3",
+      "y": 90
+    },
+    "facing=south,blockstate=4": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_3",
+      "y": 180
+    },
+    "facing=west,blockstate=4": {
+      "model": "ssc_14:block/portable_sheater_bs_blockstate_3",
+      "y": 270
     }
   }
 }

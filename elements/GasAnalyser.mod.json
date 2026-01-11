@@ -8,7 +8,7 @@
     "texture": "gas_analyset_item",
     "customModelName": "gas_analyzer:default",
     "blockingModelName": "Normal blocking",
-    "guiTexture": "gas_analyset_item",
+    "guiTexture": "",
     "name": "Gas Analyser",
     "specialInformation": {
       "fixedValue": []

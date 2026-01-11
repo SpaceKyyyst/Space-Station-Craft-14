@@ -74,6 +74,36 @@
     "facing=west,blockstate=4": {
       "model": "ssc_14:block/base_airlock_d_1_bs_blockstate_3",
       "y": 270
+    },
+    "facing=north,blockstate=5": {
+      "model": "ssc_14:block/base_airlock_d_1_bs_blockstate_4"
+    },
+    "facing=east,blockstate=5": {
+      "model": "ssc_14:block/base_airlock_d_1_bs_blockstate_4",
+      "y": 90
+    },
+    "facing=south,blockstate=5": {
+      "model": "ssc_14:block/base_airlock_d_1_bs_blockstate_4",
+      "y": 180
+    },
+    "facing=west,blockstate=5": {
+      "model": "ssc_14:block/base_airlock_d_1_bs_blockstate_4",
+      "y": 270
+    },
+    "facing=north,blockstate=6": {
+      "model": "ssc_14:block/base_airlock_d_1_bs_blockstate_5"
+    },
+    "facing=east,blockstate=6": {
+      "model": "ssc_14:block/base_airlock_d_1_bs_blockstate_5",
+      "y": 90
+    },
+    "facing=south,blockstate=6": {
+      "model": "ssc_14:block/base_airlock_d_1_bs_blockstate_5",
+      "y": 180
+    },
+    "facing=west,blockstate=6": {
+      "model": "ssc_14:block/base_airlock_d_1_bs_blockstate_5",
+      "y": 270
     }
   }
 }

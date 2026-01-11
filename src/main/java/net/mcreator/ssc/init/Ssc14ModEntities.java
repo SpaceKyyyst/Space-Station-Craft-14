@@ -18,6 +18,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.core.registries.Registries;
 
 import net.mcreator.ssc.entity.WallCarcaseEntitEntity;
+import net.mcreator.ssc.entity.PlassteelWallCarcaseEntitEntity;
 import net.mcreator.ssc.entity.IDConsoleENTITYEntity;
 import net.mcreator.ssc.Ssc14Mod;
 
@@ -32,6 +33,10 @@ public class Ssc14ModEntities {
 			EntityType.Builder.<IDConsoleENTITYEntity>of(IDConsoleENTITYEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).fireImmune()
 
 					.sized(0.9f, 1.1f));
+	public static final DeferredHolder<EntityType<?>, EntityType<PlassteelWallCarcaseEntitEntity>> PLASSTEEL_WALL_CARCASE_ENTIT = register("plassteel_wall_carcase_entit",
+			EntityType.Builder.<PlassteelWallCarcaseEntitEntity>of(PlassteelWallCarcaseEntitEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).fireImmune()
+
+					.sized(0.9f, 0.9f));
 
 	// Start of user code block custom entities
 	// End of user code block custom entities
@@ -43,11 +48,13 @@ public class Ssc14ModEntities {
 	public static void init(RegisterSpawnPlacementsEvent event) {
 		WallCarcaseEntitEntity.init(event);
 		IDConsoleENTITYEntity.init(event);
+		PlassteelWallCarcaseEntitEntity.init(event);
 	}
 
 	@SubscribeEvent
 	public static void registerAttributes(EntityAttributeCreationEvent event) {
 		event.put(WALL_CARCASE_ENTIT.get(), WallCarcaseEntitEntity.createAttributes().build());
 		event.put(ID_CONSOLE_ENTITY.get(), IDConsoleENTITYEntity.createAttributes().build());
+		event.put(PLASSTEEL_WALL_CARCASE_ENTIT.get(), PlassteelWallCarcaseEntitEntity.createAttributes().build());
 	}
 }

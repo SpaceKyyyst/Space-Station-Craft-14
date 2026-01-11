@@ -8,7 +8,7 @@
     "texture": "screwdriver",
     "customModelName": "screwdriver:default",
     "blockingModelName": "Normal blocking",
-    "guiTexture": "screwdriver",
+    "guiTexture": "",
     "name": "Screwdriver",
     "specialInformation": {
       "fixedValue": []

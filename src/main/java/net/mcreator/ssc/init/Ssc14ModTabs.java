@@ -30,7 +30,10 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.UP_TITLE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.STEEL_WALL.get().asItem());
 				tabData.accept(Ssc14ModBlocks.WALL_CARCASE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.PLASTEEL_WALL.get().asItem());
+				tabData.accept(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.BASE_WINDOW.get().asItem());
+				tabData.accept(Ssc14ModBlocks.TITLE_DARK.get().asItem());
 			}).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14CREATIVEV_2 = REGISTRY.register("ssc_14creativev_2",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14creativev_2")).icon(() -> new ItemStack(Ssc14ModItems.SSCLOGO.get())).displayItems((parameters, tabData) -> {
@@ -61,6 +64,8 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.GAS_ANALYSER.get());
 				tabData.accept(Ssc14ModItems.ACCESS_CONFIG.get());
 				tabData.accept(Ssc14ModItems.FIRE_AXE.get());
+				tabData.accept(Ssc14ModItems.ENERGY_BAR.get());
+				tabData.accept(Ssc14ModItems.ENERGY_BAR_2.get());
 				tabData.accept(Ssc14ModItems.ID_CARD_CAPITAN.get());
 				tabData.accept(Ssc14ModItems.ID_CARD_PNT.get());
 				tabData.accept(Ssc14ModItems.ID_CARD_ADUTANT.get());
@@ -107,6 +112,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.ID_CARD_VS.get());
 				tabData.accept(Ssc14ModItems.ID_CARD_SCIENTIST.get());
 				tabData.accept(Ssc14ModItems.ID_CARD_SCI_ASSISTENT.get());
+				tabData.accept(Ssc14ModItems.ENERGY_BAR_TRASH.get());
 			}).withTabsBefore(SSC_14CREATIVEV_2.getId()).build());
 
 	@SubscribeEvent
@@ -115,10 +121,13 @@ public class Ssc14ModTabs {
 			if (tabData.hasPermissions()) {
 				tabData.accept(Ssc14ModItems.WALL_CARCASE_ENTIT_SPAWN_EGG.get());
 				tabData.accept(Ssc14ModItems.ID_CONSOLE_ENTITY_SPAWN_EGG.get());
+				tabData.accept(Ssc14ModItems.PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG.get());
 				tabData.accept(Ssc14ModBlocks.ATMOS_BLOCK.get().asItem());
 				tabData.accept(Ssc14ModItems.O_2_DEBU_GHANDGENERATOR.get());
 				tabData.accept(Ssc14ModItems.HEATER_DEBU_GHANDGENERATOR.get());
 				tabData.accept(Ssc14ModItems.COOLER_DEBU_GHANDGENERATOR.get());
+				tabData.accept(Ssc14ModItems.N_2_DEBU_GHANDGENERATOR.get());
+				tabData.accept(Ssc14ModItems.AIRLOCK_CONTROLLER.get());
 			}
 		}
 	}

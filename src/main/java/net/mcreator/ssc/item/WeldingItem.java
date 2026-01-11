@@ -31,6 +31,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.Welding_Fuel_chekProcedure;
+import net.mcreator.ssc.procedures.WelderOnOffPrProcedure;
 import net.mcreator.ssc.procedures.ActiveWelder_UseProcedure;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
@@ -81,14 +82,14 @@ public class WeldingItem extends Item {
 	@Override
 	public InteractionResult use(Level world, Player entity, InteractionHand hand) {
 		InteractionResult ar = super.use(world, entity, hand);
-		ActiveWelder_UseProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+		WelderOnOffPrProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
 	}
 
 	@Override
 	public InteractionResult useOn(UseOnContext context) {
 		super.useOn(context);
-		ActiveWelder_UseProcedure.execute(context.getLevel(), context.getClickedPos().getX(), context.getClickedPos().getY(), context.getClickedPos().getZ(), context.getPlayer());
+		ActiveWelder_UseProcedure.execute(context.getLevel(), context.getClickedPos().getX(), context.getClickedPos().getY(), context.getClickedPos().getZ(), context.getLevel().getBlockState(context.getClickedPos()), context.getPlayer());
 		return InteractionResult.SUCCESS;
 	}
 

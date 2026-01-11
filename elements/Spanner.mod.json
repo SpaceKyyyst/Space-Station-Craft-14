@@ -8,7 +8,7 @@
     "texture": "govnotexture_of_spanner",
     "customModelName": "spanner:default",
     "blockingModelName": "Normal blocking",
-    "guiTexture": "govnotexture_of_spanner",
+    "guiTexture": "",
     "name": "Spanner",
     "specialInformation": {
       "fixedValue": []

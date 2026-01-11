@@ -39,6 +39,9 @@
     },
     "inventorySize": 9,
     "inventoryStackSize": 99,
+    "onRightClickedOnBlock": {
+      "name": "PlaSteelUse"
+    },
     "enableRanged": false,
     "shootConstantly": false,
     "rangedItemChargesPower": false,

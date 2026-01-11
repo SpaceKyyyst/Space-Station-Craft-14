@@ -15,10 +15,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.procedures.TemperatureTextRedactProcedure;
-import net.mcreator.ssc.procedures.O2textRedactProcedure;
-import net.mcreator.ssc.procedures.KPaTextRedactProcedure;
-import net.mcreator.ssc.procedures.GasAnalyserGUI_pr_1Procedure;
+import net.mcreator.ssc.procedures.*;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class GasAnalyserGUIOverlay {
@@ -69,6 +66,15 @@ public class GasAnalyserGUIOverlay {
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 
 					KPaTextRedactProcedure.execute(world, x, y, z), w / 2 + -102, h / 2 + -85, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+
+					N2textRedactProcedure.execute(world, x, y, z), w / 2 + -131, h / 2 + -30, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+
+					O2PercentTextProcedure.execute(world, x, y, z), w / 2 + -69, h / 2 + -46, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+
+					N2PercentTextProcedure.execute(world, x, y, z), w / 2 + -69, h / 2 + -30, -1, false);
 		}
 	}
 }

@@ -131,6 +131,7 @@ key_key.hotbar.9:key.keyboard.9
 key_key.ssc_14.dc_mopen:key.keyboard.t
 key_key.ssc_14.rotate:key.keyboard.r
 key_key.ssc_14.pullthe_object:key.keyboard.f
+key_key.ssc_14.world_object_check:key.keyboard.left.shift
 key_key.pickup.item:key.keyboard.unknown
 soundCategory_master:1.0
 soundCategory_music:0.0

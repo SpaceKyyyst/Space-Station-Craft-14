@@ -1,0 +1,15 @@
+{
+  "_fv": 79,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "LSHIFT",
+    "keyBindingName": "Осмотр объекта (в мире)",
+    "keyBindingCategoryKey": "ssc14",
+    "onKeyPressed": {
+      "name": "WorldObjectCheck_Pr"
+    },
+    "onKeyReleased": {
+      "name": "WorldObjectCheck_Pr_2"
+    }
+  }
+}

@@ -2,7 +2,7 @@
   "_fv": 79,
   "_type": "block",
   "definition": {
-    "texture": "portable_sheater_item",
+    "texture": "portable_sheater_standby_texture",
     "textureTop": "",
     "textureLeft": "",
     "textureFront": "",
@@ -10,7 +10,7 @@
     "textureBack": "",
     "renderType": 2,
     "customModelName": "portable_sheater:default",
-    "rotationMode": 0,
+    "rotationMode": 1,
     "enablePitch": false,
     "emissiveRendering": true,
     "displayFluidOverlay": false,
@@ -139,6 +139,9 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
+    "onRightClicked": {
+      "name": "TESTTEST"
+    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [

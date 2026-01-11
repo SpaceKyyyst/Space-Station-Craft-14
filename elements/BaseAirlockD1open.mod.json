@@ -74,7 +74,18 @@
         "subtract": false
       }
     ],
-    "customProperties": [],
+    "customProperties": [
+      {
+        "name": "CUSTOM:bolted",
+        "type": "logic",
+        "value": false
+      },
+      {
+        "name": "CUSTOM:emergency_acs",
+        "type": "logic",
+        "value": false
+      }
+    ],
     "name": "Base Airlock",
     "specialInformation": {
       "fixedValue": []
@@ -182,7 +193,7 @@
       "name": "BaseAirlockD1_Put"
     },
     "onTickUpdate": {
-      "name": "BaseAirlockU1open_ATMOS"
+      "name": "AtmosBlock__TIC"
     },
     "generateFeature": false,
     "restrictionBiomes": [],

@@ -36,4 +36,12 @@ public class Ssc14ModSounds {
 	public static final DeferredHolder<SoundEvent, SoundEvent> LOCK_OPEN = REGISTRY.register("lock_open", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "lock_open")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> LOCKER_CLOSE = REGISTRY.register("locker_close", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "locker_close")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> LOCKER_OPEN = REGISTRY.register("locker_open", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "locker_open")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> EATING_SOUNDS = REGISTRY.register("eating_sounds", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "eating_sounds")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> DRINK_SOUNDS = REGISTRY.register("drink_sounds", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "drink_sounds")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> CAN_OPEN_SOUND = REGISTRY.register("can_open_sound", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "can_open_sound")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> BOTTLE_SOUND = REGISTRY.register("bottle_sound", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "bottle_sound")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> AIRLOCK_BOLT_OFF = REGISTRY.register("airlock_bolt_off", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "airlock_bolt_off")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> AIRLOCK_BOLT_ON = REGISTRY.register("airlock_bolt_on", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "airlock_bolt_on")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> AIRLOCK_EMERGENCY_OFF = REGISTRY.register("airlock_emergency_off", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "airlock_emergency_off")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> AIRLOCK_EMERGENCY_ON = REGISTRY.register("airlock_emergency_on", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "airlock_emergency_on")));
 }

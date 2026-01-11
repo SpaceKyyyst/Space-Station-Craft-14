@@ -8,7 +8,7 @@
     "texture": "wwedler",
     "customModelName": "welder:default",
     "blockingModelName": "Normal blocking",
-    "guiTexture": "wwedler",
+    "guiTexture": "",
     "name": "Welder",
     "specialInformation": {
       "fixedValue": []
@@ -33,7 +33,7 @@
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onRightClickedInAir": {
-      "name": "ActiveWelder_Use"
+      "name": "WelderOnOffPr"
     },
     "onRightClickedOnBlock": {
       "name": "ActiveWelder_Use"

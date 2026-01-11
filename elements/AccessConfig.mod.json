@@ -5,7 +5,7 @@
     "renderType": 1,
     "texture": "konfigurator_item",
     "customModelName": "konfigurator_of_dostups:default",
-    "guiTexture": "konfigurator_item",
+    "guiTexture": "",
     "customProperties": {},
     "states": [],
     "animations": [],

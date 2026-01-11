@@ -5,27 +5,36 @@ import org.checkerframework.checker.units.qual.s;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.Containers;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import net.mcreator.ssc.procedures.TESTTESTProcedure;
 import net.mcreator.ssc.block.entity.PortableSheaterBlockEntity;
 
 public class PortableSheaterBlock extends Block implements EntityBlock {
 	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 4);
-	private static final VoxelShape SHAPE = box(4, 0, 6, 12, 24, 11);
+	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
+	private static final VoxelShape SHAPE_NORTH = box(4, 0, 6, 12, 24, 11);
+	private static final VoxelShape SHAPE_SOUTH = box(4, 0, 5, 12, 24, 10);
+	private static final VoxelShape SHAPE_EAST = box(5, 0, 4, 10, 24, 12);
+	private static final VoxelShape SHAPE_WEST = box(6, 0, 4, 11, 24, 12);
 
 	public PortableSheaterBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.COPPER_BULB).strength(20f, 10f).lightLevel(s -> (new Object() {
@@ -41,6 +50,7 @@ public class PortableSheaterBlock extends Block implements EntityBlock {
 				return 0;
 			}
 		}.getLightLevel())).noOcclusion().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
 	@Override
@@ -60,13 +70,46 @@ public class PortableSheaterBlock extends Block implements EntityBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return (SHAPE);
+		return (switch (state.getValue(FACING)) {
+			case NORTH -> SHAPE_NORTH;
+			case SOUTH -> SHAPE_SOUTH;
+			case EAST -> SHAPE_EAST;
+			case WEST -> SHAPE_WEST;
+			default -> SHAPE_NORTH;
+		});
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
-		builder.add(BLOCKSTATE);
+		builder.add(FACING, BLOCKSTATE);
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+	}
+
+	public BlockState rotate(BlockState state, Rotation rot) {
+		return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
+	}
+
+	public BlockState mirror(BlockState state, Mirror mirrorIn) {
+		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
+	}
+
+	@Override
+	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
+		super.useWithoutItem(blockstate, world, pos, entity, hit);
+		int x = pos.getX();
+		int y = pos.getY();
+		int z = pos.getZ();
+		double hitX = hit.getLocation().x;
+		double hitY = hit.getLocation().y;
+		double hitZ = hit.getLocation().z;
+		Direction direction = hit.getDirection();
+		TESTTESTProcedure.execute(world, x, y, z, blockstate);
+		return InteractionResult.SUCCESS;
 	}
 
 	@Override

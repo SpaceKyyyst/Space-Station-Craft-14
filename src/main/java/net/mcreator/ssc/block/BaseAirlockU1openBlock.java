@@ -27,8 +27,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.BaseAirlock_U_D_autoDESTROYProcedure;
-import net.mcreator.ssc.procedures.BaseAirlockU1open_ATMOSProcedure;
 import net.mcreator.ssc.procedures.BaseAirlockU1_ChekProcedure;
+import net.mcreator.ssc.procedures.AtmosBlock__TICProcedure;
 import net.mcreator.ssc.block.entity.BaseAirlockU1openBlockEntity;
 
 import javax.annotation.Nullable;
@@ -111,7 +111,7 @@ public class BaseAirlockU1openBlock extends Block implements EntityBlock {
 	@Override
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
-		BaseAirlockU1open_ATMOSProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		AtmosBlock__TICProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		world.scheduleTick(pos, this, 1);
 	}
 

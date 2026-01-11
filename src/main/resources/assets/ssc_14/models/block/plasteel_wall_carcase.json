@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/frame_of_plasstal_wall",
+  "textures": {
+    "all": "ssc_14:block/fr_of_pl_wall",
+    "particle": "ssc_14:block/fr_of_pl_wall",
+    "2": "ssc_14:block/plasteel_wall_frame_texture"
+  },
+  "render_type": "cutout"
+}

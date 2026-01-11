@@ -9,6 +9,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -31,8 +32,10 @@ import net.mcreator.ssc.block.entity.BaseAirlockD1BlockEntity;
 import javax.annotation.Nullable;
 
 public class BaseAirlockD1Block extends Block implements EntityBlock {
-	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 4);
+	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 6);
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
+	public static final BooleanProperty BOLTED = BooleanProperty.create("bolted");
+	public static final BooleanProperty EMERGENCY_ACS = BooleanProperty.create("emergency_acs");
 	private static final VoxelShape SHAPE_1_NORTH = Shapes.or(box(10, 0, 6, 16, 8, 10), box(15, 8, 6, 16, 16, 10), box(9, 8, 7, 15, 16, 9), box(9, 0, 9, 11, 17, 11), box(0, 12, 7, 7, 16, 9), box(0.5, 13.5, 6, 3.5, 16.5, 10), box(0, 0, 6, 8, 12, 10),
 			box(7, 0, 5, 9, 17, 7));
 	private static final VoxelShape SHAPE_1_SOUTH = Shapes.or(box(0, 0, 6, 6, 8, 10), box(0, 8, 6, 1, 16, 10), box(1, 8, 7, 7, 16, 9), box(5, 0, 5, 7, 17, 7), box(9, 12, 7, 16, 16, 9), box(12.5, 13.5, 6, 15.5, 16.5, 10), box(8, 0, 6, 16, 12, 10),
@@ -73,10 +76,14 @@ public class BaseAirlockD1Block extends Block implements EntityBlock {
 					return 4;
 				if (s.getValue(BLOCKSTATE) == 4)
 					return 4;
+				if (s.getValue(BLOCKSTATE) == 5)
+					return 4;
+				if (s.getValue(BLOCKSTATE) == 6)
+					return 4;
 				return 4;
 			}
 		}.getLightLevel())).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false));
 	}
 
 	@Override
@@ -144,12 +151,12 @@ public class BaseAirlockD1Block extends Block implements EntityBlock {
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
-		builder.add(FACING, BLOCKSTATE);
+		builder.add(FACING, BOLTED, EMERGENCY_ACS, BLOCKSTATE);
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

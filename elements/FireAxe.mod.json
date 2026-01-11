@@ -8,7 +8,7 @@
     "texture": "fire_axe",
     "customModelName": "fire_axe:default",
     "blockingModelName": "Normal blocking",
-    "guiTexture": "fire_axe",
+    "guiTexture": "",
     "name": "Fire Axe",
     "specialInformation": {
       "fixedValue": []

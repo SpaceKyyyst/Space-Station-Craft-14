@@ -30,6 +30,8 @@ public class Ssc14ModAttributes {
 	public static final DeferredHolder<Attribute, Attribute> ENT_PULL = REGISTRY.register("ent_pull", () -> new RangedAttribute("attribute.ssc_14.ent_pull", 0, 0, 1).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 	public static final DeferredHolder<Attribute, Attribute> GAS_AN_GU_IATRIB = REGISTRY.register("gas_an_gu_iatrib",
 			() -> new RangedAttribute("attribute.ssc_14.gas_an_gu_iatrib", 0, 0, 1).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+	public static final DeferredHolder<Attribute, Attribute> OPEN_WORLD_CHECK_MENU = REGISTRY.register("open_world_check_menu",
+			() -> new RangedAttribute("attribute.ssc_14.open_world_check_menu", 0, 0, 1).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 
 	@SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {
@@ -39,5 +41,6 @@ public class Ssc14ModAttributes {
 				.forEach(entity -> event.add(entity, ENT_PULL));
 		event.add(EntityType.PLAYER, ENT_PULL);
 		event.add(EntityType.PLAYER, GAS_AN_GU_IATRIB);
+		event.add(EntityType.PLAYER, OPEN_WORLD_CHECK_MENU);
 	}
 }

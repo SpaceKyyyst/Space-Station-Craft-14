@@ -3,7 +3,7 @@
     "default": {
       "name": "default",
       "map": {
-        "2": "airlock_down_ao_1_t"
+        "2": "airlock_down_opening_t"
       }
     }
   }

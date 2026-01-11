@@ -48,6 +48,9 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> BASE_AIRLOCK_D_1OPEN;
 	public static final DeferredBlock<Block> BASE_AIRLOCK_U_1OPEN;
 	public static final DeferredBlock<Block> PORTABLE_SHEATER;
+	public static final DeferredBlock<Block> PLASTEEL_WALL;
+	public static final DeferredBlock<Block> PLASTEEL_WALL_CARCASE;
+	public static final DeferredBlock<Block> TITLE_DARK;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
 		SPACED_PORTAL = register("spaced_portal", SpacedPortalBlock::new);
@@ -81,6 +84,9 @@ public class Ssc14ModBlocks {
 		BASE_AIRLOCK_D_1OPEN = register("base_airlock_d_1open", BaseAirlockD1openBlock::new);
 		BASE_AIRLOCK_U_1OPEN = register("base_airlock_u_1open", BaseAirlockU1openBlock::new);
 		PORTABLE_SHEATER = register("portable_sheater", PortableSheaterBlock::new);
+		PLASTEEL_WALL = register("plasteel_wall", PlasteelWallBlock::new);
+		PLASTEEL_WALL_CARCASE = register("plasteel_wall_carcase", PlasteelWallCarcaseBlock::new);
+		TITLE_DARK = register("title_dark", TitleDarkBlock::new);
 	}
 
 	// Start of user code block custom blocks

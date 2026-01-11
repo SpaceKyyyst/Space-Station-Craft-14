@@ -113,6 +113,15 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> URAN;
 	public static final DeferredItem<Item> PLASMA;
 	public static final DeferredItem<Item> PLASTIC;
+	public static final DeferredItem<Item> PLASTEEL_WALL;
+	public static final DeferredItem<Item> PLASTEEL_WALL_CARCASE;
+	public static final DeferredItem<Item> ENERGY_BAR;
+	public static final DeferredItem<Item> ENERGY_BAR_TRASH;
+	public static final DeferredItem<Item> ENERGY_BAR_2;
+	public static final DeferredItem<Item> PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG;
+	public static final DeferredItem<Item> TITLE_DARK;
+	public static final DeferredItem<Item> N_2_DEBU_GHANDGENERATOR;
+	public static final DeferredItem<Item> AIRLOCK_CONTROLLER;
 	static {
 		SSCLOGO = register("ssclogo", SsclogoItem::new);
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
@@ -201,6 +210,15 @@ public class Ssc14ModItems {
 		URAN = register("uran", UranItem::new);
 		PLASMA = register("plasma", PlasmaItem::new);
 		PLASTIC = register("plastic", PlasticItem::new);
+		PLASTEEL_WALL = block(Ssc14ModBlocks.PLASTEEL_WALL, new Item.Properties().stacksTo(1).fireResistant());
+		PLASTEEL_WALL_CARCASE = block(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE, new Item.Properties().stacksTo(1).fireResistant());
+		ENERGY_BAR = register("energy_bar", EnergyBarItem::new);
+		ENERGY_BAR_TRASH = register("energy_bar_trash", EnergyBarTrashItem::new);
+		ENERGY_BAR_2 = register("energy_bar_2", EnergyBar2Item::new);
+		PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG = register("plassteel_wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(Ssc14ModEntities.PLASSTEEL_WALL_CARCASE_ENTIT.get(), properties));
+		TITLE_DARK = block(Ssc14ModBlocks.TITLE_DARK, new Item.Properties().stacksTo(30).fireResistant());
+		N_2_DEBU_GHANDGENERATOR = register("n_2_debu_ghandgenerator", N2DEBUGhandgeneratorItem::new);
+		AIRLOCK_CONTROLLER = register("airlock_controller", AirlockControllerItem::new);
 	}
 
 	// Start of user code block custom items

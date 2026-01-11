@@ -12,11 +12,25 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class BaseAirlockU1_ChekProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1.get()) {
-			{
-				int _value = (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip3
+		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1.get()
+				&& ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip3
 						? (world.getBlockState(BlockPos.containing(x, y - 1, z))).getValue(_getip3)
+						: -1) < 5) {
+			{
+				int _value = (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip5
+						? (world.getBlockState(BlockPos.containing(x, y - 1, z))).getValue(_getip5)
 						: -1;
+				BlockPos _pos = BlockPos.containing(x, y, z);
+				BlockState _bs = world.getBlockState(_pos);
+				if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
+					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
+			}
+		} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1.get()
+				&& ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip10
+						? (world.getBlockState(BlockPos.containing(x, y - 1, z))).getValue(_getip10)
+						: -1) > 4) {
+			{
+				int _value = 0;
 				BlockPos _pos = BlockPos.containing(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))

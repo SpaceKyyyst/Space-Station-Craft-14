@@ -8,6 +8,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -27,15 +28,17 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.BaseAirlockU1open_ATMOSProcedure;
 import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 import net.mcreator.ssc.procedures.BaseAirlockD1_PutProcedure;
+import net.mcreator.ssc.procedures.AtmosBlock__TICProcedure;
 import net.mcreator.ssc.block.entity.BaseAirlockD1openBlockEntity;
 
 import javax.annotation.Nullable;
 
 public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
+	public static final BooleanProperty BOLTED = BooleanProperty.create("bolted");
+	public static final BooleanProperty EMERGENCY_ACS = BooleanProperty.create("emergency_acs");
 	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(15, 8, 7, 16, 16, 9), box(15, 0, 9, 16, 17, 11), box(0, 0, 6, 1, 12, 10), box(0, 0, 5, 2, 17, 7));
 	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(0, 8, 7, 1, 16, 9), box(0, 0, 5, 1, 17, 7), box(15, 0, 6, 16, 12, 10), box(14, 0, 9, 16, 17, 11));
 	private static final VoxelShape SHAPE_EAST = Shapes.or(box(7, 8, 15, 9, 16, 16), box(5, 0, 15, 7, 17, 16), box(6, 0, 0, 10, 12, 1), box(9, 0, 0, 11, 17, 2));
@@ -43,7 +46,7 @@ public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 
 	public BaseAirlockD1openBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.NETHERITE_BLOCK).strength(30f, 15f).lightLevel(s -> 4).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false));
 	}
 
 	@Override
@@ -75,12 +78,12 @@ public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
-		builder.add(FACING);
+		builder.add(FACING, BOLTED, EMERGENCY_ACS);
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -112,7 +115,7 @@ public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 	@Override
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
-		BaseAirlockU1open_ATMOSProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		AtmosBlock__TICProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		world.scheduleTick(pos, this, 5);
 	}
 

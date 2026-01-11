@@ -8,7 +8,7 @@
     "texture": "fire_w_an",
     "customModelName": "welder_2:default",
     "blockingModelName": "Normal blocking",
-    "guiTexture": "fire_w_an",
+    "guiTexture": "",
     "name": "Active Welder",
     "specialInformation": {
       "fixedValue": []
@@ -29,7 +29,7 @@
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onRightClickedInAir": {
-      "name": "ActiveWelder_Use"
+      "name": "WelderOnOffPr"
     },
     "onRightClickedOnBlock": {
       "name": "ActiveWelder_Use"

@@ -6,7 +6,10 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.bus.api.Event;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 
 import javax.annotation.Nullable;
@@ -23,7 +26,15 @@ public class O2textRedactProcedure {
 	}
 
 	private static String execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		return "" + Math.round(getBlockNBTNumber(world, BlockPos.containing(x, y, z), "O2") * 10) / 10d;
+		String loc_text = "";
+		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:permeable_to_gases")))) {
+			loc_text = "" + Math.round(getBlockNBTNumber(world, BlockPos.containing(x, y, z), "O2") * 10) / 10d;
+		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.AIR) {
+			loc_text = "0 (\u0432\u0430\u043A\u0443\u0443\u043C)";
+		} else {
+			loc_text = "N/D";
+		}
+		return loc_text;
 	}
 
 	private static double getBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag) {

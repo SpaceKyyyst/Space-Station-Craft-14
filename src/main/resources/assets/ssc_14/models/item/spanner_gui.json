@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "ssc_14:item/govnotexture_of_spanner"
-  }
-}

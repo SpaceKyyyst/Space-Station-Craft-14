@@ -3,7 +3,7 @@
     "default": {
       "name": "default",
       "map": {
-        "0": "texture_of_frame_plasstal_wall"
+        "2": "plasteel_wall_frame_texture"
       }
     }
   }

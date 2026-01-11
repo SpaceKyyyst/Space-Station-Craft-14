@@ -187,6 +187,60 @@
           "y": 35,
           "locked": false
         }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_empty1",
+          "text": {
+            "fixedValue": "",
+            "name": "N2textRedact"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 82,
+          "y": 90,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_o_2_percent_text",
+          "text": {
+            "fixedValue": "",
+            "name": "O2PercentText"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 144,
+          "y": 74,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_n_2_percent_text",
+          "text": {
+            "fixedValue": "",
+            "name": "N2PercentText"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 144,
+          "y": 90,
+          "locked": false
+        }
       }
     ],
     "baseTexture": "",

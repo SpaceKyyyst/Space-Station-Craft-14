@@ -2,7 +2,7 @@
   "parent": "ssc_14:custom/portable_sheater_off",
   "textures": {
     "all": "ssc_14:block/portable_sheater_off_texture",
-    "particle": "ssc_14:block/portable_sheater_item",
+    "particle": "ssc_14:block/portable_sheater_standby_texture",
     "0": "ssc_14:block/portable_sheater_off_texture"
   },
   "render_type": "cutout"

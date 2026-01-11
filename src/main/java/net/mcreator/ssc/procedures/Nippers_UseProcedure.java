@@ -2,6 +2,7 @@ package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.level.storage.TagValueInput;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.Blocks;
@@ -27,7 +28,7 @@ import net.mcreator.ssc.init.Ssc14ModAttributes;
 import net.mcreator.ssc.Ssc14Mod;
 
 public class Nippers_UseProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
 		if (entity == null)
 			return;
 		if (entity instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER))
@@ -490,11 +491,10 @@ public class Nippers_UseProcedure {
 						_livingEntity143.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 				}
 			});
-		}
-		if (((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_LVC.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_MVC.get()
-				|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_HVC.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_LMVC.get()
-				|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_LHVC.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_MHVC.get()
-				|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_LMHVC.get())
+		} else if (((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_LMVC.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_LHVC.get()
+				|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_MHVC.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_LMHVC.get()
+				|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_LVC.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_MVC.get()
+				|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING_HVC.get())
 				&& (entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(6)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getDirection()) == Direction.UP) {
 			if (entity instanceof LivingEntity _livingEntity161 && _livingEntity161.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity161.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
@@ -899,6 +899,285 @@ public class Nippers_UseProcedure {
 				} else {
 					if (entity instanceof LivingEntity _livingEntity260 && _livingEntity260.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 						_livingEntity260.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+				}
+			});
+		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
+				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip265 ? blockstate.getValue(_getip265) : -1) == 0) {
+			if (entity instanceof LivingEntity _livingEntity266 && _livingEntity266.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+				_livingEntity266.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
+			Ssc14Mod.queueServerWork(3, () -> {
+				if (entity.getX() + entity.getZ()
+						+ entity.getY() == (entity instanceof LivingEntity _livingEntity270 && _livingEntity270.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity270.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
+						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+					if (entity instanceof LivingEntity _livingEntity273 && _livingEntity273.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+						_livingEntity273.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
+					Ssc14Mod.queueServerWork(3, () -> {
+						if (entity.getX() + entity.getZ() + entity
+								.getY() == (entity instanceof LivingEntity _livingEntity277 && _livingEntity277.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity277.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
+								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+							if (entity instanceof LivingEntity _livingEntity280 && _livingEntity280.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+								_livingEntity280.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
+							Ssc14Mod.queueServerWork(3, () -> {
+								if (entity.getX() + entity.getZ()
+										+ entity.getY() == (entity instanceof LivingEntity _livingEntity284 && _livingEntity284.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+												? _livingEntity284.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+												: 0)
+										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+									if (entity instanceof LivingEntity _livingEntity287 && _livingEntity287.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+										_livingEntity287.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
+									Ssc14Mod.queueServerWork(3, () -> {
+										if (entity.getX() + entity.getZ()
+												+ entity.getY() == (entity instanceof LivingEntity _livingEntity291 && _livingEntity291.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+														? _livingEntity291.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+														: 0)
+												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+											if (entity instanceof LivingEntity _livingEntity294 && _livingEntity294.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+												_livingEntity294.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
+											Ssc14Mod.queueServerWork(3, () -> {
+												if (entity.getX() + entity.getZ()
+														+ entity.getY() == (entity instanceof LivingEntity _livingEntity298 && _livingEntity298.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+																? _livingEntity298.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+																: 0)
+														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()
+														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
+														&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip304 ? blockstate.getValue(_getip304) : -1) == 0) {
+													if (entity instanceof LivingEntity _livingEntity305 && _livingEntity305.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+														_livingEntity305.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
+													Ssc14Mod.queueServerWork(3, () -> {
+														{
+															int _value = 1;
+															BlockPos _pos = BlockPos.containing(x, y, z);
+															BlockState _bs = world.getBlockState(_pos);
+															if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
+																world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
+														}
+														if (world instanceof Level _level) {
+															if (!_level.isClientSide()) {
+																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:nippers_use")), SoundSource.NEUTRAL, 1, 1);
+															} else {
+																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:nippers_use")), SoundSource.NEUTRAL, 1, 1, false);
+															}
+														}
+														if (entity instanceof LivingEntity _livingEntity308 && _livingEntity308.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+															_livingEntity308.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+													});
+												} else {
+													if (entity instanceof LivingEntity _livingEntity310 && _livingEntity310.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+														_livingEntity310.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+												}
+											});
+										} else {
+											if (entity instanceof LivingEntity _livingEntity312 && _livingEntity312.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+												_livingEntity312.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+										}
+									});
+								} else {
+									if (entity instanceof LivingEntity _livingEntity314 && _livingEntity314.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+										_livingEntity314.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+								}
+							});
+						} else {
+							if (entity instanceof LivingEntity _livingEntity316 && _livingEntity316.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+								_livingEntity316.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+						}
+					});
+				} else {
+					if (entity instanceof LivingEntity _livingEntity318 && _livingEntity318.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+						_livingEntity318.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+				}
+			});
+		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
+				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip323 ? blockstate.getValue(_getip323) : -1) == 8) {
+			if (entity instanceof LivingEntity _livingEntity324 && _livingEntity324.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+				_livingEntity324.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
+			Ssc14Mod.queueServerWork(2, () -> {
+				if (entity.getX() + entity.getZ()
+						+ entity.getY() == (entity instanceof LivingEntity _livingEntity328 && _livingEntity328.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity328.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
+						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+					if (entity instanceof LivingEntity _livingEntity331 && _livingEntity331.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+						_livingEntity331.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
+					Ssc14Mod.queueServerWork(1, () -> {
+						if (entity.getX() + entity.getZ() + entity
+								.getY() == (entity instanceof LivingEntity _livingEntity335 && _livingEntity335.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity335.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
+								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+							if (entity instanceof LivingEntity _livingEntity338 && _livingEntity338.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+								_livingEntity338.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
+							Ssc14Mod.queueServerWork(2, () -> {
+								if (entity.getX() + entity.getZ()
+										+ entity.getY() == (entity instanceof LivingEntity _livingEntity342 && _livingEntity342.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+												? _livingEntity342.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+												: 0)
+										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+									if (entity instanceof LivingEntity _livingEntity345 && _livingEntity345.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+										_livingEntity345.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
+									Ssc14Mod.queueServerWork(1, () -> {
+										if (entity.getX() + entity.getZ()
+												+ entity.getY() == (entity instanceof LivingEntity _livingEntity349 && _livingEntity349.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+														? _livingEntity349.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+														: 0)
+												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+											if (entity instanceof LivingEntity _livingEntity352 && _livingEntity352.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+												_livingEntity352.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
+											Ssc14Mod.queueServerWork(2, () -> {
+												if (entity.getX() + entity.getZ()
+														+ entity.getY() == (entity instanceof LivingEntity _livingEntity356 && _livingEntity356.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+																? _livingEntity356.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+																: 0)
+														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()
+														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
+														&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip362 ? blockstate.getValue(_getip362) : -1) == 8) {
+													if (entity instanceof LivingEntity _livingEntity363 && _livingEntity363.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+														_livingEntity363.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
+													Ssc14Mod.queueServerWork(1, () -> {
+														if (world instanceof Level _level) {
+															if (!_level.isClientSide()) {
+																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:nippers_use")), SoundSource.NEUTRAL, 1, 1);
+															} else {
+																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:nippers_use")), SoundSource.NEUTRAL, 1, 1, false);
+															}
+														}
+														{
+															BlockPos _bp = BlockPos.containing(x, y, z);
+															BlockState _bs = Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get().defaultBlockState();
+															BlockState _bso = world.getBlockState(_bp);
+															for (Property<?> _propertyOld : _bso.getProperties()) {
+																Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
+																if (_propertyNew != null && _bs.getValue(_propertyNew) != null)
+																	try {
+																		_bs = _bs.setValue(_propertyNew, _bso.getValue(_propertyOld));
+																	} catch (Exception e) {
+																	}
+															}
+															world.setBlock(_bp, _bs, 3);
+														}
+														if (world instanceof ServerLevel _level) {
+															ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY()), (entity.getZ()), new ItemStack(Ssc14ModItems.PLASTEEL.get()));
+															entityToSpawn.setPickUpDelay(1);
+															entityToSpawn.setUnlimitedLifetime();
+															_level.addFreshEntity(entityToSpawn);
+														}
+														if (entity instanceof LivingEntity _livingEntity370 && _livingEntity370.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+															_livingEntity370.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+													});
+												} else {
+													if (entity instanceof LivingEntity _livingEntity372 && _livingEntity372.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+														_livingEntity372.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+												}
+											});
+										} else {
+											if (entity instanceof LivingEntity _livingEntity374 && _livingEntity374.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+												_livingEntity374.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+										}
+									});
+								} else {
+									if (entity instanceof LivingEntity _livingEntity376 && _livingEntity376.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+										_livingEntity376.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+								}
+							});
+						} else {
+							if (entity instanceof LivingEntity _livingEntity378 && _livingEntity378.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+								_livingEntity378.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+						}
+					});
+				} else {
+					if (entity instanceof LivingEntity _livingEntity380 && _livingEntity380.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+						_livingEntity380.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+				}
+			});
+		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get()) {
+			if (entity instanceof LivingEntity _livingEntity384 && _livingEntity384.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+				_livingEntity384.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
+			Ssc14Mod.queueServerWork(3, () -> {
+				if (entity.getX() + entity.getZ()
+						+ entity.getY() == (entity instanceof LivingEntity _livingEntity388 && _livingEntity388.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity388.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
+						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+					if (entity instanceof LivingEntity _livingEntity391 && _livingEntity391.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+						_livingEntity391.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
+					Ssc14Mod.queueServerWork(3, () -> {
+						if (entity.getX() + entity.getZ() + entity
+								.getY() == (entity instanceof LivingEntity _livingEntity395 && _livingEntity395.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity395.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
+								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+							if (entity instanceof LivingEntity _livingEntity398 && _livingEntity398.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+								_livingEntity398.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
+							Ssc14Mod.queueServerWork(3, () -> {
+								if (entity.getX() + entity.getZ()
+										+ entity.getY() == (entity instanceof LivingEntity _livingEntity402 && _livingEntity402.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+												? _livingEntity402.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+												: 0)
+										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+									if (entity instanceof LivingEntity _livingEntity405 && _livingEntity405.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+										_livingEntity405.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
+									Ssc14Mod.queueServerWork(1, () -> {
+										if (entity.getX() + entity.getZ()
+												+ entity.getY() == (entity instanceof LivingEntity _livingEntity409 && _livingEntity409.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+														? _livingEntity409.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+														: 0)
+												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
+											if (entity instanceof LivingEntity _livingEntity412 && _livingEntity412.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+												_livingEntity412.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
+											Ssc14Mod.queueServerWork(3, () -> {
+												if (entity.getX() + entity.getZ()
+														+ entity.getY() == (entity instanceof LivingEntity _livingEntity416 && _livingEntity416.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+																? _livingEntity416.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+																: 0)
+														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()
+														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get()) {
+													if (entity instanceof LivingEntity _livingEntity421 && _livingEntity421.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+														_livingEntity421.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
+													Ssc14Mod.queueServerWork(3, () -> {
+														if (world instanceof Level _level) {
+															if (!_level.isClientSide()) {
+																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:nippers_use")), SoundSource.NEUTRAL, 1, 1);
+															} else {
+																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:nippers_use")), SoundSource.NEUTRAL, 1, 1, false);
+															}
+														}
+														{
+															BlockPos _bp = BlockPos.containing(x, y, z);
+															BlockState _bs = Ssc14ModBlocks.WALL_CARCASE.get().defaultBlockState();
+															BlockState _bso = world.getBlockState(_bp);
+															for (Property<?> _propertyOld : _bso.getProperties()) {
+																Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
+																if (_propertyNew != null && _bs.getValue(_propertyNew) != null)
+																	try {
+																		_bs = _bs.setValue(_propertyNew, _bso.getValue(_propertyOld));
+																	} catch (Exception e) {
+																	}
+															}
+															world.setBlock(_bp, _bs, 3);
+														}
+														if (world instanceof ServerLevel _level) {
+															ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY()), (entity.getZ()), new ItemStack(Ssc14ModItems.PLASTEEL.get()));
+															entityToSpawn.setPickUpDelay(1);
+															entityToSpawn.setUnlimitedLifetime();
+															_level.addFreshEntity(entityToSpawn);
+														}
+														if (entity instanceof LivingEntity _livingEntity428 && _livingEntity428.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+															_livingEntity428.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+													});
+												} else {
+													if (entity instanceof LivingEntity _livingEntity430 && _livingEntity430.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+														_livingEntity430.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+												}
+											});
+										} else {
+											if (entity instanceof LivingEntity _livingEntity432 && _livingEntity432.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+												_livingEntity432.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+										}
+									});
+								} else {
+									if (entity instanceof LivingEntity _livingEntity434 && _livingEntity434.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+										_livingEntity434.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+								}
+							});
+						} else {
+							if (entity instanceof LivingEntity _livingEntity436 && _livingEntity436.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+								_livingEntity436.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+						}
+					});
+				} else {
+					if (entity instanceof LivingEntity _livingEntity438 && _livingEntity438.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+						_livingEntity438.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 				}
 			});
 		}

@@ -311,6 +311,32 @@
             "subtract": false
           }
         ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "airlock_down_bolted:default",
+        "luminance": 4,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "airlock_down_emergency:default",
+        "luminance": 4,
+        "boundingBoxes": []
       }
     ]
   }

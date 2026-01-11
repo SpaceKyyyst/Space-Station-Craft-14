@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "blockstate=0": {
+      "model": "ssc_14:block/plasteel_wall"
+    },
+    "blockstate=1": {
+      "model": "ssc_14:block/plasteel_wall_bs_blockstate_0"
+    },
+    "blockstate=2": {
+      "model": "ssc_14:block/plasteel_wall_bs_blockstate_1"
+    },
+    "blockstate=3": {
+      "model": "ssc_14:block/plasteel_wall_bs_blockstate_2"
+    },
+    "blockstate=4": {
+      "model": "ssc_14:block/plasteel_wall_bs_blockstate_3"
+    },
+    "blockstate=5": {
+      "model": "ssc_14:block/plasteel_wall_bs_blockstate_4"
+    },
+    "blockstate=6": {
+      "model": "ssc_14:block/plasteel_wall_bs_blockstate_5"
+    },
+    "blockstate=7": {
+      "model": "ssc_14:block/plasteel_wall_bs_blockstate_6"
+    },
+    "blockstate=8": {
+      "model": "ssc_14:block/plasteel_wall_bs_blockstate_7"
+    }
+  }
+}

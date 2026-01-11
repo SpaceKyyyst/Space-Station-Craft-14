@@ -8,7 +8,7 @@
     "texture": "nippers",
     "customModelName": "nippers:default",
     "blockingModelName": "Normal blocking",
-    "guiTexture": "nippers",
+    "guiTexture": "",
     "name": "Nippers",
     "specialInformation": {
       "fixedValue": []

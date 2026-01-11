@@ -1,0 +1,85 @@
+{
+  "_fv": 79,
+  "_type": "overlay",
+  "definition": {
+    "priority": "HIGH",
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "world_check_ui.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 214,
+          "y": 120,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_123abvabv",
+          "text": {
+            "fixedValue": "",
+            "name": "WOCtextP1"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 218,
+          "y": 123,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_wo_ctext_p_2",
+          "text": {
+            "fixedValue": "Для разборки используйте: "
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 218,
+          "y": 134,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_wo_ctext_p_21",
+          "text": {
+            "fixedValue": "",
+            "name": "WOCtextP2"
+          },
+          "color": {
+            "value": -16726017,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 218,
+          "y": 146,
+          "locked": false
+        }
+      }
+    ],
+    "baseTexture": "",
+    "overlayTarget": "Ingame",
+    "displayCondition": {
+      "name": "WorldObjectCheckUI"
+    },
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}
