@@ -43,7 +43,7 @@ public class IDcodeMenu extends AbstractContainerMenu implements Ssc14ModMenus.M
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
-			if (!this.containsKey(key) && this.size() >= 121)
+			if (!this.containsKey(key) && this.size() >= 155)
 				return null;
 			return super.put(key, value);
 		}

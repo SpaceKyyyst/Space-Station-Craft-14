@@ -1,0 +1,48 @@
+{
+  "_fv": 79,
+  "_type": "blockstates",
+  "definition": {
+    "block": "Lamp",
+    "blockstateList": [
+      {
+        "texture": "texture_of_lamp",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "lamp_on:default",
+        "luminance": 15,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "texture_of_lamp",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "lamp_broken:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "texture_lamp_empty",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "lamp_empty:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      }
+    ]
+  }
+}

@@ -4,5 +4,5 @@
     "all": "ssc_14:block/floor",
     "particle": "ssc_14:block/floor"
   },
-  "render_type": "solid"
+  "render_type": "cutout"
 }

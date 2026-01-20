@@ -32,13 +32,13 @@ public class Scrap_ProcedureProcedure {
 			Ssc14Mod.queueServerWork(1, () -> {
 				if (entity.getX() + entity.getZ()
 						+ entity.getY() == (entity instanceof LivingEntity _livingEntity10 && _livingEntity10.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity10.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 					if (entity instanceof LivingEntity _livingEntity13 && _livingEntity13.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 						_livingEntity13.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
 					Ssc14Mod.queueServerWork(1, () -> {
 						if (entity.getX() + entity.getZ() + entity
 								.getY() == (entity instanceof LivingEntity _livingEntity17 && _livingEntity17.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity17.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 							if (entity instanceof LivingEntity _livingEntity20 && _livingEntity20.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 								_livingEntity20.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
 							Ssc14Mod.queueServerWork(1, () -> {
@@ -46,7 +46,7 @@ public class Scrap_ProcedureProcedure {
 										+ entity.getY() == (entity instanceof LivingEntity _livingEntity24 && _livingEntity24.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 												? _livingEntity24.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 												: 0)
-										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 									if (entity instanceof LivingEntity _livingEntity27 && _livingEntity27.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 										_livingEntity27.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
 									Ssc14Mod.queueServerWork(1, () -> {
@@ -54,7 +54,7 @@ public class Scrap_ProcedureProcedure {
 												+ entity.getY() == (entity instanceof LivingEntity _livingEntity31 && _livingEntity31.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 														? _livingEntity31.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 														: 0)
-												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 											if (entity instanceof LivingEntity _livingEntity34 && _livingEntity34.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 												_livingEntity34.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
 											Ssc14Mod.queueServerWork(1, () -> {
@@ -62,7 +62,7 @@ public class Scrap_ProcedureProcedure {
 														+ entity.getY() == (entity instanceof LivingEntity _livingEntity38 && _livingEntity38.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 																? _livingEntity38.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 																: 0)
-														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()
+														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()
 														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.TITLE_STEEL.get()) {
 													if (entity instanceof LivingEntity _livingEntity43 && _livingEntity43.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 														_livingEntity43.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
@@ -116,13 +116,13 @@ public class Scrap_ProcedureProcedure {
 			Ssc14Mod.queueServerWork(3, () -> {
 				if (entity.getX() + entity.getZ()
 						+ entity.getY() == (entity instanceof LivingEntity _livingEntity67 && _livingEntity67.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity67.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 					if (entity instanceof LivingEntity _livingEntity70 && _livingEntity70.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 						_livingEntity70.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
 					Ssc14Mod.queueServerWork(3, () -> {
 						if (entity.getX() + entity.getZ() + entity
 								.getY() == (entity instanceof LivingEntity _livingEntity74 && _livingEntity74.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity74.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 							if (entity instanceof LivingEntity _livingEntity77 && _livingEntity77.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 								_livingEntity77.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
 							Ssc14Mod.queueServerWork(3, () -> {
@@ -130,7 +130,7 @@ public class Scrap_ProcedureProcedure {
 										+ entity.getY() == (entity instanceof LivingEntity _livingEntity81 && _livingEntity81.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 												? _livingEntity81.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 												: 0)
-										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 									if (entity instanceof LivingEntity _livingEntity84 && _livingEntity84.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 										_livingEntity84.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
 									Ssc14Mod.queueServerWork(3, () -> {
@@ -138,7 +138,7 @@ public class Scrap_ProcedureProcedure {
 												+ entity.getY() == (entity instanceof LivingEntity _livingEntity88 && _livingEntity88.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 														? _livingEntity88.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 														: 0)
-												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 											if (entity instanceof LivingEntity _livingEntity91 && _livingEntity91.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 												_livingEntity91.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
 											Ssc14Mod.queueServerWork(3, () -> {
@@ -146,7 +146,7 @@ public class Scrap_ProcedureProcedure {
 														+ entity.getY() == (entity instanceof LivingEntity _livingEntity95 && _livingEntity95.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 																? _livingEntity95.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 																: 0)
-														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()
+														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()
 														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
 														&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip101 ? blockstate.getValue(_getip101) : -1) == 3) {
 													if (entity instanceof LivingEntity _livingEntity102 && _livingEntity102.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
@@ -201,13 +201,13 @@ public class Scrap_ProcedureProcedure {
 			Ssc14Mod.queueServerWork(3, () -> {
 				if (entity.getX() + entity.getZ()
 						+ entity.getY() == (entity instanceof LivingEntity _livingEntity125 && _livingEntity125.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity125.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 					if (entity instanceof LivingEntity _livingEntity128 && _livingEntity128.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 						_livingEntity128.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
 					Ssc14Mod.queueServerWork(3, () -> {
 						if (entity.getX() + entity.getZ() + entity
 								.getY() == (entity instanceof LivingEntity _livingEntity132 && _livingEntity132.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity132.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 							if (entity instanceof LivingEntity _livingEntity135 && _livingEntity135.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 								_livingEntity135.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
 							Ssc14Mod.queueServerWork(3, () -> {
@@ -215,7 +215,7 @@ public class Scrap_ProcedureProcedure {
 										+ entity.getY() == (entity instanceof LivingEntity _livingEntity139 && _livingEntity139.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 												? _livingEntity139.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 												: 0)
-										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 									if (entity instanceof LivingEntity _livingEntity142 && _livingEntity142.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 										_livingEntity142.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
 									Ssc14Mod.queueServerWork(3, () -> {
@@ -223,7 +223,7 @@ public class Scrap_ProcedureProcedure {
 												+ entity.getY() == (entity instanceof LivingEntity _livingEntity146 && _livingEntity146.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 														? _livingEntity146.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 														: 0)
-												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()) {
+												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()) {
 											if (entity instanceof LivingEntity _livingEntity149 && _livingEntity149.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 												_livingEntity149.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
 											Ssc14Mod.queueServerWork(3, () -> {
@@ -231,7 +231,7 @@ public class Scrap_ProcedureProcedure {
 														+ entity.getY() == (entity instanceof LivingEntity _livingEntity153 && _livingEntity153.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 																? _livingEntity153.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 																: 0)
-														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCRAP.get()
+														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()
 														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
 														&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip159 ? blockstate.getValue(_getip159) : -1) == 6) {
 													if (entity instanceof LivingEntity _livingEntity160 && _livingEntity160.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))

@@ -111,6 +111,28 @@
         "name": "CUSTOM:emergency_acs",
         "type": "logic",
         "value": false
+      },
+      {
+        "name": "CUSTOM:panel_open",
+        "type": "logic",
+        "value": false
+      },
+      {
+        "name": "CUSTOM:diods",
+        "type": "logic",
+        "value": true
+      },
+      {
+        "min": 0,
+        "max": 2,
+        "name": "CUSTOM:energy_cabels",
+        "type": "integer",
+        "value": 2
+      },
+      {
+        "name": "CUSTOM:timer",
+        "type": "logic",
+        "value": true
       }
     ],
     "name": "Base Airlock",

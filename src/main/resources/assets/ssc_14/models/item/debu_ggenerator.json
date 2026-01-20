@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc_14:item/debug_block"
+  },
+  "render_type": "translucent"
+}

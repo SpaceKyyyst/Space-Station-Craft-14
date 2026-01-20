@@ -1,0 +1,23 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "space_station_craft_14:Pictures/BlockBench/SSC14/Перенесено в мод/texture_of_lamp",
+		"particle": "space_station_craft_14:Pictures/BlockBench/SSC14/Перенесено в мод/texture_of_lamp"
+	},
+	"elements": [
+		{
+			"from": [1, 13, 14],
+			"to": [15, 15, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 16, 16]},
+			"faces": {
+				"north": {"uv": [0, 2, 14, 4], "texture": "#1"},
+				"east": {"uv": [14, 0, 16, 2], "texture": "#1"},
+				"south": {"uv": [0, 0, 14, 2], "texture": "#1"},
+				"west": {"uv": [14, 0, 16, 2], "texture": "#1"},
+				"up": {"uv": [0, 3, 14, 1], "texture": "#1"},
+				"down": {"uv": [0, 5, 14, 3], "texture": "#1"}
+			}
+		}
+	]
+}

@@ -34,12 +34,15 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.BASE_WINDOW.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_DARK.get().asItem());
+				tabData.accept(Ssc14ModBlocks.LAMP.get().asItem());
 			}).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14CREATIVEV_2 = REGISTRY.register("ssc_14creativev_2",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14creativev_2")).icon(() -> new ItemStack(Ssc14ModItems.SSCLOGO.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CONSOLE_OF_ID.get().asItem());
 				tabData.accept(Ssc14ModBlocks.PORTABLE_SHEATER.get().asItem());
+				tabData.accept(Ssc14ModBlocks.APC.get().asItem());
+				tabData.accept(Ssc14ModBlocks.PODSTATION.get().asItem());
 			}).withTabsBefore(SSC_14CREATIVEV.getId()).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14CREATIVEV_3ITEM = REGISTRY.register("ssc_14creativev_3item",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14creativev_3item")).icon(() -> new ItemStack(Ssc14ModItems.SSCLOGO.get())).displayItems((parameters, tabData) -> {
@@ -56,7 +59,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.LOW_VOLTAGE_CABLE.get());
 				tabData.accept(Ssc14ModItems.MEDIUM_VOLTAGE_CABLE.get());
 				tabData.accept(Ssc14ModItems.HIGH_VOLTAGE_CABLE.get());
-				tabData.accept(Ssc14ModItems.SCRAP.get());
+				tabData.accept(Ssc14ModItems.CROWBAR.get());
 				tabData.accept(Ssc14ModItems.SPANNER.get());
 				tabData.accept(Ssc14ModItems.NIPPERS.get());
 				tabData.accept(Ssc14ModItems.SCREWDRIVER.get());
@@ -128,6 +131,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.COOLER_DEBU_GHANDGENERATOR.get());
 				tabData.accept(Ssc14ModItems.N_2_DEBU_GHANDGENERATOR.get());
 				tabData.accept(Ssc14ModItems.AIRLOCK_CONTROLLER.get());
+				tabData.accept(Ssc14ModBlocks.DEBU_GGENERATOR.get().asItem());
 			}
 		}
 	}

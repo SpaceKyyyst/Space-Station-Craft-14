@@ -337,6 +337,45 @@
         "customModelName": "airlock_down_emergency:default",
         "luminance": 4,
         "boundingBoxes": []
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "airlock_down_open_panel:default",
+        "luminance": 4,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "airlock_down_emergency_openp:default",
+        "luminance": 4,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "airlock_down_bolted_openp:default",
+        "luminance": 4,
+        "boundingBoxes": []
       }
     ]
   }

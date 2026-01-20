@@ -10,6 +10,7 @@ import net.neoforged.api.distmarker.Dist;
 
 import net.mcreator.ssc.client.gui.IDcodeScreen;
 import net.mcreator.ssc.client.gui.DopCraftMenuScreen;
+import net.mcreator.ssc.client.gui.CabelPannelAirlockScreen;
 import net.mcreator.ssc.client.gui.AccessConfigMENUScreen;
 import net.mcreator.ssc.client.gui.AccessConfigGUIScreen;
 
@@ -21,6 +22,7 @@ public class Ssc14ModScreens {
 		event.register(Ssc14ModMenus.I_DCODE.get(), IDcodeScreen::new);
 		event.register(Ssc14ModMenus.ACCESS_CONFIG_MENU.get(), AccessConfigMENUScreen::new);
 		event.register(Ssc14ModMenus.ACCESS_CONFIG_GUI.get(), AccessConfigGUIScreen::new);
+		event.register(Ssc14ModMenus.CABEL_PANNEL_AIRLOCK.get(), CabelPannelAirlockScreen::new);
 	}
 
 	public interface ScreenAccessor {

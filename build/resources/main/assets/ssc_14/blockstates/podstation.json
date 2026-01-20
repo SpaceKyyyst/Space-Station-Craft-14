@@ -1,18 +1,18 @@
 {
   "variants": {
     "facing=north": {
-      "model": "space_station_craft_14:block/podstation"
+      "model": "ssc_14:block/podstation"
     },
     "facing=east": {
-      "model": "space_station_craft_14:block/podstation",
+      "model": "ssc_14:block/podstation",
       "y": 90
     },
     "facing=south": {
-      "model": "space_station_craft_14:block/podstation",
+      "model": "ssc_14:block/podstation",
       "y": 180
     },
     "facing=west": {
-      "model": "space_station_craft_14:block/podstation",
+      "model": "ssc_14:block/podstation",
       "y": 270
     }
   }

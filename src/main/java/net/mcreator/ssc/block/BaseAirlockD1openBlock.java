@@ -7,6 +7,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.redstone.Orientation;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -39,6 +40,10 @@ public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 	public static final BooleanProperty BOLTED = BooleanProperty.create("bolted");
 	public static final BooleanProperty EMERGENCY_ACS = BooleanProperty.create("emergency_acs");
+	public static final BooleanProperty PANEL_OPEN = BooleanProperty.create("panel_open");
+	public static final BooleanProperty DIODS = BooleanProperty.create("diods");
+	public static final IntegerProperty ENERGY_CABELS = IntegerProperty.create("energy_cabels", 0, 2);
+	public static final BooleanProperty TIMER = BooleanProperty.create("timer");
 	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(15, 8, 7, 16, 16, 9), box(15, 0, 9, 16, 17, 11), box(0, 0, 6, 1, 12, 10), box(0, 0, 5, 2, 17, 7));
 	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(0, 8, 7, 1, 16, 9), box(0, 0, 5, 1, 17, 7), box(15, 0, 6, 16, 12, 10), box(14, 0, 9, 16, 17, 11));
 	private static final VoxelShape SHAPE_EAST = Shapes.or(box(7, 8, 15, 9, 16, 16), box(5, 0, 15, 7, 17, 16), box(6, 0, 0, 10, 12, 1), box(9, 0, 0, 11, 17, 2));
@@ -46,7 +51,7 @@ public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 
 	public BaseAirlockD1openBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.NETHERITE_BLOCK).strength(30f, 15f).lightLevel(s -> 4).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false).setValue(PANEL_OPEN, false).setValue(DIODS, true).setValue(ENERGY_CABELS, 2).setValue(TIMER, true));
 	}
 
 	@Override
@@ -78,12 +83,13 @@ public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
-		builder.add(FACING, BOLTED, EMERGENCY_ACS);
+		builder.add(FACING, BOLTED, EMERGENCY_ACS, PANEL_OPEN, DIODS, ENERGY_CABELS, TIMER);
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false);
+		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false).setValue(PANEL_OPEN, false).setValue(DIODS, true).setValue(ENERGY_CABELS, 2)
+				.setValue(TIMER, true);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

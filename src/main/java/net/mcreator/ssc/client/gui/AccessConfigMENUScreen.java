@@ -200,6 +200,38 @@ public class AccessConfigMENUScreen extends AbstractContainerScreen<AccessConfig
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_oruzhieinaia"), 24, 10, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gsb"), 24, 31, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_brigh"), 24, 52, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_sb"), 24, 73, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_dietiektiv"), 24, 94, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_pnt"), 24, 115, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_krioson"), 24, 136, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_si"), 102, 10, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_atmosfiernyi"), 102, 31, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_inzhieniernyi"), 102, 52, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_vnieshnii"), 102, 73, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_km"), 102, 94, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_utilizat"), 102, 115, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_snabzhieniie"), 102, 136, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gv"), 189, 10, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_khimiia"), 189, 31, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_mieditsinskii"), 189, 52, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_nr"), 189, 73, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_nauchnyi"), 189, 94, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_tiekhnichieskii"), 189, 115, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_tsierkov"), 189, 136, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gp"), 276, 10, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_siervisnyi"), 276, 31, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_kukhnia"), 276, 52, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gidropon"), 276, 73, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_bar"), 276, 94, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_tieatr"), 276, 115, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_uborshchik"), 276, 136, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_kapitan"), 354, 10, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_komand"), 354, 31, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_sinii_shchit"), 354, 52, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_iuridich"), 354, 73, -1, false);
 	}
 
 	@Override

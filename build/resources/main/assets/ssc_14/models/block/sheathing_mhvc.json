@@ -1,9 +1,0 @@
-{
-  "parent": "ssc_14:custom/cabels_mv_hv_block",
-  "textures": {
-    "all": "ssc_14:block/sv_vv_floor",
-    "particle": "ssc_14:block/sv_vv_floor",
-    "8": "ssc_14:block/cabels_mv_hv_texture"
-  },
-  "render_type": "cutout"
-}

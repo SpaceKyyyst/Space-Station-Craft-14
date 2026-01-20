@@ -241,6 +241,244 @@
           "y": 90,
           "locked": false
         }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_obiom",
+          "text": {
+            "fixedValue": "Объём:"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 31,
+          "y": 23,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_davlieniie",
+          "text": {
+            "fixedValue": "Давление:"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 31,
+          "y": 34,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_tiempieratura",
+          "text": {
+            "fixedValue": "Температура:"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 31,
+          "y": 45,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_kislorod",
+          "text": {
+            "fixedValue": "Кислород"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 26,
+          "y": 73,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_azot",
+          "text": {
+            "fixedValue": "Азот"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 26,
+          "y": 89,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_ughliek_gaz",
+          "text": {
+            "fixedValue": "Углек. Газ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 26,
+          "y": 105,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_vod_par",
+          "text": {
+            "fixedValue": "Вод. Пар"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 26,
+          "y": 121,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_plazma",
+          "text": {
+            "fixedValue": "Плазма"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 26,
+          "y": 137,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_miazmy",
+          "text": {
+            "fixedValue": "Миазмы"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 26,
+          "y": 153,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_oks_azota",
+          "text": {
+            "fixedValue": "Окс. Азота"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 26,
+          "y": 169,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_tritii",
+          "text": {
+            "fixedValue": "Тритий"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 26,
+          "y": 185,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_friezon",
+          "text": {
+            "fixedValue": "Фрезон"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 26,
+          "y": 201,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_gaz",
+          "text": {
+            "fixedValue": "Газ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 35,
+          "y": 58,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_mol",
+          "text": {
+            "fixedValue": "Моль"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 98,
+          "y": 58,
+          "locked": false
+        }
       }
     ],
     "baseTexture": "",

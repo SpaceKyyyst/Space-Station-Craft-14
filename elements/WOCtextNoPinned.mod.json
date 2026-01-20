@@ -1,0 +1,8 @@
+{
+  "_fv": 79,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable type=\"String\" id=\"loc_buf_t\">loc_buf_t</variable></variables><block type=\"event_trigger\" deletable=\"false\" x=\"75\" y=\"74\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"return_logic\"><value name=\"return\"><block type=\"logic_boolean\"><field name=\"BOOL\">FALSE</field></block></value></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

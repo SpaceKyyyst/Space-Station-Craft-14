@@ -1,0 +1,100 @@
+{
+  "_fv": 79,
+  "_type": "blockstates",
+  "definition": {
+    "block": "RodFloor",
+    "blockstateList": [
+      {
+        "texture": "rodflor_l_vc",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "rod_floor_l:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "rodflor_m_vc",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "rod_floor_m:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "rodflor_h_vc",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "rod_floor_h:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "rodflor_lm_vc",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "rod_floor_lm:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "rodflor_lh_vc",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "rod_floor_lh:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "rodflor_mh_vc",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "rod_floor_mh:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "rodflor_lnh_vc",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "rod_floor_lmh:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      }
+    ]
+  }
+}

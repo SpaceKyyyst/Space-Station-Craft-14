@@ -28,6 +28,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 
+import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
 import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
@@ -60,31 +61,21 @@ public class BaseAirlockOpenCloseProcedure {
 				}, _bpos);
 			}
 		} else {
-			if ((blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp8 && blockstate.getValue(_getbp8)) == false) {
-				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockEntity _blockEntity = world.getBlockEntity(_bp);
-					BlockState _bs = world.getBlockState(_bp);
-					if (_blockEntity != null) {
-						_blockEntity.getPersistentData().putBoolean("Opening", true);
-					}
-					if (world instanceof Level _level)
-						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
-				}
-				if ((blockstate.getBlock().getStateDefinition().getProperty("emergency_acs") instanceof BooleanProperty _getbp11 && blockstate.getValue(_getbp11)) == false) {
-					if (entity.getPersistentData().getBooleanOr("Technical", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Technical") == true) {
-						if (!world.isClientSide()) {
-							BlockPos _bp = BlockPos.containing(x, y, z);
-							BlockEntity _blockEntity = world.getBlockEntity(_bp);
-							BlockState _bs = world.getBlockState(_bp);
-							if (_blockEntity != null) {
-								_blockEntity.getPersistentData().putBoolean("Opening", false);
-							}
-							if (world instanceof Level _level)
-								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+			if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp8 && blockstate.getValue(_getbp8)) == false
+					|| (blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp10 && blockstate.getValue(_getbp10)) == true && entity.isShiftKeyDown()) {
+				if ((blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp13 && blockstate.getValue(_getbp13)) == false) {
+					if (!world.isClientSide()) {
+						BlockPos _bp = BlockPos.containing(x, y, z);
+						BlockEntity _blockEntity = world.getBlockEntity(_bp);
+						BlockState _bs = world.getBlockState(_bp);
+						if (_blockEntity != null) {
+							_blockEntity.getPersistentData().putBoolean("Opening", true);
 						}
-					} else {
-						if (entity.getPersistentData().getBooleanOr("Service", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Service") == true) {
+						if (world instanceof Level _level)
+							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+					}
+					if ((blockstate.getBlock().getStateDefinition().getProperty("emergency_acs") instanceof BooleanProperty _getbp16 && blockstate.getValue(_getbp16)) == false) {
+						if (entity.getPersistentData().getBooleanOr("Technical", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Technical") == true) {
 							if (!world.isClientSide()) {
 								BlockPos _bp = BlockPos.containing(x, y, z);
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -96,7 +87,7 @@ public class BaseAirlockOpenCloseProcedure {
 									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 							}
 						} else {
-							if (entity.getPersistentData().getBooleanOr("Out", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Out") == true) {
+							if (entity.getPersistentData().getBooleanOr("Service", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Service") == true) {
 								if (!world.isClientSide()) {
 									BlockPos _bp = BlockPos.containing(x, y, z);
 									BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -108,7 +99,7 @@ public class BaseAirlockOpenCloseProcedure {
 										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 								}
 							} else {
-								if (entity.getPersistentData().getBooleanOr("gun_room", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "gun_room") == true) {
+								if (entity.getPersistentData().getBooleanOr("Out", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Out") == true) {
 									if (!world.isClientSide()) {
 										BlockPos _bp = BlockPos.containing(x, y, z);
 										BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -120,7 +111,7 @@ public class BaseAirlockOpenCloseProcedure {
 											_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 									}
 								} else {
-									if (entity.getPersistentData().getBooleanOr("HoS", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "HoS") == true) {
+									if (entity.getPersistentData().getBooleanOr("gun_room", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "gun_room") == true) {
 										if (!world.isClientSide()) {
 											BlockPos _bp = BlockPos.containing(x, y, z);
 											BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -132,7 +123,7 @@ public class BaseAirlockOpenCloseProcedure {
 												_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 										}
 									} else {
-										if (entity.getPersistentData().getBooleanOr("Brig", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Brig") == true) {
+										if (entity.getPersistentData().getBooleanOr("HoS", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "HoS") == true) {
 											if (!world.isClientSide()) {
 												BlockPos _bp = BlockPos.containing(x, y, z);
 												BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -144,7 +135,7 @@ public class BaseAirlockOpenCloseProcedure {
 													_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 											}
 										} else {
-											if (entity.getPersistentData().getBooleanOr("Medical", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Medical") == true) {
+											if (entity.getPersistentData().getBooleanOr("Brig", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Brig") == true) {
 												if (!world.isClientSide()) {
 													BlockPos _bp = BlockPos.containing(x, y, z);
 													BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -156,7 +147,7 @@ public class BaseAirlockOpenCloseProcedure {
 														_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 												}
 											} else {
-												if (entity.getPersistentData().getBooleanOr("Crio", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Crio") == true) {
+												if (entity.getPersistentData().getBooleanOr("Medical", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Medical") == true) {
 													if (!world.isClientSide()) {
 														BlockPos _bp = BlockPos.containing(x, y, z);
 														BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -168,7 +159,7 @@ public class BaseAirlockOpenCloseProcedure {
 															_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 													}
 												} else {
-													if (entity.getPersistentData().getBooleanOr("Security", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Security") == true) {
+													if (entity.getPersistentData().getBooleanOr("Crio", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Crio") == true) {
 														if (!world.isClientSide()) {
 															BlockPos _bp = BlockPos.containing(x, y, z);
 															BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -180,7 +171,7 @@ public class BaseAirlockOpenCloseProcedure {
 																_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 														}
 													} else {
-														if (entity.getPersistentData().getBooleanOr("Ingeneer", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Ingeneer") == true) {
+														if (entity.getPersistentData().getBooleanOr("Security", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Security") == true) {
 															if (!world.isClientSide()) {
 																BlockPos _bp = BlockPos.containing(x, y, z);
 																BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -192,7 +183,7 @@ public class BaseAirlockOpenCloseProcedure {
 																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 															}
 														} else {
-															if (entity.getPersistentData().getBooleanOr("Command", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Command") == true) {
+															if (entity.getPersistentData().getBooleanOr("Ingeneer", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Ingeneer") == true) {
 																if (!world.isClientSide()) {
 																	BlockPos _bp = BlockPos.containing(x, y, z);
 																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -204,7 +195,7 @@ public class BaseAirlockOpenCloseProcedure {
 																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																}
 															} else {
-																if (entity.getPersistentData().getBooleanOr("Detective", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Detective") == true) {
+																if (entity.getPersistentData().getBooleanOr("Command", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Command") == true) {
 																	if (!world.isClientSide()) {
 																		BlockPos _bp = BlockPos.containing(x, y, z);
 																		BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -216,7 +207,7 @@ public class BaseAirlockOpenCloseProcedure {
 																			_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																	}
 																} else {
-																	if (entity.getPersistentData().getBooleanOr("PNT", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "PNT") == true) {
+																	if (entity.getPersistentData().getBooleanOr("Detective", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Detective") == true) {
 																		if (!world.isClientSide()) {
 																			BlockPos _bp = BlockPos.containing(x, y, z);
 																			BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -228,7 +219,7 @@ public class BaseAirlockOpenCloseProcedure {
 																				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																		}
 																	} else {
-																		if (entity.getPersistentData().getBooleanOr("Scientist", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Scientist") == true) {
+																		if (entity.getPersistentData().getBooleanOr("PNT", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "PNT") == true) {
 																			if (!world.isClientSide()) {
 																				BlockPos _bp = BlockPos.containing(x, y, z);
 																				BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -240,7 +231,7 @@ public class BaseAirlockOpenCloseProcedure {
 																					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																			}
 																		} else {
-																			if (entity.getPersistentData().getBooleanOr("Supply_Deportament", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Supply_Deportament") == true) {
+																			if (entity.getPersistentData().getBooleanOr("Scientist", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Scientist") == true) {
 																				if (!world.isClientSide()) {
 																					BlockPos _bp = BlockPos.containing(x, y, z);
 																					BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -252,7 +243,8 @@ public class BaseAirlockOpenCloseProcedure {
 																						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																				}
 																			} else {
-																				if (entity.getPersistentData().getBooleanOr("Atmos", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Atmos") == true) {
+																				if (entity.getPersistentData().getBooleanOr("Supply_Deportament", false) == false
+																						&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Supply_Deportament") == true) {
 																					if (!world.isClientSide()) {
 																						BlockPos _bp = BlockPos.containing(x, y, z);
 																						BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -264,7 +256,7 @@ public class BaseAirlockOpenCloseProcedure {
 																							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																					}
 																				} else {
-																					if (entity.getPersistentData().getBooleanOr("Kitchen", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Kitchen") == true) {
+																					if (entity.getPersistentData().getBooleanOr("Atmos", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Atmos") == true) {
 																						if (!world.isClientSide()) {
 																							BlockPos _bp = BlockPos.containing(x, y, z);
 																							BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -276,7 +268,7 @@ public class BaseAirlockOpenCloseProcedure {
 																								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																						}
 																					} else {
-																						if (entity.getPersistentData().getBooleanOr("Uridic", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Uridic") == true) {
+																						if (entity.getPersistentData().getBooleanOr("Kitchen", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Kitchen") == true) {
 																							if (!world.isClientSide()) {
 																								BlockPos _bp = BlockPos.containing(x, y, z);
 																								BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -288,7 +280,7 @@ public class BaseAirlockOpenCloseProcedure {
 																									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																							}
 																						} else {
-																							if (entity.getPersistentData().getBooleanOr("Gidroponic", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Gidroponic") == true) {
+																							if (entity.getPersistentData().getBooleanOr("Uridic", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Uridic") == true) {
 																								if (!world.isClientSide()) {
 																									BlockPos _bp = BlockPos.containing(x, y, z);
 																									BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -300,7 +292,8 @@ public class BaseAirlockOpenCloseProcedure {
 																										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																								}
 																							} else {
-																								if (entity.getPersistentData().getBooleanOr("Teatre", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Teatre") == true) {
+																								if (entity.getPersistentData().getBooleanOr("Gidroponic", false) == false
+																										&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Gidroponic") == true) {
 																									if (!world.isClientSide()) {
 																										BlockPos _bp = BlockPos.containing(x, y, z);
 																										BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -312,7 +305,7 @@ public class BaseAirlockOpenCloseProcedure {
 																											_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																									}
 																								} else {
-																									if (entity.getPersistentData().getBooleanOr("Bar", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Bar") == true) {
+																									if (entity.getPersistentData().getBooleanOr("Teatre", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Teatre") == true) {
 																										if (!world.isClientSide()) {
 																											BlockPos _bp = BlockPos.containing(x, y, z);
 																											BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -324,8 +317,7 @@ public class BaseAirlockOpenCloseProcedure {
 																												_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																										}
 																									} else {
-																										if (entity.getPersistentData().getBooleanOr("Cleaner", false) == false
-																												&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Cleaner") == true) {
+																										if (entity.getPersistentData().getBooleanOr("Bar", false) == false && getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Bar") == true) {
 																											if (!world.isClientSide()) {
 																												BlockPos _bp = BlockPos.containing(x, y, z);
 																												BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -337,8 +329,8 @@ public class BaseAirlockOpenCloseProcedure {
 																													_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																											}
 																										} else {
-																											if (entity.getPersistentData().getBooleanOr("Utilizat", false) == false
-																													&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Utilizat") == true) {
+																											if (entity.getPersistentData().getBooleanOr("Cleaner", false) == false
+																													&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Cleaner") == true) {
 																												if (!world.isClientSide()) {
 																													BlockPos _bp = BlockPos.containing(x, y, z);
 																													BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -350,8 +342,8 @@ public class BaseAirlockOpenCloseProcedure {
 																														_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																												}
 																											} else {
-																												if (entity.getPersistentData().getBooleanOr("Chemistry", false) == false
-																														&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Chemistry") == true) {
+																												if (entity.getPersistentData().getBooleanOr("Utilizat", false) == false
+																														&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Utilizat") == true) {
 																													if (!world.isClientSide()) {
 																														BlockPos _bp = BlockPos.containing(x, y, z);
 																														BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -363,8 +355,8 @@ public class BaseAirlockOpenCloseProcedure {
 																															_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																													}
 																												} else {
-																													if (entity.getPersistentData().getBooleanOr("Church", false) == false
-																															&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Church") == true) {
+																													if (entity.getPersistentData().getBooleanOr("Chemistry", false) == false
+																															&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Chemistry") == true) {
 																														if (!world.isClientSide()) {
 																															BlockPos _bp = BlockPos.containing(x, y, z);
 																															BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -376,8 +368,8 @@ public class BaseAirlockOpenCloseProcedure {
 																																_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																														}
 																													} else {
-																														if (entity.getPersistentData().getBooleanOr("CE", false) == false
-																																&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "CE") == true) {
+																														if (entity.getPersistentData().getBooleanOr("Church", false) == false
+																																&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Church") == true) {
 																															if (!world.isClientSide()) {
 																																BlockPos _bp = BlockPos.containing(x, y, z);
 																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -388,83 +380,97 @@ public class BaseAirlockOpenCloseProcedure {
 																																if (world instanceof Level _level)
 																																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																															}
-																														}
-																														if (entity.getPersistentData().getBooleanOr("Qm", false) == false
-																																&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Qm") == true) {
-																															if (!world.isClientSide()) {
-																																BlockPos _bp = BlockPos.containing(x, y, z);
-																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
-																																BlockState _bs = world.getBlockState(_bp);
-																																if (_blockEntity != null) {
-																																	_blockEntity.getPersistentData().putBoolean("Opening", false);
+																														} else {
+																															if (entity.getPersistentData().getBooleanOr("CE", false) == false
+																																	&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "CE") == true) {
+																																if (!world.isClientSide()) {
+																																	BlockPos _bp = BlockPos.containing(x, y, z);
+																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
+																																	BlockState _bs = world.getBlockState(_bp);
+																																	if (_blockEntity != null) {
+																																		_blockEntity.getPersistentData().putBoolean("Opening", false);
+																																	}
+																																	if (world instanceof Level _level)
+																																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																}
-																																if (world instanceof Level _level)
-																																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																															}
-																														}
-																														if (entity.getPersistentData().getBooleanOr("CMO", false) == false
-																																&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "CMO") == true) {
-																															if (!world.isClientSide()) {
-																																BlockPos _bp = BlockPos.containing(x, y, z);
-																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
-																																BlockState _bs = world.getBlockState(_bp);
-																																if (_blockEntity != null) {
-																																	_blockEntity.getPersistentData().putBoolean("Opening", false);
+																															if (entity.getPersistentData().getBooleanOr("Qm", false) == false
+																																	&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Qm") == true) {
+																																if (!world.isClientSide()) {
+																																	BlockPos _bp = BlockPos.containing(x, y, z);
+																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
+																																	BlockState _bs = world.getBlockState(_bp);
+																																	if (_blockEntity != null) {
+																																		_blockEntity.getPersistentData().putBoolean("Opening", false);
+																																	}
+																																	if (world instanceof Level _level)
+																																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																}
-																																if (world instanceof Level _level)
-																																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																															}
-																														}
-																														if (entity.getPersistentData().getBooleanOr("RD", false) == false
-																																&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "RD") == true) {
-																															if (!world.isClientSide()) {
-																																BlockPos _bp = BlockPos.containing(x, y, z);
-																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
-																																BlockState _bs = world.getBlockState(_bp);
-																																if (_blockEntity != null) {
-																																	_blockEntity.getPersistentData().putBoolean("Opening", false);
+																															if (entity.getPersistentData().getBooleanOr("CMO", false) == false
+																																	&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "CMO") == true) {
+																																if (!world.isClientSide()) {
+																																	BlockPos _bp = BlockPos.containing(x, y, z);
+																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
+																																	BlockState _bs = world.getBlockState(_bp);
+																																	if (_blockEntity != null) {
+																																		_blockEntity.getPersistentData().putBoolean("Opening", false);
+																																	}
+																																	if (world instanceof Level _level)
+																																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																}
-																																if (world instanceof Level _level)
-																																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																															}
-																														}
-																														if (entity.getPersistentData().getBooleanOr("HoP", false) == false
-																																&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "HoP") == true) {
-																															if (!world.isClientSide()) {
-																																BlockPos _bp = BlockPos.containing(x, y, z);
-																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
-																																BlockState _bs = world.getBlockState(_bp);
-																																if (_blockEntity != null) {
-																																	_blockEntity.getPersistentData().putBoolean("Opening", false);
+																															if (entity.getPersistentData().getBooleanOr("RD", false) == false
+																																	&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "RD") == true) {
+																																if (!world.isClientSide()) {
+																																	BlockPos _bp = BlockPos.containing(x, y, z);
+																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
+																																	BlockState _bs = world.getBlockState(_bp);
+																																	if (_blockEntity != null) {
+																																		_blockEntity.getPersistentData().putBoolean("Opening", false);
+																																	}
+																																	if (world instanceof Level _level)
+																																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																}
-																																if (world instanceof Level _level)
-																																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																															}
-																														}
-																														if (entity.getPersistentData().getBooleanOr("Capitan", false) == false
-																																&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Capitan") == true) {
-																															if (!world.isClientSide()) {
-																																BlockPos _bp = BlockPos.containing(x, y, z);
-																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
-																																BlockState _bs = world.getBlockState(_bp);
-																																if (_blockEntity != null) {
-																																	_blockEntity.getPersistentData().putBoolean("Opening", false);
+																															if (entity.getPersistentData().getBooleanOr("HoP", false) == false
+																																	&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "HoP") == true) {
+																																if (!world.isClientSide()) {
+																																	BlockPos _bp = BlockPos.containing(x, y, z);
+																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
+																																	BlockState _bs = world.getBlockState(_bp);
+																																	if (_blockEntity != null) {
+																																		_blockEntity.getPersistentData().putBoolean("Opening", false);
+																																	}
+																																	if (world instanceof Level _level)
+																																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																}
-																																if (world instanceof Level _level)
-																																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																															}
-																														}
-																														if (entity.getPersistentData().getBooleanOr("Blue_Sh", false) == false
-																																&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Blue_Sh") == true) {
-																															if (!world.isClientSide()) {
-																																BlockPos _bp = BlockPos.containing(x, y, z);
-																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
-																																BlockState _bs = world.getBlockState(_bp);
-																																if (_blockEntity != null) {
-																																	_blockEntity.getPersistentData().putBoolean("Opening", false);
+																															if (entity.getPersistentData().getBooleanOr("Capitan", false) == false
+																																	&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Capitan") == true) {
+																																if (!world.isClientSide()) {
+																																	BlockPos _bp = BlockPos.containing(x, y, z);
+																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
+																																	BlockState _bs = world.getBlockState(_bp);
+																																	if (_blockEntity != null) {
+																																		_blockEntity.getPersistentData().putBoolean("Opening", false);
+																																	}
+																																	if (world instanceof Level _level)
+																																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																}
-																																if (world instanceof Level _level)
-																																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+																															}
+																															if (entity.getPersistentData().getBooleanOr("Blue_Sh", false) == false
+																																	&& getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Blue_Sh") == true) {
+																																if (!world.isClientSide()) {
+																																	BlockPos _bp = BlockPos.containing(x, y, z);
+																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
+																																	BlockState _bs = world.getBlockState(_bp);
+																																	if (_blockEntity != null) {
+																																		_blockEntity.getPersistentData().putBoolean("Opening", false);
+																																	}
+																																	if (world instanceof Level _level)
+																																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+																																}
 																															}
 																														}
 																													}
@@ -491,145 +497,35 @@ public class BaseAirlockOpenCloseProcedure {
 								}
 							}
 						}
-					}
-				} else {
-					if (!world.isClientSide()) {
-						BlockPos _bp = BlockPos.containing(x, y, z);
-						BlockEntity _blockEntity = world.getBlockEntity(_bp);
-						BlockState _bs = world.getBlockState(_bp);
-						if (_blockEntity != null) {
-							_blockEntity.getPersistentData().putBoolean("Opening", true);
+					} else {
+						if (!world.isClientSide()) {
+							BlockPos _bp = BlockPos.containing(x, y, z);
+							BlockEntity _blockEntity = world.getBlockEntity(_bp);
+							BlockState _bs = world.getBlockState(_bp);
+							if (_blockEntity != null) {
+								_blockEntity.getPersistentData().putBoolean("Opening", true);
+							}
+							if (world instanceof Level _level)
+								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
-						if (world instanceof Level _level)
-							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 					}
-				}
-				Ssc14Mod.queueServerWork(1, () -> {
-					if (getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Opening") == true) {
-						if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1.get()
-								&& ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip113 ? blockstate.getValue(_getip113) : -1) == 0
-										|| (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip115 ? blockstate.getValue(_getip115) : -1) == 6)) {
-							if (world instanceof Level _level) {
-								if (!_level.isClientSide()) {
-									_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_open")), SoundSource.NEUTRAL, 1, 1);
-								} else {
-									_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_open")), SoundSource.NEUTRAL, 1, 1, false);
-								}
-							}
-							{
-								int _value = 1;
-								BlockPos _pos = BlockPos.containing(x, y, z);
-								BlockState _bs = world.getBlockState(_pos);
-								if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
-									world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
-							}
-							Ssc14Mod.queueServerWork(2, () -> {
-								{
-									int _value = 2;
-									BlockPos _pos = BlockPos.containing(x, y, z);
-									BlockState _bs = world.getBlockState(_pos);
-									if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
-										world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
-								}
-								Ssc14Mod.queueServerWork(2, () -> {
-									{
-										int _value = 3;
-										BlockPos _pos = BlockPos.containing(x, y, z);
-										BlockState _bs = world.getBlockState(_pos);
-										if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
-											world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
-									}
-									Ssc14Mod.queueServerWork(2, () -> {
-										{
-											int _value = 4;
-											BlockPos _pos = BlockPos.containing(x, y, z);
-											BlockState _bs = world.getBlockState(_pos);
-											if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
-												world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
-										}
-										Ssc14Mod.queueServerWork(2, () -> {
-											{
-												BlockPos _bp = BlockPos.containing(x, y, z);
-												BlockState _bs = Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get().defaultBlockState();
-												BlockState _bso = world.getBlockState(_bp);
-												for (Property<?> _propertyOld : _bso.getProperties()) {
-													Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
-													if (_propertyNew != null && _bs.getValue(_propertyNew) != null)
-														try {
-															_bs = _bs.setValue(_propertyNew, _bso.getValue(_propertyOld));
-														} catch (Exception e) {
-														}
-												}
-												BlockEntity _be = world.getBlockEntity(_bp);
-												CompoundTag _bnbt = null;
-												if (_be != null) {
-													_bnbt = _be.saveWithFullMetadata(world.registryAccess());
-													_be.setRemoved();
-												}
-												world.setBlock(_bp, _bs, 3);
-												if (_bnbt != null) {
-													_be = world.getBlockEntity(_bp);
-													if (_be != null) {
-														try {
-															_be.loadWithComponents(TagValueInput.create(ProblemReporter.DISCARDING, world.registryAccess(), _bnbt));
-														} catch (Exception ignored) {
-														}
-													}
-												}
-											}
-										});
-									});
-								});
-							});
-						} else if (!(!world.getEntitiesOfClass(Player.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
-								&& !(!world.getEntitiesOfClass(Mob.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
-								&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get()) {
-							if (world instanceof Level _level) {
-								if (!_level.isClientSide()) {
-									_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_close")), SoundSource.NEUTRAL, 1, 1);
-								} else {
-									_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_close")), SoundSource.NEUTRAL, 1, 1, false);
-								}
-							}
-							{
-								BlockPos _bp = BlockPos.containing(x, y, z);
-								BlockState _bs = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState();
-								BlockState _bso = world.getBlockState(_bp);
-								for (Property<?> _propertyOld : _bso.getProperties()) {
-									Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
-									if (_propertyNew != null && _bs.getValue(_propertyNew) != null)
-										try {
-											_bs = _bs.setValue(_propertyNew, _bso.getValue(_propertyOld));
-										} catch (Exception e) {
-										}
-								}
-								BlockEntity _be = world.getBlockEntity(_bp);
-								CompoundTag _bnbt = null;
-								if (_be != null) {
-									_bnbt = _be.saveWithFullMetadata(world.registryAccess());
-									_be.setRemoved();
-								}
-								world.setBlock(_bp, _bs, 3);
-								if (_bnbt != null) {
-									_be = world.getBlockEntity(_bp);
-									if (_be != null) {
-										try {
-											_be.loadWithComponents(TagValueInput.create(ProblemReporter.DISCARDING, world.registryAccess(), _bnbt));
-										} catch (Exception ignored) {
-										}
+					Ssc14Mod.queueServerWork(1, () -> {
+						if ((blockstate.getBlock().getStateDefinition().getProperty("emergency_acs") instanceof BooleanProperty _getbp115 && blockstate.getValue(_getbp115)) == true
+								|| getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Opening") == true) {
+							if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1.get()
+									&& ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip120 ? blockstate.getValue(_getip120) : -1) == 0
+											|| (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip122 ? blockstate.getValue(_getip122) : -1) == 6
+											|| (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip124 ? blockstate.getValue(_getip124) : -1) == 7
+											|| (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip126 ? blockstate.getValue(_getip126) : -1) == 8)) {
+								if (world instanceof Level _level) {
+									if (!_level.isClientSide()) {
+										_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_open")), SoundSource.NEUTRAL, 1, 1);
+									} else {
+										_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_open")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
-							}
-							{
-								int _value = 4;
-								BlockPos _pos = BlockPos.containing(x, y, z);
-								BlockState _bs = world.getBlockState(_pos);
-								if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
-									world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
-							}
-							Ssc14Mod.queueServerWork(2, () -> {
 								{
-									int _value = 3;
+									int _value = 1;
 									BlockPos _pos = BlockPos.containing(x, y, z);
 									BlockState _bs = world.getBlockState(_pos);
 									if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
@@ -645,7 +541,7 @@ public class BaseAirlockOpenCloseProcedure {
 									}
 									Ssc14Mod.queueServerWork(2, () -> {
 										{
-											int _value = 1;
+											int _value = 3;
 											BlockPos _pos = BlockPos.containing(x, y, z);
 											BlockState _bs = world.getBlockState(_pos);
 											if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
@@ -653,27 +549,160 @@ public class BaseAirlockOpenCloseProcedure {
 										}
 										Ssc14Mod.queueServerWork(2, () -> {
 											{
-												int _value = 0;
+												int _value = 4;
 												BlockPos _pos = BlockPos.containing(x, y, z);
 												BlockState _bs = world.getBlockState(_pos);
 												if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 													world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 											}
+											Ssc14Mod.queueServerWork(2, () -> {
+												{
+													BlockPos _bp = BlockPos.containing(x, y, z);
+													BlockState _bs = Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get().defaultBlockState();
+													BlockState _bso = world.getBlockState(_bp);
+													for (Property<?> _propertyOld : _bso.getProperties()) {
+														Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
+														if (_propertyNew != null && _bs.getValue(_propertyNew) != null)
+															try {
+																_bs = _bs.setValue(_propertyNew, _bso.getValue(_propertyOld));
+															} catch (Exception e) {
+															}
+													}
+													BlockEntity _be = world.getBlockEntity(_bp);
+													CompoundTag _bnbt = null;
+													if (_be != null) {
+														_bnbt = _be.saveWithFullMetadata(world.registryAccess());
+														_be.setRemoved();
+													}
+													world.setBlock(_bp, _bs, 3);
+													if (_bnbt != null) {
+														_be = world.getBlockEntity(_bp);
+														if (_be != null) {
+															try {
+																_be.loadWithComponents(TagValueInput.create(ProblemReporter.DISCARDING, world.registryAccess(), _bnbt));
+															} catch (Exception ignored) {
+															}
+														}
+													}
+												}
+											});
 										});
 									});
 								});
-							});
-						}
-					} else {
-						if (world instanceof Level _level) {
-							if (!_level.isClientSide()) {
-								_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_no_access")), SoundSource.NEUTRAL, 1, 1);
-							} else {
-								_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_no_access")), SoundSource.NEUTRAL, 1, 1, false);
+							} else if (!(!world.getEntitiesOfClass(Player.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
+									&& !(!world.getEntitiesOfClass(Mob.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
+									&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get()) {
+								if (world instanceof Level _level) {
+									if (!_level.isClientSide()) {
+										_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_close")), SoundSource.NEUTRAL, 1, 1);
+									} else {
+										_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_close")), SoundSource.NEUTRAL, 1, 1, false);
+									}
+								}
+								{
+									BlockPos _bp = BlockPos.containing(x, y, z);
+									BlockState _bs = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState();
+									BlockState _bso = world.getBlockState(_bp);
+									for (Property<?> _propertyOld : _bso.getProperties()) {
+										Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
+										if (_propertyNew != null && _bs.getValue(_propertyNew) != null)
+											try {
+												_bs = _bs.setValue(_propertyNew, _bso.getValue(_propertyOld));
+											} catch (Exception e) {
+											}
+									}
+									BlockEntity _be = world.getBlockEntity(_bp);
+									CompoundTag _bnbt = null;
+									if (_be != null) {
+										_bnbt = _be.saveWithFullMetadata(world.registryAccess());
+										_be.setRemoved();
+									}
+									world.setBlock(_bp, _bs, 3);
+									if (_bnbt != null) {
+										_be = world.getBlockEntity(_bp);
+										if (_be != null) {
+											try {
+												_be.loadWithComponents(TagValueInput.create(ProblemReporter.DISCARDING, world.registryAccess(), _bnbt));
+											} catch (Exception ignored) {
+											}
+										}
+									}
+								}
+								{
+									int _value = 4;
+									BlockPos _pos = BlockPos.containing(x, y, z);
+									BlockState _bs = world.getBlockState(_pos);
+									if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
+										world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
+								}
+								Ssc14Mod.queueServerWork(2, () -> {
+									{
+										int _value = 3;
+										BlockPos _pos = BlockPos.containing(x, y, z);
+										BlockState _bs = world.getBlockState(_pos);
+										if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
+											world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
+									}
+									Ssc14Mod.queueServerWork(2, () -> {
+										{
+											int _value = 2;
+											BlockPos _pos = BlockPos.containing(x, y, z);
+											BlockState _bs = world.getBlockState(_pos);
+											if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
+												world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
+										}
+										Ssc14Mod.queueServerWork(2, () -> {
+											{
+												int _value = 1;
+												BlockPos _pos = BlockPos.containing(x, y, z);
+												BlockState _bs = world.getBlockState(_pos);
+												if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
+													world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
+											}
+											Ssc14Mod.queueServerWork(2, () -> {
+												{
+													int _value = 0;
+													BlockPos _pos = BlockPos.containing(x, y, z);
+													BlockState _bs = world.getBlockState(_pos);
+													if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
+														world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
+												}
+											});
+										});
+									});
+								});
+							}
+						} else {
+							if (world instanceof Level _level) {
+								if (!_level.isClientSide()) {
+									_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_no_access")), SoundSource.NEUTRAL, 1, 1);
+								} else {
+									_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_no_access")), SoundSource.NEUTRAL, 1, 1, false);
+								}
 							}
 						}
-					}
-				});
+					});
+				}
+			} else if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp155 && blockstate.getValue(_getbp155)) == true && !entity.isShiftKeyDown()) {
+				if (entity instanceof ServerPlayer _ent) {
+					BlockPos _bpos = BlockPos.containing(entity.getX(), entity.getY(), entity.getZ());
+					_ent.openMenu(new MenuProvider() {
+						@Override
+						public Component getDisplayName() {
+							return Component.literal("CabelPannelAirlock");
+						}
+
+						@Override
+						public boolean shouldTriggerClientSideContainerClosingOnOpen() {
+							return false;
+						}
+
+						@Override
+						public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+							return new CabelPannelAirlockMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
+						}
+					}, _bpos);
+				}
 			}
 		}
 	}

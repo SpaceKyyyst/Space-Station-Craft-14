@@ -75,6 +75,20 @@ public class GasAnalyserGUIOverlay {
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 
 					N2PercentTextProcedure.execute(world, x, y, z), w / 2 + -69, h / 2 + -30, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_obiom"), w / 2 + -182, h / 2 + -97, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_davlieniie"), w / 2 + -182, h / 2 + -86, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_tiempieratura"), w / 2 + -182, h / 2 + -75, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_kislorod"), w / 2 + -187, h / 2 + -47, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_azot"), w / 2 + -187, h / 2 + -31, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_ughliek_gaz"), w / 2 + -187, h / 2 + -15, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_vod_par"), w / 2 + -187, h / 2 + 1, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_plazma"), w / 2 + -187, h / 2 + 17, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_miazmy"), w / 2 + -187, h / 2 + 33, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_oks_azota"), w / 2 + -187, h / 2 + 49, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_tritii"), w / 2 + -187, h / 2 + 65, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_friezon"), w / 2 + -187, h / 2 + 81, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_gaz"), w / 2 + -178, h / 2 + -62, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_mol"), w / 2 + -115, h / 2 + -62, -1, false);
 		}
 	}
 }

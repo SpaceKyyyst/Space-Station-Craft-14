@@ -1,0 +1,442 @@
+{
+  "_fv": 79,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 160,
+    "height": 1,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "cabel_pannel_airlock_copy.png",
+          "use1Xscale": false,
+          "x": 134,
+          "y": 70,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cable_button6",
+          "image": "cable_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CPcabel1button"
+          },
+          "x": 169,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "cable_1.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPcabel1"
+          },
+          "x": 170,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cable_button5",
+          "image": "cable_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CPcabel2button"
+          },
+          "x": 181,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "cable_2.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPcabel2"
+          },
+          "x": 182,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cable_button4",
+          "image": "cable_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CPcabel3button"
+          },
+          "x": 192,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "cable_3.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPcabel3"
+          },
+          "x": 192,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cabel_4",
+          "image": "cable_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CPcabel4button"
+          },
+          "x": 205,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "cabel_4.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPcabel4"
+          },
+          "x": 206,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cable_button",
+          "image": "cable_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CPcabel5button"
+          },
+          "x": 215,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "cable_5.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPcabel5"
+          },
+          "x": 217,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cable_button1",
+          "image": "cable_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CPcabel6button"
+          },
+          "x": 225,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "cable_6.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPcabel6"
+          },
+          "x": 225,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cable_button2",
+          "image": "cable_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CPcabel7button"
+          },
+          "x": 237,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "cable_7.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPcabel7"
+          },
+          "x": 239,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cable_button3",
+          "image": "cable_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CPcabel8button"
+          },
+          "x": 248,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "cable_8.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPcabel8"
+          },
+          "x": 249,
+          "y": 125,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_pitn",
+          "text": {
+            "fixedValue": "ПИТН"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 140,
+          "y": 93,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_log",
+          "text": {
+            "fixedValue": "ЛОГ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 146,
+          "y": 107,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_bolt",
+          "text": {
+            "fixedValue": "БОЛТ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 178,
+          "y": 93,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_empty",
+          "text": {
+            "fixedValue": "СВЕТ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 178,
+          "y": 107,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_empty1",
+          "text": {
+            "fixedValue": "ТЙМР"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 216,
+          "y": 93,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_biezp",
+          "text": {
+            "fixedValue": "БЕЗП"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 216,
+          "y": 107,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_ii",
+          "text": {
+            "fixedValue": "ИИ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 254,
+          "y": 93,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lamp_indicator_yellow.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPlampind1"
+          },
+          "x": 165,
+          "y": 92,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lamp_indicator_red.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPlampind2"
+          },
+          "x": 203,
+          "y": 92,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lamp_indicator_white.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPlampind3"
+          },
+          "x": 241,
+          "y": 92,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lamp_indicator_cyane.png",
+          "use1Xscale": false,
+          "x": 267,
+          "y": 92,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lamp_indicator_blue.png",
+          "use1Xscale": false,
+          "x": 165,
+          "y": 106,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lamp_indicator_green.png",
+          "use1Xscale": false,
+          "x": 203,
+          "y": 106,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "lamp_indicator_red.png",
+          "use1Xscale": false,
+          "x": 241,
+          "y": 106,
+          "locked": false
+        }
+      }
+    ],
+    "onTick": {
+      "name": "CabelPannelAirlock_TIC"
+    },
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

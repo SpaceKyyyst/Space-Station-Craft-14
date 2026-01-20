@@ -35,7 +35,7 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> LOW_VOLTAGE_CABLE;
 	public static final DeferredItem<Item> MEDIUM_VOLTAGE_CABLE;
 	public static final DeferredItem<Item> HIGH_VOLTAGE_CABLE;
-	public static final DeferredItem<Item> SCRAP;
+	public static final DeferredItem<Item> CROWBAR;
 	public static final DeferredItem<Item> TITLE_STEEL;
 	public static final DeferredItem<Item> STEEL_WALL;
 	public static final DeferredItem<Item> WALL_CARCASE;
@@ -122,6 +122,10 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> TITLE_DARK;
 	public static final DeferredItem<Item> N_2_DEBU_GHANDGENERATOR;
 	public static final DeferredItem<Item> AIRLOCK_CONTROLLER;
+	public static final DeferredItem<Item> APC;
+	public static final DeferredItem<Item> PODSTATION;
+	public static final DeferredItem<Item> DEBU_GGENERATOR;
+	public static final DeferredItem<Item> LAMP;
 	static {
 		SSCLOGO = register("ssclogo", SsclogoItem::new);
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
@@ -132,7 +136,7 @@ public class Ssc14ModItems {
 		LOW_VOLTAGE_CABLE = register("low_voltage_cable", LowVoltageCableItem::new);
 		MEDIUM_VOLTAGE_CABLE = register("medium_voltage_cable", MediumVoltageCableItem::new);
 		HIGH_VOLTAGE_CABLE = register("high_voltage_cable", HighVoltageCableItem::new);
-		SCRAP = register("scrap", ScrapItem::new);
+		CROWBAR = register("crowbar", ScrapItem::new);
 		TITLE_STEEL = block(Ssc14ModBlocks.TITLE_STEEL, new Item.Properties().stacksTo(30).fireResistant());
 		STEEL_WALL = block(Ssc14ModBlocks.STEEL_WALL, new Item.Properties().stacksTo(1).fireResistant());
 		WALL_CARCASE = block(Ssc14ModBlocks.WALL_CARCASE, new Item.Properties().stacksTo(1).fireResistant());
@@ -219,6 +223,10 @@ public class Ssc14ModItems {
 		TITLE_DARK = block(Ssc14ModBlocks.TITLE_DARK, new Item.Properties().stacksTo(30).fireResistant());
 		N_2_DEBU_GHANDGENERATOR = register("n_2_debu_ghandgenerator", N2DEBUGhandgeneratorItem::new);
 		AIRLOCK_CONTROLLER = register("airlock_controller", AirlockControllerItem::new);
+		APC = block(Ssc14ModBlocks.APC, new Item.Properties().stacksTo(1).fireResistant());
+		PODSTATION = block(Ssc14ModBlocks.PODSTATION, new Item.Properties().stacksTo(1).fireResistant());
+		DEBU_GGENERATOR = block(Ssc14ModBlocks.DEBU_GGENERATOR, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+		LAMP = block(Ssc14ModBlocks.LAMP, new Item.Properties().stacksTo(1).fireResistant());
 	}
 
 	// Start of user code block custom items

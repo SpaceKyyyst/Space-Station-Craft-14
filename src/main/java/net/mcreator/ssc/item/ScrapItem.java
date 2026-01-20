@@ -30,7 +30,7 @@ import net.mcreator.ssc.init.Ssc14ModItems;
 
 @EventBusSubscriber
 public class ScrapItem extends Item {
-	private static final ToolMaterial TOOL_MATERIAL = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 0, 4f, 0, 1, TagKey.create(Registries.ITEM, ResourceLocation.parse("ssc_14:scrap_repair_items")));
+	private static final ToolMaterial TOOL_MATERIAL = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 0, 4f, 0, 1, TagKey.create(Registries.ITEM, ResourceLocation.parse("ssc_14:crowbar_repair_items")));
 
 	public ScrapItem(Item.Properties properties) {
 		super(TOOL_MATERIAL.applyToolProperties(properties, BlockTags.MINEABLE_WITH_PICKAXE, 3f, -3f, 0)
@@ -41,7 +41,7 @@ public class ScrapItem extends Item {
 
 	@SubscribeEvent
 	public static void handleToolDamage(ModifyDefaultComponentsEvent event) {
-		event.modify(Ssc14ModItems.SCRAP.get(), builder -> builder.remove(DataComponents.MAX_DAMAGE));
+		event.modify(Ssc14ModItems.CROWBAR.get(), builder -> builder.remove(DataComponents.MAX_DAMAGE));
 	}
 
 	@Override

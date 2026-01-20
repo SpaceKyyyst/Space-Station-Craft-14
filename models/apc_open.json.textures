@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "apc_open_t"
+      }
+    }
+  }
+}

@@ -20,20 +20,6 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> SPACED_PORTAL;
 	public static final DeferredBlock<Block> ROD_FLOOR;
 	public static final DeferredBlock<Block> SHEATHING;
-	public static final DeferredBlock<Block> SHEATHING_LVC;
-	public static final DeferredBlock<Block> SHEATHING_MVC;
-	public static final DeferredBlock<Block> SHEATHING_HVC;
-	public static final DeferredBlock<Block> SHEATHING_LMVC;
-	public static final DeferredBlock<Block> SHEATHING_LHVC;
-	public static final DeferredBlock<Block> SHEATHING_MHVC;
-	public static final DeferredBlock<Block> SHEATHING_LMHVC;
-	public static final DeferredBlock<Block> ROD_FLOOR_LVC;
-	public static final DeferredBlock<Block> ROD_FLOOR_MVC;
-	public static final DeferredBlock<Block> ROD_FLOOR_HVC;
-	public static final DeferredBlock<Block> ROD_FLOOR_L_MVC;
-	public static final DeferredBlock<Block> ROD_FLOOR_L_HVC;
-	public static final DeferredBlock<Block> ROD_FLOOR_M_HVC;
-	public static final DeferredBlock<Block> ROD_FLOOR_LM_HVC;
 	public static final DeferredBlock<Block> TITLE_STEEL;
 	public static final DeferredBlock<Block> STEEL_WALL;
 	public static final DeferredBlock<Block> WALL_CARCASE;
@@ -51,25 +37,15 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> PLASTEEL_WALL;
 	public static final DeferredBlock<Block> PLASTEEL_WALL_CARCASE;
 	public static final DeferredBlock<Block> TITLE_DARK;
+	public static final DeferredBlock<Block> APC;
+	public static final DeferredBlock<Block> PODSTATION;
+	public static final DeferredBlock<Block> DEBU_GGENERATOR;
+	public static final DeferredBlock<Block> LAMP;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
 		SPACED_PORTAL = register("spaced_portal", SpacedPortalBlock::new);
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
 		SHEATHING = register("sheathing", SheathingBlock::new);
-		SHEATHING_LVC = register("sheathing_lvc", SheathingLVCBlock::new);
-		SHEATHING_MVC = register("sheathing_mvc", SheathingMVCBlock::new);
-		SHEATHING_HVC = register("sheathing_hvc", SheathingHVCBlock::new);
-		SHEATHING_LMVC = register("sheathing_lmvc", SheathingLMVCBlock::new);
-		SHEATHING_LHVC = register("sheathing_lhvc", SheathingLHVCBlock::new);
-		SHEATHING_MHVC = register("sheathing_mhvc", SheathingMHVCBlock::new);
-		SHEATHING_LMHVC = register("sheathing_lmhvc", SheathingLMHVCBlock::new);
-		ROD_FLOOR_LVC = register("rod_floor_lvc", RodFloorLvcBlock::new);
-		ROD_FLOOR_MVC = register("rod_floor_mvc", RodFloorMvcBlock::new);
-		ROD_FLOOR_HVC = register("rod_floor_hvc", RodFloorHvcBlock::new);
-		ROD_FLOOR_L_MVC = register("rod_floor_l_mvc", RodFloorLMvcBlock::new);
-		ROD_FLOOR_L_HVC = register("rod_floor_l_hvc", RodFloorLHvcBlock::new);
-		ROD_FLOOR_M_HVC = register("rod_floor_m_hvc", RodFloorMHvcBlock::new);
-		ROD_FLOOR_LM_HVC = register("rod_floor_lm_hvc", RodFloorLMHvcBlock::new);
 		TITLE_STEEL = register("title_steel", TitleSteelBlock::new);
 		STEEL_WALL = register("steel_wall", SteelWallBlock::new);
 		WALL_CARCASE = register("wall_carcase", WallCarcaseBlock::new);
@@ -87,6 +63,10 @@ public class Ssc14ModBlocks {
 		PLASTEEL_WALL = register("plasteel_wall", PlasteelWallBlock::new);
 		PLASTEEL_WALL_CARCASE = register("plasteel_wall_carcase", PlasteelWallCarcaseBlock::new);
 		TITLE_DARK = register("title_dark", TitleDarkBlock::new);
+		APC = register("apc", APCBlock::new);
+		PODSTATION = register("podstation", PodstationBlock::new);
+		DEBU_GGENERATOR = register("debu_ggenerator", DEBUGgeneratorBlock::new);
+		LAMP = register("lamp", LampBlock::new);
 	}
 
 	// Start of user code block custom blocks

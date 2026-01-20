@@ -1,0 +1,100 @@
+{
+  "_fv": 79,
+  "_type": "blockstates",
+  "definition": {
+    "block": "Sheathing",
+    "blockstateList": [
+      {
+        "texture": "nv_floor",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cabels_lv_block:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "sv_floor",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cabels_mv_block:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "vv_floor",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cabels_hv_block:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "nv_sv_floor",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cabels_lv_mv_block:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "nv_vv_floor",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cabels_lv_hv_block:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "sv_vv_floor",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cabels_mv_hv_block:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "nv_sv_vv_floor",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cabels_lv_mv_hv_block:default",
+        "luminance": 0,
+        "boundingBoxes": []
+      }
+    ]
+  }
+}

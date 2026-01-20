@@ -12,14 +12,6 @@
     "underwaterBlock": {
       "value": "Blocks.AIR"
     },
-    "airColor": {
-      "value": -16777216,
-      "falpha": 0.0
-    },
-    "fogColor": {
-      "value": -16777216,
-      "falpha": 0.0
-    },
     "ambientSound": {
       "value": ""
     },

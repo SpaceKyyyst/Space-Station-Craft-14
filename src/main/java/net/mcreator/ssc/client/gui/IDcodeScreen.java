@@ -386,6 +386,40 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_schityvaiemaia_karta"), 106, 167, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_riedaktiruiemaia_karta"), 106, 203, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_oruzhieinaia"), 24, 10, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gsb"), 24, 31, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_brigh"), 24, 52, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_sb"), 24, 73, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_dietiektiv"), 24, 94, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_pnt"), 24, 115, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_krioson"), 24, 136, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_si"), 102, 10, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_atmosfiernyi"), 102, 31, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_inzhieniernyi"), 102, 52, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_vnieshnii"), 102, 73, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_km"), 102, 94, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_utilizator"), 102, 115, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_snabzhieniie"), 102, 136, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gv"), 189, 10, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_khimiia"), 189, 31, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_mieditsinskii"), 189, 52, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_nr"), 189, 73, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_nauchnyi"), 189, 94, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tiekhnichieskii"), 189, 115, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tsierkov"), 189, 136, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gp"), 276, 10, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_siervisnyi"), 276, 31, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_kukhnia"), 276, 52, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gidropon"), 276, 73, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_bar"), 276, 94, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tieatr"), 276, 115, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_uborshchik"), 276, 136, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_kapitan"), 354, 10, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_komand"), 354, 31, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_sinii_shchit"), 354, 52, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_iuridich"), 354, 73, -1, false);
 	}
 
 	@Override

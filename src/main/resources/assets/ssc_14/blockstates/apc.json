@@ -1,18 +1,33 @@
 {
   "variants": {
-    "facing=north": {
-      "model": "space_station_craft_14:block/apc"
+    "facing=north,blockstate=0": {
+      "model": "ssc_14:block/apc"
     },
-    "facing=east": {
-      "model": "space_station_craft_14:block/apc",
+    "facing=east,blockstate=0": {
+      "model": "ssc_14:block/apc",
       "y": 90
     },
-    "facing=south": {
-      "model": "space_station_craft_14:block/apc",
+    "facing=south,blockstate=0": {
+      "model": "ssc_14:block/apc",
       "y": 180
     },
-    "facing=west": {
-      "model": "space_station_craft_14:block/apc",
+    "facing=west,blockstate=0": {
+      "model": "ssc_14:block/apc",
+      "y": 270
+    },
+    "facing=north,blockstate=1": {
+      "model": "ssc_14:block/apcbs_blockstate_0"
+    },
+    "facing=east,blockstate=1": {
+      "model": "ssc_14:block/apcbs_blockstate_0",
+      "y": 90
+    },
+    "facing=south,blockstate=1": {
+      "model": "ssc_14:block/apcbs_blockstate_0",
+      "y": 180
+    },
+    "facing=west,blockstate=1": {
+      "model": "ssc_14:block/apcbs_blockstate_0",
       "y": 270
     }
   }

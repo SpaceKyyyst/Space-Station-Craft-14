@@ -1,6 +1,7 @@
 package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
@@ -287,6 +288,120 @@ public class Screwdriver_UseProcedure {
 				} else {
 					if (entity instanceof LivingEntity _livingEntity177 && _livingEntity177.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 						_livingEntity177.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+				}
+			});
+		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get()) {
+			if (entity instanceof LivingEntity _livingEntity183 && _livingEntity183.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+				_livingEntity183.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
+			Ssc14Mod.queueServerWork(3, () -> {
+				if (entity.getX() + entity.getZ()
+						+ entity.getY() == (entity instanceof LivingEntity _livingEntity187 && _livingEntity187.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity187.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
+						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCREWDRIVER.get()) {
+					if (entity instanceof LivingEntity _livingEntity190 && _livingEntity190.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+						_livingEntity190.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
+					Ssc14Mod.queueServerWork(3, () -> {
+						if (entity.getX() + entity.getZ() + entity
+								.getY() == (entity instanceof LivingEntity _livingEntity194 && _livingEntity194.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity194.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
+								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCREWDRIVER.get()) {
+							if (entity instanceof LivingEntity _livingEntity197 && _livingEntity197.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+								_livingEntity197.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
+							Ssc14Mod.queueServerWork(3, () -> {
+								if (entity.getX() + entity.getZ()
+										+ entity.getY() == (entity instanceof LivingEntity _livingEntity201 && _livingEntity201.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+												? _livingEntity201.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+												: 0)
+										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCREWDRIVER.get()) {
+									if (entity instanceof LivingEntity _livingEntity204 && _livingEntity204.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+										_livingEntity204.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
+									Ssc14Mod.queueServerWork(3, () -> {
+										if (entity.getX() + entity.getZ()
+												+ entity.getY() == (entity instanceof LivingEntity _livingEntity208 && _livingEntity208.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+														? _livingEntity208.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+														: 0)
+												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCREWDRIVER.get()) {
+											if (entity instanceof LivingEntity _livingEntity211 && _livingEntity211.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+												_livingEntity211.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
+											Ssc14Mod.queueServerWork(3, () -> {
+												if (entity.getX() + entity.getZ()
+														+ entity.getY() == (entity instanceof LivingEntity _livingEntity215 && _livingEntity215.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+																? _livingEntity215.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+																: 0)
+														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCREWDRIVER.get()
+														&& ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1.get()
+																|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get())
+														&& (blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp223 && blockstate.getValue(_getbp223)) == false) {
+													if (entity instanceof LivingEntity _livingEntity224 && _livingEntity224.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+														_livingEntity224.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
+													Ssc14Mod.queueServerWork(3, () -> {
+														if (world instanceof Level _level) {
+															if (!_level.isClientSide()) {
+																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:screwdriver")), SoundSource.NEUTRAL, 1, 1);
+															} else {
+																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:screwdriver")), SoundSource.NEUTRAL, 1, 1, false);
+															}
+														}
+														{
+															BlockPos _pos = BlockPos.containing(x, y, z);
+															BlockState _bs = world.getBlockState(_pos);
+															if (_bs.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _booleanProp)
+																world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
+														}
+														if (world instanceof Level _level)
+															_level.updateNeighborsAt(BlockPos.containing(x, y, z), _level.getBlockState(BlockPos.containing(x, y, z)).getBlock());
+														if (entity instanceof LivingEntity _livingEntity228 && _livingEntity228.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+															_livingEntity228.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+													});
+												} else if (entity.getX() + entity.getZ()
+														+ entity.getY() == (entity instanceof LivingEntity _livingEntity233 && _livingEntity233.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+																? _livingEntity233.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+																: 0)
+														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SCREWDRIVER.get()
+														&& ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1.get()
+																|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get())
+														&& (blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp241 && blockstate.getValue(_getbp241)) == true) {
+													Ssc14Mod.queueServerWork(3, () -> {
+														if (world instanceof Level _level) {
+															if (!_level.isClientSide()) {
+																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:screwdriver")), SoundSource.NEUTRAL, 1, 1);
+															} else {
+																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:screwdriver")), SoundSource.NEUTRAL, 1, 1, false);
+															}
+														}
+														{
+															BlockPos _pos = BlockPos.containing(x, y, z);
+															BlockState _bs = world.getBlockState(_pos);
+															if (_bs.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _booleanProp)
+																world.setBlock(_pos, _bs.setValue(_booleanProp, false), 3);
+														}
+														if (world instanceof Level _level)
+															_level.updateNeighborsAt(BlockPos.containing(x, y, z), _level.getBlockState(BlockPos.containing(x, y, z)).getBlock());
+														if (entity instanceof LivingEntity _livingEntity245 && _livingEntity245.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+															_livingEntity245.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+														BaseAirlockD1_PutProcedure.execute(world, x, y, z, blockstate);
+													});
+												} else {
+													if (entity instanceof LivingEntity _livingEntity247 && _livingEntity247.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+														_livingEntity247.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+												}
+											});
+										} else {
+											if (entity instanceof LivingEntity _livingEntity249 && _livingEntity249.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+												_livingEntity249.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+										}
+									});
+								} else {
+									if (entity instanceof LivingEntity _livingEntity251 && _livingEntity251.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+										_livingEntity251.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+								}
+							});
+						} else {
+							if (entity instanceof LivingEntity _livingEntity253 && _livingEntity253.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+								_livingEntity253.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+						}
+					});
+				} else {
+					if (entity instanceof LivingEntity _livingEntity255 && _livingEntity255.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+						_livingEntity255.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 				}
 			});
 		}

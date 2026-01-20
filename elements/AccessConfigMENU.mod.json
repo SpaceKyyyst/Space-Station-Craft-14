@@ -339,6 +339,518 @@
           "y": 112,
           "locked": false
         }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_oruzhieinaia",
+          "text": {
+            "fixedValue": "Оружейная"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 30,
+          "y": 54,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_gsb",
+          "text": {
+            "fixedValue": "ГСБ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 30,
+          "y": 75,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_brigh",
+          "text": {
+            "fixedValue": "Бриг"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 30,
+          "y": 96,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_sb",
+          "text": {
+            "fixedValue": "СБ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 30,
+          "y": 117,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_dietiektiv",
+          "text": {
+            "fixedValue": "Детектив"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 30,
+          "y": 138,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_pnt",
+          "text": {
+            "fixedValue": "ПНТ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 30,
+          "y": 159,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_krioson",
+          "text": {
+            "fixedValue": "Криосон"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 30,
+          "y": 180,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_si",
+          "text": {
+            "fixedValue": "СИ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 108,
+          "y": 54,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_atmosfiernyi",
+          "text": {
+            "fixedValue": "Атмосферный"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 108,
+          "y": 75,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_inzhieniernyi",
+          "text": {
+            "fixedValue": "Инженерный"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 108,
+          "y": 96,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_vnieshnii",
+          "text": {
+            "fixedValue": "Внешний"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 108,
+          "y": 117,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_km",
+          "text": {
+            "fixedValue": "КМ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 108,
+          "y": 138,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_utilizat",
+          "text": {
+            "fixedValue": "Утилизат."
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 108,
+          "y": 159,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_snabzhieniie",
+          "text": {
+            "fixedValue": "Снабжение"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 108,
+          "y": 180,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_gv",
+          "text": {
+            "fixedValue": "ГВ"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 195,
+          "y": 54,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_khimiia",
+          "text": {
+            "fixedValue": "Химия"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 195,
+          "y": 75,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_mieditsinskii",
+          "text": {
+            "fixedValue": "Медицинский"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 195,
+          "y": 96,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_nr",
+          "text": {
+            "fixedValue": "НР"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 195,
+          "y": 117,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_nauchnyi",
+          "text": {
+            "fixedValue": "Научный"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 195,
+          "y": 138,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_tiekhnichieskii",
+          "text": {
+            "fixedValue": "Технический"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 195,
+          "y": 159,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_tsierkov",
+          "text": {
+            "fixedValue": "Церковь"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 195,
+          "y": 180,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_gp",
+          "text": {
+            "fixedValue": "ГП"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 282,
+          "y": 54,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_siervisnyi",
+          "text": {
+            "fixedValue": "Сервисный"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 282,
+          "y": 75,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_kukhnia",
+          "text": {
+            "fixedValue": "Кухня"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 282,
+          "y": 96,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_gidropon",
+          "text": {
+            "fixedValue": "Гидропон."
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 282,
+          "y": 117,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_bar",
+          "text": {
+            "fixedValue": "Бар"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 282,
+          "y": 138,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_tieatr",
+          "text": {
+            "fixedValue": "Театр"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 282,
+          "y": 159,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_uborshchik",
+          "text": {
+            "fixedValue": "Уборщик"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 282,
+          "y": 180,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_kapitan",
+          "text": {
+            "fixedValue": "Капитан"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 360,
+          "y": 54,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_komand",
+          "text": {
+            "fixedValue": "Команд."
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 360,
+          "y": 75,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_sinii_shchit",
+          "text": {
+            "fixedValue": "Синий щит"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 360,
+          "y": 96,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_iuridich",
+          "text": {
+            "fixedValue": "Юридич."
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 360,
+          "y": 117,
+          "locked": false
+        }
       }
     ],
     "onOpen": {

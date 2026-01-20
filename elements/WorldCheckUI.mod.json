@@ -46,7 +46,7 @@
           },
           "anchorPoint": "CENTER",
           "x": 218,
-          "y": 134,
+          "y": 146,
           "locked": false
         }
       },
@@ -59,12 +59,69 @@
             "name": "WOCtextP2"
           },
           "color": {
-            "value": -16726017,
+            "value": -16711681,
             "falpha": 0.0
           },
           "anchorPoint": "CENTER",
           "x": 218,
-          "y": 146,
+          "y": 158,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_eto",
+          "text": {
+            "fixedValue": "Это "
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 218,
+          "y": 134,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_nie_zakrieplieno",
+          "text": {
+            "fixedValue": "не закреплено"
+          },
+          "color": {
+            "value": -7667712,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "WOCtextNoPinned"
+          },
+          "anchorPoint": "CENTER",
+          "x": 241,
+          "y": 134,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_zakrieplieno",
+          "text": {
+            "fixedValue": "закреплено"
+          },
+          "color": {
+            "value": -16744704,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "WOCtextPinned"
+          },
+          "anchorPoint": "CENTER",
+          "x": 241,
+          "y": 134,
           "locked": false
         }
       }

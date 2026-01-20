@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/airlock_down_emergency_openp",
+  "textures": {
+    "all": "ssc_14:block/airlock_base_item",
+    "particle": "ssc_14:block/airlock_base_item",
+    "1": "ssc_14:block/airlock_down_emerg_openp_t"
+  },
+  "render_type": "cutout"
+}

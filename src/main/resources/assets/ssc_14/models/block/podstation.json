@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/podstation",
+  "textures": {
+    "all": "ssc_14:block/podstation_bl",
+    "particle": "ssc_14:block/podstation_bl",
+    "1": "ssc_14:block/podstation_texture"
+  },
+  "render_type": "cutout"
+}
