@@ -53,7 +53,7 @@
     "immuneToFire": false,
     "creativeTabs": [
       {
-        "value": "CUSTOM:SSC14creativev2"
+        "value": "CUSTOM:SSC14Objects"
       }
     ],
     "destroyTool": "Not specified",
@@ -139,9 +139,6 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
-    "onRightClicked": {
-      "name": "TESTTEST"
-    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [

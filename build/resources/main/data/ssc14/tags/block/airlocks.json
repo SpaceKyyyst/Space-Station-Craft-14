@@ -2,8 +2,6 @@
   "replace": false,
   "values": [
     "ssc_14:base_airlock_d_1",
-    "ssc_14:base_airlock_u_1",
-    "ssc_14:base_airlock_d_1open",
-    "ssc_14:base_airlock_u_1open"
+    "ssc_14:base_airlock_d_1open"
   ]
 }

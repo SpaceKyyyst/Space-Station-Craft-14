@@ -1,0 +1,84 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"2": "Pictures/BlockBench/SSC14/techlamp_texture",
+		"particle": "Pictures/BlockBench/SSC14/techlamp_on_texture"
+	},
+	"elements": [
+		{
+			"from": [6.5, 10.5, 14],
+			"to": [9.5, 13.5, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 14]},
+			"faces": {
+				"north": {"uv": [5, 0, 8, 3], "texture": "#2"},
+				"east": {"uv": [4, 6, 6, 9], "texture": "#2"},
+				"south": {"uv": [5, 3, 8, 6], "texture": "#2"},
+				"west": {"uv": [6, 6, 4, 9], "texture": "#2"},
+				"up": {"uv": [4, 6, 6, 9], "rotation": 270, "texture": "#2"},
+				"down": {"uv": [4, 6, 6, 9], "rotation": 90, "texture": "#2"}
+			}
+		},
+		{
+			"from": [7, 11, 13],
+			"to": [9, 13, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 12]},
+			"faces": {
+				"east": {"uv": [7, 7, 8, 9], "texture": "#2"},
+				"west": {"uv": [7, 9, 8, 7], "texture": "#2"},
+				"up": {"uv": [7, 7, 8, 9], "rotation": 90, "texture": "#2"},
+				"down": {"uv": [7, 9, 8, 7], "rotation": 90, "texture": "#2"}
+			}
+		},
+		{
+			"name": "lamp",
+			"from": [6, 10, 9],
+			"to": [10, 14, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 11]},
+			"faces": {
+				"north": {"uv": [0, 10, 4, 14], "texture": "#2"},
+				"east": {"uv": [0, 5, 4, 9], "texture": "#2"},
+				"south": {"uv": [5, 10, 9, 14], "texture": "#2"},
+				"west": {"uv": [4, 9, 0, 5], "texture": "#2"},
+				"up": {"uv": [4, 5, 0, 9], "rotation": 90, "texture": "#2"},
+				"down": {"uv": [0, 9, 4, 5], "rotation": 90, "texture": "#2"}
+			}
+		},
+		{
+			"name": "lamp",
+			"from": [10, 14, 13],
+			"to": [6, 10, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 12, 11]},
+			"faces": {
+				"north": {"uv": [5, 10, 9, 14], "texture": "#2"},
+				"east": {"uv": [4, 5, 0, 9], "texture": "#2"},
+				"south": {"uv": [0, 10, 4, 14], "texture": "#2"},
+				"west": {"uv": [0, 9, 4, 5], "texture": "#2"},
+				"up": {"uv": [0, 5, 4, 9], "rotation": 90, "texture": "#2"},
+				"down": {"uv": [4, 9, 0, 5], "rotation": 90, "texture": "#2"}
+			}
+		},
+		{
+			"name": "lamp_light",
+			"from": [10.5, 14.5, 13.5],
+			"to": [5.5, 9.5, 8.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 5, 16]},
+			"faces": {
+				"north": {"uv": [0, 0, 5, 5], "texture": "#2"},
+				"east": {"uv": [0, 0, 5, 5], "texture": "#2"},
+				"south": {"uv": [0, 0, 5, 5], "texture": "#2"},
+				"west": {"uv": [0, 0, 5, 5], "texture": "#2"},
+				"up": {"uv": [0, 0, 5, 5], "texture": "#2"},
+				"down": {"uv": [0, 0, 5, 5], "texture": "#2"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "techlamp",
+			"origin": [7, 0, 14],
+			"color": 0,
+			"children": [0, 1, 2, 3, 4]
+		}
+	]
+}

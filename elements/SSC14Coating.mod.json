@@ -1,0 +1,11 @@
+{
+  "_fv": 79,
+  "_type": "tab",
+  "definition": {
+    "name": "SSC14: Coating",
+    "icon": {
+      "value": "CUSTOM:TitleSteel"
+    },
+    "showSearch": false
+  }
+}

@@ -5,6 +5,30 @@
       "map": {
         "0": "portable_sheater_standby_texture"
       }
+    },
+    "open": {
+      "name": "open",
+      "map": {
+        "0": "portable_sheater_panelopen_texture"
+      }
+    },
+    "off": {
+      "name": "off",
+      "map": {
+        "0": "portable_sheater_off_texture"
+      }
+    },
+    "heat": {
+      "name": "heat",
+      "map": {
+        "0": "portable_sheater_heat_texture"
+      }
+    },
+    "cool": {
+      "name": "cool",
+      "map": {
+        "0": "portable_sheater_cool_texture"
+      }
     }
   }
 }

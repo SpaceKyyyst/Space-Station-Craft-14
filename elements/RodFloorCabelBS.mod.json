@@ -13,7 +13,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "rod_floor_l:default",
+        "customModelName": "rod_floor:lv",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -26,7 +26,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "rod_floor_m:default",
+        "customModelName": "rod_floor:mv",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -39,7 +39,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "rod_floor_h:default",
+        "customModelName": "rod_floor:hv",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -52,7 +52,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "rod_floor_lm:default",
+        "customModelName": "rod_floor:lv_mv",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -65,7 +65,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "rod_floor_lh:default",
+        "customModelName": "rod_floor:lv_hv",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -78,7 +78,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "rod_floor_mh:default",
+        "customModelName": "rod_floor:mv_hv",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -91,7 +91,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "rod_floor_lmh:default",
+        "customModelName": "rod_floor:lv_mv_hv",
         "luminance": 0,
         "boundingBoxes": []
       }

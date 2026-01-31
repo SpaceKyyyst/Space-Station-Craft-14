@@ -392,6 +392,9 @@
         "data": {
           "image": "lamp_indicator_cyane.png",
           "use1Xscale": false,
+          "displayCondition": {
+            "name": "CPlampind4"
+          },
           "x": 267,
           "y": 92,
           "locked": false

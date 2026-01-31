@@ -9,7 +9,7 @@
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "airlock_down__ao_6:default",
+    "customModelName": "base_airlock_f_open:default",
     "rotationMode": 1,
     "enablePitch": false,
     "emissiveRendering": false,
@@ -29,16 +29,34 @@
     "disableOffset": false,
     "boundingBoxes": [
       {
-        "mx": 15.0,
+        "mx": 16.0,
         "my": 8.0,
         "mz": 7.0,
         "Mx": 16.0,
-        "My": 16.0,
+        "My": 30.0,
         "Mz": 9.0,
         "subtract": false
       },
       {
+        "mx": 14.0,
+        "my": 15.0,
+        "mz": 9.0,
+        "Mx": 16.0,
+        "My": 32.0,
+        "Mz": 11.0,
+        "subtract": false
+      },
+      {
         "mx": 15.0,
+        "my": 30.0,
+        "mz": 6.0,
+        "Mx": 16.0,
+        "My": 32.0,
+        "Mz": 10.0,
+        "subtract": false
+      },
+      {
+        "mx": 16.0,
         "my": 0.0,
         "mz": 9.0,
         "Mx": 16.0,
@@ -65,12 +83,30 @@
         "subtract": false
       },
       {
-        "mx": 16.0,
-        "my": 0.0,
-        "mz": 6.0,
-        "Mx": 16.0,
-        "My": 8.0,
+        "mx": 0.0,
+        "my": 18.0,
+        "mz": 7.0,
+        "Mx": 0.0,
+        "My": 32.0,
         "Mz": 10.0,
+        "subtract": false
+      },
+      {
+        "mx": 0.0,
+        "my": 15.0,
+        "mz": 5.0,
+        "Mx": 0.0,
+        "My": 32.0,
+        "Mz": 7.0,
+        "subtract": false
+      },
+      {
+        "mx": 0.0,
+        "my": 12.0,
+        "mz": 7.0,
+        "Mx": 0.0,
+        "My": 18.0,
+        "Mz": 9.0,
         "subtract": false
       }
     ],
@@ -89,23 +125,6 @@
         "name": "CUSTOM:panel_open",
         "type": "logic",
         "value": false
-      },
-      {
-        "name": "CUSTOM:diods",
-        "type": "logic",
-        "value": true
-      },
-      {
-        "min": 0,
-        "max": 2,
-        "name": "CUSTOM:energy_cabels",
-        "type": "integer",
-        "value": 2
-      },
-      {
-        "name": "CUSTOM:timer",
-        "type": "logic",
-        "value": true
       }
     ],
     "name": "Base Airlock",
@@ -194,7 +213,7 @@
     "inventorySize": 9,
     "inventoryStackSize": 99,
     "inventoryDropWhenDestroyed": false,
-    "inventoryComparatorPower": true,
+    "inventoryComparatorPower": false,
     "inventoryOutSlotIDs": [],
     "inventoryInSlotIDs": [],
     "hasEnergyStorage": false,

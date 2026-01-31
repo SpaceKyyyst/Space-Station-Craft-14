@@ -2,20 +2,20 @@
   "_fv": 79,
   "_type": "block",
   "definition": {
-    "texture": "title",
+    "texture": "tile_fl_steel_texture",
     "textureTop": "",
     "textureLeft": "",
     "textureFront": "",
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "title_floor_1:default",
+    "customModelName": "tile_floor:default",
     "rotationMode": 0,
     "enablePitch": false,
     "emissiveRendering": false,
     "displayFluidOverlay": false,
     "animations": [],
-    "itemTexture": "title_item",
+    "itemTexture": "tile_steel_item",
     "particleTexture": "",
     "blockSetType": "OAK",
     "pottedPlant": {
@@ -53,7 +53,7 @@
     "immuneToFire": true,
     "creativeTabs": [
       {
-        "value": "CUSTOM:SSC14creativev"
+        "value": "CUSTOM:SSC14Coating"
       }
     ],
     "destroyTool": "Not specified",
@@ -68,7 +68,7 @@
     "enchantPowerBonus": 0.0,
     "plantsGrowOn": false,
     "canRedstoneConnect": false,
-    "lightOpacity": 15,
+    "lightOpacity": 0,
     "tickRate": 0,
     "tickRandomly": false,
     "isReplaceable": false,

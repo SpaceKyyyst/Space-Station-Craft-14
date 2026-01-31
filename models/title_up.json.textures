@@ -3,7 +3,19 @@
     "default": {
       "name": "default",
       "map": {
-        "2": "up_title_t"
+        "3": "up_tile_steel_texture"
+      }
+    },
+    "white": {
+      "name": "white",
+      "map": {
+        "3": "up_tile_white_texture"
+      }
+    },
+    "dark": {
+      "name": "dark",
+      "map": {
+        "3": "up_tile_dark_texture"
       }
     }
   }

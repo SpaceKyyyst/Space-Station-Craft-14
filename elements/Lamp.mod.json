@@ -53,7 +53,7 @@
     "immuneToFire": true,
     "creativeTabs": [
       {
-        "value": "CUSTOM:SSC14creativev"
+        "value": "CUSTOM:SSC14Objects"
       }
     ],
     "destroyTool": "Not specified",
@@ -139,6 +139,9 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
+    "onRightClicked": {
+      "name": "InsertingLamp"
+    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [

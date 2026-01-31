@@ -1,0 +1,74 @@
+{
+  "_fv": 79,
+  "_type": "blockstates",
+  "definition": {
+    "block": "ArmoredWindow",
+    "blockstateList": [
+      {
+        "texture": "armored_w_d1",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 4,
+        "customModelName": "Single texture",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "armored_w_d2",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 4,
+        "customModelName": "Single texture",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "armored_w_d3",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 4,
+        "customModelName": "Single texture",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "armored_w_d4",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 4,
+        "customModelName": "Single texture",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "armored_w_d5",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 4,
+        "customModelName": "Single texture",
+        "luminance": 0,
+        "boundingBoxes": []
+      }
+    ]
+  }
+}

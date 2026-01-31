@@ -4,6 +4,9 @@
   "workspacePanelSortAscending": true,
   "projectBrowserSplitPos": 0,
   "projectBrowserState": {
-    "expandedPaths": []
+    "expandedPaths": [
+      "[, Space Station Craft 14]",
+      "[, Space Station Craft 14, Source (Gradle)]"
+    ]
   }
 }

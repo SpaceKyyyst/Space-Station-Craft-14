@@ -1,5 +1,5 @@
 {
-  "parent": "ssc_14:custom/rod_floor_h",
+  "parent": "ssc_14:custom/rod_floor",
   "textures": {
     "all": "ssc_14:block/rodflor_h_vc",
     "particle": "ssc_14:block/rodfloor",

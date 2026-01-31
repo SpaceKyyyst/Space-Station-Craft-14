@@ -13,7 +13,7 @@
     "rarity": "COMMON",
     "creativeTabs": [
       {
-        "value": "CUSTOM:SSC14creativev3item"
+        "value": "CUSTOM:SSC14Items"
       }
     ],
     "stackSize": 30,

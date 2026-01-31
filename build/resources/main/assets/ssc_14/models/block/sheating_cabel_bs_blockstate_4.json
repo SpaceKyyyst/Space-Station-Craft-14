@@ -1,5 +1,5 @@
 {
-  "parent": "ssc_14:custom/cabels_lv_hv_block",
+  "parent": "ssc_14:custom/cabels_lv_mv_hv_block",
   "textures": {
     "all": "ssc_14:block/nv_vv_floor",
     "particle": "ssc_14:block/floor",

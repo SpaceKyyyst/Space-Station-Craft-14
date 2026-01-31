@@ -5,6 +5,48 @@
       "map": {
         "0": "rodfloor"
       }
+    },
+    "lv": {
+      "name": "lv",
+      "map": {
+        "0": "rodflor_l_vc"
+      }
+    },
+    "mv": {
+      "name": "mv",
+      "map": {
+        "0": "rodflor_m_vc"
+      }
+    },
+    "hv": {
+      "name": "hv",
+      "map": {
+        "0": "rodflor_h_vc"
+      }
+    },
+    "lv_mv": {
+      "name": "lv_mv",
+      "map": {
+        "0": "rodflor_lm_vc"
+      }
+    },
+    "lv_hv": {
+      "name": "lv_hv",
+      "map": {
+        "0": "rodflor_lh_vc"
+      }
+    },
+    "mv_hv": {
+      "name": "mv_hv",
+      "map": {
+        "0": "rodflor_mh_vc"
+      }
+    },
+    "lv_mv_hv": {
+      "name": "lv_mv_hv",
+      "map": {
+        "0": "rodflor_lnh_vc"
+      }
     }
   }
 }

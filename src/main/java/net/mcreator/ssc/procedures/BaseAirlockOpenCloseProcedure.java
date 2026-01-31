@@ -34,6 +34,8 @@ import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.Ssc14Mod;
 
+import java.util.Comparator;
+
 import io.netty.buffer.Unpooled;
 
 public class BaseAirlockOpenCloseProcedure {
@@ -558,7 +560,36 @@ public class BaseAirlockOpenCloseProcedure {
 											Ssc14Mod.queueServerWork(2, () -> {
 												{
 													BlockPos _bp = BlockPos.containing(x, y, z);
+													// Сохраняем PersistentData ДО замены блока
+													CompoundTag persistentData = new CompoundTag();
+													BlockEntity oldBe = world.getBlockEntity(_bp);
+													if (oldBe != null) {
+														persistentData = oldBe.getPersistentData().copy(); // ← КЛЮЧЕВОЙ МОМЕНТ
+													}
+													// Подготавливаем новый блок с теми же свойствами
 													BlockState _bs = Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get().defaultBlockState();
+													BlockState _bso = world.getBlockState(_bp);
+													for (Property<?> _propertyOld : _bso.getProperties()) {
+														Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
+														if (_propertyNew != null) {
+															try {
+																_bs = _bs.setValue(_propertyNew, _bso.getValue(_propertyOld));
+															} catch (Exception e) {
+																// ignore
+															}
+														}
+													}
+													// Устанавливаем новый блок
+													world.setBlock(_bp, _bs, 3);
+													// Восстанавливаем PersistentData в новом BlockEntity
+													BlockEntity newBe = world.getBlockEntity(_bp);
+													if (newBe != null && !persistentData.isEmpty()) {
+														newBe.getPersistentData().merge(persistentData);
+													}
+												}
+												{
+													BlockPos _bp = BlockPos.containing(x, y + 1, z);
+													BlockState _bs = Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get().defaultBlockState();
 													BlockState _bso = world.getBlockState(_bp);
 													for (Property<?> _propertyOld : _bso.getProperties()) {
 														Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
@@ -568,30 +599,15 @@ public class BaseAirlockOpenCloseProcedure {
 															} catch (Exception e) {
 															}
 													}
-													BlockEntity _be = world.getBlockEntity(_bp);
-													CompoundTag _bnbt = null;
-													if (_be != null) {
-														_bnbt = _be.saveWithFullMetadata(world.registryAccess());
-														_be.setRemoved();
-													}
 													world.setBlock(_bp, _bs, 3);
-													if (_bnbt != null) {
-														_be = world.getBlockEntity(_bp);
-														if (_be != null) {
-															try {
-																_be.loadWithComponents(TagValueInput.create(ProblemReporter.DISCARDING, world.registryAccess(), _bnbt));
-															} catch (Exception ignored) {
-															}
-														}
-													}
 												}
 											});
 										});
 									});
 								});
-							} else if (!(!world.getEntitiesOfClass(Player.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
+							} else if ((!(!world.getEntitiesOfClass(Player.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
 									&& !(!world.getEntitiesOfClass(Mob.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
-									&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get()) {
+									|| false == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "safe")) && (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get()) {
 								if (world instanceof Level _level) {
 									if (!_level.isClientSide()) {
 										_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_close")), SoundSource.NEUTRAL, 1, 1);
@@ -627,6 +643,20 @@ public class BaseAirlockOpenCloseProcedure {
 											}
 										}
 									}
+								}
+								{
+									BlockPos _bp = BlockPos.containing(x, y + 1, z);
+									BlockState _bs = Ssc14ModBlocks.AIRLOCK_UP_PLUG.get().defaultBlockState();
+									BlockState _bso = world.getBlockState(_bp);
+									for (Property<?> _propertyOld : _bso.getProperties()) {
+										Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
+										if (_propertyNew != null && _bs.getValue(_propertyNew) != null)
+											try {
+												_bs = _bs.setValue(_propertyNew, _bso.getValue(_propertyOld));
+											} catch (Exception e) {
+											}
+									}
+									world.setBlock(_bp, _bs, 3);
 								}
 								{
 									int _value = 4;
@@ -667,6 +697,8 @@ public class BaseAirlockOpenCloseProcedure {
 													if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 														world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 												}
+												if ((findEntityInWorldRange(world, Player.class, (x + 0.5), (y + 0.6), (z + 0.5), 0.3)) instanceof Player _player && !_player.level().isClientSide())
+													_player.displayClientMessage(Component.literal("\u041D\u0410\u041D\u0415\u0421\u0401\u041D \u0423\u0420\u041E\u041D \u0428\u041B\u042E\u0417\u041E\u041C"), true);
 											});
 										});
 									});
@@ -683,7 +715,7 @@ public class BaseAirlockOpenCloseProcedure {
 						}
 					});
 				}
-			} else if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp155 && blockstate.getValue(_getbp155)) == true && !entity.isShiftKeyDown()) {
+			} else if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp159 && blockstate.getValue(_getbp159)) == true && !entity.isShiftKeyDown()) {
 				if (entity instanceof ServerPlayer _ent) {
 					BlockPos _bpos = BlockPos.containing(entity.getX(), entity.getY(), entity.getZ());
 					_ent.openMenu(new MenuProvider() {
@@ -712,5 +744,9 @@ public class BaseAirlockOpenCloseProcedure {
 		if (blockEntity != null)
 			return blockEntity.getPersistentData().getBooleanOr(tag, false);
 		return false;
+	}
+
+	private static Entity findEntityInWorldRange(LevelAccessor world, Class<? extends Entity> clazz, double x, double y, double z, double range) {
+		return (Entity) world.getEntitiesOfClass(clazz, AABB.ofSize(new Vec3(x, y, z), range, range, range), e -> true).stream().sorted(Comparator.comparingDouble(e -> e.distanceToSqr(x, y, z))).findFirst().orElse(null);
 	}
 }

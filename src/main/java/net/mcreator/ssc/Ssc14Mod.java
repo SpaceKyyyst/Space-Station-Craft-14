@@ -20,6 +20,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.FriendlyByteBuf;
 
+import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.mcreator.ssc.init.*;
 
 import javax.annotation.Nullable;
@@ -51,6 +52,7 @@ public class Ssc14Mod {
 		Ssc14ModItems.REGISTRY.register(modEventBus);
 		Ssc14ModEntities.REGISTRY.register(modEventBus);
 		Ssc14ModTabs.REGISTRY.register(modEventBus);
+		Ssc14ModVariables.ATTACHMENT_TYPES.register(modEventBus);
 		Ssc14ModMenus.REGISTRY.register(modEventBus);
 		Ssc14ModAttributes.REGISTRY.register(modEventBus);
 		// Start of user code block mod init

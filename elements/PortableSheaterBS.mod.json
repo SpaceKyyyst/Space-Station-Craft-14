@@ -13,7 +13,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "portable_sheater_cool:default",
+        "customModelName": "portable_sheater:cool",
         "luminance": 2,
         "boundingBoxes": []
       },
@@ -26,7 +26,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "portable_sheater_heat:default",
+        "customModelName": "portable_sheater:heat",
         "luminance": 2,
         "boundingBoxes": []
       },
@@ -39,7 +39,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "portable_sheater_off:default",
+        "customModelName": "portable_sheater:off",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -52,7 +52,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "portable_sheater_open_panel:default",
+        "customModelName": "portable_sheater:open",
         "luminance": 0,
         "boundingBoxes": []
       }

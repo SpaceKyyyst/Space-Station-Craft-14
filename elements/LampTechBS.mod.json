@@ -1,0 +1,48 @@
+{
+  "_fv": 79,
+  "_type": "blockstates",
+  "definition": {
+    "block": "TechLamp",
+    "blockstateList": [
+      {
+        "texture": "techlamp_on_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "techlamp:on",
+        "luminance": 12,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "techlamp_broke_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "techlamp:broken",
+        "luminance": 0,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "techlamp_empty_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "techlamp:empty",
+        "luminance": 0,
+        "boundingBoxes": []
+      }
+    ]
+  }
+}

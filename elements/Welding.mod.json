@@ -15,7 +15,7 @@
     },
     "creativeTabs": [
       {
-        "value": "CUSTOM:SSC14creativev3item"
+        "value": "CUSTOM:SSC14Items"
       }
     ],
     "efficiency": 4.0,
@@ -34,9 +34,6 @@
     "damageOnCrafting": false,
     "onRightClickedInAir": {
       "name": "WelderOnOffPr"
-    },
-    "onRightClickedOnBlock": {
-      "name": "ActiveWelder_Use"
     },
     "onItemInUseTick": {
       "name": "Welding_Fuel_chek"

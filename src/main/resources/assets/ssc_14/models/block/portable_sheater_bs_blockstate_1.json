@@ -1,5 +1,5 @@
 {
-  "parent": "ssc_14:custom/portable_sheater_heat",
+  "parent": "ssc_14:custom/portable_sheater",
   "textures": {
     "all": "ssc_14:block/portable_sheater_heat_texture",
     "particle": "ssc_14:block/portable_sheater_standby_texture",

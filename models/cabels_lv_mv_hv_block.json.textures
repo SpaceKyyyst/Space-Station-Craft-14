@@ -5,6 +5,42 @@
       "map": {
         "8": "cabels_lv_mv_hv_texture"
       }
+    },
+    "lv": {
+      "name": "lv",
+      "map": {
+        "8": "cabels_lv_block"
+      }
+    },
+    "mv": {
+      "name": "mv",
+      "map": {
+        "8": "cabels_mv_texture"
+      }
+    },
+    "hv": {
+      "name": "hv",
+      "map": {
+        "8": "cabels_hv_texture"
+      }
+    },
+    "lv_mv": {
+      "name": "lv_mv",
+      "map": {
+        "8": "cabels_lv_mv_block"
+      }
+    },
+    "lv_hv": {
+      "name": "lv_hv",
+      "map": {
+        "8": "cabels_lv_hv_texture"
+      }
+    },
+    "mv_hv": {
+      "name": "mv_hv",
+      "map": {
+        "8": "cabels_mv_hv_texture"
+      }
     }
   }
 }

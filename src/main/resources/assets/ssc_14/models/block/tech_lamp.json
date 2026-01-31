@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/techlamp",
+  "textures": {
+    "all": "ssc_14:block/techlamp_on_texture",
+    "particle": "ssc_14:block/techlamp_on_texture",
+    "2": "ssc_14:block/techlamp_texture"
+  },
+  "render_type": "translucent"
+}

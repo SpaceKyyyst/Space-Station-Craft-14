@@ -26,7 +26,6 @@ import java.util.function.Function;
 @EventBusSubscriber
 public class Ssc14ModItems {
 	public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(Ssc14Mod.MODID);
-	public static final DeferredItem<Item> SSCLOGO;
 	public static final DeferredItem<Item> ROD_FLOOR;
 	public static final DeferredItem<Item> ROOD;
 	public static final DeferredItem<Item> SHEATHING;
@@ -126,8 +125,35 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> PODSTATION;
 	public static final DeferredItem<Item> DEBU_GGENERATOR;
 	public static final DeferredItem<Item> LAMP;
+	public static final DeferredItem<Item> TITLE_STEEL_DIAGONAL_MINI;
+	public static final DeferredItem<Item> TITLE_STEEL_DIAGONAL;
+	public static final DeferredItem<Item> UP_TITLE_STEEL;
+	public static final DeferredItem<Item> UP_TITLE_DARK;
+	public static final DeferredItem<Item> TITLE_STEEL_MINI;
+	public static final DeferredItem<Item> TITLE_STEEL_MONO;
+	public static final DeferredItem<Item> TITLE_STEEL_OFFSET;
+	public static final DeferredItem<Item> TITLE_STEEL_PAVEMENT;
+	public static final DeferredItem<Item> TITLE_STEEL_HERRINGBONE;
+	public static final DeferredItem<Item> TITLE_PLASTIC;
+	public static final DeferredItem<Item> TITLE_DARK_DIAGONAL_MINI;
+	public static final DeferredItem<Item> TITLE_DARK_DIAGONAL;
+	public static final DeferredItem<Item> TITLE_DARK_MINI;
+	public static final DeferredItem<Item> TITLE_DARK_MONO;
+	public static final DeferredItem<Item> TITLE_DARK_OFFSET;
+	public static final DeferredItem<Item> TITLE_DARK_PAVEMENT;
+	public static final DeferredItem<Item> TITLE_DARK_PAVEMENT_VERTICAL;
+	public static final DeferredItem<Item> TITLE_DARK_HERRINGBONE;
+	public static final DeferredItem<Item> TITLE_DARK_PLASTIC;
+	public static final DeferredItem<Item> SMES;
+	public static final DeferredItem<Item> TECH_LAMP;
+	public static final DeferredItem<Item> LED_LIGHT_TUBE;
+	public static final DeferredItem<Item> LIGHT_BULB;
+	public static final DeferredItem<Item> LED_LIGHT_TUBE_BROKEN;
+	public static final DeferredItem<Item> LIGHT_BULB_BROKEN;
+	public static final DeferredItem<Item> ARMORED_WINDOW;
+	public static final DeferredItem<Item> ARM_GLASS_SHARD;
+	public static final DeferredItem<Item> ARM_GLASS;
 	static {
-		SSCLOGO = register("ssclogo", SsclogoItem::new);
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
 		SHEATHING = block(Ssc14ModBlocks.SHEATHING, new Item.Properties().stacksTo(1).fireResistant());
@@ -227,6 +253,34 @@ public class Ssc14ModItems {
 		PODSTATION = block(Ssc14ModBlocks.PODSTATION, new Item.Properties().stacksTo(1).fireResistant());
 		DEBU_GGENERATOR = block(Ssc14ModBlocks.DEBU_GGENERATOR, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
 		LAMP = block(Ssc14ModBlocks.LAMP, new Item.Properties().stacksTo(1).fireResistant());
+		TITLE_STEEL_DIAGONAL_MINI = block(Ssc14ModBlocks.TITLE_STEEL_DIAGONAL_MINI, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_STEEL_DIAGONAL = block(Ssc14ModBlocks.TITLE_STEEL_DIAGONAL, new Item.Properties().stacksTo(30).fireResistant());
+		UP_TITLE_STEEL = block(Ssc14ModBlocks.UP_TITLE_STEEL, new Item.Properties().stacksTo(30).fireResistant());
+		UP_TITLE_DARK = block(Ssc14ModBlocks.UP_TITLE_DARK, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_STEEL_MINI = block(Ssc14ModBlocks.TITLE_STEEL_MINI, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_STEEL_MONO = block(Ssc14ModBlocks.TITLE_STEEL_MONO, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_STEEL_OFFSET = block(Ssc14ModBlocks.TITLE_STEEL_OFFSET, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_STEEL_PAVEMENT = block(Ssc14ModBlocks.TITLE_STEEL_PAVEMENT, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_STEEL_HERRINGBONE = block(Ssc14ModBlocks.TITLE_STEEL_HERRINGBONE, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_PLASTIC = block(Ssc14ModBlocks.TITLE_PLASTIC, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_DARK_DIAGONAL_MINI = block(Ssc14ModBlocks.TITLE_DARK_DIAGONAL_MINI, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_DARK_DIAGONAL = block(Ssc14ModBlocks.TITLE_DARK_DIAGONAL, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_DARK_MINI = block(Ssc14ModBlocks.TITLE_DARK_MINI, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_DARK_MONO = block(Ssc14ModBlocks.TITLE_DARK_MONO, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_DARK_OFFSET = block(Ssc14ModBlocks.TITLE_DARK_OFFSET, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_DARK_PAVEMENT = block(Ssc14ModBlocks.TITLE_DARK_PAVEMENT, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_DARK_PAVEMENT_VERTICAL = block(Ssc14ModBlocks.TITLE_DARK_PAVEMENT_VERTICAL, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_DARK_HERRINGBONE = block(Ssc14ModBlocks.TITLE_DARK_HERRINGBONE, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_DARK_PLASTIC = block(Ssc14ModBlocks.TITLE_DARK_PLASTIC, new Item.Properties().stacksTo(30).fireResistant());
+		SMES = block(Ssc14ModBlocks.SMES, new Item.Properties().stacksTo(1).fireResistant());
+		TECH_LAMP = block(Ssc14ModBlocks.TECH_LAMP, new Item.Properties().stacksTo(1).fireResistant());
+		LED_LIGHT_TUBE = register("led_light_tube", LedLightTubeItem::new);
+		LIGHT_BULB = register("light_bulb", LightBulbItem::new);
+		LED_LIGHT_TUBE_BROKEN = register("led_light_tube_broken", LedLightTubeBrokenItem::new);
+		LIGHT_BULB_BROKEN = register("light_bulb_broken", LightBulbBrokenItem::new);
+		ARMORED_WINDOW = block(Ssc14ModBlocks.ARMORED_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
+		ARM_GLASS_SHARD = register("arm_glass_shard", ArmGlassShardItem::new);
+		ARM_GLASS = register("arm_glass", ArmGlassItem::new);
 	}
 
 	// Start of user code block custom items

@@ -7,7 +7,6 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.projectile.AbstractThrownPotion;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -55,23 +54,9 @@ public class PlassteelWallCarcaseEntitEntity extends PathfinderMob {
 	public boolean hurtServer(ServerLevel level, DamageSource damagesource, float amount) {
 		if (damagesource.is(DamageTypes.IN_FIRE))
 			return false;
-		if (damagesource.getDirectEntity() instanceof AbstractArrow)
-			return false;
 		if (damagesource.getDirectEntity() instanceof AbstractThrownPotion || damagesource.getDirectEntity() instanceof AreaEffectCloud || damagesource.typeHolder().is(NeoForgeMod.POISON_DAMAGE))
 			return false;
 		if (damagesource.is(DamageTypes.FALL))
-			return false;
-		if (damagesource.is(DamageTypes.CACTUS))
-			return false;
-		if (damagesource.is(DamageTypes.DROWN))
-			return false;
-		if (damagesource.is(DamageTypes.LIGHTNING_BOLT))
-			return false;
-		if (damagesource.is(DamageTypes.TRIDENT))
-			return false;
-		if (damagesource.is(DamageTypes.DRAGON_BREATH))
-			return false;
-		if (damagesource.is(DamageTypes.WITHER) || damagesource.is(DamageTypes.WITHER_SKULL))
 			return false;
 		return super.hurtServer(level, damagesource, amount);
 	}

@@ -9,7 +9,7 @@
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "airlock_down__ao_1:default",
+    "customModelName": "base_airlock_f:default",
     "rotationMode": 1,
     "enablePitch": false,
     "emissiveRendering": false,
@@ -28,51 +28,6 @@
     "transparencyType": "CUTOUT",
     "disableOffset": false,
     "boundingBoxes": [
-      {
-        "mx": 9.0,
-        "my": 0.0,
-        "mz": 6.0,
-        "Mx": 16.0,
-        "My": 8.0,
-        "Mz": 10.0,
-        "subtract": false
-      },
-      {
-        "mx": 14.0,
-        "my": 8.0,
-        "mz": 6.0,
-        "Mx": 16.0,
-        "My": 16.0,
-        "Mz": 10.0,
-        "subtract": false
-      },
-      {
-        "mx": 8.0,
-        "my": 8.0,
-        "mz": 7.0,
-        "Mx": 14.0,
-        "My": 16.0,
-        "Mz": 9.0,
-        "subtract": false
-      },
-      {
-        "mx": 8.0,
-        "my": 0.0,
-        "mz": 9.0,
-        "Mx": 10.0,
-        "My": 17.0,
-        "Mz": 11.0,
-        "subtract": false
-      },
-      {
-        "mx": 0.0,
-        "my": 12.0,
-        "mz": 7.0,
-        "Mx": 8.0,
-        "My": 16.0,
-        "Mz": 9.0,
-        "subtract": false
-      },
       {
         "mx": 1.5,
         "my": 13.5,
@@ -99,6 +54,114 @@
         "My": 17.0,
         "Mz": 7.0,
         "subtract": false
+      },
+      {
+        "mx": 0.0,
+        "my": 18.0,
+        "mz": 6.0,
+        "Mx": 8.0,
+        "My": 32.0,
+        "Mz": 10.0,
+        "subtract": false
+      },
+      {
+        "mx": 6.0,
+        "my": 15.0,
+        "mz": 5.0,
+        "Mx": 8.0,
+        "My": 32.0,
+        "Mz": 7.0,
+        "subtract": false
+      },
+      {
+        "mx": 1.0,
+        "my": 13.0,
+        "mz": 7.0,
+        "Mx": 5.0,
+        "My": 17.0,
+        "Mz": 9.0,
+        "subtract": false
+      },
+      {
+        "mx": 0.0,
+        "my": 12.0,
+        "mz": 7.0,
+        "Mx": 8.0,
+        "My": 18.0,
+        "Mz": 9.0,
+        "subtract": false
+      },
+      {
+        "mx": 2.0,
+        "my": 0.0,
+        "mz": 6.0,
+        "Mx": 6.0,
+        "My": 1.0,
+        "Mz": 10.0,
+        "subtract": false
+      },
+      {
+        "mx": 14.0,
+        "my": 8.0,
+        "mz": 6.0,
+        "Mx": 16.0,
+        "My": 30.0,
+        "Mz": 10.0,
+        "subtract": false
+      },
+      {
+        "mx": 8.0,
+        "my": 8.0,
+        "mz": 7.0,
+        "Mx": 14.0,
+        "My": 30.0,
+        "Mz": 9.0,
+        "subtract": false
+      },
+      {
+        "mx": 6.0,
+        "my": 15.0,
+        "mz": 9.0,
+        "Mx": 8.0,
+        "My": 32.0,
+        "Mz": 11.0,
+        "subtract": false
+      },
+      {
+        "mx": 7.0,
+        "my": 30.0,
+        "mz": 6.0,
+        "Mx": 16.0,
+        "My": 32.0,
+        "Mz": 10.0,
+        "subtract": false
+      },
+      {
+        "mx": 8.0,
+        "my": 0.0,
+        "mz": 9.0,
+        "Mx": 10.0,
+        "My": 17.0,
+        "Mz": 11.0,
+        "subtract": false
+      },
+      {
+        "mx": 9.0,
+        "my": 0.0,
+        "mz": 6.0,
+        "Mx": 16.0,
+        "My": 8.0,
+        "Mz": 10.0,
+        "subtract": false
+      },
+      {
+        "mx": 11.0,
+        "my": 0.0,
+        "mz": 6.0,
+        "Mx": 14.0,
+        "My": 1.0,
+        "Mz": 10.0,
+        "subtract": false
       }
     ],
     "customProperties": [
@@ -116,23 +179,6 @@
         "name": "CUSTOM:panel_open",
         "type": "logic",
         "value": false
-      },
-      {
-        "name": "CUSTOM:diods",
-        "type": "logic",
-        "value": true
-      },
-      {
-        "min": 0,
-        "max": 2,
-        "name": "CUSTOM:energy_cabels",
-        "type": "integer",
-        "value": 2
-      },
-      {
-        "name": "CUSTOM:timer",
-        "type": "logic",
-        "value": true
       }
     ],
     "name": "Base Airlock",
@@ -149,7 +195,7 @@
     "immuneToFire": true,
     "creativeTabs": [
       {
-        "value": "CUSTOM:SSC14creativev2"
+        "value": "CUSTOM:SSC14Objects"
       }
     ],
     "destroyTool": "Not specified",
@@ -225,7 +271,7 @@
     "inventorySize": 9,
     "inventoryStackSize": 99,
     "inventoryDropWhenDestroyed": false,
-    "inventoryComparatorPower": true,
+    "inventoryComparatorPower": false,
     "inventoryOutSlotIDs": [],
     "inventoryInSlotIDs": [],
     "hasEnergyStorage": false,

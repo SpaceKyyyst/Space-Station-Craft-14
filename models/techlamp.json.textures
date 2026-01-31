@@ -1,0 +1,28 @@
+{
+  "mappings": {
+    "broken": {
+      "name": "broken",
+      "map": {
+        "2": "techlamp_broke_texture"
+      }
+    },
+    "default": {
+      "name": "default",
+      "map": {
+        "2": "techlamp_texture"
+      }
+    },
+    "on": {
+      "name": "on",
+      "map": {
+        "2": "techlamp_on_texture"
+      }
+    },
+    "empty": {
+      "name": "empty",
+      "map": {
+        "2": "techlamp_empty_texture"
+      }
+    }
+  }
+}

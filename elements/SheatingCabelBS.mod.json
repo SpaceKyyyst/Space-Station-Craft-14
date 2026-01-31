@@ -13,7 +13,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cabels_lv_block:default",
+        "customModelName": "cabels_lv_mv_hv_block:lv",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -26,7 +26,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cabels_mv_block:default",
+        "customModelName": "cabels_lv_mv_hv_block:mv",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -39,7 +39,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cabels_hv_block:default",
+        "customModelName": "cabels_lv_mv_hv_block:hv",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -52,7 +52,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cabels_lv_mv_block:default",
+        "customModelName": "cabels_lv_mv_hv_block:lv_mv",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -65,7 +65,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cabels_lv_hv_block:default",
+        "customModelName": "cabels_lv_mv_hv_block:lv_hv",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -78,7 +78,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cabels_mv_hv_block:default",
+        "customModelName": "cabels_lv_mv_hv_block:mv_hv",
         "luminance": 0,
         "boundingBoxes": []
       },

@@ -1,0 +1,11 @@
+{
+  "_fv": 79,
+  "_type": "tab",
+  "definition": {
+    "name": "SSC14: Walls",
+    "icon": {
+      "value": "CUSTOM:SteelWall"
+    },
+    "showSearch": false
+  }
+}

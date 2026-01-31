@@ -7,7 +7,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -20,7 +19,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
@@ -41,17 +39,14 @@ public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 	public static final BooleanProperty BOLTED = BooleanProperty.create("bolted");
 	public static final BooleanProperty EMERGENCY_ACS = BooleanProperty.create("emergency_acs");
 	public static final BooleanProperty PANEL_OPEN = BooleanProperty.create("panel_open");
-	public static final BooleanProperty DIODS = BooleanProperty.create("diods");
-	public static final IntegerProperty ENERGY_CABELS = IntegerProperty.create("energy_cabels", 0, 2);
-	public static final BooleanProperty TIMER = BooleanProperty.create("timer");
-	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(15, 8, 7, 16, 16, 9), box(15, 0, 9, 16, 17, 11), box(0, 0, 6, 1, 12, 10), box(0, 0, 5, 2, 17, 7));
-	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(0, 8, 7, 1, 16, 9), box(0, 0, 5, 1, 17, 7), box(15, 0, 6, 16, 12, 10), box(14, 0, 9, 16, 17, 11));
-	private static final VoxelShape SHAPE_EAST = Shapes.or(box(7, 8, 15, 9, 16, 16), box(5, 0, 15, 7, 17, 16), box(6, 0, 0, 10, 12, 1), box(9, 0, 0, 11, 17, 2));
-	private static final VoxelShape SHAPE_WEST = Shapes.or(box(7, 8, 0, 9, 16, 1), box(9, 0, 0, 11, 17, 1), box(6, 0, 15, 10, 12, 16), box(5, 0, 14, 7, 17, 16));
+	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(14, 15, 9, 16, 32, 11), box(15, 30, 6, 16, 32, 10), box(0, 0, 6, 1, 12, 10), box(0, 0, 5, 2, 17, 7));
+	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(0, 15, 5, 2, 32, 7), box(0, 30, 6, 1, 32, 10), box(15, 0, 6, 16, 12, 10), box(14, 0, 9, 16, 17, 11));
+	private static final VoxelShape SHAPE_EAST = Shapes.or(box(5, 15, 14, 7, 32, 16), box(6, 30, 15, 10, 32, 16), box(6, 0, 0, 10, 12, 1), box(9, 0, 0, 11, 17, 2));
+	private static final VoxelShape SHAPE_WEST = Shapes.or(box(9, 15, 0, 11, 32, 2), box(6, 30, 0, 10, 32, 1), box(6, 0, 15, 10, 12, 16), box(5, 0, 14, 7, 17, 16));
 
 	public BaseAirlockD1openBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.NETHERITE_BLOCK).strength(30f, 15f).lightLevel(s -> 4).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false).setValue(PANEL_OPEN, false).setValue(DIODS, true).setValue(ENERGY_CABELS, 2).setValue(TIMER, true));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false).setValue(PANEL_OPEN, false));
 	}
 
 	@Override
@@ -83,13 +78,12 @@ public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
-		builder.add(FACING, BOLTED, EMERGENCY_ACS, PANEL_OPEN, DIODS, ENERGY_CABELS, TIMER);
+		builder.add(FACING, BOLTED, EMERGENCY_ACS, PANEL_OPEN);
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false).setValue(PANEL_OPEN, false).setValue(DIODS, true).setValue(ENERGY_CABELS, 2)
-				.setValue(TIMER, true);
+		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false).setValue(PANEL_OPEN, false);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -155,19 +149,5 @@ public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 		super.triggerEvent(state, world, pos, eventID, eventParam);
 		BlockEntity blockEntity = world.getBlockEntity(pos);
 		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
-	}
-
-	@Override
-	public boolean hasAnalogOutputSignal(BlockState state) {
-		return true;
-	}
-
-	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
-		BlockEntity tileentity = world.getBlockEntity(pos);
-		if (tileentity instanceof BaseAirlockD1openBlockEntity be)
-			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
-		else
-			return 0;
 	}
 }

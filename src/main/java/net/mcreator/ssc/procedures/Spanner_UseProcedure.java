@@ -496,6 +496,100 @@ public class Spanner_UseProcedure {
 						_livingEntity319.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 				}
 			});
+		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
+				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip324 ? blockstate.getValue(_getip324) : -1) == 5) {
+			if (entity instanceof LivingEntity _livingEntity325 && _livingEntity325.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+				_livingEntity325.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
+			Ssc14Mod.queueServerWork(10, () -> {
+				if (entity.getX() + entity.getZ()
+						+ entity.getY() == (entity instanceof LivingEntity _livingEntity329 && _livingEntity329.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity329.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
+						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get()) {
+					if (entity instanceof LivingEntity _livingEntity332 && _livingEntity332.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+						_livingEntity332.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
+					Ssc14Mod.queueServerWork(10, () -> {
+						if (entity.getX() + entity.getZ() + entity
+								.getY() == (entity instanceof LivingEntity _livingEntity336 && _livingEntity336.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity336.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
+								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get()) {
+							if (entity instanceof LivingEntity _livingEntity339 && _livingEntity339.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+								_livingEntity339.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
+							Ssc14Mod.queueServerWork(10, () -> {
+								if (entity.getX() + entity.getZ()
+										+ entity.getY() == (entity instanceof LivingEntity _livingEntity343 && _livingEntity343.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+												? _livingEntity343.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+												: 0)
+										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get()) {
+									if (entity instanceof LivingEntity _livingEntity346 && _livingEntity346.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+										_livingEntity346.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
+									Ssc14Mod.queueServerWork(10, () -> {
+										if (entity.getX() + entity.getZ()
+												+ entity.getY() == (entity instanceof LivingEntity _livingEntity350 && _livingEntity350.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+														? _livingEntity350.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+														: 0)
+												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get()) {
+											if (entity instanceof LivingEntity _livingEntity353 && _livingEntity353.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+												_livingEntity353.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
+											Ssc14Mod.queueServerWork(10, () -> {
+												if (entity.getX() + entity.getZ()
+														+ entity.getY() == (entity instanceof LivingEntity _livingEntity357 && _livingEntity357.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+																? _livingEntity357.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+																: 0)
+														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get()) {
+													if (entity instanceof LivingEntity _livingEntity360 && _livingEntity360.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+														_livingEntity360.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
+													Ssc14Mod.queueServerWork(10, () -> {
+														if (entity.getX() + entity.getZ()
+																+ entity.getY() == (entity instanceof LivingEntity _livingEntity364 && _livingEntity364.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
+																		? _livingEntity364.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
+																		: 0)
+																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get()
+																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
+																&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip370 ? blockstate.getValue(_getip370) : -1) == 5) {
+															if (world instanceof Level _level) {
+																if (!_level.isClientSide()) {
+																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1);
+																} else {
+																	_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1, false);
+																}
+															}
+															world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
+															if (world instanceof ServerLevel _level) {
+																ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), new ItemStack(Ssc14ModItems.ARM_GLASS.get()));
+																entityToSpawn.setPickUpDelay(2);
+																entityToSpawn.setUnlimitedLifetime();
+																_level.addFreshEntity(entityToSpawn);
+															}
+															if (entity instanceof LivingEntity _livingEntity374 && _livingEntity374.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+																_livingEntity374.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+														} else {
+															if (entity instanceof LivingEntity _livingEntity375 && _livingEntity375.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+																_livingEntity375.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+														}
+													});
+												} else {
+													if (entity instanceof LivingEntity _livingEntity377 && _livingEntity377.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+														_livingEntity377.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+												}
+											});
+										} else {
+											if (entity instanceof LivingEntity _livingEntity379 && _livingEntity379.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+												_livingEntity379.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+										}
+									});
+								} else {
+									if (entity instanceof LivingEntity _livingEntity381 && _livingEntity381.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+										_livingEntity381.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+								}
+							});
+						} else {
+							if (entity instanceof LivingEntity _livingEntity383 && _livingEntity383.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+								_livingEntity383.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+						}
+					});
+				} else {
+					if (entity instanceof LivingEntity _livingEntity385 && _livingEntity385.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+						_livingEntity385.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+				}
+			});
 		}
 	}
 }

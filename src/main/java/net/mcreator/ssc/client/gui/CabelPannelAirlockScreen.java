@@ -94,7 +94,9 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		if (CPlampind3Procedure.execute(world, entity)) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_white.png"), this.leftPos + 107, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_cyane.png"), this.leftPos + 133, this.topPos + -28, 0, 0, 9, 9, 9, 9);
+		if (CPlampind4Procedure.execute(world, entity)) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_cyane.png"), this.leftPos + 133, this.topPos + -28, 0, 0, 9, 9, 9, 9);
+		}
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_blue.png"), this.leftPos + 31, this.topPos + -14, 0, 0, 9, 9, 9, 9);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_green.png"), this.leftPos + 69, this.topPos + -14, 0, 0, 9, 9, 9, 9);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_red.png"), this.leftPos + 107, this.topPos + -14, 0, 0, 9, 9, 9, 9);

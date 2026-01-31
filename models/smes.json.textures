@@ -1,0 +1,22 @@
+{
+  "mappings": {
+    "static_smes": {
+      "name": "static_smes",
+      "map": {
+        "0": "smes_static_texture"
+      }
+    },
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "smes_texture"
+      }
+    },
+    "panel": {
+      "name": "panel",
+      "map": {
+        "0": "smes_open_texture"
+      }
+    }
+  }
+}

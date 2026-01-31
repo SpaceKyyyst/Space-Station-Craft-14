@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:title_plastic",
+    "ssc_14:up_title",
+    "ssc_14:title_steel_mini",
+    "ssc_14:title_dark_mono",
+    "ssc_14:up_title_steel",
+    "ssc_14:title_steel_mono",
+    "ssc_14:title_steel_pavement",
+    "ssc_14:title_dark_plastic",
+    "ssc_14:title_dark_pavement",
+    "ssc_14:title_steel",
+    "ssc_14:up_title_dark",
+    "ssc_14:title_dark",
+    "ssc_14:title_dark_diagonal",
+    "ssc_14:title_steel_diagonal",
+    "ssc_14:title_steel_offset",
+    "ssc_14:title_dark_mini",
+    "ssc_14:title_steel_herringbone",
+    "ssc_14:title_dark_diagonal_mini",
+    "ssc_14:title_steel_diagonal_mini",
+    "ssc_14:title_dark_offset",
+    "ssc_14:title_dark_pavement_vertical",
+    "ssc_14:title_dark_herringbone"
+  ]
+}

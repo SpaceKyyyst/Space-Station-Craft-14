@@ -1,13 +1,3 @@
-/execute in ssc_14:spaced run tp ~ ~1 ~
-/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
-/cmdconfig
-/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
-/cmdconfig
-/effect give Dev minecraft:night_vision infinite 0 true
-/fill ~-22 ~ ~-22 ~22 ~ ~22
-/fill ~-22 ~ ~-22 ~22 ~ ~22 ssc_14:sheathing
-/fill ~-22 ~ ~-22 ~22 ~ ~22 ssc_14:uper_sheathing
-/fill ~-22 ~-2 ~-22 ~22 ~2 ~22 ssc_14:steel_wall
 /fill ~-21 ~-2 ~-21 ~21 ~2 ~21 air
 /fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
 /tick freeze
@@ -48,3 +38,13 @@
 /effect give Dev minecraft:night_vision infinite 0 true
 /setblock ~ ~ ~ mcreator_link:link
 /fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear

@@ -1,9 +1,9 @@
 {
-  "parent": "ssc_14:custom/title_floor_1",
+  "parent": "ssc_14:custom/tile_floor",
   "textures": {
-    "all": "ssc_14:block/title",
-    "particle": "ssc_14:block/title",
-    "1": "ssc_14:block/texture_of_steel_flor_1"
+    "all": "ssc_14:block/tile_fl_steel_texture",
+    "particle": "ssc_14:block/tile_fl_steel_texture",
+    "2": "ssc_14:block/tile_fl_steel_texture"
   },
   "render_type": "cutout"
 }

@@ -1,0 +1,598 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "2": "tile_fl_steel_texture"
+      }
+    },
+    "steel_diagonal_mini": {
+      "name": "steel_diagonal_mini",
+      "map": {
+        "2": "tile_fl_steel_diagonal_mini_texture"
+      }
+    },
+    "steel_diagonal": {
+      "name": "steel_diagonal",
+      "map": {
+        "2": "tile_fl_steel_diagonal_texture"
+      }
+    },
+    "steel_dirty": {
+      "name": "steel_dirty",
+      "map": {
+        "2": "tile_fl_steel_dirty_texture"
+      }
+    },
+    "steel_herringbone": {
+      "name": "steel_herringbone",
+      "map": {
+        "2": "tile_fl_steel_herringbone_texture"
+      }
+    },
+    "steel_mini": {
+      "name": "steel_mini",
+      "map": {
+        "2": "tile_fl_steel_mini_texture"
+      }
+    },
+    "steel_mono": {
+      "name": "steel_mono",
+      "map": {
+        "2": "tile_fl_steel_mono_texture"
+      }
+    },
+    "steel_offset": {
+      "name": "steel_offset",
+      "map": {
+        "2": "tile_fl_steel_offset_texture"
+      }
+    },
+    "steel_pavement": {
+      "name": "steel_pavement",
+      "map": {
+        "2": "tile_fl_steel_pavement_texture"
+      }
+    },
+    "arcadeblue": {
+      "name": "arcadeblue",
+      "map": {
+        "2": "tile_fl_arcadeblue_texture"
+      }
+    },
+    "arcadeblue2": {
+      "name": "arcadeblue2",
+      "map": {
+        "2": "tile_fl_arcadeblue2_texture"
+      }
+    },
+    "arcadered": {
+      "name": "arcadered",
+      "map": {
+        "2": "tile_fl_arcadered_texture"
+      }
+    },
+    "carpetclown": {
+      "name": "carpetclown",
+      "map": {
+        "2": "tile_fl_carpetclown_texture"
+      }
+    },
+    "eighties": {
+      "name": "eighties",
+      "map": {
+        "2": "tile_fl_eighties_texture"
+      }
+    },
+    "blue_circuit": {
+      "name": "blue_circuit",
+      "map": {
+        "2": "tile_fl_blue_circuit_texture"
+      }
+    },
+    "green_circuit": {
+      "name": "green_circuit",
+      "map": {
+        "2": "tile_fl_green_circuit_texture"
+      }
+    },
+    "red_circuit": {
+      "name": "red_circuit",
+      "map": {
+        "2": "tile_fl_red_circuit_texture"
+      }
+    },
+    "reinforced": {
+      "name": "reinforced",
+      "map": {
+        "2": "tile_fl_reinforced_texture"
+      }
+    },
+    "boxing": {
+      "name": "boxing",
+      "map": {
+        "2": "tile_fl_boxing_texture"
+      }
+    },
+    "gym": {
+      "name": "gym",
+      "map": {
+        "2": "tile_fl_gym_texture"
+      }
+    },
+    "carpetoffice": {
+      "name": "carpetoffice",
+      "map": {
+        "2": "tile_fl_carpetoffice_texture"
+      }
+    },
+    "lino": {
+      "name": "lino",
+      "map": {
+        "2": "tile_fl_lino_texture"
+      }
+    },
+    "grating_maint": {
+      "name": "grating_maint",
+      "map": {
+        "2": "tile_fl_grating_maint_texture"
+      }
+    },
+    "bar": {
+      "name": "bar",
+      "map": {
+        "2": "tile_fl_bar_texture"
+      }
+    },
+    "cafeteria": {
+      "name": "cafeteria",
+      "map": {
+        "2": "tile_fl_cafeteria_texture"
+      }
+    },
+    "clown": {
+      "name": "clown",
+      "map": {
+        "2": "tile_fl_clown_texture"
+      }
+    },
+    "laundry": {
+      "name": "laundry",
+      "map": {
+        "2": "tile_fl_laundry_texture"
+      }
+    },
+    "showroom": {
+      "name": "showroom",
+      "map": {
+        "2": "tile_fl_showroom_texture"
+      }
+    },
+    "hydro": {
+      "name": "hydro",
+      "map": {
+        "2": "tile_fl_hydro_texture"
+      }
+    },
+    "freezer": {
+      "name": "freezer",
+      "map": {
+        "2": "tile_fl_freezer_texture"
+      }
+    },
+    "kitchen": {
+      "name": "kitchen",
+      "map": {
+        "2": "tile_fl_kitchen_texture"
+      }
+    },
+    "tech_maint": {
+      "name": "tech_maint",
+      "map": {
+        "2": "tile_fl_tech_maint_texture"
+      }
+    },
+    "tech_maint_dark": {
+      "name": "tech_maint_dark",
+      "map": {
+        "2": "tile_fl_tech_maint_dark_texture"
+      }
+    },
+    "blue": {
+      "name": "blue",
+      "map": {
+        "2": "tile_fl_blue_texture"
+      }
+    },
+    "checker_dark": {
+      "name": "checker_dark",
+      "map": {
+        "2": "tile_fl_checker_dark_texture"
+      }
+    },
+    "lime": {
+      "name": "lime",
+      "map": {
+        "2": "tile_fl_lime_texture"
+      }
+    },
+    "gold": {
+      "name": "gold",
+      "map": {
+        "2": "tile_fl_gold_texture"
+      }
+    },
+    "silver": {
+      "name": "silver",
+      "map": {
+        "2": "tile_fl_silver_texture"
+      }
+    },
+    "mime": {
+      "name": "mime",
+      "map": {
+        "2": "tile_fl_mime_texture"
+      }
+    },
+    "metaldiamond": {
+      "name": "metaldiamond",
+      "map": {
+        "2": "tile_fl_metaldiamond_texture"
+      }
+    },
+    "glass": {
+      "name": "glass",
+      "map": {
+        "2": "tile_fl_glass_texture"
+      }
+    },
+    "rglass": {
+      "name": "rglass",
+      "map": {
+        "2": "tile_fl_rglass_texture"
+      }
+    },
+    "super_reinforced": {
+      "name": "super_reinforced",
+      "map": {
+        "2": "tile_fl_super_reinforced_texture"
+      }
+    },
+    "wood": {
+      "name": "wood",
+      "map": {
+        "2": "tile_fl_wood_texture"
+      }
+    },
+    "wood_tile": {
+      "name": "wood_tile",
+      "map": {
+        "2": "tile_fl_wood_tile_texture"
+      }
+    },
+    "wood_large": {
+      "name": "wood_large",
+      "map": {
+        "2": "tile_fl_wood_large_texture"
+      }
+    },
+    "plastic": {
+      "name": "plastic",
+      "map": {
+        "2": "tile_fl_plastic_texture"
+      }
+    },
+    "dark_plastic": {
+      "name": "dark_plastic",
+      "map": {
+        "2": "tile_fl_dark_plastic_texture"
+      }
+    },
+    "white_plastic": {
+      "name": "white_plastic",
+      "map": {
+        "2": "tile_fl_white_plastic_texture"
+      }
+    },
+    "dark_diagonal_mini": {
+      "name": "dark_diagonal_mini",
+      "map": {
+        "2": "tile_fl_dark_diagonal_mini_texture"
+      }
+    },
+    "dark_diagonal": {
+      "name": "dark_diagonal",
+      "map": {
+        "2": "tile_fl_dark_diagonal_texture"
+      }
+    },
+    "dark_herringbone": {
+      "name": "dark_herringbone",
+      "map": {
+        "2": "tile_fl_dark_herringbone_texture"
+      }
+    },
+    "dark_mini": {
+      "name": "dark_mini",
+      "map": {
+        "2": "tile_fl_dark_mini_texture"
+      }
+    },
+    "dark_mono": {
+      "name": "dark_mono",
+      "map": {
+        "2": "tile_fl_dark_mono_texture"
+      }
+    },
+    "dark_offset": {
+      "name": "dark_offset",
+      "map": {
+        "2": "tile_fl_dark_offset_texture"
+      }
+    },
+    "dark_pavement": {
+      "name": "dark_pavement",
+      "map": {
+        "2": "tile_fl_dark_pavement_texture"
+      }
+    },
+    "dark_pavement_vertical": {
+      "name": "dark_pavement_vertical",
+      "map": {
+        "2": "tile_fl_dark_pavement_vertical_texture"
+      }
+    },
+    "dark_test": {
+      "name": "dark_test",
+      "map": {
+        "2": "tile_fl_dark_test_texture"
+      }
+    },
+    "dark": {
+      "name": "dark",
+      "map": {
+        "2": "tile_fl_dark_texture"
+      }
+    },
+    "exoborg": {
+      "name": "exoborg",
+      "map": {
+        "2": "tile_fl_exoborg_texture"
+      }
+    },
+    "white": {
+      "name": "white",
+      "map": {
+        "2": "tile_fl_white_texture"
+      }
+    },
+    "white_diagonal_mini": {
+      "name": "white_diagonal_mini",
+      "map": {
+        "2": "tile_fl_white_diagonal_mini_texture"
+      }
+    },
+    "white_diagonal": {
+      "name": "white_diagonal",
+      "map": {
+        "2": "tile_fl_white_diagonal_texture"
+      }
+    },
+    "white_herringbone": {
+      "name": "white_herringbone",
+      "map": {
+        "2": "tile_fl_white_herringbone_texture"
+      }
+    },
+    "white_mini": {
+      "name": "white_mini",
+      "map": {
+        "2": "tile_fl_white_mini_texture"
+      }
+    },
+    "white_mono": {
+      "name": "white_mono",
+      "map": {
+        "2": "tile_fl_white_mono_texture"
+      }
+    },
+    "white_offset": {
+      "name": "white_offset",
+      "map": {
+        "2": "tile_fl_white_offset_texture"
+      }
+    },
+    "white_pavement": {
+      "name": "white_pavement",
+      "map": {
+        "2": "tile_fl_white_pavement_texture"
+      }
+    },
+    "white_pavement_vertical": {
+      "name": "white_pavement_vertical",
+      "map": {
+        "2": "tile_fl_steel_pavement_vertical_texture"
+      }
+    },
+    "elevator_shaft": {
+      "name": "elevator_shaft",
+      "map": {
+        "2": "tile_fl_elevator_shaft_texture"
+      }
+    },
+    "hull_reinforced": {
+      "name": "hull_reinforced",
+      "map": {
+        "2": "tile_fl_hull_reinforced_texture"
+      }
+    },
+    "hull": {
+      "name": "hull",
+      "map": {
+        "2": "tile_fl_hull_texture"
+      }
+    },
+    "mining_floor_dark": {
+      "name": "mining_floor_dark",
+      "map": {
+        "2": "tile_fl_mining_floor_dark_texture"
+      }
+    },
+    "mining_floor_light": {
+      "name": "mining_floor_light",
+      "map": {
+        "2": "tile_fl_mining_floor_light_texture"
+      }
+    },
+    "mining_floor": {
+      "name": "mining_floor",
+      "map": {
+        "2": "tile_fl_mining_floor_texture"
+      }
+    },
+    "mono": {
+      "name": "mono",
+      "map": {
+        "2": "tile_fl_mono_texture"
+      }
+    },
+    "rock_vault": {
+      "name": "rock_vault",
+      "map": {
+        "2": "tile_fl_rock_vault_texture"
+      }
+    },
+    "meat1": {
+      "name": "meat1",
+      "map": {
+        "2": "tile_fl_meat1_texture"
+      }
+    },
+    "meat2": {
+      "name": "meat2",
+      "map": {
+        "2": "tile_fl_meat2_texture"
+      }
+    },
+    "meat3": {
+      "name": "meat3",
+      "map": {
+        "2": "tile_fl_meat3_texture"
+      }
+    },
+    "meat4": {
+      "name": "meat4",
+      "map": {
+        "2": "tile_fl_meat4_texture"
+      }
+    },
+    "steel_damaged1": {
+      "name": "steel_damaged1",
+      "map": {
+        "2": "tile_fl_steel_damaged1_texture"
+      }
+    },
+    "steel_damaged2": {
+      "name": "steel_damaged2",
+      "map": {
+        "2": "tile_fl_steel_damaged2_texture"
+      }
+    },
+    "steel_damaged3": {
+      "name": "steel_damaged3",
+      "map": {
+        "2": "tile_fl_steel_damaged3_texture"
+      }
+    },
+    "steel_damaged4": {
+      "name": "steel_damaged4",
+      "map": {
+        "2": "tile_fl_steel_damaged4_texture"
+      }
+    },
+    "steel_damaged5": {
+      "name": "steel_damaged5",
+      "map": {
+        "2": "tile_fl_steel_damaged5_texture"
+      }
+    },
+    "steel_maint": {
+      "name": "steel_maint",
+      "map": {
+        "2": "tile_fl_steel_maint_texture"
+      }
+    },
+    "shuttleblack": {
+      "name": "shuttleblack",
+      "map": {
+        "2": "tile_fl_shuttleblack_texture"
+      }
+    },
+    "shuttleblue": {
+      "name": "shuttleblue",
+      "map": {
+        "2": "tile_fl_shuttleblue_texture"
+      }
+    },
+    "shuttlegrey": {
+      "name": "shuttlegrey",
+      "map": {
+        "2": "tile_fl_shuttlegrey_texture"
+      }
+    },
+    "shuttleorange": {
+      "name": "shuttleorange",
+      "map": {
+        "2": "tile_fl_shuttleorange_texture"
+      }
+    },
+    "shuttlepurple": {
+      "name": "shuttlepurple",
+      "map": {
+        "2": "tile_fl_shuttlepurple_texture"
+      }
+    },
+    "shuttlered": {
+      "name": "shuttlered",
+      "map": {
+        "2": "tile_fl_shuttlered_texture"
+      }
+    },
+    "shuttlewhite": {
+      "name": "shuttlewhite",
+      "map": {
+        "2": "tile_fl_shuttlewhite_texture"
+      }
+    },
+    "wood_broken1": {
+      "name": "wood_broken1",
+      "map": {
+        "2": "tile_fl_wood_broken1_texture"
+      }
+    },
+    "wood_broken2": {
+      "name": "wood_broken2",
+      "map": {
+        "2": "tile_fl_wood_broken2_texture"
+      }
+    },
+    "wood_broken3": {
+      "name": "wood_broken3",
+      "map": {
+        "2": "tile_fl_wood_broken3_texture"
+      }
+    },
+    "wood_broken4": {
+      "name": "wood_broken4",
+      "map": {
+        "2": "tile_fl_wood_broken4_texture"
+      }
+    },
+    "wood_broken5": {
+      "name": "wood_broken5",
+      "map": {
+        "2": "tile_fl_wood_broken5_texture"
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ entityDistanceScaling:1.0
 entityShadows:true
 forceUnicodeFont:false
 japaneseGlyphVariants:false
-fov:0.525
+fov:0.5
 fovEffectScale:1.0
 darknessEffectScale:1.0
 glintSpeed:0.5
@@ -24,7 +24,7 @@ particles:0
 reducedDebugInfo:false
 renderClouds:"false"
 cloudRange:128
-renderDistance:12
+renderDistance:10
 simulationDistance:10
 screenEffectScale:1.0
 soundDevice:""
@@ -41,7 +41,7 @@ realmsNotifications:true
 showSubtitles:false
 directionalAudio:false
 touchscreen:false
-bobView:false
+bobView:true
 toggleCrouch:false
 toggleSprint:false
 darkMojangStudiosBackground:true
@@ -62,14 +62,14 @@ chatLineSpacing:0.0
 textBackgroundOpacity:0.5
 backgroundForChatOnly:true
 hideServerAddress:false
-advancedItemTooltips:true
+advancedItemTooltips:false
 pauseOnLostFocus:true
 overrideWidth:0
 overrideHeight:0
 chatHeightFocused:1.0
 chatDelay:0.0
-chatHeightUnfocused:1.0
-chatScale:0.7024647887323944
+chatHeightUnfocused:0.4375
+chatScale:1.0
 chatWidth:1.0
 notificationDisplayTime:1.0
 useNativeTransport:true
@@ -79,7 +79,7 @@ tutorialStep:none
 mouseWheelSensitivity:1.0
 rawMouseInput:true
 glDebugVerbosity:1
-skipMultiplayerWarning:true
+skipMultiplayerWarning:false
 hideMatchedNames:true
 joinedFirstServer:false
 syncChunkWrites:true
@@ -105,7 +105,7 @@ key_key.sprint:key.keyboard.left.control
 key_key.drop:key.keyboard.q
 key_key.inventory:key.keyboard.e
 key_key.chat:key.keyboard.tab
-key_key.playerlist:key.keyboard.keypad.multiply
+key_key.playerlist:key.keyboard.grave.accent
 key_key.pickItem:key.mouse.middle
 key_key.command:key.keyboard.slash
 key_key.socialInteractions:key.keyboard.p

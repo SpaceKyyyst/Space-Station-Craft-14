@@ -1,0 +1,185 @@
+{
+  "_fv": 79,
+  "_type": "block",
+  "definition": {
+    "texture": "techlamp_on_texture",
+    "textureTop": "",
+    "textureLeft": "",
+    "textureFront": "",
+    "textureRight": "",
+    "textureBack": "",
+    "renderType": 2,
+    "customModelName": "techlamp:default",
+    "rotationMode": 1,
+    "enablePitch": false,
+    "emissiveRendering": false,
+    "displayFluidOverlay": false,
+    "animations": [],
+    "itemTexture": "techlamp_it",
+    "particleTexture": "",
+    "blockSetType": "OAK",
+    "pottedPlant": {
+      "value": ""
+    },
+    "tintType": "No tint",
+    "isItemTinted": false,
+    "hasTransparency": true,
+    "connectedSides": false,
+    "transparencyType": "TRANSLUCENT",
+    "disableOffset": false,
+    "boundingBoxes": [
+      {
+        "mx": 6.5,
+        "my": 10.5,
+        "mz": 14.0,
+        "Mx": 9.5,
+        "My": 13.5,
+        "Mz": 16.0,
+        "subtract": false
+      },
+      {
+        "mx": 7.0,
+        "my": 11.0,
+        "mz": 13.0,
+        "Mx": 9.0,
+        "My": 13.0,
+        "Mz": 14.0,
+        "subtract": false
+      },
+      {
+        "mx": 6.0,
+        "my": 10.0,
+        "mz": 9.0,
+        "Mx": 10.0,
+        "My": 14.0,
+        "Mz": 13.0,
+        "subtract": false
+      },
+      {
+        "mx": 10.0,
+        "my": 14.0,
+        "mz": 13.0,
+        "Mx": 6.0,
+        "My": 10.0,
+        "Mz": 9.0,
+        "subtract": false
+      }
+    ],
+    "customProperties": [],
+    "name": "Incandescent Lamp",
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "hardness": 5.0,
+    "resistance": 5.0,
+    "hasGravity": false,
+    "isWaterloggable": false,
+    "hasBlockItem": true,
+    "maxStackSize": 1,
+    "rarity": "COMMON",
+    "immuneToFire": true,
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:SSC14Objects"
+      }
+    ],
+    "destroyTool": "Not specified",
+    "customDrop": {
+      "value": "CUSTOM:Steel"
+    },
+    "dropAmount": 1,
+    "xpAmountMin": 0,
+    "xpAmountMax": 0,
+    "useLootTableForDrops": false,
+    "requiresCorrectTool": false,
+    "enchantPowerBonus": 0.0,
+    "plantsGrowOn": false,
+    "canRedstoneConnect": false,
+    "lightOpacity": 0,
+    "tickRate": 0,
+    "tickRandomly": false,
+    "isReplaceable": false,
+    "canProvidePower": false,
+    "emittedRedstonePower": {
+      "fixedValue": 15.0
+    },
+    "colorOnMap": "DEFAULT",
+    "noteBlockInstrument": "harp",
+    "creativePickItem": {
+      "value": ""
+    },
+    "offsetType": "NONE",
+    "aiPathNodeType": "DEFAULT",
+    "strippingResult": {
+      "value": ""
+    },
+    "ignitedByLava": false,
+    "flammability": 0,
+    "fireSpreadSpeed": 0,
+    "isLadder": false,
+    "slipperiness": 0.6,
+    "speedFactor": 1.0,
+    "jumpFactor": 1.0,
+    "reactionToPushing": "NORMAL",
+    "isNotColidable": true,
+    "isCustomSoundType": false,
+    "soundOnStep": {
+      "value": "GLASS"
+    },
+    "breakSound": {
+      "value": ""
+    },
+    "fallSound": {
+      "value": ""
+    },
+    "hitSound": {
+      "value": ""
+    },
+    "placeSound": {
+      "value": ""
+    },
+    "stepSound": {
+      "value": ""
+    },
+    "luminance": 0,
+    "unbreakable": false,
+    "vanillaToolTier": "NONE",
+    "isBonemealable": false,
+    "sensitiveToVibration": false,
+    "vibrationalEvents": [],
+    "vibrationSensitivityRadius": {
+      "fixedValue": 7.0
+    },
+    "hasInventory": false,
+    "openGUIOnRightClick": false,
+    "inventorySize": 9,
+    "inventoryStackSize": 99,
+    "inventoryDropWhenDestroyed": true,
+    "inventoryComparatorPower": true,
+    "inventoryOutSlotIDs": [],
+    "inventoryInSlotIDs": [],
+    "hasEnergyStorage": false,
+    "energyInitial": 0,
+    "energyCapacity": 400000,
+    "energyMaxReceive": 200,
+    "energyMaxExtract": 200,
+    "isFluidTank": false,
+    "fluidCapacity": 8000,
+    "fluidRestrictions": [],
+    "onRightClicked": {
+      "name": "InsertingLamp"
+    },
+    "generateFeature": false,
+    "restrictionBiomes": [],
+    "blocksToReplace": [
+      {
+        "value": "TAG:stone_ore_replaceables"
+      }
+    ],
+    "generationShape": "UNIFORM",
+    "frequencyPerChunks": 10,
+    "frequencyOnChunk": 16,
+    "minGenerateHeight": 0,
+    "maxGenerateHeight": 64
+  }
+}

@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "ssc_14:item/title_item_d2"
+    "layer0": "ssc_14:item/tile_dark_item"
   },
   "render_type": "translucent"
 }

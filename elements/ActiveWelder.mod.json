@@ -6,7 +6,7 @@
     "renderType": 1,
     "blockingRenderType": 0,
     "texture": "fire_w_an",
-    "customModelName": "welder_2:default",
+    "customModelName": "welder:activ",
     "blockingModelName": "Normal blocking",
     "guiTexture": "",
     "name": "Active Welder",

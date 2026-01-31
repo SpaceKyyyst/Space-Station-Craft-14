@@ -5,6 +5,12 @@
       "map": {
         "0": "texture_of_welder"
       }
+    },
+    "activ": {
+      "name": "activ",
+      "map": {
+        "0": "wadler_an_1"
+      }
     }
   }
 }

@@ -27,8 +27,13 @@ public class TitleSteelBlock extends Block {
 	}
 
 	@Override
+	public boolean propagatesSkylightDown(BlockState state) {
+		return true;
+	}
+
+	@Override
 	public int getLightBlock(BlockState state) {
-		return 15;
+		return 0;
 	}
 
 	@Override

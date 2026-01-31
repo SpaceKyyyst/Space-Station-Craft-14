@@ -1,0 +1,35 @@
+{
+  "_fv": 79,
+  "_type": "blockstates",
+  "definition": {
+    "block": "SMES",
+    "blockstateList": [
+      {
+        "texture": "smes_static_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "smes:static_smes",
+        "luminance": 2,
+        "boundingBoxes": []
+      },
+      {
+        "texture": "smes_open_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "smes:panel",
+        "luminance": 0,
+        "boundingBoxes": []
+      }
+    ]
+  }
+}

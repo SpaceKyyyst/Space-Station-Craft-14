@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "ssc_14:block/armored_w_d2",
+    "particle": "ssc_14:block/ermored_window"
+  },
+  "render_type": "cutout"
+}
