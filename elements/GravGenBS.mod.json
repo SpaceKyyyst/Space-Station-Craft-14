@@ -1,0 +1,22 @@
+{
+  "_fv": 79,
+  "_type": "blockstates",
+  "definition": {
+    "block": "GravityGenerator",
+    "blockstateList": [
+      {
+        "texture": "gravgen_block_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "gravity_generator:on",
+        "luminance": 5,
+        "boundingBoxes": []
+      }
+    ]
+  }
+}

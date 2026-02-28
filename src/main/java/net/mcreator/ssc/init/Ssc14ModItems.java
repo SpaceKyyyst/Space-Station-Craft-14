@@ -153,6 +153,32 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> ARMORED_WINDOW;
 	public static final DeferredItem<Item> ARM_GLASS_SHARD;
 	public static final DeferredItem<Item> ARM_GLASS;
+	public static final DeferredItem<Item> DEBUG_LAMP;
+	public static final DeferredItem<Item> DEBUG_TECH_LAMP;
+	public static final DeferredItem<Item> GRILLE;
+	public static final DeferredItem<Item> BROKEN_GRILLE;
+	public static final DeferredItem<Item> ASTEROID_STONE_BASE;
+	public static final DeferredItem<Item> RAW_IRON;
+	public static final DeferredItem<Item> RAW_QUARTZ;
+	public static final DeferredItem<Item> ASTEROID_STONE_IRON;
+	public static final DeferredItem<Item> ASTEROID_STONE_QUARTZ;
+	public static final DeferredItem<Item> ASTEROID_STONE_COAL;
+	public static final DeferredItem<Item> ASTEROID_STONE_GOLD;
+	public static final DeferredItem<Item> ASTEROID_STONE_PLASMA;
+	public static final DeferredItem<Item> ASTEROID_STONE_SILVER;
+	public static final DeferredItem<Item> ASTEROID_STONE_URAN;
+	public static final DeferredItem<Item> ASTEROID_STONE_DIAMOND;
+	public static final DeferredItem<Item> RAW_COAL;
+	public static final DeferredItem<Item> RAW_GOLD;
+	public static final DeferredItem<Item> RAW_PLASMA;
+	public static final DeferredItem<Item> RAW_SILVER;
+	public static final DeferredItem<Item> RAW_URAN;
+	public static final DeferredItem<Item> RAW_DIAMOND;
+	public static final DeferredItem<Item> CAVE_FLOOR_1;
+	public static final DeferredItem<Item> GRAVITY_GENERATOR;
+	public static final DeferredItem<Item> TITLE_WHITE;
+	public static final DeferredItem<Item> TITLE_WHITE_DIAGONAL_MINI;
+	public static final DeferredItem<Item> CATWALK_FLOOR;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -281,6 +307,32 @@ public class Ssc14ModItems {
 		ARMORED_WINDOW = block(Ssc14ModBlocks.ARMORED_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
 		ARM_GLASS_SHARD = register("arm_glass_shard", ArmGlassShardItem::new);
 		ARM_GLASS = register("arm_glass", ArmGlassItem::new);
+		DEBUG_LAMP = block(Ssc14ModBlocks.DEBUG_LAMP, new Item.Properties().stacksTo(1).fireResistant());
+		DEBUG_TECH_LAMP = block(Ssc14ModBlocks.DEBUG_TECH_LAMP, new Item.Properties().stacksTo(1).fireResistant());
+		GRILLE = block(Ssc14ModBlocks.GRILLE, new Item.Properties().stacksTo(1).fireResistant());
+		BROKEN_GRILLE = block(Ssc14ModBlocks.BROKEN_GRILLE, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_BASE = block(Ssc14ModBlocks.ASTEROID_STONE_BASE, new Item.Properties().stacksTo(1).fireResistant());
+		RAW_IRON = register("raw_iron", RawIronItem::new);
+		RAW_QUARTZ = register("raw_quartz", RawQuartzItem::new);
+		ASTEROID_STONE_IRON = block(Ssc14ModBlocks.ASTEROID_STONE_IRON, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_QUARTZ = block(Ssc14ModBlocks.ASTEROID_STONE_QUARTZ, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_COAL = block(Ssc14ModBlocks.ASTEROID_STONE_COAL, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_GOLD = block(Ssc14ModBlocks.ASTEROID_STONE_GOLD, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_PLASMA = block(Ssc14ModBlocks.ASTEROID_STONE_PLASMA, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_SILVER = block(Ssc14ModBlocks.ASTEROID_STONE_SILVER, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_URAN = block(Ssc14ModBlocks.ASTEROID_STONE_URAN, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_DIAMOND = block(Ssc14ModBlocks.ASTEROID_STONE_DIAMOND, new Item.Properties().stacksTo(1).fireResistant());
+		RAW_COAL = register("raw_coal", RawCoalItem::new);
+		RAW_GOLD = register("raw_gold", RawGoldItem::new);
+		RAW_PLASMA = register("raw_plasma", RawPlasmaItem::new);
+		RAW_SILVER = register("raw_silver", RawSilverItem::new);
+		RAW_URAN = register("raw_uran", RawUranItem::new);
+		RAW_DIAMOND = register("raw_diamond", RawDiamondItem::new);
+		CAVE_FLOOR_1 = block(Ssc14ModBlocks.CAVE_FLOOR_1, new Item.Properties().stacksTo(1).fireResistant());
+		GRAVITY_GENERATOR = block(Ssc14ModBlocks.GRAVITY_GENERATOR, new Item.Properties().stacksTo(1).fireResistant());
+		TITLE_WHITE = block(Ssc14ModBlocks.TITLE_WHITE, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_WHITE_DIAGONAL_MINI = block(Ssc14ModBlocks.TITLE_WHITE_DIAGONAL_MINI, new Item.Properties().stacksTo(30).fireResistant());
+		CATWALK_FLOOR = block(Ssc14ModBlocks.CATWALK_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 	}
 
 	// Start of user code block custom items

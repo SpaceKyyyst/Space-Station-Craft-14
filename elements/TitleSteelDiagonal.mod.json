@@ -30,8 +30,44 @@
     "boundingBoxes": [
       {
         "mx": 0.0,
+        "my": 12.0,
+        "mz": 0.0,
+        "Mx": 16.0,
+        "My": 16.0,
+        "Mz": 16.0,
+        "subtract": false
+      },
+      {
+        "mx": 0.0,
         "my": 0.0,
         "mz": 0.0,
+        "Mx": 1.0,
+        "My": 16.0,
+        "Mz": 1.0,
+        "subtract": false
+      },
+      {
+        "mx": 0.0,
+        "my": 0.0,
+        "mz": 15.0,
+        "Mx": 1.0,
+        "My": 16.0,
+        "Mz": 16.0,
+        "subtract": false
+      },
+      {
+        "mx": 15.0,
+        "my": 0.0,
+        "mz": 0.0,
+        "Mx": 16.0,
+        "My": 16.0,
+        "Mz": 1.0,
+        "subtract": false
+      },
+      {
+        "mx": 15.0,
+        "my": 0.0,
+        "mz": 15.0,
         "Mx": 16.0,
         "My": 16.0,
         "Mz": 16.0,
@@ -68,7 +104,7 @@
     "enchantPowerBonus": 0.0,
     "plantsGrowOn": false,
     "canRedstoneConnect": false,
-    "lightOpacity": 0,
+    "lightOpacity": 15,
     "tickRate": 0,
     "tickRandomly": false,
     "isReplaceable": false,

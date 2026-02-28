@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,blockstate=0": {
+      "model": "ssc_14:block/gravity_generator"
+    },
+    "facing=east,blockstate=0": {
+      "model": "ssc_14:block/gravity_generator",
+      "y": 90
+    },
+    "facing=south,blockstate=0": {
+      "model": "ssc_14:block/gravity_generator",
+      "y": 180
+    },
+    "facing=west,blockstate=0": {
+      "model": "ssc_14:block/gravity_generator",
+      "y": 270
+    },
+    "facing=north,blockstate=1": {
+      "model": "ssc_14:block/grav_gen_bs_blockstate_0"
+    },
+    "facing=east,blockstate=1": {
+      "model": "ssc_14:block/grav_gen_bs_blockstate_0",
+      "y": 90
+    },
+    "facing=south,blockstate=1": {
+      "model": "ssc_14:block/grav_gen_bs_blockstate_0",
+      "y": 180
+    },
+    "facing=west,blockstate=1": {
+      "model": "ssc_14:block/grav_gen_bs_blockstate_0",
+      "y": 270
+    }
+  }
+}

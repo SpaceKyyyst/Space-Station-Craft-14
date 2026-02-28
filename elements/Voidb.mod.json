@@ -135,6 +135,9 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
+    "onBlockAdded": {
+      "name": "Void_autoDelete"
+    },
     "onNeighbourBlockChanges": {
       "name": "Void_autoDelete"
     },

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "space_station_craft_14:block/asteroid_stone_gold"
+      "model": "ssc_14:block/asteroid_stone_gold"
     }
   }
 }

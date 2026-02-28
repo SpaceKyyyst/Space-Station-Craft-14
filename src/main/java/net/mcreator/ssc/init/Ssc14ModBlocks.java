@@ -63,6 +63,30 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> SMES;
 	public static final DeferredBlock<Block> TECH_LAMP;
 	public static final DeferredBlock<Block> ARMORED_WINDOW;
+	public static final DeferredBlock<Block> DEBUG_LAMP;
+	public static final DeferredBlock<Block> DEBUG_TECH_LAMP;
+	public static final DeferredBlock<Block> GRILLE;
+	public static final DeferredBlock<Block> BROKEN_GRILLE;
+	public static final DeferredBlock<Block> ASTEROID_STONE_BASE;
+	public static final DeferredBlock<Block> ASTEROID_STONE_IRON;
+	public static final DeferredBlock<Block> ASTEROID_STONE_QUARTZ;
+	public static final DeferredBlock<Block> ASTEROID_STONE_COAL;
+	public static final DeferredBlock<Block> ASTEROID_STONE_GOLD;
+	public static final DeferredBlock<Block> ASTEROID_STONE_PLASMA;
+	public static final DeferredBlock<Block> ASTEROID_STONE_SILVER;
+	public static final DeferredBlock<Block> ASTEROID_STONE_URAN;
+	public static final DeferredBlock<Block> ASTEROID_STONE_DIAMOND;
+	public static final DeferredBlock<Block> CAVE_FLOOR_1;
+	public static final DeferredBlock<Block> CAVE_FLOOR_2;
+	public static final DeferredBlock<Block> CAVE_FLOOR_3;
+	public static final DeferredBlock<Block> CAVE_FLOOR_4;
+	public static final DeferredBlock<Block> CAVE_FLOOR_5;
+	public static final DeferredBlock<Block> CAVE_FLOOR_6;
+	public static final DeferredBlock<Block> CAVE_FLOOR_7;
+	public static final DeferredBlock<Block> GRAVITY_GENERATOR;
+	public static final DeferredBlock<Block> TITLE_WHITE;
+	public static final DeferredBlock<Block> TITLE_WHITE_DIAGONAL_MINI;
+	public static final DeferredBlock<Block> CATWALK_FLOOR;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
 		SPACED_PORTAL = register("spaced_portal", SpacedPortalBlock::new);
@@ -111,6 +135,30 @@ public class Ssc14ModBlocks {
 		SMES = register("smes", SMESBlock::new);
 		TECH_LAMP = register("tech_lamp", TechLampBlock::new);
 		ARMORED_WINDOW = register("armored_window", ArmoredWindowBlock::new);
+		DEBUG_LAMP = register("debug_lamp", DEBUGLampBlock::new);
+		DEBUG_TECH_LAMP = register("debug_tech_lamp", DEBUGTechLampBlock::new);
+		GRILLE = register("grille", GrilleBlock::new);
+		BROKEN_GRILLE = register("broken_grille", BrokenGrilleBlock::new);
+		ASTEROID_STONE_BASE = register("asteroid_stone_base", AsteroidStoneBaseBlock::new);
+		ASTEROID_STONE_IRON = register("asteroid_stone_iron", AsteroidStoneIronBlock::new);
+		ASTEROID_STONE_QUARTZ = register("asteroid_stone_quartz", AsteroidStoneQuartzBlock::new);
+		ASTEROID_STONE_COAL = register("asteroid_stone_coal", AsteroidStoneCoalBlock::new);
+		ASTEROID_STONE_GOLD = register("asteroid_stone_gold", AsteroidStoneGoldBlock::new);
+		ASTEROID_STONE_PLASMA = register("asteroid_stone_plasma", AsteroidStonePlasmaBlock::new);
+		ASTEROID_STONE_SILVER = register("asteroid_stone_silver", AsteroidStoneSilverBlock::new);
+		ASTEROID_STONE_URAN = register("asteroid_stone_uran", AsteroidStoneUranBlock::new);
+		ASTEROID_STONE_DIAMOND = register("asteroid_stone_diamond", AsteroidStoneDiamondBlock::new);
+		CAVE_FLOOR_1 = register("cave_floor_1", CaveFloor1Block::new);
+		CAVE_FLOOR_2 = register("cave_floor_2", CaveFloor2Block::new);
+		CAVE_FLOOR_3 = register("cave_floor_3", CaveFloor3Block::new);
+		CAVE_FLOOR_4 = register("cave_floor_4", CaveFloor4Block::new);
+		CAVE_FLOOR_5 = register("cave_floor_5", CaveFloor5Block::new);
+		CAVE_FLOOR_6 = register("cave_floor_6", CaveFloor6Block::new);
+		CAVE_FLOOR_7 = register("cave_floor_7", CaveFloor7Block::new);
+		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);
+		TITLE_WHITE = register("title_white", TitleWhiteBlock::new);
+		TITLE_WHITE_DIAGONAL_MINI = register("title_white_diagonal_mini", TitleWhiteDiagonalMiniBlock::new);
+		CATWALK_FLOOR = register("catwalk_floor", CatwalkFloorBlock::new);
 	}
 
 	// Start of user code block custom blocks

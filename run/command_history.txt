@@ -1,50 +1,50 @@
-/fill ~-21 ~-2 ~-21 ~21 ~2 ~21 air
-/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
-/tick freeze
-/tick unfreeze
-/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
-/tick freeze
-/tick unfreeze
-/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
-/give Dev ssc_14:airlock_controller
-/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
-/execute in minecraft:overworld run tp ~ ~ ~
-/execute in ssc_14:spaced run tp ~ ~ ~
-/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
-/execute in minecraft:overworld run tp ~ ~ ~
-/execute in ssc_14:spaced run tp ~ ~ ~
-/effect give Dev minecraft:night_vision infinite 0
-/effect give Dev minecraft:night_vision infinite 0 true
-/effect clear
-/execute in ssc_14:spaced run tp ~ ~ ~
-/execute in minecraft:the_end run tp ~ ~ ~
-/execute in ssc_14:spaced run tp ~ ~ ~
-/execute in minecraft:overworld run tp ~ ~ ~
-/execute in ssc_14:spaced run tp ~ ~ ~
-/give Dev ssc_14:rood
-/
-/execute in minecraft:overworld run tp ~ ~ ~
-/setblock ~ ~ ~ minecraft:stone
-/effect give Dev minecraft:night_vision infinite 0 true
-/execute in ssc_14:spaced run tp ~ ~ ~
-/execute in minecraft:overworld run tp ~ ~ ~
-/execute in ssc_14:spaced run tp ~ ~ ~
-/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
-/execute in minecraft:overworld run tp ~ ~ ~
-/execute in ssc_14:spaced run tp ~ ~ ~
-/effect give Dev minecraft:night_vision infinite 0 true
-/give Dev ssc_14:testtesttest
-/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
-/effect give Dev minecraft:night_vision infinite 0 true
-/setblock ~ ~ ~ mcreator_link:link
-/fill ~-25 ~-25 ~-25 ~25 ~25 ~25 air replace ssc_14:atmos_block
+/fill ~ ~ ~ ~ ~268 ~ air
+/fill ~ ~ ~ ~ ~270 ~ air
+/fill ~ ~ ~ ~ ~269 ~ air
+/fill ~ ~ ~ ~ ~-50 ~ air
+/ssc14 hunger set Dev 150
 /effect give Dev minecraft:night_vision infinite 0 true
 /effect clear
 /effect give Dev minecraft:night_vision infinite 0 true
 /effect clear
-/effect give Dev minecraft:night_vision infinite 0 true
+/ssc14 hunger set Dev 150
+/attribute Dev minecraft:movement_efficiency base
+/attribute Dev minecraft:movement_efficiency base get 0
+/attribute Dev minecraft:movement_efficiency base set 0
+/attribute Dev minecraft:movement_efficiency get 0
+/attribute Dev minecraft:movement_efficiency get 1
+/attribute Dev minecraft:movement_efficiency get 0
+/attribute Dev minecraft:movement_efficiency get 1
+/attribute Dev minecraft:movement_efficiency modifier add 1
+/attribute Dev minecraft:movement_efficiency modifier value get 0 0
+/attribute Dev minecraft:movement_efficiency base set 0
+/attribute Dev minecraft:movement_speed base set 0
+/attribute Dev minecraft:movement_speed base set 1
+/attribute Dev minecraft:movement_speed base reset
+/attribute Dev minecraft:movement_efficiency base reset
+/attribute Dev minecraft:movement_speed base reset
+/kill
+/ssc14 tpspace
+/gamerule stationGravity true
+/gamerule stationGravity false
+/gamerule stationGravity true
+/gamerule stationGravity false
+/attribute Dev minecraft:gravity base set 0.08
+/attribute Dev minecraft:gravity base reset
+/attribute Dev minecraft:gravity base get 0.08
+/attribute Dev minecraft:gravity base set 0.08
+/kill Dev
+/ssc14 tpspace
+/gamerule stationGravity true
 /effect clear
 /effect give Dev minecraft:night_vision infinite 0 true
-/effect clear
+/ssc14 tpspace
 /effect give Dev minecraft:night_vision infinite 0 true
+/ssc14 hunger set Dev 150
 /effect clear
+/kill
+/ssc14 tpspace
+/ssc14 hunger set Dev 150
+/fill ~-50 ~-5 ~50 ~50 ~5 ~50 ssc_14:atmos_block replace air
+/fill ~-50 ~-5 ~50 ~50 ~5 ~50 air replace ssc_14:atmos_block
+/fill ~-50 ~-5 ~50 ~50 ~5 ~50 ssc_14:atmos_block replace air

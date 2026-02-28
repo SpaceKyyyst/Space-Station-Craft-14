@@ -16,11 +16,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.world.inventory.IDcodeMenu;
-import net.mcreator.ssc.world.inventory.DopCraftMenuMenu;
-import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
-import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
-import net.mcreator.ssc.world.inventory.AccessConfigGUIMenu;
+import net.mcreator.ssc.world.inventory.*;
 import net.mcreator.ssc.network.MenuStateUpdateMessage;
 import net.mcreator.ssc.Ssc14Mod;
 
@@ -33,6 +29,7 @@ public class Ssc14ModMenus {
 	public static final DeferredHolder<MenuType<?>, MenuType<AccessConfigMENUMenu>> ACCESS_CONFIG_MENU = REGISTRY.register("access_config_menu", () -> IMenuTypeExtension.create(AccessConfigMENUMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<AccessConfigGUIMenu>> ACCESS_CONFIG_GUI = REGISTRY.register("access_config_gui", () -> IMenuTypeExtension.create(AccessConfigGUIMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<CabelPannelAirlockMenu>> CABEL_PANNEL_AIRLOCK = REGISTRY.register("cabel_pannel_airlock", () -> IMenuTypeExtension.create(CabelPannelAirlockMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<GravGenGUIMenu>> GRAV_GEN_GUI = REGISTRY.register("grav_gen_gui", () -> IMenuTypeExtension.create(GravGenGUIMenu::new));
 
 	public interface MenuAccessor {
 		Map<String, Object> getMenuState();

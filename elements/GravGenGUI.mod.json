@@ -1,0 +1,247 @@
+{
+  "_fv": 79,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 200,
+    "height": 90,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "grav_gen_gui_2.png",
+          "use1Xscale": false,
+          "x": 114,
+          "y": 75,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_off_button",
+          "image": "off_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "GravGenOFFbutton"
+          },
+          "x": 212,
+          "y": 79,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_on_button",
+          "image": "on_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "GravGenONbutton"
+          },
+          "x": 186,
+          "y": 79,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_pitaniie",
+          "text": {
+            "fixedValue": "Питание: "
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 119,
+          "y": 85,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_status",
+          "text": {
+            "fixedValue": "Статус: "
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 119,
+          "y": 110,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_eta",
+          "text": {
+            "fixedValue": "ETA: "
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 119,
+          "y": 124,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_zariad",
+          "text": {
+            "fixedValue": "Заряд: "
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 119,
+          "y": 138,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_polnostiu_zariazhien",
+          "text": {
+            "fixedValue": "Заряжен"
+          },
+          "color": {
+            "value": -13663425,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "GravGenStatusGUIText"
+          },
+          "x": 174,
+          "y": 110,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_nd",
+          "text": {
+            "fixedValue": "N/D",
+            "name": "GravGenGUIETAtext"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 174,
+          "y": 124,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_100",
+          "text": {
+            "fixedValue": "100%",
+            "name": "GravGenGUIpercentText"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "x": 174,
+          "y": 138,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_empty",
+          "text": {
+            "fixedValue": "Заряжается"
+          },
+          "color": {
+            "value": -8226258,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "GravGenStatusGUIText2"
+          },
+          "x": 174,
+          "y": 110,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_razriazhaietsia",
+          "text": {
+            "fixedValue": "Разряжается"
+          },
+          "color": {
+            "value": -8226514,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "GravGenStatusGUIText3"
+          },
+          "x": 174,
+          "y": 110,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_vykliuchien",
+          "text": {
+            "fixedValue": "Выключен"
+          },
+          "color": {
+            "value": -8245714,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "GravGenStatusGUIText4"
+          },
+          "x": 174,
+          "y": 110,
+          "locked": true
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "gravgen_gui_rood.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "GravGenRoodGUI"
+          },
+          "x": 264,
+          "y": 112,
+          "locked": true
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 16,
+      "sy": 16,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

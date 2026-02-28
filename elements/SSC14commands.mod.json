@@ -1,0 +1,10 @@
+{
+  "_fv": 79,
+  "_type": "command",
+  "definition": {
+    "commandName": "ssc14",
+    "type": "STANDARD",
+    "permissionLevel": "4",
+    "argsxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"args_start\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"literal\"><field name=\"name\">tpspace</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">TpSSC14spacepr</field></block></statement><next><block type=\"literal\"><field name=\"name\">hunger</field><statement name=\"args\"><block type=\"literal\"><field name=\"name\">set</field><statement name=\"args\"><block type=\"entity\"><field name=\"name\">ent</field><field name=\"type\">entity</field><statement name=\"args\"><block type=\"number_min_max\"><field name=\"name\">Nutrients</field><field name=\"min\">0</field><field name=\"max\">200</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">HungerSetCommand</field></block></statement></block></statement></block></statement><next><block type=\"literal\"><field name=\"name\">digestive</field><statement name=\"args\"><block type=\"literal\"><field name=\"name\">clear</field><statement name=\"args\"><block type=\"entity\"><field name=\"name\">ent</field><field name=\"type\">entity</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">DigestiveProcessesClearCommand</field></block></statement></block></statement></block></statement></block></next></block></statement></block></next></block></next></block></xml>"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "catwalk_floor_texture"
+      }
+    }
+  }
+}

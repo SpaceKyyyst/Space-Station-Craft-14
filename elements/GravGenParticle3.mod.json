@@ -1,0 +1,24 @@
+{
+  "_fv": 79,
+  "_type": "particle",
+  "definition": {
+    "texture": "gravity_generator_core_idle_texture",
+    "animate": true,
+    "frameDuration": 2,
+    "width": 1.0,
+    "height": 1.0,
+    "scale": {
+      "fixedValue": 2.0
+    },
+    "speedFactor": 0.0,
+    "gravity": 0.0,
+    "maxAge": 10,
+    "maxAgeDiff": 0,
+    "angularVelocity": 0.0,
+    "angularAcceleration": 0.0,
+    "canCollide": false,
+    "alwaysShow": true,
+    "emissiveRendering": true,
+    "renderType": "OPAQUE"
+  }
+}

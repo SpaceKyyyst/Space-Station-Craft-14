@@ -54,6 +54,7 @@ public class Ssc14Mod {
 		Ssc14ModTabs.REGISTRY.register(modEventBus);
 		Ssc14ModVariables.ATTACHMENT_TYPES.register(modEventBus);
 		Ssc14ModMenus.REGISTRY.register(modEventBus);
+		Ssc14ModParticleTypes.REGISTRY.register(modEventBus);
 		Ssc14ModAttributes.REGISTRY.register(modEventBus);
 		// Start of user code block mod init
 		// End of user code block mod init

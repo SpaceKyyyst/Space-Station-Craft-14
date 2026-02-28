@@ -254,5 +254,13 @@
         "stream": false
       }
     ]
+  },
+  "break_stone": {
+    "sounds": [
+      {
+        "name": "ssc_14:resources_audio_effects_break_stone",
+        "stream": false
+      }
+    ]
   }
 }

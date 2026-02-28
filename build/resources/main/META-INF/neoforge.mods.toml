@@ -4,13 +4,13 @@ license="Academic Free License v3.0"
 
 [[mods]]
 modId="ssc_14"
-version="0.1.8"
+version="0.1.9"
 displayName="Space Station Craft 14"
 displayURL="https://www.youtube.com/@Space.kyyyst"
 logoFile="logo.png"
 credits="Created using mod maker MCreator - https://mcreator.net/about"
 authors="Space_Kyyyst"
-description="\u041F\u043E\u0432\u0442\u043E\u0440\u0451\u043D\u043D\u0430\u044F \u0432 Minecraft \u0438\u0433\u0440\u0430 Space Station 14. \u041E\u0441\u043D\u043E\u0432\u0430\u0442\u0435\u043B\u044C - Space Kyyyst. \u0412 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0435 \u043F\u0440\u0438\u043D\u0438\u043C\u0430\u043B\u0438 \u0443\u0447\u0430\u0441\u0442\u0438\u0435: Loksik, almazar3, bombu, sad2284, Sledge Hammer, ..."
+description="\u041F\u043E\u0432\u0442\u043E\u0440\u0451\u043D\u043D\u0430\u044F \u0432 Minecraft \u0438\u0433\u0440\u0430 Space Station 14. \u041E\u0441\u043D\u043E\u0432\u0430\u0442\u0435\u043B\u044C - Space Kyyyst. \u0412 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0435 \u043F\u0440\u0438\u043D\u0438\u043C\u0430\u043B\u0438 \u0443\u0447\u0430\u0441\u0442\u0438\u0435: Loksik, almazar3, bombu, sad2284, Sledge Hammer, Mr_irak, ..."
 
 # Start of user code block mod configuration
 # End of user code block mod configuration
@@ -33,12 +33,6 @@ description="\u041F\u043E\u0432\u0442\u043E\u0440\u0451\u043D\u043D\u0430\u044F 
     ordering="AFTER"
     side="BOTH"
 
-[[dependencies.ssc_14]]
-    modId="mcreator_link"
-    type="required"
-    versionRange="[0,)"
-    ordering="NONE"
-    side="BOTH"
 [[dependencies.ssc_14]]
     modId="itemphysic"
     type="required"

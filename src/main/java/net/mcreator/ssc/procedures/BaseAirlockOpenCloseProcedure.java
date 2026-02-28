@@ -34,8 +34,6 @@ import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.Ssc14Mod;
 
-import java.util.Comparator;
-
 import io.netty.buffer.Unpooled;
 
 public class BaseAirlockOpenCloseProcedure {
@@ -605,9 +603,9 @@ public class BaseAirlockOpenCloseProcedure {
 										});
 									});
 								});
-							} else if ((!(!world.getEntitiesOfClass(Player.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
+							} else if (!(!world.getEntitiesOfClass(Player.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
 									&& !(!world.getEntitiesOfClass(Mob.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
-									|| false == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "safe")) && (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get()) {
+									&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get()) {
 								if (world instanceof Level _level) {
 									if (!_level.isClientSide()) {
 										_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_close")), SoundSource.NEUTRAL, 1, 1);
@@ -697,8 +695,6 @@ public class BaseAirlockOpenCloseProcedure {
 													if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 														world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 												}
-												if ((findEntityInWorldRange(world, Player.class, (x + 0.5), (y + 0.6), (z + 0.5), 0.3)) instanceof Player _player && !_player.level().isClientSide())
-													_player.displayClientMessage(Component.literal("\u041D\u0410\u041D\u0415\u0421\u0401\u041D \u0423\u0420\u041E\u041D \u0428\u041B\u042E\u0417\u041E\u041C"), true);
 											});
 										});
 									});
@@ -715,7 +711,7 @@ public class BaseAirlockOpenCloseProcedure {
 						}
 					});
 				}
-			} else if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp159 && blockstate.getValue(_getbp159)) == true && !entity.isShiftKeyDown()) {
+			} else if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp156 && blockstate.getValue(_getbp156)) == true && !entity.isShiftKeyDown()) {
 				if (entity instanceof ServerPlayer _ent) {
 					BlockPos _bpos = BlockPos.containing(entity.getX(), entity.getY(), entity.getZ());
 					_ent.openMenu(new MenuProvider() {
@@ -744,9 +740,5 @@ public class BaseAirlockOpenCloseProcedure {
 		if (blockEntity != null)
 			return blockEntity.getPersistentData().getBooleanOr(tag, false);
 		return false;
-	}
-
-	private static Entity findEntityInWorldRange(LevelAccessor world, Class<? extends Entity> clazz, double x, double y, double z, double range) {
-		return (Entity) world.getEntitiesOfClass(clazz, AABB.ofSize(new Vec3(x, y, z), range, range, range), e -> true).stream().sorted(Comparator.comparingDouble(e -> e.distanceToSqr(x, y, z))).findFirst().orElse(null);
 	}
 }

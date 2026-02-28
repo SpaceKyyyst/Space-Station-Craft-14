@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:cave_floor_1",
+    "ssc_14:cave_floor_5",
+    "ssc_14:cave_floor_4",
+    "ssc_14:cave_floor_3",
+    "ssc_14:cave_floor_2",
+    "ssc_14:cave_floor_7",
+    "ssc_14:cave_floor_6"
+  ]
+}

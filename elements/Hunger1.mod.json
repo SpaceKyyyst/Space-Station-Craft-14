@@ -1,0 +1,32 @@
+{
+  "_fv": 79,
+  "_type": "overlay",
+  "definition": {
+    "priority": "NORMAL",
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "hunger_1.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Hunger1Pr"
+          },
+          "anchorPoint": "CENTER_RIGHT",
+          "x": 390,
+          "y": 104,
+          "locked": true
+        }
+      }
+    ],
+    "baseTexture": "",
+    "overlayTarget": "Ingame",
+    "gridSettings": {
+      "sx": 16,
+      "sy": 16,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": true
+    }
+  }
+}

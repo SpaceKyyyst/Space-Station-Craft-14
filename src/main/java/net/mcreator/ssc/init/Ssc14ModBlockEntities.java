@@ -48,6 +48,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleDarkHerringboneBlockEntity>> TITLE_DARK_HERRINGBONE = register("title_dark_herringbone", Ssc14ModBlocks.TITLE_DARK_HERRINGBONE, TitleDarkHerringboneBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleDarkPlasticBlockEntity>> TITLE_DARK_PLASTIC = register("title_dark_plastic", Ssc14ModBlocks.TITLE_DARK_PLASTIC, TitleDarkPlasticBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SMESBlockEntity>> SMES = register("smes", Ssc14ModBlocks.SMES, SMESBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GravityGeneratorBlockEntity>> GRAVITY_GENERATOR = register("gravity_generator", Ssc14ModBlocks.GRAVITY_GENERATOR, GravityGeneratorBlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities
@@ -81,5 +82,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_DARK_HERRINGBONE.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_DARK_PLASTIC.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, SMES.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, GRAVITY_GENERATOR.get(), SidedInvWrapper::new);
 	}
 }

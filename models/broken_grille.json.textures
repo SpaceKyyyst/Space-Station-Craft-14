@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "broken_grille_texture"
+      }
+    }
+  }
+}

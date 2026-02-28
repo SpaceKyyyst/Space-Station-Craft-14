@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "gravity_generator_off_texture"
+      }
+    },
+    "on": {
+      "name": "on",
+      "map": {
+        "0": "gravity_generator_on_texture"
+      }
+    }
+  }
+}

@@ -8,11 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.Dist;
 
-import net.mcreator.ssc.client.gui.IDcodeScreen;
-import net.mcreator.ssc.client.gui.DopCraftMenuScreen;
-import net.mcreator.ssc.client.gui.CabelPannelAirlockScreen;
-import net.mcreator.ssc.client.gui.AccessConfigMENUScreen;
-import net.mcreator.ssc.client.gui.AccessConfigGUIScreen;
+import net.mcreator.ssc.client.gui.*;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Ssc14ModScreens {
@@ -23,6 +19,7 @@ public class Ssc14ModScreens {
 		event.register(Ssc14ModMenus.ACCESS_CONFIG_MENU.get(), AccessConfigMENUScreen::new);
 		event.register(Ssc14ModMenus.ACCESS_CONFIG_GUI.get(), AccessConfigGUIScreen::new);
 		event.register(Ssc14ModMenus.CABEL_PANNEL_AIRLOCK.get(), CabelPannelAirlockScreen::new);
+		event.register(Ssc14ModMenus.GRAV_GEN_GUI.get(), GravGenGUIScreen::new);
 	}
 
 	public interface ScreenAccessor {

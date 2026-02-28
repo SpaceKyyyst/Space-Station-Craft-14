@@ -44,4 +44,5 @@ public class Ssc14ModSounds {
 	public static final DeferredHolder<SoundEvent, SoundEvent> AIRLOCK_BOLT_ON = REGISTRY.register("airlock_bolt_on", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "airlock_bolt_on")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> AIRLOCK_EMERGENCY_OFF = REGISTRY.register("airlock_emergency_off", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "airlock_emergency_off")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> AIRLOCK_EMERGENCY_ON = REGISTRY.register("airlock_emergency_on", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "airlock_emergency_on")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> BREAK_STONE = REGISTRY.register("break_stone", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "break_stone")));
 }

@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/gravity_generator",
+  "textures": {
+    "all": "ssc_14:block/gravgen_block_item",
+    "particle": "ssc_14:block/gravgen_block_item",
+    "0": "ssc_14:block/gravity_generator_on_texture"
+  },
+  "render_type": "cutout"
+}

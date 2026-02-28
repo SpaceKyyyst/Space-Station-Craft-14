@@ -39,7 +39,7 @@
     "piglinSafe": false,
     "hasRaids": false,
     "minMonsterSpawnLightLimit": 0,
-    "maxMonsterSpawnLightLimit": 7,
+    "maxMonsterSpawnLightLimit": 0,
     "monsterSpawnBlockLightLimit": 0,
     "portalFrame": {
       "value": "CUSTOM:Voidb"
