@@ -87,6 +87,14 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_WHITE;
 	public static final DeferredBlock<Block> TITLE_WHITE_DIAGONAL_MINI;
 	public static final DeferredBlock<Block> CATWALK_FLOOR;
+	public static final DeferredBlock<Block> TITLE_WHITE_DIAGONAL;
+	public static final DeferredBlock<Block> TITLE_WHITE_HERRINGBONE;
+	public static final DeferredBlock<Block> TITLE_WHITE_MINI;
+	public static final DeferredBlock<Block> TITLE_WHITE_MONO;
+	public static final DeferredBlock<Block> TITLE_WHITE_OFFSET;
+	public static final DeferredBlock<Block> TITLE_WHITE_PAVEMENT;
+	public static final DeferredBlock<Block> TITLE_WHITE_PAVEMENT_VERTICAL;
+	public static final DeferredBlock<Block> TITLE_WHITE_PLASTIC;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
 		SPACED_PORTAL = register("spaced_portal", SpacedPortalBlock::new);
@@ -159,6 +167,14 @@ public class Ssc14ModBlocks {
 		TITLE_WHITE = register("title_white", TitleWhiteBlock::new);
 		TITLE_WHITE_DIAGONAL_MINI = register("title_white_diagonal_mini", TitleWhiteDiagonalMiniBlock::new);
 		CATWALK_FLOOR = register("catwalk_floor", CatwalkFloorBlock::new);
+		TITLE_WHITE_DIAGONAL = register("title_white_diagonal", TitleWhiteDiagonalBlock::new);
+		TITLE_WHITE_HERRINGBONE = register("title_white_herringbone", TitleWhiteHerringboneBlock::new);
+		TITLE_WHITE_MINI = register("title_white_mini", TitleWhiteMiniBlock::new);
+		TITLE_WHITE_MONO = register("title_white_mono", TitleWhiteMonoBlock::new);
+		TITLE_WHITE_OFFSET = register("title_white_offset", TitleWhiteOffsetBlock::new);
+		TITLE_WHITE_PAVEMENT = register("title_white_pavement", TitleWhitePavementBlock::new);
+		TITLE_WHITE_PAVEMENT_VERTICAL = register("title_white_pavement_vertical", TitleWhitePavementVerticalBlock::new);
+		TITLE_WHITE_PLASTIC = register("title_white_plastic", TitleWhitePlasticBlock::new);
 	}
 
 	// Start of user code block custom blocks

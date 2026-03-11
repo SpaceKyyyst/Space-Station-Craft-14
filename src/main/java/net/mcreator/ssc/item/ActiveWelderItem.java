@@ -98,7 +98,7 @@ public class ActiveWelderItem extends Item {
 	public void inventoryTick(ItemStack itemstack, ServerLevel world, Entity entity, @Nullable EquipmentSlot equipmentSlot) {
 		super.inventoryTick(itemstack, world, entity, equipmentSlot);
 		if (equipmentSlot == EquipmentSlot.MAINHAND)
-			Welding_Fuel_chekProcedure.execute(entity, itemstack);
-		ActiveWelder_FuelMinProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, itemstack);
+			Welding_Fuel_chekProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, itemstack);
+		ActiveWelder_FuelMinProcedure.execute(itemstack);
 	}
 }

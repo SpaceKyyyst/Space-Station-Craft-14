@@ -179,6 +179,14 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> TITLE_WHITE;
 	public static final DeferredItem<Item> TITLE_WHITE_DIAGONAL_MINI;
 	public static final DeferredItem<Item> CATWALK_FLOOR;
+	public static final DeferredItem<Item> TITLE_WHITE_DIAGONAL;
+	public static final DeferredItem<Item> TITLE_WHITE_HERRINGBONE;
+	public static final DeferredItem<Item> TITLE_WHITE_MINI;
+	public static final DeferredItem<Item> TITLE_WHITE_MONO;
+	public static final DeferredItem<Item> TITLE_WHITE_OFFSET;
+	public static final DeferredItem<Item> TITLE_WHITE_PAVEMENT;
+	public static final DeferredItem<Item> TITLE_WHITE_PAVEMENT_VERTICAL;
+	public static final DeferredItem<Item> TITLE_WHITE_PLASTIC;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -333,6 +341,14 @@ public class Ssc14ModItems {
 		TITLE_WHITE = block(Ssc14ModBlocks.TITLE_WHITE, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_WHITE_DIAGONAL_MINI = block(Ssc14ModBlocks.TITLE_WHITE_DIAGONAL_MINI, new Item.Properties().stacksTo(30).fireResistant());
 		CATWALK_FLOOR = block(Ssc14ModBlocks.CATWALK_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
+		TITLE_WHITE_DIAGONAL = block(Ssc14ModBlocks.TITLE_WHITE_DIAGONAL, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_WHITE_HERRINGBONE = block(Ssc14ModBlocks.TITLE_WHITE_HERRINGBONE, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_WHITE_MINI = block(Ssc14ModBlocks.TITLE_WHITE_MINI, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_WHITE_MONO = block(Ssc14ModBlocks.TITLE_WHITE_MONO, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_WHITE_OFFSET = block(Ssc14ModBlocks.TITLE_WHITE_OFFSET, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_WHITE_PAVEMENT = block(Ssc14ModBlocks.TITLE_WHITE_PAVEMENT, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_WHITE_PAVEMENT_VERTICAL = block(Ssc14ModBlocks.TITLE_WHITE_PAVEMENT_VERTICAL, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_WHITE_PLASTIC = block(Ssc14ModBlocks.TITLE_WHITE_PLASTIC, new Item.Properties().stacksTo(30).fireResistant());
 	}
 
 	// Start of user code block custom items

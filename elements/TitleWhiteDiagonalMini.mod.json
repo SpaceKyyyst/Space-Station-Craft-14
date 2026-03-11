@@ -15,7 +15,7 @@
     "emissiveRendering": false,
     "displayFluidOverlay": false,
     "animations": [],
-    "itemTexture": "",
+    "itemTexture": "tile_white_diagonal_mini_item",
     "particleTexture": "",
     "blockSetType": "OAK",
     "pottedPlant": {
@@ -104,7 +104,7 @@
     "enchantPowerBonus": 0.0,
     "plantsGrowOn": false,
     "canRedstoneConnect": false,
-    "lightOpacity": 0,
+    "lightOpacity": 15,
     "tickRate": 0,
     "tickRandomly": false,
     "isReplaceable": false,

@@ -49,9 +49,17 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.TITLE_DARK_PAVEMENT_VERTICAL.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_DARK_HERRINGBONE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_DARK_PLASTIC.get().asItem());
-				tabData.accept(Ssc14ModBlocks.CAVE_FLOOR_1.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_WHITE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_DIAGONAL_MINI.get().asItem());
+				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_DIAGONAL.get().asItem());
+				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_MINI.get().asItem());
+				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_MONO.get().asItem());
+				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_OFFSET.get().asItem());
+				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_PAVEMENT.get().asItem());
+				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_PAVEMENT_VERTICAL.get().asItem());
+				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_HERRINGBONE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_PLASTIC.get().asItem());
+				tabData.accept(Ssc14ModBlocks.CAVE_FLOOR_1.get().asItem());
 			}).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_WALLS = REGISTRY.register("ssc_14_walls",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14_walls")).icon(() -> new ItemStack(Ssc14ModBlocks.STEEL_WALL.get())).displayItems((parameters, tabData) -> {

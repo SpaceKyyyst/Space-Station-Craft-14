@@ -30,7 +30,7 @@ public class PlayerTICKCheckProcedure {
 		if (entity == null)
 			return;
 		if (entity instanceof LivingEntity _livingEntity0 && _livingEntity0.getAttributes().hasAttribute(Attributes.SCALE))
-			_livingEntity0.getAttribute(Attributes.SCALE).setBaseValue(0.75);
+			_livingEntity0.getAttribute(Attributes.SCALE).setBaseValue(0.85);
 		if (!((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.GAS_ANALYSER.get())
 				&& !((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.GAS_ANALYSER.get())
 				&& (entity instanceof LivingEntity _livingEntity5 && _livingEntity5.getAttributes().hasAttribute(Ssc14ModAttributes.GAS_AN_GU_IATRIB) ? _livingEntity5.getAttribute(Ssc14ModAttributes.GAS_AN_GU_IATRIB).getValue() : 0) == 1) {

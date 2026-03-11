@@ -29,13 +29,8 @@ public class TitleWhiteDiagonalMiniBlock extends Block {
 	}
 
 	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
-	}
-
-	@Override
 	public int getLightBlock(BlockState state) {
-		return 0;
+		return 15;
 	}
 
 	@Override

@@ -194,7 +194,7 @@
   "item.ssc_14.plasma": "Плазма",
   "item.ssc_14.plastic": "Пластик",
   "item.ssc_14.plasteel_wall": "Укреплённая стена",
-  "item.ssc_14.plasteel_wall_carcase": "Укреплённый каркас стены",
+  "item.ssc_14.plasteel_wall_carcase": "Укреплённый каркас",
   "item.ssc_14.energy_bar": "Энергетический батончик",
   "item.ssc_14.energy_bar_trash": "Мусор",
   "item.ssc_14.energy_bar_2": "Энергетический батончик",
@@ -389,5 +389,15 @@
   "gui.ssc_14.grav_gen_gui.label_vykliuchien": "Выключен",
   "item.ssc_14.title_white": "Белая плитка",
   "item.ssc_14.title_white_diagonal_mini": "Белая мини диагональная плитка",
-  "item.ssc_14.catwalk_floor": "Мостик"
+  "item.ssc_14.catwalk_floor": "Мостик",
+  "key.ssc14.crawl": "Ползти",
+  "key.ssc_14.crawl": "Crawl",
+  "item.ssc_14.title_white_diagonal": "White Diagonal Mini Tile",
+  "item.ssc_14.title_white_herringbone": "White Diagonal Tile",
+  "item.ssc_14.title_white_mini": "White Herringbone Tile",
+  "item.ssc_14.title_white_mono": "White Mini Tile",
+  "item.ssc_14.title_white_offset": "White Mono Tile",
+  "item.ssc_14.title_white_pavement": "White Offset Tile",
+  "item.ssc_14.title_white_pavement_vertical": "White Pavement Tile",
+  "item.ssc_14.title_white_plastic": "White Pavement Vertical Tile"
 }

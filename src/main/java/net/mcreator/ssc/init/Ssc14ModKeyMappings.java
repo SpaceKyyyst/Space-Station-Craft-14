@@ -19,6 +19,7 @@ import net.mcreator.ssc.network.WorldObjectCheckMessage;
 import net.mcreator.ssc.network.RotateMessage;
 import net.mcreator.ssc.network.PulltheObjectMessage;
 import net.mcreator.ssc.network.DCMopenMessage;
+import net.mcreator.ssc.network.CrawlMessage;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Ssc14ModKeyMappings {
@@ -84,6 +85,19 @@ public class Ssc14ModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
+	public static final KeyMapping CRAWL = new KeyMapping("key.ssc_14.crawl", GLFW.GLFW_KEY_Z, "key.categories.movement") {
+		private boolean isDownOld = false;
+
+		@Override
+		public void setDown(boolean isDown) {
+			super.setDown(isDown);
+			if (isDownOld != isDown && isDown) {
+				ClientPacketDistributor.sendToServer(new CrawlMessage(0, 0));
+				CrawlMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+			}
+			isDownOld = isDown;
+		}
+	};
 	private static long PULLTHE_OBJECT_LASTPRESS = 0;
 	private static long WORLD_OBJECT_CHECK_LASTPRESS = 0;
 
@@ -93,6 +107,7 @@ public class Ssc14ModKeyMappings {
 		event.register(ROTATE);
 		event.register(PULLTHE_OBJECT);
 		event.register(WORLD_OBJECT_CHECK);
+		event.register(CRAWL);
 	}
 
 	@EventBusSubscriber(Dist.CLIENT)
@@ -104,6 +119,7 @@ public class Ssc14ModKeyMappings {
 				ROTATE.consumeClick();
 				PULLTHE_OBJECT.consumeClick();
 				WORLD_OBJECT_CHECK.consumeClick();
+				CRAWL.consumeClick();
 			}
 		}
 	}
