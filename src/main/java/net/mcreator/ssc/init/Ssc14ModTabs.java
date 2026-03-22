@@ -39,6 +39,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.TITLE_STEEL_PAVEMENT.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_STEEL_HERRINGBONE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_PLASTIC.get().asItem());
+				tabData.accept(Ssc14ModBlocks.STEEL_STAIRCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_DARK.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_DARK_DIAGONAL_MINI.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_DARK_DIAGONAL.get().asItem());
@@ -49,6 +50,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.TITLE_DARK_PAVEMENT_VERTICAL.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_DARK_HERRINGBONE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_DARK_PLASTIC.get().asItem());
+				tabData.accept(Ssc14ModBlocks.DARK_STAIRCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_WHITE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_DIAGONAL_MINI.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_DIAGONAL.get().asItem());
@@ -59,6 +61,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_PAVEMENT_VERTICAL.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_HERRINGBONE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_PLASTIC.get().asItem());
+				tabData.accept(Ssc14ModBlocks.WHITE_STAIRCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CAVE_FLOOR_1.get().asItem());
 			}).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_WALLS = REGISTRY.register("ssc_14_walls",
@@ -91,8 +94,14 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.SMES.get().asItem());
 				tabData.accept(Ssc14ModBlocks.LAMP.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TECH_LAMP.get().asItem());
+				tabData.accept(Ssc14ModBlocks.MACHINE_FRAME.get().asItem());
+				tabData.accept(Ssc14ModBlocks.MACHINE_FRAME_2.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CONSOLE_OF_ID.get().asItem());
 				tabData.accept(Ssc14ModBlocks.PORTABLE_SHEATER.get().asItem());
+				tabData.accept(Ssc14ModBlocks.STEEL_TABLE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.DARK_STAIRCASE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.STEEL_STAIRCASE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.WHITE_STAIRCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.GRAVITY_GENERATOR.get().asItem());
 			}).withTabsBefore(SSC_14_WALLS.getId()).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_ITEMS = REGISTRY.register("ssc_14_items",
@@ -126,8 +135,16 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.RAW_SILVER.get());
 				tabData.accept(Ssc14ModItems.RAW_URAN.get());
 				tabData.accept(Ssc14ModItems.RAW_DIAMOND.get());
+				tabData.accept(Ssc14ModBlocks.C_4.get().asItem());
+				tabData.accept(Ssc14ModItems.CAPACITOR.get());
+				tabData.accept(Ssc14ModItems.MATTER_BIN.get());
+				tabData.accept(Ssc14ModItems.MICRO_MANIPULATOR.get());
+				tabData.accept(Ssc14ModItems.LOW_BATTERIE.get());
 				tabData.accept(Ssc14ModItems.LED_LIGHT_TUBE.get());
 				tabData.accept(Ssc14ModItems.LIGHT_BULB.get());
+				tabData.accept(Ssc14ModItems.SUBSTATION_BOARD.get());
+				tabData.accept(Ssc14ModItems.SMES_BOARD.get());
+				tabData.accept(Ssc14ModItems.APC_BOARD.get());
 				tabData.accept(Ssc14ModItems.ENERGY_BAR.get());
 				tabData.accept(Ssc14ModItems.ENERGY_BAR_2.get());
 				tabData.accept(Ssc14ModItems.ID_CARD_PASSANGER.get());

@@ -95,6 +95,13 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_WHITE_PAVEMENT;
 	public static final DeferredBlock<Block> TITLE_WHITE_PAVEMENT_VERTICAL;
 	public static final DeferredBlock<Block> TITLE_WHITE_PLASTIC;
+	public static final DeferredBlock<Block> C_4;
+	public static final DeferredBlock<Block> MACHINE_FRAME;
+	public static final DeferredBlock<Block> MACHINE_FRAME_2;
+	public static final DeferredBlock<Block> STEEL_TABLE;
+	public static final DeferredBlock<Block> STEEL_STAIRCASE;
+	public static final DeferredBlock<Block> WHITE_STAIRCASE;
+	public static final DeferredBlock<Block> DARK_STAIRCASE;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
 		SPACED_PORTAL = register("spaced_portal", SpacedPortalBlock::new);
@@ -175,6 +182,13 @@ public class Ssc14ModBlocks {
 		TITLE_WHITE_PAVEMENT = register("title_white_pavement", TitleWhitePavementBlock::new);
 		TITLE_WHITE_PAVEMENT_VERTICAL = register("title_white_pavement_vertical", TitleWhitePavementVerticalBlock::new);
 		TITLE_WHITE_PLASTIC = register("title_white_plastic", TitleWhitePlasticBlock::new);
+		C_4 = register("c_4", C4Block::new);
+		MACHINE_FRAME = register("machine_frame", MachineFrameBlock::new);
+		MACHINE_FRAME_2 = register("machine_frame_2", MachineFrame2Block::new);
+		STEEL_TABLE = register("steel_table", SteelTableBlock::new);
+		STEEL_STAIRCASE = register("steel_staircase", SteelStaircaseBlock::new);
+		WHITE_STAIRCASE = register("white_staircase", WhiteStaircaseBlock::new);
+		DARK_STAIRCASE = register("dark_staircase", DarkStaircaseBlock::new);
 	}
 
 	// Start of user code block custom blocks

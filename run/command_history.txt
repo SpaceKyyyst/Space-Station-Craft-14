@@ -1,17 +1,3 @@
-/effect clear
-/ssc14 hunger set Dev 150
-/attribute Dev minecraft:movement_efficiency base
-/attribute Dev minecraft:movement_efficiency base get 0
-/attribute Dev minecraft:movement_efficiency base set 0
-/attribute Dev minecraft:movement_efficiency get 0
-/attribute Dev minecraft:movement_efficiency get 1
-/attribute Dev minecraft:movement_efficiency get 0
-/attribute Dev minecraft:movement_efficiency get 1
-/attribute Dev minecraft:movement_efficiency modifier add 1
-/attribute Dev minecraft:movement_efficiency modifier value get 0 0
-/attribute Dev minecraft:movement_efficiency base set 0
-/attribute Dev minecraft:movement_speed base set 0
-/attribute Dev minecraft:movement_speed base set 1
 /attribute Dev minecraft:movement_speed base reset
 /attribute Dev minecraft:movement_efficiency base reset
 /attribute Dev minecraft:movement_speed base reset
@@ -48,3 +34,17 @@
 /ssc14 hunger set Dev 151
 /ssc14 hunger set Dev 150
 /effect clear
+/spawnpoint
+/kill
+/gamerule tntExplodes true
+/gamerule tntExplodes false
+/gamerule tntExplodes true
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear
+/gamerule commandBlockOutput false
+/kill 2e477925-4b6f-46bd-ac06-2acca9a4c583
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear
+/effect give Dev minecraft:night_vision infinite 0 true
+/fill ~-10 ~ ~-10 ~10 ~ ~10 minecraft:white_concrete
+/effect give Dev minecraft:night_vision infinite 0 true

@@ -187,6 +187,20 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> TITLE_WHITE_PAVEMENT;
 	public static final DeferredItem<Item> TITLE_WHITE_PAVEMENT_VERTICAL;
 	public static final DeferredItem<Item> TITLE_WHITE_PLASTIC;
+	public static final DeferredItem<Item> C_4;
+	public static final DeferredItem<Item> MACHINE_FRAME;
+	public static final DeferredItem<Item> MACHINE_FRAME_2;
+	public static final DeferredItem<Item> CAPACITOR;
+	public static final DeferredItem<Item> MATTER_BIN;
+	public static final DeferredItem<Item> MICRO_MANIPULATOR;
+	public static final DeferredItem<Item> SUBSTATION_BOARD;
+	public static final DeferredItem<Item> SMES_BOARD;
+	public static final DeferredItem<Item> APC_BOARD;
+	public static final DeferredItem<Item> STEEL_TABLE;
+	public static final DeferredItem<Item> LOW_BATTERIE;
+	public static final DeferredItem<Item> STEEL_STAIRCASE;
+	public static final DeferredItem<Item> WHITE_STAIRCASE;
+	public static final DeferredItem<Item> DARK_STAIRCASE;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -349,6 +363,20 @@ public class Ssc14ModItems {
 		TITLE_WHITE_PAVEMENT = block(Ssc14ModBlocks.TITLE_WHITE_PAVEMENT, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_WHITE_PAVEMENT_VERTICAL = block(Ssc14ModBlocks.TITLE_WHITE_PAVEMENT_VERTICAL, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_WHITE_PLASTIC = block(Ssc14ModBlocks.TITLE_WHITE_PLASTIC, new Item.Properties().stacksTo(30).fireResistant());
+		C_4 = block(Ssc14ModBlocks.C_4, new Item.Properties().stacksTo(1));
+		MACHINE_FRAME = block(Ssc14ModBlocks.MACHINE_FRAME, new Item.Properties().stacksTo(1));
+		MACHINE_FRAME_2 = block(Ssc14ModBlocks.MACHINE_FRAME_2, new Item.Properties().stacksTo(1));
+		CAPACITOR = register("capacitor", CapacitorItem::new);
+		MATTER_BIN = register("matter_bin", MatterBinItem::new);
+		MICRO_MANIPULATOR = register("micro_manipulator", MicroManipulatorItem::new);
+		SUBSTATION_BOARD = register("substation_board", SubstationBoardItem::new);
+		SMES_BOARD = register("smes_board", SMESBoardItem::new);
+		APC_BOARD = register("apc_board", APCBoardItem::new);
+		STEEL_TABLE = block(Ssc14ModBlocks.STEEL_TABLE, new Item.Properties().stacksTo(1));
+		LOW_BATTERIE = register("low_batterie", LowBatterieItem::new);
+		STEEL_STAIRCASE = block(Ssc14ModBlocks.STEEL_STAIRCASE, new Item.Properties().stacksTo(1));
+		WHITE_STAIRCASE = block(Ssc14ModBlocks.WHITE_STAIRCASE, new Item.Properties().stacksTo(1));
+		DARK_STAIRCASE = block(Ssc14ModBlocks.DARK_STAIRCASE, new Item.Properties().stacksTo(1));
 	}
 
 	// Start of user code block custom items

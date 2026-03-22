@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.Block;
 
 public class UperSheathingBlock extends Block {
 	public UperSheathingBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.IRON).strength(-1f, 10f));
+		super(properties.sound(SoundType.IRON).strength(-1f, 20f));
 	}
 
 	@Override

@@ -20,17 +20,14 @@ public class CrawlClientHandler {
                                             .getBoolean("ssc14_is_crawling")
                                             .orElse(false);
 
-        System.out.println("[CRAWL] Client tick - isCrawling: " + isCrawling);
 
         if (isCrawling) {
             if (minecraft.player.getPose() != Pose.SWIMMING) {
                 minecraft.player.setPose(Pose.SWIMMING);
-                System.out.println("[CRAWL] Client: Set pose to SWIMMING");
             }
         } else {
             if (minecraft.player.getPose() == Pose.SWIMMING) {
                 minecraft.player.setPose(Pose.STANDING);
-                System.out.println("[CRAWL] Client: Set pose to STANDING");
             }
         }
     }

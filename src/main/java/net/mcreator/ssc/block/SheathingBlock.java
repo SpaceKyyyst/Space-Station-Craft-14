@@ -20,7 +20,7 @@ public class SheathingBlock extends Block {
 	private static final VoxelShape SHAPE = box(0, 0, 0, 16, 16, 16);
 
 	public SheathingBlock(BlockBehaviour.Properties properties) {
-		super(properties.mapColor(MapColor.COLOR_GRAY).sound(SoundType.IRON).strength(-1f, 10f).lightLevel(s -> (new Object() {
+		super(properties.mapColor(MapColor.COLOR_GRAY).sound(SoundType.IRON).strength(-1f, 20f).lightLevel(s -> (new Object() {
 			public int getLightLevel() {
 				if (s.getValue(BLOCKSTATE) == 1)
 					return 0;

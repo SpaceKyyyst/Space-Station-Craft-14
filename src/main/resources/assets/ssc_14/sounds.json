@@ -262,5 +262,13 @@
         "stream": false
       }
     ]
+  },
+  "welding_work": {
+    "sounds": [
+      {
+        "name": "ssc_14:welding_work",
+        "stream": false
+      }
+    ]
   }
 }

@@ -1,0 +1,100 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "2": "steel_table_texture"
+      }
+    },
+    "steel_table_n": {
+      "name": "steel_table_n",
+      "map": {
+        "2": "steel_table_texture_n"
+      }
+    },
+    "steel_table_e": {
+      "name": "steel_table_e",
+      "map": {
+        "2": "steel_table_texture_e"
+      }
+    },
+    "steel_table_s": {
+      "name": "steel_table_s",
+      "map": {
+        "2": "steel_table_texture_s"
+      }
+    },
+    "steel_table_w": {
+      "name": "steel_table_w",
+      "map": {
+        "2": "steel_table_texture_w"
+      }
+    },
+    "steel_table_ne": {
+      "name": "steel_table_ne",
+      "map": {
+        "2": "steel_table_texture_ne"
+      }
+    },
+    "steel_table_es": {
+      "name": "steel_table_es",
+      "map": {
+        "2": "steel_table_texture_es"
+      }
+    },
+    "steel_table_sw": {
+      "name": "steel_table_sw",
+      "map": {
+        "2": "steel_table_texture_sw"
+      }
+    },
+    "steel_table_nw": {
+      "name": "steel_table_nw",
+      "map": {
+        "2": "steel_table_texture_nw"
+      }
+    },
+    "steel_table_ns": {
+      "name": "steel_table_ns",
+      "map": {
+        "2": "steel_table_texture_ns"
+      }
+    },
+    "steel_table_ew": {
+      "name": "steel_table_ew",
+      "map": {
+        "2": "steel_table_texture_ew"
+      }
+    },
+    "steel_table_nsw": {
+      "name": "steel_table_nsw",
+      "map": {
+        "2": "steel_table_texture_nsw"
+      }
+    },
+    "steel_table_nes": {
+      "name": "steel_table_nes",
+      "map": {
+        "2": "steel_table_texture_nes"
+      }
+    },
+    "steel_table_new": {
+      "name": "steel_table_new",
+      "map": {
+        "2": "steel_table_texture_new"
+      }
+    },
+    "steel_table_esw": {
+      "name": "steel_table_esw",
+      "map": {
+        "2": "steel_table_texture_esw"
+      }
+    },
+    "steel_table_nesw": {
+      "name": "steel_table_nesw",
+      "map": {
+        "2": "steel_table_texture_nesw"
+      }
+    }
+  }
+}

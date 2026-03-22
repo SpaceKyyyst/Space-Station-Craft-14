@@ -28,7 +28,6 @@ public class CrawlTickCheckProcedure {
 			return;
 		if (entity instanceof Player player) {
 			boolean isCrawling = player.getPersistentData().getBoolean("ssc14_is_crawling").orElse(false);
-			System.out.println("[CRAWL] Tick - isCrawling: " + isCrawling);
 			if (isCrawling) {
 				// В режиме ползания — устанавливаем позу
 				if (player.getPose() != Pose.SWIMMING) {
@@ -43,9 +42,7 @@ public class CrawlTickCheckProcedure {
 				if (canStand && player.getPose() == Pose.SWIMMING) {
 					player.setPose(Pose.STANDING);
 					player.refreshDimensions();
-					System.out.println("[CRAWL] Set to STANDING");
 				} else if (!canStand) {
-					System.out.println("[CRAWL] Cannot stand - blocks in the way");
 					// ВАЖНО: НЕ включаем ползание автоматически!
 					// Просто остаёмся в текущей позе
 				}

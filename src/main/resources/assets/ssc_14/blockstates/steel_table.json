@@ -1,7 +1,52 @@
 {
   "variants": {
-    "": {
-      "model": "space_station_craft_14:block/steel_table"
+    "blockstate=0": {
+      "model": "ssc_14:block/steel_table"
+    },
+    "blockstate=1": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_0"
+    },
+    "blockstate=2": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_1"
+    },
+    "blockstate=3": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_2"
+    },
+    "blockstate=4": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_3"
+    },
+    "blockstate=5": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_4"
+    },
+    "blockstate=6": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_5"
+    },
+    "blockstate=7": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_6"
+    },
+    "blockstate=8": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_7"
+    },
+    "blockstate=9": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_8"
+    },
+    "blockstate=10": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_9"
+    },
+    "blockstate=11": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_10"
+    },
+    "blockstate=12": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_11"
+    },
+    "blockstate=13": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_12"
+    },
+    "blockstate=14": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_13"
+    },
+    "blockstate=15": {
+      "model": "ssc_14:block/steel_table_bs_blockstate_14"
     }
   }
 }

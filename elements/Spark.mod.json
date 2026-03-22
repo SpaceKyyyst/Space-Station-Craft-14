@@ -1,0 +1,24 @@
+{
+  "_fv": 79,
+  "_type": "particle",
+  "definition": {
+    "texture": "orange_spark",
+    "animate": true,
+    "frameDuration": 2,
+    "width": 0.1,
+    "height": 0.1,
+    "scale": {
+      "fixedValue": 0.1
+    },
+    "speedFactor": 1.0,
+    "gravity": 0.30000000000000004,
+    "maxAge": 14,
+    "maxAgeDiff": 2,
+    "angularVelocity": 0.0,
+    "angularAcceleration": 0.0,
+    "canCollide": true,
+    "alwaysShow": false,
+    "emissiveRendering": true,
+    "renderType": "OPAQUE"
+  }
+}

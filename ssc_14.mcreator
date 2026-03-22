@@ -1075,37 +1075,6 @@
       "path": "~/Technical/Craft Menu"
     },
     {
-      "name": "TitleSteel_Chek",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "title_steel_chek",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/TitleSteel_ChekProcedure.java"
-        ]
-      },
-      "path": "~/Blocks/Titles"
-    },
-    {
       "name": "BaseAirlockD1",
       "type": "block",
       "compiles": true,
@@ -1402,37 +1371,6 @@
         ]
       },
       "path": "~/Technical/Unpinned Objects"
-    },
-    {
-      "name": "UpTitle_Check",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "up_title_check",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/UpTitle_CheckProcedure.java"
-        ]
-      },
-      "path": "~/Blocks/Titles/Up Tiles"
     },
     {
       "name": "Rotate",
@@ -5925,10 +5863,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ],
         "return_type": "string",
@@ -7135,7 +7069,6 @@
           "src/main/java/net/mcreator/ssc/block/TitleSteelMiniBlock.java",
           "src/main/resources/assets/ssc_14/models/item/title_steel_mini.json",
           "src/main/resources/assets/ssc_14/blockstates/title_steel_mini.json",
-          "src/main/java/net/mcreator/ssc/block/entity/TitleSteelMiniBlockEntity.java",
           "src/main/resources/assets/ssc_14/models/block/title_steel_mini.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/title_steel_mini.json",
           "src/main/resources/assets/ssc_14/items/title_steel_mini.json"
@@ -7156,7 +7089,6 @@
           "src/main/resources/assets/ssc_14/items/title_steel_mono.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/title_steel_mono.json",
           "src/main/java/net/mcreator/ssc/block/TitleSteelMonoBlock.java",
-          "src/main/java/net/mcreator/ssc/block/entity/TitleSteelMonoBlockEntity.java",
           "src/main/resources/assets/ssc_14/models/block/title_steel_mono.json"
         ]
       },
@@ -7170,7 +7102,6 @@
       "registry_name": "title_steel_offset",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/block/entity/TitleSteelOffsetBlockEntity.java",
           "src/main/resources/assets/ssc_14/models/item/title_steel_offset.json",
           "src/main/java/net/mcreator/ssc/block/TitleSteelOffsetBlock.java",
           "src/main/resources/assets/ssc_14/items/title_steel_offset.json",
@@ -7193,7 +7124,6 @@
           "src/main/java/net/mcreator/ssc/block/TitleSteelPavementBlock.java",
           "src/main/resources/data/ssc_14/loot_table/blocks/title_steel_pavement.json",
           "src/main/resources/assets/ssc_14/blockstates/title_steel_pavement.json",
-          "src/main/java/net/mcreator/ssc/block/entity/TitleSteelPavementBlockEntity.java",
           "src/main/resources/assets/ssc_14/models/item/title_steel_pavement.json",
           "src/main/resources/assets/ssc_14/items/title_steel_pavement.json"
         ]
@@ -7211,7 +7141,6 @@
           "src/main/java/net/mcreator/ssc/block/TitleSteelHerringboneBlock.java",
           "src/main/resources/assets/ssc_14/items/title_steel_herringbone.json",
           "src/main/resources/assets/ssc_14/models/item/title_steel_herringbone.json",
-          "src/main/java/net/mcreator/ssc/block/entity/TitleSteelHerringboneBlockEntity.java",
           "src/main/resources/assets/ssc_14/models/block/title_steel_herringbone.json",
           "src/main/resources/assets/ssc_14/blockstates/title_steel_herringbone.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/title_steel_herringbone.json"
@@ -7227,7 +7156,6 @@
       "registry_name": "title_plastic",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/block/entity/TitlePlasticBlockEntity.java",
           "src/main/java/net/mcreator/ssc/block/TitlePlasticBlock.java",
           "src/main/resources/assets/ssc_14/items/title_plastic.json",
           "src/main/resources/assets/ssc_14/models/block/title_plastic.json",
@@ -7286,7 +7214,6 @@
           "src/main/resources/assets/ssc_14/items/title_dark_mini.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/title_dark_mini.json",
           "src/main/resources/assets/ssc_14/blockstates/title_dark_mini.json",
-          "src/main/java/net/mcreator/ssc/block/entity/TitleDarkMiniBlockEntity.java",
           "src/main/resources/assets/ssc_14/models/block/title_dark_mini.json",
           "src/main/resources/assets/ssc_14/models/item/title_dark_mini.json"
         ]
@@ -7305,7 +7232,6 @@
           "src/main/resources/data/ssc_14/loot_table/blocks/title_dark_mono.json",
           "src/main/java/net/mcreator/ssc/block/TitleDarkMonoBlock.java",
           "src/main/resources/assets/ssc_14/models/item/title_dark_mono.json",
-          "src/main/java/net/mcreator/ssc/block/entity/TitleDarkMonoBlockEntity.java",
           "src/main/resources/assets/ssc_14/blockstates/title_dark_mono.json",
           "src/main/resources/assets/ssc_14/models/block/title_dark_mono.json"
         ]
@@ -7322,7 +7248,6 @@
         "files": [
           "src/main/resources/assets/ssc_14/models/item/title_dark_offset.json",
           "src/main/resources/assets/ssc_14/models/block/title_dark_offset.json",
-          "src/main/java/net/mcreator/ssc/block/entity/TitleDarkOffsetBlockEntity.java",
           "src/main/resources/assets/ssc_14/blockstates/title_dark_offset.json",
           "src/main/java/net/mcreator/ssc/block/TitleDarkOffsetBlock.java",
           "src/main/resources/assets/ssc_14/items/title_dark_offset.json",
@@ -7344,7 +7269,6 @@
           "src/main/resources/assets/ssc_14/items/title_dark_pavement.json",
           "src/main/resources/assets/ssc_14/blockstates/title_dark_pavement.json",
           "src/main/resources/assets/ssc_14/models/item/title_dark_pavement.json",
-          "src/main/java/net/mcreator/ssc/block/entity/TitleDarkPavementBlockEntity.java",
           "src/main/resources/assets/ssc_14/models/block/title_dark_pavement.json"
         ]
       },
@@ -7360,7 +7284,6 @@
         "files": [
           "src/main/resources/assets/ssc_14/items/title_dark_pavement_vertical.json",
           "src/main/resources/assets/ssc_14/models/block/title_dark_pavement_vertical.json",
-          "src/main/java/net/mcreator/ssc/block/entity/TitleDarkPavementVerticalBlockEntity.java",
           "src/main/resources/data/ssc_14/loot_table/blocks/title_dark_pavement_vertical.json",
           "src/main/resources/assets/ssc_14/models/item/title_dark_pavement_vertical.json",
           "src/main/resources/assets/ssc_14/blockstates/title_dark_pavement_vertical.json",
@@ -7377,7 +7300,6 @@
       "registry_name": "title_dark_herringbone",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/block/entity/TitleDarkHerringboneBlockEntity.java",
           "src/main/resources/assets/ssc_14/items/title_dark_herringbone.json",
           "src/main/java/net/mcreator/ssc/block/TitleDarkHerringboneBlock.java",
           "src/main/resources/assets/ssc_14/models/block/title_dark_herringbone.json",
@@ -7399,7 +7321,6 @@
           "src/main/resources/data/ssc_14/loot_table/blocks/title_dark_plastic.json",
           "src/main/java/net/mcreator/ssc/block/TitleDarkPlasticBlock.java",
           "src/main/resources/assets/ssc_14/models/block/title_dark_plastic.json",
-          "src/main/java/net/mcreator/ssc/block/entity/TitleDarkPlasticBlockEntity.java",
           "src/main/resources/assets/ssc_14/models/item/title_dark_plastic.json",
           "src/main/resources/assets/ssc_14/items/title_dark_plastic.json",
           "src/main/resources/assets/ssc_14/blockstates/title_dark_plastic.json"
@@ -7962,7 +7883,7 @@
           "src/main/resources/assets/ssc_14/models/block/grille.json"
         ]
       },
-      "path": "~/Blocks"
+      "path": "~/Blocks/Other"
     },
     {
       "name": "BrokenGrille",
@@ -7980,7 +7901,7 @@
           "src/main/resources/assets/ssc_14/items/broken_grille.json"
         ]
       },
-      "path": "~/Blocks"
+      "path": "~/Blocks/Other"
     },
     {
       "name": "AsteroidStoneBase",
@@ -8923,37 +8844,6 @@
       "path": "~/Blocks/Titles/Catwalk"
     },
     {
-      "name": "CatwalkFloor_Broke",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "catwalk_floor_broke",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/CatwalkFloor_BrokeProcedure.java"
-        ]
-      },
-      "path": "~/Blocks/Titles/Catwalk"
-    },
-    {
       "name": "CrawlHandler",
       "type": "code",
       "compiles": true,
@@ -9173,6 +9063,809 @@
         ]
       },
       "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "C4",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "c_4",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/C4BlockEntity.java",
+          "src/main/resources/assets/ssc_14/items/c_4.json",
+          "src/main/resources/assets/ssc_14/models/block/c_4.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/c_4.json",
+          "src/main/resources/assets/ssc_14/models/item/c_4.json",
+          "src/main/java/net/mcreator/ssc/block/C4Block.java",
+          "src/main/resources/assets/ssc_14/blockstates/c_4.json"
+        ]
+      },
+      "path": "~/Items/Armament"
+    },
+    {
+      "name": "C4_activate_PR",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "c_4_activate_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/C4_activate_PRProcedure.java"
+        ]
+      },
+      "path": "~/Items/Armament"
+    },
+    {
+      "name": "Spark",
+      "type": "particle",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spark",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/particles/spark.json",
+          "src/main/java/net/mcreator/ssc/client/particle/SparkParticle.java"
+        ]
+      },
+      "path": "~/Dimension"
+    },
+    {
+      "name": "MachineFrame",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "machine_frame",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/machine_frame.json",
+          "src/main/resources/assets/ssc_14/models/block/machine_frame.json",
+          "src/main/resources/assets/ssc_14/blockstates/machine_frame.json",
+          "src/main/java/net/mcreator/ssc/block/MachineFrameBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/machine_frame.json",
+          "src/main/resources/assets/ssc_14/items/machine_frame.json"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame"
+    },
+    {
+      "name": "MachineFrame2_craft",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "machine_frame_2_craft",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MachineFrame2_craftProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame"
+    },
+    {
+      "name": "MachineFrame2",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "machine_frame_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/machine_frame_2.json",
+          "src/main/java/net/mcreator/ssc/block/entity/MachineFrame2BlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/machine_frame_2.json",
+          "src/main/resources/assets/ssc_14/models/item/machine_frame_2.json",
+          "src/main/resources/assets/ssc_14/blockstates/machine_frame_2.json",
+          "src/main/resources/assets/ssc_14/models/block/machine_frame_2.json",
+          "src/main/java/net/mcreator/ssc/block/MachineFrame2Block.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame"
+    },
+    {
+      "name": "MacFrameGUI",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mac_frame_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/world/inventory/MacFrameGUIMenu.java",
+          "src/main/java/net/mcreator/ssc/client/gui/MacFrameGUIScreen.java",
+          "src/main/java/net/mcreator/ssc/network/MacFrameGUISlotMessage.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame"
+    },
+    {
+      "name": "C4explorePR",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "c_4explore_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/C4explorePRProcedure.java"
+        ]
+      },
+      "path": "~/Items/Armament"
+    },
+    {
+      "name": "MacFrameGUIGreen",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mac_frame_gui_green",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MacFrameGUIGreenProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame/color_gui_element"
+    },
+    {
+      "name": "MacFrameGUIYellow",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mac_frame_gui_yellow",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MacFrameGUIYellowProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame/color_gui_element"
+    },
+    {
+      "name": "Capacitor",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "capacitor",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/CapacitorItem.java",
+          "src/main/resources/assets/ssc_14/models/item/capacitor.json",
+          "src/main/resources/assets/ssc_14/items/capacitor.json"
+        ]
+      },
+      "path": "~/Items/Utilits"
+    },
+    {
+      "name": "MatterBin",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "matter_bin",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/matter_bin.json",
+          "src/main/resources/assets/ssc_14/items/matter_bin.json",
+          "src/main/java/net/mcreator/ssc/item/MatterBinItem.java"
+        ]
+      },
+      "path": "~/Items/Utilits"
+    },
+    {
+      "name": "MicroManipulator",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "micro_manipulator",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/MicroManipulatorItem.java",
+          "src/main/resources/assets/ssc_14/models/item/micro_manipulator.json",
+          "src/main/resources/assets/ssc_14/items/micro_manipulator.json"
+        ]
+      },
+      "path": "~/Items/Utilits"
+    },
+    {
+      "name": "SubstationBoard",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "substation_board",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/substation_board.json",
+          "src/main/resources/assets/ssc_14/items/substation_board.json",
+          "src/main/java/net/mcreator/ssc/item/SubstationBoardItem.java"
+        ]
+      },
+      "path": "~/Items/Boards"
+    },
+    {
+      "name": "SMESBoard",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "smes_board",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/SMESBoardItem.java",
+          "src/main/resources/assets/ssc_14/models/item/smes_board.json",
+          "src/main/resources/assets/ssc_14/items/smes_board.json"
+        ]
+      },
+      "path": "~/Items/Boards"
+    },
+    {
+      "name": "APCBoard",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "apc_board",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/apc_board.json",
+          "src/main/java/net/mcreator/ssc/item/APCBoardItem.java",
+          "src/main/resources/assets/ssc_14/models/item/apc_board.json"
+        ]
+      },
+      "path": "~/Items/Boards"
+    },
+    {
+      "name": "Title_Placement_Conditions",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_placement_conditions",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Title_Placement_ConditionsProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "CatwalkPlacementConditions",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "catwalk_placement_conditions",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/CatwalkPlacementConditionsProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Titles/Catwalk"
+    },
+    {
+      "name": "CeilingPlacementConditions",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ceiling_placement_conditions",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/CeilingPlacementConditionsProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Titles/Up Tiles"
+    },
+    {
+      "name": "BrokeGrille",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "broke_grille",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/BrokeGrilleProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Other"
+    },
+    {
+      "name": "MacFrameGUItext1",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mac_frame_gu_itext_1",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MacFrameGUItext1Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame/Text PR"
+    },
+    {
+      "name": "SteelTable",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "steel_table",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/steel_table.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/steel_table.json",
+          "src/main/resources/assets/ssc_14/models/item/steel_table.json",
+          "src/main/java/net/mcreator/ssc/block/SteelTableBlock.java",
+          "src/main/resources/assets/ssc_14/items/steel_table.json",
+          "src/main/resources/assets/ssc_14/blockstates/steel_table.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Tables/Steel Table"
+    },
+    {
+      "name": "SteelTableBS",
+      "type": "blockstates",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "steel_table_bs",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_7.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_4.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_8.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_2.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_11.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_14.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_5.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_0.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_6.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_12.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_3.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_13.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_1.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_9.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_table_bs_blockstate_10.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Tables/Steel Table"
+    },
+    {
+      "name": "SteelTableStateUpdate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "steel_table_state_update",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/SteelTableStateUpdateProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Tables/Steel Table"
+    },
+    {
+      "name": "MacFrameGUItext2",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mac_frame_gu_itext_2",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MacFrameGUItext2Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame/Text PR"
+    },
+    {
+      "name": "MacFrameGUItext3",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mac_frame_gu_itext_3",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MacFrameGUItext3Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame/Text PR"
+    },
+    {
+      "name": "MacFrameGUItext4",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mac_frame_gu_itext_4",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MacFrameGUItext4Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame/Text PR"
+    },
+    {
+      "name": "MacFrameGUItext5",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mac_frame_gu_itext_5",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MacFrameGUItext5Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame/Text PR"
+    },
+    {
+      "name": "LowBatterie",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "low_batterie",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/LowBatterieItem.java",
+          "src/main/resources/assets/ssc_14/items/low_batterie.json",
+          "src/main/resources/assets/ssc_14/models/item/low_batterie.json"
+        ]
+      },
+      "path": "~/Items/Batteries/Low_Batterie"
+    },
+    {
+      "name": "MacFrameGUIBlockUpdate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mac_frame_gui_block_update",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MacFrameGUIBlockUpdateProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Machine Frame"
+    },
+    {
+      "name": "SteelStaircase",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "steel_staircase",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/steel_staircase.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_staircase.json",
+          "src/main/java/net/mcreator/ssc/block/SteelStaircaseBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/steel_staircase.json",
+          "src/main/resources/assets/ssc_14/models/item/steel_staircase.json",
+          "src/main/resources/assets/ssc_14/items/steel_staircase.json"
+        ]
+      },
+      "path": "~/Blocks/Titles/Stairs"
+    },
+    {
+      "name": "WhiteStaircase",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "white_staircase",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/white_staircase.json",
+          "src/main/java/net/mcreator/ssc/block/WhiteStaircaseBlock.java",
+          "src/main/resources/assets/ssc_14/items/white_staircase.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/white_staircase.json",
+          "src/main/resources/assets/ssc_14/models/block/white_staircase.json",
+          "src/main/resources/assets/ssc_14/blockstates/white_staircase.json"
+        ]
+      },
+      "path": "~/Blocks/Titles/Stairs"
+    },
+    {
+      "name": "DarkStaircase",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dark_staircase",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/dark_staircase.json",
+          "src/main/resources/assets/ssc_14/models/item/dark_staircase.json",
+          "src/main/resources/assets/ssc_14/items/dark_staircase.json",
+          "src/main/resources/assets/ssc_14/blockstates/dark_staircase.json",
+          "src/main/java/net/mcreator/ssc/block/DarkStaircaseBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/dark_staircase.json"
+        ]
+      },
+      "path": "~/Blocks/Titles/Stairs"
     }
   ],
   "variable_elements": [
@@ -9435,6 +10128,14 @@
       ],
       "category": "neutral",
       "subtitle": ""
+    },
+    {
+      "name": "welding_work",
+      "files": [
+        "welding_work"
+      ],
+      "category": "neutral",
+      "subtitle": ""
     }
   ],
   "tag_elements": {
@@ -9585,6 +10286,89 @@
       "CUSTOM:CaveFloor5",
       "CUSTOM:CaveFloor6",
       "CUSTOM:CaveFloor7"
+    ],
+    "BLOCKS:ssc14:suitable_for_tiles": [
+      "CUSTOM:Sheathing",
+      "CUSTOM:CaveFloor1",
+      "CUSTOM:CaveFloor2",
+      "CUSTOM:CaveFloor3",
+      "CUSTOM:CaveFloor4",
+      "CUSTOM:CaveFloor5",
+      "CUSTOM:CaveFloor6",
+      "CUSTOM:CaveFloor7"
+    ],
+    "BLOCKS:ssc14:suitable_for_catwalk": [
+      "CUSTOM:RodFloor",
+      "CUSTOM:Sheathing",
+      "CUSTOM:TitleSteel",
+      "CUSTOM:TitleDark",
+      "CUSTOM:TitleSteelDiagonalMini",
+      "CUSTOM:TitleSteelDiagonal",
+      "CUSTOM:TitleSteelMini",
+      "CUSTOM:TitleSteelMono",
+      "CUSTOM:TitleSteelOffset",
+      "CUSTOM:TitleSteelPavement",
+      "CUSTOM:TitleSteelHerringbone",
+      "CUSTOM:TitlePlastic",
+      "CUSTOM:TitleDarkDiagonalMini",
+      "CUSTOM:TitleDarkDiagonal",
+      "CUSTOM:TitleDarkMini",
+      "CUSTOM:TitleDarkOffset",
+      "CUSTOM:TitleDarkPavement",
+      "CUSTOM:TitleDarkPavementVertical",
+      "CUSTOM:TitleDarkHerringbone",
+      "CUSTOM:TitleDarkPlastic",
+      "CUSTOM:CaveFloor1",
+      "CUSTOM:CaveFloor2",
+      "CUSTOM:CaveFloor3",
+      "CUSTOM:CaveFloor4",
+      "CUSTOM:CaveFloor5",
+      "CUSTOM:CaveFloor6",
+      "CUSTOM:CaveFloor7",
+      "CUSTOM:TitleWhite",
+      "CUSTOM:TitleWhiteDiagonalMini",
+      "CUSTOM:TitleWhiteDiagonal",
+      "CUSTOM:TitleWhiteHerringbone",
+      "CUSTOM:TitleWhiteMini",
+      "CUSTOM:TitleWhiteMono",
+      "CUSTOM:TitleWhiteOffset",
+      "CUSTOM:TitleWhitePavement",
+      "CUSTOM:TitleWhitePavementVertical",
+      "CUSTOM:TitleWhitePlastic"
+    ],
+    "BLOCKS:ssc14:suitable_for_ceiling": [
+      "CUSTOM:UperSheathing",
+      "CUSTOM:CaveFloor1",
+      "CUSTOM:CaveFloor2",
+      "CUSTOM:CaveFloor3",
+      "CUSTOM:CaveFloor4",
+      "CUSTOM:CaveFloor5",
+      "CUSTOM:CaveFloor6",
+      "CUSTOM:CaveFloor7"
+    ],
+    "ITEMS:ssc14:mac_fr_boards": [
+      "CUSTOM:SubstationBoard",
+      "CUSTOM:SMESBoard"
+    ],
+    "BLOCKS:ssc14:tables": [
+      "CUSTOM:SteelTable"
+    ],
+    "ITEMS:ssc14:mac_fr_components": [
+      "CUSTOM:Steel",
+      "CUSTOM:LowVoltageCable",
+      "CUSTOM:MediumVoltageCable",
+      "CUSTOM:HighVoltageCable",
+      "CUSTOM:Glass",
+      "CUSTOM:Plastic",
+      "CUSTOM:Capacitor",
+      "CUSTOM:MatterBin",
+      "CUSTOM:MicroManipulator",
+      "CUSTOM:LowBatterie"
+    ],
+    "BLOCKS:ssc14:tiles_up": [
+      "CUSTOM:UpTitle",
+      "CUSTOM:UpTitleSteel",
+      "CUSTOM:UpTitleDark"
     ]
   },
   "tab_element_order": {
@@ -9620,6 +10404,7 @@
       "TitleSteelPavement",
       "TitleSteelHerringbone",
       "TitlePlastic",
+      "SteelStaircase",
       "TitleDark",
       "TitleDarkDiagonalMini",
       "TitleDarkDiagonal",
@@ -9630,6 +10415,7 @@
       "TitleDarkPavementVertical",
       "TitleDarkHerringbone",
       "TitleDarkPlastic",
+      "DarkStaircase",
       "TitleWhite",
       "TitleWhiteDiagonalMini",
       "TitleWhiteDiagonal",
@@ -9640,6 +10426,7 @@
       "TitleWhitePavementVertical",
       "TitleWhiteHerringbone",
       "TitleWhitePlastic",
+      "WhiteStaircase",
       "CaveFloor1"
     ],
     "CUSTOM:SSC14Walls": [
@@ -9670,8 +10457,14 @@
       "SMES",
       "Lamp",
       "TechLamp",
+      "MachineFrame",
+      "MachineFrame2",
       "ConsoleOfID",
       "PortableSheater",
+      "SteelTable",
+      "DarkStaircase",
+      "SteelStaircase",
+      "WhiteStaircase",
       "GravityGenerator"
     ],
     "CUSTOM:SSC14Items": [
@@ -9704,8 +10497,16 @@
       "RawSilver",
       "RawUran",
       "RawDiamond",
+      "C4",
+      "Capacitor",
+      "MatterBin",
+      "MicroManipulator",
+      "LowBatterie",
       "LedLightTube",
       "LightBulb",
+      "SubstationBoard",
+      "SMESBoard",
+      "APCBoard",
       "EnergyBar",
       "EnergyBar2",
       "IDCardPassanger",
@@ -9954,7 +10755,7 @@
       "item.ssc_14.portable_sheater": "Portable Sheater",
       "item.ssc_14.silver": "Silver",
       "item.ssc_14.ssc_14_gold": "Gold",
-      "item.ssc_14.uran": "Uran",
+      "item.ssc_14.uran": "Uranium",
       "item.ssc_14.plasma": "Plasma",
       "item.ssc_14.plastic": "Plastic",
       "item.ssc_14.plasteel_wall": "Plasteel Wall",
@@ -10141,16 +10942,16 @@
       "item.ssc_14.cave_floor_6": "Cave Floor",
       "item.ssc_14.cave_floor_7": "Cave Floor",
       "item.ssc_14.gravity_generator": "Gravity Generator",
-      "gui.ssc_14.grav_gen_gui.label_pitaniie": "Питание: ",
-      "gui.ssc_14.grav_gen_gui.label_status": "Статус: ",
+      "gui.ssc_14.grav_gen_gui.label_pitaniie": "Power:",
+      "gui.ssc_14.grav_gen_gui.label_status": "Status:",
       "gui.ssc_14.grav_gen_gui.label_eta": "ETA: ",
-      "gui.ssc_14.grav_gen_gui.label_zariad": "Заряд: ",
-      "gui.ssc_14.grav_gen_gui.label_polnostiu_zariazhien": "Заряжен",
+      "gui.ssc_14.grav_gen_gui.label_zariad": "Charge: ",
+      "gui.ssc_14.grav_gen_gui.label_polnostiu_zariazhien": "Charged",
       "gui.ssc_14.grav_gen_gui.label_nd": "N/D",
       "gui.ssc_14.grav_gen_gui.label_100": "100%",
-      "gui.ssc_14.grav_gen_gui.label_empty": "Заряжается",
+      "gui.ssc_14.grav_gen_gui.label_empty": "Сharging",
       "gui.ssc_14.grav_gen_gui.label_razriazhaietsia": "Разряжается",
-      "gui.ssc_14.grav_gen_gui.label_vykliuchien": "Выключен",
+      "gui.ssc_14.grav_gen_gui.label_vykliuchien": "Disconnected",
       "item.ssc_14.title_white": "White Title",
       "item.ssc_14.title_white_diagonal_mini": "White Diagonal Mini Tile",
       "item.ssc_14.catwalk_floor": "Catwalk Floor",
@@ -10163,7 +10964,23 @@
       "item.ssc_14.title_white_offset": "White Offset Tile",
       "item.ssc_14.title_white_pavement": "White Pavement Tile",
       "item.ssc_14.title_white_pavement_vertical": "White Pavement Vertical Tile",
-      "item.ssc_14.title_white_plastic": "White Plastic Tile"
+      "item.ssc_14.title_white_plastic": "White Plastic Tile",
+      "item.ssc_14.c_4": "C4",
+      "item.ssc_14.machine_frame": "Machine Frame",
+      "item.ssc_14.machine_frame_2": "Machine Frame",
+      "item.ssc_14.capacitor": "Capacitor",
+      "item.ssc_14.matter_bin": "Matter Bin",
+      "item.ssc_14.micro_manipulator": "Micro Manipulator",
+      "item.ssc_14.substation_board": "Substation Board",
+      "item.ssc_14.smes_board": "SMES Board",
+      "item.ssc_14.apc_board": "APC Board",
+      "subtitles.welding_work": "",
+      "gui.ssc_14.mac_frame_gui.label_empty": "",
+      "item.ssc_14.steel_table": "Steel Table",
+      "item.ssc_14.low_batterie": "Low Batterie",
+      "item.ssc_14.steel_staircase": "Steel Staircase",
+      "item.ssc_14.white_staircase": "White Staircase",
+      "item.ssc_14.dark_staircase": "Dark Staircase"
     },
     "ru_ru": {
       "biome.ssc_14.spaceb": "Космос",
@@ -10558,15 +11375,31 @@
       "item.ssc_14.title_white_diagonal_mini": "Белая мини диагональная плитка",
       "item.ssc_14.catwalk_floor": "Мостик",
       "key.ssc14.crawl": "Ползти",
-      "key.ssc_14.crawl": "Crawl",
-      "item.ssc_14.title_white_diagonal": "White Diagonal Mini Tile",
-      "item.ssc_14.title_white_herringbone": "White Diagonal Tile",
-      "item.ssc_14.title_white_mini": "White Herringbone Tile",
-      "item.ssc_14.title_white_mono": "White Mini Tile",
-      "item.ssc_14.title_white_offset": "White Mono Tile",
-      "item.ssc_14.title_white_pavement": "White Offset Tile",
-      "item.ssc_14.title_white_pavement_vertical": "White Pavement Tile",
-      "item.ssc_14.title_white_plastic": "White Pavement Vertical Tile"
+      "key.ssc_14.crawl": "Ползти",
+      "item.ssc_14.title_white_diagonal": "Белая диагональная плитка",
+      "item.ssc_14.title_white_herringbone": "Белая плитка ёлочкой",
+      "item.ssc_14.title_white_mini": "Белая мини плитка",
+      "item.ssc_14.title_white_mono": "Белая моно плитка",
+      "item.ssc_14.title_white_offset": "Белая смещённая плитка",
+      "item.ssc_14.title_white_pavement": "Белая тротуарная плитка",
+      "item.ssc_14.title_white_pavement_vertical": "Белая вертикальная тротуарная плитка",
+      "item.ssc_14.title_white_plastic": "Белая пластиковая плитка",
+      "item.ssc_14.c_4": "C4",
+      "item.ssc_14.machine_frame": "Каркас машины",
+      "item.ssc_14.machine_frame_2": "Каркас машины",
+      "item.ssc_14.capacitor": "Конденсатор",
+      "item.ssc_14.matter_bin": "Хранилище материи",
+      "item.ssc_14.micro_manipulator": "Микро манипулятор",
+      "item.ssc_14.substation_board": "Подстанция (машинная плата)",
+      "item.ssc_14.smes_board": "СМЭС (машинная плата)",
+      "item.ssc_14.apc_board": "Микросхема ЛКП",
+      "subtitles.welding_work": "",
+      "gui.ssc_14.mac_frame_gui.label_empty": "",
+      "item.ssc_14.steel_table": "Стальной стол",
+      "item.ssc_14.low_batterie": "Low Batterie",
+      "item.ssc_14.steel_staircase": "Steel Staircase",
+      "item.ssc_14.white_staircase": "Steel Staircase",
+      "item.ssc_14.dark_staircase": "White Staircase"
     }
   },
   "metadata": {
@@ -10717,6 +11550,19 @@
               {
                 "name": "GravGen",
                 "children": []
+              },
+              {
+                "name": "Machine Frame",
+                "children": [
+                  {
+                    "name": "color_gui_element",
+                    "children": []
+                  },
+                  {
+                    "name": "Text PR",
+                    "children": []
+                  }
+                ]
               }
             ]
           },
@@ -10729,6 +11575,10 @@
               },
               {
                 "name": "Catwalk",
+                "children": []
+              },
+              {
+                "name": "Stairs",
                 "children": []
               }
             ]
@@ -10743,6 +11593,20 @@
           },
           {
             "name": "Furniture",
+            "children": [
+              {
+                "name": "Tables",
+                "children": [
+                  {
+                    "name": "Steel Table",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Other",
             "children": []
           }
         ]
@@ -10791,6 +11655,23 @@
           {
             "name": "Utilits",
             "children": []
+          },
+          {
+            "name": "Armament",
+            "children": []
+          },
+          {
+            "name": "Boards",
+            "children": []
+          },
+          {
+            "name": "Batteries",
+            "children": [
+              {
+                "name": "Low_Batterie",
+                "children": []
+              }
+            ]
           }
         ]
       },
@@ -10808,7 +11689,7 @@
   "workspaceSettings": {
     "modid": "ssc_14",
     "modName": "Space Station Craft 14",
-    "version": "0.1.9",
+    "version": "0.1.12",
     "description": "Повторённая в Minecraft игра Space Station 14. Основатель - Space Kyyyst. В разработке принимали участие: Loksik, almazar3, bombu, sad2284, Sledge Hammer, Mr_irak, ...",
     "author": "Space_Kyyyst",
     "websiteURL": "https://www.youtube.com/@Space.kyyyst",

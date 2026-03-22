@@ -10,7 +10,6 @@ public class CrawlPrProcedure {
 		if (entity instanceof Player player) {
 			boolean isCrawling = player.getPersistentData().getBoolean("ssc14_is_crawling").orElse(false);
 			player.getPersistentData().putBoolean("ssc14_is_crawling", !isCrawling);
-			System.out.println("[CRAWL] Toggled: " + !isCrawling);
 		}
 		entity.stopRiding();
 	}

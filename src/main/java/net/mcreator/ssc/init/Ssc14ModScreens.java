@@ -20,6 +20,7 @@ public class Ssc14ModScreens {
 		event.register(Ssc14ModMenus.ACCESS_CONFIG_GUI.get(), AccessConfigGUIScreen::new);
 		event.register(Ssc14ModMenus.CABEL_PANNEL_AIRLOCK.get(), CabelPannelAirlockScreen::new);
 		event.register(Ssc14ModMenus.GRAV_GEN_GUI.get(), GravGenGUIScreen::new);
+		event.register(Ssc14ModMenus.MAC_FRAME_GUI.get(), MacFrameGUIScreen::new);
 	}
 
 	public interface ScreenAccessor {

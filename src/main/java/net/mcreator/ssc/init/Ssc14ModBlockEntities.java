@@ -32,23 +32,10 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DEBUGgeneratorBlockEntity>> DEBU_GGENERATOR = register("debu_ggenerator", Ssc14ModBlocks.DEBU_GGENERATOR, DEBUGgeneratorBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AirlockUpPlugBlockEntity>> AIRLOCK_UP_PLUG = register("airlock_up_plug", Ssc14ModBlocks.AIRLOCK_UP_PLUG, AirlockUpPlugBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AirlockUpPlugOPENBlockEntity>> AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN, AirlockUpPlugOPENBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleSteelMiniBlockEntity>> TITLE_STEEL_MINI = register("title_steel_mini", Ssc14ModBlocks.TITLE_STEEL_MINI, TitleSteelMiniBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleSteelMonoBlockEntity>> TITLE_STEEL_MONO = register("title_steel_mono", Ssc14ModBlocks.TITLE_STEEL_MONO, TitleSteelMonoBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleSteelOffsetBlockEntity>> TITLE_STEEL_OFFSET = register("title_steel_offset", Ssc14ModBlocks.TITLE_STEEL_OFFSET, TitleSteelOffsetBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleSteelPavementBlockEntity>> TITLE_STEEL_PAVEMENT = register("title_steel_pavement", Ssc14ModBlocks.TITLE_STEEL_PAVEMENT, TitleSteelPavementBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleSteelHerringboneBlockEntity>> TITLE_STEEL_HERRINGBONE = register("title_steel_herringbone", Ssc14ModBlocks.TITLE_STEEL_HERRINGBONE,
-			TitleSteelHerringboneBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitlePlasticBlockEntity>> TITLE_PLASTIC = register("title_plastic", Ssc14ModBlocks.TITLE_PLASTIC, TitlePlasticBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleDarkMiniBlockEntity>> TITLE_DARK_MINI = register("title_dark_mini", Ssc14ModBlocks.TITLE_DARK_MINI, TitleDarkMiniBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleDarkMonoBlockEntity>> TITLE_DARK_MONO = register("title_dark_mono", Ssc14ModBlocks.TITLE_DARK_MONO, TitleDarkMonoBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleDarkOffsetBlockEntity>> TITLE_DARK_OFFSET = register("title_dark_offset", Ssc14ModBlocks.TITLE_DARK_OFFSET, TitleDarkOffsetBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleDarkPavementBlockEntity>> TITLE_DARK_PAVEMENT = register("title_dark_pavement", Ssc14ModBlocks.TITLE_DARK_PAVEMENT, TitleDarkPavementBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleDarkPavementVerticalBlockEntity>> TITLE_DARK_PAVEMENT_VERTICAL = register("title_dark_pavement_vertical", Ssc14ModBlocks.TITLE_DARK_PAVEMENT_VERTICAL,
-			TitleDarkPavementVerticalBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleDarkHerringboneBlockEntity>> TITLE_DARK_HERRINGBONE = register("title_dark_herringbone", Ssc14ModBlocks.TITLE_DARK_HERRINGBONE, TitleDarkHerringboneBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleDarkPlasticBlockEntity>> TITLE_DARK_PLASTIC = register("title_dark_plastic", Ssc14ModBlocks.TITLE_DARK_PLASTIC, TitleDarkPlasticBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SMESBlockEntity>> SMES = register("smes", Ssc14ModBlocks.SMES, SMESBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GravityGeneratorBlockEntity>> GRAVITY_GENERATOR = register("gravity_generator", Ssc14ModBlocks.GRAVITY_GENERATOR, GravityGeneratorBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<C4BlockEntity>> C_4 = register("c_4", Ssc14ModBlocks.C_4, C4BlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MachineFrame2BlockEntity>> MACHINE_FRAME_2 = register("machine_frame_2", Ssc14ModBlocks.MACHINE_FRAME_2, MachineFrame2BlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities
@@ -68,20 +55,9 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, DEBU_GGENERATOR.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AIRLOCK_UP_PLUG.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AIRLOCK_UP_PLUG_OPEN.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_STEEL_MINI.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_STEEL_MONO.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_STEEL_OFFSET.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_STEEL_PAVEMENT.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_STEEL_HERRINGBONE.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_PLASTIC.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_DARK_MINI.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_DARK_MONO.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_DARK_OFFSET.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_DARK_PAVEMENT.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_DARK_PAVEMENT_VERTICAL.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_DARK_HERRINGBONE.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TITLE_DARK_PLASTIC.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, SMES.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, GRAVITY_GENERATOR.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, C_4.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, MACHINE_FRAME_2.get(), SidedInvWrapper::new);
 	}
 }

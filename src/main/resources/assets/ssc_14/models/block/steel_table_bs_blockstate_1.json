@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/steel_table",
+  "textures": {
+    "all": "ssc_14:block/steel_table",
+    "particle": "ssc_14:block/steel_table",
+    "2": "ssc_14:block/steel_table_texture_e"
+  },
+  "render_type": "cutout"
+}

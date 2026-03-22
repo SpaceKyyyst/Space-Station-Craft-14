@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/machine_frame_ready",
+  "textures": {
+    "all": "ssc_14:block/pribor_karkas_gotov_item",
+    "particle": "ssc_14:block/pribor_karkas_gotov_item",
+    "1": "ssc_14:block/pribor_karcas_gotov"
+  },
+  "render_type": "cutout"
+}

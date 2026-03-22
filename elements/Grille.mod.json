@@ -139,6 +139,9 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
+    "onDestroyedByPlayer": {
+      "name": "BrokeGrille"
+    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [

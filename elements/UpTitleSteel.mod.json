@@ -68,7 +68,7 @@
     "enchantPowerBonus": 0.0,
     "plantsGrowOn": false,
     "canRedstoneConnect": false,
-    "lightOpacity": 0,
+    "lightOpacity": 15,
     "tickRate": 0,
     "tickRandomly": false,
     "isReplaceable": false,
@@ -117,6 +117,9 @@
     "luminance": 0,
     "unbreakable": false,
     "vanillaToolTier": "NONE",
+    "placingCondition": {
+      "name": "CeilingPlacementConditions"
+    },
     "isBonemealable": false,
     "sensitiveToVibration": false,
     "vibrationalEvents": [],
@@ -139,12 +142,6 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
-    "onBlockAdded": {
-      "name": "UpTitle_Check"
-    },
-    "onNeighbourBlockChanges": {
-      "name": "UpTitle_Check"
-    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [

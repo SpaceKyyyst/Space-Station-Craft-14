@@ -94,7 +94,7 @@
     ],
     "destroyTool": "Not specified",
     "customDrop": {
-      "value": ""
+      "value": "CUSTOM:Rood"
     },
     "dropAmount": 1,
     "xpAmountMin": 0,
@@ -153,6 +153,9 @@
     "luminance": 0,
     "unbreakable": false,
     "vanillaToolTier": "NONE",
+    "placingCondition": {
+      "name": "CatwalkPlacementConditions"
+    },
     "isBonemealable": false,
     "sensitiveToVibration": false,
     "vibrationalEvents": [],
@@ -175,9 +178,6 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
-    "onBlockAdded": {
-      "name": "CatwalkFloor_Broke"
-    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [

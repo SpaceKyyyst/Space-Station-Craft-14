@@ -43,7 +43,7 @@ public class WorldCheckUIOverlay {
 
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 
-					WOCtextP1Procedure.execute(world, entity), w / 2 + 5, h / 2 + 3, -1, false);
+					WOCtextP1Procedure.execute(entity), w / 2 + 5, h / 2 + 3, -1, false);
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_proc_wo_ctext_p_2"), w / 2 + 5, h / 2 + 26, -1, false);
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 

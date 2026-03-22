@@ -8,6 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.Dist;
 
+import net.mcreator.ssc.client.particle.SparkParticle;
 import net.mcreator.ssc.client.particle.GravGenParticle4Particle;
 import net.mcreator.ssc.client.particle.GravGenParticle3Particle;
 import net.mcreator.ssc.client.particle.GravGenParticle2Particle;
@@ -21,5 +22,6 @@ public class Ssc14ModParticles {
 		event.registerSpriteSet(Ssc14ModParticleTypes.GRAV_GEN_PARTICLE_2.get(), GravGenParticle2Particle::provider);
 		event.registerSpriteSet(Ssc14ModParticleTypes.GRAV_GEN_PARTICLE_3.get(), GravGenParticle3Particle::provider);
 		event.registerSpriteSet(Ssc14ModParticleTypes.GRAV_GEN_PARTICLE_4.get(), GravGenParticle4Particle::provider);
+		event.registerSpriteSet(Ssc14ModParticleTypes.SPARK.get(), SparkParticle::provider);
 	}
 }

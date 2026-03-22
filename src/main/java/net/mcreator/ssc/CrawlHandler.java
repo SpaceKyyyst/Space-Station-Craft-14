@@ -14,14 +14,11 @@ public class CrawlHandler {
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Pre event) {
-    	System.out.println("[CRAWL] EVENT FIRED!");
         Player player = event.getEntity();
         
         boolean isCrawling = player.getPersistentData()
                                    .getBoolean("ssc14_is_crawling")
                                    .orElse(false);
-
-        System.out.println("[CRAWL] State: " + isCrawling + ", Pose: " + player.getPose());
 
         if (isCrawling) {
             // Устанавливаем позу плавания

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ssc_14:block/dark_staircase"
+    },
+    "facing=east": {
+      "model": "ssc_14:block/dark_staircase",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ssc_14:block/dark_staircase",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ssc_14:block/dark_staircase",
+      "y": 270
+    }
+  }
+}

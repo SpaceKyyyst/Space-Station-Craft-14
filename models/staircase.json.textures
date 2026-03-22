@@ -1,0 +1,22 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "3": "staircase_texture"
+      }
+    },
+    "dark": {
+      "name": "dark",
+      "map": {
+        "3": "dark_staircase_texture"
+      }
+    },
+    "white": {
+      "name": "white",
+      "map": {
+        "3": "white_staircase_texture"
+      }
+    }
+  }
+}

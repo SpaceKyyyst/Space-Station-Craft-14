@@ -53,7 +53,7 @@
         "data": {
           "name": "label_pitaniie",
           "text": {
-            "fixedValue": "Питание: "
+            "fixedValue": "Power:"
           },
           "color": {
             "value": -1,
@@ -69,7 +69,7 @@
         "data": {
           "name": "label_status",
           "text": {
-            "fixedValue": "Статус: "
+            "fixedValue": "Status:"
           },
           "color": {
             "value": -1,
@@ -101,7 +101,7 @@
         "data": {
           "name": "label_zariad",
           "text": {
-            "fixedValue": "Заряд: "
+            "fixedValue": "Charge: "
           },
           "color": {
             "value": -1,
@@ -117,7 +117,7 @@
         "data": {
           "name": "label_polnostiu_zariazhien",
           "text": {
-            "fixedValue": "Заряжен"
+            "fixedValue": "Charged"
           },
           "color": {
             "value": -13663425,
@@ -170,7 +170,7 @@
         "data": {
           "name": "label_empty",
           "text": {
-            "fixedValue": "Заряжается"
+            "fixedValue": "Сharging"
           },
           "color": {
             "value": -8226258,
@@ -208,7 +208,7 @@
         "data": {
           "name": "label_vykliuchien",
           "text": {
-            "fixedValue": "Выключен"
+            "fixedValue": "Disconnected"
           },
           "color": {
             "value": -8245714,

@@ -153,6 +153,9 @@
     "luminance": 0,
     "unbreakable": false,
     "vanillaToolTier": "NONE",
+    "placingCondition": {
+      "name": "Title_Placement_Conditions"
+    },
     "isBonemealable": false,
     "sensitiveToVibration": false,
     "vibrationalEvents": [],
@@ -175,12 +178,6 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
-    "onBlockAdded": {
-      "name": "TitleSteel_Chek"
-    },
-    "onNeighbourBlockChanges": {
-      "name": "TitleSteel_Chek"
-    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [
