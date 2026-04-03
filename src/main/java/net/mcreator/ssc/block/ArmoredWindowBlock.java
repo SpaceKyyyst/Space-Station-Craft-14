@@ -20,7 +20,7 @@ public class ArmoredWindowBlock extends Block {
 	private static final VoxelShape SHAPE = box(0, 0, 0, 16, 16, 16);
 
 	public ArmoredWindowBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.GLASS).strength(100f, 15f).lightLevel(s -> (new Object() {
+		super(properties.sound(SoundType.GLASS).strength(100f, 12f).lightLevel(s -> (new Object() {
 			public int getLightLevel() {
 				if (s.getValue(BLOCKSTATE) == 1)
 					return 0;

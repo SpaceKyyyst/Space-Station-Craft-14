@@ -36,42 +36,6 @@
         "My": 16.0,
         "Mz": 16.0,
         "subtract": false
-      },
-      {
-        "mx": 1.0,
-        "my": 0.0,
-        "mz": 1.0,
-        "Mx": 3.0,
-        "My": 14.0,
-        "Mz": 3.0,
-        "subtract": false
-      },
-      {
-        "mx": 13.0,
-        "my": 0.0,
-        "mz": 13.0,
-        "Mx": 15.0,
-        "My": 14.0,
-        "Mz": 15.0,
-        "subtract": false
-      },
-      {
-        "mx": 1.0,
-        "my": 0.0,
-        "mz": 13.0,
-        "Mx": 3.0,
-        "My": 14.0,
-        "Mz": 15.0,
-        "subtract": false
-      },
-      {
-        "mx": 13.0,
-        "my": 0.0,
-        "mz": 1.0,
-        "Mx": 15.0,
-        "My": 14.0,
-        "Mz": 3.0,
-        "subtract": false
       }
     ],
     "customProperties": [],

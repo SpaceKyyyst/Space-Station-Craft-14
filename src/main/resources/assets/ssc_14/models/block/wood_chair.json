@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/wood_chair",
+  "textures": {
+    "all": "ssc_14:block/wood_chair_item",
+    "particle": "ssc_14:block/wood_chair_item",
+    "3": "ssc_14:block/wood_chair_t"
+  },
+  "render_type": "cutout"
+}

@@ -1,0 +1,200 @@
+{
+  "_fv": 79,
+  "_type": "block",
+  "definition": {
+    "texture": "bar_chair_item",
+    "textureTop": "",
+    "textureLeft": "",
+    "textureFront": "",
+    "textureRight": "",
+    "textureBack": "",
+    "renderType": 2,
+    "customModelName": "bar_chair:default",
+    "rotationMode": 1,
+    "enablePitch": false,
+    "emissiveRendering": false,
+    "displayFluidOverlay": false,
+    "animations": [],
+    "itemTexture": "bar_chair_item",
+    "particleTexture": "",
+    "blockSetType": "OAK",
+    "pottedPlant": {
+      "value": ""
+    },
+    "tintType": "No tint",
+    "isItemTinted": false,
+    "hasTransparency": true,
+    "connectedSides": false,
+    "transparencyType": "CUTOUT",
+    "disableOffset": false,
+    "boundingBoxes": [
+      {
+        "mx": 3.0,
+        "my": 8.0,
+        "mz": 3.0,
+        "Mx": 13.0,
+        "My": 11.0,
+        "Mz": 13.0,
+        "subtract": false
+      },
+      {
+        "mx": 5.0,
+        "my": 7.0,
+        "mz": 5.0,
+        "Mx": 11.0,
+        "My": 8.0,
+        "Mz": 11.0,
+        "subtract": false
+      },
+      {
+        "mx": 5.0,
+        "my": 8.0,
+        "mz": 13.0,
+        "Mx": 11.0,
+        "My": 14.0,
+        "Mz": 14.0,
+        "subtract": false
+      },
+      {
+        "mx": 4.0,
+        "my": 0.0,
+        "mz": 4.0,
+        "Mx": 12.0,
+        "My": 1.0,
+        "Mz": 12.0,
+        "subtract": false
+      },
+      {
+        "mx": 7.0,
+        "my": 1.0,
+        "mz": 7.0,
+        "Mx": 9.0,
+        "My": 7.0,
+        "Mz": 9.0,
+        "subtract": false
+      }
+    ],
+    "customProperties": [],
+    "name": "Bar chair",
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "hardness": 5.0,
+    "resistance": 5.0,
+    "hasGravity": false,
+    "isWaterloggable": false,
+    "hasBlockItem": true,
+    "maxStackSize": 1,
+    "rarity": "COMMON",
+    "immuneToFire": false,
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:SSC14Objects"
+      }
+    ],
+    "destroyTool": "Not specified",
+    "customDrop": {
+      "value": "CUSTOM:Steel"
+    },
+    "dropAmount": 1,
+    "xpAmountMin": 0,
+    "xpAmountMax": 0,
+    "useLootTableForDrops": false,
+    "requiresCorrectTool": false,
+    "enchantPowerBonus": 0.0,
+    "plantsGrowOn": false,
+    "canRedstoneConnect": false,
+    "lightOpacity": 0,
+    "tickRate": 5,
+    "tickRandomly": false,
+    "isReplaceable": false,
+    "canProvidePower": false,
+    "emittedRedstonePower": {
+      "fixedValue": 15.0
+    },
+    "colorOnMap": "DEFAULT",
+    "noteBlockInstrument": "harp",
+    "creativePickItem": {
+      "value": ""
+    },
+    "offsetType": "NONE",
+    "aiPathNodeType": "DEFAULT",
+    "strippingResult": {
+      "value": ""
+    },
+    "ignitedByLava": false,
+    "flammability": 0,
+    "fireSpreadSpeed": 0,
+    "isLadder": false,
+    "slipperiness": 0.6,
+    "speedFactor": 1.0,
+    "jumpFactor": 1.0,
+    "reactionToPushing": "NORMAL",
+    "isNotColidable": true,
+    "isCustomSoundType": false,
+    "soundOnStep": {
+      "value": "IRON"
+    },
+    "breakSound": {
+      "value": ""
+    },
+    "fallSound": {
+      "value": ""
+    },
+    "hitSound": {
+      "value": ""
+    },
+    "placeSound": {
+      "value": ""
+    },
+    "stepSound": {
+      "value": ""
+    },
+    "luminance": 0,
+    "unbreakable": false,
+    "vanillaToolTier": "NONE",
+    "isBonemealable": false,
+    "sensitiveToVibration": false,
+    "vibrationalEvents": [],
+    "vibrationSensitivityRadius": {
+      "fixedValue": 7.0
+    },
+    "hasInventory": false,
+    "openGUIOnRightClick": false,
+    "inventorySize": 9,
+    "inventoryStackSize": 99,
+    "inventoryDropWhenDestroyed": true,
+    "inventoryComparatorPower": true,
+    "inventoryOutSlotIDs": [],
+    "inventoryInSlotIDs": [],
+    "hasEnergyStorage": false,
+    "energyInitial": 0,
+    "energyCapacity": 400000,
+    "energyMaxReceive": 200,
+    "energyMaxExtract": 200,
+    "isFluidTank": false,
+    "fluidCapacity": 8000,
+    "fluidRestrictions": [],
+    "onRightClicked": {
+      "name": "Sit_On_Chair_PR"
+    },
+    "onBlockAdded": {
+      "name": "Chair_Ent_Generation"
+    },
+    "onTickUpdate": {
+      "name": "OficeChair_Autorotate"
+    },
+    "generateFeature": false,
+    "restrictionBiomes": [],
+    "blocksToReplace": [
+      {
+        "value": "TAG:stone_ore_replaceables"
+      }
+    ],
+    "generationShape": "UNIFORM",
+    "frequencyPerChunks": 10,
+    "frequencyOnChunk": 16,
+    "minGenerateHeight": 0,
+    "maxGenerateHeight": 64
+  }
+}

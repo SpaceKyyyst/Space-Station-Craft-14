@@ -4,7 +4,7 @@ license="Academic Free License v3.0"
 
 [[mods]]
 modId="ssc_14"
-version="0.1.11"
+version="0.1.13"
 displayName="Space Station Craft 14"
 displayURL="https://www.youtube.com/@Space.kyyyst"
 logoFile="logo.png"
@@ -40,6 +40,12 @@ description="\u041F\u043E\u0432\u0442\u043E\u0440\u0451\u043D\u043D\u0430\u044F 
     ordering="NONE"
     side="BOTH"
 
+[[dependencies.ssc_14]]
+    modId="curios_api"
+    type="optional"
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
 
 
 # Start of user code block dependencies configuration

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "ssc_14:block/fl_grasslight3_texture",
+    "up": "ssc_14:block/fl_grasslight1_texture",
+    "north": "ssc_14:block/fl_grasslight2_texture",
+    "east": "ssc_14:block/fl_grasslight4_texture",
+    "south": "ssc_14:block/fl_grasslight2_texture",
+    "west": "ssc_14:block/fl_grasslight4_texture",
+    "particle": "ssc_14:block/fl_grasslight3_texture"
+  },
+  "render_type": "solid"
+}

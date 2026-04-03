@@ -15,7 +15,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_n",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -28,7 +38,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_e",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -41,7 +61,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_s",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -54,7 +84,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_w",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -67,7 +107,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_ne",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -80,7 +130,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_es",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -93,7 +153,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_sw",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -106,7 +176,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_nw",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -119,7 +199,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_ns",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -132,7 +222,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_ew",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -145,7 +245,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_nsw",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -158,7 +268,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_nes",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -171,7 +291,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_new",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -184,7 +314,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_esw",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       },
       {
         "texture": "steel_table",
@@ -197,7 +337,17 @@
         "renderType": 2,
         "customModelName": "steel_table:steel_table_nesw",
         "luminance": 0,
-        "boundingBoxes": []
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
       }
     ]
   }

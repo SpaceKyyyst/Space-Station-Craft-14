@@ -176,6 +176,9 @@
     "onTickUpdate": {
       "name": "GravGenTICprocedure"
     },
+    "onDestroyedByPlayer": {
+      "name": "GravityGenerator_Destroy"
+    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [

@@ -13,7 +13,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "techlamp:on",
+        "customModelName": "techlamp:default",
         "luminance": 12,
         "boundingBoxes": []
       },
@@ -26,7 +26,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "techlamp:broken",
+        "customModelName": "techlamp_2:broke",
         "luminance": 0,
         "boundingBoxes": []
       },
@@ -39,7 +39,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "techlamp:empty",
+        "customModelName": "techlamp_2:default",
         "luminance": 0,
         "boundingBoxes": []
       }

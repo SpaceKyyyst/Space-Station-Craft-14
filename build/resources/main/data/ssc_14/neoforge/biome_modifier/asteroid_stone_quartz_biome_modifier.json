@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": {
+    "type": "neoforge:any"
+  },
+  "features": "ssc_14:asteroid_stone_quartz",
+  "step": "underground_ores"
+}

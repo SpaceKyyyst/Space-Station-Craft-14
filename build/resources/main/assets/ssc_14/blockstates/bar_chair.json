@@ -1,18 +1,18 @@
 {
   "variants": {
     "facing=north": {
-      "model": "space_station_craft_14:block/bar_chair"
+      "model": "ssc_14:block/bar_chair"
     },
     "facing=east": {
-      "model": "space_station_craft_14:block/bar_chair",
+      "model": "ssc_14:block/bar_chair",
       "y": 90
     },
     "facing=south": {
-      "model": "space_station_craft_14:block/bar_chair",
+      "model": "ssc_14:block/bar_chair",
       "y": 180
     },
     "facing=west": {
-      "model": "space_station_craft_14:block/bar_chair",
+      "model": "ssc_14:block/bar_chair",
       "y": 270
     }
   }

@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ssc_14:block/grass_light_block"
+    },
+    "facing=east": {
+      "model": "ssc_14:block/grass_light_block",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ssc_14:block/grass_light_block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ssc_14:block/grass_light_block",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "ssc_14:block/grass_light_block",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "ssc_14:block/grass_light_block",
+      "x": 90
+    }
+  }
+}

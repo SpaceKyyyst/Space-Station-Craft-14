@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "ssc_14:voidb",
-    "minecraft:air"
+    "ssc_14:grass_light_block",
+    "ssc_14:dirt",
+    "minecraft:air",
+    "ssc_14:asteroid_stone_base"
   ]
 }

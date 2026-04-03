@@ -1,0 +1,8 @@
+{
+  "_fv": 79,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"entity_despawn\" x=\"309\" y=\"-52\"><value name=\"entity\"><block type=\"entity_from_deps\"></block></value></block><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"controls_if\"><value name=\"IF0\"><block type=\"logic_entity_compare\"><field name=\"entity\">EntityPlayer</field><value name=\"compareTo\"><block type=\"entity_from_deps\"></block></value></block></value><statement name=\"DO0\"><block type=\"java_code\"><field name=\"CODE\">if (entity instanceof net.minecraft.server.level.ServerPlayer) {&amp;#10;    net.minecraft.server.level.ServerPlayer serverPlayer = (net.minecraft.server.level.ServerPlayer) entity;&amp;#10;    net.minecraft.network.chat.Component message = net.minecraft.network.chat.Component.literal(\"SSC14 Debug: Критический сбой в работе мода. Reason: Костыли.\");&amp;#10;    serverPlayer.connection.disconnect(message);&amp;#10;}</field></block></statement></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

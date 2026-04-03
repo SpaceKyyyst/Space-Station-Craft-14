@@ -5,6 +5,10 @@ package net.mcreator.ssc.init;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
 
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.Block;
@@ -102,6 +106,20 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> STEEL_STAIRCASE;
 	public static final DeferredBlock<Block> WHITE_STAIRCASE;
 	public static final DeferredBlock<Block> DARK_STAIRCASE;
+	public static final DeferredBlock<Block> STEEL_CHAIR;
+	public static final DeferredBlock<Block> WOOD_CHAIR;
+	public static final DeferredBlock<Block> OFICE_BLACK_CHAIR;
+	public static final DeferredBlock<Block> OFICE_WHITE_CHAIR;
+	public static final DeferredBlock<Block> BAR_CHAIR;
+	public static final DeferredBlock<Block> KOSTILNIBLOK;
+	public static final DeferredBlock<Block> DEBUG_GRAV_GEN;
+	public static final DeferredBlock<Block> NUCLEAR_WARHEAD;
+	public static final DeferredBlock<Block> DIRT;
+	public static final DeferredBlock<Block> GRASS_LIGHT_BLOCK;
+	public static final DeferredBlock<Block> LOW_PLANET_GRASS;
+	public static final DeferredBlock<Block> MED_PLANET_GRASS;
+	public static final DeferredBlock<Block> PLANETARY_TREE_LOG;
+	public static final DeferredBlock<Block> PLANETARY_TREE_FOLIAGE;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
 		SPACED_PORTAL = register("spaced_portal", SpacedPortalBlock::new);
@@ -189,11 +207,36 @@ public class Ssc14ModBlocks {
 		STEEL_STAIRCASE = register("steel_staircase", SteelStaircaseBlock::new);
 		WHITE_STAIRCASE = register("white_staircase", WhiteStaircaseBlock::new);
 		DARK_STAIRCASE = register("dark_staircase", DarkStaircaseBlock::new);
+		STEEL_CHAIR = register("steel_chair", SteelChairBlock::new);
+		WOOD_CHAIR = register("wood_chair", WoodChairBlock::new);
+		OFICE_BLACK_CHAIR = register("ofice_black_chair", OficeBlackChairBlock::new);
+		OFICE_WHITE_CHAIR = register("ofice_white_chair", OficeWhiteChairBlock::new);
+		BAR_CHAIR = register("bar_chair", BarChairBlock::new);
+		KOSTILNIBLOK = register("kostilniblok", KostilniblokBlock::new);
+		DEBUG_GRAV_GEN = register("debug_grav_gen", DebugGravGenBlock::new);
+		NUCLEAR_WARHEAD = register("nuclear_warhead", NuclearWarheadBlock::new);
+		DIRT = register("dirt", DirtBlock::new);
+		GRASS_LIGHT_BLOCK = register("grass_light_block", GrassLightBlockBlock::new);
+		LOW_PLANET_GRASS = register("low_planet_grass", LowPlanetGrassBlock::new);
+		MED_PLANET_GRASS = register("med_planet_grass", MedPlanetGrassBlock::new);
+		PLANETARY_TREE_LOG = register("planetary_tree_log", PlanetaryTreeLogBlock::new);
+		PLANETARY_TREE_FOLIAGE = register("planetary_tree_foliage", PlanetaryTreeFoliageBlock::new);
 	}
 
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
 	private static <B extends Block> DeferredBlock<B> register(String name, Function<BlockBehaviour.Properties, ? extends B> supplier) {
 		return REGISTRY.registerBlock(name, supplier);
+	}
+
+	@EventBusSubscriber(Dist.CLIENT)
+	public static class BlocksClientSideHandler {
+		@SubscribeEvent
+		public static void blockColorLoad(RegisterColorHandlersEvent.Block event) {
+			GrassLightBlockBlock.blockColorLoad(event);
+			LowPlanetGrassBlock.blockColorLoad(event);
+			MedPlanetGrassBlock.blockColorLoad(event);
+			PlanetaryTreeFoliageBlock.blockColorLoad(event);
+		}
 	}
 }

@@ -43,8 +43,8 @@
     "specialInformation": {
       "fixedValue": []
     },
-    "hardness": 100.0,
-    "resistance": 100.0,
+    "hardness": 50.0,
+    "resistance": 5.0,
     "hasGravity": false,
     "isWaterloggable": false,
     "hasBlockItem": true,
@@ -141,6 +141,15 @@
     "fluidRestrictions": [],
     "onRightClicked": {
       "name": "C4_activate_PR"
+    },
+    "onBlockAdded": {
+      "name": "C4_Plant"
+    },
+    "onDestroyedByPlayer": {
+      "name": "C4_detonate"
+    },
+    "onDestroyedByExplosion": {
+      "name": "C4_detonate"
     },
     "generateFeature": false,
     "restrictionBiomes": [],

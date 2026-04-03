@@ -1,0 +1,12 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": {
+    "type": "neoforge:any"
+  },
+  "spawners": {
+    "type": "ssc_14:c_4_crutch_ent",
+    "weight": 20,
+    "minCount": 4,
+    "maxCount": 4
+  }
+}

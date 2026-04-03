@@ -6,6 +6,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -31,6 +32,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
+import net.mcreator.ssc.procedures.GravityGenerator_DestroyProcedure;
 import net.mcreator.ssc.procedures.GravGenTICprocedureProcedure;
 import net.mcreator.ssc.block.entity.GravityGeneratorBlockEntity;
 
@@ -112,6 +114,13 @@ public class GravityGeneratorBlock extends Block implements EntityBlock {
 		super.tick(blockstate, world, pos, random);
 		GravGenTICprocedureProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
 		world.scheduleTick(pos, this, 5);
+	}
+
+	@Override
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+		GravityGenerator_DestroyProcedure.execute();
+		return retval;
 	}
 
 	@Override

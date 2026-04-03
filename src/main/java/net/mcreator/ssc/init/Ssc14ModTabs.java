@@ -63,6 +63,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.TITLE_WHITE_PLASTIC.get().asItem());
 				tabData.accept(Ssc14ModBlocks.WHITE_STAIRCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CAVE_FLOOR_1.get().asItem());
+				tabData.accept(Ssc14ModBlocks.DIRT.get().asItem());
 			}).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_WALLS = REGISTRY.register("ssc_14_walls",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14_walls")).icon(() -> new ItemStack(Ssc14ModBlocks.STEEL_WALL.get())).displayItems((parameters, tabData) -> {
@@ -99,10 +100,19 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.CONSOLE_OF_ID.get().asItem());
 				tabData.accept(Ssc14ModBlocks.PORTABLE_SHEATER.get().asItem());
 				tabData.accept(Ssc14ModBlocks.STEEL_TABLE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.STEEL_CHAIR.get().asItem());
+				tabData.accept(Ssc14ModBlocks.WOOD_CHAIR.get().asItem());
+				tabData.accept(Ssc14ModBlocks.OFICE_BLACK_CHAIR.get().asItem());
+				tabData.accept(Ssc14ModBlocks.OFICE_WHITE_CHAIR.get().asItem());
+				tabData.accept(Ssc14ModBlocks.BAR_CHAIR.get().asItem());
 				tabData.accept(Ssc14ModBlocks.DARK_STAIRCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.STEEL_STAIRCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.WHITE_STAIRCASE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.LOW_PLANET_GRASS.get().asItem());
 				tabData.accept(Ssc14ModBlocks.GRAVITY_GENERATOR.get().asItem());
+				tabData.accept(Ssc14ModBlocks.MED_PLANET_GRASS.get().asItem());
+				tabData.accept(Ssc14ModBlocks.PLANETARY_TREE_LOG.get().asItem());
+				tabData.accept(Ssc14ModBlocks.PLANETARY_TREE_FOLIAGE.get().asItem());
 			}).withTabsBefore(SSC_14_WALLS.getId()).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_ITEMS = REGISTRY.register("ssc_14_items",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14_items")).icon(() -> new ItemStack(Ssc14ModItems.GLASS.get())).displayItems((parameters, tabData) -> {
@@ -213,9 +223,12 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.COOLER_DEBU_GHANDGENERATOR.get());
 				tabData.accept(Ssc14ModItems.N_2_DEBU_GHANDGENERATOR.get());
 				tabData.accept(Ssc14ModItems.AIRLOCK_CONTROLLER.get());
+				tabData.accept(Ssc14ModBlocks.DEBUG_GRAV_GEN.get().asItem());
 				tabData.accept(Ssc14ModBlocks.DEBU_GGENERATOR.get().asItem());
 				tabData.accept(Ssc14ModBlocks.DEBUG_LAMP.get().asItem());
 				tabData.accept(Ssc14ModBlocks.DEBUG_TECH_LAMP.get().asItem());
+				tabData.accept(Ssc14ModBlocks.KOSTILNIBLOK.get().asItem());
+				tabData.accept(Ssc14ModBlocks.NUCLEAR_WARHEAD.get().asItem());
 			}
 		}
 	}

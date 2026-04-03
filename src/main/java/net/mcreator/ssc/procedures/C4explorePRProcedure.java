@@ -5,12 +5,18 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModParticleTypes;
+import net.mcreator.ssc.init.Ssc14ModEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.Ssc14Mod;
 
@@ -26,6 +32,12 @@ public class C4explorePRProcedure {
 				_level.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, (x + 0.5), (y + 0.5), (z + 0.5), 10, 0, 0, 0, 0.4);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.SPARK.get()), (x + 0.5), (y + 0.5), (z + 0.5), 100, 0, 0, 0, 0.3);
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = Ssc14ModEntities.C_4_CRUTCH_ENT.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.5, z + 0.5), EntitySpawnReason.MOB_SUMMONED);
+				if (entityToSpawn != null) {
+					entityToSpawn.setDeltaMovement(0, 0, 0);
+				}
+			}
 		} else {
 			Ssc14Mod.queueServerWork(1, () -> {
 				if (Ssc14ModBlocks.C_4.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()) {
@@ -50,6 +62,15 @@ public class C4explorePRProcedure {
 						}
 						if (world instanceof Level _level)
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+					}
+				}
+				if (getBlockNBTNumber(world, BlockPos.containing(x, y, z), "c4timer") % 20 == 0) {
+					if (world instanceof Level _level) {
+						if (!_level.isClientSide()) {
+							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:c4_pip")), SoundSource.NEUTRAL, 1, 1);
+						} else {
+							_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:c4_pip")), SoundSource.NEUTRAL, 1, 1, false);
+						}
 					}
 				}
 			});

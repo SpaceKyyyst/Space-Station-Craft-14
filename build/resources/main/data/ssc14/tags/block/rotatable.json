@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:podstation",
+    "ssc_14:steel_chair",
+    "ssc_14:portable_sheater",
+    "ssc_14:smes",
+    "ssc_14:console_of_id"
+  ]
+}

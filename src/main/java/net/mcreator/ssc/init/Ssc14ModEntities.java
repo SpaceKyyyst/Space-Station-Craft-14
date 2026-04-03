@@ -20,6 +20,8 @@ import net.minecraft.core.registries.Registries;
 import net.mcreator.ssc.entity.WallCarcaseEntitEntity;
 import net.mcreator.ssc.entity.PlassteelWallCarcaseEntitEntity;
 import net.mcreator.ssc.entity.IDConsoleENTITYEntity;
+import net.mcreator.ssc.entity.ChairEntityEntity;
+import net.mcreator.ssc.entity.C4CrutchEntEntity;
 import net.mcreator.ssc.Ssc14Mod;
 
 @EventBusSubscriber
@@ -37,6 +39,12 @@ public class Ssc14ModEntities {
 			EntityType.Builder.<PlassteelWallCarcaseEntitEntity>of(PlassteelWallCarcaseEntitEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).fireImmune()
 
 					.sized(0.9f, 0.9f));
+	public static final DeferredHolder<EntityType<?>, EntityType<ChairEntityEntity>> CHAIR_ENTITY = register("chair_entity",
+			EntityType.Builder.<ChairEntityEntity>of(ChairEntityEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).fireImmune().ridingOffset(-0.6f).sized(0.1f, 0.1f));
+	public static final DeferredHolder<EntityType<?>, EntityType<C4CrutchEntEntity>> C_4_CRUTCH_ENT = register("c_4_crutch_ent",
+			EntityType.Builder.<C4CrutchEntEntity>of(C4CrutchEntEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+
+					.ridingOffset(-0.6f).sized(0.01f, 0.01f));
 
 	// Start of user code block custom entities
 	// End of user code block custom entities
@@ -49,6 +57,8 @@ public class Ssc14ModEntities {
 		WallCarcaseEntitEntity.init(event);
 		IDConsoleENTITYEntity.init(event);
 		PlassteelWallCarcaseEntitEntity.init(event);
+		ChairEntityEntity.init(event);
+		C4CrutchEntEntity.init(event);
 	}
 
 	@SubscribeEvent
@@ -56,5 +66,7 @@ public class Ssc14ModEntities {
 		event.put(WALL_CARCASE_ENTIT.get(), WallCarcaseEntitEntity.createAttributes().build());
 		event.put(ID_CONSOLE_ENTITY.get(), IDConsoleENTITYEntity.createAttributes().build());
 		event.put(PLASSTEEL_WALL_CARCASE_ENTIT.get(), PlassteelWallCarcaseEntitEntity.createAttributes().build());
+		event.put(CHAIR_ENTITY.get(), ChairEntityEntity.createAttributes().build());
+		event.put(C_4_CRUTCH_ENT.get(), C4CrutchEntEntity.createAttributes().build());
 	}
 }

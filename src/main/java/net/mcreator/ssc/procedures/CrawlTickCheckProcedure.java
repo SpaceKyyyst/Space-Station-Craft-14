@@ -26,28 +26,29 @@ public class CrawlTickCheckProcedure {
 	private static void execute(@Nullable Event event, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity instanceof Player player) {
-			boolean isCrawling = player.getPersistentData().getBoolean("ssc14_is_crawling").orElse(false);
-			if (isCrawling) {
-				// В режиме ползания — устанавливаем позу
-				if (player.getPose() != Pose.SWIMMING) {
-					player.setPose(Pose.SWIMMING);
-					player.refreshDimensions();
-					System.out.println("[CRAWL] Set to SWIMMING");
-				}
-			} else {
-				// Проверяем, можно ли встать — точная коллизия с хитбоксом
-				AABB standingBox = player.getDimensions(Pose.STANDING).makeBoundingBox(player.getX(), player.getY(), player.getZ());
-				boolean canStand = player.level().noCollision(player, standingBox);
-				if (canStand && player.getPose() == Pose.SWIMMING) {
-					player.setPose(Pose.STANDING);
-					player.refreshDimensions();
-				} else if (!canStand) {
-					// ВАЖНО: НЕ включаем ползание автоматически!
-					// Просто остаёмся в текущей позе
+		if (entity instanceof Player) {
+			if (entity instanceof Player player) {
+				boolean isCrawling = player.getPersistentData().getBoolean("ssc14_is_crawling").orElse(false);
+				if (isCrawling) {
+					// В режиме ползания — устанавливаем позу
+					if (player.getPose() != Pose.SWIMMING) {
+						player.setPose(Pose.SWIMMING);
+						player.refreshDimensions();
+						System.out.println("[CRAWL] Set to SWIMMING");
+					}
+				} else {
+					// Проверяем, можно ли встать — точная коллизия с хитбоксом
+					AABB standingBox = player.getDimensions(Pose.STANDING).makeBoundingBox(player.getX(), player.getY(), player.getZ());
+					boolean canStand = player.level().noCollision(player, standingBox);
+					if (canStand && player.getPose() == Pose.SWIMMING) {
+						player.setPose(Pose.STANDING);
+						player.refreshDimensions();
+					} else if (!canStand) {
+						// ВАЖНО: НЕ включаем ползание автоматически!
+						// Просто остаёмся в текущей позе
+					}
 				}
 			}
 		}
-		entity.stopRiding();
 	}
 }

@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "12": "base_airlock_f_anim_t"
+      }
+    }
+  }
+}

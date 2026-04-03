@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "bl_of_chair_t"
+      }
+    },
+    "white": {
+      "name": "white",
+      "map": {
+        "1": "wh_ofice_chair_t"
+      }
+    }
+  }
+}

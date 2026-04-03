@@ -89,7 +89,7 @@ public class AirlockUpPlugOPENBlock extends Block implements EntityBlock {
 	@Override
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
-		AtmosBlock__TICProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		AtmosBlock__TICProcedure.execute();
 	}
 
 	@Override

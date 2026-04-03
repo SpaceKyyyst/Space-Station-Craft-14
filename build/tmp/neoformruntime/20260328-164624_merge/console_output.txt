@@ -1,0 +1,18 @@
+--------------------------------------------------------------------------------
+
+Command-Line:
+ - D:\Program\MCreator\jdk\bin\java.exe
+ - -jar
+ - C:\Users\Admin\.mcreator\gradle\caches\modules-2\files-2.1\net.neoforged\mergetool\2.0.7\8d217011e2eac8f185c9351240282c780be53e72\mergetool-2.0.7-fatjar.jar
+ - --client
+ - C:\Users\Admin\.mcreator\gradle\caches\neoformruntime\intermediate_results\stripClient_6f5f2ceb2e88b271d7e790f02f292e1917f235bd_output.jar
+ - --server
+ - C:\Users\Admin\.mcreator\gradle\caches\neoformruntime\intermediate_results\stripServer_2bd2300422ae0bb0b7b037e72c3abe380dcc4e61_output.jar
+ - --ann
+ - 1.21.8
+ - --output
+ - ./output.jar
+ - --inject
+ - false
+--------------------------------------------------------------------------------
+

@@ -13,7 +13,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_ao_1:default",
+        "customModelName": "base_airlock_f_1op:default",
         "luminance": 4,
         "boundingBoxes": [
           {
@@ -162,7 +162,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_ao_2:default",
+        "customModelName": "base_airlock_f_2op:default",
         "luminance": 4,
         "boundingBoxes": [
           {
@@ -311,7 +311,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_ao_3:default",
+        "customModelName": "base_airlock_f_3op:default",
         "luminance": 4,
         "boundingBoxes": [
           {
@@ -433,7 +433,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_ao_4:default",
+        "customModelName": "base_airlock_f_4op:default",
         "luminance": 4,
         "boundingBoxes": [
           {
@@ -550,7 +550,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_emergency:default",
+        "customModelName": "base_airlock_f_emerg:default",
         "luminance": 4,
         "boundingBoxes": []
       },
@@ -563,7 +563,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_panel:default",
+        "customModelName": "base_airlock_f_open_p:default",
         "luminance": 4,
         "boundingBoxes": []
       },
@@ -576,7 +576,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_emergency_panel:default",
+        "customModelName": "base_airlock_f_emerg_open_p:default",
         "luminance": 4,
         "boundingBoxes": []
       },
@@ -589,7 +589,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_bolted_panel:default",
+        "customModelName": "base_airlock_f_bolted_open_p:default",
         "luminance": 4,
         "boundingBoxes": []
       }

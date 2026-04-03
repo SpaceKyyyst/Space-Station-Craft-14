@@ -44,7 +44,7 @@
       "fixedValue": []
     },
     "hardness": 300.0,
-    "resistance": 20.0,
+    "resistance": 16.5,
     "hasGravity": false,
     "isWaterloggable": false,
     "hasBlockItem": true,
@@ -141,6 +141,9 @@
     "fluidRestrictions": [],
     "onDestroyedByPlayer": {
       "name": "SteelWall_Destroy"
+    },
+    "onDestroyedByExplosion": {
+      "name": "PlstWallExplosionBreakdown"
     },
     "generateFeature": false,
     "restrictionBiomes": [],

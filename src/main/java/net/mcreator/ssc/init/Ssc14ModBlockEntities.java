@@ -36,6 +36,8 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GravityGeneratorBlockEntity>> GRAVITY_GENERATOR = register("gravity_generator", Ssc14ModBlocks.GRAVITY_GENERATOR, GravityGeneratorBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<C4BlockEntity>> C_4 = register("c_4", Ssc14ModBlocks.C_4, C4BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MachineFrame2BlockEntity>> MACHINE_FRAME_2 = register("machine_frame_2", Ssc14ModBlocks.MACHINE_FRAME_2, MachineFrame2BlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<KostilniblokBlockEntity>> KOSTILNIBLOK = register("kostilniblok", Ssc14ModBlocks.KOSTILNIBLOK, KostilniblokBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DebugGravGenBlockEntity>> DEBUG_GRAV_GEN = register("debug_grav_gen", Ssc14ModBlocks.DEBUG_GRAV_GEN, DebugGravGenBlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities
@@ -59,5 +61,7 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, GRAVITY_GENERATOR.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, C_4.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, MACHINE_FRAME_2.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, KOSTILNIBLOK.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, DEBUG_GRAV_GEN.get(), SidedInvWrapper::new);
 	}
 }

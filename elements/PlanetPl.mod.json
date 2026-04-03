@@ -1,0 +1,76 @@
+{
+  "_fv": 79,
+  "_type": "dimension",
+  "definition": {
+    "biomesInDimension": [
+      {
+        "value": "CUSTOM:PlanetaryPlantBiome"
+      },
+      {
+        "value": "CUSTOM:PlanetaryPlantMountainBiome"
+      }
+    ],
+    "worldGenType": "Normal world gen",
+    "mainFillerBlock": {
+      "value": "CUSTOM:AsteroidStoneBase"
+    },
+    "fluidBlock": {
+      "value": "Blocks.AIR"
+    },
+    "seaLevel": 0,
+    "generateOreVeins": true,
+    "generateAquifers": false,
+    "horizontalNoiseSize": 4,
+    "verticalNoiseSize": 1,
+    "defaultEffects": "overworld",
+    "useCustomEffects": true,
+    "hasClouds": true,
+    "cloudHeight": 192,
+    "skyType": "NORMAL",
+    "airColor": {
+      "value": -4217242,
+      "falpha": 0.0
+    },
+    "sunHeightAffectsFog": true,
+    "canRespawnHere": false,
+    "hasFog": false,
+    "ambientLight": 0.0,
+    "doesWaterVaporize": false,
+    "hasFixedTime": false,
+    "fixedTimeValue": 0,
+    "coordinateScale": 1.0,
+    "infiniburnTag": "minecraft:infiniburn_overworld",
+    "bedWorks": true,
+    "hasSkyLight": true,
+    "imitateOverworldBehaviour": false,
+    "piglinSafe": false,
+    "hasRaids": false,
+    "minMonsterSpawnLightLimit": 0,
+    "maxMonsterSpawnLightLimit": 7,
+    "monsterSpawnBlockLightLimit": 0,
+    "portalFrame": {
+      "value": ""
+    },
+    "portalParticles": {
+      "value": "PORTAL"
+    },
+    "portalLuminance": 0,
+    "portalSound": {
+      "value": "block.portal.ambient"
+    },
+    "enableIgniter": true,
+    "igniterName": "Planet Pl Portal Igniter",
+    "igniterRarity": "COMMON",
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "creativeTabs": [
+      {
+        "value": "TOOLS"
+      }
+    ],
+    "texture": "",
+    "portalTexture": "",
+    "enablePortal": false
+  }
+}

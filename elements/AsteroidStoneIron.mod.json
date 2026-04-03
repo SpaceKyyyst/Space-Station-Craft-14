@@ -139,17 +139,17 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
-    "generateFeature": false,
+    "generateFeature": true,
     "restrictionBiomes": [],
     "blocksToReplace": [
       {
-        "value": "TAG:stone_ore_replaceables"
+        "value": "TAG:ssc14:planet1_stone"
       }
     ],
     "generationShape": "UNIFORM",
-    "frequencyPerChunks": 10,
+    "frequencyPerChunks": 20,
     "frequencyOnChunk": 16,
-    "minGenerateHeight": 0,
-    "maxGenerateHeight": 64
+    "minGenerateHeight": -64,
+    "maxGenerateHeight": 300
   }
 }

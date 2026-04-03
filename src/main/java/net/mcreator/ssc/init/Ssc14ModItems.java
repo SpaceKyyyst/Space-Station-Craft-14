@@ -201,6 +201,20 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> STEEL_STAIRCASE;
 	public static final DeferredItem<Item> WHITE_STAIRCASE;
 	public static final DeferredItem<Item> DARK_STAIRCASE;
+	public static final DeferredItem<Item> STEEL_CHAIR;
+	public static final DeferredItem<Item> WOOD_CHAIR;
+	public static final DeferredItem<Item> OFICE_BLACK_CHAIR;
+	public static final DeferredItem<Item> OFICE_WHITE_CHAIR;
+	public static final DeferredItem<Item> BAR_CHAIR;
+	public static final DeferredItem<Item> KOSTILNIBLOK;
+	public static final DeferredItem<Item> DEBUG_GRAV_GEN;
+	public static final DeferredItem<Item> NUCLEAR_WARHEAD;
+	public static final DeferredItem<Item> DIRT;
+	public static final DeferredItem<Item> GRASS_LIGHT_BLOCK;
+	public static final DeferredItem<Item> LOW_PLANET_GRASS;
+	public static final DeferredItem<Item> MED_PLANET_GRASS;
+	public static final DeferredItem<Item> PLANETARY_TREE_LOG;
+	public static final DeferredItem<Item> PLANETARY_TREE_FOLIAGE;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -377,6 +391,20 @@ public class Ssc14ModItems {
 		STEEL_STAIRCASE = block(Ssc14ModBlocks.STEEL_STAIRCASE, new Item.Properties().stacksTo(1));
 		WHITE_STAIRCASE = block(Ssc14ModBlocks.WHITE_STAIRCASE, new Item.Properties().stacksTo(1));
 		DARK_STAIRCASE = block(Ssc14ModBlocks.DARK_STAIRCASE, new Item.Properties().stacksTo(1));
+		STEEL_CHAIR = block(Ssc14ModBlocks.STEEL_CHAIR, new Item.Properties().stacksTo(1));
+		WOOD_CHAIR = block(Ssc14ModBlocks.WOOD_CHAIR, new Item.Properties().stacksTo(1));
+		OFICE_BLACK_CHAIR = block(Ssc14ModBlocks.OFICE_BLACK_CHAIR, new Item.Properties().stacksTo(1));
+		OFICE_WHITE_CHAIR = block(Ssc14ModBlocks.OFICE_WHITE_CHAIR, new Item.Properties().stacksTo(1));
+		BAR_CHAIR = block(Ssc14ModBlocks.BAR_CHAIR, new Item.Properties().stacksTo(1));
+		KOSTILNIBLOK = block(Ssc14ModBlocks.KOSTILNIBLOK, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+		DEBUG_GRAV_GEN = block(Ssc14ModBlocks.DEBUG_GRAV_GEN, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+		NUCLEAR_WARHEAD = block(Ssc14ModBlocks.NUCLEAR_WARHEAD, new Item.Properties().stacksTo(1));
+		DIRT = block(Ssc14ModBlocks.DIRT, new Item.Properties().stacksTo(1));
+		GRASS_LIGHT_BLOCK = block(Ssc14ModBlocks.GRASS_LIGHT_BLOCK);
+		LOW_PLANET_GRASS = block(Ssc14ModBlocks.LOW_PLANET_GRASS, new Item.Properties().stacksTo(1));
+		MED_PLANET_GRASS = block(Ssc14ModBlocks.MED_PLANET_GRASS, new Item.Properties().stacksTo(1));
+		PLANETARY_TREE_LOG = block(Ssc14ModBlocks.PLANETARY_TREE_LOG, new Item.Properties().stacksTo(1));
+		PLANETARY_TREE_FOLIAGE = block(Ssc14ModBlocks.PLANETARY_TREE_FOLIAGE, new Item.Properties().stacksTo(1));
 	}
 
 	// Start of user code block custom items

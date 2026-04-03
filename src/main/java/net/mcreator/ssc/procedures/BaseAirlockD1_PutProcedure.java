@@ -16,26 +16,23 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
-import net.minecraft.ChatFormatting;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.Ssc14Mod;
 
-import java.util.*;
+import java.util.Random;
+import java.util.List;
+import java.util.Collections;
+import java.util.Arrays;
+import java.util.ArrayList;
 
 public class BaseAirlockD1_PutProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
-		if (world instanceof ServerLevel _level) {
-			_level.getServer().getPlayerList().broadcastSystemMessage(
-					Component.literal((new java.text.SimpleDateFormat("mm-ss-SSS").format(Calendar.getInstance().getTime()) + " - \u041E\u0411\u041D\u041E\u0412\u041B\u0415\u041D\u0418\u0415 \u0428\u041B\u042E\u0417\u0410")), false);
-		}
 		if (!((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == Ssc14ModBlocks.AIRLOCK_UP_PLUG.get() || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get())) {
 			world.setBlock(BlockPos.containing(x, y + 1, z), Ssc14ModBlocks.AIRLOCK_UP_PLUG.get().defaultBlockState(), 3);
 			{
@@ -49,14 +46,11 @@ public class BaseAirlockD1_PutProcedure {
 				}
 			}
 		}
-		if (world instanceof ServerLevel _level) {
-			_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("timer:  " + getBlockNBTLogic(world, BlockPos.containing(x, y, z), "timer"))).withColor(0x00cc00).withStyle(ChatFormatting.ITALIC), false);
-		}
 		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1.get()
-				&& ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip14 ? blockstate.getValue(_getip14) : -1) == 0
-						|| (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip16 ? blockstate.getValue(_getip16) : -1) > 4)) {
-			if ((blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp18 && blockstate.getValue(_getbp18)) == true) {
-				if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp20 && blockstate.getValue(_getbp20)) == true) {
+				&& ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip11 ? blockstate.getValue(_getip11) : -1) == 0
+						|| (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip13 ? blockstate.getValue(_getip13) : -1) > 4)) {
+			if ((blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp15 && blockstate.getValue(_getbp15)) == true) {
+				if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp17 && blockstate.getValue(_getbp17)) == true) {
 					{
 						int _value = 9;
 						BlockPos _pos = BlockPos.containing(x, y, z);
@@ -73,8 +67,8 @@ public class BaseAirlockD1_PutProcedure {
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 					}
 				}
-			} else if ((blockstate.getBlock().getStateDefinition().getProperty("emergency_acs") instanceof BooleanProperty _getbp24 && blockstate.getValue(_getbp24)) == true) {
-				if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp26 && blockstate.getValue(_getbp26)) == true) {
+			} else if ((blockstate.getBlock().getStateDefinition().getProperty("emergency_acs") instanceof BooleanProperty _getbp21 && blockstate.getValue(_getbp21)) == true) {
+				if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp23 && blockstate.getValue(_getbp23)) == true) {
 					{
 						int _value = 8;
 						BlockPos _pos = BlockPos.containing(x, y, z);
@@ -91,7 +85,7 @@ public class BaseAirlockD1_PutProcedure {
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 					}
 				}
-			} else if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp30 && blockstate.getValue(_getbp30)) == true) {
+			} else if ((blockstate.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty _getbp27 && blockstate.getValue(_getbp27)) == true) {
 				{
 					int _value = 7;
 					BlockPos _pos = BlockPos.containing(x, y, z);
@@ -110,37 +104,21 @@ public class BaseAirlockD1_PutProcedure {
 			}
 		} else if (Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()) {
 			Ssc14Mod.queueServerWork(1, () -> {
-				if (true == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "timer") && false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp37 && blockstate.getValue(_getbp37))) {
-					if (world instanceof ServerLevel _level) {
-						_level.getServer().getPlayerList()
-								.broadcastSystemMessage(Component.literal("\u041D\u0430\u0447\u0430\u043B\u043E \u043E\u0442\u0441\u0447\u0451\u0442\u0430 \u0442\u0430\u0439\u043C\u0435\u0440\u0430").withStyle(ChatFormatting.BOLD), false);
-					}
+				if (true == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "timer") && false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp34 && blockstate.getValue(_getbp34))) {
 					Ssc14Mod.queueServerWork(20, () -> {
 						if (Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()
-								&& false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp42 && blockstate.getValue(_getbp42))) {
-							if (world instanceof ServerLevel _level) {
-								_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("3...").withColor(0x7f7f7f).withStyle(ChatFormatting.ITALIC), false);
-							}
+								&& false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp38 && blockstate.getValue(_getbp38))) {
 							Ssc14Mod.queueServerWork(20, () -> {
 								if (Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()
-										&& false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp47 && blockstate.getValue(_getbp47))) {
-									if (world instanceof ServerLevel _level) {
-										_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("2...").withColor(0x7f7f7f).withStyle(ChatFormatting.ITALIC), false);
-									}
+										&& false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp42 && blockstate.getValue(_getbp42))) {
 									Ssc14Mod.queueServerWork(20, () -> {
 										if (Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()
-												&& false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp52 && blockstate.getValue(_getbp52))) {
-											if (world instanceof ServerLevel _level) {
-												_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("1...").withColor(0x7f7f7f).withStyle(ChatFormatting.ITALIC), false);
-											}
+												&& false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp46 && blockstate.getValue(_getbp46))) {
 											Ssc14Mod.queueServerWork(20, () -> {
 												if (Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()
-														&& false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp57 && blockstate.getValue(_getbp57))) {
+														&& false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp50 && blockstate.getValue(_getbp50))) {
 													if (!(!world.getEntitiesOfClass(Player.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
 															&& !(!world.getEntitiesOfClass(Mob.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())) {
-														if (world instanceof ServerLevel _level) {
-															_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u0417\u0430\u043A\u0440\u044B\u0442\u0438\u0435 \u0448\u043B\u044E\u0437\u0430...").withColor(0x27cc27), false);
-														}
 														if (world instanceof Level _level) {
 															if (!_level.isClientSide()) {
 																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_close")), SoundSource.NEUTRAL, 1, 1);
@@ -235,14 +213,6 @@ public class BaseAirlockD1_PutProcedure {
 															});
 														});
 													} else {
-														if (world instanceof ServerLevel _level) {
-															_level.getServer().getPlayerList().broadcastSystemMessage(
-																	Component.literal("\u0428\u043B\u044E\u0437 \u0447\u0442\u043E \u0442\u043E \u0431\u043B\u043E\u043A\u0438\u0440\u0443\u0435\u0442").withColor(0xcc2828), false);
-														}
-														if (world instanceof ServerLevel _level) {
-															_level.getServer().getPlayerList()
-																	.broadcastSystemMessage(Component.literal("\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435 \u0448\u043B\u044E\u0437\u0430...").withColor(0xccbc27), false);
-														}
 														BaseAirlockD1_PutProcedure.execute(world, x, y, z, blockstate);
 													}
 												}
@@ -253,20 +223,11 @@ public class BaseAirlockD1_PutProcedure {
 							});
 						}
 					});
-				} else if (false == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "timer") && false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp81 && blockstate.getValue(_getbp81))) {
-					if (world instanceof ServerLevel _level) {
-						_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u0422\u0430\u0439\u043C\u0435\u0440 \u043D\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442").withColor(0xcc27cc), false);
-					}
-					if (world instanceof ServerLevel _level) {
-						_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("timer:  " + getBlockNBTLogic(world, BlockPos.containing(x, y, z), "timer"))).withColor(0x990099).withStyle(ChatFormatting.ITALIC), false);
-					}
+				} else if (false == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "timer") && false == (blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp71 && blockstate.getValue(_getbp71))) {
 					Ssc14Mod.queueServerWork(20, () -> {
 						if (!(!world.getEntitiesOfClass(Player.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
 								&& !(!world.getEntitiesOfClass(Mob.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.4), (z + 0.5))).inflate(0.4 / 2d), e -> true).isEmpty())
 								&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get()) {
-							if (world instanceof ServerLevel _level) {
-								_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u0417\u0430\u043A\u0440\u044B\u0442\u0438\u0435 \u0448\u043B\u044E\u0437\u0430...").withColor(0x28cccc), false);
-							}
 							if (world instanceof Level _level) {
 								if (!_level.isClientSide()) {
 									_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_close")), SoundSource.NEUTRAL, 1, 1);
@@ -361,10 +322,6 @@ public class BaseAirlockD1_PutProcedure {
 								});
 							});
 						} else {
-							if (world instanceof ServerLevel _level) {
-								_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u0428\u043B\u044E\u0437 \u0447\u0442\u043E \u0442\u043E \u0431\u043B\u043E\u043A\u0438\u0440\u0443\u0435\u0442").withColor(0x6027cc),
-										false);
-							}
 							BaseAirlockD1_PutProcedure.execute(world, x, y, z, blockstate);
 						}
 					});
@@ -390,9 +347,6 @@ public class BaseAirlockD1_PutProcedure {
 						}
 						if (world instanceof Level _level)
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
-					}
-					if (world instanceof ServerLevel _level) {
-						_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("NBT \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u044B").withColor(0xff00ff).withStyle(ChatFormatting.BOLD), false);
 					}
 				}
 			});

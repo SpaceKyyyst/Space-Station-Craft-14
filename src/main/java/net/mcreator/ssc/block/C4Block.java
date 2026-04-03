@@ -6,6 +6,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -24,7 +26,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import net.mcreator.ssc.procedures.C4_detonateProcedure;
 import net.mcreator.ssc.procedures.C4_activate_PRProcedure;
+import net.mcreator.ssc.procedures.C4_PlantProcedure;
 import net.mcreator.ssc.block.entity.C4BlockEntity;
 
 public class C4Block extends Block implements EntityBlock {
@@ -37,7 +41,7 @@ public class C4Block extends Block implements EntityBlock {
 	private static final VoxelShape SHAPE_DOWN = box(5, 13, 3, 11, 16, 13);
 
 	public C4Block(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.SPAWNER).strength(100f).lightLevel(s -> 1).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.SPAWNER).strength(50f, 5f).lightLevel(s -> 1).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
@@ -86,6 +90,25 @@ public class C4Block extends Block implements EntityBlock {
 
 	public BlockState mirror(BlockState state, Mirror mirrorIn) {
 		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
+	}
+
+	@Override
+	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
+		super.onPlace(blockstate, world, pos, oldState, moving);
+		C4_PlantProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+	}
+
+	@Override
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+		C4_detonateProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		return retval;
+	}
+
+	@Override
+	public void wasExploded(ServerLevel world, BlockPos pos, Explosion e) {
+		super.wasExploded(world, pos, e);
+		C4_detonateProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override

@@ -11,7 +11,7 @@
           "src/main/resources/data/ssc_14/worldgen/biome/spaceb.json"
         ]
       },
-      "path": "~/Dimension"
+      "path": "~/Dimension/Space"
     },
     {
       "name": "Void_autoDelete",
@@ -42,7 +42,7 @@
           "src/main/java/net/mcreator/ssc/procedures/Void_autoDeleteProcedure.java"
         ]
       },
-      "path": "~/Dimension"
+      "path": "~/Dimension/Space"
     },
     {
       "name": "Voidb",
@@ -58,7 +58,7 @@
           "src/main/resources/assets/ssc_14/models/block/voidb.json"
         ]
       },
-      "path": "~/Dimension"
+      "path": "~/Dimension/Space"
     },
     {
       "name": "Spaced",
@@ -79,7 +79,7 @@
           "src/main/resources/data/ssc_14/dimension_type/spaced.json"
         ]
       },
-      "path": "~/Dimension"
+      "path": "~/Dimension/Space"
     },
     {
       "name": "TpSSC14spacepr",
@@ -1530,24 +1530,7 @@
       "locked_code": false,
       "registry_name": "atmos_block__tic",
       "metadata": {
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
+        "dependencies": [],
         "files": [
           "src/main/java/net/mcreator/ssc/procedures/AtmosBlock__TICProcedure.java"
         ]
@@ -6017,7 +6000,7 @@
           "src/main/java/net/mcreator/ssc/procedures/SkyRenderProcedure.java"
         ]
       },
-      "path": "~/Dimension"
+      "path": "~/Dimension/Space"
     },
     {
       "name": "APC",
@@ -7963,8 +7946,11 @@
           "src/main/resources/assets/ssc_14/models/block/asteroid_stone_iron.json",
           "src/main/java/net/mcreator/ssc/block/AsteroidStoneIronBlock.java",
           "src/main/resources/assets/ssc_14/models/item/asteroid_stone_iron.json",
+          "src/main/resources/data/ssc_14/worldgen/configured_feature/asteroid_stone_iron.json",
           "src/main/resources/assets/ssc_14/blockstates/asteroid_stone_iron.json",
-          "src/main/resources/data/ssc_14/loot_table/blocks/asteroid_stone_iron.json"
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/asteroid_stone_iron_biome_modifier.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/asteroid_stone_iron.json",
+          "src/main/resources/data/ssc_14/worldgen/placed_feature/asteroid_stone_iron.json"
         ]
       },
       "path": "~/Blocks/Rocks"
@@ -7977,9 +7963,12 @@
       "registry_name": "asteroid_stone_quartz",
       "metadata": {
         "files": [
+          "src/main/resources/data/ssc_14/worldgen/placed_feature/asteroid_stone_quartz.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/asteroid_stone_quartz.json",
           "src/main/resources/assets/ssc_14/models/block/asteroid_stone_quartz.json",
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/asteroid_stone_quartz_biome_modifier.json",
           "src/main/resources/assets/ssc_14/items/asteroid_stone_quartz.json",
+          "src/main/resources/data/ssc_14/worldgen/configured_feature/asteroid_stone_quartz.json",
           "src/main/resources/assets/ssc_14/blockstates/asteroid_stone_quartz.json",
           "src/main/resources/assets/ssc_14/models/item/asteroid_stone_quartz.json",
           "src/main/java/net/mcreator/ssc/block/AsteroidStoneQuartzBlock.java"
@@ -7997,8 +7986,11 @@
         "files": [
           "src/main/resources/assets/ssc_14/items/asteroid_stone_coal.json",
           "src/main/resources/assets/ssc_14/models/block/asteroid_stone_coal.json",
+          "src/main/resources/data/ssc_14/worldgen/configured_feature/asteroid_stone_coal.json",
+          "src/main/resources/data/ssc_14/worldgen/placed_feature/asteroid_stone_coal.json",
           "src/main/resources/assets/ssc_14/models/item/asteroid_stone_coal.json",
           "src/main/resources/assets/ssc_14/blockstates/asteroid_stone_coal.json",
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/asteroid_stone_coal_biome_modifier.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/asteroid_stone_coal.json",
           "src/main/java/net/mcreator/ssc/block/AsteroidStoneCoalBlock.java"
         ]
@@ -8014,9 +8006,12 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/ssc_14/models/item/asteroid_stone_gold.json",
+          "src/main/resources/data/ssc_14/worldgen/configured_feature/asteroid_stone_gold.json",
           "src/main/resources/assets/ssc_14/blockstates/asteroid_stone_gold.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/asteroid_stone_gold.json",
+          "src/main/resources/data/ssc_14/worldgen/placed_feature/asteroid_stone_gold.json",
           "src/main/java/net/mcreator/ssc/block/AsteroidStoneGoldBlock.java",
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/asteroid_stone_gold_biome_modifier.json",
           "src/main/resources/assets/ssc_14/items/asteroid_stone_gold.json",
           "src/main/resources/assets/ssc_14/models/block/asteroid_stone_gold.json"
         ]
@@ -8034,8 +8029,11 @@
           "src/main/resources/assets/ssc_14/blockstates/asteroid_stone_plasma.json",
           "src/main/resources/assets/ssc_14/models/item/asteroid_stone_plasma.json",
           "src/main/resources/assets/ssc_14/items/asteroid_stone_plasma.json",
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/asteroid_stone_plasma_biome_modifier.json",
+          "src/main/resources/data/ssc_14/worldgen/configured_feature/asteroid_stone_plasma.json",
           "src/main/resources/assets/ssc_14/models/block/asteroid_stone_plasma.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/asteroid_stone_plasma.json",
+          "src/main/resources/data/ssc_14/worldgen/placed_feature/asteroid_stone_plasma.json",
           "src/main/java/net/mcreator/ssc/block/AsteroidStonePlasmaBlock.java"
         ]
       },
@@ -8049,10 +8047,13 @@
       "registry_name": "asteroid_stone_silver",
       "metadata": {
         "files": [
+          "src/main/resources/data/ssc_14/worldgen/placed_feature/asteroid_stone_silver.json",
           "src/main/resources/assets/ssc_14/models/item/asteroid_stone_silver.json",
           "src/main/resources/assets/ssc_14/blockstates/asteroid_stone_silver.json",
           "src/main/resources/assets/ssc_14/items/asteroid_stone_silver.json",
+          "src/main/resources/data/ssc_14/worldgen/configured_feature/asteroid_stone_silver.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/asteroid_stone_silver.json",
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/asteroid_stone_silver_biome_modifier.json",
           "src/main/resources/assets/ssc_14/models/block/asteroid_stone_silver.json",
           "src/main/java/net/mcreator/ssc/block/AsteroidStoneSilverBlock.java"
         ]
@@ -8069,9 +8070,12 @@
         "files": [
           "src/main/java/net/mcreator/ssc/block/AsteroidStoneUranBlock.java",
           "src/main/resources/assets/ssc_14/models/item/asteroid_stone_uran.json",
+          "src/main/resources/data/ssc_14/worldgen/configured_feature/asteroid_stone_uran.json",
           "src/main/resources/assets/ssc_14/models/block/asteroid_stone_uran.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/asteroid_stone_uran.json",
           "src/main/resources/assets/ssc_14/items/asteroid_stone_uran.json",
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/asteroid_stone_uran_biome_modifier.json",
+          "src/main/resources/data/ssc_14/worldgen/placed_feature/asteroid_stone_uran.json",
           "src/main/resources/assets/ssc_14/blockstates/asteroid_stone_uran.json"
         ]
       },
@@ -8088,6 +8092,9 @@
           "src/main/resources/assets/ssc_14/blockstates/asteroid_stone_diamond.json",
           "src/main/resources/assets/ssc_14/models/block/asteroid_stone_diamond.json",
           "src/main/java/net/mcreator/ssc/block/AsteroidStoneDiamondBlock.java",
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/asteroid_stone_diamond_biome_modifier.json",
+          "src/main/resources/data/ssc_14/worldgen/configured_feature/asteroid_stone_diamond.json",
+          "src/main/resources/data/ssc_14/worldgen/placed_feature/asteroid_stone_diamond.json",
           "src/main/resources/data/ssc_14/loot_table/blocks/asteroid_stone_diamond.json",
           "src/main/resources/assets/ssc_14/models/item/asteroid_stone_diamond.json",
           "src/main/resources/assets/ssc_14/items/asteroid_stone_diamond.json"
@@ -8733,22 +8740,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ],
         "files": [
@@ -9081,7 +9072,7 @@
           "src/main/resources/assets/ssc_14/blockstates/c_4.json"
         ]
       },
-      "path": "~/Items/Armament"
+      "path": "~/Items/Armament/C4"
     },
     {
       "name": "C4_activate_PR",
@@ -9116,7 +9107,7 @@
           "src/main/java/net/mcreator/ssc/procedures/C4_activate_PRProcedure.java"
         ]
       },
-      "path": "~/Items/Armament"
+      "path": "~/Items/Armament/C4"
     },
     {
       "name": "Spark",
@@ -9248,7 +9239,7 @@
           "src/main/java/net/mcreator/ssc/procedures/C4explorePRProcedure.java"
         ]
       },
-      "path": "~/Items/Armament"
+      "path": "~/Items/Armament/C4"
     },
     {
       "name": "MacFrameGUIGreen",
@@ -9866,6 +9857,833 @@
         ]
       },
       "path": "~/Blocks/Titles/Stairs"
+    },
+    {
+      "name": "SteelChair",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "steel_chair",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/steel_chair.json",
+          "src/main/resources/assets/ssc_14/models/block/steel_chair.json",
+          "src/main/java/net/mcreator/ssc/block/SteelChairBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/steel_chair.json",
+          "src/main/resources/assets/ssc_14/blockstates/steel_chair.json",
+          "src/main/resources/assets/ssc_14/items/steel_chair.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Chairs"
+    },
+    {
+      "name": "Sit_On_Chair_PR",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sit_on_chair_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Sit_On_Chair_PRProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Chairs"
+    },
+    {
+      "name": "ChairEntity",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chair_entity",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/entity/ChairEntityEntity.java",
+          "src/main/resources/assets/ssc_14/items/chair_entity_spawn_egg.json",
+          "src/main/java/net/mcreator/ssc/client/renderer/ChairEntityRenderer.java"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Chairs"
+    },
+    {
+      "name": "Chair_Ent_Generation",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chair_ent_generation",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Chair_Ent_GenerationProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Chairs"
+    },
+    {
+      "name": "ChairEntity_TIC",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chair_entity_tic",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ChairEntity_TICProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Chairs"
+    },
+    {
+      "name": "WoodChair",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wood_chair",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/wood_chair.json",
+          "src/main/resources/assets/ssc_14/blockstates/wood_chair.json",
+          "src/main/java/net/mcreator/ssc/block/WoodChairBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/wood_chair.json",
+          "src/main/resources/assets/ssc_14/items/wood_chair.json",
+          "src/main/resources/assets/ssc_14/models/block/wood_chair.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Chairs"
+    },
+    {
+      "name": "OficeBlackChair",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ofice_black_chair",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/ofice_black_chair.json",
+          "src/main/resources/assets/ssc_14/items/ofice_black_chair.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/ofice_black_chair.json",
+          "src/main/resources/assets/ssc_14/blockstates/ofice_black_chair.json",
+          "src/main/resources/assets/ssc_14/models/block/ofice_black_chair.json",
+          "src/main/java/net/mcreator/ssc/block/OficeBlackChairBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Chairs"
+    },
+    {
+      "name": "OficeChair_Autorotate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ofice_chair_autorotate",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/OficeChair_AutorotateProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Chairs"
+    },
+    {
+      "name": "OficeWhiteChair",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ofice_white_chair",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/ofice_white_chair.json",
+          "src/main/resources/assets/ssc_14/blockstates/ofice_white_chair.json",
+          "src/main/resources/assets/ssc_14/models/block/ofice_white_chair.json",
+          "src/main/java/net/mcreator/ssc/block/OficeWhiteChairBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/ofice_white_chair.json",
+          "src/main/resources/assets/ssc_14/items/ofice_white_chair.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Chairs"
+    },
+    {
+      "name": "BarChair",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bar_chair",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/bar_chair.json",
+          "src/main/java/net/mcreator/ssc/block/BarChairBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/bar_chair.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/bar_chair.json",
+          "src/main/resources/assets/ssc_14/models/item/bar_chair.json",
+          "src/main/resources/assets/ssc_14/blockstates/bar_chair.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Chairs"
+    },
+    {
+      "name": "C4_detonate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "c_4_detonate",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/C4_detonateProcedure.java"
+        ]
+      },
+      "path": "~/Items/Armament/C4"
+    },
+    {
+      "name": "Wall_Explosion_Breakdown",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wall_explosion_breakdown",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Wall_Explosion_BreakdownProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Walls"
+    },
+    {
+      "name": "C4CrutchEnt",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "c_4_crutch_ent",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/c_4_crutch_ent_spawn_egg.json",
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/c_4_crutch_ent_biome_modifier.json",
+          "src/main/java/net/mcreator/ssc/entity/C4CrutchEntEntity.java",
+          "src/main/java/net/mcreator/ssc/client/renderer/C4CrutchEntRenderer.java"
+        ]
+      },
+      "path": "~/Items/Armament/C4"
+    },
+    {
+      "name": "C4_Crutch_Ent_TIC",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "c_4_crutch_ent_tic",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/C4_Crutch_Ent_TICProcedure.java"
+        ]
+      },
+      "path": "~/Items/Armament/C4"
+    },
+    {
+      "name": "PlstWallExplosionBreakdown",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "plst_wall_explosion_breakdown",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/PlstWallExplosionBreakdownProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Walls"
+    },
+    {
+      "name": "Kostilniblok",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kostilniblok",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/kostilniblok.json",
+          "src/main/java/net/mcreator/ssc/block/entity/KostilniblokBlockEntity.java",
+          "src/main/java/net/mcreator/ssc/block/KostilniblokBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/kostilniblok.json",
+          "src/main/resources/assets/ssc_14/models/block/kostilniblok.json",
+          "src/main/resources/assets/ssc_14/models/item/kostilniblok.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/kostilniblok.json"
+        ]
+      },
+      "path": "~/Dimension"
+    },
+    {
+      "name": "KostilniblokPKM",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kostilniblok_pkm",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/KostilniblokPKMProcedure.java"
+        ]
+      },
+      "path": "~/Dimension"
+    },
+    {
+      "name": "C4_Plant",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "c_4_plant",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/C4_PlantProcedure.java"
+        ]
+      },
+      "path": "~/Items/Armament/C4"
+    },
+    {
+      "name": "GravityGenerator_Destroy",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gravity_generator_destroy",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/GravityGenerator_DestroyProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/GravGen"
+    },
+    {
+      "name": "DebugGravGen",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "debug_grav_gen",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/debug_grav_gen.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/debug_grav_gen.json",
+          "src/main/resources/assets/ssc_14/models/item/debug_grav_gen.json",
+          "src/main/resources/assets/ssc_14/blockstates/debug_grav_gen.json",
+          "src/main/java/net/mcreator/ssc/block/DebugGravGenBlock.java",
+          "src/main/resources/assets/ssc_14/items/debug_grav_gen.json",
+          "src/main/java/net/mcreator/ssc/block/entity/DebugGravGenBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/GravGen"
+    },
+    {
+      "name": "DebugGravGenTIC",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "debug_grav_gen_tic",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/DebugGravGenTICProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/GravGen"
+    },
+    {
+      "name": "NuclearWarhead",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nuclear_warhead",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/nuclear_warhead.json",
+          "src/main/resources/assets/ssc_14/items/nuclear_warhead.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/nuclear_warhead.json",
+          "src/main/resources/assets/ssc_14/blockstates/nuclear_warhead.json",
+          "src/main/java/net/mcreator/ssc/block/NuclearWarheadBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/nuclear_warhead.json"
+        ]
+      }
+    },
+    {
+      "name": "NuclearWarhead_Exp",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nuclear_warhead_exp",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/NuclearWarhead_ExpProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "Dirt",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dirt",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/dirt.json",
+          "src/main/resources/assets/ssc_14/blockstates/dirt.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/dirt.json",
+          "src/main/resources/assets/ssc_14/models/block/dirt.json",
+          "src/main/java/net/mcreator/ssc/block/DirtBlock.java",
+          "src/main/resources/assets/ssc_14/items/dirt.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "Dirt_Generation",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dirt_generation",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Dirt_GenerationProcedure.java"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "PlanetaryPlantBiome",
+      "type": "biome",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "planetary_plant_biome",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/worldgen/biome/planetary_plant_biome.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "PlanetPl",
+      "type": "dimension",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "planet_pl",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/world/dimension/PlanetPlDimension.java",
+          "src/main/resources/data/ssc_14/dimension/planet_pl.json",
+          "src/main/resources/data/ssc_14/dimension_type/planet_pl.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "TpSSC14planetplantpr",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tp_ssc_14planetplantpr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/TpSSC14planetplantprProcedure.java"
+        ]
+      },
+      "path": "~/Technical/Commands"
+    },
+    {
+      "name": "GrassLightBlock",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "grass_light_block",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/GrassLightBlockBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/grass_light_block.json",
+          "src/main/resources/assets/ssc_14/items/grass_light_block.json",
+          "src/main/resources/assets/ssc_14/blockstates/grass_light_block.json",
+          "src/main/resources/assets/ssc_14/models/block/grass_light_block.json",
+          "src/main/resources/assets/ssc_14/models/item/grass_light_block.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "GrassLightBlock_Generation",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "grass_light_block_generation",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/GrassLightBlock_GenerationProcedure.java"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "PlanetaryPlantMountainBiome",
+      "type": "biome",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "planetary_plant_mountain_biome",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/worldgen/biome/planetary_plant_mountain_biome.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "LowPlanetGrass",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "low_planet_grass",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/LowPlanetGrassBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/low_planet_grass.json",
+          "src/main/resources/assets/ssc_14/items/low_planet_grass.json",
+          "src/main/resources/assets/ssc_14/blockstates/low_planet_grass.json",
+          "src/main/resources/assets/ssc_14/models/item/low_planet_grass.json",
+          "src/main/resources/assets/ssc_14/models/block/low_planet_grass.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "LowPlanetGrass_Installation",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "low_planet_grass_installation",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/LowPlanetGrass_InstallationProcedure.java"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "PlanetGrassSpawn",
+      "type": "feature",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "planet_grass_spawn",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/planet_grass_spawn_biome_modifier.json",
+          "src/main/resources/data/ssc_14/worldgen/placed_feature/planet_grass_spawn.json",
+          "src/main/resources/data/ssc_14/worldgen/configured_feature/planet_grass_spawn.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "MedPlanetGrass",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "med_planet_grass",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/med_planet_grass.json",
+          "src/main/resources/assets/ssc_14/models/item/med_planet_grass.json",
+          "src/main/resources/assets/ssc_14/models/block/med_planet_grass.json",
+          "src/main/resources/assets/ssc_14/items/med_planet_grass.json",
+          "src/main/java/net/mcreator/ssc/block/MedPlanetGrassBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/med_planet_grass.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "LowPlanetGrassSpawn",
+      "type": "feature",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "low_planet_grass_spawn",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/worldgen/configured_feature/low_planet_grass_spawn.json",
+          "src/main/resources/data/ssc_14/worldgen/placed_feature/low_planet_grass_spawn.json",
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/low_planet_grass_spawn_biome_modifier.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "PlanetaryTreeLog",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "planetary_tree_log",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/planetary_tree_log.json",
+          "src/main/resources/assets/ssc_14/models/block/planetary_tree_log.json",
+          "src/main/java/net/mcreator/ssc/block/PlanetaryTreeLogBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/planetary_tree_log.json",
+          "src/main/resources/assets/ssc_14/items/planetary_tree_log.json",
+          "src/main/resources/assets/ssc_14/blockstates/planetary_tree_log.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "PlanetTreeGeneration",
+      "type": "feature",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "planet_tree_generation",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/neoforge/biome_modifier/planet_tree_generation_biome_modifier.json",
+          "src/main/resources/data/ssc_14/worldgen/placed_feature/planet_tree_generation.json",
+          "src/main/resources/data/ssc_14/worldgen/configured_feature/planet_tree_generation.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
+    },
+    {
+      "name": "PlanetaryTreeFoliage",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "planetary_tree_foliage",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/planetary_tree_foliage.json",
+          "src/main/resources/assets/ssc_14/models/item/planetary_tree_foliage.json",
+          "src/main/java/net/mcreator/ssc/block/PlanetaryTreeFoliageBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/planetary_tree_foliage.json",
+          "src/main/resources/assets/ssc_14/models/block/planetary_tree_foliage.json",
+          "src/main/resources/assets/ssc_14/blockstates/planetary_tree_foliage.json"
+        ]
+      },
+      "path": "~/Dimension/Planets"
     }
   ],
   "variable_elements": [
@@ -10136,6 +10954,14 @@
       ],
       "category": "neutral",
       "subtitle": ""
+    },
+    {
+      "name": "c4_pip",
+      "files": [
+        "c4_pip"
+      ],
+      "category": "neutral",
+      "subtitle": ""
     }
   ],
   "tag_elements": {
@@ -10176,10 +11002,15 @@
       "Blocks.CAVE_AIR"
     ],
     "BLOCKS:minecraft:overworld_carver_replaceables": [
+      "~CUSTOM:GrassLightBlock",
+      "~CUSTOM:AsteroidStoneBase",
+      "~CUSTOM:Dirt",
       "~Blocks.AIR",
       "~CUSTOM:Voidb"
     ],
     "BLOCKS:minecraft:replaceable": [
+      "~CUSTOM:MedPlanetGrass",
+      "~CUSTOM:LowPlanetGrass",
       "~CUSTOM:AtmosBlock"
     ],
     "BLOCKS:ssc14:germetic_blocks": [
@@ -10369,6 +11200,27 @@
       "CUSTOM:UpTitle",
       "CUSTOM:UpTitleSteel",
       "CUSTOM:UpTitleDark"
+    ],
+    "BLOCKS:ssc14:chairs": [
+      "CUSTOM:SteelChair",
+      "CUSTOM:WoodChair",
+      "CUSTOM:OficeBlackChair",
+      "CUSTOM:OficeWhiteChair",
+      "CUSTOM:BarChair"
+    ],
+    "BLOCKS:ssc14:rotatable": [
+      "CUSTOM:ConsoleOfID",
+      "CUSTOM:PortableSheater",
+      "CUSTOM:Podstation",
+      "CUSTOM:SMES",
+      "CUSTOM:SteelChair"
+    ],
+    "BLOCKS:ssc14:planet1_stone": [
+      "CUSTOM:AsteroidStoneBase",
+      "CUSTOM:Dirt"
+    ],
+    "BLOCKS:minecraft:leaves": [
+      "~CUSTOM:PlanetaryTreeFoliage"
     ]
   },
   "tab_element_order": {
@@ -10382,9 +11234,12 @@
       "CoolerDEBUGhandgenerator",
       "N2DEBUGhandgenerator",
       "AirlockController",
+      "DebugGravGen",
       "DEBUGgenerator",
       "DEBUGLamp",
-      "DEBUGTechLamp"
+      "DEBUGTechLamp",
+      "Kostilniblok",
+      "NuclearWarhead"
     ],
     "CUSTOM:SSC14Coating": [
       "RodFloor",
@@ -10427,7 +11282,8 @@
       "TitleWhiteHerringbone",
       "TitleWhitePlastic",
       "WhiteStaircase",
-      "CaveFloor1"
+      "CaveFloor1",
+      "Dirt"
     ],
     "CUSTOM:SSC14Walls": [
       "SteelWall",
@@ -10462,10 +11318,19 @@
       "ConsoleOfID",
       "PortableSheater",
       "SteelTable",
+      "SteelChair",
+      "WoodChair",
+      "OficeBlackChair",
+      "OficeWhiteChair",
+      "BarChair",
       "DarkStaircase",
       "SteelStaircase",
       "WhiteStaircase",
-      "GravityGenerator"
+      "LowPlanetGrass",
+      "GravityGenerator",
+      "MedPlanetGrass",
+      "PlanetaryTreeLog",
+      "PlanetaryTreeFoliage"
     ],
     "CUSTOM:SSC14Items": [
       "Scrap",
@@ -10680,41 +11545,41 @@
       "item.ssc_14.id_card_ho_p": "ID Card (Head of Personnel)",
       "item.ssc_14.id_card_service_w": "ID Card (Service Worker)",
       "item.ssc_14.id_card_cleaner": "ID Card (Janitor)",
-      "item.ssc_14.id_card_chef": "ID Card (Шеф-повар)",
-      "item.ssc_14.id_card_botanik": "ID Card (Ботаник)",
-      "item.ssc_14.id_card_barmen": "ID Card (Бармен)",
-      "item.ssc_14.id_card_priest": "ID Card (Священник)",
-      "item.ssc_14.id_card_qm": "ID Card (Квартирмейстер)",
-      "item.ssc_14.id_card_utilizator": "ID Card (Утилизатор)",
-      "item.ssc_14.id_card_loader": "ID Card (Грузчик)",
-      "item.ssc_14.id_card_reporter": "ID Card (Репортёр)",
-      "item.ssc_14.id_card_boxer": "ID Card (Боксёр)",
-      "item.ssc_14.id_card_bibliotekar": "ID Card (Библиотекарь)",
-      "item.ssc_14.id_card_zootechnik": "ID Card (Зоотехник)",
-      "item.ssc_14.id_card_ce": "ID Card (Старший инженер)",
-      "item.ssc_14.id_card_ve": "ID Card (Ведущий инженер)",
-      "item.ssc_14.id_card_atmos": "ID Card (Атмосферный техник)",
-      "item.ssc_14.id_card_engeneer": "ID Card (Инженер)",
-      "item.ssc_14.id_card_tech_assistent": "ID Card (Технический ассистент)",
-      "item.ssc_14.id_card_musicant": "ID Card (Музыкант)",
-      "item.ssc_14.id_card_ho_s": "ID Card (Глава СБ)",
-      "item.ssc_14.id_card_instructor_s": "ID карта (Инструктор СБ)",
-      "item.ssc_14.id_card_ward": "ID карта (Смотритель)",
-      "item.ssc_14.id_card_detective": "ID карта (Детектив)",
-      "item.ssc_14.id_card_brig_med": "ID карта (Бригмедик)",
-      "item.ssc_14.id_card_oficer_s": "ID карта (Офицер СБ)",
-      "item.ssc_14.id_card_kadet_s": "ID карта (Кадет СБ)",
-      "item.ssc_14.id_card_cmo": "ID карта (Главврач)",
-      "item.ssc_14.id_card_vm": "ID карта (Ведущий врач)",
-      "item.ssc_14.id_card_chimic": "ID карта (Химик)",
-      "item.ssc_14.id_card_paramed": "ID карта (Парамедик)",
-      "item.ssc_14.id_card_medic": "ID карта (Врач)",
-      "item.ssc_14.id_card_psiholog": "ID карта (Психолог)",
-      "item.ssc_14.id_card_intern": "ID карта (Интерн)",
-      "item.ssc_14.id_card_rd": "ID карта (Научный руководитель)",
-      "item.ssc_14.id_card_vs": "ID карта (Ведущий учёный)",
-      "item.ssc_14.id_card_scientist": "ID карта (Учёный)",
-      "item.ssc_14.id_card_sci_assistent": "ID карта (Научный ассистент)",
+      "item.ssc_14.id_card_chef": "ID Card (Chef)",
+      "item.ssc_14.id_card_botanik": "ID Card (Botanist)",
+      "item.ssc_14.id_card_barmen": "ID Card (Bartender)",
+      "item.ssc_14.id_card_priest": "ID Card (Chaplain)",
+      "item.ssc_14.id_card_qm": "ID Card (Quartermaster)",
+      "item.ssc_14.id_card_utilizator": "ID Card (Salvage Specialist)",
+      "item.ssc_14.id_card_loader": "ID Card (Cargo Technician)",
+      "item.ssc_14.id_card_reporter": "ID Card (Reporter)",
+      "item.ssc_14.id_card_boxer": "ID Card (Boxer)",
+      "item.ssc_14.id_card_bibliotekar": "ID Card (Librarian)",
+      "item.ssc_14.id_card_zootechnik": "ID Card (Zootechnician)",
+      "item.ssc_14.id_card_ce": "ID Card (Chief Engineer)",
+      "item.ssc_14.id_card_ve": "ID Card (Lead Engineer)",
+      "item.ssc_14.id_card_atmos": "ID Card (Atmospheric Technician)",
+      "item.ssc_14.id_card_engeneer": "ID Card (Station Engineer)",
+      "item.ssc_14.id_card_tech_assistent": "ID Card (Technical Assistant)",
+      "item.ssc_14.id_card_musicant": "ID Card (Musician)",
+      "item.ssc_14.id_card_ho_s": "ID Card (Head of Security)",
+      "item.ssc_14.id_card_instructor_s": "ID Card (Security instructor)",
+      "item.ssc_14.id_card_ward": "ID Card (Warden)",
+      "item.ssc_14.id_card_detective": "ID Card (Detective)",
+      "item.ssc_14.id_card_brig_med": "ID Card (Brig medic)",
+      "item.ssc_14.id_card_oficer_s": "ID Card (Security Officer)",
+      "item.ssc_14.id_card_kadet_s": "ID Card (Security Cadet)",
+      "item.ssc_14.id_card_cmo": "ID Card (Chief Medical Officer)",
+      "item.ssc_14.id_card_vm": "ID Card (Leading doctor)",
+      "item.ssc_14.id_card_chimic": "ID Card (Chemist)",
+      "item.ssc_14.id_card_paramed": "ID Card (Paramedic)",
+      "item.ssc_14.id_card_medic": "ID Card (Medical Doctor)",
+      "item.ssc_14.id_card_psiholog": "ID Card (Psychologist)",
+      "item.ssc_14.id_card_intern": "ID Card (Medical Intern)",
+      "item.ssc_14.id_card_rd": "ID Card (Research Director)",
+      "item.ssc_14.id_card_vs": "ID Card (Leading scientist)",
+      "item.ssc_14.id_card_scientist": "ID Card (Scientist)",
+      "item.ssc_14.id_card_sci_assistent": "ID Card (Research Assistant)",
       "gui.ssc_14.access_config_menu.gun_room": "",
       "gui.ssc_14.access_config_menu.HoS": "",
       "gui.ssc_14.access_config_menu.Brig": "",
@@ -10980,7 +11845,26 @@
       "item.ssc_14.low_batterie": "Low Batterie",
       "item.ssc_14.steel_staircase": "Steel Staircase",
       "item.ssc_14.white_staircase": "White Staircase",
-      "item.ssc_14.dark_staircase": "Dark Staircase"
+      "item.ssc_14.dark_staircase": "Dark Staircase",
+      "item.ssc_14.steel_chair": "Steel Chair",
+      "entity.ssc_14.chair_entity": "Chair Entity",
+      "item.ssc_14.wood_chair": "Wood Chair",
+      "item.ssc_14.ofice_black_chair": "Black office chair",
+      "item.ssc_14.ofice_white_chair": "White office chair",
+      "item.ssc_14.bar_chair": "Bar chair",
+      "entity.ssc_14.c_4_crutch_ent": "C4 Crutch Ent",
+      "item.ssc_14.kostilniblok": "Kostilniblok",
+      "subtitles.c4_pip": "",
+      "item.ssc_14.debug_grav_gen": "DEBUG GravGen",
+      "item.ssc_14.nuclear_warhead": "Nuclear Warhead",
+      "item.ssc_14.dirt": "Dirt",
+      "biome.ssc_14.planetary_plant_biome": "Planetary Plant Biome",
+      "item.ssc_14.grass_light_block": "Grass Light Block",
+      "biome.ssc_14.planetary_plant_mountain_biome": "Planetary Plant Mountain Biome",
+      "item.ssc_14.low_planet_grass": "Low Planet Grass",
+      "item.ssc_14.med_planet_grass": "Medium Planet Grass",
+      "item.ssc_14.planetary_tree_log": "Planetary Tree Log",
+      "item.ssc_14.planetary_tree_foliage": "Planetary Tree Log"
     },
     "ru_ru": {
       "biome.ssc_14.spaceb": "Космос",
@@ -11396,10 +12280,29 @@
       "subtitles.welding_work": "",
       "gui.ssc_14.mac_frame_gui.label_empty": "",
       "item.ssc_14.steel_table": "Стальной стол",
-      "item.ssc_14.low_batterie": "Low Batterie",
-      "item.ssc_14.steel_staircase": "Steel Staircase",
-      "item.ssc_14.white_staircase": "Steel Staircase",
-      "item.ssc_14.dark_staircase": "White Staircase"
+      "item.ssc_14.low_batterie": "Батарея малой ёмкости",
+      "item.ssc_14.steel_staircase": "Стальные ступеньки",
+      "item.ssc_14.white_staircase": "Белые ступеньки",
+      "item.ssc_14.dark_staircase": "Тёмные ступеньки",
+      "item.ssc_14.steel_chair": "Стальной стул",
+      "entity.ssc_14.chair_entity": "Chair Entity",
+      "item.ssc_14.wood_chair": "Деревянный стул",
+      "item.ssc_14.ofice_black_chair": "Чёрный офисный стул",
+      "item.ssc_14.ofice_white_chair": "Белый офисный стул",
+      "item.ssc_14.bar_chair": "Барный стул",
+      "entity.ssc_14.c_4_crutch_ent": "C4 Crutch Ent",
+      "item.ssc_14.kostilniblok": "Kostilniblok",
+      "subtitles.c4_pip": "",
+      "item.ssc_14.debug_grav_gen": "DEBUG генератор гравитации",
+      "item.ssc_14.nuclear_warhead": "Ядерная боеголовка",
+      "item.ssc_14.dirt": "Земля",
+      "biome.ssc_14.planetary_plant_biome": "Planetary Plant Biome",
+      "item.ssc_14.grass_light_block": "Светлая трава (покрытие)",
+      "biome.ssc_14.planetary_plant_mountain_biome": "Planetary Plant Biome",
+      "item.ssc_14.low_planet_grass": "Низкая планетарная трава",
+      "item.ssc_14.med_planet_grass": "Планетарная трава",
+      "item.ssc_14.planetary_tree_log": "Planetary Tree Log",
+      "item.ssc_14.planetary_tree_foliage": "Planetary Tree Log"
     }
   },
   "metadata": {
@@ -11421,6 +12324,7 @@
       "src/main/java/net/mcreator/ssc/client/RenderUtils.java",
       "src/main/resources/META-INF/neoforge.mods.toml",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModTabs.java",
+      "src/main/resources/META-INF/accesstransformer.cfg",
       "src/main/java/net/mcreator/ssc/network/Ssc14ModVariables.java",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModModels.java",
       "src/main/resources/assets/ssc_14/sounds.json",
@@ -11432,7 +12336,16 @@
     "children": [
       {
         "name": "Dimension",
-        "children": []
+        "children": [
+          {
+            "name": "Space",
+            "children": []
+          },
+          {
+            "name": "Planets",
+            "children": []
+          }
+        ]
       },
       {
         "name": "Technical",
@@ -11602,6 +12515,10 @@
                     "children": []
                   }
                 ]
+              },
+              {
+                "name": "Chairs",
+                "children": []
               }
             ]
           },
@@ -11658,7 +12575,12 @@
           },
           {
             "name": "Armament",
-            "children": []
+            "children": [
+              {
+                "name": "C4",
+                "children": []
+              }
+            ]
           },
           {
             "name": "Boards",
@@ -11672,6 +12594,10 @@
                 "children": []
               }
             ]
+          },
+          {
+            "name": "Clothes",
+            "children": []
           }
         ]
       },
@@ -11689,7 +12615,7 @@
   "workspaceSettings": {
     "modid": "ssc_14",
     "modName": "Space Station Craft 14",
-    "version": "0.1.12",
+    "version": "0.1.13",
     "description": "Повторённая в Minecraft игра Space Station 14. Основатель - Space Kyyyst. В разработке принимали участие: Loksik, almazar3, bombu, sad2284, Sledge Hammer, Mr_irak, ...",
     "author": "Space_Kyyyst",
     "websiteURL": "https://www.youtube.com/@Space.kyyyst",
@@ -11701,7 +12627,9 @@
     ],
     "dependencies": [],
     "dependants": [],
-    "mcreatorDependencies": [],
+    "mcreatorDependencies": [
+      "curios_api"
+    ],
     "currentGenerator": "neoforge-1.21.8",
     "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.ssc"

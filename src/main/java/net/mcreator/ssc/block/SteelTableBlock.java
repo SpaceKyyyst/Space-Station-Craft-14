@@ -21,7 +21,22 @@ import net.mcreator.ssc.procedures.SteelTableStateUpdateProcedure;
 
 public class SteelTableBlock extends Block {
 	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 15);
-	private static final VoxelShape SHAPE = Shapes.or(box(0, 14, 0, 16, 16, 16), box(1, 0, 1, 3, 14, 3), box(13, 0, 13, 15, 14, 15), box(1, 0, 13, 3, 14, 15), box(13, 0, 1, 15, 14, 3));
+	private static final VoxelShape SHAPE_1 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_2 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_3 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_4 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_5 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_6 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_7 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_8 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_9 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_10 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_11 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_12 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_13 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_14 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE_15 = box(0, 14, 0, 16, 16, 16);
+	private static final VoxelShape SHAPE = box(0, 14, 0, 16, 16, 16);
 
 	public SteelTableBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.LANTERN).strength(5f).lightLevel(s -> (new Object() {
@@ -78,6 +93,51 @@ public class SteelTableBlock extends Block {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		if (state.getValue(BLOCKSTATE) == 1) {
+			return (SHAPE_1);
+		}
+		if (state.getValue(BLOCKSTATE) == 2) {
+			return (SHAPE_2);
+		}
+		if (state.getValue(BLOCKSTATE) == 3) {
+			return (SHAPE_3);
+		}
+		if (state.getValue(BLOCKSTATE) == 4) {
+			return (SHAPE_4);
+		}
+		if (state.getValue(BLOCKSTATE) == 5) {
+			return (SHAPE_5);
+		}
+		if (state.getValue(BLOCKSTATE) == 6) {
+			return (SHAPE_6);
+		}
+		if (state.getValue(BLOCKSTATE) == 7) {
+			return (SHAPE_7);
+		}
+		if (state.getValue(BLOCKSTATE) == 8) {
+			return (SHAPE_8);
+		}
+		if (state.getValue(BLOCKSTATE) == 9) {
+			return (SHAPE_9);
+		}
+		if (state.getValue(BLOCKSTATE) == 10) {
+			return (SHAPE_10);
+		}
+		if (state.getValue(BLOCKSTATE) == 11) {
+			return (SHAPE_11);
+		}
+		if (state.getValue(BLOCKSTATE) == 12) {
+			return (SHAPE_12);
+		}
+		if (state.getValue(BLOCKSTATE) == 13) {
+			return (SHAPE_13);
+		}
+		if (state.getValue(BLOCKSTATE) == 14) {
+			return (SHAPE_14);
+		}
+		if (state.getValue(BLOCKSTATE) == 15) {
+			return (SHAPE_15);
+		}
 		return (SHAPE);
 	}
 

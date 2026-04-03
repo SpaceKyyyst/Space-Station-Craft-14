@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "ssc_14:atmos_block"
+    "ssc_14:atmos_block",
+    "ssc_14:low_planet_grass",
+    "ssc_14:med_planet_grass"
   ]
 }

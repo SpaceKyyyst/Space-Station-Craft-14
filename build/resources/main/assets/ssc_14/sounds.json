@@ -270,5 +270,13 @@
         "stream": false
       }
     ]
+  },
+  "c4_pip": {
+    "sounds": [
+      {
+        "name": "ssc_14:c4_pip",
+        "stream": false
+      }
+    ]
   }
 }

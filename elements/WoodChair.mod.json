@@ -1,0 +1,215 @@
+{
+  "_fv": 79,
+  "_type": "block",
+  "definition": {
+    "texture": "wood_chair_item",
+    "textureTop": "",
+    "textureLeft": "",
+    "textureFront": "",
+    "textureRight": "",
+    "textureBack": "",
+    "renderType": 2,
+    "customModelName": "wood_chair:default",
+    "rotationMode": 1,
+    "enablePitch": false,
+    "emissiveRendering": false,
+    "displayFluidOverlay": false,
+    "animations": [],
+    "itemTexture": "wood_chair_item",
+    "particleTexture": "",
+    "blockSetType": "OAK",
+    "pottedPlant": {
+      "value": ""
+    },
+    "tintType": "No tint",
+    "isItemTinted": false,
+    "hasTransparency": true,
+    "connectedSides": false,
+    "transparencyType": "CUTOUT",
+    "disableOffset": false,
+    "boundingBoxes": [
+      {
+        "mx": 2.0,
+        "my": 0.0,
+        "mz": 2.0,
+        "Mx": 4.0,
+        "My": 6.0,
+        "Mz": 4.0,
+        "subtract": false
+      },
+      {
+        "mx": 2.0,
+        "my": 0.0,
+        "mz": 12.0,
+        "Mx": 4.0,
+        "My": 6.0,
+        "Mz": 14.0,
+        "subtract": false
+      },
+      {
+        "mx": 12.0,
+        "my": 0.0,
+        "mz": 12.0,
+        "Mx": 14.0,
+        "My": 6.0,
+        "Mz": 14.0,
+        "subtract": false
+      },
+      {
+        "mx": 12.0,
+        "my": 0.0,
+        "mz": 2.0,
+        "Mx": 14.0,
+        "My": 6.0,
+        "Mz": 4.0,
+        "subtract": false
+      },
+      {
+        "mx": 2.0,
+        "my": 6.0,
+        "mz": 2.0,
+        "Mx": 14.0,
+        "My": 9.0,
+        "Mz": 14.0,
+        "subtract": false
+      },
+      {
+        "mx": 2.0,
+        "my": 11.0,
+        "mz": 12.0,
+        "Mx": 14.0,
+        "My": 21.0,
+        "Mz": 14.0,
+        "subtract": false
+      },
+      {
+        "mx": 3.0,
+        "my": 9.0,
+        "mz": 12.0,
+        "Mx": 13.0,
+        "My": 11.0,
+        "Mz": 14.0,
+        "subtract": false
+      }
+    ],
+    "customProperties": [],
+    "name": "Wood Chair",
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "hardness": 5.0,
+    "resistance": 5.0,
+    "hasGravity": false,
+    "isWaterloggable": false,
+    "hasBlockItem": true,
+    "maxStackSize": 1,
+    "rarity": "COMMON",
+    "immuneToFire": false,
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:SSC14Objects"
+      }
+    ],
+    "destroyTool": "Not specified",
+    "customDrop": {
+      "value": ""
+    },
+    "dropAmount": 0,
+    "xpAmountMin": 0,
+    "xpAmountMax": 0,
+    "useLootTableForDrops": false,
+    "requiresCorrectTool": false,
+    "enchantPowerBonus": 0.0,
+    "plantsGrowOn": false,
+    "canRedstoneConnect": false,
+    "lightOpacity": 0,
+    "tickRate": 0,
+    "tickRandomly": false,
+    "isReplaceable": false,
+    "canProvidePower": false,
+    "emittedRedstonePower": {
+      "fixedValue": 15.0
+    },
+    "colorOnMap": "DEFAULT",
+    "noteBlockInstrument": "harp",
+    "creativePickItem": {
+      "value": ""
+    },
+    "offsetType": "NONE",
+    "aiPathNodeType": "DEFAULT",
+    "strippingResult": {
+      "value": ""
+    },
+    "ignitedByLava": false,
+    "flammability": 0,
+    "fireSpreadSpeed": 0,
+    "isLadder": false,
+    "slipperiness": 0.6,
+    "speedFactor": 1.0,
+    "jumpFactor": 1.0,
+    "reactionToPushing": "NORMAL",
+    "isNotColidable": true,
+    "isCustomSoundType": false,
+    "soundOnStep": {
+      "value": "WOOD"
+    },
+    "breakSound": {
+      "value": ""
+    },
+    "fallSound": {
+      "value": ""
+    },
+    "hitSound": {
+      "value": ""
+    },
+    "placeSound": {
+      "value": ""
+    },
+    "stepSound": {
+      "value": ""
+    },
+    "luminance": 0,
+    "unbreakable": false,
+    "vanillaToolTier": "NONE",
+    "isBonemealable": false,
+    "sensitiveToVibration": false,
+    "vibrationalEvents": [],
+    "vibrationSensitivityRadius": {
+      "fixedValue": 7.0
+    },
+    "hasInventory": false,
+    "openGUIOnRightClick": false,
+    "inventorySize": 9,
+    "inventoryStackSize": 99,
+    "inventoryDropWhenDestroyed": true,
+    "inventoryComparatorPower": true,
+    "inventoryOutSlotIDs": [],
+    "inventoryInSlotIDs": [],
+    "hasEnergyStorage": false,
+    "energyInitial": 0,
+    "energyCapacity": 400000,
+    "energyMaxReceive": 200,
+    "energyMaxExtract": 200,
+    "isFluidTank": false,
+    "fluidCapacity": 8000,
+    "fluidRestrictions": [],
+    "onRightClicked": {
+      "name": "Sit_On_Chair_PR"
+    },
+    "onBlockAdded": {
+      "name": "Chair_Ent_Generation"
+    },
+    "generateFeature": false,
+    "restrictionBiomes": [],
+    "blocksToReplace": [
+      {
+        "value": "TAG:stone_ore_replaceables"
+      }
+    ],
+    "generationShape": "UNIFORM",
+    "frequencyPerChunks": 10,
+    "frequencyOnChunk": 16,
+    "minGenerateHeight": 0,
+    "maxGenerateHeight": 64
+  }
+}

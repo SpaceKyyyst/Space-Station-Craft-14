@@ -9,7 +9,7 @@
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "techlamp:default",
+    "customModelName": "techlamp_2:lamp",
     "rotationMode": 1,
     "enablePitch": false,
     "emissiveRendering": false,
