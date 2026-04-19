@@ -18,46 +18,38 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import java.util.function.Function;
+
 public class BrokenGrilleBlock extends Block {
 	public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
-	private static final VoxelShape SHAPE_NORTH = Shapes.join(box(0, 0, 11, 16, 16, 16), box(2, 2, 0, 14, 14, 16), BooleanOp.ONLY_FIRST);
-	private static final VoxelShape SHAPE_SOUTH = Shapes.join(box(0, 0, 0, 16, 16, 5), box(2, 2, 0, 14, 14, 16), BooleanOp.ONLY_FIRST);
-	private static final VoxelShape SHAPE_EAST = Shapes.join(box(0, 0, 0, 5, 16, 16), box(0, 2, 2, 16, 14, 14), BooleanOp.ONLY_FIRST);
-	private static final VoxelShape SHAPE_WEST = Shapes.join(box(11, 0, 0, 16, 16, 16), box(0, 2, 2, 16, 14, 14), BooleanOp.ONLY_FIRST);
-	private static final VoxelShape SHAPE_UP = Shapes.join(box(0, 0, 0, 16, 5, 16), box(2, 0, 2, 14, 16, 14), BooleanOp.ONLY_FIRST);
-	private static final VoxelShape SHAPE_DOWN = Shapes.join(box(0, 11, 0, 16, 16, 16), box(2, 0, 2, 14, 16, 14), BooleanOp.ONLY_FIRST);
+	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public BrokenGrilleBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.CHAIN).strength(2f).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.CHAIN).strength(2f).noCollission().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
-	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
+	private Function<BlockState, VoxelShape> makeShapes() {
+		return this.getShapeForEachState(state -> {
+			return switch (state.getValue(FACING)) {
+				default -> Shapes.join(box(0, 0, 0, 16, 16, 5), box(2, 2, 0, 14, 14, 16), BooleanOp.ONLY_FIRST);
+				case NORTH -> Shapes.join(box(0, 0, 11, 16, 16, 16), box(2, 2, 0, 14, 14, 16), BooleanOp.ONLY_FIRST);
+				case EAST -> Shapes.join(box(0, 0, 0, 5, 16, 16), box(0, 2, 2, 16, 14, 14), BooleanOp.ONLY_FIRST);
+				case WEST -> Shapes.join(box(11, 0, 0, 16, 16, 16), box(0, 2, 2, 16, 14, 14), BooleanOp.ONLY_FIRST);
+				case UP -> Shapes.join(box(0, 0, 0, 16, 5, 16), box(2, 0, 2, 14, 16, 14), BooleanOp.ONLY_FIRST);
+				case DOWN -> Shapes.join(box(0, 11, 0, 16, 16, 16), box(2, 0, 2, 14, 16, 14), BooleanOp.ONLY_FIRST);
+			};
+		});
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return shapes.apply(state);
 	}
 
 	@Override
 	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return (switch (state.getValue(FACING)) {
-			case NORTH -> SHAPE_NORTH;
-			case SOUTH -> SHAPE_SOUTH;
-			case EAST -> SHAPE_EAST;
-			case WEST -> SHAPE_WEST;
-			case UP -> SHAPE_UP;
-			case DOWN -> SHAPE_DOWN;
-			default -> SHAPE_NORTH;
-		});
 	}
 
 	@Override

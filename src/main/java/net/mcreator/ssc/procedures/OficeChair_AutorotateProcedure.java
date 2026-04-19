@@ -20,100 +20,102 @@ public class OficeChair_AutorotateProcedure {
 		Entity sitplayer = null;
 		if (!world.getEntitiesOfClass(Player.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.5), (z + 0.5))).inflate(0.2 / 2d), e -> true).isEmpty()) {
 			sitplayer = findEntityInWorldRange(world, Player.class, (x + 0.5), (y + 0.5), (z + 0.5), 0.2);
-			if (-45 < sitplayer.getYRot() && 45 > sitplayer.getYRot()) {
-				{
-					Entity _ent = (findEntityInWorldRange(world, ChairEntityEntity.class, (x + 0.5), y, (z + 0.5), 0.1));
-					_ent.setYRot(0);
-					_ent.setXRot(0);
-					_ent.setYBodyRot(_ent.getYRot());
-					_ent.setYHeadRot(_ent.getYRot());
-					_ent.yRotO = _ent.getYRot();
-					_ent.xRotO = _ent.getXRot();
-					if (_ent instanceof LivingEntity _entity) {
-						_entity.yBodyRotO = _entity.getYRot();
-						_entity.yHeadRotO = _entity.getYRot();
+			if (sitplayer.isPassenger() && (sitplayer.getRootVehicle()) instanceof ChairEntityEntity) {
+				if (-45 < sitplayer.getYRot() && 45 > sitplayer.getYRot()) {
+					{
+						Entity _ent = (findEntityInWorldRange(world, ChairEntityEntity.class, (x + 0.5), y, (z + 0.5), 0.1));
+						_ent.setYRot(0);
+						_ent.setXRot(0);
+						_ent.setYBodyRot(_ent.getYRot());
+						_ent.setYHeadRot(_ent.getYRot());
+						_ent.yRotO = _ent.getYRot();
+						_ent.xRotO = _ent.getXRot();
+						if (_ent instanceof LivingEntity _entity) {
+							_entity.yBodyRotO = _entity.getYRot();
+							_entity.yHeadRotO = _entity.getYRot();
+						}
 					}
-				}
-				{
-					Direction _dir = Direction.SOUTH;
-					BlockPos _pos = BlockPos.containing(x, y, z);
-					BlockState _bs = world.getBlockState(_pos);
-					if (_bs.getBlock().getStateDefinition().getProperty("facing") instanceof EnumProperty _dp && _dp.getPossibleValues().contains(_dir)) {
-						world.setBlock(_pos, _bs.setValue(_dp, _dir), 3);
-					} else if (_bs.getBlock().getStateDefinition().getProperty("axis") instanceof EnumProperty _ap && _ap.getPossibleValues().contains(_dir.getAxis())) {
-						world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
+					{
+						Direction _dir = Direction.SOUTH;
+						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockState _bs = world.getBlockState(_pos);
+						if (_bs.getBlock().getStateDefinition().getProperty("facing") instanceof EnumProperty _dp && _dp.getPossibleValues().contains(_dir)) {
+							world.setBlock(_pos, _bs.setValue(_dp, _dir), 3);
+						} else if (_bs.getBlock().getStateDefinition().getProperty("axis") instanceof EnumProperty _ap && _ap.getPossibleValues().contains(_dir.getAxis())) {
+							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
+						}
 					}
-				}
-			} else if (45 <= sitplayer.getYRot() && 135 > sitplayer.getYRot()) {
-				{
-					Entity _ent = (findEntityInWorldRange(world, ChairEntityEntity.class, (x + 0.5), y, (z + 0.5), 0.1));
-					_ent.setYRot(90);
-					_ent.setXRot(0);
-					_ent.setYBodyRot(_ent.getYRot());
-					_ent.setYHeadRot(_ent.getYRot());
-					_ent.yRotO = _ent.getYRot();
-					_ent.xRotO = _ent.getXRot();
-					if (_ent instanceof LivingEntity _entity) {
-						_entity.yBodyRotO = _entity.getYRot();
-						_entity.yHeadRotO = _entity.getYRot();
+				} else if (45 <= sitplayer.getYRot() && 135 > sitplayer.getYRot()) {
+					{
+						Entity _ent = (findEntityInWorldRange(world, ChairEntityEntity.class, (x + 0.5), y, (z + 0.5), 0.1));
+						_ent.setYRot(90);
+						_ent.setXRot(0);
+						_ent.setYBodyRot(_ent.getYRot());
+						_ent.setYHeadRot(_ent.getYRot());
+						_ent.yRotO = _ent.getYRot();
+						_ent.xRotO = _ent.getXRot();
+						if (_ent instanceof LivingEntity _entity) {
+							_entity.yBodyRotO = _entity.getYRot();
+							_entity.yHeadRotO = _entity.getYRot();
+						}
 					}
-				}
-				{
-					Direction _dir = Direction.WEST;
-					BlockPos _pos = BlockPos.containing(x, y, z);
-					BlockState _bs = world.getBlockState(_pos);
-					if (_bs.getBlock().getStateDefinition().getProperty("facing") instanceof EnumProperty _dp && _dp.getPossibleValues().contains(_dir)) {
-						world.setBlock(_pos, _bs.setValue(_dp, _dir), 3);
-					} else if (_bs.getBlock().getStateDefinition().getProperty("axis") instanceof EnumProperty _ap && _ap.getPossibleValues().contains(_dir.getAxis())) {
-						world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
+					{
+						Direction _dir = Direction.WEST;
+						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockState _bs = world.getBlockState(_pos);
+						if (_bs.getBlock().getStateDefinition().getProperty("facing") instanceof EnumProperty _dp && _dp.getPossibleValues().contains(_dir)) {
+							world.setBlock(_pos, _bs.setValue(_dp, _dir), 3);
+						} else if (_bs.getBlock().getStateDefinition().getProperty("axis") instanceof EnumProperty _ap && _ap.getPossibleValues().contains(_dir.getAxis())) {
+							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
+						}
 					}
-				}
-			} else if (-45 >= sitplayer.getYRot() && -135 < sitplayer.getYRot()) {
-				{
-					Entity _ent = (findEntityInWorldRange(world, ChairEntityEntity.class, (x + 0.5), y, (z + 0.5), 0.1));
-					_ent.setYRot(-90);
-					_ent.setXRot(0);
-					_ent.setYBodyRot(_ent.getYRot());
-					_ent.setYHeadRot(_ent.getYRot());
-					_ent.yRotO = _ent.getYRot();
-					_ent.xRotO = _ent.getXRot();
-					if (_ent instanceof LivingEntity _entity) {
-						_entity.yBodyRotO = _entity.getYRot();
-						_entity.yHeadRotO = _entity.getYRot();
+				} else if (-45 >= sitplayer.getYRot() && -135 < sitplayer.getYRot()) {
+					{
+						Entity _ent = (findEntityInWorldRange(world, ChairEntityEntity.class, (x + 0.5), y, (z + 0.5), 0.1));
+						_ent.setYRot(-90);
+						_ent.setXRot(0);
+						_ent.setYBodyRot(_ent.getYRot());
+						_ent.setYHeadRot(_ent.getYRot());
+						_ent.yRotO = _ent.getYRot();
+						_ent.xRotO = _ent.getXRot();
+						if (_ent instanceof LivingEntity _entity) {
+							_entity.yBodyRotO = _entity.getYRot();
+							_entity.yHeadRotO = _entity.getYRot();
+						}
 					}
-				}
-				{
-					Direction _dir = Direction.EAST;
-					BlockPos _pos = BlockPos.containing(x, y, z);
-					BlockState _bs = world.getBlockState(_pos);
-					if (_bs.getBlock().getStateDefinition().getProperty("facing") instanceof EnumProperty _dp && _dp.getPossibleValues().contains(_dir)) {
-						world.setBlock(_pos, _bs.setValue(_dp, _dir), 3);
-					} else if (_bs.getBlock().getStateDefinition().getProperty("axis") instanceof EnumProperty _ap && _ap.getPossibleValues().contains(_dir.getAxis())) {
-						world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
+					{
+						Direction _dir = Direction.EAST;
+						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockState _bs = world.getBlockState(_pos);
+						if (_bs.getBlock().getStateDefinition().getProperty("facing") instanceof EnumProperty _dp && _dp.getPossibleValues().contains(_dir)) {
+							world.setBlock(_pos, _bs.setValue(_dp, _dir), 3);
+						} else if (_bs.getBlock().getStateDefinition().getProperty("axis") instanceof EnumProperty _ap && _ap.getPossibleValues().contains(_dir.getAxis())) {
+							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
+						}
 					}
-				}
-			} else if (135 <= sitplayer.getYRot() || -135 >= sitplayer.getYRot()) {
-				{
-					Entity _ent = (findEntityInWorldRange(world, ChairEntityEntity.class, (x + 0.5), y, (z + 0.5), 0.1));
-					_ent.setYRot(180);
-					_ent.setXRot(0);
-					_ent.setYBodyRot(_ent.getYRot());
-					_ent.setYHeadRot(_ent.getYRot());
-					_ent.yRotO = _ent.getYRot();
-					_ent.xRotO = _ent.getXRot();
-					if (_ent instanceof LivingEntity _entity) {
-						_entity.yBodyRotO = _entity.getYRot();
-						_entity.yHeadRotO = _entity.getYRot();
+				} else if (135 <= sitplayer.getYRot() || -135 >= sitplayer.getYRot()) {
+					{
+						Entity _ent = (findEntityInWorldRange(world, ChairEntityEntity.class, (x + 0.5), y, (z + 0.5), 0.1));
+						_ent.setYRot(180);
+						_ent.setXRot(0);
+						_ent.setYBodyRot(_ent.getYRot());
+						_ent.setYHeadRot(_ent.getYRot());
+						_ent.yRotO = _ent.getYRot();
+						_ent.xRotO = _ent.getXRot();
+						if (_ent instanceof LivingEntity _entity) {
+							_entity.yBodyRotO = _entity.getYRot();
+							_entity.yHeadRotO = _entity.getYRot();
+						}
 					}
-				}
-				{
-					Direction _dir = Direction.NORTH;
-					BlockPos _pos = BlockPos.containing(x, y, z);
-					BlockState _bs = world.getBlockState(_pos);
-					if (_bs.getBlock().getStateDefinition().getProperty("facing") instanceof EnumProperty _dp && _dp.getPossibleValues().contains(_dir)) {
-						world.setBlock(_pos, _bs.setValue(_dp, _dir), 3);
-					} else if (_bs.getBlock().getStateDefinition().getProperty("axis") instanceof EnumProperty _ap && _ap.getPossibleValues().contains(_dir.getAxis())) {
-						world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
+					{
+						Direction _dir = Direction.NORTH;
+						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockState _bs = world.getBlockState(_pos);
+						if (_bs.getBlock().getStateDefinition().getProperty("facing") instanceof EnumProperty _dp && _dp.getPossibleValues().contains(_dir)) {
+							world.setBlock(_pos, _bs.setValue(_dp, _dir), 3);
+						} else if (_bs.getBlock().getStateDefinition().getProperty("axis") instanceof EnumProperty _ap && _ap.getPossibleValues().contains(_dir.getAxis())) {
+							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
+						}
 					}
 				}
 			}

@@ -1,5 +1,5 @@
 {
-  "_fv": 79,
+  "_fv": 85,
   "_type": "biome",
   "definition": {
     "name": "Planetary Plant Biome",
@@ -66,6 +66,10 @@
     "genWeirdness": {
       "min": -2.0,
       "max": 0.0
+    },
+    "genDepth": {
+      "min": 0.2,
+      "max": 0.9
     },
     "treesPerChunk": 0,
     "vanillaTreeType": "Default",

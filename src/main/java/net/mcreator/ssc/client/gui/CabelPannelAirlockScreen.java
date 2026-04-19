@@ -31,6 +31,23 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 	private ImageButton imagebutton_cable_button1;
 	private ImageButton imagebutton_cable_button2;
 	private ImageButton imagebutton_cable_button3;
+	private static final ResourceLocation BACKGROUND = ResourceLocation.parse("ssc_14:textures/screens/cabel_pannel_airlock.png");
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/cabel_pannel_airlock_copy.png");
+	private static final ResourceLocation IMAGE_1 = ResourceLocation.parse("ssc_14:textures/screens/cable_1.png");
+	private static final ResourceLocation IMAGE_2 = ResourceLocation.parse("ssc_14:textures/screens/cable_2.png");
+	private static final ResourceLocation IMAGE_3 = ResourceLocation.parse("ssc_14:textures/screens/cable_3.png");
+	private static final ResourceLocation IMAGE_4 = ResourceLocation.parse("ssc_14:textures/screens/cabel_4.png");
+	private static final ResourceLocation IMAGE_5 = ResourceLocation.parse("ssc_14:textures/screens/cable_5.png");
+	private static final ResourceLocation IMAGE_6 = ResourceLocation.parse("ssc_14:textures/screens/cable_6.png");
+	private static final ResourceLocation IMAGE_7 = ResourceLocation.parse("ssc_14:textures/screens/cable_7.png");
+	private static final ResourceLocation IMAGE_8 = ResourceLocation.parse("ssc_14:textures/screens/cable_8.png");
+	private static final ResourceLocation IMAGE_9 = ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_yellow.png");
+	private static final ResourceLocation IMAGE_10 = ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_red.png");
+	private static final ResourceLocation IMAGE_11 = ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_white.png");
+	private static final ResourceLocation IMAGE_12 = ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_cyane.png");
+	private static final ResourceLocation IMAGE_13 = ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_blue.png");
+	private static final ResourceLocation IMAGE_14 = ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_green.png");
+	private static final ResourceLocation IMAGE_15 = ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_red.png");
 
 	public CabelPannelAirlockScreen(CabelPannelAirlockMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -49,8 +66,6 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		menuStateUpdateActive = false;
 	}
 
-	private static final ResourceLocation texture = ResourceLocation.parse("ssc_14:textures/screens/cabel_pannel_airlock.png");
-
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
@@ -59,47 +74,47 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 
 	@Override
 	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/cabel_pannel_airlock_copy.png"), this.leftPos + 0, this.topPos + -50, 0, 0, 160, 100, 160, 100);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + -50, 0, 0, 160, 100, 160, 100);
 		if (CPcabel1Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/cable_1.png"), this.leftPos + 36, this.topPos + 5, 0, 0, 6, 19, 6, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, this.leftPos + 36, this.topPos + 5, 0, 0, 6, 19, 6, 19);
 		}
 		if (CPcabel2Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/cable_2.png"), this.leftPos + 48, this.topPos + 5, 0, 0, 5, 19, 5, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, this.leftPos + 48, this.topPos + 5, 0, 0, 5, 19, 5, 19);
 		}
 		if (CPcabel3Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/cable_3.png"), this.leftPos + 58, this.topPos + 5, 0, 0, 6, 19, 6, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, this.leftPos + 58, this.topPos + 5, 0, 0, 6, 19, 6, 19);
 		}
 		if (CPcabel4Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/cabel_4.png"), this.leftPos + 72, this.topPos + 5, 0, 0, 7, 19, 7, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_4, this.leftPos + 72, this.topPos + 5, 0, 0, 7, 19, 7, 19);
 		}
 		if (CPcabel5Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/cable_5.png"), this.leftPos + 83, this.topPos + 5, 0, 0, 5, 19, 5, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_5, this.leftPos + 83, this.topPos + 5, 0, 0, 5, 19, 5, 19);
 		}
 		if (CPcabel6Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/cable_6.png"), this.leftPos + 91, this.topPos + 5, 0, 0, 8, 19, 8, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_6, this.leftPos + 91, this.topPos + 5, 0, 0, 8, 19, 8, 19);
 		}
 		if (CPcabel7Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/cable_7.png"), this.leftPos + 105, this.topPos + 5, 0, 0, 4, 19, 4, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_7, this.leftPos + 105, this.topPos + 5, 0, 0, 4, 19, 4, 19);
 		}
 		if (CPcabel8Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/cable_8.png"), this.leftPos + 115, this.topPos + 5, 0, 0, 7, 19, 7, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_8, this.leftPos + 115, this.topPos + 5, 0, 0, 7, 19, 7, 19);
 		}
 		if (CPlampind1Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_yellow.png"), this.leftPos + 31, this.topPos + -28, 0, 0, 9, 9, 9, 9);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_9, this.leftPos + 31, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
 		if (CPlampind2Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_red.png"), this.leftPos + 69, this.topPos + -28, 0, 0, 9, 9, 9, 9);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_10, this.leftPos + 69, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
 		if (CPlampind3Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_white.png"), this.leftPos + 107, this.topPos + -28, 0, 0, 9, 9, 9, 9);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_11, this.leftPos + 107, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
 		if (CPlampind4Procedure.execute(world, entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_cyane.png"), this.leftPos + 133, this.topPos + -28, 0, 0, 9, 9, 9, 9);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_12, this.leftPos + 133, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_blue.png"), this.leftPos + 31, this.topPos + -14, 0, 0, 9, 9, 9, 9);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_green.png"), this.leftPos + 69, this.topPos + -14, 0, 0, 9, 9, 9, 9);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lamp_indicator_red.png"), this.leftPos + 107, this.topPos + -14, 0, 0, 9, 9, 9, 9);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_13, this.leftPos + 31, this.topPos + -14, 0, 0, 9, 9, 9, 9);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_14, this.leftPos + 69, this.topPos + -14, 0, 0, 9, 9, 9, 9);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_15, this.leftPos + 107, this.topPos + -14, 0, 0, 9, 9, 9, 9);
 	}
 
 	@Override

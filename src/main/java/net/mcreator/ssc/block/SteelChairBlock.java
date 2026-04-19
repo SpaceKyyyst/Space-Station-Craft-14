@@ -24,46 +24,36 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.ssc.procedures.Sit_On_Chair_PRProcedure;
 import net.mcreator.ssc.procedures.Chair_Ent_GenerationProcedure;
 
+import java.util.function.Function;
+
 public class SteelChairBlock extends Block {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(2, 0, 2, 4, 7, 4), box(3, 0, 12, 5, 7, 14), box(2, 7, 2, 14, 9, 13), box(3, 7, 13, 5, 19, 15), box(2, 14, 12, 14, 20, 14), box(11, 7, 13, 13, 19, 15), box(12, 0, 2, 14, 7, 4),
-			box(11, 0, 12, 13, 7, 14));
-	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(12, 0, 12, 14, 7, 14), box(11, 0, 2, 13, 7, 4), box(2, 7, 3, 14, 9, 14), box(11, 7, 1, 13, 19, 3), box(2, 14, 2, 14, 20, 4), box(3, 7, 1, 5, 19, 3), box(2, 0, 12, 4, 7, 14),
-			box(3, 0, 2, 5, 7, 4));
-	private static final VoxelShape SHAPE_EAST = Shapes.or(box(12, 0, 2, 14, 7, 4), box(2, 0, 3, 4, 7, 5), box(3, 7, 2, 14, 9, 14), box(1, 7, 3, 3, 19, 5), box(2, 14, 2, 4, 20, 14), box(1, 7, 11, 3, 19, 13), box(12, 0, 12, 14, 7, 14),
-			box(2, 0, 11, 4, 7, 13));
-	private static final VoxelShape SHAPE_WEST = Shapes.or(box(2, 0, 12, 4, 7, 14), box(12, 0, 11, 14, 7, 13), box(2, 7, 2, 13, 9, 14), box(13, 7, 11, 15, 19, 13), box(12, 14, 2, 14, 20, 14), box(13, 7, 3, 15, 19, 5), box(2, 0, 2, 4, 7, 4),
-			box(12, 0, 3, 14, 7, 5));
+	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public SteelChairBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.IRON).strength(5f).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.IRON).strength(5f).noCollission().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
-	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
+	private Function<BlockState, VoxelShape> makeShapes() {
+		return this.getShapeForEachState(state -> {
+			return switch (state.getValue(FACING)) {
+				default -> Shapes.or(box(12, 0, 12, 14, 7, 14), box(11, 0, 2, 13, 7, 4), box(2, 7, 3, 14, 9, 14), box(11, 7, 1, 13, 19, 3), box(2, 14, 2, 14, 20, 4), box(3, 7, 1, 5, 19, 3), box(2, 0, 12, 4, 7, 14), box(3, 0, 2, 5, 7, 4));
+				case NORTH -> Shapes.or(box(2, 0, 2, 4, 7, 4), box(3, 0, 12, 5, 7, 14), box(2, 7, 2, 14, 9, 13), box(3, 7, 13, 5, 19, 15), box(2, 14, 12, 14, 20, 14), box(11, 7, 13, 13, 19, 15), box(12, 0, 2, 14, 7, 4), box(11, 0, 12, 13, 7, 14));
+				case EAST -> Shapes.or(box(12, 0, 2, 14, 7, 4), box(2, 0, 3, 4, 7, 5), box(3, 7, 2, 14, 9, 14), box(1, 7, 3, 3, 19, 5), box(2, 14, 2, 4, 20, 14), box(1, 7, 11, 3, 19, 13), box(12, 0, 12, 14, 7, 14), box(2, 0, 11, 4, 7, 13));
+				case WEST -> Shapes.or(box(2, 0, 12, 4, 7, 14), box(12, 0, 11, 14, 7, 13), box(2, 7, 2, 13, 9, 14), box(13, 7, 11, 15, 19, 13), box(12, 14, 2, 14, 20, 14), box(13, 7, 3, 15, 19, 5), box(2, 0, 2, 4, 7, 4), box(12, 0, 3, 14, 7, 5));
+			};
+		});
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return shapes.apply(state);
 	}
 
 	@Override
 	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return (switch (state.getValue(FACING)) {
-			case NORTH -> SHAPE_NORTH;
-			case SOUTH -> SHAPE_SOUTH;
-			case EAST -> SHAPE_EAST;
-			case WEST -> SHAPE_WEST;
-			default -> SHAPE_NORTH;
-		});
 	}
 
 	@Override

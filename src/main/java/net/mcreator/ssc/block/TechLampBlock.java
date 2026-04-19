@@ -1,7 +1,5 @@
 package net.mcreator.ssc.block;
 
-import org.checkerframework.checker.units.qual.s;
-
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -26,53 +24,37 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.InsertingLampProcedure;
 
+import java.util.function.Function;
+
 public class TechLampBlock extends Block {
-	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 3);
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(6.5, 10.5, 14, 9.5, 13.5, 16), box(7, 11, 13, 9, 13, 14), box(6, 10, 9, 10, 14, 13), box(6, 10, 9, 10, 14, 13));
-	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(6.5, 10.5, 0, 9.5, 13.5, 2), box(7, 11, 2, 9, 13, 3), box(6, 10, 3, 10, 14, 7), box(6, 10, 3, 10, 14, 7));
-	private static final VoxelShape SHAPE_EAST = Shapes.or(box(0, 10.5, 6.5, 2, 13.5, 9.5), box(2, 11, 7, 3, 13, 9), box(3, 10, 6, 7, 14, 10), box(3, 10, 6, 7, 14, 10));
-	private static final VoxelShape SHAPE_WEST = Shapes.or(box(14, 10.5, 6.5, 16, 13.5, 9.5), box(13, 11, 7, 14, 13, 9), box(9, 10, 6, 13, 14, 10), box(9, 10, 6, 13, 14, 10));
+	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 3);
+	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public TechLampBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.GLASS).strength(5f).lightLevel(s -> (new Object() {
-			public int getLightLevel() {
-				if (s.getValue(BLOCKSTATE) == 1)
-					return 12;
-				if (s.getValue(BLOCKSTATE) == 2)
-					return 0;
-				if (s.getValue(BLOCKSTATE) == 3)
-					return 0;
-				return 0;
-			}
-		}.getLightLevel())).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+		super(properties.sound(SoundType.GLASS).strength(5f).noCollission().isRedstoneConductor((bs, br, bp) -> false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BLOCKSTATE, 0));
+	}
+
+	private Function<BlockState, VoxelShape> makeShapes() {
+		return this.getShapeForEachState(state -> {
+			return switch (state.getValue(FACING)) {
+				default -> Shapes.or(box(6.5, 10.5, 0, 9.5, 13.5, 2), box(7, 11, 2, 9, 13, 3), box(6, 10, 3, 10, 14, 7), box(6, 10, 3, 10, 14, 7));
+				case NORTH -> Shapes.or(box(6.5, 10.5, 14, 9.5, 13.5, 16), box(7, 11, 13, 9, 13, 14), box(6, 10, 9, 10, 14, 13), box(6, 10, 9, 10, 14, 13));
+				case EAST -> Shapes.or(box(0, 10.5, 6.5, 2, 13.5, 9.5), box(2, 11, 7, 3, 13, 9), box(3, 10, 6, 7, 14, 10), box(3, 10, 6, 7, 14, 10));
+				case WEST -> Shapes.or(box(14, 10.5, 6.5, 16, 13.5, 9.5), box(13, 11, 7, 14, 13, 9), box(9, 10, 6, 13, 14, 10), box(9, 10, 6, 13, 14, 10));
+			};
+		});
 	}
 
 	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
-	}
-
-	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return shapes.apply(state);
 	}
 
 	@Override
 	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return (switch (state.getValue(FACING)) {
-			case NORTH -> SHAPE_NORTH;
-			case SOUTH -> SHAPE_SOUTH;
-			case EAST -> SHAPE_EAST;
-			case WEST -> SHAPE_WEST;
-			default -> SHAPE_NORTH;
-		});
 	}
 
 	@Override
@@ -83,7 +65,7 @@ public class TechLampBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BLOCKSTATE, 0);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

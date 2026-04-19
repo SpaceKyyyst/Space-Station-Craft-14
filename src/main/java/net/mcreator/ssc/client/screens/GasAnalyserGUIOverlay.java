@@ -19,6 +19,17 @@ import net.mcreator.ssc.procedures.*;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class GasAnalyserGUIOverlay {
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/gas_anal_menu.png");
+	private static final ResourceLocation IMAGE_1 = ResourceLocation.parse("ssc_14:textures/screens/o2_icon.png");
+	private static final ResourceLocation IMAGE_2 = ResourceLocation.parse("ssc_14:textures/screens/n2_icon.png");
+	private static final ResourceLocation IMAGE_3 = ResourceLocation.parse("ssc_14:textures/screens/co2_icon.png");
+	private static final ResourceLocation IMAGE_4 = ResourceLocation.parse("ssc_14:textures/screens/water_vapor_icon.png");
+	private static final ResourceLocation IMAGE_5 = ResourceLocation.parse("ssc_14:textures/screens/plasma_icon.png");
+	private static final ResourceLocation IMAGE_6 = ResourceLocation.parse("ssc_14:textures/screens/miasm_icon.png");
+	private static final ResourceLocation IMAGE_7 = ResourceLocation.parse("ssc_14:textures/screens/no2_icon.png");
+	private static final ResourceLocation IMAGE_8 = ResourceLocation.parse("ssc_14:textures/screens/tritium_icon.png");
+	private static final ResourceLocation IMAGE_9 = ResourceLocation.parse("ssc_14:textures/screens/frezon_icon.png");
+
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {
 		int w = event.getGuiGraphics().guiWidth();
@@ -36,25 +47,25 @@ public class GasAnalyserGUIOverlay {
 		}
 		if (GasAnalyserGUI_pr_1Procedure.execute(entity)) {
 			if (GasAnalyserGUI_pr_1Procedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/gas_anal_menu.png"), w / 2 + -207, h / 2 + -101, 0, 0, 200, 200, 200, 200);
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w / 2 + -207, h / 2 + -101, 0, 0, 200, 200, 200, 200);
 			}
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/o2_icon.png"), w / 2 + -203, h / 2 + -50, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, w / 2 + -203, h / 2 + -50, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/n2_icon.png"), w / 2 + -203, h / 2 + -34, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, w / 2 + -203, h / 2 + -34, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/co2_icon.png"), w / 2 + -203, h / 2 + -18, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, w / 2 + -203, h / 2 + -18, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/water_vapor_icon.png"), w / 2 + -203, h / 2 + -2, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_4, w / 2 + -203, h / 2 + -2, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/plasma_icon.png"), w / 2 + -203, h / 2 + 14, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_5, w / 2 + -203, h / 2 + 14, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/miasm_icon.png"), w / 2 + -203, h / 2 + 30, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_6, w / 2 + -203, h / 2 + 30, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/no2_icon.png"), w / 2 + -203, h / 2 + 46, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_7, w / 2 + -203, h / 2 + 46, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/tritium_icon.png"), w / 2 + -203, h / 2 + 62, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_8, w / 2 + -203, h / 2 + 62, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/frezon_icon.png"), w / 2 + -203, h / 2 + 78, 0, 0, 14, 15, 14, 15);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_9, w / 2 + -203, h / 2 + 78, 0, 0, 14, 15, 14, 15);
 
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_1000"), w / 2 + -102, h / 2 + -96, -1, false);
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font,

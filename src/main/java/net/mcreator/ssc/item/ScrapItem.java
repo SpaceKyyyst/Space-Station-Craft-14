@@ -40,7 +40,7 @@ public class ScrapItem extends Item {
 	}
 
 	@SubscribeEvent
-	public static void handleToolDamage(ModifyDefaultComponentsEvent event) {
+	public static void modifyDefaultComponents(ModifyDefaultComponentsEvent event) {
 		event.modify(Ssc14ModItems.CROWBAR.get(), builder -> builder.remove(DataComponents.MAX_DAMAGE));
 	}
 

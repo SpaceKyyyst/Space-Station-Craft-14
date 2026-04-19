@@ -1,21 +1,14 @@
 package net.mcreator.ssc.procedures;
 
-import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.bus.api.Event;
 
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.tags.TagKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 
 import net.mcreator.ssc.network.Ssc14ModVariables;
 
@@ -24,74 +17,134 @@ import javax.annotation.Nullable;
 @EventBusSubscriber
 public class GravityCheckProcedure {
 	@SubscribeEvent
-	public static void onEntityTick(EntityTickEvent.Pre event) {
-		execute(event, event.getEntity());
+	public static void onPlayerTick(PlayerTickEvent.Post event) {
+		execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity());
 	}
 
-	public static void execute(Entity entity) {
-		execute(null, entity);
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+		execute(null, world, x, y, z, entity);
 	}
 
-	private static void execute(@Nullable Event event, Entity entity) {
+	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity == null)
-			return;
-		if (!(entity instanceof LivingEntity livingEntity))
-			return;
-		// === Создаём AIRS_TAG внутри метода (единственный способ для MCreator) ===
-		TagKey<Block> AIRS_TAG = TagKey.create(Registries.BLOCK, ResourceLocation.parse("ssc14:airs") // ← БЕЗ пробелов в конце!
-		);
-		// === 1. Проверка измерения ===
-		boolean isInSpace = entity.level().dimension().equals(ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse("ssc_14:spaced")));
-		if (!isInSpace) {
-			if (livingEntity.getAttributes().hasAttribute(Attributes.GRAVITY))
-				livingEntity.getAttribute(Attributes.GRAVITY).setBaseValue(0.08);
-			livingEntity.setNoGravity(false);
-			return;
-		}
-		// === 2. Проверка гравитации станции ===
-		if (!Ssc14ModVariables.station_gravity) {
-			if (livingEntity.getAttributes().hasAttribute(Attributes.GRAVITY))
-				livingEntity.getAttribute(Attributes.GRAVITY).setBaseValue(0);
-			livingEntity.setNoGravity(true);
+		boolean found = false;
+		double sy = 0;
+		// === 🎯 ИНИЦИАЛИЗАЦИЯ ===
+		net.minecraft.nbt.CompoundTag data = entity.getPersistentData();
+		final String P = "zg_v";
+		final String ACTIVE = "zg_active";
+		final String TICK = "zg_last_tick";
+		final float DAMPING = 0.99f;
+		// 🛡️ Grace period: первые 20 тиков → обычная гравитация
+		if (entity.tickCount < 20) {
+			entity.setNoGravity(false);
+			data.remove(P + "x");
+			data.remove(P + "y");
+			data.remove(P + "z");
+			data.remove(TICK);
+			data.remove(ACTIVE);
 			return;
 		}
-		// === 3. Поиск пола (цикл вместо 7 if) ===
-		int floorDistance = -1;
-		BlockPos entityPos = entity.blockPosition();
-		for (int i = 1; i <= 7; i++) {
-			BlockState state = entity.level().getBlockState(entityPos.below(i));
-			if (!state.is(AIRS_TAG)) {
-				floorDistance = i;
-				break;
+		// 🚫 Креатив/спектатор в полёте → ванильная физика
+		if (entity instanceof net.minecraft.world.entity.player.Player player) {
+			if (player.getAbilities().flying && (player.isCreative() || player.isSpectator())) {
+				entity.setNoGravity(false);
+				player.getAbilities().setWalkingSpeed(0.1F);
+				player.getAbilities().setFlyingSpeed(0.05F);
+				player.getAbilities().mayfly = player.isCreative();
+				player.onUpdateAbilities();
+				data.remove(P + "x");
+				data.remove(P + "y");
+				data.remove(P + "z");
+				data.remove(TICK);
+				data.remove(ACTIVE);
+				return;
 			}
 		}
-		// === 4. Установка гравитации ===
-		double gravity;
-		boolean noGravity;
-		if (floorDistance <= 0) {
-			gravity = 0;
-			noGravity = true;
-		} else if (floorDistance <= 5) {
-			gravity = 0.08;
-			noGravity = false;
-		} else if (floorDistance <= 6) {
-			gravity = 0.04;
-			noGravity = false;
-		} else if (floorDistance <= 7) {
-			gravity = 0.01;
-			noGravity = false;
-		} else {
-			gravity = 0;
-			noGravity = true;
+		// === 🔍 ОПРЕДЕЛЕНИЕ ГРАВИТАЦИИ (плоская логика) ===
+		boolean hasGravity = true; // По умолчанию — гравитация есть
+		// Проверяем измерение
+		boolean inSpace = false;
+		try {
+			inSpace = entity.level().dimension().location().toString().equals("ssc_14:spaced");
+		} catch (Exception e) {
+			inSpace = false;
 		}
-		if (livingEntity.getAttributes().hasAttribute(Attributes.GRAVITY))
-			livingEntity.getAttribute(Attributes.GRAVITY).setBaseValue(gravity);
-		livingEntity.setNoGravity(noGravity);
-		//НИЖЕ КОСТЫЛЬ, не трогать, нужен для MC
-		if (Level.END == (entity.level().dimension())) {
+		if (inSpace) {
+			// Читаем глобальную переменную
+			boolean stationGravity = false;
+			try {
+				stationGravity = net.mcreator.ssc.network.Ssc14ModVariables.station_gravity;
+			} catch (Exception e) {
+				stationGravity = true;
+			}
+			if (!stationGravity) {
+				hasGravity = false; // Глобально выключена
+			} else {
+				// Ищем пол
+				boolean foundFloor = false;
+				for (int dy = 1; dy <= 7; dy++) {
+					try {
+						var pos = net.minecraft.core.BlockPos.containing(x, y - dy, z);
+						if (entity.level().isLoaded(pos) && !entity.level().getBlockState(pos).isAir()) {
+							foundFloor = true;
+							break;
+						}
+					} catch (Exception e) {
+						continue;
+					}
+				}
+				if (!foundFloor)
+					hasGravity = false; // Нет пола → невесомость
+				// Если foundFloor == true → hasGravity остаётся true (по умолчанию)
+			}
+		}
+		// Если !inSpace → hasGravity остаётся true (по умолчанию)
+		// === 🔄 ВОССТАНОВЛЕНИЕ ФИЗИКИ ===
+		if (hasGravity) {
 			entity.setNoGravity(false);
+			if (entity instanceof net.minecraft.world.entity.player.Player player) {
+				player.getAbilities().setWalkingSpeed(0.1F);
+				player.getAbilities().setFlyingSpeed(0.05F);
+				player.getAbilities().mayfly = player.isCreative();
+				player.onUpdateAbilities();
+			}
+			data.remove(P + "x");
+			data.remove(P + "y");
+			data.remove(P + "z");
+			data.remove(TICK);
+			data.remove(ACTIVE);
+			return;
+		}
+		// === 🌌 НЕВЕСОМОСТЬ ===
+		data.putBoolean(ACTIVE, true);
+		if (data.contains(TICK) && data.getInt(TICK).orElse(0) == entity.tickCount)
+			return;
+		data.putInt(TICK, entity.tickCount);
+		if (entity instanceof net.minecraft.world.entity.player.Player player) {
+			player.getAbilities().setWalkingSpeed(0.0F);
+			player.getAbilities().setFlyingSpeed(0.0F);
+			player.onUpdateAbilities();
+		}
+		entity.setNoGravity(true);
+		if (!data.contains(P + "x")) {
+			var init = entity.getDeltaMovement();
+			data.putDouble(P + "x", init.x);
+			data.putDouble(P + "y", init.y);
+			data.putDouble(P + "z", init.z);
+		}
+		var vel = new net.minecraft.world.phys.Vec3(data.getDouble(P + "x").orElse(0.0), data.getDouble(P + "y").orElse(0.0), data.getDouble(P + "z").orElse(0.0)).scale(DAMPING);
+		var old = entity.position();
+		entity.move(net.minecraft.world.entity.MoverType.SELF, vel);
+		var actual = entity.position().subtract(old);
+		entity.setDeltaMovement(actual);
+		data.putDouble(P + "x", actual.x);
+		data.putDouble(P + "y", actual.y);
+		data.putDouble(P + "z", actual.z);
+		if ((entity.level().dimension()) == Level.END && Ssc14ModVariables.station_gravity) {
+			world.addParticle(ParticleTypes.ASH, x, y, z, 0, 0, 0);
+			// КОСТЫЛЬ ¯\_(ツ)_/¯
 		}
 	}
 }

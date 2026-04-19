@@ -1,5 +1,5 @@
 {
-  "_fv": 79,
+  "_fv": 85,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -351,6 +351,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 54,
           "locked": false
@@ -367,6 +368,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 75,
           "locked": false
@@ -383,6 +385,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 96,
           "locked": false
@@ -399,6 +402,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 117,
           "locked": false
@@ -415,6 +419,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 138,
           "locked": false
@@ -431,6 +436,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 159,
           "locked": false
@@ -447,6 +453,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 180,
           "locked": false
@@ -463,6 +470,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 54,
           "locked": false
@@ -479,6 +487,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 75,
           "locked": false
@@ -495,6 +504,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 96,
           "locked": false
@@ -511,6 +521,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 117,
           "locked": false
@@ -527,6 +538,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 138,
           "locked": false
@@ -543,6 +555,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 159,
           "locked": false
@@ -559,6 +572,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 180,
           "locked": false
@@ -575,6 +589,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 54,
           "locked": false
@@ -591,6 +606,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 75,
           "locked": false
@@ -607,6 +623,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 96,
           "locked": false
@@ -623,6 +640,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 117,
           "locked": false
@@ -639,6 +657,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 138,
           "locked": false
@@ -655,6 +674,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 159,
           "locked": false
@@ -671,6 +691,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 180,
           "locked": false
@@ -687,6 +708,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 54,
           "locked": false
@@ -703,6 +725,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 75,
           "locked": false
@@ -719,6 +742,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 96,
           "locked": false
@@ -735,6 +759,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 117,
           "locked": false
@@ -751,6 +776,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 138,
           "locked": false
@@ -767,6 +793,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 159,
           "locked": false
@@ -783,6 +810,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 180,
           "locked": false
@@ -799,6 +827,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 360,
           "y": 54,
           "locked": false
@@ -815,6 +844,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 360,
           "y": 75,
           "locked": false
@@ -831,6 +861,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 360,
           "y": 96,
           "locked": false
@@ -847,6 +878,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 360,
           "y": 117,
           "locked": false

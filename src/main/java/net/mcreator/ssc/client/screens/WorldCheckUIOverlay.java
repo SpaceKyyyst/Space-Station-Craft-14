@@ -23,6 +23,8 @@ import net.mcreator.ssc.procedures.WOCtextNoPinnedProcedure;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class WorldCheckUIOverlay {
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/world_check_ui.png");
+
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void eventHandler(RenderGuiEvent.Pre event) {
 		int w = event.getGuiGraphics().guiWidth();
@@ -39,7 +41,7 @@ public class WorldCheckUIOverlay {
 			z = entity.getZ();
 		}
 		if (WorldObjectCheckUIProcedure.execute(world, entity)) {
-			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/world_check_ui.png"), w / 2 + 1, h / 2 + 0, 0, 0, 151, 100, 151, 100);
+			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w / 2 + 1, h / 2 + 0, 0, 0, 151, 100, 151, 100);
 
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 

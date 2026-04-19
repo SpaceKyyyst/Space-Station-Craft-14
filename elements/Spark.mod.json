@@ -1,5 +1,5 @@
 {
-  "_fv": 79,
+  "_fv": 85,
   "_type": "particle",
   "definition": {
     "texture": "orange_spark",
@@ -10,6 +10,7 @@
     "scale": {
       "fixedValue": 0.1
     },
+    "fixedScale": false,
     "speedFactor": 1.0,
     "gravity": 0.30000000000000004,
     "maxAge": 14,

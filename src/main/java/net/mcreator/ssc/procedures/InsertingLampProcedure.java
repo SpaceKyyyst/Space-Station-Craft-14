@@ -1,5 +1,6 @@
 package net.mcreator.ssc.procedures;
 
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.LevelAccessor;
@@ -18,7 +19,7 @@ public class InsertingLampProcedure {
 		if (entity == null)
 			return;
 		if (Ssc14ModBlocks.LAMP.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()) {
-			if (0 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip3 ? blockstate.getValue(_getip3) : -1)
+			if (0 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip3 ? blockstate.getValue(_getip3) : -1)
 					&& ItemStack.EMPTY.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				{
 					int _value = 3;
@@ -34,7 +35,7 @@ public class InsertingLampProcedure {
 					if (_entity instanceof Player _player)
 						_player.getInventory().setChanged();
 				}
-			} else if (1 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip10 ? blockstate.getValue(_getip10) : -1)
+			} else if (1 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip10 ? blockstate.getValue(_getip10) : -1)
 					&& ItemStack.EMPTY.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				{
 					int _value = 3;
@@ -50,7 +51,7 @@ public class InsertingLampProcedure {
 					if (_entity instanceof Player _player)
 						_player.getInventory().setChanged();
 				}
-			} else if (2 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip17 ? blockstate.getValue(_getip17) : -1)
+			} else if (2 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip17 ? blockstate.getValue(_getip17) : -1)
 					&& ItemStack.EMPTY.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				{
 					int _value = 3;
@@ -66,7 +67,7 @@ public class InsertingLampProcedure {
 					if (_entity instanceof Player _player)
 						_player.getInventory().setChanged();
 				}
-			} else if (3 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip24 ? blockstate.getValue(_getip24) : -1)
+			} else if (3 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip24 ? blockstate.getValue(_getip24) : -1)
 					&& Ssc14ModItems.LED_LIGHT_TUBE.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -76,7 +77,7 @@ public class InsertingLampProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
-			} else if (3 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip31 ? blockstate.getValue(_getip31) : -1)
+			} else if (3 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip31 ? blockstate.getValue(_getip31) : -1)
 					&& Ssc14ModItems.LED_LIGHT_TUBE_BROKEN.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -88,7 +89,7 @@ public class InsertingLampProcedure {
 				}
 			}
 		} else if (Ssc14ModBlocks.TECH_LAMP.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()) {
-			if (0 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip40 ? blockstate.getValue(_getip40) : -1)
+			if (0 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip40 ? blockstate.getValue(_getip40) : -1)
 					&& ItemStack.EMPTY.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				{
 					int _value = 3;
@@ -104,7 +105,7 @@ public class InsertingLampProcedure {
 					if (_entity instanceof Player _player)
 						_player.getInventory().setChanged();
 				}
-			} else if (1 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip47 ? blockstate.getValue(_getip47) : -1)
+			} else if (1 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip47 ? blockstate.getValue(_getip47) : -1)
 					&& ItemStack.EMPTY.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				{
 					int _value = 3;
@@ -120,7 +121,7 @@ public class InsertingLampProcedure {
 					if (_entity instanceof Player _player)
 						_player.getInventory().setChanged();
 				}
-			} else if (2 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip54 ? blockstate.getValue(_getip54) : -1)
+			} else if (2 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip54 ? blockstate.getValue(_getip54) : -1)
 					&& ItemStack.EMPTY.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				{
 					int _value = 3;
@@ -136,7 +137,7 @@ public class InsertingLampProcedure {
 					if (_entity instanceof Player _player)
 						_player.getInventory().setChanged();
 				}
-			} else if (3 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip61 ? blockstate.getValue(_getip61) : -1)
+			} else if (3 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip61 ? blockstate.getValue(_getip61) : -1)
 					&& Ssc14ModItems.LIGHT_BULB.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -146,7 +147,7 @@ public class InsertingLampProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
-			} else if (3 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip68 ? blockstate.getValue(_getip68) : -1)
+			} else if (3 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip68 ? blockstate.getValue(_getip68) : -1)
 					&& Ssc14ModItems.LIGHT_BULB_BROKEN.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -158,5 +159,14 @@ public class InsertingLampProcedure {
 				}
 			}
 		}
+	}
+
+	private static Property<?> getPropertyByName(BlockState state, String name) {
+		for (Property<?> property : state.getProperties()) {
+			if (property.getName().equals(name)) {
+				return property;
+			}
+		}
+		return null;
 	}
 }

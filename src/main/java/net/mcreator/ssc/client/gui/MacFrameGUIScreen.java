@@ -18,6 +18,11 @@ public class MacFrameGUIScreen extends AbstractContainerScreen<MacFrameGUIMenu> 
 	private final int x, y, z;
 	private final Player entity;
 	private boolean menuStateUpdateActive = false;
+	private static final ResourceLocation BACKGROUND = ResourceLocation.parse("ssc_14:textures/screens/mac_frame_gui.png");
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/mac_rrame_gui_2.png");
+	private static final ResourceLocation IMAGE_1 = ResourceLocation.parse("ssc_14:textures/screens/mac_fr_gui_r3.png");
+	private static final ResourceLocation IMAGE_2 = ResourceLocation.parse("ssc_14:textures/screens/mac_fr_gui_y2.png");
+	private static final ResourceLocation IMAGE_3 = ResourceLocation.parse("ssc_14:textures/screens/mac_fr_gui_g1.png");
 
 	public MacFrameGUIScreen(MacFrameGUIMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -36,8 +41,6 @@ public class MacFrameGUIScreen extends AbstractContainerScreen<MacFrameGUIMenu> 
 		menuStateUpdateActive = false;
 	}
 
-	private static final ResourceLocation texture = ResourceLocation.parse("ssc_14:textures/screens/mac_frame_gui.png");
-
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
@@ -46,14 +49,14 @@ public class MacFrameGUIScreen extends AbstractContainerScreen<MacFrameGUIMenu> 
 
 	@Override
 	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/mac_rrame_gui_2.png"), this.leftPos + 0, this.topPos + 0, 0, 0, 300, 172, 300, 172);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/mac_fr_gui_r3.png"), this.leftPos + 136, this.topPos + 33, 0, 0, 28, 28, 28, 28);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 300, 172, 300, 172);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, this.leftPos + 136, this.topPos + 33, 0, 0, 28, 28, 28, 28);
 		if (MacFrameGUIYellowProcedure.execute(world, x, y, z)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/mac_fr_gui_y2.png"), this.leftPos + 136, this.topPos + 33, 0, 0, 28, 28, 28, 28);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, this.leftPos + 136, this.topPos + 33, 0, 0, 28, 28, 28, 28);
 		}
 		if (MacFrameGUIGreenProcedure.execute(world, x, y, z)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/mac_fr_gui_g1.png"), this.leftPos + 136, this.topPos + 33, 0, 0, 28, 28, 28, 28);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, this.leftPos + 136, this.topPos + 33, 0, 0, 28, 28, 28, 28);
 		}
 	}
 

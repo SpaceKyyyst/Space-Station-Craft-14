@@ -1,5 +1,6 @@
 package net.mcreator.ssc.procedures;
 
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,7 +24,7 @@ public class GravGenTICprocedureProcedure {
 				if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 			}
-			if (true == (blockstate.getBlock().getStateDefinition().getProperty("gravity") instanceof BooleanProperty _getbp3 && blockstate.getValue(_getbp3))) {
+			if (true == (getPropertyByName(blockstate, "gravity") instanceof BooleanProperty _getbp3 && blockstate.getValue(_getbp3))) {
 				{
 					BlockPos _pos = BlockPos.containing(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
@@ -40,7 +41,7 @@ public class GravGenTICprocedureProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
-				if (false == (blockstate.getBlock().getStateDefinition().getProperty("gravity") instanceof BooleanProperty _getbp9 && blockstate.getValue(_getbp9))) {
+				if (false == (getPropertyByName(blockstate, "gravity") instanceof BooleanProperty _getbp9 && blockstate.getValue(_getbp9))) {
 					{
 						BlockPos _pos = BlockPos.containing(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
@@ -97,11 +98,11 @@ public class GravGenTICprocedureProcedure {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.GRAV_GEN_PARTICLE_4.get()), (x + 0.5), (y + 1.5), (z + 0.5), 1, 0, 0, 0, 0.1);
 		}
-		if (true == (blockstate.getBlock().getStateDefinition().getProperty("gravity") instanceof BooleanProperty _getbp30 && blockstate.getValue(_getbp30))) {
+		if (true == (getPropertyByName(blockstate, "gravity") instanceof BooleanProperty _getbp30 && blockstate.getValue(_getbp30))) {
 			if (false == Ssc14ModVariables.station_gravity) {
 				Ssc14ModVariables.station_gravity = true;
 			}
-		} else if (false == (blockstate.getBlock().getStateDefinition().getProperty("gravity") instanceof BooleanProperty _getbp32 && blockstate.getValue(_getbp32))) {
+		} else if (false == (getPropertyByName(blockstate, "gravity") instanceof BooleanProperty _getbp32 && blockstate.getValue(_getbp32))) {
 			if (true == Ssc14ModVariables.station_gravity) {
 				Ssc14ModVariables.station_gravity = false;
 			}
@@ -113,6 +114,15 @@ public class GravGenTICprocedureProcedure {
 		if (blockEntity != null)
 			return blockEntity.getPersistentData().getDoubleOr(tag, 0);
 		return -1;
+	}
+
+	private static Property<?> getPropertyByName(BlockState state, String name) {
+		for (Property<?> property : state.getProperties()) {
+			if (property.getName().equals(name)) {
+				return property;
+			}
+		}
+		return null;
 	}
 
 	private static boolean getBlockNBTLogic(LevelAccessor world, BlockPos pos, String tag) {

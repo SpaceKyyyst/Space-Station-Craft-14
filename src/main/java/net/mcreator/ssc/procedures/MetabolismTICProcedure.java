@@ -9,9 +9,6 @@ import net.minecraft.world.level.GameType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.client.Minecraft;
 
 import net.mcreator.ssc.init.Ssc14ModAttributes;
 
@@ -31,22 +28,12 @@ public class MetabolismTICProcedure {
 	private static void execute(@Nullable Event event, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity instanceof LivingEntity _livingEntity0 && _livingEntity0.getAttributes().hasAttribute(Ssc14ModAttributes.NUTRIENTS) && !(getEntityGameType(entity) == GameType.CREATIVE || getEntityGameType(entity) == GameType.SPECTATOR)) {
+		if (entity instanceof LivingEntity _livingEntity0 && _livingEntity0.getAttributes().hasAttribute(Ssc14ModAttributes.NUTRIENTS)
+				&& !(entity instanceof Player _plr1 && _plr1.gameMode() == GameType.CREATIVE || entity instanceof Player _plr2 && _plr2.gameMode() == GameType.SPECTATOR)) {
 			if (entity instanceof LivingEntity _livingEntity4 && _livingEntity4.getAttributes().hasAttribute(Ssc14ModAttributes.NUTRIENTS))
 				_livingEntity4.getAttribute(Ssc14ModAttributes.NUTRIENTS).setBaseValue((Math.round(
 						((entity instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(Ssc14ModAttributes.NUTRIENTS) ? _livingEntity3.getAttribute(Ssc14ModAttributes.NUTRIENTS).getValue() : 0) - 0.00084) * 100000)
 						/ 100000d));
 		}
-	}
-
-	private static GameType getEntityGameType(Entity entity) {
-		if (entity instanceof ServerPlayer serverPlayer) {
-			return serverPlayer.gameMode.getGameModeForPlayer();
-		} else if (entity instanceof Player player && player.level().isClientSide()) {
-			PlayerInfo playerInfo = Minecraft.getInstance().getConnection().getPlayerInfo(player.getGameProfile().getId());
-			if (playerInfo != null)
-				return playerInfo.getGameMode();
-		}
-		return null;
 	}
 }

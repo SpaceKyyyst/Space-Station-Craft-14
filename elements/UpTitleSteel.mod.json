@@ -1,5 +1,5 @@
 {
-  "_fv": 79,
+  "_fv": 85,
   "_type": "block",
   "definition": {
     "texture": "up_tile_steel_texture",
@@ -14,6 +14,7 @@
     "enablePitch": false,
     "emissiveRendering": false,
     "displayFluidOverlay": false,
+    "states": [],
     "animations": [],
     "itemTexture": "up_tile_steel_item",
     "particleTexture": "",
@@ -21,6 +22,7 @@
     "pottedPlant": {
       "value": ""
     },
+    "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,
     "hasTransparency": true,
@@ -68,6 +70,7 @@
     "enchantPowerBonus": 0.0,
     "plantsGrowOn": false,
     "canRedstoneConnect": false,
+    "hasCustomOpacity": true,
     "lightOpacity": 15,
     "tickRate": 0,
     "tickRandomly": false,
@@ -114,7 +117,9 @@
     "stepSound": {
       "value": "block.copper.step"
     },
-    "luminance": 0,
+    "luminance": {
+      "fixedValue": 0.0
+    },
     "unbreakable": false,
     "vanillaToolTier": "NONE",
     "placingCondition": {

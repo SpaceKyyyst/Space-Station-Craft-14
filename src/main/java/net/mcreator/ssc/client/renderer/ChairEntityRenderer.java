@@ -12,6 +12,7 @@ import net.mcreator.ssc.entity.ChairEntityEntity;
 
 public class ChairEntityRenderer extends HumanoidMobRenderer<ChairEntityEntity, HumanoidRenderState, HumanoidModel<HumanoidRenderState>> {
 	private ChairEntityEntity entity = null;
+	private final ResourceLocation entityTexture = ResourceLocation.parse("ssc_14:textures/entities/chair_entiti.png");
 
 	public ChairEntityRenderer(EntityRendererProvider.Context context) {
 		super(context, new HumanoidModel<HumanoidRenderState>(context.bakeLayer(ModelLayers.PLAYER)), 0.1f);
@@ -31,6 +32,6 @@ public class ChairEntityRenderer extends HumanoidMobRenderer<ChairEntityEntity, 
 
 	@Override
 	public ResourceLocation getTextureLocation(HumanoidRenderState state) {
-		return ResourceLocation.parse("ssc_14:textures/entities/chair_entiti.png");
+		return entityTexture;
 	}
 }

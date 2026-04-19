@@ -215,6 +215,28 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> MED_PLANET_GRASS;
 	public static final DeferredItem<Item> PLANETARY_TREE_LOG;
 	public static final DeferredItem<Item> PLANETARY_TREE_FOLIAGE;
+	public static final DeferredItem<Item> UP_STEEL_STAIRCASE;
+	public static final DeferredItem<Item> UP_WHITE_STAIRCASE;
+	public static final DeferredItem<Item> UP_DARK_STAIRCASE;
+	public static final DeferredItem<Item> SHUTTLE_WALL;
+	public static final DeferredItem<Item> ARMORED_SHUTTLE_WALL;
+	public static final DeferredItem<Item> DIRECTED_BASE_WINDOW;
+	public static final DeferredItem<Item> RED_SCARF;
+	public static final DeferredItem<Item> BLACK_SCARF;
+	public static final DeferredItem<Item> BLACK_GREEN_SCARF;
+	public static final DeferredItem<Item> BLUE_SCARF;
+	public static final DeferredItem<Item> BROWN_SCARF;
+	public static final DeferredItem<Item> GREEN_SCARF;
+	public static final DeferredItem<Item> LIGHT_BLUE_SCARF;
+	public static final DeferredItem<Item> LIGHT_BLUE_WHITE_SCARF;
+	public static final DeferredItem<Item> ORANGE_SCARF;
+	public static final DeferredItem<Item> PURPLE_SCARF;
+	public static final DeferredItem<Item> SINDY_SCARF;
+	public static final DeferredItem<Item> TRNS_SCARF;
+	public static final DeferredItem<Item> YELLOW_SCARF;
+	public static final DeferredItem<Item> ISOLATED_GLOVES;
+	public static final DeferredItem<Item> TECH_AIRLOCK_D_1;
+	public static final DeferredItem<Item> PICK;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -405,6 +427,28 @@ public class Ssc14ModItems {
 		MED_PLANET_GRASS = block(Ssc14ModBlocks.MED_PLANET_GRASS, new Item.Properties().stacksTo(1));
 		PLANETARY_TREE_LOG = block(Ssc14ModBlocks.PLANETARY_TREE_LOG, new Item.Properties().stacksTo(1));
 		PLANETARY_TREE_FOLIAGE = block(Ssc14ModBlocks.PLANETARY_TREE_FOLIAGE, new Item.Properties().stacksTo(1));
+		UP_STEEL_STAIRCASE = block(Ssc14ModBlocks.UP_STEEL_STAIRCASE, new Item.Properties().stacksTo(1));
+		UP_WHITE_STAIRCASE = block(Ssc14ModBlocks.UP_WHITE_STAIRCASE, new Item.Properties().stacksTo(1));
+		UP_DARK_STAIRCASE = block(Ssc14ModBlocks.UP_DARK_STAIRCASE, new Item.Properties().stacksTo(1));
+		SHUTTLE_WALL = block(Ssc14ModBlocks.SHUTTLE_WALL, new Item.Properties().stacksTo(1).fireResistant());
+		ARMORED_SHUTTLE_WALL = block(Ssc14ModBlocks.ARMORED_SHUTTLE_WALL, new Item.Properties().stacksTo(1).fireResistant());
+		DIRECTED_BASE_WINDOW = block(Ssc14ModBlocks.DIRECTED_BASE_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
+		RED_SCARF = register("red_scarf", RedScarfItem::new);
+		BLACK_SCARF = register("black_scarf", BlackScarfItem::new);
+		BLACK_GREEN_SCARF = register("black_green_scarf", BlackGreenScarfItem::new);
+		BLUE_SCARF = register("blue_scarf", BlueScarfItem::new);
+		BROWN_SCARF = register("brown_scarf", BrownScarfItem::new);
+		GREEN_SCARF = register("green_scarf", GreenScarfItem::new);
+		LIGHT_BLUE_SCARF = register("light_blue_scarf", LightBlueScarfItem::new);
+		LIGHT_BLUE_WHITE_SCARF = register("light_blue_white_scarf", LightBlueWhiteScarfItem::new);
+		ORANGE_SCARF = register("orange_scarf", OrangeScarfItem::new);
+		PURPLE_SCARF = register("purple_scarf", PurpleScarfItem::new);
+		SINDY_SCARF = register("sindy_scarf", SindyScarfItem::new);
+		TRNS_SCARF = register("trns_scarf", TrnsScarfItem::new);
+		YELLOW_SCARF = register("yellow_scarf", YellowScarfItem::new);
+		ISOLATED_GLOVES = register("isolated_gloves", IsolatedGlovesItem::new);
+		TECH_AIRLOCK_D_1 = block(Ssc14ModBlocks.TECH_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
+		PICK = register("pick", PickItem::new);
 	}
 
 	// Start of user code block custom items

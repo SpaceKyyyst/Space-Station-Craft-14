@@ -10,6 +10,7 @@ import net.mcreator.ssc.client.model.ModelConsole_of_ID_DisConnected_ENTITY;
 
 public class IDConsoleENTITYRenderer extends MobRenderer<IDConsoleENTITYEntity, LivingEntityRenderState, ModelConsole_of_ID_DisConnected_ENTITY> {
 	private IDConsoleENTITYEntity entity = null;
+	private final ResourceLocation entityTexture = ResourceLocation.parse("ssc_14:textures/entities/id_console_texture_desconnected_entity.png");
 
 	public IDConsoleENTITYRenderer(EntityRendererProvider.Context context) {
 		super(context, new ModelConsole_of_ID_DisConnected_ENTITY(context.bakeLayer(ModelConsole_of_ID_DisConnected_ENTITY.LAYER_LOCATION)), 0.5f);
@@ -28,6 +29,6 @@ public class IDConsoleENTITYRenderer extends MobRenderer<IDConsoleENTITYEntity, 
 
 	@Override
 	public ResourceLocation getTextureLocation(LivingEntityRenderState state) {
-		return ResourceLocation.parse("ssc_14:textures/entities/id_console_texture_desconnected_entity.png");
+		return entityTexture;
 	}
 }

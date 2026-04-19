@@ -17,6 +17,8 @@ public class AccessConfigGUIScreen extends AbstractContainerScreen<AccessConfigG
 	private final int x, y, z;
 	private final Player entity;
 	private boolean menuStateUpdateActive = false;
+	private static final ResourceLocation BACKGROUND = ResourceLocation.parse("ssc_14:textures/screens/access_config_gui.png");
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/access_config_gui__copy.png");
 
 	public AccessConfigGUIScreen(AccessConfigGUIMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -35,8 +37,6 @@ public class AccessConfigGUIScreen extends AbstractContainerScreen<AccessConfigG
 		menuStateUpdateActive = false;
 	}
 
-	private static final ResourceLocation texture = ResourceLocation.parse("ssc_14:textures/screens/access_config_gui.png");
-
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
@@ -45,8 +45,8 @@ public class AccessConfigGUIScreen extends AbstractContainerScreen<AccessConfigG
 
 	@Override
 	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/access_config_gui__copy.png"), this.leftPos + 0, this.topPos + 0, 0, 0, 176, 131, 176, 131);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 176, 131, 176, 131);
 	}
 
 	@Override

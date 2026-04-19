@@ -83,13 +83,8 @@ public class FireAxe_UseProcedure {
 																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING.get()) {
 															{
 																BlockPos _bp = BlockPos.containing(x, y, z);
-																BlockState _bs = (new Object() {
-																	public BlockState with(BlockState _bs, String _property, int _newValue) {
-																		Property<?> _prop = _bs.getBlock().getStateDefinition().getProperty(_property);
-																		return _prop instanceof IntegerProperty _ip && _prop.getPossibleValues().contains(_newValue) ? _bs.setValue(_ip, _newValue) : _bs;
-																	}
-																}.with(Ssc14ModBlocks.ROD_FLOOR.get().defaultBlockState(), "blockstate",
-																		blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip57 ? blockstate.getValue(_getip57) : -1));
+																BlockState _bs = (blockStateWithInt(Ssc14ModBlocks.ROD_FLOOR.get().defaultBlockState(), "blockstate",
+																		getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip57 ? blockstate.getValue(_getip57) : -1));
 																BlockState _bso = world.getBlockState(_bp);
 																for (Property<?> _propertyOld : _bso.getProperties()) {
 																	Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
@@ -139,13 +134,8 @@ public class FireAxe_UseProcedure {
 																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.UPER_SHEATHING.get()) {
 															{
 																BlockPos _bp = BlockPos.containing(x, y, z);
-																BlockState _bs = (new Object() {
-																	public BlockState with(BlockState _bs, String _property, int _newValue) {
-																		Property<?> _prop = _bs.getBlock().getStateDefinition().getProperty(_property);
-																		return _prop instanceof IntegerProperty _ip && _prop.getPossibleValues().contains(_newValue) ? _bs.setValue(_ip, _newValue) : _bs;
-																	}
-																}.with(Ssc14ModBlocks.ROD_UP_FLOOR.get().defaultBlockState(), "blockstate",
-																		blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip72 ? blockstate.getValue(_getip72) : -1));
+																BlockState _bs = (blockStateWithInt(Ssc14ModBlocks.ROD_UP_FLOOR.get().defaultBlockState(), "blockstate",
+																		getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip72 ? blockstate.getValue(_getip72) : -1));
 																BlockState _bso = world.getBlockState(_bp);
 																for (Property<?> _propertyOld : _bso.getProperties()) {
 																	Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
@@ -218,5 +208,19 @@ public class FireAxe_UseProcedure {
 				}
 			});
 		}
+	}
+
+	private static Property<?> getPropertyByName(BlockState state, String name) {
+		for (Property<?> property : state.getProperties()) {
+			if (property.getName().equals(name)) {
+				return property;
+			}
+		}
+		return null;
+	}
+
+	private static BlockState blockStateWithInt(BlockState blockState, String property, int newValue) {
+		Property<?> prop = blockState.getBlock().getStateDefinition().getProperty(property);
+		return prop instanceof IntegerProperty ip && prop.getPossibleValues().contains(newValue) ? blockState.setValue(ip, newValue) : blockState;
 	}
 }

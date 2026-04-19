@@ -1,5 +1,6 @@
 package net.mcreator.ssc.procedures;
 
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.BlockState;
@@ -22,7 +23,7 @@ public class AirlockController_DEBUG_prProcedure {
 			return;
 		if (Ssc14ModBlocks.BASE_AIRLOCK_D_1.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() || Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()) {
 			if (itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("mode", 0) == 0) {
-				if ((blockstate.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _getbp7 && blockstate.getValue(_getbp7)) == false) {
+				if ((getPropertyByName(blockstate, "bolted") instanceof BooleanProperty _getbp7 && blockstate.getValue(_getbp7)) == false) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
 							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_bolt_on")), SoundSource.NEUTRAL, 1, 1);
@@ -50,7 +51,7 @@ public class AirlockController_DEBUG_prProcedure {
 						if (_bs.getBlock().getStateDefinition().getProperty("bolted") instanceof BooleanProperty _booleanProp)
 							world.setBlock(_pos, _bs.setValue(_booleanProp, false), 3);
 					}
-					if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip13 ? blockstate.getValue(_getip13) : -1) == 5) {
+					if ((getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip13 ? blockstate.getValue(_getip13) : -1) == 5) {
 						{
 							int _value = 0;
 							BlockPos _pos = BlockPos.containing(x, y, z);
@@ -61,7 +62,7 @@ public class AirlockController_DEBUG_prProcedure {
 					}
 				}
 			} else if (itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("mode", 0) == 1) {
-				if ((blockstate.getBlock().getStateDefinition().getProperty("emergency_acs") instanceof BooleanProperty _getbp18 && blockstate.getValue(_getbp18)) == false) {
+				if ((getPropertyByName(blockstate, "emergency_acs") instanceof BooleanProperty _getbp18 && blockstate.getValue(_getbp18)) == false) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
 							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:airlock_emergency_on")), SoundSource.NEUTRAL, 1, 1);
@@ -89,7 +90,7 @@ public class AirlockController_DEBUG_prProcedure {
 						if (_bs.getBlock().getStateDefinition().getProperty("emergency_acs") instanceof BooleanProperty _booleanProp)
 							world.setBlock(_pos, _bs.setValue(_booleanProp, false), 3);
 					}
-					if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip24 ? blockstate.getValue(_getip24) : -1) == 6) {
+					if ((getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip24 ? blockstate.getValue(_getip24) : -1) == 6) {
 						{
 							int _value = 0;
 							BlockPos _pos = BlockPos.containing(x, y, z);
@@ -123,5 +124,14 @@ public class AirlockController_DEBUG_prProcedure {
 				}
 			}
 		}
+	}
+
+	private static Property<?> getPropertyByName(BlockState state, String name) {
+		for (Property<?> property : state.getProperties()) {
+			if (property.getName().equals(name)) {
+				return property;
+			}
+		}
+		return null;
 	}
 }

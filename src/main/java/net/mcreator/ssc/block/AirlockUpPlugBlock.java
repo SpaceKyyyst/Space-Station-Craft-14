@@ -29,42 +29,36 @@ import net.mcreator.ssc.block.entity.AirlockUpPlugBlockEntity;
 
 import javax.annotation.Nullable;
 
+import java.util.function.Function;
+
 public class AirlockUpPlugBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-	private static final VoxelShape SHAPE_NORTH = box(0, 0, 7, 16, 16, 9);
-	private static final VoxelShape SHAPE_SOUTH = box(0, 0, 7, 16, 16, 9);
-	private static final VoxelShape SHAPE_EAST = box(7, 0, 0, 9, 16, 16);
-	private static final VoxelShape SHAPE_WEST = box(7, 0, 0, 9, 16, 16);
+	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public AirlockUpPlugBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.EMPTY).strength(-1f, 20f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
-	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
+	private Function<BlockState, VoxelShape> makeShapes() {
+		return this.getShapeForEachState(state -> {
+			return switch (state.getValue(FACING)) {
+				default -> box(0, 0, 7, 16, 16, 9);
+				case NORTH -> box(0, 0, 7, 16, 16, 9);
+				case EAST -> box(7, 0, 0, 9, 16, 16);
+				case WEST -> box(7, 0, 0, 9, 16, 16);
+			};
+		});
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return shapes.apply(state);
 	}
 
 	@Override
 	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return (switch (state.getValue(FACING)) {
-			case NORTH -> SHAPE_NORTH;
-			case SOUTH -> SHAPE_SOUTH;
-			case EAST -> SHAPE_EAST;
-			case WEST -> SHAPE_WEST;
-			default -> SHAPE_NORTH;
-		});
 	}
 
 	@Override

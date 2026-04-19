@@ -1,0 +1,66 @@
+{
+  "_fv": 85,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Special",
+    "renderType": 1,
+    "blockingRenderType": 0,
+    "texture": "ssc_pick_techtecsture",
+    "customModelName": "ssc14_pick:default",
+    "blockingModelName": "Normal blocking",
+    "guiTexture": "",
+    "name": "Pick",
+    "rarity": "COMMON",
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:SSC14Items"
+      }
+    ],
+    "efficiency": 40.0,
+    "attackSpeed": 1.0,
+    "enchantability": 1,
+    "damageVsEntity": 4.0,
+    "usageCount": 0,
+    "glowCondition": {
+      "fixedValue": false
+    },
+    "repairItems": [],
+    "immuneToFire": true,
+    "blockDropsTier": "WOOD",
+    "blocksAffected": [
+      {
+        "value": "CUSTOM:AsteroidStoneBase"
+      },
+      {
+        "value": "CUSTOM:AsteroidStoneIron"
+      },
+      {
+        "value": "CUSTOM:AsteroidStoneQuartz"
+      },
+      {
+        "value": "CUSTOM:AsteroidStoneCoal"
+      },
+      {
+        "value": "CUSTOM:AsteroidStoneGold"
+      },
+      {
+        "value": "CUSTOM:AsteroidStonePlasma"
+      },
+      {
+        "value": "CUSTOM:AsteroidStoneSilver"
+      },
+      {
+        "value": "CUSTOM:AsteroidStoneUran"
+      },
+      {
+        "value": "CUSTOM:AsteroidStoneDiamond"
+      }
+    ],
+    "attributeModifiers": [],
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false
+  }
+}

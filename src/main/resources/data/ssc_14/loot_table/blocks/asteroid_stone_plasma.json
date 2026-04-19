@@ -10,8 +10,8 @@
           "name": "ssc_14:raw_plasma",
           "functions": [
             {
-              "count": 2,
-              "function": "minecraft:set_count"
+              "function": "minecraft:set_count",
+              "count": 2
             },
             {
               "function": "minecraft:explosion_decay"

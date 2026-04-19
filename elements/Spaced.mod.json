@@ -1,5 +1,5 @@
 {
-  "_fv": 79,
+  "_fv": 85,
   "_type": "dimension",
   "definition": {
     "biomesInDimension": [
@@ -7,6 +7,7 @@
         "value": "CUSTOM:Spaceb"
       }
     ],
+    "biomesInDimensionCaves": [],
     "worldGenType": "End like gen",
     "mainFillerBlock": {
       "value": "CUSTOM:Voidb"

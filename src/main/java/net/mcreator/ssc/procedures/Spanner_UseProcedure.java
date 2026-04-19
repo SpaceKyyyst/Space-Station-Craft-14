@@ -1,5 +1,6 @@
 package net.mcreator.ssc.procedures;
 
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
@@ -305,9 +306,7 @@ public class Spanner_UseProcedure {
 				}
 			});
 		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_WINDOW.get()
-				&& ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock().getStateDefinition().getProperty("window_disassembly") instanceof IntegerProperty _getip193
-						? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip193)
-						: -1) == 1) {
+				&& (getPropertyByName((world.getBlockState(BlockPos.containing(x, y, z))), "window_disassembly") instanceof IntegerProperty _getip193 ? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip193) : -1) == 1) {
 			if (entity instanceof LivingEntity _livingEntity194 && _livingEntity194.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity194.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(10, () -> {
@@ -353,7 +352,7 @@ public class Spanner_UseProcedure {
 																		: 0)
 																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get()
 																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.BASE_WINDOW.get()
-																&& ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock().getStateDefinition().getProperty("window_disassembly") instanceof IntegerProperty _getip239
+																&& (getPropertyByName((world.getBlockState(BlockPos.containing(x, y, z))), "window_disassembly") instanceof IntegerProperty _getip239
 																		? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip239)
 																		: -1) == 1) {
 															if (world instanceof Level _level) {
@@ -403,7 +402,7 @@ public class Spanner_UseProcedure {
 				}
 			});
 		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip259 ? blockstate.getValue(_getip259) : -1) == 4) {
+				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip259 ? blockstate.getValue(_getip259) : -1) == 4) {
 			if (entity instanceof LivingEntity _livingEntity260 && _livingEntity260.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity260.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(3, () -> {
@@ -449,7 +448,7 @@ public class Spanner_UseProcedure {
 																		: 0)
 																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get()
 																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-																&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip305 ? blockstate.getValue(_getip305) : -1) == 4) {
+																&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip305 ? blockstate.getValue(_getip305) : -1) == 4) {
 															if (world instanceof Level _level) {
 																if (!_level.isClientSide()) {
 																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1);
@@ -497,7 +496,7 @@ public class Spanner_UseProcedure {
 				}
 			});
 		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip324 ? blockstate.getValue(_getip324) : -1) == 5) {
+				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip324 ? blockstate.getValue(_getip324) : -1) == 5) {
 			if (entity instanceof LivingEntity _livingEntity325 && _livingEntity325.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity325.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(10, () -> {
@@ -543,7 +542,7 @@ public class Spanner_UseProcedure {
 																		: 0)
 																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get()
 																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-																&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip370 ? blockstate.getValue(_getip370) : -1) == 5) {
+																&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip370 ? blockstate.getValue(_getip370) : -1) == 5) {
 															if (world instanceof Level _level) {
 																if (!_level.isClientSide()) {
 																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1);
@@ -591,5 +590,14 @@ public class Spanner_UseProcedure {
 				}
 			});
 		}
+	}
+
+	private static Property<?> getPropertyByName(BlockState state, String name) {
+		for (Property<?> property : state.getProperties()) {
+			if (property.getName().equals(name)) {
+				return property;
+			}
+		}
+		return null;
 	}
 }

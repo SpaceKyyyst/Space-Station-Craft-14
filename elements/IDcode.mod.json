@@ -1,5 +1,5 @@
 {
-  "_fv": 79,
+  "_fv": 85,
   "_type": "gui",
   "definition": {
     "type": 1,
@@ -1558,6 +1558,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 112,
           "y": 170,
           "locked": false
@@ -1574,6 +1575,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 112,
           "y": 206,
           "locked": false
@@ -1590,6 +1592,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 13,
           "locked": false
@@ -1606,6 +1609,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 34,
           "locked": false
@@ -1622,6 +1626,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 55,
           "locked": false
@@ -1638,6 +1643,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 76,
           "locked": false
@@ -1654,6 +1660,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 97,
           "locked": false
@@ -1670,6 +1677,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 118,
           "locked": false
@@ -1686,6 +1694,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 30,
           "y": 139,
           "locked": false
@@ -1702,6 +1711,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 13,
           "locked": false
@@ -1718,6 +1728,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 34,
           "locked": false
@@ -1734,6 +1745,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 55,
           "locked": false
@@ -1750,6 +1762,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 76,
           "locked": false
@@ -1766,6 +1779,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 97,
           "locked": false
@@ -1782,6 +1796,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 118,
           "locked": false
@@ -1798,6 +1813,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 108,
           "y": 139,
           "locked": false
@@ -1814,6 +1830,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 13,
           "locked": false
@@ -1830,6 +1847,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 34,
           "locked": false
@@ -1846,6 +1864,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 55,
           "locked": false
@@ -1862,6 +1881,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 76,
           "locked": false
@@ -1878,6 +1898,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 97,
           "locked": false
@@ -1894,6 +1915,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 118,
           "locked": false
@@ -1910,6 +1932,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 195,
           "y": 139,
           "locked": false
@@ -1926,6 +1949,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 13,
           "locked": false
@@ -1942,6 +1966,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 34,
           "locked": false
@@ -1958,6 +1983,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 55,
           "locked": false
@@ -1974,6 +2000,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 76,
           "locked": false
@@ -1990,6 +2017,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 97,
           "locked": false
@@ -2006,6 +2034,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 118,
           "locked": false
@@ -2022,6 +2051,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 282,
           "y": 139,
           "locked": false
@@ -2038,6 +2068,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 360,
           "y": 13,
           "locked": false
@@ -2054,6 +2085,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 360,
           "y": 34,
           "locked": false
@@ -2070,6 +2102,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 360,
           "y": 55,
           "locked": false
@@ -2086,6 +2119,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "x": 360,
           "y": 76,
           "locked": false

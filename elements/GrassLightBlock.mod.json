@@ -1,5 +1,5 @@
 {
-  "_fv": 79,
+  "_fv": 85,
   "_type": "block",
   "definition": {
     "texture": "fl_grasslight3_texture",
@@ -8,19 +8,18 @@
     "textureFront": "fl_grasslight2_texture",
     "textureRight": "fl_grasslight4_texture",
     "textureBack": "fl_grasslight2_texture",
-    "renderType": 10,
-    "customModelName": "Normal",
+    "renderType": 14,
+    "customModelName": "Grass block",
     "rotationMode": 2,
     "enablePitch": false,
     "emissiveRendering": false,
     "displayFluidOverlay": false,
+    "states": [],
     "animations": [],
     "itemTexture": "",
     "particleTexture": "",
     "blockSetType": "OAK",
-    "pottedPlant": {
-      "value": ""
-    },
+    "leavesParticleChance": 0.0,
     "tintType": "Grass",
     "isItemTinted": true,
     "hasTransparency": false,
@@ -64,6 +63,7 @@
     "enchantPowerBonus": 0.0,
     "plantsGrowOn": true,
     "canRedstoneConnect": false,
+    "hasCustomOpacity": false,
     "lightOpacity": 15,
     "tickRate": 0,
     "tickRandomly": false,
@@ -110,7 +110,9 @@
     "stepSound": {
       "value": ""
     },
-    "luminance": 0,
+    "luminance": {
+      "fixedValue": 0.0
+    },
     "unbreakable": false,
     "vanillaToolTier": "NONE",
     "isBonemealable": false,

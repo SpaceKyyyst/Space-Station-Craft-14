@@ -20,9 +20,9 @@ import net.mcreator.ssc.Ssc14Mod;
 
 @EventBusSubscriber
 public record MenuStateUpdateMessage(int elementType, String name, Object elementState) implements CustomPacketPayload {
-
 	public static final Type<MenuStateUpdateMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Ssc14Mod.MODID, "menustate_update"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, MenuStateUpdateMessage> STREAM_CODEC = StreamCodec.of(MenuStateUpdateMessage::write, MenuStateUpdateMessage::read);
+
 	public static void write(FriendlyByteBuf buffer, MenuStateUpdateMessage message) {
 		buffer.writeInt(message.elementType);
 		buffer.writeUtf(message.name);

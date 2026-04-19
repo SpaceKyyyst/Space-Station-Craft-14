@@ -18,6 +18,13 @@ import net.mcreator.ssc.procedures.*;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class ActionIndicatorOverlay {
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_1.png");
+	private static final ResourceLocation IMAGE_1 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_2.png");
+	private static final ResourceLocation IMAGE_2 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_3.png");
+	private static final ResourceLocation IMAGE_3 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_4.png");
+	private static final ResourceLocation IMAGE_4 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_5.png");
+	private static final ResourceLocation IMAGE_5 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_6.png");
+
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void eventHandler(RenderGuiEvent.Pre event) {
 		int w = event.getGuiGraphics().guiWidth();
@@ -35,22 +42,22 @@ public class ActionIndicatorOverlay {
 		}
 		if (true) {
 			if (ActGUIProcedureProcedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/progress_bar_1.png"), w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
 			if (ActGUIProcedure2Procedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/progress_bar_2.png"), w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
 			if (ActGUIProcedure3Procedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/progress_bar_3.png"), w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
 			if (ActGUIProcedure4Procedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/progress_bar_4.png"), w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
 			if (ActGUIProcedure5Procedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/progress_bar_5.png"), w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_4, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
 			if (ActGUIProcedure6Procedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/progress_bar_6.png"), w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_5, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
 		}
 	}

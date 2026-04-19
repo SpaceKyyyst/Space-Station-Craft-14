@@ -21,11 +21,6 @@ public class GrilleBlock extends Block {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
-		return 1;
-	}
-
-	@Override
 	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
 	}

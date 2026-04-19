@@ -1,12 +1,9 @@
 package net.mcreator.ssc.block;
 
-import org.checkerframework.checker.units.qual.s;
-
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -28,51 +25,43 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
-import net.mcreator.ssc.procedures.BaseAirlockD1_PutProcedure;
-import net.mcreator.ssc.procedures.AtmosBlock__TICProcedure;
+import net.mcreator.ssc.procedures.BaseAirlockDEBUGCHECKProcedure;
+import net.mcreator.ssc.procedures.BaseAirlockD1PutProcedure;
 import net.mcreator.ssc.block.entity.BaseAirlockD1openBlockEntity;
 
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
 public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 	public static final BooleanProperty BOLTED = BooleanProperty.create("bolted");
 	public static final BooleanProperty EMERGENCY_ACS = BooleanProperty.create("emergency_acs");
 	public static final BooleanProperty PANEL_OPEN = BooleanProperty.create("panel_open");
-	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(14, 15, 9, 16, 32, 11), box(15, 30, 6, 16, 32, 10), box(0, 0, 6, 1, 12, 10), box(0, 0, 5, 2, 17, 7));
-	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(0, 15, 5, 2, 32, 7), box(0, 30, 6, 1, 32, 10), box(15, 0, 6, 16, 12, 10), box(14, 0, 9, 16, 17, 11));
-	private static final VoxelShape SHAPE_EAST = Shapes.or(box(5, 15, 14, 7, 32, 16), box(6, 30, 15, 10, 32, 16), box(6, 0, 0, 10, 12, 1), box(9, 0, 0, 11, 17, 2));
-	private static final VoxelShape SHAPE_WEST = Shapes.or(box(9, 15, 0, 11, 32, 2), box(6, 30, 0, 10, 32, 1), box(6, 0, 15, 10, 12, 16), box(5, 0, 14, 7, 17, 16));
+	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public BaseAirlockD1openBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.NETHERITE_BLOCK).strength(30f, 15f).lightLevel(s -> 4).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.NETHERITE_BLOCK).strength(30f, 15f).lightLevel(blockstate -> 4).noCollission().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BOLTED, false).setValue(EMERGENCY_ACS, false).setValue(PANEL_OPEN, false));
 	}
 
-	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
+	private Function<BlockState, VoxelShape> makeShapes() {
+		return this.getShapeForEachState(state -> {
+			return switch (state.getValue(FACING)) {
+				default -> Shapes.or(box(0, 15, 5, 2, 32, 7), box(0, 30, 6, 1, 32, 10), box(15, 0, 6, 16, 12, 10), box(14, 0, 9, 16, 17, 11));
+				case NORTH -> Shapes.or(box(14, 15, 9, 16, 32, 11), box(15, 30, 6, 16, 32, 10), box(0, 0, 6, 1, 12, 10), box(0, 0, 5, 2, 17, 7));
+				case EAST -> Shapes.or(box(5, 15, 14, 7, 32, 16), box(6, 30, 15, 10, 32, 16), box(6, 0, 0, 10, 12, 1), box(9, 0, 0, 11, 17, 2));
+				case WEST -> Shapes.or(box(9, 15, 0, 11, 32, 2), box(6, 30, 0, 10, 32, 1), box(6, 0, 15, 10, 12, 16), box(5, 0, 14, 7, 17, 16));
+			};
+		}, BOLTED, EMERGENCY_ACS, PANEL_OPEN);
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return shapes.apply(state);
 	}
 
 	@Override
 	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return (switch (state.getValue(FACING)) {
-			case NORTH -> SHAPE_NORTH;
-			case SOUTH -> SHAPE_SOUTH;
-			case EAST -> SHAPE_EAST;
-			case WEST -> SHAPE_WEST;
-			default -> SHAPE_NORTH;
-		});
 	}
 
 	@Override
@@ -102,21 +91,15 @@ public class BaseAirlockD1openBlock extends Block implements EntityBlock {
 	@Override
 	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
 		super.onPlace(blockstate, world, pos, oldState, moving);
-		world.scheduleTick(pos, this, 5);
-		BaseAirlockD1_PutProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
-	}
-
-	@Override
-	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, @Nullable Orientation orientation, boolean moving) {
-		super.neighborChanged(blockstate, world, pos, neighborBlock, orientation, moving);
-		BaseAirlockD1_PutProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
+		world.scheduleTick(pos, this, 10);
+		BaseAirlockD1PutProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
 	}
 
 	@Override
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
-		AtmosBlock__TICProcedure.execute();
-		world.scheduleTick(pos, this, 5);
+		BaseAirlockDEBUGCHECKProcedure.execute();
+		world.scheduleTick(pos, this, 10);
 	}
 
 	@Override

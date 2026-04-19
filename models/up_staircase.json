@@ -1,0 +1,73 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"1": "up_staircase_texture",
+		"particle": "up_staircase_texture"
+	},
+	"elements": [
+		{
+			"name": "st_1",
+			"from": [0, 12, 0],
+			"to": [16, 16, 4],
+			"rotation": {"angle": 0, "axis": "z", "origin": [0, 14, 1]},
+			"faces": {
+				"north": {"uv": [4, 1, 0, 0], "texture": "#1"},
+				"east": {"uv": [6, 3, 7, 2], "texture": "#1"},
+				"west": {"uv": [4, 5, 5, 4], "texture": "#1"},
+				"up": {"uv": [4, 4, 0, 5], "texture": "#1"},
+				"down": {"uv": [5, 1, 9, 0], "texture": "#1"}
+			}
+		},
+		{
+			"name": "st_2",
+			"from": [0, 8, 4],
+			"to": [16, 16, 8],
+			"rotation": {"angle": 0, "axis": "z", "origin": [0, 10, 1]},
+			"faces": {
+				"north": {"uv": [4, 2, 0, 0], "texture": "#1"},
+				"east": {"uv": [5, 7, 6, 5], "texture": "#1"},
+				"west": {"uv": [4, 6, 5, 4], "texture": "#1"},
+				"up": {"uv": [0, 5.25, 4, 6.25], "texture": "#1"},
+				"down": {"uv": [5, 1, 9, 0], "texture": "#1"}
+			}
+		},
+		{
+			"name": "st_3",
+			"from": [0, 4, 8],
+			"to": [16, 16, 12],
+			"rotation": {"angle": 0, "axis": "z", "origin": [0, 6, 1]},
+			"faces": {
+				"north": {"uv": [4, 3, 0, 0], "texture": "#1"},
+				"east": {"uv": [5, 5, 6, 2], "texture": "#1"},
+				"west": {"uv": [4, 7, 5, 4], "texture": "#1"},
+				"up": {"uv": [0, 5.75, 4, 6.75], "texture": "#1"},
+				"down": {"uv": [5, 1, 9, 0], "texture": "#1"}
+			}
+		},
+		{
+			"name": "st_4",
+			"from": [0, 0, 12],
+			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "z", "origin": [0, 2, 1]},
+			"faces": {
+				"north": {"uv": [4, 4, 0, 0], "texture": "#1"},
+				"east": {"uv": [4, 4, 5, 0], "texture": "#1"},
+				"south": {"uv": [4, 8, 0, 4], "texture": "#1"},
+				"west": {"uv": [4, 8, 5, 4], "texture": "#1"},
+				"up": {"uv": [0, 7, 4, 8], "texture": "#1"},
+				"down": {"uv": [5, 1, 9, 0], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"origin": [0, 6, 3],
+			"scope": 0,
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		}
+	]
+}

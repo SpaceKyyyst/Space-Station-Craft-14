@@ -120,6 +120,14 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> MED_PLANET_GRASS;
 	public static final DeferredBlock<Block> PLANETARY_TREE_LOG;
 	public static final DeferredBlock<Block> PLANETARY_TREE_FOLIAGE;
+	public static final DeferredBlock<Block> UP_STEEL_STAIRCASE;
+	public static final DeferredBlock<Block> UP_WHITE_STAIRCASE;
+	public static final DeferredBlock<Block> UP_DARK_STAIRCASE;
+	public static final DeferredBlock<Block> SHUTTLE_WALL;
+	public static final DeferredBlock<Block> ARMORED_SHUTTLE_WALL;
+	public static final DeferredBlock<Block> DIRECTED_BASE_WINDOW;
+	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1OPEN;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
 		SPACED_PORTAL = register("spaced_portal", SpacedPortalBlock::new);
@@ -221,6 +229,14 @@ public class Ssc14ModBlocks {
 		MED_PLANET_GRASS = register("med_planet_grass", MedPlanetGrassBlock::new);
 		PLANETARY_TREE_LOG = register("planetary_tree_log", PlanetaryTreeLogBlock::new);
 		PLANETARY_TREE_FOLIAGE = register("planetary_tree_foliage", PlanetaryTreeFoliageBlock::new);
+		UP_STEEL_STAIRCASE = register("up_steel_staircase", UpSteelStaircaseBlock::new);
+		UP_WHITE_STAIRCASE = register("up_white_staircase", UpWhiteStaircaseBlock::new);
+		UP_DARK_STAIRCASE = register("up_dark_staircase", UpDarkStaircaseBlock::new);
+		SHUTTLE_WALL = register("shuttle_wall", ShuttleWallBlock::new);
+		ARMORED_SHUTTLE_WALL = register("armored_shuttle_wall", ArmoredShuttleWallBlock::new);
+		DIRECTED_BASE_WINDOW = register("directed_base_window", DirectedBaseWindowBlock::new);
+		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
+		TECH_AIRLOCK_D_1OPEN = register("tech_airlock_d_1open", TechAirlockD1openBlock::new);
 	}
 
 	// Start of user code block custom blocks

@@ -1,5 +1,5 @@
 {
-  "_fv": 79,
+  "_fv": 85,
   "_type": "overlay",
   "definition": {
     "priority": "HIGH",
@@ -27,6 +27,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "anchorPoint": "CENTER",
           "x": 218,
           "y": 123,
@@ -44,6 +45,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "anchorPoint": "CENTER",
           "x": 218,
           "y": 146,
@@ -62,6 +64,7 @@
             "value": -16711681,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "anchorPoint": "CENTER",
           "x": 218,
           "y": 158,
@@ -79,6 +82,7 @@
             "value": -1,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "anchorPoint": "CENTER",
           "x": 218,
           "y": 134,
@@ -96,6 +100,7 @@
             "value": -7667712,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "displayCondition": {
             "name": "WOCtextNoPinned"
           },
@@ -116,6 +121,7 @@
             "value": -16744704,
             "falpha": 0.0
           },
+          "hasShadow": false,
           "displayCondition": {
             "name": "WOCtextPinned"
           },

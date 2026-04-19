@@ -58,6 +58,8 @@ public class AccessConfigMENUScreen extends AbstractContainerScreen<AccessConfig
 	private Checkbox Command;
 	private Checkbox Blue_Sh;
 	private Checkbox Uridic;
+	private static final ResourceLocation BACKGROUND = ResourceLocation.parse("ssc_14:textures/screens/access_config_menu.png");
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/access_config_menu__copy.png");
 
 	public AccessConfigMENUScreen(AccessConfigMENUMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -175,8 +177,6 @@ public class AccessConfigMENUScreen extends AbstractContainerScreen<AccessConfig
 		menuStateUpdateActive = false;
 	}
 
-	private static final ResourceLocation texture = ResourceLocation.parse("ssc_14:textures/screens/access_config_menu.png");
-
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
@@ -185,8 +185,8 @@ public class AccessConfigMENUScreen extends AbstractContainerScreen<AccessConfig
 
 	@Override
 	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/access_config_menu__copy.png"), this.leftPos + 0, this.topPos + 0, 0, 0, 416, 153, 416, 153);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 416, 153, 416, 153);
 	}
 
 	@Override

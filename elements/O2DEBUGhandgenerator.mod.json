@@ -1,5 +1,5 @@
 {
-  "_fv": 79,
+  "_fv": 85,
   "_type": "item",
   "definition": {
     "renderType": 0,
@@ -27,10 +27,12 @@
     "destroyAnyBlock": false,
     "immuneToFire": true,
     "isPiglinCurrency": false,
+    "repairItems": [],
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "enableMeleeDamage": false,
     "damageVsEntity": 0.0,
+    "attackSpeed": 1.6,
     "specialInformation": {
       "fixedValue": [
         "При нажатии ПКМ добавляет 100 моль O2 (0 градусов) к блоку, где вы находитесь"
@@ -38,6 +40,9 @@
     },
     "glowCondition": {
       "fixedValue": true
+    },
+    "openGUIOnRightClick": {
+      "fixedValue": false
     },
     "inventorySize": 9,
     "inventoryStackSize": 99,
@@ -67,6 +72,7 @@
     "musicDiscDescription": "",
     "musicDiscLengthInTicks": 100,
     "musicDiscAnalogOutput": 0,
-    "providedBannerPatterns": []
+    "providedBannerPatterns": [],
+    "attributeModifiers": []
   }
 }

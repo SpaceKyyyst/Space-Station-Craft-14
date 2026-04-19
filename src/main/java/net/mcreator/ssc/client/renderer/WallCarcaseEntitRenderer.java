@@ -10,6 +10,7 @@ import net.mcreator.ssc.client.model.Modelframe_of_wall_JAVA;
 
 public class WallCarcaseEntitRenderer extends MobRenderer<WallCarcaseEntitEntity, LivingEntityRenderState, Modelframe_of_wall_JAVA> {
 	private WallCarcaseEntitEntity entity = null;
+	private final ResourceLocation entityTexture = ResourceLocation.parse("ssc_14:textures/entities/texture_of_frame_wall_ent.png");
 
 	public WallCarcaseEntitRenderer(EntityRendererProvider.Context context) {
 		super(context, new Modelframe_of_wall_JAVA(context.bakeLayer(Modelframe_of_wall_JAVA.LAYER_LOCATION)), 0.5f);
@@ -28,6 +29,6 @@ public class WallCarcaseEntitRenderer extends MobRenderer<WallCarcaseEntitEntity
 
 	@Override
 	public ResourceLocation getTextureLocation(LivingEntityRenderState state) {
-		return ResourceLocation.parse("ssc_14:textures/entities/texture_of_frame_wall_ent.png");
+		return entityTexture;
 	}
 }

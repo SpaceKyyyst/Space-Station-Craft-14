@@ -55,6 +55,10 @@ public class Ssc14Mod {
 		// End of user code block mod constructor
 		NeoForge.EVENT_BUS.register(this);
 		modEventBus.addListener(this::registerNetworking);
+		if (ModList.get().isLoaded("curios")) {
+			modEventBus.addListener(Ssc14ModCuriosCompat::registerCapabilities);
+			modEventBus.addListener(Ssc14ModCuriosRenderers::registerRenderers);
+		}
 		Ssc14ModSounds.REGISTRY.register(modEventBus);
 		Ssc14ModBlocks.REGISTRY.register(modEventBus);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);

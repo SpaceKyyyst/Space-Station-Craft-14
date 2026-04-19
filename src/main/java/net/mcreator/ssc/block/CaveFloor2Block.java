@@ -16,11 +16,6 @@ public class CaveFloor2Block extends Block {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
-		return 15;
-	}
-
-	@Override
 	public ItemStack getCloneItemStack(LevelReader world, BlockPos pos, BlockState state, boolean includeData, Player entity) {
 		return new ItemStack(Ssc14ModBlocks.CAVE_FLOOR_1.get());
 	}

@@ -1,46 +1,3 @@
-/kill @e[ type= minecraft:item ]
-/summon minecraft:tnt ~ ~ ~
-/kill @e[ type= minecraft:item ]
-/fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:steel_wall
-/gamerule commandModificationBlockLimit 999999999
-/fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:steel_wall
-/fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:plasteel_wall
-/fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:sheathing
-/fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:plasteel_wall
-/fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:steel_wall
-/ssc14 tpspace
-/effect give Dev minecraft:night_vision
-/effect give Dev minecraft:night_vision infinite 0 true
-/fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:sheathing
-/fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:plasteel_wall
-/fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:steel_wall
-/setblock ~ ~ ~ sto
-/setblock ~ ~ ~ minecraft:stone
-/kill
-/setblock ~ ~ ~ minecraft:acacia_button
-/ssc14 tpdimension space
-/ssc14 tpdimension planet plant
-/effect give Dev minecraft:night_vision infinite 0 true
-/ssc14 tpdimension planet plant
-/effect give Dev minecraft:night_vision infinite 0 true
-/ssc14 tpdimension planet plant
-/effect give Dev minecraft:night_vision infinite 0 true
-/ssc14 tpdimension planet
-/ssc14 tpdimension planet plant
-/locate biome ssc_14:planetary_plant_mountain_biome
-/ssc14 tpdimension planet plant
-/fill ~-50 ~-50 ~-50 ~50 ~50 ~50 ssc_14:asteroid_stone_base replace air
-/gamerule commandModificationBlockLimit 999999999
-/fill ~-50 ~-50 ~-50 ~50 ~50 ~50 ssc_14:asteroid_stone_base replace air
-/fill ~-50 ~-50 ~-50 ~50 ~50 ~50 air replace ssc_14:asteroid_stone_base
-/locate biome ssc_14:planetary_plant_biome
-/ssc14 tpdimension planet plant
-/gamerule randomTickSpeed 50
-/gamerule randomTickSpeed 500
-/gamerule randomTickSpeed 3
-/kill
-/attribute Dev minecraft:gravity get 0
-/attribute Dev minecraft:gravity base set 0
 /attribute Dev minecraft:gravity base set 0.08
 /fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:title_white replace minecraft:white_wool
 /fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14: replace minecraft:light_gray_stained_glass_pane
@@ -48,3 +5,46 @@
 /fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:catwalk_floor replace minecraft:light_gray_stained_glass
 /fill ~-100 ~ ~-100 ~100 ~ ~100 ssc_14:catwalk_floor replace minecraft:gray_stained_glass_pane
 /give Dev ssc_14:grass_light_block
+/kill f3df4e7c-786f-49a1-945d-74930d8aec7f
+/tp 207fe753-337e-4fe8-a2ad-729d2551ddf8 ~ ~ ~1
+/setblock ~ ~ ~ minecraft:end_portal
+/ssc14 tpdimension space
+/give Dev ssc_14:musicdisk_aaa
+/tick freeze
+/tick unfreeze
+/kill 609c84d7-68bd-4cc1-a1db-3f73bc17df63
+/kill @e
+/tick freeze
+/tick unfreeze
+/tp Dev ~ ~-10 ~
+/tp Dev ~ ~5 ~
+/tp Dev ~ ~-10 ~
+/tp Dev ~ ~10 ~
+/tp Dev ~ ~-10 ~
+/tp Dev ~ ~10 ~
+/tp Dev ~ ~-10 ~
+/tp Dev ~ ~10 ~
+/tp Dev ~ ~-10 ~
+/tp Dev ~ ~10 ~
+/kill
+/setblock -159 37 28 0
+/setblock -159 37 28 air
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear
+/effect give Dev minecraft:night_vision infinite 0 true
+/setblock ~ ~ ~ minecraft:stone
+/effect clear
+/kill
+/ssc14 hels Dev reset
+/data get
+/data get block -161 36 27
+/ssc14 hels Dev reset
+/ssc14 hunger set Dev 150
+/give Dev minecraft:test_block
+/give Dev ssc_14:testblock_123

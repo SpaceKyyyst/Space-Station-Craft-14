@@ -1,5 +1,6 @@
 package net.mcreator.ssc.procedures;
 
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
@@ -280,7 +281,7 @@ public class Scrap_ProcedureProcedure {
 				}
 			});
 		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip180 ? blockstate.getValue(_getip180) : -1) == 3) {
+				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip180 ? blockstate.getValue(_getip180) : -1) == 3) {
 			if (entity instanceof LivingEntity _livingEntity181 && _livingEntity181.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity181.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(3, () -> {
@@ -318,7 +319,7 @@ public class Scrap_ProcedureProcedure {
 																: 0)
 														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()
 														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-														&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip219 ? blockstate.getValue(_getip219) : -1) == 3) {
+														&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip219 ? blockstate.getValue(_getip219) : -1) == 3) {
 													if (entity instanceof LivingEntity _livingEntity220 && _livingEntity220.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 														_livingEntity220.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 													Ssc14Mod.queueServerWork(3, () -> {
@@ -365,7 +366,7 @@ public class Scrap_ProcedureProcedure {
 				}
 			});
 		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip238 ? blockstate.getValue(_getip238) : -1) == 6) {
+				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip238 ? blockstate.getValue(_getip238) : -1) == 6) {
 			if (entity instanceof LivingEntity _livingEntity239 && _livingEntity239.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity239.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(3, () -> {
@@ -403,7 +404,7 @@ public class Scrap_ProcedureProcedure {
 																: 0)
 														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()
 														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-														&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip277 ? blockstate.getValue(_getip277) : -1) == 6) {
+														&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip277 ? blockstate.getValue(_getip277) : -1) == 6) {
 													if (entity instanceof LivingEntity _livingEntity278 && _livingEntity278.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 														_livingEntity278.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 													Ssc14Mod.queueServerWork(3, () -> {
@@ -450,7 +451,7 @@ public class Scrap_ProcedureProcedure {
 				}
 			});
 		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip296 ? blockstate.getValue(_getip296) : -1) == 2) {
+				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip296 ? blockstate.getValue(_getip296) : -1) == 2) {
 			if (entity instanceof LivingEntity _livingEntity297 && _livingEntity297.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity297.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(3, () -> {
@@ -488,7 +489,7 @@ public class Scrap_ProcedureProcedure {
 																: 0)
 														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.CROWBAR.get()
 														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-														&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip335 ? blockstate.getValue(_getip335) : -1) == 2) {
+														&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip335 ? blockstate.getValue(_getip335) : -1) == 2) {
 													if (entity instanceof LivingEntity _livingEntity336 && _livingEntity336.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 														_livingEntity336.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 													Ssc14Mod.queueServerWork(3, () -> {
@@ -535,5 +536,14 @@ public class Scrap_ProcedureProcedure {
 				}
 			});
 		}
+	}
+
+	private static Property<?> getPropertyByName(BlockState state, String name) {
+		for (Property<?> property : state.getProperties()) {
+			if (property.getName().equals(name)) {
+				return property;
+			}
+		}
+		return null;
 	}
 }

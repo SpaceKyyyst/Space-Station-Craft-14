@@ -18,6 +18,8 @@ import net.mcreator.ssc.procedures.Hunger1PrProcedure;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Hunger1Overlay {
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/hunger_1.png");
+
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {
 		int w = event.getGuiGraphics().guiWidth();
@@ -35,7 +37,7 @@ public class Hunger1Overlay {
 		}
 		if (true) {
 			if (Hunger1PrProcedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/hunger_1.png"), w - 37, h / 2 + -16, 0, 0, 32, 32, 32, 32);
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w - 37, h / 2 + -16, 0, 0, 32, 32, 32, 32);
 			}
 		}
 	}

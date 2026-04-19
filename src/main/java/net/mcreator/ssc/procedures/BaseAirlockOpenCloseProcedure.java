@@ -1,12 +1,11 @@
 package net.mcreator.ssc.procedures;
 
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
@@ -16,21 +15,24 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.tags.TagKey;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
+import net.minecraft.ChatFormatting;
 
 import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
 import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.Ssc14Mod;
 
 import java.util.Optional;
@@ -41,318 +43,247 @@ public class BaseAirlockOpenCloseProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
 		if (entity == null)
 			return;
-		// === КОНСТАНТЫ (без пробелов!) ===
-		final String[] ACCESS_ROLES = {"Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio", "Security", "Ingeneer", "Command", "Detective", "PNT", "Scientist", "Supply_Deportament", "Atmos", "Kitchen", "Uridic", "Gidroponic",
-				"Teatre", "Bar", "Cleaner", "Utilizat", "Chemistry", "Church", "CE", "Qm", "CMO", "RD", "HoP", "Capitan", "Blue_Sh"};
-		final String PROP_PANEL_OPEN = "panel_open";
-		final String PROP_BOLTED = "bolted";
-		final String PROP_EMERGENCY_ACS = "emergency_acs";
-		final String PROP_BLOCKSTATE = "blockstate";
-		final String TAG_OPENING = "Opening";
-		if (entity == null)
-			return;
+		if ((getPropertyByName(blockstate, "kostil") instanceof IntegerProperty _getip1 ? blockstate.getValue(_getip1) : -1) == 13 && entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("minecraft:skeletons")))
+				&& (world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("minecraft:logs")))) {
+			// 👨‍🦽 КОСТЫЛЬ ДЛЯ ИМПОРТОВ MCreator
+			if (world instanceof ServerLevel _level) {
+				_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Airlock error").withColor(0x000000).withStyle(ChatFormatting.ITALIC), false);
+			}
+		}
 		BlockPos pos = BlockPos.containing(x, y, z);
-		// === 1. Проверка предмета доступа (Access Config) ===
-		ItemStack mainHand = (entity instanceof LivingEntity _livEnt) ? _livEnt.getMainHandItem() : ItemStack.EMPTY;
-		if (mainHand.getItem() == Ssc14ModItems.ACCESS_CONFIG.get() && !entity.isShiftKeyDown()) {
-			if (entity instanceof ServerPlayer _ent) {
-				_ent.openMenu(new MenuProvider() {
-					@Override
-					public Component getDisplayName() {
-						return Component.literal("AccessConfigMENU");
-					}
-
-					@Override
-					public boolean shouldTriggerClientSideContainerClosingOnOpen() {
-						return false;
-					}
-
-					@Override
-					public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-						return new AccessConfigMENUMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-					}
-				}, pos);
-			}
+		BlockEntity be = world.getBlockEntity(pos);
+		if (be != null && be.getPersistentData().getBooleanOr("_ssc14_processing", false))
 			return;
-		}
-		// === 2. Проверка панели (Cable Panel) ===
-		BooleanProperty panelProp = (BooleanProperty) blockstate.getBlock().getStateDefinition().getProperty(PROP_PANEL_OPEN);
-		boolean panelOpen = (panelProp != null) && blockstate.getValue(panelProp);
-		if (panelOpen && !entity.isShiftKeyDown()) {
-			if (entity instanceof ServerPlayer _ent) {
-				_ent.openMenu(new MenuProvider() {
-					@Override
-					public Component getDisplayName() {
-						return Component.literal("CabelPannelAirlock");
-					}
+		if (!world.isClientSide() && be != null)
+			be.getPersistentData().putBoolean("_ssc14_processing", true);
+		try {
+			final String[] ACCESS_ROLES = {"Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio", "Security", "Engineer", "Command", "Detective", "PNT", "Scientist", "Supply_Department", "Atmos", "Kitchen", "Uridic",
+					"Gidroponic", "Teatre", "Bar", "Cleaner", "Utilizat", "Chemistry", "Church", "CE", "Qm", "CMO", "RD", "HoP", "Captain", "Blue_Sh"};
+			final String PROP_PANEL_OPEN = "panel_open";
+			final String PROP_BOLTED = "bolted";
+			final String PROP_EMERGENCY_ACS = "emergency_acs";
+			final String PROP_BLOCKSTATE = "blockstate";
+			final String TAG_OPENING = "Opening";
+			ItemStack mainHand = (entity instanceof LivingEntity _livEnt) ? _livEnt.getMainHandItem() : ItemStack.EMPTY;
+			if (mainHand.getItem() == Ssc14ModItems.ACCESS_CONFIG.get() && !entity.isShiftKeyDown()) {
+				if (entity instanceof ServerPlayer _ent) {
+					_ent.openMenu(new MenuProvider() {
+						@Override
+						public Component getDisplayName() {
+							return Component.literal("AccessConfigMENU");
+						}
 
-					@Override
-					public boolean shouldTriggerClientSideContainerClosingOnOpen() {
-						return false;
-					}
+						@Override
+						public boolean shouldTriggerClientSideContainerClosingOnOpen() {
+							return false;
+						}
 
-					@Override
-					public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-						return new CabelPannelAirlockMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-					}
-				}, pos);
-			}
-			return;
-		}
-		// === 3. Логика шлюза: открытие/закрытие ===
-		boolean shiftPressed = entity.isShiftKeyDown();
-		boolean shouldProcess = (!panelOpen) || (panelOpen && shiftPressed);
-		if (!shouldProcess)
-			return;
-		// Проверка bolted
-		BooleanProperty boltedProp = (BooleanProperty) blockstate.getBlock().getStateDefinition().getProperty(PROP_BOLTED);
-		if ((boltedProp != null) && blockstate.getValue(boltedProp))
-			return;
-		// Проверка emergency
-		BooleanProperty emergencyProp = (BooleanProperty) blockstate.getBlock().getStateDefinition().getProperty(PROP_EMERGENCY_ACS);
-		boolean isEmergency = (emergencyProp != null) && blockstate.getValue(emergencyProp);
-		// === ПРОВЕРКА ДОСТУПА (только если не аварийный режим) ===
-		if (!isEmergency) {
-			boolean hasAccess = true;
-			for (String role : ACCESS_ROLES) {
-				boolean entityHasRole = entity.getPersistentData().getBooleanOr(role, false);
-				BlockEntity be = world.getBlockEntity(pos);
-				boolean blockRequiresRole = (be != null) && be.getPersistentData().getBooleanOr(role, false);
-				if (blockRequiresRole && !entityHasRole) {
-					hasAccess = false;
-					break;
+						@Override
+						public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+							return new AccessConfigMENUMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+						}
+					}, pos);
 				}
-			}
-			if (!hasAccess) {
-				// ЗВУК ОТКАЗА — ТОЛЬКО ЗДЕСЬ, и сразу выходим
-				if (world instanceof Level level) {
-					Optional<SoundEvent> soundOpt = BuiltInRegistries.SOUND_EVENT.getOptional(ResourceLocation.parse("ssc_14:airlock_no_access"));
-					if (soundOpt.isPresent()) {
-						SoundEvent sound = soundOpt.get();
-						if (!level.isClientSide())
-							level.playSound(null, pos, sound, SoundSource.NEUTRAL, 1, 1);
-						else
-							level.playLocalSound(x, y, z, sound, SoundSource.NEUTRAL, 1, 1, false);
-					}
-				}
-				return; // ← НЕ запускаем анимацию, если нет доступа
-			}
-		}
-		// === Устанавливаем флаг открытия (для синхронизации) ===
-		if (!world.isClientSide()) {
-			BlockEntity be = world.getBlockEntity(pos);
-			if (be != null) {
-				be.getPersistentData().putBoolean(TAG_OPENING, true);
-				if (world instanceof Level _level)
-					_level.sendBlockUpdated(pos, blockstate, blockstate, 3);
-			}
-		}
-		// === ЗАПУСК АНИМАЦИИ ===
-		Ssc14Mod.queueServerWork(1, () -> {
-			BlockPos animPos = BlockPos.containing(x, y, z);
-			BlockState currentState = world.getBlockState(animPos);
-			if (!(world instanceof Level level))
 				return;
-			// Получаем isEmergencyACS заново (не переобъявляем emergencyProp!)
-			BooleanProperty ep = (BooleanProperty) currentState.getBlock().getStateDefinition().getProperty(PROP_EMERGENCY_ACS);
-			boolean isEmergencyACS = (ep != null) && currentState.getValue(ep);
-			// === ОТКРЫТИЕ: если блок закрытый ===
-			boolean isBaseAirlockClosed = currentState.getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1.get();
-			IntegerProperty stateProp = (IntegerProperty) currentState.getBlock().getStateDefinition().getProperty(PROP_BLOCKSTATE);
-			int blockStateVal = (stateProp != null) ? currentState.getValue(stateProp) : -1;
-			boolean validState = (blockStateVal == 0 || blockStateVal == 6 || blockStateVal == 7 || blockStateVal == 8);
-			if (isBaseAirlockClosed && validState) {
-				// Звук открытия
-				Optional<SoundEvent> openSoundOpt = BuiltInRegistries.SOUND_EVENT.getOptional(ResourceLocation.parse("ssc_14:airlock_open"));
-				if (openSoundOpt.isPresent()) {
-					SoundEvent openSound = openSoundOpt.get();
-					if (!level.isClientSide())
-						level.playSound(null, animPos, openSound, SoundSource.NEUTRAL, 1, 1);
-					else
-						level.playLocalSound(x, y, z, openSound, SoundSource.NEUTRAL, 1, 1, false);
-				}
-				// Анимация состояний 1→2→3→4
-				{
-					BlockState bs = world.getBlockState(animPos);
-					IntegerProperty sp = (IntegerProperty) bs.getBlock().getStateDefinition().getProperty(PROP_BLOCKSTATE);
-					if (sp != null && sp.getPossibleValues().contains(1))
-						world.setBlock(animPos, bs.setValue(sp, 1), 3);
-				}
-				Ssc14Mod.queueServerWork(2, () -> {
-					{
-						BlockState bs = world.getBlockState(animPos);
-						IntegerProperty sp = (IntegerProperty) bs.getBlock().getStateDefinition().getProperty(PROP_BLOCKSTATE);
-						if (sp != null && sp.getPossibleValues().contains(2))
-							world.setBlock(animPos, bs.setValue(sp, 2), 3);
-					}
-					Ssc14Mod.queueServerWork(2, () -> {
-						{
-							BlockState bs = world.getBlockState(animPos);
-							IntegerProperty sp = (IntegerProperty) bs.getBlock().getStateDefinition().getProperty(PROP_BLOCKSTATE);
-							if (sp != null && sp.getPossibleValues().contains(3))
-								world.setBlock(animPos, bs.setValue(sp, 3), 3);
-						}
-						Ssc14Mod.queueServerWork(2, () -> {
-							{
-								BlockState bs = world.getBlockState(animPos);
-								IntegerProperty sp = (IntegerProperty) bs.getBlock().getStateDefinition().getProperty(PROP_BLOCKSTATE);
-								if (sp != null && sp.getPossibleValues().contains(4))
-									world.setBlock(animPos, bs.setValue(sp, 4), 3);
-							}
-							Ssc14Mod.queueServerWork(2, () -> {
-								// Замена на открытый блок с сохранением NBT
-								BlockPos swapPos = BlockPos.containing(x, y, z);
-								BlockEntity oldBe = level.getBlockEntity(swapPos);
-								CompoundTag persistentData = (oldBe != null) ? oldBe.getPersistentData().copy() : new CompoundTag();
-								BlockState newBs = Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get().defaultBlockState();
-								BlockState oldBs = level.getBlockState(swapPos);
-								@SuppressWarnings({"rawtypes", "unchecked"})
-								var props = oldBs.getProperties();
-								for (@SuppressWarnings({"rawtypes", "unchecked"})
-								Property pOld : props) {
-									@SuppressWarnings({"rawtypes", "unchecked"})
-									Property pNew = newBs.getBlock().getStateDefinition().getProperty(pOld.getName());
-									if (pNew != null) {
-										try {
-											newBs = newBs.setValue(pNew, oldBs.getValue(pOld));
-										} catch (Exception e) {
-										}
-									}
-								}
-								level.setBlock(swapPos, newBs, 3);
-								BlockEntity newBe = level.getBlockEntity(swapPos);
-								if (newBe != null && !persistentData.isEmpty())
-									newBe.getPersistentData().merge(persistentData);
-								// Верхний блок
-								BlockPos topPos = BlockPos.containing(x, y + 1, z);
-								BlockState newTopBs = Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get().defaultBlockState();
-								BlockState oldTopBs = level.getBlockState(topPos);
-								@SuppressWarnings({"rawtypes", "unchecked"})
-								var topProps = oldTopBs.getProperties();
-								for (@SuppressWarnings({"rawtypes", "unchecked"})
-								Property pOld : topProps) {
-									@SuppressWarnings({"rawtypes", "unchecked"})
-									Property pNew = newTopBs.getBlock().getStateDefinition().getProperty(pOld.getName());
-									if (pNew != null) {
-										try {
-											newTopBs = newTopBs.setValue(pNew, oldTopBs.getValue(pOld));
-										} catch (Exception e) {
-										}
-									}
-								}
-								level.setBlock(topPos, newTopBs, 3);
-							});
-						});
-					});
-				});
 			}
-			// === ЗАКРЫТИЕ: если блок открытый (работает БЕЗ проверки на сущности) ===
-			else if (currentState.getBlock() == Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN.get()) {
-				// Звук закрытия
-				Optional<SoundEvent> closeSoundOpt = BuiltInRegistries.SOUND_EVENT.getOptional(ResourceLocation.parse("ssc_14:airlock_close"));
-				if (closeSoundOpt.isPresent()) {
-					SoundEvent closeSound = closeSoundOpt.get();
-					if (!level.isClientSide())
-						level.playSound(null, animPos, closeSound, SoundSource.NEUTRAL, 1, 1);
-					else
-						level.playLocalSound(x, y, z, closeSound, SoundSource.NEUTRAL, 1, 1, false);
+			BooleanProperty panelProp = _getProperty(blockstate, PROP_PANEL_OPEN, BooleanProperty.class);
+			boolean panelOpen = (panelProp != null) && blockstate.getValue(panelProp);
+			if (panelOpen && !entity.isShiftKeyDown()) {
+				if (entity instanceof ServerPlayer _ent) {
+					_ent.openMenu(new MenuProvider() {
+						@Override
+						public Component getDisplayName() {
+							return Component.literal("CabelPannelAirlock");
+						}
+
+						@Override
+						public boolean shouldTriggerClientSideContainerClosingOnOpen() {
+							return false;
+						}
+
+						@Override
+						public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+							return new CabelPannelAirlockMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+						}
+					}, pos);
 				}
-				// Замена на закрытый блок с сохранением NBT
-				BlockPos swapPos = BlockPos.containing(x, y, z);
-				BlockEntity oldBe = level.getBlockEntity(swapPos);
-				CompoundTag persistentData = (oldBe != null) ? oldBe.getPersistentData().copy() : new CompoundTag();
-				BlockState newBs = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState();
-				BlockState oldBs = level.getBlockState(swapPos);
-				@SuppressWarnings({"rawtypes", "unchecked"})
-				var props = oldBs.getProperties();
-				for (@SuppressWarnings({"rawtypes", "unchecked"})
-				Property pOld : props) {
+				return;
+			}
+			boolean shiftPressed = entity.isShiftKeyDown();
+			boolean shouldProcess = (!panelOpen) || (panelOpen && shiftPressed);
+			if (!shouldProcess)
+				return;
+			BooleanProperty boltedProp = _getProperty(blockstate, PROP_BOLTED, BooleanProperty.class);
+			if ((boltedProp != null) && blockstate.getValue(boltedProp))
+				return;
+			BooleanProperty emergencyProp = _getProperty(blockstate, PROP_EMERGENCY_ACS, BooleanProperty.class);
+			boolean isEmergency = (emergencyProp != null) && blockstate.getValue(emergencyProp);
+			if (!isEmergency) {
+				boolean hasAccess = true;
+				for (String role : ACCESS_ROLES) {
+					boolean entityHasRole = entity.getPersistentData().getBooleanOr(role, false);
+					BlockEntity beCheck = world.getBlockEntity(pos);
+					boolean blockRequiresRole = (beCheck != null) && beCheck.getPersistentData().getBooleanOr(role, false);
+					if (blockRequiresRole && !entityHasRole) {
+						hasAccess = false;
+						break;
+					}
+				}
+				if (!hasAccess) {
+					_playSound(world, x, y, z, pos, "ssc_14:airlock_no_access");
+					return;
+				}
+			}
+			if (!world.isClientSide() && be != null)
+				be.getPersistentData().putBoolean(TAG_OPENING, true);
+			Ssc14Mod.queueServerWork(1, () -> _handleAirlockAnimation(world, x, y, z, pos, blockstate));
+		} finally {
+			if (!world.isClientSide() && be != null)
+				be.getPersistentData().putBoolean("_ssc14_processing", false);
+		}
+	}
+
+	private static void _handleAirlockAnimation(LevelAccessor world, double x, double y, double z, BlockPos pos, BlockState blockstate) {
+		if (!(world instanceof Level level) || world.isClientSide())
+			return;
+		BlockPos animPos = BlockPos.containing(x, y, z);
+		BlockState currentState = world.getBlockState(animPos);
+		boolean isClosed = currentState.is(BlockTags.create(ResourceLocation.parse("ssc14:airlocks_closed")));
+		boolean isOpen = currentState.is(BlockTags.create(ResourceLocation.parse("ssc14:airlocks_open")));
+		IntegerProperty stateProp = _getProperty(currentState, "blockstate", IntegerProperty.class);
+		int blockStateVal = (stateProp != null) ? currentState.getValue(stateProp) : -1;
+		boolean validState = (blockStateVal == 0 || blockStateVal == 6 || blockStateVal == 7 || blockStateVal == 8);
+		if (isClosed && validState) {
+			_playSound(level, x, y, z, animPos, "ssc_14:airlock_open");
+			_runAnimation(level, animPos, stateProp, new int[]{1, 2, 3, 4}, () -> {
+				_replaceAirlockBlock(level, animPos, true, x, y, z);
+			});
+		} else if (isOpen) {
+			_playSound(level, x, y, z, animPos, "ssc_14:airlock_close");
+			// 🔧 Закрытие: сначала замена, потом анимация
+			_replaceAirlockBlock(level, animPos, false, x, y, z);
+			BlockState afterReplace = level.getBlockState(animPos);
+			IntegerProperty newStateProp = _getProperty(afterReplace, "blockstate", IntegerProperty.class);
+			if (newStateProp != null && newStateProp.getPossibleValues().contains(4)) {
+				level.setBlock(animPos, afterReplace.setValue(newStateProp, 4), 3);
+			}
+			_runAnimation(level, animPos, newStateProp, new int[]{4, 3, 2, 1, 0}, null);
+		}
+	}
+
+	private static void _runAnimation(Level level, BlockPos pos, IntegerProperty prop, int[] states, Runnable onComplete) {
+		if (prop == null || states.length == 0) {
+			if (onComplete != null)
+				onComplete.run();
+			return;
+		}
+		_runAnimationStep(level, pos, prop, states, 0, onComplete);
+	}
+
+	private static void _runAnimationStep(Level level, BlockPos pos, IntegerProperty prop, int[] states, int index, Runnable onComplete) {
+		if (index >= states.length) {
+			if (onComplete != null)
+				onComplete.run();
+			return;
+		}
+		int targetState = states[index];
+		BlockState current = level.getBlockState(pos);
+		if (prop.getPossibleValues().contains(targetState))
+			level.setBlock(pos, current.setValue(prop, targetState), 2);
+		if (index + 1 < states.length)
+			Ssc14Mod.queueServerWork(2, () -> _runAnimationStep(level, pos, prop, states, index + 1, onComplete));
+		else if (onComplete != null)
+			Ssc14Mod.queueServerWork(2, onComplete);
+	}
+
+	private static void _replaceAirlockBlock(Level level, BlockPos pos, boolean toOpen, double x, double y, double z) {
+		BlockState oldState = level.getBlockState(pos);
+		Block oldBlock = oldState.getBlock();
+		ResourceLocation oldId = BuiltInRegistries.BLOCK.getKey(oldBlock);
+		String oldName = oldId.getPath();
+		String newName;
+		boolean isCurrentlyOpen = oldName.endsWith("open");
+		if (toOpen) {
+			newName = isCurrentlyOpen ? oldName : oldName + "open";
+		} else {
+			newName = isCurrentlyOpen ? oldName.substring(0, oldName.length() - 4) : oldName;
+		}
+		Block newBlock = BuiltInRegistries.BLOCK.getOptional(ResourceLocation.tryParse(oldId.getNamespace() + ":" + newName)).orElse(oldBlock);
+		if (newBlock == oldBlock)
+			return;
+		CompoundTag persistentData = null;
+		BlockEntity oldBe = level.getBlockEntity(pos);
+		if (oldBe != null) {
+			persistentData = oldBe.getPersistentData().copy();
+			oldBe.setRemoved();
+		}
+		BlockState newBs = _copyProperties(oldState, newBlock.defaultBlockState());
+		level.setBlock(pos, newBs, 3);
+		if (persistentData != null) {
+			BlockEntity newBe = level.getBlockEntity(pos);
+			if (newBe != null)
+				newBe.getPersistentData().merge(persistentData);
+		}
+		BlockPos topPos = BlockPos.containing(x, y + 1, z);
+		BlockState oldTop = level.getBlockState(topPos);
+		String topOldName = BuiltInRegistries.BLOCK.getKey(oldTop.getBlock()).getPath();
+		String topNewName;
+		boolean isTopOpen = topOldName.endsWith("open");
+		if (toOpen) {
+			topNewName = isTopOpen ? topOldName : topOldName + "open";
+		} else {
+			topNewName = isTopOpen ? topOldName.substring(0, topOldName.length() - 4) : topOldName;
+		}
+		Block newTopBlock = BuiltInRegistries.BLOCK.getOptional(ResourceLocation.tryParse(oldId.getNamespace() + ":" + topNewName)).orElse(oldTop.getBlock());
+		if (newTopBlock != oldTop.getBlock()) {
+			BlockState newTopState = _copyProperties(oldTop, newTopBlock.defaultBlockState());
+			level.setBlock(topPos, newTopState, 3);
+		}
+	}
+
+	private static BlockState _copyProperties(BlockState from, BlockState to) {
+		BlockState result = to;
+		for (Property<?> oldProp : from.getProperties()) {
+			Property<?> newProp = result.getBlock().getStateDefinition().getProperty(oldProp.getName());
+			if (newProp != null && newProp.getValueClass().isAssignableFrom(oldProp.getValueClass())) {
+				try {
 					@SuppressWarnings({"rawtypes", "unchecked"})
-					Property pNew = newBs.getBlock().getStateDefinition().getProperty(pOld.getName());
-					if (pNew != null) {
-						try {
-							newBs = newBs.setValue(pNew, oldBs.getValue(pOld));
-						} catch (Exception e) {
-						}
-					}
-				}
-				level.setBlock(swapPos, newBs, 3);
-				BlockEntity newBe = level.getBlockEntity(swapPos);
-				if (newBe != null && !persistentData.isEmpty())
-					newBe.getPersistentData().merge(persistentData);
-				// Верхний блок
-				BlockPos topPos = BlockPos.containing(x, y + 1, z);
-				BlockState newTopBs = Ssc14ModBlocks.AIRLOCK_UP_PLUG.get().defaultBlockState();
-				BlockState oldTopBs = level.getBlockState(topPos);
-				@SuppressWarnings({"rawtypes", "unchecked"})
-				var topProps = oldTopBs.getProperties();
-				for (@SuppressWarnings({"rawtypes", "unchecked"})
-				Property pOld : topProps) {
+					Property rawNewProp = newProp;
 					@SuppressWarnings({"rawtypes", "unchecked"})
-					Property pNew = newTopBs.getBlock().getStateDefinition().getProperty(pOld.getName());
-					if (pNew != null) {
-						try {
-							newTopBs = newTopBs.setValue(pNew, oldTopBs.getValue(pOld));
-						} catch (Exception e) {
-						}
-					}
+					Comparable value = (Comparable) from.getValue(oldProp);
+					result = result.setValue(rawNewProp, value);
+				} catch (Exception ignored) {
 				}
-				level.setBlock(topPos, newTopBs, 3);
-				// Обратная анимация 4→3→2→1→0
-				{
-					BlockState bs = world.getBlockState(animPos);
-					IntegerProperty sp = (IntegerProperty) bs.getBlock().getStateDefinition().getProperty(PROP_BLOCKSTATE);
-					if (sp != null && sp.getPossibleValues().contains(4))
-						world.setBlock(animPos, bs.setValue(sp, 4), 3);
-				}
-				Ssc14Mod.queueServerWork(2, () -> {
-					{
-						BlockState bs = world.getBlockState(animPos);
-						IntegerProperty sp = (IntegerProperty) bs.getBlock().getStateDefinition().getProperty(PROP_BLOCKSTATE);
-						if (sp != null && sp.getPossibleValues().contains(3))
-							world.setBlock(animPos, bs.setValue(sp, 3), 3);
-					}
-					Ssc14Mod.queueServerWork(2, () -> {
-						{
-							BlockState bs = world.getBlockState(animPos);
-							IntegerProperty sp = (IntegerProperty) bs.getBlock().getStateDefinition().getProperty(PROP_BLOCKSTATE);
-							if (sp != null && sp.getPossibleValues().contains(2))
-								world.setBlock(animPos, bs.setValue(sp, 2), 3);
-						}
-						Ssc14Mod.queueServerWork(2, () -> {
-							{
-								BlockState bs = world.getBlockState(animPos);
-								IntegerProperty sp = (IntegerProperty) bs.getBlock().getStateDefinition().getProperty(PROP_BLOCKSTATE);
-								if (sp != null && sp.getPossibleValues().contains(1))
-									world.setBlock(animPos, bs.setValue(sp, 1), 3);
-							}
-							Ssc14Mod.queueServerWork(2, () -> {
-								{
-									BlockState bs = world.getBlockState(animPos);
-									IntegerProperty sp = (IntegerProperty) bs.getBlock().getStateDefinition().getProperty(PROP_BLOCKSTATE);
-									if (sp != null && sp.getPossibleValues().contains(0))
-										world.setBlock(animPos, bs.setValue(sp, 0), 3);
-								}
-							});
-						});
-					});
-				});
-			}
-			// Если блок не распознан — ничего не делаем (без звука!)
-		});
-		// .
-		if (blockstate.getBlock().getStateDefinition().getProperty("waterlogged") instanceof BooleanProperty _getbp1 && blockstate.getValue(_getbp1)) {
-			//КОСТЫЛЬ, НЕ УБИРАТЬ, ЕСЛИ ИСПОЛЬЗУЕТЕ MCreator. НА НЁМ ДЕРЖИТСЯ ПРОЦЕДУРА
-			{
-				BlockPos _pos = BlockPos.containing(x, y, z);
-				BlockState _bs = world.getBlockState(_pos);
-				if (_bs.getBlock().getStateDefinition().getProperty("Wait_WHAT") instanceof BooleanProperty _booleanProp)
-					world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
-			}
-			if (entity instanceof Player _player) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
-				_player.level().getBlockState(_bp).useWithoutItem(_player.level(), _player, BlockHitResult.miss(new Vec3(_bp.getX(), _bp.getY(), _bp.getZ()), Direction.UP, _bp));
 			}
 		}
+		return result;
+	}
+
+	private static void _playSound(LevelAccessor world, double x, double y, double z, BlockPos pos, String soundId) {
+		if (world instanceof Level level) {
+			Optional<SoundEvent> soundOpt = BuiltInRegistries.SOUND_EVENT.getOptional(ResourceLocation.parse(soundId));
+			if (soundOpt.isPresent()) {
+				SoundEvent sound = soundOpt.get();
+				if (!level.isClientSide())
+					level.playSound(null, pos, sound, SoundSource.NEUTRAL, 1f, 1f);
+				else
+					level.playLocalSound(x, y, z, sound, SoundSource.NEUTRAL, 1f, 1f, false);
+			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private static <T extends Property<V>, V extends Comparable<V>> T _getProperty(BlockState state, String name, Class<T> type) {
+		Property<?> prop = state.getBlock().getStateDefinition().getProperty(name);
+		return type.isInstance(prop) ? (T) prop : null;
+	}
+
+	private static Property<?> getPropertyByName(BlockState state, String name) {
+		for (Property<?> property : state.getProperties()) {
+			if (property.getName().equals(name)) {
+				return property;
+			}
+		}
+		return null;
 	}
 }

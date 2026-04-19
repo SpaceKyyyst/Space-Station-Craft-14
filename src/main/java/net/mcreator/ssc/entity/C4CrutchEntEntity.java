@@ -92,6 +92,11 @@ public class C4CrutchEntEntity extends PathfinderMob {
 	}
 
 	@Override
+	public void travel(Vec3 dir) {
+		this.travelFlying(dir, (float) this.getAttributeValue(Attributes.FLYING_SPEED));
+	}
+
+	@Override
 	protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) {
 	}
 

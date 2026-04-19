@@ -116,6 +116,43 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 	private ImageButton imagebutton_avd;
 	private ImageButton imagebutton_idcode_all_on;
 	private ImageButton imagebutton_idcode_all_off;
+	private static final ResourceLocation BACKGROUND = ResourceLocation.parse("ssc_14:textures/screens/i_dcode.png");
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/i_dcode___copy.png");
+	private static final ResourceLocation IMAGE_1 = ResourceLocation.parse("ssc_14:textures/screens/id_code_menu_decor1.png");
+	private static final ResourceLocation IMAGE_2 = ResourceLocation.parse("ssc_14:textures/screens/id_code_menu_decor2.png");
+	private static final ResourceLocation IMAGE_3 = ResourceLocation.parse("ssc_14:textures/screens/id_code_menu_decor3.png");
+	private static final ResourceLocation IMAGE_4 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_5 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_6 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_7 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_8 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_9 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_10 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_11 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_12 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_13 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_14 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_15 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_16 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_17 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_18 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_19 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_20 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_21 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_22 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_23 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_24 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_25 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_26 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_27 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_28 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_29 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_30 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_31 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_32 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_33 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_34 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final ResourceLocation IMAGE_35 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
 
 	public IDcodeScreen(IDcodeMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -240,8 +277,6 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		menuStateUpdateActive = false;
 	}
 
-	private static final ResourceLocation texture = ResourceLocation.parse("ssc_14:textures/screens/i_dcode.png");
-
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
@@ -257,112 +292,112 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 
 	@Override
 	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/i_dcode___copy.png"), this.leftPos + 0, this.topPos + 0, 0, 0, 416, 235, 416, 235);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 416, 235, 416, 235);
 		if (IDcmdecor1Procedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/id_code_menu_decor1.png"), this.leftPos + 87, this.topPos + 180, 0, 0, 17, 3, 17, 3);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, this.leftPos + 87, this.topPos + 180, 0, 0, 17, 3, 17, 3);
 		}
 		if (IDcmdecor2Procedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/id_code_menu_decor2.png"), this.leftPos + 90, this.topPos + 184, 0, 0, 9, 10, 9, 10);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, this.leftPos + 90, this.topPos + 184, 0, 0, 9, 10, 9, 10);
 		}
 		if (IDcmdecor3Procedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/id_code_menu_decor3.png"), this.leftPos + 90, this.topPos + 184, 0, 0, 9, 10, 9, 10);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, this.leftPos + 90, this.topPos + 184, 0, 0, 9, 10, 9, 10);
 		}
 		if (GunroomIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 4, this.topPos + 4, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_4, this.leftPos + 4, this.topPos + 4, 0, 0, 19, 19, 19, 19);
 		}
 		if (HoSIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 4, this.topPos + 25, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_5, this.leftPos + 4, this.topPos + 25, 0, 0, 19, 19, 19, 19);
 		}
 		if (BrigIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 4, this.topPos + 46, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_6, this.leftPos + 4, this.topPos + 46, 0, 0, 19, 19, 19, 19);
 		}
 		if (SecurityIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 4, this.topPos + 67, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_7, this.leftPos + 4, this.topPos + 67, 0, 0, 19, 19, 19, 19);
 		}
 		if (DetectiveIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 4, this.topPos + 88, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_8, this.leftPos + 4, this.topPos + 88, 0, 0, 19, 19, 19, 19);
 		}
 		if (PNTIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 4, this.topPos + 109, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_9, this.leftPos + 4, this.topPos + 109, 0, 0, 19, 19, 19, 19);
 		}
 		if (CrioIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 4, this.topPos + 130, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_10, this.leftPos + 4, this.topPos + 130, 0, 0, 19, 19, 19, 19);
 		}
 		if (CEIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 82, this.topPos + 4, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_11, this.leftPos + 82, this.topPos + 4, 0, 0, 19, 19, 19, 19);
 		}
 		if (AtmosIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 82, this.topPos + 25, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_12, this.leftPos + 82, this.topPos + 25, 0, 0, 19, 19, 19, 19);
 		}
 		if (IngeneerIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 82, this.topPos + 46, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_13, this.leftPos + 82, this.topPos + 46, 0, 0, 19, 19, 19, 19);
 		}
 		if (OutIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 82, this.topPos + 67, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_14, this.leftPos + 82, this.topPos + 67, 0, 0, 19, 19, 19, 19);
 		}
 		if (QmIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 82, this.topPos + 88, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_15, this.leftPos + 82, this.topPos + 88, 0, 0, 19, 19, 19, 19);
 		}
 		if (UtilizatIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 82, this.topPos + 109, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_16, this.leftPos + 82, this.topPos + 109, 0, 0, 19, 19, 19, 19);
 		}
 		if (SupplyDeportamentIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 82, this.topPos + 130, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_17, this.leftPos + 82, this.topPos + 130, 0, 0, 19, 19, 19, 19);
 		}
 		if (CMOIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 169, this.topPos + 4, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_18, this.leftPos + 169, this.topPos + 4, 0, 0, 19, 19, 19, 19);
 		}
 		if (ChemistryIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 169, this.topPos + 25, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_19, this.leftPos + 169, this.topPos + 25, 0, 0, 19, 19, 19, 19);
 		}
 		if (MedicalIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 169, this.topPos + 46, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_20, this.leftPos + 169, this.topPos + 46, 0, 0, 19, 19, 19, 19);
 		}
 		if (RDIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 169, this.topPos + 67, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_21, this.leftPos + 169, this.topPos + 67, 0, 0, 19, 19, 19, 19);
 		}
 		if (ScientistIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 169, this.topPos + 88, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_22, this.leftPos + 169, this.topPos + 88, 0, 0, 19, 19, 19, 19);
 		}
 		if (TechnicalIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 169, this.topPos + 109, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_23, this.leftPos + 169, this.topPos + 109, 0, 0, 19, 19, 19, 19);
 		}
 		if (ChurchIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 169, this.topPos + 130, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_24, this.leftPos + 169, this.topPos + 130, 0, 0, 19, 19, 19, 19);
 		}
 		if (HoPIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 256, this.topPos + 4, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_25, this.leftPos + 256, this.topPos + 4, 0, 0, 19, 19, 19, 19);
 		}
 		if (ServiceIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 256, this.topPos + 25, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_26, this.leftPos + 256, this.topPos + 25, 0, 0, 19, 19, 19, 19);
 		}
 		if (KitchenIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 256, this.topPos + 46, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_27, this.leftPos + 256, this.topPos + 46, 0, 0, 19, 19, 19, 19);
 		}
 		if (GidroponicIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 256, this.topPos + 67, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_28, this.leftPos + 256, this.topPos + 67, 0, 0, 19, 19, 19, 19);
 		}
 		if (BarIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 256, this.topPos + 88, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_29, this.leftPos + 256, this.topPos + 88, 0, 0, 19, 19, 19, 19);
 		}
 		if (TeatreIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 256, this.topPos + 109, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_30, this.leftPos + 256, this.topPos + 109, 0, 0, 19, 19, 19, 19);
 		}
 		if (CleanerIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 256, this.topPos + 130, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_31, this.leftPos + 256, this.topPos + 130, 0, 0, 19, 19, 19, 19);
 		}
 		if (CapitanIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 334, this.topPos + 4, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_32, this.leftPos + 334, this.topPos + 4, 0, 0, 19, 19, 19, 19);
 		}
 		if (CommandIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 334, this.topPos + 25, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_33, this.leftPos + 334, this.topPos + 25, 0, 0, 19, 19, 19, 19);
 		}
 		if (BlueShIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 334, this.topPos + 46, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_34, this.leftPos + 334, this.topPos + 46, 0, 0, 19, 19, 19, 19);
 		}
 		if (UridicIDCLockGUIProcedure.execute(entity)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png"), this.leftPos + 334, this.topPos + 67, 0, 0, 19, 19, 19, 19);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_35, this.leftPos + 334, this.topPos + 67, 0, 0, 19, 19, 19, 19);
 		}
 	}
 

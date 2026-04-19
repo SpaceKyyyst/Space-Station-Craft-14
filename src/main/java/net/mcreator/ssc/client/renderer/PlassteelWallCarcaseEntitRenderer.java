@@ -10,6 +10,7 @@ import net.mcreator.ssc.client.model.Modelframe_of_plasstal_wall_JAVA;
 
 public class PlassteelWallCarcaseEntitRenderer extends MobRenderer<PlassteelWallCarcaseEntitEntity, LivingEntityRenderState, Modelframe_of_plasstal_wall_JAVA> {
 	private PlassteelWallCarcaseEntitEntity entity = null;
+	private final ResourceLocation entityTexture = ResourceLocation.parse("ssc_14:textures/entities/frame_of_plasstal_wall_java_texture.png");
 
 	public PlassteelWallCarcaseEntitRenderer(EntityRendererProvider.Context context) {
 		super(context, new Modelframe_of_plasstal_wall_JAVA(context.bakeLayer(Modelframe_of_plasstal_wall_JAVA.LAYER_LOCATION)), 0.5f);
@@ -28,6 +29,6 @@ public class PlassteelWallCarcaseEntitRenderer extends MobRenderer<PlassteelWall
 
 	@Override
 	public ResourceLocation getTextureLocation(LivingEntityRenderState state) {
-		return ResourceLocation.parse("ssc_14:textures/entities/frame_of_plasstal_wall_java_texture.png");
+		return entityTexture;
 	}
 }

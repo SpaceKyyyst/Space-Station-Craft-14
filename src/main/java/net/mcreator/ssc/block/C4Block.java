@@ -1,7 +1,5 @@
 package net.mcreator.ssc.block;
 
-import org.checkerframework.checker.units.qual.s;
-
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -31,46 +29,38 @@ import net.mcreator.ssc.procedures.C4_activate_PRProcedure;
 import net.mcreator.ssc.procedures.C4_PlantProcedure;
 import net.mcreator.ssc.block.entity.C4BlockEntity;
 
+import java.util.function.Function;
+
 public class C4Block extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
-	private static final VoxelShape SHAPE_NORTH = box(5, 3, 13, 11, 13, 16);
-	private static final VoxelShape SHAPE_SOUTH = box(5, 3, 0, 11, 13, 3);
-	private static final VoxelShape SHAPE_EAST = box(0, 3, 5, 3, 13, 11);
-	private static final VoxelShape SHAPE_WEST = box(13, 3, 5, 16, 13, 11);
-	private static final VoxelShape SHAPE_UP = box(5, 0, 3, 11, 3, 13);
-	private static final VoxelShape SHAPE_DOWN = box(5, 13, 3, 11, 16, 13);
+	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public C4Block(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.SPAWNER).strength(50f, 5f).lightLevel(s -> 1).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.SPAWNER).strength(50f, 5f).lightLevel(blockstate -> 1).noCollission().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
-	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
+	private Function<BlockState, VoxelShape> makeShapes() {
+		return this.getShapeForEachState(state -> {
+			return switch (state.getValue(FACING)) {
+				default -> box(5, 3, 0, 11, 13, 3);
+				case NORTH -> box(5, 3, 13, 11, 13, 16);
+				case EAST -> box(0, 3, 5, 3, 13, 11);
+				case WEST -> box(13, 3, 5, 16, 13, 11);
+				case UP -> box(5, 0, 3, 11, 3, 13);
+				case DOWN -> box(5, 13, 3, 11, 16, 13);
+			};
+		});
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return shapes.apply(state);
 	}
 
 	@Override
 	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return (switch (state.getValue(FACING)) {
-			case NORTH -> SHAPE_NORTH;
-			case SOUTH -> SHAPE_SOUTH;
-			case EAST -> SHAPE_EAST;
-			case WEST -> SHAPE_WEST;
-			case UP -> SHAPE_UP;
-			case DOWN -> SHAPE_DOWN;
-			default -> SHAPE_NORTH;
-		});
 	}
 
 	@Override

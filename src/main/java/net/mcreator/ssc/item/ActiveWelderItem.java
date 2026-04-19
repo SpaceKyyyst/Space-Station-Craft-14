@@ -50,7 +50,7 @@ public class ActiveWelderItem extends Item {
 	}
 
 	@SubscribeEvent
-	public static void handleToolDamage(ModifyDefaultComponentsEvent event) {
+	public static void modifyDefaultComponents(ModifyDefaultComponentsEvent event) {
 		event.modify(Ssc14ModItems.ACTIVE_WELDER.get(), builder -> builder.remove(DataComponents.MAX_DAMAGE));
 	}
 

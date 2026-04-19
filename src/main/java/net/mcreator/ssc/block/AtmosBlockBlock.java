@@ -22,27 +22,19 @@ import net.mcreator.ssc.procedures.AtmosBlock__TICProcedure;
 import net.mcreator.ssc.block.entity.AtmosBlockBlockEntity;
 
 public class AtmosBlockBlock extends Block implements EntityBlock {
+	private static final VoxelShape SHAPE = Shapes.empty();
+
 	public AtmosBlockBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.EMPTY).strength(-1, 3600000).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false).replaceable());
-	}
-
-	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
-	}
-
-	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
-	}
-
-	@Override
-	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return Shapes.empty();
+		super(properties.sound(SoundType.EMPTY).strength(-1, 3600000).noCollission().isRedstoneConductor((bs, br, bp) -> false).replaceable());
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return SHAPE;
+	}
+
+	@Override
+	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
 	}
 

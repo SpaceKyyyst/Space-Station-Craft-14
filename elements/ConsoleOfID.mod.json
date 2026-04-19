@@ -1,5 +1,5 @@
 {
-  "_fv": 79,
+  "_fv": 85,
   "_type": "block",
   "definition": {
     "texture": "id_console_texture",
@@ -14,6 +14,7 @@
     "enablePitch": false,
     "emissiveRendering": true,
     "displayFluidOverlay": false,
+    "states": [],
     "animations": [],
     "itemTexture": "id_console_item",
     "particleTexture": "",
@@ -21,6 +22,7 @@
     "pottedPlant": {
       "value": ""
     },
+    "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,
     "hasTransparency": true,
@@ -140,6 +142,7 @@
     "enchantPowerBonus": 0.0,
     "plantsGrowOn": false,
     "canRedstoneConnect": false,
+    "hasCustomOpacity": false,
     "lightOpacity": 0,
     "tickRate": 0,
     "tickRandomly": false,
@@ -186,7 +189,9 @@
     "stepSound": {
       "value": ""
     },
-    "luminance": 3,
+    "luminance": {
+      "fixedValue": 3.0
+    },
     "unbreakable": false,
     "vanillaToolTier": "NONE",
     "isBonemealable": false,

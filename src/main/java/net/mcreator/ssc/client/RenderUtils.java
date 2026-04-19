@@ -21,14 +21,14 @@ import com.mojang.blaze3d.opengl.GlStateManager;
 public class RenderUtils {
 	public static final ResourceLocation SUN_LOCATION = ResourceLocation.withDefaultNamespace("textures/environment/sun.png");
 	public static final ResourceLocation MOON_LOCATION = ResourceLocation.withDefaultNamespace("textures/environment/moon_phases.png");
-	private static final Minecraft mc = Minecraft.getInstance();
 
 	public static void swapVanillaTexture(ResourceLocation original, ResourceLocation replacement) {
-		TextureManager textureManager = mc.getTextureManager();
+		TextureManager textureManager = Minecraft.getInstance().getTextureManager();
 		textureManager.registerAndLoad(original, new SimpleTexture(replacement));
 	}
 
 	public static void renderCustomSun(RenderLevelStageEvent.AfterSky event, ResourceLocation texture) {
+		Minecraft mc = Minecraft.getInstance();
 		PoseStack posestack = event.getPoseStack();
 		posestack.pushPose();
 		GlStateManager._enableBlend();
@@ -53,6 +53,7 @@ public class RenderUtils {
 	}
 
 	public static void renderCustomMoon(RenderLevelStageEvent.AfterSky event, ResourceLocation texture) {
+		Minecraft mc = Minecraft.getInstance();
 		PoseStack posestack = event.getPoseStack();
 		posestack.pushPose();
 		GlStateManager._enableBlend();
@@ -89,7 +90,7 @@ public class RenderUtils {
 		GlStateManager._enableBlend();
 		GlStateManager.glBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GlStateManager._depthMask(false);
-		MultiBufferSource.BufferSource bufferSource = mc.renderBuffers().bufferSource();
+		MultiBufferSource.BufferSource bufferSource = Minecraft.getInstance().renderBuffers().bufferSource();
 		VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.celestial(texture));
 		float distance = 100.0F;
 		float size = 100.0F;

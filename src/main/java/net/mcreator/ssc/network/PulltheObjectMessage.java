@@ -13,6 +13,7 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.core.SectionPos;
 
 import net.mcreator.ssc.procedures.PulltheObject_PrProcedure;
 import net.mcreator.ssc.procedures.PulltheObject_Pr2Procedure;
@@ -48,7 +49,7 @@ public record PulltheObjectMessage(int eventType, int pressedms) implements Cust
 		double y = entity.getY();
 		double z = entity.getZ();
 		// security measure to prevent arbitrary chunk generation
-		if (!world.hasChunkAt(entity.blockPosition()))
+		if (!world.getChunkSource().hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)))
 			return;
 		if (type == 0) {
 

@@ -5,6 +5,12 @@
       "map": {
         "12": "base_airlock_f_t"
       }
+    },
+    "tech": {
+      "name": "tech",
+      "map": {
+        "12": "tech_airlock_f_t"
+      }
     }
   }
 }

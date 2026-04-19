@@ -25,6 +25,9 @@ public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> im
 	private boolean menuStateUpdateActive = false;
 	private ImageButton imagebutton_off_button;
 	private ImageButton imagebutton_on_button;
+	private static final ResourceLocation BACKGROUND = ResourceLocation.parse("ssc_14:textures/screens/grav_gen_gui.png");
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/grav_gen_gui_2.png");
+	private static final ResourceLocation IMAGE_1 = ResourceLocation.parse("ssc_14:textures/screens/gravgen_gui_rood.png");
 
 	public GravGenGUIScreen(GravGenGUIMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -43,8 +46,6 @@ public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> im
 		menuStateUpdateActive = false;
 	}
 
-	private static final ResourceLocation texture = ResourceLocation.parse("ssc_14:textures/screens/grav_gen_gui.png");
-
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
@@ -53,10 +54,10 @@ public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> im
 
 	@Override
 	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/grav_gen_gui_2.png"), this.leftPos + 0, this.topPos + 0, 0, 0, 200, 90, 200, 90);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 200, 90, 200, 90);
 		if (GravGenRoodGUIProcedure.execute(world, x, y, z)) {
-			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/gravgen_gui_rood.png"), this.leftPos + 150, this.topPos + 37, 0, 0, 33, 16, 33, 16);
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, this.leftPos + 150, this.topPos + 37, 0, 0, 33, 16, 33, 16);
 		}
 	}
 

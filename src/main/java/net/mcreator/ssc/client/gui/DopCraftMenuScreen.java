@@ -22,6 +22,8 @@ public class DopCraftMenuScreen extends AbstractContainerScreen<DopCraftMenuMenu
 	private ImageButton imagebutton_strelka3;
 	private ImageButton imagebutton_autolate_button_1;
 	private ImageButton imagebutton_autolate_button_5;
+	private static final ResourceLocation BACKGROUND = ResourceLocation.parse("ssc_14:textures/screens/dop_craft_menu.png");
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/dop_craft_menu__copy.png");
 
 	public DopCraftMenuScreen(DopCraftMenuMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -40,8 +42,6 @@ public class DopCraftMenuScreen extends AbstractContainerScreen<DopCraftMenuMenu
 		menuStateUpdateActive = false;
 	}
 
-	private static final ResourceLocation texture = ResourceLocation.parse("ssc_14:textures/screens/dop_craft_menu.png");
-
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
@@ -50,8 +50,8 @@ public class DopCraftMenuScreen extends AbstractContainerScreen<DopCraftMenuMenu
 
 	@Override
 	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ResourceLocation.parse("ssc_14:textures/screens/dop_craft_menu__copy.png"), this.leftPos + 0, this.topPos + 0, 0, 0, 176, 166, 176, 166);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 176, 166, 176, 166);
 	}
 
 	@Override

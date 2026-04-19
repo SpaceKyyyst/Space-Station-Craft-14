@@ -1,9 +1,5 @@
 package net.mcreator.ssc.block;
 
-import org.checkerframework.checker.units.qual.s;
-
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -13,7 +9,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.BlockPos;
@@ -23,46 +19,21 @@ import net.mcreator.ssc.procedures.PlstWallExplosionBreakdownProcedure;
 
 public class PlasteelWallBlock extends Block {
 	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 8);
-	private static final VoxelShape SHAPE = box(0, 0, 0, 16, 16, 16);
 
 	public PlasteelWallBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.NETHERITE_BLOCK).strength(300f, 16.5f).lightLevel(s -> (new Object() {
-			public int getLightLevel() {
-				if (s.getValue(BLOCKSTATE) == 1)
-					return 0;
-				if (s.getValue(BLOCKSTATE) == 2)
-					return 0;
-				if (s.getValue(BLOCKSTATE) == 3)
-					return 0;
-				if (s.getValue(BLOCKSTATE) == 4)
-					return 0;
-				if (s.getValue(BLOCKSTATE) == 5)
-					return 0;
-				if (s.getValue(BLOCKSTATE) == 6)
-					return 0;
-				if (s.getValue(BLOCKSTATE) == 7)
-					return 0;
-				if (s.getValue(BLOCKSTATE) == 8)
-					return 0;
-				return 0;
-			}
-		}.getLightLevel())));
-	}
-
-	@Override
-	public int getLightBlock(BlockState state) {
-		return 15;
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return (SHAPE);
+		super(properties.sound(SoundType.NETHERITE_BLOCK).strength(300f, 16.5f));
+		this.registerDefaultState(this.stateDefinition.any().setValue(BLOCKSTATE, 0));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
 		builder.add(BLOCKSTATE);
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		return super.getStateForPlacement(context).setValue(BLOCKSTATE, 0);
 	}
 
 	@Override

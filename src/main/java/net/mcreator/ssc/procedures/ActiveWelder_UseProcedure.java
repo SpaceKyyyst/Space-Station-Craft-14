@@ -222,7 +222,7 @@ public class ActiveWelder_UseProcedure {
 		} else if (entity.getX() + entity.getZ()
 				+ entity.getY() == (entity instanceof LivingEntity _livingEntity108 && _livingEntity108.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity108.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
 				&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip112 ? blockstate.getValue(_getip112) : -1) == 2) {
+				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip112 ? blockstate.getValue(_getip112) : -1) == 2) {
 			if (entity instanceof LivingEntity _livingEntity113 && _livingEntity113.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity113.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(13, () -> {
@@ -275,7 +275,7 @@ public class ActiveWelder_UseProcedure {
 																		0) > 450
 																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
 																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-																&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip170 ? blockstate.getValue(_getip170) : -1) == 2) {
+																&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip170 ? blockstate.getValue(_getip170) : -1) == 2) {
 															if (world instanceof Level _level) {
 																if (!_level.isClientSide()) {
 																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1);
@@ -331,7 +331,7 @@ public class ActiveWelder_UseProcedure {
 		} else if (entity.getX() + entity.getZ()
 				+ entity.getY() == (entity instanceof LivingEntity _livingEntity193 && _livingEntity193.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity193.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
 				&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip197 ? blockstate.getValue(_getip197) : -1) == 5) {
+				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip197 ? blockstate.getValue(_getip197) : -1) == 5) {
 			if (entity instanceof LivingEntity _livingEntity198 && _livingEntity198.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity198.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(27, () -> {
@@ -384,7 +384,7 @@ public class ActiveWelder_UseProcedure {
 																		0) > 450
 																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
 																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-																&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip255 ? blockstate.getValue(_getip255) : -1) == 5) {
+																&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip255 ? blockstate.getValue(_getip255) : -1) == 5) {
 															if (world instanceof Level _level) {
 																if (!_level.isClientSide()) {
 																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1);
@@ -440,7 +440,7 @@ public class ActiveWelder_UseProcedure {
 		} else if (entity.getX() + entity.getZ()
 				+ entity.getY() == (entity instanceof LivingEntity _livingEntity278 && _livingEntity278.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity278.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
 				&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip282 ? blockstate.getValue(_getip282) : -1) == 0) {
+				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip282 ? blockstate.getValue(_getip282) : -1) == 0) {
 			if (entity instanceof LivingEntity _livingEntity283 && _livingEntity283.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity283.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(20, () -> {
@@ -493,7 +493,7 @@ public class ActiveWelder_UseProcedure {
 																		0) > 450
 																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
 																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-																&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip340 ? blockstate.getValue(_getip340) : -1) == 0) {
+																&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip340 ? blockstate.getValue(_getip340) : -1) == 0) {
 															if (world instanceof Level _level) {
 																if (!_level.isClientSide()) {
 																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1);
@@ -549,7 +549,7 @@ public class ActiveWelder_UseProcedure {
 		} else if (entity.getX() + entity.getZ()
 				+ entity.getY() == (entity instanceof LivingEntity _livingEntity363 && _livingEntity363.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity363.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
 				&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip367 ? blockstate.getValue(_getip367) : -1) == 3) {
+				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip367 ? blockstate.getValue(_getip367) : -1) == 3) {
 			if (entity instanceof LivingEntity _livingEntity368 && _livingEntity368.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity368.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(27, () -> {
@@ -602,7 +602,7 @@ public class ActiveWelder_UseProcedure {
 																		0) > 450
 																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
 																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-																&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip425 ? blockstate.getValue(_getip425) : -1) == 3) {
+																&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip425 ? blockstate.getValue(_getip425) : -1) == 3) {
 															if (world instanceof Level _level) {
 																if (!_level.isClientSide()) {
 																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1);
@@ -656,5 +656,14 @@ public class ActiveWelder_UseProcedure {
 				}
 			});
 		}
+	}
+
+	private static Property<?> getPropertyByName(BlockState state, String name) {
+		for (Property<?> property : state.getProperties()) {
+			if (property.getName().equals(name)) {
+				return property;
+			}
+		}
+		return null;
 	}
 }

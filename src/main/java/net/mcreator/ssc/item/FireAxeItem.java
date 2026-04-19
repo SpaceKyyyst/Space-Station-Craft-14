@@ -40,7 +40,7 @@ public class FireAxeItem extends Item {
 	}
 
 	@SubscribeEvent
-	public static void handleToolDamage(ModifyDefaultComponentsEvent event) {
+	public static void modifyDefaultComponents(ModifyDefaultComponentsEvent event) {
 		event.modify(Ssc14ModItems.FIRE_AXE.get(), builder -> builder.remove(DataComponents.MAX_DAMAGE));
 	}
 

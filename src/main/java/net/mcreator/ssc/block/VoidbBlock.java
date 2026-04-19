@@ -25,27 +25,19 @@ import net.mcreator.ssc.procedures.Void_autoDeleteProcedure;
 import javax.annotation.Nullable;
 
 public class VoidbBlock extends Block {
+	private static final VoxelShape SHAPE = Shapes.empty();
+
 	public VoidbBlock(BlockBehaviour.Properties properties) {
 		super(properties.mapColor(MapColor.SNOW).sound(SoundType.EMPTY).instabreak().noOcclusion().randomTicks().isRedstoneConductor((bs, br, bp) -> false));
 	}
 
 	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
-	}
-
-	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return SHAPE;
 	}
 
 	@Override
 	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return Shapes.empty();
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
 	}
 

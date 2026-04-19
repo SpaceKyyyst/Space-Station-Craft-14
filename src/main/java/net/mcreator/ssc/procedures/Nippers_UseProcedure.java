@@ -67,7 +67,7 @@ public class Nippers_UseProcedure {
 																: 0)
 														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()
 														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ROD_FLOOR.get()
-														&& 0 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip44 ? blockstate.getValue(_getip44) : -1)) {
+														&& 0 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip44 ? blockstate.getValue(_getip44) : -1)) {
 													if (entity instanceof LivingEntity _livingEntity45 && _livingEntity45.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 														_livingEntity45.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 													Ssc14Mod.queueServerWork(1, () -> {
@@ -94,8 +94,8 @@ public class Nippers_UseProcedure {
 																: 0)
 														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()
 														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ROD_FLOOR.get()
-														&& 0 < (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip60 ? blockstate.getValue(_getip60) : -1)) {
-													if (1 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip62 ? blockstate.getValue(_getip62) : -1)) {
+														&& 0 < (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip60 ? blockstate.getValue(_getip60) : -1)) {
+													if (1 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip62 ? blockstate.getValue(_getip62) : -1)) {
 														if (entity instanceof LivingEntity _livingEntity63 && _livingEntity63.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 															_livingEntity63.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 														Ssc14Mod.queueServerWork(1, () -> {
@@ -122,7 +122,7 @@ public class Nippers_UseProcedure {
 															if (entity instanceof LivingEntity _livingEntity67 && _livingEntity67.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity67.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 														});
-													} else if (2 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip70 ? blockstate.getValue(_getip70) : -1)) {
+													} else if (2 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip70 ? blockstate.getValue(_getip70) : -1)) {
 														if (entity instanceof LivingEntity _livingEntity71 && _livingEntity71.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 															_livingEntity71.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 														Ssc14Mod.queueServerWork(1, () -> {
@@ -149,7 +149,7 @@ public class Nippers_UseProcedure {
 															if (entity instanceof LivingEntity _livingEntity75 && _livingEntity75.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity75.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 														});
-													} else if (3 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip78 ? blockstate.getValue(_getip78) : -1)) {
+													} else if (3 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip78 ? blockstate.getValue(_getip78) : -1)) {
 														if (entity instanceof LivingEntity _livingEntity79 && _livingEntity79.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 															_livingEntity79.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 														Ssc14Mod.queueServerWork(1, () -> {
@@ -176,7 +176,7 @@ public class Nippers_UseProcedure {
 															if (entity instanceof LivingEntity _livingEntity83 && _livingEntity83.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity83.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 														});
-													} else if (4 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip86 ? blockstate.getValue(_getip86) : -1)) {
+													} else if (4 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip86 ? blockstate.getValue(_getip86) : -1)) {
 														if (entity instanceof LivingEntity _livingEntity87 && _livingEntity87.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 															_livingEntity87.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 														Ssc14Mod.queueServerWork(1, () -> {
@@ -203,7 +203,7 @@ public class Nippers_UseProcedure {
 															if (entity instanceof LivingEntity _livingEntity91 && _livingEntity91.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity91.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 														});
-													} else if (5 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip94 ? blockstate.getValue(_getip94) : -1)) {
+													} else if (5 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip94 ? blockstate.getValue(_getip94) : -1)) {
 														if (entity instanceof LivingEntity _livingEntity95 && _livingEntity95.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 															_livingEntity95.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 														Ssc14Mod.queueServerWork(1, () -> {
@@ -230,7 +230,7 @@ public class Nippers_UseProcedure {
 															if (entity instanceof LivingEntity _livingEntity99 && _livingEntity99.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity99.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 														});
-													} else if (6 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip102 ? blockstate.getValue(_getip102) : -1)) {
+													} else if (6 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip102 ? blockstate.getValue(_getip102) : -1)) {
 														if (entity instanceof LivingEntity _livingEntity103 && _livingEntity103.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 															_livingEntity103.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 														Ssc14Mod.queueServerWork(1, () -> {
@@ -257,7 +257,7 @@ public class Nippers_UseProcedure {
 															if (entity instanceof LivingEntity _livingEntity107 && _livingEntity107.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity107.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 														});
-													} else if (7 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip110 ? blockstate.getValue(_getip110) : -1)) {
+													} else if (7 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip110 ? blockstate.getValue(_getip110) : -1)) {
 														if (entity instanceof LivingEntity _livingEntity111 && _livingEntity111.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 															_livingEntity111.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 														Ssc14Mod.queueServerWork(1, () -> {
@@ -382,7 +382,7 @@ public class Nippers_UseProcedure {
 																		: 0)
 																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()
 																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ROD_UP_FLOOR.get()
-																&& 0 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip188 ? blockstate.getValue(_getip188) : -1)) {
+																&& 0 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip188 ? blockstate.getValue(_getip188) : -1)) {
 															world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
 															if (world instanceof ServerLevel _level) {
 																ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 1), (z + 0.5), new ItemStack(Ssc14ModItems.ROOD.get()));
@@ -429,8 +429,7 @@ public class Nippers_UseProcedure {
 						_livingEntity203.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 				}
 			});
-		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip208 ? blockstate.getValue(_getip208) : -1) > 0
+		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING.get() && (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip208 ? blockstate.getValue(_getip208) : -1) > 0
 				&& (entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(6)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getDirection()) == Direction.UP) {
 			if (entity instanceof LivingEntity _livingEntity211 && _livingEntity211.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity211.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
@@ -469,7 +468,7 @@ public class Nippers_UseProcedure {
 																: 0)
 														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()) {
 													if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING.get()) {
-														if (1 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip249 ? blockstate.getValue(_getip249) : -1)) {
+														if (1 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip249 ? blockstate.getValue(_getip249) : -1)) {
 															if (entity instanceof LivingEntity _livingEntity250 && _livingEntity250.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity250.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 															Ssc14Mod.queueServerWork(1, () -> {
@@ -496,7 +495,7 @@ public class Nippers_UseProcedure {
 																if (entity instanceof LivingEntity _livingEntity254 && _livingEntity254.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																	_livingEntity254.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 															});
-														} else if (2 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip257 ? blockstate.getValue(_getip257) : -1)) {
+														} else if (2 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip257 ? blockstate.getValue(_getip257) : -1)) {
 															if (entity instanceof LivingEntity _livingEntity258 && _livingEntity258.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity258.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 															Ssc14Mod.queueServerWork(1, () -> {
@@ -523,7 +522,7 @@ public class Nippers_UseProcedure {
 																if (entity instanceof LivingEntity _livingEntity262 && _livingEntity262.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																	_livingEntity262.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 															});
-														} else if (3 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip265 ? blockstate.getValue(_getip265) : -1)) {
+														} else if (3 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip265 ? blockstate.getValue(_getip265) : -1)) {
 															if (entity instanceof LivingEntity _livingEntity266 && _livingEntity266.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity266.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 															Ssc14Mod.queueServerWork(1, () -> {
@@ -550,7 +549,7 @@ public class Nippers_UseProcedure {
 																if (entity instanceof LivingEntity _livingEntity270 && _livingEntity270.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																	_livingEntity270.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 															});
-														} else if (4 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip273 ? blockstate.getValue(_getip273) : -1)) {
+														} else if (4 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip273 ? blockstate.getValue(_getip273) : -1)) {
 															if (entity instanceof LivingEntity _livingEntity274 && _livingEntity274.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity274.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 															Ssc14Mod.queueServerWork(1, () -> {
@@ -577,7 +576,7 @@ public class Nippers_UseProcedure {
 																if (entity instanceof LivingEntity _livingEntity278 && _livingEntity278.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																	_livingEntity278.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 															});
-														} else if (5 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip281 ? blockstate.getValue(_getip281) : -1)) {
+														} else if (5 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip281 ? blockstate.getValue(_getip281) : -1)) {
 															if (entity instanceof LivingEntity _livingEntity282 && _livingEntity282.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity282.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 															Ssc14Mod.queueServerWork(1, () -> {
@@ -604,7 +603,7 @@ public class Nippers_UseProcedure {
 																if (entity instanceof LivingEntity _livingEntity286 && _livingEntity286.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																	_livingEntity286.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 															});
-														} else if (6 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip289 ? blockstate.getValue(_getip289) : -1)) {
+														} else if (6 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip289 ? blockstate.getValue(_getip289) : -1)) {
 															if (entity instanceof LivingEntity _livingEntity290 && _livingEntity290.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity290.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 															Ssc14Mod.queueServerWork(1, () -> {
@@ -631,7 +630,7 @@ public class Nippers_UseProcedure {
 																if (entity instanceof LivingEntity _livingEntity294 && _livingEntity294.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																	_livingEntity294.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 															});
-														} else if (7 == (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip297 ? blockstate.getValue(_getip297) : -1)) {
+														} else if (7 == (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip297 ? blockstate.getValue(_getip297) : -1)) {
 															if (entity instanceof LivingEntity _livingEntity298 && _livingEntity298.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity298.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 															Ssc14Mod.queueServerWork(1, () -> {
@@ -686,7 +685,7 @@ public class Nippers_UseProcedure {
 				}
 			});
 		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip317 ? blockstate.getValue(_getip317) : -1) == 0) {
+				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip317 ? blockstate.getValue(_getip317) : -1) == 0) {
 			if (entity instanceof LivingEntity _livingEntity318 && _livingEntity318.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity318.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(3, () -> {
@@ -724,7 +723,7 @@ public class Nippers_UseProcedure {
 																: 0)
 														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()
 														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-														&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip356 ? blockstate.getValue(_getip356) : -1) == 0) {
+														&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip356 ? blockstate.getValue(_getip356) : -1) == 0) {
 													if (entity instanceof LivingEntity _livingEntity357 && _livingEntity357.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 														_livingEntity357.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 													Ssc14Mod.queueServerWork(3, () -> {
@@ -771,7 +770,7 @@ public class Nippers_UseProcedure {
 				}
 			});
 		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-				&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip375 ? blockstate.getValue(_getip375) : -1) == 8) {
+				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip375 ? blockstate.getValue(_getip375) : -1) == 8) {
 			if (entity instanceof LivingEntity _livingEntity376 && _livingEntity376.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity376.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(2, () -> {
@@ -809,7 +808,7 @@ public class Nippers_UseProcedure {
 																: 0)
 														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.NIPPERS.get()
 														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-														&& (blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip414 ? blockstate.getValue(_getip414) : -1) == 8) {
+														&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip414 ? blockstate.getValue(_getip414) : -1) == 8) {
 													if (entity instanceof LivingEntity _livingEntity415 && _livingEntity415.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 														_livingEntity415.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 													Ssc14Mod.queueServerWork(1, () -> {
@@ -1143,5 +1142,14 @@ public class Nippers_UseProcedure {
 				}
 			});
 		}
+	}
+
+	private static Property<?> getPropertyByName(BlockState state, String name) {
+		for (Property<?> property : state.getProperties()) {
+			if (property.getName().equals(name)) {
+				return property;
+			}
+		}
+		return null;
 	}
 }

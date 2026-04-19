@@ -1,5 +1,5 @@
 {
-  "_fv": 79,
+  "_fv": 85,
   "_type": "block",
   "definition": {
     "texture": "airlock_base_item",
@@ -14,13 +14,12 @@
     "enablePitch": false,
     "emissiveRendering": false,
     "displayFluidOverlay": false,
+    "states": [],
     "animations": [],
     "itemTexture": "airlock_base_item",
     "particleTexture": "",
     "blockSetType": "OAK",
-    "pottedPlant": {
-      "value": ""
-    },
+    "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,
     "hasTransparency": true,
@@ -152,8 +151,9 @@
     "enchantPowerBonus": 0.0,
     "plantsGrowOn": false,
     "canRedstoneConnect": false,
+    "hasCustomOpacity": false,
     "lightOpacity": 0,
-    "tickRate": 5,
+    "tickRate": 10,
     "tickRandomly": false,
     "isReplaceable": false,
     "canProvidePower": false,
@@ -198,7 +198,9 @@
     "stepSound": {
       "value": ""
     },
-    "luminance": 4,
+    "luminance": {
+      "fixedValue": 4.0
+    },
     "unbreakable": false,
     "vanillaToolTier": "NONE",
     "isBonemealable": false,
@@ -228,13 +230,10 @@
       "name": "BaseAirlockOpenClose"
     },
     "onBlockAdded": {
-      "name": "BaseAirlockD1_Put"
-    },
-    "onNeighbourBlockChanges": {
-      "name": "BaseAirlockD1_Put"
+      "name": "BaseAirlockD1Put"
     },
     "onTickUpdate": {
-      "name": "AtmosBlock__TIC"
+      "name": "BaseAirlockDEBUGCHECK"
     },
     "generateFeature": false,
     "restrictionBiomes": [],

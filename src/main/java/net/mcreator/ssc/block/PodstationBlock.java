@@ -1,7 +1,5 @@
 package net.mcreator.ssc.block;
 
-import org.checkerframework.checker.units.qual.s;
-
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -23,46 +21,40 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.block.entity.PodstationBlockEntity;
 
+import java.util.function.Function;
+
 public class PodstationBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(7.5, 0, 1.5, 15.5, 16, 15.5), box(0.5, 2, 4.5, 7.5, 19, 13.5), box(1.5, 0, 5.5, 6.5, 2, 12.5), box(7.5, 16, 3.5, 15.5, 24, 14.5), box(2, 19, 7, 3, 22, 8), box(5, 19, 7, 6, 23, 8),
-			box(2, 19, 10, 3, 22, 11), box(5, 19, 10, 6, 23, 11));
-	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(0.5, 0, 0.5, 8.5, 16, 14.5), box(8.5, 2, 2.5, 15.5, 19, 11.5), box(9.5, 0, 3.5, 14.5, 2, 10.5), box(0.5, 16, 1.5, 8.5, 24, 12.5), box(13, 19, 8, 14, 22, 9), box(10, 19, 8, 11, 23, 9),
-			box(13, 19, 5, 14, 22, 6), box(10, 19, 5, 11, 23, 6));
-	private static final VoxelShape SHAPE_EAST = Shapes.or(box(0.5, 0, 7.5, 14.5, 16, 15.5), box(2.5, 2, 0.5, 11.5, 19, 7.5), box(3.5, 0, 1.5, 10.5, 2, 6.5), box(1.5, 16, 7.5, 12.5, 24, 15.5), box(8, 19, 2, 9, 22, 3), box(8, 19, 5, 9, 23, 6),
-			box(5, 19, 2, 6, 22, 3), box(5, 19, 5, 6, 23, 6));
-	private static final VoxelShape SHAPE_WEST = Shapes.or(box(1.5, 0, 0.5, 15.5, 16, 8.5), box(4.5, 2, 8.5, 13.5, 19, 15.5), box(5.5, 0, 9.5, 12.5, 2, 14.5), box(3.5, 16, 0.5, 14.5, 24, 8.5), box(7, 19, 13, 8, 22, 14), box(7, 19, 10, 8, 23, 11),
-			box(10, 19, 13, 11, 22, 14), box(10, 19, 10, 11, 23, 11));
+	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public PodstationBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.ANVIL).strength(50f, 20f).lightLevel(s -> 3).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.ANVIL).strength(50f, 20f).lightLevel(blockstate -> 3).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
-	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
+	private Function<BlockState, VoxelShape> makeShapes() {
+		return this.getShapeForEachState(state -> {
+			return switch (state.getValue(FACING)) {
+				default -> Shapes.or(box(0.5, 0, 0.5, 8.5, 16, 14.5), box(8.5, 2, 2.5, 15.5, 19, 11.5), box(9.5, 0, 3.5, 14.5, 2, 10.5), box(0.5, 16, 1.5, 8.5, 24, 12.5), box(13, 19, 8, 14, 22, 9), box(10, 19, 8, 11, 23, 9),
+						box(13, 19, 5, 14, 22, 6), box(10, 19, 5, 11, 23, 6));
+				case NORTH -> Shapes.or(box(7.5, 0, 1.5, 15.5, 16, 15.5), box(0.5, 2, 4.5, 7.5, 19, 13.5), box(1.5, 0, 5.5, 6.5, 2, 12.5), box(7.5, 16, 3.5, 15.5, 24, 14.5), box(2, 19, 7, 3, 22, 8), box(5, 19, 7, 6, 23, 8), box(2, 19, 10, 3, 22, 11),
+						box(5, 19, 10, 6, 23, 11));
+				case EAST -> Shapes.or(box(0.5, 0, 7.5, 14.5, 16, 15.5), box(2.5, 2, 0.5, 11.5, 19, 7.5), box(3.5, 0, 1.5, 10.5, 2, 6.5), box(1.5, 16, 7.5, 12.5, 24, 15.5), box(8, 19, 2, 9, 22, 3), box(8, 19, 5, 9, 23, 6), box(5, 19, 2, 6, 22, 3),
+						box(5, 19, 5, 6, 23, 6));
+				case WEST -> Shapes.or(box(1.5, 0, 0.5, 15.5, 16, 8.5), box(4.5, 2, 8.5, 13.5, 19, 15.5), box(5.5, 0, 9.5, 12.5, 2, 14.5), box(3.5, 16, 0.5, 14.5, 24, 8.5), box(7, 19, 13, 8, 22, 14), box(7, 19, 10, 8, 23, 11),
+						box(10, 19, 13, 11, 22, 14), box(10, 19, 10, 11, 23, 11));
+			};
+		});
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return shapes.apply(state);
 	}
 
 	@Override
 	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return (switch (state.getValue(FACING)) {
-			case NORTH -> SHAPE_NORTH;
-			case SOUTH -> SHAPE_SOUTH;
-			case EAST -> SHAPE_EAST;
-			case WEST -> SHAPE_WEST;
-			default -> SHAPE_NORTH;
-		});
 	}
 
 	@Override

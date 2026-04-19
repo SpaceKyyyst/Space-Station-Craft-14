@@ -12,6 +12,7 @@ import net.mcreator.ssc.entity.C4CrutchEntEntity;
 
 public class C4CrutchEntRenderer extends HumanoidMobRenderer<C4CrutchEntEntity, HumanoidRenderState, HumanoidModel<HumanoidRenderState>> {
 	private C4CrutchEntEntity entity = null;
+	private final ResourceLocation entityTexture = ResourceLocation.parse("ssc_14:textures/entities/chair_entiti.png");
 
 	public C4CrutchEntRenderer(EntityRendererProvider.Context context) {
 		super(context, new HumanoidModel<HumanoidRenderState>(context.bakeLayer(ModelLayers.PLAYER)), 0.01f);
@@ -31,7 +32,7 @@ public class C4CrutchEntRenderer extends HumanoidMobRenderer<C4CrutchEntEntity, 
 
 	@Override
 	public ResourceLocation getTextureLocation(HumanoidRenderState state) {
-		return ResourceLocation.parse("ssc_14:textures/entities/chair_entiti.png");
+		return entityTexture;
 	}
 
 	@Override

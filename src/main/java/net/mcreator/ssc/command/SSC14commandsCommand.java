@@ -17,6 +17,7 @@ import net.minecraft.commands.Commands;
 import net.mcreator.ssc.procedures.TpSSC14spaceprProcedure;
 import net.mcreator.ssc.procedures.TpSSC14planetplantprProcedure;
 import net.mcreator.ssc.procedures.HungerSetCommandProcedure;
+import net.mcreator.ssc.procedures.HelsResetCommandProcedure;
 import net.mcreator.ssc.procedures.DigestiveProcessesClearCommandProcedure;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
@@ -81,7 +82,21 @@ public class SSC14commandsCommand {
 
 			DigestiveProcessesClearCommandProcedure.execute(arguments);
 			return 0;
-		}))))));
+		}))))).then(Commands.literal("hels").then(Commands.argument("ent", EntityArgument.entity()).then(Commands.literal("reset").executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
+
+			HelsResetCommandProcedure.execute(arguments);
+			return 0;
+		})))));
 	}
 
 }

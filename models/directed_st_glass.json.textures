@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "directed_st_glass_t"
+      }
+    },
+    "armored": {
+      "name": "armored",
+      "map": {
+        "1": "directed_st_glass_armored"
+      }
+    }
+  }
+}

@@ -26,11 +26,9 @@ public class WOCtextP1Procedure {
 					loc_buf_t = stack.getHoverName().getString();
 					// Вариант 2: Через систему переводов (если нет блок-предмета)
 					// loc_buf_t = Component.translatable(blockState.getBlock().getDescriptionId()).getString();
-					System.out.println("[LOOK] Block name: " + loc_buf_t);
 				} else {
 					// Нет блока под прицелом
 					loc_buf_t = "Nothing";
-					System.out.println("[LOOK] No block targeted");
 				}
 			}
 		}

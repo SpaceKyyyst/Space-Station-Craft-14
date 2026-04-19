@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "ssc_14:pick",
     "ssc_14:screwdriver",
     "ssc_14:fire_axe",
     "ssc_14:nippers",

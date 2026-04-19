@@ -1,7 +1,5 @@
 package net.mcreator.ssc.block;
 
-import org.checkerframework.checker.units.qual.s;
-
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -16,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -36,52 +35,40 @@ import net.mcreator.ssc.procedures.GravityGenerator_DestroyProcedure;
 import net.mcreator.ssc.procedures.GravGenTICprocedureProcedure;
 import net.mcreator.ssc.block.entity.GravityGeneratorBlockEntity;
 
+import java.util.function.Function;
+
 import io.netty.buffer.Unpooled;
 
 public class GravityGeneratorBlock extends Block implements EntityBlock {
-	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 1);
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 	public static final BooleanProperty GRAVITY = BooleanProperty.create("gravity");
-	private static final VoxelShape SHAPE_NORTH = Shapes.or(box(-15, 0, 0, 31, 16, 16), box(-15, 16, 0, 31, 31, 16), box(0, 0, 16, 16, 16, 31), box(0, 16, 16, 16, 31, 31));
-	private static final VoxelShape SHAPE_SOUTH = Shapes.or(box(-15, 0, 0, 31, 16, 16), box(-15, 16, 0, 31, 31, 16), box(0, 0, -15, 16, 16, 0), box(0, 16, -15, 16, 31, 0));
-	private static final VoxelShape SHAPE_EAST = Shapes.or(box(0, 0, -15, 16, 16, 31), box(0, 16, -15, 16, 31, 31), box(-15, 0, 0, 0, 16, 16), box(-15, 16, 0, 0, 31, 16));
-	private static final VoxelShape SHAPE_WEST = Shapes.or(box(0, 0, -15, 16, 16, 31), box(0, 16, -15, 16, 31, 31), box(16, 0, 0, 31, 16, 16), box(16, 16, 0, 31, 31, 16));
+	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 1);
+	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public GravityGeneratorBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.ANVIL).strength(-1, 3600000).lightLevel(s -> (new Object() {
-			public int getLightLevel() {
-				if (s.getValue(BLOCKSTATE) == 1)
-					return 5;
-				return 0;
-			}
-		}.getLightLevel())).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(GRAVITY, false));
+		super(properties.sound(SoundType.ANVIL).strength(-1, 3600000).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(GRAVITY, false).setValue(BLOCKSTATE, 0));
+	}
+
+	private Function<BlockState, VoxelShape> makeShapes() {
+		return this.getShapeForEachState(state -> {
+			return switch (state.getValue(FACING)) {
+				default -> Shapes.or(box(-15, 0, 0, 31, 16, 16), box(-15, 16, 0, 31, 31, 16), box(0, 0, -15, 16, 16, 0), box(0, 16, -15, 16, 31, 0));
+				case NORTH -> Shapes.or(box(-15, 0, 0, 31, 16, 16), box(-15, 16, 0, 31, 31, 16), box(0, 0, 16, 16, 16, 31), box(0, 16, 16, 16, 31, 31));
+				case EAST -> Shapes.or(box(0, 0, -15, 16, 16, 31), box(0, 16, -15, 16, 31, 31), box(-15, 0, 0, 0, 16, 16), box(-15, 16, 0, 0, 31, 16));
+				case WEST -> Shapes.or(box(0, 0, -15, 16, 16, 31), box(0, 16, -15, 16, 31, 31), box(16, 0, 0, 31, 16, 16), box(16, 16, 0, 31, 31, 16));
+			};
+		}, GRAVITY);
 	}
 
 	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
-	}
-
-	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return shapes.apply(state);
 	}
 
 	@Override
 	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return (switch (state.getValue(FACING)) {
-			case NORTH -> SHAPE_NORTH;
-			case SOUTH -> SHAPE_SOUTH;
-			case EAST -> SHAPE_EAST;
-			case WEST -> SHAPE_WEST;
-			default -> SHAPE_NORTH;
-		});
 	}
 
 	@Override
@@ -92,7 +79,7 @@ public class GravityGeneratorBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(GRAVITY, false);
+		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(GRAVITY, false).setValue(BLOCKSTATE, 0);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -121,6 +108,12 @@ public class GravityGeneratorBlock extends Block implements EntityBlock {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
 		GravityGenerator_DestroyProcedure.execute();
 		return retval;
+	}
+
+	@Override
+	public void wasExploded(ServerLevel world, BlockPos pos, Explosion e) {
+		super.wasExploded(world, pos, e);
+		GravityGenerator_DestroyProcedure.execute();
 	}
 
 	@Override
