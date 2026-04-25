@@ -1,9 +1,0 @@
-{
-  "parent": "ssc_14:custom/directed_st_glass",
-  "textures": {
-    "all": "ssc_14:block/station_glass",
-    "particle": "ssc_14:block/station_glass",
-    "1": "ssc_14:block/directed_st_glass_t"
-  },
-  "render_type": "cutout"
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "ssc_14:block/grille",
-    "particle": "ssc_14:block/grille"
-  },
-  "render_type": "cutout"
-}

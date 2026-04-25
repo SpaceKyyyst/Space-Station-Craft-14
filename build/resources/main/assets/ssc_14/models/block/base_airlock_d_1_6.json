@@ -1,9 +1,0 @@
-{
-  "parent": "ssc_14:custom/base_airlock_f_open_p",
-  "textures": {
-    "all": "ssc_14:block/airlock_base_item",
-    "particle": "ssc_14:block/airlock_base_item",
-    "12": "ssc_14:block/base_airlock_f_t"
-  },
-  "render_type": "cutout"
-}

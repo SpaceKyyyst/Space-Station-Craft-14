@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "size": 1,
-  "operation": "SET",
-  "order": 2,
-  "render_toggle": true,
-  "icon": "curios:slot/glovers"
-}

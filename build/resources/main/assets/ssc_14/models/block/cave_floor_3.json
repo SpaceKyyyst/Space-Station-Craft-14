@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "ssc_14:block/floor_cave3_texture",
-    "particle": "ssc_14:block/floor_cave3_texture"
-  },
-  "render_type": "solid"
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "ssc_14:block/metal_wall_up_down",
-    "particle": "ssc_14:block/metal_wall_up_down"
-  },
-  "render_type": "solid"
-}

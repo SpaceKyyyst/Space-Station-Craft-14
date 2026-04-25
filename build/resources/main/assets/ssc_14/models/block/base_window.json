@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "ssc_14:block/station_glass",
-    "particle": "ssc_14:block/station_glass"
-  },
-  "render_type": "cutout"
-}

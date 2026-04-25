@@ -1,9 +1,0 @@
-{
-  "parent": "ssc_14:custom/up_staircase",
-  "textures": {
-    "all": "ssc_14:block/staircase_item",
-    "particle": "ssc_14:block/staircase_item",
-    "1": "ssc_14:block/up_dark_stairs_t"
-  },
-  "render_type": "cutout"
-}
