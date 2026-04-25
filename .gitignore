@@ -1,1 +1,7 @@
 run/
+build/moddev/
+build/tmp/
+build/reports/
+.eclipse/
+.gradle/
+.vscode/
