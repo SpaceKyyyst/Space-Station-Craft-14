@@ -1,11 +1,11 @@
 run/
-run/
 build/moddev/
 build/tmp/
 build/reports/
 .eclipse/
 .gradle/
 .vscode/
+.mcreator/workspaceBackups/
 
 # User-specific stuff
 .idea/
