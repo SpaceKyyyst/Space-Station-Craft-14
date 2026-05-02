@@ -19,9 +19,6 @@
     "itemTexture": "bar_chair_item",
     "particleTexture": "",
     "blockSetType": "OAK",
-    "pottedPlant": {
-      "value": ""
-    },
     "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,
@@ -186,7 +183,7 @@
     "onBlockAdded": {
       "name": "Chair_Ent_Generation"
     },
-    "onTickUpdate": {
+    "onEntityCollides": {
       "name": "OficeChair_Autorotate"
     },
     "generateFeature": false,

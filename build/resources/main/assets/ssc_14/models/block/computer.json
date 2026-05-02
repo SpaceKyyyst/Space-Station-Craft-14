@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/console",
+  "textures": {
+    "all": "ssc_14:block/computer_console_item",
+    "particle": "ssc_14:block/computer_console_item",
+    "1": "ssc_14:block/computer_texture"
+  },
+  "render_type": "cutout"
+}

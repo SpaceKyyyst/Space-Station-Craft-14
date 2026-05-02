@@ -1,0 +1,8 @@
+{
+  "_fv": 85,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">player_ticks</field><next><block type=\"controls_if\"><value name=\"IF0\"><block type=\"entity_has_nogravity\"><value name=\"entity\"><block type=\"entity_from_deps\"></block></value></block></value><statement name=\"DO0\"><block type=\"java_code\"><field name=\"CODE\">// 1. Проверка: находится ли игрок вплотную к блоку&amp;#10;boolean touchingBlock = BlockPos.betweenClosedStream(&amp;#10;    Mth.floor(box.minX), Mth.floor(box.minY), Mth.floor(box.minZ),&amp;#10;    Mth.floor(box.maxX), Mth.floor(box.maxY), Mth.floor(box.maxZ)&amp;#10;).anyMatch(p -&gt; !player.level().getBlockState(p).isAir());&amp;#10;&amp;#10;Vec3 motion = player.getDeltaMovement();&amp;#10;double newY = motion.y;&amp;#10;&amp;#10;// 2. Логика ВВЕРХ/ВНИЗ (работает ТОЛЬКО если touchingBlock == true)&amp;#10;if (touchingBlock) {&amp;#10;    double speed = 0.15; // Скорость подъёма/спуска&amp;#10;    &amp;#10;    if (event.getInput().jumping) {          // Нажат прыжок&amp;#10;        newY = speed;                        // → Движение ВВЕРХ&amp;#10;    } else if (event.getInput().shiftKeyDown) { // Нажат присед&amp;#10;        newY = -speed;                       // → Движение ВНИЗ&amp;#10;    } else {&amp;#10;        newY *= 0.9;                         // → Плавное торможение, если кнопки не нажаты&amp;#10;    }&amp;#10;}&amp;#10;&amp;#10;// 3. Применение результата к игроку&amp;#10;player.setDeltaMovement(motion.x, newY, motion.z);</field></block></statement></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

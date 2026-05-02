@@ -54,7 +54,21 @@ public class SSC14commandsCommand {
 
 			TpSSC14planetplantprProcedure.execute(entity);
 			return 0;
-		})))).then(Commands.literal("hunger").then(Commands.literal("set").then(Commands.argument("ent", EntityArgument.entity()).then(Commands.argument("Nutrients", DoubleArgumentType.doubleArg(0, 200)).executes(arguments -> {
+		}))).then(Commands.literal("minecraft_overworld").executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
+
+			TpSSC14spaceprProcedure.execute(entity);
+			return 0;
+		}))).then(Commands.literal("hunger").then(Commands.literal("set").then(Commands.argument("ent", EntityArgument.entity()).then(Commands.argument("Nutrients", DoubleArgumentType.doubleArg(0, 200)).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();

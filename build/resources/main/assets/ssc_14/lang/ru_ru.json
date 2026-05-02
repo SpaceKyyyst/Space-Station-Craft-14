@@ -460,5 +460,22 @@
   "item.ssc_14.isolated_gloves": "Изолирующие перчатки",
   "item.ssc_14.tech_airlock_d_1": "Шлюз (Техи)",
   "item.ssc_14.tech_airlock_d_1open": "Шлюз (Техи)",
-  "item.ssc_14.pick": "Pick"
+  "item.ssc_14.pick": "Кирка",
+  "curios.identifier.jumpsuit": "Комбинезон",
+  "item.ssc_14.security_jumpsuit": "Комбинезон СБ",
+  "curios.identifier.boots": "Обувь",
+  "item.ssc_14.combat_boots_item": "Боевая обувь",
+  "item.ssc_14.computer": "Компьютер",
+  "item.ssc_14.atmos_airlock_d_1": "Шлюз (Атмос)",
+  "item.ssc_14.atmos_airlock_d_1open": "Шлюз (Атмос)",
+  "item.ssc_14.cargo_airlock_d_1": "Шлюз (Снабжение)",
+  "item.ssc_14.cargo_airlock_d_1open": "Шлюз (Снабжение)",
+  "item.ssc_14.closet_secure": "Защищённый шкафчик",
+  "item.ssc_14.up_closet_plug": "Защищённый шкафчик",
+  "item.ssc_14.magnetic_boots_item": "Магнитные ботинки",
+  "item.ssc_14.magnetic_boots_active_item": "Магнитные ботинки",
+  "key.ssc_14.interaction": "Взаимодействие",
+  "translation.key.magboots_description_off": "Выключено",
+  "translation.key.magboots_description_on": "Включено",
+  "translation.key.for_disassembly_use": "Для разборки используйте: "
 }

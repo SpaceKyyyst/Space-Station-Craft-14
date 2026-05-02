@@ -3,6 +3,7 @@ package net.mcreator.ssc.block;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -17,6 +18,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
@@ -24,6 +26,7 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.BaseAirlockU1_ChekProcedure;
 import net.mcreator.ssc.procedures.AtmosBlock__TICProcedure;
+import net.mcreator.ssc.procedures.AirlockUpPlug_ClickProcedure;
 import net.mcreator.ssc.block.entity.AirlockUpPlugOPENBlockEntity;
 
 import javax.annotation.Nullable;
@@ -89,6 +92,20 @@ public class AirlockUpPlugOPENBlock extends Block implements EntityBlock {
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
 		AtmosBlock__TICProcedure.execute();
+	}
+
+	@Override
+	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
+		super.useWithoutItem(blockstate, world, pos, entity, hit);
+		int x = pos.getX();
+		int y = pos.getY();
+		int z = pos.getZ();
+		double hitX = hit.getLocation().x;
+		double hitY = hit.getLocation().y;
+		double hitZ = hit.getLocation().z;
+		Direction direction = hit.getDirection();
+		AirlockUpPlug_ClickProcedure.execute(world, x, y, z, entity);
+		return InteractionResult.SUCCESS;
 	}
 
 	@Override

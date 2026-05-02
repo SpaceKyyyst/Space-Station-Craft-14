@@ -9,7 +9,7 @@
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "console_of_id:default",
+    "customModelName": "console:id",
     "rotationMode": 1,
     "enablePitch": false,
     "emissiveRendering": true,
@@ -19,9 +19,6 @@
     "itemTexture": "id_console_item",
     "particleTexture": "",
     "blockSetType": "OAK",
-    "pottedPlant": {
-      "value": ""
-    },
     "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,

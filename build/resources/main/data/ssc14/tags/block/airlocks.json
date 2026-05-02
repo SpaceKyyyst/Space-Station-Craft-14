@@ -1,9 +1,13 @@
 {
   "replace": false,
   "values": [
+    "ssc_14:cargo_airlock_d_1open",
     "ssc_14:base_airlock_d_1",
     "ssc_14:base_airlock_d_1open",
     "ssc_14:tech_airlock_d_1open",
+    "ssc_14:atmos_airlock_d_1open",
+    "ssc_14:cargo_airlock_d_1",
+    "ssc_14:atmos_airlock_d_1",
     "ssc_14:tech_airlock_d_1"
   ]
 }

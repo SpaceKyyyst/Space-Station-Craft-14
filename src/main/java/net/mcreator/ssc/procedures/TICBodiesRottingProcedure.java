@@ -1,69 +1,97 @@
+
 package net.mcreator.ssc.procedures;
 
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.bus.api.Event;
-
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.core.particles.ParticleTypes;
+import net.neoforged.neoforge.server.ServerLifecycleHooks;
+import net.minecraft.server.level.ServerPlayer;
 
 import javax.annotation.Nullable;
 
-@EventBusSubscriber
+@EventBusSubscriber(modid = "ssc14")
 public class TICBodiesRottingProcedure {
-	@SubscribeEvent
-	public static void onEntityTick(EntityTickEvent.Pre event) {
-		execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
-	}
 
-	public static void execute(LevelAccessor world, double x, double y, double z) {
-		execute(null, world, x, y, z);
-	}
+    private static final int DECAY_INTERVAL = 100;
+    private static final int BLEED_INTERVAL = 40;
+    private static final String KEY_STATE = "ssc14_state";
+    private static final String KEY_TOTAL = "ssc14_damage";
+    private static final String KEY_BLEEDING = "ssc14_bleeding";
+    private static final String KEY_DECAY_STARTED = "ssc14_decayStarted";
+    private static final String KEY_LAST_DECAY = "ssc14_lastDecayTick";
+    private static final String KEY_LAST_BLEED = "ssc14_lastBleedTick";
+    private static final String KEY_GIBBED = "ssc14_gibbed";
+    private static final String PREFIX = "ssc14_dmg_";
 
-	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		// ServerTickEvent выполняется ТОЛЬКО на сервере — проверок не нужно
-		// Получаем сервер через NeoForge-хук (работает в 1.21.8)
-		net.minecraft.server.MinecraftServer server = net.neoforged.neoforge.server.ServerLifecycleHooks.getCurrentServer();
-		if (server == null)
-			return;
-		// Итерируемся по всем игрокам
-		for (net.minecraft.server.level.ServerPlayer player : server.getPlayerList().getPlayers()) {
-			if (player == null)
-				continue;
-			var nbt = player.getPersistentData();
-			int state = nbt.getInt("ssc14_state").orElse(0);
-			// Запускаем таймер гниения при переходе в состояние "мёртв"
-			if (state == 2 && !nbt.getBoolean("ssc14_decayStarted").orElse(false)) {
-				// Для теста: 100 тиков = 5 секунд. Для релиза: замени на 12000 (10 минут)
-				long decayStartTick = player.level().getGameTime() + 100;
-				nbt.putLong("ssc14_decayStartTick", decayStartTick);
-				nbt.putBoolean("ssc14_decayStarted", true);
-				System.out.println("[SSC14] 🧟 Гниение началось: " + player.getName().getString());
-			}
-			// Наносим пассивный урон каждые 100 тиков (5 секунд)
-			if (nbt.getBoolean("ssc14_decayStarted").orElse(false)) {
-				long currentTick = player.level().getGameTime();
-				long lastDecayTick = nbt.getLong("ssc14_lastDecayTick").orElse(0L);
-				if (currentTick - lastDecayTick >= 100) {
-					double blunt = nbt.getDouble("ssc14_dmg_blunt").orElse(0.0) + 0.06;
-					double cellular = nbt.getDouble("ssc14_dmg_cellular").orElse(0.0) + 0.06;
-					double total = nbt.getDouble("ssc14_damage").orElse(0.0) + 0.12;
-					nbt.putDouble("ssc14_dmg_blunt", blunt);
-					nbt.putDouble("ssc14_dmg_cellular", cellular);
-					nbt.putDouble("ssc14_damage", total);
-					nbt.putLong("ssc14_lastDecayTick", currentTick);
-					System.out.println("[SSC14] 🧟 Гниение тик: +0.06 blunt +0.06 cellular | " + player.getName().getString());
-					// Проверка на полное разложение
-					if (cellular > 200 && !nbt.getBoolean("ssc14_gibbed").orElse(false)) {
-						nbt.putBoolean("ssc14_gibbed", true);
-						System.out.println("[SSC14] 💀 Тело " + player.getName().getString() + " разложилось полностью");
-					}
-				}
-			}
-		}
-		if (false) {
-			world.addParticle(ParticleTypes.ASH, x, y, z, 0, 0, 0);
-		}
-	}
+    @SubscribeEvent
+    public static void onEntityTick(EntityTickEvent.Pre event) {
+        execute(event);
+    }
+
+    public static void execute() { execute(null); }
+
+    private static void execute(@Nullable Event event) {
+        var server = ServerLifecycleHooks.getCurrentServer();
+        if (server == null) return;
+        
+        for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+            if (player == null) continue;
+            var nbt = player.getPersistentData();
+            
+            processDecay(player, nbt);
+            processBleeding(player, nbt);
+        }
+    }
+    
+    private static void processDecay(ServerPlayer player, net.minecraft.nbt.CompoundTag nbt) {
+        if (nbt.getInt(KEY_STATE).orElse(0) != 2) return;
+        
+        if (!nbt.getBoolean(KEY_DECAY_STARTED).orElse(false)) {
+            nbt.putLong(KEY_LAST_DECAY, player.level().getGameTime());
+            nbt.putBoolean(KEY_DECAY_STARTED, true);
+            System.out.println("[SSC14] 🧟 Гниение началось: " + player.getName().getString());
+            return;
+        }
+        
+        long now = player.level().getGameTime();
+        long last = nbt.getLong(KEY_LAST_DECAY).orElse(0L);
+        
+        if (now - last >= DECAY_INTERVAL) {
+            double blunt = nbt.getDouble(PREFIX + "blunt").orElse(0.0) + 0.06;
+            double cellular = nbt.getDouble(PREFIX + "cellular").orElse(0.0) + 0.06;
+            double total = nbt.getDouble(KEY_TOTAL).orElse(0.0) + 0.12;
+            
+            nbt.putDouble(PREFIX + "blunt", blunt);
+            nbt.putDouble(PREFIX + "cellular", cellular);
+            nbt.putDouble(KEY_TOTAL, total);
+            nbt.putLong(KEY_LAST_DECAY, now);
+            
+            System.out.println("[SSC14] 🧟 Гниение: +0.06 blunt +0.06 cellular | " + player.getName().getString());
+            
+            if (cellular > 200 && !nbt.getBoolean(KEY_GIBBED).orElse(false)) {
+                nbt.putBoolean(KEY_GIBBED, true);
+                System.out.println("[SSC14] 💀 Тело " + player.getName().getString() + " разложилось");
+            }
+        }
+    }
+    
+    private static void processBleeding(ServerPlayer player, net.minecraft.nbt.CompoundTag nbt) {
+        if (nbt.getInt(KEY_STATE).orElse(0) >= 2) return;
+        if (!nbt.getBoolean(KEY_BLEEDING).orElse(false)) return;
+        
+        long now = player.level().getGameTime();
+        long last = nbt.getLong(KEY_LAST_BLEED).orElse(0L);
+        
+        if (now - last >= BLEED_INTERVAL) {
+            double bloodloss = nbt.getDouble(PREFIX + "bloodloss").orElse(0.0) + 1.0;
+            double total = nbt.getDouble(KEY_TOTAL).orElse(0.0) + 1.0;
+            
+            nbt.putDouble(PREFIX + "bloodloss", bloodloss);
+            nbt.putDouble(KEY_TOTAL, total);
+            nbt.putLong(KEY_LAST_BLEED, now);
+            
+            System.out.println("[SSC14] 🩸 Кровотечение тик: +1 | " + player.getName().getString());
+        }
+    }
 }

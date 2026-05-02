@@ -19,7 +19,7 @@
       "value": "Blocks.AIR"
     },
     "seaLevel": 0,
-    "generateOreVeins": true,
+    "generateOreVeins": false,
     "generateAquifers": false,
     "horizontalNoiseSize": 4,
     "verticalNoiseSize": 1,
@@ -29,7 +29,7 @@
     "cloudHeight": 192,
     "skyType": "NORMAL",
     "airColor": {
-      "value": -4217242,
+      "value": -15516002,
       "falpha": 0.0
     },
     "sunHeightAffectsFog": true,

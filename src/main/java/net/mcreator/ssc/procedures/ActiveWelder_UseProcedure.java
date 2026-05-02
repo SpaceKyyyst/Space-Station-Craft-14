@@ -2,7 +2,9 @@ package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.component.CustomData;
@@ -11,12 +13,11 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
@@ -31,631 +32,235 @@ public class ActiveWelder_UseProcedure {
 		if (entity == null)
 			return;
 		double fuel = 0;
-		if (entity instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER))
-			_livingEntity3.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).setBaseValue((entity.getX() + entity.getZ() + entity.getY()));
-		if (entity.getX() + entity.getZ()
-				+ entity.getY() == (entity instanceof LivingEntity _livingEntity7 && _livingEntity7.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity7.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-				&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.STEEL_WALL.get()) {
-			if (entity instanceof LivingEntity _livingEntity10 && _livingEntity10.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-				_livingEntity10.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
-			if (world instanceof ServerLevel _level)
-				_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.SPARK.get()), (x + 0.5), (y + 0.5), (z + 0.5), 20, 0.2, 0.2, 0.2, 0.2);
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2,
-							(float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2));
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2, (float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2), false);
+		// (костыль для MC)
+		if (getPropertyByName(blockstate, "12345") instanceof BooleanProperty _getbp1 && blockstate.getValue(_getbp1) && entity.isInWater()) {
+			if (world instanceof ServerLevel _level) {
+				_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("123").withColor(0x000000), false);
+			}
+			if (world instanceof Level _level)
+				_level.updateNeighborsAt(BlockPos.containing(x, y, z), _level.getBlockState(BlockPos.containing(x, y, z)).getBlock());
+		}
+		// === ШАГ 0: БАЗОВАЯ ПРОВЕРКА НА ОШИБКИ ===
+		// Если сущность (игрок) не существует — выходим, чтобы не было краша
+		if (entity == null)
+			return;
+		// 🔧 КАК ИЗМЕНИТЬ ПОД СЕБЯ:
+		// - Замени "12345" на имя нужного свойства блока
+		// - Замени Component.literal("123") на свой текст
+		// - Удали весь блок, если он не нужен
+		// === ШАГ 2: ПРОВЕРКА, ЧТО ЭТО ЖИВОЕ СУЩЕСТВО (ИГРОК/МОБ) ===
+		// Приводим entity к LivingEntity (чтобы работать с инвентарём, атрибутами)
+		if (!(entity instanceof LivingEntity livingEntity))
+			return;
+		// Проверяем, что у игрока есть нужные атрибуты (созданные в твоём моде)
+		// Если атрибута нет — выходим, чтобы не было ошибки
+		if (!livingEntity.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER))
+			return;
+		if (!livingEntity.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+			return;
+		// === ШАГ 3: ПОДГОТОВКА ПЕРЕМЕННЫХ ===
+		// Преобразуем double-координаты в BlockPos (целочисленные координаты блока)
+		BlockPos pos = BlockPos.containing(x, y, z);
+		// Создаём "хеш" позиции игрока (сумма координат) — чтобы проверять, не сдвинулся ли он
+		// Это дешевле, чем сравнивать 3 координаты отдельно каждый тик
+		double posHash = entity.getX() + entity.getY() + entity.getZ();
+		// Получаем тип блока, по которому кликнули (без свойств, только сам блок)
+		Block targetBlock = blockstate.getBlock();
+		// === ШАГ 4: НАСТРОЙКА СВАРКИ ЧЕРЕЗ RECORD (Java 21) ===
+		/**
+		* record — это специальный тип в Java 21 для хранения неизменяемых данных.
+		* Мы упаковываем все настройки сварки в один объект, чтобы удобно передавать их
+		* во внутренний класс WeldProcess (там переменные должны быть final).
+		*
+		* Параметры WeldConfig:
+		* - delay: задержка между шагами прогресса (в тиках, 20 тиков = 1 секунда)
+		* - resultBlock: блок, в который превратится исходный (если нужна полная замена)
+		* - dropItem: предмет, который выпадет при завершении (если нужен)
+		* - targetState: новое значение свойства блока (если меняем свойство, а не весь блок)
+		* - stateProp: само свойство блока, которое меняем (например, "blockstate")
+		*/
+		record WeldConfig(int delay, Block resultBlock, net.minecraft.world.item.Item dropItem, int targetState, IntegerProperty stateProp) {
+		}
+		// Объявляем переменную config как final — обязательно для использования внутри внутреннего класса!
+		final WeldConfig config;
+		// === ОПРЕДЕЛЯЕМ НАСТРОЙКИ В ЗАВИСИМОСТИ ОТ ТИПА БЛОКА ===
+		// СЛУЧАЙ 1: Стальная стена (STEEL_WALL) — полная замена блока
+		if (targetBlock == Ssc14ModBlocks.STEEL_WALL.get()) {
+			// Создаём конфиг: 20 тиков задержка, результат — WALL_CARCASE, дроп — STEEL
+			config = new WeldConfig(20, Ssc14ModBlocks.WALL_CARCASE.get(), Ssc14ModItems.STEEL.get(), -1, null);
+			// СЛУЧАЙ 2: Пластисталь или Бронированное окно — меняем свойство блока
+		} else if (targetBlock == Ssc14ModBlocks.PLASTEEL_WALL.get() || targetBlock == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
+			// Ищем в свойствах блока свойство с именем "blockstate" типа IntegerProperty
+			IntegerProperty stateProp = null;
+			for (var prop : blockstate.getProperties()) {
+				if (prop.getName().equals("blockstate") && prop instanceof IntegerProperty ip) {
+					stateProp = ip; // нашли!
+					break;
 				}
 			}
-			Ssc14Mod.queueServerWork(20, () -> {
-				if (entity.getX() + entity.getZ()
-						+ entity.getY() == (entity instanceof LivingEntity _livingEntity17 && _livingEntity17.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity17.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-						&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.STEEL_WALL.get()) {
-					if (entity instanceof LivingEntity _livingEntity22 && _livingEntity22.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity22.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
-					if (world instanceof ServerLevel _level)
-						_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.SPARK.get()), (x + 0.5), (y + 0.5), (z + 0.5), 20, 0.2, 0.2, 0.2, 0.2);
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2,
-									(float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2));
-						} else {
-							_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2, (float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2), false);
+			// Если свойство найдено — проверяем его текущее значение
+			if (stateProp != null) {
+				int state = blockstate.getValue(stateProp); // текущее значение свойства
+				// Для PLASTEEL_WALL:
+				if (targetBlock == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
+					if (state == 2) // если свойство = 2 → меняем на 3
+						config = new WeldConfig(13, null, null, 3, stateProp);
+					else if (state == 5) // если свойство = 5 → меняем на 6
+						config = new WeldConfig(27, null, null, 6, stateProp);
+					else
+						return; // другое значение — не обрабатываем
+				}
+				// Для ARMORED_WINDOW:
+				else if (targetBlock == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
+					if (state == 0)
+						config = new WeldConfig(20, null, null, 1, stateProp);
+					else if (state == 3)
+						config = new WeldConfig(27, null, null, 4, stateProp);
+					else
+						return;
+				} else
+					return;
+			} else
+				return; // свойство не найдено — выходим
+		} else
+			return; // блок не подходит для сварки — выходим
+		// === ШАГ 5: ЛОКАЛЬНЫЙ КЛАСС "WeldProcess" — ДВИЖОК ПРОГРЕССА ===
+		/**
+		* Этот класс отвечает за пошаговый процесс сварки:
+		* - Проверяет, не сдвинулся ли игрок
+		* - Проигрывает частицы и звуки
+		* - Обновляет прогресс-бар
+		* - По завершении меняет блок и тратит топливо
+		*
+		* Почему внутренний класс? Чтобы иметь доступ к переменным execute (pos, config, livingEntity и т.д.)
+		*/
+		class WeldProcess {
+			/**
+			* run(int step) — главный метод, который вызывает сам себя рекурсивно
+			* @param step: текущий шаг прогресса (от 1 до 6)
+			*/
+			void run(int step) {
+				// === ПРОВЕРКИ НА КАЖДОМ ШАГЕ (если что-то не так — сбрасываем прогресс) ===
+				// 1. Игрок сдвинулся? (сравниваем хеш позиции)
+				if (entity.getX() + entity.getY() + entity.getZ() != posHash) {
+					reset();
+					return;
+				}
+				// 2. В главной руке больше нет сварочного аппарата?
+				if (!livingEntity.getMainHandItem().is(Ssc14ModItems.ACTIVE_WELDER.get())) {
+					reset();
+					return;
+				}
+				// 3. Блок на позиции изменился или исчез?
+				if (!world.getBlockState(pos).is(targetBlock)) {
+					reset();
+					return;
+				}
+				// === ВИЗУАЛЬНЫЕ ЭФФЕКТЫ (частицы + звук) ===
+				// Отправляем частицы искр (только на сервере, чтобы синхронизировать с клиентами)
+				if (world instanceof ServerLevel sl)
+					sl.sendParticles(Ssc14ModParticleTypes.SPARK.get(), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, // центр блока
+							20, // количество частиц
+							0.2, 0.2, 0.2, // разброс по X, Y, Z
+							0.2); // скорость частиц
+				// Настраиваем звук: случайная высота тона (0.8 - 1.2) для естественности
+				ResourceLocation sfx = ResourceLocation.parse("ssc_14:welding_work");
+				float pitch = 0.8F + (world instanceof Level l ? l.random : RandomSource.create()).nextFloat() * 0.4F;
+				// Проигрываем звук через вспомогательный метод (см. ниже)
+				playLevelSound(world, pos, sfx, 0.2F, pitch);
+				// === ЛОГИКА ПРОГРЕССА ===
+				// Если ещё не 6 шагов — продолжаем процесс
+				if (step < 6) {
+					// Обновляем значение атрибута прогресс-бара (для отображения в интерфейсе)
+					livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(step);
+					// Планируем следующий шаг через config.delay() тиков
+					// () -> run(step + 1) — это лямбда-выражение: "вызови run со следующим шагом"
+					Ssc14Mod.queueServerWork(config.delay(), () -> run(step + 1));
+				} else {
+					// === ФИНАЛЬНЫЙ ШАГ (шаг 6) — ЗАВЕРШЕНИЕ СВАРКИ ===
+					// Получаем предмет в главной руке для работы с его данными (топливо)
+					ItemStack stack = livingEntity.getMainHandItem();
+					// Читаем значение "fuel" из кастомных данных предмета (NBT-тег)
+					double fuel = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel", 0);
+					// Проверяем, достаточно ли топлива (больше 450)
+					if (fuel > 450) {
+						// Проигрываем финальный звук успеха
+						playLevelSound(world, pos, ResourceLocation.parse("ssc_14:welder_use"), 1F, 1F);
+						// === МЕНЯЕМ БЛОК ===
+						// Вариант А: полная замена блока (если config.resultBlock задан)
+						if (config.resultBlock() != null) {
+							world.setBlock(pos, config.resultBlock().defaultBlockState(), 3);
+							// Флаг 3 = обновить блок + отправить обновление клиентам + пересчитать свет
 						}
+						// Вариант Б: меняем только свойство блока (если задано stateProp)
+						else if (config.stateProp() != null) {
+							world.setBlock(pos, world.getBlockState(pos).setValue(config.stateProp(), config.targetState()), 3);
+						}
+						// === ВЫПАДЕНИЕ ПРЕДМЕТА (если задан dropItem) ===
+						if (config.dropItem() != null && world instanceof ServerLevel sLevel) {
+							// Создаём сущность предмета в центре блока
+							ItemEntity item = new ItemEntity(sLevel, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(config.dropItem()));
+							item.setPickUpDelay(1); // задержка 1 тик, чтобы игрок не подобрал мгновенно
+							item.setUnlimitedLifetime(); // предмет не исчезнет со временем
+							sLevel.addFreshEntity(item); // добавляем в мир
+						}
+						// === ТРАТИМ ТОПЛИВО ===
+						// Обновляем тег "fuel" в предмете: отнимаем 350
+						CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("fuel", fuel - 350));
 					}
-					Ssc14Mod.queueServerWork(20, () -> {
-						if (entity.getX() + entity.getZ() + entity
-								.getY() == (entity instanceof LivingEntity _livingEntity29 && _livingEntity29.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity29.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-								&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.STEEL_WALL.get()) {
-							if (entity instanceof LivingEntity _livingEntity34 && _livingEntity34.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity34.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
-							if (world instanceof ServerLevel _level)
-								_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.SPARK.get()), (x + 0.5), (y + 0.5), (z + 0.5), 20, 0.2, 0.2, 0.2, 0.2);
-							if (world instanceof Level _level) {
-								if (!_level.isClientSide()) {
-									_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2,
-											(float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2));
-								} else {
-									_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2, (float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2),
-											false);
-								}
-							}
-							Ssc14Mod.queueServerWork(20, () -> {
-								if (entity.getX() + entity.getZ()
-										+ entity.getY() == (entity instanceof LivingEntity _livingEntity41 && _livingEntity41.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-												? _livingEntity41.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-												: 0)
-										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-										&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.STEEL_WALL.get()) {
-									if (entity instanceof LivingEntity _livingEntity46 && _livingEntity46.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity46.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
-									if (world instanceof ServerLevel _level)
-										_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.SPARK.get()), (x + 0.5), (y + 0.5), (z + 0.5), 20, 0.2, 0.2, 0.2, 0.2);
-									if (world instanceof Level _level) {
-										if (!_level.isClientSide()) {
-											_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2,
-													(float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2));
-										} else {
-											_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2,
-													(float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2), false);
-										}
-									}
-									Ssc14Mod.queueServerWork(20, () -> {
-										if (entity.getX() + entity.getZ()
-												+ entity.getY() == (entity instanceof LivingEntity _livingEntity53 && _livingEntity53.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-														? _livingEntity53.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-														: 0)
-												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-												&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.STEEL_WALL.get()) {
-											if (entity instanceof LivingEntity _livingEntity58 && _livingEntity58.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity58.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
-											if (world instanceof ServerLevel _level)
-												_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.SPARK.get()), (x + 0.5), (y + 0.5), (z + 0.5), 20, 0.2, 0.2, 0.2, 0.2);
-											if (world instanceof Level _level) {
-												if (!_level.isClientSide()) {
-													_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2,
-															(float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2));
-												} else {
-													_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2,
-															(float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2), false);
-												}
-											}
-											Ssc14Mod.queueServerWork(20, () -> {
-												if (entity.getX() + entity.getZ()
-														+ entity.getY() == (entity instanceof LivingEntity _livingEntity65 && _livingEntity65.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																? _livingEntity65.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																: 0)
-														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.STEEL_WALL.get()) {
-													if (entity instanceof LivingEntity _livingEntity70 && _livingEntity70.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity70.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
-													if (world instanceof ServerLevel _level)
-														_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.SPARK.get()), (x + 0.5), (y + 0.5), (z + 0.5), 20, 0.2, 0.2, 0.2, 0.2);
-													if (world instanceof Level _level) {
-														if (!_level.isClientSide()) {
-															_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2,
-																	(float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2));
-														} else {
-															_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welding_work")), SoundSource.NEUTRAL, (float) 0.2,
-																	(float) Mth.nextDouble(RandomSource.create(), 0.8, 1.2), false);
-														}
-													}
-													Ssc14Mod.queueServerWork(20, () -> {
-														if (entity.getX() + entity.getZ()
-																+ entity.getY() == (entity instanceof LivingEntity _livingEntity77 && _livingEntity77.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																		? _livingEntity77.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																		: 0)
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel",
-																		0) > 450
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.STEEL_WALL.get()) {
-															if (world instanceof ServerLevel _level)
-																_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.SPARK.get()), (x + 0.5), (y + 0.5), (z + 0.5), 20, 0.2, 0.2, 0.2, 0.2);
-															if (world instanceof Level _level) {
-																if (!_level.isClientSide()) {
-																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1);
-																} else {
-																	_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1, false);
-																}
-															}
-															{
-																BlockPos _bp = BlockPos.containing(x, y, z);
-																BlockState _bs = Ssc14ModBlocks.WALL_CARCASE.get().defaultBlockState();
-																BlockState _bso = world.getBlockState(_bp);
-																for (Property<?> _propertyOld : _bso.getProperties()) {
-																	Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
-																	if (_propertyNew != null && _bs.getValue(_propertyNew) != null)
-																		try {
-																			_bs = _bs.setValue(_propertyNew, _bso.getValue(_propertyOld));
-																		} catch (Exception e) {
-																		}
-																}
-																world.setBlock(_bp, _bs, 3);
-															}
-															if (world instanceof ServerLevel _level) {
-																ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), new ItemStack(Ssc14ModItems.STEEL.get()));
-																entityToSpawn.setPickUpDelay(1);
-																entityToSpawn.setUnlimitedLifetime();
-																_level.addFreshEntity(entityToSpawn);
-															}
-															{
-																final String _tagName = "fuel";
-																final double _tagValue = ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag()
-																		.getDoubleOr("fuel", 0) - 350);
-																CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
-															}
-															if (entity instanceof LivingEntity _livingEntity92 && _livingEntity92.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity92.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														} else {
-															if (entity instanceof LivingEntity _livingEntity93 && _livingEntity93.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity93.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														}
-													});
-												} else {
-													if (entity instanceof LivingEntity _livingEntity95 && _livingEntity95.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity95.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-												}
-											});
-										} else {
-											if (entity instanceof LivingEntity _livingEntity97 && _livingEntity97.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity97.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-										}
-									});
-								} else {
-									if (entity instanceof LivingEntity _livingEntity99 && _livingEntity99.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity99.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-								}
-							});
-						} else {
-							if (entity instanceof LivingEntity _livingEntity101 && _livingEntity101.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity101.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-						}
-					});
-				} else {
-					if (entity instanceof LivingEntity _livingEntity103 && _livingEntity103.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity103.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+					// Сбрасываем прогресс-бар в 0 (независимо от успеха)
+					livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 				}
-			});
-		} else if (entity.getX() + entity.getZ()
-				+ entity.getY() == (entity instanceof LivingEntity _livingEntity108 && _livingEntity108.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity108.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-				&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip112 ? blockstate.getValue(_getip112) : -1) == 2) {
-			if (entity instanceof LivingEntity _livingEntity113 && _livingEntity113.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-				_livingEntity113.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
-			Ssc14Mod.queueServerWork(13, () -> {
-				if (entity.getX() + entity.getZ()
-						+ entity.getY() == (entity instanceof LivingEntity _livingEntity117 && _livingEntity117.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity117.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-						&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
-					if (entity instanceof LivingEntity _livingEntity122 && _livingEntity122.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity122.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
-					Ssc14Mod.queueServerWork(13, () -> {
-						if (entity.getX() + entity.getZ() + entity
-								.getY() == (entity instanceof LivingEntity _livingEntity126 && _livingEntity126.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity126.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-								&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
-							if (entity instanceof LivingEntity _livingEntity131 && _livingEntity131.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity131.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
-							Ssc14Mod.queueServerWork(13, () -> {
-								if (entity.getX() + entity.getZ()
-										+ entity.getY() == (entity instanceof LivingEntity _livingEntity135 && _livingEntity135.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-												? _livingEntity135.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-												: 0)
-										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-										&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
-									if (entity instanceof LivingEntity _livingEntity140 && _livingEntity140.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity140.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
-									Ssc14Mod.queueServerWork(13, () -> {
-										if (entity.getX() + entity.getZ()
-												+ entity.getY() == (entity instanceof LivingEntity _livingEntity144 && _livingEntity144.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-														? _livingEntity144.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-														: 0)
-												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-												&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
-											if (entity instanceof LivingEntity _livingEntity149 && _livingEntity149.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity149.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
-											Ssc14Mod.queueServerWork(13, () -> {
-												if (entity.getX() + entity.getZ()
-														+ entity.getY() == (entity instanceof LivingEntity _livingEntity153 && _livingEntity153.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																? _livingEntity153.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																: 0)
-														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
-													if (entity instanceof LivingEntity _livingEntity158 && _livingEntity158.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity158.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
-													Ssc14Mod.queueServerWork(13, () -> {
-														if (entity.getX() + entity.getZ()
-																+ entity.getY() == (entity instanceof LivingEntity _livingEntity162 && _livingEntity162.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																		? _livingEntity162.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																		: 0)
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel",
-																		0) > 450
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-																&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip170 ? blockstate.getValue(_getip170) : -1) == 2) {
-															if (world instanceof Level _level) {
-																if (!_level.isClientSide()) {
-																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1);
-																} else {
-																	_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1, false);
-																}
-															}
-															{
-																int _value = 3;
-																BlockPos _pos = BlockPos.containing(x, y, z);
-																BlockState _bs = world.getBlockState(_pos);
-																if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
-																	world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
-															}
-															{
-																final String _tagName = "fuel";
-																final double _tagValue = ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag()
-																		.getDoubleOr("fuel", 0) - 350);
-																CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
-															}
-															if (entity instanceof LivingEntity _livingEntity177 && _livingEntity177.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity177.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														} else {
-															if (entity instanceof LivingEntity _livingEntity178 && _livingEntity178.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity178.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														}
-													});
-												} else {
-													if (entity instanceof LivingEntity _livingEntity180 && _livingEntity180.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity180.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-												}
-											});
-										} else {
-											if (entity instanceof LivingEntity _livingEntity182 && _livingEntity182.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity182.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-										}
-									});
-								} else {
-									if (entity instanceof LivingEntity _livingEntity184 && _livingEntity184.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity184.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-								}
-							});
-						} else {
-							if (entity instanceof LivingEntity _livingEntity186 && _livingEntity186.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity186.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-						}
-					});
-				} else {
-					if (entity instanceof LivingEntity _livingEntity188 && _livingEntity188.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity188.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-				}
-			});
-		} else if (entity.getX() + entity.getZ()
-				+ entity.getY() == (entity instanceof LivingEntity _livingEntity193 && _livingEntity193.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity193.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-				&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip197 ? blockstate.getValue(_getip197) : -1) == 5) {
-			if (entity instanceof LivingEntity _livingEntity198 && _livingEntity198.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-				_livingEntity198.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
-			Ssc14Mod.queueServerWork(27, () -> {
-				if (entity.getX() + entity.getZ()
-						+ entity.getY() == (entity instanceof LivingEntity _livingEntity202 && _livingEntity202.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity202.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-						&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
-					if (entity instanceof LivingEntity _livingEntity207 && _livingEntity207.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity207.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
-					Ssc14Mod.queueServerWork(27, () -> {
-						if (entity.getX() + entity.getZ() + entity
-								.getY() == (entity instanceof LivingEntity _livingEntity211 && _livingEntity211.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity211.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-								&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
-							if (entity instanceof LivingEntity _livingEntity216 && _livingEntity216.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity216.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
-							Ssc14Mod.queueServerWork(27, () -> {
-								if (entity.getX() + entity.getZ()
-										+ entity.getY() == (entity instanceof LivingEntity _livingEntity220 && _livingEntity220.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-												? _livingEntity220.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-												: 0)
-										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-										&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
-									if (entity instanceof LivingEntity _livingEntity225 && _livingEntity225.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity225.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
-									Ssc14Mod.queueServerWork(27, () -> {
-										if (entity.getX() + entity.getZ()
-												+ entity.getY() == (entity instanceof LivingEntity _livingEntity229 && _livingEntity229.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-														? _livingEntity229.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-														: 0)
-												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-												&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
-											if (entity instanceof LivingEntity _livingEntity234 && _livingEntity234.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity234.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
-											Ssc14Mod.queueServerWork(27, () -> {
-												if (entity.getX() + entity.getZ()
-														+ entity.getY() == (entity instanceof LivingEntity _livingEntity238 && _livingEntity238.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																? _livingEntity238.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																: 0)
-														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
-													if (entity instanceof LivingEntity _livingEntity243 && _livingEntity243.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity243.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
-													Ssc14Mod.queueServerWork(27, () -> {
-														if (entity.getX() + entity.getZ()
-																+ entity.getY() == (entity instanceof LivingEntity _livingEntity247 && _livingEntity247.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																		? _livingEntity247.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																		: 0)
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel",
-																		0) > 450
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL.get()
-																&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip255 ? blockstate.getValue(_getip255) : -1) == 5) {
-															if (world instanceof Level _level) {
-																if (!_level.isClientSide()) {
-																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1);
-																} else {
-																	_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1, false);
-																}
-															}
-															{
-																int _value = 6;
-																BlockPos _pos = BlockPos.containing(x, y, z);
-																BlockState _bs = world.getBlockState(_pos);
-																if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
-																	world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
-															}
-															{
-																final String _tagName = "fuel";
-																final double _tagValue = ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag()
-																		.getDoubleOr("fuel", 0) - 350);
-																CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
-															}
-															if (entity instanceof LivingEntity _livingEntity262 && _livingEntity262.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity262.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														} else {
-															if (entity instanceof LivingEntity _livingEntity263 && _livingEntity263.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity263.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														}
-													});
-												} else {
-													if (entity instanceof LivingEntity _livingEntity265 && _livingEntity265.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity265.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-												}
-											});
-										} else {
-											if (entity instanceof LivingEntity _livingEntity267 && _livingEntity267.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity267.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-										}
-									});
-								} else {
-									if (entity instanceof LivingEntity _livingEntity269 && _livingEntity269.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity269.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-								}
-							});
-						} else {
-							if (entity instanceof LivingEntity _livingEntity271 && _livingEntity271.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity271.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-						}
-					});
-				} else {
-					if (entity instanceof LivingEntity _livingEntity273 && _livingEntity273.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity273.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-				}
-			});
-		} else if (entity.getX() + entity.getZ()
-				+ entity.getY() == (entity instanceof LivingEntity _livingEntity278 && _livingEntity278.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity278.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-				&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip282 ? blockstate.getValue(_getip282) : -1) == 0) {
-			if (entity instanceof LivingEntity _livingEntity283 && _livingEntity283.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-				_livingEntity283.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
-			Ssc14Mod.queueServerWork(20, () -> {
-				if (entity.getX() + entity.getZ()
-						+ entity.getY() == (entity instanceof LivingEntity _livingEntity287 && _livingEntity287.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity287.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-						&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
-					if (entity instanceof LivingEntity _livingEntity292 && _livingEntity292.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity292.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
-					Ssc14Mod.queueServerWork(20, () -> {
-						if (entity.getX() + entity.getZ() + entity
-								.getY() == (entity instanceof LivingEntity _livingEntity296 && _livingEntity296.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity296.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-								&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
-							if (entity instanceof LivingEntity _livingEntity301 && _livingEntity301.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity301.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
-							Ssc14Mod.queueServerWork(20, () -> {
-								if (entity.getX() + entity.getZ()
-										+ entity.getY() == (entity instanceof LivingEntity _livingEntity305 && _livingEntity305.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-												? _livingEntity305.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-												: 0)
-										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-										&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
-									if (entity instanceof LivingEntity _livingEntity310 && _livingEntity310.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity310.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
-									Ssc14Mod.queueServerWork(20, () -> {
-										if (entity.getX() + entity.getZ()
-												+ entity.getY() == (entity instanceof LivingEntity _livingEntity314 && _livingEntity314.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-														? _livingEntity314.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-														: 0)
-												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-												&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
-											if (entity instanceof LivingEntity _livingEntity319 && _livingEntity319.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity319.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
-											Ssc14Mod.queueServerWork(20, () -> {
-												if (entity.getX() + entity.getZ()
-														+ entity.getY() == (entity instanceof LivingEntity _livingEntity323 && _livingEntity323.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																? _livingEntity323.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																: 0)
-														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
-													if (entity instanceof LivingEntity _livingEntity328 && _livingEntity328.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity328.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
-													Ssc14Mod.queueServerWork(20, () -> {
-														if (entity.getX() + entity.getZ()
-																+ entity.getY() == (entity instanceof LivingEntity _livingEntity332 && _livingEntity332.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																		? _livingEntity332.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																		: 0)
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel",
-																		0) > 450
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-																&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip340 ? blockstate.getValue(_getip340) : -1) == 0) {
-															if (world instanceof Level _level) {
-																if (!_level.isClientSide()) {
-																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1);
-																} else {
-																	_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1, false);
-																}
-															}
-															{
-																int _value = 1;
-																BlockPos _pos = BlockPos.containing(x, y, z);
-																BlockState _bs = world.getBlockState(_pos);
-																if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
-																	world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
-															}
-															{
-																final String _tagName = "fuel";
-																final double _tagValue = ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag()
-																		.getDoubleOr("fuel", 0) - 350);
-																CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
-															}
-															if (entity instanceof LivingEntity _livingEntity347 && _livingEntity347.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity347.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														} else {
-															if (entity instanceof LivingEntity _livingEntity348 && _livingEntity348.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity348.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														}
-													});
-												} else {
-													if (entity instanceof LivingEntity _livingEntity350 && _livingEntity350.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity350.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-												}
-											});
-										} else {
-											if (entity instanceof LivingEntity _livingEntity352 && _livingEntity352.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity352.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-										}
-									});
-								} else {
-									if (entity instanceof LivingEntity _livingEntity354 && _livingEntity354.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity354.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-								}
-							});
-						} else {
-							if (entity instanceof LivingEntity _livingEntity356 && _livingEntity356.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity356.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-						}
-					});
-				} else {
-					if (entity instanceof LivingEntity _livingEntity358 && _livingEntity358.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity358.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-				}
-			});
-		} else if (entity.getX() + entity.getZ()
-				+ entity.getY() == (entity instanceof LivingEntity _livingEntity363 && _livingEntity363.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity363.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-				&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-				&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip367 ? blockstate.getValue(_getip367) : -1) == 3) {
-			if (entity instanceof LivingEntity _livingEntity368 && _livingEntity368.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-				_livingEntity368.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
-			Ssc14Mod.queueServerWork(27, () -> {
-				if (entity.getX() + entity.getZ()
-						+ entity.getY() == (entity instanceof LivingEntity _livingEntity372 && _livingEntity372.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity372.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-						&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
-					if (entity instanceof LivingEntity _livingEntity377 && _livingEntity377.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity377.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
-					Ssc14Mod.queueServerWork(27, () -> {
-						if (entity.getX() + entity.getZ() + entity
-								.getY() == (entity instanceof LivingEntity _livingEntity381 && _livingEntity381.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity381.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-								&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
-							if (entity instanceof LivingEntity _livingEntity386 && _livingEntity386.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity386.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
-							Ssc14Mod.queueServerWork(27, () -> {
-								if (entity.getX() + entity.getZ()
-										+ entity.getY() == (entity instanceof LivingEntity _livingEntity390 && _livingEntity390.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-												? _livingEntity390.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-												: 0)
-										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-										&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
-									if (entity instanceof LivingEntity _livingEntity395 && _livingEntity395.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity395.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
-									Ssc14Mod.queueServerWork(27, () -> {
-										if (entity.getX() + entity.getZ()
-												+ entity.getY() == (entity instanceof LivingEntity _livingEntity399 && _livingEntity399.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-														? _livingEntity399.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-														: 0)
-												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-												&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
-											if (entity instanceof LivingEntity _livingEntity404 && _livingEntity404.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity404.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
-											Ssc14Mod.queueServerWork(27, () -> {
-												if (entity.getX() + entity.getZ()
-														+ entity.getY() == (entity instanceof LivingEntity _livingEntity408 && _livingEntity408.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																? _livingEntity408.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																: 0)
-														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-														&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()) {
-													if (entity instanceof LivingEntity _livingEntity413 && _livingEntity413.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity413.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
-													Ssc14Mod.queueServerWork(27, () -> {
-														if (entity.getX() + entity.getZ()
-																+ entity.getY() == (entity instanceof LivingEntity _livingEntity417 && _livingEntity417.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																		? _livingEntity417.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																		: 0)
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel",
-																		0) > 450
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()
-																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ARMORED_WINDOW.get()
-																&& (getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip425 ? blockstate.getValue(_getip425) : -1) == 3) {
-															if (world instanceof Level _level) {
-																if (!_level.isClientSide()) {
-																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1);
-																} else {
-																	_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:welder_use")), SoundSource.NEUTRAL, 1, 1, false);
-																}
-															}
-															{
-																int _value = 4;
-																BlockPos _pos = BlockPos.containing(x, y, z);
-																BlockState _bs = world.getBlockState(_pos);
-																if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
-																	world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
-															}
-															{
-																final String _tagName = "fuel";
-																final double _tagValue = ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag()
-																		.getDoubleOr("fuel", 0) - 350);
-																CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
-															}
-															if (entity instanceof LivingEntity _livingEntity432 && _livingEntity432.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity432.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														} else {
-															if (entity instanceof LivingEntity _livingEntity433 && _livingEntity433.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity433.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														}
-													});
-												} else {
-													if (entity instanceof LivingEntity _livingEntity435 && _livingEntity435.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity435.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-												}
-											});
-										} else {
-											if (entity instanceof LivingEntity _livingEntity437 && _livingEntity437.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity437.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-										}
-									});
-								} else {
-									if (entity instanceof LivingEntity _livingEntity439 && _livingEntity439.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity439.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-								}
-							});
-						} else {
-							if (entity instanceof LivingEntity _livingEntity441 && _livingEntity441.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity441.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-						}
-					});
-				} else {
-					if (entity instanceof LivingEntity _livingEntity443 && _livingEntity443.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity443.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-				}
-			});
+			}
+
+			/**
+			* reset() — сбрасывает прогресс, если что-то пошло не так
+			* Вызывается при прерывании процесса (игрок сдвинулся, сменил предмет и т.п.)
+			*/
+			void reset() {
+				livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+			}
 		}
+		// === ЗАПУСКАЕМ ПРОЦЕСС С ПЕРВОГО ШАГА ===
+		new WeldProcess().run(1);
+	} // ← КОНЕЦ МЕТОДА execute
+		// ============================================================================
+		// ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ (вне execute, но внутри класса)
+		// ============================================================================
+
+	/**
+	* playLevelSound — универсальный метод для проигрывания звука
+	* Автоматически определяет, сервер это или клиент, и использует правильный метод
+	*
+	* @param world: мир
+	* @param pos: позиция блока
+	* @param soundLoc: идентификатор звука (например, "ssc_14:welding_work")
+	* @param volume: громкость (1.0 = 100%)
+	* @param pitch: высота тона (1.0 = нормальная)
+	*/
+	private static void playLevelSound(LevelAccessor world, BlockPos pos, ResourceLocation soundLoc, float volume, float pitch) {
+		// Работаем только если world — это полноценный Level (а не LevelAccessor)
+		if (world instanceof Level lvl) {
+			// Получаем объект SoundEvent по его идентификатору
+			net.minecraft.sounds.SoundEvent sound = BuiltInRegistries.SOUND_EVENT.getValue(soundLoc);
+			// Если звук найден в реестре
+			if (sound != null) {
+				// На сервере: проигрываем звук всем игрокам вокруг
+				if (!lvl.isClientSide())
+					lvl.playSound(null, pos, sound, SoundSource.NEUTRAL, volume, pitch);
+				// На клиенте: проигрываем локально (false = не передавать другим игрокам)
+				else
+					lvl.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), sound, SoundSource.NEUTRAL, volume, pitch, false);
+			}
+		}
+		/**
+		* getPropertyByName — ищет свойство блока по имени
+		* Нужен, потому что в MCreator неудобно работать с динамическими свойствами
+		*
+		* @param state: состояние блока
+		* @param name: имя свойства (например, "blockstate", "open", "powered")
+		* @return: объект Property, если найден, или null
+		*/
 	}
 
 	private static Property<?> getPropertyByName(BlockState state, String name) {

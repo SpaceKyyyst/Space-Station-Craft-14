@@ -15,11 +15,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.procedures.WorldObjectCheckUIProcedure;
-import net.mcreator.ssc.procedures.WOCtextPinnedProcedure;
-import net.mcreator.ssc.procedures.WOCtextP2Procedure;
-import net.mcreator.ssc.procedures.WOCtextP1Procedure;
-import net.mcreator.ssc.procedures.WOCtextNoPinnedProcedure;
+import net.mcreator.ssc.procedures.*;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class WorldCheckUIOverlay {
@@ -46,7 +42,9 @@ public class WorldCheckUIOverlay {
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 
 					WOCtextP1Procedure.execute(entity), w / 2 + 5, h / 2 + 3, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_proc_wo_ctext_p_2"), w / 2 + 5, h / 2 + 26, -1, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+
+					WOCtextForDisassemblyUseProcedure.execute(), w / 2 + 5, h / 2 + 26, -1, false);
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 
 					WOCtextP2Procedure.execute(world, entity), w / 2 + 5, h / 2 + 38, -16711681, false);

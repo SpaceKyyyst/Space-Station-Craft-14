@@ -11,6 +11,84 @@
       "map": {
         "12": "tech_airlock_f_t"
       }
+    },
+    "atmos": {
+      "name": "atmos",
+      "map": {
+        "12": "atmos_airlock_f_t"
+      }
+    },
+    "carg": {
+      "name": "carg",
+      "map": {
+        "12": "carg_airlock_f_t"
+      }
+    },
+    "cc": {
+      "name": "cc",
+      "map": {
+        "12": "cc_airlock_f_t"
+      }
+    },
+    "chm": {
+      "name": "chm",
+      "map": {
+        "12": "chm_airlock_f_t"
+      }
+    },
+    "comm": {
+      "name": "comm",
+      "map": {
+        "12": "comm_airlock_f_t"
+      }
+    },
+    "eng": {
+      "name": "eng",
+      "map": {
+        "12": "eng_airlock_f_t"
+      }
+    },
+    "gidr": {
+      "name": "gidr",
+      "map": {
+        "12": "gidr_airlock_f_t"
+      }
+    },
+    "med": {
+      "name": "med",
+      "map": {
+        "12": "med_airlock_f_t"
+      }
+    },
+    "rnd": {
+      "name": "rnd",
+      "map": {
+        "12": "rnd_airlock_f_t"
+      }
+    },
+    "sec": {
+      "name": "sec",
+      "map": {
+        "12": "sec_airlock_f_t"
+      }
+    },
+    "sind": {
+      "name": "sind",
+      "map": {
+        "12": "sind_airlock_f_t"
+      }
+    },
+    "util": {
+      "name": "util",
+      "map": {
+        "12": "util_airlock_f_t"
+      }
+    },
+    "white": {
+      "name": "white",
+      "map": {
+        "12": "white_airlock_f_t"
+      }
     }
   }
 }

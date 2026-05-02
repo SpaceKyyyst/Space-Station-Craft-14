@@ -39,7 +39,8 @@
         "data": {
           "name": "label_proc_wo_ctext_p_2",
           "text": {
-            "fixedValue": "Для разборки используйте: "
+            "fixedValue": "Для разборки используйте: ",
+            "name": "WOCtextForDisassemblyUse"
           },
           "color": {
             "value": -1,

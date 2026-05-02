@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:combat_boots_item",
+    "ssc_14:magnetic_boots_item",
+    "ssc_14:magnetic_boots_active_item"
+  ]
+}

@@ -237,6 +237,14 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> ISOLATED_GLOVES;
 	public static final DeferredItem<Item> TECH_AIRLOCK_D_1;
 	public static final DeferredItem<Item> PICK;
+	public static final DeferredItem<Item> SECURITY_JUMPSUIT;
+	public static final DeferredItem<Item> COMBAT_BOOTS_ITEM;
+	public static final DeferredItem<Item> COMPUTER;
+	public static final DeferredItem<Item> ATMOS_AIRLOCK_D_1;
+	public static final DeferredItem<Item> CARGO_AIRLOCK_D_1;
+	public static final DeferredItem<Item> CLOSET_SECURE;
+	public static final DeferredItem<Item> MAGNETIC_BOOTS_ITEM;
+	public static final DeferredItem<Item> MAGNETIC_BOOTS_ACTIVE_ITEM;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -422,7 +430,7 @@ public class Ssc14ModItems {
 		DEBUG_GRAV_GEN = block(Ssc14ModBlocks.DEBUG_GRAV_GEN, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
 		NUCLEAR_WARHEAD = block(Ssc14ModBlocks.NUCLEAR_WARHEAD, new Item.Properties().stacksTo(1));
 		DIRT = block(Ssc14ModBlocks.DIRT, new Item.Properties().stacksTo(1));
-		GRASS_LIGHT_BLOCK = block(Ssc14ModBlocks.GRASS_LIGHT_BLOCK);
+		GRASS_LIGHT_BLOCK = block(Ssc14ModBlocks.GRASS_LIGHT_BLOCK, new Item.Properties().stacksTo(1));
 		LOW_PLANET_GRASS = block(Ssc14ModBlocks.LOW_PLANET_GRASS, new Item.Properties().stacksTo(1));
 		MED_PLANET_GRASS = block(Ssc14ModBlocks.MED_PLANET_GRASS, new Item.Properties().stacksTo(1));
 		PLANETARY_TREE_LOG = block(Ssc14ModBlocks.PLANETARY_TREE_LOG, new Item.Properties().stacksTo(1));
@@ -449,6 +457,14 @@ public class Ssc14ModItems {
 		ISOLATED_GLOVES = register("isolated_gloves", IsolatedGlovesItem::new);
 		TECH_AIRLOCK_D_1 = block(Ssc14ModBlocks.TECH_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
 		PICK = register("pick", PickItem::new);
+		SECURITY_JUMPSUIT = register("security_jumpsuit", SecurityJumpsuitItem::new);
+		COMBAT_BOOTS_ITEM = register("combat_boots_item", CombatBootsItemItem::new);
+		COMPUTER = block(Ssc14ModBlocks.COMPUTER, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+		ATMOS_AIRLOCK_D_1 = block(Ssc14ModBlocks.ATMOS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
+		CARGO_AIRLOCK_D_1 = block(Ssc14ModBlocks.CARGO_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
+		CLOSET_SECURE = block(Ssc14ModBlocks.CLOSET_SECURE, new Item.Properties().stacksTo(1).fireResistant());
+		MAGNETIC_BOOTS_ITEM = register("magnetic_boots_item", MagneticBootsItemItem::new);
+		MAGNETIC_BOOTS_ACTIVE_ITEM = register("magnetic_boots_active_item", MagneticBootsACTIVEItemItem::new);
 	}
 
 	// Start of user code block custom items

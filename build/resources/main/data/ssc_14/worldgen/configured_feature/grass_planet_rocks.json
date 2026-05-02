@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "ssc_14:structure_feature",
+          "config": {
+            "structure": "ssc_14:rock_1",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": "minecraft:air",
+            "offset": [
+              0,
+              -10,
+              0
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "ssc_14:structure_feature",
+          "config": {
+            "structure": "ssc_14:rock_2",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": "minecraft:air",
+            "offset": [
+              0,
+              -10,
+              0
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "ssc_14:structure_feature",
+          "config": {
+            "structure": "ssc_14:rock_big",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": "minecraft:air",
+            "offset": [
+              0,
+              -10,
+              0
+            ]
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

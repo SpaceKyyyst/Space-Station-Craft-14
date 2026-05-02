@@ -21,7 +21,6 @@ import java.util.function.Function;
 public class Ssc14ModBlocks {
 	public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(Ssc14Mod.MODID);
 	public static final DeferredBlock<Block> VOIDB;
-	public static final DeferredBlock<Block> SPACED_PORTAL;
 	public static final DeferredBlock<Block> ROD_FLOOR;
 	public static final DeferredBlock<Block> SHEATHING;
 	public static final DeferredBlock<Block> TITLE_STEEL;
@@ -128,9 +127,15 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> DIRECTED_BASE_WINDOW;
 	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1OPEN;
+	public static final DeferredBlock<Block> COMPUTER;
+	public static final DeferredBlock<Block> ATMOS_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> ATMOS_AIRLOCK_D_1OPEN;
+	public static final DeferredBlock<Block> CARGO_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> CARGO_AIRLOCK_D_1OPEN;
+	public static final DeferredBlock<Block> CLOSET_SECURE;
+	public static final DeferredBlock<Block> UP_CLOSET_PLUG;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
-		SPACED_PORTAL = register("spaced_portal", SpacedPortalBlock::new);
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
 		SHEATHING = register("sheathing", SheathingBlock::new);
 		TITLE_STEEL = register("title_steel", TitleSteelBlock::new);
@@ -237,6 +242,13 @@ public class Ssc14ModBlocks {
 		DIRECTED_BASE_WINDOW = register("directed_base_window", DirectedBaseWindowBlock::new);
 		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
 		TECH_AIRLOCK_D_1OPEN = register("tech_airlock_d_1open", TechAirlockD1openBlock::new);
+		COMPUTER = register("computer", ComputerBlock::new);
+		ATMOS_AIRLOCK_D_1 = register("atmos_airlock_d_1", AtmosAirlockD1Block::new);
+		ATMOS_AIRLOCK_D_1OPEN = register("atmos_airlock_d_1open", AtmosAirlockD1openBlock::new);
+		CARGO_AIRLOCK_D_1 = register("cargo_airlock_d_1", CargoAirlockD1Block::new);
+		CARGO_AIRLOCK_D_1OPEN = register("cargo_airlock_d_1open", CargoAirlockD1openBlock::new);
+		CLOSET_SECURE = register("closet_secure", ClosetSecureBlock::new);
+		UP_CLOSET_PLUG = register("up_closet_plug", UpClosetPLUGBlock::new);
 	}
 
 	// Start of user code block custom blocks

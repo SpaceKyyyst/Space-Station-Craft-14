@@ -98,6 +98,7 @@ public class Ssc14ModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
+	public static final KeyMapping INTERACTION = new KeyMapping("key.ssc_14.interaction", GLFW.GLFW_KEY_E, "key.categories.inventory");
 	private static long PULLTHE_OBJECT_LASTPRESS = 0;
 	private static long WORLD_OBJECT_CHECK_LASTPRESS = 0;
 
@@ -108,6 +109,7 @@ public class Ssc14ModKeyMappings {
 		event.register(PULLTHE_OBJECT);
 		event.register(WORLD_OBJECT_CHECK);
 		event.register(CRAWL);
+		event.register(INTERACTION);
 	}
 
 	@EventBusSubscriber(Dist.CLIENT)

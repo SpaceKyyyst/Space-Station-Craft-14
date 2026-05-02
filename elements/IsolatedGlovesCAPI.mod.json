@@ -13,12 +13,12 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelisolated_gloves",
-    "baubleModelTexture": "isolated_gloves_t.png",
+    "baubleModel": "Modelgloves",
+    "baubleModelTexture": "gloves_isolated_texture.png",
     "helmetModelPart": "Empty",
     "bodyModelPart": "Empty",
-    "armsModelPartL": "leftarm",
-    "armsModelPartR": "rightarm",
+    "armsModelPartL": "l_hand",
+    "armsModelPartR": "r_hand",
     "leggingsModelPartL": "Empty",
     "leggingsModelPartR": "Empty",
     "disabledToggles": []

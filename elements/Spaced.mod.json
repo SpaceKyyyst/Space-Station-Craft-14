@@ -61,6 +61,6 @@
     "creativeTabs": [],
     "texture": "",
     "portalTexture": "space_anomaly_portal",
-    "enablePortal": true
+    "enablePortal": false
   }
 }

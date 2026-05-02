@@ -12,8 +12,8 @@ darknessEffectScale:1.0
 glintSpeed:0.5
 glintStrength:0.75
 prioritizeChunkUpdates:0
-fullscreen:false
-gamma:0.5
+fullscreen:true
+gamma:0.7570422535211268
 graphicsMode:1
 guiScale:0
 maxFps:260
@@ -24,7 +24,7 @@ particles:0
 reducedDebugInfo:false
 renderClouds:"false"
 cloudRange:128
-renderDistance:12
+renderDistance:17
 simulationDistance:10
 screenEffectScale:1.0
 soundDevice:""
@@ -134,6 +134,7 @@ key_key.ssc_14.rotate:key.keyboard.r
 key_key.ssc_14.pullthe_object:key.keyboard.f
 key_key.ssc_14.world_object_check:key.keyboard.left.shift
 key_key.ssc_14.crawl:key.keyboard.z
+key_key.ssc_14.interaction:key.keyboard.e:SHIFT
 key_key.pickup.item:key.keyboard.unknown
 soundCategory_master:1.0
 soundCategory_music:0.0

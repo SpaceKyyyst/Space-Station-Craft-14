@@ -2,7 +2,7 @@
   "_fv": 85,
   "_type": "block",
   "definition": {
-    "texture": "minecraft:debug",
+    "texture": "debug_nuke",
     "textureTop": "",
     "textureLeft": "",
     "textureFront": "",
@@ -19,9 +19,6 @@
     "itemTexture": "",
     "particleTexture": "",
     "blockSetType": "OAK",
-    "pottedPlant": {
-      "value": ""
-    },
     "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,
@@ -128,7 +125,7 @@
     "vibrationSensitivityRadius": {
       "fixedValue": 7.0
     },
-    "hasInventory": false,
+    "hasInventory": true,
     "openGUIOnRightClick": false,
     "inventorySize": 9,
     "inventoryStackSize": 99,

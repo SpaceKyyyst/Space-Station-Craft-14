@@ -460,5 +460,22 @@
   "item.ssc_14.isolated_gloves": "Isolated Gloves",
   "item.ssc_14.tech_airlock_d_1": "Technical Airlock",
   "item.ssc_14.tech_airlock_d_1open": "Technical Airlock",
-  "item.ssc_14.pick": "Pick"
+  "item.ssc_14.pick": "Pick",
+  "curios.identifier.jumpsuit": "Jumpsuit",
+  "item.ssc_14.security_jumpsuit": "Security jumpsuit",
+  "curios.identifier.boots": "Boots",
+  "item.ssc_14.combat_boots_item": "Combat Boots",
+  "item.ssc_14.computer": "Computer",
+  "item.ssc_14.atmos_airlock_d_1": "Atmos Airlock",
+  "item.ssc_14.atmos_airlock_d_1open": "Atmos Airlock",
+  "item.ssc_14.cargo_airlock_d_1": "Cargo Airlock",
+  "item.ssc_14.cargo_airlock_d_1open": "Cargo Airlock",
+  "item.ssc_14.closet_secure": "Closet Secure",
+  "item.ssc_14.up_closet_plug": "Up Closet PLUG",
+  "item.ssc_14.magnetic_boots_item": "Magnetic Boots",
+  "item.ssc_14.magnetic_boots_active_item": "Magnetic Boots",
+  "key.ssc_14.interaction": "Interaction",
+  "translation.key.magboots_description_off": "Off",
+  "translation.key.magboots_description_on": "On",
+  "translation.key.for_disassembly_use": "For disassembly use: "
 }

@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelisolated_gloves;
+import net.mcreator.ssc.client.model.Modelgloves;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,19 +22,19 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class IsolatedGlovesCAPIRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/isolated_gloves_t.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/gloves_isolated_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public IsolatedGlovesCAPIRenderer() {
-        Modelisolated_gloves model = new Modelisolated_gloves(Minecraft.getInstance().getEntityModels().bakeLayer(Modelisolated_gloves.LAYER_LOCATION));
+        Modelgloves model = new Modelgloves(Minecraft.getInstance().getEntityModels().bakeLayer(Modelgloves.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
                     "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
                 "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap())
             )),
                 "body", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
-                "left_arm", model.leftarm,
-                "right_arm", model.rightarm,
+                "left_arm", model.l_hand,
+                "right_arm", model.r_hand,
                 "left_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
                 "right_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap())
         )));

@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/closet_open",
+  "textures": {
+    "all": "ssc_14:block/closet_secure_item",
+    "particle": "ssc_14:block/closet_secure_item",
+    "0": "ssc_14:block/closet_secure_texture"
+  },
+  "render_type": "cutout"
+}

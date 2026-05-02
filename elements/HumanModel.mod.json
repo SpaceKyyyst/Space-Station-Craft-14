@@ -1,0 +1,13 @@
+{
+  "_fv": 85,
+  "_type": "humanoidmodel",
+  "definition": {
+    "modelName": "Modelhuman_m",
+    "helmetModelPart": "head",
+    "bodyModelPart": "torso",
+    "armsModelPartL": "l_arm",
+    "armsModelPartR": "r_arm",
+    "leggingsModelPartL": "l_leg",
+    "leggingsModelPartR": "r_leg"
+  }
+}

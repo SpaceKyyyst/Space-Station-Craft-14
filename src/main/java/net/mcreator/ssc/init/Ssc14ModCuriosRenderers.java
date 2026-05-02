@@ -22,5 +22,9 @@ public class Ssc14ModCuriosRenderers {
 		ICurioRenderer.register(Ssc14ModItems.TRNS_SCARF.get(), TrnsScarfCAPIRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.YELLOW_SCARF.get(), YellowScarfCAPIRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.ISOLATED_GLOVES.get(), IsolatedGlovesCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.SECURITY_JUMPSUIT.get(), SecurityRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.COMBAT_BOOTS_ITEM.get(), CombatBootsRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.MAGNETIC_BOOTS_ITEM.get(), MagneticBootsRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get(), MagneticBootsACTIVERenderer::new);
 	}
 }

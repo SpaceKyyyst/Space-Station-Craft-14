@@ -1,0 +1,12 @@
+{
+  "_fv": 85,
+  "_type": "curiosslot",
+  "definition": {
+    "texture": "boots_slot.png",
+    "name": "Boots",
+    "amount": 1,
+    "modelToggling": false,
+    "changeOrder": false,
+    "slotOrder": 4
+  }
+}

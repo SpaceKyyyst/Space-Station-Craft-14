@@ -1,0 +1,870 @@
+{
+  "_fv": 85,
+  "_type": "block",
+  "definition": {
+    "texture": "airlock_cargo_item",
+    "textureTop": "",
+    "textureLeft": "",
+    "textureFront": "",
+    "textureRight": "",
+    "textureBack": "",
+    "renderType": 2,
+    "customModelName": "base_airlock_f:carg",
+    "rotationMode": 1,
+    "enablePitch": false,
+    "emissiveRendering": false,
+    "displayFluidOverlay": false,
+    "states": [
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "base_airlock_f_1op:carg",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 15.0,
+            "my": 8.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 30.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 9.0,
+            "my": 8.0,
+            "mz": 7.0,
+            "Mx": 15.0,
+            "My": 30.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 7.0,
+            "my": 15.0,
+            "mz": 9.0,
+            "Mx": 9.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 8.0,
+            "my": 30.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 9.0,
+            "my": 0.0,
+            "mz": 9.0,
+            "Mx": 11.0,
+            "My": 17.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 10.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 8.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 12.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 15.0,
+            "My": 1.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.5,
+            "my": 13.5,
+            "mz": 6.0,
+            "Mx": 3.5,
+            "My": 16.5,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 8.0,
+            "My": 12.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 7.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 9.0,
+            "My": 17.0,
+            "Mz": 7.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 18.0,
+            "mz": 6.0,
+            "Mx": 7.0,
+            "My": 32.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 5.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 7.0,
+            "My": 32.0,
+            "Mz": 7.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 13.0,
+            "mz": 7.0,
+            "Mx": 4.0,
+            "My": 17.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 12.0,
+            "mz": 7.0,
+            "Mx": 7.0,
+            "My": 18.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 5.0,
+            "My": 1.0,
+            "Mz": 10.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 9,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 1
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "base_airlock_f_2op:carg",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 10.0,
+            "my": 8.0,
+            "mz": 7.0,
+            "Mx": 16.0,
+            "My": 30.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 8.0,
+            "my": 15.0,
+            "mz": 9.0,
+            "Mx": 10.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 9.0,
+            "my": 30.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 10.0,
+            "my": 0.0,
+            "mz": 9.0,
+            "Mx": 12.0,
+            "My": 17.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 11.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 8.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 13.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 1.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 13.5,
+            "mz": 6.0,
+            "Mx": 1.5,
+            "My": 16.5,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 6.0,
+            "My": 12.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 5.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 7.0,
+            "My": 17.0,
+            "Mz": 7.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 18.0,
+            "mz": 6.0,
+            "Mx": 5.0,
+            "My": 32.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 3.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 5.0,
+            "My": 32.0,
+            "Mz": 7.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 13.0,
+            "mz": 7.0,
+            "Mx": 2.0,
+            "My": 17.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 12.0,
+            "mz": 7.0,
+            "Mx": 5.0,
+            "My": 18.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 3.0,
+            "My": 1.0,
+            "Mz": 10.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 9,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 2
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "base_airlock_f_3op:carg",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 12.0,
+            "my": 8.0,
+            "mz": 7.0,
+            "Mx": 16.0,
+            "My": 30.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 10.0,
+            "my": 15.0,
+            "mz": 9.0,
+            "Mx": 12.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 11.0,
+            "my": 30.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 12.0,
+            "my": 0.0,
+            "mz": 9.0,
+            "Mx": 14.0,
+            "My": 17.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 13.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 8.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 1.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 4.0,
+            "My": 12.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 3.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 5.0,
+            "My": 17.0,
+            "Mz": 7.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 18.0,
+            "mz": 6.0,
+            "Mx": 3.0,
+            "My": 32.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 3.0,
+            "My": 32.0,
+            "Mz": 7.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 12.0,
+            "mz": 7.0,
+            "Mx": 3.0,
+            "My": 18.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 1.0,
+            "My": 1.0,
+            "Mz": 10.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 9,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 3
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "base_airlock_f_4op:carg",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 14.0,
+            "my": 8.0,
+            "mz": 7.0,
+            "Mx": 16.0,
+            "My": 30.0,
+            "Mz": 9.0,
+            "subtract": false
+          },
+          {
+            "mx": 12.0,
+            "my": 15.0,
+            "mz": 9.0,
+            "Mx": 14.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 13.0,
+            "my": 30.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 9.0,
+            "Mx": 16.0,
+            "My": 17.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 16.0,
+            "My": 8.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 6.0,
+            "Mx": 2.0,
+            "My": 12.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 3.0,
+            "My": 17.0,
+            "Mz": 7.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 18.0,
+            "mz": 7.0,
+            "Mx": 1.0,
+            "My": 32.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 1.0,
+            "My": 32.0,
+            "Mz": 7.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 12.0,
+            "mz": 7.0,
+            "Mx": 1.0,
+            "My": 18.0,
+            "Mz": 9.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 9,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 4
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "base_airlock_f_bolted:carg",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 9,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 5
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "base_airlock_f_deactiv_open_p_brewed:carg",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 9,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 6
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "base_airlock_f_open_p:carg",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 9,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 7
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "base_airlock_f_emerg_open_p:carg",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 9,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 8
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "base_airlock_f_bolted_open_p:carg",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 9,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 9
+          }
+        ]
+      }
+    ],
+    "animations": [],
+    "itemTexture": "airlock_cargo_item",
+    "particleTexture": "",
+    "blockSetType": "OAK",
+    "leavesParticleChance": 0.0,
+    "tintType": "No tint",
+    "isItemTinted": false,
+    "hasTransparency": true,
+    "connectedSides": false,
+    "transparencyType": "CUTOUT",
+    "disableOffset": false,
+    "boundingBoxes": [
+      {
+        "mx": 0.0,
+        "my": 0.0,
+        "mz": 6.0,
+        "Mx": 16.0,
+        "My": 32.0,
+        "Mz": 10.0,
+        "subtract": false
+      }
+    ],
+    "customProperties": [
+      {
+        "name": "CUSTOM:bolted",
+        "type": "logic",
+        "value": false
+      },
+      {
+        "name": "CUSTOM:emergency_acs",
+        "type": "logic",
+        "value": false
+      },
+      {
+        "name": "CUSTOM:panel_open",
+        "type": "logic",
+        "value": false
+      },
+      {
+        "min": 0,
+        "max": 9,
+        "name": "CUSTOM:blockstate",
+        "type": "integer",
+        "value": 0
+      }
+    ],
+    "name": "Cargo Airlock",
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "hardness": 30.0,
+    "resistance": 15.0,
+    "hasGravity": false,
+    "isWaterloggable": false,
+    "hasBlockItem": true,
+    "maxStackSize": 1,
+    "rarity": "COMMON",
+    "immuneToFire": true,
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:SSC14Objects"
+      }
+    ],
+    "destroyTool": "Not specified",
+    "customDrop": {
+      "value": ""
+    },
+    "dropAmount": 0,
+    "xpAmountMin": 0,
+    "xpAmountMax": 0,
+    "useLootTableForDrops": false,
+    "requiresCorrectTool": false,
+    "enchantPowerBonus": 0.0,
+    "plantsGrowOn": false,
+    "canRedstoneConnect": false,
+    "hasCustomOpacity": false,
+    "lightOpacity": 0,
+    "tickRate": 10,
+    "tickRandomly": false,
+    "isReplaceable": false,
+    "canProvidePower": false,
+    "emittedRedstonePower": {
+      "fixedValue": 15.0
+    },
+    "colorOnMap": "DEFAULT",
+    "noteBlockInstrument": "harp",
+    "creativePickItem": {
+      "value": ""
+    },
+    "offsetType": "NONE",
+    "aiPathNodeType": "DEFAULT",
+    "strippingResult": {
+      "value": ""
+    },
+    "ignitedByLava": false,
+    "flammability": 0,
+    "fireSpreadSpeed": 0,
+    "isLadder": false,
+    "slipperiness": 0.6,
+    "speedFactor": 1.0,
+    "jumpFactor": 1.0,
+    "reactionToPushing": "NORMAL",
+    "isNotColidable": false,
+    "isCustomSoundType": false,
+    "soundOnStep": {
+      "value": "NETHERITE"
+    },
+    "breakSound": {
+      "value": ""
+    },
+    "fallSound": {
+      "value": ""
+    },
+    "hitSound": {
+      "value": ""
+    },
+    "placeSound": {
+      "value": ""
+    },
+    "stepSound": {
+      "value": ""
+    },
+    "luminance": {
+      "fixedValue": 4.0
+    },
+    "unbreakable": false,
+    "vanillaToolTier": "NONE",
+    "isBonemealable": false,
+    "sensitiveToVibration": false,
+    "vibrationalEvents": [],
+    "vibrationSensitivityRadius": {
+      "fixedValue": 7.0
+    },
+    "hasInventory": true,
+    "guiBoundTo": "AccessConfigMENU",
+    "openGUIOnRightClick": false,
+    "inventorySize": 9,
+    "inventoryStackSize": 99,
+    "inventoryDropWhenDestroyed": false,
+    "inventoryComparatorPower": false,
+    "inventoryOutSlotIDs": [],
+    "inventoryInSlotIDs": [],
+    "hasEnergyStorage": false,
+    "energyInitial": 0,
+    "energyCapacity": 400000,
+    "energyMaxReceive": 200,
+    "energyMaxExtract": 200,
+    "isFluidTank": false,
+    "fluidCapacity": 8000,
+    "fluidRestrictions": [],
+    "onRightClicked": {
+      "name": "BaseAirlockOpenClose"
+    },
+    "onBlockAdded": {
+      "name": "BaseAirlockD1Put"
+    },
+    "onTickUpdate": {
+      "name": "BaseAirlockDEBUGCHECK"
+    },
+    "generateFeature": false,
+    "restrictionBiomes": [],
+    "blocksToReplace": [
+      {
+        "value": "TAG:stone_ore_replaceables"
+      }
+    ],
+    "generationShape": "UNIFORM",
+    "frequencyPerChunks": 10,
+    "frequencyOnChunk": 16,
+    "minGenerateHeight": 0,
+    "maxGenerateHeight": 64
+  }
+}

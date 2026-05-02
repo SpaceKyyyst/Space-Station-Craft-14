@@ -2,7 +2,11 @@
   "replace": false,
   "values": [
     "ssc_14:atmos_block",
+    "ssc_14:voidb",
+    "minecraft:cave_air",
+    "minecraft:void_air",
     "ssc_14:low_planet_grass",
+    "minecraft:air",
     "ssc_14:med_planet_grass"
   ]
 }

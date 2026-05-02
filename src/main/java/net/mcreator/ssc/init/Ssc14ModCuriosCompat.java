@@ -93,5 +93,29 @@ public class Ssc14ModCuriosCompat {
 				return stack;
 			}
 		}, Ssc14ModItems.ISOLATED_GLOVES.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.SECURITY_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.COMBAT_BOOTS_ITEM.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.MAGNETIC_BOOTS_ITEM.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get());
 	}
 }

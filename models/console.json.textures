@@ -1,0 +1,22 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "computer_texture"
+      }
+    },
+    "id": {
+      "name": "id",
+      "map": {
+        "1": "id_console_texture_anim"
+      }
+    },
+    "id_off": {
+      "name": "id_off",
+      "map": {
+        "1": "id_console_texture_desconnected"
+      }
+    }
+  }
+}

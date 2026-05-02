@@ -27,7 +27,7 @@ public class GrassLightBlockBlock extends Block {
 	public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
 
 	public GrassLightBlockBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.GRAVEL).strength(1f, 10f));
+		super(properties.sound(SoundType.MOSS).strength(1f, 10f));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 

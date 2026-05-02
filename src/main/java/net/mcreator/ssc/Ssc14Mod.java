@@ -26,6 +26,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.registries.BuiltInRegistries;
 
+import net.mcreator.ssc.world.features.StructureFeature;
 import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.mcreator.ssc.init.*;
 
@@ -66,6 +67,7 @@ public class Ssc14Mod {
 		Ssc14ModEntities.REGISTRY.register(modEventBus);
 		Ssc14ModTabs.REGISTRY.register(modEventBus);
 		Ssc14ModVariables.ATTACHMENT_TYPES.register(modEventBus);
+		StructureFeature.REGISTRY.register(modEventBus);
 		Ssc14ModMenus.REGISTRY.register(modEventBus);
 		Ssc14ModParticleTypes.REGISTRY.register(modEventBus);
 		Ssc14ModAttributes.REGISTRY.register(modEventBus);
