@@ -20,9 +20,9 @@
       }
     ],
     "efficiency": 40.0,
-    "attackSpeed": 1.0,
+    "attackSpeed": 0.7000000000000001,
     "enchantability": 1,
-    "damageVsEntity": 4.0,
+    "damageVsEntity": 0.1,
     "usageCount": 0,
     "glowCondition": {
       "fixedValue": false
@@ -61,6 +61,9 @@
     ],
     "attributeModifiers": [],
     "stayInGridWhenCrafting": false,
-    "damageOnCrafting": false
+    "damageOnCrafting": false,
+    "onEntityHitWith": {
+      "name": "PickDAMAGE"
+    }
   }
 }

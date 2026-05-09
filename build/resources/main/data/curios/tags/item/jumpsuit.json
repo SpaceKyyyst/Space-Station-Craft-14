@@ -1,6 +1,22 @@
 {
   "replace": false,
   "values": [
-    "ssc_14:security_jumpsuit"
+    "ssc_14:security_jumpsuit",
+    "ssc_14:passanger_jumpsuit",
+    "ssc_14:atmos_jumpsuit",
+    "ssc_14:botanist_jumpsuit",
+    "ssc_14:captain_jumpsuit",
+    "ssc_14:cargo_jumpsuit",
+    "ssc_14:ce_jumpsuit",
+    "ssc_14:chemist_jumpsuit",
+    "ssc_14:cmo_jumpsuit",
+    "ssc_14:engeneer_jumpsuit",
+    "ssc_14:ho_p_jumpsuit",
+    "ssc_14:ho_s_jumpsuit",
+    "ssc_14:medical_jumpsuit",
+    "ssc_14:qm_jumpsuit",
+    "ssc_14:rd_jumpsuit",
+    "ssc_14:rnd_jumpsuit",
+    "ssc_14:warden_jumpsuit"
   ]
 }

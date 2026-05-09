@@ -19,6 +19,10 @@ import net.minecraft.world.item.BlockItem;
 
 import net.mcreator.ssc.item.inventory.AccessConfigInventoryCapability;
 import net.mcreator.ssc.item.*;
+import net.mcreator.ssc.block.FencePointBlock;
+import net.mcreator.ssc.block.FencePBlock;
+import net.mcreator.ssc.block.FenceLineBlock;
+import net.mcreator.ssc.block.FenceGBlock;
 import net.mcreator.ssc.Ssc14Mod;
 
 import java.util.function.Function;
@@ -245,6 +249,32 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> CLOSET_SECURE;
 	public static final DeferredItem<Item> MAGNETIC_BOOTS_ITEM;
 	public static final DeferredItem<Item> MAGNETIC_BOOTS_ACTIVE_ITEM;
+	public static final DeferredItem<Item> PASSANGER_JUMPSUIT;
+	public static final DeferredItem<Item> ATMOS_JUMPSUIT;
+	public static final DeferredItem<Item> BOTANIST_JUMPSUIT;
+	public static final DeferredItem<Item> CAPTAIN_JUMPSUIT;
+	public static final DeferredItem<Item> CARGO_JUMPSUIT;
+	public static final DeferredItem<Item> CE_JUMPSUIT;
+	public static final DeferredItem<Item> CHEMIST_JUMPSUIT;
+	public static final DeferredItem<Item> CMO_JUMPSUIT;
+	public static final DeferredItem<Item> ENGENEER_JUMPSUIT;
+	public static final DeferredItem<Item> HO_P_JUMPSUIT;
+	public static final DeferredItem<Item> HO_S_JUMPSUIT;
+	public static final DeferredItem<Item> MEDICAL_JUMPSUIT;
+	public static final DeferredItem<Item> QM_JUMPSUIT;
+	public static final DeferredItem<Item> RD_JUMPSUIT;
+	public static final DeferredItem<Item> RND_JUMPSUIT;
+	public static final DeferredItem<Item> WARDEN_JUMPSUIT;
+	public static final DeferredItem<Item> BLACK_SOLES_ITEM;
+	public static final DeferredItem<Item> CLOSET;
+	public static final DeferredItem<Item> FENCE_LINE;
+	public static final DeferredItem<Item> FENCE_G;
+	public static final DeferredItem<Item> FENCE_POINT;
+	public static final DeferredItem<Item> FENCE_P;
+	public static final DeferredItem<Item> BRUTEPACK;
+	public static final DeferredItem<Item> BLOODPACK;
+	public static final DeferredItem<Item> GAUZE;
+	public static final DeferredItem<Item> OINTMENT;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -256,8 +286,8 @@ public class Ssc14ModItems {
 		HIGH_VOLTAGE_CABLE = register("high_voltage_cable", HighVoltageCableItem::new);
 		CROWBAR = register("crowbar", ScrapItem::new);
 		TITLE_STEEL = block(Ssc14ModBlocks.TITLE_STEEL, new Item.Properties().stacksTo(30).fireResistant());
-		STEEL_WALL = block(Ssc14ModBlocks.STEEL_WALL, new Item.Properties().stacksTo(1).fireResistant());
-		WALL_CARCASE = block(Ssc14ModBlocks.WALL_CARCASE, new Item.Properties().stacksTo(1).fireResistant());
+		STEEL_WALL = block(Ssc14ModBlocks.STEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
+		WALL_CARCASE = block(Ssc14ModBlocks.WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
 		WELDING = register("welding", WeldingItem::new);
 		ACTIVE_WELDER = register("active_welder", ActiveWelderItem::new);
 		NIPPERS = register("nippers", NippersItem::new);
@@ -275,7 +305,7 @@ public class Ssc14ModItems {
 		ATMOS_BLOCK = block(Ssc14ModBlocks.ATMOS_BLOCK, new Item.Properties().stacksTo(1));
 		GAS_ANALYSER = register("gas_analyser", GasAnalyserItem::new);
 		O_2_DEBU_GHANDGENERATOR = register("o_2_debu_ghandgenerator", O2DEBUGhandgeneratorItem::new);
-		BASE_WINDOW = block(Ssc14ModBlocks.BASE_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
+		BASE_WINDOW = block(Ssc14ModBlocks.BASE_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
 		GLASS_SHARD = register("glass_shard", GlassShardItem::new);
 		GLASS = register("glass", GlassItem::new);
 		ACCESS_CONFIG = register("access_config", AccessConfigItem::new);
@@ -332,8 +362,8 @@ public class Ssc14ModItems {
 		URAN = register("uran", UranItem::new);
 		PLASMA = register("plasma", PlasmaItem::new);
 		PLASTIC = register("plastic", PlasticItem::new);
-		PLASTEEL_WALL = block(Ssc14ModBlocks.PLASTEEL_WALL, new Item.Properties().stacksTo(1).fireResistant());
-		PLASTEEL_WALL_CARCASE = block(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE, new Item.Properties().stacksTo(1).fireResistant());
+		PLASTEEL_WALL = block(Ssc14ModBlocks.PLASTEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
+		PLASTEEL_WALL_CARCASE = block(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
 		ENERGY_BAR = register("energy_bar", EnergyBarItem::new);
 		ENERGY_BAR_TRASH = register("energy_bar_trash", EnergyBarTrashItem::new);
 		ENERGY_BAR_2 = register("energy_bar_2", EnergyBar2Item::new);
@@ -370,7 +400,7 @@ public class Ssc14ModItems {
 		LIGHT_BULB = register("light_bulb", LightBulbItem::new);
 		LED_LIGHT_TUBE_BROKEN = register("led_light_tube_broken", LedLightTubeBrokenItem::new);
 		LIGHT_BULB_BROKEN = register("light_bulb_broken", LightBulbBrokenItem::new);
-		ARMORED_WINDOW = block(Ssc14ModBlocks.ARMORED_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
+		ARMORED_WINDOW = block(Ssc14ModBlocks.ARMORED_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
 		ARM_GLASS_SHARD = register("arm_glass_shard", ArmGlassShardItem::new);
 		ARM_GLASS = register("arm_glass", ArmGlassItem::new);
 		DEBUG_LAMP = block(Ssc14ModBlocks.DEBUG_LAMP, new Item.Properties().stacksTo(1).fireResistant());
@@ -465,6 +495,32 @@ public class Ssc14ModItems {
 		CLOSET_SECURE = block(Ssc14ModBlocks.CLOSET_SECURE, new Item.Properties().stacksTo(1).fireResistant());
 		MAGNETIC_BOOTS_ITEM = register("magnetic_boots_item", MagneticBootsItemItem::new);
 		MAGNETIC_BOOTS_ACTIVE_ITEM = register("magnetic_boots_active_item", MagneticBootsACTIVEItemItem::new);
+		PASSANGER_JUMPSUIT = register("passanger_jumpsuit", PassangerJumpsuitItem::new);
+		ATMOS_JUMPSUIT = register("atmos_jumpsuit", AtmosJumpsuitItem::new);
+		BOTANIST_JUMPSUIT = register("botanist_jumpsuit", BotanistJumpsuitItem::new);
+		CAPTAIN_JUMPSUIT = register("captain_jumpsuit", CaptainJumpsuitItem::new);
+		CARGO_JUMPSUIT = register("cargo_jumpsuit", CargoJumpsuitItem::new);
+		CE_JUMPSUIT = register("ce_jumpsuit", CEJumpsuitItem::new);
+		CHEMIST_JUMPSUIT = register("chemist_jumpsuit", ChemistJumpsuitItem::new);
+		CMO_JUMPSUIT = register("cmo_jumpsuit", CMOJumpsuitItem::new);
+		ENGENEER_JUMPSUIT = register("engeneer_jumpsuit", EngeneerJumpsuitItem::new);
+		HO_P_JUMPSUIT = register("ho_p_jumpsuit", HoPJumpsuitItem::new);
+		HO_S_JUMPSUIT = register("ho_s_jumpsuit", HoSJumpsuitItem::new);
+		MEDICAL_JUMPSUIT = register("medical_jumpsuit", MedicalJumpsuitItem::new);
+		QM_JUMPSUIT = register("qm_jumpsuit", QMJumpsuitItem::new);
+		RD_JUMPSUIT = register("rd_jumpsuit", RDJumpsuitItem::new);
+		RND_JUMPSUIT = register("rnd_jumpsuit", RNDJumpsuitItem::new);
+		WARDEN_JUMPSUIT = register("warden_jumpsuit", WardenJumpsuitItem::new);
+		BLACK_SOLES_ITEM = register("black_soles_item", BlackSolesItemItem::new);
+		CLOSET = block(Ssc14ModBlocks.CLOSET, new Item.Properties().stacksTo(1).fireResistant());
+		FENCE_LINE = register("fence_line", properties -> new FenceLineBlock.Item(properties.stacksTo(1)));
+		FENCE_G = register("fence_g", properties -> new FenceGBlock.Item(properties.stacksTo(1)));
+		FENCE_POINT = register("fence_point", properties -> new FencePointBlock.Item(properties.stacksTo(1)));
+		FENCE_P = register("fence_p", properties -> new FencePBlock.Item(properties.stacksTo(1)));
+		BRUTEPACK = register("brutepack", BrutepackItem::new);
+		BLOODPACK = register("bloodpack", BloodpackItem::new);
+		GAUZE = register("gauze", GauzeItem::new);
+		OINTMENT = register("ointment", OintmentItem::new);
 	}
 
 	// Start of user code block custom items

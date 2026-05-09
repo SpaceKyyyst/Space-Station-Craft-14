@@ -31,8 +31,8 @@
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "enableMeleeDamage": true,
-    "damageVsEntity": 4.0,
-    "attackSpeed": 1.6,
+    "damageVsEntity": 0.1,
+    "attackSpeed": 1.0,
     "specialInformation": {
       "fixedValue": []
     },
@@ -44,6 +44,9 @@
     },
     "inventorySize": 9,
     "inventoryStackSize": 99,
+    "onEntityHitWith": {
+      "name": "ArmGlassShardDAMAGE"
+    },
     "enableRanged": false,
     "shootConstantly": false,
     "rangedItemChargesPower": false,

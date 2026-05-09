@@ -16,6 +16,7 @@ public class Ssc14ModModels {
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(Modelframe_of_plasstal_wall_JAVA.LAYER_LOCATION, Modelframe_of_plasstal_wall_JAVA::createBodyLayer);
 		event.registerLayerDefinition(ModelConsole_of_ID_DisConnected_ENTITY.LAYER_LOCATION, ModelConsole_of_ID_DisConnected_ENTITY::createBodyLayer);
+		event.registerLayerDefinition(Modelcolor_soles.LAYER_LOCATION, Modelcolor_soles::createBodyLayer);
 		event.registerLayerDefinition(Modeljumpsuit_security.LAYER_LOCATION, Modeljumpsuit_security::createBodyLayer);
 		event.registerLayerDefinition(Modelhuman_m.LAYER_LOCATION, Modelhuman_m::createBodyLayer);
 		event.registerLayerDefinition(Modelboots_magboots.LAYER_LOCATION, Modelboots_magboots::createBodyLayer);

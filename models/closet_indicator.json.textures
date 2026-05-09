@@ -1,0 +1,18 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "closet_secure_texture",
+        "12": "closet_blocked_render_t"
+      }
+    },
+    "open": {
+      "name": "open",
+      "map": {
+        "0": "closet_secure_texture",
+        "12": "closet_unblocked_render_t"
+      }
+    }
+  }
+}

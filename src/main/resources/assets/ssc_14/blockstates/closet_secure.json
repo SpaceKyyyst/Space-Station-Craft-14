@@ -1,32 +1,62 @@
 {
   "variants": {
-    "facing=north,open=true": {
+    "facing=north,open=true,blocked=false": {
       "model": "ssc_14:block/closet_secure_0"
     },
-    "facing=north,open=false": {
+    "facing=north,open=false,blocked=false": {
+      "model": "ssc_14:block/closet_secure_1"
+    },
+    "facing=north,open=false,blocked=true": {
       "model": "ssc_14:block/closet_secure"
     },
-    "facing=east,open=true": {
+    "facing=north,open=true,blocked=true": {
+      "model": "ssc_14:block/closet_secure"
+    },
+    "facing=east,open=true,blocked=false": {
       "model": "ssc_14:block/closet_secure_0",
       "y": 90
     },
-    "facing=east,open=false": {
+    "facing=east,open=false,blocked=false": {
+      "model": "ssc_14:block/closet_secure_1",
+      "y": 90
+    },
+    "facing=east,open=false,blocked=true": {
       "model": "ssc_14:block/closet_secure",
       "y": 90
     },
-    "facing=south,open=true": {
+    "facing=east,open=true,blocked=true": {
+      "model": "ssc_14:block/closet_secure",
+      "y": 90
+    },
+    "facing=south,open=true,blocked=false": {
       "model": "ssc_14:block/closet_secure_0",
       "y": 180
     },
-    "facing=south,open=false": {
+    "facing=south,open=false,blocked=false": {
+      "model": "ssc_14:block/closet_secure_1",
+      "y": 180
+    },
+    "facing=south,open=false,blocked=true": {
       "model": "ssc_14:block/closet_secure",
       "y": 180
     },
-    "facing=west,open=true": {
+    "facing=south,open=true,blocked=true": {
+      "model": "ssc_14:block/closet_secure",
+      "y": 180
+    },
+    "facing=west,open=true,blocked=false": {
       "model": "ssc_14:block/closet_secure_0",
       "y": 270
     },
-    "facing=west,open=false": {
+    "facing=west,open=false,blocked=false": {
+      "model": "ssc_14:block/closet_secure_1",
+      "y": 270
+    },
+    "facing=west,open=false,blocked=true": {
+      "model": "ssc_14:block/closet_secure",
+      "y": 270
+    },
+    "facing=west,open=true,blocked=true": {
       "model": "ssc_14:block/closet_secure",
       "y": 270
     }

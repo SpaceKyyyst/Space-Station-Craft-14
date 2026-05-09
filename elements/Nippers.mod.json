@@ -22,7 +22,7 @@
     "efficiency": 4.0,
     "attackSpeed": 2.0,
     "enchantability": 1,
-    "damageVsEntity": 1.5,
+    "damageVsEntity": 0.1,
     "usageCount": 0,
     "glowCondition": {
       "fixedValue": false
@@ -36,6 +36,9 @@
     "damageOnCrafting": false,
     "onRightClickedOnBlock": {
       "name": "Nippers_Use"
+    },
+    "onEntityHitWith": {
+      "name": "NippersDAMAGE"
     }
   }
 }

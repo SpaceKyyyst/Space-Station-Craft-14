@@ -107,15 +107,15 @@ public class Ssc14ModVariables {
 		public double ssc14_dmg_blunt = 0.0;
 		public double ssc14_dmg_slash = 0.0;
 		public double ssc14_dmg_piercing = 0.0;
-		public double ssc14_dmg_heat = 0;
-		public double ssc14_dmg_shock = 0;
-		public double ssc14_dmg_cold = 0;
-		public double ssc14_dmg_caustic = 0;
-		public double ssc14_dmg_poison = 0;
-		public double ssc14_dmg_radiation = 0;
+		public double ssc14_dmg_heat = 0.0;
+		public double ssc14_dmg_shock = 0.0;
+		public double ssc14_dmg_cold = 0.0;
+		public double ssc14_dmg_caustic = 0.0;
+		public double ssc14_dmg_poison = 0.0;
+		public double ssc14_dmg_radiation = 0.0;
 		public double ssc14_dmg_asphyx = 0.0;
-		public double ssc14_dmg_bloodloss = 0;
-		public double ssc14_dmg_cellular = 0;
+		public double ssc14_dmg_bloodloss = 0.0;
+		public double ssc14_dmg_cellular = 0.0;
 
 		@Override
 		public void serialize(ValueOutput output) {

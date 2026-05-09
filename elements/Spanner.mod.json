@@ -20,9 +20,9 @@
       }
     ],
     "efficiency": 4.0,
-    "attackSpeed": 1.1,
+    "attackSpeed": 1.5,
     "enchantability": 1,
-    "damageVsEntity": 4.0,
+    "damageVsEntity": 0.1,
     "usageCount": 0,
     "glowCondition": {
       "fixedValue": false
@@ -36,6 +36,9 @@
     "damageOnCrafting": false,
     "onRightClickedOnBlock": {
       "name": "Spanner_Use"
+    },
+    "onEntityHitWith": {
+      "name": "SpannerDAMAGE"
     }
   }
 }

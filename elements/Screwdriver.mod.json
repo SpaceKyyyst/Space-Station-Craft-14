@@ -36,6 +36,9 @@
     "damageOnCrafting": false,
     "onRightClickedOnBlock": {
       "name": "Screwdriver_Use"
+    },
+    "onEntityHitWith": {
+      "name": "ScrewdriverDAMAGE"
     }
   }
 }

@@ -7,11 +7,12 @@
     "ssc_14:podstation",
     "ssc_14:wood_chair",
     "ssc_14:steel_chair",
+    "ssc_14:closet",
+    "ssc_14:smes",
+    "ssc_14:console_of_id",
+    "ssc_14:bar_chair",
     "ssc_14:portable_sheater",
     "ssc_14:closet_secure",
-    "ssc_14:smes",
-    "ssc_14:ofice_white_chair",
-    "ssc_14:console_of_id",
-    "ssc_14:bar_chair"
+    "ssc_14:ofice_white_chair"
   ]
 }

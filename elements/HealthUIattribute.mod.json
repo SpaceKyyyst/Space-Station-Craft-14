@@ -1,0 +1,14 @@
+{
+  "_fv": 85,
+  "_type": "attribute",
+  "definition": {
+    "name": "Health UI attribute",
+    "minValue": 0.0,
+    "maxValue": 6.0,
+    "defaultValue": 0.0,
+    "sentiment": "NEUTRAL",
+    "addToAllEntities": false,
+    "addToPlayers": true,
+    "entities": []
+  }
+}

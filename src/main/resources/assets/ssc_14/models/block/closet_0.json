@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/closet_base_open",
+  "textures": {
+    "all": "ssc_14:block/closet_item",
+    "particle": "ssc_14:block/closet_item",
+    "2": "ssc_14:block/closet_texture"
+  },
+  "render_type": "translucent"
+}

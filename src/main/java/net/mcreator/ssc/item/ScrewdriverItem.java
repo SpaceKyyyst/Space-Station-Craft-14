@@ -26,6 +26,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.Screwdriver_UseProcedure;
+import net.mcreator.ssc.procedures.ScrewdriverDAMAGEProcedure;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 @EventBusSubscriber
@@ -68,6 +69,7 @@ public class ScrewdriverItem extends Item {
 	@Override
 	public void hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
 		itemstack.hurtAndBreak(2, entity, LivingEntity.getSlotForHand(entity.getUsedItemHand()));
+		ScrewdriverDAMAGEProcedure.execute(entity.level(), entity);
 	}
 
 	@Override

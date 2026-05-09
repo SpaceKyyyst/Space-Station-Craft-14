@@ -1,0 +1,53 @@
+{
+  "format_version": "1.21.11",
+  "credit": "Made with Blockbench",
+  "elements": [
+    {
+      "name": "lamp",
+      "from": [
+        4,
+        17,
+        0.9
+      ],
+      "to": [
+        7,
+        21,
+        0.9
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          5,
+          18,
+          -1.1
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            3,
+            4
+          ],
+          "texture": "#3"
+        }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "translation": [
+        -6,
+        -2,
+        -4
+      ]
+    }
+  }
+}

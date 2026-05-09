@@ -16,7 +16,7 @@
     "displayFluidOverlay": false,
     "states": [],
     "animations": [],
-    "itemTexture": "",
+    "itemTexture": "debug_gravgen_item",
     "particleTexture": "",
     "blockSetType": "OAK",
     "leavesParticleChance": 0.0,

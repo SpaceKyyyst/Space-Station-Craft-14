@@ -13,14 +13,17 @@ import net.minecraft.network.protocol.game.ClientboundLevelEventPacket;
 import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.BlockPos;
+import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.commands.CommandSourceStack;
 
 import java.util.Set;
 
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.context.CommandContext;
+
 public class TpSSC14planetplantprProcedure {
-	public static void execute(Entity entity) {
-		if (entity == null)
-			return;
-		if (entity instanceof ServerPlayer _player && _player.level() instanceof ServerLevel _serverLevel) {
+	public static void execute(CommandContext<CommandSourceStack> arguments) {
+		if ((commandParameterEntity(arguments, "tp_ent")) instanceof ServerPlayer _player && _player.level() instanceof ServerLevel _serverLevel) {
 			ResourceKey<Level> destinationType = ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse("ssc_14:planet_pl"));
 			if (_player.level().dimension() == destinationType)
 				return;
@@ -33,6 +36,15 @@ public class TpSSC14planetplantprProcedure {
 					_player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance, false));
 				_player.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
 			}
+		}
+	}
+
+	private static Entity commandParameterEntity(CommandContext<CommandSourceStack> arguments, String parameter) {
+		try {
+			return EntityArgument.getEntity(arguments, parameter);
+		} catch (CommandSyntaxException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

@@ -117,5 +117,107 @@ public class Ssc14ModCuriosCompat {
 				return stack;
 			}
 		}, Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.PASSANGER_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.ATMOS_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.BOTANIST_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.CAPTAIN_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.CARGO_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.CE_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.CHEMIST_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.CMO_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.ENGENEER_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.HO_P_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.HO_S_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.MEDICAL_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.QM_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.RD_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.RND_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.WARDEN_JUMPSUIT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.BLACK_SOLES_ITEM.get());
 	}
 }

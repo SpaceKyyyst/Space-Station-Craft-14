@@ -1,0 +1,147 @@
+{
+  "_fv": 85,
+  "_type": "overlay",
+  "definition": {
+    "priority": "NORMAL",
+    "components": [
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "dead_anim.png",
+          "spritesCount": 28,
+          "displayCondition": {
+            "name": "HPCorpseDisplay"
+          },
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "HealthUIanimate"
+          },
+          "anchorPoint": "CENTER_RIGHT",
+          "x": 390,
+          "y": 72,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "critical_anim.png",
+          "spritesCount": 28,
+          "displayCondition": {
+            "name": "HPCriticalDisplay"
+          },
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "HealthUIanimate"
+          },
+          "anchorPoint": "CENTER_RIGHT",
+          "x": 390,
+          "y": 72,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "health4_anim.png",
+          "spritesCount": 28,
+          "displayCondition": {
+            "name": "HPTerribleDisplay"
+          },
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "HealthUIanimate"
+          },
+          "anchorPoint": "CENTER_RIGHT",
+          "x": 390,
+          "y": 72,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "health3_anim.png",
+          "spritesCount": 28,
+          "displayCondition": {
+            "name": "HPBadDisplay"
+          },
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "HealthUIanimate"
+          },
+          "anchorPoint": "CENTER_RIGHT",
+          "x": 390,
+          "y": 72,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "health2_anim.png",
+          "spritesCount": 28,
+          "displayCondition": {
+            "name": "HPNotSoGoodDisplay"
+          },
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "HealthUIanimate"
+          },
+          "anchorPoint": "CENTER_RIGHT",
+          "x": 390,
+          "y": 72,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "health1_anim.png",
+          "spritesCount": 28,
+          "displayCondition": {
+            "name": "HPGoodDisplay"
+          },
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "HealthUIanimate"
+          },
+          "anchorPoint": "CENTER_RIGHT",
+          "x": 390,
+          "y": 72,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "health0_anim.png",
+          "spritesCount": 28,
+          "displayCondition": {
+            "name": "HPExcellentDisplay"
+          },
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "HealthUIanimate"
+          },
+          "anchorPoint": "CENTER_RIGHT",
+          "x": 390,
+          "y": 72,
+          "locked": true
+        }
+      }
+    ],
+    "baseTexture": "",
+    "overlayTarget": "Ingame",
+    "displayCondition": {
+      "name": "HealthUIdisplay"
+    },
+    "gridSettings": {
+      "sx": 16,
+      "sy": 16,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": true
+    }
+  }
+}

@@ -20,9 +20,9 @@
       }
     ],
     "efficiency": 4.0,
-    "attackSpeed": 0.8,
+    "attackSpeed": 0.75,
     "enchantability": 1,
-    "damageVsEntity": 8.0,
+    "damageVsEntity": 0.1,
     "usageCount": 0,
     "glowCondition": {
       "fixedValue": false
@@ -36,6 +36,9 @@
     "damageOnCrafting": false,
     "onRightClickedOnBlock": {
       "name": "FireAxe_Use"
+    },
+    "onEntityHitWith": {
+      "name": "FireAxeDAMAGE"
     }
   }
 }

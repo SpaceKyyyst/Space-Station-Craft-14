@@ -35,6 +35,8 @@ public class Ssc14ModAttributes {
 	public static final DeferredHolder<Attribute, Attribute> NUTRIENTS = REGISTRY.register("nutrients", () -> new RangedAttribute("attribute.ssc_14.nutrients", 125, 0, 200).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 	public static final DeferredHolder<Attribute, Attribute> DIGESTIVE_PROCESSES = REGISTRY.register("digestive_processes",
 			() -> new RangedAttribute("attribute.ssc_14.digestive_processes", 0, 0, 10).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+	public static final DeferredHolder<Attribute, Attribute> HEALTH_U_IATTRIBUTE = REGISTRY.register("health_u_iattribute",
+			() -> new RangedAttribute("attribute.ssc_14.health_u_iattribute", 0, 0, 6).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 
 	@SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {
@@ -47,5 +49,6 @@ public class Ssc14ModAttributes {
 		event.add(EntityType.PLAYER, OPEN_WORLD_CHECK_MENU);
 		event.add(EntityType.PLAYER, NUTRIENTS);
 		event.add(EntityType.PLAYER, DIGESTIVE_PROCESSES);
+		event.add(EntityType.PLAYER, HEALTH_U_IATTRIBUTE);
 	}
 }

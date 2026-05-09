@@ -1,9 +1,10 @@
 {
-  "parent": "ssc_14:custom/closet_open",
+  "parent": "ssc_14:custom/closet_indicator_open",
   "textures": {
     "all": "ssc_14:block/closet_secure_item",
     "particle": "ssc_14:block/closet_secure_item",
-    "0": "ssc_14:block/closet_secure_texture"
+    "0": "ssc_14:block/closet_secure_texture",
+    "12": "ssc_14:block/closet_unblocked_render_t"
   },
-  "render_type": "cutout"
+  "render_type": "translucent"
 }

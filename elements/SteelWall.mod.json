@@ -47,7 +47,7 @@
     "hasGravity": false,
     "isWaterloggable": false,
     "hasBlockItem": true,
-    "maxStackSize": 1,
+    "maxStackSize": 30,
     "rarity": "COMMON",
     "immuneToFire": true,
     "creativeTabs": [

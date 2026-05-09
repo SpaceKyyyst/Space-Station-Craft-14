@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,open=true": {
+      "model": "ssc_14:block/closet_0"
+    },
+    "facing=north,open=false": {
+      "model": "ssc_14:block/closet"
+    },
+    "facing=east,open=true": {
+      "model": "ssc_14:block/closet_0",
+      "y": 90
+    },
+    "facing=east,open=false": {
+      "model": "ssc_14:block/closet",
+      "y": 90
+    },
+    "facing=south,open=true": {
+      "model": "ssc_14:block/closet_0",
+      "y": 180
+    },
+    "facing=south,open=false": {
+      "model": "ssc_14:block/closet",
+      "y": 180
+    },
+    "facing=west,open=true": {
+      "model": "ssc_14:block/closet_0",
+      "y": 270
+    },
+    "facing=west,open=false": {
+      "model": "ssc_14:block/closet",
+      "y": 270
+    }
+  }
+}

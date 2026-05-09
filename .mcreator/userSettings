@@ -3,7 +3,10 @@
   "workspacePanelSortType": "CREATED",
   "workspacePanelSortAscending": true,
   "projectBrowserState": {
-    "expandedPaths": []
+    "expandedPaths": [
+      "[, Space Station Craft 14]",
+      "[, Space Station Craft 14, Source (Gradle)]"
+    ]
   },
   "leftDockState": {
     "dockSizes": {
@@ -11,9 +14,10 @@
     }
   },
   "bottomDockState": {
+    "expandedDock": "console",
     "dockSizes": {
-      "console": 518,
-      "code_viewer": 300,
+      "console": 366,
+      "code_viewer": 625,
       "debugger": 300
     }
   }

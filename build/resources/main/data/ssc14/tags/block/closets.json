@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "ssc_14:closet_secure"
+    "ssc_14:closet_secure",
+    "ssc_14:closet"
   ]
 }

@@ -14,11 +14,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.Commands;
 
-import net.mcreator.ssc.procedures.TpSSC14spaceprProcedure;
-import net.mcreator.ssc.procedures.TpSSC14planetplantprProcedure;
-import net.mcreator.ssc.procedures.HungerSetCommandProcedure;
-import net.mcreator.ssc.procedures.HelsResetCommandProcedure;
-import net.mcreator.ssc.procedures.DigestiveProcessesClearCommandProcedure;
+import net.mcreator.ssc.procedures.*;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
@@ -26,7 +22,7 @@ import com.mojang.brigadier.arguments.DoubleArgumentType;
 public class SSC14commandsCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("ssc14").requires(s -> s.hasPermission(4)).then(Commands.literal("tpdimension").then(Commands.literal("space").executes(arguments -> {
+		event.getDispatcher().register(Commands.literal("ssc14").requires(s -> s.hasPermission(4)).then(Commands.literal("tpdimension").then(Commands.argument("tp_ent", EntityArgument.entity()).then(Commands.literal("space").executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();
@@ -38,7 +34,7 @@ public class SSC14commandsCommand {
 			if (entity != null)
 				direction = entity.getDirection();
 
-			TpSSC14spaceprProcedure.execute(entity);
+			TpSSC14spaceprProcedure.execute(arguments);
 			return 0;
 		})).then(Commands.literal("planet").then(Commands.literal("plant").executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
@@ -52,7 +48,7 @@ public class SSC14commandsCommand {
 			if (entity != null)
 				direction = entity.getDirection();
 
-			TpSSC14planetplantprProcedure.execute(entity);
+			TpSSC14planetplantprProcedure.execute(arguments);
 			return 0;
 		}))).then(Commands.literal("minecraft_overworld").executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
@@ -66,9 +62,9 @@ public class SSC14commandsCommand {
 			if (entity != null)
 				direction = entity.getDirection();
 
-			TpSSC14spaceprProcedure.execute(entity);
+			TpSSC14mineOveworldprProcedure.execute(arguments);
 			return 0;
-		}))).then(Commands.literal("hunger").then(Commands.literal("set").then(Commands.argument("ent", EntityArgument.entity()).then(Commands.argument("Nutrients", DoubleArgumentType.doubleArg(0, 200)).executes(arguments -> {
+		})))).then(Commands.literal("hunger").then(Commands.literal("set").then(Commands.argument("ent", EntityArgument.entity()).then(Commands.argument("Nutrients", DoubleArgumentType.doubleArg(0, 200)).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();

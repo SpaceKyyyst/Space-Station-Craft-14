@@ -32,6 +32,7 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.Welding_Fuel_chekProcedure;
 import net.mcreator.ssc.procedures.WelderOnOffPrProcedure;
+import net.mcreator.ssc.procedures.WelderOnDAMAGEProcedure;
 import net.mcreator.ssc.procedures.ActiveWelder_UseProcedure;
 import net.mcreator.ssc.procedures.ActiveWelder_FuelMinProcedure;
 import net.mcreator.ssc.init.Ssc14ModItems;
@@ -43,8 +44,8 @@ public class ActiveWelderItem extends Item {
 	private static final ToolMaterial TOOL_MATERIAL = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 0, 4f, 0, 1, TagKey.create(Registries.ITEM, ResourceLocation.parse("ssc_14:active_welder_repair_items")));
 
 	public ActiveWelderItem(Item.Properties properties) {
-		super(TOOL_MATERIAL.applyToolProperties(properties, BlockTags.MINEABLE_WITH_PICKAXE, 4f, -3f, 0)
-				.attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 4, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+		super(TOOL_MATERIAL.applyToolProperties(properties, BlockTags.MINEABLE_WITH_PICKAXE, -0.9f, -3f, 0)
+				.attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, -0.9, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
 						.add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -3, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build())
 				.fireResistant());
 	}
@@ -78,6 +79,7 @@ public class ActiveWelderItem extends Item {
 	@Override
 	public void hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
 		itemstack.hurtAndBreak(2, entity, LivingEntity.getSlotForHand(entity.getUsedItemHand()));
+		WelderOnDAMAGEProcedure.execute(entity.level(), entity);
 	}
 
 	@Override

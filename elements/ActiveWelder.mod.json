@@ -18,7 +18,7 @@
     "efficiency": 4.0,
     "attackSpeed": 1.0,
     "enchantability": 1,
-    "damageVsEntity": 5.0,
+    "damageVsEntity": 0.1,
     "usageCount": 0,
     "glowCondition": {
       "fixedValue": false
@@ -35,6 +35,9 @@
     },
     "onRightClickedOnBlock": {
       "name": "ActiveWelder_Use"
+    },
+    "onEntityHitWith": {
+      "name": "WelderOnDAMAGE"
     },
     "onItemInInventoryTick": {
       "name": "ActiveWelder_FuelMin"

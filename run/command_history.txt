@@ -1,0 +1,50 @@
+/execute in minecraft:overworld run tp Dev ~ ~ ~
+/ssc14 tpdimension Dev planet plant
+/ssc14 tpdimension Dev minecraft_overworld
+/ssc14 tpdimension Dev space
+/ssc14 hels Dev reset
+/setblock ~ ~ ~ minecraft:stone
+/ssc14 hels Dev reset
+/effect give Dev minecraft:speed infinite 2 true
+/effect clear
+/effect give Dev minecraft:speed infinite 2 true
+/effect clear
+/effect give Dev minecraft:speed infinite 2 true
+/effect clear
+/ssc14 hels Dev reset
+/tp Dev 0 50 0
+/tp Dev ~ ~-10 ~
+/ssc14 hels Dev reset
+/ssc14 hunger digestive clear Dev
+/ssc14 hunger set Dev 0
+/ssc14 hunger set Dev 150
+/ssc14 hels Dev reset
+/summon minecraft:chicken ~ ~ ~1
+/summon minecraft:armor_stand ~ ~ ~1
+/ssc14 hels Dev reset
+/setblock ~ ~ ~1 minecraft:water
+/setblock ~ ~ ~ minecraft:water
+/ssc14 hels Dev reset
+/give Dev ssc_14:screwdriver
+/give Dev ssc_14:screwdriver 2
+/give Dev minecraft:podzol
+/ssc14 hels Dev reset
+/setblock ~ ~ ~ minecraft:stone
+/summon ssc_14:corpse
+/ssc14 hels Dev reset
+/kill 89587ece-d275-4bb9-bfa8-fc626b4393c1
+/ssc14 hels Dev reset
+/kill 5ddb7351-1998-41cd-931a-cf3f3b041689
+/kill Dev
+/ssc14 hels Dev reset
+/kill 25076789-d9ce-44ce-8ec9-76a5d0653b39
+/ssc14 hels Dev reset
+/summon zombie ~ ~ ~ {HandItems:[{id:"ID_предмета",count:1},{}]}
+/ssc14 hels Dev reset
+/give Dev ssc_14:active_welder
+/summon zombie ~ ~ ~ {HandItems:[{ssc_14:active_welder,count:1},{}]}
+/summon zombie ~ ~ ~ {HandItems:[id:{ssc_14:active_welder,count:1},{}]}
+/summon zombie ~ ~ ~ {HandItems:[{id:"ssc_14:active_welder",count:1},{}]}
+/summon zombie ~ ~ ~ {HandItems:[{id:"minecraft:diamond_sword",count:1},{}]}
+/ssc14 hels Dev reset
+/kill a44cb355-9e1d-4924-aea3-28d191dab20c

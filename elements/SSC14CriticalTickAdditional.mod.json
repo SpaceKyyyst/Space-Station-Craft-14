@@ -1,0 +1,8 @@
+{
+  "_fv": 85,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">player_ticks</field><next><block type=\"java_code\"><field name=\"CODE\">// 🔧 Простая проверка: игрок в крите?&amp;#10;var nbt = player.getPersistentData();&amp;#10;double totalDamage = nbt.getDouble(\"sscCustomHealth\").orElse(0.0);</field><next><block type=\"controls_if\"><mutation else=\"1\"></mutation><value name=\"IF0\"><block type=\"java_code_get\"><field name=\"CODE\">totalDamage &gt;= 100.0</field></block></value><statement name=\"DO0\"><block type=\"entity_allow_building\"><value name=\"entity\"><block type=\"entity_from_deps\"></block></value><value name=\"condition\"><block type=\"logic_boolean\"><field name=\"BOOL\">FALSE</field></block></value></block></statement><statement name=\"ELSE\"><block type=\"entity_allow_building\"><value name=\"entity\"><block type=\"entity_from_deps\"></block></value><value name=\"condition\"><block type=\"logic_boolean\"><field name=\"BOOL\">TRUE</field></block></value></block></statement></block></next></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

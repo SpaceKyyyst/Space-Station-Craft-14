@@ -134,6 +134,11 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> CARGO_AIRLOCK_D_1OPEN;
 	public static final DeferredBlock<Block> CLOSET_SECURE;
 	public static final DeferredBlock<Block> UP_CLOSET_PLUG;
+	public static final DeferredBlock<Block> CLOSET;
+	public static final DeferredBlock<Block> FENCE_LINE;
+	public static final DeferredBlock<Block> FENCE_G;
+	public static final DeferredBlock<Block> FENCE_POINT;
+	public static final DeferredBlock<Block> FENCE_P;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
@@ -249,6 +254,11 @@ public class Ssc14ModBlocks {
 		CARGO_AIRLOCK_D_1OPEN = register("cargo_airlock_d_1open", CargoAirlockD1openBlock::new);
 		CLOSET_SECURE = register("closet_secure", ClosetSecureBlock::new);
 		UP_CLOSET_PLUG = register("up_closet_plug", UpClosetPLUGBlock::new);
+		CLOSET = register("closet", ClosetBlock::new);
+		FENCE_LINE = register("fence_line", FenceLineBlock::new);
+		FENCE_G = register("fence_g", FenceGBlock::new);
+		FENCE_POINT = register("fence_point", FencePointBlock::new);
+		FENCE_P = register("fence_p", FencePBlock::new);
 	}
 
 	// Start of user code block custom blocks

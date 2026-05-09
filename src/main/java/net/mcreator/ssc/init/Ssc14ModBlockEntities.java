@@ -46,6 +46,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CargoAirlockD1BlockEntity>> CARGO_AIRLOCK_D_1 = register("cargo_airlock_d_1", Ssc14ModBlocks.CARGO_AIRLOCK_D_1, CargoAirlockD1BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CargoAirlockD1openBlockEntity>> CARGO_AIRLOCK_D_1OPEN = register("cargo_airlock_d_1open", Ssc14ModBlocks.CARGO_AIRLOCK_D_1OPEN, CargoAirlockD1openBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetSecureBlockEntity>> CLOSET_SECURE = register("closet_secure", Ssc14ModBlocks.CLOSET_SECURE, ClosetSecureBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET = register("closet", Ssc14ModBlocks.CLOSET, ClosetBlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities
@@ -79,5 +80,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CARGO_AIRLOCK_D_1.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CARGO_AIRLOCK_D_1OPEN.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_SECURE.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET.get(), SidedInvWrapper::new);
 	}
 }

@@ -8,11 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.Dist;
 
-import net.mcreator.ssc.client.renderer.WallCarcaseEntitRenderer;
-import net.mcreator.ssc.client.renderer.PlassteelWallCarcaseEntitRenderer;
-import net.mcreator.ssc.client.renderer.IDConsoleENTITYRenderer;
-import net.mcreator.ssc.client.renderer.ChairEntityRenderer;
-import net.mcreator.ssc.client.renderer.C4CrutchEntRenderer;
+import net.mcreator.ssc.client.renderer.*;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Ssc14ModEntityRenderers {
@@ -23,5 +19,6 @@ public class Ssc14ModEntityRenderers {
 		event.registerEntityRenderer(Ssc14ModEntities.PLASSTEEL_WALL_CARCASE_ENTIT.get(), PlassteelWallCarcaseEntitRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.CHAIR_ENTITY.get(), ChairEntityRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.C_4_CRUTCH_ENT.get(), C4CrutchEntRenderer::new);
+		event.registerEntityRenderer(Ssc14ModEntities.CORPSE.get(), CorpseRenderer::new);
 	}
 }

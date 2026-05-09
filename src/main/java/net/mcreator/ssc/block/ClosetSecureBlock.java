@@ -35,16 +35,17 @@ import java.util.function.Function;
 public class ClosetSecureBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 	public static final BooleanProperty OPEN = BooleanProperty.create("open");
+	public static final BooleanProperty BLOCKED = BooleanProperty.create("blocked");
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public ClosetSecureBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.VAULT).strength(20f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false));
+		super(properties.sound(SoundType.VAULT).strength(40f, 15f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false).setValue(BLOCKED, true));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
-			if (state.getValue(OPEN) == true) {
+			if (state.getValue(OPEN) == true && state.getValue(BLOCKED) == false) {
 				return switch (state.getValue(FACING)) {
 					default -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(2, 1, 2, 14, 31, 16), BooleanOp.ONLY_FIRST);
 					case NORTH -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(2, 1, 0, 14, 31, 14), BooleanOp.ONLY_FIRST);
@@ -84,12 +85,12 @@ public class ClosetSecureBlock extends Block implements EntityBlock {
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
-		builder.add(FACING, OPEN);
+		builder.add(FACING, OPEN, BLOCKED);
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(OPEN, false);
+		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(OPEN, false).setValue(BLOCKED, true);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

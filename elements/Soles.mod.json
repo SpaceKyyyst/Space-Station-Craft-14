@@ -1,0 +1,26 @@
+{
+  "_fv": 85,
+  "_type": "curiosbauble",
+  "definition": {
+    "item": "BlackSolesItem",
+    "slotType": "Boots",
+    "slotAmount": 1,
+    "addSlot": false,
+    "enderMask": false,
+    "friendlyPigs": false,
+    "snowWalk": false,
+    "equipSound": {
+      "value": ""
+    },
+    "hasModel": true,
+    "baubleModel": "Modelcolor_soles",
+    "baubleModelTexture": "black_soles_texture.png",
+    "helmetModelPart": "Empty",
+    "bodyModelPart": "Empty",
+    "armsModelPartL": "Empty",
+    "armsModelPartR": "Empty",
+    "leggingsModelPartL": "l_foot",
+    "leggingsModelPartR": "r_foot",
+    "disabledToggles": []
+  }
+}

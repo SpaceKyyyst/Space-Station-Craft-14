@@ -9,7 +9,7 @@
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "closet:default",
+    "customModelName": "closet_indicator:default",
     "rotationMode": 1,
     "enablePitch": false,
     "emissiveRendering": false,
@@ -23,7 +23,7 @@
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "closet_open:default",
+        "customModelName": "closet_indicator_open:default",
         "particleTexture": "",
         "hasCustomBoundingBox": true,
         "boundingBoxes": [
@@ -53,6 +53,52 @@
               "type": "logic"
             },
             "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:blocked",
+              "type": "logic"
+            },
+            "value": false
+          }
+        ]
+      },
+      {
+        "texture": "closet_secure_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "closet_indicator:open",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:blocked",
+              "type": "logic"
+            },
+            "value": false
           }
         ]
       }
@@ -66,7 +112,7 @@
     "isItemTinted": false,
     "hasTransparency": true,
     "connectedSides": false,
-    "transparencyType": "CUTOUT",
+    "transparencyType": "TRANSLUCENT",
     "disableOffset": false,
     "boundingBoxes": [
       {
@@ -93,14 +139,19 @@
         "name": "CUSTOM:open",
         "type": "logic",
         "value": false
+      },
+      {
+        "name": "CUSTOM:blocked",
+        "type": "logic",
+        "value": true
       }
     ],
     "name": "Closet Secure",
     "specialInformation": {
       "fixedValue": []
     },
-    "hardness": 20.0,
-    "resistance": 10.0,
+    "hardness": 40.0,
+    "resistance": 15.0,
     "hasGravity": false,
     "isWaterloggable": false,
     "hasBlockItem": true,

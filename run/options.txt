@@ -12,8 +12,8 @@ darknessEffectScale:1.0
 glintSpeed:0.5
 glintStrength:0.75
 prioritizeChunkUpdates:0
-fullscreen:true
-gamma:0.7570422535211268
+fullscreen:false
+gamma:0.5070422535211268
 graphicsMode:1
 guiScale:0
 maxFps:260
@@ -52,7 +52,7 @@ damageTiltStrength:1.0
 highContrast:false
 highContrastBlockOutline:false
 narratorHotkey:true
-resourcePacks:["vanilla","mod_resources"]
+resourcePacks:["vanilla"]
 incompatibleResourcePacks:[]
 lastServer:localhost:25463
 lang:ru_ru
@@ -69,8 +69,8 @@ overrideHeight:0
 chatHeightFocused:1.0
 chatDelay:0.0
 chatHeightUnfocused:0.4375
-chatScale:1.0
-chatWidth:1.0
+chatScale:0.704225352112676
+chatWidth:0.5369718309859155
 notificationDisplayTime:1.0
 useNativeTransport:true
 mainHand:"right"
@@ -79,7 +79,7 @@ tutorialStep:none
 mouseWheelSensitivity:1.0
 rawMouseInput:true
 glDebugVerbosity:1
-skipMultiplayerWarning:false
+skipMultiplayerWarning:true
 hideMatchedNames:true
 joinedFirstServer:true
 syncChunkWrites:true
@@ -134,7 +134,7 @@ key_key.ssc_14.rotate:key.keyboard.r
 key_key.ssc_14.pullthe_object:key.keyboard.f
 key_key.ssc_14.world_object_check:key.keyboard.left.shift
 key_key.ssc_14.crawl:key.keyboard.z
-key_key.ssc_14.interaction:key.keyboard.e:SHIFT
+key_key.ssc_14.interaction:key.keyboard.e
 key_key.pickup.item:key.keyboard.unknown
 soundCategory_master:1.0
 soundCategory_music:0.0
