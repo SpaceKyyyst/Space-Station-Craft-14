@@ -93,9 +93,6 @@ public class Ssc14ModTabs {
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_OBJECTS = REGISTRY.register("ssc_14_objects",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14_objects")).icon(() -> new ItemStack(Ssc14ModBlocks.CONSOLE_OF_ID.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().asItem());
-				tabData.accept(Ssc14ModBlocks.TECH_AIRLOCK_D_1.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ATMOS_AIRLOCK_D_1.get().asItem());
-				tabData.accept(Ssc14ModBlocks.CARGO_AIRLOCK_D_1.get().asItem());
 				tabData.accept(Ssc14ModBlocks.WALL_CARCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.GRILLE.get().asItem());
@@ -276,11 +273,6 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.WALL_CARCASE_ENTIT_SPAWN_EGG.get());
 				tabData.accept(Ssc14ModItems.ID_CONSOLE_ENTITY_SPAWN_EGG.get());
 				tabData.accept(Ssc14ModItems.PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG.get());
-				tabData.accept(Ssc14ModBlocks.ATMOS_BLOCK.get().asItem());
-				tabData.accept(Ssc14ModItems.O_2_DEBU_GHANDGENERATOR.get());
-				tabData.accept(Ssc14ModItems.HEATER_DEBU_GHANDGENERATOR.get());
-				tabData.accept(Ssc14ModItems.COOLER_DEBU_GHANDGENERATOR.get());
-				tabData.accept(Ssc14ModItems.N_2_DEBU_GHANDGENERATOR.get());
 				tabData.accept(Ssc14ModItems.AIRLOCK_CONTROLLER.get());
 				tabData.accept(Ssc14ModBlocks.DEBUG_GRAV_GEN.get().asItem());
 				tabData.accept(Ssc14ModBlocks.DEBU_GGENERATOR.get().asItem());
@@ -288,6 +280,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.DEBUG_TECH_LAMP.get().asItem());
 				tabData.accept(Ssc14ModBlocks.KOSTILNIBLOK.get().asItem());
 				tabData.accept(Ssc14ModBlocks.NUCLEAR_WARHEAD.get().asItem());
+				tabData.accept(Ssc14ModBlocks.DEBUG_13.get().asItem());
 			}
 		}
 	}

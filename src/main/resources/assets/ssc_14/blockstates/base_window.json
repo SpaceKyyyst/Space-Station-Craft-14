@@ -1,10 +1,78 @@
 {
-  "variants": {
-    "blockstate=1": {
-      "model": "ssc_14:block/base_window_0"
-    },
-    "blockstate=0": {
-      "model": "ssc_14:block/base_window"
-    }
-  }
+  "multipart": [
+  	
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "false", "west": "false", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/center" } },
+	
+	{ "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "false", "west": "false", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/center_south" } },
+	{ "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "false", "west": "false", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/center_north" } },
+	{ "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "true", "west": "false", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/center_west" } },
+	{ "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "false", "west": "true", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/center_east" } },
+	{ "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "false", "west": "false", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/center_down" } },
+	{ "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "false", "west": "false", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/center_up" } },
+    
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "false", "west": "false", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/north" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "false", "west": "false", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/south" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "true", "west": "false", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/east" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "false", "west": "true", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/west" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "false", "west": "false", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/up" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "false", "west": "false", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/down" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "false", "west": "false", "up": "true", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/up_down" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "true", "east": "false", "west": "false", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/north_south" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "true", "west": "true", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/east_west" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "false", "west": "false", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/up_north" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "false", "west": "false", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/up_south" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "true", "west": "false", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/up_east" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "false", "west": "true", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/up_west" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "false", "west": "false", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/down_north" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "false", "west": "false", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/down_south" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "true", "west": "false", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/down_east" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "false", "west": "true", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/down_west" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "true", "west": "false", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/north_east" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "false", "west": "true", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/north_west" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "true", "west": "false", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/south_east" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "false", "west": "true", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/south_west" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "true", "east": "false", "west": "false", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/north_south_up" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "true", "east": "false", "west": "false", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/north_south_down" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "true", "east": "true", "west": "false", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/north_south_east" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "true", "east": "false", "west": "true", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/north_south_west" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "true", "west": "true", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/east_west_up" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "true", "west": "true", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/east_west_down" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "true", "west": "true", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/east_west_north" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "true", "west": "true", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/east_west_south" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "false", "west": "false", "up": "true", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/up_down_north" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "false", "west": "false", "up": "true", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/up_down_south" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "true", "west": "false", "up": "true", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/up_down_east" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "false", "east": "false", "west": "true", "up": "true", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/up_down_west" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "true", "west": "false", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/north_east_up" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "false", "west": "true", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/north_west_up" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "true", "west": "false", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/south_east_up" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "false", "west": "true", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/south_west_up" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "true", "west": "false", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/north_east_down" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "false", "west": "true", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/north_west_down" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "true", "west": "false", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/south_east_down" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "false", "west": "true", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/south_west_down" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "true", "east": "true", "west": "true", "up": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/east_west_north_south" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "true", "up": "true", "down": "true", "east": "false", "west": "false" }, "apply": { "model": "ssc_14:block/wall/window/down_up_north_south" } },
+    { "when": { "window_disassembly": "0", "east": "true", "west": "true", "up": "true", "down": "true", "north": "false", "south": "false" }, "apply": { "model": "ssc_14:block/wall/window/east_west_down_up" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "true", "east": "true", "west": "true", "up": "true", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/east_west_north_south_up" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "true", "east": "true", "west": "true", "up": "false", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/east_west_north_south_down" } },
+    { "when": { "window_disassembly": "0", "north": "false", "south": "true", "east": "true", "west": "true", "up": "true", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/east_west_up_down_south" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "false", "east": "true", "west": "true", "up": "true", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/east_west_up_down_north" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "true", "east": "false", "west": "true", "up": "true", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/north_south_up_down_west" } },
+    { "when": { "window_disassembly": "0", "north": "true", "south": "true", "east": "true", "west": "false", "up": "true", "down": "true" }, "apply": { "model": "ssc_14:block/wall/window/north_south_up_down_east" } },
+    { "when": { "window_disassembly": "0", "east": "true", "north": "true", "south": "true", "up": "true", "west": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/east_north_south_up" } },
+    { "when": { "window_disassembly": "0", "west": "true", "north": "true", "south": "true", "up": "true", "east": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/west_north_south_up" } },
+    { "when": { "window_disassembly": "0", "north": "true", "east": "true", "west": "true", "up": "true", "south": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/north_east_west_up" } },
+    { "when": { "window_disassembly": "0", "south": "true", "east": "true", "west": "true", "up": "true", "north": "false", "down": "false" }, "apply": { "model": "ssc_14:block/wall/window/south_east_west_up" } },
+    { "when": { "window_disassembly": "0", "east": "true", "north": "true", "south": "true", "down": "true", "west": "false", "up": "false" }, "apply": { "model": "ssc_14:block/wall/window/east_north_south_down" } },
+    { "when": { "window_disassembly": "0", "west": "true", "north": "true", "south": "true", "down": "true", "east": "false", "up": "false" }, "apply": { "model": "ssc_14:block/wall/window/west_north_south_down" } },
+    { "when": { "window_disassembly": "0", "north": "true", "east": "true", "west": "true", "down": "true", "south": "false", "up": "false" }, "apply": { "model": "ssc_14:block/wall/window/north_east_west_down" } },
+    { "when": { "window_disassembly": "0", "south": "true", "east": "true", "west": "true", "down": "true", "north": "false", "up": "false" }, "apply": { "model": "ssc_14:block/wall/window/south_east_west_down" } },
+    { "when": { "window_disassembly": "0", "east": "true", "north": "true", "up": "true", "down": "true", "west": "false", "south": "false" }, "apply": { "model": "ssc_14:block/wall/window/east_north_up_down" } },
+    { "when": { "window_disassembly": "0", "west": "true", "north": "true", "up": "true", "down": "true", "east": "false", "south": "false" }, "apply": { "model": "ssc_14:block/wall/window/west_north_up_down" } },
+    { "when": { "window_disassembly": "0", "east": "true", "south": "true", "up": "true", "down": "true", "west": "false", "north": "false" }, "apply": { "model": "ssc_14:block/wall/window/east_south_up_down" } },
+    { "when": { "window_disassembly": "0", "west": "true", "south": "true", "up": "true", "down": "true", "east": "false", "north": "false" }, "apply": { "model": "ssc_14:block/wall/window/west_south_up_down" } },
+    
+    { "when": { "window_disassembly": "1" }, "apply": { "model": "ssc_14:block/base_window_0" } }
+  ]
 }

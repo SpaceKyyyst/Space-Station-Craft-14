@@ -3,7 +3,7 @@
     "default": {
       "name": "default",
       "map": {
-        "2": "closet_texture"
+        "2": "closet_generic_texture"
       }
     }
   }

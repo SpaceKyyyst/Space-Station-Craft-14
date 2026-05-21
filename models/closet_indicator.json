@@ -2,7 +2,9 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"particle": "Изображения D/BlockBench/SSC14/Перенесено в мод/closet_bl_unbl_render_texture"
+		"0": "secure_texture",
+		"12": "closet_bl_unbl_render_texture",
+		"particle": "warden_texture"
 	},
 	"elements": [
 		{
@@ -32,9 +34,9 @@
 			}
 		},
 		{
-			"from": [2, 1, 1],
-			"to": [14, 31, 2],
-			"rotation": {"angle": 0, "axis": "y", "origin": [14, 1, 1]},
+			"from": [2, 1, 0.99],
+			"to": [14, 31, 1.99],
+			"rotation": {"angle": 0, "axis": "y", "origin": [14, 1, 0.975]},
 			"faces": {
 				"north": {"uv": [3.25, 8, 6.25, 15.5], "texture": "#0"},
 				"east": {"uv": [13.5, 0, 13.75, 7.5], "texture": "#0"},
@@ -46,9 +48,9 @@
 		},
 		{
 			"name": "lamp",
-			"from": [4, 14, 0.9],
-			"to": [7, 18, 0.9],
-			"rotation": {"angle": 0, "axis": "y", "origin": [5, 15, -1.1]},
+			"from": [4, 14, 0.89],
+			"to": [7, 18, 0.89],
+			"rotation": {"angle": 0, "axis": "y", "origin": [14, -2, 0.975]},
 			"faces": {
 				"north": {"uv": [0, 0, 3, 4], "texture": "#12"}
 			}
@@ -78,7 +80,7 @@
 						2,
 						{
 							"name": "indicator",
-							"origin": [8, 17, 7.5],
+							"origin": [14, 1, 1],
 							"scope": 0,
 							"color": 0,
 							"children": [3]

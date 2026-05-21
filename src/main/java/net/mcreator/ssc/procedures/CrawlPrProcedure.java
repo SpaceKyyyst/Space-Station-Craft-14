@@ -1,3 +1,4 @@
+
 package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.entity.player.Player;
@@ -11,6 +12,5 @@ public class CrawlPrProcedure {
 			boolean isCrawling = player.getPersistentData().getBoolean("ssc14_is_crawling").orElse(false);
 			player.getPersistentData().putBoolean("ssc14_is_crawling", !isCrawling);
 		}
-		entity.stopRiding();
 	}
 }

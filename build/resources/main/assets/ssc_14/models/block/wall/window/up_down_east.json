@@ -1,0 +1,34 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "tex": "ssc_14:block/window_up_right_down",
+    "tex1": "ssc_14:block/window_up_down"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#tex",
+          "rotation": 180
+        },
+        "south": {
+          "texture": "#tex"
+        },
+        "west": {
+          "texture": "#tex1"
+        }
+      }
+    }
+  ],
+  "render_type": "cutout"
+}

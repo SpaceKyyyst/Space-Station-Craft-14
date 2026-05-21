@@ -56,9 +56,7 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> ID_CARD_PASSANGER;
 	public static final DeferredItem<Item> CONSOLE_OF_ID;
 	public static final DeferredItem<Item> ID_CONSOLE_ENTITY_SPAWN_EGG;
-	public static final DeferredItem<Item> ATMOS_BLOCK;
 	public static final DeferredItem<Item> GAS_ANALYSER;
-	public static final DeferredItem<Item> O_2_DEBU_GHANDGENERATOR;
 	public static final DeferredItem<Item> BASE_WINDOW;
 	public static final DeferredItem<Item> GLASS_SHARD;
 	public static final DeferredItem<Item> GLASS;
@@ -108,8 +106,6 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> ID_CARD_VS;
 	public static final DeferredItem<Item> ID_CARD_SCIENTIST;
 	public static final DeferredItem<Item> ID_CARD_SCI_ASSISTENT;
-	public static final DeferredItem<Item> HEATER_DEBU_GHANDGENERATOR;
-	public static final DeferredItem<Item> COOLER_DEBU_GHANDGENERATOR;
 	public static final DeferredItem<Item> PORTABLE_SHEATER;
 	public static final DeferredItem<Item> SILVER;
 	public static final DeferredItem<Item> SSC_14_GOLD;
@@ -123,7 +119,6 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> ENERGY_BAR_2;
 	public static final DeferredItem<Item> PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG;
 	public static final DeferredItem<Item> TITLE_DARK;
-	public static final DeferredItem<Item> N_2_DEBU_GHANDGENERATOR;
 	public static final DeferredItem<Item> AIRLOCK_CONTROLLER;
 	public static final DeferredItem<Item> APC;
 	public static final DeferredItem<Item> PODSTATION;
@@ -239,13 +234,10 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> TRNS_SCARF;
 	public static final DeferredItem<Item> YELLOW_SCARF;
 	public static final DeferredItem<Item> ISOLATED_GLOVES;
-	public static final DeferredItem<Item> TECH_AIRLOCK_D_1;
 	public static final DeferredItem<Item> PICK;
 	public static final DeferredItem<Item> SECURITY_JUMPSUIT;
 	public static final DeferredItem<Item> COMBAT_BOOTS_ITEM;
 	public static final DeferredItem<Item> COMPUTER;
-	public static final DeferredItem<Item> ATMOS_AIRLOCK_D_1;
-	public static final DeferredItem<Item> CARGO_AIRLOCK_D_1;
 	public static final DeferredItem<Item> CLOSET_SECURE;
 	public static final DeferredItem<Item> MAGNETIC_BOOTS_ITEM;
 	public static final DeferredItem<Item> MAGNETIC_BOOTS_ACTIVE_ITEM;
@@ -275,6 +267,7 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> BLOODPACK;
 	public static final DeferredItem<Item> GAUZE;
 	public static final DeferredItem<Item> OINTMENT;
+	public static final DeferredItem<Item> DEBUG_13;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -302,9 +295,7 @@ public class Ssc14ModItems {
 		ID_CARD_PASSANGER = register("id_card_passanger", IDCardPassangerItem::new);
 		CONSOLE_OF_ID = block(Ssc14ModBlocks.CONSOLE_OF_ID, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
 		ID_CONSOLE_ENTITY_SPAWN_EGG = register("id_console_entity_spawn_egg", properties -> new SpawnEggItem(Ssc14ModEntities.ID_CONSOLE_ENTITY.get(), properties));
-		ATMOS_BLOCK = block(Ssc14ModBlocks.ATMOS_BLOCK, new Item.Properties().stacksTo(1));
 		GAS_ANALYSER = register("gas_analyser", GasAnalyserItem::new);
-		O_2_DEBU_GHANDGENERATOR = register("o_2_debu_ghandgenerator", O2DEBUGhandgeneratorItem::new);
 		BASE_WINDOW = block(Ssc14ModBlocks.BASE_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
 		GLASS_SHARD = register("glass_shard", GlassShardItem::new);
 		GLASS = register("glass", GlassItem::new);
@@ -354,8 +345,6 @@ public class Ssc14ModItems {
 		ID_CARD_VS = register("id_card_vs", IDCardVSItem::new);
 		ID_CARD_SCIENTIST = register("id_card_scientist", IDCardScientistItem::new);
 		ID_CARD_SCI_ASSISTENT = register("id_card_sci_assistent", IDCardSciAssistentItem::new);
-		HEATER_DEBU_GHANDGENERATOR = register("heater_debu_ghandgenerator", HeaterDEBUGhandgeneratorItem::new);
-		COOLER_DEBU_GHANDGENERATOR = register("cooler_debu_ghandgenerator", CoolerDEBUGhandgeneratorItem::new);
 		PORTABLE_SHEATER = block(Ssc14ModBlocks.PORTABLE_SHEATER, new Item.Properties().stacksTo(1));
 		SILVER = register("silver", SilverItem::new);
 		SSC_14_GOLD = register("ssc_14_gold", SSC14GoldItem::new);
@@ -369,7 +358,6 @@ public class Ssc14ModItems {
 		ENERGY_BAR_2 = register("energy_bar_2", EnergyBar2Item::new);
 		PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG = register("plassteel_wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(Ssc14ModEntities.PLASSTEEL_WALL_CARCASE_ENTIT.get(), properties));
 		TITLE_DARK = block(Ssc14ModBlocks.TITLE_DARK, new Item.Properties().stacksTo(30).fireResistant());
-		N_2_DEBU_GHANDGENERATOR = register("n_2_debu_ghandgenerator", N2DEBUGhandgeneratorItem::new);
 		AIRLOCK_CONTROLLER = register("airlock_controller", AirlockControllerItem::new);
 		APC = block(Ssc14ModBlocks.APC, new Item.Properties().stacksTo(1).fireResistant());
 		PODSTATION = block(Ssc14ModBlocks.PODSTATION, new Item.Properties().stacksTo(1).fireResistant());
@@ -485,13 +473,10 @@ public class Ssc14ModItems {
 		TRNS_SCARF = register("trns_scarf", TrnsScarfItem::new);
 		YELLOW_SCARF = register("yellow_scarf", YellowScarfItem::new);
 		ISOLATED_GLOVES = register("isolated_gloves", IsolatedGlovesItem::new);
-		TECH_AIRLOCK_D_1 = block(Ssc14ModBlocks.TECH_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
 		PICK = register("pick", PickItem::new);
 		SECURITY_JUMPSUIT = register("security_jumpsuit", SecurityJumpsuitItem::new);
 		COMBAT_BOOTS_ITEM = register("combat_boots_item", CombatBootsItemItem::new);
 		COMPUTER = block(Ssc14ModBlocks.COMPUTER, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
-		ATMOS_AIRLOCK_D_1 = block(Ssc14ModBlocks.ATMOS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		CARGO_AIRLOCK_D_1 = block(Ssc14ModBlocks.CARGO_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
 		CLOSET_SECURE = block(Ssc14ModBlocks.CLOSET_SECURE, new Item.Properties().stacksTo(1).fireResistant());
 		MAGNETIC_BOOTS_ITEM = register("magnetic_boots_item", MagneticBootsItemItem::new);
 		MAGNETIC_BOOTS_ACTIVE_ITEM = register("magnetic_boots_active_item", MagneticBootsACTIVEItemItem::new);
@@ -521,6 +506,7 @@ public class Ssc14ModItems {
 		BLOODPACK = register("bloodpack", BloodpackItem::new);
 		GAUZE = register("gauze", GauzeItem::new);
 		OINTMENT = register("ointment", OintmentItem::new);
+		DEBUG_13 = block(Ssc14ModBlocks.DEBUG_13);
 	}
 
 	// Start of user code block custom items

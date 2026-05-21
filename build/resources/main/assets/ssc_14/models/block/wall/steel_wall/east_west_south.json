@@ -1,0 +1,35 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "tex": "ssc_14:block/steel_wall_up_right_down",
+    "tex1": "ssc_14:block/steel_wall_up_down"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "up": {
+          "texture": "#tex",
+          "rotation": 90
+        },
+        "down": {
+          "texture": "#tex",
+          "rotation": 270
+        },
+        "north": {
+          "texture": "#tex1",
+          "rotation": 90
+        }
+      }
+    }
+  ]
+}

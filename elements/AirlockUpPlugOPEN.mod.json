@@ -26,7 +26,26 @@
     "connectedSides": false,
     "transparencyType": "CUTOUT",
     "disableOffset": false,
-    "boundingBoxes": [],
+    "boundingBoxes": [
+      {
+        "mx": 0.0,
+        "my": 0.0,
+        "mz": 7.0,
+        "Mx": 16.0,
+        "My": 16.0,
+        "Mz": 9.0,
+        "subtract": false
+      },
+      {
+        "mx": 1.0,
+        "my": 0.0,
+        "mz": 7.0,
+        "Mx": 15.0,
+        "My": 16.0,
+        "Mz": 9.0,
+        "subtract": true
+      }
+    ],
     "customProperties": [],
     "name": "Airlock Up Plug",
     "specialInformation": {
@@ -133,8 +152,11 @@
     "onNeighbourBlockChanges": {
       "name": "BaseAirlockU1_Chek"
     },
-    "onTickUpdate": {
-      "name": "AtmosBlock__TIC"
+    "onDestroyedByPlayer": {
+      "name": "BaseAirlock_U_D_autoDESTROY"
+    },
+    "onDestroyedByExplosion": {
+      "name": "BaseAirlock_U_D_autoDESTROY"
     },
     "generateFeature": false,
     "restrictionBiomes": [],

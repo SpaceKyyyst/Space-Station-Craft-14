@@ -1,3 +1,4 @@
+
 package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.level.storage.TagValueInput;
@@ -8,6 +9,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.block.Block; // ← ДОБАВЛЕН ОТСУТСТВУЮЩИЙ ИМПОРТ
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,200 +29,149 @@ import net.mcreator.ssc.init.Ssc14ModAttributes;
 import net.mcreator.ssc.Ssc14Mod;
 
 public class FireAxe_UseProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
-		if (entity == null)
-			return;
-		if (entity instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER))
-			_livingEntity3.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).setBaseValue((entity.getX() + entity.getZ() + entity.getY()));
-		if ((entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(6)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getDirection()) == Direction.UP
-				&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING.get()
-				|| (entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(6)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getDirection()) == Direction.DOWN
-						&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.UPER_SHEATHING.get()) {
-			if (entity instanceof LivingEntity _livingEntity12 && _livingEntity12.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-				_livingEntity12.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
-			Ssc14Mod.queueServerWork(10, () -> {
-				if (entity.getX() + entity.getZ()
-						+ entity.getY() == (entity instanceof LivingEntity _livingEntity16 && _livingEntity16.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity16.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.FIRE_AXE.get()) {
-					if (entity instanceof LivingEntity _livingEntity19 && _livingEntity19.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity19.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
-					Ssc14Mod.queueServerWork(10, () -> {
-						if (entity.getX() + entity.getZ() + entity
-								.getY() == (entity instanceof LivingEntity _livingEntity23 && _livingEntity23.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity23.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
-								&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.FIRE_AXE.get()) {
-							if (entity instanceof LivingEntity _livingEntity26 && _livingEntity26.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity26.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
-							Ssc14Mod.queueServerWork(10, () -> {
-								if (entity.getX() + entity.getZ()
-										+ entity.getY() == (entity instanceof LivingEntity _livingEntity30 && _livingEntity30.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-												? _livingEntity30.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-												: 0)
-										&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.FIRE_AXE.get()) {
-									if (entity instanceof LivingEntity _livingEntity33 && _livingEntity33.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity33.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
-									Ssc14Mod.queueServerWork(10, () -> {
-										if (entity.getX() + entity.getZ()
-												+ entity.getY() == (entity instanceof LivingEntity _livingEntity37 && _livingEntity37.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-														? _livingEntity37.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-														: 0)
-												&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.FIRE_AXE.get()) {
-											if (entity instanceof LivingEntity _livingEntity40 && _livingEntity40.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity40.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
-											Ssc14Mod.queueServerWork(10, () -> {
-												if (entity.getX() + entity.getZ()
-														+ entity.getY() == (entity instanceof LivingEntity _livingEntity44 && _livingEntity44.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																? _livingEntity44.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																: 0)
-														&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.FIRE_AXE.get()) {
-													if (entity instanceof LivingEntity _livingEntity47 && _livingEntity47.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity47.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
-													Ssc14Mod.queueServerWork(10, () -> {
-														if (entity.getX() + entity.getZ()
-																+ entity.getY() == (entity instanceof LivingEntity _livingEntity51 && _livingEntity51.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																		? _livingEntity51.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																		: 0)
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.FIRE_AXE.get()
-																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.SHEATHING.get()) {
-															{
-																BlockPos _bp = BlockPos.containing(x, y, z);
-																BlockState _bs = (blockStateWithInt(Ssc14ModBlocks.ROD_FLOOR.get().defaultBlockState(), "blockstate",
-																		getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip57 ? blockstate.getValue(_getip57) : -1));
-																BlockState _bso = world.getBlockState(_bp);
-																for (Property<?> _propertyOld : _bso.getProperties()) {
-																	Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
-																	if (_propertyNew != null && _bs.getValue(_propertyNew) != null)
-																		try {
-																			_bs = _bs.setValue(_propertyNew, _bso.getValue(_propertyOld));
-																		} catch (Exception e) {
-																		}
-																}
-																BlockEntity _be = world.getBlockEntity(_bp);
-																CompoundTag _bnbt = null;
-																if (_be != null) {
-																	_bnbt = _be.saveWithFullMetadata(world.registryAccess());
-																	_be.setRemoved();
-																}
-																world.setBlock(_bp, _bs, 3);
-																if (_bnbt != null) {
-																	_be = world.getBlockEntity(_bp);
-																	if (_be != null) {
-																		try {
-																			_be.loadWithComponents(TagValueInput.create(ProblemReporter.DISCARDING, world.registryAccess(), _bnbt));
-																		} catch (Exception ignored) {
-																		}
-																	}
-																}
-															}
-															if (world instanceof ServerLevel _level) {
-																ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.1), (y + 1), (z + 0.1), new ItemStack(Ssc14ModBlocks.TITLE_STEEL.get()));
-																entityToSpawn.setPickUpDelay(1);
-																entityToSpawn.setUnlimitedLifetime();
-																_level.addFreshEntity(entityToSpawn);
-															}
-															if (world instanceof Level _level) {
-																if (!_level.isClientSide()) {
-																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:title_off")), SoundSource.NEUTRAL, 1, 1);
-																} else {
-																	_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:title_off")), SoundSource.NEUTRAL, 1, 1, false);
-																}
-															}
-															if (entity instanceof LivingEntity _livingEntity62 && _livingEntity62.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity62.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														} else if (entity.getX() + entity.getZ()
-																+ entity.getY() == (entity instanceof LivingEntity _livingEntity66 && _livingEntity66.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
-																		? _livingEntity66.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
-																		: 0)
-																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.FIRE_AXE.get()
-																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.UPER_SHEATHING.get()) {
-															{
-																BlockPos _bp = BlockPos.containing(x, y, z);
-																BlockState _bs = (blockStateWithInt(Ssc14ModBlocks.ROD_UP_FLOOR.get().defaultBlockState(), "blockstate",
-																		getPropertyByName(blockstate, "blockstate") instanceof IntegerProperty _getip72 ? blockstate.getValue(_getip72) : -1));
-																BlockState _bso = world.getBlockState(_bp);
-																for (Property<?> _propertyOld : _bso.getProperties()) {
-																	Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
-																	if (_propertyNew != null && _bs.getValue(_propertyNew) != null)
-																		try {
-																			_bs = _bs.setValue(_propertyNew, _bso.getValue(_propertyOld));
-																		} catch (Exception e) {
-																		}
-																}
-																BlockEntity _be = world.getBlockEntity(_bp);
-																CompoundTag _bnbt = null;
-																if (_be != null) {
-																	_bnbt = _be.saveWithFullMetadata(world.registryAccess());
-																	_be.setRemoved();
-																}
-																world.setBlock(_bp, _bs, 3);
-																if (_bnbt != null) {
-																	_be = world.getBlockEntity(_bp);
-																	if (_be != null) {
-																		try {
-																			_be.loadWithComponents(TagValueInput.create(ProblemReporter.DISCARDING, world.registryAccess(), _bnbt));
-																		} catch (Exception ignored) {
-																		}
-																	}
-																}
-															}
-															if (world instanceof ServerLevel _level) {
-																ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.1), (y + 0.5), (z + 0.1), new ItemStack(Ssc14ModBlocks.TITLE_STEEL.get()));
-																entityToSpawn.setPickUpDelay(1);
-																entityToSpawn.setUnlimitedLifetime();
-																_level.addFreshEntity(entityToSpawn);
-															}
-															if (world instanceof Level _level) {
-																if (!_level.isClientSide()) {
-																	_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:title_off")), SoundSource.NEUTRAL, 1, 1);
-																} else {
-																	_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:title_off")), SoundSource.NEUTRAL, 1, 1, false);
-																}
-															}
-															if (entity instanceof LivingEntity _livingEntity77 && _livingEntity77.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity77.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														} else {
-															if (entity instanceof LivingEntity _livingEntity78 && _livingEntity78.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-																_livingEntity78.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														}
-													});
-												} else {
-													if (entity instanceof LivingEntity _livingEntity80 && _livingEntity80.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity80.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-												}
-											});
-										} else {
-											if (entity instanceof LivingEntity _livingEntity82 && _livingEntity82.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity82.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-										}
-									});
-								} else {
-									if (entity instanceof LivingEntity _livingEntity84 && _livingEntity84.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity84.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-								}
-							});
-						} else {
-							if (entity instanceof LivingEntity _livingEntity86 && _livingEntity86.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity86.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-						}
-					});
-				} else {
-					if (entity instanceof LivingEntity _livingEntity88 && _livingEntity88.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity88.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-				}
-			});
-		}
-	}
 
-	private static Property<?> getPropertyByName(BlockState state, String name) {
-		for (Property<?> property : state.getProperties()) {
-			if (property.getName().equals(name)) {
-				return property;
-			}
-		}
-		return null;
-	}
+    public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
+        // === БАЗОВЫЕ ПРОВЕРКИ ===
+        if (entity == null || !(entity instanceof LivingEntity livingEntity)) return;
+        if (!livingEntity.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB)) return;
+        
+        ItemStack mainHand = livingEntity.getMainHandItem();
+        if (!mainHand.is(Ssc14ModItems.FIRE_AXE.get())) return;
 
-	private static BlockState blockStateWithInt(BlockState blockState, String property, int newValue) {
-		Property<?> prop = blockState.getBlock().getStateDefinition().getProperty(property);
-		return prop instanceof IntegerProperty ip && prop.getPossibleValues().contains(newValue) ? blockState.setValue(ip, newValue) : blockState;
-	}
+        BlockPos pos = BlockPos.containing(x, y, z);
+        double posHash = entity.getX() + entity.getY() + entity.getZ();
+        Block targetBlock = blockstate.getBlock();
+        int originalBlockstateValue = getPropertyInt(blockstate, "blockstate");
+
+        // Вычисляем направление взгляда ОДИН раз
+        Direction hitDir = entity.level().clip(new ClipContext(
+            entity.getEyePosition(1f), 
+            entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(6)),
+            ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity
+        )).getDirection();
+
+        // === КОНФИГУРАЦИЯ (Java 21 record) ===
+        // drop теперь типа Block, а не Item (совместимо с Ssc14ModBlocks.TITLE_STEEL.get())
+        record AxeConfig(int[] delays, Block target, Block result, Block drop, double dropY, Direction requiredDir) {}
+        final AxeConfig config;
+
+        if (targetBlock == Ssc14ModBlocks.SHEATHING.get()) {
+            config = new AxeConfig(new int[]{10,10,10,10,10,10}, Ssc14ModBlocks.SHEATHING.get(), Ssc14ModBlocks.ROD_FLOOR.get(), Ssc14ModBlocks.TITLE_STEEL.get(), y + 1.0, Direction.UP);
+        } else if (targetBlock == Ssc14ModBlocks.UPER_SHEATHING.get()) {
+            config = new AxeConfig(new int[]{10,10,10,10,10,10}, Ssc14ModBlocks.UPER_SHEATHING.get(), Ssc14ModBlocks.ROD_UP_FLOOR.get(), Ssc14ModBlocks.TITLE_STEEL.get(), y + 0.5, Direction.DOWN);
+        } else {
+            return;
+        }
+
+        if (hitDir != config.requiredDir()) return;
+
+        // === ЛОКАЛЬНЫЙ КЛАСС ПРОЦЕССА (внутри execute, БЕЗ static!) ===
+        class AxeProcess {
+            void run(int step) {
+                // 1. Отмена при движении
+                if (entity.getX() + entity.getY() + entity.getZ() != posHash) { reset(); return; }
+                // 2. Отмена при смене предмета (используем livingEntity вместо entity!)
+                if (!livingEntity.getMainHandItem().is(Ssc14ModItems.FIRE_AXE.get())) { reset(); return; }
+                // 3. Отмена при изменении блока
+                if (world.getBlockState(pos).getBlock() != config.target()) { reset(); return; }
+
+                livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(step);
+
+                if (step < 6) {
+                    Ssc14Mod.queueServerWork(config.delays()[step - 1], () -> run(step + 1));
+                } else {
+                    Ssc14Mod.queueServerWork(config.delays()[5], this::executeFinal);
+                }
+            }
+
+            private void executeFinal() {
+                // Финальные проверки
+                if (entity.getX() + entity.getY() + entity.getZ() != posHash) { reset(); return; }
+                if (!livingEntity.getMainHandItem().is(Ssc14ModItems.FIRE_AXE.get())) { reset(); return; }
+                if (world.getBlockState(pos).getBlock() != config.target()) { reset(); return; }
+
+                BlockState resultState = config.result().defaultBlockState();
+                
+                // Устанавливаем свойство "blockstate" из исходного блока
+                if (resultState.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty ip) {
+                    resultState = resultState.setValue(ip, originalBlockstateValue);
+                }
+                
+                // Копируем остальные свойства старого блока
+                resultState = copyProperties(world.getBlockState(pos), resultState);
+
+                // Сохраняем BlockEntity (NBT)
+                BlockEntity be = world.getBlockEntity(pos);
+                CompoundTag nbt = null;
+                if (be != null) {
+                    nbt = be.saveWithFullMetadata(world.registryAccess());
+                    be.setRemoved();
+                }
+
+                world.setBlock(pos, resultState, 3);
+
+                // Восстанавливаем NBT
+                if (nbt != null) {
+                    be = world.getBlockEntity(pos);
+                    if (be != null) {
+                        try {
+                            be.loadWithComponents(TagValueInput.create(ProblemReporter.DISCARDING, world.registryAccess(), nbt));
+                        } catch (Exception ignored) {}
+                    }
+                }
+
+                // Дроп и звук
+                if (config.drop() != null && world instanceof ServerLevel sLevel) {
+                    ItemEntity drop = new ItemEntity(sLevel, pos.getX() + 0.1, config.dropY(), pos.getZ() + 0.1, new ItemStack(config.drop()));
+                    drop.setPickUpDelay(1);
+                    drop.setUnlimitedLifetime();
+                    sLevel.addFreshEntity(drop);
+                }
+                playSound(world, pos, "ssc_14:title_off", 1.0F, 1.0F);
+                reset();
+            }
+
+            void reset() {
+                livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+            }
+        }
+
+        new AxeProcess().run(1);
+    }
+
+    // ============================================================================
+    // ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ
+    // ============================================================================
+
+    private static int getPropertyInt(BlockState state, String name) {
+        for (Property<?> prop : state.getProperties()) {
+            if (prop.getName().equals(name) && prop instanceof IntegerProperty ip) return state.getValue(ip);
+        }
+        return -1;
+    }
+
+    /** Исправлена проблема с дженериками Property<?> */
+    private static BlockState copyProperties(BlockState from, BlockState toBase) {
+        BlockState result = toBase;
+        for (Property<?> oldProp : from.getProperties()) {
+            Property<?> newProp = result.getBlock().getStateDefinition().getProperty(oldProp.getName());
+            if (newProp != null) {
+                try {
+                    // Приведение к сырому типу Property решает конфликт дженериков в Minecraft
+                    result = result.setValue((Property) newProp, from.getValue((Property) oldProp));
+                } catch (Exception ignored) {}
+            }
+        }
+        return result;
+    }
+
+    private static void playSound(LevelAccessor world, BlockPos pos, String soundId, float volume, float pitch) {
+        if (world instanceof Level lvl) {
+            var sound = BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse(soundId));
+            if (sound != null) {
+                if (!lvl.isClientSide()) lvl.playSound(null, pos, sound, SoundSource.NEUTRAL, volume, pitch);
+                else lvl.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), sound, SoundSource.NEUTRAL, volume, pitch, false);
+            }
+        }
+    }
 }

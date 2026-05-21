@@ -3,8 +3,10 @@ package net.mcreator.ssc.block;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.redstone.Orientation;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
@@ -13,19 +15,19 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import net.mcreator.ssc.procedures.BaseAirlock_U_D_autoDESTROYProcedure;
 import net.mcreator.ssc.procedures.BaseAirlockU1_ChekProcedure;
-import net.mcreator.ssc.procedures.AtmosBlock__TICProcedure;
 import net.mcreator.ssc.procedures.AirlockUpPlug_ClickProcedure;
 import net.mcreator.ssc.block.entity.AirlockUpPlugOPENBlockEntity;
 
@@ -44,7 +46,12 @@ public class AirlockUpPlugOPENBlock extends Block implements EntityBlock {
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
-			return Shapes.empty();
+			return switch (state.getValue(FACING)) {
+				default -> Shapes.join(box(0, 0, 7, 16, 16, 9), box(1, 0, 7, 15, 16, 9), BooleanOp.ONLY_FIRST);
+				case NORTH -> Shapes.join(box(0, 0, 7, 16, 16, 9), box(1, 0, 7, 15, 16, 9), BooleanOp.ONLY_FIRST);
+				case EAST -> Shapes.join(box(7, 0, 0, 9, 16, 16), box(7, 0, 1, 9, 16, 15), BooleanOp.ONLY_FIRST);
+				case WEST -> Shapes.join(box(7, 0, 0, 9, 16, 16), box(7, 0, 1, 9, 16, 15), BooleanOp.ONLY_FIRST);
+			};
 		});
 	}
 
@@ -89,9 +96,16 @@ public class AirlockUpPlugOPENBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
-		super.tick(blockstate, world, pos, random);
-		AtmosBlock__TICProcedure.execute();
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+		BaseAirlock_U_D_autoDESTROYProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		return retval;
+	}
+
+	@Override
+	public void wasExploded(ServerLevel world, BlockPos pos, Explosion e) {
+		super.wasExploded(world, pos, e);
+		BaseAirlock_U_D_autoDESTROYProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override

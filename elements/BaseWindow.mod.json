@@ -42,7 +42,7 @@
             "property": {
               "min": 0,
               "max": 1,
-              "name": "CUSTOM:blockstate",
+              "name": "CUSTOM:window_disassembly",
               "type": "integer"
             },
             "value": 1
@@ -77,13 +77,6 @@
         "min": 0,
         "max": 1,
         "name": "CUSTOM:window_disassembly",
-        "type": "integer",
-        "value": 0
-      },
-      {
-        "min": 0,
-        "max": 1,
-        "name": "CUSTOM:blockstate",
         "type": "integer",
         "value": 0
       }

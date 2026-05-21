@@ -1,9 +1,9 @@
 {
-  "parent": "ssc_14:custom/base_airlock_f_emerg",
+  "parent": "ssc_14:custom/airlock_bolted_weld",
   "textures": {
     "all": "ssc_14:block/airlock_base_item",
     "particle": "ssc_14:block/airlock_base_item",
-    "12": "ssc_14:block/base_airlock_f_anim_t"
+    "0": "ssc_14:block/standard_airlock_basic_texture"
   },
   "render_type": "cutout"
 }

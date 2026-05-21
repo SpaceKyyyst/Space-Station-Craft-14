@@ -31,9 +31,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> BASE_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> UP_TITLE;
 	public static final DeferredBlock<Block> CONSOLE_OF_ID;
-	public static final DeferredBlock<Block> ATMOS_BLOCK;
 	public static final DeferredBlock<Block> BASE_WINDOW;
-	public static final DeferredBlock<Block> BASE_AIRLOCK_D_1OPEN;
 	public static final DeferredBlock<Block> PORTABLE_SHEATER;
 	public static final DeferredBlock<Block> PLASTEEL_WALL;
 	public static final DeferredBlock<Block> PLASTEEL_WALL_CARCASE;
@@ -125,13 +123,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> SHUTTLE_WALL;
 	public static final DeferredBlock<Block> ARMORED_SHUTTLE_WALL;
 	public static final DeferredBlock<Block> DIRECTED_BASE_WINDOW;
-	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1OPEN;
 	public static final DeferredBlock<Block> COMPUTER;
-	public static final DeferredBlock<Block> ATMOS_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> ATMOS_AIRLOCK_D_1OPEN;
-	public static final DeferredBlock<Block> CARGO_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> CARGO_AIRLOCK_D_1OPEN;
 	public static final DeferredBlock<Block> CLOSET_SECURE;
 	public static final DeferredBlock<Block> UP_CLOSET_PLUG;
 	public static final DeferredBlock<Block> CLOSET;
@@ -139,6 +131,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> FENCE_G;
 	public static final DeferredBlock<Block> FENCE_POINT;
 	public static final DeferredBlock<Block> FENCE_P;
+	public static final DeferredBlock<Block> DEBUG_13;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
@@ -151,9 +144,7 @@ public class Ssc14ModBlocks {
 		BASE_AIRLOCK_D_1 = register("base_airlock_d_1", BaseAirlockD1Block::new);
 		UP_TITLE = register("up_title", UpTitleBlock::new);
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
-		ATMOS_BLOCK = register("atmos_block", AtmosBlockBlock::new);
 		BASE_WINDOW = register("base_window", BaseWindowBlock::new);
-		BASE_AIRLOCK_D_1OPEN = register("base_airlock_d_1open", BaseAirlockD1openBlock::new);
 		PORTABLE_SHEATER = register("portable_sheater", PortableSheaterBlock::new);
 		PLASTEEL_WALL = register("plasteel_wall", PlasteelWallBlock::new);
 		PLASTEEL_WALL_CARCASE = register("plasteel_wall_carcase", PlasteelWallCarcaseBlock::new);
@@ -245,13 +236,7 @@ public class Ssc14ModBlocks {
 		SHUTTLE_WALL = register("shuttle_wall", ShuttleWallBlock::new);
 		ARMORED_SHUTTLE_WALL = register("armored_shuttle_wall", ArmoredShuttleWallBlock::new);
 		DIRECTED_BASE_WINDOW = register("directed_base_window", DirectedBaseWindowBlock::new);
-		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
-		TECH_AIRLOCK_D_1OPEN = register("tech_airlock_d_1open", TechAirlockD1openBlock::new);
 		COMPUTER = register("computer", ComputerBlock::new);
-		ATMOS_AIRLOCK_D_1 = register("atmos_airlock_d_1", AtmosAirlockD1Block::new);
-		ATMOS_AIRLOCK_D_1OPEN = register("atmos_airlock_d_1open", AtmosAirlockD1openBlock::new);
-		CARGO_AIRLOCK_D_1 = register("cargo_airlock_d_1", CargoAirlockD1Block::new);
-		CARGO_AIRLOCK_D_1OPEN = register("cargo_airlock_d_1open", CargoAirlockD1openBlock::new);
 		CLOSET_SECURE = register("closet_secure", ClosetSecureBlock::new);
 		UP_CLOSET_PLUG = register("up_closet_plug", UpClosetPLUGBlock::new);
 		CLOSET = register("closet", ClosetBlock::new);
@@ -259,6 +244,7 @@ public class Ssc14ModBlocks {
 		FENCE_G = register("fence_g", FenceGBlock::new);
 		FENCE_POINT = register("fence_point", FencePointBlock::new);
 		FENCE_P = register("fence_p", FencePBlock::new);
+		DEBUG_13 = register("debug_13", DEBUG13Block::new);
 	}
 
 	// Start of user code block custom blocks

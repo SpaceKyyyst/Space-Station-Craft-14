@@ -19,4 +19,8 @@ public class Ssc14ModParticleTypes {
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> GRAV_GEN_PARTICLE_3 = REGISTRY.register("grav_gen_particle_3", () -> new SimpleParticleType(true));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> GRAV_GEN_PARTICLE_4 = REGISTRY.register("grav_gen_particle_4", () -> new SimpleParticleType(true));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SPARK = REGISTRY.register("spark", () -> new SimpleParticleType(false));
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> PLASMA_PARTICLES_1 = REGISTRY.register("plasma_particles_1", () -> new SimpleParticleType(false));
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> PLASMA_PARTICLES_2 = REGISTRY.register("plasma_particles_2", () -> new SimpleParticleType(false));
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> WATER_VAPOR_PARTICLES_1 = REGISTRY.register("water_vapor_particles_1", () -> new SimpleParticleType(false));
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> WATER_VAPOR_PARTICLES_2 = REGISTRY.register("water_vapor_particles_2", () -> new SimpleParticleType(false));
 }

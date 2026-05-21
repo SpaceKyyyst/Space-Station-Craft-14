@@ -8,7 +8,7 @@ import net.minecraft.core.BlockPos;
 
 public class BaseAirlockU1_ChekProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		if (!(world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:airlocks_closed")))) {
+		if (!(world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:airlocks")))) {
 			world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
 		}
 	}

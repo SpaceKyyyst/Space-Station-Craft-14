@@ -24,8 +24,6 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Ssc14Mod.MODID);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BaseAirlockD1BlockEntity>> BASE_AIRLOCK_D_1 = register("base_airlock_d_1", Ssc14ModBlocks.BASE_AIRLOCK_D_1, BaseAirlockD1BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ConsoleOfIDBlockEntity>> CONSOLE_OF_ID = register("console_of_id", Ssc14ModBlocks.CONSOLE_OF_ID, ConsoleOfIDBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AtmosBlockBlockEntity>> ATMOS_BLOCK = register("atmos_block", Ssc14ModBlocks.ATMOS_BLOCK, AtmosBlockBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BaseAirlockD1openBlockEntity>> BASE_AIRLOCK_D_1OPEN = register("base_airlock_d_1open", Ssc14ModBlocks.BASE_AIRLOCK_D_1OPEN, BaseAirlockD1openBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PortableSheaterBlockEntity>> PORTABLE_SHEATER = register("portable_sheater", Ssc14ModBlocks.PORTABLE_SHEATER, PortableSheaterBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<APCBlockEntity>> APC = register("apc", Ssc14ModBlocks.APC, APCBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PodstationBlockEntity>> PODSTATION = register("podstation", Ssc14ModBlocks.PODSTATION, PodstationBlockEntity::new);
@@ -39,12 +37,6 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<KostilniblokBlockEntity>> KOSTILNIBLOK = register("kostilniblok", Ssc14ModBlocks.KOSTILNIBLOK, KostilniblokBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DebugGravGenBlockEntity>> DEBUG_GRAV_GEN = register("debug_grav_gen", Ssc14ModBlocks.DEBUG_GRAV_GEN, DebugGravGenBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<NuclearWarheadBlockEntity>> NUCLEAR_WARHEAD = register("nuclear_warhead", Ssc14ModBlocks.NUCLEAR_WARHEAD, NuclearWarheadBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TechAirlockD1BlockEntity>> TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", Ssc14ModBlocks.TECH_AIRLOCK_D_1, TechAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TechAirlockD1openBlockEntity>> TECH_AIRLOCK_D_1OPEN = register("tech_airlock_d_1open", Ssc14ModBlocks.TECH_AIRLOCK_D_1OPEN, TechAirlockD1openBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AtmosAirlockD1BlockEntity>> ATMOS_AIRLOCK_D_1 = register("atmos_airlock_d_1", Ssc14ModBlocks.ATMOS_AIRLOCK_D_1, AtmosAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AtmosAirlockD1openBlockEntity>> ATMOS_AIRLOCK_D_1OPEN = register("atmos_airlock_d_1open", Ssc14ModBlocks.ATMOS_AIRLOCK_D_1OPEN, AtmosAirlockD1openBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CargoAirlockD1BlockEntity>> CARGO_AIRLOCK_D_1 = register("cargo_airlock_d_1", Ssc14ModBlocks.CARGO_AIRLOCK_D_1, CargoAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CargoAirlockD1openBlockEntity>> CARGO_AIRLOCK_D_1OPEN = register("cargo_airlock_d_1open", Ssc14ModBlocks.CARGO_AIRLOCK_D_1OPEN, CargoAirlockD1openBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetSecureBlockEntity>> CLOSET_SECURE = register("closet_secure", Ssc14ModBlocks.CLOSET_SECURE, ClosetSecureBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET = register("closet", Ssc14ModBlocks.CLOSET, ClosetBlockEntity::new);
 
@@ -58,8 +50,6 @@ public class Ssc14ModBlockEntities {
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, BASE_AIRLOCK_D_1.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CONSOLE_OF_ID.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ATMOS_BLOCK.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, BASE_AIRLOCK_D_1OPEN.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, PORTABLE_SHEATER.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, APC.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, PODSTATION.get(), SidedInvWrapper::new);
@@ -73,12 +63,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, KOSTILNIBLOK.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, DEBUG_GRAV_GEN.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, NUCLEAR_WARHEAD.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TECH_AIRLOCK_D_1.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, TECH_AIRLOCK_D_1OPEN.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ATMOS_AIRLOCK_D_1.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ATMOS_AIRLOCK_D_1OPEN.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CARGO_AIRLOCK_D_1.get(), SidedInvWrapper::new);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CARGO_AIRLOCK_D_1OPEN.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_SECURE.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET.get(), SidedInvWrapper::new);
 	}

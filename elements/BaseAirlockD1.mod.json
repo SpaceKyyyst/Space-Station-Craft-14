@@ -9,7 +9,7 @@
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "base_airlock_f:default",
+    "customModelName": "airlock:default",
     "rotationMode": 1,
     "enablePitch": false,
     "emissiveRendering": false,
@@ -23,152 +23,74 @@
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_1op:default",
+        "customModelName": "airlock:panelop",
         "particleTexture": "",
-        "hasCustomBoundingBox": true,
+        "hasCustomBoundingBox": false,
         "boundingBoxes": [
           {
-            "mx": 15.0,
-            "my": 8.0,
-            "mz": 6.0,
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
             "Mx": 16.0,
-            "My": 30.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 9.0,
-            "my": 8.0,
-            "mz": 7.0,
-            "Mx": 15.0,
-            "My": 30.0,
-            "Mz": 9.0,
-            "subtract": false
-          },
-          {
-            "mx": 7.0,
-            "my": 15.0,
-            "mz": 9.0,
-            "Mx": 9.0,
-            "My": 32.0,
-            "Mz": 11.0,
-            "subtract": false
-          },
-          {
-            "mx": 8.0,
-            "my": 30.0,
-            "mz": 6.0,
-            "Mx": 16.0,
-            "My": 32.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 9.0,
-            "my": 0.0,
-            "mz": 9.0,
-            "Mx": 11.0,
-            "My": 17.0,
-            "Mz": 11.0,
-            "subtract": false
-          },
-          {
-            "mx": 10.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 16.0,
-            "My": 8.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 12.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 15.0,
-            "My": 1.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.5,
-            "my": 13.5,
-            "mz": 6.0,
-            "Mx": 3.5,
-            "My": 16.5,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 8.0,
-            "My": 12.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 7.0,
-            "my": 0.0,
-            "mz": 5.0,
-            "Mx": 9.0,
-            "My": 17.0,
-            "Mz": 7.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 18.0,
-            "mz": 6.0,
-            "Mx": 7.0,
-            "My": 32.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 5.0,
-            "my": 15.0,
-            "mz": 5.0,
-            "Mx": 7.0,
-            "My": 32.0,
-            "Mz": 7.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 13.0,
-            "mz": 7.0,
-            "Mx": 4.0,
-            "My": 17.0,
-            "Mz": 9.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 12.0,
-            "mz": 7.0,
-            "Mx": 7.0,
-            "My": 18.0,
-            "Mz": 9.0,
-            "subtract": false
-          },
-          {
-            "mx": 1.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 5.0,
-            "My": 1.0,
-            "Mz": 10.0,
+            "My": 16.0,
+            "Mz": 16.0,
             "subtract": false
           }
         ],
         "stateMap": [
           {
             "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
               "min": 0,
-              "max": 9,
-              "name": "CUSTOM:blockstate",
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 0
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_off:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
               "type": "integer"
             },
             "value": 1
@@ -183,143 +105,74 @@
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_2op:default",
+        "customModelName": "airlock_off:panelop",
         "particleTexture": "",
-        "hasCustomBoundingBox": true,
+        "hasCustomBoundingBox": false,
         "boundingBoxes": [
           {
-            "mx": 10.0,
-            "my": 8.0,
-            "mz": 7.0,
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
             "Mx": 16.0,
-            "My": 30.0,
-            "Mz": 9.0,
-            "subtract": false
-          },
-          {
-            "mx": 8.0,
-            "my": 15.0,
-            "mz": 9.0,
-            "Mx": 10.0,
-            "My": 32.0,
-            "Mz": 11.0,
-            "subtract": false
-          },
-          {
-            "mx": 9.0,
-            "my": 30.0,
-            "mz": 6.0,
-            "Mx": 16.0,
-            "My": 32.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 10.0,
-            "my": 0.0,
-            "mz": 9.0,
-            "Mx": 12.0,
-            "My": 17.0,
-            "Mz": 11.0,
-            "subtract": false
-          },
-          {
-            "mx": 11.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 16.0,
-            "My": 8.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 13.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 16.0,
-            "My": 1.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 13.5,
-            "mz": 6.0,
-            "Mx": 1.5,
-            "My": 16.5,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 6.0,
-            "My": 12.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 5.0,
-            "my": 0.0,
-            "mz": 5.0,
-            "Mx": 7.0,
-            "My": 17.0,
-            "Mz": 7.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 18.0,
-            "mz": 6.0,
-            "Mx": 5.0,
-            "My": 32.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 3.0,
-            "my": 15.0,
-            "mz": 5.0,
-            "Mx": 5.0,
-            "My": 32.0,
-            "Mz": 7.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 13.0,
-            "mz": 7.0,
-            "Mx": 2.0,
-            "My": 17.0,
-            "Mz": 9.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 12.0,
-            "mz": 7.0,
-            "Mx": 5.0,
-            "My": 18.0,
-            "Mz": 9.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 3.0,
-            "My": 1.0,
-            "Mz": 10.0,
+            "My": 16.0,
+            "Mz": 16.0,
             "subtract": false
           }
         ],
         "stateMap": [
           {
             "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
               "min": 0,
-              "max": 9,
-              "name": "CUSTOM:blockstate",
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 1
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_bolted:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
               "type": "integer"
             },
             "value": 2
@@ -334,125 +187,74 @@
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_3op:default",
+        "customModelName": "airlock_bolted:panelop",
         "particleTexture": "",
-        "hasCustomBoundingBox": true,
+        "hasCustomBoundingBox": false,
         "boundingBoxes": [
           {
-            "mx": 12.0,
-            "my": 8.0,
-            "mz": 7.0,
-            "Mx": 16.0,
-            "My": 30.0,
-            "Mz": 9.0,
-            "subtract": false
-          },
-          {
-            "mx": 10.0,
-            "my": 15.0,
-            "mz": 9.0,
-            "Mx": 12.0,
-            "My": 32.0,
-            "Mz": 11.0,
-            "subtract": false
-          },
-          {
-            "mx": 11.0,
-            "my": 30.0,
-            "mz": 6.0,
-            "Mx": 16.0,
-            "My": 32.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 12.0,
-            "my": 0.0,
-            "mz": 9.0,
-            "Mx": 14.0,
-            "My": 17.0,
-            "Mz": 11.0,
-            "subtract": false
-          },
-          {
-            "mx": 13.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 16.0,
-            "My": 8.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 15.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 16.0,
-            "My": 1.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
             "mx": 0.0,
             "my": 0.0,
-            "mz": 6.0,
-            "Mx": 4.0,
-            "My": 12.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 3.0,
-            "my": 0.0,
-            "mz": 5.0,
-            "Mx": 5.0,
-            "My": 17.0,
-            "Mz": 7.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 18.0,
-            "mz": 6.0,
-            "Mx": 3.0,
-            "My": 32.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 1.0,
-            "my": 15.0,
-            "mz": 5.0,
-            "Mx": 3.0,
-            "My": 32.0,
-            "Mz": 7.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 12.0,
-            "mz": 7.0,
-            "Mx": 3.0,
-            "My": 18.0,
-            "Mz": 9.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 1.0,
-            "My": 1.0,
-            "Mz": 10.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
             "subtract": false
           }
         ],
         "stateMap": [
           {
             "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
               "min": 0,
-              "max": 9,
-              "name": "CUSTOM:blockstate",
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 2
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_bolted_weld:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
               "type": "integer"
             },
             "value": 3
@@ -467,107 +269,74 @@
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_4op:default",
+        "customModelName": "airlock_bolted_weld:panelop",
         "particleTexture": "",
-        "hasCustomBoundingBox": true,
+        "hasCustomBoundingBox": false,
         "boundingBoxes": [
           {
-            "mx": 14.0,
-            "my": 8.0,
-            "mz": 7.0,
-            "Mx": 16.0,
-            "My": 30.0,
-            "Mz": 9.0,
-            "subtract": false
-          },
-          {
-            "mx": 12.0,
-            "my": 15.0,
-            "mz": 9.0,
-            "Mx": 14.0,
-            "My": 32.0,
-            "Mz": 11.0,
-            "subtract": false
-          },
-          {
-            "mx": 13.0,
-            "my": 30.0,
-            "mz": 6.0,
-            "Mx": 16.0,
-            "My": 32.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 14.0,
-            "my": 0.0,
-            "mz": 9.0,
-            "Mx": 16.0,
-            "My": 17.0,
-            "Mz": 11.0,
-            "subtract": false
-          },
-          {
-            "mx": 15.0,
-            "my": 0.0,
-            "mz": 6.0,
-            "Mx": 16.0,
-            "My": 8.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
             "mx": 0.0,
             "my": 0.0,
-            "mz": 6.0,
-            "Mx": 2.0,
-            "My": 12.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 1.0,
-            "my": 0.0,
-            "mz": 5.0,
-            "Mx": 3.0,
-            "My": 17.0,
-            "Mz": 7.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 18.0,
-            "mz": 7.0,
-            "Mx": 1.0,
-            "My": 32.0,
-            "Mz": 10.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 15.0,
-            "mz": 5.0,
-            "Mx": 1.0,
-            "My": 32.0,
-            "Mz": 7.0,
-            "subtract": false
-          },
-          {
-            "mx": 0.0,
-            "my": 12.0,
-            "mz": 7.0,
-            "Mx": 1.0,
-            "My": 18.0,
-            "Mz": 9.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
             "subtract": false
           }
         ],
         "stateMap": [
           {
             "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
               "min": 0,
-              "max": 9,
-              "name": "CUSTOM:blockstate",
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 3
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_emerg:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
               "type": "integer"
             },
             "value": 4
@@ -582,16 +351,74 @@
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_bolted:default",
+        "customModelName": "airlock_emerg:panelop",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
               "min": 0,
-              "max": 9,
-              "name": "CUSTOM:blockstate",
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 4
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_emerg_weld:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
               "type": "integer"
             },
             "value": 5
@@ -606,16 +433,74 @@
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_emerg:default",
+        "customModelName": "airlock_emerg_weld:panelop",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
               "min": 0,
-              "max": 9,
-              "name": "CUSTOM:blockstate",
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 5
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_hacked:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
               "type": "integer"
             },
             "value": 6
@@ -630,16 +515,74 @@
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_open_p:default",
+        "customModelName": "airlock_hacked:panelop",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
               "min": 0,
-              "max": 9,
-              "name": "CUSTOM:blockstate",
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 6
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_hacked_weld:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
               "type": "integer"
             },
             "value": 7
@@ -654,16 +597,74 @@
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_emerg_open_p:default",
+        "customModelName": "airlock_hacked_weld:panelop",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
               "min": 0,
-              "max": 9,
-              "name": "CUSTOM:blockstate",
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 7
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_noaccess:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
               "type": "integer"
             },
             "value": 8
@@ -678,19 +679,1304 @@
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "base_airlock_f_bolted_open_p:default",
+        "customModelName": "airlock_noaccess:panelop",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
               "min": 0,
-              "max": 9,
-              "name": "CUSTOM:blockstate",
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 8
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_off:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
               "type": "integer"
             },
             "value": 9
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_off:panelop",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 9
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_off_weld:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 10
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_off_weld:panelop",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 10
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_open:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 1.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 13.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 11
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_open:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 1.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 13.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 11
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_opening_key1:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 1.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 5.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 7.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 7.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 29.0,
+            "mz": 11.0,
+            "Mx": 9.0,
+            "My": 17.0,
+            "Mz": 5.0,
+            "subtract": false
+          },
+          {
+            "mx": 9.0,
+            "my": 17.0,
+            "mz": 6.0,
+            "Mx": 15.0,
+            "My": 29.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 9.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 17.0,
+            "mz": 11.0,
+            "Mx": 11.0,
+            "My": 6.0,
+            "Mz": 5.0,
+            "subtract": false
+          },
+          {
+            "mx": 11.0,
+            "my": 6.0,
+            "mz": 6.0,
+            "Mx": 15.0,
+            "My": 17.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.25,
+            "my": 13.75,
+            "mz": 5.25,
+            "Mx": 4.75,
+            "My": 18.25,
+            "Mz": 10.75,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 6.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 10.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 12
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_opening_key1:panelop",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 1.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 5.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 7.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 7.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 29.0,
+            "mz": 11.0,
+            "Mx": 9.0,
+            "My": 17.0,
+            "Mz": 5.0,
+            "subtract": false
+          },
+          {
+            "mx": 9.0,
+            "my": 17.0,
+            "mz": 6.0,
+            "Mx": 15.0,
+            "My": 29.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 9.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 17.0,
+            "mz": 11.0,
+            "Mx": 11.0,
+            "My": 6.0,
+            "Mz": 5.0,
+            "subtract": false
+          },
+          {
+            "mx": 11.0,
+            "my": 6.0,
+            "mz": 6.0,
+            "Mx": 15.0,
+            "My": 17.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.25,
+            "my": 13.75,
+            "mz": 5.25,
+            "Mx": 4.75,
+            "My": 18.25,
+            "Mz": 10.75,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 6.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 10.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 12
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_opening_key2:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 1.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 3.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 5.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 9.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 29.0,
+            "mz": 11.0,
+            "Mx": 11.0,
+            "My": 17.0,
+            "Mz": 5.0,
+            "subtract": false
+          },
+          {
+            "mx": 11.0,
+            "my": 17.0,
+            "mz": 6.0,
+            "Mx": 15.0,
+            "My": 29.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 11.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 17.0,
+            "mz": 11.0,
+            "Mx": 13.0,
+            "My": 6.0,
+            "Mz": 5.0,
+            "subtract": false
+          },
+          {
+            "mx": 13.0,
+            "my": 6.0,
+            "mz": 6.0,
+            "Mx": 15.0,
+            "My": 17.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.25,
+            "my": 13.75,
+            "mz": 5.25,
+            "Mx": 2.75,
+            "My": 18.25,
+            "Mz": 10.75,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 4.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 12.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 13
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_opening_key2:panelop",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 1.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 3.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 5.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 9.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 29.0,
+            "mz": 11.0,
+            "Mx": 11.0,
+            "My": 17.0,
+            "Mz": 5.0,
+            "subtract": false
+          },
+          {
+            "mx": 11.0,
+            "my": 17.0,
+            "mz": 6.0,
+            "Mx": 15.0,
+            "My": 29.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 11.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 17.0,
+            "mz": 11.0,
+            "Mx": 13.0,
+            "My": 6.0,
+            "Mz": 5.0,
+            "subtract": false
+          },
+          {
+            "mx": 13.0,
+            "my": 6.0,
+            "mz": 6.0,
+            "Mx": 15.0,
+            "My": 17.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.25,
+            "my": 13.75,
+            "mz": 5.25,
+            "Mx": 2.75,
+            "My": 18.25,
+            "Mz": 10.75,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 4.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 12.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 13
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_opening_key3:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 1.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 3.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 11.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 29.0,
+            "mz": 11.0,
+            "Mx": 13.0,
+            "My": 17.0,
+            "Mz": 5.0,
+            "subtract": false
+          },
+          {
+            "mx": 13.0,
+            "my": 17.0,
+            "mz": 6.0,
+            "Mx": 15.0,
+            "My": 29.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 13.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 2.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 14.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 14
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_opening_key3:panelop",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 1.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 16.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 3.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 11.0,
+            "my": 15.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 32.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 15.0,
+            "my": 29.0,
+            "mz": 11.0,
+            "Mx": 13.0,
+            "My": 17.0,
+            "Mz": 5.0,
+            "subtract": false
+          },
+          {
+            "mx": 13.0,
+            "my": 17.0,
+            "mz": 6.0,
+            "Mx": 15.0,
+            "My": 29.0,
+            "Mz": 10.0,
+            "subtract": false
+          },
+          {
+            "mx": 13.0,
+            "my": 0.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 15.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 1.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 2.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          },
+          {
+            "mx": 14.0,
+            "my": 1.0,
+            "mz": 5.0,
+            "Mx": 15.0,
+            "My": 2.0,
+            "Mz": 11.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 14
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_opening_key_0:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 15
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_opening_key_0:panelop",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 15
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_weld:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 16
+          }
+        ]
+      },
+      {
+        "texture": "airlock_base_item",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "airlock_weld:panelop",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:panel_open",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "min": 0,
+              "max": 25,
+              "name": "CUSTOM:arl_variat",
+              "type": "integer"
+            },
+            "value": 16
           }
         ]
       }
@@ -719,24 +2005,14 @@
     ],
     "customProperties": [
       {
-        "name": "CUSTOM:bolted",
-        "type": "logic",
-        "value": false
-      },
-      {
-        "name": "CUSTOM:emergency_acs",
-        "type": "logic",
-        "value": false
-      },
-      {
         "name": "CUSTOM:panel_open",
         "type": "logic",
         "value": false
       },
       {
         "min": 0,
-        "max": 9,
-        "name": "CUSTOM:blockstate",
+        "max": 25,
+        "name": "CUSTOM:arl_variat",
         "type": "integer",
         "value": 0
       }
@@ -772,7 +2048,7 @@
     "canRedstoneConnect": false,
     "hasCustomOpacity": false,
     "lightOpacity": 0,
-    "tickRate": 10,
+    "tickRate": 0,
     "tickRandomly": false,
     "isReplaceable": false,
     "canProvidePower": false,
@@ -850,9 +2126,6 @@
     },
     "onBlockAdded": {
       "name": "BaseAirlockD1Put"
-    },
-    "onTickUpdate": {
-      "name": "BaseAirlockDEBUGCHECK"
     },
     "generateFeature": false,
     "restrictionBiomes": [],
