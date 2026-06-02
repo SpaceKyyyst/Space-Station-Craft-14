@@ -1,0 +1,8 @@
+{
+  "_fv": 85,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable type=\"String\" id=\"bufer_t\">bufer_t</variable></variables><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"return_string\"><value name=\"return\"><block type=\"get_localized_text\"><value name=\"key\"><block type=\"text\"><field name=\"TEXT\">translation.key.pda_text_danger_level</field></block></value></block></value></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "_fv": 85,
+  "_type": "curiosslot",
+  "definition": {
+    "texture": "backpack_slot.png",
+    "name": "Backpack",
+    "amount": 1,
+    "modelToggling": false,
+    "changeOrder": true,
+    "slotOrder": 13
+  }
+}

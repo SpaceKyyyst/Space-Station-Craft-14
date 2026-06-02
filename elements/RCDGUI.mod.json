@@ -1,0 +1,121 @@
+{
+  "_fv": 85,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 200,
+    "height": 200,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": false,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "rcd_gui_2.png",
+          "use1Xscale": false,
+          "x": 114,
+          "y": 20,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_deconstruct_gui_texture",
+          "image": "deconstruct_gui_texture.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RCDGUIdeconstructButton"
+          },
+          "x": 239,
+          "y": 46,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_airlock_gui_texture",
+          "image": "airlock_gui_texture.png",
+          "hoveredImage": "",
+          "x": 171,
+          "y": 163,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_floorwall_gui_texture",
+          "image": "floorwall_gui_texture.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RCDGUIwallfloorModeButton"
+          },
+          "x": 164,
+          "y": 46,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_windowglill_gui_texture",
+          "image": "windowglill_gui_texture.png",
+          "hoveredImage": "",
+          "x": 132,
+          "y": 104,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cabels_gui_texture",
+          "image": "cabels_gui_texture.png",
+          "hoveredImage": "",
+          "x": 264,
+          "y": 104,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_lamps_gui_texture",
+          "image": "lamps_gui_texture.png",
+          "hoveredImage": "",
+          "x": 232,
+          "y": 163,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_rcd_gui_exit_b",
+          "image": "rcd_gui_exit_b.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RCDGUIexitButton"
+          },
+          "x": 206,
+          "y": 112,
+          "locked": true
+        }
+      }
+    ],
+    "onTick": {
+      "name": "RCDGUI_check_"
+    },
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

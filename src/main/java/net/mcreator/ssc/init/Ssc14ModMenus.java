@@ -31,6 +31,9 @@ public class Ssc14ModMenus {
 	public static final DeferredHolder<MenuType<?>, MenuType<CabelPannelAirlockMenu>> CABEL_PANNEL_AIRLOCK = REGISTRY.register("cabel_pannel_airlock", () -> IMenuTypeExtension.create(CabelPannelAirlockMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<GravGenGUIMenu>> GRAV_GEN_GUI = REGISTRY.register("grav_gen_gui", () -> IMenuTypeExtension.create(GravGenGUIMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<MacFrameGUIMenu>> MAC_FRAME_GUI = REGISTRY.register("mac_frame_gui", () -> IMenuTypeExtension.create(MacFrameGUIMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<PDApassangerGUIMenu>> PD_APASSANGER_GUI = REGISTRY.register("pd_apassanger_gui", () -> IMenuTypeExtension.create(PDApassangerGUIMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIMenu>> RCDGUI = REGISTRY.register("rcdgui", () -> IMenuTypeExtension.create(RCDGUIMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIwallfloorMenu>> RCDGU_IWALLFLOOR = REGISTRY.register("rcdgu_iwallfloor", () -> IMenuTypeExtension.create(RCDGUIwallfloorMenu::new));
 
 	public interface MenuAccessor {
 		Map<String, Object> getMenuState();

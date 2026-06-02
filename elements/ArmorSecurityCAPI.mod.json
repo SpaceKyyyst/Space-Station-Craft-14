@@ -1,0 +1,26 @@
+{
+  "_fv": 85,
+  "_type": "curiosbauble",
+  "definition": {
+    "item": "ArmorSecurity",
+    "slotType": "Outerwear",
+    "slotAmount": 1,
+    "addSlot": false,
+    "enderMask": false,
+    "friendlyPigs": false,
+    "snowWalk": false,
+    "equipSound": {
+      "value": ""
+    },
+    "hasModel": true,
+    "baubleModel": "Modelarmor_security",
+    "baubleModelTexture": "armor_security_texture.png",
+    "helmetModelPart": "Empty",
+    "bodyModelPart": "armor_security",
+    "armsModelPartL": "Empty",
+    "armsModelPartR": "Empty",
+    "leggingsModelPartL": "Empty",
+    "leggingsModelPartR": "Empty",
+    "disabledToggles": []
+  }
+}

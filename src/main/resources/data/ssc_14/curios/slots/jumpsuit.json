@@ -2,7 +2,7 @@
   "replace": false,
   "size": 1,
   "operation": "SET",
-  "order": 3,
+  "order": 7,
   "render_toggle": true,
   "icon": "curios:slot/jumpsuit_slot"
 }

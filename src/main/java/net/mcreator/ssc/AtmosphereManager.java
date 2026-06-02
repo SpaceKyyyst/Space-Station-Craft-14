@@ -2,25 +2,35 @@
 package net.mcreator.ssc;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.List;
-import java.util.ArrayList;
+import net.minecraft.util.RandomSource;
+import net.mcreator.ssc.init.Ssc14ModParticleTypes;
+import java.util.*;
 
 public final class AtmosphereManager {
+    // ═══════════════════════════════════════════════════════════════
+    // 🎨 НАСТРОЙКИ ВИЗУАЛИЗАЦИИ
+    // ═══════════════════════════════════════════════════════════════
+    private static final float MIN_SPAWN_DISTANCE = 0f;
+    private static final float MAX_SPAWN_DISTANCE = 64f; // Уменьшено для производительности
+    private static final float MIN_DENSITY_THRESHOLD = 0.0f;
+    private static final float MAX_DENSITY_EFFECT = 1.0f;
+    private static final float BASE_SPAWN_CHANCE = 0.25f;
+    private static final float PLASMA_CHANCE_MULTIPLIER = 1.3f;
+    private static final float TRITIUM_CHANCE_MULTIPLIER = 1.3f;
+    private static final float DEFAULT_GAS_CHANCE_MULTIPLIER = 1.0f;
+    private static final float SECOND_PARTICLE_CHANCE = 0.5f;
+    private static final float PARTICLE_OFFSET_RANGE = 0.5f;
 
-    // 🔧 НАСТРОЙКИ ЧАСТОТЫ СПАВНА ЧАСТИЦ (в начале класса!)
-    private static final float PLASMA_SPAWN_CHANCE = 0.3f;    // Шанс спавна частицы плазмы (~33%)
-    private static final float VAPOR_SPAWN_CHANCE = 0.3f;     // Шанс спавна частицы пара (~25%)
-    private static final float SECOND_TYPE_CHANCE = 0.5f;      // Шанс спавна "второго типа" частиц (50/50)
-
+    // ═══════════════════════════════════════════════════════════════
+    // ⚙️ СИСТЕМНЫЕ НАСТРОЙКИ
+    // ═══════════════════════════════════════════════════════════════
     private static GasReaction[] REACTIONS;
     private static final Map<String, AtmosphereManager> CACHE = new HashMap<>();
     private static final int MAX_ACTIVE_REGIONS = 128;
+
     private final Map<Long, AtmosRegion> regions = new HashMap<>();
     private final Set<Long> activeRegions = new HashSet<>();
 
@@ -117,39 +127,123 @@ public final class AtmosphereManager {
         return region;
     }
 
+    // ✅ КЛЮЧЕВОЕ: регион ДОБАВЛЯЕТСЯ в activeRegions при изменении
     public void onBlockChanged(BlockPos pos) {
         AtmosRegion region = getOrCreateRegion(pos);
         region.updatePermeability(pos);
-        activeRegions.add(packRegionKey(pos));
+        activeRegions.add(packRegionKey(pos)); // 🔑 Это критически важно!
     }
 
     public AtmosCell getCellAt(BlockPos pos) { 
         return getOrCreateRegion(pos).getCellAt(pos); 
     }
 
+    private int getParticleType(int gasIndex, boolean isSecondType, RandomSource random) {
+        if (gasIndex == GasType.PLASMA.ordinal() || gasIndex == GasType.TRITIUM.ordinal()) {
+            return isSecondType ? 2 : 1;
+        }
+        return 1 + random.nextInt(4);
+    }
+
+    private ParticleOptions getParticleForGas(int gasIndex, int type) {
+        try {
+            switch (gasIndex) {
+                case 4: // PLASMA
+                    return type == 1 ? 
+                        Ssc14ModParticleTypes.PLASMA_PARTICLES_1.get() : 
+                        Ssc14ModParticleTypes.PLASMA_PARTICLES_2.get();
+                case 6: // TRITIUM
+                    return type == 1 ? 
+                        Ssc14ModParticleTypes.TRITIUM_PARTICLES_1.get() : 
+                        Ssc14ModParticleTypes.TRITIUM_PARTICLES_2.get();
+                case 9: // WATER_VAPOR
+                    return switch (type) {
+                        case 1 -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_1.get();
+                        case 2 -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_2.get();
+                        case 3 -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_3.get();
+                        default -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_4.get();
+                    };
+                case 5: // AMMONIA
+                    return switch (type) {
+                        case 1 -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_1.get();
+                        case 2 -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_2.get();
+                        case 3 -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_3.get();
+                        default -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_4.get();
+                    };
+                case 7: // FREON
+                    return switch (type) {
+                        case 1 -> Ssc14ModParticleTypes.FREON_PARTICLES_1.get();
+                        case 2 -> Ssc14ModParticleTypes.FREON_PARTICLES_2.get();
+                        case 3 -> Ssc14ModParticleTypes.FREON_PARTICLES_3.get();
+                        default -> Ssc14ModParticleTypes.FREON_PARTICLES_4.get();
+                    };
+                case 8: // HELIUM
+                    return switch (type) {
+                        case 1 -> Ssc14ModParticleTypes.HELIUM_PARTICLES_1.get();
+                        case 2 -> Ssc14ModParticleTypes.HELIUM_PARTICLES_2.get();
+                        case 3 -> Ssc14ModParticleTypes.HELIUM_PARTICLES_3.get();
+                        default -> Ssc14ModParticleTypes.HELIUM_PARTICLES_4.get();
+                    };
+                default:
+                    return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private float calculateFinalSpawnChance(double distSqr, float density, int gasIndex) {
+        float distanceFactor;
+        double maxDistSqr = MAX_SPAWN_DISTANCE * MAX_SPAWN_DISTANCE;
+        double minDistSqr = MIN_SPAWN_DISTANCE * MIN_SPAWN_DISTANCE;
+        
+        if (distSqr <= minDistSqr) {
+            distanceFactor = 1.0f;
+        } else if (distSqr >= maxDistSqr) {
+            distanceFactor = 0.0f;
+        } else {
+            float t = (float)((distSqr - minDistSqr) / (maxDistSqr - minDistSqr));
+            distanceFactor = 1.0f - t * t;
+        }
+        
+        float densityFactor;
+        if (density <= MIN_DENSITY_THRESHOLD) {
+            densityFactor = 0.0f;
+        } else if (density >= MAX_DENSITY_EFFECT) {
+            densityFactor = 1.0f;
+        } else {
+            densityFactor = (density - MIN_DENSITY_THRESHOLD) / (MAX_DENSITY_EFFECT - MIN_DENSITY_THRESHOLD);
+        }
+         
+        float gasMultiplier;
+        if (gasIndex == GasType.PLASMA.ordinal()) {
+            gasMultiplier = PLASMA_CHANCE_MULTIPLIER;
+        } else if (gasIndex == GasType.TRITIUM.ordinal()) {
+            gasMultiplier = TRITIUM_CHANCE_MULTIPLIER;
+        } else {
+            gasMultiplier = DEFAULT_GAS_CHANCE_MULTIPLIER;
+        }
+        
+        return Math.min(1.0f, BASE_SPAWN_CHANCE * distanceFactor * densityFactor * gasMultiplier);
+    }
+
     public void tick() {
         if (level == null || level.isClientSide) return;
         
-        // 🔍 ОПТИМИЗАЦИЯ: убираем регионы, которые далеко от игроков и неактивны
+        // 🔍 ОПТИМИЗАЦИЯ: чистка далёких неактивных регионов
         if (!activeRegions.isEmpty()) {
             Set<Long> toRemove = new HashSet<>();
             for (long key : activeRegions) {
                 AtmosRegion region = regions.get(key);
                 if (region == null) { toRemove.add(key); continue; }
-                
                 BlockPos origin = region.getRegionOrigin();
                 boolean nearPlayer = false;
-                
                 for (ServerPlayer player : level.players()) {
                     if (player.blockPosition().distSqr(origin) < 256*256) {
-                        nearPlayer = true;
-                        break;
+                        nearPlayer = true; break;
                     }
                 }
-                
-                if (!nearPlayer && !region.isActive) {
-                    toRemove.add(key);
-                }
+                if (!nearPlayer && !region.isActive) toRemove.add(key);
             }
             activeRegions.removeAll(toRemove);
         }
@@ -161,94 +255,72 @@ public final class AtmosphereManager {
         
         float deltaTime = fastTick ? 0.2f : 1.0f;
         
-        // 🔒 Лимит активных регионов
         if (activeRegions.size() > MAX_ACTIVE_REGIONS) {
             List<Long> toRemove = new ArrayList<>(activeRegions);
             toRemove.sort((a, b) -> {
-                AtmosRegion ra = regions.get(a);
-                AtmosRegion rb = regions.get(b);
-                long ta = ra != null ? ra.lastActivityTime : 0;
-                long tb = rb != null ? rb.lastActivityTime : 0;
-                return Long.compare(ta, tb);
+                AtmosRegion ra = regions.get(a), rb = regions.get(b);
+                return Long.compare(
+                    ra != null ? ra.lastActivityTime : 0,
+                    rb != null ? rb.lastActivityTime : 0
+                );
             });
-            for (int i = 0; i < toRemove.size() - MAX_ACTIVE_REGIONS; i++) {
+            for (int i = 0; i < toRemove.size() - MAX_ACTIVE_REGIONS; i++)
                 activeRegions.remove(toRemove.get(i));
-            }
         }
         
         Set<Long> toTick = new HashSet<>(activeRegions);
         for (long key : toTick) {
             AtmosRegion region = regions.get(key);
-            if (region == null) { 
-                activeRegions.remove(key); 
-                continue; 
-            }
+            if (region == null) { activeRegions.remove(key); continue; }
             
             region.tick(deltaTime, REACTIONS);
             
-            // 👇 Визуализация плазмы
+            // 👇 ВИЗУАЛИЗАЦИЯ ВСЕХ ГАЗОВ 👇
             if (!region.getPendingVisuals().isEmpty() && !level.isClientSide) {
-                for (AtmosRegion.PlasmaVisualData data : region.getPendingVisuals()) {
+                for (AtmosRegion.GasVisualData data : region.getPendingVisuals()) {
                     BlockPos particlePos = new BlockPos((int)data.x, (int)data.y, (int)data.z);
                     
                     for (ServerPlayer player : level.players()) {
-                        if (player.blockPosition().distSqr(particlePos) < 4096) {
-                            if (level.random.nextFloat() < PLASMA_SPAWN_CHANCE) {
+                        double distSqr = player.blockPosition().distSqr(particlePos);
+                        if (distSqr >= MAX_SPAWN_DISTANCE * MAX_SPAWN_DISTANCE) continue;
+                        
+                        float spawnChance = calculateFinalSpawnChance(distSqr, data.density, data.gasIndex);
+                        if (spawnChance <= 0f || level.random.nextFloat() >= spawnChance) continue;
+                        
+                        int pType = getParticleType(data.gasIndex, false, level.random);
+                        ParticleOptions particle = getParticleForGas(data.gasIndex, pType);
+                        if (particle != null) {
+                            // ✅ sendParticles: последние 3 параметра — deltaX, deltaY, deltaZ (разброс скорости), потом speed
+                            level.sendParticles(
+                                particle,
+                                data.x + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+                                data.y + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+                                data.z + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+                                1,          // count
+                                0.0, 0.0, 0.0,  // deltaX, deltaY, deltaZ (НУЛИ = нет разброса скорости!)
+                                0.0         // speed = 0 = частицы не падают!
+                            );
+                        }
+                        
+                        if (level.random.nextFloat() < SECOND_PARTICLE_CHANCE) {
+                            int sType = getParticleType(data.gasIndex, true, level.random);
+                            ParticleOptions second = getParticleForGas(data.gasIndex, sType);
+                            if (second != null && second != particle) {
                                 level.sendParticles(
-                                    net.mcreator.ssc.init.Ssc14ModParticleTypes.PLASMA_PARTICLES_1.get(),
-                                    data.x + (level.random.nextFloat() - 0.5f),
-                                    data.y + (level.random.nextFloat() - 0.5f),
-                                    data.z + (level.random.nextFloat() - 0.5f),
-                                    1, 0, 0, 0, 0
+                                    second,
+                                    data.x + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+                                    data.y + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+                                    data.z + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+                                    1, 0.0, 0.0, 0.0, 0.0
                                 );
-                                if (level.random.nextFloat() < SECOND_TYPE_CHANCE) {
-                                    level.sendParticles(
-                                        net.mcreator.ssc.init.Ssc14ModParticleTypes.PLASMA_PARTICLES_2.get(),
-                                        data.x + (level.random.nextFloat() - 0.5f),
-                                        data.y + (level.random.nextFloat() - 0.5f),
-                                        data.z + (level.random.nextFloat() - 0.5f),
-                                        1, 0, 0, 0, 0
-                                    );
-                                }
                             }
                         }
                     }
                 }
             }
             
-            // 👇 Визуализация водяного пара (аналогично плазме)
-            if (!region.getPendingVaporVisuals().isEmpty() && !level.isClientSide) {
-                for (AtmosRegion.VaporVisualData data : region.getPendingVaporVisuals()) {
-                    BlockPos particlePos = new BlockPos((int)data.x, (int)data.y, (int)data.z);
-                    
-                    for (ServerPlayer player : level.players()) {
-                        if (player.blockPosition().distSqr(particlePos) < 4096) {
-                            if (level.random.nextFloat() < VAPOR_SPAWN_CHANCE) {
-                                level.sendParticles(
-                                    net.mcreator.ssc.init.Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_1.get(),
-                                    data.x + (level.random.nextFloat() - 0.5f),
-                                    data.y + (level.random.nextFloat() - 0.5f),
-                                    data.z + (level.random.nextFloat() - 0.5f),
-                                    1, 0, 0, 0, 0
-                                );
-                                if (level.random.nextFloat() < SECOND_TYPE_CHANCE) {
-                                    level.sendParticles(
-                                        net.mcreator.ssc.init.Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_2.get(),
-                                        data.x + (level.random.nextFloat() - 0.5f),
-                                        data.y + (level.random.nextFloat() - 0.5f),
-                                        data.z + (level.random.nextFloat() - 0.5f),
-                                        1, 0, 0, 0, 0
-                                    );
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            
-            if (!region.isActive && System.currentTimeMillis() - region.lastActivityTime > 15000) {
+            if (!region.isActive && System.currentTimeMillis() - region.lastActivityTime > 15000)
                 activeRegions.remove(key);
-            }
         }
     }
 

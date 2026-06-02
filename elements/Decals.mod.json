@@ -1,0 +1,11 @@
+{
+  "_fv": 85,
+  "_type": "tab",
+  "definition": {
+    "name": "SSC14: Decals",
+    "icon": {
+      "value": "CUSTOM:DECAL1spawner"
+    },
+    "showSearch": false
+  }
+}

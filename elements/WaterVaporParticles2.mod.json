@@ -2,16 +2,16 @@
   "_fv": 85,
   "_type": "particle",
   "definition": {
-    "texture": "water_vapor_particles_2",
+    "texture": "water_vapor_2",
     "animate": false,
     "frameDuration": 20,
-    "width": 1.4,
-    "height": 1.4,
+    "width": 1.0,
+    "height": 1.0,
     "scale": {
-      "fixedValue": 3.0
+      "fixedValue": 4.0
     },
     "fixedScale": false,
-    "speedFactor": 0.2,
+    "speedFactor": 0.1,
     "gravity": 0.0,
     "maxAge": 60,
     "maxAgeDiff": 10,

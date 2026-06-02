@@ -1,0 +1,25 @@
+{
+  "_fv": 85,
+  "_type": "particle",
+  "definition": {
+    "texture": "rcdinterferencepparticle",
+    "animate": false,
+    "frameDuration": 1,
+    "width": 0.07,
+    "height": 0.07,
+    "scale": {
+      "fixedValue": 0.19999999999999998
+    },
+    "fixedScale": true,
+    "speedFactor": 0.0,
+    "gravity": 0.0,
+    "maxAge": 5,
+    "maxAgeDiff": 5,
+    "angularVelocity": 0.0,
+    "angularAcceleration": 0.0,
+    "canCollide": true,
+    "alwaysShow": true,
+    "emissiveRendering": true,
+    "renderType": "OPAQUE"
+  }
+}

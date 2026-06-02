@@ -1,0 +1,12 @@
+{
+  "_fv": 85,
+  "_type": "curiosslot",
+  "definition": {
+    "texture": "mask_slot.png",
+    "name": "Mask",
+    "amount": 1,
+    "modelToggling": false,
+    "changeOrder": true,
+    "slotOrder": 4
+  }
+}

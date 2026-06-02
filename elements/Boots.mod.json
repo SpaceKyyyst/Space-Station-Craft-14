@@ -6,7 +6,7 @@
     "name": "Boots",
     "amount": 1,
     "modelToggling": false,
-    "changeOrder": false,
-    "slotOrder": 4
+    "changeOrder": true,
+    "slotOrder": 11
   }
 }

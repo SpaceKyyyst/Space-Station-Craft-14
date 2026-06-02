@@ -2,6 +2,7 @@
   "replace": false,
   "size": 1,
   "operation": "SET",
+  "order": 11,
   "render_toggle": true,
   "icon": "curios:slot/boots_slot"
 }

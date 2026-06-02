@@ -2,7 +2,7 @@
   "replace": false,
   "size": 1,
   "operation": "SET",
-  "order": 2,
+  "order": 8,
   "render_toggle": true,
   "icon": "curios:slot/glovers"
 }

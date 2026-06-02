@@ -1,0 +1,26 @@
+{
+  "_fv": 85,
+  "_type": "curiosbauble",
+  "definition": {
+    "item": "HelmetsEva",
+    "slotType": "Headdress",
+    "slotAmount": 1,
+    "addSlot": false,
+    "enderMask": false,
+    "friendlyPigs": false,
+    "snowWalk": false,
+    "equipSound": {
+      "value": ""
+    },
+    "hasModel": true,
+    "baubleModel": "Modelhelmets_eva_equipped",
+    "baubleModelTexture": "helmets_eva_equipped_texture.png",
+    "helmetModelPart": "eva",
+    "bodyModelPart": "Empty",
+    "armsModelPartL": "Empty",
+    "armsModelPartR": "Empty",
+    "leggingsModelPartL": "Empty",
+    "leggingsModelPartR": "Empty",
+    "disabledToggles": []
+  }
+}

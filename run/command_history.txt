@@ -1,50 +1,50 @@
-/kill 9e85a7f5-243b-4c83-abaf-732fb4b8256b
-/ssc14 atmos addgas 10 oxygen
-/ssc14 atmos addgas 100 oxygen
-/ssc14 atmos addgas 1000 oxygen
-/ssc14 atmos addgas 100 oxygen
-/ssc14 atmos addgas 100 plasma
-/ssc14 atmos addgas 1000 plasma
-/ssc14 atmos temperature 10
-/ssc14 atmos temperature 1
-/ssc14 atmos temperature 1000000
-/ssc14 atmos addgas 100 oxygen
-/ssc14 atmos temperature 1000000
-/ssc14 atmos addgas 100 oxygen
-/ssc14 atmos temperature 1
-/ssc14 atmos addgas 100 oxygen
-/effect give Dev minecraft:night_vision infinite 0 true
-/ssc14 atmos addgas 100 oxygen
-/tick rate 40
-/tick rate 20
-/ssc14 atmos addgas 100 oxygen
-/tick rate 40
-/tick rate 20
-/ssc14 atmos addgas 1000 oxygen
-/ssc14 atmos addgas 100 oxygen
-/ssc14 atmos addgas 1000 oxygen
-/tick rate 40
-/tick rate 20
-/ssc14 atmos addgas 1 plasma
-/ssc14 atmos addgas 10 plasma
-/ssc14 atmos addgas 1000 plasma
-/ssc14 atmos addgas 10 plasma
-/ssc14 atmos addgas 100 plasma
-/ssc14 atmos addgas 100 oxygen
-/ssc14 atmos addgas 100 plasma
-/ssc14 atmos addgas 100 vater_vapor
-/ssc14 atmos addgas 100 water_vapor
-/ssc14 atmos addgas 100 plasma
-/ssc14 atmos addgas 100 water_vapor
-/ssc14 atmos addgas 100 plasma
-/effect clear
-/ssc14 atmos addgas 100 plasma
-/ssc14 atmos addgas 100 water_vapor
-/ssc14 atmos addgas 100 plasma
-/setblock -141 38 24 minecraft:air
-/effect give Dev minecraft:night_vision infinite 0 true
-/effect clear
-/effect give Dev minecraft:night_vision infinite 0 true
-/effect clear
-/damage Dev 50
+/attribute Dev minecraft:scale base set 2
+/attribute Dev minecraft:scale base set 4
+/attribute Dev minecraft:scale base set 1
+/attribute Dev minecraft:scale base set 0.5
+/attribute Dev minecraft:scale base set 1
+/attribute Dev minecraft:scale base set 1.5
+/attribute Dev minecraft:scale base set 1
+/attribute Dev minecraft:scale base set 0.5
+/attribute Dev minecraft:scale base set 0.25
+/attribute Dev minecraft:scale base set 2
+/attribute Dev minecraft:scale base set 3
+/attribute Dev minecraft:scale base set 6
+/attribute Dev minecraft:scale base set 2
+/attribute Dev minecraft:scale base set 1
+/attribute Dev minecraft:scale base set 1.5
+/attribute Dev minecraft:scale base set 2
+/attribute Dev minecraft:scale base set 3
+/attribute Dev minecraft:scale base set 0.5
+/attribute Dev minecraft:scale base set 0.25
+/attribute Dev minecraft:scale base set 1
+/attribute Dev minecraft:scale base set 3
+/attribute Dev minecraft:scale base set 1
+/attribute Dev minecraft:scale base set 0.5
+/attribute Dev minecraft:scale base set 1
+/attribute Dev minecraft:scale base set 0.72
+/attribute Dev minecraft:scale base set 1.9
+/attribute Dev minecraft:scale base set 1.8
+/attribute Dev minecraft:scale base set 1.5
+/attribute Dev minecraft:scale base set 1.65
+/attribute Dev minecraft:scale base set 0.5
+/attribute Dev minecraft:scale base set 0.52
+/kill Dev
 /ssc14 hels Dev reset
+/kill bd3d747d-c3c2-4ddf-8405-89779f47fe83
+/setblock -116 43 56 air
+/particle ssc_14:rcd_interference_p ~ ~ ~ ~ ~ ~ 0 100
+/particle ssc_14:rcd_interference_p ~ ~ ~ ~ ~ ~ 0 1000
+/particle ssc_14:rcd_interference_p ~ ~ ~ ~ ~ ~ 0 100000
+/particle ssc_14:rcd_interference_p ~ ~ ~ ~ ~ ~ 0 1000000
+/particle ssc_14:rcd_interference_p ~ ~ ~ ~ ~ ~ 0 100000
+/particle ssc_14:deconstruct_p ~ ~ ~ ~ ~ ~ 0 100000
+/particle ssc_14:deconstruct_p ~ ~ ~ ~ ~ ~ 0 1000000
+/particle ssc_14:deconstruct_p ~ ~ ~ ~ ~ ~ 0 10000000
+/ssc14 tpdimension Dev planet plant
+/time set day
+/kill
+/kill 465c8d17-c3a1-4859-8821-bb2953540dcb
+/ssc14 hels Dev reset
+/tp Dev 0 50 0
+/ssc14 tpdimension Dev space

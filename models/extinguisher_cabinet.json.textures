@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "extinguisher_cabinet_texture"
+      }
+    },
+    "empty": {
+      "name": "empty",
+      "map": {
+        "0": "extinguisher_cabinet_empty_texture"
+      }
+    }
+  }
+}

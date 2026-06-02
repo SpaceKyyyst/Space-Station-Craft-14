@@ -26,22 +26,18 @@ public class PlasmaParticles2Particle extends TextureSheetParticle {
 	}
 
 	private final SpriteSet spriteSet;
-	private float angularVelocity;
-	private float angularAcceleration;
 
 	protected PlasmaParticles2Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
 		super(world, x, y, z);
 		this.spriteSet = spriteSet;
 		this.setSize(1f, 1f);
-		this.quadSize *= 2.5f;
+		this.quadSize *= 4f;
 		this.lifetime = (int) Math.max(1, 60 + (this.random.nextInt(20) - 10));
 		this.gravity = 0f;
 		this.hasPhysics = true;
-		this.xd = vx * 0.2;
-		this.yd = vy * 0.2;
-		this.zd = vz * 0.2;
-		this.angularVelocity = 0.05f;
-		this.angularAcceleration = 0f;
+		this.xd = vx * 0.1;
+		this.yd = vy * 0.1;
+		this.zd = vz * 0.1;
 		this.pickSprite(spriteSet);
 	}
 
@@ -53,8 +49,5 @@ public class PlasmaParticles2Particle extends TextureSheetParticle {
 	@Override
 	public void tick() {
 		super.tick();
-		this.oRoll = this.roll;
-		this.roll += this.angularVelocity;
-		this.angularVelocity += this.angularAcceleration;
 	}
 }

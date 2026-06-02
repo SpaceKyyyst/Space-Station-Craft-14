@@ -8,6 +8,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.bus.api.Event;
 import net.neoforged.api.distmarker.Dist;
 
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.nbt.CompoundTag;
@@ -34,7 +36,7 @@ public class HumanModelRenderProcedure {
 	@SubscribeEvent
 	public static void onPlayerRendered(RenderPlayerEvent.Pre event) {
 		Entity entity = (Entity) event.getRenderState().getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
-		execute(event, entity, (EntityModel) event.getRenderer().getModel(), event);
+		execute(event, entity, (EntityModel) event.getRenderer().getModel(), event, event.getPoseStack());
 	}
 
 	public static Collection<Runnable> capes = new ConcurrentLinkedQueue<>();
@@ -99,18 +101,24 @@ public class HumanModelRenderProcedure {
 		poseStack.popPose();
 	}
 
-	public static void execute(Entity entity, EntityModel entityModel, RenderPlayerEvent playerRenderEvent) {
-		execute(null, entity, entityModel, playerRenderEvent);
+	public static void execute(Entity entity, EntityModel entityModel, RenderPlayerEvent playerRenderEvent, PoseStack poseStack) {
+		execute(null, entity, entityModel, playerRenderEvent, poseStack);
 	}
 
-	private static void execute(@Nullable Event event, Entity entity, EntityModel entityModel, RenderPlayerEvent playerRenderEvent) {
-		if (entity == null || entityModel == null || playerRenderEvent == null)
+	private static void execute(@Nullable Event event, Entity entity, EntityModel entityModel, RenderPlayerEvent playerRenderEvent, PoseStack poseStack) {
+		if (entity == null || entityModel == null || playerRenderEvent == null || poseStack == null)
 			return;
+		double model_scale = 0;
+		double clothes_scale = 0;
+		model_scale = entity instanceof LivingEntity _livingEntity0 && _livingEntity0.getAttributes().hasAttribute(Attributes.SCALE) ? _livingEntity0.getAttribute(Attributes.SCALE).getValue() : 0;
+		clothes_scale = 1 / (entity instanceof LivingEntity _livingEntity1 && _livingEntity1.getAttributes().hasAttribute(Attributes.SCALE) ? _livingEntity1.getAttribute(Attributes.SCALE).getValue() : 0);
 		if (!entity.isInvisible()) {
+			poseStack.scale((float) model_scale, (float) model_scale, (float) model_scale);
 			{
 				ResourceLocation texture = (ResourceLocation.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png"));
 				renderHumanoid(playerRenderEvent, Ssc14ModHumanoidModels.HUMAN_MODEL, playerRenderEvent.getMultiBufferSource().getBuffer(RenderType.armorCutoutNoCull(texture)), playerRenderEvent.getRenderState());
 			}
+			poseStack.scale((float) clothes_scale, (float) clothes_scale, (float) clothes_scale);
 		}
 		((PlayerModel) entityModel).body.skipDraw = !(false);
 		((PlayerModel) entityModel).hat.skipDraw = !(false);

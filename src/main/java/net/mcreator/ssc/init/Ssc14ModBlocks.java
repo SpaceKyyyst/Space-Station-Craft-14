@@ -132,6 +132,8 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> FENCE_POINT;
 	public static final DeferredBlock<Block> FENCE_P;
 	public static final DeferredBlock<Block> DEBUG_13;
+	public static final DeferredBlock<Block> EXTINGUISHER_CABINET;
+	public static final DeferredBlock<Block> TITLE_STEEL_PAVEMENT_VERTICAL;
 	static {
 		VOIDB = register("voidb", VoidbBlock::new);
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
@@ -245,6 +247,8 @@ public class Ssc14ModBlocks {
 		FENCE_POINT = register("fence_point", FencePointBlock::new);
 		FENCE_P = register("fence_p", FencePBlock::new);
 		DEBUG_13 = register("debug_13", DEBUG13Block::new);
+		EXTINGUISHER_CABINET = register("extinguisher_cabinet", ExtinguisherCabinetBlock::new);
+		TITLE_STEEL_PAVEMENT_VERTICAL = register("title_steel_pavement_vertical", TitleSteelPavementVerticalBlock::new);
 	}
 
 	// Start of user code block custom blocks

@@ -1,0 +1,8 @@
+{
+  "_fv": 85,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">player_log_in</field><next><block type=\"entity_set_attribute_base_value\"><field name=\"attribute\">SCALE</field><value name=\"entity\"><block type=\"entity_from_deps\"></block></value><value name=\"value\"><block type=\"math_number\"><field name=\"NUM\">0.9</field></block></value><next><block type=\"java_code\"><field name=\"CODE\">&amp;#10;/*&amp;#10;MINECRAFT атрибут scale: &amp;#10;&amp;#10;* Люди:  0,88 - 1,05&amp;#10;* Дворфы:  0,50 - 0,72&amp;#10;* Унатхи:  0,99 - 1,22&amp;#10;* Слаймолюды:  0,55 - 0,88&amp;#10;* Дионы:  0,55 - 1,22&amp;#10;* Арахниды:  1,38 - 1,93&amp;#10;* Нианы:  0,94&amp;#10;* Воксы:  0,55 - 0,83&amp;#10;* Вульпы:  0,94 - 1,10&amp;#10;* Фелиниды:  0,72 - 0,88&amp;#10;*/&amp;#10;</field><comment pinned=\"true\" h=\"55\" w=\"155\">Данные роста всех рас</comment></block></next></block></next></block><block type=\"math_number\" x=\"50\" y=\"515\"><field name=\"NUM\">1</field><comment pinned=\"true\" h=\"73\" w=\"100\">\n1 = 181 см\n0.5 = 90 см</comment></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

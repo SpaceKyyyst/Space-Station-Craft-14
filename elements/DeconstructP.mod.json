@@ -1,0 +1,28 @@
+{
+  "_fv": 85,
+  "_type": "particle",
+  "definition": {
+    "texture": "deconstruct_block_16an",
+    "animate": true,
+    "frameDuration": 3,
+    "width": 1.0,
+    "height": 1.0,
+    "scale": {
+      "fixedValue": 3.4
+    },
+    "fixedScale": true,
+    "speedFactor": 0.0,
+    "gravity": 0.0,
+    "maxAge": 160,
+    "maxAgeDiff": 0,
+    "angularVelocity": 0.0,
+    "angularAcceleration": 0.0,
+    "canCollide": false,
+    "alwaysShow": true,
+    "emissiveRendering": true,
+    "rotationProvider": {
+      "name": "DeconstructParticle_ORIENT_"
+    },
+    "renderType": "TRANSLUCENT"
+  }
+}

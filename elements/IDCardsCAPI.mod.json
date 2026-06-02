@@ -1,0 +1,26 @@
+{
+  "_fv": 85,
+  "_type": "curiosbauble",
+  "definition": {
+    "item": "IDCardPassanger",
+    "slotType": "PDA",
+    "slotAmount": 1,
+    "addSlot": false,
+    "enderMask": false,
+    "friendlyPigs": false,
+    "snowWalk": false,
+    "equipSound": {
+      "value": ""
+    },
+    "hasModel": false,
+    "baubleModel": "Default",
+    "baubleModelTexture": "",
+    "helmetModelPart": "Empty",
+    "bodyModelPart": "Empty",
+    "armsModelPartL": "Empty",
+    "armsModelPartR": "Empty",
+    "leggingsModelPartL": "Empty",
+    "leggingsModelPartR": "Empty",
+    "disabledToggles": []
+  }
+}

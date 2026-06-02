@@ -65,7 +65,7 @@ public class DEBUG13Block extends Block {
 		double hitY = hit.getLocation().y;
 		double hitZ = hit.getLocation().z;
 		Direction direction = hit.getDirection();
-		DEBUG13PriShchielchkiePKMPoBlokuProcedure.execute(world, x, y, z);
+		DEBUG13PriShchielchkiePKMPoBlokuProcedure.execute(world, x, y, z, entity);
 		return InteractionResult.SUCCESS;
 	}
 }

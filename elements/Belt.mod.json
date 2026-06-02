@@ -1,0 +1,12 @@
+{
+  "_fv": 85,
+  "_type": "curiosslot",
+  "definition": {
+    "texture": "belt_slot.png",
+    "name": "Belt",
+    "amount": 1,
+    "modelToggling": false,
+    "changeOrder": true,
+    "slotOrder": 9
+  }
+}

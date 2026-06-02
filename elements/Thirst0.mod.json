@@ -1,0 +1,32 @@
+{
+  "_fv": 85,
+  "_type": "overlay",
+  "definition": {
+    "priority": "NORMAL",
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "thirsty.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Thirst0Pr"
+          },
+          "anchorPoint": "CENTER_RIGHT",
+          "x": 390,
+          "y": 136,
+          "locked": true
+        }
+      }
+    ],
+    "baseTexture": "",
+    "overlayTarget": "Ingame",
+    "gridSettings": {
+      "sx": 16,
+      "sy": 16,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": true
+    }
+  }
+}

@@ -37,6 +37,9 @@ public class Ssc14ModAttributes {
 			() -> new RangedAttribute("attribute.ssc_14.digestive_processes", 0, 0, 10).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 	public static final DeferredHolder<Attribute, Attribute> HEALTH_U_IATTRIBUTE = REGISTRY.register("health_u_iattribute",
 			() -> new RangedAttribute("attribute.ssc_14.health_u_iattribute", 0, 0, 6).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+	public static final DeferredHolder<Attribute, Attribute> LIQUID = REGISTRY.register("liquid", () -> new RangedAttribute("attribute.ssc_14.liquid", 125, 0, 200).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+	public static final DeferredHolder<Attribute, Attribute> FLUID_ABSORPTION = REGISTRY.register("fluid_absorption",
+			() -> new RangedAttribute("attribute.ssc_14.fluid_absorption", 0, 0, 10).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 
 	@SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {
@@ -50,5 +53,7 @@ public class Ssc14ModAttributes {
 		event.add(EntityType.PLAYER, NUTRIENTS);
 		event.add(EntityType.PLAYER, DIGESTIVE_PROCESSES);
 		event.add(EntityType.PLAYER, HEALTH_U_IATTRIBUTE);
+		event.add(EntityType.PLAYER, LIQUID);
+		event.add(EntityType.PLAYER, FLUID_ABSORPTION);
 	}
 }

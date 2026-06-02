@@ -9,7 +9,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 
-// 🔑 ГЛАВНОЕ ИСПРАВЛЕНИЕ: modid = "ssc_14" (должен ТОЧНО совпадать с @Mod в главном классе)
+// 🔑 modid ДОЛЖЕН точно совпадать с @Mod в главном классе
 @EventBusSubscriber(modid = "ssc_14")
 public class AtmosForgeEventHandler {
 
@@ -27,11 +27,14 @@ public class AtmosForgeEventHandler {
 
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
-        handleBlockChange(event.getLevel(), event.getPos());
+        // ✅ Проверяем, что позиция валидна
+        if (event.getPos() != null) {
+            handleBlockChange(event.getLevel(), event.getPos());
+        }
     }
 
     private static void handleBlockChange(LevelAccessor level, BlockPos pos) {
-        if (level instanceof ServerLevel serverLevel && !serverLevel.isClientSide) {
+        if (level instanceof ServerLevel serverLevel && !serverLevel.isClientSide && pos != null) {
             AtmosphereManager.get(serverLevel).onBlockChanged(pos);
         }
     }

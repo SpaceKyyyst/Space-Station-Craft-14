@@ -1,11 +1,15 @@
 package net.mcreator.ssc.init;
 
 import top.theillusivec4.curios.api.type.capability.ICurio;
+import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.CuriosCapability;
 
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
 import net.minecraft.world.item.ItemStack;
+
+import net.mcreator.ssc.procedures.OuterclothingEvaCAPIBaubleIsUnequippedProcedure;
+import net.mcreator.ssc.procedures.OuterclothingEvaCAPIBaubleIsEquippedProcedure;
 
 public class Ssc14ModCuriosCompat {
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -219,5 +223,75 @@ public class Ssc14ModCuriosCompat {
 				return stack;
 			}
 		}, Ssc14ModItems.BLACK_SOLES_ITEM.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.CLOAKS_CAP.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.MANTLES_CAP.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.ARMOR_SECURITY.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.HELMET_SECURITY.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.BELT_SECURITY.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.HEADSET_BASE.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.ID_CARD_PASSANGER.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.PD_APASSANGER.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+
+			@Override
+			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
+				OuterclothingEvaCAPIBaubleIsEquippedProcedure.execute(slotContext.entity());
+			}
+
+			@Override
+			public void onUnequip(SlotContext slotContext, ItemStack newStack) {
+				OuterclothingEvaCAPIBaubleIsUnequippedProcedure.execute(slotContext.entity());
+			}
+		}, Ssc14ModItems.OUTERCLOTHING_EVA.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.HELMETS_EVA.get());
 	}
 }

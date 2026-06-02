@@ -278,5 +278,45 @@
         "stream": false
       }
     ]
+  },
+  "extinguish_effect": {
+    "sounds": [
+      {
+        "name": "ssc_14:extinguish_effect",
+        "stream": false
+      }
+    ]
+  },
+  "items_flask_close1": {
+    "sounds": [
+      {
+        "name": "ssc_14:items_flask_close1",
+        "stream": false
+      }
+    ]
+  },
+  "items_pen_click": {
+    "sounds": [
+      {
+        "name": "ssc_14:items_pen_click",
+        "stream": false
+      }
+    ]
+  },
+  "items_flashlight_pda": {
+    "sounds": [
+      {
+        "name": "ssc_14:items_flashlight_pda",
+        "stream": false
+      }
+    ]
+  },
+  "items_rcd_deconstruct": {
+    "sounds": [
+      {
+        "name": "ssc_14:items_rcd_deconstruct",
+        "stream": false
+      }
+    ]
   }
 }

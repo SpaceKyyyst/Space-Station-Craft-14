@@ -42,17 +42,17 @@ public class BaseAirlockD1Block extends Block implements EntityBlock {
 		return this.getShapeForEachState(state -> {
 			if (state.getValue(PANEL_OPEN) == false && state.getValue(ARL_VARIAT) == 11) {
 				return switch (state.getValue(FACING)) {
-					default -> Shapes.or(box(15, 0, 5, 16, 32, 11), box(0, 0, 5, 1, 32, 11), box(1, 15, 5, 3, 32, 11));
-					case NORTH -> Shapes.or(box(0, 0, 5, 1, 32, 11), box(15, 0, 5, 16, 32, 11), box(13, 15, 5, 15, 32, 11));
-					case EAST -> Shapes.or(box(5, 0, 0, 11, 32, 1), box(5, 0, 15, 11, 32, 16), box(5, 15, 13, 11, 32, 15));
-					case WEST -> Shapes.or(box(5, 0, 15, 11, 32, 16), box(5, 0, 0, 11, 32, 1), box(5, 15, 1, 11, 32, 3));
+					default -> Shapes.or(box(15, 0, 5, 16, 32, 11), box(0, 0, 5, 1, 32, 11));
+					case NORTH -> Shapes.or(box(0, 0, 5, 1, 32, 11), box(15, 0, 5, 16, 32, 11));
+					case EAST -> Shapes.or(box(5, 0, 0, 11, 32, 1), box(5, 0, 15, 11, 32, 16));
+					case WEST -> Shapes.or(box(5, 0, 15, 11, 32, 16), box(5, 0, 0, 11, 32, 1));
 				};
 			} else if (state.getValue(PANEL_OPEN) == true && state.getValue(ARL_VARIAT) == 11) {
 				return switch (state.getValue(FACING)) {
-					default -> Shapes.or(box(15, 0, 5, 16, 32, 11), box(0, 0, 5, 1, 32, 11), box(1, 15, 5, 3, 32, 11));
-					case NORTH -> Shapes.or(box(0, 0, 5, 1, 32, 11), box(15, 0, 5, 16, 32, 11), box(13, 15, 5, 15, 32, 11));
-					case EAST -> Shapes.or(box(5, 0, 0, 11, 32, 1), box(5, 0, 15, 11, 32, 16), box(5, 15, 13, 11, 32, 15));
-					case WEST -> Shapes.or(box(5, 0, 15, 11, 32, 16), box(5, 0, 0, 11, 32, 1), box(5, 15, 1, 11, 32, 3));
+					default -> Shapes.or(box(15, 0, 5, 16, 32, 11), box(0, 0, 5, 1, 32, 11));
+					case NORTH -> Shapes.or(box(0, 0, 5, 1, 32, 11), box(15, 0, 5, 16, 32, 11));
+					case EAST -> Shapes.or(box(5, 0, 0, 11, 32, 1), box(5, 0, 15, 11, 32, 16));
+					case WEST -> Shapes.or(box(5, 0, 15, 11, 32, 16), box(5, 0, 0, 11, 32, 1));
 				};
 			} else if (state.getValue(PANEL_OPEN) == false && state.getValue(ARL_VARIAT) == 12) {
 				return switch (state.getValue(FACING)) {
@@ -122,10 +122,10 @@ public class BaseAirlockD1Block extends Block implements EntityBlock {
 				};
 			}
 			return switch (state.getValue(FACING)) {
-				default -> box(0, 0, 6, 16, 32, 10);
-				case NORTH -> box(0, 0, 6, 16, 32, 10);
-				case EAST -> box(6, 0, 0, 10, 32, 16);
-				case WEST -> box(6, 0, 0, 10, 32, 16);
+				default -> box(0, 0, 5, 16, 32, 11);
+				case NORTH -> box(0, 0, 5, 16, 32, 11);
+				case EAST -> box(5, 0, 0, 11, 32, 16);
+				case WEST -> box(5, 0, 0, 11, 32, 16);
 			};
 		});
 	}

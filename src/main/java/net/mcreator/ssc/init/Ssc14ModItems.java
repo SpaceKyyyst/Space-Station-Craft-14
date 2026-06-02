@@ -17,6 +17,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.BlockItem;
 
+import net.mcreator.ssc.item.inventory.PDApassangerInventoryCapability;
 import net.mcreator.ssc.item.inventory.AccessConfigInventoryCapability;
 import net.mcreator.ssc.item.*;
 import net.mcreator.ssc.block.FencePointBlock;
@@ -268,6 +269,24 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> GAUZE;
 	public static final DeferredItem<Item> OINTMENT;
 	public static final DeferredItem<Item> DEBUG_13;
+	public static final DeferredItem<Item> DECAL_1SPAWNER;
+	public static final DeferredItem<Item> DECAL_1DELETION;
+	public static final DeferredItem<Item> CLOAKS_CAP;
+	public static final DeferredItem<Item> MANTLES_CAP;
+	public static final DeferredItem<Item> ARMOR_SECURITY;
+	public static final DeferredItem<Item> HELMET_SECURITY;
+	public static final DeferredItem<Item> BELT_SECURITY;
+	public static final DeferredItem<Item> HEADSET_BASE;
+	public static final DeferredItem<Item> PD_APASSANGER;
+	public static final DeferredItem<Item> OUTERCLOTHING_EVA;
+	public static final DeferredItem<Item> HELMETS_EVA;
+	public static final DeferredItem<Item> EXTINGUISHER_CABINET;
+	public static final DeferredItem<Item> EXTINGUISHER;
+	public static final DeferredItem<Item> EXTINGUISHER_OPEN;
+	public static final DeferredItem<Item> PEN;
+	public static final DeferredItem<Item> RSU;
+	public static final DeferredItem<Item> TITLE_STEEL_PAVEMENT_VERTICAL;
+	public static final DeferredItem<Item> RC_DCARTRIDGE;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -507,6 +526,24 @@ public class Ssc14ModItems {
 		GAUZE = register("gauze", GauzeItem::new);
 		OINTMENT = register("ointment", OintmentItem::new);
 		DEBUG_13 = block(Ssc14ModBlocks.DEBUG_13);
+		DECAL_1SPAWNER = register("decal_1spawner", DECAL1spawnerItem::new);
+		DECAL_1DELETION = register("decal_1deletion", DECAL1deletionItem::new);
+		CLOAKS_CAP = register("cloaks_cap", CloaksCapItem::new);
+		MANTLES_CAP = register("mantles_cap", MantlesCapItem::new);
+		ARMOR_SECURITY = register("armor_security", ArmorSecurityItem::new);
+		HELMET_SECURITY = register("helmet_security", HelmetSecurityItem::new);
+		BELT_SECURITY = register("belt_security", BeltSecurityItem::new);
+		HEADSET_BASE = register("headset_base", HeadsetBaseItem::new);
+		PD_APASSANGER = register("pd_apassanger", PDApassangerItem::new);
+		OUTERCLOTHING_EVA = register("outerclothing_eva", OuterclothingEvaItem::new);
+		HELMETS_EVA = register("helmets_eva", HelmetsEvaItem::new);
+		EXTINGUISHER_CABINET = block(Ssc14ModBlocks.EXTINGUISHER_CABINET, new Item.Properties().stacksTo(1));
+		EXTINGUISHER = register("extinguisher", ExtinguisherItem::new);
+		EXTINGUISHER_OPEN = register("extinguisher_open", ExtinguisherOpenItem::new);
+		PEN = register("pen", PenItem::new);
+		RSU = register("rsu", RSUItem::new);
+		TITLE_STEEL_PAVEMENT_VERTICAL = block(Ssc14ModBlocks.TITLE_STEEL_PAVEMENT_VERTICAL, new Item.Properties().stacksTo(30).fireResistant());
+		RC_DCARTRIDGE = register("rc_dcartridge", RCDcartridgeItem::new);
 	}
 
 	// Start of user code block custom items
@@ -526,5 +563,6 @@ public class Ssc14ModItems {
 	@SubscribeEvent
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
 		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new AccessConfigInventoryCapability(stack), ACCESS_CONFIG.get());
+		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new PDApassangerInventoryCapability(stack), PD_APASSANGER.get());
 	}
 }

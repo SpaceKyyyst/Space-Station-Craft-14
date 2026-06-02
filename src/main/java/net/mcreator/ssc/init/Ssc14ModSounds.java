@@ -47,4 +47,9 @@ public class Ssc14ModSounds {
 	public static final DeferredHolder<SoundEvent, SoundEvent> BREAK_STONE = REGISTRY.register("break_stone", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "break_stone")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> WELDING_WORK = REGISTRY.register("welding_work", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "welding_work")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> C4_PIP = REGISTRY.register("c4_pip", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "c4_pip")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> EXTINGUISH_EFFECT = REGISTRY.register("extinguish_effect", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "extinguish_effect")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> ITEMS_FLASK_CLOSE1 = REGISTRY.register("items_flask_close1", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "items_flask_close1")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> ITEMS_PEN_CLICK = REGISTRY.register("items_pen_click", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "items_pen_click")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> ITEMS_FLASHLIGHT_PDA = REGISTRY.register("items_flashlight_pda", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "items_flashlight_pda")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> ITEMS_RCD_DECONSTRUCT = REGISTRY.register("items_rcd_deconstruct", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "items_rcd_deconstruct")));
 }

@@ -8,12 +8,28 @@ import net.minecraft.world.level.Level;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.BlockPos;
+import net.minecraft.ChatFormatting;
 
 import net.mcreator.ssc.Ssc14Mod;
 
 public class NuclearWarhead_ExpProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		if (false == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Ded14")) {
+		if (false == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Ded13")) {
+			if (!world.isClientSide()) {
+				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockEntity _blockEntity = world.getBlockEntity(_bp);
+				BlockState _bs = world.getBlockState(_bp);
+				if (_blockEntity != null) {
+					_blockEntity.getPersistentData().putBoolean("Ded13", true);
+				}
+				if (world instanceof Level _level)
+					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+			}
+			if (world instanceof ServerLevel _level) {
+				_level.getServer().getPlayerList().broadcastSystemMessage(
+						Component.literal("\u041F\u041E\u0414\u0422\u0412\u0415\u0420\u0414\u0418\u0422\u0415  \u0410\u041A\u0422\u0418\u0412\u0410\u0426\u0418\u042E").withColor(0xff0000).withStyle(ChatFormatting.BOLD), false);
+			}
+		} else if (false == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Ded14") && true == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Ded13")) {
 			if (!world.isClientSide()) {
 				BlockPos _bp = BlockPos.containing(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -25,22 +41,22 @@ public class NuclearWarhead_ExpProcedure {
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 			if (world instanceof ServerLevel _level) {
-				_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u0414\u0435\u0442\u043E\u043D\u0430\u0446\u0438\u044F \u0447\u0435\u0440\u0435\u0437"), false);
+				_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u0414\u0435\u0442\u043E\u043D\u0430\u0446\u0438\u044F \u0447\u0435\u0440\u0435\u0437....").withStyle(ChatFormatting.ITALIC), false);
 			}
 			if (world instanceof ServerLevel _level) {
-				_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("3...").withColor(0xff7f7f), false);
+				_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("3...").withColor(0xff7f7f).withStyle(ChatFormatting.ITALIC), false);
 			}
 			Ssc14Mod.queueServerWork(20, () -> {
 				if (world instanceof ServerLevel _level) {
-					_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("2...").withColor(0xff3f3f), false);
+					_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("2...").withColor(0xff3f3f).withStyle(ChatFormatting.ITALIC), false);
 				}
 				Ssc14Mod.queueServerWork(20, () -> {
 					if (world instanceof ServerLevel _level) {
-						_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("1...").withColor(0xff0000), false);
+						_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("1...").withColor(0xff0000).withStyle(ChatFormatting.ITALIC), false);
 					}
 					Ssc14Mod.queueServerWork(20, () -> {
 						if (world instanceof ServerLevel _level) {
-							_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u0411\u0410\u0425").withColor(0xff0000), false);
+							_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u0411\u0410-\u0410-\u0410\u0425!").withColor(0xff0000).withStyle(ChatFormatting.BOLD), false);
 						}
 						world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
 						// Проверяем, что мир — это серверный уровень (взрывы только на сервере!)

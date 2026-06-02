@@ -1,0 +1,12 @@
+{
+  "_fv": 85,
+  "_type": "curiosslot",
+  "definition": {
+    "texture": "pda_slot.png",
+    "name": "PDA",
+    "amount": 1,
+    "modelToggling": false,
+    "changeOrder": true,
+    "slotOrder": 10
+  }
+}

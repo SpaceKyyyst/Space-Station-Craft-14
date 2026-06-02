@@ -1,0 +1,26 @@
+{
+  "_fv": 85,
+  "_type": "particle",
+  "definition": {
+    "texture": "extinguisher_spray_",
+    "animate": true,
+    "frameDuration": 5,
+    "width": 1.0,
+    "height": 1.0,
+    "scale": {
+      "fixedValue": 2.0,
+      "name": "ExtinguisherSprayVizualnyiMasshtabChastitsy"
+    },
+    "fixedScale": false,
+    "speedFactor": 0.0,
+    "gravity": 0.0,
+    "maxAge": 19,
+    "maxAgeDiff": 0,
+    "angularVelocity": 0.0,
+    "angularAcceleration": 0.0,
+    "canCollide": true,
+    "alwaysShow": false,
+    "emissiveRendering": false,
+    "renderType": "TRANSLUCENT"
+  }
+}

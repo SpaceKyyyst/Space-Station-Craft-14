@@ -1,0 +1,25 @@
+{
+  "_fv": 85,
+  "_type": "particle",
+  "definition": {
+    "texture": "freon_particles_2",
+    "animate": false,
+    "frameDuration": 20,
+    "width": 1.0,
+    "height": 1.0,
+    "scale": {
+      "fixedValue": 4.0
+    },
+    "fixedScale": false,
+    "speedFactor": 0.1,
+    "gravity": 0.0,
+    "maxAge": 60,
+    "maxAgeDiff": 10,
+    "angularVelocity": 0.0,
+    "angularAcceleration": 0.0,
+    "canCollide": true,
+    "alwaysShow": false,
+    "emissiveRendering": false,
+    "renderType": "TRANSLUCENT"
+  }
+}

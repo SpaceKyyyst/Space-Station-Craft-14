@@ -93,6 +93,34 @@ public class SSC14commandsCommand {
 
 			DigestiveProcessesClearCommandProcedure.execute(arguments);
 			return 0;
+		}))))).then(Commands.literal("thirsty").then(Commands.literal("set").then(Commands.argument("ent", EntityArgument.entity()).then(Commands.argument("Liquid", DoubleArgumentType.doubleArg(0, 200)).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
+
+			ThirstySetCommandProcedure.execute(arguments);
+			return 0;
+		})))).then(Commands.literal("digestive").then(Commands.literal("clear").then(Commands.argument("ent", EntityArgument.entity()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
+
+			DigestiveProcessesClearCommandProcedure.execute(arguments);
+			return 0;
 		}))))).then(Commands.literal("hels").then(Commands.argument("ent", EntityArgument.entity()).then(Commands.literal("reset").executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();

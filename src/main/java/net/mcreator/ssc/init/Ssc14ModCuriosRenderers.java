@@ -43,5 +43,14 @@ public class Ssc14ModCuriosRenderers {
 		ICurioRenderer.register(Ssc14ModItems.RND_JUMPSUIT.get(), RNDRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.WARDEN_JUMPSUIT.get(), WardenRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.BLACK_SOLES_ITEM.get(), SolesRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.CLOAKS_CAP.get(), CloaksCapCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.MANTLES_CAP.get(), MantlesCapCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.ARMOR_SECURITY.get(), ArmorSecurityCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HELMET_SECURITY.get(), HelmetSecurityCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.BELT_SECURITY.get(), BeltSecurityCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_BASE.get(), HeadsetBaseCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.PD_APASSANGER.get(), PDApassangerCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.OUTERCLOTHING_EVA.get(), OuterclothingEvaCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HELMETS_EVA.get(), HelmetsEvaCAPIRenderer::new);
 	}
 }

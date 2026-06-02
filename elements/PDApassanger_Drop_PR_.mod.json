@@ -1,0 +1,8 @@
+{
+  "_fv": 85,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">entity_ticks</field><next><block type=\"controls_if\"><value name=\"IF0\"><block type=\"logic_entity_compare\"><field name=\"entity\">EntityItem</field><value name=\"compareTo\"><block type=\"entity_from_deps\"></block></value></block></value><statement name=\"DO0\"><block type=\"controls_if\"><value name=\"IF0\"><block type=\"java_code_get\"><field name=\"CODE\">/* ОПРЕДЕЛИТЬ, ЧТО ЭТО ИМЕННО КПК */</field></block></value><statement name=\"DO0\"><block type=\"java_code\"><field name=\"CODE\">&amp;#10;&amp;#10;// Если у КПК включен свет, то на месте этой стопки продолжать создавать свет, если выключен, удалить блок света в этой точке&amp;#10;&amp;#10;</field></block></statement></block></statement></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

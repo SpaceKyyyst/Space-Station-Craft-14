@@ -1,0 +1,12 @@
+{
+  "_fv": 85,
+  "_type": "curiosslot",
+  "definition": {
+    "texture": "ear_slot.png",
+    "name": "Ear",
+    "amount": 1,
+    "modelToggling": false,
+    "changeOrder": true,
+    "slotOrder": 2
+  }
+}

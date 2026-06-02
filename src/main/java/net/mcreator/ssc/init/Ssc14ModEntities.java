@@ -45,6 +45,10 @@ public class Ssc14ModEntities {
 			EntityType.Builder.<CorpseEntity>of(CorpseEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
 					.sized(0.4f, 0.3f));
+	public static final DeferredHolder<EntityType<?>, EntityType<Decal1Entity>> DECAL_1 = register("decal_1",
+			EntityType.Builder.<Decal1Entity>of(Decal1Entity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+
+					.sized(0.1f, 0.1f));
 
 	// Start of user code block custom entities
 	// End of user code block custom entities
@@ -60,6 +64,7 @@ public class Ssc14ModEntities {
 		ChairEntityEntity.init(event);
 		C4CrutchEntEntity.init(event);
 		CorpseEntity.init(event);
+		Decal1Entity.init(event);
 	}
 
 	@SubscribeEvent
@@ -70,5 +75,6 @@ public class Ssc14ModEntities {
 		event.put(CHAIR_ENTITY.get(), ChairEntityEntity.createAttributes().build());
 		event.put(C_4_CRUTCH_ENT.get(), C4CrutchEntEntity.createAttributes().build());
 		event.put(CORPSE.get(), CorpseEntity.createAttributes().build());
+		event.put(DECAL_1.get(), Decal1Entity.createAttributes().build());
 	}
 }

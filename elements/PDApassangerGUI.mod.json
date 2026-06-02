@@ -1,0 +1,365 @@
+{
+  "_fv": 85,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 192,
+    "height": 150,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "pda_passanger_gui_2.png",
+          "use1Xscale": false,
+          "x": 118,
+          "y": 45,
+          "locked": true
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "pen_button_active.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "PDApenButtonDisplayCond"
+          },
+          "x": 270,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_pen_button_active",
+          "image": "pda_empty_button_texture.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "PenRemovePR"
+          },
+          "x": 270,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "id_eject_button.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "PDAidButtonDisplayCond"
+          },
+          "x": 281,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_pda_empty_button_texture",
+          "image": "pda_empty_button_texture.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "IDRemovePR"
+          },
+          "x": 281,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "light_buttom_texture.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "PDAlightButtonDisplayCond"
+          },
+          "x": 259,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_pda_empty_button_texture1",
+          "image": "pda_empty_button_texture.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "PDAflashlightPR"
+          },
+          "x": 259,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atextid",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextid"
+          },
+          "color": {
+            "value": -3026479,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 128,
+          "y": 71,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_station_name",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextStationName"
+          },
+          "color": {
+            "value": -3223858,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 128,
+          "y": 80,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_danger_level",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextDangerLevel"
+          },
+          "color": {
+            "value": -3223858,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 128,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atextid_2",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextid2"
+          },
+          "color": {
+            "value": -256,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 148,
+          "y": 71,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_station_name_2",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextStationName2"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 180,
+          "y": 80,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_danger_level_2",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextDangerLevel2"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 218,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_danger_level_2_g",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextDangerLevel2G"
+          },
+          "color": {
+            "value": -14585048,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 218,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_danger_level_2_y",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextDangerLevel2Y"
+          },
+          "color": {
+            "value": -5668859,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 218,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_danger_level_2_b",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextDangerLevel2B"
+          },
+          "color": {
+            "value": -15907190,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 218,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_danger_level_2_r",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextDangerLevel2R"
+          },
+          "color": {
+            "value": -7272183,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 218,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_danger_level_2_p",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextDangerLevel2P"
+          },
+          "color": {
+            "value": -6477674,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 218,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_danger_level_2_gam",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextDangerLevel2Gam"
+          },
+          "color": {
+            "value": -5157766,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 218,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_danger_level_2_d",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextDangerLevel2D"
+          },
+          "color": {
+            "value": -10878968,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 218,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_pd_atext_danger_level_2_e",
+          "text": {
+            "fixedValue": "",
+            "name": "PDAtextDangerLevel2E"
+          },
+          "color": {
+            "value": -12316287,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 218,
+          "y": 89,
+          "locked": true
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

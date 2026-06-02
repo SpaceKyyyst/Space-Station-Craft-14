@@ -30,14 +30,14 @@ public class WaterVaporParticles2Particle extends TextureSheetParticle {
 	protected WaterVaporParticles2Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
 		super(world, x, y, z);
 		this.spriteSet = spriteSet;
-		this.setSize(1.4f, 1.4f);
-		this.quadSize *= 3f;
+		this.setSize(1f, 1f);
+		this.quadSize *= 4f;
 		this.lifetime = (int) Math.max(1, 60 + (this.random.nextInt(20) - 10));
 		this.gravity = 0f;
 		this.hasPhysics = true;
-		this.xd = vx * 0.2;
-		this.yd = vy * 0.2;
-		this.zd = vz * 0.2;
+		this.xd = vx * 0.1;
+		this.yd = vy * 0.1;
+		this.zd = vz * 0.1;
 		this.pickSprite(spriteSet);
 	}
 

@@ -16,8 +16,8 @@ public final class AtmosRegion {
     private static final float MIN_TOTAL_MOLES_TO_TICK = 0.1f;
     private static final float PLASMA_VISUAL_THRESHOLD = 0.05f;
     private static final int VISUAL_UPDATE_INTERVAL = 10;
-    private static final int VENT_SCAN_RANGE = 20; // 🔍 Радиус проверки на "выход в космос"
-
+    private static final int VENT_SCAN_RANGE = 20;
+    
     private final int regionX, regionY, regionZ;
     private final AtmosCell[] cells = new AtmosCell[CELL_COUNT];
     private BitSet dirtyCells = new BitSet(CELL_COUNT);
@@ -28,26 +28,21 @@ public final class AtmosRegion {
     public long lastActivityTime = 0;
     private GasReaction[] reactions;
     private ServerLevel level;
-    
-    private int visualTickCounter = 0;
-    private final List<PlasmaVisualData> pendingVisuals = new ArrayList<>();
 
-    public static class PlasmaVisualData {
+    private int visualTickCounter = 0;
+    private final List<GasVisualData> pendingVisuals = new ArrayList<>();
+
+    public static class GasVisualData {
         public final double x, y, z;
+        public final int gasIndex;
         public final float density;
-        public PlasmaVisualData(double x, double y, double z, float density) {
-            this.x = x; this.y = y; this.z = z; this.density = density;
+        
+        public GasVisualData(double x, double y, double z, int gasIndex, float density) {
+            this.x = x; this.y = y; this.z = z;
+            this.gasIndex = gasIndex;
+            this.density = density;
         }
     }
-    
-	// 📦 Данные для визуализации водяного пара
-	public static class VaporVisualData {
-	    public final double x, y, z;
-	    public final float density;
-	    public VaporVisualData(double x, double y, double z, float density) {
-	        this.x = x; this.y = y; this.z = z; this.density = density;
-	    }
-	}
 
     public AtmosRegion(int rx, int ry, int rz) {
         this.regionX = rx; this.regionY = ry; this.regionZ = rz;
@@ -68,56 +63,21 @@ public final class AtmosRegion {
         return new BlockPos(regionX << 4, regionY << 4, regionZ << 4); 
     }
 
-    // 🔥 ИСПРАВЛЕННЫЙ МЕТОД: проверка на "выход в космос" в радиусе 20 блоков
     private boolean isVentedToSpace(BlockPos pos) {
         if (level == null) return false;
-        
-        // 🔼 Проверка ВВЕРХ: если на расстоянии до 20 блоков нет полных блоков → космос
         for (int dy = 1; dy <= VENT_SCAN_RANGE; dy++) {
             BlockPos check = pos.above(dy);
             BlockState state = level.getBlockState(check);
-            // Если блок имеет коллизию (не воздух, не стекло, не решётка) — путь закрыт
-            if (!state.isAir() && !state.getCollisionShape(level, check).isEmpty()) {
-                break; // Уперлись в твёрдый блок
-            }
-            // Если достигли границы мира — гарантированный космос
+            if (!state.isAir() && !state.getCollisionShape(level, check).isEmpty()) break;
             if (check.getY() >= level.getMaxY()) return true;
         }
-        
-        // 🔽 Проверка ВНИЗ: аналогично
         for (int dy = 1; dy <= VENT_SCAN_RANGE; dy++) {
             BlockPos check = pos.below(dy);
             BlockState state = level.getBlockState(check);
-            if (!state.isAir() && !state.getCollisionShape(level, check).isEmpty()) {
-                break;
-            }
+            if (!state.isAir() && !state.getCollisionShape(level, check).isEmpty()) break;
             if (check.getY() < level.getMinY()) return true;
         }
-        
         return false;
-    }
-
-    // ✅ ИСПРАВЛЕННЫЙ МЕТОД: проницаемость с учётом реальной позиции блока
-    private float getBlockPermeability(BlockState state, BlockPos pos) {
-        // 1. Проверяем интерфейс IAtmosBlock (кастомные блоки мода)
-        if (state.getBlock() instanceof IAtmosBlock ab) {
-            return ab.getPermeability(state);
-        }
-        
-        // 2. Проверяем тег "негерметичный" (для совместимости с другими модами)
-        // Создаём тег динамически, если не зарегистрирован
-        try {
-			var tagKey = net.minecraft.tags.BlockTags.create(
-			    net.minecraft.resources.ResourceLocation.parse("ssc_14:non_hermetic"));
-            if (state.is(tagKey)) return 1.0f;
-        } catch (Exception ignored) {}
-        
-        // 3. Воздух — полностью проницаем
-        if (state.isAir()) return 1.0f;
-        
-        // 4. Неполные блоки (без полной коллизии) — проницаемы
-        // ✅ КРИТИЧЕСКИЙ ФИКС: используем реальную позицию pos вместо BlockPos.ZERO!
-        return state.getCollisionShape(level, pos).isEmpty() ? 1.0f : 0.0f;
     }
 
     public void updatePermeability(BlockPos pos) {
@@ -125,8 +85,6 @@ public final class AtmosRegion {
         int idx = packCellIndex(pos);
         recalcCellFaces(pos, idx);
         dirtyCells.set(idx);
-        
-        // Граница зависит от обоих блоков, поэтому обновляем 6 соседей
         for (int f = 0; f < 6; f++) {
             BlockPos nPos = pos.relative(net.minecraft.core.Direction.from3DDataValue(f));
             if (contains(nPos)) {
@@ -140,14 +98,33 @@ public final class AtmosRegion {
 
     private void recalcCellFaces(BlockPos pos, int idx) {
         BlockState state = level.getBlockState(pos);
-        // ✅ Передаём реальную позицию для корректной коллизии
         float base = getBlockPermeability(state, pos);
         for (int f = 0; f < 6; f++) {
             BlockPos nPos = pos.relative(net.minecraft.core.Direction.from3DDataValue(f));
             float neighborPerm = getBlockPermeability(level.getBlockState(nPos), nPos);
-            // Граница герметична, если хоть одна сторона герметична
             facePermeability[f][idx] = Math.min(base, neighborPerm);
         }
+    }
+
+    // ✅ ИСПРАВЛЕННЫЙ МЕТОД: правильная проверка тега
+    private float getBlockPermeability(BlockState state, BlockPos pos) {
+        // 1. Кастомные блоки мода
+        if (state.getBlock() instanceof IAtmosBlock ab) {
+            return ab.getPermeability(state);
+        }
+        
+        // 2. Проверяем тег "негерметичный" — ИСПРАВЛЕНО
+        try {
+            if (state.is(IAtmosBlock.NON_HERMETIC_TAG)) {
+                return 1.0f;
+            }
+        } catch (Exception ignored) {}
+        
+        // 3. Воздух — полностью проницаем
+        if (state.isAir()) return 1.0f;
+        
+        // 4. Используем реальную позицию для коллизии
+        return state.getCollisionShape(level, pos).isEmpty() ? 1.0f : 0.0f;
     }
 
     public void initFromWorld(ServerLevel level) {
@@ -159,12 +136,10 @@ public final class AtmosRegion {
                     int idx = (y << 8) | (z << 4) | x;
                     BlockPos pos = origin.offset(x, y, z);
                     recalcCellFaces(pos, idx);
-                    // ❌ НЕ помечаем как грязные — пустой регион не должен тикаться
                 }
     }
 
-    // 🔥 Получение данных для визуализации плазмы
-    public List<PlasmaVisualData> collectPlasmaVisuals(BlockPos playerPos, int maxParticles) {
+    public List<GasVisualData> collectGasVisuals(BlockPos playerPos, int maxParticles) {
         pendingVisuals.clear();
         if (level == null || level.isClientSide) return pendingVisuals;
         if (playerPos.distSqr(getRegionOrigin()) > 4096) return pendingVisuals;
@@ -172,47 +147,27 @@ public final class AtmosRegion {
         int spawned = 0;
         for (int i = 0; i < CELL_COUNT && spawned < maxParticles; i++) {
             AtmosCell cell = cells[i];
-            float plasma = cell.getMoles(GasType.PLASMA.ordinal());
-            if (plasma > PLASMA_VISUAL_THRESHOLD) {
-                BlockPos pos = unpackCellIndex(i, getRegionOrigin());
-                double px = pos.getX() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
-                double py = pos.getY() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
-                double pz = pos.getZ() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
-                pendingVisuals.add(new PlasmaVisualData(px, py, pz, Math.min(plasma * 2f, 1.0f)));
-                spawned++;
+            for (int g = 0; g < GasType.COUNT; g++) {
+                float moles = cell.getMoles(g);
+                if (moles > 0.05f) {
+                    BlockPos pos = unpackCellIndex(i, getRegionOrigin());
+                    // ✅ Частицы в центре ячейки, без смещения к полу
+                    double px = pos.getX() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
+                    double py = pos.getY() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
+                    double pz = pos.getZ() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
+                    
+                    pendingVisuals.add(new GasVisualData(px, py, pz, g, Math.min(moles * 2f, 1.0f)));
+                    spawned++;
+                    if (spawned >= maxParticles) break;
+                }
             }
         }
         return pendingVisuals;
     }
 
-	// 🔥 Получение данных для визуализации водяного пара
-	public List<VaporVisualData> collectVaporVisuals(BlockPos playerPos, int maxParticles) {
-	    List<VaporVisualData> pending = new ArrayList<>();
-	    if (level == null || level.isClientSide) return pending;
-	    if (playerPos.distSqr(getRegionOrigin()) > 4096) return pending;
-	    
-	    int spawned = 0;
-	    for (int i = 0; i < CELL_COUNT && spawned < maxParticles; i++) {
-	        AtmosCell cell = cells[i];
-	        // ✅ Убедитесь, что GasType.WATER_VAPOR существует!
-	        float vapor = cell.getMoles(GasType.WATER_VAPOR.ordinal());
-	        
-	        if (vapor > 0.05f) { // Порог видимости пара
-	            BlockPos pos = unpackCellIndex(i, getRegionOrigin());
-	            double px = pos.getX() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
-	            double py = pos.getY() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
-	            double pz = pos.getZ() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
-	            
-	            pending.add(new VaporVisualData(px, py, pz, Math.min(vapor * 2f, 1.0f)));
-	            spawned++;
-	        }
-	    }
-	    return pending;
-	}
-
     public void tick(float deltaTime, GasReaction[] reactions) {
         this.reactions = reactions;
-        
+         
         if (dirtyCells.isEmpty()) {
             if (isActive && System.currentTimeMillis() - lastActivityTime > ACTIVITY_TIMEOUT_MS) {
                 isActive = false;
@@ -220,7 +175,6 @@ public final class AtmosRegion {
             return;
         }
 
-        // 🔒 Обрезка списка грязных ячеек если их слишком много
         int dirtyCount = dirtyCells.cardinality();
         if (dirtyCount > MAX_DIRTY_CELLS) {
             BitSet trimmed = new BitSet(CELL_COUNT);
@@ -234,7 +188,6 @@ public final class AtmosRegion {
             dirtyCells = trimmed;
         }
 
-        // 🚫 Ранний выход если газа почти нет
         float totalMoles = 0f;
         for (int i = 0; i < CELL_COUNT; i++) totalMoles += cells[i].getTotalMoles();
         if (totalMoles < MIN_TOTAL_MOLES_TO_TICK) {
@@ -247,23 +200,20 @@ public final class AtmosRegion {
         boolean anyChanged = false;
         BitSet nextDirty = new BitSet(CELL_COUNT);
 
-        // 🔥 ШАГ 1: МГНОВЕННОЕ УДАЛЕНИЕ ГАЗА В КОСМОС (ДО диффузии!)
+        // ШАГ 1: Удаление газа в космос
         for (int i = dirtyCells.nextSetBit(0); i >= 0; i = dirtyCells.nextSetBit(i + 1)) {
             AtmosCell cell = cells[i];
             if (cell.getTotalMoles() <= 0.001f) continue;
-            
             BlockPos pos = unpackCellIndex(i, getRegionOrigin());
             if (isVentedToSpace(pos)) {
-                // ✅ Мгновенное удаление всего газа
                 for (int g = 0; g < GasType.COUNT; g++) cell.setMoles(g, 0f);
                 cell.setTemperature(294.15f);
                 anyChanged = true;
-                // ❌ НЕ добавляем в nextDirty — ячейка становится "спящей"
                 continue;
             }
         }
 
-        // 🔥 ШАГ 2: Химические реакции
+        // ШАГ 2: Химические реакции
         for (int i = reactionCells.nextSetBit(0); i >= 0; i = reactionCells.nextSetBit(i + 1)) {
             if (cells[i].tryReactions(reactions)) {
                 anyChanged = true;
@@ -272,13 +222,11 @@ public final class AtmosRegion {
         }
         reactionCells.clear();
 
-        // 🔥 ШАГ 3: Диффузия
+        // ШАГ 3: Диффузия
         for (int i = dirtyCells.nextSetBit(0); i >= 0; i = dirtyCells.nextSetBit(i + 1)) {
             AtmosCell cell = cells[i];
             if (cell.getTotalMoles() <= 0.001f) continue;
-            
             if (diffuseCell(i, deltaTime, nextDirty)) anyChanged = true;
-            
             if (cell.getTotalMoles() > 0.005f || cell.getPressure() > 5f) {
                 nextDirty.set(i);
             }
@@ -286,10 +234,10 @@ public final class AtmosRegion {
 
         dirtyCells = nextDirty;
         
-        // 🔥 ШАГ 4: Сбор данных для визуализации
+        // ШАГ 4: Визуализация
         visualTickCounter++;
         if (visualTickCounter >= VISUAL_UPDATE_INTERVAL && isActive) {
-            collectPlasmaVisuals(level.players().isEmpty() ? getRegionOrigin() : 
+            collectGasVisuals(level.players().isEmpty() ? getRegionOrigin() : 
                 level.players().iterator().next().blockPosition(), 32);
             visualTickCounter = 0;
         }
@@ -344,18 +292,16 @@ public final class AtmosRegion {
         if (!contains(pos)) return;
         int idx = packCellIndex(pos);
         dirtyCells.set(idx);
+        // ✅ КРИТИЧЕСКОЕ: помечаем ячейку для проверки реакций
+        if (cells[idx].canReact()) {
+            reactionCells.set(idx);
+        }
         isActive = true;
         lastActivityTime = System.currentTimeMillis();
     }
 
     public boolean isActive() { return isActive; }
-    public List<PlasmaVisualData> getPendingVisuals() { return pendingVisuals; }
-    public List<VaporVisualData> getPendingVaporVisuals() { 
-	    return collectVaporVisuals(
-	        level.players().isEmpty() ? getRegionOrigin() : level.players().iterator().next().blockPosition(), 
-	        32
-	    ); 
-	}
+    public List<GasVisualData> getPendingVisuals() { return pendingVisuals; }
 
     // === NBT ===
     public void writeToNBT(net.minecraft.nbt.CompoundTag tag) {
