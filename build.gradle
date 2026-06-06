@@ -6,6 +6,16 @@ plugins {
 version = '1.0'
 base.archivesName = "modid"
 
+repositories {
+    mavenCentral()
+    maven { url = 'https://api.modrinth.com/maven' }
+}
+
+dependencies {
+    implementation "maven.modrinth:ItemPhysic:1.8.11"
+    implementation "maven.modrinth:creativecore:2.14.7-neoforge"
+}
+
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 neoForge {
