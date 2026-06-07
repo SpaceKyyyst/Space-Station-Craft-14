@@ -1,0 +1,100 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "2": "wood_table_texture"
+      }
+    },
+    "n": {
+      "name": "n",
+      "map": {
+        "2": "wood_table_texture_n"
+      }
+    },
+    "e": {
+      "name": "e",
+      "map": {
+        "2": "wood_table_texture_e"
+      }
+    },
+    "s": {
+      "name": "s",
+      "map": {
+        "2": "wood_table_texture_s"
+      }
+    },
+    "w": {
+      "name": "w",
+      "map": {
+        "2": "wood_table_texture_w"
+      }
+    },
+    "ne": {
+      "name": "ne",
+      "map": {
+        "2": "wood_table_texture_ne"
+      }
+    },
+    "es": {
+      "name": "es",
+      "map": {
+        "2": "wood_table_texture_es"
+      }
+    },
+    "sw": {
+      "name": "sw",
+      "map": {
+        "2": "wood_table_texture_sw"
+      }
+    },
+    "nw": {
+      "name": "nw",
+      "map": {
+        "2": "wood_table_texture_nw"
+      }
+    },
+    "ns": {
+      "name": "ns",
+      "map": {
+        "2": "wood_table_texture_ns"
+      }
+    },
+    "ew": {
+      "name": "ew",
+      "map": {
+        "2": "wood_table_texture_ew"
+      }
+    },
+    "nsw": {
+      "name": "nsw",
+      "map": {
+        "2": "wood_table_texture_nsw"
+      }
+    },
+    "nes": {
+      "name": "nes",
+      "map": {
+        "2": "wood_table_texture_nes"
+      }
+    },
+    "new_": {
+      "name": "new_",
+      "map": {
+        "2": "wood_table_texture_new"
+      }
+    },
+    "esw": {
+      "name": "esw",
+      "map": {
+        "2": "wood_table_texture_esw"
+      }
+    },
+    "nesw": {
+      "name": "nesw",
+      "map": {
+        "2": "wood_table_texture_nesw"
+      }
+    }
+  }
+}

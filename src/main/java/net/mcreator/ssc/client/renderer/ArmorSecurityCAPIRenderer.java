@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelarmor_security;
+import net.mcreator.ssc.client.model.Modelarmor_security_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,21 +22,21 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class ArmorSecurityCAPIRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/armor_security_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/armor_security_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public ArmorSecurityCAPIRenderer() {
-        Modelarmor_security model = new Modelarmor_security(Minecraft.getInstance().getEntityModels().bakeLayer(Modelarmor_security.LAYER_LOCATION));
+        Modelarmor_security_equipped model = new Modelarmor_security_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modelarmor_security_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
                     "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
                 "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap())
             )),
-                "body", model.armor_security,
-                "left_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
-                "right_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
-                "left_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
-                "right_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap())
+                "body", model.torso,
+                "left_arm", model.l_arm,
+                "right_arm", model.r_arm,
+                "left_leg", model.l_leg,
+                "right_leg", model.r_leg
         )));
 	}
 

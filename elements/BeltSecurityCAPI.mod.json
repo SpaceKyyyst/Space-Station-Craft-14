@@ -13,8 +13,8 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelbelt",
-    "baubleModelTexture": "belt_security_texture.png",
+    "baubleModel": "Modelbelt_equipped",
+    "baubleModelTexture": "belt_security_equipped_texture.png",
     "helmetModelPart": "Empty",
     "bodyModelPart": "torso",
     "armsModelPartL": "Empty",

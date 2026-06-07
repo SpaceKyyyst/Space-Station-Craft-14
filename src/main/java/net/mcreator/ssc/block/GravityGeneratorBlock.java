@@ -13,9 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
@@ -31,11 +29,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
+import net.mcreator.ssc.procedures.GravityGenerator_PlugBlock_Generate_Procedure;
+import net.mcreator.ssc.procedures.GravityGenerator_Placement_TermsProcedure;
 import net.mcreator.ssc.procedures.GravityGenerator_DestroyProcedure;
 import net.mcreator.ssc.procedures.GravGenTICprocedureProcedure;
 import net.mcreator.ssc.block.entity.GravityGeneratorBlockEntity;
-
-import java.util.function.Function;
 
 import io.netty.buffer.Unpooled;
 
@@ -43,27 +41,10 @@ public class GravityGeneratorBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 	public static final BooleanProperty GRAVITY = BooleanProperty.create("gravity");
 	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 1);
-	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public GravityGeneratorBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.ANVIL).strength(-1, 3600000).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(GRAVITY, false).setValue(BLOCKSTATE, 0));
-	}
-
-	private Function<BlockState, VoxelShape> makeShapes() {
-		return this.getShapeForEachState(state -> {
-			return switch (state.getValue(FACING)) {
-				default -> Shapes.or(box(-15, 0, 0, 31, 16, 16), box(-15, 16, 0, 31, 31, 16), box(0, 0, -15, 16, 16, 0), box(0, 16, -15, 16, 31, 0));
-				case NORTH -> Shapes.or(box(-15, 0, 0, 31, 16, 16), box(-15, 16, 0, 31, 31, 16), box(0, 0, 16, 16, 16, 31), box(0, 16, 16, 16, 31, 31));
-				case EAST -> Shapes.or(box(0, 0, -15, 16, 16, 31), box(0, 16, -15, 16, 31, 31), box(-15, 0, 0, 0, 16, 16), box(-15, 16, 0, 0, 31, 16));
-				case WEST -> Shapes.or(box(0, 0, -15, 16, 16, 31), box(0, 16, -15, 16, 31, 31), box(16, 0, 0, 31, 16, 16), box(16, 16, 0, 31, 31, 16));
-			};
-		}, GRAVITY);
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return shapes.apply(state);
 	}
 
 	@Override
@@ -91,9 +72,26 @@ public class GravityGeneratorBlock extends Block implements EntityBlock {
 	}
 
 	@Override
+	public boolean canSurvive(BlockState blockstate, LevelReader worldIn, BlockPos pos) {
+		if (worldIn instanceof LevelAccessor world) {
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			return GravityGenerator_Placement_TermsProcedure.execute(world, x, y, z);
+		}
+		return super.canSurvive(blockstate, worldIn, pos);
+	}
+
+	@Override
+	public BlockState updateShape(BlockState state, LevelReader world, ScheduledTickAccess scheduledTickAccess, BlockPos currentPos, Direction facing, BlockPos facingPos, BlockState facingState, RandomSource random) {
+		return !state.canSurvive(world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, world, scheduledTickAccess, currentPos, facing, facingPos, facingState, random);
+	}
+
+	@Override
 	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
 		super.onPlace(blockstate, world, pos, oldState, moving);
 		world.scheduleTick(pos, this, 5);
+		GravityGenerator_PlugBlock_Generate_Procedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
 	}
 
 	@Override

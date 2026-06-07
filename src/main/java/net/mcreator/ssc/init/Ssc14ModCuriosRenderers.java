@@ -52,5 +52,22 @@ public class Ssc14ModCuriosRenderers {
 		ICurioRenderer.register(Ssc14ModItems.PD_APASSANGER.get(), PDApassangerCAPIRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.OUTERCLOTHING_EVA.get(), OuterclothingEvaCAPIRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.HELMETS_EVA.get(), HelmetsEvaCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.MALE_BOXERS.get(), MaleBoxersCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.GLASS_SECURITY.get(), GlassSecurityCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.GAS_MASK.get(), GasMaskCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.WORK_BOOTS.get(), WorkBootsCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.CLOAKS_HO_S.get(), CloaksHoSCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.MANTLES_HO_S_SHOULDER_CAP.get(), MantlesHoSShoulderCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.MANTLES_HO_S.get(), MantlesHoSCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.COAT_ATMOS.get(), CoatAtmosCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.COAT_SECURITY.get(), CoatSecurityCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.TIE_BLACK.get(), TieBlackCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.TIE_RED.get(), TieRedCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.TIE_SCIENCE.get(), TieScienceCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.GLASS_GLASSES.get(), GlassGlassesCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.GLASS_DARK.get(), GlassDarkCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.BLACK_GLOVES.get(), BlackGlovesCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HELMET_COSMONAUT.get(), HelmetCosmonautCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.CONE.get(), ConeHelmetRenderer::new);
 	}
 }

@@ -19,9 +19,9 @@ public class Modelpda_equipped<T extends Entity> extends EntityModel<T> {
 
 		PartDefinition torso = partdefinition.addOrReplaceChild("torso",
 				CubeListBuilder.create().texOffs(0, 0)
-						.addBox(1.0F, -2.0F, -3.0F, 2.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)).texOffs(0, 4)
-						.addBox(1.0F, -3.0F, -3.0F, 0.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)),
-				PartPose.offset(0.0F, 13.0F, 0.0F));
+						.addBox(1.0F, 9.0F, -3.0F, 2.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)).texOffs(0, 4)
+						.addBox(1.0F, 8.0F, -3.0F, 0.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)),
+				PartPose.offset(0.0F, 2.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 16, 16);
 	}

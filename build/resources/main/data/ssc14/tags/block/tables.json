@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "ssc_14:steel_table"
+    "ssc_14:steel_table",
+    "ssc_14:wood_table"
   ]
 }

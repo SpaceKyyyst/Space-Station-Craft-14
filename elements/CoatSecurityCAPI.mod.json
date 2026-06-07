@@ -1,0 +1,26 @@
+{
+  "_fv": 85,
+  "_type": "curiosbauble",
+  "definition": {
+    "item": "CoatSecurity",
+    "slotType": "Outerwear",
+    "slotAmount": 1,
+    "addSlot": false,
+    "enderMask": false,
+    "friendlyPigs": false,
+    "snowWalk": false,
+    "equipSound": {
+      "value": ""
+    },
+    "hasModel": true,
+    "baubleModel": "Modelcoat_security_equipped",
+    "baubleModelTexture": "coat_security_equipped_texture.png",
+    "helmetModelPart": "head",
+    "bodyModelPart": "torso",
+    "armsModelPartL": "l_arm",
+    "armsModelPartR": "r_arm",
+    "leggingsModelPartL": "Empty",
+    "leggingsModelPartR": "Empty",
+    "disabledToggles": []
+  }
+}

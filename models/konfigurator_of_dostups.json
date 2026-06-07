@@ -69,6 +69,7 @@
 			}
 		}
 	],
+	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
 			"translation": [-0.25, 6.5, 2.25]

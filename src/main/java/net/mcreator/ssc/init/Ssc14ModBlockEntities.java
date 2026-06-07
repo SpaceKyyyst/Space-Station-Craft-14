@@ -39,6 +39,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<NuclearWarheadBlockEntity>> NUCLEAR_WARHEAD = register("nuclear_warhead", Ssc14ModBlocks.NUCLEAR_WARHEAD, NuclearWarheadBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetSecureBlockEntity>> CLOSET_SECURE = register("closet_secure", Ssc14ModBlocks.CLOSET_SECURE, ClosetSecureBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET = register("closet", Ssc14ModBlocks.CLOSET, ClosetBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CommunicationServersBlockEntity>> COMMUNICATION_SERVERS = register("communication_servers", Ssc14ModBlocks.COMMUNICATION_SERVERS, CommunicationServersBlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities
@@ -65,5 +66,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, NUCLEAR_WARHEAD.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_SECURE.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, COMMUNICATION_SERVERS.get(), SidedInvWrapper::new);
 	}
 }

@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelgloves;
+import net.mcreator.ssc.client.model.Modelgloves_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,11 +22,11 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class IsolatedGlovesCAPIRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/gloves_isolated_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/gloves_yellow_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public IsolatedGlovesCAPIRenderer() {
-        Modelgloves model = new Modelgloves(Minecraft.getInstance().getEntityModels().bakeLayer(Modelgloves.LAYER_LOCATION));
+        Modelgloves_equipped model = new Modelgloves_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modelgloves_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
                     "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()),

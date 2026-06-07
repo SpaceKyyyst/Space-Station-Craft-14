@@ -53,39 +53,12 @@
     "disableOffset": false,
     "boundingBoxes": [
       {
-        "mx": -15.0,
-        "my": 0.0,
-        "mz": 0.0,
-        "Mx": 31.0,
-        "My": 16.0,
-        "Mz": 16.0,
-        "subtract": false
-      },
-      {
-        "mx": -15.0,
-        "my": 16.0,
-        "mz": 0.0,
-        "Mx": 31.0,
-        "My": 31.0,
-        "Mz": 16.0,
-        "subtract": false
-      },
-      {
         "mx": 0.0,
         "my": 0.0,
-        "mz": 16.0,
+        "mz": 0.0,
         "Mx": 16.0,
         "My": 16.0,
-        "Mz": 31.0,
-        "subtract": false
-      },
-      {
-        "mx": 0.0,
-        "my": 16.0,
-        "mz": 16.0,
-        "Mx": 16.0,
-        "My": 31.0,
-        "Mz": 31.0,
+        "Mz": 16.0,
         "subtract": false
       }
     ],
@@ -184,6 +157,9 @@
     },
     "unbreakable": true,
     "vanillaToolTier": "NONE",
+    "placingCondition": {
+      "name": "GravityGenerator_Placement_Terms"
+    },
     "isBonemealable": false,
     "sensitiveToVibration": false,
     "vibrationalEvents": [],
@@ -207,6 +183,9 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
+    "onBlockAdded": {
+      "name": "GravityGenerator_PlugBlock_Generate_"
+    },
     "onTickUpdate": {
       "name": "GravGenTICprocedure"
     },

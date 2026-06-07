@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "ssc_14:belt_security",
-    "ssc_14:rsu"
+    "ssc_14:belt_security"
   ]
 }

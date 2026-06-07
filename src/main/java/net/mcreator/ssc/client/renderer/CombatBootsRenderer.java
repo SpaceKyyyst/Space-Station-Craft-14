@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelboots_combatboots;
+import net.mcreator.ssc.client.model.Modelboots_jackboots_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,11 +22,11 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class CombatBootsRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/boots_combatboots_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/boots_jackboots_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public CombatBootsRenderer() {
-        Modelboots_combatboots model = new Modelboots_combatboots(Minecraft.getInstance().getEntityModels().bakeLayer(Modelboots_combatboots.LAYER_LOCATION));
+        Modelboots_jackboots_equipped model = new Modelboots_jackboots_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modelboots_jackboots_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
                     "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()),

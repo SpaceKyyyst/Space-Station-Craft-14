@@ -1,9 +1,6 @@
 {
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
-	"textures": {
-		"1": "extinguisher_texture"
-	},
 	"elements": [
 		{
 			"from": [6, 0, 6],
@@ -100,6 +97,7 @@
 			}
 		}
 	],
+	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [19.25, 0, 0],

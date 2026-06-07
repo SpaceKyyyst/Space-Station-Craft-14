@@ -19,10 +19,10 @@ public class Modelhelmets_eva_equipped<T extends Entity> extends EntityModel<T> 
 
 		PartDefinition eva = partdefinition.addOrReplaceChild("eva",
 				CubeListBuilder.create().texOffs(0, 0)
-						.addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.5F)).texOffs(32, 48)
-						.addBox(-1.0F, -2.0F, -5.0F, 2.0F, 2.0F, 1.0F, new CubeDeformation(0.5F)).texOffs(32, 0)
-						.addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.725F)).texOffs(0, 48)
-						.addBox(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.725F)),
+						.addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.5F)).texOffs(32, 0)
+						.addBox(-1.0F, -2.0F, -5.0F, 2.0F, 2.0F, 1.0F, new CubeDeformation(0.5F)).texOffs(0, 16)
+						.addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.625F)).texOffs(0, 32)
+						.addBox(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.75F)),
 				PartPose.offset(0.0F, 2.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);

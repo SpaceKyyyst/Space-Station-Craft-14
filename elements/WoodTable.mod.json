@@ -1,0 +1,682 @@
+{
+  "_fv": 85,
+  "_type": "block",
+  "definition": {
+    "texture": "wood_table_item",
+    "textureTop": "",
+    "textureLeft": "",
+    "textureFront": "",
+    "textureRight": "",
+    "textureBack": "",
+    "renderType": 2,
+    "customModelName": "wood_table:default",
+    "rotationMode": 0,
+    "enablePitch": false,
+    "emissiveRendering": false,
+    "displayFluidOverlay": false,
+    "states": [
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:n",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 1
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:e",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 2
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:s",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 3
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:w",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 4
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:ne",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 5
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:es",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 6
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:sw",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 7
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:nw",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 8
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:ns",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 9
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:ew",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 10
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:nsw",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 11
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:nes",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 12
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:new_",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 13
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:esw",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 14
+          }
+        ]
+      },
+      {
+        "texture": "steel_table",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "wood_table:nesw",
+        "particleTexture": "",
+        "hasCustomBoundingBox": true,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 15,
+              "name": "CUSTOM:blockstate",
+              "type": "integer"
+            },
+            "value": 15
+          }
+        ]
+      }
+    ],
+    "animations": [],
+    "itemTexture": "wood_table_item",
+    "particleTexture": "",
+    "blockSetType": "OAK",
+    "leavesParticleChance": 0.0,
+    "tintType": "No tint",
+    "isItemTinted": false,
+    "hasTransparency": true,
+    "connectedSides": false,
+    "transparencyType": "CUTOUT",
+    "disableOffset": false,
+    "boundingBoxes": [
+      {
+        "mx": 0.0,
+        "my": 14.0,
+        "mz": 0.0,
+        "Mx": 16.0,
+        "My": 16.0,
+        "Mz": 16.0,
+        "subtract": false
+      }
+    ],
+    "customProperties": [
+      {
+        "min": 0,
+        "max": 15,
+        "name": "CUSTOM:blockstate",
+        "type": "integer",
+        "value": 0
+      }
+    ],
+    "name": "Wood Table",
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "hardness": 5.0,
+    "resistance": 5.0,
+    "hasGravity": false,
+    "isWaterloggable": false,
+    "hasBlockItem": true,
+    "maxStackSize": 1,
+    "rarity": "COMMON",
+    "immuneToFire": false,
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:SSC14Objects"
+      }
+    ],
+    "destroyTool": "Not specified",
+    "customDrop": {
+      "value": ""
+    },
+    "dropAmount": 0,
+    "xpAmountMin": 0,
+    "xpAmountMax": 0,
+    "useLootTableForDrops": false,
+    "requiresCorrectTool": false,
+    "enchantPowerBonus": 0.0,
+    "plantsGrowOn": false,
+    "canRedstoneConnect": false,
+    "hasCustomOpacity": false,
+    "lightOpacity": 0,
+    "tickRate": 0,
+    "tickRandomly": false,
+    "isReplaceable": false,
+    "canProvidePower": false,
+    "emittedRedstonePower": {
+      "fixedValue": 15.0
+    },
+    "colorOnMap": "DEFAULT",
+    "noteBlockInstrument": "harp",
+    "creativePickItem": {
+      "value": ""
+    },
+    "offsetType": "NONE",
+    "aiPathNodeType": "DEFAULT",
+    "strippingResult": {
+      "value": ""
+    },
+    "ignitedByLava": false,
+    "flammability": 0,
+    "fireSpreadSpeed": 0,
+    "isLadder": false,
+    "slipperiness": 0.6,
+    "speedFactor": 1.0,
+    "jumpFactor": 1.0,
+    "reactionToPushing": "NORMAL",
+    "isNotColidable": false,
+    "isCustomSoundType": false,
+    "soundOnStep": {
+      "value": "WOOD"
+    },
+    "breakSound": {
+      "value": ""
+    },
+    "fallSound": {
+      "value": ""
+    },
+    "hitSound": {
+      "value": ""
+    },
+    "placeSound": {
+      "value": ""
+    },
+    "stepSound": {
+      "value": ""
+    },
+    "luminance": {
+      "fixedValue": 0.0
+    },
+    "unbreakable": false,
+    "vanillaToolTier": "NONE",
+    "isBonemealable": false,
+    "sensitiveToVibration": false,
+    "vibrationalEvents": [],
+    "vibrationSensitivityRadius": {
+      "fixedValue": 7.0
+    },
+    "hasInventory": false,
+    "openGUIOnRightClick": false,
+    "inventorySize": 9,
+    "inventoryStackSize": 99,
+    "inventoryDropWhenDestroyed": true,
+    "inventoryComparatorPower": true,
+    "inventoryOutSlotIDs": [],
+    "inventoryInSlotIDs": [],
+    "hasEnergyStorage": false,
+    "energyInitial": 0,
+    "energyCapacity": 400000,
+    "energyMaxReceive": 200,
+    "energyMaxExtract": 200,
+    "isFluidTank": false,
+    "fluidCapacity": 8000,
+    "fluidRestrictions": [],
+    "onBlockAdded": {
+      "name": "SteelTableStateUpdate"
+    },
+    "onDestroyedByPlayer": {
+      "name": "SteelTableStateUpdate"
+    },
+    "generateFeature": false,
+    "restrictionBiomes": [],
+    "blocksToReplace": [
+      {
+        "value": "TAG:stone_ore_replaceables"
+      }
+    ],
+    "generationShape": "UNIFORM",
+    "frequencyPerChunks": 10,
+    "frequencyOnChunk": 16,
+    "minGenerateHeight": 0,
+    "maxGenerateHeight": 64
+  }
+}

@@ -52,4 +52,5 @@ public class Ssc14ModSounds {
 	public static final DeferredHolder<SoundEvent, SoundEvent> ITEMS_PEN_CLICK = REGISTRY.register("items_pen_click", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "items_pen_click")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> ITEMS_FLASHLIGHT_PDA = REGISTRY.register("items_flashlight_pda", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "items_flashlight_pda")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> ITEMS_RCD_DECONSTRUCT = REGISTRY.register("items_rcd_deconstruct", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "items_rcd_deconstruct")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> MEDICAL_SCANNER_USE = REGISTRY.register("medical_scanner_use", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "medical_scanner_use")));
 }

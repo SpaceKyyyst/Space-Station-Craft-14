@@ -122,10 +122,10 @@ public class BaseAirlockD1Block extends Block implements EntityBlock {
 				};
 			}
 			return switch (state.getValue(FACING)) {
-				default -> box(0, 0, 5, 16, 32, 11);
-				case NORTH -> box(0, 0, 5, 16, 32, 11);
-				case EAST -> box(5, 0, 0, 11, 32, 16);
-				case WEST -> box(5, 0, 0, 11, 32, 16);
+				default -> box(0, 0, 5, 16, 16, 11);
+				case NORTH -> box(0, 0, 5, 16, 16, 11);
+				case EAST -> box(5, 0, 0, 11, 16, 16);
+				case WEST -> box(5, 0, 0, 11, 16, 16);
 			};
 		});
 	}

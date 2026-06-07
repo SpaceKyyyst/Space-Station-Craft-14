@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelmantles_cap;
+import net.mcreator.ssc.client.model.Modelmantle_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,11 +22,11 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class MantlesCapCAPIRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/mantles_cap_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/mantle_cap_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public MantlesCapCAPIRenderer() {
-        Modelmantles_cap model = new Modelmantles_cap(Minecraft.getInstance().getEntityModels().bakeLayer(Modelmantles_cap.LAYER_LOCATION));
+        Modelmantle_equipped model = new Modelmantle_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modelmantle_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
                     "head", model.head,

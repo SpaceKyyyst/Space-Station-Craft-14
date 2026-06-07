@@ -13,14 +13,14 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modeljumpsuit_security",
+    "baubleModel": "Modeljumpsuit_equipped",
     "baubleModelTexture": "jumpsuit_qm_texture.png",
     "helmetModelPart": "Empty",
     "bodyModelPart": "torso",
     "armsModelPartL": "l_arm",
     "armsModelPartR": "r_arm",
     "leggingsModelPartL": "l_leg",
-    "leggingsModelPartR": "r_leg",
+    "leggingsModelPartR": "r_arm",
     "disabledToggles": []
   }
 }

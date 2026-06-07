@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "ssc_14:voidb",
     "minecraft:cave_air",
     "minecraft:void_air",
     "ssc_14:low_planet_grass",

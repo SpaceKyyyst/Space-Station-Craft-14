@@ -24,6 +24,7 @@ public class Ssc14ModScreens {
 		event.register(Ssc14ModMenus.PD_APASSANGER_GUI.get(), PDApassangerGUIScreen::new);
 		event.register(Ssc14ModMenus.RCDGUI.get(), RCDGUIScreen::new);
 		event.register(Ssc14ModMenus.RCDGU_IWALLFLOOR.get(), RCDGUIwallfloorScreen::new);
+		event.register(Ssc14ModMenus.HEADSET_GU_IKOSTIL.get(), HeadsetGUIkostilScreen::new);
 	}
 
 	public interface ScreenAccessor {

@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelcloaks_cap;
+import net.mcreator.ssc.client.model.Modelcloak_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,11 +22,11 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class CloaksCapCAPIRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/cloaks_cap_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/cloak_cap_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public CloaksCapCAPIRenderer() {
-        Modelcloaks_cap model = new Modelcloaks_cap(Minecraft.getInstance().getEntityModels().bakeLayer(Modelcloaks_cap.LAYER_LOCATION));
+        Modelcloak_equipped model = new Modelcloak_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modelcloak_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
                     "head", model.head,

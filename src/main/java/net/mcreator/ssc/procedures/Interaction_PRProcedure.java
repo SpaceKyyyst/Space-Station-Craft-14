@@ -24,7 +24,7 @@ public class Interaction_PRProcedure {
         if (mc.player == null || mc.screen == null) return;
         
         if (mc.screen instanceof AbstractContainerScreen<?> containerScreen) {
-            // ✅ FIX: Переводим пиксели окна в координаты GUI (делим на масштаб)
+            // ✅ Переводим пиксели окна в координаты GUI (делим на масштаб)
             double scale = mc.getWindow().getGuiScale();
             double guiMouseX = mc.mouseHandler.xpos() / scale;
             double guiMouseY = mc.mouseHandler.ypos() / scale;
@@ -38,13 +38,15 @@ public class Interaction_PRProcedure {
                 if (guiMouseX >= slotX && guiMouseX < slotX + 16 &&
                     guiMouseY >= slotY && guiMouseY < slotY + 16) {
 
-					// Внутри цикла, когда слот найден:
-					String itemId = slot.getItem().getItem().toString(); // "ssc_14:magnetic_boots_item"
-					if (!itemId.equals("minecraft:air")) {
-					    mc.player.connection.send(new ServerboundChatCommandPacket("ssc14_interact " + itemId));
-					    event.setCanceled(true);
-					    return;
-					}
+                    // ✅ FIX: Получаем порядковый номер слота в текущем меню
+                    int slotIndex = containerScreen.getMenu().slots.indexOf(slot);
+                    
+                    if (slotIndex != -1) {
+                        // Отправляем индекс слота вместо ID предмета
+                        mc.player.connection.send(new ServerboundChatCommandPacket("ssc14_interact " + slotIndex));
+                        event.setCanceled(true);
+                        return;
+                    }
                 }
             }
         }

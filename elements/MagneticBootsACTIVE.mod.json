@@ -13,10 +13,13 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelboots_magboots",
-    "baubleModelTexture": "boots_magboots_on_texture.png",
-    "curioTick": {
-      "name": "MagneticBootsACTIVE_TIC"
+    "baubleModel": "Modelboots_magboots_equipped",
+    "baubleModelTexture": "boots_magboots_on_equipped_texture.png",
+    "onEquip": {
+      "name": "MagBootsCAPIBaubleIsEquipped"
+    },
+    "onUnequip": {
+      "name": "MagBootsCAPIBaubleIsUnequipped"
     },
     "helmetModelPart": "Empty",
     "bodyModelPart": "Empty",

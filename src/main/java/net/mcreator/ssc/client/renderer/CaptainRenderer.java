@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modeljumpsuit_security;
+import net.mcreator.ssc.client.model.Modeljumpsuit_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,11 +22,11 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class CaptainRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/jumpsuit_captain_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/jumpsuit_captain_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public CaptainRenderer() {
-        Modeljumpsuit_security model = new Modeljumpsuit_security(Minecraft.getInstance().getEntityModels().bakeLayer(Modeljumpsuit_security.LAYER_LOCATION));
+        Modeljumpsuit_equipped model = new Modeljumpsuit_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modeljumpsuit_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
                     "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()),

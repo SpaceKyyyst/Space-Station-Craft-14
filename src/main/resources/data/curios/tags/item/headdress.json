@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "ssc_14:helmet_security",
-    "ssc_14:helmets_eva"
+    "ssc_14:helmets_eva",
+    "ssc_14:helmet_cosmonaut",
+    "ssc_14:cone"
   ]
 }

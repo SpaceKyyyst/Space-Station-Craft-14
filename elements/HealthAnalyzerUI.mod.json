@@ -1,0 +1,155 @@
+{
+  "_fv": 85,
+  "_type": "overlay",
+  "definition": {
+    "priority": "NORMAL",
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "health_analyzer_uv.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER_LEFT",
+          "x": 22,
+          "y": 4,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_miekhanichieskiie",
+          "text": {
+            "fixedValue": "Механические"
+          },
+          "color": {
+            "value": -16777216,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER_LEFT",
+          "x": 37,
+          "y": 65,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_fizichieskiie",
+          "text": {
+            "fixedValue": "Физические"
+          },
+          "color": {
+            "value": -16777216,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER_LEFT",
+          "x": 37,
+          "y": 101,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_toksiny",
+          "text": {
+            "fixedValue": "Токсины"
+          },
+          "color": {
+            "value": -16777216,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER_LEFT",
+          "x": 37,
+          "y": 146,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_niekhvatka_vozdukha",
+          "text": {
+            "fixedValue": "Нехватка воздуха"
+          },
+          "color": {
+            "value": -16777216,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER_LEFT",
+          "x": 37,
+          "y": 173,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_gienietichieskiie",
+          "text": {
+            "fixedValue": "Генетические"
+          },
+          "color": {
+            "value": -16777216,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER_LEFT",
+          "x": 37,
+          "y": 200,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_hau_itext_all_damage",
+          "text": {
+            "fixedValue": "12345"
+          },
+          "color": {
+            "value": -16777216,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER_LEFT",
+          "x": 27,
+          "y": 53,
+          "locked": true
+        }
+      },
+      {
+        "type": "entitymodel",
+        "data": {
+          "entityModel": {
+            "name": "HealthAnalyzerUIEntityDisplay"
+          },
+          "scale": 15,
+          "rotationX": 0,
+          "followMouseMovement": false,
+          "anchorPoint": "CENTER_LEFT",
+          "x": 32,
+          "y": 19,
+          "locked": true
+        }
+      }
+    ],
+    "baseTexture": "",
+    "overlayTarget": "Ingame",
+    "displayCondition": {
+      "name": "HealthAnalyzerUI_Display_Conditions"
+    },
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

@@ -13,8 +13,8 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelboots_combatboots",
-    "baubleModelTexture": "boots_combatboots_texture.png",
+    "baubleModel": "Modelboots_jackboots_equipped",
+    "baubleModelTexture": "boots_jackboots_equipped_texture.png",
     "helmetModelPart": "Empty",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

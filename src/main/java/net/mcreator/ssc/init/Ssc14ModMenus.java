@@ -34,6 +34,7 @@ public class Ssc14ModMenus {
 	public static final DeferredHolder<MenuType<?>, MenuType<PDApassangerGUIMenu>> PD_APASSANGER_GUI = REGISTRY.register("pd_apassanger_gui", () -> IMenuTypeExtension.create(PDApassangerGUIMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIMenu>> RCDGUI = REGISTRY.register("rcdgui", () -> IMenuTypeExtension.create(RCDGUIMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIwallfloorMenu>> RCDGU_IWALLFLOOR = REGISTRY.register("rcdgu_iwallfloor", () -> IMenuTypeExtension.create(RCDGUIwallfloorMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<HeadsetGUIkostilMenu>> HEADSET_GU_IKOSTIL = REGISTRY.register("headset_gu_ikostil", () -> IMenuTypeExtension.create(HeadsetGUIkostilMenu::new));
 
 	public interface MenuAccessor {
 		Map<String, Object> getMenuState();

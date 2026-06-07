@@ -13,8 +13,8 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelcolor_soles",
-    "baubleModelTexture": "black_soles_texture.png",
+    "baubleModel": "Modelsoles_equipped",
+    "baubleModelTexture": "black_soles_equipped_texture.png",
     "helmetModelPart": "Empty",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

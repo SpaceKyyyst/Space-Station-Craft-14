@@ -13,8 +13,8 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelmantles_cap",
-    "baubleModelTexture": "mantles_cap_texture.png",
+    "baubleModel": "Modelmantle_equipped",
+    "baubleModelTexture": "mantle_cap_equipped_texture.png",
     "helmetModelPart": "head",
     "bodyModelPart": "torso",
     "armsModelPartL": "l_arm",

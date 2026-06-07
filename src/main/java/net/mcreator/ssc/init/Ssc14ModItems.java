@@ -18,6 +18,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.BlockItem;
 
 import net.mcreator.ssc.item.inventory.PDApassangerInventoryCapability;
+import net.mcreator.ssc.item.inventory.HeadsetBaseInventoryCapability;
 import net.mcreator.ssc.item.inventory.AccessConfigInventoryCapability;
 import net.mcreator.ssc.item.*;
 import net.mcreator.ssc.block.FencePointBlock;
@@ -287,6 +288,34 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> RSU;
 	public static final DeferredItem<Item> TITLE_STEEL_PAVEMENT_VERTICAL;
 	public static final DeferredItem<Item> RC_DCARTRIDGE;
+	public static final DeferredItem<Item> MALE_BOXERS;
+	public static final DeferredItem<Item> HEALTH_ANALYZER;
+	public static final DeferredItem<Item> GLASS_SECURITY;
+	public static final DeferredItem<Item> GAS_MASK;
+	public static final DeferredItem<Item> COMMUNICATION_SERVERS;
+	public static final DeferredItem<Item> ENCRYPTION_KEY_PASSANGER;
+	public static final DeferredItem<Item> ENCRYPTION_KEY_COMMAND;
+	public static final DeferredItem<Item> ENCRYPTION_KEY_ENGENEER;
+	public static final DeferredItem<Item> ENCRYPTION_KEY_MEDICAL;
+	public static final DeferredItem<Item> ENCRYPTION_KEY_RND;
+	public static final DeferredItem<Item> ENCRYPTION_KEY_SECURITY;
+	public static final DeferredItem<Item> ENCRYPTION_KEY_SERVICE;
+	public static final DeferredItem<Item> ENCRYPTION_KEY_CARGO;
+	public static final DeferredItem<Item> WOOD_TABLE;
+	public static final DeferredItem<Item> WORK_BOOTS;
+	public static final DeferredItem<Item> CLOAKS_HO_S;
+	public static final DeferredItem<Item> MANTLES_HO_S_SHOULDER_CAP;
+	public static final DeferredItem<Item> MANTLES_HO_S;
+	public static final DeferredItem<Item> COAT_ATMOS;
+	public static final DeferredItem<Item> COAT_SECURITY;
+	public static final DeferredItem<Item> TIE_BLACK;
+	public static final DeferredItem<Item> TIE_RED;
+	public static final DeferredItem<Item> TIE_SCIENCE;
+	public static final DeferredItem<Item> GLASS_GLASSES;
+	public static final DeferredItem<Item> GLASS_DARK;
+	public static final DeferredItem<Item> BLACK_GLOVES;
+	public static final DeferredItem<Item> HELMET_COSMONAUT;
+	public static final DeferredItem<Item> CONE;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -544,6 +573,34 @@ public class Ssc14ModItems {
 		RSU = register("rsu", RSUItem::new);
 		TITLE_STEEL_PAVEMENT_VERTICAL = block(Ssc14ModBlocks.TITLE_STEEL_PAVEMENT_VERTICAL, new Item.Properties().stacksTo(30).fireResistant());
 		RC_DCARTRIDGE = register("rc_dcartridge", RCDcartridgeItem::new);
+		MALE_BOXERS = register("male_boxers", MaleBoxersItem::new);
+		HEALTH_ANALYZER = register("health_analyzer", HealthAnalyzerItem::new);
+		GLASS_SECURITY = register("glass_security", GlassSecurityItem::new);
+		GAS_MASK = register("gas_mask", GasMaskItem::new);
+		COMMUNICATION_SERVERS = block(Ssc14ModBlocks.COMMUNICATION_SERVERS, new Item.Properties().stacksTo(1));
+		ENCRYPTION_KEY_PASSANGER = register("encryption_key_passanger", EncryptionKeyPassangerItem::new);
+		ENCRYPTION_KEY_COMMAND = register("encryption_key_command", EncryptionKeyCommandItem::new);
+		ENCRYPTION_KEY_ENGENEER = register("encryption_key_engeneer", EncryptionKeyEngeneerItem::new);
+		ENCRYPTION_KEY_MEDICAL = register("encryption_key_medical", EncryptionKeyMedicalItem::new);
+		ENCRYPTION_KEY_RND = register("encryption_key_rnd", EncryptionKeyRNDItem::new);
+		ENCRYPTION_KEY_SECURITY = register("encryption_key_security", EncryptionKeySecurityItem::new);
+		ENCRYPTION_KEY_SERVICE = register("encryption_key_service", EncryptionKeyServiceItem::new);
+		ENCRYPTION_KEY_CARGO = register("encryption_key_cargo", EncryptionKeyCargoItem::new);
+		WOOD_TABLE = block(Ssc14ModBlocks.WOOD_TABLE, new Item.Properties().stacksTo(1));
+		WORK_BOOTS = register("work_boots", WorkBootsItem::new);
+		CLOAKS_HO_S = register("cloaks_ho_s", CloaksHoSItem::new);
+		MANTLES_HO_S_SHOULDER_CAP = register("mantles_ho_s_shoulder_cap", MantlesHoSShoulderCapItem::new);
+		MANTLES_HO_S = register("mantles_ho_s", MantlesHoSItem::new);
+		COAT_ATMOS = register("coat_atmos", CoatAtmosItem::new);
+		COAT_SECURITY = register("coat_security", CoatSecurityItem::new);
+		TIE_BLACK = register("tie_black", TieBlackItem::new);
+		TIE_RED = register("tie_red", TieRedItem::new);
+		TIE_SCIENCE = register("tie_science", TieScienceItem::new);
+		GLASS_GLASSES = register("glass_glasses", GlassGlassesItem::new);
+		GLASS_DARK = register("glass_dark", GlassDarkItem::new);
+		BLACK_GLOVES = register("black_gloves", BlackGlovesItem::new);
+		HELMET_COSMONAUT = register("helmet_cosmonaut", HelmetCosmonautItem::new);
+		CONE = register("cone", ConeItem::new);
 	}
 
 	// Start of user code block custom items
@@ -563,6 +620,7 @@ public class Ssc14ModItems {
 	@SubscribeEvent
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
 		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new AccessConfigInventoryCapability(stack), ACCESS_CONFIG.get());
+		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetBaseInventoryCapability(stack), HEADSET_BASE.get());
 		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new PDApassangerInventoryCapability(stack), PD_APASSANGER.get());
 	}
 }

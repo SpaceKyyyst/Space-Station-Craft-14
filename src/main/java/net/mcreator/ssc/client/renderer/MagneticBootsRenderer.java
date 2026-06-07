@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelboots_magboots;
+import net.mcreator.ssc.client.model.Modelboots_magboots_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,11 +22,11 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class MagneticBootsRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/boots_magboots_off_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/boots_magboots_off_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public MagneticBootsRenderer() {
-        Modelboots_magboots model = new Modelboots_magboots(Minecraft.getInstance().getEntityModels().bakeLayer(Modelboots_magboots.LAYER_LOCATION));
+        Modelboots_magboots_equipped model = new Modelboots_magboots_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modelboots_magboots_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
                     "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()),

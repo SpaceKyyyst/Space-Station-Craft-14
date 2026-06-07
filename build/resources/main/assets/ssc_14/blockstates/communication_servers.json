@@ -1,0 +1,319 @@
+{
+  "variants": {
+    "facing=north,type=1": {
+      "model": "ssc_14:block/communication_servers_0"
+    },
+    "facing=north,type=2": {
+      "model": "ssc_14:block/communication_servers_1"
+    },
+    "facing=north,type=3": {
+      "model": "ssc_14:block/communication_servers_2"
+    },
+    "facing=north,type=4": {
+      "model": "ssc_14:block/communication_servers_3"
+    },
+    "facing=north,type=5": {
+      "model": "ssc_14:block/communication_servers_4"
+    },
+    "facing=north,type=6": {
+      "model": "ssc_14:block/communication_servers_5"
+    },
+    "facing=north,type=7": {
+      "model": "ssc_14:block/communication_servers_6"
+    },
+    "facing=north,type=8": {
+      "model": "ssc_14:block/communication_servers_7"
+    },
+    "facing=north,type=10": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=11": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=9": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=14": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=15": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=12": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=13": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=0": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=18": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=19": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=16": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=17": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=north,type=20": {
+      "model": "ssc_14:block/communication_servers"
+    },
+    "facing=east,type=1": {
+      "model": "ssc_14:block/communication_servers_0",
+      "y": 90
+    },
+    "facing=east,type=2": {
+      "model": "ssc_14:block/communication_servers_1",
+      "y": 90
+    },
+    "facing=east,type=3": {
+      "model": "ssc_14:block/communication_servers_2",
+      "y": 90
+    },
+    "facing=east,type=4": {
+      "model": "ssc_14:block/communication_servers_3",
+      "y": 90
+    },
+    "facing=east,type=5": {
+      "model": "ssc_14:block/communication_servers_4",
+      "y": 90
+    },
+    "facing=east,type=6": {
+      "model": "ssc_14:block/communication_servers_5",
+      "y": 90
+    },
+    "facing=east,type=7": {
+      "model": "ssc_14:block/communication_servers_6",
+      "y": 90
+    },
+    "facing=east,type=8": {
+      "model": "ssc_14:block/communication_servers_7",
+      "y": 90
+    },
+    "facing=east,type=10": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=11": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=9": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=14": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=15": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=12": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=13": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=0": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=18": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=19": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=16": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=17": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=east,type=20": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 90
+    },
+    "facing=south,type=1": {
+      "model": "ssc_14:block/communication_servers_0",
+      "y": 180
+    },
+    "facing=south,type=2": {
+      "model": "ssc_14:block/communication_servers_1",
+      "y": 180
+    },
+    "facing=south,type=3": {
+      "model": "ssc_14:block/communication_servers_2",
+      "y": 180
+    },
+    "facing=south,type=4": {
+      "model": "ssc_14:block/communication_servers_3",
+      "y": 180
+    },
+    "facing=south,type=5": {
+      "model": "ssc_14:block/communication_servers_4",
+      "y": 180
+    },
+    "facing=south,type=6": {
+      "model": "ssc_14:block/communication_servers_5",
+      "y": 180
+    },
+    "facing=south,type=7": {
+      "model": "ssc_14:block/communication_servers_6",
+      "y": 180
+    },
+    "facing=south,type=8": {
+      "model": "ssc_14:block/communication_servers_7",
+      "y": 180
+    },
+    "facing=south,type=10": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=11": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=9": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=14": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=15": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=12": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=13": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=0": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=18": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=19": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=16": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=17": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=south,type=20": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 180
+    },
+    "facing=west,type=1": {
+      "model": "ssc_14:block/communication_servers_0",
+      "y": 270
+    },
+    "facing=west,type=2": {
+      "model": "ssc_14:block/communication_servers_1",
+      "y": 270
+    },
+    "facing=west,type=3": {
+      "model": "ssc_14:block/communication_servers_2",
+      "y": 270
+    },
+    "facing=west,type=4": {
+      "model": "ssc_14:block/communication_servers_3",
+      "y": 270
+    },
+    "facing=west,type=5": {
+      "model": "ssc_14:block/communication_servers_4",
+      "y": 270
+    },
+    "facing=west,type=6": {
+      "model": "ssc_14:block/communication_servers_5",
+      "y": 270
+    },
+    "facing=west,type=7": {
+      "model": "ssc_14:block/communication_servers_6",
+      "y": 270
+    },
+    "facing=west,type=8": {
+      "model": "ssc_14:block/communication_servers_7",
+      "y": 270
+    },
+    "facing=west,type=10": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=11": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=9": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=14": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=15": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=12": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=13": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=0": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=18": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=19": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=16": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=17": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    },
+    "facing=west,type=20": {
+      "model": "ssc_14:block/communication_servers",
+      "y": 270
+    }
+  }
+}

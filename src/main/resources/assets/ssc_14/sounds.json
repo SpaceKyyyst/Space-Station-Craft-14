@@ -318,5 +318,13 @@
         "stream": false
       }
     ]
+  },
+  "medical_scanner_use": {
+    "sounds": [
+      {
+        "name": "ssc_14:medical_scanner_use",
+        "stream": false
+      }
+    ]
   }
 }

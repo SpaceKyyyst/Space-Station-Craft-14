@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/wood_table",
+  "textures": {
+    "all": "ssc_14:block/steel_table",
+    "particle": "ssc_14:block/wood_table_item",
+    "2": "ssc_14:block/wood_table_texture_ns"
+  },
+  "render_type": "cutout"
+}

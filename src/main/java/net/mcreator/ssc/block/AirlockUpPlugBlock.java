@@ -46,10 +46,10 @@ public class AirlockUpPlugBlock extends Block implements EntityBlock {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(0, 0, 7, 16, 16, 9);
-				case NORTH -> box(0, 0, 7, 16, 16, 9);
-				case EAST -> box(7, 0, 0, 9, 16, 16);
-				case WEST -> box(7, 0, 0, 9, 16, 16);
+				default -> box(0, 0, 5, 16, 16, 11);
+				case NORTH -> box(0, 0, 5, 16, 16, 11);
+				case EAST -> box(5, 0, 0, 11, 16, 16);
+				case WEST -> box(5, 0, 0, 11, 16, 16);
 			};
 		});
 	}

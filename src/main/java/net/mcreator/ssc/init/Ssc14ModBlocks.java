@@ -20,7 +20,6 @@ import java.util.function.Function;
 
 public class Ssc14ModBlocks {
 	public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(Ssc14Mod.MODID);
-	public static final DeferredBlock<Block> VOIDB;
 	public static final DeferredBlock<Block> ROD_FLOOR;
 	public static final DeferredBlock<Block> SHEATHING;
 	public static final DeferredBlock<Block> TITLE_STEEL;
@@ -134,8 +133,10 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> DEBUG_13;
 	public static final DeferredBlock<Block> EXTINGUISHER_CABINET;
 	public static final DeferredBlock<Block> TITLE_STEEL_PAVEMENT_VERTICAL;
+	public static final DeferredBlock<Block> COMMUNICATION_SERVERS;
+	public static final DeferredBlock<Block> WOOD_TABLE;
+	public static final DeferredBlock<Block> GRAV_GEN_PLUG_BLOCK;
 	static {
-		VOIDB = register("voidb", VoidbBlock::new);
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
 		SHEATHING = register("sheathing", SheathingBlock::new);
 		TITLE_STEEL = register("title_steel", TitleSteelBlock::new);
@@ -249,6 +250,9 @@ public class Ssc14ModBlocks {
 		DEBUG_13 = register("debug_13", DEBUG13Block::new);
 		EXTINGUISHER_CABINET = register("extinguisher_cabinet", ExtinguisherCabinetBlock::new);
 		TITLE_STEEL_PAVEMENT_VERTICAL = register("title_steel_pavement_vertical", TitleSteelPavementVerticalBlock::new);
+		COMMUNICATION_SERVERS = register("communication_servers", CommunicationServersBlock::new);
+		WOOD_TABLE = register("wood_table", WoodTableBlock::new);
+		GRAV_GEN_PLUG_BLOCK = register("grav_gen_plug_block", GravGenPlugBlockBlock::new);
 	}
 
 	// Start of user code block custom blocks

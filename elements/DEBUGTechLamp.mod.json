@@ -9,8 +9,8 @@
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "techlamp:on",
-    "rotationMode": 1,
+    "customModelName": "techlamp:default",
+    "rotationMode": 3,
     "enablePitch": false,
     "emissiveRendering": false,
     "displayFluidOverlay": false,
@@ -19,9 +19,6 @@
     "itemTexture": "techlamp_it",
     "particleTexture": "",
     "blockSetType": "OAK",
-    "pottedPlant": {
-      "value": ""
-    },
     "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,

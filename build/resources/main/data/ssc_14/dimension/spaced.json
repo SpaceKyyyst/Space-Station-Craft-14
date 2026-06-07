@@ -27,7 +27,7 @@
       "aquifers_enabled": false,
       "ore_veins_enabled": false,
       "default_block": {
-        "Name": "ssc_14:voidb"
+        "Name": "minecraft:air"
       },
       "default_fluid": {
         "Name": "minecraft:air"

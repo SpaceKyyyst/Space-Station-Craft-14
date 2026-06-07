@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:encryption_key_command",
+    "ssc_14:encryption_key_security",
+    "ssc_14:encryption_key_passanger",
+    "ssc_14:encryption_key_engeneer",
+    "ssc_14:encryption_key_service",
+    "ssc_14:encryption_key_rnd",
+    "ssc_14:encryption_key_cargo",
+    "ssc_14:encryption_key_medical"
+  ]
+}

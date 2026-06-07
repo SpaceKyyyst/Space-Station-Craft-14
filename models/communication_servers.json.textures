@@ -1,0 +1,58 @@
+{
+  "mappings": {
+    "sec": {
+      "name": "sec",
+      "map": {
+        "2": "telecom_server_sec_texture"
+      }
+    },
+    "default": {
+      "name": "default",
+      "map": {
+        "2": "telecom_server_empty_texture"
+      }
+    },
+    "serv": {
+      "name": "serv",
+      "map": {
+        "2": "telecom_server_serv_texture"
+      }
+    },
+    "comand": {
+      "name": "comand",
+      "map": {
+        "2": "telecom_server_comnd_texture"
+      }
+    },
+    "rnd": {
+      "name": "rnd",
+      "map": {
+        "2": "telecom_server_rnd_texture"
+      }
+    },
+    "cargo": {
+      "name": "cargo",
+      "map": {
+        "2": "telecom_server_cargo_texture"
+      }
+    },
+    "med": {
+      "name": "med",
+      "map": {
+        "2": "telecom_server_med_texture"
+      }
+    },
+    "base": {
+      "name": "base",
+      "map": {
+        "2": "telecom_server_base_texture"
+      }
+    },
+    "eng": {
+      "name": "eng",
+      "map": {
+        "2": "telecom_server_eng_texture"
+      }
+    }
+  }
+}

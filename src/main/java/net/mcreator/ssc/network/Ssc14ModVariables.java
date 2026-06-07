@@ -188,15 +188,39 @@ public class Ssc14ModVariables {
 		boolean _syncDirty = false;
 		public double station_code = 0;
 		public String station_name = "\"\"";
+		public boolean Base_Radio_Frequency = false;
+		public boolean Command_Radio_Frequency = false;
+		public boolean Engeneer_Radio_Frequency = false;
+		public boolean Medical_Radio_Frequency = false;
+		public boolean RND_Radio_Frequency = false;
+		public boolean Sec_Radio_Frequency = false;
+		public boolean Serv_Radio_Frequency = false;
+		public boolean Cargo_Radio_Frequency = false;
 
 		public void read(CompoundTag nbt, HolderLookup.Provider lookupProvider) {
 			station_code = nbt.getDoubleOr("station_code", 0);
 			station_name = nbt.getStringOr("station_name", "");
+			Base_Radio_Frequency = nbt.getBooleanOr("Base_Radio_Frequency", false);
+			Command_Radio_Frequency = nbt.getBooleanOr("Command_Radio_Frequency", false);
+			Engeneer_Radio_Frequency = nbt.getBooleanOr("Engeneer_Radio_Frequency", false);
+			Medical_Radio_Frequency = nbt.getBooleanOr("Medical_Radio_Frequency", false);
+			RND_Radio_Frequency = nbt.getBooleanOr("RND_Radio_Frequency", false);
+			Sec_Radio_Frequency = nbt.getBooleanOr("Sec_Radio_Frequency", false);
+			Serv_Radio_Frequency = nbt.getBooleanOr("Serv_Radio_Frequency", false);
+			Cargo_Radio_Frequency = nbt.getBooleanOr("Cargo_Radio_Frequency", false);
 		}
 
 		public CompoundTag save(CompoundTag nbt, HolderLookup.Provider lookupProvider) {
 			nbt.putDouble("station_code", station_code);
 			nbt.putString("station_name", station_name);
+			nbt.putBoolean("Base_Radio_Frequency", Base_Radio_Frequency);
+			nbt.putBoolean("Command_Radio_Frequency", Command_Radio_Frequency);
+			nbt.putBoolean("Engeneer_Radio_Frequency", Engeneer_Radio_Frequency);
+			nbt.putBoolean("Medical_Radio_Frequency", Medical_Radio_Frequency);
+			nbt.putBoolean("RND_Radio_Frequency", RND_Radio_Frequency);
+			nbt.putBoolean("Sec_Radio_Frequency", Sec_Radio_Frequency);
+			nbt.putBoolean("Serv_Radio_Frequency", Serv_Radio_Frequency);
+			nbt.putBoolean("Cargo_Radio_Frequency", Cargo_Radio_Frequency);
 			return nbt;
 		}
 

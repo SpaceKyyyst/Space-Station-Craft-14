@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelcolor_soles;
+import net.mcreator.ssc.client.model.Modelsoles_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,11 +22,11 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class SolesRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/black_soles_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/black_soles_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public SolesRenderer() {
-        Modelcolor_soles model = new Modelcolor_soles(Minecraft.getInstance().getEntityModels().bakeLayer(Modelcolor_soles.LAYER_LOCATION));
+        Modelsoles_equipped model = new Modelsoles_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modelsoles_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
                     "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()),

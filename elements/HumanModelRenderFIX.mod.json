@@ -1,0 +1,8 @@
+{
+  "_fv": 85,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable type=\"Number\" id=\"model_scale\">model_scale</variable><variable type=\"Number\" id=\"clothes_scale\">clothes_scale</variable></variables><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">render_player</field><next><block type=\"modelpart_set_visibility\"><field name=\"modelpart\">rightArm</field><value name=\"visibility\"><block type=\"logic_boolean\"><field name=\"BOOL\">FALSE</field></block></value><next><block type=\"modelpart_set_visibility\"><field name=\"modelpart\">rightSleeve</field><value name=\"visibility\"><block type=\"logic_boolean\"><field name=\"BOOL\">FALSE</field></block></value></block></next></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

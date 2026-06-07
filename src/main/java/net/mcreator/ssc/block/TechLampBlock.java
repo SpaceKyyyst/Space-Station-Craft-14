@@ -65,7 +65,9 @@ public class TechLampBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BLOCKSTATE, 0);
+		if (context.getClickedFace().getAxis() == Direction.Axis.Y)
+			return super.getStateForPlacement(context).setValue(FACING, Direction.NORTH).setValue(BLOCKSTATE, 0);
+		return super.getStateForPlacement(context).setValue(FACING, context.getClickedFace()).setValue(BLOCKSTATE, 0);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

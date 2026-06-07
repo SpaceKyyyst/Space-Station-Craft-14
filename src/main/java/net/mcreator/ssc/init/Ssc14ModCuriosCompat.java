@@ -10,6 +10,8 @@ import net.minecraft.world.item.ItemStack;
 
 import net.mcreator.ssc.procedures.OuterclothingEvaCAPIBaubleIsUnequippedProcedure;
 import net.mcreator.ssc.procedures.OuterclothingEvaCAPIBaubleIsEquippedProcedure;
+import net.mcreator.ssc.procedures.MagBootsCAPIBaubleIsUnequippedProcedure;
+import net.mcreator.ssc.procedures.MagBootsCAPIBaubleIsEquippedProcedure;
 
 public class Ssc14ModCuriosCompat {
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -119,6 +121,16 @@ public class Ssc14ModCuriosCompat {
 			@Override
 			public ItemStack getStack() {
 				return stack;
+			}
+
+			@Override
+			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
+				MagBootsCAPIBaubleIsEquippedProcedure.execute(slotContext.entity());
+			}
+
+			@Override
+			public void onUnequip(SlotContext slotContext, ItemStack newStack) {
+				MagBootsCAPIBaubleIsUnequippedProcedure.execute(slotContext.entity());
 			}
 		}, Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
@@ -293,5 +305,107 @@ public class Ssc14ModCuriosCompat {
 				return stack;
 			}
 		}, Ssc14ModItems.HELMETS_EVA.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.MALE_BOXERS.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.GLASS_SECURITY.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.GAS_MASK.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.WORK_BOOTS.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.CLOAKS_HO_S.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.MANTLES_HO_S_SHOULDER_CAP.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.MANTLES_HO_S.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.COAT_ATMOS.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.COAT_SECURITY.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.TIE_BLACK.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.TIE_RED.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.TIE_SCIENCE.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.GLASS_GLASSES.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.GLASS_DARK.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.BLACK_GLOVES.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.HELMET_COSMONAUT.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14ModItems.CONE.get());
 	}
 }

@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modeljumpsuit_security;
+import net.mcreator.ssc.client.model.Modeljumpsuit_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -26,7 +26,7 @@ public class HoPRenderer implements ICurioRenderer.HumanoidRender {
 	private final HumanoidModel humanoidModel;
 
 	public HoPRenderer() {
-        Modeljumpsuit_security model = new Modeljumpsuit_security(Minecraft.getInstance().getEntityModels().bakeLayer(Modeljumpsuit_security.LAYER_LOCATION));
+        Modeljumpsuit_equipped model = new Modeljumpsuit_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modeljumpsuit_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
                     "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()),

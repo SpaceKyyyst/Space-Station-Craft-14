@@ -1,0 +1,8 @@
+{
+  "_fv": 85,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"controls_if\"><mutation elseif=\"1\"></mutation><value name=\"IF0\"><block type=\"java_code_get\"><field name=\"CODE\">Если игрок смотрит на какую то сущность на дистанции до 5 блоков</field></block></value><statement name=\"DO0\"><block type=\"java_code\"><field name=\"CODE\">&amp;#10;// возвращать сущность, на которую игрок смотрит&amp;#10;</field><next><block type=\"return_entity\"><value name=\"return\"><block type=\"entity_from_deps\"></block></value></block></next></block></statement><value name=\"IF1\"><block type=\"math_binary_ops\"><field name=\"OP\">GT</field><value name=\"A\"><block type=\"math_number\"><field name=\"NUM\">10</field></block></value><value name=\"B\"><block type=\"entity_pitch\"><value name=\"entity\"><block type=\"entity_from_deps\"></block></value></block></value></block></value><statement name=\"DO1\"><block type=\"java_code\"><field name=\"CODE\">&amp;#10;// если игрок смотрит вниз, возвращать самого игрока как сущность&amp;#10;</field><next><block type=\"return_entity\"><value name=\"return\"><block type=\"entity_from_deps\"></block></value></block></next></block></statement><next><block type=\"return_entity\"><value name=\"return\"><block type=\"entity_none\"></block></value></block></next></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

@@ -13,14 +13,14 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelarmor_security",
-    "baubleModelTexture": "armor_security_texture.png",
+    "baubleModel": "Modelarmor_security_equipped",
+    "baubleModelTexture": "armor_security_equipped_texture.png",
     "helmetModelPart": "Empty",
-    "bodyModelPart": "armor_security",
-    "armsModelPartL": "Empty",
-    "armsModelPartR": "Empty",
-    "leggingsModelPartL": "Empty",
-    "leggingsModelPartR": "Empty",
+    "bodyModelPart": "torso",
+    "armsModelPartL": "l_arm",
+    "armsModelPartR": "r_arm",
+    "leggingsModelPartL": "l_leg",
+    "leggingsModelPartR": "r_leg",
     "disabledToggles": []
   }
 }

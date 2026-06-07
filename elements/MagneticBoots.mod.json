@@ -13,8 +13,8 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelboots_magboots",
-    "baubleModelTexture": "boots_magboots_off_texture.png",
+    "baubleModel": "Modelboots_magboots_equipped",
+    "baubleModelTexture": "boots_magboots_off_equipped_texture.png",
     "helmetModelPart": "Empty",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

@@ -2,10 +2,6 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
-	"textures": {
-		"1": "space_station_craft_14:block/ssc14_pick_t",
-		"particle": "space_station_craft_14:block/ssc14_pick_t"
-	},
 	"elements": [
 		{
 			"from": [7, 0, 7],
@@ -47,6 +43,7 @@
 			}
 		}
 	],
+	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
 			"translation": [0, 2.75, 2]

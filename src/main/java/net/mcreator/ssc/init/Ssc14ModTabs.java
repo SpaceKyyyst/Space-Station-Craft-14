@@ -107,10 +107,12 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.MACHINE_FRAME_2.get().asItem());
 				tabData.accept(Ssc14ModBlocks.COMPUTER.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CONSOLE_OF_ID.get().asItem());
+				tabData.accept(Ssc14ModBlocks.COMMUNICATION_SERVERS.get().asItem());
 				tabData.accept(Ssc14ModBlocks.PORTABLE_SHEATER.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CLOSET_SECURE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CLOSET.get().asItem());
 				tabData.accept(Ssc14ModBlocks.STEEL_TABLE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.WOOD_TABLE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.STEEL_CHAIR.get().asItem());
 				tabData.accept(Ssc14ModBlocks.WOOD_CHAIR.get().asItem());
 				tabData.accept(Ssc14ModBlocks.OFICE_BLACK_CHAIR.get().asItem());
@@ -168,6 +170,8 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.RAW_SILVER.get());
 				tabData.accept(Ssc14ModItems.RAW_URAN.get());
 				tabData.accept(Ssc14ModItems.RAW_DIAMOND.get());
+				tabData.accept(Ssc14ModItems.CONE.get());
+				tabData.accept(Ssc14ModItems.HEALTH_ANALYZER.get());
 				tabData.accept(Ssc14ModItems.BRUTEPACK.get());
 				tabData.accept(Ssc14ModItems.BLOODPACK.get());
 				tabData.accept(Ssc14ModItems.GAUZE.get());
@@ -182,6 +186,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.SUBSTATION_BOARD.get());
 				tabData.accept(Ssc14ModItems.SMES_BOARD.get());
 				tabData.accept(Ssc14ModItems.APC_BOARD.get());
+				tabData.accept(Ssc14ModItems.ENCRYPTION_KEY_PASSANGER.get());
 				tabData.accept(Ssc14ModItems.PEN.get());
 				tabData.accept(Ssc14ModItems.ENERGY_BAR.get());
 				tabData.accept(Ssc14ModItems.ENERGY_BAR_2.get());
@@ -236,7 +241,11 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.LED_LIGHT_TUBE_BROKEN.get());
 				tabData.accept(Ssc14ModItems.LIGHT_BULB_BROKEN.get());
 				tabData.accept(Ssc14ModItems.ENERGY_BAR_TRASH.get());
+				tabData.accept(Ssc14ModItems.HELMET_COSMONAUT.get());
 				tabData.accept(Ssc14ModItems.HELMET_SECURITY.get());
+				tabData.accept(Ssc14ModItems.GLASS_GLASSES.get());
+				tabData.accept(Ssc14ModItems.GLASS_DARK.get());
+				tabData.accept(Ssc14ModItems.GLASS_SECURITY.get());
 				tabData.accept(Ssc14ModItems.HEADSET_BASE.get());
 				tabData.accept(Ssc14ModItems.CAPTAIN_JUMPSUIT.get());
 				tabData.accept(Ssc14ModItems.HO_S_JUMPSUIT.get());
@@ -255,11 +264,19 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.HO_P_JUMPSUIT.get());
 				tabData.accept(Ssc14ModItems.BOTANIST_JUMPSUIT.get());
 				tabData.accept(Ssc14ModItems.PASSANGER_JUMPSUIT.get());
+				tabData.accept(Ssc14ModItems.COAT_ATMOS.get());
+				tabData.accept(Ssc14ModItems.COAT_SECURITY.get());
 				tabData.accept(Ssc14ModItems.ARMOR_SECURITY.get());
 				tabData.accept(Ssc14ModItems.OUTERCLOTHING_EVA.get());
 				tabData.accept(Ssc14ModItems.HELMETS_EVA.get());
 				tabData.accept(Ssc14ModItems.CLOAKS_CAP.get());
+				tabData.accept(Ssc14ModItems.CLOAKS_HO_S.get());
 				tabData.accept(Ssc14ModItems.MANTLES_CAP.get());
+				tabData.accept(Ssc14ModItems.MANTLES_HO_S.get());
+				tabData.accept(Ssc14ModItems.MANTLES_HO_S_SHOULDER_CAP.get());
+				tabData.accept(Ssc14ModItems.TIE_BLACK.get());
+				tabData.accept(Ssc14ModItems.TIE_RED.get());
+				tabData.accept(Ssc14ModItems.TIE_SCIENCE.get());
 				tabData.accept(Ssc14ModItems.BLACK_SCARF.get());
 				tabData.accept(Ssc14ModItems.BLACK_GREEN_SCARF.get());
 				tabData.accept(Ssc14ModItems.SINDY_SCARF.get());
@@ -274,11 +291,22 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.TRNS_SCARF.get());
 				tabData.accept(Ssc14ModItems.PURPLE_SCARF.get());
 				tabData.accept(Ssc14ModItems.ISOLATED_GLOVES.get());
+				tabData.accept(Ssc14ModItems.BLACK_GLOVES.get());
 				tabData.accept(Ssc14ModItems.BELT_SECURITY.get());
 				tabData.accept(Ssc14ModItems.PD_APASSANGER.get());
 				tabData.accept(Ssc14ModItems.BLACK_SOLES_ITEM.get());
+				tabData.accept(Ssc14ModItems.WORK_BOOTS.get());
 				tabData.accept(Ssc14ModItems.COMBAT_BOOTS_ITEM.get());
 				tabData.accept(Ssc14ModItems.MAGNETIC_BOOTS_ITEM.get());
+				tabData.accept(Ssc14ModItems.MALE_BOXERS.get());
+				tabData.accept(Ssc14ModItems.GAS_MASK.get());
+				tabData.accept(Ssc14ModItems.ENCRYPTION_KEY_COMMAND.get());
+				tabData.accept(Ssc14ModItems.ENCRYPTION_KEY_ENGENEER.get());
+				tabData.accept(Ssc14ModItems.ENCRYPTION_KEY_MEDICAL.get());
+				tabData.accept(Ssc14ModItems.ENCRYPTION_KEY_RND.get());
+				tabData.accept(Ssc14ModItems.ENCRYPTION_KEY_SECURITY.get());
+				tabData.accept(Ssc14ModItems.ENCRYPTION_KEY_SERVICE.get());
+				tabData.accept(Ssc14ModItems.ENCRYPTION_KEY_CARGO.get());
 			}).withTabsBefore(SSC_14_OBJECTS.getId()).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> DECALS = REGISTRY.register("decals",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.decals")).icon(() -> new ItemStack(Ssc14ModItems.DECAL_1SPAWNER.get())).displayItems((parameters, tabData) -> {

@@ -1,0 +1,444 @@
+{
+  "_fv": 85,
+  "_type": "block",
+  "definition": {
+    "texture": "communication_server_item",
+    "textureTop": "",
+    "textureLeft": "",
+    "textureFront": "",
+    "textureRight": "",
+    "textureBack": "",
+    "renderType": 2,
+    "customModelName": "communication_servers:default",
+    "rotationMode": 1,
+    "enablePitch": false,
+    "emissiveRendering": true,
+    "displayFluidOverlay": false,
+    "states": [
+      {
+        "texture": "telecom_server_base_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "communication_servers:base",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 20,
+              "name": "CUSTOM:type",
+              "type": "integer"
+            },
+            "value": 1
+          }
+        ]
+      },
+      {
+        "texture": "telecom_server_comnd_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "communication_servers:comand",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 20,
+              "name": "CUSTOM:type",
+              "type": "integer"
+            },
+            "value": 2
+          }
+        ]
+      },
+      {
+        "texture": "telecom_server_eng_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "communication_servers:eng",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 20,
+              "name": "CUSTOM:type",
+              "type": "integer"
+            },
+            "value": 3
+          }
+        ]
+      },
+      {
+        "texture": "telecom_server_med_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "communication_servers:med",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 20,
+              "name": "CUSTOM:type",
+              "type": "integer"
+            },
+            "value": 4
+          }
+        ]
+      },
+      {
+        "texture": "telecom_server_rnd_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "communication_servers:rnd",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 20,
+              "name": "CUSTOM:type",
+              "type": "integer"
+            },
+            "value": 5
+          }
+        ]
+      },
+      {
+        "texture": "telecom_server_sec_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "communication_servers:sec",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 20,
+              "name": "CUSTOM:type",
+              "type": "integer"
+            },
+            "value": 6
+          }
+        ]
+      },
+      {
+        "texture": "telecom_server_serv_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "communication_servers:serv",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 20,
+              "name": "CUSTOM:type",
+              "type": "integer"
+            },
+            "value": 7
+          }
+        ]
+      },
+      {
+        "texture": "telecom_server_cargo_texture",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "communication_servers:cargo",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "min": 0,
+              "max": 20,
+              "name": "CUSTOM:type",
+              "type": "integer"
+            },
+            "value": 8
+          }
+        ]
+      }
+    ],
+    "animations": [],
+    "itemTexture": "communication_server_item",
+    "particleTexture": "",
+    "blockSetType": "OAK",
+    "leavesParticleChance": 0.0,
+    "tintType": "No tint",
+    "isItemTinted": false,
+    "hasTransparency": true,
+    "connectedSides": false,
+    "transparencyType": "CUTOUT",
+    "disableOffset": false,
+    "boundingBoxes": [
+      {
+        "mx": 0.0,
+        "my": 0.0,
+        "mz": 2.0,
+        "Mx": 16.0,
+        "My": 31.0,
+        "Mz": 15.0,
+        "subtract": false
+      }
+    ],
+    "customProperties": [
+      {
+        "min": 0,
+        "max": 20,
+        "name": "CUSTOM:type",
+        "type": "integer",
+        "value": 0
+      }
+    ],
+    "name": "Communication Server",
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "hardness": 60.0,
+    "resistance": 30.0,
+    "hasGravity": false,
+    "isWaterloggable": false,
+    "hasBlockItem": true,
+    "maxStackSize": 1,
+    "rarity": "COMMON",
+    "immuneToFire": false,
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:SSC14Objects"
+      }
+    ],
+    "destroyTool": "Not specified",
+    "customDrop": {
+      "value": "CUSTOM:Steel"
+    },
+    "dropAmount": 1,
+    "xpAmountMin": 0,
+    "xpAmountMax": 0,
+    "useLootTableForDrops": false,
+    "requiresCorrectTool": false,
+    "enchantPowerBonus": 0.0,
+    "plantsGrowOn": false,
+    "canRedstoneConnect": false,
+    "hasCustomOpacity": true,
+    "lightOpacity": 0,
+    "tickRate": 20,
+    "tickRandomly": false,
+    "isReplaceable": false,
+    "canProvidePower": false,
+    "emittedRedstonePower": {
+      "fixedValue": 15.0
+    },
+    "colorOnMap": "DEFAULT",
+    "noteBlockInstrument": "harp",
+    "creativePickItem": {
+      "value": ""
+    },
+    "offsetType": "NONE",
+    "aiPathNodeType": "DEFAULT",
+    "strippingResult": {
+      "value": ""
+    },
+    "ignitedByLava": false,
+    "flammability": 0,
+    "fireSpreadSpeed": 0,
+    "isLadder": false,
+    "slipperiness": 0.6,
+    "speedFactor": 1.0,
+    "jumpFactor": 1.0,
+    "reactionToPushing": "NORMAL",
+    "isNotColidable": false,
+    "isCustomSoundType": false,
+    "soundOnStep": {
+      "value": "ANVIL"
+    },
+    "breakSound": {
+      "value": ""
+    },
+    "fallSound": {
+      "value": ""
+    },
+    "hitSound": {
+      "value": ""
+    },
+    "placeSound": {
+      "value": ""
+    },
+    "stepSound": {
+      "value": ""
+    },
+    "luminance": {
+      "fixedValue": 0.0
+    },
+    "unbreakable": false,
+    "vanillaToolTier": "NONE",
+    "isBonemealable": false,
+    "sensitiveToVibration": false,
+    "vibrationalEvents": [],
+    "vibrationSensitivityRadius": {
+      "fixedValue": 7.0
+    },
+    "hasInventory": true,
+    "openGUIOnRightClick": false,
+    "inventorySize": 1,
+    "inventoryStackSize": 1,
+    "inventoryDropWhenDestroyed": true,
+    "inventoryComparatorPower": false,
+    "inventoryOutSlotIDs": [],
+    "inventoryInSlotIDs": [],
+    "hasEnergyStorage": false,
+    "energyInitial": 0,
+    "energyCapacity": 400000,
+    "energyMaxReceive": 200,
+    "energyMaxExtract": 200,
+    "isFluidTank": false,
+    "fluidCapacity": 8000,
+    "fluidRestrictions": [],
+    "onRightClicked": {
+      "name": "CommunicationServers_Click_USE"
+    },
+    "onTickUpdate": {
+      "name": "CommunicationServers_TIC_PR_"
+    },
+    "generateFeature": false,
+    "restrictionBiomes": [],
+    "blocksToReplace": [
+      {
+        "value": "TAG:stone_ore_replaceables"
+      }
+    ],
+    "generationShape": "UNIFORM",
+    "frequencyPerChunks": 10,
+    "frequencyOnChunk": 16,
+    "minGenerateHeight": 0,
+    "maxGenerateHeight": 64
+  }
+}

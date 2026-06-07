@@ -57,7 +57,9 @@ public class DEBUGTechLampBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		if (context.getClickedFace().getAxis() == Direction.Axis.Y)
+			return super.getStateForPlacement(context).setValue(FACING, Direction.NORTH);
+		return super.getStateForPlacement(context).setValue(FACING, context.getClickedFace());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

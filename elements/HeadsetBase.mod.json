@@ -25,7 +25,7 @@
       "value": ""
     },
     "destroyAnyBlock": false,
-    "immuneToFire": false,
+    "immuneToFire": true,
     "isPiglinCurrency": false,
     "repairItems": [],
     "stayInGridWhenCrafting": false,
@@ -39,11 +39,18 @@
     "glowCondition": {
       "fixedValue": false
     },
+    "guiBoundTo": "HeadsetGUIkostil",
     "openGUIOnRightClick": {
       "fixedValue": false
     },
-    "inventorySize": 9,
-    "inventoryStackSize": 99,
+    "inventorySize": 20,
+    "inventoryStackSize": 1,
+    "onRightClickedInAir": {
+      "name": "HeadsetBase_CLICK_PR_"
+    },
+    "onItemInInventoryTick": {
+      "name": "Headset_Generate_"
+    },
     "enableRanged": false,
     "shootConstantly": false,
     "rangedItemChargesPower": false,

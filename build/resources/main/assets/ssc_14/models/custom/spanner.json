@@ -388,6 +388,7 @@
       }
     }
   ],
+  "gui_light": "front",
   "display": {
     "thirdperson_righthand": {
       "rotation": [
@@ -479,6 +480,7 @@
         9,
         5.5
       ],
+      "scope": 0,
       "color": 0,
       "children": [
         0,

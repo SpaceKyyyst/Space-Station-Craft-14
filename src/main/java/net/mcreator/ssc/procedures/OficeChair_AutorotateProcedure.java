@@ -5,6 +5,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,7 +14,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.entity.ChairEntityEntity;
 
 import java.util.Comparator;
@@ -96,7 +96,7 @@ public class OficeChair_AutorotateProcedure {
 				}
 			}
 		}
-		if (Ssc14ModBlocks.VOIDB.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()) {
+		if (Blocks.STRUCTURE_BLOCK == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()) {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.ASH, x, y, z, 0, 0, 0, 0, 0);
 		}

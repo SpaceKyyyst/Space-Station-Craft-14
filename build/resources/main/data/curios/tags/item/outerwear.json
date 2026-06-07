@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "ssc_14:armor_security",
-    "ssc_14:outerclothing_eva"
+    "ssc_14:outerclothing_eva",
+    "ssc_14:coat_atmos",
+    "ssc_14:coat_security"
   ]
 }

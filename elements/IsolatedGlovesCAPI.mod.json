@@ -13,8 +13,8 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelgloves",
-    "baubleModelTexture": "gloves_isolated_texture.png",
+    "baubleModel": "Modelgloves_equipped",
+    "baubleModelTexture": "gloves_yellow_equipped_texture.png",
     "helmetModelPart": "Empty",
     "bodyModelPart": "Empty",
     "armsModelPartL": "l_hand",

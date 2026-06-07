@@ -1,0 +1,26 @@
+{
+  "_fv": 85,
+  "_type": "curiosbauble",
+  "definition": {
+    "item": "MaleBoxers",
+    "slotType": "Underwear",
+    "slotAmount": 1,
+    "addSlot": false,
+    "enderMask": false,
+    "friendlyPigs": false,
+    "snowWalk": false,
+    "equipSound": {
+      "value": ""
+    },
+    "hasModel": true,
+    "baubleModel": "Modelmale_boxers",
+    "baubleModelTexture": "male_boxers_texture.png",
+    "helmetModelPart": "Empty",
+    "bodyModelPart": "torso",
+    "armsModelPartL": "Empty",
+    "armsModelPartR": "Empty",
+    "leggingsModelPartL": "l_leg",
+    "leggingsModelPartR": "r_leg",
+    "disabledToggles": []
+  }
+}

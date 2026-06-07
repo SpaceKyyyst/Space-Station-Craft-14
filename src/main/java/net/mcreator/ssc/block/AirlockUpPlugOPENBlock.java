@@ -47,10 +47,10 @@ public class AirlockUpPlugOPENBlock extends Block implements EntityBlock {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> Shapes.join(box(0, 0, 7, 16, 16, 9), box(1, 0, 7, 15, 16, 9), BooleanOp.ONLY_FIRST);
-				case NORTH -> Shapes.join(box(0, 0, 7, 16, 16, 9), box(1, 0, 7, 15, 16, 9), BooleanOp.ONLY_FIRST);
-				case EAST -> Shapes.join(box(7, 0, 0, 9, 16, 16), box(7, 0, 1, 9, 16, 15), BooleanOp.ONLY_FIRST);
-				case WEST -> Shapes.join(box(7, 0, 0, 9, 16, 16), box(7, 0, 1, 9, 16, 15), BooleanOp.ONLY_FIRST);
+				default -> Shapes.join(box(0, 0, 5, 16, 16, 11), box(1, 0, 5, 15, 16, 11), BooleanOp.ONLY_FIRST);
+				case NORTH -> Shapes.join(box(0, 0, 5, 16, 16, 11), box(1, 0, 5, 15, 16, 11), BooleanOp.ONLY_FIRST);
+				case EAST -> Shapes.join(box(5, 0, 0, 11, 16, 16), box(5, 0, 1, 11, 16, 15), BooleanOp.ONLY_FIRST);
+				case WEST -> Shapes.join(box(5, 0, 0, 11, 16, 16), box(5, 0, 1, 11, 16, 15), BooleanOp.ONLY_FIRST);
 			};
 		});
 	}

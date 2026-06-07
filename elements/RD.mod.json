@@ -13,7 +13,7 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modeljumpsuit_security",
+    "baubleModel": "Modeljumpsuit_equipped",
     "baubleModelTexture": "jumpsuit_rd_texture.png",
     "helmetModelPart": "Empty",
     "bodyModelPart": "torso",

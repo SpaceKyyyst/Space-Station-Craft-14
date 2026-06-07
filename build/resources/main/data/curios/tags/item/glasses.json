@@ -1,4 +1,8 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "ssc_14:glass_security",
+    "ssc_14:glass_glasses",
+    "ssc_14:glass_dark"
+  ]
 }

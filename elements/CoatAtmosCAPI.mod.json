@@ -1,0 +1,26 @@
+{
+  "_fv": 85,
+  "_type": "curiosbauble",
+  "definition": {
+    "item": "CoatAtmos",
+    "slotType": "Outerwear",
+    "slotAmount": 1,
+    "addSlot": false,
+    "enderMask": false,
+    "friendlyPigs": false,
+    "snowWalk": false,
+    "equipSound": {
+      "value": ""
+    },
+    "hasModel": true,
+    "baubleModel": "Modelwintercoat_coat_equipped",
+    "baubleModelTexture": "coat_atmos_equipped_texture.png",
+    "helmetModelPart": "Empty",
+    "bodyModelPart": "torso",
+    "armsModelPartL": "l_arm",
+    "armsModelPartR": "r_arm",
+    "leggingsModelPartL": "l_leg",
+    "leggingsModelPartR": "r_leg",
+    "disabledToggles": []
+  }
+}

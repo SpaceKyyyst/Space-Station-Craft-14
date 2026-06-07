@@ -2,9 +2,6 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
-	"textures": {
-		"1": "Gas_Analyzer_Texture"
-	},
 	"elements": [
 		{
 			"from": [5, 0, 6.5],
@@ -74,6 +71,7 @@
 			}
 		}
 	],
+	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [0, -180, 0],

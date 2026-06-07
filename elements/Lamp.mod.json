@@ -10,7 +10,7 @@
     "textureBack": "",
     "renderType": 2,
     "customModelName": "lamp:default",
-    "rotationMode": 1,
+    "rotationMode": 3,
     "enablePitch": false,
     "emissiveRendering": false,
     "displayFluidOverlay": false,
@@ -92,9 +92,6 @@
     "itemTexture": "lamp",
     "particleTexture": "",
     "blockSetType": "OAK",
-    "pottedPlant": {
-      "value": ""
-    },
     "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,
