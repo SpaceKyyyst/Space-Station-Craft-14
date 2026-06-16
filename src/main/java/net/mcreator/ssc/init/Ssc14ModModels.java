@@ -30,6 +30,7 @@ public class Ssc14ModModels {
 		event.registerLayerDefinition(Modelboots_jackboots_equipped.LAYER_LOCATION, Modelboots_jackboots_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelmask_gas_equipped.LAYER_LOCATION, Modelmask_gas_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelmale_boxers.LAYER_LOCATION, Modelmale_boxers::createBodyLayer);
+		event.registerLayerDefinition(Modelmouses.LAYER_LOCATION, Modelmouses::createBodyLayer);
 		event.registerLayerDefinition(Modeldecal_1.LAYER_LOCATION, Modeldecal_1::createBodyLayer);
 		event.registerLayerDefinition(Modelheadsets.LAYER_LOCATION, Modelheadsets::createBodyLayer);
 		event.registerLayerDefinition(Modelhelmet_cone_equipped.LAYER_LOCATION, Modelhelmet_cone_equipped::createBodyLayer);
@@ -47,12 +48,13 @@ public class Ssc14ModModels {
 		event.registerLayerDefinition(Modelglass_equipped.LAYER_LOCATION, Modelglass_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelhelmet_security_equipped.LAYER_LOCATION, Modelhelmet_security_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelhelmets_eva_syndicate_equipped.LAYER_LOCATION, Modelhelmets_eva_syndicate_equipped::createBodyLayer);
-		event.registerLayerDefinition(Modeljumpsuit_security.LAYER_LOCATION, Modeljumpsuit_security::createBodyLayer);
+		event.registerLayerDefinition(Modelmothroach.LAYER_LOCATION, Modelmothroach::createBodyLayer);
 		event.registerLayerDefinition(Modelwintercoat_coat_equipped.LAYER_LOCATION, Modelwintercoat_coat_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelhuman_m.LAYER_LOCATION, Modelhuman_m::createBodyLayer);
 		event.registerLayerDefinition(Modelbelt.LAYER_LOCATION, Modelbelt::createBodyLayer);
 		event.registerLayerDefinition(Modelgloves.LAYER_LOCATION, Modelgloves::createBodyLayer);
 		event.registerLayerDefinition(Modelscarf.LAYER_LOCATION, Modelscarf::createBodyLayer);
+		event.registerLayerDefinition(Modeluniform_equipped.LAYER_LOCATION, Modeluniform_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelboots_combatboots.LAYER_LOCATION, Modelboots_combatboots::createBodyLayer);
 		event.registerLayerDefinition(Modelboots_workboots_equipped.LAYER_LOCATION, Modelboots_workboots_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelhelmet_cosmonaut_equipped.LAYER_LOCATION, Modelhelmet_cosmonaut_equipped::createBodyLayer);

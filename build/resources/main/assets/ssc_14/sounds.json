@@ -326,5 +326,157 @@
         "stream": false
       }
     ]
+  },
+  "announce_sound": {
+    "sounds": [
+      {
+        "name": "ssc_14:resources_audio_announcements_announce",
+        "stream": false
+      }
+    ]
+  },
+  "attention": {
+    "sounds": [
+      {
+        "name": "ssc_14:resources_audio_announcements_attention",
+        "stream": false
+      }
+    ]
+  },
+  "ion_storm": {
+    "sounds": [
+      {
+        "name": "ssc_14:resources_audio__sunrise_announcements_ionstorm",
+        "stream": false
+      }
+    ]
+  },
+  "red_code": {
+    "sounds": [
+      {
+        "name": "ssc_14:resources_audio_misc_redalert",
+        "stream": false
+      }
+    ]
+  },
+  "blue_code": {
+    "sounds": [
+      {
+        "name": "ssc_14:resources_audio_misc_bluealert",
+        "stream": false
+      }
+    ]
+  },
+  "delta_code": {
+    "sounds": [
+      {
+        "name": "ssc_14:resources_audio_misc_delta",
+        "stream": false
+      }
+    ]
+  },
+  "epsilon_code": {
+    "sounds": [
+      {
+        "name": "ssc_14:resources_audio_misc_epsilon",
+        "stream": false
+      }
+    ]
+  },
+  "gamma_code": {
+    "sounds": [
+      {
+        "name": "ssc_14:resources_audio_misc_gamma",
+        "stream": false
+      }
+    ]
+  },
+  "green_code": {
+    "sounds": [
+      {
+        "name": "ssc_14:resources_audio_misc_notice2",
+        "stream": false
+      }
+    ]
+  },
+  "equip_base_equip": {
+    "sounds": [
+      {
+        "name": "ssc_14:equip_base_equip",
+        "stream": false
+      }
+    ]
+  },
+  "equip_helmets": {
+    "sounds": [
+      {
+        "name": "ssc_14:equip_helmets",
+        "stream": false
+      }
+    ]
+  },
+  "equip_gloves": {
+    "sounds": [
+      {
+        "name": "ssc_14:equip_gloves",
+        "stream": false
+      }
+    ]
+  },
+  "equip_backpacks": {
+    "sounds": [
+      {
+        "name": "ssc_14:equip_backpacks",
+        "stream": false
+      }
+    ]
+  },
+  "machines_vending_eject": {
+    "sounds": [
+      {
+        "name": "ssc_14:machines_vending_eject",
+        "stream": false
+      }
+    ]
+  },
+  "machines_vending_jingle": {
+    "sounds": [
+      {
+        "name": "ssc_14:machines_vending_jingle",
+        "stream": false
+      }
+    ]
+  },
+  "mouse_squeak": {
+    "sounds": [
+      {
+        "name": "ssc_14:mouse_squeak",
+        "stream": false
+      }
+    ]
+  },
+  "machines_shutter": {
+    "sounds": [
+      {
+        "name": "ssc_14:machines_shutter",
+        "stream": false
+      }
+    ]
+  },
+  "effects_glass_knock": {
+    "sounds": [
+      {
+        "name": "ssc_14:effects_glass_knock",
+        "stream": false
+      }
+    ]
+  },
+  "machines_button": {
+    "sounds": [
+      {
+        "name": "ssc_14:machines_button",
+        "stream": false
+      }
+    ]
   }
 }

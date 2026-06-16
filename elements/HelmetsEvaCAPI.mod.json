@@ -15,6 +15,9 @@
     "hasModel": true,
     "baubleModel": "Modelhelmets_eva_equipped",
     "baubleModelTexture": "helmets_eva_equipped_texture.png",
+    "onEquip": {
+      "name": "EquipHelmetSoundPR"
+    },
     "helmetModelPart": "eva",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

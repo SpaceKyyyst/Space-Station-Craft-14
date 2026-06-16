@@ -22,7 +22,7 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class MedicalRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/jumpsuit_med_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/jumpsuit_medical_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public MedicalRenderer() {

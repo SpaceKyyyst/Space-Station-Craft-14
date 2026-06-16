@@ -17,6 +17,12 @@
       "map": {
         "1": "id_console_texture_desconnected"
       }
+    },
+    "communication": {
+      "name": "communication",
+      "map": {
+        "1": "communication_console_texture"
+      }
     }
   }
 }

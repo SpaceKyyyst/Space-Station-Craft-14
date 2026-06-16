@@ -22,7 +22,7 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class ChemistRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/jumpsuit_chemist_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/jumpsuit_chemistry_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public ChemistRenderer() {

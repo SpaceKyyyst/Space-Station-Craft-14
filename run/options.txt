@@ -15,7 +15,7 @@ prioritizeChunkUpdates:0
 fullscreen:false
 gamma:0.5070422535211268
 graphicsMode:1
-guiScale:0
+guiScale:4
 maxFps:260
 inactivityFpsLimit:"afk"
 mipmapLevels:4

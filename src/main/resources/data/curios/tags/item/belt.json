@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "ssc_14:belt_security"
+    "ssc_14:belt_security",
+    "ssc_14:belt_security_webbing",
+    "ssc_14:belt_instrumental"
   ]
 }

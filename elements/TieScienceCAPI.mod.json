@@ -15,6 +15,9 @@
     "hasModel": true,
     "baubleModel": "Modelties_equipped",
     "baubleModelTexture": "tie_science_equipped_texture.png",
+    "onEquip": {
+      "name": "Equip_BaseSound_PR_"
+    },
     "helmetModelPart": "Empty",
     "bodyModelPart": "torso",
     "armsModelPartL": "Empty",

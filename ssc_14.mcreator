@@ -1085,7 +1085,7 @@
           "src/main/resources/assets/ssc_14/models/block/base_airlock_d_1_22.json"
         ]
       },
-      "path": "~/Blocks/Airlocks/Base ArLk"
+      "path": "~/Blocks/Airlocks/Airlocks"
     },
     {
       "name": "BaseAirlockOpenClose",
@@ -5127,7 +5127,7 @@
           "src/main/resources/assets/ssc_14/items/energy_bar.json"
         ]
       },
-      "path": "~/Items/food"
+      "path": "~/Items/Food"
     },
     {
       "name": "EnergyBar_Opening",
@@ -5166,7 +5166,7 @@
           "src/main/java/net/mcreator/ssc/procedures/EnergyBar_OpeningProcedure.java"
         ]
       },
-      "path": "~/Items/food"
+      "path": "~/Items/Food"
     },
     {
       "name": "EnergyBarTrash",
@@ -5181,7 +5181,7 @@
           "src/main/resources/assets/ssc_14/items/energy_bar_trash.json"
         ]
       },
-      "path": "~/Items/food"
+      "path": "~/Items/Food"
     },
     {
       "name": "EnergyBar2",
@@ -5196,7 +5196,7 @@
           "src/main/resources/assets/ssc_14/items/energy_bar_2.json"
         ]
       },
-      "path": "~/Items/food"
+      "path": "~/Items/Food"
     },
     {
       "name": "PlassteelWallCarcaseEntit",
@@ -7107,7 +7107,7 @@
           "src/main/java/net/mcreator/ssc/procedures/FoodEatingPrProcedure.java"
         ]
       },
-      "path": "~/Items/food"
+      "path": "~/Items/Food"
     },
     {
       "name": "Nutrients",
@@ -8331,19 +8331,6 @@
         ]
       },
       "path": "~/Blocks/Titles/Catwalk"
-    },
-    {
-      "name": "CrawlHandler",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "crawl_handler",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/ssc/CrawlHandler.java"
-        ]
-      },
-      "path": "~/Technical/Key Bind/Crawl"
     },
     {
       "name": "CrawlPr",
@@ -10841,7 +10828,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/SecurityRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "SecurityJumpsuit",
@@ -10856,7 +10843,7 @@
           "src/main/resources/assets/ssc_14/items/security_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "Boots",
@@ -11642,7 +11629,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/PassangerRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "PassangerJumpsuit",
@@ -11657,7 +11644,7 @@
           "src/main/resources/assets/ssc_14/items/passanger_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "Atmos",
@@ -11670,7 +11657,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/AtmosRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "AtmosJumpsuit",
@@ -11685,7 +11672,7 @@
           "src/main/java/net/mcreator/ssc/item/AtmosJumpsuitItem.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "Botanist",
@@ -11698,7 +11685,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/BotanistRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "BotanistJumpsuit",
@@ -11713,7 +11700,7 @@
           "src/main/resources/assets/ssc_14/models/item/botanist_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "Captain",
@@ -11726,7 +11713,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/CaptainRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "CaptainJumpsuit",
@@ -11741,7 +11728,7 @@
           "src/main/java/net/mcreator/ssc/item/CaptainJumpsuitItem.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "Cargo",
@@ -11754,7 +11741,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/CargoRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "CargoJumpsuit",
@@ -11769,7 +11756,7 @@
           "src/main/java/net/mcreator/ssc/item/CargoJumpsuitItem.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "Ce",
@@ -11782,7 +11769,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/CeRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "CEJumpsuit",
@@ -11797,7 +11784,7 @@
           "src/main/resources/assets/ssc_14/models/item/ce_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "Chemist",
@@ -11810,7 +11797,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/ChemistRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "ChemistJumpsuit",
@@ -11825,7 +11812,7 @@
           "src/main/resources/assets/ssc_14/models/item/chemist_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "CMO",
@@ -11838,7 +11825,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/CMORenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "CMOJumpsuit",
@@ -11853,7 +11840,7 @@
           "src/main/resources/assets/ssc_14/models/item/cmo_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "Engeneer",
@@ -11866,7 +11853,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/EngeneerRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "EngeneerJumpsuit",
@@ -11881,7 +11868,7 @@
           "src/main/resources/assets/ssc_14/items/engeneer_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "HoP",
@@ -11894,7 +11881,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/HoPRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "HoPJumpsuit",
@@ -11909,7 +11896,7 @@
           "src/main/resources/assets/ssc_14/models/item/ho_p_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "HoS",
@@ -11922,7 +11909,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/HoSRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "HoSJumpsuit",
@@ -11937,7 +11924,7 @@
           "src/main/resources/assets/ssc_14/items/ho_s_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "Medical",
@@ -11950,7 +11937,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/MedicalRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "MedicalJumpsuit",
@@ -11965,7 +11952,7 @@
           "src/main/resources/assets/ssc_14/items/medical_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "QM",
@@ -11978,7 +11965,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/QMRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "QMJumpsuit",
@@ -11993,7 +11980,7 @@
           "src/main/java/net/mcreator/ssc/item/QMJumpsuitItem.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "RD",
@@ -12006,7 +11993,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/RDRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "RDJumpsuit",
@@ -12021,7 +12008,7 @@
           "src/main/java/net/mcreator/ssc/item/RDJumpsuitItem.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "RND",
@@ -12034,7 +12021,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/RNDRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "RNDJumpsuit",
@@ -12049,7 +12036,7 @@
           "src/main/resources/assets/ssc_14/items/rnd_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "Warden",
@@ -12062,7 +12049,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/WardenRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "WardenJumpsuit",
@@ -12077,7 +12064,7 @@
           "src/main/resources/assets/ssc_14/items/warden_jumpsuit.json"
         ]
       },
-      "path": "~/Items/Clothes/Jumpsuit"
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
     },
     {
       "name": "HealthUI",
@@ -14234,6 +14221,22 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ],
         "files": [
@@ -16640,6 +16643,2644 @@
         ]
       },
       "path": "~/Items/Utilits"
+    },
+    {
+      "name": "EquipmentAutoEquipment",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "equipment_auto_equipment",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/EquipmentAutoEquipmentProcedure.java"
+        ]
+      },
+      "path": "~/Items/Clothes"
+    },
+    {
+      "name": "BeltSecurityWebbingCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "belt_security_webbing_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/BeltSecurityWebbingCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Belt"
+    },
+    {
+      "name": "BeltSecurityWebbing",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "belt_security_webbing",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/BeltSecurityWebbingItem.java",
+          "src/main/resources/assets/ssc_14/models/item/belt_security_webbing.json",
+          "src/main/resources/assets/ssc_14/items/belt_security_webbing.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Belt"
+    },
+    {
+      "name": "BeltInstrumentalCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "belt_instrumental_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/BeltInstrumentalCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Belt"
+    },
+    {
+      "name": "BeltInstrumental",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "belt_instrumental",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/belt_instrumental.json",
+          "src/main/java/net/mcreator/ssc/item/BeltInstrumentalItem.java",
+          "src/main/resources/assets/ssc_14/models/item/belt_instrumental.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Belt"
+    },
+    {
+      "name": "MaskGasSecurityCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mask_gas_security_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/MaskGasSecurityCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Mask"
+    },
+    {
+      "name": "MaskGasSecurity",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mask_gas_security",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/MaskGasSecurityItem.java",
+          "src/main/resources/assets/ssc_14/items/mask_gas_security.json",
+          "src/main/resources/assets/ssc_14/models/item/mask_gas_security.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Mask"
+    },
+    {
+      "name": "Socks",
+      "type": "curiosslot",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "socks",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/curios/slots/socks.json",
+          "src/main/resources/data/ssc_14/curios/entities/socks.json",
+          "src/main/resources/data/curios/tags/item/socks.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "WhiteKneeCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "white_knee_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/WhiteKneeCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "WhiteKnee",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "white_knee",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/white_knee.json",
+          "src/main/resources/assets/ssc_14/models/item/white_knee.json",
+          "src/main/java/net/mcreator/ssc/item/WhiteKneeItem.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "BeeThighCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bee_thigh_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/BeeThighCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "BeeThigh",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bee_thigh",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/bee_thigh.json",
+          "src/main/resources/assets/ssc_14/items/bee_thigh.json",
+          "src/main/java/net/mcreator/ssc/item/BeeThighItem.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsBlueCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_blue_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/StockingsBlueCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsBlue",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_blue",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/StockingsBlueItem.java",
+          "src/main/resources/assets/ssc_14/models/item/stockings_blue.json",
+          "src/main/resources/assets/ssc_14/items/stockings_blue.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsCyanCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_cyan_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/StockingsCyanCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsCyan",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_cyan",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/stockings_cyan.json",
+          "src/main/java/net/mcreator/ssc/item/StockingsCyanItem.java",
+          "src/main/resources/assets/ssc_14/models/item/stockings_cyan.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsDPinkCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_d_pink_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/StockingsDPinkCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsDPink",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_d_pink",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/stockings_d_pink.json",
+          "src/main/java/net/mcreator/ssc/item/StockingsDPinkItem.java",
+          "src/main/resources/assets/ssc_14/items/stockings_d_pink.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsGreenCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_green_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/StockingsGreenCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsGreen",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_green",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/StockingsGreenItem.java",
+          "src/main/resources/assets/ssc_14/models/item/stockings_green.json",
+          "src/main/resources/assets/ssc_14/items/stockings_green.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsLPinkCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_l_pink_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/StockingsLPinkCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsLPink",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_l_pink",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/StockingsLPinkItem.java",
+          "src/main/resources/assets/ssc_14/models/item/stockings_l_pink.json",
+          "src/main/resources/assets/ssc_14/items/stockings_l_pink.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsOrangeCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_orange_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/StockingsOrangeCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsOrange",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_orange",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/stockings_orange.json",
+          "src/main/java/net/mcreator/ssc/item/StockingsOrangeItem.java",
+          "src/main/resources/assets/ssc_14/items/stockings_orange.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsPurpleCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_purple_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/StockingsPurpleCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsPurple",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_purple",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/stockings_purple.json",
+          "src/main/resources/assets/ssc_14/models/item/stockings_purple.json",
+          "src/main/java/net/mcreator/ssc/item/StockingsPurpleItem.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsYellowCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_yellow_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/StockingsYellowCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "StockingsYellow",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stockings_yellow",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/stockings_yellow.json",
+          "src/main/resources/assets/ssc_14/models/item/stockings_yellow.json",
+          "src/main/java/net/mcreator/ssc/item/StockingsYellowItem.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Socks"
+    },
+    {
+      "name": "CommunicationConsole",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "communication_console",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/communication_console.json",
+          "src/main/java/net/mcreator/ssc/block/entity/CommunicationConsoleBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/communication_console.json",
+          "src/main/java/net/mcreator/ssc/block/CommunicationConsoleBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/communication_console.json",
+          "src/main/resources/assets/ssc_14/items/communication_console.json",
+          "src/main/resources/assets/ssc_14/blockstates/communication_console.json"
+        ]
+      },
+      "path": "~/Blocks/Devices/Consoles/Communication"
+    },
+    {
+      "name": "CommunConsoleGUI",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "commun_console_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/gui/CommunConsoleGUIScreen.java",
+          "src/main/java/net/mcreator/ssc/world/inventory/CommunConsoleGUIMenu.java",
+          "src/main/java/net/mcreator/ssc/network/CommunConsoleGUIButtonMessage.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Consoles/Communication"
+    },
+    {
+      "name": "CommConsREDcode",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "comm_cons_re_dcode",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/CommConsREDcodeProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Consoles/Communication"
+    },
+    {
+      "name": "CommConsGUITextCurrentCode",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "comm_cons_gui_text_current_code",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/CommConsGUITextCurrentCodeProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Consoles/Communication"
+    },
+    {
+      "name": "CommConsBLUEcode",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "comm_cons_blu_ecode",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/CommConsBLUEcodeProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Consoles/Communication"
+    },
+    {
+      "name": "CommConsPURPLEcode",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "comm_cons_purpl_ecode",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/CommConsPURPLEcodeProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Consoles/Communication"
+    },
+    {
+      "name": "CommConsYELLOWcode",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "comm_cons_yello_wcode",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/CommConsYELLOWcodeProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Consoles/Communication"
+    },
+    {
+      "name": "CommConsGREENcode",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "comm_cons_gree_ncode",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/CommConsGREENcodeProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Consoles/Communication"
+    },
+    {
+      "name": "ConsolesOpenMenuSound",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "consoles_open_menu_sound",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ConsolesOpenMenuSoundProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Consoles"
+    },
+    {
+      "name": "Equip_BaseSound_PR_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "equip_base_sound_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Equip_BaseSound_PR_Procedure.java"
+        ]
+      },
+      "path": "~/Items/Clothes"
+    },
+    {
+      "name": "Equip_GlovesSound_PR_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "equip_gloves_sound_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Equip_GlovesSound_PR_Procedure.java"
+        ]
+      },
+      "path": "~/Items/Clothes"
+    },
+    {
+      "name": "EquipHelmetSoundPR",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "equip_helmet_sound_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/EquipHelmetSoundPRProcedure.java"
+        ]
+      },
+      "path": "~/Items/Clothes"
+    },
+    {
+      "name": "TechAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tech_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/tech_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/item/tech_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/blockstates/tech_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_25.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TechAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_22.json",
+          "src/main/java/net/mcreator/ssc/block/TechAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/items/tech_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_airlock_d_1_13.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "CrawlHandler",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "crawl_handler",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/CrawlHandler.java"
+        ]
+      },
+      "path": "~/Technical/Key Bind/Crawl"
+    },
+    {
+      "name": "GasProducerO2",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gas_producer_o_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/gas_producer_o_2.json",
+          "src/main/resources/assets/ssc_14/items/gas_producer_o_2.json",
+          "src/main/resources/assets/ssc_14/models/item/gas_producer_o_2.json",
+          "src/main/resources/assets/ssc_14/blockstates/gas_producer_o_2.json",
+          "src/main/java/net/mcreator/ssc/block/GasProducerO2Block.java",
+          "src/main/resources/assets/ssc_14/models/block/gas_producer_o_2.json"
+        ]
+      },
+      "path": "~/Blocks/Devices/Gas Sistem"
+    },
+    {
+      "name": "GasProducerO2_tick_PR_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "gas_producer_o_2_tick_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/GasProducerO2_tick_PR_Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Gas Sistem"
+    },
+    {
+      "name": "LiquidGetCommand",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "liquid_get_command",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/LiquidGetCommandProcedure.java"
+        ]
+      },
+      "path": "~/Technical/Commands"
+    },
+    {
+      "name": "ReagentColorHelper",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "reagent_color_helper",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/ReagentColorHelper.java"
+        ]
+      },
+      "path": "~/Chemistry System"
+    },
+    {
+      "name": "ModReagents",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "mod_reagents",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/ModReagents.java"
+        ]
+      },
+      "path": "~/Chemistry System"
+    },
+    {
+      "name": "ReagentContainer",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "reagent_container",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/reagent_container.json",
+          "src/main/resources/assets/ssc_14/items/reagent_container.json",
+          "src/main/java/net/mcreator/ssc/item/ReagentContainerItem.java"
+        ]
+      },
+      "path": "~/Chemistry System"
+    },
+    {
+      "name": "ReagentContainerConfig",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "reagent_container_config",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/ReagentContainerConfig.java"
+        ]
+      },
+      "path": "~/Chemistry System"
+    },
+    {
+      "name": "VendingAut1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vending_aut_1",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/VendingAut1Block.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/vending_aut_1.json",
+          "src/main/resources/assets/ssc_14/blockstates/vending_aut_1.json",
+          "src/main/java/net/mcreator/ssc/block/entity/VendingAut1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/items/vending_aut_1.json",
+          "src/main/resources/assets/ssc_14/models/block/vending_aut_1.json",
+          "src/main/resources/assets/ssc_14/models/item/vending_aut_1.json"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending"
+    },
+    {
+      "name": "VendingAut1GUI",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vending_aut_1_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/world/inventory/VendingAut1GUIMenu.java",
+          "src/main/java/net/mcreator/ssc/client/gui/VendingAut1GUIScreen.java",
+          "src/main/java/net/mcreator/ssc/network/VendingAut1GUIButtonMessage.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending"
+    },
+    {
+      "name": "SSC14ChemistryCommand",
+      "type": "command",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "ssc_14_chemistry_command",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/command/SSC14ChemistryCommandCommand.java"
+        ]
+      },
+      "path": "~/Chemistry System"
+    },
+    {
+      "name": "FillReagentPR",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "fill_reagent_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/FillReagentPRProcedure.java"
+        ]
+      },
+      "path": "~/Chemistry System"
+    },
+    {
+      "name": "VendAutGUIButton1",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_aut_gui_button_1",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendAutGUIButton1Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "VendingAut_GENERATE_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vending_aut_generate",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendingAut_GENERATE_Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending"
+    },
+    {
+      "name": "CheeseHonkers",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cheese_honkers",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/cheese_honkers.json",
+          "src/main/java/net/mcreator/ssc/item/CheeseHonkersItem.java",
+          "src/main/resources/assets/ssc_14/models/item/cheese_honkers.json"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "CheeseHonkersTrash",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cheese_honkers_trash",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/CheeseHonkersTrashItem.java",
+          "src/main/resources/assets/ssc_14/items/cheese_honkers_trash.json",
+          "src/main/resources/assets/ssc_14/models/item/cheese_honkers_trash.json"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "Chips",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chips",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/chips.json",
+          "src/main/resources/assets/ssc_14/models/item/chips.json",
+          "src/main/java/net/mcreator/ssc/item/ChipsItem.java"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "ChipsTrash",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chips_trash",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/chips_trash.json",
+          "src/main/java/net/mcreator/ssc/item/ChipsTrashItem.java",
+          "src/main/resources/assets/ssc_14/models/item/chips_trash.json"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "Boritos",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "boritos",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/boritos.json",
+          "src/main/resources/assets/ssc_14/items/boritos.json",
+          "src/main/java/net/mcreator/ssc/item/BoritosItem.java"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "BoritosTrash",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "boritos_trash",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/boritos_trash.json",
+          "src/main/resources/assets/ssc_14/items/boritos_trash.json",
+          "src/main/java/net/mcreator/ssc/item/BoritosTrashItem.java"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "Popcorn",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "popcorn",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/popcorn.json",
+          "src/main/java/net/mcreator/ssc/item/PopcornItem.java",
+          "src/main/resources/assets/ssc_14/models/item/popcorn.json"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "PopcornTrash",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "popcorn_trash",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/popcorn_trash.json",
+          "src/main/resources/assets/ssc_14/models/item/popcorn_trash.json",
+          "src/main/java/net/mcreator/ssc/item/PopcornTrashItem.java"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "VendingAut1_CREATIVE_DESTROY_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vending_aut_1_creative_destroy",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendingAut1_CREATIVE_DESTROY_Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending"
+    },
+    {
+      "name": "VendGUIindicator1",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_gu_iindicator_1",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendGUIindicator1Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "VendingKOSTIL",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vending_kostil",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/vending_kostil.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/vending_kostil.json",
+          "src/main/resources/assets/ssc_14/models/block/vending_kostil.json",
+          "src/main/java/net/mcreator/ssc/block/VendingKOSTILBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending"
+    },
+    {
+      "name": "VendingKOSTIL_CLICK_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vending_kostil_click",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendingKOSTIL_CLICK_Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending"
+    },
+    {
+      "name": "VendingKOSTIL_UPDATE_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vending_kostil_update",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendingKOSTIL_UPDATE_Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending"
+    },
+    {
+      "name": "VendingAut_UPDATE_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vending_aut_update",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendingAut_UPDATE_Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending"
+    },
+    {
+      "name": "VendAutGUIButton2",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_aut_gui_button_2",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendAutGUIButton2Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "VendGUIindicator2",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_gu_iindicator_2",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendGUIindicator2Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "VendAutGUIButton3",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_aut_gui_button_3",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendAutGUIButton3Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "VendGUIindicator3",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_gu_iindicator_3",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendGUIindicator3Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "MouseBrown",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mouse_brown",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/MouseBrownRenderer.java",
+          "src/main/java/net/mcreator/ssc/entity/MouseBrownEntity.java",
+          "src/main/resources/assets/ssc_14/items/mouse_brown_spawn_egg.json",
+          "src/main/resources/assets/ssc_14/models/item/mouse_brown_spawn_egg.json"
+        ]
+      },
+      "path": "~/Mobs/Mouses"
+    },
+    {
+      "name": "SSC14mobs",
+      "type": "tab",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ssc_14mobs",
+      "metadata": {
+        "files": []
+      },
+      "path": "~/Mobs"
+    },
+    {
+      "name": "MouseGray",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mouse_gray",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/MouseGrayRenderer.java",
+          "src/main/resources/assets/ssc_14/items/mouse_gray_spawn_egg.json",
+          "src/main/resources/assets/ssc_14/models/item/mouse_gray_spawn_egg.json",
+          "src/main/java/net/mcreator/ssc/entity/MouseGrayEntity.java"
+        ]
+      },
+      "path": "~/Mobs/Mouses"
+    },
+    {
+      "name": "MouseWhite",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mouse_white",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/MouseWhiteRenderer.java",
+          "src/main/java/net/mcreator/ssc/entity/MouseWhiteEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/mouse_white_spawn_egg.json",
+          "src/main/resources/assets/ssc_14/items/mouse_white_spawn_egg.json"
+        ]
+      },
+      "path": "~/Mobs/Mouses"
+    },
+    {
+      "name": "VendAutGUIButton4",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_aut_gui_button_4",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendAutGUIButton4Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "VendGUIindicator4",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_gu_iindicator_4",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendGUIindicator4Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "VendAutGUIButton5",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_aut_gui_button_5",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendAutGUIButton5Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "VendGUIindicator5",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_gu_iindicator_5",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendGUIindicator5Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "VendAutGUIButton6",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_aut_gui_button_6",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendAutGUIButton6Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "VendGUIindicator6",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vend_gu_iindicator_6",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/VendGUIindicator6Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Vending/Buttons_PR"
+    },
+    {
+      "name": "RCDGUIwindows",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rcdgu_iwindows",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/network/RCDGUIwindowsButtonMessage.java",
+          "src/main/java/net/mcreator/ssc/client/gui/RCDGUIwindowsScreen.java",
+          "src/main/java/net/mcreator/ssc/world/inventory/RCDGUIwindowsMenu.java"
+        ]
+      },
+      "path": "~/Items/Instruments/RCD/RCD GUI"
+    },
+    {
+      "name": "RCDGUIgrilleButton",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rcdgu_igrille_button",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/RCDGUIgrilleButtonProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/RCD/RCD GUI"
+    },
+    {
+      "name": "RCDGUIwindowButton",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rcdgu_iwindow_button",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/RCDGUIwindowButtonProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/RCD/RCD GUI"
+    },
+    {
+      "name": "RCDGUIdirwindowButton",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rcdgu_idirwindow_button",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/RCDGUIdirwindowButtonProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/RCD/RCD GUI"
+    },
+    {
+      "name": "RCDGUIdirArmWindowButton",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rcdgu_idir_arm_window_button",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/RCDGUIdirArmWindowButtonProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/RCD/RCD GUI"
+    },
+    {
+      "name": "RCDGUIarmWindowButton",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rcdgu_iarm_window_button",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/RCDGUIarmWindowButtonProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/RCD/RCD GUI"
+    },
+    {
+      "name": "RCDGUIwindowsModeButton",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rcdgu_iwindows_mode_button",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/RCDGUIwindowsModeButtonProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/RCD/RCD GUI"
+    },
+    {
+      "name": "DirectedArmoredWindow",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "directed_armored_window",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/DirectedArmoredWindowBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/directed_armored_window.json",
+          "src/main/resources/assets/ssc_14/models/block/directed_armored_window.json",
+          "src/main/resources/assets/ssc_14/models/item/directed_armored_window.json",
+          "src/main/resources/assets/ssc_14/blockstates/directed_armored_window.json",
+          "src/main/resources/assets/ssc_14/items/directed_armored_window.json"
+        ]
+      },
+      "path": "~/Blocks/Walls"
+    },
+    {
+      "name": "Bartender",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bartender",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/BartenderRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "BartenderJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bartender_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/bartender_jumpsuit.json",
+          "src/main/java/net/mcreator/ssc/item/BartenderJumpsuitItem.java",
+          "src/main/resources/assets/ssc_14/models/item/bartender_jumpsuit.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "Brigmedic",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "brigmedic",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/BrigmedicRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "BrigmedicJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "brigmedic_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/brigmedic_jumpsuit.json",
+          "src/main/resources/assets/ssc_14/items/brigmedic_jumpsuit.json",
+          "src/main/java/net/mcreator/ssc/item/BrigmedicJumpsuitItem.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "Capformal",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "capformal",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/CapformalRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CapformalJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "capformal_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/capformal_jumpsuit.json",
+          "src/main/resources/assets/ssc_14/items/capformal_jumpsuit.json",
+          "src/main/java/net/mcreator/ssc/item/CapformalJumpsuitItem.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "Casual",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "casual",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/CasualRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CasualJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "casual_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/casual_jumpsuit.json",
+          "src/main/java/net/mcreator/ssc/item/CasualJumpsuitItem.java",
+          "src/main/resources/assets/ssc_14/items/casual_jumpsuit.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CEturtle",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "c_eturtle",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/CEturtleRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CEturtleJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "c_eturtle_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/CEturtleJumpsuitItem.java",
+          "src/main/resources/assets/ssc_14/models/item/c_eturtle_jumpsuit.json",
+          "src/main/resources/assets/ssc_14/items/c_eturtle_jumpsuit.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CentcomAgent",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "centcom_agent",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/CentcomAgentRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CentcomAgentJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "centcom_agent_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/centcom_agent_jumpsuit.json",
+          "src/main/java/net/mcreator/ssc/item/CentcomAgentJumpsuitItem.java",
+          "src/main/resources/assets/ssc_14/models/item/centcom_agent_jumpsuit.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CentcomOfficer",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "centcom_officer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/CentcomOfficerRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CentcomOfficerJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "centcom_officer_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/centcom_officer_jumpsuit.json",
+          "src/main/resources/assets/ssc_14/items/centcom_officer_jumpsuit.json",
+          "src/main/java/net/mcreator/ssc/item/CentcomOfficerJumpsuitItem.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CentcomOfficial",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "centcom_official",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/CentcomOfficialRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CentcomOfficialJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "centcom_official_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/centcom_official_jumpsuit.json",
+          "src/main/resources/assets/ssc_14/items/centcom_official_jumpsuit.json",
+          "src/main/java/net/mcreator/ssc/item/CentcomOfficialJumpsuitItem.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "Chaplain",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chaplain",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/ChaplainRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "ChaplainJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chaplain_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/chaplain_jumpsuit.json",
+          "src/main/java/net/mcreator/ssc/item/ChaplainJumpsuitItem.java",
+          "src/main/resources/assets/ssc_14/items/chaplain_jumpsuit.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "Chef",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chef",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/ChefRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "ChefJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chef_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/chef_jumpsuit.json",
+          "src/main/resources/assets/ssc_14/items/chef_jumpsuit.json",
+          "src/main/java/net/mcreator/ssc/item/ChefJumpsuitItem.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CMOturtle",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cm_oturtle",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/CMOturtleRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "CMOturtleJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cm_oturtle_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/cm_oturtle_jumpsuit.json",
+          "src/main/resources/assets/ssc_14/models/item/cm_oturtle_jumpsuit.json",
+          "src/main/java/net/mcreator/ssc/item/CMOturtleJumpsuitItem.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "HoSparade",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ho_sparade",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HoSparadeRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "HoSparadeJumpsuit",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ho_sparade_jumpsuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/ho_sparade_jumpsuit.json",
+          "src/main/java/net/mcreator/ssc/item/HoSparadeJumpsuitItem.java",
+          "src/main/resources/assets/ssc_14/models/item/ho_sparade_jumpsuit.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Jumpsuit/JumpSUITs"
+    },
+    {
+      "name": "DEBUGACTIVATOR",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "debugactivator",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/debugactivator.json",
+          "src/main/java/net/mcreator/ssc/item/DEBUGACTIVATORItem.java",
+          "src/main/resources/assets/ssc_14/models/item/debugactivator.json"
+        ]
+      },
+      "path": "~/Blocks/Devices/Shutters"
+    },
+    {
+      "name": "Shutters",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "shutters",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/shutters.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_5.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_8.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_2.json",
+          "src/main/resources/assets/ssc_14/items/shutters.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_7.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_9.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_1.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_4.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_14.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_11.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/shutters.json",
+          "src/main/resources/assets/ssc_14/blockstates/shutters.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_0.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_13.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_10.json",
+          "src/main/java/net/mcreator/ssc/block/ShuttersBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/shutters_6.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ShuttersBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/shutters.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_3.json",
+          "src/main/resources/assets/ssc_14/models/block/shutters_12.json"
+        ]
+      },
+      "path": "~/Blocks/Devices/Shutters"
+    },
+    {
+      "name": "Windows_KnockKnock_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "windows_knock_knock",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Windows_KnockKnock_Procedure.java"
+        ],
+        "return_type": "actionresulttype"
+      },
+      "path": "~/Blocks/Walls"
+    },
+    {
+      "name": "Shutters_DEBUD_AKTIVATOR_PR_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shutters_debud_aktivator_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Shutters_DEBUD_AKTIVATOR_PR_Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Shutters"
+    },
+    {
+      "name": "Shutters_UPDATE_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shutters_update",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Shutters_UPDATE_Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Shutters"
+    },
+    {
+      "name": "ShuttersOpeningPR",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shutters_opening_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ShuttersOpeningPRProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Shutters"
+    },
+    {
+      "name": "ShuttersClosingPR",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shutters_closing_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ShuttersClosingPRProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Shutters"
+    },
+    {
+      "name": "Button",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "button",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/button.json",
+          "src/main/resources/assets/ssc_14/items/button.json",
+          "src/main/resources/assets/ssc_14/models/item/button.json",
+          "src/main/resources/assets/ssc_14/models/block/button.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/button.json",
+          "src/main/resources/assets/ssc_14/models/block/button_0.json",
+          "src/main/java/net/mcreator/ssc/block/ButtonBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/ButtonBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Buttons"
+    },
+    {
+      "name": "Button_CLICK_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "button_click",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Button_CLICK_Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Buttons"
+    },
+    {
+      "name": "NetworkConfigurator",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "network_configurator",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/NetworkConfiguratorItem.java",
+          "src/main/resources/assets/ssc_14/items/network_configurator.json",
+          "src/main/resources/assets/ssc_14/models/item/network_configurator.json"
+        ]
+      },
+      "path": "~/Items/Instruments/NetConfig"
+    },
+    {
+      "name": "NetworkConfigurator_USE_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "network_configurator_use",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/NetworkConfigurator_USE_Procedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/NetConfig"
+    },
+    {
+      "name": "NetConfigGUI",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "net_config_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/gui/NetConfigGUIScreen.java",
+          "src/main/java/net/mcreator/ssc/network/NetConfigGUIButtonMessage.java",
+          "src/main/java/net/mcreator/ssc/world/inventory/NetConfigGUIMenu.java"
+        ]
+      },
+      "path": "~/Items/Instruments/NetConfig"
+    },
+    {
+      "name": "NetworkConfigurator_DROP_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "network_configurator_drop",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/NetworkConfigurator_DROP_Procedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/NetConfig"
+    },
+    {
+      "name": "NetConfigGUI_TIC_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "net_config_gui_tic",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/NetConfigGUI_TIC_Procedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/NetConfig"
+    },
+    {
+      "name": "NetConfigGUI_CLOSE_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "net_config_gui_close",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/NetConfigGUI_CLOSE_Procedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/NetConfig"
+    },
+    {
+      "name": "INetworkTrigger",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "i_network_trigger",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/INetworkTrigger.java"
+        ]
+      },
+      "path": "~/Items/Instruments/NetConfig"
+    },
+    {
+      "name": "INetworkAction",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "i_network_action",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/INetworkAction.java"
+        ]
+      },
+      "path": "~/Items/Instruments/NetConfig"
+    },
+    {
+      "name": "NetworkSavedData",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "network_saved_data",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/NetworkSavedData.java"
+        ]
+      },
+      "path": "~/Items/Instruments/NetConfig"
+    },
+    {
+      "name": "NetworkManager",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "network_manager",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/NetworkManager.java"
+        ]
+      },
+      "path": "~/Items/Instruments/NetConfig"
+    },
+    {
+      "name": "NetConfigGUISyncMessage",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "net_config_gui_sync_message",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/NetConfigGUISyncMessage.java"
+        ]
+      },
+      "path": "~/Items/Instruments/NetConfig"
     }
   ],
   "variable_elements": [
@@ -17104,6 +19745,158 @@
       ],
       "category": "player",
       "subtitle": ""
+    },
+    {
+      "name": "announce_sound",
+      "files": [
+        "resources_audio_announcements_announce"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "attention",
+      "files": [
+        "resources_audio_announcements_attention"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "ion_storm",
+      "files": [
+        "resources_audio__sunrise_announcements_ionstorm"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "red_code",
+      "files": [
+        "resources_audio_misc_redalert"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "blue_code",
+      "files": [
+        "resources_audio_misc_bluealert"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "delta_code",
+      "files": [
+        "resources_audio_misc_delta"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "epsilon_code",
+      "files": [
+        "resources_audio_misc_epsilon"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "gamma_code",
+      "files": [
+        "resources_audio_misc_gamma"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "green_code",
+      "files": [
+        "resources_audio_misc_notice2"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "equip_base_equip",
+      "files": [
+        "equip_base_equip"
+      ],
+      "category": "player",
+      "subtitle": ""
+    },
+    {
+      "name": "equip_helmets",
+      "files": [
+        "equip_helmets"
+      ],
+      "category": "player",
+      "subtitle": ""
+    },
+    {
+      "name": "equip_gloves",
+      "files": [
+        "equip_gloves"
+      ],
+      "category": "player",
+      "subtitle": ""
+    },
+    {
+      "name": "equip_backpacks",
+      "files": [
+        "equip_backpacks"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "machines_vending_eject",
+      "files": [
+        "machines_vending_eject"
+      ],
+      "category": "block",
+      "subtitle": ""
+    },
+    {
+      "name": "machines_vending_jingle",
+      "files": [
+        "machines_vending_jingle"
+      ],
+      "category": "block",
+      "subtitle": ""
+    },
+    {
+      "name": "mouse_squeak",
+      "files": [
+        "mouse_squeak"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "machines_shutter",
+      "files": [
+        "machines_shutter"
+      ],
+      "category": "block",
+      "subtitle": ""
+    },
+    {
+      "name": "effects_glass_knock",
+      "files": [
+        "effects_glass_knock"
+      ],
+      "category": "block",
+      "subtitle": ""
+    },
+    {
+      "name": "machines_button",
+      "files": [
+        "machines_button"
+      ],
+      "category": "block",
+      "subtitle": ""
     }
   ],
   "tag_elements": {
@@ -17216,7 +20009,8 @@
       "CUSTOM:IDCardSciAssistent"
     ],
     "BLOCKS:ssc14:airlocks": [
-      "CUSTOM:BaseAirlockD1"
+      "CUSTOM:BaseAirlockD1",
+      "CUSTOM:TechAirlockD1"
     ],
     "BLOCKS:ssc14:tiles": [
       "CUSTOM:TitleSteel",
@@ -17433,7 +20227,9 @@
       "CUSTOM:TitleWhitePavement",
       "CUSTOM:TitleWhitePavementVertical",
       "CUSTOM:TitleWhitePlastic",
-      "CUSTOM:NuclearWarhead"
+      "CUSTOM:NuclearWarhead",
+      "CUSTOM:TechAirlockD1",
+      "CUSTOM:TitleSteelPavementVertical"
     ],
     "BLOCKS:ssc14:non-hermetic": [
       "CUSTOM:RodFloor",
@@ -17483,7 +20279,13 @@
       "CUSTOM:UpSteelStaircase",
       "CUSTOM:UpWhiteStaircase",
       "CUSTOM:UpDarkStaircase",
-      "CUSTOM:DirectedBaseWindow"
+      "CUSTOM:DirectedBaseWindow",
+      "CUSTOM:ExtinguisherCabinet",
+      "CUSTOM:CommunicationServers",
+      "CUSTOM:WoodTable",
+      "CUSTOM:GravGenPlugBlock",
+      "CUSTOM:CommunicationConsole",
+      "CUSTOM:GasProducerO2"
     ],
     "ENTITIES:decals:ssc14": [
       "CUSTOM:Decal1"
@@ -17553,6 +20355,21 @@
       "CUSTOM:EncryptionKeySecurity",
       "CUSTOM:EncryptionKeyService",
       "CUSTOM:EncryptionKeyCargo"
+    ],
+    "ITEMS:ssc14:noautoequip": [
+      "CUSTOM:PDApassanger"
+    ],
+    "BLOCKS:ssc14:vendings": [
+      "CUSTOM:VendingAut1"
+    ],
+    "BLOCKS:ssc14:connectable": [
+      "CUSTOM:BaseAirlockD1",
+      "CUSTOM:Lamp",
+      "CUSTOM:TechLamp",
+      "CUSTOM:C4",
+      "CUSTOM:TechAirlockD1",
+      "CUSTOM:Shutters",
+      "CUSTOM:Button"
     ]
   },
   "tab_element_order": {
@@ -17567,7 +20384,8 @@
       "DEBUGTechLamp",
       "Kostilniblok",
       "DEBUG13",
-      "NuclearWarhead"
+      "NuclearWarhead",
+      "DEBUGACTIVATOR"
     ],
     "CUSTOM:SSC14Coating": [
       "RodFloor",
@@ -17628,6 +20446,7 @@
       "BaseWindow",
       "ArmoredWindow",
       "DirectedBaseWindow",
+      "DirectedArmoredWindow",
       "AsteroidStoneBase",
       "AsteroidStoneIron",
       "AsteroidStoneQuartz",
@@ -17640,6 +20459,7 @@
     ],
     "CUSTOM:SSC14Objects": [
       "BaseAirlockD1",
+      "TechAirlockD1",
       "WallCarcase",
       "PlasteelWallCarcase",
       "Grille",
@@ -17649,10 +20469,14 @@
       "SMES",
       "Lamp",
       "TechLamp",
+      "Shutters",
+      "Button",
       "MachineFrame",
       "MachineFrame2",
       "Computer",
       "ConsoleOfID",
+      "CommunicationConsole",
+      "GasProducerO2",
       "CommunicationServers",
       "PortableSheater",
       "ClosetSecure",
@@ -17664,6 +20488,7 @@
       "OficeBlackChair",
       "OficeWhiteChair",
       "BarChair",
+      "VendingAut1",
       "ExtinguisherCabinet",
       "FencePoint",
       "FenceLine",
@@ -17690,6 +20515,7 @@
       "FireAxe",
       "GasAnalyser",
       "AccessConfig",
+      "NetworkConfigurator",
       "RSU",
       "RCDcartridge",
       "Pick",
@@ -17726,15 +20552,27 @@
       "MatterBin",
       "MicroManipulator",
       "LowBatterie",
+      "ReagentContainer",
       "LedLightTube",
       "LightBulb",
       "SubstationBoard",
       "SMESBoard",
       "APCBoard",
       "EncryptionKeyPassanger",
+      "EncryptionKeyCommand",
+      "EncryptionKeyEngeneer",
+      "EncryptionKeyMedical",
+      "EncryptionKeyRND",
+      "EncryptionKeySecurity",
+      "EncryptionKeyService",
+      "EncryptionKeyCargo",
       "Pen",
       "EnergyBar",
       "EnergyBar2",
+      "CheeseHonkers",
+      "Chips",
+      "Boritos",
+      "Popcorn",
       "IDCardPassanger",
       "IDCardCapitan",
       "IDCardPNT",
@@ -17785,12 +20623,13 @@
       "ArmGlassShard",
       "LedLightTubeBroken",
       "LightBulbBroken",
-      "EnergyBarTrash",
       "HelmetCosmonaut",
       "HelmetSecurity",
       "GlassGlasses",
       "GlassDark",
       "GlassSecurity",
+      "GasMask",
+      "MaskGasSecurity",
       "HeadsetBase",
       "CaptainJumpsuit",
       "HoSJumpsuit",
@@ -17809,6 +20648,18 @@
       "HoPJumpsuit",
       "BotanistJumpsuit",
       "PassangerJumpsuit",
+      "BartenderJumpsuit",
+      "BrigmedicJumpsuit",
+      "CapformalJumpsuit",
+      "CasualJumpsuit",
+      "CEturtleJumpsuit",
+      "CentcomAgentJumpsuit",
+      "CentcomOfficerJumpsuit",
+      "CentcomOfficialJumpsuit",
+      "ChaplainJumpsuit",
+      "ChefJumpsuit",
+      "CMOturtleJumpsuit",
+      "HoSparadeJumpsuit",
       "CoatAtmos",
       "CoatSecurity",
       "ArmorSecurity",
@@ -17837,21 +20688,35 @@
       "PurpleScarf",
       "IsolatedGloves",
       "BlackGloves",
+      "BeltInstrumental",
       "BeltSecurity",
+      "BeltSecurityWebbing",
       "PDApassanger",
       "BlackSolesItem",
       "WorkBoots",
       "CombatBootsItem",
       "MagneticBootsItem",
       "MaleBoxers",
-      "GasMask",
-      "EncryptionKeyCommand",
-      "EncryptionKeyEngeneer",
-      "EncryptionKeyMedical",
-      "EncryptionKeyRND",
-      "EncryptionKeySecurity",
-      "EncryptionKeyService",
-      "EncryptionKeyCargo"
+      "WhiteKnee",
+      "BeeThigh",
+      "StockingsBlue",
+      "StockingsCyan",
+      "StockingsDPink",
+      "StockingsGreen",
+      "StockingsLPink",
+      "StockingsOrange",
+      "StockingsPurple",
+      "StockingsYellow",
+      "CheeseHonkersTrash",
+      "ChipsTrash",
+      "BoritosTrash",
+      "PopcornTrash",
+      "EnergyBarTrash"
+    ],
+    "CUSTOM:SSC14mobs": [
+      "MouseBrown",
+      "MouseGray",
+      "MouseWhite"
     ],
     "CUSTOM:Decals": [
       "DECAL1deletion",
@@ -18477,11 +21342,133 @@
       "item.ssc_14.glass_dark": "Dark Glasses",
       "item.ssc_14.black_gloves": "Black Gloves",
       "item.ssc_14.helmet_cosmonaut": "Cosmonaut Helmet",
-      "item.ssc_14.cone": "Cone"
+      "item.ssc_14.cone": "Cone",
+      "item.ssc_14.belt_security_webbing": "Belt Security Webbing",
+      "item.ssc_14.belt_instrumental": "Instrumental Belt",
+      "item.ssc_14.mask_gas_security": "Security Gas Mask",
+      "curios.identifier.socks": "Socks",
+      "item.ssc_14.white_knee": "Whit Knee",
+      "item.ssc_14.bee_thigh": "Bee Thigh",
+      "item.ssc_14.stockings_blue": "Stockings Blue",
+      "item.ssc_14.stockings_cyan": "Stockings Cyan",
+      "item.ssc_14.stockings_d_pink": "Stockings Dark-Pink",
+      "item.ssc_14.stockings_green": "Stockings Green",
+      "item.ssc_14.stockings_l_pink": "Stockings Light-Pink",
+      "item.ssc_14.stockings_orange": "Stockings Orange",
+      "item.ssc_14.stockings_purple": "Stockings Purple",
+      "item.ssc_14.stockings_yellow": "Stockings Yellow",
+      "item.ssc_14.communication_console": "Communication console",
+      "gui.ssc_14.commun_console_gui.label_otpravka_soobshchieniia": "Отправка сообщения",
+      "gui.ssc_14.commun_console_gui.label_kod_ughrozy": "Код угрозы",
+      "gui.ssc_14.commun_console_gui.label_krasnyi": "Красный",
+      "gui.ssc_14.commun_console_gui.label_sinii": "Синий",
+      "gui.ssc_14.commun_console_gui.label_fiolietovyi": "Фиолетовый",
+      "gui.ssc_14.commun_console_gui.label_zielionyi": "Зелёный",
+      "gui.ssc_14.commun_console_gui.label_zhioltyi": "Жёлтый",
+      "gui.ssc_14.commun_console_gui.label_na_stantsii_vybieritie": "на станции выберите",
+      "gui.ssc_14.commun_console_gui.label_ughrozy": "угрозы. ",
+      "gui.ssc_14.commun_console_gui.label_sootvietstvuiushchii_kod": "соответствующий код",
+      "gui.ssc_14.commun_console_gui.label_pri_nalichii_ughroz": "При наличии угроз",
+      "gui.ssc_14.commun_console_gui.label_vvieditie_obiavlieniie": "Введите объявление: ",
+      "subtitles.announce_sound": "",
+      "subtitles.attention": "",
+      "subtitles.ion_storm": "",
+      "subtitles.red_code": "",
+      "subtitles.blue_code": "",
+      "subtitles.delta_code": "",
+      "subtitles.epsilon_code": "",
+      "subtitles.gamma_code": "",
+      "subtitles.green_code": "",
+      "subtitles.equip_base_equip": "",
+      "subtitles.equip_helmets": "",
+      "subtitles.equip_gloves": "",
+      "subtitles.equip_backpacks": "",
+      "item.ssc_14.tech_airlock_d_1": "Tech Airlock",
+      "item.ssc_14.gas_producer_o_2": "Gas Producer (O₂ | 100 mole/s)",
+      "item.ssc_14.reagent_container": "Reagent Container",
+      "item.ssc_14.vending_aut_1": "Vending Automate (Snaks blue)",
+      "reagent.ssc_14.tea": "",
+      "reagent.ssc_14.ice": "",
+      "reagent.ssc_14.ice_tea": "Ice tea",
+      "reagent.ssc_14.potassium": "Potassium",
+      "reagent.ssc_14.soda": "Soda",
+      "reagent.ssc_14.water": "",
+      "reagent.ssc_14.beer": "Beer",
+      "reagent.ssc_14.vodka": "Vodka",
+      "reagent.ssc_14.wine": "Wine",
+      "reagent.ssc_14.whiskey": "Whiskey",
+      "reagent.ssc_14.reagents": "Contains reagents:",
+      "tooltip.ssc_14.container.capacity": "Volume: %s / %s mb",
+      "subtitles.vending_eject": "",
+      "subtitles.machines_vending_eject": "",
+      "subtitles.machines_vending_jingle": "",
+      "item.ssc_14.cheese_honkers": "Cheese Honkers",
+      "item.ssc_14.cheese_honkers_trash": "Trash",
+      "item.ssc_14.chips": "Chips",
+      "item.ssc_14.chips_trash": "Trash",
+      "item.ssc_14.boritos": "Boritos",
+      "item.ssc_14.boritos_trash": "Trash",
+      "item.ssc_14.popcorn": "Popcorn",
+      "item.ssc_14.popcorn_trash": "Trash",
+      "item.ssc_14.vending_kostil": "Vending",
+      "item.ssc_14.mouse_brown_spawn_egg": "Mouse Brown Spawn Egg",
+      "entity.ssc_14.mouse_brown": "Mouse Brown",
+      "subtitles.mouse_squeak": "",
+      "item_group.ssc_14.ssc_14mobs": "SSC14: Mobs",
+      "entity.ssc_14.mouse_gray": "Mouse Gray",
+      "item.ssc_14.mouse_gray_spawn_egg": "Mouse Gray Spawn Egg",
+      "entity.ssc_14.mouse_white": "Mouse White",
+      "item.ssc_14.mouse_white_spawn_egg": "Mouse White Spawn Egg",
+      "item.ssc_14.directed_armored_window": "Directed Armored Window",
+      "item.ssc_14.bartender_jumpsuit": "Bartender jumpsuit",
+      "item.ssc_14.brigmedic_jumpsuit": "Brigmedic jumpsuit",
+      "item.ssc_14.capformal_jumpsuit": "Capformal jumpsuit",
+      "item.ssc_14.casual_jumpsuit": "Casual jumpsuit",
+      "item.ssc_14.c_eturtle_jumpsuit": "CE turtle jumpsuit",
+      "item.ssc_14.centcom_agent_jumpsuit": "CC agent jumpsuit",
+      "item.ssc_14.centcom_officer_jumpsuit": "Centcom Officer jumpsuit",
+      "item.ssc_14.centcom_official_jumpsuit": "Centcom Official jumpsuit",
+      "item.ssc_14.chaplain_jumpsuit": "Chaplain jumpsuit",
+      "item.ssc_14.chef_jumpsuit": "Chef jumpsuit",
+      "item.ssc_14.cm_oturtle_jumpsuit": "CMO turtle jumpsuit",
+      "item.ssc_14.ho_sparade_jumpsuit": "HoS parade jumpsuit",
+      "item.ssc_14.debugactivator": "DEBUG ACTIVATOR",
+      "item.ssc_14.shutters": "Shutters",
+      "subtitles.machines_shutter": "",
+      "subtitles.effects_glass_knock": "",
+      "item.ssc_14.button": "Button",
+      "subtitles.machines_button": "",
+      "item.ssc_14.network_configurator": "Network Configurator",
+      "reagent.ssc_14.cream": "",
+      "reagent.ssc_14.cafe_latte": "",
+      "reagent.ssc_14.green_tea": "",
+      "reagent.ssc_14.grenadine": "",
+      "reagent.ssc_14.iced_coffee": "",
+      "reagent.ssc_14.iced_green_tea": "",
+      "reagent.ssc_14.iced_tea": "",
+      "reagent.ssc_14.lemonade": "",
+      "reagent.ssc_14.milk": "",
+      "reagent.ssc_14.oat_milk": "",
+      "reagent.ssc_14.soy_milk": "",
+      "reagent.ssc_14.spoiled_milk": "",
+      "reagent.ssc_14.nuka_cola": "",
+      "reagent.ssc_14.soda_water": "",
+      "reagent.ssc_14.soy_latte": "",
+      "reagent.ssc_14.tonic_water": "",
+      "reagent.ssc_14.cola": "",
+      "reagent.ssc_14.changeling_sting": "",
+      "reagent.ssc_14.dr_gibb": "",
+      "reagent.ssc_14.energy_drink": "",
+      "reagent.ssc_14.grape_soda": "",
+      "reagent.ssc_14.lemon_lime": "",
+      "reagent.ssc_14.pwr_game": "",
+      "reagent.ssc_14.space_mountain_wind": "",
+      "reagent.ssc_14.space_up": "",
+      "reagent.ssc_14.starkist": "",
+      "reagent.ssc_14.fourteen_loko": ""
     },
     "ru_ru": {
       "biome.ssc_14.spaceb": "Космос",
-      "subtitles.ssc14_sounds": "",
       "item.ssc_14.rod_floor": "Внешний каркас",
       "item.ssc_14.rood": "Стержень",
       "item.ssc_14.sheathing": "Обшивка",
@@ -18490,47 +21477,25 @@
       "item.ssc_14.low_voltage_cable": "Низковольтный кабель",
       "item.ssc_14.medium_voltage_cable": "Средневольтный кабель",
       "item.ssc_14.high_voltage_cable": "Высоковольтный кабель",
-      "subtitles.title_on": "",
-      "subtitles.title_off": "",
       "item.ssc_14.title_steel": "Стальная плитка",
       "item.ssc_14.steel_wall": "Стальная стена",
       "item.ssc_14.wall_carcase": "Каркас стены",
-      "subtitles.wall_destroy": "",
-      "subtitles.device_destroy": "",
-      "subtitles.walldevice_destroy": "",
       "attribute.ssc_14.progress_bar_atrb": "Progress Bar",
       "attribute.ssc_14.xy_zplayer": "XYZ player",
       "item.ssc_14.welding": "Сварочный аппарат",
       "item.ssc_14.active_welder": "Сварочный аппарат",
-      "subtitles.welder_use": "",
-      "subtitles.welder_off": "",
-      "subtitles.welder_refueling": "",
-      "subtitles.welder_on": "",
       "item.ssc_14.nippers": "Кусачки",
-      "subtitles.nippers_use": "",
       "item.ssc_14.fire_axe": "Пожарный топор",
       "item.ssc_14.uper_sheathing": "Потолочная обшивка",
       "item.ssc_14.rod_up_floor": "Потолочный внешний каркас",
-      "subtitles.spanner_use": "",
-      "subtitles.screwdriver": "",
       "item.ssc_14.screwdriver": "Отвёртка",
       "item.ssc_14.spanner": "Гаечный ключ",
       "key.ssc_14.dc_mopen": "Открыть меню создания",
       "item.ssc_14.base_airlock_d_1": "Шлюз (Стандарт)",
-      "subtitles.airlock_open": "",
-      "subtitles.airlock_close": "",
-      "subtitles.airlock_no_access": "",
       "item.ssc_14.up_title": "Белая потолочная плитка",
       "entity.ssc_14.wall_carcase_entit": "Wall Carcase Ent",
       "item.ssc_14.wall_carcase_entit_spawn_egg": "Wall Carcase Ent Spawn Egg",
       "item.ssc_14.id_card_passanger": "ID карта (Пассажир)",
-      "subtitles.console_use_1": "",
-      "subtitles.console_use_2": "",
-      "subtitles.console_use_3": "",
-      "subtitles.lock_close": "",
-      "subtitles.lock_open": "",
-      "subtitles.locker_close": "",
-      "subtitles.locker_open": "",
       "item.ssc_14.console_of_id": "Консоль ID-карт",
       "item.ssc_14.id_console_entity_spawn_egg": "Wall Carcase Ent Spawn Egg",
       "entity.ssc_14.id_console_entity": "Wall Carcase Ent",
@@ -18539,48 +21504,15 @@
       "attribute.ssc_14.ent_pull": "Ent Pull",
       "item.ssc_14.gas_analyser": "Газоанализатор",
       "attribute.ssc_14.gas_an_gu_iatrib": "Gas An GU Iatrib",
-      "gui.ssc_14.gas_analyser_gui.label_kislorod": "Кислород:  ",
-      "gui.ssc_14.gas_analyser_gui.label_kpa": "кПа:  ",
-      "gui.ssc_14.gas_analyser_gui.label_empty": "%:  ",
+      "gui.ssc_14.gas_analyser_gui.label_kislorod": "Кислород:",
+      "gui.ssc_14.gas_analyser_gui.label_kpa": "кПа:",
+      "gui.ssc_14.gas_analyser_gui.label_empty": "%:",
       "item.ssc_14.base_window": "Окно",
       "item.ssc_14.glass_shard": "Осколок стекла",
       "item.ssc_14.glass": "Стекло",
       "item.ssc_14.access_config": "Конфигуратор доступов",
-      "gui.ssc_14.i_dcode.HoS": "",
-      "gui.ssc_14.i_dcode.gun_room": "",
-      "gui.ssc_14.i_dcode.Brig": "",
-      "gui.ssc_14.i_dcode.Security": "",
-      "gui.ssc_14.i_dcode.Detective": "",
-      "gui.ssc_14.i_dcode.Blue_Sh": "",
-      "gui.ssc_14.i_dcode.CE": "",
-      "gui.ssc_14.i_dcode.CMO": "",
-      "gui.ssc_14.i_dcode.RD": "",
-      "gui.ssc_14.i_dcode.PNT": "",
-      "gui.ssc_14.i_dcode.HoP": "",
-      "gui.ssc_14.i_dcode.Ingeneer": "",
-      "gui.ssc_14.i_dcode.Qm": "",
-      "gui.ssc_14.i_dcode.Atmos": "",
-      "gui.ssc_14.i_dcode.Utilizat": "",
-      "gui.ssc_14.i_dcode.Supply_Deportament": "",
-      "gui.ssc_14.i_dcode.Technical": "",
-      "gui.ssc_14.i_dcode.Chemistry": "",
-      "gui.ssc_14.i_dcode.Medical": "",
-      "gui.ssc_14.i_dcode.Scientist": "",
-      "gui.ssc_14.i_dcode.Out": "",
-      "gui.ssc_14.i_dcode.Crio": "",
-      "gui.ssc_14.i_dcode.Capitan": "",
-      "gui.ssc_14.i_dcode.Service": "",
-      "gui.ssc_14.i_dcode.Kitchen": "",
-      "gui.ssc_14.i_dcode.Gidroponic": "",
-      "gui.ssc_14.i_dcode.Bar": "",
-      "gui.ssc_14.i_dcode.Teatre": "",
-      "gui.ssc_14.i_dcode.Cleaner": "",
-      "gui.ssc_14.i_dcode.Command": "",
-      "gui.ssc_14.i_dcode.Uridic": "",
-      "gui.ssc_14.i_dcode.Church": "",
       "item.ssc_14.id_card_capitan": "ID карта (Капитан)",
       "gui.ssc_14.i_dcode.Job_Name": "должность",
-      "gui.ssc_14.i_dcode.Job_Name_Readact": "",
       "gui.ssc_14.i_dcode.tooltip_riedaktirovat_imia_dolzhnosti": "Редактировать имя должности?",
       "item.ssc_14.id_card_pnt": "ID карта (Представитель NT)",
       "item.ssc_14.id_card_adutant": "ID карта (Адъютант)",
@@ -18626,38 +21558,6 @@
       "item.ssc_14.id_card_vs": "ID карта (Ведущий учёный)",
       "item.ssc_14.id_card_scientist": "ID карта (Учёный)",
       "item.ssc_14.id_card_sci_assistent": "ID карта (Научный ассистент)",
-      "gui.ssc_14.access_config_menu.gun_room": "",
-      "gui.ssc_14.access_config_menu.HoS": "",
-      "gui.ssc_14.access_config_menu.Brig": "",
-      "gui.ssc_14.access_config_menu.Security": "",
-      "gui.ssc_14.access_config_menu.Detective": "",
-      "gui.ssc_14.access_config_menu.PNT": "",
-      "gui.ssc_14.access_config_menu.Crio": "",
-      "gui.ssc_14.access_config_menu.CE": "",
-      "gui.ssc_14.access_config_menu.Atmos": "",
-      "gui.ssc_14.access_config_menu.Ingeneer": "",
-      "gui.ssc_14.access_config_menu.Out": "",
-      "gui.ssc_14.access_config_menu.Qm": "",
-      "gui.ssc_14.access_config_menu.Utilizat": "",
-      "gui.ssc_14.access_config_menu.Supply_Deportament": "",
-      "gui.ssc_14.access_config_menu.CMO": "",
-      "gui.ssc_14.access_config_menu.Chemistry": "",
-      "gui.ssc_14.access_config_menu.Medical": "",
-      "gui.ssc_14.access_config_menu.RD": "",
-      "gui.ssc_14.access_config_menu.Scientist": "",
-      "gui.ssc_14.access_config_menu.Technical": "",
-      "gui.ssc_14.access_config_menu.Church": "",
-      "gui.ssc_14.access_config_menu.HoP": "",
-      "gui.ssc_14.access_config_menu.Service": "",
-      "gui.ssc_14.access_config_menu.Kitchen": "",
-      "gui.ssc_14.access_config_menu.Gidroponic": "",
-      "gui.ssc_14.access_config_menu.Bar": "",
-      "gui.ssc_14.access_config_menu.Teatre": "",
-      "gui.ssc_14.access_config_menu.Cleaner": "",
-      "gui.ssc_14.access_config_menu.Capitan": "",
-      "gui.ssc_14.access_config_menu.Blue_Sh": "",
-      "gui.ssc_14.access_config_menu.Command": "",
-      "gui.ssc_14.access_config_menu.Uridic": "",
       "gui.ssc_14.gas_analyser_gui.label_1000": "1000",
       "item.ssc_14.portable_sheater": "Термостат",
       "item.ssc_14.silver": "Серебро",
@@ -18673,20 +21573,10 @@
       "entity.ssc_14.plassteel_wall_carcase_entit": "Wall Carcase Ent",
       "item.ssc_14.plassteel_wall_carcase_entit_spawn_egg": "Wall Carcase Ent Spawn Egg",
       "item.ssc_14.title_dark": "Тёмная плитка",
-      "subtitles.eating_sound_1": "",
-      "subtitles.eating_sound_2": "",
-      "subtitles.eating_sounds": "",
-      "subtitles.drink_sounds": "",
-      "subtitles.can_open_sound": "",
-      "subtitles.bottle_sound": "",
       "key.ssc_14.world_object_check": "Осмотр объекта (в мире)",
       "attribute.ssc_14.open_world_check_menu": "Open World Check Menu",
-      "gui.ssc_14.world_check_ui.label_proc_wo_ctext_p_2": "Для разборки используйте: ",
+      "gui.ssc_14.world_check_ui.label_proc_wo_ctext_p_2": "Для разборки используйте:",
       "item.ssc_14.airlock_controller": "[DEBUG] Пульт от шлюзов",
-      "subtitles.airlock_bolt_off": "",
-      "subtitles.airlock_bolt_on": "",
-      "subtitles.airlock_emergency_off": "",
-      "subtitles.airlock_emergency_on": "",
       "item.ssc_14.apc": "ЛКП",
       "item.ssc_14.podstation": "Подстанция",
       "item.ssc_14.debu_ggenerator": "DEBUG генератор [1000 W]",
@@ -18712,10 +21602,10 @@
       "gui.ssc_14.cabel_pannel_airlock.label_biezp": "БЕЗП",
       "gui.ssc_14.cabel_pannel_airlock.label_empty": "СВЕТ",
       "gui.ssc_14.access_config_menu.label_oruzhieinaia": "Оружейная",
-      "gui.ssc_14.world_check_ui.label_eto": "Это ",
+      "gui.ssc_14.world_check_ui.label_eto": "Это",
       "gui.ssc_14.world_check_ui.label_nie_zakrieplieno": "не закреплено",
       "gui.ssc_14.world_check_ui.label_zakrieplieno": "закреплено",
-      "item.ssc_14.lamp": "Lamp",
+      "item.ssc_14.lamp": "Светильник",
       "gui.ssc_14.access_config_menu.label_gsb": "ГСБ",
       "gui.ssc_14.access_config_menu.label_pnt": "ПНТ",
       "gui.ssc_14.access_config_menu.label_sb": "СБ",
@@ -18817,14 +21707,13 @@
       "item.ssc_14.arm_glass": "Армированное стекло",
       "attribute.ssc_14.nutrients": "Nutrients",
       "attribute.ssc_14.digestive_processes": "Nutrients",
-      "item.ssc_14.debug_lamp": "Вечно работающая лампа",
+      "item.ssc_14.debug_lamp": "Вечно работающий светильник",
       "item.ssc_14.debug_tech_lamp": "Вечно работающая лампа накаливания",
       "item.ssc_14.grille": "Решётка",
       "item.ssc_14.broken_grille": "Сломанная решётка",
       "item.ssc_14.asteroid_stone_base": "Астероидный камень",
       "item.ssc_14.raw_iron": "Железная руда",
       "item.ssc_14.raw_quartz": "Кварцевая руда",
-      "subtitles.break_stone": "",
       "item.ssc_14.asteroid_stone_iron": "Астероидный камень (железо)",
       "item.ssc_14.asteroid_stone_quartz": "Астероидный камень (кварц)",
       "item.ssc_14.asteroid_stone_coal": "Астероидный камень (уголь)",
@@ -18847,10 +21736,10 @@
       "item.ssc_14.cave_floor_6": "Cave Floor",
       "item.ssc_14.cave_floor_7": "Cave Floor",
       "item.ssc_14.gravity_generator": "Генератор гравитации",
-      "gui.ssc_14.grav_gen_gui.label_pitaniie": "Питание: ",
-      "gui.ssc_14.grav_gen_gui.label_status": "Статус: ",
-      "gui.ssc_14.grav_gen_gui.label_eta": "ETA: ",
-      "gui.ssc_14.grav_gen_gui.label_zariad": "Заряд: ",
+      "gui.ssc_14.grav_gen_gui.label_pitaniie": "Питание:",
+      "gui.ssc_14.grav_gen_gui.label_status": "Статус:",
+      "gui.ssc_14.grav_gen_gui.label_eta": "ETA:",
+      "gui.ssc_14.grav_gen_gui.label_zariad": "Заряд:",
       "gui.ssc_14.grav_gen_gui.label_polnostiu_zariazhien": "Заряжен",
       "gui.ssc_14.grav_gen_gui.label_nd": "N/D",
       "gui.ssc_14.grav_gen_gui.label_100": "100%",
@@ -18879,8 +21768,6 @@
       "item.ssc_14.substation_board": "Подстанция (машинная плата)",
       "item.ssc_14.smes_board": "СМЭС (машинная плата)",
       "item.ssc_14.apc_board": "Микросхема ЛКП",
-      "subtitles.welding_work": "",
-      "gui.ssc_14.mac_frame_gui.label_empty": "",
       "item.ssc_14.steel_table": "Стальной стол",
       "item.ssc_14.low_batterie": "Батарея малой ёмкости",
       "item.ssc_14.steel_staircase": "Стальные ступеньки",
@@ -18894,7 +21781,6 @@
       "item.ssc_14.bar_chair": "Барный стул",
       "entity.ssc_14.c_4_crutch_ent": "C4 Crutch Ent",
       "item.ssc_14.kostilniblok": "Kostilniblok",
-      "subtitles.c4_pip": "",
       "item.ssc_14.debug_grav_gen": "DEBUG генератор гравитации",
       "item.ssc_14.nuclear_warhead": "Ядерная боеголовка",
       "item.ssc_14.dirt": "Земля",
@@ -18905,7 +21791,6 @@
       "item.ssc_14.med_planet_grass": "Планетарная трава",
       "item.ssc_14.planetary_tree_log": "Планетарное бревно",
       "item.ssc_14.planetary_tree_foliage": "Планетарная листва",
-      "subtitles.last_chance_1": "",
       "item.ssc_14.up_steel_staircase": "Потолочные стальные ступени",
       "item.ssc_14.up_white_staircase": "Потолочные белые ступени",
       "item.ssc_14.up_dark_staircase": "Потолочные тёмные ступени",
@@ -18921,7 +21806,7 @@
       "item.ssc_14.green_scarf": "Зелёный шарф",
       "item.ssc_14.light_blue_scarf": "Голубой шарф",
       "item.ssc_14.light_blue_white_scarf": "Бело-голубой шарф",
-      "item.ssc_14.orange_scarf": "Онанжевый шарф",
+      "item.ssc_14.orange_scarf": "Оранжевый шарф",
       "item.ssc_14.purple_scarf": "Фиолетовый шарф",
       "item.ssc_14.sindy_scarf": "Синди-шарф",
       "item.ssc_14.trns_scarf": "Транс шарф",
@@ -18941,7 +21826,7 @@
       "key.ssc_14.interaction": "Взаимодействие",
       "translation.key.magboots_description_off": "Выключено",
       "translation.key.magboots_description_on": "Включено",
-      "translation.key.for_disassembly_use": "Для разборки используйте: ",
+      "translation.key.for_disassembly_use": "Для разборки используйте:",
       "item.ssc_14.passanger_jumpsuit": "Комбинезон пассажира",
       "item.ssc_14.atmos_jumpsuit": "Комбинезон атмосферного техника",
       "item.ssc_14.botanist_jumpsuit": "Комбинезон ботаника",
@@ -19039,15 +21924,10 @@
       "item.ssc_14.extinguisher_cabinet": "Хранилище огнетушителя",
       "item.ssc_14.extinguisher": "Огнетушитель",
       "item.ssc_14.extinguisher_open": "Огнетушитель",
-      "subtitles.extinguish_effect": "",
-      "subtitles.items_flask_close1": "",
-      "item.ssc_14.pen": "Pen",
-      "subtitles.items_pen_click": "",
-      "subtitles.items_flashlight_pda": "",
+      "item.ssc_14.pen": "Ручка",
       "gui.ssc_14.pd_apassanger_gui.label_aabbvv": "АаБбВв",
-      "pda_text_id": "",
-      "translation.key.pda_text_stationname": "Станция:  ",
-      "translation.key.pda_text_danger_level": "Уровень угрозы:  ",
+      "translation.key.pda_text_stationname": "Станция:",
+      "translation.key.pda_text_danger_level": "Уровень угрозы:",
       "translation.key.pda_text_danger_level_green": "Зелёный",
       "translation.key.pda_text_danger_level_yellow": "Жёлтый",
       "translation.key.pda_text_danger_level_blue": "Синий",
@@ -19057,13 +21937,11 @@
       "translation.key.pda_text_danger_level_delta": "Дельта",
       "translation.key.pda_text_danger_level_epsilon": "Эпсилон",
       "item.ssc_14.rsu": "РСУ",
-      "subtitles.items_rcd_deconstruct": "",
       "item.ssc_14.title_steel_pavement_vertical": "Стальная вертикальная тротуарная плитка",
       "item.ssc_14.rc_dcartridge": "Картридж РСУ",
       "curios.identifier.underwear": "Нижнее бельё",
       "item.ssc_14.male_boxers": "Мужские боксеры",
-      "item.ssc_14.health_analyzer": "Health Analyzer",
-      "subtitles.medical_scanner_use": "",
+      "item.ssc_14.health_analyzer": "Анализатор здоровья",
       "gui.ssc_14.health_analyzer_ui.label_miekhanichieskiie": "Механические",
       "gui.ssc_14.health_analyzer_ui.label_fizichieskiie": "Физические",
       "gui.ssc_14.health_analyzer_ui.label_toksiny": "Токсины",
@@ -19097,7 +21975,104 @@
       "item.ssc_14.glass_dark": "Тёмные очки",
       "item.ssc_14.black_gloves": "Чёрные перчатки",
       "item.ssc_14.helmet_cosmonaut": "Шлем космонавта",
-      "item.ssc_14.cone": "Конус"
+      "item.ssc_14.cone": "Конус",
+      "item.ssc_14.belt_security_webbing": "РПС СБ",
+      "item.ssc_14.belt_instrumental": "Пояс для инструментов",
+      "item.ssc_14.mask_gas_security": "Противогаз СБ",
+      "curios.identifier.socks": "Носки",
+      "item.ssc_14.white_knee": "Белые длинные носки",
+      "item.ssc_14.bee_thigh": "Чулочки в пчёлку",
+      "item.ssc_14.stockings_blue": "Синие чулочки",
+      "item.ssc_14.stockings_cyan": "Голубые чулочки",
+      "item.ssc_14.stockings_d_pink": "Тёмно-розовые чулочки",
+      "item.ssc_14.stockings_green": "Зелёные чулочки",
+      "item.ssc_14.stockings_l_pink": "Светло-розовые чулочки",
+      "item.ssc_14.stockings_orange": "Оранжевые чулочки",
+      "item.ssc_14.stockings_purple": "Фиолетовые чулочки",
+      "item.ssc_14.stockings_yellow": "Жёлтые чулочки",
+      "item.ssc_14.communication_console": "Консоль связи",
+      "gui.ssc_14.commun_console_gui.label_otpravka_soobshchieniia": "Отправка сообщения",
+      "gui.ssc_14.commun_console_gui.label_kod_ughrozy": "Код угрозы",
+      "gui.ssc_14.commun_console_gui.label_krasnyi": "Красный",
+      "gui.ssc_14.commun_console_gui.label_sinii": "Синий",
+      "gui.ssc_14.commun_console_gui.label_fiolietovyi": "Фиолетовый",
+      "gui.ssc_14.commun_console_gui.label_zielionyi": "Зелёный",
+      "gui.ssc_14.commun_console_gui.label_zhioltyi": "Жёлтый",
+      "gui.ssc_14.commun_console_gui.label_na_stantsii_vybieritie": "на станции выберите",
+      "gui.ssc_14.commun_console_gui.label_ughrozy": "угрозы.",
+      "gui.ssc_14.commun_console_gui.label_sootvietstvuiushchii_kod": "соответствующий код",
+      "gui.ssc_14.commun_console_gui.label_pri_nalichii_ughroz": "При наличии угроз",
+      "gui.ssc_14.commun_console_gui.label_vvieditie_obiavlieniie": "Введите объявление:",
+      "item.ssc_14.tech_airlock_d_1": "Технический шлюз",
+      "item.ssc_14.gas_producer_o_2": "Генератор газа  (O₂ | 100 моль/сек)",
+      "item.ssc_14.reagent_container": "Большая мензурка",
+      "item.ssc_14.vending_aut_1": "Дискаунт Дэн",
+      "reagent.ssc_14.reagents": "Содержит реагенты:",
+      "tooltip.ssc_14.container.capacity": "Объём: %s / %s мб",
+      "item.ssc_14.cheese_honkers": "Сырные хонкеры",
+      "item.ssc_14.cheese_honkers_trash": "Мусор",
+      "item.ssc_14.chips": "Чипсы",
+      "item.ssc_14.chips_trash": "Мусор",
+      "item.ssc_14.boritos": "Боритос",
+      "item.ssc_14.boritos_trash": "Мусор",
+      "item.ssc_14.popcorn": "Попкорн",
+      "item.ssc_14.popcorn_trash": "Мусор",
+      "item.ssc_14.vending_kostil": "Автомат",
+      "item.ssc_14.mouse_brown_spawn_egg": "Яйцо призыва: Мышь (коричневая)",
+      "entity.ssc_14.mouse_brown": "Mouse Brown",
+      "item_group.ssc_14.ssc_14mobs": "SSC14: Мобы",
+      "entity.ssc_14.mouse_gray": "Mouse Brown",
+      "item.ssc_14.mouse_gray_spawn_egg": "Яйцо призыва: Мышь (серая)",
+      "entity.ssc_14.mouse_white": "Mouse Gray",
+      "item.ssc_14.mouse_white_spawn_egg": "Яйцо призыва: Мышь (белая)",
+      "item.ssc_14.directed_armored_window": "Направленное укреплённое окно",
+      "item.ssc_14.bartender_jumpsuit": "Комбинезон бармена",
+      "item.ssc_14.brigmedic_jumpsuit": "Комбинезон бригмедика",
+      "item.ssc_14.capformal_jumpsuit": "Официальный комбинезон капитана",
+      "item.ssc_14.casual_jumpsuit": "Комбинезон сервисного работника",
+      "item.ssc_14.c_eturtle_jumpsuit": "Водолазка СИ",
+      "item.ssc_14.centcom_agent_jumpsuit": "Комбинезон агента ЦК",
+      "item.ssc_14.centcom_officer_jumpsuit": "Комбинезон офицера ЦК",
+      "item.ssc_14.centcom_official_jumpsuit": "Официальный комбинезон ЦК",
+      "item.ssc_14.chaplain_jumpsuit": "Комбинезон священника",
+      "item.ssc_14.chef_jumpsuit": "Комбинезон повара",
+      "item.ssc_14.cm_oturtle_jumpsuit": "Водолазка ГВ",
+      "item.ssc_14.ho_sparade_jumpsuit": "Парадный комбинезон ГСБ",
+      "item.ssc_14.debugactivator": "DEBUG-Включатель",
+      "item.ssc_14.shutters": "Ставни",
+      "item.ssc_14.button": "Кнопка",
+      "item.ssc_14.network_configurator": "Конфигуратор сетей",
+      "reagent.ssc_14.coffee": "Кофе",
+      "reagent.ssc_14.cream": "Сливки",
+      "reagent.ssc_14.cafe_latte": "Кофе латте",
+      "reagent.ssc_14.green_tea": "Зелёный чай",
+      "reagent.ssc_14.grenadine": "Гренадин",
+      "reagent.ssc_14.iced_coffee": "Айс-кофе",
+      "reagent.ssc_14.iced_green_tea": "Зелёный чай со льдом",
+      "reagent.ssc_14.iced_tea": "Чай со льдом",
+      "reagent.ssc_14.lemonade": "Лимонад",
+      "reagent.ssc_14.milk": "Молоко",
+      "reagent.ssc_14.oat_milk": "Овсяное молоко",
+      "reagent.ssc_14.soy_milk": "Соевое молоко",
+      "reagent.ssc_14.spoiled_milk": "Прокисшее молоко",
+      "reagent.ssc_14.nuka_cola": "Ядерная кола",
+      "reagent.ssc_14.soda_water": "Газированная вода",
+      "reagent.ssc_14.soy_latte": "Соевый латте",
+      "reagent.ssc_14.tea": "Чай",
+      "reagent.ssc_14.tonic_water": "Тоник",
+      "reagent.ssc_14.water": "Вода",
+      "reagent.ssc_14.ice": "Лёд",
+      "reagent.ssc_14.cola": "Космическая Кола",
+      "reagent.ssc_14.changeling_sting": "Жало генокрада",
+      "reagent.ssc_14.dr_gibb": "Доктор Гибб",
+      "reagent.ssc_14.energy_drink": "Энергетик",
+      "reagent.ssc_14.grape_soda": "Виноградная газировка",
+      "reagent.ssc_14.lemon_lime": "Газировка Лемон-лайм",
+      "reagent.ssc_14.pwr_game": "Редбул",
+      "reagent.ssc_14.space_mountain_wind": "Космический Солар Винд",
+      "reagent.ssc_14.space_up": "Спейс-Ап",
+      "reagent.ssc_14.starkist": "Старкист",
+      "reagent.ssc_14.fourteen_loko": "Четырнадцать Локо"
     }
   },
   "metadata": {
@@ -19270,7 +22245,7 @@
                 ]
               },
               {
-                "name": "Base ArLk",
+                "name": "Airlocks",
                 "children": []
               }
             ]
@@ -19296,6 +22271,10 @@
                   },
                   {
                     "name": "Computer",
+                    "children": []
+                  },
+                  {
+                    "name": "Communication",
                     "children": []
                   }
                 ]
@@ -19323,6 +22302,27 @@
               },
               {
                 "name": "Telecom Servers",
+                "children": []
+              },
+              {
+                "name": "Gas Sistem",
+                "children": []
+              },
+              {
+                "name": "Vending",
+                "children": [
+                  {
+                    "name": "Buttons_PR",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "Shutters",
+                "children": []
+              },
+              {
+                "name": "Buttons",
                 "children": []
               }
             ]
@@ -19441,6 +22441,10 @@
                     "children": []
                   }
                 ]
+              },
+              {
+                "name": "NetConfig",
+                "children": []
               }
             ]
           },
@@ -19454,7 +22458,7 @@
             ]
           },
           {
-            "name": "food",
+            "name": "Food",
             "children": []
           },
           {
@@ -19521,7 +22525,16 @@
               },
               {
                 "name": "Jumpsuit",
-                "children": []
+                "children": [
+                  {
+                    "name": "JumpSUITs",
+                    "children": []
+                  },
+                  {
+                    "name": "JumpSKIRTs",
+                    "children": []
+                  }
+                ]
               },
               {
                 "name": "Boots",
@@ -19594,6 +22607,10 @@
               {
                 "name": "Underwear",
                 "children": []
+              },
+              {
+                "name": "Socks",
+                "children": []
               }
             ]
           },
@@ -19641,13 +22658,26 @@
       {
         "name": "DECALS",
         "children": []
+      },
+      {
+        "name": "Chemistry System",
+        "children": []
+      },
+      {
+        "name": "Mobs",
+        "children": [
+          {
+            "name": "Mouses",
+            "children": []
+          }
+        ]
       }
     ]
   },
   "workspaceSettings": {
     "modid": "ssc_14",
     "modName": "Space Station Craft 14",
-    "version": "0.1.19",
+    "version": "0.1.20",
     "description": "Повторённая в Minecraft игра Space Station 14. Основатель - Space Kyyyst. В разработке принимали участие: almazar3, Mr_irak, Water Melon, sad2284. ",
     "author": "Space_Kyyyst",
     "websiteURL": "https://www.youtube.com/@Space.kyyyst",

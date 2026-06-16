@@ -1,44 +1,34 @@
 
 package net.mcreator.ssc;
 
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.AABB;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.mcreator.ssc.procedures.CrawlPrProcedure;
 
 @EventBusSubscriber(modid = "ssc_14")
 public class CrawlHandler {
-
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
-        if (player == null || player.isRemoved()) return;
+        if (player.level().isClientSide()) return;
 
-        // Исправлена ошибка с Optional
-        boolean isCrawling = player.getPersistentData().getBoolean("ssc14_is_crawling").orElse(false);
+        var speedAttr = player.getAttribute(Attributes.MOVEMENT_SPEED);
+        boolean isCrawling = speedAttr != null && speedAttr.hasModifier(CrawlPrProcedure.CRAWL_SPEED_MOD_ID);
 
         if (isCrawling) {
-            if (player.getPose() != Pose.SWIMMING) {
-                player.setPose(Pose.SWIMMING);
+            // 🔥 Принудительно ставим позу КАЖДЫЙ ТИК
+            if (player.getForcedPose() != Pose.SWIMMING) {
+                player.setForcedPose(Pose.SWIMMING);
                 player.refreshDimensions();
             }
         } else {
-            // makeBoundingBox в 1.21+ принимает Vec3. player.position() возвращает Vec3
-            AABB standingBox = player.getDimensions(Pose.STANDING).makeBoundingBox(player.position());
-            // noCollision проверяет, не пересекается ли новый хитбокс с блоками
-            boolean canStand = player.level().noCollision(player, standingBox);
-
-            if (!canStand) {
-                // Места нет → остаёмся в позе ползания
-                if (player.getPose() != Pose.SWIMMING) {
-                    player.setPose(Pose.SWIMMING);
-                    player.refreshDimensions();
-                }
-            } else if (player.getPose() == Pose.SWIMMING) {
-                // Место есть → встаём
-                player.setPose(Pose.STANDING);
+            // 🔥 Убираем принудительную позу
+            if (player.getForcedPose() == Pose.SWIMMING) {
+                player.setForcedPose(null);
                 player.refreshDimensions();
             }
         }

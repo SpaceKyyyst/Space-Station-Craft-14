@@ -1,0 +1,29 @@
+{
+  "_fv": 85,
+  "_type": "curiosbauble",
+  "definition": {
+    "item": "StockingsCyan",
+    "slotType": "Socks",
+    "slotAmount": 1,
+    "addSlot": false,
+    "enderMask": false,
+    "friendlyPigs": false,
+    "snowWalk": false,
+    "equipSound": {
+      "value": ""
+    },
+    "hasModel": true,
+    "baubleModel": "Modelsocks_equipped",
+    "baubleModelTexture": "stockings_cyan_equipped_texture.png",
+    "onEquip": {
+      "name": "Equip_BaseSound_PR_"
+    },
+    "helmetModelPart": "Empty",
+    "bodyModelPart": "Empty",
+    "armsModelPartL": "Empty",
+    "armsModelPartR": "Empty",
+    "leggingsModelPartL": "l_leg",
+    "leggingsModelPartR": "r_leg",
+    "disabledToggles": []
+  }
+}

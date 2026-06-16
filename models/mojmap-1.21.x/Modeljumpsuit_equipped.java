@@ -27,22 +27,28 @@ public class Modeljumpsuit_equipped<T extends Entity> extends EntityModel<T> {
 
 		PartDefinition torso = partdefinition.addOrReplaceChild("torso",
 				CubeListBuilder.create().texOffs(0, 0)
-						.addBox(-4.0F, 0.0F, -2.0F, 8.0F, 10.0F, 4.0F, new CubeDeformation(0.25F)).texOffs(0, 14)
-						.addBox(-4.0F, 10.0F, -2.0F, 8.0F, 1.0F, 4.0F, new CubeDeformation(0.375F)),
+						.addBox(-4.0F, 0.0F, -2.0F, 8.0F, 11.0F, 4.0F, new CubeDeformation(0.25F)).texOffs(0, 15)
+						.addBox(-4.0F, 0.0F, -2.0F, 8.0F, 11.0F, 4.0F, new CubeDeformation(0.375F)),
 				PartPose.offset(0.0F, 2.0F, 0.0F));
 
-		PartDefinition r_arm = partdefinition.addOrReplaceChild("r_arm", CubeListBuilder.create().texOffs(24, 0).addBox(
-				-2.0F, -2.0F, -2.0F, 3.0F, 8.0F, 4.0F, new CubeDeformation(0.25F)), PartPose.offset(-5.0F, 4.0F, 0.0F));
+		PartDefinition r_arm = partdefinition.addOrReplaceChild("r_arm", CubeListBuilder.create().texOffs(24, 0)
+				.addBox(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, new CubeDeformation(0.25F)),
+				PartPose.offset(-5.0F, 4.0F, 0.0F));
 
-		PartDefinition l_arm = partdefinition.addOrReplaceChild("l_arm", CubeListBuilder.create().texOffs(0, 32).addBox(
-				-1.0F, -2.0F, -2.0F, 3.0F, 8.0F, 4.0F, new CubeDeformation(0.25F)), PartPose.offset(5.0F, 4.0F, 0.0F));
+		PartDefinition l_arm = partdefinition.addOrReplaceChild("l_arm", CubeListBuilder.create().texOffs(24, 16)
+				.addBox(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, new CubeDeformation(0.25F)),
+				PartPose.offset(5.0F, 4.0F, 0.0F));
 
-		PartDefinition r_leg = partdefinition.addOrReplaceChild("r_leg", CubeListBuilder.create().texOffs(0, 19)
-				.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.125F)),
+		PartDefinition r_leg = partdefinition.addOrReplaceChild("r_leg",
+				CubeListBuilder.create().texOffs(38, 0)
+						.addBox(-3.0F, 0.0F, -2.0F, 5.0F, 9.0F, 4.0F, new CubeDeformation(0.325F)).texOffs(0, 30)
+						.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.125F)),
 				PartPose.offset(-2.0F, 13.0F, 0.0F));
 
-		PartDefinition l_leg = partdefinition.addOrReplaceChild("l_leg", CubeListBuilder.create().texOffs(16, 19)
-				.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.125F)),
+		PartDefinition l_leg = partdefinition.addOrReplaceChild("l_leg",
+				CubeListBuilder.create().texOffs(32, 32)
+						.addBox(-2.0F, 0.0F, -2.0F, 5.0F, 9.0F, 4.0F, new CubeDeformation(0.325F)).texOffs(16, 32)
+						.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.125F)),
 				PartPose.offset(2.0F, 13.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);

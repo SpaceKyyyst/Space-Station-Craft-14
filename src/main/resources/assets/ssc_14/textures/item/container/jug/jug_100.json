@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc:item/container/jug/jug",
+    "layer1": "ssc:item/container/jug/jug_100"
+  }
+}

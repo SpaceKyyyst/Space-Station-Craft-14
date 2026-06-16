@@ -1,50 +1,50 @@
-/attribute Dev minecraft:scale base set 2
-/attribute Dev minecraft:scale base set 4
-/attribute Dev minecraft:scale base set 1
-/attribute Dev minecraft:scale base set 0.5
-/attribute Dev minecraft:scale base set 1
-/attribute Dev minecraft:scale base set 1.5
-/attribute Dev minecraft:scale base set 1
-/attribute Dev minecraft:scale base set 0.5
-/attribute Dev minecraft:scale base set 0.25
-/attribute Dev minecraft:scale base set 2
-/attribute Dev minecraft:scale base set 3
-/attribute Dev minecraft:scale base set 6
-/attribute Dev minecraft:scale base set 2
-/attribute Dev minecraft:scale base set 1
-/attribute Dev minecraft:scale base set 1.5
-/attribute Dev minecraft:scale base set 2
-/attribute Dev minecraft:scale base set 3
-/attribute Dev minecraft:scale base set 0.5
-/attribute Dev minecraft:scale base set 0.25
-/attribute Dev minecraft:scale base set 1
-/attribute Dev minecraft:scale base set 3
-/attribute Dev minecraft:scale base set 1
-/attribute Dev minecraft:scale base set 0.5
-/attribute Dev minecraft:scale base set 1
-/attribute Dev minecraft:scale base set 0.72
-/attribute Dev minecraft:scale base set 1.9
-/attribute Dev minecraft:scale base set 1.8
-/attribute Dev minecraft:scale base set 1.5
-/attribute Dev minecraft:scale base set 1.65
-/attribute Dev minecraft:scale base set 0.5
-/attribute Dev minecraft:scale base set 0.52
-/kill Dev
-/ssc14 hels Dev reset
-/kill bd3d747d-c3c2-4ddf-8405-89779f47fe83
-/setblock -116 43 56 air
-/particle ssc_14:rcd_interference_p ~ ~ ~ ~ ~ ~ 0 100
-/particle ssc_14:rcd_interference_p ~ ~ ~ ~ ~ ~ 0 1000
-/particle ssc_14:rcd_interference_p ~ ~ ~ ~ ~ ~ 0 100000
-/particle ssc_14:rcd_interference_p ~ ~ ~ ~ ~ ~ 0 1000000
-/particle ssc_14:rcd_interference_p ~ ~ ~ ~ ~ ~ 0 100000
-/particle ssc_14:deconstruct_p ~ ~ ~ ~ ~ ~ 0 100000
-/particle ssc_14:deconstruct_p ~ ~ ~ ~ ~ ~ 0 1000000
-/particle ssc_14:deconstruct_p ~ ~ ~ ~ ~ ~ 0 10000000
-/ssc14 tpdimension Dev planet plant
-/time set day
-/kill
-/kill 465c8d17-c3a1-4859-8821-bb2953540dcb
-/ssc14 hels Dev reset
-/tp Dev 0 50 0
-/ssc14 tpdimension Dev space
+/ssc14 fill_reagent 10 potassium
+/ssc14 fill_reagent 10 ice
+/ssc14 fill_reagent 2 tea
+/effect give Dev minecraft:night_vision infinite 0 true
+/effect clear
+/ssc14 hunger digestive clear
+/ssc14 hunger digestive clear Dev
+/data get block -111 43 44
+/kill @e[ type= ssc_14:mouse_brown ]
+/kill @e[ type= ssc_14:mouse_gray ]
+/kill @e[ type= ssc_14:mouse_white ]
+/kill @e[ type= ssc_14:mouse_gray ]
+/kill @e[ type= ssc_14:mouse_brown ]
+/ssc14 liquids add 10 nicotine
+/ssc14 liquids add 10 water
+/ssc14 liquids add 10 nicotine
+/ssc14 liquids add 1 water
+/ssc14 liquids add 1 вод
+/ssc14 liquids add 1
+/ssc14 liquids add 111 1
+/ssc14 liquids add 111
+/ssc14 liquids add 111 а а аау а34 3
+/ssc14 liquids add 1 water
+/ssc14 liquids add 1 wate
+/ssc14 liquids add 1
+/ssc14_chemistry fill_reagent aloe 1
+/ssc14_chemistry fill_reagent absinthe 2
+/ssc14_chemistry fill_reagent water 10
+/ssc14_chemistry fill_reagent water 100
+/ssc14_chemistry fill_reagent watermelon_juice 10
+/ssc14_chemistry fill_reagent brave_bull 100
+/ssc14_chemistry fill_reagent ale 50
+/ssc14_chemistry fill_reagent whiskey 10
+/ssc14_chemistry fill_reagent water 10
+/ssc14_chemistry fill_reagent ice 10
+/ssc14_chemistry fill_reagent coffee 10
+/ssc14_chemistry fill_reagent cream 10
+/ssc14_chemistry fill_reagent water 10
+/ssc14_chemistry fill_reagent ice 10
+/ssc14_chemistry fill_reagent coffee 10
+/ssc14_chemistry fill_reagent potassium 16
+/ssc14_chemistry fill_reagent aluminium 1
+/ssc14_chemistry fill_reagent water 1
+/ssc14_chemistry fill_reagent water 5
+/ssc14_chemistry fill_reagent water 10
+/ssc14_chemistry fill_reagent potassium 10-
+/ssc14_chemistry fill_reagent potassium 10
+/ssc14_chemistry fill_reagent water 10
+/ssc14_chemistry fill_reagent potassium 10
+/ssc14_chemistry fill_reagent water 10

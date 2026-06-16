@@ -1,0 +1,119 @@
+{
+  "_fv": 85,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 200,
+    "height": 200,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": false,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "rcd_gui_2.png",
+          "use1Xscale": false,
+          "x": 114,
+          "y": 20,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_rcd_gui_exit_b",
+          "image": "rcd_gui_back_b.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RCDGUIbackButton"
+          },
+          "x": 206,
+          "y": 112,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_steel_wall_gui_texture",
+          "image": "grille.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RCDGUIgrilleButton"
+          },
+          "x": 156,
+          "y": 50,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_most_floor_gui_texture",
+          "image": "armored_window_gui.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RCDGUIarmWindowButton"
+          },
+          "x": 241,
+          "y": 50,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_tile_steel_gui_texture",
+          "image": "window_gui.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RCDGUIwindowButton"
+          },
+          "x": 136,
+          "y": 129,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_floor_gui_texture",
+          "image": "directed_arm_window_gui.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RCDGUIdirArmWindowButton"
+          },
+          "x": 259,
+          "y": 129,
+          "locked": false
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_directed_window_gui",
+          "image": "directed_window_gui.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RCDGUIdirwindowButton"
+          },
+          "x": 198,
+          "y": 170,
+          "locked": false
+        }
+      }
+    ],
+    "onTick": {
+      "name": "RCDGUI_check_"
+    },
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/airlock",
+  "textures": {
+    "all": "ssc_14:block/airlock_techi",
+    "particle": "ssc_14:block/airlock_techi",
+    "0": "ssc_14:block/standard_airlock_maint_texture"
+  },
+  "render_type": "cutout"
+}

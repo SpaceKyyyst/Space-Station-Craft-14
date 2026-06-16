@@ -14,13 +14,16 @@
     },
     "hasModel": true,
     "baubleModel": "Modeljumpsuit_equipped",
-    "baubleModelTexture": "jumpsuit_qm_texture.png",
+    "baubleModelTexture": "jumpsuit_qm_equipped_texture.png",
+    "onEquip": {
+      "name": "Equip_BaseSound_PR_"
+    },
     "helmetModelPart": "Empty",
     "bodyModelPart": "torso",
     "armsModelPartL": "l_arm",
     "armsModelPartR": "r_arm",
     "leggingsModelPartL": "l_leg",
-    "leggingsModelPartR": "r_arm",
+    "leggingsModelPartR": "r_leg",
     "disabledToggles": []
   }
 }

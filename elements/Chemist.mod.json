@@ -14,7 +14,10 @@
     },
     "hasModel": true,
     "baubleModel": "Modeljumpsuit_equipped",
-    "baubleModelTexture": "jumpsuit_chemist_texture.png",
+    "baubleModelTexture": "jumpsuit_chemistry_equipped_texture.png",
+    "onEquip": {
+      "name": "Equip_BaseSound_PR_"
+    },
     "helmetModelPart": "Empty",
     "bodyModelPart": "torso",
     "armsModelPartL": "l_arm",

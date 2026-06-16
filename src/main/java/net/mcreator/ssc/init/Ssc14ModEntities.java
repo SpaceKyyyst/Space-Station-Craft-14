@@ -49,6 +49,18 @@ public class Ssc14ModEntities {
 			EntityType.Builder.<Decal1Entity>of(Decal1Entity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
 					.sized(0.1f, 0.1f));
+	public static final DeferredHolder<EntityType<?>, EntityType<MouseBrownEntity>> MOUSE_BROWN = register("mouse_brown",
+			EntityType.Builder.<MouseBrownEntity>of(MouseBrownEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+
+					.sized(0.3f, 0.3f));
+	public static final DeferredHolder<EntityType<?>, EntityType<MouseGrayEntity>> MOUSE_GRAY = register("mouse_gray",
+			EntityType.Builder.<MouseGrayEntity>of(MouseGrayEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+
+					.sized(0.3f, 0.3f));
+	public static final DeferredHolder<EntityType<?>, EntityType<MouseWhiteEntity>> MOUSE_WHITE = register("mouse_white",
+			EntityType.Builder.<MouseWhiteEntity>of(MouseWhiteEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+
+					.sized(0.3f, 0.3f));
 
 	// Start of user code block custom entities
 	// End of user code block custom entities
@@ -65,6 +77,9 @@ public class Ssc14ModEntities {
 		C4CrutchEntEntity.init(event);
 		CorpseEntity.init(event);
 		Decal1Entity.init(event);
+		MouseBrownEntity.init(event);
+		MouseGrayEntity.init(event);
+		MouseWhiteEntity.init(event);
 	}
 
 	@SubscribeEvent
@@ -76,5 +91,8 @@ public class Ssc14ModEntities {
 		event.put(C_4_CRUTCH_ENT.get(), C4CrutchEntEntity.createAttributes().build());
 		event.put(CORPSE.get(), CorpseEntity.createAttributes().build());
 		event.put(DECAL_1.get(), Decal1Entity.createAttributes().build());
+		event.put(MOUSE_BROWN.get(), MouseBrownEntity.createAttributes().build());
+		event.put(MOUSE_GRAY.get(), MouseGrayEntity.createAttributes().build());
+		event.put(MOUSE_WHITE.get(), MouseWhiteEntity.createAttributes().build());
 	}
 }

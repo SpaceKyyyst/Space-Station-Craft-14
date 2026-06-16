@@ -35,6 +35,10 @@ public class Ssc14ModMenus {
 	public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIMenu>> RCDGUI = REGISTRY.register("rcdgui", () -> IMenuTypeExtension.create(RCDGUIMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIwallfloorMenu>> RCDGU_IWALLFLOOR = REGISTRY.register("rcdgu_iwallfloor", () -> IMenuTypeExtension.create(RCDGUIwallfloorMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<HeadsetGUIkostilMenu>> HEADSET_GU_IKOSTIL = REGISTRY.register("headset_gu_ikostil", () -> IMenuTypeExtension.create(HeadsetGUIkostilMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<CommunConsoleGUIMenu>> COMMUN_CONSOLE_GUI = REGISTRY.register("commun_console_gui", () -> IMenuTypeExtension.create(CommunConsoleGUIMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<VendingAut1GUIMenu>> VENDING_AUT_1_GUI = REGISTRY.register("vending_aut_1_gui", () -> IMenuTypeExtension.create(VendingAut1GUIMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIwindowsMenu>> RCDGU_IWINDOWS = REGISTRY.register("rcdgu_iwindows", () -> IMenuTypeExtension.create(RCDGUIwindowsMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<NetConfigGUIMenu>> NET_CONFIG_GUI = REGISTRY.register("net_config_gui", () -> IMenuTypeExtension.create(NetConfigGUIMenu::new));
 
 	public interface MenuAccessor {
 		Map<String, Object> getMenuState();

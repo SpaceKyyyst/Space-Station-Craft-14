@@ -1,0 +1,244 @@
+{
+  "variants": {
+    "facing=north,up=true,down=false,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_0"
+    },
+    "facing=north,up=true,down=true,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_1"
+    },
+    "facing=north,up=false,down=true,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_2"
+    },
+    "facing=north,up=false,down=false,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_3"
+    },
+    "facing=north,up=true,down=false,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_4"
+    },
+    "facing=north,up=true,down=true,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_5"
+    },
+    "facing=north,up=false,down=true,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_6"
+    },
+    "facing=north,up=false,down=false,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_7"
+    },
+    "facing=north,up=true,down=false,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_8"
+    },
+    "facing=north,up=true,down=true,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_9"
+    },
+    "facing=north,up=false,down=true,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_10"
+    },
+    "facing=north,up=false,down=false,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_11"
+    },
+    "facing=north,up=true,down=false,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_12"
+    },
+    "facing=north,up=true,down=true,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_13"
+    },
+    "facing=north,up=false,down=true,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_14"
+    },
+    "facing=north,up=false,down=false,opening=false,open=false": {
+      "model": "ssc_14:block/shutters"
+    },
+    "facing=east,up=true,down=false,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_0",
+      "y": 90
+    },
+    "facing=east,up=true,down=true,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_1",
+      "y": 90
+    },
+    "facing=east,up=false,down=true,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_2",
+      "y": 90
+    },
+    "facing=east,up=false,down=false,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_3",
+      "y": 90
+    },
+    "facing=east,up=true,down=false,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_4",
+      "y": 90
+    },
+    "facing=east,up=true,down=true,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_5",
+      "y": 90
+    },
+    "facing=east,up=false,down=true,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_6",
+      "y": 90
+    },
+    "facing=east,up=false,down=false,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_7",
+      "y": 90
+    },
+    "facing=east,up=true,down=false,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_8",
+      "y": 90
+    },
+    "facing=east,up=true,down=true,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_9",
+      "y": 90
+    },
+    "facing=east,up=false,down=true,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_10",
+      "y": 90
+    },
+    "facing=east,up=false,down=false,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_11",
+      "y": 90
+    },
+    "facing=east,up=true,down=false,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_12",
+      "y": 90
+    },
+    "facing=east,up=true,down=true,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_13",
+      "y": 90
+    },
+    "facing=east,up=false,down=true,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_14",
+      "y": 90
+    },
+    "facing=east,up=false,down=false,opening=false,open=false": {
+      "model": "ssc_14:block/shutters",
+      "y": 90
+    },
+    "facing=south,up=true,down=false,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_0",
+      "y": 180
+    },
+    "facing=south,up=true,down=true,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_1",
+      "y": 180
+    },
+    "facing=south,up=false,down=true,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_2",
+      "y": 180
+    },
+    "facing=south,up=false,down=false,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_3",
+      "y": 180
+    },
+    "facing=south,up=true,down=false,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_4",
+      "y": 180
+    },
+    "facing=south,up=true,down=true,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_5",
+      "y": 180
+    },
+    "facing=south,up=false,down=true,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_6",
+      "y": 180
+    },
+    "facing=south,up=false,down=false,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_7",
+      "y": 180
+    },
+    "facing=south,up=true,down=false,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_8",
+      "y": 180
+    },
+    "facing=south,up=true,down=true,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_9",
+      "y": 180
+    },
+    "facing=south,up=false,down=true,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_10",
+      "y": 180
+    },
+    "facing=south,up=false,down=false,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_11",
+      "y": 180
+    },
+    "facing=south,up=true,down=false,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_12",
+      "y": 180
+    },
+    "facing=south,up=true,down=true,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_13",
+      "y": 180
+    },
+    "facing=south,up=false,down=true,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_14",
+      "y": 180
+    },
+    "facing=south,up=false,down=false,opening=false,open=false": {
+      "model": "ssc_14:block/shutters",
+      "y": 180
+    },
+    "facing=west,up=true,down=false,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_0",
+      "y": 270
+    },
+    "facing=west,up=true,down=true,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_1",
+      "y": 270
+    },
+    "facing=west,up=false,down=true,opening=false,open=false": {
+      "model": "ssc_14:block/shutters_2",
+      "y": 270
+    },
+    "facing=west,up=false,down=false,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_3",
+      "y": 270
+    },
+    "facing=west,up=true,down=false,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_4",
+      "y": 270
+    },
+    "facing=west,up=true,down=true,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_5",
+      "y": 270
+    },
+    "facing=west,up=false,down=true,opening=true,open=false": {
+      "model": "ssc_14:block/shutters_6",
+      "y": 270
+    },
+    "facing=west,up=false,down=false,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_7",
+      "y": 270
+    },
+    "facing=west,up=true,down=false,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_8",
+      "y": 270
+    },
+    "facing=west,up=true,down=true,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_9",
+      "y": 270
+    },
+    "facing=west,up=false,down=true,opening=false,open=true": {
+      "model": "ssc_14:block/shutters_10",
+      "y": 270
+    },
+    "facing=west,up=false,down=false,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_11",
+      "y": 270
+    },
+    "facing=west,up=true,down=false,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_12",
+      "y": 270
+    },
+    "facing=west,up=true,down=true,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_13",
+      "y": 270
+    },
+    "facing=west,up=false,down=true,opening=true,open=true": {
+      "model": "ssc_14:block/shutters_14",
+      "y": 270
+    },
+    "facing=west,up=false,down=false,opening=false,open=false": {
+      "model": "ssc_14:block/shutters",
+      "y": 270
+    }
+  }
+}

@@ -32,10 +32,10 @@ public class Modelsocks_equipped extends EntityModel<LivingEntityRenderState> {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 		PartDefinition r_leg = partdefinition.addOrReplaceChild("r_leg",
-				CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.05F)).texOffs(12, 8).addBox(-2.0F, 9.0F, -3.0F, 4.0F, 2.0F, 5.0F, new CubeDeformation(0.1F)),
+				CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.05F)).texOffs(12, 8).addBox(-2.0F, 9.1F, -3.0F, 4.0F, 2.0F, 5.0F, new CubeDeformation(0.1F)),
 				PartPose.offset(-2.0F, 13.0F, 0.0F));
 		PartDefinition l_leg = partdefinition.addOrReplaceChild("l_leg",
-				CubeListBuilder.create().texOffs(0, 13).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.05F)).texOffs(12, 21).addBox(-2.0F, 9.0F, -3.0F, 4.0F, 2.0F, 5.0F, new CubeDeformation(0.1F)),
+				CubeListBuilder.create().texOffs(0, 13).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.05F)).texOffs(12, 21).addBox(-2.0F, 9.1F, -3.0F, 4.0F, 2.0F, 5.0F, new CubeDeformation(0.1F)),
 				PartPose.offset(2.0F, 13.0F, 0.0F));
 		return LayerDefinition.create(meshdefinition, 32, 32);
 	}

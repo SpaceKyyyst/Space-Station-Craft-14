@@ -5,11 +5,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -100,37 +102,97 @@ public class FoodEatingPrProcedure {
 																			"Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043E\u0440\u0435\u0445\u043E\u0432\u043E, \u0432\u043E\u043B\u043E\u043A\u043D\u0438\u0441\u0442\u043E, \u0441\u043B\u0430\u0434\u043A\u043E \u0438 \u043A\u0430\u043A \u043E\u0432\u0451\u0441."),
 																			true);
 																Digestion20PrProcedure.execute(world, entity);
+															} else if (itemstack.getItem() == Ssc14ModItems.CHEESE_HONKERS.get()) {
+																if (world instanceof ServerLevel _level) {
+																	ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Ssc14ModItems.CHEESE_HONKERS_TRASH.get()));
+																	entityToSpawn.setPickUpDelay(1);
+																	entityToSpawn.setUnlimitedLifetime();
+																	_level.addFreshEntity(entityToSpawn);
+																}
+																itemstack.shrink(1);
+																if (entity instanceof LivingEntity _livingEntity62 && _livingEntity62.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES))
+																	_livingEntity62.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
+																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity61 && _livingEntity61.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
+																					? _livingEntity61.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
+																					: 0)));
+																if (entity instanceof Player _player && !_player.level().isClientSide())
+																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0441\u044B\u0440\u043D\u043E."), true);
+															} else if (itemstack.getItem() == Ssc14ModItems.CHIPS.get()) {
+																if (world instanceof ServerLevel _level) {
+																	ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Ssc14ModItems.CHIPS_TRASH.get()));
+																	entityToSpawn.setPickUpDelay(1);
+																	entityToSpawn.setUnlimitedLifetime();
+																	_level.addFreshEntity(entityToSpawn);
+																}
+																itemstack.shrink(1);
+																if (entity instanceof LivingEntity _livingEntity70 && _livingEntity70.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES))
+																	_livingEntity70.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
+																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity69 && _livingEntity69.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
+																					? _livingEntity69.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
+																					: 0)));
+																if (entity instanceof Player _player && !_player.level().isClientSide())
+																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0441\u044B\u0440\u043D\u043E."), true);
+															} else if (itemstack.getItem() == Ssc14ModItems.BORITOS.get()) {
+																if (world instanceof ServerLevel _level) {
+																	ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Ssc14ModItems.BORITOS_TRASH.get()));
+																	entityToSpawn.setPickUpDelay(1);
+																	entityToSpawn.setUnlimitedLifetime();
+																	_level.addFreshEntity(entityToSpawn);
+																}
+																itemstack.shrink(1);
+																if (entity instanceof LivingEntity _livingEntity78 && _livingEntity78.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES))
+																	_livingEntity78.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
+																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity77 && _livingEntity77.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
+																					? _livingEntity77.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
+																					: 0)));
+																if (entity instanceof Player _player && !_player.level().isClientSide())
+																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0441\u044B\u0440\u043D\u043E."), true);
+															} else if (itemstack.getItem() == Ssc14ModItems.POPCORN.get()) {
+																if (world instanceof ServerLevel _level) {
+																	ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Ssc14ModItems.POPCORN_TRASH.get()));
+																	entityToSpawn.setPickUpDelay(1);
+																	entityToSpawn.setUnlimitedLifetime();
+																	_level.addFreshEntity(entityToSpawn);
+																}
+																itemstack.shrink(1);
+																if (entity instanceof LivingEntity _livingEntity86 && _livingEntity86.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES))
+																	_livingEntity86.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
+																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity85 && _livingEntity85.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
+																					? _livingEntity85.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
+																					: 0)));
+																if (entity instanceof Player _player && !_player.level().isClientSide())
+																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0441\u044B\u0440\u043D\u043E."), true);
 															}
 														} else {
 															if (entity instanceof Player _player && !_player.level().isClientSide())
 																_player.displayClientMessage(Component.literal("\u0412 \u0432\u0430\u0441 \u0431\u043E\u043B\u044C\u0448\u0435 \u043D\u0435 \u0432\u043B\u0435\u0437\u0435\u0442!"), true);
 														}
-														if (entity instanceof LivingEntity _livingEntity57 && _livingEntity57.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-															_livingEntity57.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+														if (entity instanceof LivingEntity _livingEntity89 && _livingEntity89.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+															_livingEntity89.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 													});
 												} else {
-													if (entity instanceof LivingEntity _livingEntity59 && _livingEntity59.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-														_livingEntity59.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+													if (entity instanceof LivingEntity _livingEntity91 && _livingEntity91.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+														_livingEntity91.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 												}
 											});
 										} else {
-											if (entity instanceof LivingEntity _livingEntity61 && _livingEntity61.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-												_livingEntity61.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+											if (entity instanceof LivingEntity _livingEntity93 && _livingEntity93.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+												_livingEntity93.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 										}
 									});
 								} else {
-									if (entity instanceof LivingEntity _livingEntity63 && _livingEntity63.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-										_livingEntity63.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+									if (entity instanceof LivingEntity _livingEntity95 && _livingEntity95.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+										_livingEntity95.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 								}
 							});
 						} else {
-							if (entity instanceof LivingEntity _livingEntity65 && _livingEntity65.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-								_livingEntity65.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+							if (entity instanceof LivingEntity _livingEntity97 && _livingEntity97.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+								_livingEntity97.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 						}
 					});
 				} else {
-					if (entity instanceof LivingEntity _livingEntity67 && _livingEntity67.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
-						_livingEntity67.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+					if (entity instanceof LivingEntity _livingEntity99 && _livingEntity99.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
+						_livingEntity99.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 				}
 			});
 		} else {

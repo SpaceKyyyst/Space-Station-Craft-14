@@ -27,7 +27,7 @@ public class RCDGUIwallfloorScreen extends AbstractContainerScreen<RCDGUIwallflo
 	private ImageButton imagebutton_most_floor_gui_texture;
 	private ImageButton imagebutton_tile_steel_gui_texture;
 	private ImageButton imagebutton_floor_gui_texture;
-	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/rcd_gui_wallfloor.png");
+	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/rcd_gui_2.png");
 
 	public RCDGUIwallfloorScreen(RCDGUIwallfloorMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);

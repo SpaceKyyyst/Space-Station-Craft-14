@@ -15,6 +15,9 @@
     "hasModel": true,
     "baubleModel": "Modelmantle_hos_shoulder_equipped",
     "baubleModelTexture": "mantle_hos_shoulder_equipped_texture.png",
+    "onEquip": {
+      "name": "Equip_BaseSound_PR_"
+    },
     "helmetModelPart": "head",
     "bodyModelPart": "torso",
     "armsModelPartL": "l_arm",

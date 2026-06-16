@@ -1,0 +1,324 @@
+{
+  "_fv": 85,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 176,
+    "height": 166,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "commun_console_gui_2.png",
+          "use1Xscale": false,
+          "x": 5,
+          "y": 3,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_otpravka_soobshchieniia",
+          "text": {
+            "fixedValue": "Отправка сообщения"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 222,
+          "y": 34,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_kod_ughrozy",
+          "text": {
+            "fixedValue": "Код угрозы"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 30,
+          "y": 34,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_krasnyi",
+          "text": {
+            "fixedValue": "Красный"
+          },
+          "color": {
+            "value": -3397592,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 42,
+          "y": 113,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_sinii",
+          "text": {
+            "fixedValue": "Синий"
+          },
+          "color": {
+            "value": -14139956,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 42,
+          "y": 127,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_fiolietovyi",
+          "text": {
+            "fixedValue": "Фиолетовый"
+          },
+          "color": {
+            "value": -6412084,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 42,
+          "y": 141,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_zhioltyi",
+          "text": {
+            "fixedValue": "Жёлтый"
+          },
+          "color": {
+            "value": -3359704,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 42,
+          "y": 155,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_zielionyi",
+          "text": {
+            "fixedValue": "Зелёный"
+          },
+          "color": {
+            "value": -14103471,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 42,
+          "y": 169,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_pri_nalichii_ughroz",
+          "text": {
+            "fixedValue": "При наличии угроз"
+          },
+          "color": {
+            "value": -1710619,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 28,
+          "y": 49,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_na_stantsii_vybieritie",
+          "text": {
+            "fixedValue": "на станции выберите"
+          },
+          "color": {
+            "value": -1710619,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 28,
+          "y": 59,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_sootvietstvuiushchii_kod",
+          "text": {
+            "fixedValue": "соответствующий код"
+          },
+          "color": {
+            "value": -1710619,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 28,
+          "y": 69,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_ughrozy",
+          "text": {
+            "fixedValue": "угрозы. "
+          },
+          "color": {
+            "value": -1710619,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 28,
+          "y": 79,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_comm_cons_gui_button",
+          "image": "comm_cons_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CommConsREDcode"
+          },
+          "x": 32,
+          "y": 111,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_comm_cons_gui_button1",
+          "image": "comm_cons_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CommConsBLUEcode"
+          },
+          "x": 32,
+          "y": 125,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_comm_cons_gui_button2",
+          "image": "comm_cons_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CommConsPURPLEcode"
+          },
+          "x": 32,
+          "y": 139,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_comm_cons_gui_button3",
+          "image": "comm_cons_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CommConsYELLOWcode"
+          },
+          "x": 32,
+          "y": 153,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_comm_cons_gui_button4",
+          "image": "comm_cons_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "CommConsGREENcode"
+          },
+          "x": 32,
+          "y": 167,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_vvieditie_obiavlieniie",
+          "text": {
+            "fixedValue": "Введите объявление: "
+          },
+          "color": {
+            "value": -1710619,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 220,
+          "y": 49,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_comm_cons_gui_text_current",
+          "text": {
+            "fixedValue": "",
+            "name": "CommConsGUITextCurrentCode"
+          },
+          "color": {
+            "value": -1710619,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 28,
+          "y": 91,
+          "locked": false
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

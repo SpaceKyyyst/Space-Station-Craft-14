@@ -69,5 +69,30 @@ public class Ssc14ModCuriosRenderers {
 		ICurioRenderer.register(Ssc14ModItems.BLACK_GLOVES.get(), BlackGlovesCAPIRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.HELMET_COSMONAUT.get(), HelmetCosmonautCAPIRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.CONE.get(), ConeHelmetRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.BELT_SECURITY_WEBBING.get(), BeltSecurityWebbingCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.BELT_INSTRUMENTAL.get(), BeltInstrumentalCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.MASK_GAS_SECURITY.get(), MaskGasSecurityCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.WHITE_KNEE.get(), WhiteKneeCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.BEE_THIGH.get(), BeeThighCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.STOCKINGS_BLUE.get(), StockingsBlueCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.STOCKINGS_CYAN.get(), StockingsCyanCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.STOCKINGS_D_PINK.get(), StockingsDPinkCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.STOCKINGS_GREEN.get(), StockingsGreenCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.STOCKINGS_L_PINK.get(), StockingsLPinkCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.STOCKINGS_ORANGE.get(), StockingsOrangeCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.STOCKINGS_PURPLE.get(), StockingsPurpleCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.STOCKINGS_YELLOW.get(), StockingsYellowCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.BARTENDER_JUMPSUIT.get(), BartenderRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.BRIGMEDIC_JUMPSUIT.get(), BrigmedicRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.CAPFORMAL_JUMPSUIT.get(), CapformalRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.CASUAL_JUMPSUIT.get(), CasualRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.C_ETURTLE_JUMPSUIT.get(), CEturtleRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.CENTCOM_AGENT_JUMPSUIT.get(), CentcomAgentRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.CENTCOM_OFFICER_JUMPSUIT.get(), CentcomOfficerRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.CENTCOM_OFFICIAL_JUMPSUIT.get(), CentcomOfficialRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.CHAPLAIN_JUMPSUIT.get(), ChaplainRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.CHEF_JUMPSUIT.get(), ChefRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.CM_OTURTLE_JUMPSUIT.get(), CMOturtleRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HO_SPARADE_JUMPSUIT.get(), HoSparadeRenderer::new);
 	}
 }

@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/gas_producer",
+  "textures": {
+    "all": "ssc_14:block/gas_producer_item",
+    "particle": "ssc_14:block/gas_producer_item",
+    "2": "ssc_14:block/gas_producer_texture"
+  },
+  "render_type": "cutout"
+}

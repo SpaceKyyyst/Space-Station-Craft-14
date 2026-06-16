@@ -31,8 +31,8 @@ public class Modelgloves_equipped extends EntityModel<LivingEntityRenderState> {
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
-		PartDefinition r_hand = partdefinition.addOrReplaceChild("r_hand", CubeListBuilder.create().texOffs(0, 0).mirror().addBox(-2.0F, 6.0F, -2.0F, 3.0F, 4.0F, 4.0F, new CubeDeformation(0.05F)).mirror(false), PartPose.offset(-5.0F, 4.0F, 0.0F));
-		PartDefinition l_hand = partdefinition.addOrReplaceChild("l_hand", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 6.0F, -2.0F, 3.0F, 4.0F, 4.0F, new CubeDeformation(0.05F)), PartPose.offset(5.0F, 4.0F, 0.0F));
+		PartDefinition r_hand = partdefinition.addOrReplaceChild("r_hand", CubeListBuilder.create().texOffs(0, 0).mirror().addBox(-2.0F, 6.2F, -2.0F, 3.0F, 4.0F, 4.0F, new CubeDeformation(0.05F)).mirror(false), PartPose.offset(-5.0F, 4.0F, 0.0F));
+		PartDefinition l_hand = partdefinition.addOrReplaceChild("l_hand", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 6.2F, -2.0F, 3.0F, 4.0F, 4.0F, new CubeDeformation(0.05F)), PartPose.offset(5.0F, 4.0F, 0.0F));
 		return LayerDefinition.create(meshdefinition, 16, 16);
 	}
 

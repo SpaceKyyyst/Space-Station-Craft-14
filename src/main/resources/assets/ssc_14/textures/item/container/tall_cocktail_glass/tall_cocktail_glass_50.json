@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc:item/container/tall_cocktail_glass/tall_cocktail_glass",
+    "layer1": "ssc:item/container/tall_cocktail_glass/tall_cocktail_glass_50"
+  }
+}

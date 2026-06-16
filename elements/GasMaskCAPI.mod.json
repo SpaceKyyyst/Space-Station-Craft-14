@@ -15,6 +15,9 @@
     "hasModel": true,
     "baubleModel": "Modelmask_gas_equipped",
     "baubleModelTexture": "mask_gas_equipped_texture.png",
+    "onEquip": {
+      "name": "Equip_BaseSound_PR_"
+    },
     "helmetModelPart": "head",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

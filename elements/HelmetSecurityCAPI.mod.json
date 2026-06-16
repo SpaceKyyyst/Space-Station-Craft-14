@@ -15,6 +15,9 @@
     "hasModel": true,
     "baubleModel": "Modelhelmet_security_equipped",
     "baubleModelTexture": "helmet_security_equipped_texture.png",
+    "onEquip": {
+      "name": "EquipHelmetSoundPR"
+    },
     "helmetModelPart": "head",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

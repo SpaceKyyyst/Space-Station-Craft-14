@@ -22,7 +22,7 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class QMRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/jumpsuit_qm_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/jumpsuit_qm_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public QMRenderer() {
@@ -36,7 +36,7 @@ public class QMRenderer implements ICurioRenderer.HumanoidRender {
                 "left_arm", model.l_arm,
                 "right_arm", model.r_arm,
                 "left_leg", model.l_leg,
-                "right_leg", model.r_arm
+                "right_leg", model.r_leg
         )));
 	}
 

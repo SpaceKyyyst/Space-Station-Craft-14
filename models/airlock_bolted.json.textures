@@ -11,6 +11,18 @@
       "map": {
         "0": "standard_airlock_basic_panel_open_texture"
       }
+    },
+    "tech": {
+      "name": "tech",
+      "map": {
+        "0": "standard_airlock_maint_texture"
+      }
+    },
+    "tech_panelop": {
+      "name": "tech_panelop",
+      "map": {
+        "0": "standard_airlock_maint_panel_open_texture"
+      }
     }
   }
 }

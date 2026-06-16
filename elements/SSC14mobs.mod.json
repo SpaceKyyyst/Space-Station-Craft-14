@@ -1,0 +1,11 @@
+{
+  "_fv": 85,
+  "_type": "tab",
+  "definition": {
+    "name": "SSC14: Mobs",
+    "icon": {
+      "value": "CUSTOM:MouseBrown.spawn_egg"
+    },
+    "showSearch": false
+  }
+}

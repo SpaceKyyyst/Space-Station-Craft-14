@@ -1,0 +1,767 @@
+{
+  "_fv": 85,
+  "_type": "gui",
+  "definition": {
+    "type": 1,
+    "width": 150,
+    "height": 200,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 1000,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "vending_aut_2_gui.png",
+          "use1Xscale": false,
+          "x": 139,
+          "y": 20,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button1",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "VendAutGUIButton1"
+          },
+          "x": 253,
+          "y": 41,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button2",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "VendAutGUIButton2"
+          },
+          "x": 253,
+          "y": 50,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button3",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "VendAutGUIButton3"
+          },
+          "x": 253,
+          "y": 59,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button4",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "VendAutGUIButton4"
+          },
+          "x": 253,
+          "y": 68,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button5",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "VendAutGUIButton5"
+          },
+          "x": 253,
+          "y": 77,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button6",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "VendAutGUIButton6"
+          },
+          "x": 253,
+          "y": 86,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button7",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 253,
+          "y": 95,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button8",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 253,
+          "y": 104,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button9",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 253,
+          "y": 113,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button10",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 253,
+          "y": 122,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button11",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 253,
+          "y": 131,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button12",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 253,
+          "y": 140,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button13",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 253,
+          "y": 149,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button14",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 253,
+          "y": 158,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button15",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 41,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button16",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 50,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button17",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 59,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button18",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 68,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button19",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 77,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button20",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 86,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button21",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 95,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button22",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 104,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button23",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 113,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button24",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 122,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button25",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 131,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button26",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 140,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button27",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 149,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_vendind_gui_button28",
+          "image": "vendind_gui_button.png",
+          "hoveredImage": "",
+          "x": 268,
+          "y": 158,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 1,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 150,
+          "y": 43,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 2,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 168,
+          "y": 43,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 3,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 186,
+          "y": 43,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 4,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 204,
+          "y": 43,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 5,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 222,
+          "y": 43,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 6,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 150,
+          "y": 66,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 7,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 168,
+          "y": 66,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 8,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 186,
+          "y": 66,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 9,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 204,
+          "y": 66,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 10,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 222,
+          "y": 66,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 11,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 150,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 12,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 168,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 13,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 186,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 14,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 204,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 15,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 222,
+          "y": 89,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 16,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 150,
+          "y": 112,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 17,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 168,
+          "y": 112,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 18,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 186,
+          "y": 112,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 19,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 204,
+          "y": 112,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 20,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 222,
+          "y": 112,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 21,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 150,
+          "y": 135,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 22,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 168,
+          "y": 135,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 23,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 186,
+          "y": 135,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 24,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 204,
+          "y": 135,
+          "locked": true
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 25,
+          "disablePickup": {
+            "fixedValue": true
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 222,
+          "y": 135,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "vend_amount_sprites.png",
+          "spritesCount": 20,
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "VendGUIindicator1"
+          },
+          "x": 162,
+          "y": 59,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "vend_amount_sprites.png",
+          "spritesCount": 20,
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "VendGUIindicator2"
+          },
+          "x": 180,
+          "y": 59,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "vend_amount_sprites.png",
+          "spritesCount": 20,
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "VendGUIindicator3"
+          },
+          "x": 198,
+          "y": 59,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "vend_amount_sprites.png",
+          "spritesCount": 20,
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "VendGUIindicator4"
+          },
+          "x": 216,
+          "y": 59,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "vend_amount_sprites.png",
+          "spritesCount": 20,
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "VendGUIindicator5"
+          },
+          "x": 234,
+          "y": 59,
+          "locked": true
+        }
+      },
+      {
+        "type": "sprite",
+        "data": {
+          "sprite": "vend_amount_sprites.png",
+          "spritesCount": 20,
+          "spriteIndex": {
+            "fixedValue": 0.0,
+            "name": "VendGUIindicator6"
+          },
+          "x": 162,
+          "y": 82,
+          "locked": false
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

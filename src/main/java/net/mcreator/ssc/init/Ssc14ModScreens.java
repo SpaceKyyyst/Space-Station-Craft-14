@@ -25,6 +25,10 @@ public class Ssc14ModScreens {
 		event.register(Ssc14ModMenus.RCDGUI.get(), RCDGUIScreen::new);
 		event.register(Ssc14ModMenus.RCDGU_IWALLFLOOR.get(), RCDGUIwallfloorScreen::new);
 		event.register(Ssc14ModMenus.HEADSET_GU_IKOSTIL.get(), HeadsetGUIkostilScreen::new);
+		event.register(Ssc14ModMenus.COMMUN_CONSOLE_GUI.get(), CommunConsoleGUIScreen::new);
+		event.register(Ssc14ModMenus.VENDING_AUT_1_GUI.get(), VendingAut1GUIScreen::new);
+		event.register(Ssc14ModMenus.RCDGU_IWINDOWS.get(), RCDGUIwindowsScreen::new);
+		event.register(Ssc14ModMenus.NET_CONFIG_GUI.get(), NetConfigGUIScreen::new);
 	}
 
 	public interface ScreenAccessor {

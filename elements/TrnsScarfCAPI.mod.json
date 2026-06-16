@@ -15,6 +15,9 @@
     "hasModel": true,
     "baubleModel": "Modelscarf",
     "baubleModelTexture": "scarf_trns_t.png",
+    "onEquip": {
+      "name": "Equip_BaseSound_PR_"
+    },
     "helmetModelPart": "Empty",
     "bodyModelPart": "bone",
     "armsModelPartL": "Empty",

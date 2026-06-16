@@ -163,7 +163,21 @@ public class SSC14commandsCommand {
 
 			SSC14AtmosGasTemperatureCommandProcedure.execute(world, arguments);
 			return 0;
-		})))));
+		})))).then(Commands.literal("liquids").then(Commands.literal("add").then(Commands.argument("count", DoubleArgumentType.doubleArg(1, 1000)).then(Commands.argument("liquid_name", MessageArgument.message()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
+
+			LiquidGetCommandProcedure.execute(arguments);
+			return 0;
+		}))))));
 	}
 
 }

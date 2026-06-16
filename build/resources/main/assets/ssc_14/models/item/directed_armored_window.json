@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc_14:item/directed_st_glass_armored_item"
+  },
+  "render_type": "translucent"
+}

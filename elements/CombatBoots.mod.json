@@ -15,6 +15,9 @@
     "hasModel": true,
     "baubleModel": "Modelboots_jackboots_equipped",
     "baubleModelTexture": "boots_jackboots_equipped_texture.png",
+    "onEquip": {
+      "name": "Equip_BaseSound_PR_"
+    },
     "helmetModelPart": "Empty",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

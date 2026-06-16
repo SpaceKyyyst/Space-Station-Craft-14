@@ -23,6 +23,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.core.component.DataComponents;
@@ -42,7 +43,6 @@ public class RSU_useOnBlock_Procedure {
         if (!livingEntity.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB)) return;
         if (!itemstack.is(Ssc14ModItems.RSU.get())) return;
 
-        // === 1. ОТКРЫТИЕ GUI ПРИ ЗАЖАТОМ SHIFT ===
         if (entity.isShiftKeyDown()) {
             if (entity instanceof ServerPlayer serverPlayer) {
                 BlockPos _bpos = BlockPos.containing(x, y, z);
@@ -61,7 +61,7 @@ public class RSU_useOnBlock_Procedure {
                     }
                 }, _bpos);
             }
-            return; 
+            return;
         }
 
         int mode = (int) itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("Mode", 0);
@@ -86,39 +86,37 @@ public class RSU_useOnBlock_Procedure {
             return;
         }
 
-        if (mode >= 2 && mode <= 5) {
+        if (mode >= 2 && mode <= 10) {
             handleConstruction(world, livingEntity, itemstack, placePos, mode, clickedFace);
             return;
         }
     }
 
-    // =========================================================================
-    // РАЗБОРКА
-    // =========================================================================
-    private static void handleDeconstruction(LevelAccessor world, LivingEntity livingEntity, ItemStack itemstack, 
+    private static void handleDeconstruction(LevelAccessor world, LivingEntity livingEntity, ItemStack itemstack,
                                               BlockPos pos, BlockState blockState) {
         if (!blockState.is(BlockTags.create(ResourceLocation.parse("ssc14:rcd_deconstruct")))) return;
         if (blockState.isAir()) return;
 
         double posHash = livingEntity.getX() + livingEntity.getY() + livingEntity.getZ();
-        final int STEP_DELAY = 20;
-        final int TOTAL_STEPS = 6;
+        int totalSteps = isFastDeconstruct(blockState) ? 1 : 8;
+        int operationTicks = 20 * totalSteps;
 
-        // СПАВН 6 ПАРТИКЛОВ РАЗБОРКИ (Только в момент начала действия!)
         if (world instanceof ServerLevel serverLevel) {
             spawnBuildParticles(serverLevel, pos);
         }
 
         class DeconstructProcess {
-            void run(int step) {
+            void run(int progressStep) {
                 if (livingEntity.getX() + livingEntity.getY() + livingEntity.getZ() != posHash) { reset(); return; }
                 if (!livingEntity.getMainHandItem().is(Ssc14ModItems.RSU.get())) { reset(); return; }
                 if (!world.getBlockState(pos).is(blockState.getBlock())) { reset(); return; }
 
-                livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(step);
-
-                if (step < TOTAL_STEPS) {
-                    Ssc14Mod.queueServerWork(STEP_DELAY, () -> run(step + 1));
+                if (progressStep < 5) {
+                    livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(progressStep + 1);
+                    
+                    int delay = operationTicks / 5;
+                    if (delay <= 0) delay = 1;
+                    Ssc14Mod.queueServerWork(delay, () -> run(progressStep + 1));
                 } else {
                     world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
                     
@@ -130,7 +128,11 @@ public class RSU_useOnBlock_Procedure {
                     }
                     
                     playSound(world, pos, "ssc_14:items_rcd_deconstruct", 1.0F, 1.0F);
-                    reset();
+                    
+                    livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
+                    Ssc14Mod.queueServerWork(5, () -> {
+                        livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+                    });
                 }
             }
 
@@ -139,12 +141,9 @@ public class RSU_useOnBlock_Procedure {
             }
         }
 
-        new DeconstructProcess().run(1);
+        new DeconstructProcess().run(0);
     }
 
-    // =========================================================================
-    // СТРОИТЕЛЬСТВО
-    // =========================================================================
     private static void handleConstruction(LevelAccessor world, LivingEntity livingEntity, ItemStack itemstack,
                                            BlockPos placePos, int mode, Direction face) {
         if (!world.getBlockState(placePos).isAir()) return;
@@ -152,15 +151,10 @@ public class RSU_useOnBlock_Procedure {
         BuildConfig config = getBuildConfig(mode);
         if (config == null) return;
 
-        // === НОВАЯ ПРОВЕРКА: УСЛОВИЯ РАЗМЕЩЕНИЯ ДЛЯ ПЛИТКИ И МОСТИКА ===
-        if (mode == 3) { // Плитка (Tile)
-            if (!Title_Placement_ConditionsProcedure.execute(world, placePos.getX(), placePos.getY(), placePos.getZ())) {
-                return; // Блок под местом установки не подходит для плитки
-            }
-        } else if (mode == 5) { // Мостик (Catwalk)
-            if (!CatwalkPlacementConditionsProcedure.execute(world, placePos.getX(), placePos.getY(), placePos.getZ())) {
-                return; // Блок под местом установки не подходит для мостика
-            }
+        if (mode == 3) {
+            if (!Title_Placement_ConditionsProcedure.execute(world, placePos.getX(), placePos.getY(), placePos.getZ())) return;
+        } else if (mode == 5) {
+            if (!CatwalkPlacementConditionsProcedure.execute(world, placePos.getX(), placePos.getY(), placePos.getZ())) return;
         }
 
         double charges = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
@@ -168,11 +162,18 @@ public class RSU_useOnBlock_Procedure {
         
         if (charges < config.cost()) return;
 
+        Direction facing = getFacingFromLook(livingEntity).getOpposite();
+        BlockState tempState = config.blockState();
+        if (config.isDirected()) {
+            tempState = tempState.setValue(BlockStateProperties.FACING, facing);
+        }
+        final BlockState finalState = tempState;
+
         double posHash = livingEntity.getX() + livingEntity.getY() + livingEntity.getZ();
+        int operationTicks = config.delay() * config.steps();
 
         if (config.delay() == 0) {
-            // Мгновенная постройка
-            world.setBlock(placePos, config.blockState(), 3);
+            world.setBlock(placePos, finalState, 3);
             
             final double newCharges = charges - config.cost();
             CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble("Charges", newCharges));
@@ -181,34 +182,42 @@ public class RSU_useOnBlock_Procedure {
             return;
         }
 
-        // Постройка с прогресс-баром (стена)
         if (world instanceof ServerLevel serverLevel) {
-            spawnBuildParticles(serverLevel, placePos);
+            if (config.isDirected()) {
+                spawnDirectedWindowParticles(serverLevel, placePos, facing);
+            } else {
+                spawnBuildParticles(serverLevel, placePos);
+            }
         }
 
         class BuildProcess {
-            void run(int step) {
+            void run(int progressStep) {
                 if (livingEntity.getX() + livingEntity.getY() + livingEntity.getZ() != posHash) { reset(); return; }
                 if (!livingEntity.getMainHandItem().is(Ssc14ModItems.RSU.get())) { reset(); return; }
                 if (!world.getBlockState(placePos).isAir()) { reset(); return; }
                 
-                // Повторная проверка зарядов во время процесса
                 double currentCharges = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
                         .copyTag().getDoubleOr("Charges", 0);
                 if (currentCharges < config.cost()) { reset(); return; }
 
-                livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(step);
-
-                if (step < 6) {
-                    Ssc14Mod.queueServerWork(config.delay(), () -> run(step + 1));
+                if (progressStep < 5) {
+                    livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(progressStep + 1);
+                    
+                    int delay = operationTicks / 5;
+                    if (delay <= 0) delay = 1;
+                    Ssc14Mod.queueServerWork(delay, () -> run(progressStep + 1));
                 } else {
-                    world.setBlock(placePos, config.blockState(), 3);
+                    world.setBlock(placePos, finalState, 3);
                     
                     final double finalCharges = currentCharges - config.cost();
                     CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble("Charges", finalCharges));
                     
                     playSound(world, placePos, "ssc_14:items_rcd_deconstruct", 1.0F, 1.0F);
-                    reset();
+                    
+                    livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
+                    Ssc14Mod.queueServerWork(5, () -> {
+                        livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+                    });
                 }
             }
 
@@ -217,12 +226,25 @@ public class RSU_useOnBlock_Procedure {
             }
         }
 
-        new BuildProcess().run(1);
+        new BuildProcess().run(0);
     }
 
-    // =========================================================================
-    // СПАВН 6 ПАРТИКЛОВ СБОРКИ/РАЗБОРКИ (Большие партиклы на гранях)
-    // =========================================================================
+    private static boolean isFastDeconstruct(BlockState blockState) {
+        net.minecraft.world.level.block.Block block = blockState.getBlock();
+        return block == Ssc14ModBlocks.GRILLE.get() ||
+               block == Ssc14ModBlocks.DIRECTED_BASE_WINDOW.get() ||
+               block == Ssc14ModBlocks.DIRECTED_ARMORED_WINDOW.get() ||
+               blockState.is(BlockTags.create(ResourceLocation.parse("ssc14:tiles"))) ||
+               blockState.is(BlockTags.create(ResourceLocation.parse("ssc14:tiles_up")));
+    }
+
+    private static Direction getFacingFromLook(LivingEntity entity) {
+        float xRot = entity.getXRot();
+        if (xRot < -45) return Direction.UP;
+        if (xRot > 45) return Direction.DOWN;
+        return entity.getDirection();
+    }
+
     private static void spawnBuildParticles(ServerLevel serverLevel, BlockPos pos) {
         double offset = 0.5001;
         for (Direction dir : Direction.values()) {
@@ -243,17 +265,68 @@ public class RSU_useOnBlock_Procedure {
         }
     }
 
-    // =========================================================================
-    // КОНФИГУРАЦИЯ
-    // =========================================================================
-    private record BuildConfig(int delay, double cost, BlockState blockState) {}
+    private static void spawnDirectedWindowParticles(ServerLevel serverLevel, BlockPos pos, Direction facing) {
+        SimpleParticleType particle = Ssc14ModParticleTypes.RCD_INTERFERENCE_P.get();
+        double thickness = 3.0 / 16.0;
+        double halfThickness = thickness / 2.0;
+        
+        double cx = pos.getX() + 0.5 + facing.getStepX() * (0.5 - halfThickness);
+        double cy = pos.getY() + 0.5 + facing.getStepY() * (0.5 - halfThickness);
+        double cz = pos.getZ() + 0.5 + facing.getStepZ() * (0.5 - halfThickness);
+        
+        int steps = 4;
+        double stepSize = 1.0 / steps;
+        double edgeOffset = 0.01;
+
+        if (facing == Direction.NORTH || facing == Direction.SOUTH) {
+            for (int i = 0; i <= steps; i++) {
+                double t = i * stepSize;
+                serverLevel.sendParticles(particle, pos.getX() + t, pos.getY() + edgeOffset, cz, 1, 0, 0, 0, 0);
+                serverLevel.sendParticles(particle, pos.getX() + t, pos.getY() + 1 - edgeOffset, cz, 1, 0, 0, 0, 0);
+            }
+            for (int i = 0; i <= steps; i++) {
+                double t = i * stepSize;
+                serverLevel.sendParticles(particle, pos.getX() + edgeOffset, pos.getY() + t, cz, 1, 0, 0, 0, 0);
+                serverLevel.sendParticles(particle, pos.getX() + 1 - edgeOffset, pos.getY() + t, cz, 1, 0, 0, 0, 0);
+            }
+        } else if (facing == Direction.EAST || facing == Direction.WEST) {
+            for (int i = 0; i <= steps; i++) {
+                double t = i * stepSize;
+                serverLevel.sendParticles(particle, cx, pos.getY() + edgeOffset, pos.getZ() + t, 1, 0, 0, 0, 0);
+                serverLevel.sendParticles(particle, cx, pos.getY() + 1 - edgeOffset, pos.getZ() + t, 1, 0, 0, 0, 0);
+            }
+            for (int i = 0; i <= steps; i++) {
+                double t = i * stepSize;
+                serverLevel.sendParticles(particle, cx, pos.getY() + t, pos.getZ() + edgeOffset, 1, 0, 0, 0, 0);
+                serverLevel.sendParticles(particle, cx, pos.getY() + t, pos.getZ() + 1 - edgeOffset, 1, 0, 0, 0, 0);
+            }
+        } else if (facing == Direction.UP || facing == Direction.DOWN) {
+            for (int i = 0; i <= steps; i++) {
+                double t = i * stepSize;
+                serverLevel.sendParticles(particle, pos.getX() + t, cy, pos.getZ() + edgeOffset, 1, 0, 0, 0, 0);
+                serverLevel.sendParticles(particle, pos.getX() + t, cy, pos.getZ() + 1 - edgeOffset, 1, 0, 0, 0, 0);
+            }
+            for (int i = 0; i <= steps; i++) {
+                double t = i * stepSize;
+                serverLevel.sendParticles(particle, pos.getX() + edgeOffset, cy, pos.getZ() + t, 1, 0, 0, 0, 0);
+                serverLevel.sendParticles(particle, pos.getX() + 1 - edgeOffset, cy, pos.getZ() + t, 1, 0, 0, 0, 0);
+            }
+        }
+    }
+
+    private record BuildConfig(int delay, int steps, double cost, BlockState blockState, boolean isDirected) {}
     
     private static BuildConfig getBuildConfig(int mode) {
         return switch (mode) {
-            case 2 -> new BuildConfig(20, 5, Ssc14ModBlocks.STEEL_WALL.get().defaultBlockState());
-            case 3 -> new BuildConfig(0, 1, Ssc14ModBlocks.TITLE_STEEL.get().defaultBlockState());
-            case 4 -> new BuildConfig(0, 1, Ssc14ModBlocks.SHEATHING.get().defaultBlockState());
-            case 5 -> new BuildConfig(0, 1, Ssc14ModBlocks.CATWALK_FLOOR.get().defaultBlockState());
+            case 2 -> new BuildConfig(20, 2, 5, Ssc14ModBlocks.STEEL_WALL.get().defaultBlockState(), false);
+            case 3 -> new BuildConfig(0, 0, 1, Ssc14ModBlocks.TITLE_STEEL.get().defaultBlockState(), false);
+            case 4 -> new BuildConfig(20, 1, 1, Ssc14ModBlocks.SHEATHING.get().defaultBlockState(), false);
+            case 5 -> new BuildConfig(0, 0, 1, Ssc14ModBlocks.CATWALK_FLOOR.get().defaultBlockState(), false);
+            case 6 -> new BuildConfig(20, 1, 1, Ssc14ModBlocks.GRILLE.get().defaultBlockState(), false);
+            case 7 -> new BuildConfig(20, 2, 3, Ssc14ModBlocks.BASE_WINDOW.get().defaultBlockState(), false);
+            case 8 -> new BuildConfig(20, 1, 2, Ssc14ModBlocks.DIRECTED_BASE_WINDOW.get().defaultBlockState(), true);
+            case 9 -> new BuildConfig(20, 1, 3, Ssc14ModBlocks.DIRECTED_ARMORED_WINDOW.get().defaultBlockState(), true);
+            case 10 -> new BuildConfig(20, 2, 4, Ssc14ModBlocks.ARMORED_WINDOW.get().defaultBlockState(), false);
             default -> null;
         };
     }

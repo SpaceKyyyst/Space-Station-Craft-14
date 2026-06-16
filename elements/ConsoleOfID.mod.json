@@ -199,7 +199,7 @@
     },
     "hasInventory": true,
     "guiBoundTo": "IDcode",
-    "openGUIOnRightClick": false,
+    "openGUIOnRightClick": true,
     "inventorySize": 2,
     "inventoryStackSize": 1,
     "inventoryDropWhenDestroyed": true,
@@ -215,7 +215,7 @@
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
     "onRightClicked": {
-      "name": "ConsoleID_openMenu"
+      "name": "ConsolesOpenMenuSound"
     },
     "generateFeature": false,
     "restrictionBiomes": [],

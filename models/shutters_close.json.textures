@@ -1,0 +1,28 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "2": "shutters_close_texture"
+      }
+    },
+    "center": {
+      "name": "center",
+      "map": {
+        "2": "shutters_center_close_texture"
+      }
+    },
+    "up": {
+      "name": "up",
+      "map": {
+        "2": "shutters_up_close_texture"
+      }
+    },
+    "down": {
+      "name": "down",
+      "map": {
+        "2": "shutters_down_close_texture"
+      }
+    }
+  }
+}

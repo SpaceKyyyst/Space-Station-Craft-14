@@ -116,6 +116,12 @@ public class RCDGUIScreen extends AbstractContainerScreen<RCDGUIMenu> implements
 		this.addRenderableWidget(imagebutton_floorwall_gui_texture);
 		imagebutton_windowglill_gui_texture = new ImageButton(this.leftPos + 18, this.topPos + 84, 32, 32,
 				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/windowglill_gui_texture.png"), ResourceLocation.parse("ssc_14:textures/screens/windowglill_gui_texture.png")), e -> {
+					int x = RCDGUIScreen.this.x;
+					int y = RCDGUIScreen.this.y;
+					if (true) {
+						ClientPacketDistributor.sendToServer(new RCDGUIButtonMessage(3, x, y, z));
+						RCDGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
+					}
 				}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {

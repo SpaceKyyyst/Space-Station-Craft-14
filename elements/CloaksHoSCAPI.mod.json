@@ -15,6 +15,9 @@
     "hasModel": true,
     "baubleModel": "Modelcloak_equipped",
     "baubleModelTexture": "cloak_hos_equipped_texture.png",
+    "onEquip": {
+      "name": "Equip_BaseSound_PR_"
+    },
     "helmetModelPart": "head",
     "bodyModelPart": "torso",
     "armsModelPartL": "l_arm",

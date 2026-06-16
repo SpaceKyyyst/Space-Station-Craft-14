@@ -65,6 +65,9 @@
           "name": "imagebutton_windowglill_gui_texture",
           "image": "windowglill_gui_texture.png",
           "hoveredImage": "",
+          "onClick": {
+            "name": "RCDGUIwindowsModeButton"
+          },
           "x": 132,
           "y": 104,
           "locked": true

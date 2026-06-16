@@ -136,6 +136,14 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> COMMUNICATION_SERVERS;
 	public static final DeferredBlock<Block> WOOD_TABLE;
 	public static final DeferredBlock<Block> GRAV_GEN_PLUG_BLOCK;
+	public static final DeferredBlock<Block> COMMUNICATION_CONSOLE;
+	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> GAS_PRODUCER_O_2;
+	public static final DeferredBlock<Block> VENDING_AUT_1;
+	public static final DeferredBlock<Block> VENDING_KOSTIL;
+	public static final DeferredBlock<Block> DIRECTED_ARMORED_WINDOW;
+	public static final DeferredBlock<Block> SHUTTERS;
+	public static final DeferredBlock<Block> BUTTON;
 	static {
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
 		SHEATHING = register("sheathing", SheathingBlock::new);
@@ -253,6 +261,14 @@ public class Ssc14ModBlocks {
 		COMMUNICATION_SERVERS = register("communication_servers", CommunicationServersBlock::new);
 		WOOD_TABLE = register("wood_table", WoodTableBlock::new);
 		GRAV_GEN_PLUG_BLOCK = register("grav_gen_plug_block", GravGenPlugBlockBlock::new);
+		COMMUNICATION_CONSOLE = register("communication_console", CommunicationConsoleBlock::new);
+		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
+		GAS_PRODUCER_O_2 = register("gas_producer_o_2", GasProducerO2Block::new);
+		VENDING_AUT_1 = register("vending_aut_1", VendingAut1Block::new);
+		VENDING_KOSTIL = register("vending_kostil", VendingKOSTILBlock::new);
+		DIRECTED_ARMORED_WINDOW = register("directed_armored_window", DirectedArmoredWindowBlock::new);
+		SHUTTERS = register("shutters", ShuttersBlock::new);
+		BUTTON = register("button", ButtonBlock::new);
 	}
 
 	// Start of user code block custom blocks

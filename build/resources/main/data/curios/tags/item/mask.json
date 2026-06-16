@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "ssc_14:gas_mask"
+    "ssc_14:gas_mask",
+    "ssc_14:mask_gas_security"
   ]
 }

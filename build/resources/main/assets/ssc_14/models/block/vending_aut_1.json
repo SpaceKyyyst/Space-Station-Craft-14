@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/vending_automates",
+  "textures": {
+    "all": "ssc_14:block/vending_aut_1_texture",
+    "particle": "ssc_14:block/vending_aut_1_texture",
+    "1": "ssc_14:block/vending_aut_1_texture"
+  },
+  "render_type": "cutout"
+}

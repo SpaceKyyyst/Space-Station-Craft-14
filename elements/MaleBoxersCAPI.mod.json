@@ -15,6 +15,9 @@
     "hasModel": true,
     "baubleModel": "Modelmale_boxers",
     "baubleModelTexture": "male_boxers_texture.png",
+    "onEquip": {
+      "name": "Equip_BaseSound_PR_"
+    },
     "helmetModelPart": "Empty",
     "bodyModelPart": "torso",
     "armsModelPartL": "Empty",

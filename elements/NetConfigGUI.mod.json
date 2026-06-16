@@ -1,0 +1,553 @@
+{
+  "_fv": 85,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 250,
+    "height": 160,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": false,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "net_config_gui_2.png",
+          "use1Xscale": false,
+          "x": 89,
+          "y": 40,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "NetConfigGUI_Button_L1_Click"
+          },
+          "displayCondition": {
+            "name": "NetConfigGUI_Button_L1_Cond_"
+          },
+          "x": 100,
+          "y": 58,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_l_1_t",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUI_Button_L1_text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 104,
+          "y": 60,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button1",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonR1Cond"
+          },
+          "x": 250,
+          "y": 58,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_r_1te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonR1text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 254,
+          "y": 60,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button2",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonL2Cond"
+          },
+          "x": 100,
+          "y": 74,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button3",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonL3Cond"
+          },
+          "x": 100,
+          "y": 90,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button4",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonL4Cond"
+          },
+          "x": 100,
+          "y": 106,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button5",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonL5Cond"
+          },
+          "x": 100,
+          "y": 122,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button6",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonL6Cond"
+          },
+          "x": 100,
+          "y": 138,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button7",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonL7Cond"
+          },
+          "x": 100,
+          "y": 154,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button8",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonL8Cond"
+          },
+          "x": 100,
+          "y": 170,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button9",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonR2Cond"
+          },
+          "x": 250,
+          "y": 74,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button10",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonR3Cond"
+          },
+          "x": 250,
+          "y": 90,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button11",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonR4Cond"
+          },
+          "x": 250,
+          "y": 106,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button12",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonR5Cond"
+          },
+          "x": 250,
+          "y": 122,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button13",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonR6Cond"
+          },
+          "x": 250,
+          "y": 138,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button14",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonR7Cond"
+          },
+          "x": 250,
+          "y": 154,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_net_config_gui_button15",
+          "image": "net_config_gui_button.png",
+          "hoveredImage": "",
+          "displayCondition": {
+            "name": "NetConfigGUIButtonR8Cond"
+          },
+          "x": 250,
+          "y": 170,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_l_2te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonL2text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 104,
+          "y": 76,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_l_3te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonL3text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 104,
+          "y": 92,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_l_4te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonL4text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 104,
+          "y": 108,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_l_5te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonL5text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 104,
+          "y": 124,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_l_6te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonL6text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 104,
+          "y": 140,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_l_7te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonL7text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 104,
+          "y": 156,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_l_8te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonL8text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 104,
+          "y": 172,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_r_2te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonR2text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 254,
+          "y": 76,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_r_3te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonR3text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 254,
+          "y": 92,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_r_4te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonR4text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 254,
+          "y": 108,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_r_5te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonR5text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 254,
+          "y": 124,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_r_6te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonR6text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 254,
+          "y": 140,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_r_7te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonR7text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 254,
+          "y": 156,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_net_config_gui_button_r_8te",
+          "text": {
+            "fixedValue": "",
+            "name": "NetConfigGUIButtonR8text"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 254,
+          "y": 172,
+          "locked": true
+        }
+      }
+    ],
+    "onTick": {
+      "name": "NetConfigGUI_TIC_"
+    },
+    "onClosed": {
+      "name": "NetConfigGUI_CLOSE_"
+    },
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

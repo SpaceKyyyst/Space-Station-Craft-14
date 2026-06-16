@@ -15,6 +15,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.core.SectionPos;
 
+import net.mcreator.ssc.procedures.RCDGUIwindowsModeButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwallfloorModeButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIexitButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIdeconstructButtonProcedure;
@@ -56,6 +57,10 @@ public record RCDGUIButtonMessage(int buttonID, int x, int y, int z) implements 
 		if (buttonID == 2) {
 
 			RCDGUIwallfloorModeButtonProcedure.execute(world, x, y, z, entity);
+		}
+		if (buttonID == 3) {
+
+			RCDGUIwindowsModeButtonProcedure.execute(world, x, y, z, entity);
 		}
 		if (buttonID == 6) {
 

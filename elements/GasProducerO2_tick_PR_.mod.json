@@ -1,0 +1,8 @@
+{
+  "_fv": 85,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"java_code\"><field name=\"CODE\">&amp;#10;&amp;#10;// УД&amp;#10;&amp;#10;</field><next><block type=\"block_notify\"><value name=\"x\"><block type=\"coord_x\"></block></value><value name=\"y\"><block type=\"coord_y\"></block></value><value name=\"z\"><block type=\"coord_z\"></block></value><next><block type=\"play_sound\"><field name=\"sound\">CUSTOM:title_on</field><field name=\"soundcategory\">neutral</field><value name=\"x\"><block type=\"coord_x\"></block></value><value name=\"y\"><block type=\"coord_y\"></block></value><value name=\"z\"><block type=\"coord_z\"></block></value><value name=\"level\"><block type=\"math_number\"><field name=\"NUM\">1</field></block></value><value name=\"pitch\"><block type=\"math_number\"><field name=\"NUM\">1</field></block></value><next><block type=\"java_code\"><field name=\"CODE\">&amp;#10;&amp;#10;// УД&amp;#10;&amp;#10;</field></block></next></block></next></block></next></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

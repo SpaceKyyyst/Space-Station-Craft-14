@@ -2,6 +2,8 @@
 package net.mcreator.ssc.procedures;
 
 import org.joml.Vector3f;
+import org.joml.AxisAngle4f;
+import org.joml.Quaternionf;
 
 import net.neoforged.neoforge.client.event.RenderPlayerEvent;
 import net.neoforged.neoforge.client.event.RenderArmEvent;
@@ -13,6 +15,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -26,6 +29,7 @@ import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.Direction;
 
 import net.mcreator.ssc.init.Ssc14ModRenderStateModifiers;
 import net.mcreator.ssc.init.Ssc14ModHumanoidModels;
@@ -36,6 +40,7 @@ import java.util.Collection;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class HumanModelRenderFIXProcedure {
@@ -51,7 +56,6 @@ public class HumanModelRenderFIXProcedure {
 		EntityModel<?> entityModel = event.getRenderer().getModel();
 		
 		if (entityModel instanceof PlayerModel playerModel) {
-			// Принудительно скрываем все части ванильной модели
 			playerModel.head.skipDraw = true;
 			playerModel.hat.skipDraw = true;
 			playerModel.body.skipDraw = true;
@@ -70,20 +74,17 @@ public class HumanModelRenderFIXProcedure {
 	}
 
 	// ==========================================
-	// 2. Рендер руки (Вид от 1-го лица) - ИСПРАВЛЕНИЕ БАГА
+	// 2. Рендер руки (Вид от 1-го лица)
 	// ==========================================
 	@SubscribeEvent
 	public static void onArmRendered(RenderArmEvent event) {
 		Minecraft mc = Minecraft.getInstance();
 		if (mc.player == null || mc.getEntityRenderDispatcher() == null) return;
 
-		// ИСПРАВЛЕНИЕ 1: Если игрок в спектаторе, не трогаем рендер руки.
-		// Мы выходим ДО отмены события, чтобы ванильный рендер спектатора работал нормально.
 		if (mc.player.isSpectator()) {
 			return; 
 		}
 
-		// Отменяем ванильный рендер руки, чтобы предотвратить баг и наложение
 		event.setCanceled(true);
 
 		var renderer = mc.getEntityRenderDispatcher().getRenderer(mc.player);
@@ -103,20 +104,14 @@ public class HumanModelRenderFIXProcedure {
 		PoseStack poseStack = event.getPoseStack();
 		poseStack.pushPose();
 
-		// ИСПРАВЛЕНИЕ 2: Сбрасываем повороты!
-		// Так как модели в Майнкрафте общие (shared) для всех игроков, 
-		// после рендера других игроков в них остаются повороты их анимаций (ходьбы).
-		// Если их не сбросить, рука от первого лица унаследует чужие анимации и будет махать.
 		vanillaArm.resetPose();
 		vanillaSleeve.resetPose();
 		customArm.resetPose();
 		customSleeve.resetPose();
 
-		// Копируем сбросленные повороты
 		customArm.copyFrom(vanillaArm);
 		customSleeve.copyFrom(vanillaSleeve);
 
-		// Временно разрешаем отрисовку наших частей
 		boolean armVisible = customArm.skipDraw;
 		boolean sleeveVisible = customSleeve.skipDraw;
 		customArm.skipDraw = false;
@@ -126,11 +121,9 @@ public class HumanModelRenderFIXProcedure {
 		VertexConsumer buffer = event.getMultiBufferSource().getBuffer(RenderType.armorCutoutNoCull(texture));
 		int packedLight = event.getPackedLight();
 
-		// Рендерим руку и рукав
 		customArm.render(poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY);
 		customSleeve.render(poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY);
 
-		// Возвращаем исходное состояние skipDraw
 		customArm.skipDraw = armVisible;
 		customSleeve.skipDraw = sleeveVisible;
 
@@ -138,7 +131,7 @@ public class HumanModelRenderFIXProcedure {
 	}
 
 	// ==========================================
-	// 3. Вспомогательные методы (без изменений)
+	// 3. Вспомогательные методы
 	// ==========================================
 	public static void offsetScale(PlayerModel model, Vector3f offset) {
 		model.head.offsetScale(offset);
@@ -160,6 +153,9 @@ public class HumanModelRenderFIXProcedure {
 	public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
 		PoseStack poseStack = playerRenderEvent.getPoseStack();
 		poseStack.pushPose();
+		
+		Entity entity = state.getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
+		
 		CompoundTag playerData = state.getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY).getPersistentData();
 		float oldAnimationProgress = 0;
 		float oldAgeInTicks = 0;
@@ -167,6 +163,7 @@ public class HumanModelRenderFIXProcedure {
 			oldAnimationProgress = playerData.getFloatOr("PlayerAnimationProgress", 0);
 			oldAgeInTicks = playerData.getFloatOr("LastTickTime", 0);
 		}
+		
 		model.setupAnim(state);
 		if (playerData.contains("PlayerAnimationProgress") && playerData.getFloatOr("PlayerAnimationProgress", 0) > 0) {
 			playerData.putFloat("PlayerAnimationProgress", oldAnimationProgress);
@@ -174,7 +171,9 @@ public class HumanModelRenderFIXProcedure {
 		} else if (oldAnimationProgress > 0) {
 			model.setupAnim(state);
 		}
+		
 		playerRenderEvent.getRenderer().setupRotations(state, poseStack, state.bodyRot, 0);
+		
 		poseStack.scale(-0.938f, -0.938f, 0.938f);
 		poseStack.translate(0.0D, -1.501, 0.0D);
 		Vector3f offset = new Vector3f(0.015f);
@@ -194,6 +193,7 @@ public class HumanModelRenderFIXProcedure {
 		PoseStack poseStack = playerRenderEvent.getPoseStack();
 		poseStack.pushPose();
 		playerRenderEvent.getRenderer().setupRotations((PlayerRenderState) state, poseStack, state.bodyRot, 0);
+		
 		poseStack.scale(-0.938f, -0.938f, 0.938f);
 		poseStack.translate(0.0D, -1.501, 0.0D);
 		((EntityModel<LivingEntityRenderState>) model).setupAnim(state);
