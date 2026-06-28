@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "ssc_14:item/tile_white_offset_item"
-  },
-  "render_type": "translucent"
-}

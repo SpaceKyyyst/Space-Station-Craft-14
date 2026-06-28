@@ -19,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.sounds.SoundSource;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -289,6 +290,7 @@ public class ModReagents {
 	    new Reagent("olive_oil", "reagent.ssc_14.olive_oil", 0x808000),
 	    new Reagent("oil", "reagent.ssc_14.oil", 0xB67823),
 	    new Reagent("theobromine", "reagent.ssc_14.theobromine", 0xF5F5F5),
+	    new Reagent("table_salt", "reagent.ssc_14.table_salt", 0xFFFFFF),
 	    
 	    // Прочее (Misc)
 	    new Reagent("carpetium", "reagent.ssc_14.carpetium", 0x800000),
@@ -429,11 +431,14 @@ public class ModReagents {
 	    new Reaction(Map.of("ez_nutrient", 1, "sulfuric_acid", 1), List.of(new ReagentGive("robust_harvest", 1))),
 	    new Reaction(Map.of("ez_nutrient", 1, "radium", 1), List.of(new ReagentGive("left4_zed", 1))),
 	    new Reaction(Map.of("robust_harvest", 3, "cryoxadone", 1, "diethylamine", 3), List.of(new ReagentGive("semin", 1))),
+
+	    // ===== ЕДА И КУЛИНАРИЯ (Food & Cooking) =====
+    	new Reaction(Map.of("flour", 45, "water", 15), List.of(new SpawnItemEffect("ssc_14:dough", 1)))  // ДОБАВИТЬ ТУТ ЗАПЯТУЮ ПОСЛЕ ВОЗВРАЩЕНИЯ МЕХАНИКИ С БИБЛИЕЙ
 	    
-	    // ===== ПРОЧЕЕ =====
-	    new Reaction(Map.of("water", 1), List.of(new ReagentGive("holy_water", 1))), // Освящение воды
-	    new Reaction(Map.of("blood", 1), List.of(new ReagentGive("wine", 1))) // Освящение крови -> вино
-	);
+	    // ===== ПРОЧЕЕ =====  НА ДАННЫЙ МОМЕНТ ЗАКОММЕНТИРОВАНО, Т.К. ДАННОЙ МЕХАНИКИ НЕТ
+	    //new Reaction(Map.of("water", 1), List.of(new ReagentGive("holy_water", 1))),  Освящение воды
+	    //new Reaction(Map.of("blood", 1), List.of(new ReagentGive("wine", 1)))  Освящение крови -> вино  
+	); 
 
     private static final Map<String, Reagent> REAGENTS = new LinkedHashMap<>();
     private static final List<Reaction> REACTIONS = new ArrayList<>();
@@ -600,6 +605,22 @@ public class ModReagents {
                 if (iter > 1024) break;
             }
         } while (changed && iter <= 1024);
+
+        // Если хотя бы одна реакция в цепочке успешно выполнилась, воспроизводим звук на сервере
+        if (reactionHappened && player != null && !player.level().isClientSide()) {
+            net.minecraft.world.level.Level _level = player.level();
+            net.minecraft.core.BlockPos _pos = player.blockPosition();
+            
+            // В Minecraft 1.21.8 метод .get() у Holder возвращает саму запись
+            net.minecraft.sounds.SoundEvent bubbleSound = BuiltInRegistries.SOUND_EVENT
+                .get(ResourceLocation.parse("ssc_14:chemistry_bubbles"))
+                .map(net.minecraft.core.Holder::value)
+                .orElse(null);
+
+            if (bubbleSound != null) {
+                _level.playSound(null, _pos, bubbleSound, SoundSource.MASTER, 1.0F, 1.0F);
+            }
+        }
     }
 
     public static boolean canApplyReaction(ItemStack stack, Reaction reaction) {

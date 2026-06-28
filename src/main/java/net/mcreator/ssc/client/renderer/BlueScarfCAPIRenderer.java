@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelscarf;
+import net.mcreator.ssc.client.model.Modelscarfs_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,17 +22,17 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class BlueScarfCAPIRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/scarf_blue_t.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/scarf_blue_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public BlueScarfCAPIRenderer() {
-        Modelscarf model = new Modelscarf(Minecraft.getInstance().getEntityModels().bakeLayer(Modelscarf.LAYER_LOCATION));
+        Modelscarfs_equipped model = new Modelscarfs_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modelscarfs_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
-                    "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
+                    "head", model.head,
                 "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap())
             )),
-                "body", model.bone,
+                "body", model.torso,
                 "left_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
                 "right_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
                 "left_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()),

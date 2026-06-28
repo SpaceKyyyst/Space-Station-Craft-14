@@ -45,7 +45,7 @@
     "inventorySize": 9,
     "inventoryStackSize": 99,
     "onRightClickedOnBlock": {
-      "name": "DECAL1deletion_P_"
+      "name": "DECAL1deletion_USE_"
     },
     "enableRanged": false,
     "shootConstantly": false,

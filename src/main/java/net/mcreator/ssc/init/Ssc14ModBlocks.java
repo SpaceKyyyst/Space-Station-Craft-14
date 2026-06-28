@@ -144,6 +144,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> DIRECTED_ARMORED_WINDOW;
 	public static final DeferredBlock<Block> SHUTTERS;
 	public static final DeferredBlock<Block> BUTTON;
+	public static final DeferredBlock<Block> MICROWAWE;
 	static {
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
 		SHEATHING = register("sheathing", SheathingBlock::new);
@@ -269,6 +270,7 @@ public class Ssc14ModBlocks {
 		DIRECTED_ARMORED_WINDOW = register("directed_armored_window", DirectedArmoredWindowBlock::new);
 		SHUTTERS = register("shutters", ShuttersBlock::new);
 		BUTTON = register("button", ButtonBlock::new);
+		MICROWAWE = register("microwawe", MicrowaweBlock::new);
 	}
 
 	// Start of user code block custom blocks

@@ -37,6 +37,12 @@ public class ReagentContainerConfig {
         CAPACITIES.put(ResourceLocation.parse("ssc_14:vacuum_flask"), 500);
         CAPACITIES.put(ResourceLocation.parse("ssc_14:bar_flask"), 100);
         
+        // ===== НОВЫЕ: Пакеты и бутылки =====
+        CAPACITIES.put(ResourceLocation.parse("ssc_14:flour_open"), 50);           // Пакет муки
+        CAPACITIES.put(ResourceLocation.parse("ssc_14:sugar_open"), 50);           // Пакет сахара
+        CAPACITIES.put(ResourceLocation.parse("ssc_14:milk_open"), 100);           // Бутылка молока
+        CAPACITIES.put(ResourceLocation.parse("ssc_14:all_purpose_sauce_open"), 30); // Бутылка универсального фермента
+        
         // Если каких-то предметов нет в списке, добавь их по аналогии!
     }
 }

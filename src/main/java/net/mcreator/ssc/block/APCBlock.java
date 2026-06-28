@@ -1,8 +1,10 @@
+
 package net.mcreator.ssc.block;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -12,6 +14,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.MenuProvider;
@@ -21,6 +24,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.block.entity.APCBlockEntity;
+import net.mcreator.ssc.EnergyNetworkManager;
 
 import java.util.function.Function;
 
@@ -32,6 +36,30 @@ public class APCBlock extends Block implements EntityBlock {
 	public APCBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.LODESTONE).strength(30f, 10f).lightLevel(blockstate -> 3).noCollission().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BLOCKSTATE, 0));
+	}
+
+	@Override
+	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
+		super.onPlace(blockstate, world, pos, oldState, moving);
+		if (!world.isClientSide()) {
+			// Принудительно пересобираем сеть под ЛКП
+			EnergyNetworkManager.updatePosition(world, pos.below());
+		}
+	}
+
+	@Override
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, net.minecraft.world.entity.player.Player entity, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+		if (!world.isClientSide()) {
+			EnergyNetworkManager.updatePosition(world, pos.below());
+		}
+		return retval;
+	}
+
+	@Override
+	public void wasExploded(ServerLevel world, BlockPos pos, Explosion e) {
+		super.wasExploded(world, pos, e);
+		EnergyNetworkManager.updatePosition(world, pos.below());
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {

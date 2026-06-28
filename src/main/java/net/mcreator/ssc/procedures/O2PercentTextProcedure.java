@@ -5,12 +5,15 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.bus.api.Event;
 
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
+
+import net.mcreator.ssc.GasType;
+import net.mcreator.ssc.AtmosphereManager;
+import net.mcreator.ssc.AtmosCell;
 
 import javax.annotation.Nullable;
 
@@ -26,21 +29,21 @@ public class O2PercentTextProcedure {
 	}
 
 	private static String execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		String loc_text = "";
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:permeable_to_gases")))) {
-			loc_text = Math.round((getBlockNBTNumber(world, BlockPos.containing(x, y, z), "O2") / (getBlockNBTNumber(world, BlockPos.containing(x, y, z), "O2") + getBlockNBTNumber(world, BlockPos.containing(x, y, z), "N2"))) * 1000) / 10d + " %";
-		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.AIR) {
-			loc_text = "0 %";
+		if (!(world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:hermetic")))) {
+			if (world instanceof ServerLevel serverLevel) {
+				AtmosCell cell = AtmosphereManager.get(serverLevel).getCellAt(BlockPos.containing(x, y, z));
+				if (cell != null) {
+					float gasMoles = cell.getMoles(GasType.OXYGEN.ordinal()); // 🔁 замени OXYGEN на нужный газ
+					float totalMoles = cell.getTotalMoles();
+					if (totalMoles > 0.001f) { // защита от деления на ~0
+						float percent = (gasMoles / totalMoles) * 100f;
+						return Math.round(percent * 10) / 10d + " %";
+					}
+				}
+			}
 		} else {
-			loc_text = "N/D";
+			return "-";
 		}
-		return loc_text;
-	}
-
-	private static double getBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag) {
-		BlockEntity blockEntity = world.getBlockEntity(pos);
-		if (blockEntity != null)
-			return blockEntity.getPersistentData().getDoubleOr(tag, 0);
-		return -1;
+		return "-";
 	}
 }

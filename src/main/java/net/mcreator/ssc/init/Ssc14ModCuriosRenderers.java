@@ -94,5 +94,18 @@ public class Ssc14ModCuriosRenderers {
 		ICurioRenderer.register(Ssc14ModItems.CHEF_JUMPSUIT.get(), ChefRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.CM_OTURTLE_JUMPSUIT.get(), CMOturtleRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.HO_SPARADE_JUMPSUIT.get(), HoSparadeRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_BRIGMEDIC.get(), HeadsetBrigmedicCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_CARGO.get(), HeadsetCargoCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_CENTCOM.get(), HeadsetCentcomCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_COMMAND.get(), HeadsetCommandCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_ENGINEERING.get(), HeadsetEngineerCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_MEDICAL.get(), HeadsetMedicalCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_MEDICAL_SCIENCE.get(), HeadsetMedicalScienceCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_MINING.get(), HeadsetMiningCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_ROBOTICS.get(), HeadsetRoboticsCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_SCIENCE.get(), HeadsetScienceCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_SECURITY.get(), HeadsetSecurityCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_SERVICE.get(), HeadsetServiceCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HEADSET_SYNDICATE.get(), HeadsetSyndicateCAPIRenderer::new);
 	}
 }

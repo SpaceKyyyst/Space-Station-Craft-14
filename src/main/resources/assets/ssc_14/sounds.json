@@ -478,5 +478,101 @@
         "stream": false
       }
     ]
+  },
+  "items_bottle_open": {
+    "sounds": [
+      {
+        "name": "ssc_14:items_bottle_open",
+        "stream": false
+      }
+    ]
+  },
+  "microwave_start_beep": {
+    "sounds": [
+      {
+        "name": "ssc_14:microwave_start_beep",
+        "stream": false
+      }
+    ]
+  },
+  "microwave_done_beep": {
+    "sounds": [
+      {
+        "name": "ssc_14:microwave_done_beep",
+        "stream": false
+      }
+    ]
+  },
+  "microwave_loop_6": {
+    "sounds": [
+      {
+        "name": "ssc_14:microwave_loop_6",
+        "stream": false
+      }
+    ]
+  },
+  "package_opening": {
+    "sounds": [
+      {
+        "name": "ssc_14:package_opening",
+        "stream": false
+      }
+    ]
+  },
+  "chemistry_bubbles": {
+    "sounds": [
+      {
+        "name": "ssc_14:chemistry_bubbles",
+        "stream": false
+      }
+    ]
+  },
+  "gunshots_mk58": {
+    "sounds": [
+      {
+        "name": "ssc_14:gunshots_mk58",
+        "stream": false
+      }
+    ]
+  },
+  "guns_bolt_open": {
+    "sounds": [
+      {
+        "name": "ssc_14:guns_bolt_open",
+        "stream": false
+      }
+    ]
+  },
+  "guns_bolt_closed": {
+    "sounds": [
+      {
+        "name": "ssc_14:guns_bolt_closed",
+        "stream": false
+      }
+    ]
+  },
+  "items_pistol_reloading": {
+    "sounds": [
+      {
+        "name": "ssc_14:items_pistol_reloading",
+        "stream": false
+      }
+    ]
+  },
+  "items_pistol_mag_in": {
+    "sounds": [
+      {
+        "name": "ssc_14:items_pistol_mag_in",
+        "stream": false
+      }
+    ]
+  },
+  "items_pistol_mag_out": {
+    "sounds": [
+      {
+        "name": "ssc_14:items_pistol_mag_out",
+        "stream": false
+      }
+    ]
   }
 }

@@ -49,10 +49,12 @@ public class Ssc14ModModels {
 		event.registerLayerDefinition(Modelhelmet_security_equipped.LAYER_LOCATION, Modelhelmet_security_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelhelmets_eva_syndicate_equipped.LAYER_LOCATION, Modelhelmets_eva_syndicate_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelmothroach.LAYER_LOCATION, Modelmothroach::createBodyLayer);
+		event.registerLayerDefinition(Modelbullet.LAYER_LOCATION, Modelbullet::createBodyLayer);
 		event.registerLayerDefinition(Modelwintercoat_coat_equipped.LAYER_LOCATION, Modelwintercoat_coat_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelhuman_m.LAYER_LOCATION, Modelhuman_m::createBodyLayer);
 		event.registerLayerDefinition(Modelbelt.LAYER_LOCATION, Modelbelt::createBodyLayer);
 		event.registerLayerDefinition(Modelgloves.LAYER_LOCATION, Modelgloves::createBodyLayer);
+		event.registerLayerDefinition(Modelscarfs_equipped.LAYER_LOCATION, Modelscarfs_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelscarf.LAYER_LOCATION, Modelscarf::createBodyLayer);
 		event.registerLayerDefinition(Modeluniform_equipped.LAYER_LOCATION, Modeluniform_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelboots_combatboots.LAYER_LOCATION, Modelboots_combatboots::createBodyLayer);

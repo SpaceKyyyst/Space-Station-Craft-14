@@ -1,3 +1,4 @@
+
 package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.level.block.state.properties.Property;

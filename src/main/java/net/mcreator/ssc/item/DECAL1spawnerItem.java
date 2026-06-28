@@ -1,3 +1,4 @@
+
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.context.UseOnContext;
@@ -8,7 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.network.chat.Component;
 
-import net.mcreator.ssc.procedures.DECAL1spawner_BlockClickProcedure;
+import net.mcreator.ssc.procedures.DECAL1spawner_USE_Procedure;
 
 import java.util.function.Consumer;
 
@@ -26,7 +27,8 @@ public class DECAL1spawnerItem extends Item {
 	@Override
 	public InteractionResult useOn(UseOnContext context) {
 		super.useOn(context);
-		DECAL1spawner_BlockClickProcedure.execute(context.getLevel(), context.getClickedPos().getX(), context.getClickedPos().getY(), context.getClickedPos().getZ(), context.getLevel().getBlockState(context.getClickedPos()), context.getPlayer());
+		// Передаем в процедуру уровень (мир) и игрока, который использовал предмет
+		DECAL1spawner_USE_Procedure.execute(context.getLevel(), context.getPlayer());
 		return InteractionResult.SUCCESS;
 	}
 }

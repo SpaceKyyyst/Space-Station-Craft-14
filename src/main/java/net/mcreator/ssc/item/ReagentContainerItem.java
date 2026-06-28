@@ -35,7 +35,6 @@ public class ReagentContainerItem extends Item {
         return ReagentContainerConfig.CAPACITIES.getOrDefault(key, DEFAULT_CAPACITY);
     }
 
-    // Убрана @Override аннотация - метод не будет переопределять суперкласс, но код скомпилируется
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         int current = ModReagents.getReagents(stack).values().stream().mapToInt(Integer::intValue).sum();
         tooltip.add(Component.translatable("tooltip.ssc_14.container.capacity", current, getMaxCapacity())

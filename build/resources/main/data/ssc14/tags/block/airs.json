@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:cave_air",
-    "minecraft:void_air",
-    "minecraft:air"
-  ]
-}

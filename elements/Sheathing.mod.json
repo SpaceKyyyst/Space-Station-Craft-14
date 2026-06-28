@@ -16,7 +16,7 @@
     "displayFluidOverlay": false,
     "states": [
       {
-        "texture": "nv_floor",
+        "texture": "cabels_lv_block",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -26,21 +26,43 @@
         "customModelName": "cabels_lv_mv_hv_block:lv",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
-              "min": 0,
-              "max": 7,
-              "name": "CUSTOM:blockstate",
-              "type": "integer"
+              "name": "CUSTOM:lv",
+              "type": "logic"
             },
-            "value": 1
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:mv",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:hv",
+              "type": "logic"
+            },
+            "value": false
           }
         ]
       },
       {
-        "texture": "sv_floor",
+        "texture": "cabels_mv_texture",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -50,21 +72,43 @@
         "customModelName": "cabels_lv_mv_hv_block:mv",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
-              "min": 0,
-              "max": 7,
-              "name": "CUSTOM:blockstate",
-              "type": "integer"
+              "name": "CUSTOM:lv",
+              "type": "logic"
             },
-            "value": 2
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:mv",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:hv",
+              "type": "logic"
+            },
+            "value": false
           }
         ]
       },
       {
-        "texture": "vv_floor",
+        "texture": "cabels_hv_texture",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -74,21 +118,43 @@
         "customModelName": "cabels_lv_mv_hv_block:hv",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
-              "min": 0,
-              "max": 7,
-              "name": "CUSTOM:blockstate",
-              "type": "integer"
+              "name": "CUSTOM:lv",
+              "type": "logic"
             },
-            "value": 3
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:mv",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:hv",
+              "type": "logic"
+            },
+            "value": true
           }
         ]
       },
       {
-        "texture": "nv_sv_floor",
+        "texture": "cabels_lv_mv_block",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -98,21 +164,43 @@
         "customModelName": "cabels_lv_mv_hv_block:lv_mv",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
-              "min": 0,
-              "max": 7,
-              "name": "CUSTOM:blockstate",
-              "type": "integer"
+              "name": "CUSTOM:lv",
+              "type": "logic"
             },
-            "value": 4
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:mv",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:hv",
+              "type": "logic"
+            },
+            "value": false
           }
         ]
       },
       {
-        "texture": "nv_vv_floor",
+        "texture": "cabels_lv_hv_texture",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -122,21 +210,43 @@
         "customModelName": "cabels_lv_mv_hv_block:lv_hv",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
-              "min": 0,
-              "max": 7,
-              "name": "CUSTOM:blockstate",
-              "type": "integer"
+              "name": "CUSTOM:lv",
+              "type": "logic"
             },
-            "value": 5
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:mv",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:hv",
+              "type": "logic"
+            },
+            "value": true
           }
         ]
       },
       {
-        "texture": "sv_vv_floor",
+        "texture": "cabels_mv_hv_texture",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -146,21 +256,43 @@
         "customModelName": "cabels_lv_mv_hv_block:mv_hv",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
-              "min": 0,
-              "max": 7,
-              "name": "CUSTOM:blockstate",
-              "type": "integer"
+              "name": "CUSTOM:lv",
+              "type": "logic"
             },
-            "value": 6
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:mv",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:hv",
+              "type": "logic"
+            },
+            "value": true
           }
         ]
       },
       {
-        "texture": "nv_sv_vv_floor",
+        "texture": "cabels_lv_mv_hv_texture",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -170,16 +302,38 @@
         "customModelName": "cabels_lv_mv_hv_block:default",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
-              "min": 0,
-              "max": 7,
-              "name": "CUSTOM:blockstate",
-              "type": "integer"
+              "name": "CUSTOM:lv",
+              "type": "logic"
             },
-            "value": 7
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:mv",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:hv",
+              "type": "logic"
+            },
+            "value": true
           }
         ]
       }
@@ -188,9 +342,6 @@
     "itemTexture": "",
     "particleTexture": "",
     "blockSetType": "OAK",
-    "pottedPlant": {
-      "value": ""
-    },
     "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,
@@ -211,11 +362,19 @@
     ],
     "customProperties": [
       {
-        "min": 0,
-        "max": 7,
-        "name": "CUSTOM:blockstate",
-        "type": "integer",
-        "value": 0
+        "name": "CUSTOM:lv",
+        "type": "logic",
+        "value": false
+      },
+      {
+        "name": "CUSTOM:mv",
+        "type": "logic",
+        "value": false
+      },
+      {
+        "name": "CUSTOM:hv",
+        "type": "logic",
+        "value": false
       }
     ],
     "name": "Sheathing",
@@ -305,10 +464,10 @@
     "vibrationSensitivityRadius": {
       "fixedValue": 7.0
     },
-    "hasInventory": false,
+    "hasInventory": true,
     "openGUIOnRightClick": false,
-    "inventorySize": 9,
-    "inventoryStackSize": 99,
+    "inventorySize": 0,
+    "inventoryStackSize": 1,
     "inventoryDropWhenDestroyed": true,
     "inventoryComparatorPower": true,
     "inventoryOutSlotIDs": [],

@@ -47,7 +47,7 @@
     "inventorySize": 9,
     "inventoryStackSize": 99,
     "onRightClickedOnBlock": {
-      "name": "DECAL1spawner_BlockClick"
+      "name": "DECAL1spawner_USE_"
     },
     "enableRanged": false,
     "shootConstantly": false,

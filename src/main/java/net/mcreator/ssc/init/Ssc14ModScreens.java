@@ -29,6 +29,8 @@ public class Ssc14ModScreens {
 		event.register(Ssc14ModMenus.VENDING_AUT_1_GUI.get(), VendingAut1GUIScreen::new);
 		event.register(Ssc14ModMenus.RCDGU_IWINDOWS.get(), RCDGUIwindowsScreen::new);
 		event.register(Ssc14ModMenus.NET_CONFIG_GUI.get(), NetConfigGUIScreen::new);
+		event.register(Ssc14ModMenus.EGG_CARTON_GUI.get(), EggCartonGUIScreen::new);
+		event.register(Ssc14ModMenus.MICROWAWE_GUI.get(), MicrowaweGUIScreen::new);
 	}
 
 	public interface ScreenAccessor {

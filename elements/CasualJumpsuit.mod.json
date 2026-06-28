@@ -3,7 +3,7 @@
   "_type": "item",
   "definition": {
     "renderType": 0,
-    "texture": "ssc14",
+    "texture": "jumpsuit_casual_item",
     "customModelName": "Normal",
     "guiTexture": "",
     "customProperties": {},

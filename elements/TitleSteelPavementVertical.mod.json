@@ -9,7 +9,7 @@
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "tile_floor:white_pavement_vertical",
+    "customModelName": "tile_floor:steel_pavement_vertical",
     "rotationMode": 0,
     "enablePitch": false,
     "emissiveRendering": false,

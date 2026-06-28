@@ -16,50 +16,48 @@
     "displayFluidOverlay": false,
     "states": [
       {
-        "texture": "texture_of_lamp",
+        "texture": "texture_lamp_empty",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "lamp_on:default",
+        "customModelName": "lamp_empty:default",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
-        "stateMap": [
+        "boundingBoxes": [
           {
-            "property": {
-              "min": 0,
-              "max": 3,
-              "name": "CUSTOM:blockstate",
-              "type": "integer"
-            },
-            "value": 1
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
           }
-        ]
-      },
-      {
-        "texture": "texture_of_lamp",
-        "textureTop": "",
-        "textureLeft": "",
-        "textureFront": "",
-        "textureRight": "",
-        "textureBack": "",
-        "renderType": 2,
-        "customModelName": "lamp_broken:default",
-        "particleTexture": "",
-        "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        ],
         "stateMap": [
           {
             "property": {
-              "min": 0,
-              "max": 3,
-              "name": "CUSTOM:blockstate",
-              "type": "integer"
+              "name": "CUSTOM:have_lamp",
+              "type": "logic"
             },
-            "value": 2
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:broken",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:active",
+              "type": "logic"
+            },
+            "value": false
           }
         ]
       },
@@ -74,16 +72,268 @@
         "customModelName": "lamp_empty:default",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
-        "boundingBoxes": [],
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
         "stateMap": [
           {
             "property": {
-              "min": 0,
-              "max": 3,
-              "name": "CUSTOM:blockstate",
-              "type": "integer"
+              "name": "CUSTOM:have_lamp",
+              "type": "logic"
             },
-            "value": 3
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:broken",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:active",
+              "type": "logic"
+            },
+            "value": false
+          }
+        ]
+      },
+      {
+        "texture": "texture_lamp_empty",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "lamp_empty:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:have_lamp",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:broken",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:active",
+              "type": "logic"
+            },
+            "value": true
+          }
+        ]
+      },
+      {
+        "texture": "texture_lamp_empty",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "lamp_empty:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:have_lamp",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:broken",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:active",
+              "type": "logic"
+            },
+            "value": true
+          }
+        ]
+      },
+      {
+        "texture": "texture_of_lamp",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "lamp_broken:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:have_lamp",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:broken",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:active",
+              "type": "logic"
+            },
+            "value": false
+          }
+        ]
+      },
+      {
+        "texture": "texture_of_lamp",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "lamp_on:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:have_lamp",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:broken",
+              "type": "logic"
+            },
+            "value": false
+          },
+          {
+            "property": {
+              "name": "CUSTOM:active",
+              "type": "logic"
+            },
+            "value": true
+          }
+        ]
+      },
+      {
+        "texture": "texture_of_lamp",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "renderType": 2,
+        "customModelName": "lamp_broken:default",
+        "particleTexture": "",
+        "hasCustomBoundingBox": false,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ],
+        "stateMap": [
+          {
+            "property": {
+              "name": "CUSTOM:have_lamp",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:broken",
+              "type": "logic"
+            },
+            "value": true
+          },
+          {
+            "property": {
+              "name": "CUSTOM:active",
+              "type": "logic"
+            },
+            "value": true
           }
         ]
       }
@@ -112,11 +362,19 @@
     ],
     "customProperties": [
       {
-        "min": 0,
-        "max": 3,
-        "name": "CUSTOM:blockstate",
-        "type": "integer",
-        "value": 0
+        "name": "CUSTOM:have_lamp",
+        "type": "logic",
+        "value": true
+      },
+      {
+        "name": "CUSTOM:broken",
+        "type": "logic",
+        "value": false
+      },
+      {
+        "name": "CUSTOM:active",
+        "type": "logic",
+        "value": false
       }
     ],
     "name": "Lamp",
@@ -206,10 +464,10 @@
     "vibrationSensitivityRadius": {
       "fixedValue": 7.0
     },
-    "hasInventory": false,
+    "hasInventory": true,
     "openGUIOnRightClick": false,
-    "inventorySize": 9,
-    "inventoryStackSize": 99,
+    "inventorySize": 0,
+    "inventoryStackSize": 1,
     "inventoryDropWhenDestroyed": true,
     "inventoryComparatorPower": true,
     "inventoryOutSlotIDs": [],

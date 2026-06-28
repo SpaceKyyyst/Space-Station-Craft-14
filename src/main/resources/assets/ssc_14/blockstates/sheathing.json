@@ -1,27 +1,27 @@
 {
   "variants": {
-    "blockstate=1": {
+    "lv=true,mv=false,hv=false": {
       "model": "ssc_14:block/sheathing_0"
     },
-    "blockstate=2": {
+    "lv=false,mv=true,hv=false": {
       "model": "ssc_14:block/sheathing_1"
     },
-    "blockstate=3": {
+    "lv=false,mv=false,hv=true": {
       "model": "ssc_14:block/sheathing_2"
     },
-    "blockstate=4": {
+    "lv=true,mv=true,hv=false": {
       "model": "ssc_14:block/sheathing_3"
     },
-    "blockstate=5": {
+    "lv=true,mv=false,hv=true": {
       "model": "ssc_14:block/sheathing_4"
     },
-    "blockstate=6": {
+    "lv=false,mv=true,hv=true": {
       "model": "ssc_14:block/sheathing_5"
     },
-    "blockstate=7": {
+    "lv=true,mv=true,hv=true": {
       "model": "ssc_14:block/sheathing_6"
     },
-    "blockstate=0": {
+    "lv=false,mv=false,hv=false": {
       "model": "ssc_14:block/sheathing"
     }
   }

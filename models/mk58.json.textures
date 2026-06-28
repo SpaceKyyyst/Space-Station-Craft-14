@@ -1,0 +1,28 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "1": "mk58_texture"
+      }
+    },
+    "magz": {
+      "name": "magz",
+      "map": {
+        "1": "mk58_magazine_texture"
+      }
+    },
+    "open_magz": {
+      "name": "open_magz",
+      "map": {
+        "1": "mk58_magazine_open_texture"
+      }
+    },
+    "open": {
+      "name": "open",
+      "map": {
+        "1": "mk58_open_texture"
+      }
+    }
+  }
+}

@@ -5,12 +5,14 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.bus.api.Event;
 
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
+
+import net.mcreator.ssc.AtmosphereManager;
+import net.mcreator.ssc.AtmosCell;
 
 import javax.annotation.Nullable;
 
@@ -26,22 +28,20 @@ public class KPaTextRedactProcedure {
 	}
 
 	private static String execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		String loc_text = "";
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:permeable_to_gases")))) {
-			return Math.round(8.31446262 * getBlockNBTNumber(world, BlockPos.containing(x, y, z), "t_K") * (getBlockNBTNumber(world, BlockPos.containing(x, y, z), "O2") + getBlockNBTNumber(world, BlockPos.containing(x, y, z), "N2"))) / 1000d
-					+ " (\u043A\u041F\u0430)";
-		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.AIR) {
-			loc_text = "0 \u043A\u041F\u0430 (\u0432\u0430\u043A\u0443\u0443\u043C)";
+		if (!(world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:hermetic")))) {
+			if (world instanceof ServerLevel serverLevel) {
+				AtmosCell cell = AtmosphereManager.get(serverLevel).getCellAt(BlockPos.containing(x, y, z));
+				if (cell != null) {
+					float totalMoles = cell.getTotalMoles(); // ✅ сумма ВСЕХ газов
+					float temp = cell.getTemperature();
+					float pressurePa = totalMoles * 8.314f * temp; // P в Паскалях
+					float pressureKPa = pressurePa / 1000f; // перевод в кПа
+					return Math.round(pressureKPa * 10) / 10d + " (кПа)";
+				}
+			}
 		} else {
-			loc_text = "N/D";
+			return "-";
 		}
-		return loc_text;
-	}
-
-	private static double getBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag) {
-		BlockEntity blockEntity = world.getBlockEntity(pos);
-		if (blockEntity != null)
-			return blockEntity.getPersistentData().getDoubleOr(tag, 0);
-		return -1;
+		return "-";
 	}
 }

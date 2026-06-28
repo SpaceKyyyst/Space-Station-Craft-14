@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "ssc:item/container/rocks_glass/rocks_glass",
-    "layer1": "ssc:item/container/rocks_glass/rocks_glass_25"
-  }
-}

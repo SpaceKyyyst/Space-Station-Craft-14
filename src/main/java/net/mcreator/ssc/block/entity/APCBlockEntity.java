@@ -1,3 +1,4 @@
+
 package net.mcreator.ssc.block.entity;
 
 import net.minecraft.world.level.storage.ValueOutput;
@@ -19,17 +20,62 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
+import net.mcreator.ssc.IEnergyStorageBlock;
 
 import javax.annotation.Nullable;
-
 import java.util.stream.IntStream;
 
-public class APCBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+public class APCBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, IEnergyStorageBlock {
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(9, ItemStack.EMPTY);
+	
+	private long storedEnergy = 0;
+	private static final long MAX_ENERGY = 2500000;
+
+	private long netCurrent = 0;
+	private long netSupply = 0;
+	private long netConsume = 0;
 
 	public APCBlockEntity(BlockPos position, BlockState state) {
 		super(Ssc14ModBlockEntities.APC.get(), position, state);
 	}
+
+	@Override
+	public long getStoredEnergy() {
+		return this.storedEnergy;
+	}
+
+	@Override
+	public void setStoredEnergy(long joules) {
+		this.storedEnergy = Math.clamp(joules, 0, MAX_ENERGY);
+		this.setChanged();
+		if (this.level != null && !this.level.isClientSide()) {
+			this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
+		}
+	}
+
+	// Безопасный метод симуляции без сброса энергосетей
+	public void setStoredEnergySimulation(long joules) {
+		this.storedEnergy = Math.clamp(joules, 0, MAX_ENERGY);
+		this.setChanged();
+	}
+
+	@Override
+	public long getMaxEnergy() {
+		return MAX_ENERGY;
+	}
+
+	@Override
+	public long getNetworkCurrentPower() { return this.netCurrent; }
+	@Override
+	public void setNetworkCurrentPower(long watt) { this.netCurrent = watt; this.setChanged(); }
+	@Override
+	public long getNetworkTheoreticalSupply() { return this.netSupply; }
+	@Override
+	public void setNetworkTheoreticalSupply(long watt) { this.netSupply = watt; }
+	@Override
+	public long getNetworkIdealConsumption() { return this.netConsume; }
+	@Override
+	public void setNetworkIdealConsumption(long watt) { this.netConsume = watt; }
 
 	@Override
 	public void loadAdditional(ValueInput valueInput) {
@@ -37,6 +83,11 @@ public class APCBlockEntity extends RandomizableContainerBlockEntity implements 
 		if (!this.tryLoadLootTable(valueInput))
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		ContainerHelper.loadAllItems(valueInput, this.stacks);
+		
+		this.storedEnergy = valueInput.getLongOr("storedEnergy", 0L);
+		this.netCurrent = valueInput.getLongOr("netCurrent", 0L);
+		this.netSupply = valueInput.getLongOr("netSupply", 0L);
+		this.netConsume = valueInput.getLongOr("netConsume", 0L);
 	}
 
 	@Override
@@ -44,6 +95,11 @@ public class APCBlockEntity extends RandomizableContainerBlockEntity implements 
 		super.saveAdditional(valueOutput);
 		if (!this.trySaveLootTable(valueOutput))
 			ContainerHelper.saveAllItems(valueOutput, this.stacks);
+			
+		valueOutput.putLong("storedEnergy", this.storedEnergy);
+		valueOutput.putLong("netCurrent", this.netCurrent);
+		valueOutput.putLong("netSupply", this.netSupply);
+		valueOutput.putLong("netConsume", this.netConsume);
 	}
 
 	@Override
@@ -75,7 +131,7 @@ public class APCBlockEntity extends RandomizableContainerBlockEntity implements 
 	}
 
 	@Override
-	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
+	protected AbstractContainerMenu createMenu(int id, Inventory inventory) {
 		return ChestMenu.threeRows(id, inventory);
 	}
 

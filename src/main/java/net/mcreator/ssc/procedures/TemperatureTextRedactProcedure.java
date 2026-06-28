@@ -5,12 +5,14 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.bus.api.Event;
 
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
+
+import net.mcreator.ssc.AtmosphereManager;
+import net.mcreator.ssc.AtmosCell;
 
 import javax.annotation.Nullable;
 
@@ -26,21 +28,17 @@ public class TemperatureTextRedactProcedure {
 	}
 
 	private static String execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		String bufer_1 = "";
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:permeable_to_gases")))) {
-			bufer_1 = Math.round(getBlockNBTNumber(world, BlockPos.containing(x, y, z), "t_K") * 10) / 10d + " (K)";
-		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.AIR) {
-			bufer_1 = "\u0412\u0430\u043A\u0443\u0443\u043C (2.7 (K))";
+		if (!(world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:hermetic")))) {
+			if (world instanceof ServerLevel serverLevel) {
+				AtmosCell cell = AtmosphereManager.get(serverLevel).getCellAt(BlockPos.containing(x, y, z));
+				if (cell != null) {
+					float temp = cell.getTemperature();
+					return Math.round(temp * 10) / 10d + " (K)";
+				}
+			}
 		} else {
-			bufer_1 = "N/D";
+			return "-";
 		}
-		return bufer_1;
-	}
-
-	private static double getBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag) {
-		BlockEntity blockEntity = world.getBlockEntity(pos);
-		if (blockEntity != null)
-			return blockEntity.getPersistentData().getDoubleOr(tag, 0);
-		return -1;
+		return "-";
 	}
 }

@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "size": 1,
-  "operation": "SET",
-  "order": 20,
-  "render_toggle": true,
-  "icon": "curios:slot/pants_slot"
-}

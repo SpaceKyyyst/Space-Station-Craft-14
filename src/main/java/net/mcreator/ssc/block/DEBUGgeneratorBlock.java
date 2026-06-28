@@ -1,8 +1,10 @@
+
 package net.mcreator.ssc.block;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -11,17 +13,52 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.Containers;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.block.entity.DEBUGgeneratorBlockEntity;
+import net.mcreator.ssc.EnergyNetworkManager;
 
 public class DEBUGgeneratorBlock extends Block implements EntityBlock {
 	public DEBUGgeneratorBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.AMETHYST).strength(-1, 3600000).lightLevel(blockstate -> 1).noOcclusion().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
+	}
+
+	// Точный синтаксис onPlace из твоего DEBUG13Block
+	@Override
+	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
+		super.onPlace(blockstate, world, pos, oldState, moving);
+		if (!world.isClientSide()) {
+			for (int yOffset = 1; yOffset <= 5; yOffset++) {
+				EnergyNetworkManager.updatePosition(world, pos.below(yOffset));
+			}
+		}
+	}
+
+	// Точный синтаксис поломки игроком из твоего DEBUG13Block
+	@Override
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+		if (!world.isClientSide()) {
+			for (int yOffset = 1; yOffset <= 5; yOffset++) {
+				EnergyNetworkManager.updatePosition(world, pos.below(yOffset));
+			}
+		}
+		return retval;
+	}
+
+	// Точный синтаксис взрыва из твоего DEBUG13Block
+	@Override
+	public void wasExploded(ServerLevel world, BlockPos pos, Explosion e) {
+		super.wasExploded(world, pos, e);
+		for (int yOffset = 1; yOffset <= 5; yOffset++) {
+			EnergyNetworkManager.updatePosition(world, pos.below(yOffset));
+		}
 	}
 
 	@Override

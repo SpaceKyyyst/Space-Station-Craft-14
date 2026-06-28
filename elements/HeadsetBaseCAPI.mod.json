@@ -13,9 +13,9 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelheadsets",
-    "baubleModelTexture": "headset_base_texture.png",
-    "helmetModelPart": "headset_security",
+    "baubleModel": "Modelheadset_equipped",
+    "baubleModelTexture": "headset_base_equipped_texture.png",
+    "helmetModelPart": "head",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",
     "armsModelPartR": "Empty",

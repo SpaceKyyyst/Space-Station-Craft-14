@@ -4,8 +4,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -28,12 +28,14 @@ import java.util.function.Function;
 
 public class TechLampBlock extends Block {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 3);
+	public static final BooleanProperty HAVE_LAMP = BooleanProperty.create("have_lamp");
+	public static final BooleanProperty BROKEN = BooleanProperty.create("broken");
+	public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public TechLampBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.GLASS).strength(5f).noCollission().isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BLOCKSTATE, 0));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
@@ -60,14 +62,14 @@ public class TechLampBlock extends Block {
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
-		builder.add(FACING, BLOCKSTATE);
+		builder.add(FACING, HAVE_LAMP, BROKEN, ACTIVE);
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		if (context.getClickedFace().getAxis() == Direction.Axis.Y)
-			return super.getStateForPlacement(context).setValue(FACING, Direction.NORTH).setValue(BLOCKSTATE, 0);
-		return super.getStateForPlacement(context).setValue(FACING, context.getClickedFace()).setValue(BLOCKSTATE, 0);
+			return super.getStateForPlacement(context).setValue(FACING, Direction.NORTH).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false);
+		return super.getStateForPlacement(context).setValue(FACING, context.getClickedFace()).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

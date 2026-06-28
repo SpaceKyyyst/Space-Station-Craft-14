@@ -1,0 +1,428 @@
+{
+  "_fv": 85,
+  "_type": "gui",
+  "definition": {
+    "type": 1,
+    "width": 176,
+    "height": 166,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "microwawe_gui_2.png",
+          "use1Xscale": false,
+          "x": 126,
+          "y": 37,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 1,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 141,
+          "y": 50,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 2,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 160,
+          "y": 50,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 3,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 179,
+          "y": 50,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 4,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 198,
+          "y": 50,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 5,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 141,
+          "y": 69,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 6,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 160,
+          "y": 69,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 7,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 179,
+          "y": 69,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 8,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 198,
+          "y": 69,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 9,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 141,
+          "y": 88,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 10,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 160,
+          "y": 88,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 11,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 179,
+          "y": 88,
+          "locked": true
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "id": 12,
+          "disablePickup": {
+            "fixedValue": false,
+            "name": "MicrwGUIslotRule"
+          },
+          "dropItemsWhenNotBound": false,
+          "x": 198,
+          "y": 88,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_microwawe_gui_text_time",
+          "text": {
+            "fixedValue": "",
+            "name": "MicrowaweGUITextTime"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 236,
+          "y": 51,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_microwawe_gui_button",
+          "image": "microwawe_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MicrwGUIbut1"
+          },
+          "x": 233,
+          "y": 66,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_microwawe_gui_button1",
+          "image": "microwawe_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MicrwGUIbut5"
+          },
+          "x": 251,
+          "y": 66,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_microwawe_gui_button2",
+          "image": "microwawe_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MicrwGUIbut10"
+          },
+          "x": 269,
+          "y": 66,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_microwawe_gui_button3",
+          "image": "microwawe_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MicrwGUIbut15"
+          },
+          "x": 233,
+          "y": 80,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_microwawe_gui_button4",
+          "image": "microwawe_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MicrwGUIbut20"
+          },
+          "x": 251,
+          "y": 80,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_microwawe_gui_button5",
+          "image": "microwawe_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MicrwGUIbut25"
+          },
+          "x": 269,
+          "y": 80,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_microwawe_gui_button6",
+          "image": "microwawe_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MicrwGUIbutC"
+          },
+          "x": 233,
+          "y": 94,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_microwawe_gui_button7",
+          "image": "microwawe_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MicrwGUIbut30"
+          },
+          "x": 251,
+          "y": 94,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_microwawe_gui_button8",
+          "image": "microwawe_gui_button.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "MicrwGUIbutE"
+          },
+          "x": 269,
+          "y": 94,
+          "locked": true
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

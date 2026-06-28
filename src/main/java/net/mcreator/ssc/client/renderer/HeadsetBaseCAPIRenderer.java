@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelheadsets;
+import net.mcreator.ssc.client.model.Modelheadset_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,14 +22,14 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class HeadsetBaseCAPIRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/headset_base_texture.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/headset_base_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public HeadsetBaseCAPIRenderer() {
-        Modelheadsets model = new Modelheadsets(Minecraft.getInstance().getEntityModels().bakeLayer(Modelheadsets.LAYER_LOCATION));
+        Modelheadset_equipped model = new Modelheadset_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modelheadset_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
-                    "head", model.headset_security,
+                    "head", model.head,
                 "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap())
             )),
                 "body", new ModelPart(Collections.emptyList(), Collections.emptyMap()),

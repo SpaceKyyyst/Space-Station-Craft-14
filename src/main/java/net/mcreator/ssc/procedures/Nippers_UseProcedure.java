@@ -3,6 +3,7 @@ package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Block;
@@ -23,12 +24,13 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.init.Ssc14ModAttributes;
+import net.mcreator.ssc.block.SheathingBlock;
+import net.mcreator.ssc.EnergyNetworkManager;
 import net.mcreator.ssc.Ssc14Mod;
 
 public class Nippers_UseProcedure {
 
     public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
-        // === БАЗОВЫЕ ПРОВЕРКИ ===
         if (entity == null || !(entity instanceof LivingEntity livingEntity)) return;
         if (!livingEntity.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB)) return;
         
@@ -38,63 +40,57 @@ public class Nippers_UseProcedure {
         BlockPos pos = BlockPos.containing(x, y, z);
         double posHash = entity.getX() + entity.getY() + entity.getZ();
         Block targetBlock = blockstate.getBlock();
-        IntegerProperty stateProp = findIntegerProperty(blockstate, "blockstate");
-        int currentState = stateProp != null ? blockstate.getValue(stateProp) : -1;
 
-        // === КОНФИГУРАЦИЯ ===
-        record NipperConfig(int[] delays, int action, IntegerProperty prop, int requiredState, int targetState, 
-                            Block newBlock, net.minecraft.world.item.Item dropItem, double dropY, boolean copyProps) {}
+        record NipperConfig(int[] delays, int action, Property<?> targetProp, Block newBlock, 
+                            net.minecraft.world.item.Item dropItem, double dropY, boolean copyProps) {}
         
         NipperConfig config = null;
+        int[] fastDelays = new int[]{1, 1, 1, 1, 1, 1};
 
-        // ROD_FLOOR / ROD_UP_FLOOR / SHEATHING
-        if (targetBlock == Ssc14ModBlocks.ROD_FLOOR.get() || targetBlock == Ssc14ModBlocks.ROD_UP_FLOOR.get() || targetBlock == Ssc14ModBlocks.SHEATHING.get()) {
-            int[] delays = new int[]{1, 1, 1, 1, 1, 1};
+        // === ОБРАБОТКА БЛОКА ОБШИВКИ (SHEATHING) ===
+        if (targetBlock == Ssc14ModBlocks.SHEATHING.get()) {
+            Direction hit = entity.level().clip(new ClipContext(entity.getEyePosition(1f), 
+                    entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(6)), 
+                    ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getDirection();
+            
+            if (hit == Direction.UP) {
+                // ИСПРАВЛЕНО: Теперь приоритет демонтажа идет от меньшего вольтажа к большему: LV -> MV -> HV
+                if (blockstate.getValue(SheathingBlock.LV)) {
+                    config = new NipperConfig(fastDelays, 10, SheathingBlock.LV, null, Ssc14ModItems.LOW_VOLTAGE_CABLE.get(), y + 1.0, false);
+                } else if (blockstate.getValue(SheathingBlock.MV)) {
+                    config = new NipperConfig(fastDelays, 10, SheathingBlock.MV, null, Ssc14ModItems.MEDIUM_VOLTAGE_CABLE.get(), y + 1.0, false);
+                } else if (blockstate.getValue(SheathingBlock.HV)) {
+                    config = new NipperConfig(fastDelays, 10, SheathingBlock.HV, null, Ssc14ModItems.HIGH_VOLTAGE_CABLE.get(), y + 1.0, false);
+                }
+            }
+        }
+        // === БАЗОВАЯ СОВМЕСТИМОСТЬ ДЛЯ ОСТАЛЬНЫХ СТРУКТУР СТАНЦИИ ===
+        else if (targetBlock == Ssc14ModBlocks.ROD_FLOOR.get() || targetBlock == Ssc14ModBlocks.ROD_UP_FLOOR.get()) {
+            IntegerProperty stateProp = findIntegerProperty(blockstate, "blockstate");
+            int currentState = stateProp != null ? blockstate.getValue(stateProp) : -1;
             double dropY = (targetBlock == Ssc14ModBlocks.ROD_UP_FLOOR.get()) ? y : y + 1.0;
             
             if (currentState == 0) {
-                config = new NipperConfig(delays, 1, null, 0, -1, null, Ssc14ModItems.ROOD.get(), dropY, false);
-            } else if (currentState > 0 && currentState <= 7) {
-                int targetS = -1; net.minecraft.world.item.Item drop = null;
-                switch (currentState) {
-                    case 1 -> { targetS = 0; drop = Ssc14ModItems.LOW_VOLTAGE_CABLE.get(); }
-                    case 2 -> { targetS = 0; drop = Ssc14ModItems.MEDIUM_VOLTAGE_CABLE.get(); }
-                    case 3 -> { targetS = 0; drop = Ssc14ModItems.HIGH_VOLTAGE_CABLE.get(); }
-                    case 4 -> { targetS = 2; drop = Ssc14ModItems.LOW_VOLTAGE_CABLE.get(); }
-                    case 5 -> { targetS = 3; drop = Ssc14ModItems.LOW_VOLTAGE_CABLE.get(); }
-                    case 6 -> { targetS = 3; drop = Ssc14ModItems.MEDIUM_VOLTAGE_CABLE.get(); }
-                    case 7 -> { targetS = 6; drop = Ssc14ModItems.LOW_VOLTAGE_CABLE.get(); }
-                }
-                if (targetS != -1) config = new NipperConfig(delays, 2, stateProp, currentState, targetS, null, drop, y + 1.0, false);
-            }
-            // Проверка направления для SHEATHING
-            if (config != null && targetBlock == Ssc14ModBlocks.SHEATHING.get()) {
-                Direction hit = entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(6)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getDirection();
-                if (hit != Direction.UP) config = null;
+                config = new NipperConfig(fastDelays, 1, null, null, Ssc14ModItems.ROOD.get(), dropY, false);
             }
         }
-        // PLASTEEL_WALL
         else if (targetBlock == Ssc14ModBlocks.PLASTEEL_WALL.get()) {
-            if (currentState == 0) config = new NipperConfig(new int[]{3,3,3,3,3,3}, 2, stateProp, 0, 1, null, null, y + 1.0, false);
-            else if (currentState == 8) config = new NipperConfig(new int[]{3,1,2,1,2,1}, 3, null, 8, -1, Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get(), Ssc14ModItems.PLASTEEL.get(), entity.getY(), true);
+            IntegerProperty stateProp = findIntegerProperty(blockstate, "blockstate");
+            int currentState = stateProp != null ? blockstate.getValue(stateProp) : -1;
+            if (currentState == 0) config = new NipperConfig(new int[]{3,3,3,3,3,3}, 2, stateProp, null, null, y + 1.0, false);
+            else if (currentState == 8) config = new NipperConfig(new int[]{3,1,2,1,2,1}, 3, null, Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get(), Ssc14ModItems.PLASTEEL.get(), entity.getY(), true);
         }
-        // PLASTEEL_WALL_CARCASE
         else if (targetBlock == Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get()) {
-            config = new NipperConfig(new int[]{3,3,3,1,3,3}, 3, null, -1, -1, Ssc14ModBlocks.WALL_CARCASE.get(), Ssc14ModItems.PLASTEEL.get(), entity.getY(), true);
+            config = new NipperConfig(new int[]{3,3,3,1,3,3}, 3, null, Ssc14ModBlocks.WALL_CARCASE.get(), Ssc14ModItems.PLASTEEL.get(), entity.getY(), true);
         }
-        // GRILLE
         else if (targetBlock == Ssc14ModBlocks.GRILLE.get()) {
-            config = new NipperConfig(new int[]{1,2,1,2,1,2}, 1, null, -1, -1, null, Ssc14ModItems.ROOD.get(), y + 0.1, false);
+            config = new NipperConfig(new int[]{1,2,1,2,1,2}, 1, null, null, Ssc14ModItems.ROOD.get(), y + 0.1, false);
         }
-        // BROKEN_GRILLE
         else if (targetBlock == Ssc14ModBlocks.BROKEN_GRILLE.get()) {
-            config = new NipperConfig(new int[]{1,2,1,2,1,2}, 5, null, -1, -1, null, null, y + 0.5, false);
+            config = new NipperConfig(fastDelays, 5, null, null, null, y + 0.5, false);
         }
 
-        // Если конфигурация не создана — выходим
         if (config == null) return;
-
-        // === ЛОКАЛЬНЫЙ КЛАСС ПРОЦЕССА ===
         class NipperProcess {
             private final LivingEntity entity;
             private final LevelAccessor world;
@@ -102,25 +98,22 @@ public class Nippers_UseProcedure {
             private final double posHash;
             private final Block targetBlock;
             private final NipperConfig config;
-            private final int requiredState; // ← Запоминаем требуемое состояние для защиты от повторов
+            private final BlockState initialBs;
 
-            NipperProcess(LivingEntity entity, LevelAccessor world, BlockPos pos, double posHash, Block targetBlock, NipperConfig config, int requiredState) {
+            NipperProcess(LivingEntity entity, LevelAccessor world, BlockPos pos, double posHash, Block targetBlock, NipperConfig config, BlockState initialBs) {
                 this.entity = entity; this.world = world; this.pos = pos; this.posHash = posHash;
-                this.targetBlock = targetBlock; this.config = config; this.requiredState = requiredState;
+                this.targetBlock = targetBlock; this.config = config; this.initialBs = initialBs;
             }
 
             void run(int step) {
-                // === ЖЁСТКИЕ ПРОВЕРКИ НА КАЖДОМ ШАГЕ ===
                 if (entity.getX() + entity.getY() + entity.getZ() != posHash) { reset(); return; }
                 if (!livingEntity.getMainHandItem().is(Ssc14ModItems.NIPPERS.get())) { reset(); return; }
                 
                 BlockState currentBs = world.getBlockState(pos);
-                // 1. Блок должен быть того же типа
                 if (currentBs.getBlock() != targetBlock) { reset(); return; }
-                // 2. Если конфиг требует конкретное состояние — проверяем его (защита от повторов!)
-                if (config.requiredState() != -1 && config.prop() != null) {
-                    int currentVal = currentBs.getValue(config.prop());
-                    if (currentVal != config.requiredState()) { reset(); return; }
+                
+                if (targetBlock == Ssc14ModBlocks.SHEATHING.get() && config.targetProp() instanceof BooleanProperty bp) {
+                    if (!currentBs.getValue(bp)) { reset(); return; }
                 }
 
                 entity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(step);
@@ -133,36 +126,39 @@ public class Nippers_UseProcedure {
             }
 
             private void executeFinal() {
-                // Финальные проверки (те же, что в run)
                 if (entity.getX() + entity.getY() + entity.getZ() != posHash) { reset(); return; }
                 if (!livingEntity.getMainHandItem().is(Ssc14ModItems.NIPPERS.get())) { reset(); return; }
                 
                 BlockState currentBs = world.getBlockState(pos);
                 if (currentBs.getBlock() != targetBlock) { reset(); return; }
-                // Ключевая проверка: если состояние уже изменилось — значит, действие уже выполнено, не делаем ничего!
-                if (config.requiredState() != -1 && config.prop() != null) {
-                    int currentVal = currentBs.getValue(config.prop());
-                    if (currentVal != config.requiredState()) { reset(); return; } // ← Уже не то состояние → отменяем
-                }
 
-                // Выполняем действие
-                switch (config.action()) {
-                    case 1 -> { world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3); spawnDrop(config.dropItem(), config.dropY()); }
-                    case 2 -> {
-                        if (config.prop() != null) {
-                            IntegerProperty p = findIntegerProperty(currentBs, "blockstate");
-                            if (p != null) world.setBlock(pos, currentBs.setValue(p, config.targetState()), 3);
-                        }
+                if (config.action() == 10 && targetBlock == Ssc14ModBlocks.SHEATHING.get() && config.targetProp() instanceof BooleanProperty bp) {
+                    if (currentBs.getValue(bp)) {
+                        BlockState updatedBs = currentBs.setValue(bp, false);
+                        world.setBlock(pos, updatedBs, 3);
+                        
                         spawnDrop(config.dropItem(), config.dropY());
+                        EnergyNetworkManager.updatePosition(world, pos);
                     }
-                    case 3, 4 -> {
-                        BlockState newBs = config.newBlock().defaultBlockState();
-                        if (config.copyProps()) copyProperties(currentBs, newBs, pos);
-                        else world.setBlock(pos, newBs, 3);
-                        if (config.action() == 3) spawnDrop(config.dropItem(), config.dropY());
+                } else {
+                    switch (config.action()) {
+                        case 1 -> { world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3); spawnDrop(config.dropItem(), config.dropY()); }
+                        case 2 -> {
+                            if (config.targetProp() instanceof IntegerProperty ip) {
+                                world.setBlock(pos, currentBs.setValue(ip, 1), 3);
+                            }
+                            spawnDrop(config.dropItem(), config.dropY());
+                        }
+                        case 3 -> {
+                            BlockState newBs = config.newBlock().defaultBlockState();
+                            if (config.copyProps()) copyProperties(currentBs, newBs, pos);
+                            else world.setBlock(pos, newBs, 3);
+                            spawnDrop(config.dropItem(), config.dropY());
+                        }
+                        case 5 -> world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
                     }
-                    case 5 -> world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
                 }
+                
                 playSound(world, pos, "ssc_14:nippers_use", 1.0F, 1.0F);
                 reset();
             }
@@ -190,13 +186,8 @@ public class Nippers_UseProcedure {
             }
         }
 
-        // Запуск процесса (передаём requiredState для проверки)
-        new NipperProcess(livingEntity, world, pos, posHash, targetBlock, config, currentState).run(1);
+        new NipperProcess(livingEntity, world, pos, posHash, targetBlock, config, blockstate).run(1);
     }
-
-    // ============================================================================
-    // ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ
-    // ============================================================================
 
     private static IntegerProperty findIntegerProperty(BlockState state, String name) {
         for (Property<?> prop : state.getProperties()) {

@@ -15,11 +15,9 @@ import net.neoforged.api.distmarker.Dist;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 
-import net.mcreator.ssc.network.WorldObjectCheckMessage;
-import net.mcreator.ssc.network.RotateMessage;
-import net.mcreator.ssc.network.PulltheObjectMessage;
-import net.mcreator.ssc.network.DCMopenMessage;
-import net.mcreator.ssc.network.CrawlMessage;
+import net.mcreator.ssc.network.*;
+
+import com.mojang.blaze3d.platform.InputConstants;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Ssc14ModKeyMappings {
@@ -99,6 +97,19 @@ public class Ssc14ModKeyMappings {
 		}
 	};
 	public static final KeyMapping INTERACTION = new KeyMapping("key.ssc_14.interaction", GLFW.GLFW_KEY_E, "key.categories.inventory");
+	public static final KeyMapping SPECIFY = new KeyMapping("key.ssc_14.specify", InputConstants.Type.MOUSE, GLFW.GLFW_MOUSE_BUTTON_MIDDLE, "key.categories.multiplayer") {
+		private boolean isDownOld = false;
+
+		@Override
+		public void setDown(boolean isDown) {
+			super.setDown(isDown);
+			if (isDownOld != isDown && isDown) {
+				ClientPacketDistributor.sendToServer(new SpecifyMessage(0, 0));
+				SpecifyMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+			}
+			isDownOld = isDown;
+		}
+	};
 	private static long PULLTHE_OBJECT_LASTPRESS = 0;
 	private static long WORLD_OBJECT_CHECK_LASTPRESS = 0;
 
@@ -110,6 +121,7 @@ public class Ssc14ModKeyMappings {
 		event.register(WORLD_OBJECT_CHECK);
 		event.register(CRAWL);
 		event.register(INTERACTION);
+		event.register(SPECIFY);
 	}
 
 	@EventBusSubscriber(Dist.CLIENT)
@@ -122,6 +134,7 @@ public class Ssc14ModKeyMappings {
 				PULLTHE_OBJECT.consumeClick();
 				WORLD_OBJECT_CHECK.consumeClick();
 				CRAWL.consumeClick();
+				SPECIFY.consumeClick();
 			}
 		}
 	}

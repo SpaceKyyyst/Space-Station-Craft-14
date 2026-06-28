@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "ssc_14:block/kostilni_blk",
-    "particle": "ssc_14:block/kostilni_blk"
-  },
-  "render_type": "solid"
-}

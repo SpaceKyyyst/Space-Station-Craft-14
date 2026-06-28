@@ -1,10 +1,11 @@
+
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.InteractionResult;
 
-import net.mcreator.ssc.procedures.DECAL1deletion_P_Procedure;
+import net.mcreator.ssc.procedures.DECAL1deletion_USE_Procedure;
 
 public class DECAL1deletionItem extends Item {
 	public DECAL1deletionItem(Item.Properties properties) {
@@ -14,7 +15,8 @@ public class DECAL1deletionItem extends Item {
 	@Override
 	public InteractionResult useOn(UseOnContext context) {
 		super.useOn(context);
-		DECAL1deletion_P_Procedure.execute(context.getLevel(), context.getClickedPos().getX(), context.getClickedPos().getY(), context.getClickedPos().getZ(), context.getLevel().getBlockState(context.getClickedPos()), context.getPlayer());
+		// Передаем честные аргументы уровня и игрока в процедуру удаления
+		DECAL1deletion_USE_Procedure.execute(context.getLevel(), context.getPlayer());
 		return InteractionResult.SUCCESS;
 	}
 }

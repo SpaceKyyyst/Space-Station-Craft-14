@@ -2,7 +2,7 @@
   "parent": "block/cube_all",
   "textures": {
     "all": "ssc_14:block/station_glass_d1",
-    "particle": "ssc_14:block/station_glass"
+    "particle": "ssc_14:block/window"
   },
-  "render_type": "cutout"
+  "render_type": "translucent"
 }

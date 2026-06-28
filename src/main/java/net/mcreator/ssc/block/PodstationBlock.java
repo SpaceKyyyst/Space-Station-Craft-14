@@ -1,8 +1,10 @@
+
 package net.mcreator.ssc.block;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
@@ -11,6 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.MenuProvider;
@@ -20,6 +23,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.block.entity.PodstationBlockEntity;
+import net.mcreator.ssc.EnergyNetworkManager;
 
 import java.util.function.Function;
 
@@ -32,17 +36,63 @@ public class PodstationBlock extends Block implements EntityBlock {
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
+	@Override
+	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
+		super.onPlace(blockstate, world, pos, oldState, moving);
+		if (!world.isClientSide()) {
+			// Обновляем все соседние блоки вплотную к подстанции
+			for (Direction dir : Direction.values()) {
+				EnergyNetworkManager.updatePosition(world, pos.relative(dir));
+			}
+		}
+	}
+
+	@Override
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, net.minecraft.world.entity.player.Player entity, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+		if (!world.isClientSide()) {
+			for (Direction dir : Direction.values()) {
+				EnergyNetworkManager.updatePosition(world, pos.relative(dir));
+			}
+		}
+		return retval;
+	}
+
+	@Override
+	public void wasExploded(ServerLevel world, BlockPos pos, Explosion e) {
+		super.wasExploded(world, pos, e);
+		for (Direction dir : Direction.values()) {
+			EnergyNetworkManager.updatePosition(world, pos.relative(dir));
+		}
+	}
+
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> Shapes.or(box(0.5, 0, 0.5, 8.5, 16, 14.5), box(8.5, 2, 2.5, 15.5, 19, 11.5), box(9.5, 0, 3.5, 14.5, 2, 10.5), box(0.5, 16, 1.5, 8.5, 24, 12.5), box(13, 19, 8, 14, 22, 9), box(10, 19, 8, 11, 23, 9),
-						box(13, 19, 5, 14, 22, 6), box(10, 19, 5, 11, 23, 6));
-				case NORTH -> Shapes.or(box(7.5, 0, 1.5, 15.5, 16, 15.5), box(0.5, 2, 4.5, 7.5, 19, 13.5), box(1.5, 0, 5.5, 6.5, 2, 12.5), box(7.5, 16, 3.5, 15.5, 24, 14.5), box(2, 19, 7, 3, 22, 8), box(5, 19, 7, 6, 23, 8), box(2, 19, 10, 3, 22, 11),
-						box(5, 19, 10, 6, 23, 11));
-				case EAST -> Shapes.or(box(0.5, 0, 7.5, 14.5, 16, 15.5), box(2.5, 2, 0.5, 11.5, 19, 7.5), box(3.5, 0, 1.5, 10.5, 2, 6.5), box(1.5, 16, 7.5, 12.5, 24, 15.5), box(8, 19, 2, 9, 22, 3), box(8, 19, 5, 9, 23, 6), box(5, 19, 2, 6, 22, 3),
-						box(5, 19, 5, 6, 23, 6));
-				case WEST -> Shapes.or(box(1.5, 0, 0.5, 15.5, 16, 8.5), box(4.5, 2, 8.5, 13.5, 19, 15.5), box(5.5, 0, 9.5, 12.5, 2, 14.5), box(3.5, 16, 0.5, 14.5, 24, 8.5), box(7, 19, 13, 8, 22, 14), box(7, 19, 10, 8, 23, 11),
-						box(10, 19, 13, 11, 22, 14), box(10, 19, 10, 11, 23, 11));
+				default -> Shapes.or(
+					box(0.5, 0, 0.5, 8.5, 16, 14.5), box(8.5, 2, 2.5, 15.5, 19, 11.5), 
+					box(9.5, 0, 3.5, 14.5, 2, 10.5), box(0.5, 16, 1.5, 8.5, 24, 12.5), 
+					box(13, 19, 8, 14, 22, 9), box(10, 19, 8, 11, 23, 9),
+					box(13, 19, 5, 14, 22, 6), box(10, 19, 5, 11, 23, 6)
+				);
+				case NORTH -> Shapes.or(
+					box(7.5, 0, 1.5, 15.5, 16, 15.5), box(0.5, 2, 4.5, 7.5, 19, 13.5), 
+					box(1.5, 0, 5.5, 6.5, 2, 12.5), box(7.5, 16, 3.5, 15.5, 24, 14.5), 
+					box(2, 19, 7, 3, 22, 8), box(5, 19, 7, 6, 23, 8), 
+					box(2, 19, 10, 3, 22, 11), box(5, 19, 10, 6, 23, 11)
+				);
+				case EAST -> Shapes.or(
+					box(0.5, 0, 7.5, 14.5, 16, 15.5), box(2.5, 2, 0.5, 11.5, 19, 7.5), 
+					box(3.5, 0, 1.5, 10.5, 2, 6.5), box(1.5, 16, 7.5, 12.5, 24, 15.5), 
+					box(8, 19, 2, 9, 22, 3), box(8, 19, 5, 9, 23, 6), 
+					box(5, 19, 2, 6, 22, 3), box(5, 19, 5, 6, 23, 6)
+				);
+				case WEST -> Shapes.or(
+					box(1.5, 0, 0.5, 15.5, 16, 8.5), box(4.5, 2, 8.5, 13.5, 19, 15.5), 
+					box(5.5, 0, 9.5, 12.5, 2, 14.5), box(3.5, 16, 0.5, 14.5, 24, 8.5), 
+					box(7, 19, 13, 8, 22, 14), box(7, 19, 10, 8, 23, 11),
+					box(10, 19, 13, 11, 22, 14), box(10, 19, 10, 11, 23, 11)
+				);
 			};
 		});
 	}

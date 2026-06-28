@@ -13,13 +13,13 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelscarf",
-    "baubleModelTexture": "scarf_brown_t.png",
+    "baubleModel": "Modelscarfs_equipped",
+    "baubleModelTexture": "scarf_brown_equipped_texture.png",
     "onEquip": {
       "name": "Equip_BaseSound_PR_"
     },
-    "helmetModelPart": "Empty",
-    "bodyModelPart": "bone",
+    "helmetModelPart": "head",
+    "bodyModelPart": "torso",
     "armsModelPartL": "Empty",
     "armsModelPartR": "Empty",
     "leggingsModelPartL": "Empty",

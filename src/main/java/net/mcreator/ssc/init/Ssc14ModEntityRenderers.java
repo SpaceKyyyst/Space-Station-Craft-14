@@ -20,9 +20,9 @@ public class Ssc14ModEntityRenderers {
 		event.registerEntityRenderer(Ssc14ModEntities.CHAIR_ENTITY.get(), ChairEntityRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.C_4_CRUTCH_ENT.get(), C4CrutchEntRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.CORPSE.get(), CorpseRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.DECAL_1.get(), Decal1Renderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.MOUSE_BROWN.get(), MouseBrownRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.MOUSE_GRAY.get(), MouseGrayRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.MOUSE_WHITE.get(), MouseWhiteRenderer::new);
+		event.registerEntityRenderer(Ssc14ModEntities.BULLET_35.get(), Bullet35Renderer::new);
 	}
 }

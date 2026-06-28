@@ -1,8 +1,14 @@
+
 {
-  "parent": "block/cube_all",
+  "loader": "fusion:model",
+  "type": "fusion:connecting",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "ssc_14:block/metal_wall_up_down",
-    "particle": "ssc_14:block/metal_wall_up_down"
+    "all": "ssc_14:block/steel_wall"
   },
-  "render_type": "solid"
+  "connections": [
+    {
+      "type": "fusion:is_same_block"
+    }
+  ]
 }

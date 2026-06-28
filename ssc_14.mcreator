@@ -91,7 +91,7 @@
       "name": "Sheathing",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "sheathing",
       "metadata": {
         "files": [
@@ -100,6 +100,7 @@
           "src/main/resources/assets/ssc_14/models/block/sheathing_0.json",
           "src/main/resources/assets/ssc_14/models/block/sheathing_3.json",
           "src/main/resources/assets/ssc_14/models/block/sheathing.json",
+          "src/main/java/net/mcreator/ssc/block/entity/SheathingBlockEntity.java",
           "src/main/resources/assets/ssc_14/models/block/sheathing_6.json",
           "src/main/resources/assets/ssc_14/blockstates/sheathing.json",
           "src/main/resources/assets/ssc_14/models/block/sheathing_1.json",
@@ -191,7 +192,7 @@
       "name": "Sheathing_Cab_Instal",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "sheathing_cab_instal",
       "metadata": {
         "dependencies": [
@@ -331,7 +332,7 @@
           "src/main/java/net/mcreator/ssc/procedures/SteelWall_DestroyProcedure.java"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "SteelWall",
@@ -349,7 +350,7 @@
           "src/main/resources/assets/ssc_14/models/block/steel_wall.json"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "WallCarcase",
@@ -367,7 +368,7 @@
           "src/main/resources/assets/ssc_14/blockstates/wall_carcase.json"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "ActionIndicator",
@@ -810,7 +811,7 @@
           "src/main/resources/assets/ssc_14/models/block/uper_sheathing.json"
         ]
       },
-      "path": "~/Blocks/Up Floor"
+      "path": "~/Blocks/Floors"
     },
     {
       "name": "RodUpFloor",
@@ -828,7 +829,7 @@
           "src/main/java/net/mcreator/ssc/block/RodUpFloorBlock.java"
         ]
       },
-      "path": "~/Blocks/Up Floor"
+      "path": "~/Blocks/Floors"
     },
     {
       "name": "TitleInstallPr",
@@ -1544,7 +1545,7 @@
       "name": "O2textRedact",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "o_2text_redact",
       "metadata": {
         "dependencies": [
@@ -1589,7 +1590,7 @@
           "src/main/resources/assets/ssc_14/models/block/base_window.json"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "GlassShard",
@@ -5059,7 +5060,7 @@
           "src/main/resources/assets/ssc_14/models/block/plasteel_wall.json"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "PlasteelWallCarcase",
@@ -5077,7 +5078,7 @@
           "src/main/resources/data/ssc_14/loot_table/blocks/plasteel_wall_carcase.json"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "PlaSteelUse",
@@ -5633,7 +5634,7 @@
       "name": "APC",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "apc",
       "metadata": {
         "files": [
@@ -5647,13 +5648,13 @@
           "src/main/resources/data/ssc_14/loot_table/blocks/apc.json"
         ]
       },
-      "path": "~/Blocks/Devices"
+      "path": "~/Blocks/Devices/ENERGETIC"
     },
     {
       "name": "Podstation",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "podstation",
       "metadata": {
         "files": [
@@ -5666,13 +5667,13 @@
           "src/main/resources/assets/ssc_14/models/item/podstation.json"
         ]
       },
-      "path": "~/Blocks/Devices"
+      "path": "~/Blocks/Devices/ENERGETIC"
     },
     {
       "name": "DEBUGgenerator",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "debu_ggenerator",
       "metadata": {
         "files": [
@@ -5685,7 +5686,7 @@
           "src/main/resources/data/ssc_14/loot_table/blocks/debu_ggenerator.json"
         ]
       },
-      "path": "~/Blocks/Devices"
+      "path": "~/Blocks/Devices/ENERGETIC"
     },
     {
       "name": "CabelPannelAirlock",
@@ -6271,22 +6272,27 @@
       "name": "Lamp",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "lamp",
       "metadata": {
         "files": [
           "src/main/resources/assets/ssc_14/models/block/lamp_1.json",
+          "src/main/resources/assets/ssc_14/models/block/lamp_4.json",
+          "src/main/resources/assets/ssc_14/models/block/lamp.json",
+          "src/main/resources/assets/ssc_14/models/block/lamp_6.json",
+          "src/main/resources/assets/ssc_14/models/block/lamp_3.json",
           "src/main/resources/assets/ssc_14/blockstates/lamp.json",
           "src/main/resources/assets/ssc_14/items/lamp.json",
           "src/main/resources/assets/ssc_14/models/block/lamp_0.json",
+          "src/main/resources/assets/ssc_14/models/block/lamp_5.json",
+          "src/main/java/net/mcreator/ssc/block/entity/LampBlockEntity.java",
           "src/main/java/net/mcreator/ssc/block/LampBlock.java",
           "src/main/resources/data/ssc_14/loot_table/blocks/lamp.json",
           "src/main/resources/assets/ssc_14/models/item/lamp.json",
-          "src/main/resources/assets/ssc_14/models/block/lamp.json",
           "src/main/resources/assets/ssc_14/models/block/lamp_2.json"
         ]
       },
-      "path": "~/Blocks/Lamps"
+      "path": "~/Blocks/Devices/Lamps"
     },
     {
       "name": "CPlampind1",
@@ -6895,7 +6901,7 @@
           "src/main/resources/assets/ssc_14/models/block/smes_1.json"
         ]
       },
-      "path": "~/Blocks/Devices"
+      "path": "~/Blocks/Devices/ENERGETIC"
     },
     {
       "name": "TechLamp",
@@ -6906,17 +6912,21 @@
       "metadata": {
         "files": [
           "src/main/resources/data/ssc_14/loot_table/blocks/tech_lamp.json",
-          "src/main/resources/assets/ssc_14/models/item/tech_lamp.json",
-          "src/main/java/net/mcreator/ssc/block/TechLampBlock.java",
           "src/main/resources/assets/ssc_14/blockstates/tech_lamp.json",
-          "src/main/resources/assets/ssc_14/models/block/tech_lamp_0.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_lamp_5.json",
           "src/main/resources/assets/ssc_14/items/tech_lamp.json",
           "src/main/resources/assets/ssc_14/models/block/tech_lamp.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_lamp_2.json",
+          "src/main/resources/assets/ssc_14/models/item/tech_lamp.json",
+          "src/main/java/net/mcreator/ssc/block/TechLampBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/tech_lamp_0.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_lamp_4.json",
+          "src/main/resources/assets/ssc_14/models/block/tech_lamp_3.json",
           "src/main/resources/assets/ssc_14/models/block/tech_lamp_1.json",
-          "src/main/resources/assets/ssc_14/models/block/tech_lamp_2.json"
+          "src/main/resources/assets/ssc_14/models/block/tech_lamp_6.json"
         ]
       },
-      "path": "~/Blocks/Lamps"
+      "path": "~/Blocks/Devices/Lamps"
     },
     {
       "name": "LedLightTube",
@@ -6952,7 +6962,7 @@
       "name": "InsertingLamp",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "inserting_lamp",
       "metadata": {
         "dependencies": [
@@ -6985,7 +6995,7 @@
           "src/main/java/net/mcreator/ssc/procedures/InsertingLampProcedure.java"
         ]
       },
-      "path": "~/Blocks/Lamps"
+      "path": "~/Blocks/Devices/Lamps"
     },
     {
       "name": "LedLightTubeBroken",
@@ -7038,7 +7048,7 @@
           "src/main/resources/assets/ssc_14/models/block/armored_window_3.json"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "ArmGlassShard",
@@ -7359,7 +7369,7 @@
           "src/main/java/net/mcreator/ssc/block/DEBUGLampBlock.java"
         ]
       },
-      "path": "~/Blocks/Lamps"
+      "path": "~/Blocks/Devices/Lamps"
     },
     {
       "name": "DEBUGTechLamp",
@@ -7377,7 +7387,7 @@
           "src/main/resources/assets/ssc_14/models/block/debug_tech_lamp.json"
         ]
       },
-      "path": "~/Blocks/Lamps"
+      "path": "~/Blocks/Devices/Lamps"
     },
     {
       "name": "Grille",
@@ -9588,7 +9598,7 @@
           "src/main/java/net/mcreator/ssc/procedures/Wall_Explosion_BreakdownProcedure.java"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "C4CrutchEnt",
@@ -9658,7 +9668,7 @@
           "src/main/java/net/mcreator/ssc/procedures/PlstWallExplosionBreakdownProcedure.java"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "Kostilniblok",
@@ -10203,7 +10213,7 @@
           "src/main/resources/assets/ssc_14/models/item/shuttle_wall.json"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "ArmoredShuttleWall",
@@ -10221,7 +10231,7 @@
           "src/main/resources/assets/ssc_14/models/block/armored_shuttle_wall.json"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "DirectedBaseWindow",
@@ -10239,7 +10249,7 @@
           "src/main/resources/assets/ssc_14/blockstates/directed_base_window.json"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "Neck",
@@ -10769,7 +10779,7 @@
       "metadata": {
         "files": []
       },
-      "path": "~/Render"
+      "path": "~/Technical/Pl Render"
     },
     {
       "name": "HumanModelRender",
@@ -10800,7 +10810,7 @@
           "src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java"
         ]
       },
-      "path": "~/Render"
+      "path": "~/Technical/Pl Render"
     },
     {
       "name": "Jumpsuit",
@@ -10913,7 +10923,7 @@
           "src/main/java/net/mcreator/ssc/procedures/HumanArmRenderProcedure.java"
         ]
       },
-      "path": "~/Render"
+      "path": "~/Technical/Pl Render"
     },
     {
       "name": "Computer",
@@ -12882,19 +12892,6 @@
       "path": "~/Items/Instruments/Pick"
     },
     {
-      "name": "ConnectedBlock",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "connected_block",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/ssc/ConnectedBlock.java"
-        ]
-      },
-      "path": "~/Blocks/Walls"
-    },
-    {
       "name": "DEBUG13",
       "type": "block",
       "compiles": true,
@@ -12960,7 +12957,7 @@
           "src/main/java/net/mcreator/ssc/GasType.java"
         ]
       },
-      "path": "~/ATMOS sistem"
+      "path": "~/Technical/ATMOS sistem"
     },
     {
       "name": "GasReaction",
@@ -12973,7 +12970,7 @@
           "src/main/java/net/mcreator/ssc/GasReaction.java"
         ]
       },
-      "path": "~/ATMOS sistem"
+      "path": "~/Technical/ATMOS sistem"
     },
     {
       "name": "IAtmosBlock",
@@ -12986,7 +12983,7 @@
           "src/main/java/net/mcreator/ssc/IAtmosBlock.java"
         ]
       },
-      "path": "~/ATMOS sistem"
+      "path": "~/Technical/ATMOS sistem"
     },
     {
       "name": "AtmosCell",
@@ -12999,7 +12996,7 @@
           "src/main/java/net/mcreator/ssc/AtmosCell.java"
         ]
       },
-      "path": "~/ATMOS sistem"
+      "path": "~/Technical/ATMOS sistem"
     },
     {
       "name": "AtmosRegion",
@@ -13012,7 +13009,7 @@
           "src/main/java/net/mcreator/ssc/AtmosRegion.java"
         ]
       },
-      "path": "~/ATMOS sistem"
+      "path": "~/Technical/ATMOS sistem"
     },
     {
       "name": "AtmosphereManager",
@@ -13025,7 +13022,7 @@
           "src/main/java/net/mcreator/ssc/AtmosphereManager.java"
         ]
       },
-      "path": "~/ATMOS sistem"
+      "path": "~/Technical/ATMOS sistem"
     },
     {
       "name": "SSC14AtmosSetGasCommand",
@@ -13061,7 +13058,7 @@
           "src/main/java/net/mcreator/ssc/AtmosForgeEventHandler.java"
         ]
       },
-      "path": "~/ATMOS sistem"
+      "path": "~/Technical/ATMOS sistem"
     },
     {
       "name": "SSC14AtmosGasTemperatureCommand",
@@ -13098,7 +13095,7 @@
           "src/main/resources/assets/ssc_14/particles/plasma_particles_1.json"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "PlasmaParticles2",
@@ -13112,7 +13109,7 @@
           "src/main/resources/assets/ssc_14/particles/plasma_particles_2.json"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "WaterVaporParticles1",
@@ -13126,7 +13123,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/WaterVaporParticles1Particle.java"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "WaterVaporParticles2",
@@ -13140,7 +13137,7 @@
           "src/main/resources/assets/ssc_14/particles/water_vapor_particles_2.json"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "UpAirlockPlugKistil",
@@ -13216,7 +13213,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/WaterVaporParticles3Particle.java"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "WaterVaporParticles4",
@@ -13230,7 +13227,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/WaterVaporParticles4Particle.java"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "AmmoniaParticles1",
@@ -13244,7 +13241,7 @@
           "src/main/resources/assets/ssc_14/particles/ammonia_particles_1.json"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "AmmoniaParticles2",
@@ -13258,7 +13255,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/AmmoniaParticles2Particle.java"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "AmmoniaParticles3",
@@ -13272,7 +13269,7 @@
           "src/main/resources/assets/ssc_14/particles/ammonia_particles_3.json"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "AmmoniaParticles4",
@@ -13286,7 +13283,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/AmmoniaParticles4Particle.java"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "FreonParticles1",
@@ -13300,7 +13297,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/FreonParticles1Particle.java"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "FreonParticles2",
@@ -13314,7 +13311,7 @@
           "src/main/resources/assets/ssc_14/particles/freon_particles_2.json"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "FreonParticles3",
@@ -13328,7 +13325,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/FreonParticles3Particle.java"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "FreonParticles4",
@@ -13342,7 +13339,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/FreonParticles4Particle.java"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "HeliumParticles1",
@@ -13356,7 +13353,7 @@
           "src/main/resources/assets/ssc_14/particles/helium_particles_1.json"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "HeliumParticles2",
@@ -13370,7 +13367,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/HeliumParticles2Particle.java"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "HeliumParticles3",
@@ -13384,7 +13381,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/HeliumParticles3Particle.java"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "HeliumParticles4",
@@ -13398,7 +13395,7 @@
           "src/main/resources/assets/ssc_14/particles/helium_particles_4.json"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "TritiumParticles1",
@@ -13412,7 +13409,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/TritiumParticles1Particle.java"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "TritiumParticles2",
@@ -13426,28 +13423,13 @@
           "src/main/resources/assets/ssc_14/particles/tritium_particles_2.json"
         ]
       },
-      "path": "~/ATMOS sistem/Gas Particles"
-    },
-    {
-      "name": "Decal1",
-      "type": "livingentity",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "decal_1",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/ssc_14/items/decal_1_spawn_egg.json",
-          "src/main/java/net/mcreator/ssc/entity/Decal1Entity.java",
-          "src/main/java/net/mcreator/ssc/client/renderer/Decal1Renderer.java"
-        ]
-      },
-      "path": "~/DECALS"
+      "path": "~/Technical/ATMOS sistem/Gas Particles"
     },
     {
       "name": "DECAL1spawner",
       "type": "item",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "decal_1spawner",
       "metadata": {
         "files": [
@@ -13470,107 +13452,16 @@
       "path": "~/DECALS"
     },
     {
-      "name": "DECAL1spawner_BlockClick",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "decal_1spawner_block_click",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "blockstate",
-            "type": "blockstate"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/DECAL1spawner_BlockClickProcedure.java"
-        ]
-      },
-      "path": "~/DECALS"
-    },
-    {
-      "name": "DecalEventHandler",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "decal_event_handler",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/ssc/DecalEventHandler.java"
-        ]
-      },
-      "path": "~/DECALS"
-    },
-    {
       "name": "DECAL1deletion",
       "type": "item",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "decal_1deletion",
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/ssc/item/DECAL1deletionItem.java",
           "src/main/resources/assets/ssc_14/items/decal_1deletion.json",
           "src/main/resources/assets/ssc_14/models/item/decal_1deletion.json"
-        ]
-      },
-      "path": "~/DECALS"
-    },
-    {
-      "name": "DECAL1deletion_P_",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "decal_1deletion_p",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "blockstate",
-            "type": "blockstate"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/DECAL1deletion_P_Procedure.java"
         ]
       },
       "path": "~/DECALS"
@@ -15534,7 +15425,7 @@
           "src/main/java/net/mcreator/ssc/LocalChatEventHandler.java"
         ]
       },
-      "path": "~/MASSAGE sistem"
+      "path": "~/Technical/MASSAGE sistem"
     },
     {
       "name": "HorizontalSunRenderer",
@@ -16502,7 +16393,7 @@
           "src/main/java/net/mcreator/ssc/procedures/HumanModelRenderFIXProcedure.java"
         ]
       },
-      "path": "~/Render"
+      "path": "~/Technical/Pl Render"
     },
     {
       "name": "GlassGlassesCAPI",
@@ -17459,7 +17350,7 @@
           "src/main/java/net/mcreator/ssc/ReagentColorHelper.java"
         ]
       },
-      "path": "~/Chemistry System"
+      "path": "~/Technical/Chemistry System"
     },
     {
       "name": "ModReagents",
@@ -17472,7 +17363,7 @@
           "src/main/java/net/mcreator/ssc/ModReagents.java"
         ]
       },
-      "path": "~/Chemistry System"
+      "path": "~/Technical/Chemistry System"
     },
     {
       "name": "ReagentContainer",
@@ -17487,7 +17378,7 @@
           "src/main/java/net/mcreator/ssc/item/ReagentContainerItem.java"
         ]
       },
-      "path": "~/Chemistry System"
+      "path": "~/Technical/Chemistry System"
     },
     {
       "name": "ReagentContainerConfig",
@@ -17500,7 +17391,7 @@
           "src/main/java/net/mcreator/ssc/ReagentContainerConfig.java"
         ]
       },
-      "path": "~/Chemistry System"
+      "path": "~/Technical/Chemistry System"
     },
     {
       "name": "VendingAut1",
@@ -17547,26 +17438,7 @@
           "src/main/java/net/mcreator/ssc/command/SSC14ChemistryCommandCommand.java"
         ]
       },
-      "path": "~/Chemistry System"
-    },
-    {
-      "name": "FillReagentPR",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "fill_reagent_pr",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "arguments",
-            "type": "cmdcontext"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/FillReagentPRProcedure.java"
-        ]
-      },
-      "path": "~/Chemistry System"
+      "path": "~/Technical/Chemistry System"
     },
     {
       "name": "VendAutGUIButton1",
@@ -18461,7 +18333,7 @@
           "src/main/resources/assets/ssc_14/items/directed_armored_window.json"
         ]
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "Bartender",
@@ -18882,7 +18754,7 @@
         ],
         "return_type": "actionresulttype"
       },
-      "path": "~/Blocks/Walls"
+      "path": "~/Blocks/Walls-Windows"
     },
     {
       "name": "Shutters_DEBUD_AKTIVATOR_PR_",
@@ -19281,6 +19153,2039 @@
         ]
       },
       "path": "~/Items/Instruments/NetConfig"
+    },
+    {
+      "name": "Microwawe",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "microwawe",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/MicrowaweBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/microwawe.json",
+          "src/main/java/net/mcreator/ssc/block/entity/MicrowaweBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/microwawe_1.json",
+          "src/main/resources/assets/ssc_14/blockstates/microwawe.json",
+          "src/main/resources/assets/ssc_14/models/block/microwawe_0.json",
+          "src/main/resources/assets/ssc_14/models/item/microwawe.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/microwawe.json",
+          "src/main/resources/assets/ssc_14/items/microwawe.json"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "Dough",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dough",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/dough.json",
+          "src/main/resources/assets/ssc_14/items/dough.json",
+          "src/main/java/net/mcreator/ssc/item/DoughItem.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "DoughPiece",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dough_piece",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/dough_piece.json",
+          "src/main/java/net/mcreator/ssc/item/DoughPieceItem.java",
+          "src/main/resources/assets/ssc_14/items/dough_piece.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "Bread",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bread",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/BreadItem.java",
+          "src/main/resources/assets/ssc_14/models/item/bread.json",
+          "src/main/resources/assets/ssc_14/items/bread.json"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "BreadSlice",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bread_slice",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/bread_slice.json",
+          "src/main/resources/assets/ssc_14/models/item/bread_slice.json",
+          "src/main/java/net/mcreator/ssc/item/BreadSliceItem.java"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "Bun",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bun",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/bun.json",
+          "src/main/java/net/mcreator/ssc/item/BunItem.java",
+          "src/main/resources/assets/ssc_14/models/item/bun.json"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "Container_Opening_PR_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "container_opening_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Container_Opening_PR_Procedure.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "Flour",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "flour",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/flour.json",
+          "src/main/resources/assets/ssc_14/items/flour.json",
+          "src/main/java/net/mcreator/ssc/item/FlourItem.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "FlourOpen",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "flour_open",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/FlourOpenItem.java",
+          "src/main/resources/assets/ssc_14/items/flour_open.json",
+          "src/main/resources/assets/ssc_14/models/item/flour_open.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "Sugar",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sugar",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/sugar.json",
+          "src/main/java/net/mcreator/ssc/item/SugarItem.java",
+          "src/main/resources/assets/ssc_14/items/sugar.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "SugarOpen",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "sugar_open",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/sugar_open.json",
+          "src/main/resources/assets/ssc_14/items/sugar_open.json",
+          "src/main/java/net/mcreator/ssc/item/SugarOpenItem.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "Milk",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "milk",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/milk.json",
+          "src/main/resources/assets/ssc_14/models/item/milk.json",
+          "src/main/java/net/mcreator/ssc/item/MilkItem.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "MilkOpen",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "milk_open",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/milk_open.json",
+          "src/main/java/net/mcreator/ssc/item/MilkOpenItem.java",
+          "src/main/resources/assets/ssc_14/models/item/milk_open.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "AllPurposeSauce",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "all_purpose_sauce",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/all_purpose_sauce.json",
+          "src/main/resources/assets/ssc_14/items/all_purpose_sauce.json",
+          "src/main/java/net/mcreator/ssc/item/AllPurposeSauceItem.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "AllPurposeSauceOpen",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "all_purpose_sauce_open",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/all_purpose_sauce_open.json",
+          "src/main/java/net/mcreator/ssc/item/AllPurposeSauceOpenItem.java",
+          "src/main/resources/assets/ssc_14/items/all_purpose_sauce_open.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "Egg",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "egg",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/egg.json",
+          "src/main/resources/assets/ssc_14/models/item/egg.json",
+          "src/main/java/net/mcreator/ssc/item/EggItem.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "Eggshell",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "eggshell",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/eggshell.json",
+          "src/main/resources/assets/ssc_14/items/eggshell.json",
+          "src/main/java/net/mcreator/ssc/item/EggshellItem.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "EggCarton",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "egg_carton",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/egg_carton.json",
+          "src/main/java/net/mcreator/ssc/item/EggCartonItem.java",
+          "src/main/resources/assets/ssc_14/items/egg_carton.json",
+          "src/main/java/net/mcreator/ssc/item/inventory/EggCartonInventoryCapability.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "EggCartonGUI",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "egg_carton_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/gui/EggCartonGUIScreen.java",
+          "src/main/java/net/mcreator/ssc/world/inventory/EggCartonGUIMenu.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "EggCarton_EggsGenerate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "egg_carton_eggs_generate",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/EggCarton_EggsGenerateProcedure.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "MicrowaweGUI",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "microwawe_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/gui/MicrowaweGUIScreen.java",
+          "src/main/java/net/mcreator/ssc/world/inventory/MicrowaweGUIMenu.java",
+          "src/main/java/net/mcreator/ssc/network/MicrowaweGUIButtonMessage.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "MicrowaweGUITextTime",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "microwawe_gui_text_time",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrowaweGUITextTimeProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "MicrwGUIbut1",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "micrw_gu_ibut_1",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrwGUIbut1Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "MicrwGUIbut5",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "micrw_gu_ibut_5",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrwGUIbut5Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "MicrwGUIbut10",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "micrw_gu_ibut_10",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrwGUIbut10Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "MicrwGUIbut15",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "micrw_gu_ibut_15",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrwGUIbut15Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "MicrwGUIbut20",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "micrw_gu_ibut_20",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrwGUIbut20Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "MicrwGUIbut25",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "micrw_gu_ibut_25",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrwGUIbut25Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "MicrwGUIbut30",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "micrw_gu_ibut_30",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrwGUIbut30Procedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "MicrwGUIbutC",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "micrw_gu_ibut_c",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrwGUIbutCProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "MicrwGUIbutE",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "micrw_gu_ibut_e",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrwGUIbutEProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "MicrwGUIslotRule",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "micrw_gu_islot_rule",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrwGUIslotRuleProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "Tofu",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tofu",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/tofu.json",
+          "src/main/java/net/mcreator/ssc/item/TofuItem.java",
+          "src/main/resources/assets/ssc_14/models/item/tofu.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "TofuBurger",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tofu_burger",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/TofuBurgerItem.java",
+          "src/main/resources/assets/ssc_14/models/item/tofu_burger.json",
+          "src/main/resources/assets/ssc_14/items/tofu_burger.json"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "TofuSlice",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tofu_slice",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/tofu_slice.json",
+          "src/main/resources/assets/ssc_14/models/item/tofu_slice.json",
+          "src/main/java/net/mcreator/ssc/item/TofuSliceItem.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "MicrwGUItimerPR",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "micrw_gu_itimer_pr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MicrwGUItimerPRProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Devices/Kitchen"
+    },
+    {
+      "name": "FillReagentPR",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "fill_reagent_pr",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/FillReagentPRProcedure.java"
+        ]
+      },
+      "path": "~/Technical/Chemistry System"
+    },
+    {
+      "name": "CheeseWheel",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cheese_wheel",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/cheese_wheel.json",
+          "src/main/java/net/mcreator/ssc/item/CheeseWheelItem.java",
+          "src/main/resources/assets/ssc_14/items/cheese_wheel.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "Cheese",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cheese",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/cheese.json",
+          "src/main/resources/assets/ssc_14/items/cheese.json",
+          "src/main/java/net/mcreator/ssc/item/CheeseItem.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "Cutlet",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cutlet",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/cutlet.json",
+          "src/main/resources/assets/ssc_14/models/item/cutlet.json",
+          "src/main/java/net/mcreator/ssc/item/CutletItem.java"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "FriedCutlet",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fried_cutlet",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/FriedCutletItem.java",
+          "src/main/resources/assets/ssc_14/models/item/fried_cutlet.json",
+          "src/main/resources/assets/ssc_14/items/fried_cutlet.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "Meat",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "meat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/MeatItem.java",
+          "src/main/resources/assets/ssc_14/items/meat.json",
+          "src/main/resources/assets/ssc_14/models/item/meat.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "FriedMeat",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fried_meat",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/fried_meat.json",
+          "src/main/java/net/mcreator/ssc/item/FriedMeatItem.java",
+          "src/main/resources/assets/ssc_14/items/fried_meat.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "RottenMeat",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rotten_meat",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/rotten_meat.json",
+          "src/main/java/net/mcreator/ssc/item/RottenMeatItem.java",
+          "src/main/resources/assets/ssc_14/models/item/rotten_meat.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "Cheeseburger",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cheeseburger",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/CheeseburgerItem.java",
+          "src/main/resources/assets/ssc_14/models/item/cheeseburger.json",
+          "src/main/resources/assets/ssc_14/items/cheeseburger.json"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "Catburger",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "catburger",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/catburger.json",
+          "src/main/resources/assets/ssc_14/items/catburger.json",
+          "src/main/java/net/mcreator/ssc/item/CatburgerItem.java"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "HeadsetBrigmedicCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_brigmedic_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetBrigmedicCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetBrigmedic",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_brigmedic",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetBrigmedicInventoryCapability.java",
+          "src/main/java/net/mcreator/ssc/item/HeadsetBrigmedicItem.java",
+          "src/main/resources/assets/ssc_14/models/item/headset_brigmedic.json",
+          "src/main/resources/assets/ssc_14/items/headset_brigmedic.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "ProcessReactionsMessage",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "process_reactions_message",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/ProcessReactionsMessage.java"
+        ]
+      },
+      "path": "~/Technical/Chemistry System"
+    },
+    {
+      "name": "ReagentTransferHandler",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "reagent_transfer_handler",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/ReagentTransferHandler.java"
+        ]
+      },
+      "path": "~/Technical/Chemistry System"
+    },
+    {
+      "name": "Potato",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "potato",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/potato.json",
+          "src/main/java/net/mcreator/ssc/item/PotatoItem.java",
+          "src/main/resources/assets/ssc_14/models/item/potato.json"
+        ]
+      },
+      "path": "~/Items/Food/Ingridients"
+    },
+    {
+      "name": "SpaceFries",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "space_fries",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/SpaceFriesItem.java",
+          "src/main/resources/assets/ssc_14/items/space_fries.json",
+          "src/main/resources/assets/ssc_14/models/item/space_fries.json"
+        ]
+      },
+      "path": "~/Items/Food"
+    },
+    {
+      "name": "CableType",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cable_type",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/CableType.java"
+        ]
+      },
+      "path": "~/Technical/Energetic"
+    },
+    {
+      "name": "EnergyNetwork",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "energy_network",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/EnergyNetwork.java"
+        ]
+      },
+      "path": "~/Technical/Energetic"
+    },
+    {
+      "name": "EnergyNetworkManager",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "energy_network_manager",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/EnergyNetworkManager.java"
+        ]
+      },
+      "path": "~/Technical/Energetic"
+    },
+    {
+      "name": "IEnergyStorageBlock",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "i_energy_storage_block",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/IEnergyStorageBlock.java"
+        ]
+      },
+      "path": "~/Technical/Energetic"
+    },
+    {
+      "name": "EnergySimulationServer",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "energy_simulation_server",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/EnergySimulationServer.java"
+        ]
+      },
+      "path": "~/Technical/Energetic"
+    },
+    {
+      "name": "Multitul",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "multitul",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/multitul.json",
+          "src/main/java/net/mcreator/ssc/item/MultitulItem.java",
+          "src/main/resources/assets/ssc_14/items/multitul.json"
+        ]
+      },
+      "path": "~/Items/Instruments/Multitul"
+    },
+    {
+      "name": "Multitul_UI_Conditions",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "multitul_ui_conditions",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Multitul_UI_ConditionsProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/Multitul"
+    },
+    {
+      "name": "MultitulUI",
+      "type": "overlay",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "multitul_ui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/screens/MultitulUIOverlay.java"
+        ]
+      },
+      "path": "~/Items/Instruments/Multitul"
+    },
+    {
+      "name": "MultitoolClientCache",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "multitool_client_cache",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/MultitoolClientCache.java"
+        ]
+      },
+      "path": "~/Technical/Energetic"
+    },
+    {
+      "name": "MultitoolDataPacket",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "multitool_data_packet",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/MultitoolDataPacket.java"
+        ]
+      },
+      "path": "~/Technical/Energetic"
+    },
+    {
+      "name": "NetworkRegister",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "network_register",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/NetworkRegister.java"
+        ]
+      },
+      "path": "~/Technical/Energetic"
+    },
+    {
+      "name": "Multitul_Cable_Mode",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "multitul_cable_mode",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Multitul_Cable_ModeProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/Multitul"
+    },
+    {
+      "name": "Multitul_Description",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "multitul_description",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Multitul_DescriptionProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments/Multitul"
+    },
+    {
+      "name": "HeadsetCargo",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_cargo",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetCargoInventoryCapability.java",
+          "src/main/java/net/mcreator/ssc/item/HeadsetCargoItem.java",
+          "src/main/resources/assets/ssc_14/items/headset_cargo.json",
+          "src/main/resources/assets/ssc_14/models/item/headset_cargo.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetCentcom",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_centcom",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetCentcomInventoryCapability.java",
+          "src/main/resources/assets/ssc_14/models/item/headset_centcom.json",
+          "src/main/java/net/mcreator/ssc/item/HeadsetCentcomItem.java",
+          "src/main/resources/assets/ssc_14/items/headset_centcom.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetCommand",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_command",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/HeadsetCommandItem.java",
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetCommandInventoryCapability.java",
+          "src/main/resources/assets/ssc_14/items/headset_command.json",
+          "src/main/resources/assets/ssc_14/models/item/headset_command.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetEngineering",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_engineering",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/headset_engineering.json",
+          "src/main/resources/assets/ssc_14/models/item/headset_engineering.json",
+          "src/main/java/net/mcreator/ssc/item/HeadsetEngineeringItem.java",
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetEngineeringInventoryCapability.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetMedical",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_medical",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/HeadsetMedicalItem.java",
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetMedicalInventoryCapability.java",
+          "src/main/resources/assets/ssc_14/models/item/headset_medical.json",
+          "src/main/resources/assets/ssc_14/items/headset_medical.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetMedicalScience",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_medical_science",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetMedicalScienceInventoryCapability.java",
+          "src/main/resources/assets/ssc_14/items/headset_medical_science.json",
+          "src/main/java/net/mcreator/ssc/item/HeadsetMedicalScienceItem.java",
+          "src/main/resources/assets/ssc_14/models/item/headset_medical_science.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetCargoCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_cargo_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetCargoCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetCentcomCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_centcom_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetCentcomCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetCommandCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_command_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetCommandCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetEngineerCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_engineer_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetEngineerCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetMedicalCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_medical_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetMedicalCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetMedicalScienceCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_medical_science_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetMedicalScienceCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetMiningCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_mining_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetMiningCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetMining",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_mining",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/headset_mining.json",
+          "src/main/java/net/mcreator/ssc/item/HeadsetMiningItem.java",
+          "src/main/resources/assets/ssc_14/items/headset_mining.json",
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetMiningInventoryCapability.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetRoboticsCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_robotics_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetRoboticsCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetRobotics",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_robotics",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetRoboticsInventoryCapability.java",
+          "src/main/resources/assets/ssc_14/items/headset_robotics.json",
+          "src/main/java/net/mcreator/ssc/item/HeadsetRoboticsItem.java",
+          "src/main/resources/assets/ssc_14/models/item/headset_robotics.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetScienceCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_science_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetScienceCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetScience",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_science",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetScienceInventoryCapability.java",
+          "src/main/java/net/mcreator/ssc/item/HeadsetScienceItem.java",
+          "src/main/resources/assets/ssc_14/models/item/headset_science.json",
+          "src/main/resources/assets/ssc_14/items/headset_science.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetSecurityCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_security_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetSecurityCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetSecurity",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_security",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/headset_security.json",
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetSecurityInventoryCapability.java",
+          "src/main/resources/assets/ssc_14/models/item/headset_security.json",
+          "src/main/java/net/mcreator/ssc/item/HeadsetSecurityItem.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetServiceCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_service_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetServiceCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetService",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_service",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/HeadsetServiceItem.java",
+          "src/main/resources/assets/ssc_14/items/headset_service.json",
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetServiceInventoryCapability.java",
+          "src/main/resources/assets/ssc_14/models/item/headset_service.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetSyndicateCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_syndicate_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HeadsetSyndicateCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "HeadsetSyndicate",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "headset_syndicate",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/headset_syndicate.json",
+          "src/main/java/net/mcreator/ssc/item/HeadsetSyndicateItem.java",
+          "src/main/java/net/mcreator/ssc/item/inventory/HeadsetSyndicateInventoryCapability.java",
+          "src/main/resources/assets/ssc_14/items/headset_syndicate.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Ear/Headsets"
+    },
+    {
+      "name": "DECAL1spawner_USE_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "decal_1spawner_use",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/DECAL1spawner_USE_Procedure.java"
+        ]
+      },
+      "path": "~/DECALS"
+    },
+    {
+      "name": "DECAL1deletion_USE_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "decal_1deletion_use",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/DECAL1deletion_USE_Procedure.java"
+        ]
+      },
+      "path": "~/DECALS"
+    },
+    {
+      "name": "DecalData",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "decal_data",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/DecalData.java"
+        ]
+      },
+      "path": "~/DECALS"
+    },
+    {
+      "name": "DecalRegistry",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "decal_registry",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/DecalRegistry.java"
+        ]
+      },
+      "path": "~/DECALS"
+    },
+    {
+      "name": "DecalNetwork",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "decal_network",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/DecalNetwork.java"
+        ]
+      },
+      "path": "~/DECALS"
+    },
+    {
+      "name": "ClientDecalRenderer",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "client_decal_renderer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/ClientDecalRenderer.java"
+        ]
+      },
+      "path": "~/DECALS"
+    },
+    {
+      "name": "Specify_CLICK_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "specify_click",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Specify_CLICK_Procedure.java"
+        ]
+      },
+      "path": "~/Technical/Key Bind/Specify"
+    },
+    {
+      "name": "Specify",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "specify",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/network/SpecifyMessage.java"
+        ]
+      },
+      "path": "~/Technical/Key Bind/Specify"
+    },
+    {
+      "name": "SpecifyP",
+      "type": "particle",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "specify_p",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/particle/SpecifyPParticle.java",
+          "src/main/resources/assets/ssc_14/particles/specify_p.json"
+        ]
+      },
+      "path": "~/Technical/Key Bind/Specify"
+    },
+    {
+      "name": "MK58",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mk_58",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/mk_58.json",
+          "src/main/java/net/mcreator/ssc/item/MK58Item.java",
+          "src/main/resources/assets/ssc_14/items/mk_58.json"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MK58_Fire_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mk_58_fire",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MK58_Fire_Procedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "Bullet35item",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bullet_35item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/Bullet35itemItem.java",
+          "src/main/resources/assets/ssc_14/models/item/bullet_35item.json",
+          "src/main/resources/assets/ssc_14/items/bullet_35item.json"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "Bullet35",
+      "type": "projectile",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bullet_35",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/Bullet35Renderer.java",
+          "src/main/java/net/mcreator/ssc/entity/Bullet35Entity.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "Bullet35_BlockCollision_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bullet_35_block_collision",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "immediatesourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Bullet35_BlockCollision_Procedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MK58_Breech_Open_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "mk_58_breech_open",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MK58_Breech_Open_Procedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MK58open",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mk_58open",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/MK58openItem.java",
+          "src/main/resources/assets/ssc_14/items/mk_58open.json",
+          "src/main/resources/assets/ssc_14/models/item/mk_58open.json"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MagazinePistol35",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magazine_pistol_35",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/magazine_pistol_35.json",
+          "src/main/resources/assets/ssc_14/items/magazine_pistol_35.json",
+          "src/main/java/net/mcreator/ssc/item/MagazinePistol35Item.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MagazinePistol35_GENERATE_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magazine_pistol_35_generate",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MagazinePistol35_GENERATE_Procedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MagazinePistol35_Description_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magazine_pistol_35_description",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MagazinePistol35_Description_Procedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MK58_GENERATE_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mk_58_generate",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MK58_GENERATE_Procedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MK58nomagz",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mk_58nomagz",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/mk_58nomagz.json",
+          "src/main/java/net/mcreator/ssc/item/MK58nomagzItem.java",
+          "src/main/resources/assets/ssc_14/models/item/mk_58nomagz.json"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MagazinePistol35_USE_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magazine_pistol_35_use",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MagazinePistol35_USE_Procedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MagazinePistol35empty",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magazine_pistol_35empty",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/magazine_pistol_35empty.json",
+          "src/main/java/net/mcreator/ssc/item/MagazinePistol35emptyItem.java",
+          "src/main/resources/assets/ssc_14/items/magazine_pistol_35empty.json"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "GunBulletCountUI_Conditions",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gun_bullet_count_ui_conditions",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/GunBulletCountUI_ConditionsProcedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "GunBulletCountUI",
+      "type": "overlay",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gun_bullet_count_ui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/screens/GunBulletCountUIOverlay.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "GunBulletCountUIPr2",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gun_bullet_count_ui_pr_2",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/GunBulletCountUIPr2Procedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MK58_Description",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mk_58_description",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/MK58_DescriptionProcedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "MK58openNoMagz",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mk_58open_no_magz",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/mk_58open_no_magz.json",
+          "src/main/resources/assets/ssc_14/items/mk_58open_no_magz.json",
+          "src/main/java/net/mcreator/ssc/item/MK58openNoMagzItem.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
     }
   ],
   "variable_elements": [
@@ -19897,6 +21802,102 @@
       ],
       "category": "block",
       "subtitle": ""
+    },
+    {
+      "name": "items_bottle_open",
+      "files": [
+        "items_bottle_open"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "microwave_start_beep",
+      "files": [
+        "microwave_start_beep"
+      ],
+      "category": "block",
+      "subtitle": ""
+    },
+    {
+      "name": "microwave_done_beep",
+      "files": [
+        "microwave_done_beep"
+      ],
+      "category": "block",
+      "subtitle": ""
+    },
+    {
+      "name": "microwave_loop_6",
+      "files": [
+        "microwave_loop_6"
+      ],
+      "category": "block",
+      "subtitle": ""
+    },
+    {
+      "name": "package_opening",
+      "files": [
+        "package_opening"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "chemistry_bubbles",
+      "files": [
+        "chemistry_bubbles"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "gunshots_mk58",
+      "files": [
+        "gunshots_mk58"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "guns_bolt_open",
+      "files": [
+        "guns_bolt_open"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "guns_bolt_closed",
+      "files": [
+        "guns_bolt_closed"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "items_pistol_reloading",
+      "files": [
+        "items_pistol_reloading"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "items_pistol_mag_in",
+      "files": [
+        "items_pistol_mag_in"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "items_pistol_mag_out",
+      "files": [
+        "items_pistol_mag_out"
+      ],
+      "category": "master",
+      "subtitle": ""
     }
   ],
   "tag_elements": {
@@ -19948,17 +21949,6 @@
       "Blocks.AIR",
       "Blocks.VOID_AIR",
       "Blocks.CAVE_AIR"
-    ],
-    "BLOCKS:ssc14:permeable_to_gases": [
-      "CUSTOM:WallCarcase",
-      "CUSTOM:ConsoleOfID",
-      "CUSTOM:RodFloor",
-      "CUSTOM:RodUpFloor",
-      "CUSTOM:PortableSheater",
-      "CUSTOM:PlasteelWallCarcase",
-      "CUSTOM:APC",
-      "CUSTOM:Podstation",
-      "CUSTOM:Lamp"
     ],
     "ITEMS:ssc14:id": [
       "CUSTOM:IDCardPassanger",
@@ -20287,9 +22277,6 @@
       "CUSTOM:CommunicationConsole",
       "CUSTOM:GasProducerO2"
     ],
-    "ENTITIES:decals:ssc14": [
-      "CUSTOM:Decal1"
-    ],
     "ITEMS:ssc14:pens": [
       "CUSTOM:Pen"
     ],
@@ -20344,7 +22331,20 @@
       "CUSTOM:TitleSteelPavementVertical"
     ],
     "ITEMS:ssc14:headsets": [
-      "CUSTOM:HeadsetBase"
+      "CUSTOM:HeadsetBase",
+      "CUSTOM:HeadsetBrigmedic",
+      "CUSTOM:HeadsetCargo",
+      "CUSTOM:HeadsetCentcom",
+      "CUSTOM:HeadsetCommand",
+      "CUSTOM:HeadsetEngineering",
+      "CUSTOM:HeadsetMedical",
+      "CUSTOM:HeadsetMedicalScience",
+      "CUSTOM:HeadsetMining",
+      "CUSTOM:HeadsetRobotics",
+      "CUSTOM:HeadsetScience",
+      "CUSTOM:HeadsetSecurity",
+      "CUSTOM:HeadsetService",
+      "CUSTOM:HeadsetSyndicate"
     ],
     "ITEMS:ssc14:encryption_keys": [
       "CUSTOM:EncryptionKeyPassanger",
@@ -20357,7 +22357,11 @@
       "CUSTOM:EncryptionKeyCargo"
     ],
     "ITEMS:ssc14:noautoequip": [
-      "CUSTOM:PDApassanger"
+      "CUSTOM:PDApassanger",
+      "CUSTOM:BeltSecurity",
+      "CUSTOM:BeltSecurityWebbing",
+      "CUSTOM:BeltInstrumental",
+      "TAG:ssc14:headsets"
     ],
     "BLOCKS:ssc14:vendings": [
       "CUSTOM:VendingAut1"
@@ -20370,6 +22374,20 @@
       "CUSTOM:TechAirlockD1",
       "CUSTOM:Shutters",
       "CUSTOM:Button"
+    ],
+    "ITEMS:ssc14:eggs": [
+      "CUSTOM:Egg",
+      "CUSTOM:Eggshell"
+    ],
+    "BLOCKS:ssc14:multitul_check": [
+      "CUSTOM:RodFloor",
+      "CUSTOM:Sheathing"
+    ],
+    "ITEMS:ssc14:mk58": [
+      "CUSTOM:MK58",
+      "CUSTOM:MK58open",
+      "CUSTOM:MK58nomagz",
+      "CUSTOM:MK58openNoMagz"
     ]
   },
   "tab_element_order": {
@@ -20479,6 +22497,7 @@
       "GasProducerO2",
       "CommunicationServers",
       "PortableSheater",
+      "Microwawe",
       "ClosetSecure",
       "Closet",
       "SteelTable",
@@ -20515,6 +22534,7 @@
       "FireAxe",
       "GasAnalyser",
       "AccessConfig",
+      "Multitul",
       "NetworkConfigurator",
       "RSU",
       "RCDcartridge",
@@ -20573,6 +22593,30 @@
       "Chips",
       "Boritos",
       "Popcorn",
+      "Flour",
+      "Sugar",
+      "Milk",
+      "AllPurposeSauce",
+      "EggCarton",
+      "Egg",
+      "Dough",
+      "DoughPiece",
+      "CheeseWheel",
+      "Cheese",
+      "Tofu",
+      "TofuSlice",
+      "Cutlet",
+      "FriedCutlet",
+      "Meat",
+      "FriedMeat",
+      "Potato",
+      "Bread",
+      "BreadSlice",
+      "Bun",
+      "TofuBurger",
+      "Cheeseburger",
+      "Catburger",
+      "SpaceFries",
       "IDCardPassanger",
       "IDCardCapitan",
       "IDCardPNT",
@@ -20631,6 +22675,19 @@
       "GasMask",
       "MaskGasSecurity",
       "HeadsetBase",
+      "HeadsetService",
+      "HeadsetCargo",
+      "HeadsetMining",
+      "HeadsetMedical",
+      "HeadsetEngineering",
+      "HeadsetMedicalScience",
+      "HeadsetRobotics",
+      "HeadsetScience",
+      "HeadsetBrigmedic",
+      "HeadsetSecurity",
+      "HeadsetCommand",
+      "HeadsetCentcom",
+      "HeadsetSyndicate",
       "CaptainJumpsuit",
       "HoSJumpsuit",
       "WardenJumpsuit",
@@ -20711,7 +22768,13 @@
       "ChipsTrash",
       "BoritosTrash",
       "PopcornTrash",
-      "EnergyBarTrash"
+      "EnergyBarTrash",
+      "RottenMeat",
+      "Eggshell",
+      "MagazinePistol35",
+      "Bullet35item",
+      "MagazinePistol35empty",
+      "MK58nomagz"
     ],
     "CUSTOM:SSC14mobs": [
       "MouseBrown",
@@ -21257,7 +23320,6 @@
       "death.attack.ssc_14dmgcellular.player": "%1$s",
       "entity.ssc_14.corpse": "Corpse",
       "item.ssc_14.debug_13": "DEBUG 13",
-      "entity.ssc_14.decal_1": "Decal 1",
       "item.ssc_14.decal_1spawner": "DECAL 1 spawner",
       "item_group.ssc_14.decals": "SSC14: Decals",
       "item.ssc_14.decal_1deletion": "DECAL deletion",
@@ -21465,7 +23527,78 @@
       "reagent.ssc_14.space_mountain_wind": "",
       "reagent.ssc_14.space_up": "",
       "reagent.ssc_14.starkist": "",
-      "reagent.ssc_14.fourteen_loko": ""
+      "reagent.ssc_14.fourteen_loko": "",
+      "item.ssc_14.microwawe": "Microwawe",
+      "item.ssc_14.dough": "Dough",
+      "item.ssc_14.dough_piece": "Dough piece",
+      "item.ssc_14.bread": "Bread",
+      "item.ssc_14.bread_slice": "Slice of Bread",
+      "item.ssc_14.bun": "Bun",
+      "item.ssc_14.flour": "Flour",
+      "item.ssc_14.flour_open": "Flour",
+      "item.ssc_14.sugar": "Sugar",
+      "item.ssc_14.sugar_open": "Sugar",
+      "item.ssc_14.milk": "Milk",
+      "item.ssc_14.milk_open": "Milk",
+      "item.ssc_14.all_purpose_sauce": "All-purpose sauce",
+      "item.ssc_14.all_purpose_sauce_open": "All-purpose sauce",
+      "item.ssc_14.egg": "Egg",
+      "item.ssc_14.eggshell": "Eggshell",
+      "item.ssc_14.egg_carton": "Egg Carton",
+      "subtitles.items_bottle_open": "",
+      "item.ssc_14.tofu": "Tofu",
+      "item.ssc_14.tofu_burger": "Tofu burger",
+      "item.ssc_14.tofu_slice": "Tofu slice",
+      "subtitles.microwave_start_beep": "",
+      "subtitles.microwave_done_beep": "",
+      "subtitles.microwave_loop_6": "",
+      "subtitles.package_opening": "",
+      "item.ssc_14.cheese_wheel": "Cheese wheel",
+      "item.ssc_14.cheese": "Cheese",
+      "item.ssc_14.cutlet": "Cutlet",
+      "item.ssc_14.fried_cutlet": "Fried Cutlet",
+      "item.ssc_14.meat": "Meat",
+      "item.ssc_14.fried_meat": "Fried Meat",
+      "item.ssc_14.rotten_meat": "Rotten Meat",
+      "item.ssc_14.cheeseburger": "Cheeseburger",
+      "item.ssc_14.catburger": "Catburger",
+      "item.ssc_14.headset_brigmedic": "Brigmedic headset",
+      "item.ssc_14.potato": "Potato",
+      "item.ssc_14.space_fries": "Space Fries",
+      "subtitles.chemistry_bubbles": "",
+      "item.ssc_14.multitul": "Multitul",
+      "gui.ssc_14.multitul_ui.label_vkhodnoi_zapas": "Входной запас",
+      "gui.ssc_14.multitul_ui.label_vykhodnoi_zapas": "Выходной запас",
+      "gui.ssc_14.multitul_ui.label_ot_batariei": "От батарей",
+      "gui.ssc_14.multitul_ui.label_tieorietichieskoie_snabzhieniie": "Теоретическое снабжение",
+      "gui.ssc_14.multitul_ui.label_idiealnoie_potrieblieniie": "Идеальное потребление",
+      "gui.ssc_14.multitul_ui.label_tiekushchieie_pitaniie": "Текущее питание",
+      "item.ssc_14.headset_cargo": "Cargo headset",
+      "item.ssc_14.headset_centcom": "Centcom headset",
+      "item.ssc_14.headset_command": "Command headset",
+      "item.ssc_14.headset_engineering": "Engineering headset",
+      "item.ssc_14.headset_medical": "Medical headset",
+      "item.ssc_14.headset_medical_science": "Medical-Science headset",
+      "item.ssc_14.headset_mining": "Mining headset",
+      "item.ssc_14.headset_robotics": "Robotics headset",
+      "item.ssc_14.headset_science": "Science headset",
+      "item.ssc_14.headset_security": "Security headset",
+      "item.ssc_14.headset_service": "Service headset",
+      "item.ssc_14.headset_syndicate": "Syndicate headset",
+      "key.ssc_14.specify": "Specify",
+      "item.ssc_14.mk_58": "MK58",
+      "item.ssc_14.bullet_35item": "Bullet (.35)",
+      "subtitles.gunshots_mk58": "",
+      "item.ssc_14.mk_58open": "MK58",
+      "subtitles.guns_bolt_open": "",
+      "subtitles.guns_bolt_closed": "",
+      "item.ssc_14.magazine_pistol_35": "Magazine Pistol 35",
+      "item.ssc_14.mk_58nomagz": "MK58",
+      "item.ssc_14.magazine_pistol_35empty": "Magazine Pistol 35",
+      "item.ssc_14.mk_58open_no_magz": "MK 58",
+      "subtitles.items_pistol_reloading": "",
+      "subtitles.items_pistol_mag_in": "",
+      "subtitles.items_pistol_mag_out": ""
     },
     "ru_ru": {
       "biome.ssc_14.spaceb": "Космос",
@@ -21579,7 +23712,7 @@
       "item.ssc_14.airlock_controller": "[DEBUG] Пульт от шлюзов",
       "item.ssc_14.apc": "ЛКП",
       "item.ssc_14.podstation": "Подстанция",
-      "item.ssc_14.debu_ggenerator": "DEBUG генератор [1000 W]",
+      "item.ssc_14.debu_ggenerator": "DEBUG генератор [10000 W]",
       "item.ssc_14.crowbar": "Лом",
       "gui.ssc_14.gas_analyser_gui.label_obiom": "Объём:",
       "gui.ssc_14.gas_analyser_gui.label_davlieniie": "Давление:",
@@ -21897,7 +24030,6 @@
       "death.attack.ssc_14dmgcellular.player": "%1$s",
       "entity.ssc_14.corpse": "Corpse",
       "item.ssc_14.debug_13": "DEBUG 13",
-      "entity.ssc_14.decal_1": "Decal 1",
       "item.ssc_14.decal_1spawner": "Декаль 1",
       "item_group.ssc_14.decals": "SSC14: Декали",
       "item.ssc_14.decal_1deletion": "Удаление декалей",
@@ -22072,7 +24204,78 @@
       "reagent.ssc_14.space_mountain_wind": "Космический Солар Винд",
       "reagent.ssc_14.space_up": "Спейс-Ап",
       "reagent.ssc_14.starkist": "Старкист",
-      "reagent.ssc_14.fourteen_loko": "Четырнадцать Локо"
+      "reagent.ssc_14.fourteen_loko": "Четырнадцать Локо",
+      "item.ssc_14.microwawe": "Микроволновка",
+      "item.ssc_14.dough": "Тесто",
+      "item.ssc_14.dough_piece": "Кусочек теста",
+      "item.ssc_14.bread": "Хлеб",
+      "item.ssc_14.bread_slice": "Ломтик хлеба",
+      "item.ssc_14.bun": "Булочка",
+      "item.ssc_14.flour": "Мука",
+      "item.ssc_14.flour_open": "Мука",
+      "item.ssc_14.sugar": "Сахар",
+      "item.ssc_14.sugar_open": "Сахар",
+      "item.ssc_14.milk": "Молоко",
+      "item.ssc_14.milk_open": "Молоко",
+      "item.ssc_14.all_purpose_sauce": "Универсальный фермент",
+      "item.ssc_14.all_purpose_sauce_open": "Универсальный фермент",
+      "item.ssc_14.egg": "Яйцо",
+      "item.ssc_14.eggshell": "Скорлупа",
+      "item.ssc_14.egg_carton": "Коробка яиц",
+      "subtitles.items_bottle_open": "",
+      "item.ssc_14.tofu": "Тофу",
+      "item.ssc_14.tofu_burger": "Тофу-бургер",
+      "item.ssc_14.tofu_slice": "Кусочек тофу",
+      "subtitles.microwave_start_beep": "",
+      "subtitles.microwave_done_beep": "",
+      "subtitles.microwave_loop_6": "",
+      "subtitles.package_opening": "",
+      "item.ssc_14.cheese_wheel": "Головка сыра",
+      "item.ssc_14.cheese": "Сыр",
+      "item.ssc_14.cutlet": "Сырая котлета",
+      "item.ssc_14.fried_cutlet": "Жаренная котлета",
+      "item.ssc_14.meat": "Мясо",
+      "item.ssc_14.fried_meat": "Жаренное мясо",
+      "item.ssc_14.rotten_meat": "Гнилое мясо",
+      "item.ssc_14.cheeseburger": "Чизбургер",
+      "item.ssc_14.catburger": "Неко-бургер",
+      "item.ssc_14.headset_brigmedic": "Гарнитура бригмедика",
+      "item.ssc_14.potato": "Картофель",
+      "item.ssc_14.space_fries": "Космический фри",
+      "subtitles.chemistry_bubbles": "",
+      "item.ssc_14.multitul": "Мультитул",
+      "gui.ssc_14.multitul_ui.label_vkhodnoi_zapas": "Входной запас",
+      "gui.ssc_14.multitul_ui.label_vykhodnoi_zapas": "Выходной запас",
+      "gui.ssc_14.multitul_ui.label_ot_batariei": "От батарей",
+      "gui.ssc_14.multitul_ui.label_tieorietichieskoie_snabzhieniie": "Теоретическое снабжение",
+      "gui.ssc_14.multitul_ui.label_idiealnoie_potrieblieniie": "Идеальное потребление",
+      "gui.ssc_14.multitul_ui.label_tiekushchieie_pitaniie": "Текущее питание",
+      "item.ssc_14.headset_cargo": "Гарнитура снабжения",
+      "item.ssc_14.headset_centcom": "Гарнитура ЦентКом",
+      "item.ssc_14.headset_command": "Гарнитура командования",
+      "item.ssc_14.headset_engineering": "Инженерная гарнитура",
+      "item.ssc_14.headset_medical": "Мед гарнитура",
+      "item.ssc_14.headset_medical_science": "Гарнитура мед-наука",
+      "item.ssc_14.headset_mining": "Шахтёрская гарнитура",
+      "item.ssc_14.headset_robotics": "Гарнитура робототехника",
+      "item.ssc_14.headset_science": "Научная гарнитура",
+      "item.ssc_14.headset_security": "Гарнитура СБ",
+      "item.ssc_14.headset_service": "Гарнитура сервиса",
+      "item.ssc_14.headset_syndicate": "Гарнитура Синдиката",
+      "key.ssc_14.specify": "Указать",
+      "item.ssc_14.mk_58": "MK 58",
+      "item.ssc_14.bullet_35item": "Патрон (.35 авто)",
+      "subtitles.gunshots_mk58": "",
+      "item.ssc_14.mk_58open": "MK 58",
+      "subtitles.guns_bolt_open": "",
+      "subtitles.guns_bolt_closed": "",
+      "item.ssc_14.magazine_pistol_35": "Пистолетный магазин (.35 авто)",
+      "item.ssc_14.mk_58nomagz": "MK 58  (НЕ ТРОГАТЬ, НЕ РАБОТАЕТ)",
+      "item.ssc_14.magazine_pistol_35empty": "Magazine Pistol 35",
+      "item.ssc_14.mk_58open_no_magz": "MK 58",
+      "subtitles.items_pistol_reloading": "",
+      "subtitles.items_pistol_mag_in": "",
+      "subtitles.items_pistol_mag_out": ""
     }
   },
   "metadata": {
@@ -22157,6 +24360,10 @@
               {
                 "name": "Interaction",
                 "children": []
+              },
+              {
+                "name": "Specify",
+                "children": []
               }
             ]
           },
@@ -22183,6 +24390,31 @@
           },
           {
             "name": "ITEM TIMER RESET",
+            "children": []
+          },
+          {
+            "name": "ATMOS sistem",
+            "children": [
+              {
+                "name": "Gas Particles",
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "Pl Render",
+            "children": []
+          },
+          {
+            "name": "MASSAGE sistem",
+            "children": []
+          },
+          {
+            "name": "Chemistry System",
+            "children": []
+          },
+          {
+            "name": "Energetic",
             "children": []
           }
         ]
@@ -22225,11 +24457,7 @@
             ]
           },
           {
-            "name": "Up Floor",
-            "children": []
-          },
-          {
-            "name": "Walls",
+            "name": "Walls-Windows",
             "children": []
           },
           {
@@ -22324,6 +24552,18 @@
               {
                 "name": "Buttons",
                 "children": []
+              },
+              {
+                "name": "Kitchen",
+                "children": []
+              },
+              {
+                "name": "ENERGETIC",
+                "children": []
+              },
+              {
+                "name": "Lamps",
+                "children": []
               }
             ]
           },
@@ -22343,10 +24583,6 @@
                 "children": []
               }
             ]
-          },
-          {
-            "name": "Lamps",
-            "children": []
           },
           {
             "name": "Rocks",
@@ -22445,6 +24681,10 @@
               {
                 "name": "NetConfig",
                 "children": []
+              },
+              {
+                "name": "Multitul",
+                "children": []
               }
             ]
           },
@@ -22459,7 +24699,12 @@
           },
           {
             "name": "Food",
-            "children": []
+            "children": [
+              {
+                "name": "Ingridients",
+                "children": []
+              }
+            ]
           },
           {
             "name": "Materials and Cabels",
@@ -22478,6 +24723,10 @@
             "children": [
               {
                 "name": "C4",
+                "children": []
+              },
+              {
+                "name": "MK58",
                 "children": []
               }
             ]
@@ -22639,28 +24888,7 @@
         ]
       },
       {
-        "name": "ATMOS sistem",
-        "children": [
-          {
-            "name": "Gas Particles",
-            "children": []
-          }
-        ]
-      },
-      {
-        "name": "Render",
-        "children": []
-      },
-      {
-        "name": "MASSAGE sistem",
-        "children": []
-      },
-      {
         "name": "DECALS",
-        "children": []
-      },
-      {
-        "name": "Chemistry System",
         "children": []
       },
       {
@@ -22677,7 +24905,7 @@
   "workspaceSettings": {
     "modid": "ssc_14",
     "modName": "Space Station Craft 14",
-    "version": "0.1.20",
+    "version": "0.1.21",
     "description": "Повторённая в Minecraft игра Space Station 14. Основатель - Space Kyyyst. В разработке принимали участие: almazar3, Mr_irak, Water Melon, sad2284. ",
     "author": "Space_Kyyyst",
     "websiteURL": "https://www.youtube.com/@Space.kyyyst",
@@ -22685,6 +24913,7 @@
     "serverSideOnly": false,
     "modPicture": "ssc14_newlogo",
     "requiredMods": [
+      "fusion",
       "itemphysic"
     ],
     "dependencies": [],

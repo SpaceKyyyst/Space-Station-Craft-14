@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=north,on_off=false,active=false": {
+      "model": "ssc_14:block/microwawe_0"
+    },
+    "facing=north,on_off=true,active=true": {
+      "model": "ssc_14:block/microwawe_1"
+    },
+    "facing=north,on_off=true,active=false": {
+      "model": "ssc_14:block/microwawe"
+    },
+    "facing=north,on_off=false,active=true": {
+      "model": "ssc_14:block/microwawe"
+    },
+    "facing=east,on_off=false,active=false": {
+      "model": "ssc_14:block/microwawe_0",
+      "y": 90
+    },
+    "facing=east,on_off=true,active=true": {
+      "model": "ssc_14:block/microwawe_1",
+      "y": 90
+    },
+    "facing=east,on_off=true,active=false": {
+      "model": "ssc_14:block/microwawe",
+      "y": 90
+    },
+    "facing=east,on_off=false,active=true": {
+      "model": "ssc_14:block/microwawe",
+      "y": 90
+    },
+    "facing=south,on_off=false,active=false": {
+      "model": "ssc_14:block/microwawe_0",
+      "y": 180
+    },
+    "facing=south,on_off=true,active=true": {
+      "model": "ssc_14:block/microwawe_1",
+      "y": 180
+    },
+    "facing=south,on_off=true,active=false": {
+      "model": "ssc_14:block/microwawe",
+      "y": 180
+    },
+    "facing=south,on_off=false,active=true": {
+      "model": "ssc_14:block/microwawe",
+      "y": 180
+    },
+    "facing=west,on_off=false,active=false": {
+      "model": "ssc_14:block/microwawe_0",
+      "y": 270
+    },
+    "facing=west,on_off=true,active=true": {
+      "model": "ssc_14:block/microwawe_1",
+      "y": 270
+    },
+    "facing=west,on_off=true,active=false": {
+      "model": "ssc_14:block/microwawe",
+      "y": 270
+    },
+    "facing=west,on_off=false,active=true": {
+      "model": "ssc_14:block/microwawe",
+      "y": 270
+    }
+  }
+}

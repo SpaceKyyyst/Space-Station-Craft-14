@@ -1,0 +1,26 @@
+{
+  "_fv": 85,
+  "_type": "projectile",
+  "definition": {
+    "projectileItem": {
+      "value": "CUSTOM:Bullet35item"
+    },
+    "showParticles": false,
+    "actionSound": {
+      "value": "entity.arrow.shoot"
+    },
+    "igniteFire": false,
+    "disableGravity": true,
+    "disableDiscarding": false,
+    "power": 10.0,
+    "damage": 16.0,
+    "knockback": 1,
+    "entityModel": "Modelbullet",
+    "customModelTexture": "bullets_texture.png",
+    "modelWidth": 0.1,
+    "modelHeight": 0.1,
+    "onHitsBlock": {
+      "name": "Bullet35_BlockCollision_"
+    }
+  }
+}

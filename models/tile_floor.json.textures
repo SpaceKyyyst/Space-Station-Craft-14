@@ -411,7 +411,7 @@
     "white_pavement_vertical": {
       "name": "white_pavement_vertical",
       "map": {
-        "2": "tile_fl_steel_pavement_vertical_texture"
+        "2": "tile_fl_white_pavement_vertical_texture"
       }
     },
     "elevator_shaft": {
@@ -592,6 +592,12 @@
       "name": "wood_broken5",
       "map": {
         "2": "tile_fl_wood_broken5_texture"
+      }
+    },
+    "steel_pavement_vertical": {
+      "name": "steel_pavement_vertical",
+      "map": {
+        "2": "tile_fl_steel_pavement_vertical_texture"
       }
     }
   }

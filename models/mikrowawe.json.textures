@@ -1,0 +1,22 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "3": "microwave_on_texture"
+      }
+    },
+    "active": {
+      "name": "active",
+      "map": {
+        "3": "microwave_active_texture"
+      }
+    },
+    "off": {
+      "name": "off",
+      "map": {
+        "3": "microwave_off_texture"
+      }
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "_fv": 85,
+  "_type": "overlay",
+  "definition": {
+    "priority": "NORMAL",
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "name": "label_tiekushchieie_pitaniie",
+          "text": {
+            "fixedValue": "Текущее питание",
+            "name": "MultUI_Current_Power"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER",
+          "x": 238,
+          "y": 72,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_ot_batariei",
+          "text": {
+            "fixedValue": "От батарей",
+            "name": "MultUI_Battery_Power"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER",
+          "x": 238,
+          "y": 88,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_tieorietichieskoie_snabzhieniie",
+          "text": {
+            "fixedValue": "Теоретическое снабжение",
+            "name": "MultUI_Theoretical_Power"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER",
+          "x": 238,
+          "y": 104,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_idiealnoie_potrieblieniie",
+          "text": {
+            "fixedValue": "Идеальное потребление",
+            "name": "MultUI_Ideal_Power"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER",
+          "x": 238,
+          "y": 120,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_vkhodnoi_zapas",
+          "text": {
+            "fixedValue": "Входной запас",
+            "name": "MultUI_Input_Power"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER",
+          "x": 238,
+          "y": 136,
+          "locked": true
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_vykhodnoi_zapas",
+          "text": {
+            "fixedValue": "Выходной запас",
+            "name": "MultUI_Output_Power"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "anchorPoint": "CENTER",
+          "x": 238,
+          "y": 152,
+          "locked": true
+        }
+      }
+    ],
+    "baseTexture": "",
+    "overlayTarget": "Ingame",
+    "displayCondition": {
+      "name": "Multitul_UI_Conditions"
+    },
+    "gridSettings": {
+      "sx": 16,
+      "sy": 16,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": true
+    }
+  }
+}

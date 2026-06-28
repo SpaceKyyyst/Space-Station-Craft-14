@@ -1,6 +1,13 @@
 {
   "replace": false,
   "values": [
-    "ssc_14:pd_apassanger"
+    "ssc_14:pd_apassanger",
+    "ssc_14:belt_security",
+    "ssc_14:belt_security_webbing",
+    "ssc_14:belt_instrumental",
+    {
+      "id": "#ssc14:headsets",
+      "required": false
+    }
   ]
 }

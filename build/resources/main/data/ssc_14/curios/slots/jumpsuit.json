@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "size": 1,
-  "operation": "SET",
-  "order": 7,
-  "render_toggle": true,
-  "icon": "curios:slot/jumpsuit_slot"
-}
