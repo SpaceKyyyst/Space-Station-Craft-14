@@ -6,12 +6,9 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.Wall_Explosion_BreakdownProcedure;
 import net.mcreator.ssc.procedures.SteelWall_DestroyProcedure;
 
 public class ShuttleWallBlock extends Block {
@@ -24,11 +21,5 @@ public class ShuttleWallBlock extends Block {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
 		SteelWall_DestroyProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
 		return retval;
-	}
-
-	@Override
-	public void wasExploded(ServerLevel world, BlockPos pos, Explosion e) {
-		super.wasExploded(world, pos, e);
-		Wall_Explosion_BreakdownProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 }

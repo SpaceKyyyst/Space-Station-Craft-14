@@ -1,3 +1,4 @@
+
 package net.mcreator.ssc.block;
 
 import net.minecraft.world.level.material.FluidState;
@@ -28,7 +29,8 @@ public class SteelWallBlock extends Block {
 
 	@Override
 	public void wasExploded(ServerLevel world, BlockPos pos, Explosion e) {
-		super.wasExploded(world, pos, e);
-		Wall_Explosion_BreakdownProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		// Мы НЕ вызываем super.wasExploded, чтобы ванильный взрыв сразу не удалял блок.
+		// Вместо этого передаем объект взрыва 'e' в нашу процедуру.
+		Wall_Explosion_BreakdownProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), e);
 	}
 }

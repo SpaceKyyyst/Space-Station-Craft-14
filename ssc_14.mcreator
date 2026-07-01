@@ -5040,7 +5040,7 @@
       "name": "PlasteelWall",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "plasteel_wall",
       "metadata": {
         "files": [
@@ -7031,7 +7031,7 @@
       "name": "ArmoredWindow",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "armored_window",
       "metadata": {
         "files": [
@@ -9382,37 +9382,6 @@
       "path": "~/Blocks/Furniture/Chairs"
     },
     {
-      "name": "Chair_Ent_Generation",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "chair_ent_generation",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/Chair_Ent_GenerationProcedure.java"
-        ]
-      },
-      "path": "~/Blocks/Furniture/Chairs"
-    },
-    {
       "name": "ChairEntity_TIC",
       "type": "procedure",
       "compiles": true,
@@ -9573,7 +9542,7 @@
       "name": "Wall_Explosion_Breakdown",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "wall_explosion_breakdown",
       "metadata": {
         "dependencies": [
@@ -21186,6 +21155,1839 @@
         ]
       },
       "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "TitleArcadeblue",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_arcadeblue",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_arcadeblue.json",
+          "src/main/resources/assets/ssc_14/items/title_arcadeblue.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_arcadeblue.json",
+          "src/main/java/net/mcreator/ssc/block/TitleArcadeblueBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/title_arcadeblue.json",
+          "src/main/resources/assets/ssc_14/models/block/title_arcadeblue.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "Titlearcadeblue2",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "titlearcadeblue_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/titlearcadeblue_2.json",
+          "src/main/java/net/mcreator/ssc/block/Titlearcadeblue2Block.java",
+          "src/main/resources/assets/ssc_14/models/item/titlearcadeblue_2.json",
+          "src/main/resources/assets/ssc_14/blockstates/titlearcadeblue_2.json",
+          "src/main/resources/assets/ssc_14/models/block/titlearcadeblue_2.json",
+          "src/main/resources/assets/ssc_14/items/titlearcadeblue_2.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleArcadered",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_arcadered",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/title_arcadered.json",
+          "src/main/java/net/mcreator/ssc/block/TitleArcaderedBlock.java",
+          "src/main/resources/assets/ssc_14/items/title_arcadered.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_arcadered.json",
+          "src/main/resources/assets/ssc_14/models/block/title_arcadered.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_arcadered.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleBar",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_bar",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/TitleBarBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/title_bar.json",
+          "src/main/resources/assets/ssc_14/items/title_bar.json",
+          "src/main/resources/assets/ssc_14/models/item/title_bar.json",
+          "src/main/resources/assets/ssc_14/models/block/title_bar.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_bar.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleBlueCircuit",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_blue_circuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/title_blue_circuit.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_blue_circuit.json",
+          "src/main/resources/assets/ssc_14/models/block/title_blue_circuit.json",
+          "src/main/resources/assets/ssc_14/models/item/title_blue_circuit.json",
+          "src/main/java/net/mcreator/ssc/block/TitleBlueCircuitBlock.java",
+          "src/main/resources/assets/ssc_14/items/title_blue_circuit.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleBlue",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_blue",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/title_blue.json",
+          "src/main/resources/assets/ssc_14/models/block/title_blue.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_blue.json",
+          "src/main/resources/assets/ssc_14/models/item/title_blue.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_blue.json",
+          "src/main/java/net/mcreator/ssc/block/TitleBlueBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleBoxing",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_boxing",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/title_boxing.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_boxing.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_boxing.json",
+          "src/main/resources/assets/ssc_14/models/item/title_boxing.json",
+          "src/main/java/net/mcreator/ssc/block/TitleBoxingBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_boxing.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleCafeteria",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_cafeteria",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/title_cafeteria.json",
+          "src/main/java/net/mcreator/ssc/block/TitleCafeteriaBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_cafeteria.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_cafeteria.json",
+          "src/main/resources/assets/ssc_14/items/title_cafeteria.json",
+          "src/main/resources/assets/ssc_14/models/item/title_cafeteria.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleCarpetclown",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_carpetclown",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/title_carpetclown.json",
+          "src/main/resources/assets/ssc_14/models/item/title_carpetclown.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_carpetclown.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_carpetclown.json",
+          "src/main/resources/assets/ssc_14/models/block/title_carpetclown.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleCarpetclownBlockEntity.java",
+          "src/main/java/net/mcreator/ssc/block/TitleCarpetclownBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleCarpetoffice",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_carpetoffice",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/title_carpetoffice.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_carpetoffice.json",
+          "src/main/java/net/mcreator/ssc/block/TitleCarpetofficeBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/title_carpetoffice.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleCarpetofficeBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/title_carpetoffice.json",
+          "src/main/resources/assets/ssc_14/items/title_carpetoffice.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleCheckerdark",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_checkerdark",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/TitleCheckerdarkBlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/title_checkerdark.json",
+          "src/main/resources/assets/ssc_14/models/item/title_checkerdark.json",
+          "src/main/resources/assets/ssc_14/models/block/title_checkerdark.json",
+          "src/main/resources/assets/ssc_14/items/title_checkerdark.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_checkerdark.json",
+          "src/main/java/net/mcreator/ssc/block/TitleCheckerdarkBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleClown",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_clown",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/TitleClownBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/title_clown.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_clown.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleClownBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/title_clown.json",
+          "src/main/resources/assets/ssc_14/items/title_clown.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_clown.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleDarktest",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_darktest",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/title_darktest.json",
+          "src/main/java/net/mcreator/ssc/block/TitleDarktestBlock.java",
+          "src/main/resources/assets/ssc_14/items/title_darktest.json",
+          "src/main/resources/assets/ssc_14/models/item/title_darktest.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleDarktestBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_darktest.json",
+          "src/main/resources/assets/ssc_14/models/block/title_darktest.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "Titleeighties",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "titleeighties",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/TitleeightiesBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleeightiesBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/titleeighties.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/titleeighties.json",
+          "src/main/resources/assets/ssc_14/items/titleeighties.json",
+          "src/main/resources/assets/ssc_14/blockstates/titleeighties.json",
+          "src/main/resources/assets/ssc_14/models/block/titleeighties.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleElevatorshaft",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_elevatorshaft",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_elevatorshaft.json",
+          "src/main/resources/assets/ssc_14/items/title_elevatorshaft.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_elevatorshaft.json",
+          "src/main/resources/assets/ssc_14/models/block/title_elevatorshaft.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleElevatorshaftBlockEntity.java",
+          "src/main/java/net/mcreator/ssc/block/TitleElevatorshaftBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/title_elevatorshaft.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleExoborg",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_exoborg",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/TitleExoborgBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_exoborg.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_exoborg.json",
+          "src/main/resources/assets/ssc_14/items/title_exoborg.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_exoborg.json",
+          "src/main/resources/assets/ssc_14/models/item/title_exoborg.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleExoborgBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleFreezer",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_freezer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/TitleFreezerBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_freezer.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_freezer.json",
+          "src/main/resources/assets/ssc_14/models/block/title_freezer.json",
+          "src/main/resources/assets/ssc_14/models/item/title_freezer.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleFreezerBlockEntity.java",
+          "src/main/resources/assets/ssc_14/items/title_freezer.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleGold",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_gold",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/title_gold.json",
+          "src/main/java/net/mcreator/ssc/block/TitleGoldBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_gold.json",
+          "src/main/resources/assets/ssc_14/items/title_gold.json",
+          "src/main/resources/assets/ssc_14/models/item/title_gold.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleGoldBlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/title_gold.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleGratingmaint",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_gratingmaint",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_gratingmaint.json",
+          "src/main/resources/assets/ssc_14/items/title_gratingmaint.json",
+          "src/main/java/net/mcreator/ssc/block/TitleGratingmaintBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_gratingmaint.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleGratingmaintBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/title_gratingmaint.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_gratingmaint.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleGreencircuit",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_greencircuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_greencircuit.json",
+          "src/main/resources/assets/ssc_14/models/block/title_greencircuit.json",
+          "src/main/java/net/mcreator/ssc/block/TitleGreencircuitBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleGreencircuitBlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/title_greencircuit.json",
+          "src/main/resources/assets/ssc_14/models/item/title_greencircuit.json",
+          "src/main/resources/assets/ssc_14/items/title_greencircuit.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleGym",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_gym",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/title_gym.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_gym.json",
+          "src/main/resources/assets/ssc_14/models/item/title_gym.json",
+          "src/main/resources/assets/ssc_14/items/title_gym.json",
+          "src/main/java/net/mcreator/ssc/block/TitleGymBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_gym.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleGymBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleHullreinforced",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_hullreinforced",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/title_hullreinforced.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_hullreinforced.json",
+          "src/main/resources/assets/ssc_14/models/block/title_hullreinforced.json",
+          "src/main/resources/assets/ssc_14/items/title_hullreinforced.json",
+          "src/main/java/net/mcreator/ssc/block/TitleHullreinforcedBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/title_hullreinforced.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleHullreinforcedBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleHull",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_hull",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/TitleHullBlockEntity.java",
+          "src/main/resources/assets/ssc_14/items/title_hull.json",
+          "src/main/resources/assets/ssc_14/models/block/title_hull.json",
+          "src/main/java/net/mcreator/ssc/block/TitleHullBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_hull.json",
+          "src/main/resources/assets/ssc_14/models/item/title_hull.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_hull.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleHydro",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_hydro",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/title_hydro.json",
+          "src/main/java/net/mcreator/ssc/block/TitleHydroBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_hydro.json",
+          "src/main/resources/assets/ssc_14/items/title_hydro.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_hydro.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_hydro.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleHydroBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleKitchen",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_kitchen",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/title_kitchen.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_kitchen.json",
+          "src/main/resources/assets/ssc_14/models/block/title_kitchen.json",
+          "src/main/java/net/mcreator/ssc/block/TitleKitchenBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleKitchenBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_kitchen.json",
+          "src/main/resources/assets/ssc_14/models/item/title_kitchen.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleLaundry",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_laundry",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/title_laundry.json",
+          "src/main/java/net/mcreator/ssc/block/TitleLaundryBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_laundry.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_laundry.json",
+          "src/main/resources/assets/ssc_14/models/block/title_laundry.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleLaundryBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/title_laundry.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleLime",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_lime",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/title_lime.json",
+          "src/main/resources/assets/ssc_14/models/block/title_lime.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleLimeBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_lime.json",
+          "src/main/java/net/mcreator/ssc/block/TitleLimeBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/title_lime.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_lime.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleLino",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_lino",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_lino.json",
+          "src/main/resources/assets/ssc_14/items/title_lino.json",
+          "src/main/resources/assets/ssc_14/models/block/title_lino.json",
+          "src/main/java/net/mcreator/ssc/block/TitleLinoBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/title_lino.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleLinoBlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/title_lino.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleMeat",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_meat",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/title_meat_0.json",
+          "src/main/resources/assets/ssc_14/models/block/title_meat_2.json",
+          "src/main/resources/assets/ssc_14/models/item/title_meat.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_meat.json",
+          "src/main/java/net/mcreator/ssc/block/TitleMeatBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleMeatBlockEntity.java",
+          "src/main/resources/assets/ssc_14/items/title_meat.json",
+          "src/main/resources/assets/ssc_14/models/block/title_meat_1.json",
+          "src/main/resources/assets/ssc_14/models/block/title_meat.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_meat.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "Title_RANDOMIZE",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_randomize",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Title_RANDOMIZEProcedure.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleMetaldiamond",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_metaldiamond",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/TitleMetaldiamondBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_metaldiamond.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleMetaldiamondBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_metaldiamond.json",
+          "src/main/resources/assets/ssc_14/items/title_metaldiamond.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_metaldiamond.json",
+          "src/main/resources/assets/ssc_14/models/item/title_metaldiamond.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleMime",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_mime",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/TitleMimeBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/title_mime.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_mime.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_mime.json",
+          "src/main/resources/assets/ssc_14/items/title_mime.json",
+          "src/main/resources/assets/ssc_14/models/block/title_mime.json",
+          "src/main/java/net/mcreator/ssc/block/TitleMimeBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleMiningfloordark",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_miningfloordark",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/title_miningfloordark.json",
+          "src/main/java/net/mcreator/ssc/block/TitleMiningfloordarkBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleMiningfloordarkBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_miningfloordark.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_miningfloordark.json",
+          "src/main/resources/assets/ssc_14/items/title_miningfloordark.json",
+          "src/main/resources/assets/ssc_14/models/item/title_miningfloordark.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleMiningfloorlight",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_miningfloorlight",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/TitleMiningfloorlightBlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/title_miningfloorlight.json",
+          "src/main/resources/assets/ssc_14/models/block/title_miningfloorlight.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_miningfloorlight.json",
+          "src/main/resources/assets/ssc_14/items/title_miningfloorlight.json",
+          "src/main/resources/assets/ssc_14/models/item/title_miningfloorlight.json",
+          "src/main/java/net/mcreator/ssc/block/TitleMiningfloorlightBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleMiningfloor",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_miningfloor",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/title_miningfloor.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleMiningfloorBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_miningfloor.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_miningfloor.json",
+          "src/main/resources/assets/ssc_14/models/block/title_miningfloor.json",
+          "src/main/java/net/mcreator/ssc/block/TitleMiningfloorBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/title_miningfloor.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleMono",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_mono",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/title_mono.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_mono.json",
+          "src/main/java/net/mcreator/ssc/block/TitleMonoBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_mono.json",
+          "src/main/resources/assets/ssc_14/items/title_mono.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleMonoBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/title_mono.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleRedcircuit",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_redcircuit",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_redcircuit.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleRedcircuitBlockEntity.java",
+          "src/main/java/net/mcreator/ssc/block/TitleRedcircuitBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_redcircuit.json",
+          "src/main/resources/assets/ssc_14/models/item/title_redcircuit.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_redcircuit.json",
+          "src/main/resources/assets/ssc_14/items/title_redcircuit.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleReinforced",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_reinforced",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/title_reinforced.json",
+          "src/main/resources/assets/ssc_14/models/item/title_reinforced.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_reinforced.json",
+          "src/main/java/net/mcreator/ssc/block/TitleReinforcedBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleReinforcedBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/title_reinforced.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_reinforced.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleRockvault",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_rockvault",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/TitleRockvaultBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/title_rockvault.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_rockvault.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_rockvault.json",
+          "src/main/resources/assets/ssc_14/items/title_rockvault.json",
+          "src/main/resources/assets/ssc_14/models/block/title_rockvault.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleRockvaultBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleShowroom",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_showroom",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/title_showroom.json",
+          "src/main/java/net/mcreator/ssc/block/TitleShowroomBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/title_showroom.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_showroom.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_showroom.json",
+          "src/main/resources/assets/ssc_14/items/title_showroom.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleShowroomBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleShuttleblack",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_shuttleblack",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_shuttleblack.json",
+          "src/main/resources/assets/ssc_14/models/block/title_shuttleblack.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_shuttleblack.json",
+          "src/main/java/net/mcreator/ssc/block/TitleShuttleblackBlock.java",
+          "src/main/resources/assets/ssc_14/items/title_shuttleblack.json",
+          "src/main/resources/assets/ssc_14/models/item/title_shuttleblack.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleShuttleblackBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleShuttleblue",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_shuttleblue",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/TitleShuttleblueBlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/title_shuttleblue.json",
+          "src/main/resources/assets/ssc_14/models/block/title_shuttleblue.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_shuttleblue.json",
+          "src/main/resources/assets/ssc_14/models/item/title_shuttleblue.json",
+          "src/main/resources/assets/ssc_14/items/title_shuttleblue.json",
+          "src/main/java/net/mcreator/ssc/block/TitleShuttleblueBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleShuttlegrey",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_shuttlegrey",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_shuttlegrey.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleShuttlegreyBlockEntity.java",
+          "src/main/java/net/mcreator/ssc/block/TitleShuttlegreyBlock.java",
+          "src/main/resources/assets/ssc_14/items/title_shuttlegrey.json",
+          "src/main/resources/assets/ssc_14/models/item/title_shuttlegrey.json",
+          "src/main/resources/assets/ssc_14/models/block/title_shuttlegrey.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_shuttlegrey.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleShuttleorange",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_shuttleorange",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/TitleShuttleorangeBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleShuttleorangeBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_shuttleorange.json",
+          "src/main/resources/assets/ssc_14/models/item/title_shuttleorange.json",
+          "src/main/resources/assets/ssc_14/models/block/title_shuttleorange.json",
+          "src/main/resources/assets/ssc_14/items/title_shuttleorange.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_shuttleorange.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleShuttlepurple",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_shuttlepurple",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/title_shuttlepurple.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleShuttlepurpleBlockEntity.java",
+          "src/main/java/net/mcreator/ssc/block/TitleShuttlepurpleBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/title_shuttlepurple.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_shuttlepurple.json",
+          "src/main/resources/assets/ssc_14/items/title_shuttlepurple.json",
+          "src/main/resources/assets/ssc_14/models/block/title_shuttlepurple.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleShuttlered",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_shuttlered",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/title_shuttlered.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_shuttlered.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_shuttlered.json",
+          "src/main/resources/assets/ssc_14/models/item/title_shuttlered.json",
+          "src/main/resources/assets/ssc_14/items/title_shuttlered.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleShuttleredBlockEntity.java",
+          "src/main/java/net/mcreator/ssc/block/TitleShuttleredBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleShuttlewhite",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_shuttlewhite",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_shuttlewhite.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleShuttlewhiteBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/title_shuttlewhite.json",
+          "src/main/java/net/mcreator/ssc/block/TitleShuttlewhiteBlock.java",
+          "src/main/resources/assets/ssc_14/models/item/title_shuttlewhite.json",
+          "src/main/resources/assets/ssc_14/items/title_shuttlewhite.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_shuttlewhite.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleSilver",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_silver",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/TitleSilverBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_silver.json",
+          "src/main/resources/assets/ssc_14/models/item/title_silver.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_silver.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleSilverBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_silver.json",
+          "src/main/resources/assets/ssc_14/items/title_silver.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleSteeldamaged",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_steeldamaged",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/title_steeldamaged.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_steeldamaged.json",
+          "src/main/resources/assets/ssc_14/items/title_steeldamaged.json",
+          "src/main/resources/assets/ssc_14/models/block/title_steeldamaged_2.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_steeldamaged.json",
+          "src/main/resources/assets/ssc_14/models/block/title_steeldamaged_1.json",
+          "src/main/resources/assets/ssc_14/models/block/title_steeldamaged.json",
+          "src/main/java/net/mcreator/ssc/block/TitleSteeldamagedBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_steeldamaged_0.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleSteeldamagedBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/title_steeldamaged_3.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleSteeldirty",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_steeldirty",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_steeldirty.json",
+          "src/main/resources/assets/ssc_14/models/block/title_steeldirty.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_steeldirty.json",
+          "src/main/resources/assets/ssc_14/models/item/title_steeldirty.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleSteeldirtyBlockEntity.java",
+          "src/main/resources/assets/ssc_14/items/title_steeldirty.json",
+          "src/main/java/net/mcreator/ssc/block/TitleSteeldirtyBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleSteelmaint",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_steelmaint",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_steelmaint.json",
+          "src/main/java/net/mcreator/ssc/block/TitleSteelmaintBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_steelmaint.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleSteelmaintBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/title_steelmaint.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_steelmaint.json",
+          "src/main/resources/assets/ssc_14/items/title_steelmaint.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleSuperreinforced",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_superreinforced",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_superreinforced.json",
+          "src/main/resources/assets/ssc_14/models/block/title_superreinforced.json",
+          "src/main/resources/assets/ssc_14/models/item/title_superreinforced.json",
+          "src/main/java/net/mcreator/ssc/block/TitleSuperreinforcedBlock.java",
+          "src/main/resources/assets/ssc_14/items/title_superreinforced.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_superreinforced.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleSuperreinforcedBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleTechmaintdark",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_techmaintdark",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/TitleTechmaintdarkBlockEntity.java",
+          "src/main/java/net/mcreator/ssc/block/TitleTechmaintdarkBlock.java",
+          "src/main/resources/assets/ssc_14/items/title_techmaintdark.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_techmaintdark.json",
+          "src/main/resources/assets/ssc_14/models/item/title_techmaintdark.json",
+          "src/main/resources/assets/ssc_14/models/block/title_techmaintdark.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_techmaintdark.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleTechmaint",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_techmaint",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/title_techmaint.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_techmaint.json",
+          "src/main/resources/assets/ssc_14/models/block/title_techmaint.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_techmaint.json",
+          "src/main/resources/assets/ssc_14/items/title_techmaint.json",
+          "src/main/java/net/mcreator/ssc/block/TitleTechmaintBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleTechmaintBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleWoodbroken",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_woodbroken",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/title_woodbroken.json",
+          "src/main/resources/assets/ssc_14/models/block/title_woodbroken_2.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_woodbroken.json",
+          "src/main/java/net/mcreator/ssc/block/TitleWoodbrokenBlock.java",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleWoodbrokenBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_woodbroken.json",
+          "src/main/resources/assets/ssc_14/models/block/title_woodbroken_3.json",
+          "src/main/resources/assets/ssc_14/models/item/title_woodbroken.json",
+          "src/main/resources/assets/ssc_14/models/block/title_woodbroken.json",
+          "src/main/resources/assets/ssc_14/models/block/title_woodbroken_1.json",
+          "src/main/resources/assets/ssc_14/models/block/title_woodbroken_0.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleWoodlarge",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_woodlarge",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/TitleWoodlargeBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/title_woodlarge.json",
+          "src/main/java/net/mcreator/ssc/block/TitleWoodlargeBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_woodlarge.json",
+          "src/main/resources/assets/ssc_14/items/title_woodlarge.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_woodlarge.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_woodlarge.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleWood",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_wood",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_wood.json",
+          "src/main/resources/assets/ssc_14/models/item/title_wood.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_wood.json",
+          "src/main/resources/assets/ssc_14/items/title_wood.json",
+          "src/main/java/net/mcreator/ssc/block/entity/TitleWoodBlockEntity.java",
+          "src/main/java/net/mcreator/ssc/block/TitleWoodBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/title_wood.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "TitleWoodtile",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "title_woodtile",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/TitleWoodtileBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/title_woodtile.json",
+          "src/main/java/net/mcreator/ssc/block/TitleWoodtileBlock.java",
+          "src/main/resources/assets/ssc_14/items/title_woodtile.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/title_woodtile.json",
+          "src/main/resources/assets/ssc_14/models/item/title_woodtile.json",
+          "src/main/resources/assets/ssc_14/blockstates/title_woodtile.json"
+        ]
+      },
+      "path": "~/Blocks/Titles"
+    },
+    {
+      "name": "AtmosphericsAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "atmospherics_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_31.json",
+          "src/main/java/net/mcreator/ssc/block/AtmosphericsAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_17.json",
+          "src/main/java/net/mcreator/ssc/block/entity/AtmosphericsAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/item/atmospherics_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/blockstates/atmospherics_airlock_d_1.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/atmospherics_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/items/atmospherics_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/atmospherics_airlock_d_1_13.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "CargoAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cargo_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_12.json",
+          "src/main/java/net/mcreator/ssc/block/entity/CargoAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_21.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/cargo_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_10.json",
+          "src/main/java/net/mcreator/ssc/block/CargoAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/items/cargo_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/blockstates/cargo_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/item/cargo_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/cargo_airlock_d_1_29.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "CentComAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cent_com_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_19.json",
+          "src/main/java/net/mcreator/ssc/block/entity/CentComAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_25.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/cent_com_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/blockstates/cent_com_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/item/cent_com_airlock_d_1.json",
+          "src/main/java/net/mcreator/ssc/block/CentComAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/items/cent_com_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/cent_com_airlock_d_1_13.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "ChemistryAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chemistry_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/item/chemistry_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_19.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ChemistryAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/blockstates/chemistry_airlock_d_1.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/chemistry_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/items/chemistry_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/chemistry_airlock_d_1_28.json",
+          "src/main/java/net/mcreator/ssc/block/ChemistryAirlockD1Block.java"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "CommandAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "command_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/command_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_28.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/command_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_29.json",
+          "src/main/java/net/mcreator/ssc/block/CommandAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/blockstates/command_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_18.json",
+          "src/main/java/net/mcreator/ssc/block/entity/CommandAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/models/item/command_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/command_airlock_d_1_20.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "EngineeringAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "engineering_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_30.json",
+          "src/main/java/net/mcreator/ssc/block/entity/EngineeringAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/item/engineering_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_31.json",
+          "src/main/java/net/mcreator/ssc/block/EngineeringAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/blockstates/engineering_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/items/engineering_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_17.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/engineering_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/engineering_airlock_d_1_28.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "HydroponicsAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hydroponics_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/blockstates/hydroponics_airlock_d_1.json",
+          "src/main/java/net/mcreator/ssc/block/HydroponicsAirlockD1Block.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/hydroponics_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_11.json",
+          "src/main/java/net/mcreator/ssc/block/entity/HydroponicsAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/item/hydroponics_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/items/hydroponics_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/hydroponics_airlock_d_1_0.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "MedicalAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "medical_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/items/medical_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_21.json",
+          "src/main/java/net/mcreator/ssc/block/MedicalAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/item/medical_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/blockstates/medical_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_18.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/medical_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_11.json",
+          "src/main/java/net/mcreator/ssc/block/entity/MedicalAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/medical_airlock_d_1_9.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "SalvageAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "salvage_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_32.json",
+          "src/main/java/net/mcreator/ssc/block/entity/SalvageAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/items/salvage_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/item/salvage_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_31.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/salvage_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_6.json",
+          "src/main/java/net/mcreator/ssc/block/SalvageAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/blockstates/salvage_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/salvage_airlock_d_1_30.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "ScienceAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "science_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_27.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/science_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_6.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ScienceAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/item/science_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/blockstates/science_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_21.json",
+          "src/main/java/net/mcreator/ssc/block/ScienceAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/items/science_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/science_airlock_d_1_2.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "SecurityAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "security_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/security_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/blockstates/security_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/items/security_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/item/security_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_27.json",
+          "src/main/java/net/mcreator/ssc/block/SecurityAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_32.json",
+          "src/main/java/net/mcreator/ssc/block/entity/SecurityAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/security_airlock_d_1_20.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "SyndicateAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "syndicate_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_19.json",
+          "src/main/java/net/mcreator/ssc/block/entity/SyndicateAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/item/syndicate_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/blockstates/syndicate_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_31.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/syndicate_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_11.json",
+          "src/main/java/net/mcreator/ssc/block/SyndicateAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/items/syndicate_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/syndicate_airlock_d_1_12.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "VirologyAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "virology_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/VirologyAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/item/virology_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/blockstates/virology_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_30.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/virology_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/items/virology_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_26.json",
+          "src/main/java/net/mcreator/ssc/block/VirologyAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/virology_airlock_d_1_6.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "ClosetEmerg",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "closet_emerg",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/closet_emerg.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ClosetEmergBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/closet_emerg.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_emerg_0.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/closet_emerg.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_emerg.json",
+          "src/main/java/net/mcreator/ssc/block/ClosetEmergBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/closet_emerg.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Closet"
+    },
+    {
+      "name": "ClosetFire",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "closet_fire",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/closet_fire.json",
+          "src/main/resources/assets/ssc_14/models/item/closet_fire.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_fire.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_fire_0.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ClosetFireBlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/closet_fire.json",
+          "src/main/resources/assets/ssc_14/items/closet_fire.json",
+          "src/main/java/net/mcreator/ssc/block/ClosetFireBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Closet"
     }
   ],
   "variable_elements": [
@@ -22000,7 +23802,20 @@
     ],
     "BLOCKS:ssc14:airlocks": [
       "CUSTOM:BaseAirlockD1",
-      "CUSTOM:TechAirlockD1"
+      "CUSTOM:TechAirlockD1",
+      "CUSTOM:AtmosphericsAirlockD1",
+      "CUSTOM:CargoAirlockD1",
+      "CUSTOM:CentComAirlockD1",
+      "CUSTOM:ChemistryAirlockD1",
+      "CUSTOM:CommandAirlockD1",
+      "CUSTOM:EngineeringAirlockD1",
+      "CUSTOM:HydroponicsAirlockD1",
+      "CUSTOM:MedicalAirlockD1",
+      "CUSTOM:SalvageAirlockD1",
+      "CUSTOM:ScienceAirlockD1",
+      "CUSTOM:SecurityAirlockD1",
+      "CUSTOM:SyndicateAirlockD1",
+      "CUSTOM:VirologyAirlockD1"
     ],
     "BLOCKS:ssc14:tiles": [
       "CUSTOM:TitleSteel",
@@ -22150,7 +23965,9 @@
     ],
     "BLOCKS:ssc14:closets": [
       "CUSTOM:ClosetSecure",
-      "CUSTOM:Closet"
+      "CUSTOM:Closet",
+      "CUSTOM:ClosetEmerg",
+      "CUSTOM:ClosetFire"
     ],
     "ENTITIES:ssc14:alive": [
       "CUSTOM:Corpse"
@@ -22450,6 +24267,63 @@
       "TitleWhitePlastic",
       "WhiteStaircase",
       "UpWhiteStaircase",
+      "Titleeighties",
+      "Titlearcadeblue2",
+      "TitleArcadeblue",
+      "TitleArcadered",
+      "TitleCarpetoffice",
+      "TitleCarpetclown",
+      "TitleLaundry",
+      "TitleBlue",
+      "TitleClown",
+      "TitleBar",
+      "TitleCafeteria",
+      "TitleMime",
+      "TitleKitchen",
+      "TitleCheckerdark",
+      "TitleLime",
+      "TitleHydro",
+      "TitleBoxing",
+      "TitleGym",
+      "TitleLino",
+      "TitleFreezer",
+      "TitleGold",
+      "TitleSilver",
+      "TitleRedcircuit",
+      "TitleGreencircuit",
+      "TitleBlueCircuit",
+      "TitleShowroom",
+      "TitleMiningfloordark",
+      "TitleMiningfloorlight",
+      "TitleMiningfloor",
+      "TitleMono",
+      "TitleShuttleblack",
+      "TitleShuttleblue",
+      "TitleShuttlegrey",
+      "TitleShuttleorange",
+      "TitleShuttlepurple",
+      "TitleShuttlered",
+      "TitleShuttlewhite",
+      "TitleReinforced",
+      "TitleSuperreinforced",
+      "TitleMetaldiamond",
+      "TitleTechmaintdark",
+      "TitleTechmaint",
+      "TitleSteelmaint",
+      "TitleGratingmaint",
+      "TitleWood",
+      "TitleWoodtile",
+      "TitleWoodlarge",
+      "TitleWoodbroken",
+      "TitleSteeldamaged",
+      "TitleSteeldirty",
+      "TitleMeat",
+      "TitleElevatorshaft",
+      "TitleExoborg",
+      "TitleDarktest",
+      "TitleHullreinforced",
+      "TitleHull",
+      "TitleRockvault",
       "CaveFloor1",
       "Dirt",
       "GrassLightBlock"
@@ -22478,6 +24352,19 @@
     "CUSTOM:SSC14Objects": [
       "BaseAirlockD1",
       "TechAirlockD1",
+      "AtmosphericsAirlockD1",
+      "CargoAirlockD1",
+      "CentComAirlockD1",
+      "ChemistryAirlockD1",
+      "CommandAirlockD1",
+      "EngineeringAirlockD1",
+      "HydroponicsAirlockD1",
+      "MedicalAirlockD1",
+      "SalvageAirlockD1",
+      "ScienceAirlockD1",
+      "SecurityAirlockD1",
+      "SyndicateAirlockD1",
+      "VirologyAirlockD1",
       "WallCarcase",
       "PlasteelWallCarcase",
       "Grille",
@@ -22500,6 +24387,8 @@
       "Microwawe",
       "ClosetSecure",
       "Closet",
+      "ClosetEmerg",
+      "ClosetFire",
       "SteelTable",
       "WoodTable",
       "SteelChair",
@@ -23598,7 +25487,79 @@
       "item.ssc_14.mk_58open_no_magz": "MK 58",
       "subtitles.items_pistol_reloading": "",
       "subtitles.items_pistol_mag_in": "",
-      "subtitles.items_pistol_mag_out": ""
+      "subtitles.items_pistol_mag_out": "",
+      "item.ssc_14.title_arcadeblue": "Arcade Blue Tile",
+      "item.ssc_14.titlearcadeblue_2": "Arcade blue 2 tile",
+      "item.ssc_14.title_arcadered": "Arcade red tile",
+      "item.ssc_14.title_bar": "Bar tile",
+      "item.ssc_14.title_blue_circuit": "Blue circuit tile",
+      "item.ssc_14.title_blue": "Blue tile",
+      "item.ssc_14.title_boxing": "Boxing tile",
+      "item.ssc_14.title_cafeteria": "Cafeteria tile",
+      "item.ssc_14.title_carpetclown": "Carpet clown tile",
+      "item.ssc_14.title_carpetoffice": "Carpet office tile",
+      "item.ssc_14.title_checkerdark": "Checker dark tile",
+      "item.ssc_14.title_clown": "Clown tile",
+      "item.ssc_14.title_darktest": "Dark test tile",
+      "item.ssc_14.titleeighties": "Eighties tile",
+      "item.ssc_14.title_elevatorshaft": "Elevator shaft tile",
+      "item.ssc_14.title_exoborg": "Exoborg tile",
+      "item.ssc_14.title_freezer": "Freezer tile",
+      "item.ssc_14.title_gold": "Gold tile",
+      "item.ssc_14.title_gratingmaint": "Grating maint tile",
+      "item.ssc_14.title_greencircuit": "Green circuit tile",
+      "item.ssc_14.title_gym": "Gym tile",
+      "item.ssc_14.title_hullreinforced": "Hull reinforced tile",
+      "item.ssc_14.title_hull": "Hull tile",
+      "item.ssc_14.title_hydro": "Hydro tile",
+      "item.ssc_14.title_kitchen": "Kitchen tile",
+      "item.ssc_14.title_laundry": "Laundry tile",
+      "item.ssc_14.title_lime": "Lime tile",
+      "item.ssc_14.title_lino": "Lino tile",
+      "item.ssc_14.title_meat": "Meat tile",
+      "item.ssc_14.title_metaldiamond": "Metal diamond tile",
+      "item.ssc_14.title_mime": "Mime tile",
+      "item.ssc_14.title_miningfloordark": "Mining floor dark tile",
+      "item.ssc_14.title_miningfloorlight": "Mining floor light tile",
+      "item.ssc_14.title_miningfloor": "Mining floor tile",
+      "item.ssc_14.title_mono": "Mono tile",
+      "item.ssc_14.title_redcircuit": "Red circuit tile",
+      "item.ssc_14.title_reinforced": "Red circuit tile",
+      "item.ssc_14.title_rockvault": "Rock vault tile",
+      "item.ssc_14.title_showroom": "Showroom tile",
+      "item.ssc_14.title_shuttleblack": "Shuttle black tile",
+      "item.ssc_14.title_shuttleblue": "Shuttle blue tile",
+      "item.ssc_14.title_shuttlegrey": "Shuttle grey tile",
+      "item.ssc_14.title_shuttleorange": "Shuttle orange tile",
+      "item.ssc_14.title_shuttlepurple": "Shuttle purple tile",
+      "item.ssc_14.title_shuttlered": "Shuttle red tile",
+      "item.ssc_14.title_shuttlewhite": "Shuttle white tile",
+      "item.ssc_14.title_silver": "Silver tile",
+      "item.ssc_14.title_steeldamaged": "Steel damaged tile",
+      "item.ssc_14.title_steeldirty": "Steel dirty tile",
+      "item.ssc_14.title_steelmaint": "Steel maint tile",
+      "item.ssc_14.title_superreinforced": "Super reinforced tile",
+      "item.ssc_14.title_techmaintdark": "Tech maint dark tile",
+      "item.ssc_14.title_techmaint": "Tech maint tile",
+      "item.ssc_14.title_woodbroken": "Wood broken tile",
+      "item.ssc_14.title_woodlarge": "Wood large tile",
+      "item.ssc_14.title_wood": "Wood tile",
+      "item.ssc_14.title_woodtile": "Wood tile tile",
+      "item.ssc_14.atmospherics_airlock_d_1": "Atmospherics Airlock",
+      "item.ssc_14.cargo_airlock_d_1": "Cargo Airlock",
+      "item.ssc_14.cent_com_airlock_d_1": "CentComm Airlock",
+      "item.ssc_14.chemistry_airlock_d_1": "Chemistry Airlock",
+      "item.ssc_14.command_airlock_d_1": "Command Airlock",
+      "item.ssc_14.engineering_airlock_d_1": "Engineering Airlock",
+      "item.ssc_14.hydroponics_airlock_d_1": "Hydroponics Airlock",
+      "item.ssc_14.medical_airlock_d_1": "Medical Airlock",
+      "item.ssc_14.salvage_airlock_d_1": "Salvage Airlock",
+      "item.ssc_14.science_airlock_d_1": "Science Airlock",
+      "item.ssc_14.security_airlock_d_1": "Security Airlock",
+      "item.ssc_14.syndicate_airlock_d_1": "Syndicate Airlock",
+      "item.ssc_14.virology_airlock_d_1": "Virology Airlock",
+      "item.ssc_14.closet_emerg": "Emergency closet",
+      "item.ssc_14.closet_fire": "Fire closet"
     },
     "ru_ru": {
       "biome.ssc_14.spaceb": "Космос",
@@ -23624,7 +25585,7 @@
       "item.ssc_14.screwdriver": "Отвёртка",
       "item.ssc_14.spanner": "Гаечный ключ",
       "key.ssc_14.dc_mopen": "Открыть меню создания",
-      "item.ssc_14.base_airlock_d_1": "Шлюз (Стандарт)",
+      "item.ssc_14.base_airlock_d_1": "Шлюз",
       "item.ssc_14.up_title": "Белая потолочная плитка",
       "entity.ssc_14.wall_carcase_entit": "Wall Carcase Ent",
       "item.ssc_14.wall_carcase_entit_spawn_egg": "Wall Carcase Ent Spawn Egg",
@@ -24135,7 +26096,7 @@
       "gui.ssc_14.commun_console_gui.label_sootvietstvuiushchii_kod": "соответствующий код",
       "gui.ssc_14.commun_console_gui.label_pri_nalichii_ughroz": "При наличии угроз",
       "gui.ssc_14.commun_console_gui.label_vvieditie_obiavlieniie": "Введите объявление:",
-      "item.ssc_14.tech_airlock_d_1": "Технический шлюз",
+      "item.ssc_14.tech_airlock_d_1": "Шлюз (Технический)",
       "item.ssc_14.gas_producer_o_2": "Генератор газа  (O₂ | 100 моль/сек)",
       "item.ssc_14.reagent_container": "Большая мензурка",
       "item.ssc_14.vending_aut_1": "Дискаунт Дэн",
@@ -24275,7 +26236,111 @@
       "item.ssc_14.mk_58open_no_magz": "MK 58",
       "subtitles.items_pistol_reloading": "",
       "subtitles.items_pistol_mag_in": "",
-      "subtitles.items_pistol_mag_out": ""
+      "subtitles.items_pistol_mag_out": "",
+      "item.ssc_14.title_arcadeblue": "Синий пол аркады",
+      "item.ssc_14.titlearcadeblue_2": "Синий пол аркады",
+      "item.ssc_14.title_arcadered": "Красный пол аркады",
+      "item.ssc_14.title_bar": "Барный пол",
+      "item.ssc_14.title_blue_circuit": "Синий микросхемный пол",
+      "item.ssc_14.title_blue": "Голубая плитка",
+      "item.ssc_14.title_boxing": "Пол боксёрского ринга",
+      "item.ssc_14.title_cafeteria": "Пол кафетерия",
+      "item.ssc_14.title_carpetclown": "Клоунский ковёр",
+      "item.ssc_14.title_carpetoffice": "Офисный ковёр",
+      "item.ssc_14.title_checkerdark": "Тёмные стальные плитки шашечками",
+      "item.ssc_14.title_clown": "Клоунский пол",
+      "item.ssc_14.title_darktest": "Тёмныйй тестовый пол",
+      "item.ssc_14.titleeighties": "Пол восьмидесятых",
+      "item.ssc_14.title_elevatorshaft": "Пол шахты лифта",
+      "item.ssc_14.title_exoborg": "Пол ксеноборгов",
+      "item.ssc_14.title_freezer": "Морозильник",
+      "item.ssc_14.title_gold": "Золотой пол",
+      "item.ssc_14.title_gratingmaint": "Решётчатый технический пол",
+      "item.ssc_14.title_greencircuit": "Зелёный микросхемный пол",
+      "item.ssc_14.title_gym": "Пол спортзала",
+      "item.ssc_14.title_hullreinforced": "Наружная укреплённая обшивка корпуса",
+      "item.ssc_14.title_hull": "Наружная обшивка корпуса",
+      "item.ssc_14.title_hydro": "Гидро пол",
+      "item.ssc_14.title_kitchen": "Кухонный пол",
+      "item.ssc_14.title_laundry": "Пол прачечной",
+      "item.ssc_14.title_lime": "Лаймовый пол",
+      "item.ssc_14.title_lino": "Линолеумный пол",
+      "item.ssc_14.title_meat": "Мясистый пол",
+      "item.ssc_14.title_metaldiamond": "Пол из алмазных плит",
+      "item.ssc_14.title_mime": "Мимский пол",
+      "item.ssc_14.title_miningfloordark": "Тёмная шахтёрская плитка",
+      "item.ssc_14.title_miningfloorlight": "Светлая шахтёрская плитка",
+      "item.ssc_14.title_miningfloor": "Шахтёрская плитка",
+      "item.ssc_14.title_mono": "Моно пол",
+      "item.ssc_14.title_redcircuit": "Красный микросхемный пол",
+      "item.ssc_14.title_reinforced": "Армированный пол",
+      "item.ssc_14.title_rockvault": "Каменный пол",
+      "item.ssc_14.title_showroom": "Пол выставочного зала",
+      "item.ssc_14.title_shuttleblack": "Чёрный пол шаттла",
+      "item.ssc_14.title_shuttleblue": "Синий пол шаттла",
+      "item.ssc_14.title_shuttlegrey": "Серый пол шаттла",
+      "item.ssc_14.title_shuttleorange": "Оранжевый пол шаттла",
+      "item.ssc_14.title_shuttlepurple": "Фиолетовый пол шаттла",
+      "item.ssc_14.title_shuttlered": "Красный пол шаттла",
+      "item.ssc_14.title_shuttlewhite": "Белй пол шаттла",
+      "item.ssc_14.title_silver": "Серебряный пол",
+      "item.ssc_14.title_steeldamaged": "Повреждённый стальной пол",
+      "item.ssc_14.title_steeldirty": "Грязный стальной пол",
+      "item.ssc_14.title_steelmaint": "Стальной технический пол",
+      "item.ssc_14.title_superreinforced": "Укреплённый армированный пол",
+      "item.ssc_14.title_techmaintdark": "Тёмный технический пол",
+      "item.ssc_14.title_techmaint": "Технический пол",
+      "item.ssc_14.title_woodbroken": "Деревянный сломанный пол",
+      "item.ssc_14.title_woodlarge": "Большой деревянный пол",
+      "item.ssc_14.title_wood": "Деревянный пол",
+      "item.ssc_14.title_woodtile": "Деревянный узорчатый пол",
+      "item.ssc_14.atmospherics_airlock_d_1": "Шлюз (Атмос)",
+      "item.ssc_14.cargo_airlock_d_1": "Шлюз (Снабжение)",
+      "item.ssc_14.cent_com_airlock_d_1": "Шлюз (ЦентКом)",
+      "item.ssc_14.chemistry_airlock_d_1": "Шлюз (Химия)",
+      "item.ssc_14.command_airlock_d_1": "Шлюз (Командование)",
+      "item.ssc_14.engineering_airlock_d_1": "Шлюз (Инженерный)",
+      "item.ssc_14.hydroponics_airlock_d_1": "Шлюз (Гидропоника)",
+      "item.ssc_14.medical_airlock_d_1": "Шлюз (Мед)",
+      "item.ssc_14.salvage_airlock_d_1": "Шлюз (Утилизаторский)",
+      "item.ssc_14.science_airlock_d_1": "Шлюз (Научный)",
+      "item.ssc_14.security_airlock_d_1": "Шлюз (СБ)",
+      "item.ssc_14.syndicate_airlock_d_1": "Шлюз (Синдикат)",
+      "item.ssc_14.virology_airlock_d_1": "Шлюз (Вирусология)",
+      "item.ssc_14.closet_emerg": "Аварийный шкафчик",
+      "item.ssc_14.closet_fire": "Пожарный шкафчик",
+      "gui.ssc_14.access_config_menu.PNT": "",
+      "gui.ssc_14.access_config_menu.Utilizat": "",
+      "gui.ssc_14.access_config_menu.Ingeneer": "",
+      "gui.ssc_14.access_config_menu.CMO": "",
+      "gui.ssc_14.access_config_menu.Cleaner": "",
+      "gui.ssc_14.access_config_menu.Out": "",
+      "gui.ssc_14.access_config_menu.Qm": "",
+      "gui.ssc_14.access_config_menu.gun_room": "",
+      "gui.ssc_14.access_config_menu.Command": "",
+      "gui.ssc_14.access_config_menu.RD": "",
+      "gui.ssc_14.access_config_menu.Uridic": "",
+      "gui.ssc_14.access_config_menu.Atmos": "",
+      "gui.ssc_14.access_config_menu.Supply_Deportament": "",
+      "gui.ssc_14.access_config_menu.Teatre": "",
+      "gui.ssc_14.access_config_menu.Medical": "",
+      "gui.ssc_14.access_config_menu.Capitan": "",
+      "gui.ssc_14.access_config_menu.Chemistry": "",
+      "gui.ssc_14.access_config_menu.Blue_Sh": "",
+      "gui.ssc_14.access_config_menu.Technical": "",
+      "gui.ssc_14.access_config_menu.Service": "",
+      "gui.ssc_14.access_config_menu.Scientist": "",
+      "gui.ssc_14.access_config_menu.CE": "",
+      "gui.ssc_14.access_config_menu.Bar": "",
+      "gui.ssc_14.access_config_menu.Detective": "",
+      "gui.ssc_14.access_config_menu.Security": "",
+      "gui.ssc_14.access_config_menu.Brig": "",
+      "gui.ssc_14.access_config_menu.Gidroponic": "",
+      "gui.ssc_14.access_config_menu.Crio": "",
+      "gui.ssc_14.access_config_menu.Kitchen": "",
+      "gui.ssc_14.access_config_menu.Church": "",
+      "gui.ssc_14.access_config_menu.HoP": "",
+      "gui.ssc_14.access_config_menu.HoS": ""
     }
   },
   "metadata": {
@@ -24905,7 +26970,7 @@
   "workspaceSettings": {
     "modid": "ssc_14",
     "modName": "Space Station Craft 14",
-    "version": "0.1.21",
+    "version": "0.1.22",
     "description": "Повторённая в Minecraft игра Space Station 14. Основатель - Space Kyyyst. В разработке принимали участие: almazar3, Mr_irak, Water Melon, sad2284. ",
     "author": "Space_Kyyyst",
     "websiteURL": "https://www.youtube.com/@Space.kyyyst",

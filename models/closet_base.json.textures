@@ -5,6 +5,18 @@
       "map": {
         "0": "closet_generic_texture"
       }
+    },
+    "emergency": {
+      "name": "emergency",
+      "map": {
+        "0": "closet_emergency_texture"
+      }
+    },
+    "fire": {
+      "name": "fire",
+      "map": {
+        "0": "closet_fire_texture"
+      }
     }
   }
 }

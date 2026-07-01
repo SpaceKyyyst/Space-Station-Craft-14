@@ -40,7 +40,6 @@ public class SheathingBlock extends Block implements EntityBlock {
 		return new SheathingBlockEntity(pos, state);
 	}
 
-	// 1. ТРИГГЕР: Разрушение кабеля игроком
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
@@ -51,7 +50,6 @@ public class SheathingBlock extends Block implements EntityBlock {
 		return retval;
 	}
 
-	// 2. ТРИГГЕР: Разрушение кабеля взрывом ТНТ / С4
 	@Override
 	public void wasExploded(ServerLevel world, BlockPos pos, Explosion e) {
 		super.wasExploded(world, pos, e);

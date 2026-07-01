@@ -40,9 +40,9 @@ public class BaseAirlockOpenCloseProcedure {
 
 	private static final String[] ACCESS_ROLES = {
 		"Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio", "Security", 
-		"Engineer", "Command", "Detective", "PNT", "Scientist", "Supply_Department", "Atmos", 
+		"Ingeneer", "Command", "Detective", "PNT", "Scientist", "Supply_Deportament", "Atmos", 
 		"Kitchen", "Uridic", "Gidroponic", "Teatre", "Bar", "Cleaner", "Utilizat", "Chemistry", 
-		"Church", "CE", "Qm", "CMO", "RD", "HoP", "Captain", "Blue_Sh"
+		"Church", "CE", "Qm", "CMO", "RD", "HoP", "Capitan", "Blue_Sh"
 	};
 
 	public static void execute(Level world, double x, double y, double z, BlockState blockstate, Entity entity) {

@@ -10,6 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
+
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 
 import java.util.Random;
@@ -18,22 +19,23 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 public class BaseAirlockD1PutProcedure {
-
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
 		if (world.isClientSide()) return;
 		BlockPos pos = BlockPos.containing(x, y, z);
 		BlockPos topPos = pos.above();
-		initializeBlockNBT(world, pos);
+		
+		initializeBlockNBT(world, pos, blockstate); // Передаем blockstate для проверки типа шлюза
 		ensureTopBlockExists(world, topPos, blockstate);
 		initializeClosedAirlockState(world, pos, blockstate);
 		generateRandomCableValues(world, pos);
 	}
 
-	private static void initializeBlockNBT(LevelAccessor world, BlockPos pos) {
+	private static void initializeBlockNBT(LevelAccessor world, BlockPos pos, BlockState state) {
 		BlockEntity be = world.getBlockEntity(pos);
 		if (be == null) return;
 		CompoundTag nbt = be.getPersistentData();
 		if (nbt.getBoolean("initialized").orElse(false)) return;
+		
 		nbt.putBoolean("initialized", true);
 		nbt.putBoolean("bolted", false);
 		nbt.putBoolean("welded", false);
@@ -44,6 +46,51 @@ public class BaseAirlockD1PutProcedure {
 		nbt.putBoolean("ai_access", true);
 		nbt.putBoolean("logs", true);
 		nbt.putBoolean("powered", true);
+
+		// Сначала отключаем ВСЕ доступы по умолчанию (выставляем в false)
+		String[] allAccesses = {
+			"Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio", 
+			"Security", "Ingeneer", "Command", "Detective", "PNT", "Scientist", "Supply_Deportament", 
+			"Atmos", "Kitchen", "Uridic", "Gidroponic", "Teatre", "Bar", "Cleaner", 
+			"Utilizat", "Chemistry", "Church", "CE", "Qm", "CMO", "RD", "HoP", "Capitan", "Blue_Sh"
+		};
+		for (String access : allAccesses) {
+			nbt.putBoolean(access, false);
+		}
+
+		// Проверяем тип установленного блока через реестр и выдаем нужные доступы
+		Block block = state.getBlock();
+
+		if (block == Ssc14ModBlocks.TECH_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Technical", true);
+		} else if (block == Ssc14ModBlocks.ATMOSPHERICS_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Atmos", true);
+		} else if (block == Ssc14ModBlocks.CARGO_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Supply_Deportament", true);
+		} else if (block == Ssc14ModBlocks.CENT_COM_AIRLOCK_D_1.get()) {
+			// Пока нету доступов
+		} else if (block == Ssc14ModBlocks.CHEMISTRY_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Chemistry", true);
+		} else if (block == Ssc14ModBlocks.COMMAND_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Command", true);
+		} else if (block == Ssc14ModBlocks.ENGINEERING_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Ingeneer", true);
+		} else if (block == Ssc14ModBlocks.HYDROPONICS_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Gidroponic", true);
+		} else if (block == Ssc14ModBlocks.MEDICAL_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Medical", true);
+		} else if (block == Ssc14ModBlocks.SALVAGE_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Utilizat", true);
+		} else if (block == Ssc14ModBlocks.SCIENCE_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Scientist", true);
+		} else if (block == Ssc14ModBlocks.SECURITY_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Security", true);
+			nbt.putBoolean("Brig", true);
+		} else if (block == Ssc14ModBlocks.SYNDICATE_AIRLOCK_D_1.get()) {
+			// Нету доступов
+		} else if (block == Ssc14ModBlocks.VIROLOGY_AIRLOCK_D_1.get()) {
+			nbt.putBoolean("Medical", true);
+		}
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
@@ -72,7 +119,6 @@ public class BaseAirlockD1PutProcedure {
 		world.setBlock(topPos, plugState, 3);
 	}
 
-	// 🔧 ИСПРАВЛЕННАЯ ВЕРСИЯ: полная поддержка всех состояний + правильная защита
 	private static void initializeClosedAirlockState(LevelAccessor world, BlockPos pos, BlockState state) {
 		IntegerProperty arlProp = getSafeProperty(state, "arl_variat", IntegerProperty.class);
 		if (arlProp == null) return;
@@ -83,56 +129,34 @@ public class BaseAirlockD1PutProcedure {
 		
 		int currentState = state.getValue(arlProp);
 		
-		// 🔧 ЗАЩИТА: никогда не трогаем эти состояния
-		// - Анимация открытия (12-15)
-		// - Полностью открыт (11)
-		// - Взлом (6, 7) — пока не реализован
-		// - Отказ в доступе (8) — временная анимация
 		if (currentState == 6 || currentState == 7 || currentState == 8 || 
 			currentState == 11 || (currentState >= 12 && currentState <= 15)) {
 			return;
 		}
 		
-		// 🔧 Получаем ВСЕ флаги из NBT
 		boolean bolted = nbt.getBoolean("bolted").orElse(false);
 		boolean welded = nbt.getBoolean("welded").orElse(false);
 		boolean emergency = nbt.getBoolean("emergency_acs").orElse(false);
 		boolean powered = nbt.getBoolean("powered").orElse(true);
 		
-		// 🔧 РАСЧЁТ целевого состояния на основе ВСЕХ флагов
-		// Сопоставление:
-		// 0  - закрытый
-		// 1  - закрытый + болты + нет питания
-		// 2  - болты
-		// 3  - болты + сварка
-		// 4  - аварийка
-		// 5  - аварийка + сварка
-		// 9  - нет питания
-		// 10 - нет питания + сварка
-		// 16 - сварка
 		int targetState;
 		
 		if (!powered) {
-			// Нет питания: 1, 9, 10
 			if (welded) {
-				targetState = 10; // нет питания + сварка
+				targetState = 10;
 			} else if (bolted) {
-				targetState = 1; // болты + нет питания
+				targetState = 1;
 			} else {
-				targetState = 9; // просто нет питания
+				targetState = 9;
 			}
 		} else if (bolted) {
-			// Болты (есть питание): 2, 3
 			targetState = welded ? 3 : 2;
 		} else if (emergency) {
-			// Аварийка (есть питание, нет болтов): 4, 5
 			targetState = welded ? 5 : 4;
 		} else {
-			// Обычное состояние (есть питание, нет болтов/аварийки): 0, 16
 			targetState = welded ? 16 : 0;
 		}
 		
-		// 🔧 Меняем только если состояние не совпадает с целевым
 		if (currentState != targetState) {
 			_setBlockState((Level) world, pos, targetState, arlProp);
 		}

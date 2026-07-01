@@ -25,7 +25,6 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.Sit_On_Chair_PRProcedure;
 import net.mcreator.ssc.procedures.OficeChair_AutorotateProcedure;
-import net.mcreator.ssc.procedures.Chair_Ent_GenerationProcedure;
 
 import java.util.function.Function;
 
@@ -76,12 +75,6 @@ public class OficeWhiteChairBlock extends Block {
 
 	public BlockState mirror(BlockState state, Mirror mirrorIn) {
 		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
-	}
-
-	@Override
-	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
-		super.onPlace(blockstate, world, pos, oldState, moving);
-		Chair_Ent_GenerationProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override

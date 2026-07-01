@@ -15,10 +15,10 @@ public class ChairEntity_TICProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if (!(world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).is(BlockTags.create(ResourceLocation.parse("ssc14:chairs")))) {
+		if (!(world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).is(BlockTags.create(ResourceLocation.parse("ssc14:chairs"))) || !entity.isVehicle()) {
 			if (!entity.level().isClientSide())
 				entity.discard();
-		} else {
+		} else if (entity.isVehicle()) {
 			if (Direction.NORTH == (getBlockDirection(world, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ())))) {
 				{
 					Entity _ent = entity;

@@ -144,9 +144,6 @@
     "onDestroyedByPlayer": {
       "name": "SteelWall_Destroy"
     },
-    "onDestroyedByExplosion": {
-      "name": "Wall_Explosion_Breakdown"
-    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [
