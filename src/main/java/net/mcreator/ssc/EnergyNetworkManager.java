@@ -1,4 +1,3 @@
-
 package net.mcreator.ssc;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
@@ -7,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-
 import java.util.*;
 
 public class EnergyNetworkManager {
@@ -24,9 +22,9 @@ public class EnergyNetworkManager {
         if (level == null || level.isClientSide()) return;
 
         System.out.println("=== [SSC14-GRAF] Умный пересчёт в точке: " + pos + " ===");
-
         BlockState triggerState = level.getBlockState(pos);
-        
+
+        // СЛУЧАЙ 1: Кликнули/обновили сам кабель
         if (triggerState.getBlock() instanceof SheathingBlock) {
             for (CableType type : CableType.values()) {
                 rebuildNetworksForType(level, pos, type);
@@ -34,22 +32,77 @@ public class EnergyNetworkManager {
             return;
         }
 
-        for (CableType type : CableType.values()) {
-            List<EnergyNetwork> networks = getNetworks(level, type);
-            
-            // Зачищаем уничтоженную точку из всех списков
-            for (EnergyNetwork net : networks) {
-                net.getCables().remove(pos);
-                net.getSources().remove(pos);
-                net.getConsumers().remove(pos);
-            }
-            networks.removeIf(net -> net.getCables().isEmpty());
+        // СЛУЧАЙ 2: Обновился прибор (Лампа, ЛКП, Подстанция, Генератор) на высоте.
+        // Реализуем "Обратный умный скан" строго вниз согласно техническому паспорту геометрии.
+        boolean handledByDeviceScan = false;
 
-            // Перестраиваем смежные ветки от четырёх соседей
-            for (Direction dir : HORIZONTAL_DIRECTIONS) {
-                BlockPos neighborPos = pos.relative(dir);
-                if (level.getBlockState(neighborPos).getBlock() instanceof SheathingBlock) {
-                    rebuildNetworksForType(level, neighborPos, type);
+        // А. Проверка Лампы (LV потребитель). Ищет кабель строго вниз от 1 до 6 блоков.
+        if (triggerState.is(Ssc14ModBlocks.LAMP.get())) {
+            for (int yOffset = 1; yOffset <= 6; yOffset++) {
+                BlockPos targetCablePos = pos.below(yOffset);
+                BlockState cableState = level.getBlockState(targetCablePos);
+                if (cableState.getBlock() instanceof SheathingBlock && CableType.LV.hasCable(cableState)) {
+                    // Лампа также проверяет куб 5x5 по горизонтали. 
+                    // Проверяем, попадает ли кабель в горизонтальный радиус от прибора (в пределах 2 блоков)
+                    rebuildNetworksForType(level, targetCablePos, CableType.LV);
+                    handledByDeviceScan = true;
+                }
+            }
+        }
+        // Б. Проверка ЛКП / APC (LV источник, MV потребитель). Ищет кабель строго вниз от 1 до 5 блоков.
+        else if (triggerState.is(Ssc14ModBlocks.APC.get())) {
+            for (int yOffset = 1; yOffset <= 5; yOffset++) {
+                BlockPos targetCablePos = pos.below(yOffset);
+                BlockState cableState = level.getBlockState(targetCablePos);
+                if (cableState.getBlock() instanceof SheathingBlock) {
+                    if (CableType.LV.hasCable(cableState)) rebuildNetworksForType(level, targetCablePos, CableType.LV);
+                    if (CableType.MV.hasCable(cableState)) rebuildNetworksForType(level, targetCablePos, CableType.MV);
+                    handledByDeviceScan = true;
+                }
+            }
+        }
+        // В. Проверка Подстанции (MV источник, HV потребитель). Ищет кабель строго вниз на 1 или 2 блока.
+        else if (triggerState.is(Ssc14ModBlocks.PODSTATION.get())) {
+            for (int yOffset = 1; yOffset <= 2; yOffset++) {
+                BlockPos targetCablePos = pos.below(yOffset);
+                BlockState cableState = level.getBlockState(targetCablePos);
+                if (cableState.getBlock() instanceof SheathingBlock) {
+                    if (CableType.MV.hasCable(cableState)) rebuildNetworksForType(level, targetCablePos, CableType.MV);
+                    if (CableType.HV.hasCable(cableState)) rebuildNetworksForType(level, targetCablePos, CableType.HV);
+                    handledByDeviceScan = true;
+                }
+            }
+        }
+        // Г. Проверка Генератора (HV источник). Ищет кабель строго вниз на 1 или 2 блока.
+        else if (triggerState.is(Ssc14ModBlocks.DEBU_GGENERATOR.get())) {
+            for (int yOffset = 1; yOffset <= 2; yOffset++) {
+                BlockPos targetCablePos = pos.below(yOffset);
+                BlockState cableState = level.getBlockState(targetCablePos);
+                if (cableState.getBlock() instanceof SheathingBlock && CableType.HV.hasCable(cableState)) {
+                    rebuildNetworksForType(level, targetCablePos, CableType.HV);
+                    handledByDeviceScan = true;
+                }
+            }
+        }
+
+        // СЛУЧАЙ 3: Базовая логика для разрушенных блоков или обычных блоков среды.
+        // Зачищаем точку из графов и проверяем горизонтальных соседей, ТОЛЬКО если это не был наш прибор.
+        if (!handledByDeviceScan) {
+            for (CableType type : CableType.values()) {
+                List<EnergyNetwork> networks = getNetworks(level, type);
+                
+                for (EnergyNetwork net : networks) {
+                    net.getCables().remove(pos);
+                    net.getSources().remove(pos);
+                    net.getConsumers().remove(pos);
+                }
+                networks.removeIf(net -> net.getCables().isEmpty());
+
+                for (Direction dir : HORIZONTAL_DIRECTIONS) {
+                    BlockPos neighborPos = pos.relative(dir);
+                    if (level.getBlockState(neighborPos).getBlock() instanceof SheathingBlock) {
+                        rebuildNetworksForType(level, neighborPos, type);
+                    }
                 }
             }
         }

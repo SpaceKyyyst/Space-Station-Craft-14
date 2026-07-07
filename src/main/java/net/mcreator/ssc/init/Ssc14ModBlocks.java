@@ -217,6 +217,16 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> VIROLOGY_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> CLOSET_EMERG;
 	public static final DeferredBlock<Block> CLOSET_FIRE;
+	public static final DeferredBlock<Block> CLOSET_BLACK;
+	public static final DeferredBlock<Block> CLOSET_BLUE;
+	public static final DeferredBlock<Block> CLOSET_GRAY;
+	public static final DeferredBlock<Block> CLOSET_GREEN;
+	public static final DeferredBlock<Block> CLOSET_MIXED;
+	public static final DeferredBlock<Block> CLOSET_N_2;
+	public static final DeferredBlock<Block> CLOSET_ORANGE;
+	public static final DeferredBlock<Block> CLOSET_PINK;
+	public static final DeferredBlock<Block> GLASS_TABLE;
+	public static final DeferredBlock<Block> GLASS_AIRLOCK_D_1;
 	static {
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
 		SHEATHING = register("sheathing", SheathingBlock::new);
@@ -415,6 +425,16 @@ public class Ssc14ModBlocks {
 		VIROLOGY_AIRLOCK_D_1 = register("virology_airlock_d_1", VirologyAirlockD1Block::new);
 		CLOSET_EMERG = register("closet_emerg", ClosetEmergBlock::new);
 		CLOSET_FIRE = register("closet_fire", ClosetFireBlock::new);
+		CLOSET_BLACK = register("closet_black", ClosetBlackBlock::new);
+		CLOSET_BLUE = register("closet_blue", ClosetBlueBlock::new);
+		CLOSET_GRAY = register("closet_gray", ClosetGrayBlock::new);
+		CLOSET_GREEN = register("closet_green", ClosetGreenBlock::new);
+		CLOSET_MIXED = register("closet_mixed", ClosetMixedBlock::new);
+		CLOSET_N_2 = register("closet_n_2", ClosetN2Block::new);
+		CLOSET_ORANGE = register("closet_orange", ClosetOrangeBlock::new);
+		CLOSET_PINK = register("closet_pink", ClosetPinkBlock::new);
+		GLASS_TABLE = register("glass_table", GlassTableBlock::new);
+		GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1", GlassAirlockD1Block::new);
 	}
 
 	// Start of user code block custom blocks

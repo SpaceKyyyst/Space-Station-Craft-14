@@ -18,6 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.BuiltInRegistries;
 
+import net.mcreator.ssc.procedures.Bullet_FlyProcedure;
 import net.mcreator.ssc.procedures.Bullet35_BlockCollision_Procedure;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModEntities;
@@ -89,6 +90,7 @@ public class Bullet35Entity extends AbstractArrow implements ItemSupplier {
 	@Override
 	public void tick() {
 		super.tick();
+		Bullet_FlyProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
 		if (this.isInGround())
 			this.discard();
 	}

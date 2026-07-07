@@ -1,0 +1,25 @@
+{
+  "_fv": 85,
+  "_type": "particle",
+  "definition": {
+    "texture": "bulletflight_part_anim",
+    "animate": true,
+    "frameDuration": 1,
+    "width": 0.1,
+    "height": 0.1,
+    "scale": {
+      "fixedValue": 2.5
+    },
+    "fixedScale": false,
+    "speedFactor": 0.1,
+    "gravity": 0.0,
+    "maxAge": 2,
+    "maxAgeDiff": 1,
+    "angularVelocity": 0.0,
+    "angularAcceleration": 0.0,
+    "canCollide": false,
+    "alwaysShow": false,
+    "emissiveRendering": false,
+    "renderType": "TRANSLUCENT"
+  }
+}

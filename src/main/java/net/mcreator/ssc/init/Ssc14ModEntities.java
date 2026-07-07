@@ -59,6 +59,8 @@ public class Ssc14ModEntities {
 					.sized(0.3f, 0.3f));
 	public static final DeferredHolder<EntityType<?>, EntityType<Bullet35Entity>> BULLET_35 = register("bullet_35",
 			EntityType.Builder.<Bullet35Entity>of(Bullet35Entity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.1f, 0.1f));
+	public static final DeferredHolder<EntityType<?>, EntityType<FoamDartProjectileEntity>> FOAM_DART_PROJECTILE = register("foam_dart_projectile",
+			EntityType.Builder.<FoamDartProjectileEntity>of(FoamDartProjectileEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.1f, 0.3f));
 
 	// Start of user code block custom entities
 	// End of user code block custom entities

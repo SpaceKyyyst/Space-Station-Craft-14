@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "ssc_14:glass_airlock_d_1",
     "ssc_14:cent_com_airlock_d_1",
     "ssc_14:command_airlock_d_1",
     "ssc_14:salvage_airlock_d_1",

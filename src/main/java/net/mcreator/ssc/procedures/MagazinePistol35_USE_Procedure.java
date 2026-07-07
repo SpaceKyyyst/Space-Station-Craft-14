@@ -85,7 +85,7 @@ public class MagazinePistol35_USE_Procedure {
 				{
 					final String _tagName = "GenEraTE";
 					final boolean _tagValue = true;
-					CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putBoolean(_tagName, _tagValue));
+					CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putBoolean(_tagName, _tagValue));
 				}
 				{
 					final String _tagName = "Bullets";

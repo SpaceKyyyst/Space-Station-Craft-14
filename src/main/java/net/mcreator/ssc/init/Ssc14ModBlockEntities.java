@@ -113,6 +113,15 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<VirologyAirlockD1BlockEntity>> VIROLOGY_AIRLOCK_D_1 = register("virology_airlock_d_1", Ssc14ModBlocks.VIROLOGY_AIRLOCK_D_1, VirologyAirlockD1BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetEmergBlockEntity>> CLOSET_EMERG = register("closet_emerg", Ssc14ModBlocks.CLOSET_EMERG, ClosetEmergBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetFireBlockEntity>> CLOSET_FIRE = register("closet_fire", Ssc14ModBlocks.CLOSET_FIRE, ClosetFireBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlackBlockEntity>> CLOSET_BLACK = register("closet_black", Ssc14ModBlocks.CLOSET_BLACK, ClosetBlackBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlueBlockEntity>> CLOSET_BLUE = register("closet_blue", Ssc14ModBlocks.CLOSET_BLUE, ClosetBlueBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetGrayBlockEntity>> CLOSET_GRAY = register("closet_gray", Ssc14ModBlocks.CLOSET_GRAY, ClosetGrayBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetGreenBlockEntity>> CLOSET_GREEN = register("closet_green", Ssc14ModBlocks.CLOSET_GREEN, ClosetGreenBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetMixedBlockEntity>> CLOSET_MIXED = register("closet_mixed", Ssc14ModBlocks.CLOSET_MIXED, ClosetMixedBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetN2BlockEntity>> CLOSET_N_2 = register("closet_n_2", Ssc14ModBlocks.CLOSET_N_2, ClosetN2BlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetOrangeBlockEntity>> CLOSET_ORANGE = register("closet_orange", Ssc14ModBlocks.CLOSET_ORANGE, ClosetOrangeBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetPinkBlockEntity>> CLOSET_PINK = register("closet_pink", Ssc14ModBlocks.CLOSET_PINK, ClosetPinkBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GlassAirlockD1BlockEntity>> GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1", Ssc14ModBlocks.GLASS_AIRLOCK_D_1, GlassAirlockD1BlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities
@@ -212,5 +221,14 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, VIROLOGY_AIRLOCK_D_1.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_EMERG.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_FIRE.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_BLACK.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_BLUE.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_GRAY.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_GREEN.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_MIXED.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_N_2.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_ORANGE.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_PINK.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, GLASS_AIRLOCK_D_1.get(), SidedInvWrapper::new);
 	}
 }

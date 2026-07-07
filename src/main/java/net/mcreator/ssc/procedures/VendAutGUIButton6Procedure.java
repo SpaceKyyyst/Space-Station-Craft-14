@@ -67,7 +67,7 @@ public class VendAutGUIButton6Procedure {
 						}
 					} else if (Direction.SOUTH == (getDirectionFromBlockState((world.getBlockState(BlockPos.containing(x, y, z)))))) {
 						if (world instanceof ServerLevel _level) {
-							ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z - 1), (itemFromBlockInventory(world, BlockPos.containing(x, y, z), 6).copy()));
+							ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 1), (itemFromBlockInventory(world, BlockPos.containing(x, y, z), 6).copy()));
 							entityToSpawn.setPickUpDelay(0);
 							entityToSpawn.setUnlimitedLifetime();
 							_level.addFreshEntity(entityToSpawn);

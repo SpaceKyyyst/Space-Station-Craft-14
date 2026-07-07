@@ -45,5 +45,6 @@ public class Ssc14ModParticles {
 		event.registerSpriteSet(Ssc14ModParticleTypes.DECONSTRUCT_PZ.get(), DeconstructPZParticle::provider);
 		event.registerSpriteSet(Ssc14ModParticleTypes.RCD_INTERFERENCE_P.get(), RCDInterferencePParticle::provider);
 		event.registerSpriteSet(Ssc14ModParticleTypes.SPECIFY_P.get(), SpecifyPParticle::provider);
+		event.registerSpriteSet(Ssc14ModParticleTypes.BULLET_FLIGHT_P.get(), BulletFlightPParticle::provider);
 	}
 }

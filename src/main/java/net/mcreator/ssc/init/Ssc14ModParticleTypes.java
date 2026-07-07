@@ -45,4 +45,5 @@ public class Ssc14ModParticleTypes {
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DECONSTRUCT_PZ = REGISTRY.register("deconstruct_pz", () -> new SimpleParticleType(true));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> RCD_INTERFERENCE_P = REGISTRY.register("rcd_interference_p", () -> new SimpleParticleType(true));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SPECIFY_P = REGISTRY.register("specify_p", () -> new SimpleParticleType(true));
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BULLET_FLIGHT_P = REGISTRY.register("bullet_flight_p", () -> new SimpleParticleType(false));
 }

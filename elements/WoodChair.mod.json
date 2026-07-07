@@ -19,9 +19,6 @@
     "itemTexture": "wood_chair_item",
     "particleTexture": "",
     "blockSetType": "OAK",
-    "pottedPlant": {
-      "value": ""
-    },
     "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,
@@ -114,9 +111,9 @@
     ],
     "destroyTool": "Not specified",
     "customDrop": {
-      "value": ""
+      "value": "CUSTOM:Wood"
     },
-    "dropAmount": 0,
+    "dropAmount": 1,
     "xpAmountMin": 0,
     "xpAmountMax": 0,
     "useLootTableForDrops": false,
@@ -200,9 +197,6 @@
     "fluidRestrictions": [],
     "onRightClicked": {
       "name": "Sit_On_Chair_PR"
-    },
-    "onBlockAdded": {
-      "name": "Chair_Ent_Generation"
     },
     "generateFeature": false,
     "restrictionBiomes": [],

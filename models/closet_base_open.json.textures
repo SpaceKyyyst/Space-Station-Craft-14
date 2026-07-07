@@ -3,19 +3,67 @@
     "default": {
       "name": "default",
       "map": {
-        "2": "closet_generic_texture"
+        "0": "closet_generic_texture"
       }
     },
     "emergency": {
       "name": "emergency",
       "map": {
-        "2": "closet_emergency_texture"
+        "0": "closet_emergency_texture"
       }
     },
     "fire": {
       "name": "fire",
       "map": {
-        "2": "closet_fire_texture"
+        "0": "closet_fire_texture"
+      }
+    },
+    "black": {
+      "name": "black",
+      "map": {
+        "0": "closet_black_texture"
+      }
+    },
+    "blue": {
+      "name": "blue",
+      "map": {
+        "0": "closet_blue_texture"
+      }
+    },
+    "gray": {
+      "name": "gray",
+      "map": {
+        "0": "closet_gray_texture"
+      }
+    },
+    "green": {
+      "name": "green",
+      "map": {
+        "0": "closet_green_texture"
+      }
+    },
+    "mixed": {
+      "name": "mixed",
+      "map": {
+        "0": "closet_mixed_texture"
+      }
+    },
+    "n2": {
+      "name": "n2",
+      "map": {
+        "0": "closet_n2_texture"
+      }
+    },
+    "orange": {
+      "name": "orange",
+      "map": {
+        "0": "closet_orange_texture"
+      }
+    },
+    "pink": {
+      "name": "pink",
+      "map": {
+        "0": "closet_pink_texture"
       }
     }
   }

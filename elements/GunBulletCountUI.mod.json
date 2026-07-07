@@ -10,7 +10,7 @@
           "image": "mk_58_bullet_ui.png",
           "use1Xscale": false,
           "anchorPoint": "BOTTOM_CENTER",
-          "x": 102,
+          "x": 96,
           "y": 202,
           "locked": true
         }
@@ -27,6 +27,20 @@
           "anchorPoint": "BOTTOM_CENTER",
           "x": 102,
           "y": 202,
+          "locked": true
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "bullet_ui_sprite_2.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "GunBulletChamberUIConditions"
+          },
+          "anchorPoint": "BOTTOM_CENTER",
+          "x": 98,
+          "y": 208,
           "locked": true
         }
       }

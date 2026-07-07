@@ -13,8 +13,8 @@
       "value": ""
     },
     "hasModel": true,
-    "baubleModel": "Modelhelmet_cone_equipped",
-    "baubleModelTexture": "cone_equipped.png",
+    "baubleModel": "Modelhead_cone_equipped",
+    "baubleModelTexture": "head_cone_equipped_texture.png",
     "helmetModelPart": "head",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

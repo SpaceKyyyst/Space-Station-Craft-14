@@ -21,6 +21,9 @@
     "modelHeight": 0.1,
     "onHitsBlock": {
       "name": "Bullet35_BlockCollision_"
+    },
+    "onFlyingTick": {
+      "name": "Bullet_Fly"
     }
   }
 }

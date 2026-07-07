@@ -20900,7 +20900,7 @@
       "name": "MK58_Breech_Open_",
       "type": "procedure",
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "mk_58_breech_open",
       "metadata": {
         "dependencies": [
@@ -22988,6 +22988,464 @@
         ]
       },
       "path": "~/Blocks/Furniture/Closet"
+    },
+    {
+      "name": "ClosetBlack",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "closet_black",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/closet_black.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ClosetBlackBlockEntity.java",
+          "src/main/resources/assets/ssc_14/items/closet_black.json",
+          "src/main/resources/assets/ssc_14/models/item/closet_black.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_black.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/closet_black.json",
+          "src/main/java/net/mcreator/ssc/block/ClosetBlackBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/closet_black_0.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Closet"
+    },
+    {
+      "name": "ClosetBlue",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "closet_blue",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/closet_blue.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_blue_0.json",
+          "src/main/java/net/mcreator/ssc/block/ClosetBlueBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/closet_blue.json",
+          "src/main/resources/assets/ssc_14/models/item/closet_blue.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_blue.json",
+          "src/main/resources/assets/ssc_14/items/closet_blue.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ClosetBlueBlockEntity.java"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Closet"
+    },
+    {
+      "name": "ClosetGray",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "closet_gray",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/blockstates/closet_gray.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ClosetGrayBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/closet_gray.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_gray.json",
+          "src/main/resources/assets/ssc_14/items/closet_gray.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_gray_0.json",
+          "src/main/java/net/mcreator/ssc/block/ClosetGrayBlock.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/closet_gray.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Closet"
+    },
+    {
+      "name": "ClosetGreen",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "closet_green",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/ClosetGreenBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/closet_green.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_green.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_green_0.json",
+          "src/main/resources/assets/ssc_14/models/item/closet_green.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ClosetGreenBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/closet_green.json",
+          "src/main/resources/assets/ssc_14/items/closet_green.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Closet"
+    },
+    {
+      "name": "ClosetMixed",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "closet_mixed",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/ClosetMixedBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/closet_mixed.json",
+          "src/main/resources/assets/ssc_14/items/closet_mixed.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_mixed_0.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ClosetMixedBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/closet_mixed.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_mixed.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/closet_mixed.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Closet"
+    },
+    {
+      "name": "ClosetN2",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "closet_n_2",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/ClosetN2Block.java",
+          "src/main/java/net/mcreator/ssc/block/entity/ClosetN2BlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/closet_n_2.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_n_2_0.json",
+          "src/main/resources/assets/ssc_14/models/item/closet_n_2.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/closet_n_2.json",
+          "src/main/resources/assets/ssc_14/items/closet_n_2.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_n_2.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Closet"
+    },
+    {
+      "name": "ClosetOrange",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "closet_orange",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/closet_orange.json",
+          "src/main/java/net/mcreator/ssc/block/entity/ClosetOrangeBlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/item/closet_orange.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_orange.json",
+          "src/main/resources/assets/ssc_14/blockstates/closet_orange.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_orange_0.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/closet_orange.json",
+          "src/main/java/net/mcreator/ssc/block/ClosetOrangeBlock.java"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Closet"
+    },
+    {
+      "name": "ClosetPink",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "closet_pink",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/block/entity/ClosetPinkBlockEntity.java",
+          "src/main/resources/data/ssc_14/loot_table/blocks/closet_pink.json",
+          "src/main/resources/assets/ssc_14/models/item/closet_pink.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_pink.json",
+          "src/main/java/net/mcreator/ssc/block/ClosetPinkBlock.java",
+          "src/main/resources/assets/ssc_14/blockstates/closet_pink.json",
+          "src/main/resources/assets/ssc_14/items/closet_pink.json",
+          "src/main/resources/assets/ssc_14/models/block/closet_pink_0.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Closet"
+    },
+    {
+      "name": "Wood",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wood",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/wood.json",
+          "src/main/resources/assets/ssc_14/models/item/wood.json",
+          "src/main/java/net/mcreator/ssc/item/WoodItem.java"
+        ]
+      },
+      "path": "~/Items/Materials and Cabels"
+    },
+    {
+      "name": "GlassTable",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "glass_table",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/glass_table_10.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_4.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_0.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_13.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/glass_table.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_14.json",
+          "src/main/resources/assets/ssc_14/blockstates/glass_table.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_11.json",
+          "src/main/java/net/mcreator/ssc/block/GlassTableBlock.java",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_7.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_8.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_12.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_2.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_5.json",
+          "src/main/resources/assets/ssc_14/models/item/glass_table.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_1.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_6.json",
+          "src/main/resources/assets/ssc_14/items/glass_table.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_9.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table_3.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_table.json"
+        ]
+      },
+      "path": "~/Blocks/Furniture/Tables"
+    },
+    {
+      "name": "GlassAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "glass_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/ssc_14/loot_table/blocks/glass_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_24.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_32.json",
+          "src/main/java/net/mcreator/ssc/block/GlassAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_16.json",
+          "src/main/java/net/mcreator/ssc/block/entity/GlassAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/models/item/glass_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/blockstates/glass_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_26.json",
+          "src/main/resources/assets/ssc_14/items/glass_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_5.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/glass_airlock_d_1_12.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "AstroAceFoamPower",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "astro_ace_foam_power",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/astro_ace_foam_power.json",
+          "src/main/resources/assets/ssc_14/models/item/astro_ace_foam_power.json",
+          "src/main/java/net/mcreator/ssc/item/AstroAceFoamPowerItem.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/Astro-Ace Foam Power"
+    },
+    {
+      "name": "FoamDart",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "foam_dart",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/FoamDartItem.java",
+          "src/main/resources/assets/ssc_14/items/foam_dart.json",
+          "src/main/resources/assets/ssc_14/models/item/foam_dart.json"
+        ]
+      },
+      "path": "~/Items/WEAPON/Astro-Ace Foam Power"
+    },
+    {
+      "name": "FoamDartReloading",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "foam_dart_reloading",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/FoamDartReloadingProcedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/Astro-Ace Foam Power"
+    },
+    {
+      "name": "AstroAceFP_FIRE",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "astro_ace_fp_fire",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/AstroAceFP_FIREProcedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/Astro-Ace Foam Power"
+    },
+    {
+      "name": "AstroAceFP_Description",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "astro_ace_fp_description",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/AstroAceFP_DescriptionProcedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/Astro-Ace Foam Power"
+    },
+    {
+      "name": "FoamDartProjectile",
+      "type": "projectile",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "foam_dart_projectile",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/entity/FoamDartProjectileEntity.java",
+          "src/main/java/net/mcreator/ssc/client/renderer/FoamDartProjectileRenderer.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/Astro-Ace Foam Power"
+    },
+    {
+      "name": "BulletFlightP",
+      "type": "particle",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bullet_flight_p",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/particles/bullet_flight_p.json",
+          "src/main/java/net/mcreator/ssc/client/particle/BulletFlightPParticle.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "Bullet_Fly",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bullet_fly",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Bullet_FlyProcedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "GunBulletChamberUIConditions",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gun_bullet_chamber_ui_conditions",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/GunBulletChamberUIConditionsProcedure.java"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "Bullet35Cartridge",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bullet_35_cartridge",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/bullet_35_cartridge.json",
+          "src/main/java/net/mcreator/ssc/item/Bullet35CartridgeItem.java",
+          "src/main/resources/assets/ssc_14/models/item/bullet_35_cartridge.json"
+        ]
+      },
+      "path": "~/Items/WEAPON/MK58"
     }
   ],
   "variable_elements": [
@@ -23700,6 +24158,30 @@
       ],
       "category": "master",
       "subtitle": ""
+    },
+    {
+      "name": "foam_rifle_charging",
+      "files": [
+        "foam_rifle_charging"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "foam_rifle_shot",
+      "files": [
+        "foam_rifle_shot"
+      ],
+      "category": "master",
+      "subtitle": ""
+    },
+    {
+      "name": "foam_rifle_discharge",
+      "files": [
+        "foam_rifle_discharge"
+      ],
+      "category": "master",
+      "subtitle": ""
     }
   ],
   "tag_elements": {
@@ -23815,7 +24297,8 @@
       "CUSTOM:ScienceAirlockD1",
       "CUSTOM:SecurityAirlockD1",
       "CUSTOM:SyndicateAirlockD1",
-      "CUSTOM:VirologyAirlockD1"
+      "CUSTOM:VirologyAirlockD1",
+      "CUSTOM:GlassAirlockD1"
     ],
     "BLOCKS:ssc14:tiles": [
       "CUSTOM:TitleSteel",
@@ -23915,7 +24398,8 @@
     ],
     "BLOCKS:ssc14:tables": [
       "CUSTOM:SteelTable",
-      "CUSTOM:WoodTable"
+      "CUSTOM:WoodTable",
+      "CUSTOM:GlassTable"
     ],
     "ITEMS:ssc14:mac_fr_components": [
       "CUSTOM:Steel",
@@ -23967,7 +24451,15 @@
       "CUSTOM:ClosetSecure",
       "CUSTOM:Closet",
       "CUSTOM:ClosetEmerg",
-      "CUSTOM:ClosetFire"
+      "CUSTOM:ClosetFire",
+      "CUSTOM:ClosetBlack",
+      "CUSTOM:ClosetBlue",
+      "CUSTOM:ClosetGray",
+      "CUSTOM:ClosetGreen",
+      "CUSTOM:ClosetMixed",
+      "CUSTOM:ClosetN2",
+      "CUSTOM:ClosetOrange",
+      "CUSTOM:ClosetPink"
     ],
     "ENTITIES:ssc14:alive": [
       "CUSTOM:Corpse"
@@ -24365,6 +24857,7 @@
       "SecurityAirlockD1",
       "SyndicateAirlockD1",
       "VirologyAirlockD1",
+      "GlassAirlockD1",
       "WallCarcase",
       "PlasteelWallCarcase",
       "Grille",
@@ -24385,12 +24878,21 @@
       "CommunicationServers",
       "PortableSheater",
       "Microwawe",
-      "ClosetSecure",
       "Closet",
       "ClosetEmerg",
+      "ClosetN2",
       "ClosetFire",
+      "ClosetBlack",
+      "ClosetBlue",
+      "ClosetGray",
+      "ClosetGreen",
+      "ClosetMixed",
+      "ClosetOrange",
+      "ClosetPink",
+      "ClosetSecure",
       "SteelTable",
       "WoodTable",
+      "GlassTable",
       "SteelChair",
       "WoodChair",
       "OficeBlackChair",
@@ -24442,6 +24944,7 @@
       "SSC14Gold",
       "Silver",
       "Uran",
+      "Wood",
       "RawIron",
       "RawQuartz",
       "RawCoal",
@@ -24457,6 +24960,11 @@
       "Gauze",
       "Ointment",
       "C4",
+      "AstroAceFoamPower",
+      "FoamDart",
+      "MK58",
+      "MagazinePistol35",
+      "Bullet35item",
       "Capacitor",
       "MatterBin",
       "MicroManipulator",
@@ -24658,12 +25166,9 @@
       "BoritosTrash",
       "PopcornTrash",
       "EnergyBarTrash",
+      "Bullet35Cartridge",
       "RottenMeat",
-      "Eggshell",
-      "MagazinePistol35",
-      "Bullet35item",
-      "MagazinePistol35empty",
-      "MK58nomagz"
+      "Eggshell"
     ],
     "CUSTOM:SSC14mobs": [
       "MouseBrown",
@@ -25559,7 +26064,24 @@
       "item.ssc_14.syndicate_airlock_d_1": "Syndicate Airlock",
       "item.ssc_14.virology_airlock_d_1": "Virology Airlock",
       "item.ssc_14.closet_emerg": "Emergency closet",
-      "item.ssc_14.closet_fire": "Fire closet"
+      "item.ssc_14.closet_fire": "Fire closet",
+      "item.ssc_14.closet_black": "Black closet",
+      "item.ssc_14.closet_blue": "Blue closet",
+      "item.ssc_14.closet_gray": "Gray closet",
+      "item.ssc_14.closet_green": "Green closet",
+      "item.ssc_14.closet_mixed": "Mixed closet",
+      "item.ssc_14.closet_n_2": "N2 closet",
+      "item.ssc_14.closet_orange": "Orange closet",
+      "item.ssc_14.closet_pink": "Pink closet",
+      "item.ssc_14.wood": "Wood",
+      "item.ssc_14.glass_table": "Glass Table",
+      "item.ssc_14.glass_airlock_d_1": "Glass Airlock",
+      "item.ssc_14.astro_ace_foam_power": "Astro-Ace Foam Power",
+      "item.ssc_14.foam_dart": "Foam Dart",
+      "subtitles.foam_rifle_charging": "",
+      "subtitles.foam_rifle_shot": "",
+      "subtitles.foam_rifle_discharge": "",
+      "item.ssc_14.bullet_35_cartridge": "Bullet cartridge (.35)"
     },
     "ru_ru": {
       "biome.ssc_14.spaceb": "Космос",
@@ -26340,7 +26862,24 @@
       "gui.ssc_14.access_config_menu.Kitchen": "",
       "gui.ssc_14.access_config_menu.Church": "",
       "gui.ssc_14.access_config_menu.HoP": "",
-      "gui.ssc_14.access_config_menu.HoS": ""
+      "gui.ssc_14.access_config_menu.HoS": "",
+      "item.ssc_14.closet_black": "Чёрный шкафчик",
+      "item.ssc_14.closet_blue": "Синий шкафчик",
+      "item.ssc_14.closet_gray": "Серый шкафчик",
+      "item.ssc_14.closet_green": "Зелёный шкафчик",
+      "item.ssc_14.closet_mixed": "Микс шкафчик",
+      "item.ssc_14.closet_n_2": "Шкафчик с N2",
+      "item.ssc_14.closet_orange": "Оранжевый шкафчик",
+      "item.ssc_14.closet_pink": "Розовый шкафчик",
+      "item.ssc_14.wood": "Древесина",
+      "item.ssc_14.glass_table": "Стеклянный стол",
+      "item.ssc_14.glass_airlock_d_1": "Стеклянный шлюз",
+      "item.ssc_14.astro_ace_foam_power": "Астро-Ас Сила Пенопласта",
+      "item.ssc_14.foam_dart": "Поролоновый дротик",
+      "subtitles.foam_rifle_charging": "",
+      "subtitles.foam_rifle_shot": "",
+      "subtitles.foam_rifle_discharge": "",
+      "item.ssc_14.bullet_35_cartridge": "Bullet (.35)"
     }
   },
   "metadata": {
@@ -26793,6 +27332,10 @@
               {
                 "name": "MK58",
                 "children": []
+              },
+              {
+                "name": "Astro-Ace Foam Power",
+                "children": []
               }
             ]
           },
@@ -26970,8 +27513,8 @@
   "workspaceSettings": {
     "modid": "ssc_14",
     "modName": "Space Station Craft 14",
-    "version": "0.1.22",
-    "description": "Повторённая в Minecraft игра Space Station 14. Основатель - Space Kyyyst. В разработке принимали участие: almazar3, Mr_irak, Water Melon, sad2284. ",
+    "version": "0.1.23",
+    "description": "Повторённая в Minecraft игра Space Station 14. Основатель - Space Kyyyst. В разработке принимали участие: almazar3, Mr_irak, Water Melon, sad2284, Подхлебкин. ",
     "author": "Space_Kyyyst",
     "websiteURL": "https://www.youtube.com/@Space.kyyyst",
     "license": "Academic Free License v3.0",

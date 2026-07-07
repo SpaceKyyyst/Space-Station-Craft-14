@@ -881,5 +881,22 @@
   "item.ssc_14.syndicate_airlock_d_1": "Syndicate Airlock",
   "item.ssc_14.virology_airlock_d_1": "Virology Airlock",
   "item.ssc_14.closet_emerg": "Emergency closet",
-  "item.ssc_14.closet_fire": "Fire closet"
+  "item.ssc_14.closet_fire": "Fire closet",
+  "item.ssc_14.closet_black": "Black closet",
+  "item.ssc_14.closet_blue": "Blue closet",
+  "item.ssc_14.closet_gray": "Gray closet",
+  "item.ssc_14.closet_green": "Green closet",
+  "item.ssc_14.closet_mixed": "Mixed closet",
+  "item.ssc_14.closet_n_2": "N2 closet",
+  "item.ssc_14.closet_orange": "Orange closet",
+  "item.ssc_14.closet_pink": "Pink closet",
+  "item.ssc_14.wood": "Wood",
+  "item.ssc_14.glass_table": "Glass Table",
+  "item.ssc_14.glass_airlock_d_1": "Glass Airlock",
+  "item.ssc_14.astro_ace_foam_power": "Astro-Ace Foam Power",
+  "item.ssc_14.foam_dart": "Foam Dart",
+  "subtitles.foam_rifle_charging": "",
+  "subtitles.foam_rifle_shot": "",
+  "subtitles.foam_rifle_discharge": "",
+  "item.ssc_14.bullet_35_cartridge": "Bullet cartridge (.35)"
 }

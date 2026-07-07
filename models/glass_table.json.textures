@@ -1,0 +1,100 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "2": "glass_table_texture"
+      }
+    },
+    "glass_table_n": {
+      "name": "glass_table_n",
+      "map": {
+        "2": "glass_table_texture_n"
+      }
+    },
+    "glass_table_e": {
+      "name": "glass_table_e",
+      "map": {
+        "2": "glass_table_texture_e"
+      }
+    },
+    "glass_table_s": {
+      "name": "glass_table_s",
+      "map": {
+        "2": "glass_table_texture_s"
+      }
+    },
+    "glass_table_w": {
+      "name": "glass_table_w",
+      "map": {
+        "2": "glass_table_texture_w"
+      }
+    },
+    "glass_table_ne": {
+      "name": "glass_table_ne",
+      "map": {
+        "2": "glass_table_texture_ne"
+      }
+    },
+    "glass_table_es": {
+      "name": "glass_table_es",
+      "map": {
+        "2": "glass_table_texture_es"
+      }
+    },
+    "glass_table_sw": {
+      "name": "glass_table_sw",
+      "map": {
+        "2": "glass_table_texture_sw"
+      }
+    },
+    "glass_table_nw": {
+      "name": "glass_table_nw",
+      "map": {
+        "2": "glass_table_texture_nw"
+      }
+    },
+    "glass_table_ns": {
+      "name": "glass_table_ns",
+      "map": {
+        "2": "glass_table_texture_ns"
+      }
+    },
+    "glass_table_ew": {
+      "name": "glass_table_ew",
+      "map": {
+        "2": "glass_table_texture_ew"
+      }
+    },
+    "glass_table_nsw": {
+      "name": "glass_table_nsw",
+      "map": {
+        "2": "glass_table_texture_nsw"
+      }
+    },
+    "glass_table_nes": {
+      "name": "glass_table_nes",
+      "map": {
+        "2": "glass_table_texture_nes"
+      }
+    },
+    "glass_table_new": {
+      "name": "glass_table_new",
+      "map": {
+        "2": "glass_table_texture_new"
+      }
+    },
+    "glass_table_esw": {
+      "name": "glass_table_esw",
+      "map": {
+        "2": "glass_table_texture_esw"
+      }
+    },
+    "glass_table_nesw": {
+      "name": "glass_table_nesw",
+      "map": {
+        "2": "glass_table_texture_nesw"
+      }
+    }
+  }
+}

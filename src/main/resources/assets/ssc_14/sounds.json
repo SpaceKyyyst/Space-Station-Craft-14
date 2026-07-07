@@ -574,5 +574,29 @@
         "stream": false
       }
     ]
+  },
+  "foam_rifle_charging": {
+    "sounds": [
+      {
+        "name": "ssc_14:foam_rifle_charging",
+        "stream": false
+      }
+    ]
+  },
+  "foam_rifle_shot": {
+    "sounds": [
+      {
+        "name": "ssc_14:foam_rifle_shot",
+        "stream": false
+      }
+    ]
+  },
+  "foam_rifle_discharge": {
+    "sounds": [
+      {
+        "name": "ssc_14:foam_rifle_discharge",
+        "stream": false
+      }
+    ]
   }
 }

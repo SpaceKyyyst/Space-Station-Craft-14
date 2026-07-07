@@ -23,6 +23,7 @@ public class Ssc14ModModels {
 		event.registerLayerDefinition(Modelcloaks_cap.LAYER_LOCATION, Modelcloaks_cap::createBodyLayer);
 		event.registerLayerDefinition(Modelgloves_equipped.LAYER_LOCATION, Modelgloves_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelheadset_equipped.LAYER_LOCATION, Modelheadset_equipped::createBodyLayer);
+		event.registerLayerDefinition(Modelhead_cone_equipped.LAYER_LOCATION, Modelhead_cone_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelarmor_security.LAYER_LOCATION, Modelarmor_security::createBodyLayer);
 		event.registerLayerDefinition(Modelboots_magboots.LAYER_LOCATION, Modelboots_magboots::createBodyLayer);
 		event.registerLayerDefinition(Modelhelmets_eva_large_equipped.LAYER_LOCATION, Modelhelmets_eva_large_equipped::createBodyLayer);
@@ -32,8 +33,8 @@ public class Ssc14ModModels {
 		event.registerLayerDefinition(Modelmale_boxers.LAYER_LOCATION, Modelmale_boxers::createBodyLayer);
 		event.registerLayerDefinition(Modelmouses.LAYER_LOCATION, Modelmouses::createBodyLayer);
 		event.registerLayerDefinition(Modeldecal_1.LAYER_LOCATION, Modeldecal_1::createBodyLayer);
+		event.registerLayerDefinition(Modelfoam_dart.LAYER_LOCATION, Modelfoam_dart::createBodyLayer);
 		event.registerLayerDefinition(Modelheadsets.LAYER_LOCATION, Modelheadsets::createBodyLayer);
-		event.registerLayerDefinition(Modelhelmet_cone_equipped.LAYER_LOCATION, Modelhelmet_cone_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modeltanks_suitstorage_equipped.LAYER_LOCATION, Modeltanks_suitstorage_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelsoles_equipped.LAYER_LOCATION, Modelsoles_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelhelmet_security.LAYER_LOCATION, Modelhelmet_security::createBodyLayer);

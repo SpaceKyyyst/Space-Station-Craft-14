@@ -11,11 +11,7 @@
     "animations": [],
     "name": "MK58",
     "rarity": "COMMON",
-    "creativeTabs": [
-      {
-        "value": "CUSTOM:SSC14Items"
-      }
-    ],
+    "creativeTabs": [],
     "stackSize": 1,
     "enchantability": 0,
     "useDuration": -10,

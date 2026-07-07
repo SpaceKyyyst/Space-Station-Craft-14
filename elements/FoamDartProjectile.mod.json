@@ -1,0 +1,23 @@
+{
+  "_fv": 85,
+  "_type": "projectile",
+  "definition": {
+    "projectileItem": {
+      "value": "CUSTOM:FoamDart"
+    },
+    "showParticles": false,
+    "actionSound": {
+      "value": "entity.arrow.shoot"
+    },
+    "igniteFire": false,
+    "disableGravity": false,
+    "disableDiscarding": true,
+    "power": 2.0,
+    "damage": 0.0,
+    "knockback": 0,
+    "entityModel": "Modelfoam_dart",
+    "customModelTexture": "foam_dart_texture.png",
+    "modelWidth": 0.1,
+    "modelHeight": 0.30000000000000004
+  }
+}

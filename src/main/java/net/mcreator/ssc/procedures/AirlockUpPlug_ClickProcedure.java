@@ -6,7 +6,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.core.BlockPos;
-import net.mcreator.ssc.block.BaseAirlockD1Block;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
+import net.minecraft.resources.ResourceLocation;
 
 public class AirlockUpPlug_ClickProcedure {
 
@@ -17,8 +19,8 @@ public class AirlockUpPlug_ClickProcedure {
 		BlockPos airlockPos = BlockPos.containing(x, y - 1, z);
 		BlockState airlockState = world.getBlockState(airlockPos);
 		
-		// Проверяем, что там действительно наш шлюз
-		if (airlockState.getBlock() instanceof BaseAirlockD1Block) {
+		// Проверяем, что блок соответствует тегу #ssc14:airlocks
+		if (airlockState.is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("ssc14:airlocks")))) {
 			// Передаём управление основной процедуре
 			// 🔧 Важно: приводим LevelAccessor к Level для sendBlockUpdated
 			if (world instanceof Level level) {

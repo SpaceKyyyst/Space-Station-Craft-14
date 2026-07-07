@@ -85,4 +85,7 @@ public class Ssc14ModSounds {
 	public static final DeferredHolder<SoundEvent, SoundEvent> ITEMS_PISTOL_RELOADING = REGISTRY.register("items_pistol_reloading", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "items_pistol_reloading")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> ITEMS_PISTOL_MAG_IN = REGISTRY.register("items_pistol_mag_in", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "items_pistol_mag_in")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> ITEMS_PISTOL_MAG_OUT = REGISTRY.register("items_pistol_mag_out", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "items_pistol_mag_out")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> FOAM_RIFLE_CHARGING = REGISTRY.register("foam_rifle_charging", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "foam_rifle_charging")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> FOAM_RIFLE_SHOT = REGISTRY.register("foam_rifle_shot", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "foam_rifle_shot")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> FOAM_RIFLE_DISCHARGE = REGISTRY.register("foam_rifle_discharge", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("ssc_14", "foam_rifle_discharge")));
 }

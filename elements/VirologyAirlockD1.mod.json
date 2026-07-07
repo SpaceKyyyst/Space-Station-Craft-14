@@ -474,7 +474,7 @@
         "textureRight": "",
         "textureBack": "",
         "renderType": 2,
-        "customModelName": "airlock_hacked:virology_panelop",
+        "customModelName": "airlock_hacked:virology",
         "particleTexture": "",
         "hasCustomBoundingBox": false,
         "boundingBoxes": [

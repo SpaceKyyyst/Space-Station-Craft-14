@@ -777,5 +777,22 @@
   "gui.ssc_14.access_config_menu.Kitchen": "",
   "gui.ssc_14.access_config_menu.Church": "",
   "gui.ssc_14.access_config_menu.HoP": "",
-  "gui.ssc_14.access_config_menu.HoS": ""
+  "gui.ssc_14.access_config_menu.HoS": "",
+  "item.ssc_14.closet_black": "Чёрный шкафчик",
+  "item.ssc_14.closet_blue": "Синий шкафчик",
+  "item.ssc_14.closet_gray": "Серый шкафчик",
+  "item.ssc_14.closet_green": "Зелёный шкафчик",
+  "item.ssc_14.closet_mixed": "Микс шкафчик",
+  "item.ssc_14.closet_n_2": "Шкафчик с N2",
+  "item.ssc_14.closet_orange": "Оранжевый шкафчик",
+  "item.ssc_14.closet_pink": "Розовый шкафчик",
+  "item.ssc_14.wood": "Древесина",
+  "item.ssc_14.glass_table": "Стеклянный стол",
+  "item.ssc_14.glass_airlock_d_1": "Стеклянный шлюз",
+  "item.ssc_14.astro_ace_foam_power": "Астро-Ас Сила Пенопласта",
+  "item.ssc_14.foam_dart": "Поролоновый дротик",
+  "subtitles.foam_rifle_charging": "",
+  "subtitles.foam_rifle_shot": "",
+  "subtitles.foam_rifle_discharge": "",
+  "item.ssc_14.bullet_35_cartridge": "Bullet (.35)"
 }

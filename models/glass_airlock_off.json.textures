@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "glass_airlock_texture"
+      }
+    },
+    "panelop": {
+      "name": "panelop",
+      "map": {
+        "0": "glass_airlock_panel_open_texture"
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelhelmet_cone_equipped;
+import net.mcreator.ssc.client.model.Modelhead_cone_equipped;
 
 import java.util.Map;
 import java.util.Collections;
@@ -22,11 +22,11 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class ConeHelmetRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/cone_equipped.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/head_cone_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public ConeHelmetRenderer() {
-        Modelhelmet_cone_equipped model = new Modelhelmet_cone_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modelhelmet_cone_equipped.LAYER_LOCATION));
+        Modelhead_cone_equipped model = new Modelhead_cone_equipped(Minecraft.getInstance().getEntityModels().bakeLayer(Modelhead_cone_equipped.LAYER_LOCATION));
         this.humanoidModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of(
             "head", new ModelPart(Collections.emptyList(), Map.of(
                     "head", model.head,

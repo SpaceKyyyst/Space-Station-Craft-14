@@ -166,6 +166,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.SECURITY_AIRLOCK_D_1.get().asItem());
 				tabData.accept(Ssc14ModBlocks.SYNDICATE_AIRLOCK_D_1.get().asItem());
 				tabData.accept(Ssc14ModBlocks.VIROLOGY_AIRLOCK_D_1.get().asItem());
+				tabData.accept(Ssc14ModBlocks.GLASS_AIRLOCK_D_1.get().asItem());
 				tabData.accept(Ssc14ModBlocks.WALL_CARCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.GRILLE.get().asItem());
@@ -186,12 +187,21 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.COMMUNICATION_SERVERS.get().asItem());
 				tabData.accept(Ssc14ModBlocks.PORTABLE_SHEATER.get().asItem());
 				tabData.accept(Ssc14ModBlocks.MICROWAWE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.CLOSET_SECURE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CLOSET.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CLOSET_EMERG.get().asItem());
+				tabData.accept(Ssc14ModBlocks.CLOSET_N_2.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CLOSET_FIRE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.CLOSET_BLACK.get().asItem());
+				tabData.accept(Ssc14ModBlocks.CLOSET_BLUE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.CLOSET_GRAY.get().asItem());
+				tabData.accept(Ssc14ModBlocks.CLOSET_GREEN.get().asItem());
+				tabData.accept(Ssc14ModBlocks.CLOSET_MIXED.get().asItem());
+				tabData.accept(Ssc14ModBlocks.CLOSET_ORANGE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.CLOSET_PINK.get().asItem());
+				tabData.accept(Ssc14ModBlocks.CLOSET_SECURE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.STEEL_TABLE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.WOOD_TABLE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.GLASS_TABLE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.STEEL_CHAIR.get().asItem());
 				tabData.accept(Ssc14ModBlocks.WOOD_CHAIR.get().asItem());
 				tabData.accept(Ssc14ModBlocks.OFICE_BLACK_CHAIR.get().asItem());
@@ -244,6 +254,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.SSC_14_GOLD.get());
 				tabData.accept(Ssc14ModItems.SILVER.get());
 				tabData.accept(Ssc14ModItems.URAN.get());
+				tabData.accept(Ssc14ModItems.WOOD.get());
 				tabData.accept(Ssc14ModItems.RAW_IRON.get());
 				tabData.accept(Ssc14ModItems.RAW_QUARTZ.get());
 				tabData.accept(Ssc14ModItems.RAW_COAL.get());
@@ -259,6 +270,11 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.GAUZE.get());
 				tabData.accept(Ssc14ModItems.OINTMENT.get());
 				tabData.accept(Ssc14ModBlocks.C_4.get().asItem());
+				tabData.accept(Ssc14ModItems.ASTRO_ACE_FOAM_POWER.get());
+				tabData.accept(Ssc14ModItems.FOAM_DART.get());
+				tabData.accept(Ssc14ModItems.MK_58.get());
+				tabData.accept(Ssc14ModItems.MAGAZINE_PISTOL_35.get());
+				tabData.accept(Ssc14ModItems.BULLET_35ITEM.get());
 				tabData.accept(Ssc14ModItems.CAPACITOR.get());
 				tabData.accept(Ssc14ModItems.MATTER_BIN.get());
 				tabData.accept(Ssc14ModItems.MICRO_MANIPULATOR.get());
@@ -460,12 +476,9 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.BORITOS_TRASH.get());
 				tabData.accept(Ssc14ModItems.POPCORN_TRASH.get());
 				tabData.accept(Ssc14ModItems.ENERGY_BAR_TRASH.get());
+				tabData.accept(Ssc14ModItems.BULLET_35_CARTRIDGE.get());
 				tabData.accept(Ssc14ModItems.ROTTEN_MEAT.get());
 				tabData.accept(Ssc14ModItems.EGGSHELL.get());
-				tabData.accept(Ssc14ModItems.MAGAZINE_PISTOL_35.get());
-				tabData.accept(Ssc14ModItems.BULLET_35ITEM.get());
-				tabData.accept(Ssc14ModItems.MAGAZINE_PISTOL_35EMPTY.get());
-				tabData.accept(Ssc14ModItems.MK_58NOMAGZ.get());
 			}).withTabsBefore(SSC_14_OBJECTS.getId()).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14MOBS = REGISTRY.register("ssc_14mobs",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14mobs")).icon(() -> new ItemStack(Ssc14ModItems.MOUSE_BROWN_SPAWN_EGG.get())).displayItems((parameters, tabData) -> {

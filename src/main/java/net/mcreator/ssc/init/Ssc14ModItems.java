@@ -484,6 +484,20 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> VIROLOGY_AIRLOCK_D_1;
 	public static final DeferredItem<Item> CLOSET_EMERG;
 	public static final DeferredItem<Item> CLOSET_FIRE;
+	public static final DeferredItem<Item> CLOSET_BLACK;
+	public static final DeferredItem<Item> CLOSET_BLUE;
+	public static final DeferredItem<Item> CLOSET_GRAY;
+	public static final DeferredItem<Item> CLOSET_GREEN;
+	public static final DeferredItem<Item> CLOSET_MIXED;
+	public static final DeferredItem<Item> CLOSET_N_2;
+	public static final DeferredItem<Item> CLOSET_ORANGE;
+	public static final DeferredItem<Item> CLOSET_PINK;
+	public static final DeferredItem<Item> WOOD;
+	public static final DeferredItem<Item> GLASS_TABLE;
+	public static final DeferredItem<Item> GLASS_AIRLOCK_D_1;
+	public static final DeferredItem<Item> ASTRO_ACE_FOAM_POWER;
+	public static final DeferredItem<Item> FOAM_DART;
+	public static final DeferredItem<Item> BULLET_35_CARTRIDGE;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -939,6 +953,20 @@ public class Ssc14ModItems {
 		VIROLOGY_AIRLOCK_D_1 = block(Ssc14ModBlocks.VIROLOGY_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
 		CLOSET_EMERG = block(Ssc14ModBlocks.CLOSET_EMERG, new Item.Properties().stacksTo(1).fireResistant());
 		CLOSET_FIRE = block(Ssc14ModBlocks.CLOSET_FIRE, new Item.Properties().stacksTo(1).fireResistant());
+		CLOSET_BLACK = block(Ssc14ModBlocks.CLOSET_BLACK, new Item.Properties().stacksTo(1).fireResistant());
+		CLOSET_BLUE = block(Ssc14ModBlocks.CLOSET_BLUE, new Item.Properties().stacksTo(1).fireResistant());
+		CLOSET_GRAY = block(Ssc14ModBlocks.CLOSET_GRAY, new Item.Properties().stacksTo(1).fireResistant());
+		CLOSET_GREEN = block(Ssc14ModBlocks.CLOSET_GREEN, new Item.Properties().stacksTo(1).fireResistant());
+		CLOSET_MIXED = block(Ssc14ModBlocks.CLOSET_MIXED, new Item.Properties().stacksTo(1).fireResistant());
+		CLOSET_N_2 = block(Ssc14ModBlocks.CLOSET_N_2, new Item.Properties().stacksTo(1).fireResistant());
+		CLOSET_ORANGE = block(Ssc14ModBlocks.CLOSET_ORANGE, new Item.Properties().stacksTo(1).fireResistant());
+		CLOSET_PINK = block(Ssc14ModBlocks.CLOSET_PINK, new Item.Properties().stacksTo(1).fireResistant());
+		WOOD = register("wood", WoodItem::new);
+		GLASS_TABLE = block(Ssc14ModBlocks.GLASS_TABLE, new Item.Properties().stacksTo(1));
+		GLASS_AIRLOCK_D_1 = block(Ssc14ModBlocks.GLASS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
+		ASTRO_ACE_FOAM_POWER = register("astro_ace_foam_power", AstroAceFoamPowerItem::new);
+		FOAM_DART = register("foam_dart", FoamDartItem::new);
+		BULLET_35_CARTRIDGE = register("bullet_35_cartridge", Bullet35CartridgeItem::new);
 	}
 
 	// Start of user code block custom items
