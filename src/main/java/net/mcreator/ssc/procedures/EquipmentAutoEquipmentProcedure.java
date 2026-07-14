@@ -15,7 +15,6 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
-// ДОБАВЛЕНЫ ИМПОРТЫ ДЛЯ ТЕГОВ И РЕСУРСОВ
 import net.minecraft.tags.ItemTags;
 import net.minecraft.resources.ResourceLocation;
 
@@ -54,7 +53,6 @@ public class EquipmentAutoEquipmentProcedure {
         }
 
         // Проверяем, является ли предмет курьо И не входит ли он в тег "noautoequip"
-        // Мы используем уже готовую переменную itemInHand, что делает код чище и быстрее
         if (Ssc14Mod.CuriosApiHelper.isCurioItem(itemInHand) && !itemInHand.is(ItemTags.create(ResourceLocation.parse("ssc14:noautoequip")))) {
             
             // Получаем инвентарь Curios игрока
@@ -78,11 +76,20 @@ public class EquipmentAutoEquipmentProcedure {
                 
                 // ПРОВЕРКА: спрашиваем у самого инвентаря, можно ли положить сюда этот предмет
                 if (inv.isItemValid(0, itemInHand)) {
-                    if (inv.getStackInSlot(0).isEmpty()) {
+                    ItemStack stackInSlot = inv.getStackInSlot(0);
+
+                    if (stackInSlot.isEmpty()) {
                         targetSlot = slotId;
                         targetInv = inv;
                         break; // Приоритет 1: нашли пустой подходящий слот, сразу используем его
                     } else if (targetSlot == null) {
+                        // --- НОВАЯ ФИЛЬТРАЦИЯ ДЛЯ ВСТРОЕННЫХ ШЛЕМОВ ---
+                        // Если целевой слот - headdress, и в нём уже находится шлем из тега,
+                        // то мы ЗАПРЕЩАЕМ авто-замену в этот слот, чтобы шлем не выпал в руку.
+                        if ("headdress".equals(slotId) && stackInSlot.is(ItemTags.create(ResourceLocation.parse("ssc14:hardsuits_helmets")))) {
+                            continue; // Пропускаем этот слот, ищем другие подходящие
+                        }
+
                         // Приоритет 2: запоминаем первый подходящий слот на случай, если все они заняты (для обмена)
                         targetSlot = slotId;
                         targetInv = inv;
@@ -110,6 +117,11 @@ public class EquipmentAutoEquipmentProcedure {
                     targetInv.insertItem(0, itemInHand.copyWithCount(1), false);
                     itemInHand.shrink(1);
                 } else {
+                    // Дополнительная (двойная) проверка безопасности перед непосредственной заменой
+                    if ("headdress".equals(targetSlot) && equippedItem.is(ItemTags.create(ResourceLocation.parse("ssc14:hardsuits_helmets")))) {
+                        return; // Экстренный выход, если шлем как-то попал в targetSlot для обмена
+                    }
+
                     // Слот занят: выполняем обмен (swap)
                     // 1. Забираем предмет из слота
                     ItemStack extracted = targetInv.extractItem(0, 1, false);

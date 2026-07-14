@@ -1,0 +1,32 @@
+{
+  "_fv": 85,
+  "_type": "curiosbauble",
+  "definition": {
+    "item": "HardsuitSalvage",
+    "slotType": "Outerwear",
+    "slotAmount": 1,
+    "addSlot": false,
+    "enderMask": false,
+    "friendlyPigs": false,
+    "snowWalk": false,
+    "equipSound": {
+      "value": ""
+    },
+    "hasModel": true,
+    "baubleModel": "Modelhardsuit_salvage_equipped",
+    "baubleModelTexture": "hardsuit_salvage_off_equipped_texture.png",
+    "onEquip": {
+      "name": "OuterclothingSalvageCAPIBaubleIsEquipped"
+    },
+    "onUnequip": {
+      "name": "OuterclothingSalvageCAPIBaubleIsUnequipped"
+    },
+    "helmetModelPart": "Empty",
+    "bodyModelPart": "torso",
+    "armsModelPartL": "l_arm",
+    "armsModelPartR": "r_arm",
+    "leggingsModelPartL": "l_leg",
+    "leggingsModelPartR": "r_leg",
+    "disabledToggles": []
+  }
+}

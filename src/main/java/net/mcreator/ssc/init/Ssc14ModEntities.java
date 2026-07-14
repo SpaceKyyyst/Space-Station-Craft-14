@@ -61,6 +61,10 @@ public class Ssc14ModEntities {
 			EntityType.Builder.<Bullet35Entity>of(Bullet35Entity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.1f, 0.1f));
 	public static final DeferredHolder<EntityType<?>, EntityType<FoamDartProjectileEntity>> FOAM_DART_PROJECTILE = register("foam_dart_projectile",
 			EntityType.Builder.<FoamDartProjectileEntity>of(FoamDartProjectileEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.1f, 0.3f));
+	public static final DeferredHolder<EntityType<?>, EntityType<PosterEntity>> POSTER = register("poster",
+			EntityType.Builder.<PosterEntity>of(PosterEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+
+					.sized(0.1f, 1f));
 
 	// Start of user code block custom entities
 	// End of user code block custom entities
@@ -79,6 +83,7 @@ public class Ssc14ModEntities {
 		MouseBrownEntity.init(event);
 		MouseGrayEntity.init(event);
 		MouseWhiteEntity.init(event);
+		PosterEntity.init(event);
 	}
 
 	@SubscribeEvent
@@ -92,5 +97,6 @@ public class Ssc14ModEntities {
 		event.put(MOUSE_BROWN.get(), MouseBrownEntity.createAttributes().build());
 		event.put(MOUSE_GRAY.get(), MouseGrayEntity.createAttributes().build());
 		event.put(MOUSE_WHITE.get(), MouseWhiteEntity.createAttributes().build());
+		event.put(POSTER.get(), PosterEntity.createAttributes().build());
 	}
 }

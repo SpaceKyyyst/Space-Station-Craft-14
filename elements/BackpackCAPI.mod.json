@@ -1,0 +1,29 @@
+{
+  "_fv": 85,
+  "_type": "curiosbauble",
+  "definition": {
+    "item": "Backpack2",
+    "slotType": "Backpack",
+    "slotAmount": 1,
+    "addSlot": false,
+    "enderMask": false,
+    "friendlyPigs": false,
+    "snowWalk": false,
+    "equipSound": {
+      "value": ""
+    },
+    "hasModel": true,
+    "baubleModel": "Modelbackpack_equipped",
+    "baubleModelTexture": "backpack_equipped_texture.png",
+    "onEquip": {
+      "name": "Equip_BaseSound_PR_"
+    },
+    "helmetModelPart": "Empty",
+    "bodyModelPart": "torso",
+    "armsModelPartL": "Empty",
+    "armsModelPartR": "Empty",
+    "leggingsModelPartL": "Empty",
+    "leggingsModelPartR": "Empty",
+    "disabledToggles": []
+  }
+}

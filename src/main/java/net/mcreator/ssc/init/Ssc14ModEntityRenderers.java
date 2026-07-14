@@ -25,5 +25,6 @@ public class Ssc14ModEntityRenderers {
 		event.registerEntityRenderer(Ssc14ModEntities.MOUSE_WHITE.get(), MouseWhiteRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.BULLET_35.get(), Bullet35Renderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.FOAM_DART_PROJECTILE.get(), FoamDartProjectileRenderer::new);
+		event.registerEntityRenderer(Ssc14ModEntities.POSTER.get(), PosterRenderer::new);
 	}
 }

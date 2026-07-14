@@ -1,0 +1,85 @@
+{
+  "_fv": 85,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 166,
+    "height": 166,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "",
+          "name": "R",
+          "width": 120,
+          "height": 20,
+          "x": 155,
+          "y": 56,
+          "locked": false
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "",
+          "name": "G",
+          "width": 120,
+          "height": 20,
+          "x": 155,
+          "y": 88,
+          "locked": false
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "",
+          "name": "B",
+          "width": 120,
+          "height": 20,
+          "x": 155,
+          "y": 120,
+          "locked": false
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_na_etoi_koordinatie_razmiestit_tsv",
+          "text": {
+            "fixedValue": "на этой координате разместить цветовой кубик"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "hasShadow": false,
+          "x": 206,
+          "y": 164,
+          "locked": false
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "decals_gui_2.png",
+          "use1Xscale": false,
+          "x": 131,
+          "y": 37,
+          "locked": true
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 16,
+      "sy": 16,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

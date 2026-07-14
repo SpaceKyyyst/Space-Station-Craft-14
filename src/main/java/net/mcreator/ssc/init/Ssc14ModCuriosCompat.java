@@ -1017,5 +1017,43 @@ public class Ssc14ModCuriosCompat {
 				return stack;
 			}
 		}, Ssc14ModItems.HEADSET_SYNDICATE.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+
+			@Override
+			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
+				OuterclothingSalvageCAPIBaubleIsEquippedProcedure.execute(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ(), slotContext.entity());
+			}
+
+			@Override
+			public void onUnequip(SlotContext slotContext, ItemStack newStack) {
+				OuterclothingSalvageCAPIBaubleIsUnequippedProcedure.execute(slotContext.entity());
+			}
+		}, Ssc14ModItems.HARDSUIT_SALVAGE.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+
+			@Override
+			public boolean canUnequip(SlotContext slotContext) {
+				return HardsuitSalvageHelmetCAPI_unequipebleProcedure.execute();
+			}
+		}, Ssc14ModItems.HARDSUIT_SALVAGE_HELMET.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+
+			@Override
+			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
+				Equip_BaseSound_PR_Procedure.execute(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
+			}
+		}, Ssc14ModItems.BACKPACK_2.get());
 	}
 }

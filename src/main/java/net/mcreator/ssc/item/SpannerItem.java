@@ -8,7 +8,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +16,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.tags.TagKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.resources.ResourceLocation;
@@ -25,7 +23,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.Spanner_UseProcedure;
 import net.mcreator.ssc.procedures.SpannerDAMAGEProcedure;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
@@ -70,12 +67,5 @@ public class SpannerItem extends Item {
 	public void hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
 		itemstack.hurtAndBreak(2, entity, LivingEntity.getSlotForHand(entity.getUsedItemHand()));
 		SpannerDAMAGEProcedure.execute(entity.level(), entity);
-	}
-
-	@Override
-	public InteractionResult useOn(UseOnContext context) {
-		super.useOn(context);
-		Spanner_UseProcedure.execute(context.getLevel(), context.getClickedPos().getX(), context.getClickedPos().getY(), context.getClickedPos().getZ(), context.getLevel().getBlockState(context.getClickedPos()), context.getPlayer());
-		return InteractionResult.SUCCESS;
 	}
 }

@@ -1,0 +1,29 @@
+{
+  "_fv": 85,
+  "_type": "curiosbauble",
+  "definition": {
+    "item": "HardsuitSalvageHelmet",
+    "slotType": "Headdress",
+    "slotAmount": 1,
+    "addSlot": false,
+    "enderMask": false,
+    "friendlyPigs": false,
+    "snowWalk": false,
+    "equipSound": {
+      "value": ""
+    },
+    "unequipCondition": {
+      "name": "HardsuitSalvageHelmetCAPI_unequipeble"
+    },
+    "hasModel": true,
+    "baubleModel": "Modelhardsuit_helmet_salvage_equipped",
+    "baubleModelTexture": "hardsuit_salvage_off_equipped_texture.png",
+    "helmetModelPart": "helmet",
+    "bodyModelPart": "Empty",
+    "armsModelPartL": "Empty",
+    "armsModelPartR": "Empty",
+    "leggingsModelPartL": "Empty",
+    "leggingsModelPartR": "Empty",
+    "disabledToggles": []
+  }
+}

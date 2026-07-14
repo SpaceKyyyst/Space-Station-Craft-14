@@ -14,6 +14,7 @@ repositories {
 dependencies {
     implementation "maven.modrinth:ItemPhysic:1.8.11"
     implementation "maven.modrinth:creativecore:2.14.7-neoforge"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)

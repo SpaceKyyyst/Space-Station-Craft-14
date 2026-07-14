@@ -8,7 +8,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +32,6 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.ssc.procedures.Welding_Fuel_chekProcedure;
 import net.mcreator.ssc.procedures.WelderOnOffPrProcedure;
 import net.mcreator.ssc.procedures.WelderOnDAMAGEProcedure;
-import net.mcreator.ssc.procedures.ActiveWelder_UseProcedure;
 import net.mcreator.ssc.procedures.ActiveWelder_FuelMinProcedure;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
@@ -87,13 +85,6 @@ public class ActiveWelderItem extends Item {
 		InteractionResult ar = super.use(world, entity, hand);
 		WelderOnOffPrProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
-	}
-
-	@Override
-	public InteractionResult useOn(UseOnContext context) {
-		super.useOn(context);
-		ActiveWelder_UseProcedure.execute(context.getLevel(), context.getClickedPos().getX(), context.getClickedPos().getY(), context.getClickedPos().getZ(), context.getLevel().getBlockState(context.getClickedPos()), context.getPlayer());
-		return InteractionResult.SUCCESS;
 	}
 
 	@Override

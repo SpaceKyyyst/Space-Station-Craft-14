@@ -107,5 +107,8 @@ public class Ssc14ModCuriosRenderers {
 		ICurioRenderer.register(Ssc14ModItems.HEADSET_SECURITY.get(), HeadsetSecurityCAPIRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.HEADSET_SERVICE.get(), HeadsetServiceCAPIRenderer::new);
 		ICurioRenderer.register(Ssc14ModItems.HEADSET_SYNDICATE.get(), HeadsetSyndicateCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HARDSUIT_SALVAGE.get(), HardsuitSalvageCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.HARDSUIT_SALVAGE_HELMET.get(), HardsuitSalvageHelmetCAPIRenderer::new);
+		ICurioRenderer.register(Ssc14ModItems.BACKPACK_2.get(), BackpackCAPIRenderer::new);
 	}
 }

@@ -38,9 +38,6 @@ public class ModArmorSetupProcedure {
         {
             String itemId = "ssc_14:helmet_security"; // 🔹 ID в нижнем регистре!
             
-            // 🔹 Формат: registerResistance("ID_предмета", "тип_урона", множитель_0.0-1.0);
-            // 🔹 0.1 = 10% защиты, 0.5 = 50%, 1.0 = 100% (полное поглощение)
-            
             ArmorResistanceHelper.registerResistance(itemId, "blunt", 0.1);      // 10% от ударного
             ArmorResistanceHelper.registerResistance(itemId, "slash", 0.1);      // 10% от режущего
             ArmorResistanceHelper.registerResistance(itemId, "piercing", 0.1);   // 10% от колющего
@@ -52,14 +49,51 @@ public class ModArmorSetupProcedure {
         }
         
         // ───────────────────────────────────────────────────────────
+        //  Скафандр утилизатора 
+        // ───────────────────────────────────────────────────────────
+        {
+            String itemId = "ssc_14:hardsuit_salvage"; // 🔹 ID в нижнем регистре!
+            
+            ArmorResistanceHelper.registerResistance(itemId, "blunt", 0.3);			// 30% от ударного
+            ArmorResistanceHelper.registerResistance(itemId, "slash", 0.4);			// 40% от режущего
+            ArmorResistanceHelper.registerResistance(itemId, "piercing", 0.3);		// 30% от колющего
+            ArmorResistanceHelper.registerResistance(itemId, "heat", 0.3);			// 30% от температурного
+            ArmorResistanceHelper.registerResistance(itemId, "caustic", 0.3);		// 30% от кислотного
+            ArmorResistanceHelper.registerResistance(itemId, "radiation", 0.7);		// 70% от радиации
+        }
+        
+        // ───────────────────────────────────────────────────────────
+        //  Шлем скафандра утилизатора 
+        // ───────────────────────────────────────────────────────────
+        {
+            String itemId = "ssc_14:hardsuit_salvage_helmet"; // 🔹 ID в нижнем регистре!
+            
+            ArmorResistanceHelper.registerResistance(itemId, "blunt", 0.1);			// 10% от ударного
+            ArmorResistanceHelper.registerResistance(itemId, "slash", 0.1);			// 10% от режущего
+            ArmorResistanceHelper.registerResistance(itemId, "piercing", 0.05);		// 5% от колющего
+            ArmorResistanceHelper.registerResistance(itemId, "heat", 0.1);			// 10% от температурного
+            ArmorResistanceHelper.registerResistance(itemId, "radiation", 0.75);	// 75% от радиации
+        }
+
+        
+        
+        // ───────────────────────────────────────────────────────────
         // 🧥 Пример: как добавить ещё один предмет (например, перчатки)
         // ───────────────────────────────────────────────────────────
+        
+            // 🔹 Формат: registerResistance("ID_предмета", "тип_урона", множитель_0.0-1.0);
+            // 🔹 0.1 = 10% защиты, 0.5 = 50%, 1.0 = 100% (полное поглощение)
+
         /*
         {
             String itemId = "ssc_14:gloves_security";
             
-            ArmorResistanceHelper.registerResistance(itemId, "blunt", 0.05);     // 5%
-            ArmorResistanceHelper.registerResistance(itemId, "heat", 0.1);       // 10%
+            ArmorResistanceHelper.registerResistance(itemId, "blunt", 0.3);			// 30% от ударного
+            ArmorResistanceHelper.registerResistance(itemId, "slash", 0.4);			// 40% от режущего
+            ArmorResistanceHelper.registerResistance(itemId, "piercing", 0.3);		// 30% от колющего
+            ArmorResistanceHelper.registerResistance(itemId, "heat", 0.3);			// 30% от температурного
+            ArmorResistanceHelper.registerResistance(itemId, "caustic", 0.3);		// 30% от кислотного
+            ArmorResistanceHelper.registerResistance(itemId, "radiation", 0.7);		// 70% от радиации
         }
         */
         

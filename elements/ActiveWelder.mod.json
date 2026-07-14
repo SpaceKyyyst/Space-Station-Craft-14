@@ -6,7 +6,7 @@
     "renderType": 1,
     "blockingRenderType": 0,
     "texture": "fire_w_an",
-    "customModelName": "welder:activ",
+    "customModelName": "welder_2:default",
     "blockingModelName": "Normal blocking",
     "guiTexture": "",
     "name": "Active Welder",
@@ -32,9 +32,6 @@
     "damageOnCrafting": false,
     "onRightClickedInAir": {
       "name": "WelderOnOffPr"
-    },
-    "onRightClickedOnBlock": {
-      "name": "ActiveWelder_Use"
     },
     "onEntityHitWith": {
       "name": "WelderOnDAMAGE"

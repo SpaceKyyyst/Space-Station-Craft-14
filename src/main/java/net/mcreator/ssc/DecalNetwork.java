@@ -12,7 +12,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.event.level.ChunkWatchEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
@@ -58,12 +57,10 @@ public class DecalNetwork {
     @SubscribeEvent
     public static void registerPackets(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar registrar = event.registrar("ssc_14").versioned("1");
-        // Явное указание обработчика пакета
         registrar.playToClient(
-            ClientboundChunkDecalsPacket.TYPE, 
-            ClientboundChunkDecalsPacket.STREAM_CODEC, 
+            ClientboundChunkDecalsPacket.TYPE,
+            ClientboundChunkDecalsPacket.STREAM_CODEC,
             (packet, context) -> context.enqueueWork(() -> {
-                System.out.println("[SS14-Decals] Client successfully received packet for chunk: " + packet.chunkPos() + " containing decals: " + packet.decals().size());
                 if (packet.decals().isEmpty()) {
                     CLIENT_DECAL_STORAGE.remove(packet.chunkPos());
                 } else {
@@ -77,10 +74,9 @@ public class DecalNetwork {
     public static void syncChunkToTrackingPlayers(LevelChunk chunk) {
         if (chunk.getLevel() instanceof ServerLevel serverLevel && DecalRegistry.DECAL_ATTACHMENT != null) {
             DecalRegistry.DecalListContainer container = chunk.getData(DecalRegistry.DECAL_ATTACHMENT);
-            if (container != null && !container.decals().isEmpty()) {
-                System.out.println("[SS14-Decals] Server pushing network data packet for chunk " + chunk.getPos());
-                PacketDistributor.sendToPlayersTrackingChunk(serverLevel, chunk.getPos(), new ClientboundChunkDecalsPacket(chunk.getPos(), container.decals()));
-            }
+            List<DecalData> decals = (container != null) ? container.decals() : List.of();
+            PacketDistributor.sendToPlayersTrackingChunk(serverLevel, chunk.getPos(),
+                    new ClientboundChunkDecalsPacket(chunk.getPos(), decals));
         }
     }
 
@@ -88,7 +84,13 @@ public class DecalNetwork {
     public static class ForgeEvents {
         @SubscribeEvent
         public static void onChunkWatch(ChunkWatchEvent.Watch event) {
-            syncChunkToTrackingPlayers(event.getChunk());
+            LevelChunk chunk = event.getChunk();
+            if (DecalRegistry.DECAL_ATTACHMENT == null) return;
+            DecalRegistry.DecalListContainer container = chunk.getData(DecalRegistry.DECAL_ATTACHMENT);
+            if (container != null && !container.decals().isEmpty()) {
+                PacketDistributor.sendToPlayer(event.getPlayer(),
+                        new ClientboundChunkDecalsPacket(chunk.getPos(), container.decals()));
+            }
         }
     }
 }

@@ -31,6 +31,8 @@ public class Ssc14ModScreens {
 		event.register(Ssc14ModMenus.NET_CONFIG_GUI.get(), NetConfigGUIScreen::new);
 		event.register(Ssc14ModMenus.EGG_CARTON_GUI.get(), EggCartonGUIScreen::new);
 		event.register(Ssc14ModMenus.MICROWAWE_GUI.get(), MicrowaweGUIScreen::new);
+		event.register(Ssc14ModMenus.DECAL_SCOLOR_GUI.get(), DECALScolorGUIScreen::new);
+		event.register(Ssc14ModMenus.BACKPACK_GUI.get(), BackpackGUIScreen::new);
 	}
 
 	public interface ScreenAccessor {

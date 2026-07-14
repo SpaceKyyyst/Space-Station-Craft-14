@@ -1,3 +1,4 @@
+
 package net.mcreator.ssc.procedures;
 
 import org.joml.Vector3f;
@@ -11,14 +12,18 @@ import net.neoforged.api.distmarker.Dist;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.client.renderer.entity.state.PlayerRenderState;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.mcreator.ssc.init.Ssc14ModRenderStateModifiers;
 import net.mcreator.ssc.init.Ssc14ModHumanoidModels;
@@ -30,6 +35,8 @@ import java.util.Collection;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
+
+import top.theillusivec4.curios.api.CuriosApi;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class HumanModelRenderProcedure {
@@ -59,9 +66,12 @@ public class HumanModelRenderProcedure {
 	}
 
 	public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
+		Entity dataEntity = state.getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
+		if (dataEntity == null) return;
+
 		PoseStack poseStack = playerRenderEvent.getPoseStack();
 		poseStack.pushPose();
-		CompoundTag playerData = state.getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY).getPersistentData();
+		CompoundTag playerData = dataEntity.getPersistentData();
 		float oldAnimationProgress = 0;
 		float oldAgeInTicks = 0;
 		if (playerData.contains("PlayerAnimationProgress")) {
@@ -101,6 +111,26 @@ public class HumanModelRenderProcedure {
 		poseStack.popPose();
 	}
 
+	private static boolean hasHardsuitInSlot(Player player, String slotId, String tagMain, String tagAlt, String itemMain, String itemAlt) {
+		var invOpt = CuriosApi.getCuriosInventory(player);
+		if (invOpt.isEmpty()) return false;
+		var handler = invOpt.get().getStacksHandler(slotId);
+		if (handler.isEmpty()) return false;
+		var stacks = handler.get().getStacks();
+		for (int i = 0; i < stacks.getSlots(); i++) {
+			ItemStack stack = stacks.getStackInSlot(i);
+			if (stack.isEmpty()) continue;
+			ResourceLocation loc = BuiltInRegistries.ITEM.getKey(stack.getItem());
+			if (stack.is(ItemTags.create(ResourceLocation.parse(tagMain)))
+					|| stack.is(ItemTags.create(ResourceLocation.parse(tagAlt)))
+					|| loc.toString().equals(itemMain)
+					|| loc.toString().equals(itemAlt)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static void execute(Entity entity, EntityModel entityModel, RenderPlayerEvent playerRenderEvent, PoseStack poseStack) {
 		execute(null, entity, entityModel, playerRenderEvent, poseStack);
 	}
@@ -108,29 +138,83 @@ public class HumanModelRenderProcedure {
 	private static void execute(@Nullable Event event, Entity entity, EntityModel entityModel, RenderPlayerEvent playerRenderEvent, PoseStack poseStack) {
 		if (entity == null || entityModel == null || playerRenderEvent == null || poseStack == null)
 			return;
-		double model_scale = 0;
-		double clothes_scale = 0;
-		model_scale = entity instanceof LivingEntity _livingEntity0 && _livingEntity0.getAttributes().hasAttribute(Attributes.SCALE) ? _livingEntity0.getAttribute(Attributes.SCALE).getValue() : 0;
-		clothes_scale = 1 / (entity instanceof LivingEntity _livingEntity1 && _livingEntity1.getAttributes().hasAttribute(Attributes.SCALE) ? _livingEntity1.getAttribute(Attributes.SCALE).getValue() : 0);
-		if (!entity.isInvisible()) {
-			poseStack.scale((float) model_scale, (float) model_scale, (float) model_scale);
-			{
-				ResourceLocation texture = (ResourceLocation.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png"));
-				renderHumanoid(playerRenderEvent, Ssc14ModHumanoidModels.HUMAN_MODEL, playerRenderEvent.getMultiBufferSource().getBuffer(RenderType.armorCutoutNoCull(texture)), playerRenderEvent.getRenderState());
-			}
-			poseStack.scale((float) clothes_scale, (float) clothes_scale, (float) clothes_scale);
+
+		double model_scale = 1;
+		if (entity instanceof LivingEntity livingEntity && livingEntity.getAttributes().hasAttribute(Attributes.SCALE)) {
+			model_scale = livingEntity.getAttribute(Attributes.SCALE).getValue();
 		}
-		((PlayerModel) entityModel).body.skipDraw = !(false);
-		((PlayerModel) entityModel).hat.skipDraw = !(false);
-		((PlayerModel) entityModel).head.skipDraw = !(false);
-		((PlayerModel) entityModel).jacket.skipDraw = !(false);
-		((PlayerModel) entityModel).leftArm.skipDraw = !(false);
-		((PlayerModel) entityModel).leftLeg.skipDraw = !(false);
-		((PlayerModel) entityModel).leftPants.skipDraw = !(false);
-		((PlayerModel) entityModel).leftSleeve.skipDraw = !(false);
-		((PlayerModel) entityModel).rightArm.skipDraw = !(false);
-		((PlayerModel) entityModel).rightLeg.skipDraw = !(false);
-		((PlayerModel) entityModel).rightPants.skipDraw = !(false);
-		((PlayerModel) entityModel).rightSleeve.skipDraw = !(false);
+		if (!(model_scale > 0)) {
+			model_scale = 1;
+		}
+
+		if (!entity.isInvisible()) {
+			poseStack.pushPose();
+			poseStack.scale((float) model_scale, (float) model_scale, (float) model_scale);
+
+			Ssc14ModHumanoidModels.HUMAN_MODEL.body.skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.jacket.skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.leftArm.skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.rightArm.skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.leftSleeve.skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.rightSleeve.skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.leftLeg.skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.rightLeg.skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.leftPants.skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.rightPants.skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.head.skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.head.getChild("head").skipDraw = false;
+			Ssc14ModHumanoidModels.HUMAN_MODEL.hat.skipDraw = false;
+
+			boolean hasHardsuitBody = false;
+			boolean hasHardsuitHelmet = false;
+
+			if (entity instanceof Player player) {
+				hasHardsuitBody = hasHardsuitInSlot(player, "outerwear",
+						"ssc14:hardsuits_body", "ssc_14:hardsuits_body",
+						"ssc_14:hardsuit_salvage", "ssc14:hardsuit_salvage");
+				hasHardsuitHelmet = hasHardsuitInSlot(player, "headdress",
+						"ssc14:hardsuits_helmets", "ssc_14:hardsuits_helmets",
+						"ssc_14:hardsuit_salvage_helmet", "ssc14:hardsuit_salvage_helmet");
+			}
+
+			if (hasHardsuitBody) {
+				Ssc14ModHumanoidModels.HUMAN_MODEL.body.skipDraw = true;
+				Ssc14ModHumanoidModels.HUMAN_MODEL.jacket.skipDraw = true;
+				Ssc14ModHumanoidModels.HUMAN_MODEL.leftArm.skipDraw = true;
+				Ssc14ModHumanoidModels.HUMAN_MODEL.rightArm.skipDraw = true;
+				Ssc14ModHumanoidModels.HUMAN_MODEL.leftSleeve.skipDraw = true;
+				Ssc14ModHumanoidModels.HUMAN_MODEL.rightSleeve.skipDraw = true;
+				Ssc14ModHumanoidModels.HUMAN_MODEL.leftLeg.skipDraw = true;
+				Ssc14ModHumanoidModels.HUMAN_MODEL.rightLeg.skipDraw = true;
+				Ssc14ModHumanoidModels.HUMAN_MODEL.leftPants.skipDraw = true;
+				Ssc14ModHumanoidModels.HUMAN_MODEL.rightPants.skipDraw = true;
+			}
+
+			if (hasHardsuitHelmet) {
+				Ssc14ModHumanoidModels.HUMAN_MODEL.head.skipDraw = true;
+				Ssc14ModHumanoidModels.HUMAN_MODEL.head.getChild("head").skipDraw = true;
+				Ssc14ModHumanoidModels.HUMAN_MODEL.hat.skipDraw = true;
+			}
+
+			ResourceLocation texture = ResourceLocation.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png");
+			renderHumanoid(playerRenderEvent, Ssc14ModHumanoidModels.HUMAN_MODEL,
+					playerRenderEvent.getMultiBufferSource().getBuffer(RenderType.armorCutoutNoCull(texture)),
+					playerRenderEvent.getRenderState());
+
+			poseStack.popPose();
+		}
+
+		((PlayerModel) entityModel).body.skipDraw = true;
+		((PlayerModel) entityModel).hat.skipDraw = true;
+		((PlayerModel) entityModel).head.skipDraw = true;
+		((PlayerModel) entityModel).jacket.skipDraw = true;
+		((PlayerModel) entityModel).leftArm.skipDraw = true;
+		((PlayerModel) entityModel).leftLeg.skipDraw = true;
+		((PlayerModel) entityModel).leftPants.skipDraw = true;
+		((PlayerModel) entityModel).leftSleeve.skipDraw = true;
+		((PlayerModel) entityModel).rightArm.skipDraw = true;
+		((PlayerModel) entityModel).rightLeg.skipDraw = true;
+		((PlayerModel) entityModel).rightPants.skipDraw = true;
+		((PlayerModel) entityModel).rightSleeve.skipDraw = true;
 	}
 }

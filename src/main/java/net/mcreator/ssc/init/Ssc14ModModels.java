@@ -15,6 +15,7 @@ public class Ssc14ModModels {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(Modelframe_of_plasstal_wall_JAVA.LAYER_LOCATION, Modelframe_of_plasstal_wall_JAVA::createBodyLayer);
+		event.registerLayerDefinition(Modelhardsuit_salvage_equipped.LAYER_LOCATION, Modelhardsuit_salvage_equipped::createBodyLayer);
 		event.registerLayerDefinition(ModelConsole_of_ID_DisConnected_ENTITY.LAYER_LOCATION, ModelConsole_of_ID_DisConnected_ENTITY::createBodyLayer);
 		event.registerLayerDefinition(Modelmantle_equipped.LAYER_LOCATION, Modelmantle_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modeljumpsuit_equipped.LAYER_LOCATION, Modeljumpsuit_equipped::createBodyLayer);
@@ -24,6 +25,7 @@ public class Ssc14ModModels {
 		event.registerLayerDefinition(Modelgloves_equipped.LAYER_LOCATION, Modelgloves_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelheadset_equipped.LAYER_LOCATION, Modelheadset_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelhead_cone_equipped.LAYER_LOCATION, Modelhead_cone_equipped::createBodyLayer);
+		event.registerLayerDefinition(Modelbackpack_equipped.LAYER_LOCATION, Modelbackpack_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelarmor_security.LAYER_LOCATION, Modelarmor_security::createBodyLayer);
 		event.registerLayerDefinition(Modelboots_magboots.LAYER_LOCATION, Modelboots_magboots::createBodyLayer);
 		event.registerLayerDefinition(Modelhelmets_eva_large_equipped.LAYER_LOCATION, Modelhelmets_eva_large_equipped::createBodyLayer);
@@ -57,6 +59,7 @@ public class Ssc14ModModels {
 		event.registerLayerDefinition(Modelgloves.LAYER_LOCATION, Modelgloves::createBodyLayer);
 		event.registerLayerDefinition(Modelscarfs_equipped.LAYER_LOCATION, Modelscarfs_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelscarf.LAYER_LOCATION, Modelscarf::createBodyLayer);
+		event.registerLayerDefinition(Modelhardsuit_helmet_salvage_equipped.LAYER_LOCATION, Modelhardsuit_helmet_salvage_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modeluniform_equipped.LAYER_LOCATION, Modeluniform_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelboots_combatboots.LAYER_LOCATION, Modelboots_combatboots::createBodyLayer);
 		event.registerLayerDefinition(Modelboots_workboots_equipped.LAYER_LOCATION, Modelboots_workboots_equipped::createBodyLayer);

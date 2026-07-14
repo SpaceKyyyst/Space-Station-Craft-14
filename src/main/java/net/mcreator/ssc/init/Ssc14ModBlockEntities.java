@@ -122,6 +122,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetOrangeBlockEntity>> CLOSET_ORANGE = register("closet_orange", Ssc14ModBlocks.CLOSET_ORANGE, ClosetOrangeBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetPinkBlockEntity>> CLOSET_PINK = register("closet_pink", Ssc14ModBlocks.CLOSET_PINK, ClosetPinkBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GlassAirlockD1BlockEntity>> GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1", Ssc14ModBlocks.GLASS_AIRLOCK_D_1, GlassAirlockD1BlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BaseGlassAirlockD1BlockEntity>> BASE_GLASS_AIRLOCK_D_1 = register("base_glass_airlock_d_1", Ssc14ModBlocks.BASE_GLASS_AIRLOCK_D_1, BaseGlassAirlockD1BlockEntity::new);
 
 	// Start of user code block custom block entities
 	// End of user code block custom block entities
@@ -230,5 +231,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_ORANGE.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CLOSET_PINK.get(), SidedInvWrapper::new);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, GLASS_AIRLOCK_D_1.get(), SidedInvWrapper::new);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, BASE_GLASS_AIRLOCK_D_1.get(), SidedInvWrapper::new);
 	}
 }

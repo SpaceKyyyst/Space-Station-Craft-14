@@ -227,6 +227,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> CLOSET_PINK;
 	public static final DeferredBlock<Block> GLASS_TABLE;
 	public static final DeferredBlock<Block> GLASS_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> BASE_GLASS_AIRLOCK_D_1;
 	static {
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
 		SHEATHING = register("sheathing", SheathingBlock::new);
@@ -435,6 +436,7 @@ public class Ssc14ModBlocks {
 		CLOSET_PINK = register("closet_pink", ClosetPinkBlock::new);
 		GLASS_TABLE = register("glass_table", GlassTableBlock::new);
 		GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1", GlassAirlockD1Block::new);
+		BASE_GLASS_AIRLOCK_D_1 = register("base_glass_airlock_d_1", BaseGlassAirlockD1Block::new);
 	}
 
 	// Start of user code block custom blocks

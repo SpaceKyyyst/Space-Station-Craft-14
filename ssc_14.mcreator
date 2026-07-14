@@ -243,45 +243,6 @@
       "path": "~/Items/Instruments/Crowbar"
     },
     {
-      "name": "Scrap_Procedure",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "scrap_procedure",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "blockstate",
-            "type": "blockstate"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/Scrap_ProcedureProcedure.java"
-        ]
-      },
-      "path": "~/Items/Instruments/Crowbar"
-    },
-    {
       "name": "TitleSteel",
       "type": "block",
       "compiles": true,
@@ -591,45 +552,6 @@
       "path": "~/Items/Instruments/Welder"
     },
     {
-      "name": "ActiveWelder_Use",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "active_welder_use",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "blockstate",
-            "type": "blockstate"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/ActiveWelder_UseProcedure.java"
-        ]
-      },
-      "path": "~/Items/Instruments/Welder"
-    },
-    {
       "name": "Welding_Fuel_chek",
       "type": "procedure",
       "compiles": true,
@@ -703,45 +625,6 @@
       "path": "~/Items/Instruments/Nippers"
     },
     {
-      "name": "Nippers_Use",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "nippers_use",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "blockstate",
-            "type": "blockstate"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/Nippers_UseProcedure.java"
-        ]
-      },
-      "path": "~/Items/Instruments/Nippers"
-    },
-    {
       "name": "FireAxe",
       "type": "tool",
       "compiles": true,
@@ -752,45 +635,6 @@
           "src/main/resources/assets/ssc_14/models/item/fire_axe.json",
           "src/main/resources/assets/ssc_14/items/fire_axe.json",
           "src/main/java/net/mcreator/ssc/item/FireAxeItem.java"
-        ]
-      },
-      "path": "~/Items/Instruments/FireAxe"
-    },
-    {
-      "name": "FireAxe_Use",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "fire_axe_use",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "blockstate",
-            "type": "blockstate"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/FireAxe_UseProcedure.java"
         ]
       },
       "path": "~/Items/Instruments/FireAxe"
@@ -882,45 +726,6 @@
       "path": "~/Items/Instruments/Screwdriver"
     },
     {
-      "name": "Screwdriver_Use",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "screwdriver_use",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "blockstate",
-            "type": "blockstate"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/Screwdriver_UseProcedure.java"
-        ]
-      },
-      "path": "~/Items/Instruments/Screwdriver"
-    },
-    {
       "name": "Spanner",
       "type": "tool",
       "compiles": true,
@@ -931,45 +736,6 @@
           "src/main/resources/assets/ssc_14/items/spanner.json",
           "src/main/java/net/mcreator/ssc/item/SpannerItem.java",
           "src/main/resources/assets/ssc_14/models/item/spanner.json"
-        ]
-      },
-      "path": "~/Items/Instruments/Spanner"
-    },
-    {
-      "name": "Spanner_Use",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "spanner_use",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "blockstate",
-            "type": "blockstate"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/Spanner_UseProcedure.java"
         ]
       },
       "path": "~/Items/Instruments/Spanner"
@@ -10754,7 +10520,7 @@
       "name": "HumanModelRender",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "human_model_render",
       "metadata": {
         "dependencies": [
@@ -14053,7 +13819,7 @@
           "src/main/java/net/mcreator/ssc/client/renderer/OuterclothingEvaCAPIRenderer.java"
         ]
       },
-      "path": "~/Items/Clothes/Outerwear/OuterClothing"
+      "path": "~/Items/Clothes/Outerwear/OuterClothing/Eva"
     },
     {
       "name": "OuterclothingEva",
@@ -14068,7 +13834,7 @@
           "src/main/resources/assets/ssc_14/models/item/outerclothing_eva.json"
         ]
       },
-      "path": "~/Items/Clothes/Outerwear/OuterClothing"
+      "path": "~/Items/Clothes/Outerwear/OuterClothing/Eva"
     },
     {
       "name": "OuterclothingEvaCAPIBaubleIsEquipped",
@@ -14103,7 +13869,7 @@
           "src/main/java/net/mcreator/ssc/procedures/OuterclothingEvaCAPIBaubleIsEquippedProcedure.java"
         ]
       },
-      "path": "~/Items/Clothes/Outerwear/OuterClothing"
+      "path": "~/Items/Clothes/Outerwear/OuterClothing/Eva"
     },
     {
       "name": "OuterclothingEvaCAPIBaubleIsUnequipped",
@@ -14122,7 +13888,7 @@
           "src/main/java/net/mcreator/ssc/procedures/OuterclothingEvaCAPIBaubleIsUnequippedProcedure.java"
         ]
       },
-      "path": "~/Items/Clothes/Outerwear/OuterClothing"
+      "path": "~/Items/Clothes/Outerwear/OuterClothing/Eva"
     },
     {
       "name": "HelmetsEvaCAPI",
@@ -23446,6 +23212,889 @@
         ]
       },
       "path": "~/Items/WEAPON/MK58"
+    },
+    {
+      "name": "BaseGlassAirlockD1",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "base_glass_airlock_d_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_16.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_10.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_7.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_27.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_4.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_19.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_24.json",
+          "src/main/resources/data/ssc_14/loot_table/blocks/base_glass_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_32.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_13.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_21.json",
+          "src/main/resources/assets/ssc_14/models/item/base_glass_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_22.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_11.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_8.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_28.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_14.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_30.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_17.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_1.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_25.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_31.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_3.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_23.json",
+          "src/main/resources/assets/ssc_14/items/base_glass_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_0.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_29.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_26.json",
+          "src/main/java/net/mcreator/ssc/block/BaseGlassAirlockD1Block.java",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_5.json",
+          "src/main/java/net/mcreator/ssc/block/entity/BaseGlassAirlockD1BlockEntity.java",
+          "src/main/resources/assets/ssc_14/blockstates/base_glass_airlock_d_1.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_18.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_2.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_15.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_12.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_20.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_9.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1_6.json",
+          "src/main/resources/assets/ssc_14/models/block/base_glass_airlock_d_1.json"
+        ]
+      },
+      "path": "~/Blocks/Airlocks/Airlocks"
+    },
+    {
+      "name": "SS14ConstructionRegistry",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "ss_14_construction_registry",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/SS14ConstructionRegistryProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "UniversalDeconstructionProcedure",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "universal_deconstruction_procedure",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/UniversalDeconstructionProcedureProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "ToolsBlockClick",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tools_block_click",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/ToolsBlockClickProcedure.java"
+        ]
+      },
+      "path": "~/Items/Instruments"
+    },
+    {
+      "name": "PosterRandomAnything",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_random_anything",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_random_anything.json",
+          "src/main/resources/assets/ssc_14/items/poster_random_anything.json",
+          "src/main/java/net/mcreator/ssc/item/PosterRandomAnythingItem.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "Posters_Install",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "posters_install",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/Posters_InstallProcedure.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "Poster",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/entity/PosterEntity.java",
+          "src/main/resources/assets/ssc_14/items/poster_spawn_egg.json",
+          "src/main/java/net/mcreator/ssc/client/renderer/PosterRenderer.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "DECAL2spawner",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "decal_2spawner",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/decal_2spawner.json",
+          "src/main/java/net/mcreator/ssc/item/inventory/DECAL2spawnerInventoryCapability.java",
+          "src/main/resources/assets/ssc_14/items/decal_2spawner.json",
+          "src/main/java/net/mcreator/ssc/item/DECAL2spawnerItem.java"
+        ]
+      },
+      "path": "~/DECALS"
+    },
+    {
+      "name": "PosterAnomaly",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_anomaly",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_anomaly.json",
+          "src/main/resources/assets/ssc_14/items/poster_anomaly.json",
+          "src/main/java/net/mcreator/ssc/item/PosterAnomalyItem.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterArmory",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_armory",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_armory.json",
+          "src/main/java/net/mcreator/ssc/item/PosterArmoryItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_armory.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterAtmos",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_atmos",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_atmos.json",
+          "src/main/java/net/mcreator/ssc/item/PosterAtmosItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_atmos.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterBar",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_bar",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/PosterBarItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_bar.json",
+          "src/main/resources/assets/ssc_14/models/item/poster_bar.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterBridge",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_bridge",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/PosterBridgeItem.java",
+          "src/main/resources/assets/ssc_14/models/item/poster_bridge.json",
+          "src/main/resources/assets/ssc_14/items/poster_bridge.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterCargo",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_cargo",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_cargo.json",
+          "src/main/java/net/mcreator/ssc/item/PosterCargoItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_cargo.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterChapel",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_chapel",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/poster_chapel.json",
+          "src/main/java/net/mcreator/ssc/item/PosterChapelItem.java",
+          "src/main/resources/assets/ssc_14/models/item/poster_chapel.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterChem",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_chem",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/poster_chem.json",
+          "src/main/resources/assets/ssc_14/models/item/poster_chem.json",
+          "src/main/java/net/mcreator/ssc/item/PosterChemItem.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterCommander",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_commander",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_commander.json",
+          "src/main/java/net/mcreator/ssc/item/PosterCommanderItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_commander.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterDeathsposal",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_deathsposal",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/poster_deathsposal.json",
+          "src/main/java/net/mcreator/ssc/item/PosterDeathsposalItem.java",
+          "src/main/resources/assets/ssc_14/models/item/poster_deathsposal.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterDetective",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_detective",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/poster_detective.json",
+          "src/main/resources/assets/ssc_14/models/item/poster_detective.json",
+          "src/main/java/net/mcreator/ssc/item/PosterDetectiveItem.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterDrama",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_drama",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/poster_drama.json",
+          "src/main/java/net/mcreator/ssc/item/PosterDramaItem.java",
+          "src/main/resources/assets/ssc_14/models/item/poster_drama.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterEng",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_eng",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_eng.json",
+          "src/main/java/net/mcreator/ssc/item/PosterEngItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_eng.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterEva",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_eva",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_eva.json",
+          "src/main/java/net/mcreator/ssc/item/PosterEvaItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_eva.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterGravi",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_gravi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/PosterGraviItem.java",
+          "src/main/resources/assets/ssc_14/models/item/poster_gravi.json",
+          "src/main/resources/assets/ssc_14/items/poster_gravi.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterHydro",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_hydro",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_hydro.json",
+          "src/main/resources/assets/ssc_14/items/poster_hydro.json",
+          "src/main/java/net/mcreator/ssc/item/PosterHydroItem.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterJanitor",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_janitor",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_janitor.json",
+          "src/main/resources/assets/ssc_14/items/poster_janitor.json",
+          "src/main/java/net/mcreator/ssc/item/PosterJanitorItem.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterKitchen",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_kitchen",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_kitchen.json",
+          "src/main/java/net/mcreator/ssc/item/PosterKitchenItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_kitchen.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterLaw",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_law",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/PosterLawItem.java",
+          "src/main/resources/assets/ssc_14/models/item/poster_law.json",
+          "src/main/resources/assets/ssc_14/items/poster_law.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterMail",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_mail",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/poster_mail.json",
+          "src/main/resources/assets/ssc_14/models/item/poster_mail.json",
+          "src/main/java/net/mcreator/ssc/item/PosterMailItem.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterMedbay",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_medbay",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/PosterMedbayItem.java",
+          "src/main/resources/assets/ssc_14/models/item/poster_medbay.json",
+          "src/main/resources/assets/ssc_14/items/poster_medbay.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterMediumSecure",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_medium_secure",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/PosterMediumSecureItem.java",
+          "src/main/resources/assets/ssc_14/models/item/poster_medium_secure.json",
+          "src/main/resources/assets/ssc_14/items/poster_medium_secure.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterPods",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_pods",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_pods.json",
+          "src/main/java/net/mcreator/ssc/item/PosterPodsItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_pods.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterPrison",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_prison",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/PosterPrisonItem.java",
+          "src/main/resources/assets/ssc_14/models/item/poster_prison.json",
+          "src/main/resources/assets/ssc_14/items/poster_prison.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterRnd",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_rnd",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/poster_rnd.json",
+          "src/main/resources/assets/ssc_14/models/item/poster_rnd.json",
+          "src/main/java/net/mcreator/ssc/item/PosterRndItem.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterSalvage",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_salvage",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_salvage.json",
+          "src/main/resources/assets/ssc_14/items/poster_salvage.json",
+          "src/main/java/net/mcreator/ssc/item/PosterSalvageItem.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterSci",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_sci",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_sci.json",
+          "src/main/java/net/mcreator/ssc/item/PosterSciItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_sci.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterSecurity",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_security",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/PosterSecurityItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_security.json",
+          "src/main/resources/assets/ssc_14/models/item/poster_security.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterSpace",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_space",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_space.json",
+          "src/main/java/net/mcreator/ssc/item/PosterSpaceItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_space.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterSurgery",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_surgery",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_surgery.json",
+          "src/main/resources/assets/ssc_14/items/poster_surgery.json",
+          "src/main/java/net/mcreator/ssc/item/PosterSurgeryItem.java"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterTelecoms",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_telecoms",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/PosterTelecomsItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_telecoms.json",
+          "src/main/resources/assets/ssc_14/models/item/poster_telecoms.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterVault",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_vault",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/poster_vault.json",
+          "src/main/java/net/mcreator/ssc/item/PosterVaultItem.java",
+          "src/main/resources/assets/ssc_14/items/poster_vault.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterVirology",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_virology",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/poster_virology.json",
+          "src/main/java/net/mcreator/ssc/item/PosterVirologyItem.java",
+          "src/main/resources/assets/ssc_14/models/item/poster_virology.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "PosterXenoarch",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "poster_xenoarch",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/PosterXenoarchItem.java",
+          "src/main/resources/assets/ssc_14/models/item/poster_xenoarch.json",
+          "src/main/resources/assets/ssc_14/items/poster_xenoarch.json"
+        ]
+      },
+      "path": "~/Posters"
+    },
+    {
+      "name": "DECAL_setting_",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "decal_setting",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/DECAL_setting_Procedure.java"
+        ]
+      },
+      "path": "~/DECALS"
+    },
+    {
+      "name": "DECALScolorGUI",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "decal_scolor_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/world/inventory/DECALScolorGUIMenu.java",
+          "src/main/java/net/mcreator/ssc/client/gui/DECALScolorGUIScreen.java"
+        ]
+      },
+      "path": "~/DECALS"
+    },
+    {
+      "name": "HardsuitSalvageCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hardsuit_salvage_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HardsuitSalvageCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Outerwear/OuterClothing/Salvage"
+    },
+    {
+      "name": "HardsuitSalvage",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hardsuit_salvage",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/item/HardsuitSalvageItem.java",
+          "src/main/resources/assets/ssc_14/models/item/hardsuit_salvage.json",
+          "src/main/resources/assets/ssc_14/items/hardsuit_salvage.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Outerwear/OuterClothing/Salvage"
+    },
+    {
+      "name": "OuterclothingSalvageCAPIBaubleIsEquipped",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "outerclothing_salvage_capi_bauble_is_equipped",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/OuterclothingSalvageCAPIBaubleIsEquippedProcedure.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Outerwear/OuterClothing/Salvage"
+    },
+    {
+      "name": "OuterclothingSalvageCAPIBaubleIsUnequipped",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "outerclothing_salvage_capi_bauble_is_unequipped",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/OuterclothingSalvageCAPIBaubleIsUnequippedProcedure.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Outerwear/OuterClothing/Salvage"
+    },
+    {
+      "name": "HardsuitSalvageHelmetCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hardsuit_salvage_helmet_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/HardsuitSalvageHelmetCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Outerwear/OuterClothing/Salvage"
+    },
+    {
+      "name": "HardsuitSalvageHelmet",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hardsuit_salvage_helmet",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/models/item/hardsuit_salvage_helmet.json",
+          "src/main/java/net/mcreator/ssc/item/HardsuitSalvageHelmetItem.java",
+          "src/main/resources/assets/ssc_14/items/hardsuit_salvage_helmet.json"
+        ]
+      },
+      "path": "~/Items/Clothes/Outerwear/OuterClothing/Salvage"
+    },
+    {
+      "name": "HardsuitSalvageHelmetCAPI_unequipeble",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hardsuit_salvage_helmet_capi_unequipeble",
+      "metadata": {
+        "dependencies": [],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/HardsuitSalvageHelmetCAPI_unequipebleProcedure.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Outerwear/OuterClothing/Salvage"
+    },
+    {
+      "name": "BackpackCAPI",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "backpack_capi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/renderer/BackpackCAPIRenderer.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Backpack"
+    },
+    {
+      "name": "Backpack2",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "backpack_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/items/backpack_2.json",
+          "src/main/resources/assets/ssc_14/models/item/backpack_2.json",
+          "src/main/java/net/mcreator/ssc/item/inventory/Backpack2InventoryCapability.java",
+          "src/main/java/net/mcreator/ssc/item/Backpack2Item.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Backpack"
+    },
+    {
+      "name": "BackpackGUI",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "backpack_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/gui/BackpackGUIScreen.java",
+          "src/main/java/net/mcreator/ssc/world/inventory/BackpackGUIMenu.java"
+        ]
+      },
+      "path": "~/Items/Clothes/Backpack"
     }
   ],
   "variable_elements": [
@@ -24298,7 +24947,8 @@
       "CUSTOM:SecurityAirlockD1",
       "CUSTOM:SyndicateAirlockD1",
       "CUSTOM:VirologyAirlockD1",
-      "CUSTOM:GlassAirlockD1"
+      "CUSTOM:GlassAirlockD1",
+      "CUSTOM:BaseGlassAirlockD1"
     ],
     "BLOCKS:ssc14:tiles": [
       "CUSTOM:TitleSteel",
@@ -24322,7 +24972,74 @@
       "CUSTOM:TitleDarkPavement",
       "CUSTOM:TitleDarkPavementVertical",
       "CUSTOM:TitleDarkHerringbone",
-      "CUSTOM:TitleDarkPlastic"
+      "CUSTOM:TitleDarkPlastic",
+      "CUSTOM:TitleArcadeblue",
+      "CUSTOM:Titlearcadeblue2",
+      "CUSTOM:TitleArcadered",
+      "CUSTOM:TitleBar",
+      "CUSTOM:TitleBlueCircuit",
+      "CUSTOM:TitleBlue",
+      "CUSTOM:TitleBoxing",
+      "CUSTOM:TitleCafeteria",
+      "CUSTOM:TitleCarpetclown",
+      "CUSTOM:TitleCarpetoffice",
+      "CUSTOM:TitleCheckerdark",
+      "CUSTOM:TitleClown",
+      "CUSTOM:TitleDarktest",
+      "CUSTOM:Titleeighties",
+      "CUSTOM:TitleElevatorshaft",
+      "CUSTOM:TitleExoborg",
+      "CUSTOM:TitleFreezer",
+      "CUSTOM:TitleGold",
+      "CUSTOM:TitleGratingmaint",
+      "CUSTOM:TitleGreencircuit",
+      "CUSTOM:TitleGym",
+      "CUSTOM:TitleHullreinforced",
+      "CUSTOM:TitleHull",
+      "CUSTOM:TitleHydro",
+      "CUSTOM:TitleKitchen",
+      "CUSTOM:TitleLaundry",
+      "CUSTOM:TitleLime",
+      "CUSTOM:TitleLino",
+      "CUSTOM:TitleMeat",
+      "CUSTOM:TitleMetaldiamond",
+      "CUSTOM:TitleMime",
+      "CUSTOM:TitleMiningfloordark",
+      "CUSTOM:TitleMiningfloorlight",
+      "CUSTOM:TitleMiningfloor",
+      "CUSTOM:TitleMono",
+      "CUSTOM:TitleRedcircuit",
+      "CUSTOM:TitleReinforced",
+      "CUSTOM:TitleRockvault",
+      "CUSTOM:TitleShowroom",
+      "CUSTOM:TitleShuttleblack",
+      "CUSTOM:TitleShuttleblue",
+      "CUSTOM:TitleShuttlegrey",
+      "CUSTOM:TitleShuttleorange",
+      "CUSTOM:TitleShuttlepurple",
+      "CUSTOM:TitleShuttlered",
+      "CUSTOM:TitleShuttlewhite",
+      "CUSTOM:TitleSilver",
+      "CUSTOM:TitleSteeldamaged",
+      "CUSTOM:TitleSteeldirty",
+      "CUSTOM:TitleSteelmaint",
+      "CUSTOM:TitleSuperreinforced",
+      "CUSTOM:TitleTechmaintdark",
+      "CUSTOM:TitleTechmaint",
+      "CUSTOM:TitleWoodbroken",
+      "CUSTOM:TitleWoodlarge",
+      "CUSTOM:TitleWood",
+      "CUSTOM:TitleWoodtile",
+      "CUSTOM:TitleWhiteDiagonal",
+      "CUSTOM:TitleWhiteHerringbone",
+      "CUSTOM:TitleWhiteMini",
+      "CUSTOM:TitleWhiteMono",
+      "CUSTOM:TitleWhiteOffset",
+      "CUSTOM:TitleWhitePavement",
+      "CUSTOM:TitleWhitePavementVertical",
+      "CUSTOM:TitleWhitePlastic",
+      "CUSTOM:TitleWhite",
+      "CUSTOM:TitleWhiteDiagonalMini"
     ],
     "BLOCKS:ssc14:cave_floor": [
       "CUSTOM:CaveFloor1",
@@ -24670,7 +25387,8 @@
       "CUSTOM:BeltSecurity",
       "CUSTOM:BeltSecurityWebbing",
       "CUSTOM:BeltInstrumental",
-      "TAG:ssc14:headsets"
+      "TAG:ssc14:headsets",
+      "CUSTOM:Backpack2"
     ],
     "BLOCKS:ssc14:vendings": [
       "CUSTOM:VendingAut1"
@@ -24697,6 +25415,12 @@
       "CUSTOM:MK58open",
       "CUSTOM:MK58nomagz",
       "CUSTOM:MK58openNoMagz"
+    ],
+    "ITEMS:ssc14:hardsuits_helmets": [
+      "CUSTOM:HardsuitSalvageHelmet"
+    ],
+    "ITEMS:ssc14:hardsuits_body": [
+      "CUSTOM:HardsuitSalvage"
     ]
   },
   "tab_element_order": {
@@ -24858,6 +25582,7 @@
       "SyndicateAirlockD1",
       "VirologyAirlockD1",
       "GlassAirlockD1",
+      "BaseGlassAirlockD1",
       "WallCarcase",
       "PlasteelWallCarcase",
       "Grille",
@@ -24910,6 +25635,41 @@
       "UpDarkStaircase",
       "UpSteelStaircase",
       "UpWhiteStaircase",
+      "PosterRandomAnything",
+      "PosterBridge",
+      "PosterCommander",
+      "PosterVault",
+      "PosterSecurity",
+      "PosterPrison",
+      "PosterArmory",
+      "PosterLaw",
+      "PosterDetective",
+      "PosterEng",
+      "PosterAtmos",
+      "PosterTelecoms",
+      "PosterGravi",
+      "PosterRnd",
+      "PosterSci",
+      "PosterAnomaly",
+      "PosterXenoarch",
+      "PosterKitchen",
+      "PosterBar",
+      "PosterChapel",
+      "PosterDrama",
+      "PosterHydro",
+      "PosterJanitor",
+      "PosterMedbay",
+      "PosterChem",
+      "PosterSurgery",
+      "PosterVirology",
+      "PosterCargo",
+      "PosterSalvage",
+      "PosterMail",
+      "PosterEva",
+      "PosterDeathsposal",
+      "PosterSpace",
+      "PosterPods",
+      "PosterMediumSecure",
       "GravityGenerator",
       "LowPlanetGrass",
       "MedPlanetGrass",
@@ -25114,11 +25874,13 @@
       "ChefJumpsuit",
       "CMOturtleJumpsuit",
       "HoSparadeJumpsuit",
+      "Backpack2",
       "CoatAtmos",
       "CoatSecurity",
       "ArmorSecurity",
       "OuterclothingEva",
       "HelmetsEva",
+      "HardsuitSalvage",
       "CloaksCap",
       "CloaksHoS",
       "MantlesCap",
@@ -25177,7 +25939,8 @@
     ],
     "CUSTOM:Decals": [
       "DECAL1deletion",
-      "DECAL1spawner"
+      "DECAL1spawner",
+      "DECAL2spawner"
     ]
   },
   "language_map": {
@@ -26081,7 +26844,52 @@
       "subtitles.foam_rifle_charging": "",
       "subtitles.foam_rifle_shot": "",
       "subtitles.foam_rifle_discharge": "",
-      "item.ssc_14.bullet_35_cartridge": "Bullet cartridge (.35)"
+      "item.ssc_14.bullet_35_cartridge": "Bullet cartridge (.35)",
+      "item.ssc_14.base_glass_airlock_d_1": "Base Glass Airlock",
+      "item.ssc_14.poster_random_anything": "Poster Random Anything",
+      "entity.ssc_14.poster": "Poster",
+      "item.ssc_14.decal_2spawner": "DECAL 2 spawner",
+      "item.ssc_14.poster_anomaly": "Poster Anomaly",
+      "item.ssc_14.poster_armory": "Poster Armory",
+      "item.ssc_14.poster_atmos": "Poster Atmos",
+      "item.ssc_14.poster_bar": "Poster Bar",
+      "item.ssc_14.poster_bridge": "Poster Bridge",
+      "item.ssc_14.poster_cargo": "Poster Cargo",
+      "item.ssc_14.poster_chapel": "Poster Chapel",
+      "item.ssc_14.poster_chem": "Poster Chem",
+      "item.ssc_14.poster_commander": "Poster Commander",
+      "item.ssc_14.poster_deathsposal": "Poster Deathsposal",
+      "item.ssc_14.poster_detective": "Poster Detective",
+      "item.ssc_14.poster_drama": "Poster Drama",
+      "item.ssc_14.poster_eng": "Poster Eng",
+      "item.ssc_14.poster_eva": "Poster Eva",
+      "item.ssc_14.poster_gravi": "Poster Gravi",
+      "item.ssc_14.poster_hydro": "Poster Hydro",
+      "item.ssc_14.poster_janitor": "Poster Janitor",
+      "item.ssc_14.poster_kitchen": "Poster Kitchen",
+      "item.ssc_14.poster_law": "Poster Law",
+      "item.ssc_14.poster_mail": "Poster Mail",
+      "item.ssc_14.poster_medbay": "Poster Medbay",
+      "item.ssc_14.poster_medium_secure": "Poster_Medium_Secure",
+      "item.ssc_14.poster_pods": "Poster_Pods",
+      "item.ssc_14.poster_prison": "Poster Prison",
+      "item.ssc_14.poster_rnd": "Poster Rnd",
+      "item.ssc_14.poster_salvage": "Poster Salvage",
+      "item.ssc_14.poster_sci": "Poster Sci",
+      "item.ssc_14.poster_security": "Poster Security",
+      "item.ssc_14.poster_space": "Poster Space",
+      "item.ssc_14.poster_surgery": "Poster Surgery",
+      "item.ssc_14.poster_telecoms": "Poster Telecoms",
+      "item.ssc_14.poster_vault": "Poster Vault",
+      "item.ssc_14.poster_virology": "Poster Virology",
+      "item.ssc_14.poster_xenoarch": "Poster Xenoarch",
+      "gui.ssc_14.decal_scolor_gui.R": "",
+      "gui.ssc_14.decal_scolor_gui.B": "",
+      "gui.ssc_14.decal_scolor_gui.G": "",
+      "gui.ssc_14.decal_scolor_gui.label_na_etoi_koordinatie_razmiestit_tsv": "на этой координате разместить цветовой кубик",
+      "item.ssc_14.hardsuit_salvage": "Hardsuit Salvage",
+      "item.ssc_14.hardsuit_salvage_helmet": "Hardsuit Salvage Helmet",
+      "item.ssc_14.backpack_2": "Backpack"
     },
     "ru_ru": {
       "biome.ssc_14.spaceb": "Космос",
@@ -26753,8 +27561,8 @@
       "subtitles.guns_bolt_open": "",
       "subtitles.guns_bolt_closed": "",
       "item.ssc_14.magazine_pistol_35": "Пистолетный магазин (.35 авто)",
-      "item.ssc_14.mk_58nomagz": "MK 58  (НЕ ТРОГАТЬ, НЕ РАБОТАЕТ)",
-      "item.ssc_14.magazine_pistol_35empty": "Magazine Pistol 35",
+      "item.ssc_14.mk_58nomagz": "MK 58",
+      "item.ssc_14.magazine_pistol_35empty": "Пистолетный магазин (.35 авто)",
       "item.ssc_14.mk_58open_no_magz": "MK 58",
       "subtitles.items_pistol_reloading": "",
       "subtitles.items_pistol_mag_in": "",
@@ -26879,7 +27687,52 @@
       "subtitles.foam_rifle_charging": "",
       "subtitles.foam_rifle_shot": "",
       "subtitles.foam_rifle_discharge": "",
-      "item.ssc_14.bullet_35_cartridge": "Bullet (.35)"
+      "item.ssc_14.bullet_35_cartridge": "Гильза",
+      "item.ssc_14.base_glass_airlock_d_1": "Стеклянный шлюз (Стандарт)",
+      "item.ssc_14.poster_random_anything": "Дебаг-постер",
+      "entity.ssc_14.poster": "Постер",
+      "item.ssc_14.decal_2spawner": "DECAL 2 spawner",
+      "item.ssc_14.poster_anomaly": "Постер аномалистика",
+      "item.ssc_14.poster_armory": "Постер оружейная",
+      "item.ssc_14.poster_atmos": "Постер атмос",
+      "item.ssc_14.poster_bar": "Постер бар",
+      "item.ssc_14.poster_bridge": "Постер мостик",
+      "item.ssc_14.poster_cargo": "Постер снабжение",
+      "item.ssc_14.poster_chapel": "Постер церковь",
+      "item.ssc_14.poster_chem": "Постер химия",
+      "item.ssc_14.poster_commander": "Постер глава",
+      "item.ssc_14.poster_deathsposal": "Постер космос",
+      "item.ssc_14.poster_detective": "Постер детектив",
+      "item.ssc_14.poster_drama": "Постер театр",
+      "item.ssc_14.poster_eng": "Постер инженерный",
+      "item.ssc_14.poster_eva": "Постер ЕВА",
+      "item.ssc_14.poster_gravi": "Постер гравитация",
+      "item.ssc_14.poster_hydro": "Постер гидропоника",
+      "item.ssc_14.poster_janitor": "Постер уборщик",
+      "item.ssc_14.poster_kitchen": "Постер кухня",
+      "item.ssc_14.poster_law": "Постер закон",
+      "item.ssc_14.poster_mail": "Постер почта",
+      "item.ssc_14.poster_medbay": "Постер мед",
+      "item.ssc_14.poster_medium_secure": "Постер охраняемой зоны",
+      "item.ssc_14.poster_pods": "Постер поды",
+      "item.ssc_14.poster_prison": "Постер бриг",
+      "item.ssc_14.poster_rnd": "Постер РНД",
+      "item.ssc_14.poster_salvage": "Постер утилизаторы",
+      "item.ssc_14.poster_sci": "Постер наука",
+      "item.ssc_14.poster_security": "Постер СБ",
+      "item.ssc_14.poster_space": "Постер космос",
+      "item.ssc_14.poster_surgery": "Постер хирург",
+      "item.ssc_14.poster_telecoms": "Постер телекоммуникация",
+      "item.ssc_14.poster_vault": "Постер хранилище",
+      "item.ssc_14.poster_virology": "Постер вирусология",
+      "item.ssc_14.poster_xenoarch": "Постер хсеноархеология",
+      "gui.ssc_14.decal_scolor_gui.R": "",
+      "gui.ssc_14.decal_scolor_gui.B": "",
+      "gui.ssc_14.decal_scolor_gui.G": "",
+      "gui.ssc_14.decal_scolor_gui.label_na_etoi_koordinatie_razmiestit_tsv": "на этой координате разместить цветовой кубик",
+      "item.ssc_14.hardsuit_salvage": "Скафандр утилизатора",
+      "item.ssc_14.hardsuit_salvage_helmet": "Шлем скафандра утилизатора",
+      "item.ssc_14.backpack_2": "Рюкзак"
     }
   },
   "metadata": {
@@ -27411,7 +28264,16 @@
                   },
                   {
                     "name": "OuterClothing",
-                    "children": []
+                    "children": [
+                      {
+                        "name": "Eva",
+                        "children": []
+                      },
+                      {
+                        "name": "Salvage",
+                        "children": []
+                      }
+                    ]
                   },
                   {
                     "name": "Coats",
@@ -27454,10 +28316,6 @@
                 "children": []
               },
               {
-                "name": "Back",
-                "children": []
-              },
-              {
                 "name": "Mask",
                 "children": []
               },
@@ -27467,6 +28325,10 @@
               },
               {
                 "name": "Socks",
+                "children": []
+              },
+              {
+                "name": "Back",
                 "children": []
               }
             ]
@@ -27507,14 +28369,18 @@
             "children": []
           }
         ]
+      },
+      {
+        "name": "Posters",
+        "children": []
       }
     ]
   },
   "workspaceSettings": {
     "modid": "ssc_14",
     "modName": "Space Station Craft 14",
-    "version": "0.1.23",
-    "description": "Повторённая в Minecraft игра Space Station 14. Основатель - Space Kyyyst. В разработке принимали участие: almazar3, Mr_irak, Water Melon, sad2284, Подхлебкин. ",
+    "version": "0.1.24",
+    "description": "Повторённая в Minecraft игра Space Station 14. Основатель - Space Kyyyst. В разработке принимали участие: almazar3, Mr_irak, Water Melon, sad2284, Подхлебкин, VoiceInTheVoid. ",
     "author": "Space_Kyyyst",
     "websiteURL": "https://www.youtube.com/@Space.kyyyst",
     "license": "Academic Free License v3.0",

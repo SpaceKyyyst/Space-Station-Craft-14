@@ -1,0 +1,184 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "glass_airlock_basic_texture"
+      }
+    },
+    "panelop": {
+      "name": "panelop",
+      "map": {
+        "0": "glass_airlock_basic_panel_open_texture"
+      }
+    },
+    "tech": {
+      "name": "tech",
+      "map": {
+        "0": "glass_airlock_maint_texture"
+      }
+    },
+    "tech_panelop": {
+      "name": "tech_panelop",
+      "map": {
+        "0": "glass_airlock_maint_panel_open_texture"
+      }
+    },
+    "atmos": {
+      "name": "atmos",
+      "map": {
+        "0": "glass_airlock_atmospherics_texture"
+      }
+    },
+    "atmos_panelop": {
+      "name": "atmos_panelop",
+      "map": {
+        "0": "glass_airlock_atmospherics_panel_open_texture"
+      }
+    },
+    "cargo": {
+      "name": "cargo",
+      "map": {
+        "0": "glass_airlock_cargo_texture"
+      }
+    },
+    "cargo_panelop": {
+      "name": "cargo_panelop",
+      "map": {
+        "0": "glass_airlock_cargo_panel_open_texture"
+      }
+    },
+    "centcomm": {
+      "name": "centcomm",
+      "map": {
+        "0": "glass_airlock_centcomm_texture"
+      }
+    },
+    "centcomm_panelop": {
+      "name": "centcomm_panelop",
+      "map": {
+        "0": "glass_airlock_centcomm_panel_open_texture"
+      }
+    },
+    "chemistry": {
+      "name": "chemistry",
+      "map": {
+        "0": "glass_airlock_chemistry_texture"
+      }
+    },
+    "chemistry_panelop": {
+      "name": "chemistry_panelop",
+      "map": {
+        "0": "glass_airlock_chemistry_panel_open_texture"
+      }
+    },
+    "command": {
+      "name": "command",
+      "map": {
+        "0": "glass_airlock_command_texture"
+      }
+    },
+    "command_panelop": {
+      "name": "command_panelop",
+      "map": {
+        "0": "glass_airlock_command_panel_open_texture"
+      }
+    },
+    "engineering": {
+      "name": "engineering",
+      "map": {
+        "0": "glass_airlock_engineering_texture"
+      }
+    },
+    "engineering_panelop": {
+      "name": "engineering_panelop",
+      "map": {
+        "0": "glass_airlock_engineering_panel_open_texture"
+      }
+    },
+    "hydroponics": {
+      "name": "hydroponics",
+      "map": {
+        "0": "glass_airlock_hydroponics_texture"
+      }
+    },
+    "hydroponics_panelop": {
+      "name": "hydroponics_panelop",
+      "map": {
+        "0": "glass_airlock_hydroponics_panel_open_texture"
+      }
+    },
+    "medical": {
+      "name": "medical",
+      "map": {
+        "0": "glass_airlock_medical_texture"
+      }
+    },
+    "medical_panelop": {
+      "name": "medical_panelop",
+      "map": {
+        "0": "glass_airlock_medical_panel_open_texture"
+      }
+    },
+    "salvage": {
+      "name": "salvage",
+      "map": {
+        "0": "glass_airlock_salvage_texture"
+      }
+    },
+    "salvage_panelop": {
+      "name": "salvage_panelop",
+      "map": {
+        "0": "glass_airlock_salvage_panel_open_texture"
+      }
+    },
+    "science": {
+      "name": "science",
+      "map": {
+        "0": "glass_airlock_science_texture"
+      }
+    },
+    "science_panelop": {
+      "name": "science_panelop",
+      "map": {
+        "0": "glass_airlock_science_panel_open_texture"
+      }
+    },
+    "security": {
+      "name": "security",
+      "map": {
+        "0": "glass_airlock_security_texture"
+      }
+    },
+    "security_panelop": {
+      "name": "security_panelop",
+      "map": {
+        "0": "glass_airlock_security_panel_open_texture"
+      }
+    },
+    "syndicate": {
+      "name": "syndicate",
+      "map": {
+        "0": "glass_airlock_syndicate_texture"
+      }
+    },
+    "syndicate_panelop": {
+      "name": "syndicate_panelop",
+      "map": {
+        "0": "glass_airlock_syndicate_panel_open_texture"
+      }
+    },
+    "virology": {
+      "name": "virology",
+      "map": {
+        "0": "glass_airlock_virology_texture"
+      }
+    },
+    "virology_panelop": {
+      "name": "virology_panelop",
+      "map": {
+        "0": "glass_airlock_virology_panel_open_texture"
+      }
+    }
+  }
+}
