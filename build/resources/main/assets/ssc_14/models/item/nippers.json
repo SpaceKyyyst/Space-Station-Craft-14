@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/nippers",
+  "textures": {
+    "0": "ssc_14:block/texture_of_nippers",
+    "particle": "ssc_14:item/nippers"
+  }
+}

@@ -31,12 +31,6 @@ public class DECAL2spawnerItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> componentConsumer, TooltipFlag flag) {
-		super.appendHoverText(itemstack, context, tooltipDisplay, componentConsumer, flag);
-		componentConsumer.accept(Component.translatable("item.ssc_14.decal_2spawner.description_0"));
-	}
-
-	@Override
 	public InteractionResult use(Level world, Player entity, InteractionHand hand) {
 		InteractionResult ar = super.use(world, entity, hand);
 		if (entity instanceof ServerPlayer serverPlayer) {

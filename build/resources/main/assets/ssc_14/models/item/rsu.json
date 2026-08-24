@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/tool_rcd",
+  "textures": {
+    "0": "ssc_14:block/tool_rcd_texture",
+    "particle": "ssc_14:item/rsu_item"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:glass_airlock_d_1",
+    "ssc_14:cent_com_airlock_d_1",
+    "ssc_14:command_airlock_d_1",
+    "ssc_14:salvage_airlock_d_1",
+    "ssc_14:science_airlock_d_1",
+    "ssc_14:cargo_airlock_d_1",
+    "ssc_14:tech_airlock_d_1",
+    "ssc_14:hydroponics_airlock_d_1",
+    "ssc_14:engineering_airlock_d_1",
+    "ssc_14:base_airlock_d_1",
+    "ssc_14:base_glass_airlock_d_1",
+    "ssc_14:syndicate_airlock_d_1",
+    "ssc_14:atmospherics_airlock_d_1",
+    "ssc_14:virology_airlock_d_1",
+    "ssc_14:chemistry_airlock_d_1",
+    "ssc_14:medical_airlock_d_1",
+    "ssc_14:security_airlock_d_1"
+  ]
+}

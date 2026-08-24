@@ -143,6 +143,9 @@
 		"firstperson_lefthand": {
 			"translation": [0, 1.25, 0.5]
 		},
+		"ground": {
+			"rotation": [0, 90, 0]
+		},
 		"gui": {
 			"rotation": [0, -90, 0],
 			"translation": [0.25, -0.25, 0]

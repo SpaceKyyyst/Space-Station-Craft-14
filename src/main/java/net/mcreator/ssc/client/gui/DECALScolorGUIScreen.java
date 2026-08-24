@@ -1,5 +1,7 @@
 package net.mcreator.ssc.client.gui;
 
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -8,10 +10,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.ssc.world.inventory.DECALScolorGUIMenu;
+import net.mcreator.ssc.procedures.DECALSGUIaccept2Procedure;
+import net.mcreator.ssc.network.DECALScolorGUIButtonMessage;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 public class DECALScolorGUIScreen extends AbstractContainerScreen<DECALScolorGUIMenu> implements Ssc14ModScreens.ScreenAccessor {
@@ -22,6 +27,7 @@ public class DECALScolorGUIScreen extends AbstractContainerScreen<DECALScolorGUI
 	private EditBox R;
 	private EditBox G;
 	private EditBox B;
+	private Button button_priniat;
 	private static final ResourceLocation BACKGROUND = ResourceLocation.parse("ssc_14:textures/screens/decal_scolor_gui.png");
 	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/decals_gui_2.png");
 
@@ -90,12 +96,10 @@ public class DECALScolorGUIScreen extends AbstractContainerScreen<DECALScolorGUI
 		G.setValue(GValue);
 		B.setValue(BValue);
 	}
-	
-	// Убрать текст
-	// Это координата, на которой должен быть крадрат под выбранный в полях цвет, т.е. пример
+
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.decal_scolor_gui.label_na_etoi_koordinatie_razmiestit_tsv"), 75, 127, -1, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.decal_scolor_gui.label_na_etoi_koordinatie_razmiestit_tsv"), 79, 116, -1, false);
 	}
 
 	@Override
@@ -122,5 +126,20 @@ public class DECALScolorGUIScreen extends AbstractContainerScreen<DECALScolorGUI
 				menu.sendMenuStateUpdate(entity, 0, "B", content, false);
 		});
 		this.addWidget(this.B);
+		button_priniat = Button.builder(Component.translatable("gui.ssc_14.decal_scolor_gui.button_priniat"), e -> {
+			int x = DECALScolorGUIScreen.this.x;
+			int y = DECALScolorGUIScreen.this.y;
+			if (DECALSGUIaccept2Procedure.execute(entity)) {
+				ClientPacketDistributor.sendToServer(new DECALScolorGUIButtonMessage(0, x, y, z));
+				DECALScolorGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+			}
+		}).bounds(this.leftPos + 51, this.topPos + 142, 60, 20).build();
+		this.addRenderableWidget(button_priniat);
+	}
+
+	@Override
+	protected void containerTick() {
+		super.containerTick();
+		this.button_priniat.visible = DECALSGUIaccept2Procedure.execute(entity);
 	}
 }

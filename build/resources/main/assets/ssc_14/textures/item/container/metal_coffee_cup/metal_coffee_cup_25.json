@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc:item/container/mug/mug_metal",
+    "layer1": "ssc:item/container/mug/mug_25"
+  }
+}

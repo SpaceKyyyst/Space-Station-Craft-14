@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/mk58",
+  "textures": {
+    "1": "ssc_14:block/mk58_texture",
+    "particle": "ssc_14:item/mk58_icon"
+  }
+}

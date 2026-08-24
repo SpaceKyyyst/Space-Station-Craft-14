@@ -538,6 +538,11 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> HARDSUIT_SALVAGE;
 	public static final DeferredItem<Item> HARDSUIT_SALVAGE_HELMET;
 	public static final DeferredItem<Item> BACKPACK_2;
+	public static final DeferredItem<Item> DEBU_GITEM;
+	public static final DeferredItem<Item> DECAL_3SPAWNER;
+	public static final DeferredItem<Item> DECAL_4SPAWNER;
+	public static final DeferredItem<Item> DECAL_5SPAWNER;
+	public static final DeferredItem<Item> DECAL_6SPAWNER;
 	static {
 		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
@@ -1047,6 +1052,11 @@ public class Ssc14ModItems {
 		HARDSUIT_SALVAGE = register("hardsuit_salvage", HardsuitSalvageItem::new);
 		HARDSUIT_SALVAGE_HELMET = register("hardsuit_salvage_helmet", HardsuitSalvageHelmetItem::new);
 		BACKPACK_2 = register("backpack_2", Backpack2Item::new);
+		DEBU_GITEM = register("debu_gitem", DEBUGitemItem::new);
+		DECAL_3SPAWNER = register("decal_3spawner", DECAL3spawnerItem::new);
+		DECAL_4SPAWNER = register("decal_4spawner", DECAL4spawnerItem::new);
+		DECAL_5SPAWNER = register("decal_5spawner", DECAL5spawnerItem::new);
+		DECAL_6SPAWNER = register("decal_6spawner", DECAL6spawnerItem::new);
 	}
 
 	// Start of user code block custom items
@@ -1066,6 +1076,7 @@ public class Ssc14ModItems {
 	@SubscribeEvent
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
 		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new AccessConfigInventoryCapability(stack), ACCESS_CONFIG.get());
+		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL1spawnerInventoryCapability(stack), DECAL_1SPAWNER.get());
 		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetBaseInventoryCapability(stack), HEADSET_BASE.get());
 		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new PDApassangerInventoryCapability(stack), PD_APASSANGER.get());
 		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new EggCartonInventoryCapability(stack), EGG_CARTON.get());
@@ -1084,5 +1095,9 @@ public class Ssc14ModItems {
 		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetSyndicateInventoryCapability(stack), HEADSET_SYNDICATE.get());
 		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL2spawnerInventoryCapability(stack), DECAL_2SPAWNER.get());
 		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new Backpack2InventoryCapability(stack), BACKPACK_2.get());
+		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL3spawnerInventoryCapability(stack), DECAL_3SPAWNER.get());
+		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL4spawnerInventoryCapability(stack), DECAL_4SPAWNER.get());
+		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL5spawnerInventoryCapability(stack), DECAL_5SPAWNER.get());
+		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL6spawnerInventoryCapability(stack), DECAL_6SPAWNER.get());
 	}
 }

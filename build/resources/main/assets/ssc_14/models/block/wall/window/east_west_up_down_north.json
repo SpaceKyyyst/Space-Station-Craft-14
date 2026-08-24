@@ -1,0 +1,26 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "tex": "ssc_14:block/window_all"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "south": {
+          "texture": "#tex"
+        }
+      }
+    }
+  ],
+  "render_type": "cutout"
+}

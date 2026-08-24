@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc:item/container/small_glass/small_glass",
+    "layer1": "ssc:item/container/small_glass/small_glass_25"
+  }
+}

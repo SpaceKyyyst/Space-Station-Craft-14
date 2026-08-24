@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc_14:item/broken_grille"
+  },
+  "render_type": "translucent"
+}

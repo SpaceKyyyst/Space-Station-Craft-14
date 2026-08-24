@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/konfigurator_of_dostups",
+  "textures": {
+    "0": "ssc_14:block/konfigurator_t_anima",
+    "particle": "ssc_14:item/konfigurator_item"
+  }
+}

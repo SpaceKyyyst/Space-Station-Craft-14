@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/foam_rifle",
+  "textures": {
+    "0": "ssc_14:block/foam_rifle_texture",
+    "particle": "ssc_14:item/astroace_foam_power"
+  }
+}

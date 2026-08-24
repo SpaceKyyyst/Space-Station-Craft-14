@@ -1,0 +1,36 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "tex": "ssc_14:block/steel_wall_up"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#tex"
+        },
+        "south": {
+          "texture": "#tex"
+        },
+        "east": {
+          "texture": "#tex",
+          "rotation": 0
+        },
+        "west": {
+          "texture": "#tex",
+          "rotation": 0
+        }
+      }
+    }
+  ]
+}

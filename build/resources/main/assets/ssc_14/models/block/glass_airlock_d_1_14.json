@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/glass_airlock_hacked_welded",
+  "textures": {
+    "all": "ssc_14:block/airlock_base_item",
+    "particle": "ssc_14:block/airlock_white_item",
+    "0": "ssc_14:block/glass_airlock_panel_open_texture"
+  },
+  "render_type": "translucent"
+}

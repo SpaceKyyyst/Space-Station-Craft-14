@@ -1,0 +1,15 @@
+
+{
+  "loader": "fusion:model",
+  "type": "fusion:connecting",
+  "render_type": "translucent",
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "ssc_14:block/ermored_window"
+  },
+  "connections": [
+    {
+      "type": "fusion:is_same_block"
+    }
+  ]
+}

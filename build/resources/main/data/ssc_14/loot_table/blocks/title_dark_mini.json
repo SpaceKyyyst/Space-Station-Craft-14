@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "ssc_14:blocks/title_dark_mini",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ssc_14:title_dark_mini"
+        }
+      ]
+    }
+  ]
+}

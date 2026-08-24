@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "size": 1,
+  "operation": "SET",
+  "order": 12,
+  "render_toggle": true,
+  "icon": "curios:slot/back_slot"
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/airlock_controller_debug",
+  "textures": {
+    "2": "ssc_14:block/airlock_controller_debug_texture",
+    "particle": "ssc_14:item/airlock_controller_debug_item"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "ssc_14:planetary_plant_biome",
+  "features": "ssc_14:low_planet_grass_spawn",
+  "step": "top_layer_modification"
+}

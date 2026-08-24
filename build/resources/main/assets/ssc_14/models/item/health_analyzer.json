@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/health_analyzer",
+  "textures": {
+    "1": "ssc_14:block/health_analyzer_on_texture",
+    "particle": "ssc_14:item/health_analyzer_item"
+  }
+}

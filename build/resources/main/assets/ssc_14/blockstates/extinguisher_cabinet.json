@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=north,open=true,empty=false": {
+      "model": "ssc_14:block/extinguisher_cabinet_0"
+    },
+    "facing=north,open=true,empty=true": {
+      "model": "ssc_14:block/extinguisher_cabinet_1"
+    },
+    "facing=north,open=false,empty=true": {
+      "model": "ssc_14:block/extinguisher_cabinet_2"
+    },
+    "facing=north,open=false,empty=false": {
+      "model": "ssc_14:block/extinguisher_cabinet"
+    },
+    "facing=east,open=true,empty=false": {
+      "model": "ssc_14:block/extinguisher_cabinet_0",
+      "y": 90
+    },
+    "facing=east,open=true,empty=true": {
+      "model": "ssc_14:block/extinguisher_cabinet_1",
+      "y": 90
+    },
+    "facing=east,open=false,empty=true": {
+      "model": "ssc_14:block/extinguisher_cabinet_2",
+      "y": 90
+    },
+    "facing=east,open=false,empty=false": {
+      "model": "ssc_14:block/extinguisher_cabinet",
+      "y": 90
+    },
+    "facing=south,open=true,empty=false": {
+      "model": "ssc_14:block/extinguisher_cabinet_0",
+      "y": 180
+    },
+    "facing=south,open=true,empty=true": {
+      "model": "ssc_14:block/extinguisher_cabinet_1",
+      "y": 180
+    },
+    "facing=south,open=false,empty=true": {
+      "model": "ssc_14:block/extinguisher_cabinet_2",
+      "y": 180
+    },
+    "facing=south,open=false,empty=false": {
+      "model": "ssc_14:block/extinguisher_cabinet",
+      "y": 180
+    },
+    "facing=west,open=true,empty=false": {
+      "model": "ssc_14:block/extinguisher_cabinet_0",
+      "y": 270
+    },
+    "facing=west,open=true,empty=true": {
+      "model": "ssc_14:block/extinguisher_cabinet_1",
+      "y": 270
+    },
+    "facing=west,open=false,empty=true": {
+      "model": "ssc_14:block/extinguisher_cabinet_2",
+      "y": 270
+    },
+    "facing=west,open=false,empty=false": {
+      "model": "ssc_14:block/extinguisher_cabinet",
+      "y": 270
+    }
+  }
+}

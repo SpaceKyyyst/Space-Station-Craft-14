@@ -58,8 +58,8 @@
             "falpha": 0.0
           },
           "hasShadow": false,
-          "x": 206,
-          "y": 164,
+          "x": 210,
+          "y": 153,
           "locked": false
         }
       },
@@ -72,8 +72,30 @@
           "y": 37,
           "locked": true
         }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_priniat",
+          "text": "ПРИНЯТЬ",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "DECALSGUIaccept"
+          },
+          "displayCondition": {
+            "name": "DECALSGUIaccept2"
+          },
+          "width": 60,
+          "height": 20,
+          "x": 182,
+          "y": 179,
+          "locked": false
+        }
       }
     ],
+    "onTick": {
+      "name": "DECALScolorGUI_tick"
+    },
     "gridSettings": {
       "sx": 16,
       "sy": 16,

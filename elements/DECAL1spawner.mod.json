@@ -41,11 +41,13 @@
     "glowCondition": {
       "fixedValue": false
     },
+    "guiBoundTo": "DECALScolorGUI",
     "openGUIOnRightClick": {
-      "fixedValue": false
+      "fixedValue": true,
+      "name": "DECAL_setting_"
     },
-    "inventorySize": 9,
-    "inventoryStackSize": 99,
+    "inventorySize": 1,
+    "inventoryStackSize": 1,
     "onRightClickedOnBlock": {
       "name": "DECAL1spawner_USE_"
     },

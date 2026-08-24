@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/broken_grille",
+  "textures": {
+    "all": "ssc_14:block/broken_grille_texture",
+    "particle": "ssc_14:block/broken_grille_texture",
+    "1": "ssc_14:block/broken_grille_texture"
+  },
+  "render_type": "cutout"
+}

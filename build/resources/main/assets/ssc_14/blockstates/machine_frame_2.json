@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ssc_14:block/machine_frame_2"
+    },
+    "facing=east": {
+      "model": "ssc_14:block/machine_frame_2",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ssc_14:block/machine_frame_2",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ssc_14:block/machine_frame_2",
+      "y": 270
+    }
+  }
+}

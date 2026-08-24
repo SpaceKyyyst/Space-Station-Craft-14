@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/air_lock_techi"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/air_lock_techi",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/air_lock_techi",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/air_lock_techi",
+      "y": 270
+    }
+  }
+}

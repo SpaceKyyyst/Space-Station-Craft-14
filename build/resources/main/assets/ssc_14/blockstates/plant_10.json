@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/plant_10"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/plant_10",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/plant_10",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/plant_10",
+      "y": 270
+    }
+  }
+}

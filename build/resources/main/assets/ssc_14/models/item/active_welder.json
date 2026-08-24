@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/welder_2",
+  "textures": {
+    "0": "ssc_14:block/wadler_an_1",
+    "particle": "ssc_14:item/fire_w_an"
+  }
+}

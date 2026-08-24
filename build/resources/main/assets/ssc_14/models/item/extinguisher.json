@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/extinguisher",
+  "textures": {
+    "1": "ssc_14:block/extinguisher_texture",
+    "particle": "ssc_14:item/extinguisher_item"
+  }
+}

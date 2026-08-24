@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
+import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -55,6 +56,20 @@ public class DecalRegistry {
 
         DecalNetwork.syncChunkToTrackingPlayers(chunk);
     }
+
+    public static void removeDecalAt(LevelChunk chunk, BlockPos pos, Direction face) {
+	    if (DECAL_ATTACHMENT == null) return;
+	    DecalListContainer container = chunk.getData(DECAL_ATTACHMENT);
+	    List<DecalData> decals = new ArrayList<>(container.decals());
+	    
+	    // Удаляем декаль, если совпадает и позиция, и сторона блока
+	    boolean removed = decals.removeIf(d -> d.pos().equals(pos) && d.face() == face);
+	    
+	    if (removed) {
+	        chunk.setData(DECAL_ATTACHMENT, new DecalListContainer(decals));
+	        DecalNetwork.syncChunkToTrackingPlayers(chunk);
+	    }
+	}
 
     public static void removeDecalsInRadius(LevelChunk chunk, BlockPos center, double radius) {
         if (chunk.getLevel() instanceof ServerLevel serverLevel) {

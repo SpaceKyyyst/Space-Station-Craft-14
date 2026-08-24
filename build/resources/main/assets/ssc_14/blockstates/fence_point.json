@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ssc_14:block/fence_point"
+    },
+    "facing=east": {
+      "model": "ssc_14:block/fence_point",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ssc_14:block/fence_point",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ssc_14:block/fence_point",
+      "y": 270
+    }
+  }
+}

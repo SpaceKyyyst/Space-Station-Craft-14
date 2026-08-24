@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "lv=true,mv=false,hv=false": {
+      "model": "ssc_14:block/sheathing_0"
+    },
+    "lv=false,mv=true,hv=false": {
+      "model": "ssc_14:block/sheathing_1"
+    },
+    "lv=false,mv=false,hv=true": {
+      "model": "ssc_14:block/sheathing_2"
+    },
+    "lv=true,mv=true,hv=false": {
+      "model": "ssc_14:block/sheathing_3"
+    },
+    "lv=true,mv=false,hv=true": {
+      "model": "ssc_14:block/sheathing_4"
+    },
+    "lv=false,mv=true,hv=true": {
+      "model": "ssc_14:block/sheathing_5"
+    },
+    "lv=true,mv=true,hv=true": {
+      "model": "ssc_14:block/sheathing_6"
+    },
+    "lv=false,mv=false,hv=false": {
+      "model": "ssc_14:block/sheathing"
+    }
+  }
+}

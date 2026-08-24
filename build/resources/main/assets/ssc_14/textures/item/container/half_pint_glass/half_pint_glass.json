@@ -1,0 +1,32 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc:item/container/half_pint_glass/half_pint_glass"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "ssc:fill_level": 0.25
+      },
+      "model": "ssc:item/container/half_pint_glass/half_pint_glass_25"
+    },
+    {
+      "predicate": {
+        "ssc:fill_level": 0.5
+      },
+      "model": "ssc:item/container/half_pint_glass/half_pint_glass_50"
+    },
+    {
+      "predicate": {
+        "ssc:fill_level": 0.75
+      },
+      "model": "ssc:item/container/half_pint_glass/half_pint_glass_75"
+    },
+    {
+      "predicate": {
+        "ssc:fill_level": 1
+      },
+      "model": "ssc:item/container/half_pint_glass/half_pint_glass_100"
+    }
+  ]
+}

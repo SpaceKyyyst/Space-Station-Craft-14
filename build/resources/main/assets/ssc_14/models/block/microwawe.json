@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/mikrowawe",
+  "textures": {
+    "all": "ssc_14:block/microwawe_item",
+    "particle": "ssc_14:block/microwawe_item",
+    "3": "ssc_14:block/microwave_on_texture"
+  },
+  "render_type": "solid"
+}

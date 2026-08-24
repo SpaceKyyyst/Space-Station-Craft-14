@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "ssc_14:planetary_plant_biome",
+  "features": "ssc_14:planet_tree_generation",
+  "step": "vegetal_decoration"
+}

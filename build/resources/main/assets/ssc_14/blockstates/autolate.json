@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/autolate"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/autolate",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/autolate",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/autolate",
+      "y": 270
+    }
+  }
+}

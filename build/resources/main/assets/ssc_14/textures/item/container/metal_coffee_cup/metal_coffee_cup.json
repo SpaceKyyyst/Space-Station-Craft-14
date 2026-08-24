@@ -1,0 +1,32 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc:item/container/mug/mug_metal"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "ssc:fill_level": 0.25
+      },
+      "model": "ssc:item/container/metal_coffee_cup/metal_coffee_cup_25"
+    },
+    {
+      "predicate": {
+        "ssc:fill_level": 0.5
+      },
+      "model": "ssc:item/container/metal_coffee_cup/metal_coffee_cup_50"
+    },
+    {
+      "predicate": {
+        "ssc:fill_level": 0.75
+      },
+      "model": "ssc:item/container/metal_coffee_cup/metal_coffee_cup_75"
+    },
+    {
+      "predicate": {
+        "ssc:fill_level": 1
+      },
+      "model": "ssc:item/container/metal_coffee_cup/metal_coffee_cup_100"
+    }
+  ]
+}

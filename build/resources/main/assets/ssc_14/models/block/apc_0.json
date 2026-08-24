@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/apc_open",
+  "textures": {
+    "all": "ssc_14:block/apc_open_item",
+    "particle": "ssc_14:block/apc_item",
+    "1": "ssc_14:block/apc_open_t"
+  },
+  "render_type": "cutout"
+}

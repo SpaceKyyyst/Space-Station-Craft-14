@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/pribor_karkas"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/pribor_karkas",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/pribor_karkas",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/pribor_karkas",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ssc_14:block/console_of_id"
+    },
+    "facing=east": {
+      "model": "ssc_14:block/console_of_id",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ssc_14:block/console_of_id",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ssc_14:block/console_of_id",
+      "y": 270
+    }
+  }
+}

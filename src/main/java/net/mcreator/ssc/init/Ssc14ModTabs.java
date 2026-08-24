@@ -529,6 +529,10 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.DECAL_1DELETION.get());
 				tabData.accept(Ssc14ModItems.DECAL_1SPAWNER.get());
 				tabData.accept(Ssc14ModItems.DECAL_2SPAWNER.get());
+				tabData.accept(Ssc14ModItems.DECAL_3SPAWNER.get());
+				tabData.accept(Ssc14ModItems.DECAL_4SPAWNER.get());
+				tabData.accept(Ssc14ModItems.DECAL_5SPAWNER.get());
+				tabData.accept(Ssc14ModItems.DECAL_6SPAWNER.get());
 			}).withTabsBefore(SSC_14MOBS.getId()).build());
 
 	@SubscribeEvent
@@ -547,6 +551,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.DEBUG_13.get().asItem());
 				tabData.accept(Ssc14ModBlocks.NUCLEAR_WARHEAD.get().asItem());
 				tabData.accept(Ssc14ModItems.DEBUGACTIVATOR.get());
+				tabData.accept(Ssc14ModItems.DEBU_GITEM.get());
 			}
 		}
 	}

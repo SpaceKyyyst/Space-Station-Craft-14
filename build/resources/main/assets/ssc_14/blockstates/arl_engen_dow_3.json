@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/arl_engen_dow_3"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/arl_engen_dow_3",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/arl_engen_dow_3",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/arl_engen_dow_3",
+      "y": 270
+    }
+  }
+}

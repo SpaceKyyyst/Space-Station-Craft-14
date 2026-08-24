@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "minecraft:block/dragon_egg",
+    "particle": "minecraft:block/debug"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ssc_14:block/broken_grille"
+    },
+    "facing=east": {
+      "model": "ssc_14:block/broken_grille",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ssc_14:block/broken_grille",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ssc_14:block/broken_grille",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "ssc_14:block/broken_grille",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "ssc_14:block/broken_grille",
+      "x": 90
+    }
+  }
+}

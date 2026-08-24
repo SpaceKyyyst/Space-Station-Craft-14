@@ -1,0 +1,8 @@
+{
+  "_fv": 85,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"world_send_chat\"><field name=\"color\">#ffffff</field><field name=\"bold\">FALSE</field><field name=\"italic\">FALSE</field><field name=\"underlined\">FALSE</field><value name=\"text\"><block type=\"text\"><field name=\"TEXT\">ЛКМ</field></block></value></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

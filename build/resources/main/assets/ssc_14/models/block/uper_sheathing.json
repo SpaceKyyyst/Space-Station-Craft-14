@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "ssc_14:block/up_floor",
+    "particle": "ssc_14:block/up_floor"
+  },
+  "render_type": "solid"
+}

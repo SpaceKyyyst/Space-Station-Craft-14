@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/directed_st_glass_uran_armored"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/directed_st_glass_uran_armored",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/directed_st_glass_uran_armored",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/directed_st_glass_uran_armored",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "space_station_craft_14:block/directed_st_glass_uran_armored",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "space_station_craft_14:block/directed_st_glass_uran_armored",
+      "x": 90
+    }
+  }
+}

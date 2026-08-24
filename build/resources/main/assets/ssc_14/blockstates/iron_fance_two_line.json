@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/iron_fance_two_line"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/iron_fance_two_line",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/iron_fance_two_line",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/iron_fance_two_line",
+      "y": 270
+    }
+  }
+}

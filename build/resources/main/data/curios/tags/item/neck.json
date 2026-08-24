@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:red_scarf",
+    "ssc_14:black_scarf",
+    "ssc_14:black_green_scarf",
+    "ssc_14:blue_scarf",
+    "ssc_14:brown_scarf",
+    "ssc_14:green_scarf",
+    "ssc_14:light_blue_scarf",
+    "ssc_14:light_blue_white_scarf",
+    "ssc_14:orange_scarf",
+    "ssc_14:purple_scarf",
+    "ssc_14:sindy_scarf",
+    "ssc_14:trns_scarf",
+    "ssc_14:yellow_scarf",
+    "ssc_14:cloaks_cap",
+    "ssc_14:mantles_cap",
+    "ssc_14:cloaks_ho_s",
+    "ssc_14:mantles_ho_s_shoulder_cap",
+    "ssc_14:mantles_ho_s",
+    "ssc_14:tie_black",
+    "ssc_14:tie_red",
+    "ssc_14:tie_science"
+  ]
+}

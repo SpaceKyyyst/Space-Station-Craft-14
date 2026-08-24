@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "ssc_14:block/planetary_tree_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "ssc_14:block/planetary_tree_log"
+    },
+    "axis=z": {
+      "model": "ssc_14:block/planetary_tree_log",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc:item/container/big_mug/big_mug"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "ssc:fill_level": 0.5
+      },
+      "model": "ssc:item/container/big_mug/big_mug_50"
+    },
+    {
+      "predicate": {
+        "ssc:fill_level": 0.75
+      },
+      "model": "ssc:item/container/big_mug/big_mug_75"
+    },
+    {
+      "predicate": {
+        "ssc:fill_level": 1
+      },
+      "model": "ssc:item/container/big_mug/big_mug_100"
+    }
+  ]
+}

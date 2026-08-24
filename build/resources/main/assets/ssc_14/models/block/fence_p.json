@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/fence_p",
+  "textures": {
+    "all": "ssc_14:block/fence_item",
+    "particle": "ssc_14:block/fence_item",
+    "1": "ssc_14:block/fence_texture"
+  },
+  "render_type": "cutout"
+}

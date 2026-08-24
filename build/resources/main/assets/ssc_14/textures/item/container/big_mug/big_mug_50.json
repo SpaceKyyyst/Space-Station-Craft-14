@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc:item/container/big_mug/big_mug",
+    "layer1": "ssc:item/container/big_mug/big_mug_50"
+  }
+}

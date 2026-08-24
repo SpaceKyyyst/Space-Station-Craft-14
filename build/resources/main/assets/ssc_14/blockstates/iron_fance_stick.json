@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "space_station_craft_14:block/iron_fance_stick"
+    },
+    "facing=east": {
+      "model": "space_station_craft_14:block/iron_fance_stick",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "space_station_craft_14:block/iron_fance_stick",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "space_station_craft_14:block/iron_fance_stick",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/spanner",
+  "textures": {
+    "0": "ssc_14:block/texture_of_spanner",
+    "particle": "ssc_14:item/govnotexture_of_spanner"
+  }
+}

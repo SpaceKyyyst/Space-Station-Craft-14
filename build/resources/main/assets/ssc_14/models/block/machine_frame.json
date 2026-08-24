@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/machine_frame",
+  "textures": {
+    "all": "ssc_14:block/pribor_karkas_item",
+    "particle": "ssc_14:block/pribor_karkas_item",
+    "2": "ssc_14:block/pribor_karcas_t"
+  },
+  "render_type": "cutout"
+}

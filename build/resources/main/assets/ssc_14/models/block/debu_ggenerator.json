@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/debug",
+  "textures": {
+    "all": "ssc_14:block/debug_block_texture",
+    "particle": "ssc_14:block/debug_block_texture",
+    "1": "ssc_14:block/debug_block_texture"
+  },
+  "render_type": "cutout"
+}

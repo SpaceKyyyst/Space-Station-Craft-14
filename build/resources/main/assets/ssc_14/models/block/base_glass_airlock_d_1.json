@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/airlock_glass",
+  "textures": {
+    "all": "ssc_14:block/airlock_glass_base_item",
+    "particle": "ssc_14:block/airlock_glass_base_item",
+    "0": "ssc_14:block/glass_airlock_basic_texture"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/smes",
+  "textures": {
+    "all": "ssc_14:block/smes_static_texture",
+    "particle": "ssc_14:block/smes_texture",
+    "0": "ssc_14:block/smes_static_texture"
+  },
+  "render_type": "cutout"
+}

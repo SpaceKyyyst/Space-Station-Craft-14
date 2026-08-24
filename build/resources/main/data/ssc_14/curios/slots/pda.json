@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "size": 1,
+  "operation": "SET",
+  "order": 10,
+  "render_toggle": true,
+  "icon": "curios:slot/pda_slot"
+}

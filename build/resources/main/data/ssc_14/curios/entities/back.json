@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "entities": [
+    "player"
+  ],
+  "slots": [
+    "back"
+  ]
+}

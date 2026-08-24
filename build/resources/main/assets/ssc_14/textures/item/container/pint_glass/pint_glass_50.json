@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc:item/container/beer_glass/beer_glass",
+    "layer1": "ssc:item/container/beer_glass/beer_glass_50"
+  }
+}

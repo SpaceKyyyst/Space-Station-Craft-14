@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/iron_chair",
+  "textures": {
+    "all": "ssc_14:block/iron_chair_item",
+    "particle": "ssc_14:block/iron_chair_item",
+    "2": "ssc_14:block/iron_chair_t"
+  },
+  "render_type": "cutout"
+}

@@ -11,19 +11,18 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Mth;
 
 public class DECAL1spawner_USE_Procedure {
     public static void execute(LevelAccessor world, Entity entity, BlockPos pos, Direction face, ItemStack itemStack) {
         if (world == null || entity == null || pos == null || face == null || itemStack == null) return;
-        
-        // Логика должна выполняться строго на сервере
         if (world.isClientSide()) return;
 
         if (world.getChunk(pos) instanceof LevelChunk chunk) {
-            // Определяем ID декали по предмету в руке
-            String decalId = "decal_1"; // По умолчанию
-            
-            // Получаем текстовое имя предмета для точной сверки
+            String decalId = "decal_1"; 
             ResourceLocation itemKey = BuiltInRegistries.ITEM.getKey(itemStack.getItem());
             String itemName = itemKey.getPath();
 
@@ -31,8 +30,41 @@ public class DECAL1spawner_USE_Procedure {
                 decalId = "decal_2";
             }
 
-            // Спавним нужную декаль на кликнутом блоке без вращения (0)
-            DecalData newDecal = new DecalData(pos, face, decalId, 0);
+            if (itemName.equals("decal_3spawner") || itemName.contains("decal3")) {
+                decalId = "decal_3";
+            }
+
+            if (itemName.equals("decal_4spawner") || itemName.contains("decal4")) {
+                decalId = "decal_4";
+            }
+
+            if (itemName.equals("decal_5spawner") || itemName.contains("decal5")) {
+                decalId = "decal_5";
+            }
+
+            if (itemName.equals("decal_6spawner") || itemName.contains("decal6")) {
+                decalId = "decal_6";
+            }
+
+            int finalColor = -1; // По умолчанию без цвета (белый)
+            CustomData customData = itemStack.get(DataComponents.CUSTOM_DATA);
+            
+            if (customData != null) {
+                CompoundTag tag = customData.copyTag();
+                // Проверяем наличие всех трех каналов цвета
+                if (tag.contains("R") && tag.contains("G") && tag.contains("B")) {
+                    // Используем майнкрафтовский Mth.clamp для double и достаем значение через orElse
+                    int r = (int) Mth.clamp(tag.getDouble("R").orElse(0.0), 0.0, 255.0);
+                    int g = (int) Mth.clamp(tag.getDouble("G").orElse(0.0), 0.0, 255.0);
+                    int b = (int) Mth.clamp(tag.getDouble("B").orElse(0.0), 0.0, 255.0);
+                    
+                    // Упаковываем в HEX-формат (Alpha ставим 255 - полностью непрозрачный)
+                    finalColor = (255 << 24) | (r << 16) | (g << 8) | b;
+                }
+            }
+
+            // Спавним декаль на кликнутом блоке с полученным цветом
+            DecalData newDecal = new DecalData(pos, face, decalId, 0, finalColor);
             DecalRegistry.addDecal(chunk, newDecal);
         }
     }

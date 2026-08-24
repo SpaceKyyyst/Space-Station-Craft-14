@@ -1,0 +1,25 @@
+-p
+C:\\Users\\Admin\\.mcreator\\gradle\\caches\\modules-2\\files-2.1\\net.neoforged\\JarJarFileSystems\\0.4.1\\78f59f89defcd032ed788b151ca6a0d40ace796a\\JarJarFileSystems-0.4.1.jar;C:\\Users\\Admin\\.mcreator\\gradle\\caches\\modules-2\\files-2.1\\net.neoforged.fancymodloader\\bootstraplauncher\\9.0.16\\703417f9ccbdb2c69ba9b25b04458b0803987a0b\\bootstraplauncher-9.0.16.jar;C:\\Users\\Admin\\.mcreator\\gradle\\caches\\modules-2\\files-2.1\\net.neoforged.fancymodloader\\securejarhandler\\9.0.16\\ae0b47dfdb029eb38243aae5d8980015f1274c59\\securejarhandler-9.0.16.jar
+--add-modules
+ALL-MODULE-PATH
+--add-opens
+java.base/java.util.jar=cpw.mods.securejarhandler
+--add-opens
+java.base/java.lang.invoke=cpw.mods.securejarhandler
+--add-exports
+java.base/sun.security.util=cpw.mods.securejarhandler
+--add-exports
+jdk.naming.dns/com.sun.jndi.dns=java.naming
+
+# User JVM Arguments
+-Dcom.sun.management.jmxremote.port=1099
+-Dcom.sun.management.jmxremote.local.only=true
+-Dcom.sun.management.jmxremote.ssl=false
+-Dcom.sun.management.jmxremote.authenticate=false
+
+-Dlog4j2.configurationFile=D:\\Space_Station_Craft_14_[recovery]\\build\\moddev\\clientLog4j2.xml
+-Djava.net.preferIPv6Addresses=system
+-DignoreList=mixinextras-neoforge-0.5.0.jar,client-extra,neoforge-
+-DlegacyClassPath.file=D:\\Space_Station_Craft_14_[recovery]\\build\\moddev\\clientLegacyClasspath.txt
+-Dneoforge.enableGameTest=true
+-Dforge.logging.markers=REGISTRIES

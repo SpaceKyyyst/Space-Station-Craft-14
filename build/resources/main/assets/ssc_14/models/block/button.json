@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/button",
+  "textures": {
+    "all": "ssc_14:block/button_item",
+    "particle": "ssc_14:block/button_item",
+    "0": "ssc_14:block/button_texture"
+  },
+  "render_type": "solid"
+}

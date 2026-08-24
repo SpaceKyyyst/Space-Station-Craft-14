@@ -9,6 +9,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.mcreator.ssc.entity.PosterEntity;
 import net.mcreator.ssc.init.Ssc14ModEntities;
 import net.mcreator.ssc.init.Ssc14ModItems;
@@ -74,19 +75,44 @@ public class Posters_InstallProcedure {
         String currentPosterType = POSTER_MAP.get(itemstack.getItem());
         if (currentPosterType == null) return;
 
-        PosterEntity poster = new PosterEntity(Ssc14ModEntities.POSTER.get(), level);
-        
+        // ВЫЧИСЛЕНИЕ ДРОБНОЙ ПОЗИЦИИ КЛИКА (от 0.0 до 1.0 внутри блока)
+        Vec3 clickLoc = context.getClickLocation();
+        double hitX = clickLoc.x - (double)pos.getX();
+        double hitY = clickLoc.y - (double)pos.getY();
+        double hitZ = clickLoc.z - (double)pos.getZ();
+
+        // Переводим hitX и hitZ в строго положительные значения (на случай отрицательных координат мира)
+        hitX = (hitX < 0) ? hitX + 1.0D : hitX;
+        hitZ = (hitZ < 0) ? hitZ + 1.0D : hitZ;
+
+        // Базовые координаты центра блока воздуха перед стеной
         double x = (double) spawnPos.getX() + 0.5D;
         double y = (double) spawnPos.getY();
         double z = (double) spawnPos.getZ() + 0.5D;
-        
+
+        // Смещение К СТЕНЕ по оси клика
         x -= (double) clickedFace.getStepX() * 0.465D;
         z -= (double) clickedFace.getStepZ() * 0.465D;
-        
+
+        // СИСТЕМА УМНОГО СДВИГА ПО ТРЁМ ВЕКТОРАМ (Шаг 0.5 блока)
+        // Высота (Вектор Y) обрабатывается всегда, так как все стены вертикальные
+        y += getSmartOffset(hitY);
+
+        // Горизонтальные векторы обрабатываются в зависимости от направления стены
+        if (clickedFace.getAxis() == Direction.Axis.Z) {
+            // Кликнули по стене Север/Юг -> постер двигается влево/вправо по оси X
+            x = (double) spawnPos.getX() + getSmartOffset(hitX);
+        } else if (clickedFace.getAxis() == Direction.Axis.X) {
+            // Кликнули по стене Восток/Запад -> постер двигается влево/вправо по оси Z
+            z = (double) spawnPos.getZ() + getSmartOffset(hitZ);
+        }
+
+        PosterEntity poster = new PosterEntity(Ssc14ModEntities.POSTER.get(), level);
         poster.absSnapTo(x, y, z, 0.0F, 0.0F);
         poster.setFacingDirection(clickedFace);
         poster.setPosterType(currentPosterType);
 
+        // ДИНАМИЧЕСКАЯ НАСТРОЙКА ХИТБОКСА (подстраивается под новые координаты смещения)
         double thickness = 0.03D; 
         double hWidth = 0.5D;     
         double hHeight = 1.0D;    
@@ -100,11 +126,22 @@ public class Posters_InstallProcedure {
 
         poster.setBoundingBox(new AABB(minX, minY, minZ, maxX, maxY, maxZ));
 
-        level.playSound(null, spawnPos, SoundEvents.PAINTING_PLACE, net.minecraft.sounds.SoundSource.BLOCKS, 1.0F, 1.0F);
+        level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.PAINTING_PLACE, net.minecraft.sounds.SoundSource.BLOCKS, 1.0F, 1.0F);
         level.addFreshEntity(poster);
 
         if (!player.getAbilities().instabuild) {
             itemstack.shrink(1);
+        }
+    }
+
+    // Вспомогательный метод для округления долей клика по правилу 0.25 - 0.75
+    private static double getSmartOffset(double hitValue) {
+        if (hitValue < 0.25D) {
+            return 0.0D; // Сдвиг к началу блока (координата 0)
+        } else if (hitValue > 0.75D) {
+            return 1.0D; // Сдвиг к концу блока (координата 1)
+        } else {
+            return 0.5D; // Строго центр блока
         }
     }
 }

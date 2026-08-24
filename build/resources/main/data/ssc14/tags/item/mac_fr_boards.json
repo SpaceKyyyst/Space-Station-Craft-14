@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:substation_board",
+    "ssc_14:smes_board"
+  ]
+}

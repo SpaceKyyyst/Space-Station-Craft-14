@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:headset_base",
+    "ssc_14:headset_brigmedic",
+    "ssc_14:headset_cargo",
+    "ssc_14:headset_centcom",
+    "ssc_14:headset_command",
+    "ssc_14:headset_engineering",
+    "ssc_14:headset_medical",
+    "ssc_14:headset_medical_science",
+    "ssc_14:headset_mining",
+    "ssc_14:headset_robotics",
+    "ssc_14:headset_science",
+    "ssc_14:headset_security",
+    "ssc_14:headset_service",
+    "ssc_14:headset_syndicate"
+  ]
+}

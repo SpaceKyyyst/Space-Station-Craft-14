@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/lamp_empty",
+  "textures": {
+    "all": "ssc_14:block/texture_lamp_empty",
+    "particle": "ssc_14:block/texture_of_lamp",
+    "2": "ssc_14:block/texture_lamp_empty"
+  },
+  "render_type": "cutout"
+}

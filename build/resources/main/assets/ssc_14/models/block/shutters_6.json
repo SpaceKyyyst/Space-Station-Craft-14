@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/shutters_opening",
+  "textures": {
+    "all": "ssc_14:block/shutters_item",
+    "particle": "ssc_14:block/shutters_item",
+    "1": "ssc_14:block/shutters_down_close_texture"
+  },
+  "render_type": "cutout"
+}

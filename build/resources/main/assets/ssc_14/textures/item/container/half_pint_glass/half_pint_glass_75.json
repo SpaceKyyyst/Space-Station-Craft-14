@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc:item/container/half_pint_glass/half_pint_glass",
+    "layer1": "ssc:item/container/half_pint_glass/half_pint_glass_75"
+  }
+}

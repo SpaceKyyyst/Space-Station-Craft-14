@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/bar_chair",
+  "textures": {
+    "all": "ssc_14:block/bar_chair_item",
+    "particle": "ssc_14:block/bar_chair_item",
+    "1": "ssc_14:block/bar_chair_t"
+  },
+  "render_type": "cutout"
+}

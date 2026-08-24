@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/ofice_chair",
+  "textures": {
+    "all": "ssc_14:block/white_ofice_chair_item",
+    "particle": "ssc_14:block/white_ofice_chair_item",
+    "1": "ssc_14:block/wh_ofice_chair_t"
+  },
+  "render_type": "cutout"
+}

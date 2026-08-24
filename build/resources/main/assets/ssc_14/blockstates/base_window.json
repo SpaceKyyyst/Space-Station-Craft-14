@@ -1,0 +1,11 @@
+
+{
+  "variants": {
+    "window_disassembly=1": {
+      "model": "ssc_14:block/base_window_0"
+    },
+    "window_disassembly=0": {
+      "model": "ssc_14:block/base_window"
+    }
+  }
+}

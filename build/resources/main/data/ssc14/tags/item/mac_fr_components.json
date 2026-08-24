@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:matter_bin",
+    "ssc_14:low_batterie",
+    "ssc_14:glass",
+    "ssc_14:low_voltage_cable",
+    "ssc_14:medium_voltage_cable",
+    "ssc_14:capacitor",
+    "ssc_14:plastic",
+    "ssc_14:micro_manipulator",
+    "ssc_14:high_voltage_cable",
+    "ssc_14:steel"
+  ]
+}

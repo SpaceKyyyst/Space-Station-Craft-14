@@ -30,85 +30,130 @@ public class MK58_Fire_Procedure {
 			return;
 		double BulletChamber = 0;
 		double MagazBullets = 0;
-		if (entity instanceof Player _player)
-			_player.getCooldowns().addCooldown(itemstack, 10);
-		if (itemstack.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-			BulletChamber = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("BulletChamber", 0);
-			MagazBullets = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0);
-			if ((Ssc14ModItems.MK_58.get() == itemstack.getItem() || Ssc14ModItems.MK_58NOMAGZ.get() == itemstack.getItem()) && 0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("BulletChamber", 0)) {
-				{
-					Entity _shootFrom = entity;
-					Level projectileLevel = _shootFrom.level();
-					if (!projectileLevel.isClientSide()) {
-						Projectile _entityToSpawn = initArrowProjectile(new Bullet35Entity(Ssc14ModEntities.BULLET_35.get(), projectileLevel), entity, 16, true, false, false, AbstractArrow.Pickup.DISALLOWED);
-						_entityToSpawn.setPos(_shootFrom.getX(), _shootFrom.getEyeY() - 0.1, _shootFrom.getZ());
-						_entityToSpawn.shoot(_shootFrom.getLookAngle().x, _shootFrom.getLookAngle().y, _shootFrom.getLookAngle().z, 4, (float) 0.1);
-						projectileLevel.addFreshEntity(_entityToSpawn);
-					}
-				}
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:gunshots_mk58")), SoundSource.MASTER, (float) 1.5,
-								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
-					} else {
-						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:gunshots_mk58")), SoundSource.MASTER, (float) 1.5,
-								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
-					}
-				}
-				if (world instanceof ServerLevel _level) {
-					ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY() + entity.getBbHeight() / 3d), (entity.getZ()), new ItemStack(Ssc14ModItems.BULLET_35_CARTRIDGE.get()));
-					entityToSpawn.setPickUpDelay(0);
-					entityToSpawn.setUnlimitedLifetime();
-					_level.addFreshEntity(entityToSpawn);
-				}
-				if (0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0)) {
+		if (!(entity instanceof Player _plrCldCheck1 && _plrCldCheck1.getCooldowns().isOnCooldown(itemstack))) {
+			if (entity instanceof Player _player)
+				_player.getCooldowns().addCooldown(itemstack, 10);
+			if (itemstack.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+				BulletChamber = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("BulletChamber", 0);
+				MagazBullets = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0);
+				if ((Ssc14ModItems.MK_58.get() == itemstack.getItem() || Ssc14ModItems.MK_58NOMAGZ.get() == itemstack.getItem()) && 0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("BulletChamber", 0)) {
 					{
-						final String _tagName = "MagazBullets";
-						final double _tagValue = (itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0) - 1);
-						CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble(_tagName, _tagValue));
+						Entity _shootFrom = entity;
+						Level projectileLevel = _shootFrom.level();
+						if (!projectileLevel.isClientSide()) {
+							Projectile _entityToSpawn = initArrowProjectile(new Bullet35Entity(Ssc14ModEntities.BULLET_35.get(), projectileLevel), entity, 16, true, false, false, AbstractArrow.Pickup.DISALLOWED);
+							_entityToSpawn.setPos(_shootFrom.getX(), _shootFrom.getEyeY() - 0.1, _shootFrom.getZ());
+							_entityToSpawn.shoot(_shootFrom.getLookAngle().x, _shootFrom.getLookAngle().y, _shootFrom.getLookAngle().z, 4, (float) 0.1);
+							projectileLevel.addFreshEntity(_entityToSpawn);
+						}
 					}
-				} else {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, (float) 1.5,
+							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:gunshots_mk58")), SoundSource.MASTER, (float) 1.5,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 						} else {
-							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, (float) 1.5,
+							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:gunshots_mk58")), SoundSource.MASTER, (float) 1.5,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 						}
 					}
-					if (Ssc14ModItems.MK_58.get() == itemstack.getItem()) {
-						itemstack.shrink(1);
-						if (entity instanceof LivingEntity _entity) {
-							ItemStack _setstack42 = new ItemStack(Ssc14ModItems.MK_58OPEN.get()).copy();
-							_setstack42.setCount(1);
-							_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack42);
-							if (_entity instanceof Player _player)
-								_player.getInventory().setChanged();
-						}
+					if (world instanceof ServerLevel _level) {
+						ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY() + entity.getBbHeight() / 3d), (entity.getZ()), new ItemStack(Ssc14ModItems.BULLET_35_CARTRIDGE.get()));
+						entityToSpawn.setPickUpDelay(0);
+						entityToSpawn.setUnlimitedLifetime();
+						_level.addFreshEntity(entityToSpawn);
+					}
+					if (0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0)) {
 						{
-							final String _tagName = "GenEraTE";
-							final boolean _tagValue = true;
-							CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putBoolean(_tagName, _tagValue));
+							final String _tagName = "MagazBullets";
+							final double _tagValue = (itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0) - 1);
+							CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble(_tagName, _tagValue));
 						}
-					} else if (Ssc14ModItems.MK_58NOMAGZ.get() == itemstack.getItem()) {
-						itemstack.shrink(1);
-						if (entity instanceof LivingEntity _entity) {
-							ItemStack _setstack49 = new ItemStack(Ssc14ModItems.MK_58OPEN_NO_MAGZ.get()).copy();
-							_setstack49.setCount(1);
-							_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack49);
-							if (_entity instanceof Player _player)
-								_player.getInventory().setChanged();
+					} else {
+						if (world instanceof Level _level) {
+							if (!_level.isClientSide()) {
+								_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, (float) 1.5,
+										(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
+							} else {
+								_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, (float) 1.5,
+										(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
+							}
 						}
-						{
-							final String _tagName = "GenEraTE";
-							final boolean _tagValue = true;
-							CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putBoolean(_tagName, _tagValue));
+						if (Ssc14ModItems.MK_58.get() == itemstack.getItem()) {
+							itemstack.shrink(1);
+							if (entity instanceof LivingEntity _entity) {
+								ItemStack _setstack44 = new ItemStack(Ssc14ModItems.MK_58OPEN.get()).copy();
+								_setstack44.setCount(1);
+								_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack44);
+								if (_entity instanceof Player _player)
+									_player.getInventory().setChanged();
+							}
+							{
+								final String _tagName = "GenEraTE";
+								final boolean _tagValue = true;
+								CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putBoolean(_tagName, _tagValue));
+							}
+							{
+								final String _tagName = "BulletChamber";
+								final double _tagValue = 0;
+								CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble(_tagName, _tagValue));
+							}
+						} else if (Ssc14ModItems.MK_58NOMAGZ.get() == itemstack.getItem()) {
+							itemstack.shrink(1);
+							if (entity instanceof LivingEntity _entity) {
+								ItemStack _setstack53 = new ItemStack(Ssc14ModItems.MK_58OPEN_NO_MAGZ.get()).copy();
+								_setstack53.setCount(1);
+								_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack53);
+								if (_entity instanceof Player _player)
+									_player.getInventory().setChanged();
+							}
+							{
+								final String _tagName = "GenEraTE";
+								final boolean _tagValue = true;
+								CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putBoolean(_tagName, _tagValue));
+							}
+							{
+								final String _tagName = "BulletChamber";
+								final double _tagValue = 0;
+								CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble(_tagName, _tagValue));
+							}
 						}
 					}
-				}
-			} else if (Ssc14ModItems.MK_58OPEN.get() == itemstack.getItem()) {
-				if (0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0)) {
+				} else if (Ssc14ModItems.MK_58OPEN.get() == itemstack.getItem()) {
+					if (0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0)) {
+						if (world instanceof Level _level) {
+							if (!_level.isClientSide()) {
+								_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
+										(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
+							} else {
+								_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
+										(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
+							}
+						}
+						itemstack.shrink(1);
+						if (entity instanceof LivingEntity _entity) {
+							ItemStack _setstack69 = new ItemStack(Ssc14ModItems.MK_58.get()).copy();
+							_setstack69.setCount(1);
+							_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack69);
+							if (_entity instanceof Player _player)
+								_player.getInventory().setChanged();
+						}
+						{
+							final String _tagName = "GenEraTE";
+							final boolean _tagValue = true;
+							CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putBoolean(_tagName, _tagValue));
+						}
+						{
+							final String _tagName = "MagazBullets";
+							final double _tagValue = (MagazBullets - 1);
+							CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
+						}
+						{
+							final String _tagName = "BulletChamber";
+							final double _tagValue = 1;
+							CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
+						}
+					}
+				} else if (Ssc14ModItems.MK_58OPEN_NO_MAGZ.get() == itemstack.getItem()) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
 							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
@@ -120,9 +165,9 @@ public class MK58_Fire_Procedure {
 					}
 					itemstack.shrink(1);
 					if (entity instanceof LivingEntity _entity) {
-						ItemStack _setstack63 = new ItemStack(Ssc14ModItems.MK_58.get()).copy();
-						_setstack63.setCount(1);
-						_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack63);
+						ItemStack _setstack85 = new ItemStack(Ssc14ModItems.MK_58NOMAGZ.get()).copy();
+						_setstack85.setCount(1);
+						_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack85);
 						if (_entity instanceof Player _player)
 							_player.getInventory().setChanged();
 					}
@@ -132,48 +177,10 @@ public class MK58_Fire_Procedure {
 						CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putBoolean(_tagName, _tagValue));
 					}
 					{
-						final String _tagName = "MagazBullets";
-						final double _tagValue = (MagazBullets - 1);
-						CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
-					}
-					{
 						final String _tagName = "BulletChamber";
-						final double _tagValue = 1;
+						final double _tagValue = BulletChamber;
 						CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
 					}
-				}
-			} else if (Ssc14ModItems.MK_58OPEN_NO_MAGZ.get() == itemstack.getItem()) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
-								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
-					} else {
-						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
-								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
-					}
-				}
-				itemstack.shrink(1);
-				if (entity instanceof LivingEntity _entity) {
-					ItemStack _setstack79 = new ItemStack(Ssc14ModItems.MK_58NOMAGZ.get()).copy();
-					_setstack79.setCount(1);
-					_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack79);
-					if (_entity instanceof Player _player)
-						_player.getInventory().setChanged();
-				}
-				{
-					final String _tagName = "GenEraTE";
-					final boolean _tagValue = true;
-					CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putBoolean(_tagName, _tagValue));
-				}
-				{
-					final String _tagName = "MagazBullets";
-					final double _tagValue = (MagazBullets - 1);
-					CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
-				}
-				{
-					final String _tagName = "BulletChamber";
-					final double _tagValue = 1;
-					CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
 				}
 			}
 		}

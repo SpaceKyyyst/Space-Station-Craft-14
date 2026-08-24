@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/cone",
+  "textures": {
+    "1": "ssc_14:block/cone_texture",
+    "particle": "ssc_14:item/cone_item"
+  }
+}

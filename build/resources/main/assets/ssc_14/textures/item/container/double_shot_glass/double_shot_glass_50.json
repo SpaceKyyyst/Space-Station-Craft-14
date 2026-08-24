@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc:item/container/double_shot_glass/double_shot_glass",
+    "layer1": "ssc:item/container/double_shot_glass/double_shot_glass_50"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "ssc_14:custom/network_configurator",
+  "textures": {
+    "1": "ssc_14:block/network_configurator_texture",
+    "particle": "ssc_14:item/ssc14"
+  }
+}

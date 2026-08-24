@@ -78,7 +78,7 @@ public class ClientDecalRenderer {
                 int skyLight = level.getBrightness(LightLayer.SKY, decal.pos().relative(face));
                 int packedLight = LightTexture.pack(blockLight, skyLight);
 
-                renderQuad(poseStack.last().pose(), buffer, packedLight);
+                renderQuad(poseStack.last().pose(), buffer, packedLight, decal.color());
                 poseStack.popPose();
             }
         }
@@ -100,10 +100,21 @@ public class ClientDecalRenderer {
         }
     }
 
-    private static void renderQuad(Matrix4f matrix, VertexConsumer buffer, int packedLight) {
-        buffer.addVertex(matrix, -0.5f, -0.5f, 0).setColor(255, 255, 255, 255).setUv(0, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(0, 0, 1);
-        buffer.addVertex(matrix, 0.5f, -0.5f, 0).setColor(255, 255, 255, 255).setUv(1, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(0, 0, 1);
-        buffer.addVertex(matrix, 0.5f, 0.5f, 0).setColor(255, 255, 255, 255).setUv(1, 0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(0, 0, 1);
-        buffer.addVertex(matrix, -0.5f, 0.5f, 0).setColor(255, 255, 255, 255).setUv(0, 0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(0, 0, 1);
-    }
+	private static void renderQuad(Matrix4f matrix, VertexConsumer buffer, int packedLight, int color) {
+	    // Распаковываем каналы из int
+	    int a = (color >> 24) & 0xFF;
+	    int r = (color >> 16) & 0xFF;
+	    int g = (color >> 8) & 0xFF;
+	    int b = color & 0xFF;
+	
+	    // Если цвет равен -1, это даст нам 255, 255, 255, 255 автоматически
+	    if (color == -1) {
+	        r = 255; g = 255; b = 255; a = 255;
+	    }
+	
+	    buffer.addVertex(matrix, -0.5f, -0.5f, 0).setColor(r, g, b, a).setUv(0, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(0, 0, 1);
+	    buffer.addVertex(matrix, 0.5f, -0.5f, 0).setColor(r, g, b, a).setUv(1, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(0, 0, 1);
+	    buffer.addVertex(matrix, 0.5f, 0.5f, 0).setColor(r, g, b, a).setUv(1, 0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(0, 0, 1);
+	    buffer.addVertex(matrix, -0.5f, 0.5f, 0).setColor(r, g, b, a).setUv(0, 0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(0, 0, 1);
+	}
 }

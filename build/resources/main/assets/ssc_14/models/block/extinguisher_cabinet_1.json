@@ -1,0 +1,9 @@
+{
+  "parent": "ssc_14:custom/extinguisher_cabinet_open",
+  "textures": {
+    "all": "ssc_14:block/extinguisher_cabinet_empty_texture",
+    "particle": "ssc_14:block/extinguisher_cabinet_texture",
+    "0": "ssc_14:block/extinguisher_cabinet_empty_texture"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ssc_14:item/frame_of_plasstal_wall_item"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "ssc_14:closet_blue",
+    "ssc_14:closet_emerg",
+    "ssc_14:closet_fire",
+    "ssc_14:closet_black",
+    "ssc_14:closet_n_2",
+    "ssc_14:closet_secure",
+    "ssc_14:closet",
+    "ssc_14:closet_gray",
+    "ssc_14:closet_green",
+    "ssc_14:closet_orange",
+    "ssc_14:closet_mixed",
+    "ssc_14:closet_pink"
+  ]
+}
