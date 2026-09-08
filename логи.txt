@@ -1,0 +1,1157 @@
+Executing Gradle task: runClient
+Build info: MCreator 2026.2.30420, neoforge-26.1.2, 64-bit, 15739 MB, Windows 10, JVM 25.0.2, JAVA_HOME: D:\Program\MCreator 2026.2\jdk, started on: 2026-09-08-17:53:49
+Loaded APIs: curios_api
+
+Reusing configuration cache.
+> Task :downloadAssets UP-TO-DATE
+> Task :createMinecraftArtifacts UP-TO-DATE
+> Task :prepareClientRun UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :compileJava
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ArmorResistanceHelper.java:6: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosForgeEventHandler.java:30: error: cannot find symbol public static void onBlockBreak(BlockEvent.BreakEvent event) {
+ ^
+ symbol: class BreakEvent
+ location: class BlockEvent
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:8: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:14: error: cannot find symbol import net.minecraft.client.gui.GuiGraphics;
+ ^
+ symbol: class GuiGraphics
+ location: package net.minecraft.client.gui
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:26: error: cannot find symbol private static final ResourceLocation IMAGE_0 = ResourceLocation.fromNamespaceAndPath("ssc_14", "textures/screens/net_config_gui_2.png");
+ ^
+ symbol: class ResourceLocation
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:27: error: cannot find symbol private static final ResourceLocation BUTTON_TEX = ResourceLocation.fromNamespaceAndPath("ssc_14", "textures/screens/net_config_gui_button.png");
+ ^
+ symbol: class ResourceLocation
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:45: error: cannot find symbol public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:52: error: cannot find symbol private void drawAllText(GuiGraphics guiGraphics) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:75: error: cannot find symbol protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:81: error: cannot find symbol protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:93: error: cannot find symbol private void drawStateText(GuiGraphics guiGraphics, Map<String, Object> state, String key, int x, int y) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:104: error: cannot find symbol private void drawConnections(GuiGraphics guiGraphics) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:120: error: cannot find symbol private void drawLine(GuiGraphics guiGraphics, int x1, int y1, int x2, int y2, int color) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPParticle.java:11: error: cannot find symbol import net.minecraft.client.particle.TextureSheetParticle;
+ ^
+ symbol: class TextureSheetParticle
+ location: package net.minecraft.client.particle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPParticle.java:17: error: cannot find symbol public class DeconstructPParticle extends TextureSheetParticle {
+ ^
+ symbol: class TextureSheetParticle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPXParticle.java:11: error: cannot find symbol import net.minecraft.client.particle.TextureSheetParticle;
+ ^
+ symbol: class TextureSheetParticle
+ location: package net.minecraft.client.particle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPXParticle.java:17: error: cannot find symbol public class DeconstructPXParticle extends TextureSheetParticle {
+ ^
+ symbol: class TextureSheetParticle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPZParticle.java:11: error: cannot find symbol import net.minecraft.client.particle.TextureSheetParticle;
+ ^
+ symbol: class TextureSheetParticle
+ location: package net.minecraft.client.particle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPZParticle.java:17: error: cannot find symbol public class DeconstructPZParticle extends TextureSheetParticle {
+ ^
+ symbol: class TextureSheetParticle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\ExtinguisherSprayParticle.java:6: error: cannot find symbol import net.minecraft.client.particle.TextureSheetParticle;
+ ^
+ symbol: class TextureSheetParticle
+ location: package net.minecraft.client.particle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\ExtinguisherSprayParticle.java:14: error: cannot find symbol public class ExtinguisherSprayParticle extends TextureSheetParticle {
+ ^
+ symbol: class TextureSheetParticle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\renderer\PosterRenderer.java:8: error: cannot find symbol import net.minecraft.client.renderer.RenderType;
+ ^
+ symbol: class RenderType
+ location: package net.minecraft.client.renderer
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\renderer\PosterRenderer.java:12: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ClientDecalRenderer.java:9: error: cannot find symbol import net.minecraft.client.renderer.LightTexture;
+ ^
+ symbol: class LightTexture
+ location: package net.minecraft.client.renderer
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ClientDecalRenderer.java:11: error: cannot find symbol import net.minecraft.client.renderer.RenderType;
+ ^
+ symbol: class RenderType
+ location: package net.minecraft.client.renderer
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ClientDecalRenderer.java:14: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\DecalNetwork.java:7: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\DecalRegistry.java:9: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\IAtmosBlock.java:7: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\ReagentContainerItem.java:9: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:7: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ModReagents.java:13: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\MultitoolDataPacket.java:7: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\NetConfigGUISyncMessage.java:9: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\network\NetConfigGUIButtonMessage.java:12: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\AirlockController_DEBUG_prProcedure.java:19: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\AirlockUpPlug_ClickProcedure.java:11: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\BaseAirlockOpenCloseProcedure.java:27: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetEntityTICcheckProcedure.java:13: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:29: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:29: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Container_Opening_PR_Procedure.java:14: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\CrawlPrProcedure.java:9: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\CrawlPrProcedure.java:13: error: cannot find symbol public static final ResourceLocation CRAWL_SPEED_MOD_ID = ResourceLocation.fromNamespaceAndPath("ssc_14", "crawl_slowdown");
+ ^
+ symbol: class ResourceLocation
+ location: class CrawlPrProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\DECAL1spawner_USE_Procedure.java:12: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\DecalBlockBreakHandlerProcedure.java:16: error: cannot find symbol public static void onBlockBreak(BlockEvent.BreakEvent event) {
+ ^
+ symbol: class BreakEvent
+ location: class BlockEvent
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EntityGravitySistemProcedure.java:15: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:19: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:24: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:26: error: cannot find symbol import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+ ^
+ symbol: class PlayerRenderState
+ location: package net.minecraft.client.renderer.entity.state
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:29: error: cannot find symbol import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+ ^
+ symbol: class PlayerRenderer
+ location: package net.minecraft.client.renderer.entity.player
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:30: error: cannot find symbol import net.minecraft.client.renderer.RenderType;
+ ^
+ symbol: class RenderType
+ location: package net.minecraft.client.renderer
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:32: error: cannot find symbol import net.minecraft.client.model.PlayerModel;
+ ^
+ symbol: class PlayerModel
+ location: package net.minecraft.client.model
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:142: error: cannot find symbol public static void offsetScale(PlayerModel model, Vector3f offset) {
+ ^
+ symbol: class PlayerModel
+ location: class HumanModelRenderFIXProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:159: error: cannot find symbol public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
+ ^
+ symbol: class PlayerModel
+ location: class HumanModelRenderFIXProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:159: error: cannot find symbol public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
+ ^
+ symbol: class PlayerRenderState
+ location: class HumanModelRenderFIXProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:17: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:20: error: cannot find symbol import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+ ^
+ symbol: class PlayerRenderState
+ location: package net.minecraft.client.renderer.entity.state
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:23: error: cannot find symbol import net.minecraft.client.renderer.RenderType;
+ ^
+ symbol: class RenderType
+ location: package net.minecraft.client.renderer
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:24: error: cannot find symbol import net.minecraft.client.model.PlayerModel;
+ ^
+ symbol: class PlayerModel
+ location: package net.minecraft.client.model
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:51: error: cannot find symbol public static void offsetScale(PlayerModel model, Vector3f offset) {
+ ^
+ symbol: class PlayerModel
+ location: class HumanModelRenderProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:68: error: cannot find symbol public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
+ ^
+ symbol: class PlayerModel
+ location: class HumanModelRenderProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:68: error: cannot find symbol public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
+ ^
+ symbol: class PlayerRenderState
+ location: class HumanModelRenderProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Medicoments_USEProcedure.java:17: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:5: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Multitul_UI_ConditionsProcedure.java:14: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\NetworkConfigurator_USE_Procedure.java:14: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\OnPlayerTakeDamageSSC14Procedure.java:12: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\OnPlayerTakeDamageSSC14Procedure.java:35: error: cannot find symbol private static final ResourceLocation SSC14_SLOWDOWN_ID = new ResourceLocation("ssc14", "slowdown");
+ ^
+ symbol: class ResourceLocation
+ location: class OnPlayerTakeDamageSSC14Procedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\OnPlayerTakeDamageSSC14Procedure.java:36: error: cannot find symbol private static final ResourceLocation CRIT_IMMOBILIZE_ID = new ResourceLocation("ssc14", "crit_immobilize");
+ ^
+ symbol: class ResourceLocation
+ location: class OnPlayerTakeDamageSSC14Procedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\OnPlayerTakeDamageSSC14Procedure.java:37: error: cannot find symbol private static final ResourceLocation CRIT_NOJUMP_ID = new ResourceLocation("ssc14", "crit_nojump");
+ ^
+ symbol: class ResourceLocation
+ location: class OnPlayerTakeDamageSSC14Procedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\RCDinterfParticGenerateProcedure.java:19: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\RSU_useOnBlock_Procedure.java:30: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SpaceInputBlockerProcedure.java:10: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SSC14CriticalTickProcedure.java:13: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SSC14CriticalTickProcedure.java:31: error: cannot find symbol private static final ResourceLocation CRIT_IMMOBILIZE_ID = new ResourceLocation("ssc14", "crit_immobilize");
+ ^
+ symbol: class ResourceLocation
+ location: class SSC14CriticalTickProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SSC14CriticalTickProcedure.java:32: error: cannot find symbol private static final ResourceLocation CRIT_NOJUMP_ID = new ResourceLocation("ssc14", "crit_nojump");
+ ^
+ symbol: class ResourceLocation
+ location: class SSC14CriticalTickProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\UniversalDeconstructionProcedureProcedure.java:17: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ProcessReactionsMessage.java:10: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ReagentContainerConfig.java:4: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ReagentContainerConfig.java:9: error: cannot find symbol public static final Map<ResourceLocation, Integer> CAPACITIES = new HashMap<>();
+ ^
+ symbol: class ResourceLocation
+ location: class ReagentContainerConfig
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ArmorResistanceHelper.java:48: error: cannot find symbol ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
+ ^
+ symbol: class ResourceLocation
+ location: class ArmorResistanceHelper
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ArmorResistanceHelper.java:63: error: cannot find symbol ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
+ ^
+ symbol: class ResourceLocation
+ location: class ArmorResistanceHelper
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:109: error: cannot find symbol String key = level.dimension().location().toString();
+ ^
+ symbol: method location()
+ location: class ResourceKey<Level>
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:282: error: cannot find symbol if (distSqr == maxDistSqr || distSqr > maxDistSqr) continue;
+ ^
+ symbol: variable maxDistSqr
+ location: class AtmosphereManager
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:282: error: cannot find symbol if (distSqr == maxDistSqr || distSqr > maxDistSqr) continue;
+ ^
+ symbol: variable maxDistSqr
+ location: class AtmosphereManager
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:285: error: random has protected access in Level if (spawnChance == 0f || !(spawnChance > 0f) || level.random.nextFloat() >= spawnChance) continue;
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:287: error: random has protected access in Level int pType = getParticleType(data.gasIndex, false, level.random);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:292: error: random has protected access in Level data.x + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:293: error: random has protected access in Level data.y + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:294: error: random has protected access in Level data.z + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:300: error: random has protected access in Level if (level.random.nextFloat() < SECOND_PARTICLE_CHANCE) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:301: error: random has protected access in Level int sType = getParticleType(data.gasIndex, true, level.random);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:306: error: random has protected access in Level data.x + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:307: error: random has protected access in Level data.y + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:308: error: random has protected access in Level data.z + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:323: error: cannot find symbol CACHE.remove(level.dimension().location().toString());
+ ^
+ symbol: method location()
+ location: class ResourceKey<Level>
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosRegion.java:144: error: isClientSide has private access in Level if (level == null || level.isClientSide) return pendingVisuals;
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosRegion.java:155: error: random has protected access in Level double px = pos.getX() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosRegion.java:156: error: random has protected access in Level double py = pos.getY() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\world\inventory\NetConfigGUIMenu.java:57: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ private IItemHandler internal;
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\world\inventory\NetConfigGUIMenu.java:71: warning: [removal] ItemStackHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ this.internal = new ItemStackHandler(0);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL1spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+public class DECAL1spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL2spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+public class DECAL2spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL3spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+public class DECAL3spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL4spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+public class DECAL4spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL5spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+public class DECAL5spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL6spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+public class DECAL6spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\IDCardPassangerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+public class IDCardPassangerInventoryCapability extends ComponentItemHandler {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:198: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandler handler = earHandler.get().getStacks();
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:199: warning: [removal] getSlots() in IItemHandler has been deprecated and marked for removal
+ int slotsCount = handler.getSlots();
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:201: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack stack = handler.getStackInSlot(i);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:219: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandler container = headset.getCapability(Capabilities.ItemHandler.ITEM);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:223: warning: [removal] getSlots() in IItemHandler has been deprecated and marked for removal
+ int totalSlots = container.getSlots();
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:225: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack itemInSlot = container.getStackInSlot(i);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:80: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null) instanceof IItemHandler handler) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:81: warning: [removal] getSlots() in IItemHandler has been deprecated and marked for removal
+ for (int _slot = 0; _slot < handler.getSlots(); _slot++) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:82: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack _stack = handler.getStackInSlot(_slot);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:84: warning: [removal] extractItem(int,int,boolean) in IItemHandler has been deprecated and marked for removal
+ ItemStack _extracted = handler.extractItem(_slot, _stack.getCount(), false);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:131: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null) instanceof IItemHandlerModifiable handler) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:133: warning: [removal] ItemHandlerHelper in net.neoforged.neoforge.items has been deprecated and marked for removal
+ ItemStack _remaining = ItemHandlerHelper.insertItemStacked(handler, _stack, false);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:133: warning: [removal] insertItemStacked(IItemHandler,ItemStack,boolean) in ItemHandlerHelper has been deprecated and marked for removal
+ ItemStack _remaining = ItemHandlerHelper.insertItemStacked(handler, _stack, false);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:161: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null) instanceof IItemHandler handler) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:162: warning: [removal] getSlots() in IItemHandler has been deprecated and marked for removal
+ for (int _slot = 0; _slot < handler.getSlots(); _slot++) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:163: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack _stack = handler.getStackInSlot(_slot);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:165: warning: [removal] extractItem(int,int,boolean) in IItemHandler has been deprecated and marked for removal
+ ItemStack _extracted = handler.extractItem(_slot, _stack.getCount(), false);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:212: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null) instanceof IItemHandlerModifiable handler) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:214: warning: [removal] ItemHandlerHelper in net.neoforged.neoforge.items has been deprecated and marked for removal
+ ItemStack _remaining = ItemHandlerHelper.insertItemStacked(handler, _stack, false);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:214: warning: [removal] insertItemStacked(IItemHandler,ItemStack,boolean) in ItemHandlerHelper has been deprecated and marked for removal
+ ItemStack _remaining = ItemHandlerHelper.insertItemStacked(handler, _stack, false);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:67: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandlerModifiable targetInv = null;
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:75: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandlerModifiable inv = stacksHandler.getStacks();
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:78: warning: [removal] isItemValid(int,ItemStack) in IItemHandler has been deprecated and marked for removal
+ if (inv.isItemValid(0, itemInHand)) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:79: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack stackInSlot = inv.getStackInSlot(0);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:113: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack equippedItem = targetInv.getStackInSlot(0);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:117: warning: [removal] insertItem(int,ItemStack,boolean) in IItemHandler has been deprecated and marked for removal
+ targetInv.insertItem(0, itemInHand.copyWithCount(1), false);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:127: warning: [removal] extractItem(int,int,boolean) in IItemHandler has been deprecated and marked for removal
+ ItemStack extracted = targetInv.extractItem(0, 1, false);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:129: warning: [removal] insertItem(int,ItemStack,boolean) in IItemHandler has been deprecated and marked for removal
+ targetInv.insertItem(0, itemInHand.copyWithCount(1), false);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\IDCardAccessProcedure.java:116: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandler curiosHandler = handler.getStacks();
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\IDCardAccessProcedure.java:118: warning: [removal] getSlots() in IItemHandler has been deprecated and marked for removal
+ for (int i = 0; i < curiosHandler.getSlots(); i++) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\IDCardAccessProcedure.java:119: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ collectAccesses(curiosHandler.getStackInSlot(i), currentAccesses);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Interaction_PRProcedure.java:34: warning: [removal] getGuiLeft() in AbstractContainerScreen has been deprecated and marked for removal
+ double slotX = slot.x + containerScreen.getGuiLeft();
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Interaction_PRProcedure.java:35: warning: [removal] getGuiTop() in AbstractContainerScreen has been deprecated and marked for removal
+ double slotY = slot.y + containerScreen.getGuiTop();
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MacFrameGUIBlockUpdateProcedure.java:30: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandler handler = getItemHandler(world, pos);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MacFrameGUIBlockUpdateProcedure.java:36: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack boardStack = handler.getStackInSlot(0);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MacFrameGUIBlockUpdateProcedure.java:52: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack stack = handler.getStackInSlot(slot);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MacFrameGUIBlockUpdateProcedure.java:113: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ private static IItemHandler getItemHandler(LevelAccessor world, BlockPos pos) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:27: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandler handler = level.getCapability(Capabilities.ItemHandler.BLOCK, pos, null);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:30: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandlerModifiable modifiableHandler = null;
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:31: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (handler instanceof IItemHandlerModifiable) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:32: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ modifiableHandler = (IItemHandlerModifiable) handler;
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:37: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack slot0 = modifiableHandler.getStackInSlot(0);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:38: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack slot1 = modifiableHandler.getStackInSlot(1);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:39: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack slot2 = modifiableHandler.getStackInSlot(2);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:40: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack slot3 = modifiableHandler.getStackInSlot(3);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:45: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ private static void checkRecipes(Level level, BlockPos pos, IItemHandlerModifiable inv, ItemStack s0, ItemStack s1, ItemStack s2, ItemStack s3) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:168: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ private static void shrinkSlot(IItemHandlerModifiable inv, int slotId, int amount) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:169: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack stack = inv.getStackInSlot(slotId);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:179: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ private static void spawnOutput(IItemHandlerModifiable inv, ItemStack result, int outputSlot) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:180: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack existingOutput = inv.getStackInSlot(outputSlot);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\PDA_generateProcedure.java:34: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (itemstack.getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\PDA_generateProcedure.java:41: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (itemstack.getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SS14ConstructionRegistryProcedure.java:273: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (handler instanceof IItemHandlerModifiable mod) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SS14ConstructionRegistryProcedure.java:294: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (handler instanceof IItemHandlerModifiable mod) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ReagentTransferHandler.java:30: warning: [removal] getSlotUnderMouse() in AbstractContainerScreen has been deprecated and marked for removal
+ Slot slot = containerScreen.getSlotUnderMouse();
+ ^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+100 errors
+64 warnings
+> Task :compileJava FAILED
+FAILURE: Build failed with an exception.
+* What went wrong:
+Execution failed for task ':compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+ Note: Recompile with -Xlint:deprecation for details.
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ArmorResistanceHelper.java:6: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosForgeEventHandler.java:30: error: cannot find symbol public static void onBlockBreak(BlockEvent.BreakEvent event) {
+ ^
+ symbol: class BreakEvent
+ location: class BlockEvent
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:8: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:14: error: cannot find symbol import net.minecraft.client.gui.GuiGraphics;
+ ^
+ symbol: class GuiGraphics
+ location: package net.minecraft.client.gui
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:26: error: cannot find symbol private static final ResourceLocation IMAGE_0 = ResourceLocation.fromNamespaceAndPath("ssc_14", "textures/screens/net_config_gui_2.png");
+ ^
+ symbol: class ResourceLocation
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:27: error: cannot find symbol private static final ResourceLocation BUTTON_TEX = ResourceLocation.fromNamespaceAndPath("ssc_14", "textures/screens/net_config_gui_button.png");
+ ^
+ symbol: class ResourceLocation
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:45: error: cannot find symbol public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:52: error: cannot find symbol private void drawAllText(GuiGraphics guiGraphics) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:75: error: cannot find symbol protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:81: error: cannot find symbol protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:93: error: cannot find symbol private void drawStateText(GuiGraphics guiGraphics, Map<String, Object> state, String key, int x, int y) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:104: error: cannot find symbol private void drawConnections(GuiGraphics guiGraphics) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\gui\NetConfigGUIScreen.java:120: error: cannot find symbol private void drawLine(GuiGraphics guiGraphics, int x1, int y1, int x2, int y2, int color) {
+ ^
+ symbol: class GuiGraphics
+ location: class NetConfigGUIScreen
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPParticle.java:11: error: cannot find symbol import net.minecraft.client.particle.TextureSheetParticle;
+ ^
+ symbol: class TextureSheetParticle
+ location: package net.minecraft.client.particle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPXParticle.java:11: error: cannot find symbol import net.minecraft.client.particle.TextureSheetParticle;
+ ^
+ symbol: class TextureSheetParticle
+ location: package net.minecraft.client.particle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPZParticle.java:11: error: cannot find symbol import net.minecraft.client.particle.TextureSheetParticle;
+ ^
+ symbol: class TextureSheetParticle
+ location: package net.minecraft.client.particle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\ExtinguisherSprayParticle.java:6: error: cannot find symbol import net.minecraft.client.particle.TextureSheetParticle;
+ ^
+ symbol: class TextureSheetParticle
+ location: package net.minecraft.client.particle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\renderer\PosterRenderer.java:8: error: cannot find symbol import net.minecraft.client.renderer.RenderType;
+ ^
+ symbol: class RenderType
+ location: package net.minecraft.client.renderer
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\renderer\PosterRenderer.java:12: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ClientDecalRenderer.java:9: error: cannot find symbol import net.minecraft.client.renderer.LightTexture;
+ ^
+ symbol: class LightTexture
+ location: package net.minecraft.client.renderer
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ClientDecalRenderer.java:11: error: cannot find symbol import net.minecraft.client.renderer.RenderType;
+ ^
+ symbol: class RenderType
+ location: package net.minecraft.client.renderer
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ClientDecalRenderer.java:14: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\DecalNetwork.java:7: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\DecalRegistry.java:9: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\IAtmosBlock.java:7: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\ReagentContainerItem.java:9: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:7: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ModReagents.java:13: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\MultitoolDataPacket.java:7: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\NetConfigGUISyncMessage.java:9: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\network\NetConfigGUIButtonMessage.java:12: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\AirlockController_DEBUG_prProcedure.java:19: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\AirlockUpPlug_ClickProcedure.java:11: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\BaseAirlockOpenCloseProcedure.java:27: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetEntityTICcheckProcedure.java:13: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:29: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:29: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Container_Opening_PR_Procedure.java:14: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\CrawlPrProcedure.java:9: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\CrawlPrProcedure.java:13: error: cannot find symbol public static final ResourceLocation CRAWL_SPEED_MOD_ID = ResourceLocation.fromNamespaceAndPath("ssc_14", "crawl_slowdown");
+ ^
+ symbol: class ResourceLocation
+ location: class CrawlPrProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\DECAL1spawner_USE_Procedure.java:12: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\DecalBlockBreakHandlerProcedure.java:16: error: cannot find symbol public static void onBlockBreak(BlockEvent.BreakEvent event) {
+ ^
+ symbol: class BreakEvent
+ location: class BlockEvent
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EntityGravitySistemProcedure.java:15: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:19: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:24: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:26: error: cannot find symbol import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+ ^
+ symbol: class PlayerRenderState
+ location: package net.minecraft.client.renderer.entity.state
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:29: error: cannot find symbol import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+ ^
+ symbol: class PlayerRenderer
+ location: package net.minecraft.client.renderer.entity.player
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:30: error: cannot find symbol import net.minecraft.client.renderer.RenderType;
+ ^
+ symbol: class RenderType
+ location: package net.minecraft.client.renderer
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:32: error: cannot find symbol import net.minecraft.client.model.PlayerModel;
+ ^
+ symbol: class PlayerModel
+ location: package net.minecraft.client.model
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:142: error: cannot find symbol public static void offsetScale(PlayerModel model, Vector3f offset) {
+ ^
+ symbol: class PlayerModel
+ location: class HumanModelRenderFIXProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:159: error: cannot find symbol public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
+ ^
+ symbol: class PlayerModel
+ location: class HumanModelRenderFIXProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderFIXProcedure.java:159: error: cannot find symbol public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
+ ^
+ symbol: class PlayerRenderState
+ location: class HumanModelRenderFIXProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:17: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:20: error: cannot find symbol import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+ ^
+ symbol: class PlayerRenderState
+ location: package net.minecraft.client.renderer.entity.state
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:23: error: cannot find symbol import net.minecraft.client.renderer.RenderType;
+ ^
+ symbol: class RenderType
+ location: package net.minecraft.client.renderer
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:24: error: cannot find symbol import net.minecraft.client.model.PlayerModel;
+ ^
+ symbol: class PlayerModel
+ location: package net.minecraft.client.model
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:51: error: cannot find symbol public static void offsetScale(PlayerModel model, Vector3f offset) {
+ ^
+ symbol: class PlayerModel
+ location: class HumanModelRenderProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:68: error: cannot find symbol public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
+ ^
+ symbol: class PlayerModel
+ location: class HumanModelRenderProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\HumanModelRenderProcedure.java:68: error: cannot find symbol public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
+ ^
+ symbol: class PlayerRenderState
+ location: class HumanModelRenderProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Medicoments_USEProcedure.java:17: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:5: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Multitul_UI_ConditionsProcedure.java:14: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\NetworkConfigurator_USE_Procedure.java:14: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\OnPlayerTakeDamageSSC14Procedure.java:12: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\OnPlayerTakeDamageSSC14Procedure.java:35: error: cannot find symbol private static final ResourceLocation SSC14_SLOWDOWN_ID = new ResourceLocation("ssc14", "slowdown");
+ ^
+ symbol: class ResourceLocation
+ location: class OnPlayerTakeDamageSSC14Procedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\OnPlayerTakeDamageSSC14Procedure.java:36: error: cannot find symbol private static final ResourceLocation CRIT_IMMOBILIZE_ID = new ResourceLocation("ssc14", "crit_immobilize");
+ ^
+ symbol: class ResourceLocation
+ location: class OnPlayerTakeDamageSSC14Procedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\OnPlayerTakeDamageSSC14Procedure.java:37: error: cannot find symbol private static final ResourceLocation CRIT_NOJUMP_ID = new ResourceLocation("ssc14", "crit_nojump");
+ ^
+ symbol: class ResourceLocation
+ location: class OnPlayerTakeDamageSSC14Procedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\RCDinterfParticGenerateProcedure.java:19: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\RSU_useOnBlock_Procedure.java:30: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SpaceInputBlockerProcedure.java:10: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SSC14CriticalTickProcedure.java:13: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SSC14CriticalTickProcedure.java:31: error: cannot find symbol private static final ResourceLocation CRIT_IMMOBILIZE_ID = new ResourceLocation("ssc14", "crit_immobilize");
+ ^
+ symbol: class ResourceLocation
+ location: class SSC14CriticalTickProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SSC14CriticalTickProcedure.java:32: error: cannot find symbol private static final ResourceLocation CRIT_NOJUMP_ID = new ResourceLocation("ssc14", "crit_nojump");
+ ^
+ symbol: class ResourceLocation
+ location: class SSC14CriticalTickProcedure
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\UniversalDeconstructionProcedureProcedure.java:17: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ProcessReactionsMessage.java:10: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ReagentContainerConfig.java:4: error: cannot find symbol import net.minecraft.resources.ResourceLocation;
+ ^
+ symbol: class ResourceLocation
+ location: package net.minecraft.resources
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ReagentContainerConfig.java:9: error: cannot find symbol public static final Map<ResourceLocation, Integer> CAPACITIES = new HashMap<>();
+ ^
+ symbol: class ResourceLocation
+ location: class ReagentContainerConfig
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ArmorResistanceHelper.java:48: error: cannot find symbol ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
+ ^
+ symbol: class ResourceLocation
+ location: class ArmorResistanceHelper
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ArmorResistanceHelper.java:63: error: cannot find symbol ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
+ ^
+ symbol: class ResourceLocation
+ location: class ArmorResistanceHelper
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:282: error: cannot find symbol if (distSqr == maxDistSqr || distSqr > maxDistSqr) continue;
+ ^
+ symbol: variable maxDistSqr
+ location: class AtmosphereManager
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:282: error: cannot find symbol if (distSqr == maxDistSqr || distSqr > maxDistSqr) continue;
+ ^
+ symbol: variable maxDistSqr
+ location: class AtmosphereManager
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:285: error: random has protected access in Level if (spawnChance == 0f || !(spawnChance > 0f) || level.random.nextFloat() >= spawnChance) continue;
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:287: error: random has protected access in Level int pType = getParticleType(data.gasIndex, false, level.random);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:292: error: random has protected access in Level data.x + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:293: error: random has protected access in Level data.y + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:294: error: random has protected access in Level data.z + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:300: error: random has protected access in Level if (level.random.nextFloat() < SECOND_PARTICLE_CHANCE) {
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:301: error: random has protected access in Level int sType = getParticleType(data.gasIndex, true, level.random);
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:306: error: random has protected access in Level data.x + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:307: error: random has protected access in Level data.y + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:308: error: random has protected access in Level data.z + (level.random.nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosRegion.java:144: error: isClientSide has private access in Level if (level == null || level.isClientSide) return pendingVisuals;
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosRegion.java:155: error: random has protected access in Level double px = pos.getX() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
+ ^
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosRegion.java:156: error: random has protected access in Level double py = pos.getY() + 0.5 + (level.random.nextFloat() - 0.5f) * 0.3f;
+ ^
+ Note: Recompile with -Xlint:unchecked for details.
+ Note: Some input files use or override a deprecated API.
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\world\inventory\NetConfigGUIMenu.java:57: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ private IItemHandler internal;
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\world\inventory\NetConfigGUIMenu.java:71: warning: [removal] ItemStackHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ this.internal = new ItemStackHandler(0);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL1spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ public class DECAL1spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL2spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ public class DECAL2spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL3spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ public class DECAL3spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL4spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ public class DECAL4spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL5spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ public class DECAL5spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\DECAL6spawnerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ public class DECAL6spawnerInventoryCapability extends ComponentItemHandler {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\item\inventory\IDCardPassangerInventoryCapability.java:19: warning: [removal] ComponentItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ public class IDCardPassangerInventoryCapability extends ComponentItemHandler {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:198: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandler handler = earHandler.get().getStacks();
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:199: warning: [removal] getSlots() in IItemHandler has been deprecated and marked for removal
+ int slotsCount = handler.getSlots();
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:201: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack stack = handler.getStackInSlot(i);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:219: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandler container = headset.getCapability(Capabilities.ItemHandler.ITEM);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:223: warning: [removal] getSlots() in IItemHandler has been deprecated and marked for removal
+ int totalSlots = container.getSlots();
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\LocalChatEventHandler.java:225: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack itemInSlot = container.getStackInSlot(i);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:80: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null) instanceof IItemHandler handler) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:81: warning: [removal] getSlots() in IItemHandler has been deprecated and marked for removal
+ for (int _slot = 0; _slot < handler.getSlots(); _slot++) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:82: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack _stack = handler.getStackInSlot(_slot);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:84: warning: [removal] extractItem(int,int,boolean) in IItemHandler has been deprecated and marked for removal
+ ItemStack _extracted = handler.extractItem(_slot, _stack.getCount(), false);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:131: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null) instanceof IItemHandlerModifiable handler) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:133: warning: [removal] ItemHandlerHelper in net.neoforged.neoforge.items has been deprecated and marked for removal
+ ItemStack _remaining = ItemHandlerHelper.insertItemStacked(handler, _stack, false);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\ClosetOpenCloseBASEPrProcedure.java:133: warning: [removal] insertItemStacked(IItemHandler,ItemStack,boolean) in ItemHandlerHelper has been deprecated and marked for removal
+ ItemStack _remaining = ItemHandlerHelper.insertItemStacked(handler, _stack, false);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:161: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null) instanceof IItemHandler handler) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:162: warning: [removal] getSlots() in IItemHandler has been deprecated and marked for removal
+ for (int _slot = 0; _slot < handler.getSlots(); _slot++) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:163: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack _stack = handler.getStackInSlot(_slot);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:165: warning: [removal] extractItem(int,int,boolean) in IItemHandler has been deprecated and marked for removal
+ ItemStack _extracted = handler.extractItem(_slot, _stack.getCount(), false);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:212: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null) instanceof IItemHandlerModifiable handler) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:214: warning: [removal] ItemHandlerHelper in net.neoforged.neoforge.items has been deprecated and marked for removal
+ ItemStack _remaining = ItemHandlerHelper.insertItemStacked(handler, _stack, false);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Closet_OpenClose_PrProcedure.java:214: warning: [removal] insertItemStacked(IItemHandler,ItemStack,boolean) in ItemHandlerHelper has been deprecated and marked for removal
+ ItemStack _remaining = ItemHandlerHelper.insertItemStacked(handler, _stack, false);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:67: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandlerModifiable targetInv = null;
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:75: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandlerModifiable inv = stacksHandler.getStacks();
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:78: warning: [removal] isItemValid(int,ItemStack) in IItemHandler has been deprecated and marked for removal
+ if (inv.isItemValid(0, itemInHand)) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:79: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack stackInSlot = inv.getStackInSlot(0);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:113: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack equippedItem = targetInv.getStackInSlot(0);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:117: warning: [removal] insertItem(int,ItemStack,boolean) in IItemHandler has been deprecated and marked for removal
+ targetInv.insertItem(0, itemInHand.copyWithCount(1), false);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:127: warning: [removal] extractItem(int,int,boolean) in IItemHandler has been deprecated and marked for removal
+ ItemStack extracted = targetInv.extractItem(0, 1, false);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\EquipmentAutoEquipmentProcedure.java:129: warning: [removal] insertItem(int,ItemStack,boolean) in IItemHandler has been deprecated and marked for removal
+ targetInv.insertItem(0, itemInHand.copyWithCount(1), false);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\IDCardAccessProcedure.java:116: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandler curiosHandler = handler.getStacks();
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\IDCardAccessProcedure.java:118: warning: [removal] getSlots() in IItemHandler has been deprecated and marked for removal
+ for (int i = 0; i < curiosHandler.getSlots(); i++) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\IDCardAccessProcedure.java:119: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ collectAccesses(curiosHandler.getStackInSlot(i), currentAccesses);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Interaction_PRProcedure.java:34: warning: [removal] getGuiLeft() in AbstractContainerScreen has been deprecated and marked for removal
+ double slotX = slot.x + containerScreen.getGuiLeft();
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\Interaction_PRProcedure.java:35: warning: [removal] getGuiTop() in AbstractContainerScreen has been deprecated and marked for removal
+ double slotY = slot.y + containerScreen.getGuiTop();
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MacFrameGUIBlockUpdateProcedure.java:30: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandler handler = getItemHandler(world, pos);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MacFrameGUIBlockUpdateProcedure.java:36: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack boardStack = handler.getStackInSlot(0);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MacFrameGUIBlockUpdateProcedure.java:52: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack stack = handler.getStackInSlot(slot);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MacFrameGUIBlockUpdateProcedure.java:113: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ private static IItemHandler getItemHandler(LevelAccessor world, BlockPos pos) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:27: warning: [removal] IItemHandler in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandler handler = level.getCapability(Capabilities.ItemHandler.BLOCK, pos, null);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:30: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ IItemHandlerModifiable modifiableHandler = null;
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:31: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (handler instanceof IItemHandlerModifiable) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:32: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ modifiableHandler = (IItemHandlerModifiable) handler;
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:37: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack slot0 = modifiableHandler.getStackInSlot(0);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:38: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack slot1 = modifiableHandler.getStackInSlot(1);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:39: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack slot2 = modifiableHandler.getStackInSlot(2);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:40: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack slot3 = modifiableHandler.getStackInSlot(3);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:45: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ private static void checkRecipes(Level level, BlockPos pos, IItemHandlerModifiable inv, ItemStack s0, ItemStack s1, ItemStack s2, ItemStack s3) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:168: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ private static void shrinkSlot(IItemHandlerModifiable inv, int slotId, int amount) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:169: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack stack = inv.getStackInSlot(slotId);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:179: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ private static void spawnOutput(IItemHandlerModifiable inv, ItemStack result, int outputSlot) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\MicrwGUIbutEProcedure.java:180: warning: [removal] getStackInSlot(int) in IItemHandler has been deprecated and marked for removal
+ ItemStack existingOutput = inv.getStackInSlot(outputSlot);
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\PDA_generateProcedure.java:34: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (itemstack.getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\PDA_generateProcedure.java:41: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (itemstack.getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SS14ConstructionRegistryProcedure.java:273: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (handler instanceof IItemHandlerModifiable mod) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\procedures\SS14ConstructionRegistryProcedure.java:294: warning: [removal] IItemHandlerModifiable in net.neoforged.neoforge.items has been deprecated and marked for removal
+ if (handler instanceof IItemHandlerModifiable mod) {
+ ^
+ D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\ReagentTransferHandler.java:30: warning: [removal] getSlotUnderMouse() in AbstractContainerScreen has been deprecated and marked for removal
+ Slot slot = containerScreen.getSlotUnderMouse();
+ ^
+ Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPParticle.java:17: error: cannot find symbol public class DeconstructPParticle extends TextureSheetParticle {
+ ^
+ symbol: class TextureSheetParticle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPXParticle.java:17: error: cannot find symbol public class DeconstructPXParticle extends TextureSheetParticle {
+ ^
+ symbol: class TextureSheetParticle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\DeconstructPZParticle.java:17: error: cannot find symbol public class DeconstructPZParticle extends TextureSheetParticle {
+ ^
+ symbol: class TextureSheetParticle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\client\particle\ExtinguisherSprayParticle.java:14: error: cannot find symbol public class ExtinguisherSprayParticle extends TextureSheetParticle {
+ ^
+ symbol: class TextureSheetParticle
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:109: error: cannot find symbol String key = level.dimension().location().toString();
+ ^
+ symbol: method location()
+ location: class ResourceKey<Level>
+D:\Space_Station_Craft_14_[recovery]\src\main\java\net\mcreator\ssc\AtmosphereManager.java:323: error: cannot find symbol CACHE.remove(level.dimension().location().toString());
+ ^
+ symbol: method location()
+ location: class ResourceKey<Level>
+ 100 errors
+ 64 warnings
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+BUILD FAILED in 5s
+5 actionable tasks: 1 executed, 4 up-to-date
+Configuration cache entry reused.
+
+BUILD FAILED
+Task completed in 6 seconds
