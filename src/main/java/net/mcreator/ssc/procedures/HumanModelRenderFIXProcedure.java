@@ -60,7 +60,7 @@ public class HumanModelRenderFIXProcedure {
 	public static void onPlayerRendered(RenderPlayerEvent.Pre event) {
 		Entity entity = (Entity) event.getRenderState().getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
 		EntityModel<?> entityModel = event.getRenderer().getModel();
-		
+
 		if (entityModel instanceof PlayerModel playerModel) {
 			playerModel.head.skipDraw = true;
 			playerModel.hat.skipDraw = true;
@@ -88,7 +88,7 @@ public class HumanModelRenderFIXProcedure {
 		if (mc.player == null || mc.getEntityRenderDispatcher() == null) return;
 
 		if (mc.player.isSpectator()) {
-			return; 
+			return;
 		}
 
 		event.setCanceled(true);
@@ -100,10 +100,10 @@ public class HumanModelRenderFIXProcedure {
 		PlayerModel customModel = Ssc14ModHumanoidModels.HUMAN_MODEL;
 
 		boolean isLeft = event.getArm() == HumanoidArm.LEFT;
-		
+
 		ModelPart vanillaArm = isLeft ? vanillaModel.leftArm : vanillaModel.rightArm;
 		ModelPart vanillaSleeve = isLeft ? vanillaModel.leftSleeve : vanillaModel.rightSleeve;
-		
+
 		ModelPart customArm = isLeft ? customModel.leftArm : customModel.rightArm;
 		ModelPart customSleeve = isLeft ? customModel.leftSleeve : customModel.rightSleeve;
 
@@ -159,9 +159,9 @@ public class HumanModelRenderFIXProcedure {
 	public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
 		PoseStack poseStack = playerRenderEvent.getPoseStack();
 		poseStack.pushPose();
-		
+
 		Entity entity = state.getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
-		
+
 		CompoundTag playerData = state.getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY).getPersistentData();
 		float oldAnimationProgress = 0;
 		float oldAgeInTicks = 0;
@@ -169,7 +169,7 @@ public class HumanModelRenderFIXProcedure {
 			oldAnimationProgress = playerData.getFloatOr("PlayerAnimationProgress", 0);
 			oldAgeInTicks = playerData.getFloatOr("LastTickTime", 0);
 		}
-		
+
 		model.setupAnim(state);
 		if (playerData.contains("PlayerAnimationProgress") && playerData.getFloatOr("PlayerAnimationProgress", 0) > 0) {
 			playerData.putFloat("PlayerAnimationProgress", oldAnimationProgress);
@@ -177,9 +177,9 @@ public class HumanModelRenderFIXProcedure {
 		} else if (oldAnimationProgress > 0) {
 			model.setupAnim(state);
 		}
-		
+
 		playerRenderEvent.getRenderer().setupRotations(state, poseStack, state.bodyRot, 0);
-		
+
 		poseStack.scale(-0.938f, -0.938f, 0.938f);
 		poseStack.translate(0.0D, -1.501, 0.0D);
 		Vector3f offset = new Vector3f(0.015f);
@@ -199,7 +199,7 @@ public class HumanModelRenderFIXProcedure {
 		PoseStack poseStack = playerRenderEvent.getPoseStack();
 		poseStack.pushPose();
 		playerRenderEvent.getRenderer().setupRotations((PlayerRenderState) state, poseStack, state.bodyRot, 0);
-		
+
 		poseStack.scale(-0.938f, -0.938f, 0.938f);
 		poseStack.translate(0.0D, -1.501, 0.0D);
 		((EntityModel<LivingEntityRenderState>) model).setupAnim(state);

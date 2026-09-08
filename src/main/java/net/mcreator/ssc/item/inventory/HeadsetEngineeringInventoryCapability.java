@@ -1,22 +1,20 @@
 package net.mcreator.ssc.item.inventory;
 
-import net.neoforged.neoforge.items.ComponentItemHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.item.ItemAccessItemHandler;
+import net.neoforged.neoforge.transfer.access.ItemAccess;
 import net.neoforged.neoforge.event.entity.item.ItemTossEvent;
-import net.neoforged.neoforge.common.MutableDataComponentHolder;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.component.DataComponents;
 
 import net.mcreator.ssc.world.inventory.HeadsetGUIkostilMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
-import javax.annotation.Nonnull;
-
 @EventBusSubscriber
-public class HeadsetEngineeringInventoryCapability extends ComponentItemHandler {
+public class HeadsetEngineeringInventoryCapability extends ItemAccessItemHandler {
 	@SubscribeEvent
 	public static void onItemDropped(ItemTossEvent event) {
 		if (event.getEntity().getItem().getItem() == Ssc14ModItems.HEADSET_ENGINEERING.get()) {
@@ -26,22 +24,17 @@ public class HeadsetEngineeringInventoryCapability extends ComponentItemHandler 
 		}
 	}
 
-	public HeadsetEngineeringInventoryCapability(MutableDataComponentHolder parent) {
-		super(parent, DataComponents.CONTAINER, 20);
+	public HeadsetEngineeringInventoryCapability(ItemAccess access) {
+		super(access, DataComponents.CONTAINER, 20);
 	}
 
 	@Override
-	public int getSlotLimit(int slot) {
-		return 1;
+	protected int getCapacity(int index, ItemResource resource) {
+		return Math.min(1, super.getCapacity(index, resource));
 	}
 
 	@Override
-	public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-		return stack.getItem() != Ssc14ModItems.HEADSET_ENGINEERING.get();
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return super.getStackInSlot(slot).copy();
+	public boolean isValid(int index, ItemResource resource) {
+		return super.isValid(index, resource) && resource.getItem() != Ssc14ModItems.HEADSET_ENGINEERING.get();
 	}
 }

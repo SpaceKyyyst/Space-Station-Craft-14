@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
@@ -18,7 +18,7 @@ import java.util.Comparator;
 
 public class Closet_DestroyProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:closets")))) {
+		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(Identifier.parse("ssc14:closets")))) {
 			{
 				BlockPos _pos = BlockPos.containing(x, y - 1, z);
 				Block.dropResources(world.getBlockState(_pos), world, BlockPos.containing(x, y - 0.5, z), null);

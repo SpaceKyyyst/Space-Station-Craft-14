@@ -1,0 +1,19 @@
+[core]
+	symlinks = false
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = false
+	worktree = D:\\Space_Station_Craft_14_[recovery]
+	autocrlf = false
+	sha1Implementation = jdkNative
+	eol = native
+[commit]
+	gpgsign = false
+[index]
+	version = 4
+[pack]
+	threads = 0
+[user]
+	name = MCreator
+	email = localhistory@mcreator

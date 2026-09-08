@@ -1,7 +1,7 @@
 {
   "type": "minecraft:tree",
   "config": {
-    "dirt_provider": {
+    "below_trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
         "Name": "ssc_14:dirt"
@@ -19,7 +19,6 @@
         "Name": "ssc_14:planetary_tree_log"
       }
     },
-    "force_dirt": true,
     "ignore_vines": true,
     "foliage_placer": {
       "type": "minecraft:cherry_foliage_placer",

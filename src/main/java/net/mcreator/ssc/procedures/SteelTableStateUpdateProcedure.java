@@ -4,12 +4,12 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
 
 public class SteelTableStateUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:tables"))) || !(world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:tables")))) {
+		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(Identifier.parse("ssc14:tables"))) || !(world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(Identifier.parse("ssc14:tables")))) {
 			// Обновляем 5 блоков: центр + 4 направления
 			int centerX = (int) Math.floor(x);
 			int centerY = (int) Math.floor(y);

@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 1,
@@ -26,9 +26,7 @@
           "name": "imagebutton_vendind_gui_button1",
           "image": "vendind_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "VendAutGUIButton1"
-          },
+          "onClick": "VendAutGUIButton1",
           "x": 253,
           "y": 41,
           "locked": true
@@ -40,9 +38,7 @@
           "name": "imagebutton_vendind_gui_button2",
           "image": "vendind_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "VendAutGUIButton2"
-          },
+          "onClick": "VendAutGUIButton2",
           "x": 253,
           "y": 50,
           "locked": true
@@ -54,9 +50,7 @@
           "name": "imagebutton_vendind_gui_button3",
           "image": "vendind_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "VendAutGUIButton3"
-          },
+          "onClick": "VendAutGUIButton3",
           "x": 253,
           "y": 59,
           "locked": true
@@ -68,9 +62,7 @@
           "name": "imagebutton_vendind_gui_button4",
           "image": "vendind_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "VendAutGUIButton4"
-          },
+          "onClick": "VendAutGUIButton4",
           "x": 253,
           "y": 68,
           "locked": true
@@ -82,9 +74,7 @@
           "name": "imagebutton_vendind_gui_button5",
           "image": "vendind_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "VendAutGUIButton5"
-          },
+          "onClick": "VendAutGUIButton5",
           "x": 253,
           "y": 77,
           "locked": true
@@ -96,9 +86,7 @@
           "name": "imagebutton_vendind_gui_button6",
           "image": "vendind_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "VendAutGUIButton6"
-          },
+          "onClick": "VendAutGUIButton6",
           "x": 253,
           "y": 86,
           "locked": true

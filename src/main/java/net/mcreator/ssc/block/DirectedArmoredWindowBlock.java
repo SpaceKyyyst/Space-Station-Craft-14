@@ -39,12 +39,12 @@ public class DirectedArmoredWindowBlock extends Block {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(0, 0, 0, 16, 16, 3);
 				case NORTH -> box(0, 0, 13, 16, 16, 16);
 				case EAST -> box(0, 0, 0, 3, 16, 16);
 				case WEST -> box(13, 0, 0, 16, 16, 16);
 				case UP -> box(0, 0, 0, 16, 3, 16);
 				case DOWN -> box(0, 13, 0, 16, 16, 16);
+				default -> box(0, 0, 0, 16, 16, 3);
 			};
 		}, WINDOW_DISSASAMBLY);
 	}
@@ -65,7 +65,7 @@ public class DirectedArmoredWindowBlock extends Block {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 0;
 	}
 
@@ -82,7 +82,10 @@ public class DirectedArmoredWindowBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getNearestLookingDirection().getOpposite()).setValue(WINDOW_DISSASAMBLY, 0);
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getNearestLookingDirection().getOpposite()).setValue(WINDOW_DISSASAMBLY, 0);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -103,7 +106,7 @@ public class DirectedArmoredWindowBlock extends Block {
 		double hitY = hit.getLocation().y;
 		double hitZ = hit.getLocation().z;
 		Direction direction = hit.getDirection();
-		Windows_KnockKnock_Procedure.execute(world, x, y, z, entity);
-		return InteractionResult.SUCCESS;
+		InteractionResult result = Windows_KnockKnock_Procedure.execute(world, x, y, z, entity);
+		return result;
 	}
 }

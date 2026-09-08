@@ -24,7 +24,7 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.Containers;
 import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
@@ -38,9 +38,9 @@ public class TitleSteeldamagedBlock extends Block implements EntityBlock {
 	private static final VoxelShape SHAPE = Shapes.or(box(0, 12, 0, 16, 16, 16), box(0, 0, 0, 1, 16, 1), box(0, 0, 15, 1, 16, 16), box(15, 0, 0, 16, 16, 1), box(15, 0, 15, 16, 16, 16));
 
 	public TitleSteeldamagedBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(new DeferredSoundType(1.0f, 1.0f, () -> BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:title_off")), () -> BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("block.copper.step")),
-				() -> BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:title_on")), () -> BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("block.copper.hit")),
-				() -> BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("block.copper.fall")))).strength(100f, 5f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(new DeferredSoundType(1.0f, 1.0f, () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:title_off")), () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.step")),
+				() -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:title_on")), () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.hit")),
+				() -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.fall")))).strength(100f, 5f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(STATE, 1));
 	}
 
@@ -50,7 +50,7 @@ public class TitleSteeldamagedBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 15;
 	}
 
@@ -67,7 +67,10 @@ public class TitleSteeldamagedBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(STATE, 1);
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(STATE, 1);
 	}
 
 	@Override
@@ -121,7 +124,7 @@ public class TitleSteeldamagedBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
+	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos, Direction direction) {
 		BlockEntity tileentity = world.getBlockEntity(pos);
 		if (tileentity instanceof TitleSteeldamagedBlockEntity be)
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);

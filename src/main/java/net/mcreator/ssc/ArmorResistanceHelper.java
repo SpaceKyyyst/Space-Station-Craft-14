@@ -1,4 +1,3 @@
-
 package net.mcreator.ssc;
 
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +26,6 @@ public class ArmorResistanceHelper {
         RESISTANCE_REGISTRY.put(key, Math.min(Math.max(value, 0.0), 1.0));
     }
 
-    // 🔧 ИЗМЕНЕНО: Последовательное применение защиты (как в вики SS14)
     public static float applyArmorResistance(Player player, String damageType, float incomingDamage) {
         float currentDamage = incomingDamage;
 
@@ -52,7 +50,6 @@ public class ArmorResistanceHelper {
 
                 if (RESISTANCE_REGISTRY.containsKey(key)) {
                     double resistance = RESISTANCE_REGISTRY.get(key);
-                    // 🔧 Формула SS14: damage = damage * (1 - resistance)
                     currentDamage *= (1.0f - (float)resistance);
                     System.out.println("[SSC14-ARMOR] " + itemId + " | " + damageType + " | res=" + resistance + " | new_dmg=" + String.format("%.2f", currentDamage));
                 }

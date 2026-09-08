@@ -5,8 +5,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
 import net.minecraft.network.protocol.game.ClientboundPlayerAbilitiesPacket;
 import net.minecraft.network.protocol.game.ClientboundLevelEventPacket;
@@ -24,7 +24,7 @@ import com.mojang.brigadier.context.CommandContext;
 public class TpSSC14planetplantprProcedure {
 	public static void execute(CommandContext<CommandSourceStack> arguments) {
 		if ((commandParameterEntity(arguments, "tp_ent")) instanceof ServerPlayer _player && _player.level() instanceof ServerLevel _serverLevel) {
-			ResourceKey<Level> destinationType = ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse("ssc_14:planet_pl"));
+			ResourceKey<Level> destinationType = ResourceKey.create(Registries.DIMENSION, Identifier.parse("ssc_14:planet_pl"));
 			if (_player.level().dimension() == destinationType)
 				return;
 			ServerLevel nextLevel = _serverLevel.getServer().getLevel(destinationType);

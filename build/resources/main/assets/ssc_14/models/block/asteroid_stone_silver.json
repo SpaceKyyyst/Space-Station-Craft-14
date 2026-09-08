@@ -3,6 +3,5 @@
   "textures": {
     "all": "ssc_14:block/asteroid_stone_silver",
     "particle": "ssc_14:block/asteroid_stone_silver"
-  },
-  "render_type": "solid"
+  }
 }

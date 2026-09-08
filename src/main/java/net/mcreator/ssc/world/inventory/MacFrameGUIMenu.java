@@ -1,10 +1,13 @@
 package net.mcreator.ssc.world.inventory;
 
-import net.neoforged.neoforge.items.wrapper.InvWrapper;
-import net.neoforged.neoforge.items.SlotItemHandler;
-import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
+import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
+import net.neoforged.neoforge.transfer.item.ResourceHandlerSlot;
+import net.neoforged.neoforge.transfer.item.ItemUtil;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.access.ItemAccess;
+import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
@@ -18,9 +21,10 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.Container;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
@@ -46,7 +50,7 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 	public final Player entity;
 	public int x, y, z;
 	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
-	private IItemHandler internal;
+	private ResourceHandler<ItemResource> internal;
 	private final Map<Integer, Slot> customSlots = new HashMap<>();
 	private boolean bound = false;
 	private Supplier<Boolean> boundItemMatcher = null;
@@ -57,7 +61,7 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 		super(Ssc14ModMenus.MAC_FRAME_GUI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
-		this.internal = new ItemStackHandler(9);
+		this.internal = new ItemStacksResourceHandler(9);
 		BlockPos pos = null;
 		if (extraData != null) {
 			pos = extraData.readBlockPos();
@@ -71,7 +75,7 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 				byte hand = extraData.readByte();
 				ItemStack itemstack = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
 				this.boundItemMatcher = () -> itemstack == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
-				IItemHandler cap = itemstack.getCapability(Capabilities.ItemHandler.ITEM);
+				ResourceHandler<ItemResource> cap = itemstack.getCapability(Capabilities.Item.ITEM, ItemAccess.forPlayerSlot(this.entity, hand == 0 ? this.entity.getInventory().getSelectedSlot() : Inventory.SLOT_OFFHAND));
 				if (cap != null) {
 					this.internal = cap;
 					this.bound = true;
@@ -80,7 +84,7 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 				extraData.readByte(); // drop padding
 				boundEntity = world.getEntity(extraData.readVarInt());
 				if (boundEntity != null) {
-					IItemHandler cap = boundEntity.getCapability(Capabilities.ItemHandler.ENTITY);
+					ResourceHandler<ItemResource> cap = boundEntity.getCapability(Capabilities.Item.ENTITY);
 					if (cap != null) {
 						this.internal = cap;
 						this.bound = true;
@@ -89,153 +93,153 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 			} else { // might be bound to block
 				boundBlockEntity = this.world.getBlockEntity(pos);
 				if (boundBlockEntity instanceof BaseContainerBlockEntity baseContainerBlockEntity) {
-					this.internal = new InvWrapper(baseContainerBlockEntity);
+					this.internal = VanillaContainerWrapper.of(baseContainerBlockEntity);
 					this.bound = true;
 				}
 			}
 		}
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 142, 39) {
+		this.customSlots.put(0, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 0, 142, 39) {
 			private final int slot = 0;
 			private int x = MacFrameGUIMenu.this.x;
 			private int y = MacFrameGUIMenu.this.y;
 
 			@Override
-			public void setChanged() {
-				super.setChanged();
+			protected void setStackCopy(ItemStack stack) {
+				super.setStackCopy(stack);
 				slotChanged(0, 0, 0);
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("ssc14:mac_fr_boards")));
+				return stack.is(ItemTags.create(Identifier.parse("ssc14:mac_fr_boards")));
 			}
 		}));
-		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 142, 13) {
+		this.customSlots.put(1, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 1, 142, 13) {
 			private final int slot = 1;
 			private int x = MacFrameGUIMenu.this.x;
 			private int y = MacFrameGUIMenu.this.y;
 
 			@Override
-			public void setChanged() {
-				super.setChanged();
+			protected void setStackCopy(ItemStack stack) {
+				super.setStackCopy(stack);
 				slotChanged(1, 0, 0);
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("ssc14:mac_fr_components")));
+				return stack.is(ItemTags.create(Identifier.parse("ssc14:mac_fr_components")));
 			}
 		}));
-		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 168, 13) {
+		this.customSlots.put(2, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 2, 168, 13) {
 			private final int slot = 2;
 			private int x = MacFrameGUIMenu.this.x;
 			private int y = MacFrameGUIMenu.this.y;
 
 			@Override
-			public void setChanged() {
-				super.setChanged();
+			protected void setStackCopy(ItemStack stack) {
+				super.setStackCopy(stack);
 				slotChanged(2, 0, 0);
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("ssc14:mac_fr_components")));
+				return stack.is(ItemTags.create(Identifier.parse("ssc14:mac_fr_components")));
 			}
 		}));
-		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 168, 39) {
+		this.customSlots.put(3, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 3, 168, 39) {
 			private final int slot = 3;
 			private int x = MacFrameGUIMenu.this.x;
 			private int y = MacFrameGUIMenu.this.y;
 
 			@Override
-			public void setChanged() {
-				super.setChanged();
+			protected void setStackCopy(ItemStack stack) {
+				super.setStackCopy(stack);
 				slotChanged(3, 0, 0);
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("ssc14:mac_fr_components")));
+				return stack.is(ItemTags.create(Identifier.parse("ssc14:mac_fr_components")));
 			}
 		}));
-		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 168, 65) {
+		this.customSlots.put(4, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 4, 168, 65) {
 			private final int slot = 4;
 			private int x = MacFrameGUIMenu.this.x;
 			private int y = MacFrameGUIMenu.this.y;
 
 			@Override
-			public void setChanged() {
-				super.setChanged();
+			protected void setStackCopy(ItemStack stack) {
+				super.setStackCopy(stack);
 				slotChanged(4, 0, 0);
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("ssc14:mac_fr_components")));
+				return stack.is(ItemTags.create(Identifier.parse("ssc14:mac_fr_components")));
 			}
 		}));
-		this.customSlots.put(5, this.addSlot(new SlotItemHandler(internal, 5, 142, 65) {
+		this.customSlots.put(5, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 5, 142, 65) {
 			private final int slot = 5;
 			private int x = MacFrameGUIMenu.this.x;
 			private int y = MacFrameGUIMenu.this.y;
 
 			@Override
-			public void setChanged() {
-				super.setChanged();
+			protected void setStackCopy(ItemStack stack) {
+				super.setStackCopy(stack);
 				slotChanged(5, 0, 0);
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("ssc14:mac_fr_components")));
+				return stack.is(ItemTags.create(Identifier.parse("ssc14:mac_fr_components")));
 			}
 		}));
-		this.customSlots.put(6, this.addSlot(new SlotItemHandler(internal, 6, 116, 65) {
+		this.customSlots.put(6, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 6, 116, 65) {
 			private final int slot = 6;
 			private int x = MacFrameGUIMenu.this.x;
 			private int y = MacFrameGUIMenu.this.y;
 
 			@Override
-			public void setChanged() {
-				super.setChanged();
+			protected void setStackCopy(ItemStack stack) {
+				super.setStackCopy(stack);
 				slotChanged(6, 0, 0);
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("ssc14:mac_fr_components")));
+				return stack.is(ItemTags.create(Identifier.parse("ssc14:mac_fr_components")));
 			}
 		}));
-		this.customSlots.put(7, this.addSlot(new SlotItemHandler(internal, 7, 116, 39) {
+		this.customSlots.put(7, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 7, 116, 39) {
 			private final int slot = 7;
 			private int x = MacFrameGUIMenu.this.x;
 			private int y = MacFrameGUIMenu.this.y;
 
 			@Override
-			public void setChanged() {
-				super.setChanged();
+			protected void setStackCopy(ItemStack stack) {
+				super.setStackCopy(stack);
 				slotChanged(7, 0, 0);
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("ssc14:mac_fr_components")));
+				return stack.is(ItemTags.create(Identifier.parse("ssc14:mac_fr_components")));
 			}
 		}));
-		this.customSlots.put(8, this.addSlot(new SlotItemHandler(internal, 8, 116, 13) {
+		this.customSlots.put(8, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 8, 116, 13) {
 			private final int slot = 8;
 			private int x = MacFrameGUIMenu.this.x;
 			private int y = MacFrameGUIMenu.this.y;
 
 			@Override
-			public void setChanged() {
-				super.setChanged();
+			protected void setStackCopy(ItemStack stack) {
+				super.setStackCopy(stack);
 				slotChanged(8, 0, 0);
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("ssc14:mac_fr_components")));
+				return stack.is(ItemTags.create(Identifier.parse("ssc14:mac_fr_components")));
 			}
 		}));
 		for (int si = 0; si < 3; ++si)
@@ -243,6 +247,22 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 				this.addSlot(new Slot(inv, sj + (si + 1) * 9, 62 + 8 + sj * 18, 8 + 84 + si * 18));
 		for (int si = 0; si < 9; ++si)
 			this.addSlot(new Slot(inv, si, 62 + 8 + si * 18, 8 + 142));
+	}
+
+	private void setItemInSlot(int index, ItemResource resource, int amount) {
+		if (internal instanceof ItemStacksResourceHandler handler) {
+			handler.set(index, resource, amount);
+		} else if (boundBlockEntity instanceof Container container) {
+			container.setItem(index, resource.toStack(Math.max(0, amount)));
+		} else {
+			try (var tx = Transaction.openRoot()) {
+				if (!internal.getResource(index).isEmpty())
+					internal.extract(index, internal.getResource(index), internal.getAmountAsInt(index), tx);
+				if (!resource.isEmpty() && amount > 0)
+					internal.insert(index, resource, amount, tx);
+				tx.commit();
+			}
+		}
 	}
 
 	@Override
@@ -261,7 +281,7 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 	@Override
 	public ItemStack quickMoveStack(Player playerIn, int index) {
 		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = (Slot) this.slots.get(index);
+		Slot slot = this.slots.get(index);
 		if (slot != null && slot.hasItem()) {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
@@ -293,62 +313,62 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 	}
 
 	@Override
-	protected boolean moveItemStackTo(ItemStack p_38904_, int p_38905_, int p_38906_, boolean p_38907_) {
-		boolean flag = false;
-		int i = p_38905_;
-		if (p_38907_) {
-			i = p_38906_ - 1;
+	protected boolean moveItemStackTo(ItemStack itemStack, int startSlot, int endSlot, boolean backwards) {
+		boolean anythingChanged = false;
+		int destSlot = startSlot;
+		if (backwards) {
+			destSlot = endSlot - 1;
 		}
-		if (p_38904_.isStackable()) {
-			while (!p_38904_.isEmpty() && (p_38907_ ? i >= p_38905_ : i < p_38906_)) {
-				Slot slot = this.slots.get(i);
-				ItemStack itemstack = slot.getItem();
-				if (slot.mayPlace(itemstack) && !itemstack.isEmpty() && ItemStack.isSameItemSameComponents(p_38904_, itemstack)) {
-					int j = itemstack.getCount() + p_38904_.getCount();
-					int k = slot.getMaxStackSize(itemstack);
-					if (j <= k) {
-						p_38904_.setCount(0);
-						itemstack.setCount(j);
-						slot.set(itemstack);
-						flag = true;
-					} else if (itemstack.getCount() < k) {
-						p_38904_.shrink(k - itemstack.getCount());
-						itemstack.setCount(k);
-						slot.set(itemstack);
-						flag = true;
+		if (itemStack.isStackable()) {
+			while (!itemStack.isEmpty() && (backwards ? destSlot >= startSlot : destSlot < endSlot)) {
+				Slot slot = this.slots.get(destSlot);
+				ItemStack target = slot.getItem();
+				if (slot.mayPlace(target) && !target.isEmpty() && ItemStack.isSameItemSameComponents(itemStack, target)) {
+					int totalStack = target.getCount() + itemStack.getCount();
+					int maxStackSize = slot.getMaxStackSize(target);
+					if (totalStack <= maxStackSize) {
+						itemStack.setCount(0);
+						target.setCount(totalStack);
+						slot.set(target);
+						anythingChanged = true;
+					} else if (target.getCount() < maxStackSize) {
+						itemStack.shrink(maxStackSize - target.getCount());
+						target.setCount(maxStackSize);
+						slot.set(target);
+						anythingChanged = true;
 					}
 				}
-				if (p_38907_) {
-					i--;
+				if (backwards) {
+					destSlot--;
 				} else {
-					i++;
+					destSlot++;
 				}
 			}
 		}
-		if (!p_38904_.isEmpty()) {
-			if (p_38907_) {
-				i = p_38906_ - 1;
+		if (!itemStack.isEmpty()) {
+			if (backwards) {
+				destSlot = endSlot - 1;
 			} else {
-				i = p_38905_;
+				destSlot = startSlot;
 			}
-			while (p_38907_ ? i >= p_38905_ : i < p_38906_) {
-				Slot slot1 = this.slots.get(i);
-				ItemStack itemstack1 = slot1.getItem();
-				if (itemstack1.isEmpty() && slot1.mayPlace(p_38904_)) {
-					int l = slot1.getMaxStackSize(p_38904_);
-					slot1.setByPlayer(p_38904_.split(Math.min(p_38904_.getCount(), l)));
-					slot1.setChanged();
-					flag = true;
+			while (backwards ? destSlot >= startSlot : destSlot < endSlot) {
+				Slot slotx = this.slots.get(destSlot);
+				ItemStack targetx = slotx.getItem();
+				if (targetx.isEmpty() && slotx.mayPlace(itemStack)) {
+					int maxStackSize = slotx.getMaxStackSize(itemStack);
+					slotx.setByPlayer(itemStack.split(Math.min(itemStack.getCount(), maxStackSize)));
+					slotx.setChanged();
+					anythingChanged = true;
 					break;
 				}
-				if (p_38907_) {
-					i--;
+				if (backwards) {
+					destSlot--;
 				} else {
-					i++;
+					destSlot++;
 				}
 			}
 		}
-		return flag;
+		return anythingChanged;
 	}
 
 	@Override
@@ -357,7 +377,7 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 		MacFrameGUIBlockUpdateProcedure.execute(world, x, y, z);
 		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
 			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
-				for (int j = 0; j < internal.getSlots(); ++j) {
+				for (int j = 0; j < internal.size(); ++j) {
 					if (j == 0)
 						continue;
 					if (j == 1)
@@ -374,12 +394,11 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 						continue;
 					if (j == 8)
 						continue;
-					playerIn.drop(internal.getStackInSlot(j), false);
-					if (internal instanceof IItemHandlerModifiable ihm)
-						ihm.setStackInSlot(j, ItemStack.EMPTY);
+					playerIn.drop(ItemUtil.getStack(internal, j), false);
+					setItemInSlot(j, ItemResource.EMPTY, 0);
 				}
 			} else {
-				for (int i = 0; i < internal.getSlots(); ++i) {
+				for (int i = 0; i < internal.size(); ++i) {
 					if (i == 0)
 						continue;
 					if (i == 1)
@@ -396,9 +415,8 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 						continue;
 					if (i == 8)
 						continue;
-					playerIn.getInventory().placeItemBackInInventory(internal.getStackInSlot(i));
-					if (internal instanceof IItemHandlerModifiable ihm)
-						ihm.setStackInSlot(i, ItemStack.EMPTY);
+					playerIn.getInventory().placeItemBackInInventory(ItemUtil.getStack(internal, i));
+					setItemInSlot(i, ItemResource.EMPTY, 0);
 				}
 			}
 		}

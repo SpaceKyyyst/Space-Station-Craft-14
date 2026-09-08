@@ -1,7 +1,8 @@
 package net.mcreator.ssc.procedures;
 
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.item.ItemUtil;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.common.extensions.ILevelExtension;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
@@ -13,11 +14,12 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.Container;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
@@ -39,10 +41,10 @@ public class VendAutGUIButton5Procedure {
 			}
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x + 0.5, y + 0.5, z + 0.5), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:machines_vending_eject")), SoundSource.BLOCKS,
+					_level.playSound(null, BlockPos.containing(x + 0.5, y + 0.5, z + 0.5), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:machines_vending_eject")), SoundSource.BLOCKS,
 							(float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1), (float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1));
 				} else {
-					_level.playLocalSound((x + 0.5), (y + 0.5), (z + 0.5), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:machines_vending_eject")), SoundSource.BLOCKS, (float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1),
+					_level.playLocalSound((x + 0.5), (y + 0.5), (z + 0.5), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:machines_vending_eject")), SoundSource.BLOCKS, (float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1),
 							(float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1), false);
 				}
 			}
@@ -98,11 +100,11 @@ public class VendAutGUIButton5Procedure {
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 					}
 					if (getBlockNBTNumber(world, BlockPos.containing(x, y, z), "slot_5") == 0) {
-						if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-							int _slotid = 5;
-							ItemStack _stk = _itemHandlerModifiable.getStackInSlot(_slotid).copy();
-							_stk.shrink(1);
-							_itemHandlerModifiable.setStackInSlot(_slotid, _stk);
+						if (world instanceof ServerLevel _serverLevel) {
+							BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
+							if (_be instanceof Container _container) {
+								_container.getItem(5).shrink(1);
+							}
 						}
 					}
 				}
@@ -119,9 +121,9 @@ public class VendAutGUIButton5Procedure {
 
 	private static ItemStack itemFromBlockInventory(LevelAccessor world, BlockPos pos, int slot) {
 		if (world instanceof ILevelExtension ext) {
-			IItemHandler itemHandler = ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null);
+			ResourceHandler<ItemResource> itemHandler = ext.getCapability(Capabilities.Item.BLOCK, pos, null);
 			if (itemHandler != null)
-				return itemHandler.getStackInSlot(slot);
+				return ItemUtil.getStack(itemHandler, slot);
 		}
 		return ItemStack.EMPTY;
 	}

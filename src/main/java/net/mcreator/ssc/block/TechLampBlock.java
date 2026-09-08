@@ -34,17 +34,17 @@ public class TechLampBlock extends Block {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public TechLampBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.GLASS).strength(5f).noCollission().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.GLASS).strength(5f).noCollision().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> Shapes.or(box(6.5, 10.5, 0, 9.5, 13.5, 2), box(7, 11, 2, 9, 13, 3), box(6, 10, 3, 10, 14, 7), box(6, 10, 3, 10, 14, 7));
 				case NORTH -> Shapes.or(box(6.5, 10.5, 14, 9.5, 13.5, 16), box(7, 11, 13, 9, 13, 14), box(6, 10, 9, 10, 14, 13), box(6, 10, 9, 10, 14, 13));
 				case EAST -> Shapes.or(box(0, 10.5, 6.5, 2, 13.5, 9.5), box(2, 11, 7, 3, 13, 9), box(3, 10, 6, 7, 14, 10), box(3, 10, 6, 7, 14, 10));
 				case WEST -> Shapes.or(box(14, 10.5, 6.5, 16, 13.5, 9.5), box(13, 11, 7, 14, 13, 9), box(9, 10, 6, 13, 14, 10), box(9, 10, 6, 13, 14, 10));
+				default -> Shapes.or(box(6.5, 10.5, 0, 9.5, 13.5, 2), box(7, 11, 2, 9, 13, 3), box(6, 10, 3, 10, 14, 7), box(6, 10, 3, 10, 14, 7));
 			};
 		});
 	}
@@ -67,9 +67,12 @@ public class TechLampBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
 		if (context.getClickedFace().getAxis() == Direction.Axis.Y)
-			return super.getStateForPlacement(context).setValue(FACING, Direction.NORTH).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false);
-		return super.getStateForPlacement(context).setValue(FACING, context.getClickedFace()).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false);
+			return state.setValue(FACING, Direction.NORTH).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false);
+		return state.setValue(FACING, context.getClickedFace()).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

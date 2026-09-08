@@ -14,10 +14,13 @@ public class CrawlHandler {
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
-        if (player.level().isClientSide()) return;
 
         var speedAttr = player.getAttribute(Attributes.MOVEMENT_SPEED);
         boolean isCrawling = speedAttr != null && speedAttr.hasModifier(CrawlPrProcedure.CRAWL_SPEED_MOD_ID);
+
+        if (player.isSpectator() || player.isSleeping()) {
+            isCrawling = false;
+        }
 
         if (isCrawling) {
             // 🔥 Принудительно ставим позу КАЖДЫЙ ТИК

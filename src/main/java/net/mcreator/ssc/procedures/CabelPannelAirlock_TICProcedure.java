@@ -8,7 +8,7 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
 
 public class CabelPannelAirlock_TICProcedure {
@@ -23,7 +23,7 @@ public class CabelPannelAirlock_TICProcedure {
 								entity.level().clip(
 										new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY(),
 								entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ())))
-				.is(BlockTags.create(ResourceLocation.parse("ssc14:airlocks")))
+				.is(BlockTags.create(Identifier.parse("ssc14:airlocks")))
 				&& true == (getPropertyByName(
 						(world.getBlockState(
 								new BlockPos(

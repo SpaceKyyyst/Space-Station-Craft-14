@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "HardsuitSalvage",
@@ -9,18 +9,12 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
+    "equipSound": "",
     "hasModel": true,
     "baubleModel": "Modelhardsuit_salvage_equipped",
     "baubleModelTexture": "hardsuit_salvage_off_equipped_texture.png",
-    "onEquip": {
-      "name": "OuterclothingSalvageCAPIBaubleIsEquipped"
-    },
-    "onUnequip": {
-      "name": "OuterclothingSalvageCAPIBaubleIsUnequipped"
-    },
+    "onEquip": "OuterclothingSalvageCAPIBaubleIsEquipped",
+    "onUnequip": "OuterclothingSalvageCAPIBaubleIsUnequipped",
     "helmetModelPart": "Empty",
     "bodyModelPart": "torso",
     "armsModelPartL": "l_arm",

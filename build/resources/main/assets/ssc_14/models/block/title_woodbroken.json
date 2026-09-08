@@ -4,6 +4,5 @@
     "all": "ssc_14:block/tile_fl_wood_broken1_texture",
     "particle": "ssc_14:block/tile_fl_wood_broken1_texture",
     "2": "ssc_14:block/tile_fl_wood_broken1_texture"
-  },
-  "render_type": "cutout"
+  }
 }

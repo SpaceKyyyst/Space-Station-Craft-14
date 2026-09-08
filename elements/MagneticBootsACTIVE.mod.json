@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "MagneticBootsACTIVEItem",
@@ -9,18 +9,12 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
+    "equipSound": "",
     "hasModel": true,
     "baubleModel": "Modelboots_magboots_equipped",
     "baubleModelTexture": "boots_magboots_on_equipped_texture.png",
-    "onEquip": {
-      "name": "MagBootsCAPIBaubleIsEquipped"
-    },
-    "onUnequip": {
-      "name": "MagBootsCAPIBaubleIsUnequipped"
-    },
+    "onEquip": "MagBootsCAPIBaubleIsEquipped",
+    "onUnequip": "MagBootsCAPIBaubleIsUnequipped",
     "helmetModelPart": "Empty",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

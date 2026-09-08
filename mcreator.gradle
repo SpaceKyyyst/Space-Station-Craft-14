@@ -6,8 +6,8 @@ maven {
 }
 
 dependencies {
-  runtimeOnly "top.theillusivec4.curios:curios-neoforge:12.0.0+1.21.8"
-  compileOnly "top.theillusivec4.curios:curios-neoforge:12.0.0+1.21.8:api"
+  runtimeOnly "top.theillusivec4.curios:curios-neoforge:15.0.0-beta.2+26.1.2"
+  compileOnly "top.theillusivec4.curios:curios-neoforge:15.0.0-beta.2+26.1.2:api"
 }
 
 

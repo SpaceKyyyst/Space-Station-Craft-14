@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "block",
   "definition": {
     "texture": "asteroid_stone_gold",
@@ -19,9 +19,7 @@
     "itemTexture": "",
     "particleTexture": "",
     "blockSetType": "OAK",
-    "pottedPlant": {
-      "value": ""
-    },
+    "pottedPlant": "",
     "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,
@@ -54,14 +52,10 @@
     "rarity": "COMMON",
     "immuneToFire": true,
     "creativeTabs": [
-      {
-        "value": "CUSTOM:SSC14Walls"
-      }
+      "CUSTOM:SSC14Walls"
     ],
     "destroyTool": "Not specified",
-    "customDrop": {
-      "value": "CUSTOM:RawGold"
-    },
+    "customDrop": "CUSTOM:RawGold",
     "dropAmount": 2,
     "xpAmountMin": 0,
     "xpAmountMax": 0,
@@ -81,14 +75,10 @@
     },
     "colorOnMap": "DEFAULT",
     "noteBlockInstrument": "harp",
-    "creativePickItem": {
-      "value": ""
-    },
+    "creativePickItem": "",
     "offsetType": "NONE",
     "aiPathNodeType": "DEFAULT",
-    "strippingResult": {
-      "value": ""
-    },
+    "strippingResult": "",
     "ignitedByLava": false,
     "flammability": 0,
     "fireSpreadSpeed": 0,
@@ -98,25 +88,13 @@
     "jumpFactor": 1.0,
     "reactionToPushing": "NORMAL",
     "isNotColidable": false,
+    "soundOnStep": "STONE",
     "isCustomSoundType": true,
-    "soundOnStep": {
-      "value": "STONE"
-    },
-    "breakSound": {
-      "value": "CUSTOM:break_stone"
-    },
-    "fallSound": {
-      "value": "block.stone.fall"
-    },
-    "hitSound": {
-      "value": "block.stone.hit"
-    },
-    "placeSound": {
-      "value": "block.stone.place"
-    },
-    "stepSound": {
-      "value": "block.stone.step"
-    },
+    "breakSound": "CUSTOM:break_stone",
+    "fallSound": "block.stone.fall",
+    "hitSound": "block.stone.hit",
+    "placeSound": "block.stone.place",
+    "stepSound": "block.stone.step",
     "luminance": {
       "fixedValue": 0.0
     },
@@ -147,9 +125,7 @@
     "generateFeature": true,
     "restrictionBiomes": [],
     "blocksToReplace": [
-      {
-        "value": "TAG:ssc14:planet1_stone"
-      }
+      "TAG:ssc14:planet1_stone"
     ],
     "generationShape": "UNIFORM",
     "frequencyPerChunks": 10,

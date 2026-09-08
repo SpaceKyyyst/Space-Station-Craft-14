@@ -1,7 +1,5 @@
 package net.mcreator.ssc.client.screens;
 
-import org.checkerframework.checker.units.qual.h;
-
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -10,7 +8,7 @@ import net.neoforged.api.distmarker.Dist;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
@@ -18,7 +16,7 @@ import net.mcreator.ssc.procedures.Hunger1PrProcedure;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Hunger1Overlay {
-	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/hunger_1.png");
+	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/hunger_1.png");
 
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {

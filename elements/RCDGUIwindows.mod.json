@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -26,9 +26,7 @@
           "name": "imagebutton_rcd_gui_exit_b",
           "image": "rcd_gui_back_b.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIbackButton"
-          },
+          "onClick": "RCDGUIbackButton",
           "x": 206,
           "y": 112,
           "locked": true
@@ -40,9 +38,7 @@
           "name": "imagebutton_steel_wall_gui_texture",
           "image": "grille.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIgrilleButton"
-          },
+          "onClick": "RCDGUIgrilleButton",
           "x": 156,
           "y": 50,
           "locked": false
@@ -54,9 +50,7 @@
           "name": "imagebutton_most_floor_gui_texture",
           "image": "armored_window_gui.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIarmWindowButton"
-          },
+          "onClick": "RCDGUIarmWindowButton",
           "x": 241,
           "y": 50,
           "locked": false
@@ -68,9 +62,7 @@
           "name": "imagebutton_tile_steel_gui_texture",
           "image": "window_gui.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIwindowButton"
-          },
+          "onClick": "RCDGUIwindowButton",
           "x": 136,
           "y": 129,
           "locked": false
@@ -82,9 +74,7 @@
           "name": "imagebutton_floor_gui_texture",
           "image": "directed_arm_window_gui.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIdirArmWindowButton"
-          },
+          "onClick": "RCDGUIdirArmWindowButton",
           "x": 259,
           "y": 129,
           "locked": false
@@ -96,18 +86,14 @@
           "name": "imagebutton_directed_window_gui",
           "image": "directed_window_gui.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIdirwindowButton"
-          },
+          "onClick": "RCDGUIdirwindowButton",
           "x": 198,
           "y": 170,
           "locked": false
         }
       }
     ],
-    "onTick": {
-      "name": "RCDGUI_check_"
-    },
+    "onTick": "RCDGUI_check_",
     "gridSettings": {
       "sx": 18,
       "sy": 18,

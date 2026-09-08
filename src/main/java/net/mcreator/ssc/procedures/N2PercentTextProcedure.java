@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
 
 import javax.annotation.Nullable;
@@ -27,7 +27,7 @@ public class N2PercentTextProcedure {
 
 	private static String execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
 		String loc_text = "";
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:permeable_to_gases")))) {
+		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(Identifier.parse("ssc14:permeable_to_gases")))) {
 			loc_text = Math.round((getBlockNBTNumber(world, BlockPos.containing(x, y, z), "N2") / (getBlockNBTNumber(world, BlockPos.containing(x, y, z), "O2") + getBlockNBTNumber(world, BlockPos.containing(x, y, z), "N2"))) * 1000) / 10d + " %";
 		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.AIR) {
 			loc_text = "0 %";

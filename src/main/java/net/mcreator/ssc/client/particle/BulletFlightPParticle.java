@@ -1,14 +1,14 @@
 package net.mcreator.ssc.client.particle;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.client.particle.SpriteSet;
-import net.minecraft.client.particle.ParticleRenderType;
+import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.multiplayer.ClientLevel;
 
-public class BulletFlightPParticle extends TextureSheetParticle {
+public class BulletFlightPParticle extends SingleQuadParticle {
 	public static BulletFlightPParticleProvider provider(SpriteSet spriteSet) {
 		return new BulletFlightPParticleProvider(spriteSet);
 	}
@@ -20,7 +20,7 @@ public class BulletFlightPParticle extends TextureSheetParticle {
 			this.spriteSet = spriteSet;
 		}
 
-		public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
 			return new BulletFlightPParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
 		}
 	}
@@ -28,7 +28,7 @@ public class BulletFlightPParticle extends TextureSheetParticle {
 	private final SpriteSet spriteSet;
 
 	protected BulletFlightPParticle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
-		super(world, x, y, z);
+		super(world, x, y, z, spriteSet.first());
 		this.spriteSet = spriteSet;
 		this.setSize(0.1f, 0.1f);
 		this.quadSize *= 2.5f;
@@ -42,8 +42,8 @@ public class BulletFlightPParticle extends TextureSheetParticle {
 	}
 
 	@Override
-	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+	public SingleQuadParticle.Layer getLayer() {
+		return SingleQuadParticle.Layer.TRANSLUCENT;
 	}
 
 	@Override

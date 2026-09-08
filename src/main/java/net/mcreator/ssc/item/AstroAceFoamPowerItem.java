@@ -33,7 +33,7 @@ public class AstroAceFoamPowerItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> componentConsumer, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, tooltipDisplay, componentConsumer, flag);
-		Entity entity = itemstack.getEntityRepresentation() != null ? itemstack.getEntityRepresentation() : Ssc14Mod.clientPlayer();
+		Entity entity = Ssc14Mod.clientPlayer();
 		String hoverText = AstroAceFP_DescriptionProcedure.execute(itemstack);
 		if (hoverText != null) {
 			for (String line : hoverText.split("\n")) {

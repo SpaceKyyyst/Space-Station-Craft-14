@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 1,
@@ -24,9 +24,7 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": false,
-          "onSlotChanged": {
-            "name": "IDCode0Cellpr"
-          },
+          "onSlotChanged": "IDCode0Cellpr",
           "x": 92,
           "y": 165,
           "locked": false
@@ -46,9 +44,7 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": false,
-          "onSlotChanged": {
-            "name": "IDCode0Cellpr"
-          },
+          "onSlotChanged": "IDCode0Cellpr",
           "x": 92,
           "y": 201,
           "locked": false
@@ -389,9 +385,7 @@
         "data": {
           "image": "id_code_menu_decor1.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "IDcmdecor1"
-          },
+          "displayCondition": "IDcmdecor1",
           "x": 93,
           "y": 183,
           "locked": false
@@ -402,9 +396,7 @@
         "data": {
           "image": "id_code_menu_decor2.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "IDcmdecor2"
-          },
+          "displayCondition": "IDcmdecor2",
           "x": 96,
           "y": 187,
           "locked": false
@@ -415,9 +407,7 @@
         "data": {
           "image": "id_code_menu_decor3.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "IDcmdecor3"
-          },
+          "displayCondition": "IDcmdecor3",
           "x": 96,
           "y": 187,
           "locked": false
@@ -428,9 +418,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "GunroomIDCLockGUI"
-          },
+          "displayCondition": "GunroomIDCLockGUI",
           "x": 10,
           "y": 7,
           "locked": false
@@ -441,9 +429,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "HoSIDCLockGUI"
-          },
+          "displayCondition": "HoSIDCLockGUI",
           "x": 10,
           "y": 28,
           "locked": false
@@ -454,9 +440,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "BrigIDCLockGUI"
-          },
+          "displayCondition": "BrigIDCLockGUI",
           "x": 10,
           "y": 49,
           "locked": false
@@ -467,9 +451,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "SecurityIDCLockGUI"
-          },
+          "displayCondition": "SecurityIDCLockGUI",
           "x": 10,
           "y": 70,
           "locked": false
@@ -480,9 +462,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "DetectiveIDCLockGUI"
-          },
+          "displayCondition": "DetectiveIDCLockGUI",
           "x": 10,
           "y": 91,
           "locked": false
@@ -493,9 +473,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "PNTIDCLockGUI"
-          },
+          "displayCondition": "PNTIDCLockGUI",
           "x": 10,
           "y": 112,
           "locked": false
@@ -506,9 +484,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CrioIDCLockGUI"
-          },
+          "displayCondition": "CrioIDCLockGUI",
           "x": 10,
           "y": 133,
           "locked": false
@@ -519,9 +495,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CEIDCLockGUI"
-          },
+          "displayCondition": "CEIDCLockGUI",
           "x": 88,
           "y": 7,
           "locked": false
@@ -532,9 +506,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "AtmosIDCLockGUI"
-          },
+          "displayCondition": "AtmosIDCLockGUI",
           "x": 88,
           "y": 28,
           "locked": false
@@ -545,9 +517,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "IngeneerIDCLockGUI"
-          },
+          "displayCondition": "IngeneerIDCLockGUI",
           "x": 88,
           "y": 49,
           "locked": false
@@ -558,9 +528,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "OutIDCLockGUI"
-          },
+          "displayCondition": "OutIDCLockGUI",
           "x": 88,
           "y": 70,
           "locked": false
@@ -571,9 +539,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "QmIDCLockGUI"
-          },
+          "displayCondition": "QmIDCLockGUI",
           "x": 88,
           "y": 91,
           "locked": false
@@ -584,9 +550,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "UtilizatIDCLockGUI"
-          },
+          "displayCondition": "UtilizatIDCLockGUI",
           "x": 88,
           "y": 112,
           "locked": false
@@ -597,9 +561,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "SupplyDeportamentIDCLockGUI"
-          },
+          "displayCondition": "SupplyDeportamentIDCLockGUI",
           "x": 88,
           "y": 133,
           "locked": false
@@ -610,9 +572,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CMOIDCLockGUI"
-          },
+          "displayCondition": "CMOIDCLockGUI",
           "x": 175,
           "y": 7,
           "locked": false
@@ -623,9 +583,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "ChemistryIDCLockGUI"
-          },
+          "displayCondition": "ChemistryIDCLockGUI",
           "x": 175,
           "y": 28,
           "locked": false
@@ -636,9 +594,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "MedicalIDCLockGUI"
-          },
+          "displayCondition": "MedicalIDCLockGUI",
           "x": 175,
           "y": 49,
           "locked": false
@@ -649,9 +605,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "RDIDCLockGUI"
-          },
+          "displayCondition": "RDIDCLockGUI",
           "x": 175,
           "y": 70,
           "locked": false
@@ -662,9 +616,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "ScientistIDCLockGUI"
-          },
+          "displayCondition": "ScientistIDCLockGUI",
           "x": 175,
           "y": 91,
           "locked": false
@@ -675,9 +627,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "TechnicalIDCLockGUI"
-          },
+          "displayCondition": "TechnicalIDCLockGUI",
           "x": 175,
           "y": 112,
           "locked": false
@@ -688,9 +638,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "ChurchIDCLockGUI"
-          },
+          "displayCondition": "ChurchIDCLockGUI",
           "x": 175,
           "y": 133,
           "locked": false
@@ -701,9 +649,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "HoPIDCLockGUI"
-          },
+          "displayCondition": "HoPIDCLockGUI",
           "x": 262,
           "y": 7,
           "locked": false
@@ -714,9 +660,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "ServiceIDCLockGUI"
-          },
+          "displayCondition": "ServiceIDCLockGUI",
           "x": 262,
           "y": 28,
           "locked": false
@@ -727,9 +671,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "KitchenIDCLockGUI"
-          },
+          "displayCondition": "KitchenIDCLockGUI",
           "x": 262,
           "y": 49,
           "locked": false
@@ -740,9 +682,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "GidroponicIDCLockGUI"
-          },
+          "displayCondition": "GidroponicIDCLockGUI",
           "x": 262,
           "y": 70,
           "locked": false
@@ -753,9 +693,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "BarIDCLockGUI"
-          },
+          "displayCondition": "BarIDCLockGUI",
           "x": 262,
           "y": 91,
           "locked": false
@@ -766,9 +704,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "TeatreIDCLockGUI"
-          },
+          "displayCondition": "TeatreIDCLockGUI",
           "x": 262,
           "y": 112,
           "locked": false
@@ -779,9 +715,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CleanerIDCLockGUI"
-          },
+          "displayCondition": "CleanerIDCLockGUI",
           "x": 262,
           "y": 133,
           "locked": false
@@ -792,9 +726,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CapitanIDCLockGUI"
-          },
+          "displayCondition": "CapitanIDCLockGUI",
           "x": 340,
           "y": 7,
           "locked": false
@@ -805,9 +737,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CommandIDCLockGUI"
-          },
+          "displayCondition": "CommandIDCLockGUI",
           "x": 340,
           "y": 28,
           "locked": false
@@ -818,9 +748,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "BlueShIDCLockGUI"
-          },
+          "displayCondition": "BlueShIDCLockGUI",
           "x": 340,
           "y": 49,
           "locked": false
@@ -831,9 +759,7 @@
         "data": {
           "image": "lock_gui.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "UridicIDCLockGUI"
-          },
+          "displayCondition": "UridicIDCLockGUI",
           "x": 340,
           "y": 70,
           "locked": false
@@ -867,9 +793,7 @@
           "name": "imagebutton_kapitan",
           "image": "kapitan.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CapitanJOB"
-          },
+          "onClick": "CapitanJOB",
           "x": 19,
           "y": 166,
           "locked": false
@@ -881,9 +805,7 @@
           "name": "imagebutton_nt",
           "image": "nt.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "PNTJOB"
-          },
+          "onClick": "PNTJOB",
           "x": 28,
           "y": 166,
           "locked": false
@@ -895,9 +817,7 @@
           "name": "imagebutton_gp",
           "image": "gp.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "HoPJOB"
-          },
+          "onClick": "HoPJOB",
           "x": 19,
           "y": 175,
           "locked": false
@@ -909,9 +829,7 @@
           "name": "imagebutton_gsb",
           "image": "gsb.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "HoSJOB"
-          },
+          "onClick": "HoSJOB",
           "x": 19,
           "y": 202,
           "locked": false
@@ -923,9 +841,7 @@
           "name": "imagebutton_gv",
           "image": "gv.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CMOJOB"
-          },
+          "onClick": "CMOJOB",
           "x": 19,
           "y": 211,
           "locked": false
@@ -937,9 +853,7 @@
           "name": "imagebutton_km",
           "image": "km.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "QmJOB"
-          },
+          "onClick": "QmJOB",
           "x": 19,
           "y": 184,
           "locked": false
@@ -951,9 +865,7 @@
           "name": "imagebutton_gruzchik",
           "image": "gruzchik.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "LoaderJOB"
-          },
+          "onClick": "LoaderJOB",
           "x": 37,
           "y": 184,
           "locked": false
@@ -965,9 +877,7 @@
           "name": "imagebutton_utilizator",
           "image": "utilizator.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "UtilizatorJOB"
-          },
+          "onClick": "UtilizatorJOB",
           "x": 28,
           "y": 184,
           "locked": false
@@ -979,9 +889,7 @@
           "name": "imagebutton_passazhir",
           "image": "passazhir.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "PassangerJOB"
-          },
+          "onClick": "PassangerJOB",
           "x": 64,
           "y": 193,
           "locked": false
@@ -993,9 +901,7 @@
           "name": "imagebutton_nr",
           "image": "nr.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RDJOB"
-          },
+          "onClick": "RDJOB",
           "x": 19,
           "y": 220,
           "locked": false
@@ -1007,9 +913,7 @@
           "name": "imagebutton_viedushchii_uchionyi",
           "image": "viedushchii_uchionyi.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "VSJOB"
-          },
+          "onClick": "VSJOB",
           "x": 28,
           "y": 220,
           "locked": false
@@ -1021,9 +925,7 @@
           "name": "imagebutton_uchionyi",
           "image": "uchionyi.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "ScientistJOB"
-          },
+          "onClick": "ScientistJOB",
           "x": 37,
           "y": 220,
           "locked": false
@@ -1035,9 +937,7 @@
           "name": "imagebutton_nauchnyi_assistient",
           "image": "nauchnyi_assistient.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "ScienceAssistentJOB"
-          },
+          "onClick": "ScienceAssistentJOB",
           "x": 46,
           "y": 220,
           "locked": false
@@ -1049,9 +949,7 @@
           "name": "imagebutton_si",
           "image": "si.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CEJOB"
-          },
+          "onClick": "CEJOB",
           "x": 19,
           "y": 193,
           "locked": false
@@ -1063,9 +961,7 @@
           "name": "imagebutton_atmos",
           "image": "atmos.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "AtmosJOB"
-          },
+          "onClick": "AtmosJOB",
           "x": 37,
           "y": 193,
           "locked": false
@@ -1077,9 +973,7 @@
           "name": "imagebutton_viedushchii_inzhienier",
           "image": "viedushchii_inzhienier.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "VEJOB"
-          },
+          "onClick": "VEJOB",
           "x": 28,
           "y": 193,
           "locked": false
@@ -1091,9 +985,7 @@
           "name": "imagebutton_tiekhnichieskii_assistient",
           "image": "tiekhnichieskii_assistient.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "TechicalAssistentJOB"
-          },
+          "onClick": "TechicalAssistentJOB",
           "x": 55,
           "y": 193,
           "locked": false
@@ -1105,9 +997,7 @@
           "name": "imagebutton_inzhienier",
           "image": "inzhienier.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "EngeneerJOB"
-          },
+          "onClick": "EngeneerJOB",
           "x": 46,
           "y": 193,
           "locked": false
@@ -1119,9 +1009,7 @@
           "name": "imagebutton_paramiedik",
           "image": "paramiedik.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "ParamedJOB"
-          },
+          "onClick": "ParamedJOB",
           "x": 46,
           "y": 211,
           "locked": false
@@ -1133,9 +1021,7 @@
           "name": "imagebutton_khimik",
           "image": "khimik.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "ChemistJOB"
-          },
+          "onClick": "ChemistJOB",
           "x": 37,
           "y": 211,
           "locked": false
@@ -1147,9 +1033,7 @@
           "name": "imagebutton_vrach",
           "image": "vrach.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MedicJOB"
-          },
+          "onClick": "MedicJOB",
           "x": 55,
           "y": 211,
           "locked": false
@@ -1161,9 +1045,7 @@
           "name": "imagebutton_viedushchii_vrach",
           "image": "viedushchii_vrach.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "VVJOB"
-          },
+          "onClick": "VVJOB",
           "x": 28,
           "y": 211,
           "locked": false
@@ -1175,9 +1057,7 @@
           "name": "imagebutton_intiern",
           "image": "intiern.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "InternJOB"
-          },
+          "onClick": "InternJOB",
           "x": 73,
           "y": 211,
           "locked": false
@@ -1189,9 +1069,7 @@
           "name": "imagebutton_kadiet",
           "image": "kadiet.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "KadetJOB"
-          },
+          "onClick": "KadetJOB",
           "x": 73,
           "y": 202,
           "locked": false
@@ -1203,9 +1081,7 @@
           "name": "imagebutton_instruktor_sb",
           "image": "instruktor_sb.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "ISBJOB"
-          },
+          "onClick": "ISBJOB",
           "x": 28,
           "y": 202,
           "locked": false
@@ -1217,9 +1093,7 @@
           "name": "imagebutton_ofitsier",
           "image": "ofitsier.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "OficerJOB"
-          },
+          "onClick": "OficerJOB",
           "x": 64,
           "y": 202,
           "locked": false
@@ -1231,9 +1105,7 @@
           "name": "imagebutton_dietiektiv",
           "image": "dietiektiv.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "DetectiveJOB"
-          },
+          "onClick": "DetectiveJOB",
           "x": 46,
           "y": 202,
           "locked": false
@@ -1245,9 +1117,7 @@
           "name": "imagebutton_psikhologh",
           "image": "psikhologh.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "PsichologJOB"
-          },
+          "onClick": "PsichologJOB",
           "x": 64,
           "y": 211,
           "locked": false
@@ -1259,9 +1129,7 @@
           "name": "imagebutton_brighmied",
           "image": "brighmied.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "BrigMedJOB"
-          },
+          "onClick": "BrigMedJOB",
           "x": 55,
           "y": 202,
           "locked": false
@@ -1273,9 +1141,7 @@
           "name": "imagebutton_mim",
           "image": "mim.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MimeJOB"
-          },
+          "onClick": "MimeJOB",
           "x": 64,
           "y": 166,
           "locked": false
@@ -1287,9 +1153,7 @@
           "name": "imagebutton_smotritiel",
           "image": "smotritiel.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "WardJOB"
-          },
+          "onClick": "WardJOB",
           "x": 37,
           "y": 202,
           "locked": false
@@ -1301,9 +1165,7 @@
           "name": "imagebutton_osh",
           "image": "osh.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "BlueShJOB"
-          },
+          "onClick": "BlueShJOB",
           "x": 55,
           "y": 166,
           "locked": false
@@ -1315,9 +1177,7 @@
           "name": "imagebutton_adutant",
           "image": "adutant.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "AdutantJOB"
-          },
+          "onClick": "AdutantJOB",
           "x": 37,
           "y": 166,
           "locked": false
@@ -1329,9 +1189,7 @@
           "name": "imagebutton_kloun",
           "image": "kloun.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "ClownJOB"
-          },
+          "onClick": "ClownJOB",
           "x": 73,
           "y": 166,
           "locked": false
@@ -1343,9 +1201,7 @@
           "name": "imagebutton_muzykant",
           "image": "muzykant.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MusicantJOB"
-          },
+          "onClick": "MusicantJOB",
           "x": 73,
           "y": 193,
           "locked": false
@@ -1357,9 +1213,7 @@
           "name": "imagebutton_zootiekhnik",
           "image": "zootiekhnik.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "ZootechnikJOB"
-          },
+          "onClick": "ZootechnikJOB",
           "x": 73,
           "y": 184,
           "locked": false
@@ -1371,9 +1225,7 @@
           "name": "imagebutton_bibliotiekar",
           "image": "bibliotiekar.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "BibliotecarJOB"
-          },
+          "onClick": "BibliotecarJOB",
           "x": 64,
           "y": 184,
           "locked": false
@@ -1385,9 +1237,7 @@
           "name": "imagebutton_siervisnyi_rabotnik",
           "image": "siervisnyi_rabotnik.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "ServicerJOB"
-          },
+          "onClick": "ServicerJOB",
           "x": 28,
           "y": 175,
           "locked": false
@@ -1399,9 +1249,7 @@
           "name": "imagebutton_uborshchik",
           "image": "uborshchik.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CleanerJOB"
-          },
+          "onClick": "CleanerJOB",
           "x": 37,
           "y": 175,
           "locked": false
@@ -1413,9 +1261,7 @@
           "name": "imagebutton_povar",
           "image": "povar.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "ChiefPovarJOB"
-          },
+          "onClick": "ChiefPovarJOB",
           "x": 46,
           "y": 175,
           "locked": false
@@ -1427,9 +1273,7 @@
           "name": "imagebutton_botanik",
           "image": "botanik.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "BotanicJOB"
-          },
+          "onClick": "BotanicJOB",
           "x": 55,
           "y": 175,
           "locked": false
@@ -1441,9 +1285,7 @@
           "name": "imagebutton_barmien",
           "image": "barmien.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "BarmenJOB"
-          },
+          "onClick": "BarmenJOB",
           "x": 64,
           "y": 175,
           "locked": false
@@ -1455,9 +1297,7 @@
           "name": "imagebutton_boksior",
           "image": "boksior.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "BoxerJOB"
-          },
+          "onClick": "BoxerJOB",
           "x": 55,
           "y": 184,
           "locked": false
@@ -1469,9 +1309,7 @@
           "name": "imagebutton_sviashchiennik",
           "image": "sviashchiennik.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CharchManJOB"
-          },
+          "onClick": "CharchManJOB",
           "x": 73,
           "y": 175,
           "locked": false
@@ -1483,9 +1321,7 @@
           "name": "imagebutton_rieportior",
           "image": "rieportior.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "ReporterJOB"
-          },
+          "onClick": "ReporterJOB",
           "x": 46,
           "y": 184,
           "locked": false
@@ -1497,9 +1333,7 @@
           "name": "imagebutton_avd",
           "image": "avd.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "AVDJOB"
-          },
+          "onClick": "AVDJOB",
           "x": 46,
           "y": 166,
           "locked": false
@@ -1525,9 +1359,7 @@
           "name": "imagebutton_idcode_all_on",
           "image": "idcode_all_on.png",
           "hoveredImage": "idcode_all_on_2.png",
-          "onClick": {
-            "name": "IDCodeALLON"
-          },
+          "onClick": "IDCodeALLON",
           "x": 92,
           "y": 223,
           "locked": false
@@ -1539,9 +1371,7 @@
           "name": "imagebutton_idcode_all_off",
           "image": "idcode_all_off.png",
           "hoveredImage": "idcode_all_off_2.png",
-          "onClick": {
-            "name": "IDCodeALLOFF"
-          },
+          "onClick": "IDCodeALLOFF",
           "x": 119,
           "y": 223,
           "locked": false
@@ -2126,12 +1956,8 @@
         }
       }
     ],
-    "onOpen": {
-      "name": "IDconsole_OPENMENU"
-    },
-    "onTick": {
-      "name": "ID_Code_CHECK"
-    },
+    "onOpen": "IDconsole_OPENMENU",
+    "onTick": "ID_Code_CHECK",
     "gridSettings": {
       "sx": 10,
       "sy": 14,

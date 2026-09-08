@@ -11,6 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -24,7 +25,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.tags.TagKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
@@ -39,7 +40,7 @@ import javax.annotation.Nullable;
 
 @EventBusSubscriber
 public class ActiveWelderItem extends Item {
-	private static final ToolMaterial TOOL_MATERIAL = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 0, 4f, 0, 1, TagKey.create(Registries.ITEM, ResourceLocation.parse("ssc_14:active_welder_repair_items")));
+	private static final ToolMaterial TOOL_MATERIAL = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 0, 4f, 0, 1, TagKey.create(Registries.ITEM, Identifier.parse("ssc_14:active_welder_repair_items")));
 
 	public ActiveWelderItem(Item.Properties properties) {
 		super(TOOL_MATERIAL.applyToolProperties(properties, BlockTags.MINEABLE_WITH_PICKAXE, -0.9f, -3f, 0)
@@ -50,7 +51,7 @@ public class ActiveWelderItem extends Item {
 
 	@SubscribeEvent
 	public static void modifyDefaultComponents(ModifyDefaultComponentsEvent event) {
-		event.modify(Ssc14ModItems.ACTIVE_WELDER.get(), builder -> builder.remove(DataComponents.MAX_DAMAGE));
+		event.modify(Ssc14ModItems.ACTIVE_WELDER.get(), (builder, _, _) -> builder.set(DataComponents.MAX_DAMAGE, null));
 	}
 
 	@Override
@@ -59,7 +60,7 @@ public class ActiveWelderItem extends Item {
 	}
 
 	@Override
-	public boolean canPerformAction(ItemStack stack, ItemAbility toolAction) {
+	public boolean canPerformAction(ItemInstance stack, ItemAbility toolAction) {
 		return ItemAbilities.DEFAULT_AXE_ACTIONS.contains(toolAction) || ItemAbilities.DEFAULT_HOE_ACTIONS.contains(toolAction) || ItemAbilities.DEFAULT_SHOVEL_ACTIONS.contains(toolAction) || toolAction == ItemAbilities.SWORD_SWEEP;
 	}
 
@@ -70,13 +71,13 @@ public class ActiveWelderItem extends Item {
 
 	@Override
 	public boolean mineBlock(ItemStack itemstack, Level world, BlockState blockstate, BlockPos pos, LivingEntity entity) {
-		itemstack.hurtAndBreak(1, entity, LivingEntity.getSlotForHand(entity.getUsedItemHand()));
+		itemstack.hurtAndBreak(1, entity, entity.getUsedItemHand().asEquipmentSlot());
 		return true;
 	}
 
 	@Override
 	public void hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
-		itemstack.hurtAndBreak(2, entity, LivingEntity.getSlotForHand(entity.getUsedItemHand()));
+		itemstack.hurtAndBreak(2, entity, entity.getUsedItemHand().asEquipmentSlot());
 		WelderOnDAMAGEProcedure.execute(entity.level(), entity);
 	}
 

@@ -3,12 +3,13 @@ package net.mcreator.ssc.client.gui;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.Checkbox;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
 import net.mcreator.ssc.init.Ssc14ModScreens;
@@ -18,6 +19,7 @@ import java.security.Security;
 import java.lang.ref.Cleaner;
 
 import com.mojang.brigadier.Command;
+import com.mojang.blaze3d.platform.InputConstants;
 
 import com.google.common.util.concurrent.Service;
 
@@ -58,17 +60,15 @@ public class AccessConfigMENUScreen extends AbstractContainerScreen<AccessConfig
 	private Checkbox Command;
 	private Checkbox Blue_Sh;
 	private Checkbox Uridic;
-	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/access_config_menu__copy.png");
+	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/access_config_menu__copy.png");
 
 	public AccessConfigMENUScreen(AccessConfigMENUMenu container, Inventory inventory, Component text) {
-		super(container, inventory, text);
+		super(container, inventory, text, 416, 153);
 		this.world = container.world;
 		this.x = container.x;
 		this.y = container.y;
 		this.z = container.z;
 		this.entity = container.entity;
-		this.imageWidth = 416;
-		this.imageHeight = 153;
 	}
 
 	@Override
@@ -77,159 +77,160 @@ public class AccessConfigMENUScreen extends AbstractContainerScreen<AccessConfig
 		if (elementType == 1 && elementState instanceof Boolean logicState) {
 			if (name.equals("gun_room")) {
 				if (gun_room.selected() != logicState)
-					gun_room.onPress();
+					gun_room.onPress(null);
 			} else if (name.equals("HoS")) {
 				if (HoS.selected() != logicState)
-					HoS.onPress();
+					HoS.onPress(null);
 			} else if (name.equals("Brig")) {
 				if (Brig.selected() != logicState)
-					Brig.onPress();
+					Brig.onPress(null);
 			} else if (name.equals("Security")) {
 				if (Security.selected() != logicState)
-					Security.onPress();
+					Security.onPress(null);
 			} else if (name.equals("Detective")) {
 				if (Detective.selected() != logicState)
-					Detective.onPress();
+					Detective.onPress(null);
 			} else if (name.equals("PNT")) {
 				if (PNT.selected() != logicState)
-					PNT.onPress();
+					PNT.onPress(null);
 			} else if (name.equals("Crio")) {
 				if (Crio.selected() != logicState)
-					Crio.onPress();
+					Crio.onPress(null);
 			} else if (name.equals("CE")) {
 				if (CE.selected() != logicState)
-					CE.onPress();
+					CE.onPress(null);
 			} else if (name.equals("Atmos")) {
 				if (Atmos.selected() != logicState)
-					Atmos.onPress();
+					Atmos.onPress(null);
 			} else if (name.equals("Ingeneer")) {
 				if (Ingeneer.selected() != logicState)
-					Ingeneer.onPress();
+					Ingeneer.onPress(null);
 			} else if (name.equals("Out")) {
 				if (Out.selected() != logicState)
-					Out.onPress();
+					Out.onPress(null);
 			} else if (name.equals("Qm")) {
 				if (Qm.selected() != logicState)
-					Qm.onPress();
+					Qm.onPress(null);
 			} else if (name.equals("Utilizat")) {
 				if (Utilizat.selected() != logicState)
-					Utilizat.onPress();
+					Utilizat.onPress(null);
 			} else if (name.equals("Supply_Deportament")) {
 				if (Supply_Deportament.selected() != logicState)
-					Supply_Deportament.onPress();
+					Supply_Deportament.onPress(null);
 			} else if (name.equals("CMO")) {
 				if (CMO.selected() != logicState)
-					CMO.onPress();
+					CMO.onPress(null);
 			} else if (name.equals("Chemistry")) {
 				if (Chemistry.selected() != logicState)
-					Chemistry.onPress();
+					Chemistry.onPress(null);
 			} else if (name.equals("Medical")) {
 				if (Medical.selected() != logicState)
-					Medical.onPress();
+					Medical.onPress(null);
 			} else if (name.equals("RD")) {
 				if (RD.selected() != logicState)
-					RD.onPress();
+					RD.onPress(null);
 			} else if (name.equals("Scientist")) {
 				if (Scientist.selected() != logicState)
-					Scientist.onPress();
+					Scientist.onPress(null);
 			} else if (name.equals("Technical")) {
 				if (Technical.selected() != logicState)
-					Technical.onPress();
+					Technical.onPress(null);
 			} else if (name.equals("Church")) {
 				if (Church.selected() != logicState)
-					Church.onPress();
+					Church.onPress(null);
 			} else if (name.equals("HoP")) {
 				if (HoP.selected() != logicState)
-					HoP.onPress();
+					HoP.onPress(null);
 			} else if (name.equals("Service")) {
 				if (Service.selected() != logicState)
-					Service.onPress();
+					Service.onPress(null);
 			} else if (name.equals("Kitchen")) {
 				if (Kitchen.selected() != logicState)
-					Kitchen.onPress();
+					Kitchen.onPress(null);
 			} else if (name.equals("Gidroponic")) {
 				if (Gidroponic.selected() != logicState)
-					Gidroponic.onPress();
+					Gidroponic.onPress(null);
 			} else if (name.equals("Bar")) {
 				if (Bar.selected() != logicState)
-					Bar.onPress();
+					Bar.onPress(null);
 			} else if (name.equals("Teatre")) {
 				if (Teatre.selected() != logicState)
-					Teatre.onPress();
+					Teatre.onPress(null);
 			} else if (name.equals("Cleaner")) {
 				if (Cleaner.selected() != logicState)
-					Cleaner.onPress();
+					Cleaner.onPress(null);
 			} else if (name.equals("Capitan")) {
 				if (Capitan.selected() != logicState)
-					Capitan.onPress();
+					Capitan.onPress(null);
 			} else if (name.equals("Command")) {
 				if (Command.selected() != logicState)
-					Command.onPress();
+					Command.onPress(null);
 			} else if (name.equals("Blue_Sh")) {
 				if (Blue_Sh.selected() != logicState)
-					Blue_Sh.onPress();
+					Blue_Sh.onPress(null);
 			} else if (name.equals("Uridic")) {
 				if (Uridic.selected() != logicState)
-					Uridic.onPress();
+					Uridic.onPress(null);
 			}
 		}
 		menuStateUpdateActive = false;
 	}
 
 	@Override
-	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-		super.render(guiGraphics, mouseX, mouseY, partialTicks);
-		this.renderTooltip(guiGraphics, mouseX, mouseY);
+	public void extractRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+		super.extractRenderState(guiGraphics, mouseX, mouseY, partialTicks);
 	}
 
 	@Override
-	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
+	public void extractBackground(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+		super.extractBackground(guiGraphics, mouseX, mouseY, partialTicks);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 416, 153, 416, 153);
 	}
 
 	@Override
-	public boolean keyPressed(int key, int b, int c) {
+	public boolean keyPressed(KeyEvent event) {
+		int key = InputConstants.getKey(event).getValue();
 		if (key == 256) {
 			this.minecraft.player.closeContainer();
 			return true;
 		}
-		return super.keyPressed(key, b, c);
+		return super.keyPressed(event);
 	}
 
 	@Override
-	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_oruzhieinaia"), 24, 10, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gsb"), 24, 31, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_brigh"), 24, 52, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_sb"), 24, 73, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_dietiektiv"), 24, 94, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_pnt"), 24, 115, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_krioson"), 24, 136, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_si"), 102, 10, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_atmosfiernyi"), 102, 31, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_inzhieniernyi"), 102, 52, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_vnieshnii"), 102, 73, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_km"), 102, 94, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_utilizat"), 102, 115, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_snabzhieniie"), 102, 136, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gv"), 189, 10, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_khimiia"), 189, 31, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_mieditsinskii"), 189, 52, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_nr"), 189, 73, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_nauchnyi"), 189, 94, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_tiekhnichieskii"), 189, 115, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_tsierkov"), 189, 136, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gp"), 276, 10, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_siervisnyi"), 276, 31, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_kukhnia"), 276, 52, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gidropon"), 276, 73, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_bar"), 276, 94, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_tieatr"), 276, 115, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_uborshchik"), 276, 136, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_kapitan"), 354, 10, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_komand"), 354, 31, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_sinii_shchit"), 354, 52, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_iuridich"), 354, 73, -1, false);
+	protected void extractLabels(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY) {
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_oruzhieinaia"), 24, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gsb"), 24, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_brigh"), 24, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_sb"), 24, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_dietiektiv"), 24, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_pnt"), 24, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_krioson"), 24, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_si"), 102, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_atmosfiernyi"), 102, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_inzhieniernyi"), 102, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_vnieshnii"), 102, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_km"), 102, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_utilizat"), 102, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_snabzhieniie"), 102, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gv"), 189, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_khimiia"), 189, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_mieditsinskii"), 189, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_nr"), 189, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_nauchnyi"), 189, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_tiekhnichieskii"), 189, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_tsierkov"), 189, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gp"), 276, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_siervisnyi"), 276, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_kukhnia"), 276, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_gidropon"), 276, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_bar"), 276, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_tieatr"), 276, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_uborshchik"), 276, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_kapitan"), 354, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_komand"), 354, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_sinii_shchit"), 354, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.access_config_menu.label_iuridich"), 354, 73, -1, false);
 	}
 
 	@Override

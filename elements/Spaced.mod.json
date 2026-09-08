@@ -1,20 +1,14 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "dimension",
   "definition": {
     "biomesInDimension": [
-      {
-        "value": "CUSTOM:Spaceb"
-      }
+      "CUSTOM:Spaceb"
     ],
     "biomesInDimensionCaves": [],
     "worldGenType": "End like gen",
-    "mainFillerBlock": {
-      "value": "CUSTOM:Voidb"
-    },
-    "fluidBlock": {
-      "value": "Blocks.AIR"
-    },
+    "mainFillerBlock": "Blocks.SEA_LANTERN",
+    "fluidBlock": "Blocks.AIR",
     "seaLevel": 0,
     "generateOreVeins": true,
     "generateAquifers": true,
@@ -34,6 +28,16 @@
     "fixedTimeValue": 18000,
     "coordinateScale": 1.0,
     "infiniburnTag": "minecraft:infiniburn_overworld",
+    "enableCustomSkyboxTextures": false,
+    "skyboxTextureUp": "",
+    "skyboxTextureDown": "",
+    "skyboxTextureNorth": "",
+    "skyboxTextureSouth": "",
+    "skyboxTextureWest": "",
+    "skyboxTextureEast": "",
+    "enableCustomSunMoonTextures": false,
+    "sunTexture": "",
+    "moonTexture": "",
     "bedWorks": true,
     "hasSkyLight": false,
     "imitateOverworldBehaviour": false,
@@ -42,16 +46,10 @@
     "minMonsterSpawnLightLimit": 0,
     "maxMonsterSpawnLightLimit": 0,
     "monsterSpawnBlockLightLimit": 0,
-    "portalFrame": {
-      "value": "CUSTOM:Voidb"
-    },
-    "portalParticles": {
-      "value": "ASH"
-    },
+    "portalFrame": "",
+    "portalParticles": "ASH",
     "portalLuminance": 0,
-    "portalSound": {
-      "value": ""
-    },
+    "portalSound": "",
     "enableIgniter": false,
     "igniterName": "Spaced Portal Igniter",
     "igniterRarity": "COMMON",

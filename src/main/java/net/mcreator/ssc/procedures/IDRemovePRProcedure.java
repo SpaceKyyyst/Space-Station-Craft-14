@@ -1,7 +1,10 @@
 package net.mcreator.ssc.procedures;
 
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
+import net.neoforged.neoforge.transfer.item.ItemUtil;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.access.ItemAccess;
+import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
 import net.minecraft.world.level.LevelAccessor;
@@ -13,7 +16,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import net.mcreator.ssc.init.Ssc14ModItems;
 
@@ -30,10 +33,9 @@ public class IDRemovePRProcedure {
 					if (_entity instanceof Player _player)
 						_player.getInventory().setChanged();
 				}
-				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-					ItemStack _setstack = new ItemStack(Ssc14ModItems.ID_CARD_PASSANGER.get()).copy();
-					_setstack.setCount(-1);
-					_modHandlerItemSetSlot.setStackInSlot(0, _setstack);
+				ItemStack _itemStack11 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+				if (_itemStack11.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack11)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+					setStackInSlot(_resourceHandler, 0, ItemResource.of(new ItemStack(Ssc14ModItems.ID_CARD_PASSANGER.get())), -1);
 				}
 			} else {
 				if (world instanceof ServerLevel _level) {
@@ -43,18 +45,16 @@ public class IDRemovePRProcedure {
 					entityToSpawn.setUnlimitedLifetime();
 					_level.addFreshEntity(entityToSpawn);
 				}
-				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-					ItemStack _setstack = new ItemStack(Ssc14ModItems.ID_CARD_PASSANGER.get()).copy();
-					_setstack.setCount(-1);
-					_modHandlerItemSetSlot.setStackInSlot(0, _setstack);
+				ItemStack _itemStack19 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+				if (_itemStack19.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack19)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+					setStackInSlot(_resourceHandler, 0, ItemResource.of(new ItemStack(Ssc14ModItems.ID_CARD_PASSANGER.get())), -1);
 				}
 			}
 		} else {
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).is(ItemTags.create(ResourceLocation.parse("ssc14:id")))) {
-				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-					ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).copy();
-					_setstack.setCount(1);
-					_modHandlerItemSetSlot.setStackInSlot(0, _setstack);
+			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).is(ItemTags.create(Identifier.parse("ssc14:id")))) {
+				ItemStack _itemStack24 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+				if (_itemStack24.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack24)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+					setStackInSlot(_resourceHandler, 0, ItemResource.of((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)), 1);
 				}
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).shrink(1);
 			}
@@ -62,9 +62,19 @@ public class IDRemovePRProcedure {
 	}
 
 	private static ItemStack getItemStackFromItemStackSlot(int slotID, ItemStack itemStack) {
-		IItemHandler itemHandler = itemStack.getCapability(Capabilities.ItemHandler.ITEM, null);
+		ResourceHandler<ItemResource> itemHandler = itemStack.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(itemStack));
 		if (itemHandler != null)
-			return itemHandler.getStackInSlot(slotID).copy();
+			return ItemUtil.getStack(itemHandler, slotID);
 		return ItemStack.EMPTY;
+	}
+
+	private static void setStackInSlot(ResourceHandler<ItemResource> handler, int index, ItemResource resource, int amount) {
+		try (var tx = Transaction.openRoot()) {
+			if (!handler.getResource(index).isEmpty())
+				handler.extract(index, handler.getResource(index), handler.getAmountAsInt(index), tx);
+			if (!resource.isEmpty() && amount > 0)
+				handler.insert(index, resource, amount, tx);
+			tx.commit();
+		}
 	}
 }

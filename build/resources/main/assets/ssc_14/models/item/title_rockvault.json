@@ -2,6 +2,5 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "ssc_14:item/tile_rock_vault_item"
-  },
-  "render_type": "translucent"
+  }
 }

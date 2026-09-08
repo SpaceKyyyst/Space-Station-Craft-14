@@ -4,6 +4,5 @@
     "all": "ssc_14:block/microwawe_item",
     "particle": "ssc_14:block/microwawe_item",
     "3": "ssc_14:block/microwave_active_texture"
-  },
-  "render_type": "solid"
+  }
 }

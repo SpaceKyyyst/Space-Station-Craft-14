@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.MenuProvider;
@@ -36,19 +37,19 @@ public class C4Block extends Block implements EntityBlock {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public C4Block(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.SPAWNER).strength(50f, 5f).lightLevel(blockstate -> 1).noCollission().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.SPAWNER).strength(50f, 5f).lightLevel(blockstate -> 1).noCollision().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(5, 3, 0, 11, 13, 3);
 				case NORTH -> box(5, 3, 13, 11, 13, 16);
 				case EAST -> box(0, 3, 5, 3, 13, 11);
 				case WEST -> box(13, 3, 5, 16, 13, 11);
 				case UP -> box(5, 0, 3, 11, 3, 13);
 				case DOWN -> box(5, 13, 3, 11, 16, 13);
+				default -> box(5, 3, 0, 11, 13, 3);
 			};
 		});
 	}
@@ -71,7 +72,10 @@ public class C4Block extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getClickedFace());
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getClickedFace());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -89,8 +93,8 @@ public class C4Block extends Block implements EntityBlock {
 	}
 
 	@Override
-	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
-		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, ItemStack toolStack, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, toolStack, willHarvest, fluid);
 		C4_detonateProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		return retval;
 	}
@@ -144,7 +148,7 @@ public class C4Block extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
+	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos, Direction direction) {
 		BlockEntity tileentity = world.getBlockEntity(pos);
 		if (tileentity instanceof C4BlockEntity be)
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);

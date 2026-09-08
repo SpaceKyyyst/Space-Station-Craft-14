@@ -1,14 +1,14 @@
 package net.mcreator.ssc.client.particle;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.client.particle.SpriteSet;
-import net.minecraft.client.particle.ParticleRenderType;
+import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.multiplayer.ClientLevel;
 
-public class GravGenParticle4Particle extends TextureSheetParticle {
+public class GravGenParticle4Particle extends SingleQuadParticle {
 	public static GravGenParticle4ParticleProvider provider(SpriteSet spriteSet) {
 		return new GravGenParticle4ParticleProvider(spriteSet);
 	}
@@ -20,7 +20,7 @@ public class GravGenParticle4Particle extends TextureSheetParticle {
 			this.spriteSet = spriteSet;
 		}
 
-		public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
 			return new GravGenParticle4Particle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
 		}
 	}
@@ -28,7 +28,7 @@ public class GravGenParticle4Particle extends TextureSheetParticle {
 	private final SpriteSet spriteSet;
 
 	protected GravGenParticle4Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
-		super(world, x, y, z);
+		super(world, x, y, z, spriteSet.first());
 		this.spriteSet = spriteSet;
 		this.setSize(1f, 1f);
 		this.quadSize *= 2f;
@@ -42,13 +42,13 @@ public class GravGenParticle4Particle extends TextureSheetParticle {
 	}
 
 	@Override
-	public int getLightColor(float partialTick) {
+	public int getLightCoords(float partialTick) {
 		return 15728880;
 	}
 
 	@Override
-	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+	public SingleQuadParticle.Layer getLayer() {
+		return SingleQuadParticle.Layer.OPAQUE;
 	}
 
 	@Override

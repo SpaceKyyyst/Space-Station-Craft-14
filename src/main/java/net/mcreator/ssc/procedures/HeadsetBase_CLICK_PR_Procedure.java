@@ -1,7 +1,10 @@
 package net.mcreator.ssc.procedures;
 
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
+import net.neoforged.neoforge.transfer.item.ItemUtil;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.access.ItemAccess;
+import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
 import net.minecraft.world.level.LevelAccessor;
@@ -11,7 +14,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import net.mcreator.ssc.init.Ssc14ModItems;
 
@@ -21,84 +24,76 @@ public class HeadsetBase_CLICK_PR_Procedure {
 			return;
 		double i = 0;
 		i = 0;
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(ItemTags.create(ResourceLocation.parse("ssc14:headsets")))
-				&& (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).is(ItemTags.create(ResourceLocation.parse("ssc14:encryption_keys")))) {
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(ItemTags.create(Identifier.parse("ssc14:headsets")))
+				&& (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).is(ItemTags.create(Identifier.parse("ssc14:encryption_keys")))) {
 			if (Ssc14ModItems.ENCRYPTION_KEY_PASSANGER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 				if (!(Ssc14ModItems.ENCRYPTION_KEY_PASSANGER.get() == (getItemStackFromItemStackSlot(1, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getItem())) {
-					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).copy();
-						_setstack.setCount(1);
-						_modHandlerItemSetSlot.setStackInSlot(1, _setstack);
+					ItemStack _itemStack11 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+					if (_itemStack11.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack11)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+						setStackInSlot(_resourceHandler, 1, ItemResource.of((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)), 1);
 					}
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).shrink(1);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_COMMAND.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 				if (!(Ssc14ModItems.ENCRYPTION_KEY_COMMAND.get() == (getItemStackFromItemStackSlot(2, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getItem())) {
-					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).copy();
-						_setstack.setCount(1);
-						_modHandlerItemSetSlot.setStackInSlot(2, _setstack);
+					ItemStack _itemStack21 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+					if (_itemStack21.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack21)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+						setStackInSlot(_resourceHandler, 2, ItemResource.of((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)), 1);
 					}
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).shrink(1);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_ENGENEER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 				if (!(Ssc14ModItems.ENCRYPTION_KEY_ENGENEER.get() == (getItemStackFromItemStackSlot(3, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getItem())) {
-					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).copy();
-						_setstack.setCount(1);
-						_modHandlerItemSetSlot.setStackInSlot(3, _setstack);
+					ItemStack _itemStack31 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+					if (_itemStack31.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack31)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+						setStackInSlot(_resourceHandler, 3, ItemResource.of((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)), 1);
 					}
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).shrink(1);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_MEDICAL.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 				if (!(Ssc14ModItems.ENCRYPTION_KEY_MEDICAL.get() == (getItemStackFromItemStackSlot(4, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getItem())) {
-					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).copy();
-						_setstack.setCount(1);
-						_modHandlerItemSetSlot.setStackInSlot(4, _setstack);
+					ItemStack _itemStack41 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+					if (_itemStack41.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack41)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+						setStackInSlot(_resourceHandler, 4, ItemResource.of((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)), 1);
 					}
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).shrink(1);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_RND.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 				if (!(Ssc14ModItems.ENCRYPTION_KEY_RND.get() == (getItemStackFromItemStackSlot(5, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getItem())) {
-					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).copy();
-						_setstack.setCount(1);
-						_modHandlerItemSetSlot.setStackInSlot(5, _setstack);
+					ItemStack _itemStack51 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+					if (_itemStack51.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack51)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+						setStackInSlot(_resourceHandler, 5, ItemResource.of((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)), 1);
 					}
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).shrink(1);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_SECURITY.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 				if (!(Ssc14ModItems.ENCRYPTION_KEY_SECURITY.get() == (getItemStackFromItemStackSlot(6, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getItem())) {
-					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).copy();
-						_setstack.setCount(1);
-						_modHandlerItemSetSlot.setStackInSlot(6, _setstack);
+					ItemStack _itemStack61 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+					if (_itemStack61.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack61)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+						setStackInSlot(_resourceHandler, 6, ItemResource.of((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)), 1);
 					}
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).shrink(1);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_SERVICE.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 				if (!(Ssc14ModItems.ENCRYPTION_KEY_SERVICE.get() == (getItemStackFromItemStackSlot(7, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getItem())) {
-					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).copy();
-						_setstack.setCount(1);
-						_modHandlerItemSetSlot.setStackInSlot(7, _setstack);
+					ItemStack _itemStack71 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+					if (_itemStack71.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack71)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+						setStackInSlot(_resourceHandler, 7, ItemResource.of((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)), 1);
 					}
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).shrink(1);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_CARGO.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 				if (!(Ssc14ModItems.ENCRYPTION_KEY_CARGO.get() == (getItemStackFromItemStackSlot(8, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getItem())) {
-					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).copy();
-						_setstack.setCount(1);
-						_modHandlerItemSetSlot.setStackInSlot(8, _setstack);
+					ItemStack _itemStack81 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+					if (_itemStack81.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack81)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+						setStackInSlot(_resourceHandler, 8, ItemResource.of((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)), 1);
 					}
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).shrink(1);
 				}
 			}
-		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(ItemTags.create(ResourceLocation.parse("ssc14:headsets")))
+		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(ItemTags.create(Identifier.parse("ssc14:headsets")))
 				&& Ssc14ModItems.SCREWDRIVER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
-			for (int index0 = 0; index0 < 15; index0++) {
+			for (int index1 = 0; index1 < 15; index1++) {
 				i = i + 1;
 				if (0 != (getItemStackFromItemStackSlot((int) i, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getCount()) {
 					if (world instanceof ServerLevel _level) {
@@ -108,10 +103,9 @@ public class HeadsetBase_CLICK_PR_Procedure {
 						entityToSpawn.setUnlimitedLifetime();
 						_level.addFreshEntity(entityToSpawn);
 					}
-					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCapability(Capabilities.ItemHandler.ITEM, null) instanceof IItemHandlerModifiable _modHandlerItemSetSlot) {
-						ItemStack _setstack = new ItemStack(Ssc14ModItems.ENCRYPTION_KEY_PASSANGER.get()).copy();
-						_setstack.setCount(-1);
-						_modHandlerItemSetSlot.setStackInSlot((int) i, _setstack);
+					ItemStack _itemStack98 = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+					if (_itemStack98.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(_itemStack98)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+						setStackInSlot(_resourceHandler, (int) i, ItemResource.of(new ItemStack(Ssc14ModItems.ENCRYPTION_KEY_PASSANGER.get())), -1);
 					}
 				}
 			}
@@ -119,9 +113,19 @@ public class HeadsetBase_CLICK_PR_Procedure {
 	}
 
 	private static ItemStack getItemStackFromItemStackSlot(int slotID, ItemStack itemStack) {
-		IItemHandler itemHandler = itemStack.getCapability(Capabilities.ItemHandler.ITEM, null);
+		ResourceHandler<ItemResource> itemHandler = itemStack.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(itemStack));
 		if (itemHandler != null)
-			return itemHandler.getStackInSlot(slotID).copy();
+			return ItemUtil.getStack(itemHandler, slotID);
 		return ItemStack.EMPTY;
+	}
+
+	private static void setStackInSlot(ResourceHandler<ItemResource> handler, int index, ItemResource resource, int amount) {
+		try (var tx = Transaction.openRoot()) {
+			if (!handler.getResource(index).isEmpty())
+				handler.extract(index, handler.getResource(index), handler.getAmountAsInt(index), tx);
+			if (!resource.isEmpty() && amount > 0)
+				handler.insert(index, resource, amount, tx);
+			tx.commit();
+		}
 	}
 }

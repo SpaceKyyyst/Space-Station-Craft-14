@@ -7,12 +7,12 @@ import net.neoforged.bus.api.Event;
 import net.neoforged.api.distmarker.Dist;
 
 import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.client.renderer.entity.player.AvatarRenderer;
+import net.minecraft.client.model.player.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.Minecraft;
 
@@ -27,7 +27,7 @@ public class HumanArmRenderProcedure {
 	@SubscribeEvent
 	public static void onArmRendered(RenderArmEvent event) {
 		Minecraft mc = Minecraft.getInstance();
-		PlayerRenderer renderer = (PlayerRenderer) mc.getEntityRenderDispatcher().getRenderer(mc.player);
+		AvatarRenderer renderer = (AvatarRenderer) mc.getEntityRenderDispatcher().getRenderer(mc.player);
 		execute(event, event, (EntityModel) renderer.getModel(), event.getPoseStack());
 	}
 
@@ -39,7 +39,7 @@ public class HumanArmRenderProcedure {
 		if (armRenderEvent == null || entityModel == null || poseStack == null)
 			return;
 		{
-			ResourceLocation texture = (ResourceLocation.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png"));
+			Identifier texture = (Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png"));
 			PlayerModel humanoidModel = Ssc14ModHumanoidModels.HUMAN_MODEL;
 			PlayerModel playerOriginal = (PlayerModel) entityModel;
 			boolean lefthanded = armRenderEvent.getArm() == HumanoidArm.LEFT;
@@ -50,9 +50,12 @@ public class HumanArmRenderProcedure {
 				playerOriginal.leftArm.resetPose();
 			else
 				playerOriginal.rightArm.resetPose();
-			part.copyFrom(lefthanded ? playerOriginal.leftArm : playerOriginal.rightArm);
+			part.loadPose(lefthanded ? playerOriginal.leftArm.storePose() : playerOriginal.rightArm.storePose());
 			part.skipDraw = false;
-			part.render(poseStack, armRenderEvent.getMultiBufferSource().getBuffer(RenderType.armorCutoutNoCull(texture)), armRenderEvent.getPackedLight(), OverlayTexture.NO_OVERLAY);
+			part.zRot = 0.1f;
+			part.xRot = -0.005f;
+			part.y = 2;
+			part.render(poseStack, Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(RenderTypes.armorCutoutNoCull(texture)), armRenderEvent.getPackedLight(), OverlayTexture.NO_OVERLAY);
 			part.skipDraw = partVisible;
 		}
 	}

@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "CloaksHoS",
@@ -9,15 +9,11 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
+    "equipSound": "",
     "hasModel": true,
     "baubleModel": "Modelcloak_equipped",
     "baubleModelTexture": "cloak_hos_equipped_texture.png",
-    "onEquip": {
-      "name": "Equip_BaseSound_PR_"
-    },
+    "onEquip": "Equip_BaseSound_PR_",
     "helmetModelPart": "head",
     "bodyModelPart": "torso",
     "armsModelPartL": "l_arm",

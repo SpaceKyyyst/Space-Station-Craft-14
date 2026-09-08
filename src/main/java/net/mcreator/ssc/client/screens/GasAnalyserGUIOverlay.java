@@ -1,7 +1,5 @@
 package net.mcreator.ssc.client.screens;
 
-import org.checkerframework.checker.units.qual.h;
-
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -10,7 +8,7 @@ import net.neoforged.api.distmarker.Dist;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
@@ -19,16 +17,16 @@ import net.mcreator.ssc.procedures.*;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class GasAnalyserGUIOverlay {
-	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/gas_anal_menu.png");
-	private static final ResourceLocation IMAGE_1 = ResourceLocation.parse("ssc_14:textures/screens/o2_icon.png");
-	private static final ResourceLocation IMAGE_2 = ResourceLocation.parse("ssc_14:textures/screens/n2_icon.png");
-	private static final ResourceLocation IMAGE_3 = ResourceLocation.parse("ssc_14:textures/screens/co2_icon.png");
-	private static final ResourceLocation IMAGE_4 = ResourceLocation.parse("ssc_14:textures/screens/water_vapor_icon.png");
-	private static final ResourceLocation IMAGE_5 = ResourceLocation.parse("ssc_14:textures/screens/plasma_icon.png");
-	private static final ResourceLocation IMAGE_6 = ResourceLocation.parse("ssc_14:textures/screens/miasm_icon.png");
-	private static final ResourceLocation IMAGE_7 = ResourceLocation.parse("ssc_14:textures/screens/no2_icon.png");
-	private static final ResourceLocation IMAGE_8 = ResourceLocation.parse("ssc_14:textures/screens/tritium_icon.png");
-	private static final ResourceLocation IMAGE_9 = ResourceLocation.parse("ssc_14:textures/screens/frezon_icon.png");
+	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/gas_anal_menu.png");
+	private static final Identifier IMAGE_1 = Identifier.parse("ssc_14:textures/screens/o2_icon.png");
+	private static final Identifier IMAGE_2 = Identifier.parse("ssc_14:textures/screens/n2_icon.png");
+	private static final Identifier IMAGE_3 = Identifier.parse("ssc_14:textures/screens/co2_icon.png");
+	private static final Identifier IMAGE_4 = Identifier.parse("ssc_14:textures/screens/water_vapor_icon.png");
+	private static final Identifier IMAGE_5 = Identifier.parse("ssc_14:textures/screens/plasma_icon.png");
+	private static final Identifier IMAGE_6 = Identifier.parse("ssc_14:textures/screens/miasm_icon.png");
+	private static final Identifier IMAGE_7 = Identifier.parse("ssc_14:textures/screens/no2_icon.png");
+	private static final Identifier IMAGE_8 = Identifier.parse("ssc_14:textures/screens/tritium_icon.png");
+	private static final Identifier IMAGE_9 = Identifier.parse("ssc_14:textures/screens/frezon_icon.png");
 
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {
@@ -67,39 +65,39 @@ public class GasAnalyserGUIOverlay {
 
 			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_9, w / 2 + -203, h / 2 + 78, 0, 0, 14, 15, 14, 15);
 
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_1000"), w / 2 + -102, h / 2 + -96, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_1000"), w / 2 + -102, h / 2 + -96, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font,
 
 					O2textRedactProcedure.execute(world, x, y, z), w / 2 + -131, h / 2 + -46, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+			event.getGuiGraphics().text(Minecraft.getInstance().font,
 
 					TemperatureTextRedactProcedure.execute(world, x, y, z), w / 2 + -102, h / 2 + -74, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+			event.getGuiGraphics().text(Minecraft.getInstance().font,
 
 					KPaTextRedactProcedure.execute(world, x, y, z), w / 2 + -102, h / 2 + -85, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+			event.getGuiGraphics().text(Minecraft.getInstance().font,
 
 					N2textRedactProcedure.execute(world, x, y, z), w / 2 + -131, h / 2 + -30, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+			event.getGuiGraphics().text(Minecraft.getInstance().font,
 
 					O2PercentTextProcedure.execute(world, x, y, z), w / 2 + -69, h / 2 + -46, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+			event.getGuiGraphics().text(Minecraft.getInstance().font,
 
 					N2PercentTextProcedure.execute(world, x, y, z), w / 2 + -69, h / 2 + -30, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_obiom"), w / 2 + -182, h / 2 + -97, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_davlieniie"), w / 2 + -182, h / 2 + -86, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_tiempieratura"), w / 2 + -182, h / 2 + -75, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_kislorod"), w / 2 + -187, h / 2 + -47, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_azot"), w / 2 + -187, h / 2 + -31, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_ughliek_gaz"), w / 2 + -187, h / 2 + -15, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_vod_par"), w / 2 + -187, h / 2 + 1, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_plazma"), w / 2 + -187, h / 2 + 17, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_miazmy"), w / 2 + -187, h / 2 + 33, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_oks_azota"), w / 2 + -187, h / 2 + 49, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_tritii"), w / 2 + -187, h / 2 + 65, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_friezon"), w / 2 + -187, h / 2 + 81, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_gaz"), w / 2 + -178, h / 2 + -62, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_mol"), w / 2 + -115, h / 2 + -62, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_obiom"), w / 2 + -182, h / 2 + -97, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_davlieniie"), w / 2 + -182, h / 2 + -86, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_tiempieratura"), w / 2 + -182, h / 2 + -75, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_kislorod"), w / 2 + -187, h / 2 + -47, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_azot"), w / 2 + -187, h / 2 + -31, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_ughliek_gaz"), w / 2 + -187, h / 2 + -15, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_vod_par"), w / 2 + -187, h / 2 + 1, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_plazma"), w / 2 + -187, h / 2 + 17, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_miazmy"), w / 2 + -187, h / 2 + 33, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_oks_azota"), w / 2 + -187, h / 2 + 49, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_tritii"), w / 2 + -187, h / 2 + 65, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_friezon"), w / 2 + -187, h / 2 + 81, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_gaz"), w / 2 + -178, h / 2 + -62, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.gas_analyser_gui.label_mol"), w / 2 + -115, h / 2 + -62, -1, false);
 		}
 	}
 }

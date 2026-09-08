@@ -1,38 +1,22 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "biome",
   "definition": {
     "name": "Planetary Plant Mountain Biome",
-    "groundBlock": {
-      "value": "CUSTOM:AsteroidStoneBase"
-    },
-    "undergroundBlock": {
-      "value": "CUSTOM:AsteroidStoneBase"
-    },
-    "underwaterBlock": {
-      "value": ""
-    },
+    "groundBlock": "CUSTOM:AsteroidStoneBase",
+    "undergroundBlock": "CUSTOM:AsteroidStoneBase",
+    "underwaterBlock": "",
     "airColor": {
       "value": -15724446,
       "falpha": 0.0
     },
-    "ambientSound": {
-      "value": ""
-    },
-    "additionsSound": {
-      "value": ""
-    },
-    "music": {
-      "value": ""
-    },
-    "moodSound": {
-      "value": ""
-    },
+    "ambientSound": "",
+    "additionsSound": "",
+    "music": "",
+    "moodSound": "",
     "moodSoundDelay": 6000,
     "spawnParticles": false,
-    "particleToSpawn": {
-      "value": "CUSTOM:GravGenActiveParticle"
-    },
+    "particleToSpawn": "CUSTOM:GravGenActiveParticle",
     "particlesProbability": 0.5,
     "rainingPossibility": 0.5,
     "temperature": 0.5,
@@ -67,18 +51,10 @@
     "vanillaTreeType": "Default",
     "treeType": 0,
     "minHeight": 7,
-    "treeStem": {
-      "value": ""
-    },
-    "treeBranch": {
-      "value": ""
-    },
-    "treeVines": {
-      "value": ""
-    },
-    "treeFruits": {
-      "value": ""
-    },
+    "treeStem": "",
+    "treeBranch": "",
+    "treeVines": "",
+    "treeFruits": "",
     "defaultFeatures": [],
     "spawnStronghold": false,
     "spawnMineshaft": false,

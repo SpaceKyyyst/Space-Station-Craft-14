@@ -33,17 +33,17 @@ public class BarChairBlock extends Block {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public BarChairBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.IRON).strength(5f).noCollission().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.IRON).strength(5f).noCollision().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> Shapes.or(box(3, 8, 3, 13, 11, 13), box(5, 7, 5, 11, 8, 11), box(5, 8, 2, 11, 14, 3), box(4, 0, 4, 12, 1, 12), box(7, 1, 7, 9, 7, 9));
 				case NORTH -> Shapes.or(box(3, 8, 3, 13, 11, 13), box(5, 7, 5, 11, 8, 11), box(5, 8, 13, 11, 14, 14), box(4, 0, 4, 12, 1, 12), box(7, 1, 7, 9, 7, 9));
 				case EAST -> Shapes.or(box(3, 8, 3, 13, 11, 13), box(5, 7, 5, 11, 8, 11), box(2, 8, 5, 3, 14, 11), box(4, 0, 4, 12, 1, 12), box(7, 1, 7, 9, 7, 9));
 				case WEST -> Shapes.or(box(3, 8, 3, 13, 11, 13), box(5, 7, 5, 11, 8, 11), box(13, 8, 5, 14, 14, 11), box(4, 0, 4, 12, 1, 12), box(7, 1, 7, 9, 7, 9));
+				default -> Shapes.or(box(3, 8, 3, 13, 11, 13), box(5, 7, 5, 11, 8, 11), box(5, 8, 2, 11, 14, 3), box(4, 0, 4, 12, 1, 12), box(7, 1, 7, 9, 7, 9));
 			};
 		});
 	}
@@ -66,7 +66,10 @@ public class BarChairBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -78,8 +81,8 @@ public class BarChairBlock extends Block {
 	}
 
 	@Override
-	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier) {
-		super.entityInside(blockstate, world, pos, entity, insideBlockEffectApplier);
+	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier, boolean isPrecise) {
+		super.entityInside(blockstate, world, pos, entity, insideBlockEffectApplier, isPrecise);
 		OficeChair_AutorotateProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 

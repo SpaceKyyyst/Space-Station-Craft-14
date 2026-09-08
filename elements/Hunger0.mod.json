@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "overlay",
   "definition": {
     "priority": "NORMAL",
@@ -9,9 +9,7 @@
         "data": {
           "image": "hunger_0.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "Hunger0Pr"
-          },
+          "displayCondition": "Hunger0Pr",
           "anchorPoint": "CENTER_RIGHT",
           "x": 390,
           "y": 104,

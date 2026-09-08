@@ -4,8 +4,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.BlockPos;
 
@@ -60,8 +60,8 @@ public class C4_activate_PRProcedure {
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 					}
 				}
-				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(
+				if (entity instanceof ServerPlayer _player)
+					_player.sendSystemMessage(
 							Component.literal(("\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430 \u0432\u0440\u0435\u043C\u0435\u043D\u0438: " + getBlockNBTNumber(world, BlockPos.containing(x, y, z), "c4setting") + " (\u0441\u0435\u043A.)")),
 							true);
 			}

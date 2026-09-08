@@ -28,7 +28,7 @@ public class KostilniblokBlock extends Block implements EntityBlock {
 	private static final VoxelShape SHAPE = box(0, -1, 0.2, 16, 15, 16.2);
 
 	public KostilniblokBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.ANVIL).strength(-1f, 666f).lightLevel(blockstate -> 1).noOcclusion().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.ANVIL).strength(-1f, 666f).lightLevel(blockstate -> 1).noOcclusion().postProcess((bs, br, bp) -> bp).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class KostilniblokBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 14;
 	}
 
@@ -89,7 +89,7 @@ public class KostilniblokBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
+	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos, Direction direction) {
 		BlockEntity tileentity = world.getBlockEntity(pos);
 		if (tileentity instanceof KostilniblokBlockEntity be)
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);

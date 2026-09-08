@@ -15,24 +15,17 @@ import org.joml.Quaternionf;
 import net.mcreator.ssc.procedures.DeconstructPXORIENTProcedure;
 
 public class DeconstructPXParticle extends TextureSheetParticle {
-    public static DeconstructPXParticleProvider provider(SpriteSet spriteSet) {
-        return new DeconstructPXParticleProvider(spriteSet);
-    }
+    private final SpriteSet spriteSet;
+
+    public static DeconstructPXParticleProvider provider(SpriteSet spriteSet) { return new DeconstructPXParticleProvider(spriteSet); }
 
     public static class DeconstructPXParticleProvider implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
-
-        public DeconstructPXParticleProvider(SpriteSet spriteSet) {
-            this.spriteSet = spriteSet;
-        }
-
-        @Override
-        public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+        public DeconstructPXParticleProvider(SpriteSet spriteSet) { this.spriteSet = spriteSet; }
+        @Override public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
             return new DeconstructPXParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
         }
     }
-
-    private final SpriteSet spriteSet;
 
     protected DeconstructPXParticle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
         super(world, x, y, z);
@@ -42,24 +35,14 @@ public class DeconstructPXParticle extends TextureSheetParticle {
         this.lifetime = 160;
         this.gravity = 0f;
         this.hasPhysics = false;
-        this.xd = 0;
-        this.yd = 0;
-        this.zd = 0;
+        this.xd = 0; this.yd = 0; this.zd = 0;
         this.setSpriteFromAge(spriteSet);
     }
 
-    @Override
-    public int getLightColor(float partialTick) {
-        return 15728880;
-    }
+    @Override public int getLightColor(float partialTick) { return 15728880; }
+    @Override public ParticleRenderType getRenderType() { return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT; }
 
-    @Override
-    public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
-    }
-
-    @Override
-    public void render(VertexConsumer buffer, Camera camera, float partialTicks) {
+    @Override public void render(VertexConsumer buffer, Camera camera, float partialTicks) {
         Vec3 vec = DeconstructPXORIENTProcedure.execute();
         Quaternionf tilt = new Quaternionf().rotationXYZ((float) vec.x(), (float) vec.y(), (float) vec.z());
         this.renderRotatedQuad(buffer, camera, tilt, partialTicks);
@@ -67,11 +50,8 @@ public class DeconstructPXParticle extends TextureSheetParticle {
         this.renderRotatedQuad(buffer, camera, flippedTilt, partialTicks);
     }
 
-    @Override
-    public void tick() {
+    @Override public void tick() {
         super.tick();
-        if (!this.removed) {
-            this.setSprite(this.spriteSet.get((this.age / 3) % 52 + 1, 52));
-        }
+        if (!this.removed) { this.setSprite(this.spriteSet.get((this.age / 3) % 52 + 1, 52)); }
     }
 }

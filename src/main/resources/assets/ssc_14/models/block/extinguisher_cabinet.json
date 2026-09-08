@@ -4,6 +4,5 @@
     "all": "ssc_14:block/extinguisher_cabinet_texture",
     "particle": "ssc_14:block/extinguisher_cabinet_texture",
     "0": "ssc_14:block/extinguisher_cabinet_texture"
-  },
-  "render_type": "translucent"
+  }
 }

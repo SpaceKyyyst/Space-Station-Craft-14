@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "overlay",
   "definition": {
     "priority": "NORMAL",
@@ -9,9 +9,7 @@
         "data": {
           "image": "gas_anal_menu.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "GasAnalyserGUI_pr_1"
-          },
+          "displayCondition": "GasAnalyserGUI_pr_1",
           "anchorPoint": "CENTER",
           "x": 6,
           "y": 19,
@@ -504,9 +502,7 @@
     ],
     "baseTexture": "",
     "overlayTarget": "Ingame",
-    "displayCondition": {
-      "name": "GasAnalyserGUI_pr_1"
-    },
+    "displayCondition": "GasAnalyserGUI_pr_1",
     "gridSettings": {
       "sx": 18,
       "sy": 18,

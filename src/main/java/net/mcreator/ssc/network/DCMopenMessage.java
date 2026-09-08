@@ -7,7 +7,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
@@ -20,7 +20,7 @@ import net.mcreator.ssc.Ssc14Mod;
 
 @EventBusSubscriber
 public record DCMopenMessage(int eventType, int pressedms) implements CustomPacketPayload {
-	public static final Type<DCMopenMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Ssc14Mod.MODID, "key_dc_mopen"));
+	public static final Type<DCMopenMessage> TYPE = new Type<>(Identifier.fromNamespaceAndPath(Ssc14Mod.MODID, "key_dc_mopen"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, DCMopenMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, DCMopenMessage message) -> {
 		buffer.writeInt(message.eventType);
 		buffer.writeInt(message.pressedms);

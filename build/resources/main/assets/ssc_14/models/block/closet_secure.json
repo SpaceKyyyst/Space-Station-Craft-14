@@ -5,6 +5,5 @@
     "particle": "ssc_14:block/closet_secure_item",
     "0": "ssc_14:block/closet_secure_texture",
     "12": "ssc_14:block/closet_blocked_render_t"
-  },
-  "render_type": "translucent"
+  }
 }

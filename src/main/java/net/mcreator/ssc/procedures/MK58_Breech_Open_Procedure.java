@@ -13,7 +13,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
@@ -34,10 +34,10 @@ public class MK58_Breech_Open_Procedure {
 			if (Ssc14ModItems.MK_58.get() == itemstack.getItem() && !entity.isShiftKeyDown()) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, 1,
+						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, 1,
 								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 					} else {
-						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, 1,
+						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, 1,
 								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 					}
 				}
@@ -71,10 +71,10 @@ public class MK58_Breech_Open_Procedure {
 				if (ItemStack.EMPTY.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:items_pistol_mag_out")), SoundSource.MASTER, 1,
+							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:items_pistol_mag_out")), SoundSource.MASTER, 1,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 						} else {
-							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:items_pistol_mag_out")), SoundSource.MASTER, 1,
+							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:items_pistol_mag_out")), SoundSource.MASTER, 1,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 						}
 					}
@@ -127,10 +127,10 @@ public class MK58_Breech_Open_Procedure {
 			} else if (Ssc14ModItems.MK_58OPEN.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() && !entity.isShiftKeyDown()) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, 1,
+						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, 1,
 								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 					} else {
-						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, 1,
+						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, 1,
 								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 					}
 				}
@@ -163,10 +163,10 @@ public class MK58_Breech_Open_Procedure {
 				if (ItemStack.EMPTY.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:items_pistol_mag_out")), SoundSource.MASTER, 1,
+							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:items_pistol_mag_out")), SoundSource.MASTER, 1,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 						} else {
-							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:items_pistol_mag_out")), SoundSource.MASTER, 1,
+							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:items_pistol_mag_out")), SoundSource.MASTER, 1,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 						}
 					}
@@ -214,10 +214,10 @@ public class MK58_Breech_Open_Procedure {
 			} else if (Ssc14ModItems.MK_58NOMAGZ.get() == itemstack.getItem() && !entity.isShiftKeyDown()) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, 1,
+						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, 1,
 								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 					} else {
-						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, 1,
+						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, 1,
 								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 					}
 				}
@@ -247,10 +247,10 @@ public class MK58_Breech_Open_Procedure {
 						|| Ssc14ModItems.MAGAZINE_PISTOL_35EMPTY.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:items_pistol_mag_in")), SoundSource.MASTER, 1,
+							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:items_pistol_mag_in")), SoundSource.MASTER, 1,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 						} else {
-							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:items_pistol_mag_in")), SoundSource.MASTER, 1,
+							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:items_pistol_mag_in")), SoundSource.MASTER, 1,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 						}
 					}
@@ -282,10 +282,10 @@ public class MK58_Breech_Open_Procedure {
 			} else if (Ssc14ModItems.MK_58OPEN_NO_MAGZ.get() == itemstack.getItem() && !entity.isShiftKeyDown()) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, 1,
+						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, 1,
 								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 					} else {
-						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, 1,
+						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, 1,
 								(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 					}
 				}
@@ -315,10 +315,10 @@ public class MK58_Breech_Open_Procedure {
 						|| Ssc14ModItems.MAGAZINE_PISTOL_35EMPTY.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:items_pistol_mag_in")), SoundSource.MASTER, 1,
+							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:items_pistol_mag_in")), SoundSource.MASTER, 1,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 						} else {
-							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:items_pistol_mag_in")), SoundSource.MASTER, 1,
+							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:items_pistol_mag_in")), SoundSource.MASTER, 1,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 						}
 					}

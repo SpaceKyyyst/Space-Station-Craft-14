@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "HardsuitSalvageHelmet",
@@ -9,12 +9,8 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
-    "unequipCondition": {
-      "name": "HardsuitSalvageHelmetCAPI_unequipeble"
-    },
+    "equipSound": "",
+    "unequipCondition": "HardsuitSalvageHelmetCAPI_unequipeble",
     "hasModel": true,
     "baubleModel": "Modelhardsuit_helmet_salvage_equipped",
     "baubleModelTexture": "hardsuit_salvage_off_equipped_texture.png",

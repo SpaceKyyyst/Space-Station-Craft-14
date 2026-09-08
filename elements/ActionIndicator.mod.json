@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "overlay",
   "definition": {
     "priority": "HIGH",
@@ -9,9 +9,7 @@
         "data": {
           "image": "progress_bar_1.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "ActGUIProcedure"
-          },
+          "displayCondition": "ActGUIProcedure",
           "anchorPoint": "CENTER",
           "x": 205,
           "y": 104,
@@ -23,9 +21,7 @@
         "data": {
           "image": "progress_bar_2.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "ActGUIProcedure2"
-          },
+          "displayCondition": "ActGUIProcedure2",
           "anchorPoint": "CENTER",
           "x": 205,
           "y": 104,
@@ -37,9 +33,7 @@
         "data": {
           "image": "progress_bar_3.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "ActGUIProcedure3"
-          },
+          "displayCondition": "ActGUIProcedure3",
           "anchorPoint": "CENTER",
           "x": 205,
           "y": 104,
@@ -51,9 +45,7 @@
         "data": {
           "image": "progress_bar_4.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "ActGUIProcedure4"
-          },
+          "displayCondition": "ActGUIProcedure4",
           "anchorPoint": "CENTER",
           "x": 205,
           "y": 104,
@@ -65,9 +57,7 @@
         "data": {
           "image": "progress_bar_5.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "ActGUIProcedure5"
-          },
+          "displayCondition": "ActGUIProcedure5",
           "anchorPoint": "CENTER",
           "x": 205,
           "y": 104,
@@ -79,9 +69,7 @@
         "data": {
           "image": "progress_bar_6.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "ActGUIProcedure6"
-          },
+          "displayCondition": "ActGUIProcedure6",
           "anchorPoint": "CENTER",
           "x": 205,
           "y": 104,

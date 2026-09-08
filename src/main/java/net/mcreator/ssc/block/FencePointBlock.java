@@ -40,10 +40,10 @@ public class FencePointBlock extends Block {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(14, 0, 0, 16, 14, 2);
 				case NORTH -> box(0, 0, 14, 2, 14, 16);
 				case EAST -> box(0, 0, 0, 2, 14, 2);
 				case WEST -> box(14, 0, 14, 16, 14, 16);
+				default -> box(14, 0, 0, 16, 14, 2);
 			};
 		});
 	}
@@ -59,7 +59,7 @@ public class FencePointBlock extends Block {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 0;
 	}
 
@@ -76,7 +76,10 @@ public class FencePointBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

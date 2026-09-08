@@ -40,17 +40,17 @@ public class AirlockUpPlugOPENBlock extends Block implements EntityBlock {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public AirlockUpPlugOPENBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.EMPTY).strength(-1f, 20f).noCollission().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.EMPTY).strength(-1f, 20f).noCollision().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> Shapes.join(box(0, 0, 5, 16, 16, 11), box(1, 0, 5, 15, 16, 11), BooleanOp.ONLY_FIRST);
 				case NORTH -> Shapes.join(box(0, 0, 5, 16, 16, 11), box(1, 0, 5, 15, 16, 11), BooleanOp.ONLY_FIRST);
 				case EAST -> Shapes.join(box(5, 0, 0, 11, 16, 16), box(5, 0, 1, 11, 16, 15), BooleanOp.ONLY_FIRST);
 				case WEST -> Shapes.join(box(5, 0, 0, 11, 16, 16), box(5, 0, 1, 11, 16, 15), BooleanOp.ONLY_FIRST);
+				default -> Shapes.join(box(0, 0, 5, 16, 16, 11), box(1, 0, 5, 15, 16, 11), BooleanOp.ONLY_FIRST);
 			};
 		});
 	}
@@ -73,7 +73,10 @@ public class AirlockUpPlugOPENBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -96,8 +99,8 @@ public class AirlockUpPlugOPENBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
-		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, ItemStack toolStack, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, toolStack, willHarvest, fluid);
 		BaseAirlock_U_D_autoDESTROYProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		return retval;
 	}

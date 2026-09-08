@@ -25,21 +25,22 @@ import java.util.List;
 public class Ssc14ModAttributes {
 	public static final DeferredRegister<Attribute> REGISTRY = DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, Ssc14Mod.MODID);
 	public static final DeferredHolder<Attribute, Attribute> PROGRESS_BAR_ATRB = REGISTRY.register("progress_bar_atrb",
-			() -> new RangedAttribute("attribute.ssc_14.progress_bar_atrb", 0, 0, 7).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> XY_ZPLAYER = REGISTRY.register("xy_zplayer", () -> new RangedAttribute("attribute.ssc_14.xy_zplayer", 0, -30000000, 30000000).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> ENT_PULL = REGISTRY.register("ent_pull", () -> new RangedAttribute("attribute.ssc_14.ent_pull", 0, 0, 1).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+			() -> new RangedAttribute("attribute.ssc_14.progress_bar_atrb", 0d, 0d, 7d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+	public static final DeferredHolder<Attribute, Attribute> XY_ZPLAYER = REGISTRY.register("xy_zplayer",
+			() -> new RangedAttribute("attribute.ssc_14.xy_zplayer", 0d, -30000000d, 30000000d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+	public static final DeferredHolder<Attribute, Attribute> ENT_PULL = REGISTRY.register("ent_pull", () -> new RangedAttribute("attribute.ssc_14.ent_pull", 0d, 0d, 1d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 	public static final DeferredHolder<Attribute, Attribute> GAS_AN_GU_IATRIB = REGISTRY.register("gas_an_gu_iatrib",
-			() -> new RangedAttribute("attribute.ssc_14.gas_an_gu_iatrib", 0, 0, 1).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+			() -> new RangedAttribute("attribute.ssc_14.gas_an_gu_iatrib", 0d, 0d, 1d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 	public static final DeferredHolder<Attribute, Attribute> OPEN_WORLD_CHECK_MENU = REGISTRY.register("open_world_check_menu",
-			() -> new RangedAttribute("attribute.ssc_14.open_world_check_menu", 0, 0, 1).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> NUTRIENTS = REGISTRY.register("nutrients", () -> new RangedAttribute("attribute.ssc_14.nutrients", 125, 0, 200).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+			() -> new RangedAttribute("attribute.ssc_14.open_world_check_menu", 0d, 0d, 1d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+	public static final DeferredHolder<Attribute, Attribute> NUTRIENTS = REGISTRY.register("nutrients", () -> new RangedAttribute("attribute.ssc_14.nutrients", 125d, 0d, 200d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 	public static final DeferredHolder<Attribute, Attribute> DIGESTIVE_PROCESSES = REGISTRY.register("digestive_processes",
-			() -> new RangedAttribute("attribute.ssc_14.digestive_processes", 0, 0, 10).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+			() -> new RangedAttribute("attribute.ssc_14.digestive_processes", 0d, 0d, 10d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 	public static final DeferredHolder<Attribute, Attribute> HEALTH_U_IATTRIBUTE = REGISTRY.register("health_u_iattribute",
-			() -> new RangedAttribute("attribute.ssc_14.health_u_iattribute", 0, 0, 6).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> LIQUID = REGISTRY.register("liquid", () -> new RangedAttribute("attribute.ssc_14.liquid", 125, 0, 200).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+			() -> new RangedAttribute("attribute.ssc_14.health_u_iattribute", 0d, 0d, 6d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+	public static final DeferredHolder<Attribute, Attribute> LIQUID = REGISTRY.register("liquid", () -> new RangedAttribute("attribute.ssc_14.liquid", 125d, 0d, 200d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 	public static final DeferredHolder<Attribute, Attribute> FLUID_ABSORPTION = REGISTRY.register("fluid_absorption",
-			() -> new RangedAttribute("attribute.ssc_14.fluid_absorption", 0, 0, 10).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+			() -> new RangedAttribute("attribute.ssc_14.fluid_absorption", 0d, 0d, 10d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
 
 	@SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {

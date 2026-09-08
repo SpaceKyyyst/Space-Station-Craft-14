@@ -1,4 +1,3 @@
-
 package net.mcreator.ssc.procedures;
 
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -18,16 +17,15 @@ public class TICBodiesRottingProcedure {
         if (player.level().isClientSide()) return;
         
         CompoundTag nbt = player.getPersistentData();
-        if (nbt.getBoolean("ssc14_dead").orElse(false)) return; // Игнорируем мёртвых
+        if (nbt.getBoolean("ssc14_dead")) return; // убрали orElse
 
-        double total = nbt.getDouble("sscCustomHealth").orElse(0.0);
+        double total = nbt.getDouble("sscCustomHealth");
 
-        // === 🩹 РЕГЕНЕРАЦИЯ (< 20 урона) ===
         if (total > 0 && total < 20.0) {
-            int timer = nbt.getInt("ssc14_regenTimer").orElse(0);
-            if (timer >= 20) { // Каждую секунду
-                double blunt = nbt.getDouble("ssc14_dmg_blunt").orElse(0.0);
-                double heat = nbt.getDouble("ssc14_dmg_heat").orElse(0.0);
+            int timer = nbt.getInt("ssc14_regenTimer");
+            if (timer >= 20) {
+                double blunt = nbt.getDouble("ssc14_dmg_blunt");
+                double heat = nbt.getDouble("ssc14_dmg_heat");
                 
                 double healBlunt = Math.min(blunt, 0.02);
                 double healHeat = Math.min(heat, 0.07);
@@ -47,13 +45,12 @@ public class TICBodiesRottingProcedure {
             nbt.putInt("ssc14_regenTimer", 0);
         }
 
-        // === 🩸 КРОВОТЕЧЕНИЕ (каждые 2 сек +1 bloodloss) ===
-        if (nbt.getBoolean("ssc14_bleeding").orElse(false)) {
-            int bleedTimer = nbt.getInt("ssc14_bleedTick").orElse(0);
+        if (nbt.getBoolean("ssc14_bleeding")) {
+            int bleedTimer = nbt.getInt("ssc14_bleedTick");
             if (bleedTimer >= 40) {
-                double bloodloss = nbt.getDouble("ssc14_dmg_bloodloss").orElse(0.0);
+                double bloodloss = nbt.getDouble("ssc14_dmg_bloodloss");
                 nbt.putDouble("ssc14_dmg_bloodloss", bloodloss + 1.0);
-                double newTotal = nbt.getDouble("sscCustomHealth").orElse(0.0) + 1.0;
+                double newTotal = nbt.getDouble("sscCustomHealth") + 1.0;
                 nbt.putDouble("sscCustomHealth", newTotal);
                 updateHealthUI(player, newTotal);
                 nbt.putInt("ssc14_bleedTick", 0);

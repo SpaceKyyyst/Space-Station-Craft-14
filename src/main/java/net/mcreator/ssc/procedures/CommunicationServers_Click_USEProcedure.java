@@ -1,22 +1,25 @@
 package net.mcreator.ssc.procedures;
 
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.item.ItemUtil;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.common.extensions.ILevelExtension;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.Container;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 
@@ -28,10 +31,13 @@ public class CommunicationServers_Click_USEProcedure {
 			return;
 		if ((getPropertyByName(blockstate, "type") instanceof IntegerProperty _getip1 ? blockstate.getValue(_getip1) : -1) == 0) {
 			if (Ssc14ModItems.ENCRYPTION_KEY_PASSANGER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-					ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
-					_setstack.setCount(1);
-					_itemHandlerModifiable.setStackInSlot(0, _setstack);
+				if (world instanceof ServerLevel _serverLevel) {
+					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
+					if (_be instanceof Container _container) {
+						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
+						_setstack.setCount(1);
+						_container.setItem(0, _setstack);
+					}
 				}
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -42,10 +48,13 @@ public class CommunicationServers_Click_USEProcedure {
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_COMMAND.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-					ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
-					_setstack.setCount(1);
-					_itemHandlerModifiable.setStackInSlot(0, _setstack);
+				if (world instanceof ServerLevel _serverLevel) {
+					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
+					if (_be instanceof Container _container) {
+						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
+						_setstack.setCount(1);
+						_container.setItem(0, _setstack);
+					}
 				}
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -56,10 +65,13 @@ public class CommunicationServers_Click_USEProcedure {
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_ENGENEER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-					ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
-					_setstack.setCount(1);
-					_itemHandlerModifiable.setStackInSlot(0, _setstack);
+				if (world instanceof ServerLevel _serverLevel) {
+					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
+					if (_be instanceof Container _container) {
+						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
+						_setstack.setCount(1);
+						_container.setItem(0, _setstack);
+					}
 				}
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -70,10 +82,13 @@ public class CommunicationServers_Click_USEProcedure {
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_MEDICAL.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-					ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
-					_setstack.setCount(1);
-					_itemHandlerModifiable.setStackInSlot(0, _setstack);
+				if (world instanceof ServerLevel _serverLevel) {
+					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
+					if (_be instanceof Container _container) {
+						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
+						_setstack.setCount(1);
+						_container.setItem(0, _setstack);
+					}
 				}
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -84,10 +99,13 @@ public class CommunicationServers_Click_USEProcedure {
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_RND.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-					ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
-					_setstack.setCount(1);
-					_itemHandlerModifiable.setStackInSlot(0, _setstack);
+				if (world instanceof ServerLevel _serverLevel) {
+					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
+					if (_be instanceof Container _container) {
+						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
+						_setstack.setCount(1);
+						_container.setItem(0, _setstack);
+					}
 				}
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -98,10 +116,13 @@ public class CommunicationServers_Click_USEProcedure {
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_SECURITY.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-					ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
-					_setstack.setCount(1);
-					_itemHandlerModifiable.setStackInSlot(0, _setstack);
+				if (world instanceof ServerLevel _serverLevel) {
+					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
+					if (_be instanceof Container _container) {
+						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
+						_setstack.setCount(1);
+						_container.setItem(0, _setstack);
+					}
 				}
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -112,10 +133,13 @@ public class CommunicationServers_Click_USEProcedure {
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_SERVICE.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-					ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
-					_setstack.setCount(1);
-					_itemHandlerModifiable.setStackInSlot(0, _setstack);
+				if (world instanceof ServerLevel _serverLevel) {
+					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
+					if (_be instanceof Container _container) {
+						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
+						_setstack.setCount(1);
+						_container.setItem(0, _setstack);
+					}
 				}
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -126,10 +150,13 @@ public class CommunicationServers_Click_USEProcedure {
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 			} else if (Ssc14ModItems.ENCRYPTION_KEY_CARGO.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-					ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
-					_setstack.setCount(1);
-					_itemHandlerModifiable.setStackInSlot(0, _setstack);
+				if (world instanceof ServerLevel _serverLevel) {
+					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
+					if (_be instanceof Container _container) {
+						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
+						_setstack.setCount(1);
+						_container.setItem(0, _setstack);
+					}
 				}
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				{
@@ -144,9 +171,9 @@ public class CommunicationServers_Click_USEProcedure {
 				&& Ssc14ModItems.SCREWDRIVER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:screwdriver")), SoundSource.BLOCKS, 1, 1);
+					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:screwdriver")), SoundSource.BLOCKS, 1, 1);
 				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:screwdriver")), SoundSource.BLOCKS, 1, 1, false);
+					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:screwdriver")), SoundSource.BLOCKS, 1, 1, false);
 				}
 			}
 			if (world instanceof ServerLevel _level) {
@@ -155,11 +182,11 @@ public class CommunicationServers_Click_USEProcedure {
 				entityToSpawn.setUnlimitedLifetime();
 				_level.addFreshEntity(entityToSpawn);
 			}
-			if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-				int _slotid = 0;
-				ItemStack _stk = _itemHandlerModifiable.getStackInSlot(_slotid).copy();
-				_stk.shrink(1);
-				_itemHandlerModifiable.setStackInSlot(_slotid, _stk);
+			if (world instanceof ServerLevel _serverLevel) {
+				BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
+				if (_be instanceof Container _container) {
+					_container.getItem(0).shrink(1);
+				}
 			}
 			{
 				int _value = 0;
@@ -182,9 +209,9 @@ public class CommunicationServers_Click_USEProcedure {
 
 	private static ItemStack itemFromBlockInventory(LevelAccessor world, BlockPos pos, int slot) {
 		if (world instanceof ILevelExtension ext) {
-			IItemHandler itemHandler = ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null);
+			ResourceHandler<ItemResource> itemHandler = ext.getCapability(Capabilities.Item.BLOCK, pos, null);
 			if (itemHandler != null)
-				return itemHandler.getStackInSlot(slot);
+				return ItemUtil.getStack(itemHandler, slot);
 		}
 		return ItemStack.EMPTY;
 	}

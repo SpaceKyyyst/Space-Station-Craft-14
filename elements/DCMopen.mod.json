@@ -1,12 +1,10 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "keybind",
   "definition": {
     "triggerKey": "T",
     "keyBindingName": "Open crft menu",
     "keyBindingCategoryKey": "ssc14",
-    "onKeyPressed": {
-      "name": "DCM_Open"
-    }
+    "onKeyPressed": "DCM_Open"
   }
 }

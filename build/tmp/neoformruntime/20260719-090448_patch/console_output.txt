@@ -1,0 +1,30 @@
+--------------------------------------------------------------------------------
+
+Command-Line:
+ - C:\Users\Admin\.jdks\ms-25.0.3\bin\java.exe
+ - --sun-misc-unsafe-memory-access=allow
+ - -jar
+ - C:\Users\Admin\.gradle\caches\modules-2\files-2.1\io.codechicken\DiffPatch\2.0.0.36\5b32f9baa0c0371c0dc80a3b88794960af0c6b44\DiffPatch-2.0.0.36-all.jar
+ - C:\Users\Admin\.gradle\caches\neoformruntime\intermediate_results\decompile_2789f1adc34fe3c4fef31ef8f31904d490abb7ee_output.jar
+ - C:\Users\Admin\.gradle\caches\modules-2\files-2.1\net.neoforged\neoform\26.1.2-1\194355a3ab209fbdf6f970a05be03a7888599fb\neoform-26.1.2-1.zip
+ - --prefix
+ - patches/
+ - --patch
+ - --archive
+ - ZIP
+ - --output
+ - ./output.zip
+ - --log-level
+ - WARN
+ - --mode
+ - OFFSET
+ - --archive-rejects
+ - ZIP
+ - --reject
+ - ./outputRejects.zip
+ - --base-path-prefix
+ - a/
+ - --modified-path-prefix
+ - b/
+--------------------------------------------------------------------------------
+

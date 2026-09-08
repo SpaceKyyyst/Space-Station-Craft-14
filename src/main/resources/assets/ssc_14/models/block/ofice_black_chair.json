@@ -4,6 +4,5 @@
     "all": "ssc_14:block/black_ofice_chair_item",
     "particle": "ssc_14:block/black_ofice_chair_item",
     "1": "ssc_14:block/bl_of_chair_t"
-  },
-  "render_type": "cutout"
+  }
 }

@@ -8,6 +8,5 @@
     "south": "ssc_14:block/fl_dirt4_texture",
     "west": "ssc_14:block/fl_dirt3_texture",
     "particle": "ssc_14:block/fl_dirt1_texture"
-  },
-  "render_type": "solid"
+  }
 }

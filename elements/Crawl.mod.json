@@ -1,12 +1,10 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "keybind",
   "definition": {
     "triggerKey": "Z",
     "keyBindingName": "Crawl",
     "keyBindingCategoryKey": "movement",
-    "onKeyPressed": {
-      "name": "CrawlPr"
-    }
+    "onKeyPressed": "CrawlPr"
   }
 }

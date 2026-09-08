@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "tool",
   "definition": {
     "toolType": "MultiTool",
@@ -15,9 +15,7 @@
       "fixedValue": []
     },
     "creativeTabs": [
-      {
-        "value": "CUSTOM:SSC14Items"
-      }
+      "CUSTOM:SSC14Items"
     ],
     "efficiency": 1.0,
     "attackSpeed": 1.0,
@@ -34,8 +32,6 @@
     "attributeModifiers": [],
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
-    "onRightClickedInAir": {
-      "name": "GasAnalyser_Activ"
-    }
+    "onRightClickedInAir": "GasAnalyser_Activ"
   }
 }

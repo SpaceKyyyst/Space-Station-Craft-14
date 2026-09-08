@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -26,9 +26,7 @@
           "name": "imagebutton_rcd_gui_exit_b",
           "image": "rcd_gui_back_b.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIbackButton"
-          },
+          "onClick": "RCDGUIbackButton",
           "x": 206,
           "y": 112,
           "locked": true
@@ -40,9 +38,7 @@
           "name": "imagebutton_steel_wall_gui_texture",
           "image": "steel_wall_gui_texture.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIwallButton"
-          },
+          "onClick": "RCDGUIwallButton",
           "x": 152,
           "y": 58,
           "locked": true
@@ -54,9 +50,7 @@
           "name": "imagebutton_most_floor_gui_texture",
           "image": "most_floor__gui_texture.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIcatwalkButton"
-          },
+          "onClick": "RCDGUIcatwalkButton",
           "x": 244,
           "y": 58,
           "locked": true
@@ -68,9 +62,7 @@
           "name": "imagebutton_tile_steel_gui_texture",
           "image": "tile_steel__gui_texture.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUItileButton"
-          },
+          "onClick": "RCDGUItileButton",
           "x": 152,
           "y": 150,
           "locked": true
@@ -82,18 +74,14 @@
           "name": "imagebutton_floor_gui_texture",
           "image": "floor_gui_texture.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIsheatingButton"
-          },
+          "onClick": "RCDGUIsheatingButton",
           "x": 244,
           "y": 150,
           "locked": true
         }
       }
     ],
-    "onTick": {
-      "name": "RCDGUI_check_"
-    },
+    "onTick": "RCDGUI_check_",
     "gridSettings": {
       "sx": 18,
       "sy": 18,

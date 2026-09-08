@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "HelmetCosmonaut",
@@ -9,15 +9,11 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
+    "equipSound": "",
     "hasModel": true,
     "baubleModel": "Modelhelmet_cosmonaut_equipped",
     "baubleModelTexture": "helmet_cosmonaut_equippedtexture.png",
-    "onEquip": {
-      "name": "EquipHelmetSoundPR"
-    },
+    "onEquip": "EquipHelmetSoundPR",
     "helmetModelPart": "head",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

@@ -30,17 +30,17 @@ public class PortableSheaterBlock extends Block implements EntityBlock {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public PortableSheaterBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.COPPER_BULB).strength(20f, 10f).noOcclusion().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.COPPER_BULB).strength(20f, 10f).noOcclusion().postProcess((bs, br, bp) -> bp).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BLOCKSTATE, 0));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(4, 0, 5, 12, 24, 10);
 				case NORTH -> box(4, 0, 6, 12, 24, 11);
 				case EAST -> box(5, 0, 4, 10, 24, 12);
 				case WEST -> box(6, 0, 4, 11, 24, 12);
+				default -> box(4, 0, 5, 12, 24, 10);
 			};
 		});
 	}
@@ -63,7 +63,10 @@ public class PortableSheaterBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BLOCKSTATE, 0);
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BLOCKSTATE, 0);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -103,7 +106,7 @@ public class PortableSheaterBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
+	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos, Direction direction) {
 		BlockEntity tileentity = world.getBlockEntity(pos);
 		if (tileentity instanceof PortableSheaterBlockEntity be)
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);

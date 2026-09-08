@@ -9,7 +9,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 
@@ -21,10 +21,10 @@ public class Windows_KnockKnock_Procedure {
 			if (!(world instanceof Level level) || level.isClientSide()) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x + 0.5, y + 0.5, z + 0.5), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:effects_glass_knock")), SoundSource.BLOCKS,
+						_level.playSound(null, BlockPos.containing(x + 0.5, y + 0.5, z + 0.5), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:effects_glass_knock")), SoundSource.BLOCKS,
 								(float) Mth.nextDouble(RandomSource.create(), 0.5, 1), (float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1));
 					} else {
-						_level.playLocalSound((x + 0.5), (y + 0.5), (z + 0.5), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:effects_glass_knock")), SoundSource.BLOCKS, (float) Mth.nextDouble(RandomSource.create(), 0.5, 1),
+						_level.playLocalSound((x + 0.5), (y + 0.5), (z + 0.5), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:effects_glass_knock")), SoundSource.BLOCKS, (float) Mth.nextDouble(RandomSource.create(), 0.5, 1),
 								(float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1), false);
 					}
 				}

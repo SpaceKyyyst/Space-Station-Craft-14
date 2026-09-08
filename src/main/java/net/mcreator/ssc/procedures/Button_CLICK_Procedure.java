@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 
@@ -18,9 +18,9 @@ public class Button_CLICK_Procedure {
 		if (false == (getPropertyByName((world.getBlockState(BlockPos.containing(x, y, z))), "active") instanceof BooleanProperty _getbp1 && (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getbp1))) {
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x + 1, y + 1, z + 1), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:machines_button")), SoundSource.BLOCKS, 1, 1);
+					_level.playSound(null, BlockPos.containing(x + 1, y + 1, z + 1), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:machines_button")), SoundSource.BLOCKS, 1, 1);
 				} else {
-					_level.playLocalSound((x + 1), (y + 1), (z + 1), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:machines_button")), SoundSource.BLOCKS, 1, 1, false);
+					_level.playLocalSound((x + 1), (y + 1), (z + 1), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:machines_button")), SoundSource.BLOCKS, 1, 1, false);
 				}
 			}
 			{

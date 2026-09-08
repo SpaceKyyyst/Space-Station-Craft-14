@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "BlackGloves",
@@ -9,15 +9,11 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
+    "equipSound": "",
     "hasModel": true,
     "baubleModel": "Modelgloves_equipped",
     "baubleModelTexture": "gloves_black_equipped_texture.png",
-    "onEquip": {
-      "name": "Equip_GlovesSound_PR_"
-    },
+    "onEquip": "Equip_GlovesSound_PR_",
     "helmetModelPart": "Empty",
     "bodyModelPart": "Empty",
     "armsModelPartL": "l_hand",

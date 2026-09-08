@@ -1,6 +1,3 @@
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package net.mcreator.ssc.init;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -566,10 +563,10 @@ public class Ssc14ModItems {
 		SPANNER = register("spanner", SpannerItem::new);
 		BASE_AIRLOCK_D_1 = block(Ssc14ModBlocks.BASE_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
 		UP_TITLE = block(Ssc14ModBlocks.UP_TITLE, new Item.Properties().stacksTo(30).fireResistant());
-		WALL_CARCASE_ENTIT_SPAWN_EGG = register("wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(Ssc14ModEntities.WALL_CARCASE_ENTIT.get(), properties));
+		WALL_CARCASE_ENTIT_SPAWN_EGG = register("wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.WALL_CARCASE_ENTIT.get())));
 		ID_CARD_PASSANGER = register("id_card_passanger", IDCardPassangerItem::new);
 		CONSOLE_OF_ID = block(Ssc14ModBlocks.CONSOLE_OF_ID, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
-		ID_CONSOLE_ENTITY_SPAWN_EGG = register("id_console_entity_spawn_egg", properties -> new SpawnEggItem(Ssc14ModEntities.ID_CONSOLE_ENTITY.get(), properties));
+		ID_CONSOLE_ENTITY_SPAWN_EGG = register("id_console_entity_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.ID_CONSOLE_ENTITY.get())));
 		GAS_ANALYSER = register("gas_analyser", GasAnalyserItem::new);
 		BASE_WINDOW = block(Ssc14ModBlocks.BASE_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
 		GLASS_SHARD = register("glass_shard", GlassShardItem::new);
@@ -631,7 +628,7 @@ public class Ssc14ModItems {
 		ENERGY_BAR = register("energy_bar", EnergyBarItem::new);
 		ENERGY_BAR_TRASH = register("energy_bar_trash", EnergyBarTrashItem::new);
 		ENERGY_BAR_2 = register("energy_bar_2", EnergyBar2Item::new);
-		PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG = register("plassteel_wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(Ssc14ModEntities.PLASSTEEL_WALL_CARCASE_ENTIT.get(), properties));
+		PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG = register("plassteel_wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.PLASSTEEL_WALL_CARCASE_ENTIT.get())));
 		TITLE_DARK = block(Ssc14ModBlocks.TITLE_DARK, new Item.Properties().stacksTo(30).fireResistant());
 		AIRLOCK_CONTROLLER = register("airlock_controller", AirlockControllerItem::new);
 		APC = block(Ssc14ModBlocks.APC, new Item.Properties().stacksTo(1).fireResistant());
@@ -854,9 +851,9 @@ public class Ssc14ModItems {
 		BORITOS_TRASH = register("boritos_trash", BoritosTrashItem::new);
 		POPCORN = register("popcorn", PopcornItem::new);
 		POPCORN_TRASH = register("popcorn_trash", PopcornTrashItem::new);
-		MOUSE_BROWN_SPAWN_EGG = register("mouse_brown_spawn_egg", properties -> new SpawnEggItem(Ssc14ModEntities.MOUSE_BROWN.get(), properties));
-		MOUSE_GRAY_SPAWN_EGG = register("mouse_gray_spawn_egg", properties -> new SpawnEggItem(Ssc14ModEntities.MOUSE_GRAY.get(), properties));
-		MOUSE_WHITE_SPAWN_EGG = register("mouse_white_spawn_egg", properties -> new SpawnEggItem(Ssc14ModEntities.MOUSE_WHITE.get(), properties));
+		MOUSE_BROWN_SPAWN_EGG = register("mouse_brown_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.MOUSE_BROWN.get())));
+		MOUSE_GRAY_SPAWN_EGG = register("mouse_gray_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.MOUSE_GRAY.get())));
+		MOUSE_WHITE_SPAWN_EGG = register("mouse_white_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.MOUSE_WHITE.get())));
 		DIRECTED_ARMORED_WINDOW = block(Ssc14ModBlocks.DIRECTED_ARMORED_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
 		BARTENDER_JUMPSUIT = register("bartender_jumpsuit", BartenderJumpsuitItem::new);
 		BRIGMEDIC_JUMPSUIT = register("brigmedic_jumpsuit", BrigmedicJumpsuitItem::new);
@@ -1062,7 +1059,7 @@ public class Ssc14ModItems {
 	// Start of user code block custom items
 	// End of user code block custom items
 	private static <I extends Item> DeferredItem<I> register(String name, Function<Item.Properties, ? extends I> supplier) {
-		return REGISTRY.registerItem(name, supplier, new Item.Properties());
+		return REGISTRY.registerItem(name, supplier, Item.Properties::new);
 	}
 
 	private static DeferredItem<Item> block(DeferredHolder<Block, Block> block) {
@@ -1070,34 +1067,34 @@ public class Ssc14ModItems {
 	}
 
 	private static DeferredItem<Item> block(DeferredHolder<Block, Block> block, Item.Properties properties) {
-		return REGISTRY.registerItem(block.getId().getPath(), prop -> new BlockItem(block.get(), prop), properties);
+		return REGISTRY.registerItem(block.getId().getPath(), prop -> new BlockItem(block.get(), prop), () -> properties);
 	}
 
 	@SubscribeEvent
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new AccessConfigInventoryCapability(stack), ACCESS_CONFIG.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL1spawnerInventoryCapability(stack), DECAL_1SPAWNER.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetBaseInventoryCapability(stack), HEADSET_BASE.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new PDApassangerInventoryCapability(stack), PD_APASSANGER.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new EggCartonInventoryCapability(stack), EGG_CARTON.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetBrigmedicInventoryCapability(stack), HEADSET_BRIGMEDIC.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetCargoInventoryCapability(stack), HEADSET_CARGO.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetCentcomInventoryCapability(stack), HEADSET_CENTCOM.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetCommandInventoryCapability(stack), HEADSET_COMMAND.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetEngineeringInventoryCapability(stack), HEADSET_ENGINEERING.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetMedicalInventoryCapability(stack), HEADSET_MEDICAL.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetMedicalScienceInventoryCapability(stack), HEADSET_MEDICAL_SCIENCE.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetMiningInventoryCapability(stack), HEADSET_MINING.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetRoboticsInventoryCapability(stack), HEADSET_ROBOTICS.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetScienceInventoryCapability(stack), HEADSET_SCIENCE.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetSecurityInventoryCapability(stack), HEADSET_SECURITY.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetServiceInventoryCapability(stack), HEADSET_SERVICE.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new HeadsetSyndicateInventoryCapability(stack), HEADSET_SYNDICATE.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL2spawnerInventoryCapability(stack), DECAL_2SPAWNER.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new Backpack2InventoryCapability(stack), BACKPACK_2.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL3spawnerInventoryCapability(stack), DECAL_3SPAWNER.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL4spawnerInventoryCapability(stack), DECAL_4SPAWNER.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL5spawnerInventoryCapability(stack), DECAL_5SPAWNER.get());
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new DECAL6spawnerInventoryCapability(stack), DECAL_6SPAWNER.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new AccessConfigInventoryCapability(access), ACCESS_CONFIG.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL1spawnerInventoryCapability(access), DECAL_1SPAWNER.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetBaseInventoryCapability(access), HEADSET_BASE.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new PDApassangerInventoryCapability(access), PD_APASSANGER.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new EggCartonInventoryCapability(access), EGG_CARTON.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetBrigmedicInventoryCapability(access), HEADSET_BRIGMEDIC.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetCargoInventoryCapability(access), HEADSET_CARGO.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetCentcomInventoryCapability(access), HEADSET_CENTCOM.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetCommandInventoryCapability(access), HEADSET_COMMAND.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetEngineeringInventoryCapability(access), HEADSET_ENGINEERING.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetMedicalInventoryCapability(access), HEADSET_MEDICAL.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetMedicalScienceInventoryCapability(access), HEADSET_MEDICAL_SCIENCE.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetMiningInventoryCapability(access), HEADSET_MINING.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetRoboticsInventoryCapability(access), HEADSET_ROBOTICS.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetScienceInventoryCapability(access), HEADSET_SCIENCE.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetSecurityInventoryCapability(access), HEADSET_SECURITY.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetServiceInventoryCapability(access), HEADSET_SERVICE.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetSyndicateInventoryCapability(access), HEADSET_SYNDICATE.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL2spawnerInventoryCapability(access), DECAL_2SPAWNER.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new Backpack2InventoryCapability(access), BACKPACK_2.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL3spawnerInventoryCapability(access), DECAL_3SPAWNER.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL4spawnerInventoryCapability(access), DECAL_4SPAWNER.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL5spawnerInventoryCapability(access), DECAL_5SPAWNER.get());
+		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL6spawnerInventoryCapability(access), DECAL_6SPAWNER.get());
 	}
 }

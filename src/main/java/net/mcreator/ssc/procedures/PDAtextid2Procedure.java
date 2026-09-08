@@ -1,6 +1,9 @@
 package net.mcreator.ssc.procedures;
 
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.item.ItemUtil;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.access.ItemAccess;
+import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
 import net.minecraft.world.item.component.CustomData;
@@ -33,9 +36,9 @@ public class PDAtextid2Procedure {
 	}
 
 	private static ItemStack getItemStackFromItemStackSlot(int slotID, ItemStack itemStack) {
-		IItemHandler itemHandler = itemStack.getCapability(Capabilities.ItemHandler.ITEM, null);
+		ResourceHandler<ItemResource> itemHandler = itemStack.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(itemStack));
 		if (itemHandler != null)
-			return itemHandler.getStackInSlot(slotID).copy();
+			return ItemUtil.getStack(itemHandler, slotID);
 		return ItemStack.EMPTY;
 	}
 }

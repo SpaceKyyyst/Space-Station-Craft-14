@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -79,12 +79,8 @@
           "name": "button_priniat",
           "text": "ПРИНЯТЬ",
           "isUndecorated": false,
-          "onClick": {
-            "name": "DECALSGUIaccept"
-          },
-          "displayCondition": {
-            "name": "DECALSGUIaccept2"
-          },
+          "onClick": "DECALSGUIaccept",
+          "displayCondition": "DECALSGUIaccept2",
           "width": 60,
           "height": 20,
           "x": 182,
@@ -93,9 +89,7 @@
         }
       }
     ],
-    "onTick": {
-      "name": "DECALScolorGUI_tick"
-    },
+    "onTick": "DECALScolorGUI_tick",
     "gridSettings": {
       "sx": 16,
       "sy": 16,

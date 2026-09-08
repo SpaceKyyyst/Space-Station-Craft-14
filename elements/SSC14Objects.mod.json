@@ -1,11 +1,9 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "tab",
   "definition": {
     "name": "SSC14: Objects",
-    "icon": {
-      "value": "CUSTOM:ConsoleOfID"
-    },
+    "icon": "CUSTOM:ConsoleOfID",
     "showSearch": false
   }
 }

@@ -1,14 +1,10 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "projectile",
   "definition": {
-    "projectileItem": {
-      "value": "CUSTOM:Bullet35item"
-    },
+    "projectileItem": "CUSTOM:Bullet35item",
     "showParticles": false,
-    "actionSound": {
-      "value": "entity.arrow.shoot"
-    },
+    "actionSound": "entity.arrow.shoot",
     "igniteFire": false,
     "disableGravity": true,
     "disableDiscarding": false,
@@ -19,11 +15,7 @@
     "customModelTexture": "bullets_texture.png",
     "modelWidth": 0.1,
     "modelHeight": 0.1,
-    "onHitsBlock": {
-      "name": "Bullet35_BlockCollision_"
-    },
-    "onFlyingTick": {
-      "name": "Bullet_Fly"
-    }
+    "onHitsBlock": "Bullet35_BlockCollision_",
+    "onFlyingTick": "Bullet_Fly"
   }
 }

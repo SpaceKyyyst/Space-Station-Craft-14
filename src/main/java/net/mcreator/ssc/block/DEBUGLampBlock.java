@@ -24,17 +24,17 @@ public class DEBUGLampBlock extends Block {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public DEBUGLampBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.GLASS).strength(10f).lightLevel(blockstate -> 15).noCollission().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.GLASS).strength(10f).lightLevel(blockstate -> 15).noCollision().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(1, 13, 0, 15, 15, 2);
 				case NORTH -> box(1, 13, 14, 15, 15, 16);
 				case EAST -> box(0, 13, 1, 2, 15, 15);
 				case WEST -> box(14, 13, 1, 16, 15, 15);
+				default -> box(1, 13, 0, 15, 15, 2);
 			};
 		});
 	}
@@ -57,9 +57,12 @@ public class DEBUGLampBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
 		if (context.getClickedFace().getAxis() == Direction.Axis.Y)
-			return super.getStateForPlacement(context).setValue(FACING, Direction.NORTH);
-		return super.getStateForPlacement(context).setValue(FACING, context.getClickedFace());
+			return state.setValue(FACING, Direction.NORTH);
+		return state.setValue(FACING, context.getClickedFace());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

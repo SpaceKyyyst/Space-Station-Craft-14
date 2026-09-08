@@ -22,48 +22,31 @@ public class DECAL1spawner_USE_Procedure {
         if (world.isClientSide()) return;
 
         if (world.getChunk(pos) instanceof LevelChunk chunk) {
-            String decalId = "decal_1"; 
+            String decalId = "decal_1";
             ResourceLocation itemKey = BuiltInRegistries.ITEM.getKey(itemStack.getItem());
             String itemName = itemKey.getPath();
 
-            if (itemName.equals("decal_2spawner") || itemName.contains("decal2")) {
-                decalId = "decal_2";
-            }
+            if (itemName.equals("decal_2spawner") || itemName.contains("decal2")) { decalId = "decal_2"; }
+            if (itemName.equals("decal_3spawner") || itemName.contains("decal3")) { decalId = "decal_3"; }
+            if (itemName.equals("decal_4spawner") || itemName.contains("decal4")) { decalId = "decal_4"; }
+            if (itemName.equals("decal_5spawner") || itemName.contains("decal5")) { decalId = "decal_5"; }
+            if (itemName.equals("decal_6spawner") || itemName.contains("decal6")) { decalId = "decal_6"; }
 
-            if (itemName.equals("decal_3spawner") || itemName.contains("decal3")) {
-                decalId = "decal_3";
-            }
-
-            if (itemName.equals("decal_4spawner") || itemName.contains("decal4")) {
-                decalId = "decal_4";
-            }
-
-            if (itemName.equals("decal_5spawner") || itemName.contains("decal5")) {
-                decalId = "decal_5";
-            }
-
-            if (itemName.equals("decal_6spawner") || itemName.contains("decal6")) {
-                decalId = "decal_6";
-            }
-
-            int finalColor = -1; // По умолчанию без цвета (белый)
+            int finalColor = -1; 
             CustomData customData = itemStack.get(DataComponents.CUSTOM_DATA);
             
             if (customData != null) {
                 CompoundTag tag = customData.copyTag();
-                // Проверяем наличие всех трех каналов цвета
                 if (tag.contains("R") && tag.contains("G") && tag.contains("B")) {
-                    // Используем майнкрафтовский Mth.clamp для double и достаем значение через orElse
-                    int r = (int) Mth.clamp(tag.getDouble("R").orElse(0.0), 0.0, 255.0);
-                    int g = (int) Mth.clamp(tag.getDouble("G").orElse(0.0), 0.0, 255.0);
-                    int b = (int) Mth.clamp(tag.getDouble("B").orElse(0.0), 0.0, 255.0);
+                    // ИСПРАВЛЕНО: Прямое получение double параметров без orElse и безопасный зажим диапазона 0-255
+                    int r = (int) Mth.clamp(tag.getDouble("R"), 0.0, 255.0);
+                    int g = (int) Mth.clamp(tag.getDouble("G"), 0.0, 255.0);
+                    int b = (int) Mth.clamp(tag.getDouble("B"), 0.0, 255.0);
                     
-                    // Упаковываем в HEX-формат (Alpha ставим 255 - полностью непрозрачный)
                     finalColor = (255 << 24) | (r << 16) | (g << 8) | b;
                 }
             }
 
-            // Спавним декаль на кликнутом блоке с полученным цветом
             DecalData newDecal = new DecalData(pos, face, decalId, 0, finalColor);
             DecalRegistry.addDecal(chunk, newDecal);
         }

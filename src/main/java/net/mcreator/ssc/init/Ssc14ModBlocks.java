@@ -448,7 +448,7 @@ public class Ssc14ModBlocks {
 	@EventBusSubscriber(Dist.CLIENT)
 	public static class BlocksClientSideHandler {
 		@SubscribeEvent
-		public static void blockColorLoad(RegisterColorHandlersEvent.Block event) {
+		public static void blockColorLoad(RegisterColorHandlersEvent.BlockTintSources event) {
 			GrassLightBlockBlock.blockColorLoad(event);
 			LowPlanetGrassBlock.blockColorLoad(event);
 			MedPlanetGrassBlock.blockColorLoad(event);

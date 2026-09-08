@@ -40,10 +40,10 @@ public class ExtinguisherCabinetBlock extends Block {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(4, 2, 0, 11, 12, 5);
 				case NORTH -> box(5, 2, 11, 12, 12, 16);
 				case EAST -> box(0, 2, 5, 5, 12, 12);
 				case WEST -> box(11, 2, 4, 16, 12, 11);
+				default -> box(4, 2, 0, 11, 12, 5);
 			};
 		});
 	}
@@ -59,7 +59,7 @@ public class ExtinguisherCabinetBlock extends Block {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 0;
 	}
 
@@ -76,7 +76,10 @@ public class ExtinguisherCabinetBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(OPEN, false).setValue(EMPTY, false);
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(OPEN, false).setValue(EMPTY, false);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

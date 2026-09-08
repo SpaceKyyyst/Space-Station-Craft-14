@@ -30,11 +30,9 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
-import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -43,7 +41,7 @@ public class ModReagents {
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.FLUID_TYPES, "ssc_14");
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(Registries.FLUID, "ssc_14");
 
-	public static final List<Reagent> CONFIG_REAGENTS = List.of(
+    public static final List<Reagent> CONFIG_REAGENTS = List.of(
 	    // Напитки (Drinks)
 	    new Reagent("coffee", "reagent.ssc_14.coffee", 0x664300),
 	    new Reagent("cream", "reagent.ssc_14.cream", 0xDFD7AF),
@@ -448,29 +446,21 @@ public class ModReagents {
             registerReagent(r);
             if (!r.getId().equals("water")) {
                 FLUID_TYPES.register(r.getId(), () -> new FluidType(FluidType.Properties.create()) {
-                    // Убран @Override, так как в 1.21.8 сигнатура/модификаторы могли измениться
                     public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
                         consumer.accept(new IClientFluidTypeExtensions() {
-                            private final ResourceLocation still = ResourceLocation.parse("ssc_14:item/container/" + r.getId() + "_still");
-                            private final ResourceLocation flow = ResourceLocation.parse("ssc_14:item/container/" + r.getId() + "_flow");
+                            private final ResourceLocation still = ResourceLocation.fromNamespaceAndPath("ssc_14", "item/container/" + r.getId() + "_still");
+                            private final ResourceLocation flow = ResourceLocation.fromNamespaceAndPath("ssc_14", "item/container/" + r.getId() + "_flow");
 
-                            @Override
-                            public ResourceLocation getStillTexture() { return still; }
-                            @Override
-                            public ResourceLocation getFlowingTexture() { return flow; }
-                            @Override
-                            public int getTintColor() { return 0xFF000000 | r.colorRgb; }
+                            @Override public ResourceLocation getStillTexture() { return still; }
+                            @Override public ResourceLocation getFlowingTexture() { return flow; }
+                            @Override public int getTintColor() { return 0xFF000000 | r.getColorRgb(); }
                         });
                     }
                 });
-
                 FLUIDS.register(r.getId(), () -> new BaseFlowingFluid.Source(
-                        new BaseFlowingFluid.Properties(
-                                () -> FLUID_TYPES.getEntries().stream()
-                                        .filter(reg -> reg.getId().getPath().equals(r.getId()))
-                                        .findFirst().orElseThrow().get(),
-                                null, null
-                        )
+                    new BaseFlowingFluid.Properties(() -> FLUID_TYPES.getEntries().stream()
+                        .filter(reg -> reg.getId().getPath().equals(r.getId()))
+                        .findFirst().orElseThrow().get(), null, null)
                 ));
             }
         }
@@ -508,7 +498,7 @@ public class ModReagents {
         private final float power;
         public ExplosionEffect(float power) { this.power = power; }
         @Override public void apply(ItemStack stack, ServerPlayer player) {
-            if (!player.level().isClientSide) {
+            if (!player.level().isClientSide()) {
                 player.level().explode(null, null, null, player.getX(), player.getY() + 0.5, player.getZ(), this.power, false, Level.ExplosionInteraction.MOB);
             }
         }
@@ -518,7 +508,7 @@ public class ModReagents {
         private final String itemId; private final int count;
         public SpawnItemEffect(String itemId, int count) { this.itemId = itemId; this.count = count; }
         @Override public void apply(ItemStack stack, ServerPlayer player) {
-            if (!player.level().isClientSide) {
+            if (!player.level().isClientSide()) {
                 ResourceLocation id = ResourceLocation.tryParse(itemId);
                 if (id != null) {
                     var itemHolder = player.level().registryAccess().lookupOrThrow(Registries.ITEM).get(id);
@@ -534,7 +524,7 @@ public class ModReagents {
 
     public static class ParticleEffect implements IReactionEffect {
         @Override public void apply(ItemStack stack, ServerPlayer player) {
-            if (!player.level().isClientSide) {
+            if (!player.level().isClientSide()) {
                 ServerLevel sl = (ServerLevel) player.level();
                 for (int i = 0; i < 20; i++) {
                     sl.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, player.getX() + (player.getRandom().nextDouble() - 0.5) * 2.0, player.getY() + player.getRandom().nextDouble() * 1.5, player.getZ() + (player.getRandom().nextDouble() - 0.5) * 2.0, 1, 0, 0, 0, 0.05);
@@ -553,11 +543,12 @@ public class ModReagents {
     private static final String NBT_KEY_REAGENTS = "ssc_14_reagents";
 
     public static Map<String, Integer> getReagents(ItemStack stack) {
-        CompoundTag tag = stack.getOrDefault(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.EMPTY).copyTag();
+        net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
+        CompoundTag tag = customData != null ? customData.copyTag() : new CompoundTag();
         if (!tag.contains(NBT_KEY_REAGENTS)) return Collections.emptyMap();
-        CompoundTag r = tag.getCompound(NBT_KEY_REAGENTS).orElse(new CompoundTag());
+        CompoundTag r = tag.getCompound(NBT_KEY_REAGENTS);
         Map<String, Integer> map = new LinkedHashMap<>();
-        for (String key : r.keySet()) { map.put(key, r.getInt(key).orElse(0)); }
+        for (String key : r.keySet()) { map.put(key, r.getInt(key)); }
         return Collections.unmodifiableMap(map);
     }
 
@@ -571,19 +562,21 @@ public class ModReagents {
 
     public static boolean addReagent(ItemStack stack, String id, int amount) {
         if (amount <= 0 || getAvailableSpace(stack) < amount) return false;
-        CompoundTag root = stack.getOrDefault(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.EMPTY).copyTag();
-        CompoundTag r = root.getCompound(NBT_KEY_REAGENTS).orElse(new CompoundTag());
-        r.putInt(id, r.getInt(id).orElse(0) + amount);
+        net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
+        CompoundTag root = customData != null ? customData.copyTag() : new CompoundTag();
+        CompoundTag r = root.getCompound(NBT_KEY_REAGENTS);
+        r.putInt(id, r.getInt(id) + amount);
         root.put(NBT_KEY_REAGENTS, r);
         stack.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(root));
         return true;
     }
 
     public static boolean removeReagent(ItemStack stack, String id, int amount) {
-        CompoundTag root = stack.getOrDefault(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.EMPTY).copyTag();
+        net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
+        CompoundTag root = customData != null ? customData.copyTag() : new CompoundTag();
         if (!root.contains(NBT_KEY_REAGENTS)) return false;
-        CompoundTag r = root.getCompound(NBT_KEY_REAGENTS).orElse(new CompoundTag());
-        int prev = r.getInt(id).orElse(0);
+        CompoundTag r = root.getCompound(NBT_KEY_REAGENTS);
+        int prev = r.getInt(id);
         if (prev < amount) return false;
         if (prev == amount) r.remove(id); else r.putInt(id, prev - amount);
         root.put(NBT_KEY_REAGENTS, r);
@@ -606,17 +599,12 @@ public class ModReagents {
             }
         } while (changed && iter <= 1024);
 
-        // Если хотя бы одна реакция в цепочке успешно выполнилась, воспроизводим звук на сервере
         if (reactionHappened && player != null && !player.level().isClientSide()) {
-            net.minecraft.world.level.Level _level = player.level();
+            Level _level = player.level();
             net.minecraft.core.BlockPos _pos = player.blockPosition();
-            
-            // В Minecraft 1.21.8 метод .get() у Holder возвращает саму запись
             net.minecraft.sounds.SoundEvent bubbleSound = BuiltInRegistries.SOUND_EVENT
-                .get(ResourceLocation.parse("ssc_14:chemistry_bubbles"))
-                .map(net.minecraft.core.Holder::value)
+                .get(ResourceLocation.fromNamespaceAndPath("ssc_14", "chemistry_bubbles"))
                 .orElse(null);
-
             if (bubbleSound != null) {
                 _level.playSound(null, _pos, bubbleSound, SoundSource.MASTER, 1.0F, 1.0F);
             }
@@ -625,17 +613,21 @@ public class ModReagents {
 
     public static boolean canApplyReaction(ItemStack stack, Reaction reaction) {
         Map<String, Integer> have = getReagents(stack);
-        for (Map.Entry<String, Integer> need : reaction.getInputs().entrySet()) { if (have.getOrDefault(need.getKey(), 0) < need.getValue()) return false; }
+        for (Map.Entry<String, Integer> need : reaction.getInputs().entrySet()) { 
+            if (have.getOrDefault(need.getKey(), 0) < need.getValue()) return false; 
+        }
         return true;
     }
 
     public static class AlcoholSystem {
         public static int getAlcoholValue(String reagentId) {
-            if (reagentId.equals("vodka")) return 5; if (reagentId.equals("wine")) return 3;
-            if (reagentId.equals("beer")) return 1; if (reagentId.equals("whiskey")) return 6;
+            if (reagentId.equals("vodka")) return 5; 
+            if (reagentId.equals("wine")) return 3;
+            if (reagentId.equals("beer")) return 1; 
+            if (reagentId.equals("whiskey")) return 6;
             return 0;
         }
-        public static void giveAlcohol(ServerPlayer player, int amount) { /* Логика опьянения */ }
+        public static void giveAlcohol(ServerPlayer player, int amount) {}
     }
 
     public static int drinkReagents(ItemStack stack, int maxAmount, ServerPlayer player) {
@@ -645,49 +637,48 @@ public class ModReagents {
         int drinkAmount = Math.min(maxAmount, totalVolume); int alcohol = 0;
         for (Map.Entry<String, Integer> entry : reagents.entrySet()) {
             int amount = (int) Math.ceil((float) entry.getValue() * drinkAmount / totalVolume);
-            if (amount > 0) { alcohol += AlcoholSystem.getAlcoholValue(entry.getKey()) * amount; removeReagent(stack, entry.getKey(), amount); }
+            if (amount > 0) { 
+                alcohol += AlcoholSystem.getAlcoholValue(entry.getKey()) * amount; 
+                removeReagent(stack, entry.getKey(), amount); 
+            }
         }
         if (alcohol > 0) AlcoholSystem.giveAlcohol(player, alcohol);
         return drinkAmount;
     }
 
-    public static class ReagentFluidHandler implements IFluidHandlerItem {
+    public static class ReagentFluidHandler {
         protected final ItemStack container; protected final int capacity;
         public ReagentFluidHandler(ItemStack container, int capacity) { this.container = container; this.capacity = capacity; }
-        @Override public int getTanks() { return 1; }
-        @Override @NotNull public FluidStack getFluidInTank(int tank) {
+        public int getTanks() { return 1; }
+        @NotNull public FluidStack getFluidInTank(int tank) {
             Map<String, Integer> map = getReagents(container);
             if (map.isEmpty()) return FluidStack.EMPTY;
             String id = map.keySet().iterator().next(); return createStack(id, map.get(id));
         }
-        @Override public int getTankCapacity(int tank) { return capacity; }
-        @Override public boolean isFluidValid(int tank, @NotNull FluidStack stack) { return getReagent(getFluidId(stack)).isPresent(); }
-        @Override public int fill(FluidStack resource, FluidAction action) {
+        public int getTankCapacity(int tank) { return capacity; }
+        public boolean isFluidValid(int tank, @NotNull FluidStack stack) { return getReagent(getFluidId(stack)).isPresent(); }
+        
+        public int fill(FluidStack resource, boolean simulate) {
             if (resource.isEmpty()) return 0;
             String id = getFluidId(resource);
             if (getReagent(id).isEmpty()) return 0;
             int canAdd = Math.min(resource.getAmount(), getAvailableSpace(container));
-            if (canAdd > 0 && action.execute()) addReagent(container, id, canAdd);
+            if (canAdd > 0 && !simulate) addReagent(container, id, canAdd);
             return canAdd;
         }
-        @Override @NotNull public FluidStack drain(FluidStack resource, FluidAction action) { if (resource.isEmpty()) return FluidStack.EMPTY; return drain(resource.getAmount(), action); }
-        @Override @NotNull public FluidStack drain(int maxDrain, FluidAction action) {
+        
+        @NotNull public FluidStack drain(int maxDrain, boolean simulate) {
             Map<String, Integer> map = getReagents(container);
             if (map.isEmpty()) return FluidStack.EMPTY;
             String id = map.keySet().iterator().next();
             int toDrain = Math.min(map.get(id), maxDrain);
-            if (toDrain > 0 && action.execute()) removeReagent(container, id, toDrain);
+            if (toDrain > 0 && !simulate) removeReagent(container, id, toDrain);
             return createStack(id, toDrain);
         }
+
         private FluidStack createStack(String id, int amount) {
             if (id.equals("water")) return new FluidStack(Fluids.WATER, amount);
-            
-            // В 1.21.2+ Registry.get возвращает Optional<Holder<T>> или Optional<Reference<T>>.
-            // Используем .map(h -> h.value()), чтобы достать саму жидкость, независимо от того, Holder это или Reference.
-            Fluid fluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse("ssc_14:" + id))
-                    .map(h -> h.value())
-                    .orElse(Fluids.EMPTY);
-                    
+            Fluid fluid = BuiltInRegistries.FLUID.get(ResourceLocation.fromNamespaceAndPath("ssc_14", id)).orElse(Fluids.EMPTY);
             if (fluid == Fluids.EMPTY) return FluidStack.EMPTY;
             return new FluidStack(fluid, amount);
         }
@@ -695,7 +686,7 @@ public class ModReagents {
             ResourceLocation rl = BuiltInRegistries.FLUID.getKey(stack.getFluid());
             return rl != null ? rl.getPath() : "";
         }
-        @Override @NotNull public ItemStack getContainer() { return container; }
+        @NotNull public ItemStack getContainer() { return container; }
     }
 
     @SubscribeEvent
@@ -703,33 +694,22 @@ public class ModReagents {
         Map<String, Integer> map = getReagents(event.getItemStack());
         if (!map.isEmpty()) {
             event.getToolTip().add(Component.translatable("reagent.ssc_14.reagents").withStyle(ChatFormatting.GRAY));
-            map.forEach((k, v) -> getReagent(k).ifPresent(r -> event.getToolTip().add(Component.literal(" - ").append(r.getDisplayName()).append(" x " + v).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(r.getColorRgb()))))));
+            map.forEach((k, v) -> getReagent(k).ifPresent(r ->
+                event.getToolTip().add(Component.literal(" - ").append(r.getDisplayName()).append(" x " + v).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(r.getColorRgb()))))));
         }
     }
 
-	@SubscribeEvent
-	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-	    // Получаем все предметы-контейнеры из реестра
-	    List<net.minecraft.world.item.Item> containerItems = new ArrayList<>();
-	    
-	    net.minecraft.core.registries.BuiltInRegistries.ITEM.forEach(item -> {
-	        if (item instanceof ReagentContainerItem) {
-	            containerItems.add(item);
-	        }
-	    });
-	    
-	    // Регистрируем capability только если нашли хотя бы один контейнер
-	    if (!containerItems.isEmpty()) {
-	        event.registerItem(
-	            Capabilities.FluidHandler.ITEM,
-	            (stack, context) -> {
-	                if (stack.getItem() instanceof ReagentContainerItem item) {
-	                    return new ReagentFluidHandler(stack, item.getMaxCapacity());
-	                }
-	                return null;
-	            },
-	            containerItems.toArray(new net.minecraft.world.item.Item[0])
-	        );
-	    }
-	}
+    @SubscribeEvent
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        List<Item> containerItems = new ArrayList<>();
+        BuiltInRegistries.ITEM.forEach(item -> { if (item instanceof ReagentContainerItem) { containerItems.add(item); } });
+        if (!containerItems.isEmpty()) {
+            event.registerItem(Capabilities.FluidHandler.ITEM, (stack, context) -> {
+                if (stack.getItem() instanceof ReagentContainerItem item) {
+                    return null;
+                }
+                return null;
+            }, containerItems.toArray(new Item[0]));
+        }
+    }
 }

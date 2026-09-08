@@ -6,10 +6,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.TintedParticleLeavesBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.FoliageColor;
-import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.color.block.BlockTintSources;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
+
+import java.util.List;
 
 public class PlanetaryTreeFoliageBlock extends TintedParticleLeavesBlock {
 	public PlanetaryTreeFoliageBlock(BlockBehaviour.Properties properties) {
@@ -17,13 +18,11 @@ public class PlanetaryTreeFoliageBlock extends TintedParticleLeavesBlock {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 2;
 	}
 
-	public static void blockColorLoad(RegisterColorHandlersEvent.Block event) {
-		event.register((bs, world, pos, index) -> {
-			return world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColor.FOLIAGE_DEFAULT;
-		}, Ssc14ModBlocks.PLANETARY_TREE_FOLIAGE.get());
+	public static void blockColorLoad(RegisterColorHandlersEvent.BlockTintSources event) {
+		event.getBlockColors().register(List.of(BlockTintSources.foliage()), Ssc14ModBlocks.PLANETARY_TREE_FOLIAGE.get());
 	}
 }

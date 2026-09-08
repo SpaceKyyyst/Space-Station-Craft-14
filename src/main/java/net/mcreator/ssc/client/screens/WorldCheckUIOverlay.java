@@ -1,7 +1,5 @@
 package net.mcreator.ssc.client.screens;
 
-import org.checkerframework.checker.units.qual.h;
-
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -10,7 +8,7 @@ import net.neoforged.api.distmarker.Dist;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
@@ -19,7 +17,7 @@ import net.mcreator.ssc.procedures.*;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class WorldCheckUIOverlay {
-	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/world_check_ui.png");
+	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/world_check_ui.png");
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void eventHandler(RenderGuiEvent.Pre event) {
@@ -39,20 +37,20 @@ public class WorldCheckUIOverlay {
 		if (WorldObjectCheckUIProcedure.execute(world, entity)) {
 			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w / 2 + 1, h / 2 + 0, 0, 0, 151, 100, 151, 100);
 
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+			event.getGuiGraphics().text(Minecraft.getInstance().font,
 
 					WOCtextP1Procedure.execute(entity), w / 2 + 5, h / 2 + 3, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+			event.getGuiGraphics().text(Minecraft.getInstance().font,
 
 					WOCtextForDisassemblyUseProcedure.execute(), w / 2 + 5, h / 2 + 26, -1, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+			event.getGuiGraphics().text(Minecraft.getInstance().font,
 
 					WOCtextP2Procedure.execute(world, entity), w / 2 + 5, h / 2 + 38, -16711681, false);
-			event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_eto"), w / 2 + 5, h / 2 + 14, -1, false);
+			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_eto"), w / 2 + 5, h / 2 + 14, -1, false);
 			if (WOCtextNoPinnedProcedure.execute())
-				event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_nie_zakrieplieno"), w / 2 + 28, h / 2 + 14, -7667712, false);
+				event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_nie_zakrieplieno"), w / 2 + 28, h / 2 + 14, -7667712, false);
 			if (WOCtextPinnedProcedure.execute(entity))
-				event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_zakrieplieno"), w / 2 + 28, h / 2 + 14, -16744704, false);
+				event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_zakrieplieno"), w / 2 + 28, h / 2 + 14, -16744704, false);
 		}
 	}
 }

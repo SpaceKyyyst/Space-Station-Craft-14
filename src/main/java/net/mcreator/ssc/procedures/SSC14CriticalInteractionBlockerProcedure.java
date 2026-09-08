@@ -1,4 +1,3 @@
-
 package net.mcreator.ssc.procedures;
 
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -27,7 +26,7 @@ public class SSC14CriticalInteractionBlockerProcedure {
     
     private static boolean isCritical(Player player) {
         if (player == null) return false;
-        double dmg = player.getPersistentData().getDouble("sscCustomHealth").orElse(0.0);
+        double dmg = player.getPersistentData().getDouble("sscCustomHealth");
         return (dmg >= 100.0 && dmg < 200.0);
     }
 }

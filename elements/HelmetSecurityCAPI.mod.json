@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "HelmetSecurity",
@@ -9,15 +9,11 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
+    "equipSound": "",
     "hasModel": true,
     "baubleModel": "Modelhelmet_security_equipped",
     "baubleModelTexture": "helmet_security_equipped_texture.png",
-    "onEquip": {
-      "name": "EquipHelmetSoundPR"
-    },
+    "onEquip": "EquipHelmetSoundPR",
     "helmetModelPart": "head",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

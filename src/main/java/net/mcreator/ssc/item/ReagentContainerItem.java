@@ -20,7 +20,6 @@ import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.List;
 
 public class ReagentContainerItem extends Item {
@@ -35,10 +34,10 @@ public class ReagentContainerItem extends Item {
         return ReagentContainerConfig.CAPACITIES.getOrDefault(key, DEFAULT_CAPACITY);
     }
 
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+    @Override
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         int current = ModReagents.getReagents(stack).values().stream().mapToInt(Integer::intValue).sum();
-        tooltip.add(Component.translatable("tooltip.ssc_14.container.capacity", current, getMaxCapacity())
-                .withStyle(net.minecraft.ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("tooltip.ssc_14.container.capacity", current, getMaxCapacity()).withStyle(net.minecraft.ChatFormatting.GRAY));
     }
 
     @Override
@@ -62,8 +61,8 @@ public class ReagentContainerItem extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-        if (!level.isClientSide && entity instanceof ServerPlayer sp) {
-            int amount = 10; 
+        if (!level.isClientSide() && entity instanceof ServerPlayer sp) {
+            int amount = 10;
             if (ModReagents.drinkReagents(stack, amount, sp) > 0) {
                 level.playSound(null, sp.getX(), sp.getY(), sp.getZ(), SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS, 1.0F, 1.0F);
             }

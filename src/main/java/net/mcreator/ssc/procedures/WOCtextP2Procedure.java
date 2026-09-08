@@ -7,7 +7,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
@@ -33,7 +33,7 @@ public class WOCtextP2Procedure {
 								|| 8 == (getPropertyByName((world.getBlockState(BlockPos.containing(X, Y, Z))), "blockstate") instanceof IntegerProperty _getip20 ? (world.getBlockState(BlockPos.containing(X, Y, Z))).getValue(_getip20) : -1))
 				|| Ssc14ModBlocks.GRILLE.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() || Ssc14ModBlocks.BROKEN_GRILLE.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()) {
 			loc_buf_t = "\u041A\u0443\u0441\u0430\u0447\u043A\u0438";
-		} else if ((world.getBlockState(BlockPos.containing(X, Y, Z))).is(BlockTags.create(ResourceLocation.parse("ssc14:tiles")))
+		} else if ((world.getBlockState(BlockPos.containing(X, Y, Z))).is(BlockTags.create(Identifier.parse("ssc14:tiles")))
 				|| Ssc14ModBlocks.PLASTEEL_WALL.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()
 						&& (3 == (getPropertyByName((world.getBlockState(BlockPos.containing(X, Y, Z))), "blockstate") instanceof IntegerProperty _getip30 ? (world.getBlockState(BlockPos.containing(X, Y, Z))).getValue(_getip30) : -1)
 								|| 6 == (getPropertyByName((world.getBlockState(BlockPos.containing(X, Y, Z))), "blockstate") instanceof IntegerProperty _getip32 ? (world.getBlockState(BlockPos.containing(X, Y, Z))).getValue(_getip32) : -1))

@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "particle",
   "definition": {
     "texture": "deconstruct_block_16an",
@@ -20,9 +20,7 @@
     "canCollide": false,
     "alwaysShow": true,
     "emissiveRendering": true,
-    "rotationProvider": {
-      "name": "DeconstructParticle_ORIENT_"
-    },
+    "rotationProvider": "DeconstructParticle_ORIENT_",
     "renderType": "TRANSLUCENT"
   }
 }

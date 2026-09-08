@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -885,12 +885,8 @@
         }
       }
     ],
-    "onOpen": {
-      "name": "AccessConfigMENU_Open_PR"
-    },
-    "onTick": {
-      "name": "AcsConfigMenuCHECK"
-    },
+    "onOpen": "AccessConfigMENU_Open_PR",
+    "onTick": "AcsConfigMenuCHECK",
     "gridSettings": {
       "sx": 18,
       "sy": 18,

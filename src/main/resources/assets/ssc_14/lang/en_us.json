@@ -529,7 +529,6 @@
   "death.attack.ssc_14dmgcellular": "%1$s",
   "death.attack.ssc_14dmgcellular.item": "%1$s",
   "death.attack.ssc_14dmgcellular.player": "%1$s",
-  "entity.ssc_14.corpse": "Corpse",
   "item.ssc_14.debug_13": "DEBUG 13",
   "item.ssc_14.decal_1spawner": "DECAL 1 spawner",
   "item_group.ssc_14.decals": "SSC14: Decals",

@@ -1,22 +1,21 @@
 package net.mcreator.ssc.client.renderer;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 
 import net.mcreator.ssc.entity.FoamDartProjectileEntity;
 import net.mcreator.ssc.client.model.Modelfoam_dart;
 
 import com.mojang.math.Axis;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class FoamDartProjectileRenderer extends EntityRenderer<FoamDartProjectileEntity, LivingEntityRenderState> {
-	private static final ResourceLocation texture = ResourceLocation.parse("ssc_14:textures/entities/foam_dart_texture.png");
+	private static final Identifier texture = Identifier.parse("ssc_14:textures/entities/foam_dart_texture.png");
 	private final Modelfoam_dart model;
 
 	public FoamDartProjectileRenderer(EntityRendererProvider.Context context) {
@@ -25,15 +24,14 @@ public class FoamDartProjectileRenderer extends EntityRenderer<FoamDartProjectil
 	}
 
 	@Override
-	public void render(LivingEntityRenderState state, PoseStack poseStack, MultiBufferSource bufferIn, int packedLightIn) {
-		VertexConsumer vb = bufferIn.getBuffer(RenderType.entityCutout(texture));
+	public void submit(LivingEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
 		poseStack.pushPose();
 		poseStack.mulPose(Axis.YP.rotationDegrees(state.yRot - 90));
 		poseStack.mulPose(Axis.ZP.rotationDegrees(90 + state.xRot));
 		model.setupAnim(state);
-		model.renderToBuffer(poseStack, vb, packedLightIn, OverlayTexture.NO_OVERLAY);
+		submitNodeCollector.submitModel(this.model, state, poseStack, texture, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
 		poseStack.popPose();
-		super.render(state, poseStack, bufferIn, packedLightIn);
+		super.submit(state, poseStack, submitNodeCollector, camera);
 	}
 
 	@Override

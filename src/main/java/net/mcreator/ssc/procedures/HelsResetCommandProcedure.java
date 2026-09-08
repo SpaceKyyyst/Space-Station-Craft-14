@@ -1,7 +1,5 @@
 package net.mcreator.ssc.procedures;
 
-import org.checkerframework.checker.units.qual.t;
-
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.commands.arguments.EntityArgument;
