@@ -35,17 +35,17 @@ public class CommunicationServersBlock extends Block implements EntityBlock {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public CommunicationServersBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.ANVIL).strength(60f, 30f).noOcclusion().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.ANVIL).strength(60f, 30f).noOcclusion().postProcess((bs, br, bp) -> bp).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, 0));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(0, 0, 1, 16, 31, 14);
 				case NORTH -> box(0, 0, 2, 16, 31, 15);
 				case EAST -> box(1, 0, 0, 14, 31, 16);
 				case WEST -> box(2, 0, 0, 15, 31, 16);
+				default -> box(0, 0, 1, 16, 31, 14);
 			};
 		});
 	}
@@ -61,7 +61,7 @@ public class CommunicationServersBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 0;
 	}
 
@@ -78,7 +78,10 @@ public class CommunicationServersBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(TYPE, 0);
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(TYPE, 0);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

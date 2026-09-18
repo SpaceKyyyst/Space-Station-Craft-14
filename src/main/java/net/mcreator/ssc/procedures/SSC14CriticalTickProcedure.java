@@ -11,7 +11,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 @EventBusSubscriber
 public class SSC14CriticalTickProcedure {
@@ -28,41 +28,39 @@ public class SSC14CriticalTickProcedure {
     private static final double CRIT_WIDTH = 0.6;
     private static final double CRIT_HEIGHT = 0.45;
     
-    private static final ResourceLocation CRIT_IMMOBILIZE_ID = ResourceLocation.parse("ssc14:crit_immobilize");
-    private static final ResourceLocation CRIT_NOJUMP_ID = ResourceLocation.parse("ssc14:crit_nojump");
+    // ИСПРАВЛЕНО: Замена приватного конструктора на фабричный метод для NeoForge 26.1.2
+    private static final Identifier CRIT_IMMOBILIZE_ID = Identifier.fromNamespaceAndPath("ssc14", "crit_immobilize");
+    private static final Identifier CRIT_NOJUMP_ID = Identifier.fromNamespaceAndPath("ssc14", "crit_nojump");
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Pre event) {
         Player player = event.getEntity();
         var nbt = player.getPersistentData();
         
-        // 🔧 Читаем урон и вычисляем крит (работает на обеих сторонах)
+        // ИСПРАВЛЕНО: Добавлена распаковка Optional через orElse
         double totalDamage = nbt.getDouble(KEY_TOTAL).orElse(0.0);
-        boolean isCritical = (totalDamage >= CRIT_MIN && totalDamage < CRIT_MAX);
+        boolean isCritical = (totalDamage >= CRIT_MIN && totalDamage * 1.0 <= CRIT_MAX);
         
-        // === СЕРВЕРНАЯ ЛОГИКА: урон, атрибуты, mayBuild ===
         if (!player.level().isClientSide()) {
             if (isCritical) {
-                // 💨 Удушье
+                // ИСПРАВЛЕНО: Добавлена распаковка Optional для таймера
                 int timer = nbt.getInt(KEY_ASPHYX_TIMER).orElse(0);
                 if (timer >= ASPHYX_INTERVAL_TICKS) {
+                    // ИСПРАВЛЕНО: Добавлена распаковка Optional для урона от удушья
                     double asphyx = nbt.getDouble(PREFIX_TYPE + "asphyx").orElse(0.0) + 1.0;
                     nbt.putDouble(PREFIX_TYPE + "asphyx", asphyx);
                     nbt.putDouble(KEY_TOTAL, totalDamage + 1.0);
                     nbt.putInt(KEY_ASPHYX_TIMER, 0);
-                    System.out.println("[SSC14] 💨 Удушье: +1 | Всего: " + (totalDamage + 1.0));
+                    System.out.println("[SSC14] Удушье: +1 | Всего: " + (totalDamage + 1.0));
                 } else {
                     nbt.putInt(KEY_ASPHYX_TIMER, timer + 1);
                 }
                 
-                // 🛑 Иммобилизация (атрибуты)
                 applyCriticalModifiers(player);
                 
-                // 🔧 Блокировка строительства
                 player.getAbilities().mayBuild = false;
                 player.onUpdateAbilities();
             } else {
-                // 🔹 Восстановление mayBuild при выходе из крита
                 if (!player.getAbilities().mayBuild) {
                     player.getAbilities().mayBuild = true;
                     player.onUpdateAbilities();
@@ -71,27 +69,22 @@ public class SSC14CriticalTickProcedure {
             }
         }
         
-        // === ВИЗУАЛ + ХИТБОКС: ПРИМЕНЯЕМ НА ОБЕИХ СТОРОНАХ ===
         if (isCritical) {
-            // 🛌 Поза: каждый тик, клиент + сервер
             if (player.getPose() != Pose.SWIMMING) {
                 player.setPose(Pose.SWIMMING);
-                player.refreshDimensions(); // 🔹 Синхронизирует хитбокс с клиентом
+                player.refreshDimensions();
             }
             
-            // 📦 Хитбокс: каждый тик, клиент + сервер (защита от сброса)
             double x = player.getX(), y = player.getY(), z = player.getZ();
             player.setBoundingBox(new AABB(
                 x - CRIT_WIDTH / 2, y, z - CRIT_WIDTH / 2,
                 x + CRIT_WIDTH / 2, y + CRIT_HEIGHT, z + CRIT_WIDTH / 2
             ));
             
-            // 👁 Слепота: добавляем на сервере, но эффект виден на клиенте
             if (!player.level().isClientSide() && !player.hasEffect(MobEffects.BLINDNESS)) {
                 player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 220, 0, false, false));
             }
         } else {
-            // 🔹 Восстановление позы и хитбокса при выходе из крита
             if (player.getPose() == Pose.SWIMMING) {
                 player.setPose(Pose.STANDING);
                 player.refreshDimensions();

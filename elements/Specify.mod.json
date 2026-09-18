@@ -1,12 +1,10 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "keybind",
   "definition": {
     "triggerKey": "MOUSEMIDDLE",
     "keyBindingName": "Specify",
     "keyBindingCategoryKey": "multiplayer",
-    "onKeyPressed": {
-      "name": "Specify_CLICK_"
-    }
+    "onKeyPressed": "Specify_CLICK_"
   }
 }

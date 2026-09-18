@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -26,9 +26,7 @@
           "name": "imagebutton_cable_button6",
           "image": "cable_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CPcabel1button"
-          },
+          "onClick": "CPcabel1button",
           "x": 169,
           "y": 125,
           "locked": false
@@ -39,9 +37,7 @@
         "data": {
           "image": "cable_1.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPcabel1"
-          },
+          "displayCondition": "CPcabel1",
           "x": 170,
           "y": 125,
           "locked": false
@@ -53,9 +49,7 @@
           "name": "imagebutton_cable_button5",
           "image": "cable_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CPcabel2button"
-          },
+          "onClick": "CPcabel2button",
           "x": 181,
           "y": 125,
           "locked": false
@@ -66,9 +60,7 @@
         "data": {
           "image": "cable_2.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPcabel2"
-          },
+          "displayCondition": "CPcabel2",
           "x": 182,
           "y": 125,
           "locked": false
@@ -80,9 +72,7 @@
           "name": "imagebutton_cable_button4",
           "image": "cable_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CPcabel3button"
-          },
+          "onClick": "CPcabel3button",
           "x": 192,
           "y": 125,
           "locked": false
@@ -93,9 +83,7 @@
         "data": {
           "image": "cable_3.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPcabel3"
-          },
+          "displayCondition": "CPcabel3",
           "x": 192,
           "y": 125,
           "locked": false
@@ -107,9 +95,7 @@
           "name": "imagebutton_cabel_4",
           "image": "cable_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CPcabel4button"
-          },
+          "onClick": "CPcabel4button",
           "x": 205,
           "y": 125,
           "locked": false
@@ -120,9 +106,7 @@
         "data": {
           "image": "cabel_4.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPcabel4"
-          },
+          "displayCondition": "CPcabel4",
           "x": 206,
           "y": 125,
           "locked": false
@@ -134,9 +118,7 @@
           "name": "imagebutton_cable_button",
           "image": "cable_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CPcabel5button"
-          },
+          "onClick": "CPcabel5button",
           "x": 215,
           "y": 125,
           "locked": false
@@ -147,9 +129,7 @@
         "data": {
           "image": "cable_5.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPcabel5"
-          },
+          "displayCondition": "CPcabel5",
           "x": 217,
           "y": 125,
           "locked": false
@@ -161,9 +141,7 @@
           "name": "imagebutton_cable_button1",
           "image": "cable_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CPcabel6button"
-          },
+          "onClick": "CPcabel6button",
           "x": 225,
           "y": 125,
           "locked": false
@@ -174,9 +152,7 @@
         "data": {
           "image": "cable_6.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPcabel6"
-          },
+          "displayCondition": "CPcabel6",
           "x": 225,
           "y": 125,
           "locked": false
@@ -188,9 +164,7 @@
           "name": "imagebutton_cable_button2",
           "image": "cable_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CPcabel7button"
-          },
+          "onClick": "CPcabel7button",
           "x": 237,
           "y": 125,
           "locked": false
@@ -201,9 +175,7 @@
         "data": {
           "image": "cable_7.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPcabel7"
-          },
+          "displayCondition": "CPcabel7",
           "x": 239,
           "y": 125,
           "locked": false
@@ -215,9 +187,7 @@
           "name": "imagebutton_cable_button3",
           "image": "cable_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CPcabel8button"
-          },
+          "onClick": "CPcabel8button",
           "x": 248,
           "y": 125,
           "locked": false
@@ -228,9 +198,7 @@
         "data": {
           "image": "cable_8.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPcabel8"
-          },
+          "displayCondition": "CPcabel8",
           "x": 249,
           "y": 125,
           "locked": false
@@ -360,9 +328,7 @@
         "data": {
           "image": "lamp_indicator_yellow.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPlampind1"
-          },
+          "displayCondition": "CPlampind1",
           "x": 165,
           "y": 92,
           "locked": false
@@ -373,9 +339,7 @@
         "data": {
           "image": "lamp_indicator_red.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPlampind2"
-          },
+          "displayCondition": "CPlampind2",
           "x": 203,
           "y": 92,
           "locked": false
@@ -386,9 +350,7 @@
         "data": {
           "image": "lamp_indicator_white.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPlampind3"
-          },
+          "displayCondition": "CPlampind3",
           "x": 241,
           "y": 92,
           "locked": false
@@ -399,9 +361,7 @@
         "data": {
           "image": "lamp_indicator_cyane.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "CPlampind4"
-          },
+          "displayCondition": "CPlampind4",
           "x": 267,
           "y": 92,
           "locked": false
@@ -438,9 +398,7 @@
         }
       }
     ],
-    "onTick": {
-      "name": "CabelPannelAirlock_TIC"
-    },
+    "onTick": "CabelPannelAirlock_TIC",
     "gridSettings": {
       "sx": 18,
       "sy": 18,

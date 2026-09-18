@@ -2,6 +2,7 @@
 package net.mcreator.ssc.procedures;
 
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.bus.api.Event;
@@ -14,7 +15,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.tags.TagKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -69,9 +70,12 @@ public class Medicoments_USEProcedure {
         if (!(entity instanceof LivingEntity target)) return;
         if (!(sourceentity instanceof Player player)) return;
         
-        if (!(entity instanceof Player) && 
-            !entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("ssc_14:alive")))) {
-            return;
+        // ИСПРАВЛЕНО: Безопасный обход дженериков компилятора через встроенный холдер регистра NeoForge 26.x
+        if (!(entity instanceof Player)) {
+            var checkTag = TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath("ssc_14", "alive"));
+            if (!entity.getType().builtInRegistryHolder().is(checkTag)) {
+                return;
+            }
         }
         
         ItemStack heldItem = player.getMainHandItem();
@@ -85,7 +89,6 @@ public class Medicoments_USEProcedure {
     private static String getItemId(Item item) {
         return BuiltInRegistries.ITEM.getKey(item).toString();
     }
-    
     private static boolean hasHealableDamage(LivingEntity target, Map<String, Double> effects) {
         var nbt = target.getPersistentData();
         for (String damageType : effects.keySet()) {
@@ -114,7 +117,6 @@ public class Medicoments_USEProcedure {
         }
     }
     
-    // 🔧 НОВЫЙ МЕТОД: Принудительная отмена лечения
     private static void cancelHealing(LivingEntity target) {
         updateProgressBar(target, 0);
         setCurrentHealer(target, null);
@@ -124,19 +126,16 @@ public class Medicoments_USEProcedure {
     private static void startHealingProcess(Player player, LivingEntity target, ItemStack itemStack, Map<String, Double> effects) {
         UUID currentHealer = getCurrentHealer(target);
         
-        // 🔧 ПРОВЕРКА НА ОТМЕНУ: если тот же игрок кликает повторно → отменяем лечение
         if (currentHealer != null && currentHealer.equals(player.getUUID())) {
             cancelHealing(target);
             return;
         }
         
-        // 🔧 Если другой игрок уже лечит → не начинаем новый процесс
         if (currentHealer != null) {
             System.out.println("[SSC14-HEAL] Отмена: " + target.getName().getString() + " уже лечится другим игроком");
             return;
         }
         
-        // 🔧 Начинаем новый процесс лечения
         setCurrentHealer(target, player.getUUID());
         
         var playerNbt = player.getPersistentData();
@@ -157,7 +156,6 @@ public class Medicoments_USEProcedure {
             
             setCurrentHealer(target, null);
             
-            // 🔧 ПРОВЕРКА НА АВТО-ПОВТОР (только если не было отмены)
             if (wasHealed && itemStack.getCount() > 0 && 
                 player.getMainHandItem().is(itemStack.getItem()) &&
                 hasHealableDamage(target, effects)) {
@@ -215,7 +213,7 @@ public class Medicoments_USEProcedure {
                 updateSlowdownAttribute(player, totalAfter);
             }
             
-            System.out.println("[SSC14-HEAL] Всего: " + totalBefore + " → " + totalAfter + " | UI & скорость обновлены");
+            System.out.println("[SSC14-HEAL] Всего: " + totalBefore + " -> " + totalAfter + " | UI & скорость обновлены");
         }
         
         return wasAnyHealed;
@@ -227,7 +225,7 @@ public class Medicoments_USEProcedure {
         var attr = player.getAttribute(Attributes.MOVEMENT_SPEED);
         if (attr == null) return;
         
-        ResourceLocation slowId = ResourceLocation.parse("ssc14:slowdown");
+        Identifier slowId = Identifier.fromNamespaceAndPath("ssc14", "slowdown");
         
         if (attr.hasModifier(slowId)) {
             attr.removeModifier(slowId);

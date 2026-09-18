@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "overlay",
   "definition": {
     "priority": "NORMAL",
@@ -9,9 +9,7 @@
         "data": {
           "image": "thirsty.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "Thirst0Pr"
-          },
+          "displayCondition": "Thirst0Pr",
           "anchorPoint": "CENTER_RIGHT",
           "x": 390,
           "y": 136,

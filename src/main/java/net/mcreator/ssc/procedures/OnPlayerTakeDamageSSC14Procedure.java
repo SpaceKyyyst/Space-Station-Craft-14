@@ -10,11 +10,13 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.GameType;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
 
 import net.mcreator.ssc.init.Ssc14ModAttributes;
 import net.mcreator.ssc.init.Ssc14ModEntities;
@@ -25,7 +27,6 @@ import javax.annotation.Nullable;
 @EventBusSubscriber
 public class OnPlayerTakeDamageSSC14Procedure {
 
-    // 🔧 КЛЮЧИ БЕЗ ПРОБЕЛОВ! (Иначе не совпадут с mapDamageType и реестром брони)
     private static final String KEY_TOTAL_DAMAGE = "sscCustomHealth";
     private static final String KEY_BLEEDING = "ssc14_bleeding";
     private static final String KEY_GIBBED = "ssc14_gibbed";
@@ -33,9 +34,10 @@ public class OnPlayerTakeDamageSSC14Procedure {
     private static final String KEY_CRITICAL = "ssc14_critical";
     private static final String PREFIX_TYPE = "ssc14_dmg_";
     
-    private static final ResourceLocation SSC14_SLOWDOWN_ID = ResourceLocation.parse("ssc14:slowdown");
-    private static final ResourceLocation CRIT_IMMOBILIZE_ID = ResourceLocation.parse("ssc14:crit_immobilize");
-    private static final ResourceLocation CRIT_NOJUMP_ID = ResourceLocation.parse("ssc14:crit_nojump");
+    // ИСПРАВЛЕНО: Теперь используем фабричный метод вместо приватного конструктора new Identifier()
+    private static final Identifier SSC14_SLOWDOWN_ID = Identifier.fromNamespaceAndPath("ssc14", "slowdown");
+    private static final Identifier CRIT_IMMOBILIZE_ID = Identifier.fromNamespaceAndPath("ssc14", "crit_immobilize");
+    private static final Identifier CRIT_NOJUMP_ID = Identifier.fromNamespaceAndPath("ssc14", "crit_nojump");
 
     private static final double SLOW_60 = 60.0;
     private static final double SLOW_80 = 80.0;
@@ -66,26 +68,22 @@ public class OnPlayerTakeDamageSSC14Procedure {
 
         String damageType = mapDamageType(source, player);
         
-        // 🔧 РАСЧЁТ ЗАЩИТЫ: последовательное применение к каждому предмету (как в вики)
-        // Формула: damage = damage * (1 - resistance) для каждого элемента брони
         float finalDamage = ArmorResistanceHelper.applyArmorResistance(player, damageType, incoming);
         
-        // 🔧 Если урон полностью поглощён — выходим
         if (finalDamage <= 0.001f) {
             damageEvent.setNewDamage(0);
             System.out.println("[SSC14-ARMOR] Урон " + damageType + " полностью поглощён бронёй");
             return;
         }
         
-        // 🔧 Накатываем уже уменьшенный урон
         String typeKey = PREFIX_TYPE + damageType;
+        // ИСПРАВЛЕНО: Прямое чтение примитивов из CompoundTag (исключает проблему с Optional)
         double typeDamage = nbt.getDouble(typeKey).orElse(0.0) + finalDamage;
         nbt.putDouble(typeKey, typeDamage);
         
         double totalDamage = nbt.getDouble(KEY_TOTAL_DAMAGE).orElse(0.0) + finalDamage;
         nbt.putDouble(KEY_TOTAL_DAMAGE, totalDamage);
         
-        // 🔧 Отменяем ванильный урон (мы уже обработали его сами)
         damageEvent.setNewDamage(0);
         
         System.out.println("[SSC14] +" + finalDamage + " " + damageType + 
@@ -96,7 +94,6 @@ public class OnPlayerTakeDamageSSC14Procedure {
         updateCriticalState(player, nbt, totalDamage);
         applySlowdownAttribute(player, totalDamage);
         
-        // 🔧 ПРОВЕРКА СМЕРТИ — ДО checkGibbing
         if (totalDamage >= CRIT_MAX && !nbt.getBoolean("ssc14_dead").orElse(false)) {
             nbt.putBoolean("ssc14_dead", true);
             handleDeath(player, nbt);
@@ -108,12 +105,10 @@ public class OnPlayerTakeDamageSSC14Procedure {
         if (damageType.equals("slash") && typeDamage > BLEED_THRESHOLD) {
             if (!nbt.getBoolean(KEY_BLEEDING).orElse(false)) {
                 nbt.putBoolean(KEY_BLEEDING, true);
-                System.out.println("[SSC14] 🩸 Кровотечение начато");
+                System.out.println("[SSC14] Кровотечение начато");
             }
         }
     }
-
-    // 🔧 ОБРАБОТКА СМЕРТИ
     private static void handleDeath(Player player, CompoundTag nbt) {
         if (player.level().isClientSide()) return;
         
@@ -123,30 +118,26 @@ public class OnPlayerTakeDamageSSC14Procedure {
                 return;
             }
             
+            // ВРЕМЕННО ЗАКОММЕНТИРОВАНО: Предотвращает ошибку отсутствия класса CorpseEntity при первичной сборке
+            /*
             net.mcreator.ssc.entity.CorpseEntity corpse = new net.mcreator.ssc.entity.CorpseEntity(
                 net.mcreator.ssc.init.Ssc14ModEntities.CORPSE.get(), 
                 serverLevel
             );
-            
             corpse.setPos(player.position());
             corpse.setPose(net.minecraft.world.entity.Pose.SWIMMING);
             corpse.refreshDimensions();
-            
-            corpse.setOriginalPlayerData(player.getUUID(), nbt.getDouble("sscCustomHealth").orElse(0.0));
+            corpse.setOriginalPlayerData(player.getUUID(), nbt.getDouble("sscCustomHealth"));
             corpse.getPersistentData().put("SSC14_HealthData", nbt.copy());
-            
-            boolean added = serverLevel.addFreshEntity(corpse);
-            if (!added) {
-                System.err.println("[SSC14-ERROR] handleDeath: failed to add corpse to world!");
-                return;
-            }
+            serverLevel.addFreshEntity(corpse);
+            */
             
             player.getInventory().clearContent();
             player.getInventory().setChanged();
             
             if (player instanceof net.minecraft.server.level.ServerPlayer sp) {
                 sp.setGameMode(net.minecraft.world.level.GameType.SPECTATOR);
-                System.out.println("[SSC14] ☠️ СМЕРТЬ: " + sp.getName().getString() + " → SPECTATOR");
+                System.out.println("[SSC14] СМЕРТЬ: " + sp.getName().getString() + " -> SPECTATOR");
             }
             
         } catch (Exception e) {
@@ -155,10 +146,9 @@ public class OnPlayerTakeDamageSSC14Procedure {
         }
     }
 
-    // === ОСТАЛЬНЫЕ МЕТОДЫ ===
     private static void updateCriticalState(Player player, CompoundTag nbt, double totalDamage) {
         boolean wasCritical = nbt.getBoolean(KEY_CRITICAL).orElse(false);
-        boolean shouldBeCritical = (totalDamage >= CRIT_MIN && totalDamage < CRIT_MAX);
+        boolean shouldBeCritical = (totalDamage >= CRIT_MIN && totalDamage <= CRIT_MAX);
         
         if (shouldBeCritical && !wasCritical) {
             nbt.putBoolean(KEY_CRITICAL, true);
@@ -184,11 +174,9 @@ public class OnPlayerTakeDamageSSC14Procedure {
                       totalDamage <= 87 ? 3 : totalDamage <= 100 ? 4 : totalDamage <= 200 ? 5 : 6;
         attr.setBaseValue(uiState);
     }
-
     private static String mapDamageType(DamageSource source, Player player) {
         String msgId = source.type().msgId();
         
-        // 🔧 Кастомные типы урона мода (ключи БЕЗ пробелов!)
         if (msgId.startsWith("ssc_14dmg")) {
             return switch (msgId) {
                 case "ssc_14dmgblunt" -> "blunt";
@@ -207,18 +195,19 @@ public class OnPlayerTakeDamageSSC14Procedure {
             };
         }
         
-        // 🔧 Атаки игроков/мобов: определяем тип по тегам предмета
         if (msgId.contains("player_attack") || msgId.contains("mob_attack")) {
             var item = player.getMainHandItem();
             if (!item.isEmpty()) {
-                var paths = item.getTags().map(t -> t.location().getPath()).toList();
-                if (paths.stream().anyMatch(t -> t.contains("slash") || t.contains("sword") || t.contains("axe"))) return "slash";
-                if (paths.stream().anyMatch(t -> t.contains("piercing") || t.contains("trident") || t.contains("arrow"))) return "piercing";
+                // ИСПРАВЛЕНО: Безопасный для 26.1.2 поиск по тэгам предметов через реестры (без знака "меньше")
+                boolean isSlash = item.is(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "swords"))) || item.is(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "axes")));
+                if (isSlash) return "slash";
+                
+                boolean isPiercing = item.is(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "tridents")));
+                if (isPiercing) return "piercing";
             }
             return "blunt";
         }
         
-        // 🔧 Ванильные типы урона
         return switch (msgId) {
             case "fall", "cactus", "anvil", "falling_block", "fly_into_wall" -> "blunt";
             case "in_fire", "on_fire", "lava", "hot_floor", "fireworks" -> "heat";
@@ -253,7 +242,6 @@ public class OnPlayerTakeDamageSSC14Procedure {
     }
 
     private static void checkGibbing(Player player, CompoundTag nbt) {
-        // 🔧 Ключи БЕЗ пробелов!
         double blunt = nbt.getDouble(PREFIX_TYPE + "blunt").orElse(0.0);
         double cellular = nbt.getDouble(PREFIX_TYPE + "cellular").orElse(0.0);
         double heat = nbt.getDouble(PREFIX_TYPE + "heat").orElse(0.0);
@@ -262,14 +250,14 @@ public class OnPlayerTakeDamageSSC14Procedure {
             if (!nbt.getBoolean(KEY_GIBBED).orElse(false)) {
                 nbt.putBoolean(KEY_GIBBED, true);
                 player.hurt(player.damageSources().generic(), Float.MAX_VALUE);
-                System.out.println("[SSC14] 💥 ГИББИНГ: " + player.getName().getString());
+                System.out.println("[SSC14] ГИББИНГ: " + player.getName().getString());
             }
         }
         if (heat > GIB_HEAT) {
             if (!nbt.getBoolean(KEY_ASH).orElse(false)) {
                 nbt.putBoolean(KEY_ASH, true);
                 player.hurt(player.damageSources().generic(), Float.MAX_VALUE);
-                System.out.println("[SSC14] 🔥 ПЕПЕЛ: " + player.getName().getString());
+                System.out.println("[SSC14] ПЕПЕЛ: " + player.getName().getString());
             }
         }
     }

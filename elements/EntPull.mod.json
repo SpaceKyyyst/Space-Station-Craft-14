@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "attribute",
   "definition": {
     "name": "Ent Pull",
@@ -10,12 +10,8 @@
     "addToAllEntities": false,
     "addToPlayers": true,
     "entities": [
-      {
-        "value": "CUSTOM:WallCarcaseEntit"
-      },
-      {
-        "value": "CUSTOM:IDConsoleENTITY"
-      }
+      "CUSTOM:WallCarcaseEntit",
+      "CUSTOM:IDConsoleENTITY"
     ]
   }
 }

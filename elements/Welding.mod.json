@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "tool",
   "definition": {
     "toolType": "MultiTool",
@@ -15,9 +15,7 @@
       "fixedValue": []
     },
     "creativeTabs": [
-      {
-        "value": "CUSTOM:SSC14Items"
-      }
+      "CUSTOM:SSC14Items"
     ],
     "efficiency": 4.0,
     "attackSpeed": 1.0,
@@ -34,14 +32,8 @@
     "attributeModifiers": [],
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
-    "onRightClickedInAir": {
-      "name": "WelderOnOffPr"
-    },
-    "onEntityHitWith": {
-      "name": "WeldingOffDAMAGE"
-    },
-    "onItemInUseTick": {
-      "name": "Welding_Fuel_chek"
-    }
+    "onRightClickedInAir": "WelderOnOffPr",
+    "onEntityHitWith": "WeldingOffDAMAGE",
+    "onItemInUseTick": "Welding_Fuel_chek"
   }
 }

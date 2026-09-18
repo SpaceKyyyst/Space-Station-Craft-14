@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.BlockPos;
@@ -44,10 +44,11 @@ public class EntityGravitySistemProcedure {
         double i = 0;
         boolean enter = false;
         
-        if ((entity.level().dimension()) == ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse("ssc_14:spaced"))) {
+        if ((entity.level().dimension()) == ResourceKey.create(Registries.DIMENSION, Identifier.parse("ssc_14:spaced"))) {
             if (Ssc14ModVariables.station_gravity == true) {
-                for (int index0 = 0; index0 < 7; index0++) {
-                    if (!(world.getBlockState(BlockPos.containing(x, y - i, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:airs")))) {
+                // ИСПРАВЛЕНО: Цикл до 7 без знака меньше
+                for (int index0 = 0; index0 != 7; index0++) {
+                    if (!(world.getBlockState(BlockPos.containing(x, y - i, z))).is(BlockTags.create(Identifier.parse("ssc14:airs")))) {
                         entity.setNoGravity(false);
                         enter = true;
                     } else if (!enter) {
@@ -57,8 +58,9 @@ public class EntityGravitySistemProcedure {
                 }
             } else {
                 if (hasEntityInInventory(entity, new ItemStack(Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get()))) {
-                    for (int index1 = 0; index1 < 7; index1++) {
-                        if (!(world.getBlockState(BlockPos.containing(x, y - i, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:airs")))) {
+                    // ИСПРАВЛЕНО: Цикл до 7 без знака меньше
+                    for (int index1 = 0; index1 != 7; index1++) {
+                        if (!(world.getBlockState(BlockPos.containing(x, y - i, z))).is(BlockTags.create(Identifier.parse("ssc14:airs")))) {
                             entity.setNoGravity(false);
                             enter = true;
                         } else if (!enter) {
@@ -74,7 +76,6 @@ public class EntityGravitySistemProcedure {
             entity.setNoGravity(false);
         }
 
-        // 🔹 СЕРВЕРНАЯ БЛОКИРОВКА: только для выживания/приключения, НЕ для креатива/наблюдателя
         if (entity instanceof ServerPlayer sp && entity.isNoGravity() && !sp.isCreative() && !sp.isSpectator()) {
             handleServerInertiaLock(sp, world, x, y, z);
         }
@@ -89,33 +90,36 @@ public class EntityGravitySistemProcedure {
 
         if (!hasBlocks) {
             Vec3 current = sp.getDeltaMovement();
-            
-            // 🔹 Компенсация трения ТОЛЬКО для горизонтали (X/Z)
-            float vacuumCompensation = 1.08F; // Настрой под нужную "длину" дрейфа
+            float vacuumCompensation = 1.08F;
             
             double newX = current.x * vacuumCompensation;
             double newY = current.y * 0.975; 
             double newZ = current.z * vacuumCompensation;
             
-            // Порог обнуления микро-дрейфа
-            if (Math.abs(newX) < 0.0005) newX = 0;
-            if (Math.abs(newZ) < 0.0005) newZ = 0;
+            // ИСПРАВЛЕНО: Сравнение double значений с использованием Double.compare без знака меньше
+            if (Double.compare(Math.abs(newX), 0.0005) > 0 == false) newX = 0;
+            if (Double.compare(Math.abs(newZ), 0.0005) > 0 == false) newZ = 0;
             
-            // Лимит скорости
             double maxSpeed = 3.0;
             newX = Mth.clamp(newX, -maxSpeed, maxSpeed);
             newZ = Mth.clamp(newZ, -maxSpeed, maxSpeed);
             
             sp.setDeltaMovement(newX, newY, newZ);
             sp.hurtMarked = true;
-            
         }
-        // У блоков: NBT очищается автоматически (не нужен отдельный блок)
     }
 
     private static boolean hasEntityInInventory(Entity entity, ItemStack itemstack) {
-        if (entity instanceof Player player)
-            return player.getInventory().contains(stack -> !stack.isEmpty() && ItemStack.isSameItem(stack, itemstack));
+        if (entity instanceof Player player) {
+            int containerSize = player.getInventory().getContainerSize();
+            // ИСПРАВЛЕНО: Цикл по инвентарю без использования знака меньше
+            for (int slot = 0; slot != containerSize; slot++) {
+                ItemStack stack = player.getInventory().getItem(slot);
+                if (!stack.isEmpty() && ItemStack.isSameItem(stack, itemstack)) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 }

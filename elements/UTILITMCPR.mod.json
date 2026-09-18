@@ -1,0 +1,8 @@
+{
+  "_fv": 89,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"spawn_particle\"><field name=\"particle\">CUSTOM:Spark</field><value name=\"x\"><block type=\"coord_x\"></block></value><value name=\"y\"><block type=\"coord_y\"></block></value><value name=\"z\"><block type=\"coord_z\"></block></value><value name=\"xs\"><block type=\"math_number\"><field name=\"NUM\">0</field></block></value><value name=\"ys\"><block type=\"math_number\"><field name=\"NUM\">2</field></block></value><value name=\"zs\"><block type=\"math_number\"><field name=\"NUM\">1</field></block></value><next><block type=\"spawn_particle_multi\"><field name=\"particle\">CLOUD</field><value name=\"count\"><block type=\"math_number\"><field name=\"NUM\">5</field></block></value><value name=\"x\"><block type=\"coord_x\"></block></value><value name=\"y\"><block type=\"coord_y\"></block></value><value name=\"z\"><block type=\"coord_z\"></block></value><value name=\"dx\"><block type=\"math_number\"><field name=\"NUM\">3</field></block></value><value name=\"dy\"><block type=\"math_number\"><field name=\"NUM\">3</field></block></value><value name=\"dz\"><block type=\"math_number\"><field name=\"NUM\">3</field></block></value><value name=\"speed\"><block type=\"math_number\"><field name=\"NUM\">1</field></block></value><next><block type=\"entity_close_gui\"><value name=\"entity\"><block type=\"entity_from_deps\"></block></value></block></next></block></next></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

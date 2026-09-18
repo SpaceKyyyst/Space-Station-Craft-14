@@ -4,6 +4,5 @@
     "all": "ssc_14:block/tile_fl_steel_damaged3_texture",
     "particle": "ssc_14:block/tile_fl_steel_damaged1_texture",
     "2": "ssc_14:block/tile_fl_steel_damaged3_texture"
-  },
-  "render_type": "cutout"
+  }
 }

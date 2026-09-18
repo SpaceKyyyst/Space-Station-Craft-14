@@ -1,20 +1,38 @@
 {
-  "ultrawarm": false,
-  "natural": false,
-  "piglin_safe": false,
-  "respawn_anchor_works": false,
-  "bed_works": true,
-  "has_raids": false,
+  "attributes": {
+    "minecraft:audio/background_music": {
+      "creative": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.creative"
+      },
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.game"
+      }
+    },
+    "minecraft:visual/ambient_light_color": "#0a0a0a",
+    "minecraft:visual/sunrise_sunset_color": {
+      "modifier": "override",
+      "argument": 0
+    },
+    "minecraft:gameplay/can_start_raid": false,
+    "minecraft:gameplay/respawn_anchor_works": false
+  },
   "has_skylight": false,
   "has_ceiling": false,
+  "has_ender_dragon_fight": false,
   "coordinate_scale": 1,
   "ambient_light": 0,
   "infiniburn": "#minecraft:infiniburn_overworld",
-  "fixed_time": 18000,
+  "has_fixed_time": true,
+  "timelines": "ssc_14:spaced_fixed",
+  "default_clock": "minecraft:overworld",
   "min_y": 0,
   "height": 256,
   "logical_height": 256,
   "monster_spawn_light_level": 0,
   "monster_spawn_block_light_limit": 0,
-  "effects": "ssc_14:spaced"
+  "skybox": "overworld"
 }

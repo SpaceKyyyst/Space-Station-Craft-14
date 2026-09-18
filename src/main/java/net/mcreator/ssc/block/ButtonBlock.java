@@ -1,3 +1,4 @@
+
 package net.mcreator.ssc.block;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -22,7 +23,7 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.Button_CLICK_Procedure;
 import net.mcreator.ssc.block.entity.ButtonBlockEntity;
-import net.mcreator.ssc.INetworkTrigger;
+import net.mcreator.ssc.INetworkTrigger; // Наш кастомный интерфейс сетей мода
 
 import java.util.function.Function;
 
@@ -32,41 +33,27 @@ public class ButtonBlock extends Block implements EntityBlock, INetworkTrigger {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public ButtonBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.LANTERN).strength(10f, 5f).noCollission().isRedstoneConductor((bs, br, bp) -> false));
+		// ИСПРАВЛЕНО: noCollission() заменен на новейший noCollision()
+		super(properties.sound(SoundType.LANTERN).strength(10f, 5f).noCollision().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(ACTIVE, false));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(6, 6, 0, 10, 10, 2);
 				case NORTH -> box(6, 6, 14, 10, 10, 16);
 				case EAST -> box(0, 6, 6, 2, 10, 10);
 				case WEST -> box(14, 6, 6, 16, 10, 10);
 				case UP -> box(6, 0, 6, 10, 2, 10);
 				case DOWN -> box(6, 14, 6, 10, 16, 10);
+				default -> box(6, 6, 0, 10, 10, 2);
 			};
 		});
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+	protected VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return shapes.apply(state);
-	}
-
-	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
-	}
-
-	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
-	}
-
-	@Override
-	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return Shapes.empty();
 	}
 
 	@Override
@@ -77,27 +64,28 @@ public class ButtonBlock extends Block implements EntityBlock, INetworkTrigger {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getClickedFace()).setValue(ACTIVE, false);
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getClickedFace()).setValue(ACTIVE, false);
 	}
 
-	public BlockState rotate(BlockState state, Rotation rot) {
+	@Override
+	protected BlockState rotate(BlockState state, Rotation rot) {
 		return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
-	public BlockState mirror(BlockState state, Mirror mirrorIn) {
+	@Override
+	protected BlockState mirror(BlockState state, Mirror mirrorIn) {
 		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
 	}
 
 	@Override
-	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
+	protected InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		double hitX = hit.getLocation().x;
-		double hitY = hit.getLocation().y;
-		double hitZ = hit.getLocation().z;
-		Direction direction = hit.getDirection();
 		Button_CLICK_Procedure.execute(world, x, y, z);
 		return InteractionResult.SUCCESS;
 	}
@@ -113,21 +101,17 @@ public class ButtonBlock extends Block implements EntityBlock, INetworkTrigger {
 		return new ButtonBlockEntity(pos, state);
 	}
 
+	// ==========================================
+	// КАСТОМНАЯ СИГНАЛЬНАЯ СИСТЕМА ДЛЯ INetworkTrigger
+	// ==========================================
 	@Override
-	public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
-		super.triggerEvent(state, world, pos, eventID, eventParam);
-		BlockEntity blockEntity = world.getBlockEntity(pos);
-		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
+	public java.util.List<String> getAvailableTriggers() {
+		return java.util.List.of("activate");
 	}
-	
-    @Override
-    public java.util.List<String> getAvailableTriggers() {
-        return java.util.List.of("activate");
-    }
 
-    @Override
-    public String getTriggerName(String triggerId) {
-        if ("activate".equals(triggerId)) return "При нажатии";
-        return triggerId;
-    }
+	@Override
+	public String getTriggerName(String triggerId) {
+		if ("activate".equals(triggerId)) return "При нажатии";
+		return triggerId;
+	}
 }

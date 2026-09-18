@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 1,
@@ -296,9 +296,7 @@
           "name": "imagebutton_microwawe_gui_button",
           "image": "microwawe_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MicrwGUIbut1"
-          },
+          "onClick": "MicrwGUIbut1",
           "x": 233,
           "y": 66,
           "locked": true
@@ -310,9 +308,7 @@
           "name": "imagebutton_microwawe_gui_button1",
           "image": "microwawe_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MicrwGUIbut5"
-          },
+          "onClick": "MicrwGUIbut5",
           "x": 251,
           "y": 66,
           "locked": true
@@ -324,9 +320,7 @@
           "name": "imagebutton_microwawe_gui_button2",
           "image": "microwawe_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MicrwGUIbut10"
-          },
+          "onClick": "MicrwGUIbut10",
           "x": 269,
           "y": 66,
           "locked": true
@@ -338,9 +332,7 @@
           "name": "imagebutton_microwawe_gui_button3",
           "image": "microwawe_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MicrwGUIbut15"
-          },
+          "onClick": "MicrwGUIbut15",
           "x": 233,
           "y": 80,
           "locked": true
@@ -352,9 +344,7 @@
           "name": "imagebutton_microwawe_gui_button4",
           "image": "microwawe_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MicrwGUIbut20"
-          },
+          "onClick": "MicrwGUIbut20",
           "x": 251,
           "y": 80,
           "locked": true
@@ -366,9 +356,7 @@
           "name": "imagebutton_microwawe_gui_button5",
           "image": "microwawe_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MicrwGUIbut25"
-          },
+          "onClick": "MicrwGUIbut25",
           "x": 269,
           "y": 80,
           "locked": true
@@ -380,9 +368,7 @@
           "name": "imagebutton_microwawe_gui_button6",
           "image": "microwawe_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MicrwGUIbutC"
-          },
+          "onClick": "MicrwGUIbutC",
           "x": 233,
           "y": 94,
           "locked": true
@@ -394,9 +380,7 @@
           "name": "imagebutton_microwawe_gui_button7",
           "image": "microwawe_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MicrwGUIbut30"
-          },
+          "onClick": "MicrwGUIbut30",
           "x": 251,
           "y": 94,
           "locked": true
@@ -408,9 +392,7 @@
           "name": "imagebutton_microwawe_gui_button8",
           "image": "microwawe_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "MicrwGUIbutE"
-          },
+          "onClick": "MicrwGUIbutE",
           "x": 269,
           "y": 94,
           "locked": true

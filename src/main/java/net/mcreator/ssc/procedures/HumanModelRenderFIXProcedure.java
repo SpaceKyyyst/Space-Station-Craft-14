@@ -21,22 +21,19 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier; 
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.client.renderer.entity.state.PlayerRenderState;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.model.PlayerModel;
-import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.client.renderer.entity.player.AvatarRenderer;
+import net.minecraft.client.model.player.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 
-import net.mcreator.ssc.init.Ssc14ModRenderStateModifiers;
 import net.mcreator.ssc.init.Ssc14ModHumanoidModels;
+import net.mcreator.ssc.init.Ssc14ModRenderStateModifiers; // ДОБАВЛЕН ИМПОРТ МОДИФИКАТОРОВ СТЕЙТА
 
 import javax.annotation.Nullable;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -44,7 +41,6 @@ import java.util.Collection;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
 
 import top.theillusivec4.curios.api.CuriosApi;
 
@@ -53,14 +49,13 @@ public class HumanModelRenderFIXProcedure {
 
 	public static Collection<Runnable> capes = new ConcurrentLinkedQueue<>();
 
-	// ==========================================
-	// 1. Рендер тела (Вид от 3-го лица)
-	// ==========================================
 	@SubscribeEvent
 	public static void onPlayerRendered(RenderPlayerEvent.Pre event) {
-		Entity entity = (Entity) event.getRenderState().getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
-		EntityModel<?> entityModel = event.getRenderer().getModel();
-		
+		// ИСПРАВЛЕНО НА ОСНОВЕ ЭТАЛОНА: Извлекаем игрока через RenderState RenderData
+		Player entity = (Player) event.getRenderState().getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
+		AvatarRenderer renderer = (AvatarRenderer) event.getRenderer();
+		EntityModel<?> entityModel = (EntityModel<?>) renderer.getModel();
+
 		if (entityModel instanceof PlayerModel playerModel) {
 			playerModel.head.skipDraw = true;
 			playerModel.hat.skipDraw = true;
@@ -79,131 +74,61 @@ public class HumanModelRenderFIXProcedure {
 		executeBodyRender(entity, entityModel, event, event.getPoseStack());
 	}
 
-	// ==========================================
-	// 2. Рендер руки (Вид от 1-го лица)
-	// ==========================================
 	@SubscribeEvent
 	public static void onArmRendered(RenderArmEvent event) {
 		Minecraft mc = Minecraft.getInstance();
 		if (mc.player == null || mc.getEntityRenderDispatcher() == null) return;
 
-		if (mc.player.isSpectator()) {
-			return; 
-		}
+		if (mc.player.isSpectator()) return;
 
 		event.setCanceled(true);
 
 		var renderer = mc.getEntityRenderDispatcher().getRenderer(mc.player);
-		if (!(renderer instanceof PlayerRenderer playerRenderer)) return;
+		if (!(renderer instanceof AvatarRenderer avatarRenderer)) return;
 
-		PlayerModel vanillaModel = (PlayerModel) playerRenderer.getModel();
+		PlayerModel vanillaModel = (PlayerModel) avatarRenderer.getModel();
 		PlayerModel customModel = Ssc14ModHumanoidModels.HUMAN_MODEL;
 
 		boolean isLeft = event.getArm() == HumanoidArm.LEFT;
-		
-		ModelPart vanillaArm = isLeft ? vanillaModel.leftArm : vanillaModel.rightArm;
-		ModelPart vanillaSleeve = isLeft ? vanillaModel.leftSleeve : vanillaModel.rightSleeve;
-		
 		ModelPart customArm = isLeft ? customModel.leftArm : customModel.rightArm;
-		ModelPart customSleeve = isLeft ? customModel.leftSleeve : customModel.rightSleeve;
 
 		PoseStack poseStack = event.getPoseStack();
 		poseStack.pushPose();
 
-		vanillaArm.resetPose();
-		vanillaSleeve.resetPose();
 		customArm.resetPose();
-		customSleeve.resetPose();
+		if (isLeft) vanillaModel.leftArm.resetPose(); else vanillaModel.rightArm.resetPose();
 
-		customArm.copyFrom(vanillaArm);
-		customSleeve.copyFrom(vanillaSleeve);
+		customArm.loadPose(isLeft ? vanillaModel.leftArm.storePose() : vanillaModel.rightArm.storePose());
 
 		boolean armVisible = customArm.skipDraw;
-		boolean sleeveVisible = customSleeve.skipDraw;
 		customArm.skipDraw = false;
-		customSleeve.skipDraw = false;
 
-		ResourceLocation texture = ResourceLocation.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png");
-		VertexConsumer buffer = event.getMultiBufferSource().getBuffer(RenderType.armorCutoutNoCull(texture));
+		Identifier texture = Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png");
+		VertexConsumer buffer = Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(RenderTypes.armorCutoutNoCull(texture));
 		int packedLight = event.getPackedLight();
 
 		customArm.render(poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY);
-		customSleeve.render(poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY);
 
 		customArm.skipDraw = armVisible;
-		customSleeve.skipDraw = sleeveVisible;
-
 		poseStack.popPose();
 	}
-
-	// ==========================================
-	// 3. Вспомогательные методы
-	// ==========================================
-	public static void offsetScale(PlayerModel model, Vector3f offset) {
-		model.head.offsetScale(offset);
-		model.head.y += offset.x() > 0 ? 0.05 : -0.05;
-		model.body.offsetScale(offset);
-		model.leftArm.offsetScale(offset);
-		model.rightArm.offsetScale(offset);
-		model.leftLeg.offsetScale(offset);
-		model.rightLeg.offsetScale(offset);
-		model.hat.offsetScale(offset);
-		model.hat.y += offset.x() > 0 ? 0.05 : -0.05;
-		model.jacket.offsetScale(offset);
-		model.leftSleeve.offsetScale(offset);
-		model.rightSleeve.offsetScale(offset);
-		model.leftPants.offsetScale(offset);
-		model.rightPants.offsetScale(offset);
-	}
-
-	public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer, PlayerRenderState state) {
+	public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, VertexConsumer vertexConsumer) {
 		PoseStack poseStack = playerRenderEvent.getPoseStack();
 		poseStack.pushPose();
-		
-		Entity entity = state.getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
-		
-		CompoundTag playerData = state.getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY).getPersistentData();
-		float oldAnimationProgress = 0;
-		float oldAgeInTicks = 0;
-		if (playerData.contains("PlayerAnimationProgress")) {
-			oldAnimationProgress = playerData.getFloatOr("PlayerAnimationProgress", 0);
-			oldAgeInTicks = playerData.getFloatOr("LastTickTime", 0);
-		}
-		
-		model.setupAnim(state);
-		if (playerData.contains("PlayerAnimationProgress") && playerData.getFloatOr("PlayerAnimationProgress", 0) > 0) {
-			playerData.putFloat("PlayerAnimationProgress", oldAnimationProgress);
-			playerData.putFloat("LastTickTime", oldAgeInTicks);
-		} else if (oldAnimationProgress > 0) {
-			model.setupAnim(state);
-		}
-		
-		playerRenderEvent.getRenderer().setupRotations(state, poseStack, state.bodyRot, 0);
-		
+
 		poseStack.scale(-0.938f, -0.938f, 0.938f);
 		poseStack.translate(0.0D, -1.501, 0.0D);
-		Vector3f offset = new Vector3f(0.015f);
-		offsetScale(model, offset);
+		
 		if (!capes.isEmpty()) {
 			capes.forEach(cape -> cape.run());
 			capes.clear();
 		}
-		model.renderToBuffer(poseStack, vertexConsumer, playerRenderEvent.getPackedLight(), LivingEntityRenderer.getOverlayCoords(state, 0));
-		offset.negate();
-		offsetScale(model, offset);
-		poseStack.popPose();
-	}
-
-	@SuppressWarnings("unchecked")
-	public static void renderEntity(RenderPlayerEvent playerRenderEvent, EntityModel<?> model, VertexConsumer vertexConsumer, LivingEntityRenderState state) {
-		PoseStack poseStack = playerRenderEvent.getPoseStack();
-		poseStack.pushPose();
-		playerRenderEvent.getRenderer().setupRotations((PlayerRenderState) state, poseStack, state.bodyRot, 0);
 		
-		poseStack.scale(-0.938f, -0.938f, 0.938f);
-		poseStack.translate(0.0D, -1.501, 0.0D);
-		((EntityModel<LivingEntityRenderState>) model).setupAnim(state);
-		model.renderToBuffer(poseStack, vertexConsumer, playerRenderEvent.getPackedLight(), LivingEntityRenderer.getOverlayCoords(state, 0));
+		// ИСПРАВЛЕНО НА ОСНОВЕ ЭТАЛОНА: Извлекаем LivingEntity и его запрятанное поле освещения из стейта
+		var state = playerRenderEvent.getRenderState();
+		int lightCoords = state.lightCoords;
+		
+		model.renderToBuffer(poseStack, vertexConsumer, lightCoords, OverlayTexture.NO_OVERLAY);
 		poseStack.popPose();
 	}
 
@@ -212,13 +137,18 @@ public class HumanModelRenderFIXProcedure {
 		if (invOpt.isEmpty()) return false;
 		var handler = invOpt.get().getStacksHandler(slotId);
 		if (handler.isEmpty()) return false;
-		var stacks = handler.get().getStacks();
-		for (int i = 0; i < stacks.getSlots(); i++) {
+		
+		net.neoforged.neoforge.items.IItemHandlerModifiable stacks = handler.get().getStacks();
+		if (stacks == null) return false;
+		
+		int slotsCount = stacks.getSlots();
+		for (int i = 0; slotsCount > i; i++) {
 			ItemStack stack = stacks.getStackInSlot(i);
 			if (stack.isEmpty()) continue;
-			ResourceLocation loc = BuiltInRegistries.ITEM.getKey(stack.getItem());
-			if (stack.is(ItemTags.create(ResourceLocation.parse(tagMain)))
-					|| stack.is(ItemTags.create(ResourceLocation.parse(tagAlt)))
+			Identifier loc = BuiltInRegistries.ITEM.getKey(stack.getItem());
+			if (loc == null) continue;
+			if (stack.is(ItemTags.create(Identifier.parse(tagMain)))
+					|| stack.is(ItemTags.create(Identifier.parse(tagAlt)))
 					|| loc.toString().equals(itemMain)
 					|| loc.toString().equals(itemAlt)) {
 				return true;
@@ -250,7 +180,6 @@ public class HumanModelRenderFIXProcedure {
 			humanModel.leftPants.skipDraw = false;
 			humanModel.rightPants.skipDraw = false;
 			humanModel.head.skipDraw = false;
-			humanModel.head.getChild("head").skipDraw = false;
 			humanModel.hat.skipDraw = false;
 
 			boolean hasHardsuitBody = false;
@@ -280,14 +209,13 @@ public class HumanModelRenderFIXProcedure {
 
 			if (hasHardsuitHelmet) {
 				humanModel.head.skipDraw = true;
-				humanModel.head.getChild("head").skipDraw = true;
 				humanModel.hat.skipDraw = true;
 			}
 
 			poseStack.scale((float) model_scale, (float) model_scale, (float) model_scale);
 			{
-				ResourceLocation texture = ResourceLocation.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png");
-				renderHumanoid(playerRenderEvent, Ssc14ModHumanoidModels.HUMAN_MODEL, playerRenderEvent.getMultiBufferSource().getBuffer(RenderType.armorCutoutNoCull(texture)), playerRenderEvent.getRenderState());
+				Identifier texture = Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png");
+				renderHumanoid(playerRenderEvent, Ssc14ModHumanoidModels.HUMAN_MODEL, Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(RenderTypes.armorCutoutNoCull(texture)));
 			}
 			poseStack.scale((float) clothes_scale, (float) clothes_scale, (float) clothes_scale);
 		}

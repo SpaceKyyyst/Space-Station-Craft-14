@@ -11,7 +11,7 @@ import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.phys.BlockHitResult;
@@ -38,10 +38,11 @@ public class Multitul_UI_ConditionsProcedure {
 		CustomData customData = mainHand.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
 		int toolMode = 1;
 		
-		if (!customData.isEmpty() && customData.getUnsafe().contains("Mode")) {
-			var modeOpt = customData.getUnsafe().getDouble("Mode");
-			if (modeOpt.isPresent()) {
-				toolMode = modeOpt.get().intValue();
+		// ИСПРАВЛЕНО: getUnsafe() заменен на copyTag() с безопасной распаковкой примитивов double под 26.1.2
+		if (!customData.isEmpty()) {
+			var tag = customData.copyTag();
+			if (tag.contains("Mode")) {
+				toolMode = tag.getDouble("Mode").orElse(0.0).intValue();
 			}
 		}
 		
@@ -68,7 +69,7 @@ public class Multitul_UI_ConditionsProcedure {
 			BlockPos pos = blockHit.getBlockPos();
 			BlockState state = world.getBlockState(pos);
 
-			if (state.is(BlockTags.create(ResourceLocation.parse("ssc14:multitul_check")))) {
+			if (state.is(BlockTags.create(Identifier.fromNamespaceAndPath("ssc14", "multitul_check")))) {
 				String propertyName = targetType.getProperty().getName();
 				boolean hasTargetCable = getPropertyByName(state, propertyName) instanceof BooleanProperty bp && state.getValue(bp);
 
@@ -81,7 +82,6 @@ public class Multitul_UI_ConditionsProcedure {
 							boolean networkFound = false;
 							for (EnergyNetwork net : EnergyNetworkManager.getNetworks(world, targetType)) {
 								if (net.getCables().contains(pos)) {
-									// ИСПРАВЛЕНИЕ ДЛЯ 1.21.8: Используем метод sendToPlayer вместо .PLAYER.send()
 									PacketDistributor.sendToPlayer(serverPlayer, new MultitoolDataPacket(
 										toolMode, net.currentPower, net.batteryPower, net.theoreticalSupply, net.idealConsumption,
 										net.inputStored, net.inputMax, net.outputStored, net.outputMax
@@ -91,7 +91,6 @@ public class Multitul_UI_ConditionsProcedure {
 								}
 							}
 							if (!networkFound) {
-								// ИСПРАВЛЕНИЕ ДЛЯ 1.21.8: Пустой пакет через sendToPlayer
 								PacketDistributor.sendToPlayer(serverPlayer, new MultitoolDataPacket(toolMode, 0, 0, 0, 0, 0, 0, 0, 0));
 							}
 						}
@@ -99,7 +98,6 @@ public class Multitul_UI_ConditionsProcedure {
 					return true;
 				} else {
 					if (!world.isClientSide() && entity instanceof ServerPlayer serverPlayer) {
-						// ИСПРАВЛЕНИЕ ДЛЯ 1.21.8: Пакет сброса через sendToPlayer
 						PacketDistributor.sendToPlayer(serverPlayer, new MultitoolDataPacket(toolMode, 0, 0, 0, 0, 0, 0, 0, 0));
 					}
 				}

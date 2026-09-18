@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "tool",
   "definition": {
     "toolType": "MultiTool",
@@ -30,17 +30,9 @@
     "attributeModifiers": [],
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
-    "onRightClickedInAir": {
-      "name": "WelderOnOffPr"
-    },
-    "onEntityHitWith": {
-      "name": "WelderOnDAMAGE"
-    },
-    "onItemInInventoryTick": {
-      "name": "ActiveWelder_FuelMin"
-    },
-    "onItemInUseTick": {
-      "name": "Welding_Fuel_chek"
-    }
+    "onRightClickedInAir": "WelderOnOffPr",
+    "onEntityHitWith": "WelderOnDAMAGE",
+    "onItemInInventoryTick": "ActiveWelder_FuelMin",
+    "onItemInUseTick": "Welding_Fuel_chek"
   }
 }

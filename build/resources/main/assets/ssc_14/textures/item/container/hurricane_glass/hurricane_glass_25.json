@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "ssc:item/container/hurricane_glass/hurricane_glass",
-    "layer1": "ssc:item/container/hurricane_glass/hurricane_glass_25"
-  }
-}

@@ -1,6 +1,7 @@
 {
   "pack": {
-    "pack_format": 81,
+    "min_format": 101.1,
+    "max_format": 101.1,
     "description": "Повторённая в Minecraft игра Space Station 14. Основатель - Space Kyyyst. В разработке принимали участие: almazar3, Mr_irak, Water Melon, sad2284, Подхлебкин, VoiceInTheVoid. "
   }
 }

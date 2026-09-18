@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
@@ -47,17 +48,17 @@ public class ClosetSecureBlock extends Block implements EntityBlock {
 		return this.getShapeForEachState(state -> {
 			if (state.getValue(OPEN) == true && state.getValue(BLOCKED) == false) {
 				return switch (state.getValue(FACING)) {
-					default -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(2, 1, 2, 14, 31, 16), BooleanOp.ONLY_FIRST);
 					case NORTH -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(2, 1, 0, 14, 31, 14), BooleanOp.ONLY_FIRST);
 					case EAST -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(2, 1, 2, 16, 31, 14), BooleanOp.ONLY_FIRST);
 					case WEST -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(0, 1, 2, 14, 31, 14), BooleanOp.ONLY_FIRST);
+					default -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(2, 1, 2, 14, 31, 16), BooleanOp.ONLY_FIRST);
 				};
 			}
 			return switch (state.getValue(FACING)) {
-				default -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(2, 1, 2, 14, 31, 14), BooleanOp.ONLY_FIRST);
 				case NORTH -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(2, 1, 2, 14, 31, 14), BooleanOp.ONLY_FIRST);
 				case EAST -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(2, 1, 2, 14, 31, 14), BooleanOp.ONLY_FIRST);
 				case WEST -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(2, 1, 2, 14, 31, 14), BooleanOp.ONLY_FIRST);
+				default -> Shapes.join(box(1, 0, 1, 15, 32, 15), box(2, 1, 2, 14, 31, 14), BooleanOp.ONLY_FIRST);
 			};
 		});
 	}
@@ -73,7 +74,7 @@ public class ClosetSecureBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 0;
 	}
 
@@ -90,7 +91,10 @@ public class ClosetSecureBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(OPEN, false).setValue(BLOCKED, true);
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(OPEN, false).setValue(BLOCKED, true);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -124,8 +128,8 @@ public class ClosetSecureBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
-		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, ItemStack toolStack, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, toolStack, willHarvest, fluid);
 		Closet_DestroyProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		return retval;
 	}

@@ -1,6 +1,5 @@
-package net.mcreator.ssc.procedures;
 
-import org.checkerframework.checker.units.qual.t;
+package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
@@ -58,8 +57,8 @@ public class HelsResetCommandProcedure {
 		}
 		// Сбрасываем модификатор скорости
 		var speedAttr = player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED);
-		if (speedAttr != null && speedAttr.hasModifier(net.minecraft.resources.ResourceLocation.parse("ssc14:slowdown"))) {
-			speedAttr.removeModifier(net.minecraft.resources.ResourceLocation.parse("ssc14:slowdown"));
+		if (speedAttr != null && speedAttr.hasModifier(net.minecraft.resources.Identifier.parse("ssc14:slowdown"))) {
+			speedAttr.removeModifier(net.minecraft.resources.Identifier.parse("ssc14:slowdown"));
 		}
 		// 🔧 Сбрасываем mayBuild (на случай, если был в крите)
 		player.getAbilities().mayBuild = true;

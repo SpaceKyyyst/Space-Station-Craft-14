@@ -1,11 +1,9 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "tab",
   "definition": {
     "name": "SSC14: Items",
-    "icon": {
-      "value": "CUSTOM:Glass"
-    },
+    "icon": "CUSTOM:Glass",
     "showSearch": false
   }
 }

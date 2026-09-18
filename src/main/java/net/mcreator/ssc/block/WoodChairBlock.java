@@ -30,17 +30,17 @@ public class WoodChairBlock extends Block {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public WoodChairBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.WOOD).strength(5f).noCollission().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.WOOD).strength(5f).noCollision().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> Shapes.or(box(12, 0, 12, 14, 6, 14), box(12, 0, 2, 14, 6, 4), box(2, 0, 2, 4, 6, 4), box(2, 0, 12, 4, 6, 14), box(2, 6, 2, 14, 9, 14), box(2, 11, 2, 14, 21, 4), box(3, 9, 2, 13, 11, 4));
 				case NORTH -> Shapes.or(box(2, 0, 2, 4, 6, 4), box(2, 0, 12, 4, 6, 14), box(12, 0, 12, 14, 6, 14), box(12, 0, 2, 14, 6, 4), box(2, 6, 2, 14, 9, 14), box(2, 11, 12, 14, 21, 14), box(3, 9, 12, 13, 11, 14));
 				case EAST -> Shapes.or(box(12, 0, 2, 14, 6, 4), box(2, 0, 2, 4, 6, 4), box(2, 0, 12, 4, 6, 14), box(12, 0, 12, 14, 6, 14), box(2, 6, 2, 14, 9, 14), box(2, 11, 2, 4, 21, 14), box(2, 9, 3, 4, 11, 13));
 				case WEST -> Shapes.or(box(2, 0, 12, 4, 6, 14), box(12, 0, 12, 14, 6, 14), box(12, 0, 2, 14, 6, 4), box(2, 0, 2, 4, 6, 4), box(2, 6, 2, 14, 9, 14), box(12, 11, 2, 14, 21, 14), box(12, 9, 3, 14, 11, 13));
+				default -> Shapes.or(box(12, 0, 12, 14, 6, 14), box(12, 0, 2, 14, 6, 4), box(2, 0, 2, 4, 6, 4), box(2, 0, 12, 4, 6, 14), box(2, 6, 2, 14, 9, 14), box(2, 11, 2, 14, 21, 4), box(3, 9, 2, 13, 11, 4));
 			};
 		});
 	}
@@ -63,7 +63,10 @@ public class WoodChairBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

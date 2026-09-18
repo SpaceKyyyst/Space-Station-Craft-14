@@ -1,12 +1,13 @@
+
 package net.mcreator.ssc.procedures;
 
 import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.common.extensions.ILevelExtension;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.core.BlockPos;
@@ -26,13 +27,13 @@ public class MacFrameGUIBlockUpdateProcedure {
 		}
 		BlockPos pos = BlockPos.containing(x, y, z);
 		BlockState currentState = world.getBlockState(pos);
-		// 1. Получаем доступ к инвентарю ОДИН раз (кэшируем Capability)
+		
 		IItemHandler handler = getItemHandler(world, pos);
 		if (handler == null) {
 			setReadyState(world, pos, currentState, false);
 			return;
 		}
-		// 2. Проверяем плату в слоте 0
+		
 		ItemStack boardStack = handler.getStackInSlot(0);
 		if (boardStack.isEmpty()) {
 			setReadyState(world, pos, currentState, false);
@@ -40,12 +41,12 @@ public class MacFrameGUIBlockUpdateProcedure {
 		}
 		Item boardItem = boardStack.getItem();
 		Map<Item, Integer> requirements = getRecipeRequirements(boardItem);
-		// Если для этой платы нет рецепта
+		
 		if (requirements == null || requirements.isEmpty()) {
 			setReadyState(world, pos, currentState, false);
 			return;
 		}
-		// 3. Считаем предметы в слотах 1-8
+		
 		Map<Item, Integer> foundItems = new HashMap<>();
 		int totalItemsInSlots = 0;
 		for (int slot = 1; slot <= 8; slot++) {
@@ -56,10 +57,10 @@ public class MacFrameGUIBlockUpdateProcedure {
 				foundItems.merge(stack.getItem(), count, Integer::sum);
 			}
 		}
-		// 4. Проверка соответствия
+		
 		boolean isReady = true;
 		int requiredTotalCount = 0;
-		// Проверяем, что каждого нужного предмета ровно столько, сколько надо
+		
 		for (Map.Entry<Item, Integer> entry : requirements.entrySet()) {
 			Item requiredItem = entry.getKey();
 			int requiredCount = entry.getValue();
@@ -70,16 +71,14 @@ public class MacFrameGUIBlockUpdateProcedure {
 				break;
 			}
 		}
-		// 5. Проверка "Не больше, не меньше" (чтобы не было мусора в слотах)
-		// Общее количество предметов в слотах 1-8 должно совпадать с суммой требований рецепта
+		
 		if (isReady && totalItemsInSlots != requiredTotalCount) {
 			isReady = false;
 		}
-		// 6. Обновляем состояние блока
+		
 		setReadyState(world, pos, currentState, isReady);
 	}
 
-	// Вспомогательный метод для получения рецепта в зависимости от платы
 	private static Map<Item, Integer> getRecipeRequirements(Item board) {
 		Map<Item, Integer> recipe = new HashMap<>();
 		if (board == Ssc14ModItems.SUBSTATION_BOARD.get()) {
@@ -90,7 +89,6 @@ public class MacFrameGUIBlockUpdateProcedure {
 		} else if (board == Ssc14ModItems.SMES_BOARD.get()) {
 			recipe.put(Ssc14ModItems.CAPACITOR.get(), 1);
 			recipe.put(Ssc14ModItems.HIGH_VOLTAGE_CABLE.get(), 10);
-			// 4 батарейки в сумме, не важно в каких слотах
 			recipe.put(Ssc14ModItems.LOW_BATTERIE.get(), 4);
 		} else {
 			return null;
@@ -98,21 +96,19 @@ public class MacFrameGUIBlockUpdateProcedure {
 		return recipe;
 	}
 
-	// Вспомогательный метод для безопасного обновления свойства ready
 	private static void setReadyState(LevelAccessor world, BlockPos pos, BlockState currentState, boolean ready) {
-		// Проверяем, существует ли свойство, чтобы избежать крашей на кастомных блоках
 		if (currentState.getBlock().getStateDefinition().getProperty("ready") instanceof BooleanProperty prop) {
-			// Оптимизация: не ставим блок, если значение не изменилось
 			if (currentState.getValue(prop) != ready) {
 				world.setBlock(pos, currentState.setValue(prop, ready), 3);
 			}
 		}
 	}
 
-	// Оптимизированное получение хендлера (кэширование проверки типа)
+	// ИСПРАВЛЕНО: Безопасное получение IItemHandler под маппинги NeoForge 26.1.2 без дженериков
 	private static IItemHandler getItemHandler(LevelAccessor world, BlockPos pos) {
-		if (world instanceof ILevelExtension ext) {
-			return ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null);
+		if (world instanceof Level level) {
+			var newHandler = level.getCapability(Capabilities.Item.BLOCK, pos, null);
+			return newHandler == null ? null : IItemHandler.of(newHandler);
 		}
 		return null;
 	}

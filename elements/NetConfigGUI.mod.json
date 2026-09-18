@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -26,12 +26,8 @@
           "name": "imagebutton_net_config_gui_button",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "NetConfigGUI_Button_L1_Click"
-          },
-          "displayCondition": {
-            "name": "NetConfigGUI_Button_L1_Cond_"
-          },
+          "onClick": "NetConfigGUI_Button_L1_Click",
+          "displayCondition": "NetConfigGUI_Button_L1_Cond_",
           "x": 100,
           "y": 58,
           "locked": true
@@ -61,9 +57,7 @@
           "name": "imagebutton_net_config_gui_button1",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonR1Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonR1Cond",
           "x": 250,
           "y": 58,
           "locked": true
@@ -93,9 +87,7 @@
           "name": "imagebutton_net_config_gui_button2",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonL2Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonL2Cond",
           "x": 100,
           "y": 74,
           "locked": true
@@ -107,9 +99,7 @@
           "name": "imagebutton_net_config_gui_button3",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonL3Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonL3Cond",
           "x": 100,
           "y": 90,
           "locked": true
@@ -121,9 +111,7 @@
           "name": "imagebutton_net_config_gui_button4",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonL4Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonL4Cond",
           "x": 100,
           "y": 106,
           "locked": true
@@ -135,9 +123,7 @@
           "name": "imagebutton_net_config_gui_button5",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonL5Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonL5Cond",
           "x": 100,
           "y": 122,
           "locked": true
@@ -149,9 +135,7 @@
           "name": "imagebutton_net_config_gui_button6",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonL6Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonL6Cond",
           "x": 100,
           "y": 138,
           "locked": true
@@ -163,9 +147,7 @@
           "name": "imagebutton_net_config_gui_button7",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonL7Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonL7Cond",
           "x": 100,
           "y": 154,
           "locked": true
@@ -177,9 +159,7 @@
           "name": "imagebutton_net_config_gui_button8",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonL8Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonL8Cond",
           "x": 100,
           "y": 170,
           "locked": true
@@ -191,9 +171,7 @@
           "name": "imagebutton_net_config_gui_button9",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonR2Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonR2Cond",
           "x": 250,
           "y": 74,
           "locked": true
@@ -205,9 +183,7 @@
           "name": "imagebutton_net_config_gui_button10",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonR3Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonR3Cond",
           "x": 250,
           "y": 90,
           "locked": true
@@ -219,9 +195,7 @@
           "name": "imagebutton_net_config_gui_button11",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonR4Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonR4Cond",
           "x": 250,
           "y": 106,
           "locked": true
@@ -233,9 +207,7 @@
           "name": "imagebutton_net_config_gui_button12",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonR5Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonR5Cond",
           "x": 250,
           "y": 122,
           "locked": true
@@ -247,9 +219,7 @@
           "name": "imagebutton_net_config_gui_button13",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonR6Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonR6Cond",
           "x": 250,
           "y": 138,
           "locked": true
@@ -261,9 +231,7 @@
           "name": "imagebutton_net_config_gui_button14",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonR7Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonR7Cond",
           "x": 250,
           "y": 154,
           "locked": true
@@ -275,9 +243,7 @@
           "name": "imagebutton_net_config_gui_button15",
           "image": "net_config_gui_button.png",
           "hoveredImage": "",
-          "displayCondition": {
-            "name": "NetConfigGUIButtonR8Cond"
-          },
+          "displayCondition": "NetConfigGUIButtonR8Cond",
           "x": 250,
           "y": 170,
           "locked": true
@@ -536,12 +502,8 @@
         }
       }
     ],
-    "onTick": {
-      "name": "NetConfigGUI_TIC_"
-    },
-    "onClosed": {
-      "name": "NetConfigGUI_CLOSE_"
-    },
+    "onTick": "NetConfigGUI_TIC_",
+    "onClosed": "NetConfigGUI_CLOSE_",
     "gridSettings": {
       "sx": 18,
       "sy": 18,

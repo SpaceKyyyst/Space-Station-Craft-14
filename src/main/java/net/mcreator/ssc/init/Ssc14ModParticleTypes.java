@@ -40,10 +40,10 @@ public class Ssc14ModParticleTypes {
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> TRITIUM_PARTICLES_1 = REGISTRY.register("tritium_particles_1", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> TRITIUM_PARTICLES_2 = REGISTRY.register("tritium_particles_2", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> EXTINGUISHER_SPRAY = REGISTRY.register("extinguisher_spray", () -> new SimpleParticleType(false));
-	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DECONSTRUCT_P = REGISTRY.register("deconstruct_p", () -> new SimpleParticleType(true));
-	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DECONSTRUCT_PX = REGISTRY.register("deconstruct_px", () -> new SimpleParticleType(true));
-	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DECONSTRUCT_PZ = REGISTRY.register("deconstruct_pz", () -> new SimpleParticleType(true));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> RCD_INTERFERENCE_P = REGISTRY.register("rcd_interference_p", () -> new SimpleParticleType(true));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SPECIFY_P = REGISTRY.register("specify_p", () -> new SimpleParticleType(true));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BULLET_FLIGHT_P = REGISTRY.register("bullet_flight_p", () -> new SimpleParticleType(false));
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DECONSTRUCT_P = REGISTRY.register("deconstruct_p", () -> new SimpleParticleType(true));
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DECONSTRUCT_PX = REGISTRY.register("deconstruct_px", () -> new SimpleParticleType(true));
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DECONSTRUCT_PZ = REGISTRY.register("deconstruct_pz", () -> new SimpleParticleType(true));
 }

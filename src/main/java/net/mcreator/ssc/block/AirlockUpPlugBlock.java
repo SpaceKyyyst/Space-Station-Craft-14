@@ -46,10 +46,10 @@ public class AirlockUpPlugBlock extends Block implements EntityBlock {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(0, 0, 5, 16, 16, 11);
 				case NORTH -> box(0, 0, 5, 16, 16, 11);
 				case EAST -> box(5, 0, 0, 11, 16, 16);
 				case WEST -> box(5, 0, 0, 11, 16, 16);
+				default -> box(0, 0, 5, 16, 16, 11);
 			};
 		});
 	}
@@ -72,7 +72,10 @@ public class AirlockUpPlugBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -95,8 +98,8 @@ public class AirlockUpPlugBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
-		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, ItemStack toolStack, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, toolStack, willHarvest, fluid);
 		BaseAirlock_U_D_autoDESTROYProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		return retval;
 	}

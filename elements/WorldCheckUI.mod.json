@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "overlay",
   "definition": {
     "priority": "HIGH",
@@ -102,9 +102,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
-          "displayCondition": {
-            "name": "WOCtextNoPinned"
-          },
+          "displayCondition": "WOCtextNoPinned",
           "anchorPoint": "CENTER",
           "x": 241,
           "y": 134,
@@ -123,9 +121,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
-          "displayCondition": {
-            "name": "WOCtextPinned"
-          },
+          "displayCondition": "WOCtextPinned",
           "anchorPoint": "CENTER",
           "x": 241,
           "y": 134,
@@ -135,9 +131,7 @@
     ],
     "baseTexture": "",
     "overlayTarget": "Ingame",
-    "displayCondition": {
-      "name": "WorldObjectCheckUI"
-    },
+    "displayCondition": "WorldObjectCheckUI",
     "gridSettings": {
       "sx": 18,
       "sy": 18,

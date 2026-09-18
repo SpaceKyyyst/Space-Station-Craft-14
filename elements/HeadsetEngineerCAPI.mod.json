@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "HeadsetEngineering",
@@ -9,9 +9,7 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
+    "equipSound": "",
     "hasModel": true,
     "baubleModel": "Modelheadset_equipped",
     "baubleModelTexture": "headset_engineering_equipped_texture.png",

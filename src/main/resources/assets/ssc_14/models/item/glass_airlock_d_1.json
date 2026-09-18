@@ -2,6 +2,5 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "ssc_14:item/arl_b_glass_it"
-  },
-  "render_type": "translucent"
+  }
 }

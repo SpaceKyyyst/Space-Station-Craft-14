@@ -3,6 +3,6 @@
   "size": 1,
   "operation": "SET",
   "order": 7,
-  "render_toggle": true,
+  "render_toggle": false,
   "icon": "curios:slot/jumpsuit_slot"
 }

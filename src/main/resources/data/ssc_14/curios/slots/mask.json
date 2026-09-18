@@ -3,6 +3,6 @@
   "size": 1,
   "operation": "SET",
   "order": 4,
-  "render_toggle": true,
+  "render_toggle": false,
   "icon": "curios:slot/mask_slot"
 }

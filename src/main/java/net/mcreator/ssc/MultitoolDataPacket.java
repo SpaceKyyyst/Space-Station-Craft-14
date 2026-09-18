@@ -4,14 +4,14 @@ package net.mcreator.ssc;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.minecraft.client.Minecraft;
 
 public record MultitoolDataPacket(int mode, long current, long battery, long theoretical, long ideal, 
                                   long inStored, long inMax, long outStored, long outMax) implements CustomPacketPayload {
 
-    public static final Type<MultitoolDataPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath("ssc_14", "multitool_data"));
+    public static final Type<MultitoolDataPacket> TYPE = new Type<>(Identifier.fromNamespaceAndPath("ssc_14", "multitool_data"));
 
     public static final StreamCodec<FriendlyByteBuf, MultitoolDataPacket> CODEC = StreamCodec.of(
         (buf, val) -> {

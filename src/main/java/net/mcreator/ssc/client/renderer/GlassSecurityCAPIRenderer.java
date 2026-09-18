@@ -5,12 +5,15 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+import net.minecraft.resources.Identifier;
+import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
@@ -21,8 +24,8 @@ import java.util.Collections;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
-public class GlassSecurityCAPIRenderer implements ICurioRenderer.HumanoidRender {
-	private static final ResourceLocation TEXTURE = ResourceLocation.parse("ssc_14:textures/entities/glass_security_equipped_texture.png");
+public class GlassSecurityCAPIRenderer<S extends LivingEntityRenderState, M extends EntityModel<? super S>> implements ICurioRenderer.HumanoidRender {
+	private static final Identifier TEXTURE = Identifier.parse("ssc_14:textures/entities/glass_security_equipped_texture.png");
 	private final HumanoidModel humanoidModel;
 
 	public GlassSecurityCAPIRenderer() {
@@ -41,22 +44,23 @@ public class GlassSecurityCAPIRenderer implements ICurioRenderer.HumanoidRender 
 	}
 
     @Override
-    public void renderFirstPersonHand(ItemStack stack,
-                                       SlotContext slotContext,
-                                       HumanoidArm arm,
-                                       PoseStack poseStack,
-                                       MultiBufferSource renderTypeBuffer,
-                                       PlayerRenderState playerRenderState,
-                                       AbstractClientPlayer clientPlayer,
-                                       int packedLight) {}
+    public void renderFirstPersonHand(
+      ItemStack stack,
+      SlotContext slotContext,
+      HumanoidArm arm,
+      PoseStack poseStack,
+      SubmitNodeCollector submitNodeCollector,
+      AvatarRenderState avatarRenderState,
+      AbstractClientPlayer clientPlayer,
+      int packedLight) {}
 
     @Override
-    public HumanoidModel<? extends HumanoidRenderState> getModel(ItemStack stack, SlotContext slotContext) {
+    public HumanoidModel<HumanoidRenderState> getModel(ItemStack stack, SlotContext slotContext) {
         return this.humanoidModel;
     }
 
     @Override
-    public ResourceLocation getModelTexture(ItemStack stack, SlotContext slotContext) {
+    public Identifier getModelTexture(ItemStack stack, SlotContext slotContext) {
         return TEXTURE;
     }
 }

@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "tool",
   "definition": {
     "toolType": "MultiTool",
@@ -15,9 +15,7 @@
       "fixedValue": []
     },
     "creativeTabs": [
-      {
-        "value": "CUSTOM:SSC14Items"
-      }
+      "CUSTOM:SSC14Items"
     ],
     "efficiency": 4.0,
     "attackSpeed": 1.0,
@@ -34,11 +32,7 @@
     "attributeModifiers": [],
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
-    "onRightClickedOnBlock": {
-      "name": "Scrap_Procedure"
-    },
-    "onEntityHitWith": {
-      "name": "ScrapDAMAGE"
-    }
+    "onRightClickedOnBlock": "Scrap_Procedure",
+    "onEntityHitWith": "ScrapDAMAGE"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -25,9 +25,7 @@
         "data": {
           "image": "pen_button_active.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "PDApenButtonDisplayCond"
-          },
+          "displayCondition": "PDApenButtonDisplayCond",
           "x": 270,
           "y": 56,
           "locked": true
@@ -39,9 +37,7 @@
           "name": "imagebutton_pen_button_active",
           "image": "pda_empty_button_texture.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "PenRemovePR"
-          },
+          "onClick": "PenRemovePR",
           "x": 270,
           "y": 56,
           "locked": true
@@ -52,9 +48,7 @@
         "data": {
           "image": "id_eject_button.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "PDAidButtonDisplayCond"
-          },
+          "displayCondition": "PDAidButtonDisplayCond",
           "x": 281,
           "y": 56,
           "locked": true
@@ -66,9 +60,7 @@
           "name": "imagebutton_pda_empty_button_texture",
           "image": "pda_empty_button_texture.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "IDRemovePR"
-          },
+          "onClick": "IDRemovePR",
           "x": 281,
           "y": 56,
           "locked": true
@@ -79,9 +71,7 @@
         "data": {
           "image": "light_buttom_texture.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "PDAlightButtonDisplayCond"
-          },
+          "displayCondition": "PDAlightButtonDisplayCond",
           "x": 259,
           "y": 56,
           "locked": true
@@ -93,9 +83,7 @@
           "name": "imagebutton_pda_empty_button_texture1",
           "image": "pda_empty_button_texture.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "PDAflashlightPR"
-          },
+          "onClick": "PDAflashlightPR",
           "x": 259,
           "y": 56,
           "locked": true

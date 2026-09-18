@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "block",
   "definition": {
     "texture": "gravgen_block_item",
@@ -89,14 +89,10 @@
     "rarity": "COMMON",
     "immuneToFire": true,
     "creativeTabs": [
-      {
-        "value": "CUSTOM:SSC14Objects"
-      }
+      "CUSTOM:SSC14Objects"
     ],
     "destroyTool": "Not specified",
-    "customDrop": {
-      "value": ""
-    },
+    "customDrop": "",
     "dropAmount": 0,
     "xpAmountMin": 0,
     "xpAmountMax": 0,
@@ -116,14 +112,10 @@
     },
     "colorOnMap": "DEFAULT",
     "noteBlockInstrument": "harp",
-    "creativePickItem": {
-      "value": ""
-    },
+    "creativePickItem": "",
     "offsetType": "NONE",
     "aiPathNodeType": "DEFAULT",
-    "strippingResult": {
-      "value": ""
-    },
+    "strippingResult": "",
     "ignitedByLava": false,
     "flammability": 0,
     "fireSpreadSpeed": 0,
@@ -133,33 +125,19 @@
     "jumpFactor": 1.0,
     "reactionToPushing": "NORMAL",
     "isNotColidable": false,
+    "soundOnStep": "ANVIL",
     "isCustomSoundType": false,
-    "soundOnStep": {
-      "value": "ANVIL"
-    },
-    "breakSound": {
-      "value": ""
-    },
-    "fallSound": {
-      "value": ""
-    },
-    "hitSound": {
-      "value": ""
-    },
-    "placeSound": {
-      "value": ""
-    },
-    "stepSound": {
-      "value": ""
-    },
+    "breakSound": "",
+    "fallSound": "",
+    "hitSound": "",
+    "placeSound": "",
+    "stepSound": "",
     "luminance": {
       "fixedValue": 0.0
     },
     "unbreakable": true,
     "vanillaToolTier": "NONE",
-    "placingCondition": {
-      "name": "GravityGenerator_Placement_Terms"
-    },
+    "placingCondition": "GravityGenerator_Placement_Terms",
     "isBonemealable": false,
     "sensitiveToVibration": false,
     "vibrationalEvents": [],
@@ -183,24 +161,14 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
-    "onBlockAdded": {
-      "name": "GravityGenerator_PlugBlock_Generate_"
-    },
-    "onTickUpdate": {
-      "name": "GravGenTICprocedure"
-    },
-    "onDestroyedByPlayer": {
-      "name": "GravityGenerator_Destroy"
-    },
-    "onDestroyedByExplosion": {
-      "name": "GravityGenerator_Destroy"
-    },
+    "onBlockAdded": "GravityGenerator_PlugBlock_Generate_",
+    "onTickUpdate": "GravGenTICprocedure",
+    "onDestroyedByPlayer": "GravityGenerator_Destroy",
+    "onDestroyedByExplosion": "GravityGenerator_Destroy",
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [
-      {
-        "value": "TAG:stone_ore_replaceables"
-      }
+      "TAG:stone_ore_replaceables"
     ],
     "generationShape": "UNIFORM",
     "frequencyPerChunks": 10,

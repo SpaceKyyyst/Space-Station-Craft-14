@@ -22,8 +22,8 @@
       "metadata": {
         "files": [
           "src/main/resources/data/ssc_14/dimension/spaced.json",
-          "src/main/java/net/mcreator/ssc/world/dimension/SpacedDimension.java",
-          "src/main/resources/data/ssc_14/dimension_type/spaced.json"
+          "src/main/resources/data/ssc_14/dimension_type/spaced.json",
+          "src/main/resources/data/ssc_14/timeline/spaced_fixed.json"
         ]
       },
       "path": "~/Dimension/Space"
@@ -5384,10 +5384,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "skyRenderEvent",
-            "type": "skyRenderEvent"
           }
         ],
         "files": [
@@ -5968,7 +5964,7 @@
       "name": "CPlogLampPr",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "c_plog_lamp_pr",
       "metadata": {
         "dependencies": [
@@ -6038,7 +6034,7 @@
       "name": "Lamp",
       "type": "block",
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "lamp",
       "metadata": {
         "files": [
@@ -6652,7 +6648,7 @@
       "name": "SMES",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "smes",
       "metadata": {
         "files": [
@@ -8350,7 +8346,7 @@
           "src/main/java/net/mcreator/ssc/client/particle/SparkParticle.java"
         ]
       },
-      "path": "~/Dimension"
+      "path": "~/Items/Instruments/Welder"
     },
     {
       "name": "MachineFrame",
@@ -8824,7 +8820,7 @@
       "name": "SteelTableStateUpdate",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "steel_table_state_update",
       "metadata": {
         "dependencies": [
@@ -8998,7 +8994,7 @@
       "name": "MacFrameGUIBlockUpdate",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "mac_frame_gui_block_update",
       "metadata": {
         "dependencies": [
@@ -9308,7 +9304,7 @@
       "name": "Wall_Explosion_Breakdown",
       "type": "procedure",
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "wall_explosion_breakdown",
       "metadata": {
         "dependencies": [
@@ -9641,7 +9637,6 @@
       "registry_name": "planet_pl",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/ssc/world/dimension/PlanetPlDimension.java",
           "src/main/resources/data/ssc_14/dimension/planet_pl.json",
           "src/main/resources/data/ssc_14/dimension_type/planet_pl.json"
         ]
@@ -10426,7 +10421,7 @@
       "name": "HelsResetCommand",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "hels_reset_command",
       "metadata": {
         "dependencies": [
@@ -10918,10 +10913,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "skyRenderEvent",
-            "type": "skyRenderEvent"
           }
         ],
         "files": [
@@ -11054,7 +11045,7 @@
       "name": "Closet_Destroy",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "closet_destroy",
       "metadata": {
         "dependencies": [
@@ -12044,20 +12035,6 @@
       "path": "~/Items/Clothes/Boots"
     },
     {
-      "name": "CuriosGuiModifier",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "curios_gui_modifier",
-      "metadata": {
-        "dependencies": [],
-        "files": [
-          "src/main/java/net/mcreator/ssc/procedures/CuriosGuiModifierProcedure.java"
-        ]
-      },
-      "path": "~/Technical"
-    },
-    {
       "name": "Closet",
       "type": "block",
       "compiles": true,
@@ -12380,21 +12357,6 @@
         ]
       },
       "path": "~/Items/MED"
-    },
-    {
-      "name": "Corpse",
-      "type": "livingentity",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "corpse",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/ssc/client/renderer/CorpseRenderer.java",
-          "src/main/java/net/mcreator/ssc/entity/CorpseEntity.java",
-          "src/main/resources/assets/ssc_14/items/corpse_spawn_egg.json"
-        ]
-      },
-      "path": "~/Technical/HP - Health Points"
     },
     {
       "name": "ScrapDAMAGE",
@@ -14811,48 +14773,6 @@
       "path": "~/Items/Instruments/RCD/RCD GUI"
     },
     {
-      "name": "DeconstructP",
-      "type": "particle",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "deconstruct_p",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/ssc_14/particles/deconstruct_p.json",
-          "src/main/java/net/mcreator/ssc/client/particle/DeconstructPParticle.java"
-        ]
-      },
-      "path": "~/Items/Instruments/RCD"
-    },
-    {
-      "name": "DeconstructPX",
-      "type": "particle",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "deconstruct_px",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/ssc/client/particle/DeconstructPXParticle.java",
-          "src/main/resources/assets/ssc_14/particles/deconstruct_px.json"
-        ]
-      },
-      "path": "~/Items/Instruments/RCD"
-    },
-    {
-      "name": "DeconstructPZ",
-      "type": "particle",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "deconstruct_pz",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/ssc/client/particle/DeconstructPZParticle.java",
-          "src/main/resources/assets/ssc_14/particles/deconstruct_pz.json"
-        ]
-      },
-      "path": "~/Items/Instruments/RCD"
-    },
-    {
       "name": "DeconstructPORIENT",
       "type": "procedure",
       "compiles": true,
@@ -16707,7 +16627,7 @@
       "name": "CommConsREDcode",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "comm_cons_re_dcode",
       "metadata": {
         "dependencies": [
@@ -16746,7 +16666,7 @@
       "name": "CommConsBLUEcode",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "comm_cons_blu_ecode",
       "metadata": {
         "dependencies": [
@@ -16765,7 +16685,7 @@
       "name": "CommConsPURPLEcode",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "comm_cons_purpl_ecode",
       "metadata": {
         "dependencies": [
@@ -16784,7 +16704,7 @@
       "name": "CommConsYELLOWcode",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "comm_cons_yello_wcode",
       "metadata": {
         "dependencies": [
@@ -16803,7 +16723,7 @@
       "name": "CommConsGREENcode",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "comm_cons_gree_ncode",
       "metadata": {
         "dependencies": [
@@ -19228,7 +19148,7 @@
       "name": "MicrowaweGUI",
       "type": "gui",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "microwawe_gui",
       "metadata": {
         "files": [
@@ -24267,6 +24187,82 @@
         ]
       },
       "path": "~/DECALS"
+    },
+    {
+      "name": "DeconstructP",
+      "type": "particle",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "deconstruct_p",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/ssc_14/particles/deconstruct_p.json",
+          "src/main/java/net/mcreator/ssc/client/particle/DeconstructPParticle.java"
+        ]
+      },
+      "path": "~/Items/Instruments/RCD"
+    },
+    {
+      "name": "DeconstructPX",
+      "type": "particle",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "deconstruct_px",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/particle/DeconstructPXParticle.java",
+          "src/main/resources/assets/ssc_14/particles/deconstruct_px.json"
+        ]
+      },
+      "path": "~/Items/Instruments/RCD"
+    },
+    {
+      "name": "DeconstructPZ",
+      "type": "particle",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "deconstruct_pz",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/ssc/client/particle/DeconstructPZParticle.java",
+          "src/main/resources/assets/ssc_14/particles/deconstruct_pz.json"
+        ]
+      },
+      "path": "~/Items/Instruments/RCD"
+    },
+    {
+      "name": "UTILITMCPR",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "utilitmcpr",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/ssc/procedures/UTILITMCPRProcedure.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -25006,51 +25002,14 @@
     }
   ],
   "tag_elements": {
-    "ITEMS:minecraft:pickaxes": [
-      "~CUSTOM:Pick",
-      "~CUSTOM:GasAnalyser",
-      "~CUSTOM:Spanner",
-      "~CUSTOM:Screwdriver",
-      "~CUSTOM:FireAxe",
-      "~CUSTOM:Nippers",
-      "~CUSTOM:ActiveWelder",
-      "~CUSTOM:Welding",
-      "~CUSTOM:Scrap"
-    ],
-    "ITEMS:minecraft:axes": [
-      "~CUSTOM:GasAnalyser",
-      "~CUSTOM:Spanner",
-      "~CUSTOM:Screwdriver",
-      "~CUSTOM:FireAxe",
-      "~CUSTOM:Nippers",
-      "~CUSTOM:ActiveWelder",
-      "~CUSTOM:Welding",
-      "~CUSTOM:Scrap"
-    ],
-    "ITEMS:minecraft:swords": [
-      "~CUSTOM:GasAnalyser",
-      "~CUSTOM:Spanner",
-      "~CUSTOM:Screwdriver",
-      "~CUSTOM:FireAxe",
-      "~CUSTOM:Nippers",
-      "~CUSTOM:ActiveWelder",
-      "~CUSTOM:Welding",
-      "~CUSTOM:Scrap"
-    ],
     "BLOCKS:ssc14:airs": [
       "Blocks.AIR",
       "Blocks.VOID_AIR",
       "Blocks.CAVE_AIR"
     ],
-    "BLOCKS:minecraft:overworld_carver_replaceables": [
-      "~CUSTOM:AsteroidStoneBase",
-      "~CUSTOM:Dirt",
-      "~CUSTOM:GrassLightBlock",
-      "~Blocks.AIR"
-    ],
     "BLOCKS:minecraft:replaceable": [
-      "~CUSTOM:MedPlanetGrass",
-      "~CUSTOM:LowPlanetGrass",
+      "~MedPlanetGrass@CUSTOM:MedPlanetGrass",
+      "~LowPlanetGrass@CUSTOM:LowPlanetGrass",
       "Blocks.AIR",
       "Blocks.VOID_AIR",
       "Blocks.CAVE_AIR"
@@ -25333,9 +25292,6 @@
       "CUSTOM:AsteroidStoneBase",
       "CUSTOM:Dirt"
     ],
-    "BLOCKS:minecraft:leaves": [
-      "~CUSTOM:PlanetaryTreeFoliage"
-    ],
     "BLOCKS:ssc14:closets": [
       "CUSTOM:ClosetSecure",
       "CUSTOM:Closet",
@@ -25349,9 +25305,6 @@
       "CUSTOM:ClosetN2",
       "CUSTOM:ClosetOrange",
       "CUSTOM:ClosetPink"
-    ],
-    "ENTITIES:ssc14:alive": [
-      "CUSTOM:Corpse"
     ],
     "BLOCKS:ssc14:hermetic": [
       "CUSTOM:Sheathing",
@@ -25601,6 +25554,45 @@
       "CUSTOM:DECAL4spawner",
       "CUSTOM:DECAL5spawner",
       "CUSTOM:DECAL6spawner"
+    ],
+    "ITEMS:minecraft:pickaxes": [
+      "~Pick@CUSTOM:Pick",
+      "~GasAnalyser@CUSTOM:GasAnalyser",
+      "~Spanner@CUSTOM:Spanner",
+      "~Screwdriver@CUSTOM:Screwdriver",
+      "~FireAxe@CUSTOM:FireAxe",
+      "~Nippers@CUSTOM:Nippers",
+      "~ActiveWelder@CUSTOM:ActiveWelder",
+      "~Welding@CUSTOM:Welding",
+      "~Scrap@CUSTOM:Scrap"
+    ],
+    "ITEMS:minecraft:axes": [
+      "~GasAnalyser@CUSTOM:GasAnalyser",
+      "~Spanner@CUSTOM:Spanner",
+      "~Screwdriver@CUSTOM:Screwdriver",
+      "~FireAxe@CUSTOM:FireAxe",
+      "~Nippers@CUSTOM:Nippers",
+      "~ActiveWelder@CUSTOM:ActiveWelder",
+      "~Welding@CUSTOM:Welding",
+      "~Scrap@CUSTOM:Scrap"
+    ],
+    "ITEMS:minecraft:swords": [
+      "~GasAnalyser@CUSTOM:GasAnalyser",
+      "~Spanner@CUSTOM:Spanner",
+      "~Screwdriver@CUSTOM:Screwdriver",
+      "~FireAxe@CUSTOM:FireAxe",
+      "~Nippers@CUSTOM:Nippers",
+      "~ActiveWelder@CUSTOM:ActiveWelder",
+      "~Welding@CUSTOM:Welding",
+      "~Scrap@CUSTOM:Scrap"
+    ],
+    "BLOCKS:minecraft:overworld_carver_replaceables": [
+      "~PlanetPl@CUSTOM:AsteroidStoneBase",
+      "~PlanetPl@CUSTOM:Dirt",
+      "~PlanetPl@CUSTOM:GrassLightBlock"
+    ],
+    "BLOCKS:minecraft:leaves": [
+      "~PlanetaryTreeFoliage@CUSTOM:PlanetaryTreeFoliage"
     ]
   },
   "tab_element_order": {
@@ -26660,7 +26652,6 @@
       "death.attack.ssc_14dmgcellular": "%1$s",
       "death.attack.ssc_14dmgcellular.item": "%1$s",
       "death.attack.ssc_14dmgcellular.player": "%1$s",
-      "entity.ssc_14.corpse": "Corpse",
       "item.ssc_14.debug_13": "DEBUG 13",
       "item.ssc_14.decal_1spawner": "DECAL 1 spawner",
       "item_group.ssc_14.decals": "SSC14: Decals",
@@ -27080,7 +27071,11 @@
       "item.ssc_14.decal_4spawner": "DECAL 4 spawner",
       "item.ssc_14.decal_5spawner.description_0": "ДЕКАЛИ НЕ ТРОГАТЬ - НЕДОРАБОТАННЫЙ МУСОР",
       "item.ssc_14.decal_5spawner": "DECAL 5 spawner",
-      "item.ssc_14.decal_6spawner": "DECAL 6 spawner"
+      "item.ssc_14.decal_6spawner": "DECAL 6 spawner",
+      "item.ssc_14.decal_2spawner.description_0": "ДЕКАЛИ НЕ ТРОГАТЬ - НЕДОРАБОТАННЫЙ МУСОР",
+      "item.ssc_14.decal_3spawner.description_0": "ДЕКАЛИ НЕ ТРОГАТЬ - НЕДОРАБОТАННЫЙ МУСОР",
+      "item.ssc_14.decal_4spawner.description_0": "ДЕКАЛИ НЕ ТРОГАТЬ - НЕДОРАБОТАННЫЙ МУСОР",
+      "item.ssc_14.decal_1spawner.description_0": "ДЕКАЛИ НЕ ТРОГАТЬ - НЕДОРАБОТАННЫЙ МУСОР"
     },
     "ru_ru": {
       "biome.ssc_14.spaceb": "Космос",
@@ -27510,7 +27505,6 @@
       "death.attack.ssc_14dmgcellular": "%1$s",
       "death.attack.ssc_14dmgcellular.item": "%1$s",
       "death.attack.ssc_14dmgcellular.player": "%1$s",
-      "entity.ssc_14.corpse": "Corpse",
       "item.ssc_14.debug_13": "DEBUG 13",
       "item.ssc_14.decal_1spawner": "Декаль 1",
       "item_group.ssc_14.decals": "SSC14: Декали",
@@ -27929,7 +27923,44 @@
       "item.ssc_14.decal_4spawner": "Декаль 4",
       "item.ssc_14.decal_5spawner.description_0": "ДЕКАЛИ НЕ ТРОГАТЬ - НЕДОРАБОТАННЫЙ МУСОР",
       "item.ssc_14.decal_5spawner": "DECAL 3 spawner",
-      "item.ssc_14.decal_6spawner": "DECAL 5 spawner"
+      "item.ssc_14.decal_6spawner": "DECAL 5 spawner",
+      "gui.ssc_14.i_dcode.Chemistry": "",
+      "gui.ssc_14.i_dcode.gun_room": "",
+      "gui.ssc_14.i_dcode.Medical": "",
+      "gui.ssc_14.i_dcode.Security": "",
+      "gui.ssc_14.i_dcode.Command": "",
+      "gui.ssc_14.i_dcode.Church": "",
+      "gui.ssc_14.i_dcode.Gidroponic": "",
+      "gui.ssc_14.i_dcode.Ingeneer": "",
+      "gui.ssc_14.i_dcode.Utilizat": "",
+      "gui.ssc_14.i_dcode.Technical": "",
+      "gui.ssc_14.i_dcode.Cleaner": "",
+      "gui.ssc_14.i_dcode.Capitan": "",
+      "gui.ssc_14.i_dcode.Scientist": "",
+      "gui.ssc_14.i_dcode.Uridic": "",
+      "gui.ssc_14.i_dcode.HoP": "",
+      "gui.ssc_14.i_dcode.HoS": "",
+      "gui.ssc_14.i_dcode.CE": "",
+      "gui.ssc_14.i_dcode.Brig": "",
+      "gui.ssc_14.i_dcode.Crio": "",
+      "gui.ssc_14.i_dcode.Teatre": "",
+      "gui.ssc_14.i_dcode.Bar": "",
+      "gui.ssc_14.i_dcode.Service": "",
+      "gui.ssc_14.i_dcode.Out": "",
+      "gui.ssc_14.i_dcode.Job_Name_Readact": "",
+      "gui.ssc_14.i_dcode.Kitchen": "",
+      "gui.ssc_14.i_dcode.CMO": "",
+      "gui.ssc_14.i_dcode.Supply_Deportament": "",
+      "gui.ssc_14.i_dcode.RD": "",
+      "gui.ssc_14.i_dcode.Detective": "",
+      "gui.ssc_14.i_dcode.Blue_Sh": "",
+      "gui.ssc_14.i_dcode.Qm": "",
+      "gui.ssc_14.i_dcode.PNT": "",
+      "gui.ssc_14.i_dcode.Atmos": "",
+      "item.ssc_14.decal_2spawner.description_0": "ДЕКАЛИ НЕ ТРОГАТЬ - НЕДОРАБОТАННЫЙ МУСОР",
+      "item.ssc_14.decal_3spawner.description_0": "ДЕКАЛИ НЕ ТРОГАТЬ - НЕДОРАБОТАННЫЙ МУСОР",
+      "item.ssc_14.decal_4spawner.description_0": "ДЕКАЛИ НЕ ТРОГАТЬ - НЕДОРАБОТАННЫЙ МУСОР",
+      "item.ssc_14.decal_1spawner.description_0": "ДЕКАЛИ НЕ ТРОГАТЬ - НЕДОРАБОТАННЫЙ МУСОР"
     }
   },
   "metadata": {
@@ -27954,7 +27985,6 @@
       "src/main/java/net/mcreator/ssc/init/Ssc14ModEntityRenderers.java",
       "src/main/resources/pack.mcmeta",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModSounds.java",
-      "src/main/java/net/mcreator/ssc/client/RenderUtils.java",
       "src/main/resources/META-INF/neoforge.mods.toml",
       "src/main/java/net/mcreator/ssc/init/Ssc14ModTabs.java",
       "src/main/resources/META-INF/accesstransformer.cfg",
@@ -28576,7 +28606,7 @@
   "workspaceSettings": {
     "modid": "ssc_14",
     "modName": "Space Station Craft 14",
-    "version": "0.1.24",
+    "version": "0.1.26",
     "description": "Повторённая в Minecraft игра Space Station 14. Основатель - Space Kyyyst. В разработке принимали участие: almazar3, Mr_irak, Water Melon, sad2284, Подхлебкин, VoiceInTheVoid. ",
     "author": "Space_Kyyyst",
     "websiteURL": "https://www.youtube.com/@Space.kyyyst",
@@ -28592,9 +28622,9 @@
     "mcreatorDependencies": [
       "curios_api"
     ],
-    "currentGenerator": "neoforge-1.21.8",
+    "currentGenerator": "neoforge-26.1.2",
     "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.ssc"
   },
-  "mcreatorVersion": 202600114619
+  "mcreatorVersion": 202600230420
 }

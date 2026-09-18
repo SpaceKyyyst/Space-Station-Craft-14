@@ -14,7 +14,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.util.RandomSource;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
@@ -25,9 +25,9 @@ public class TitleWhitePavementVerticalBlock extends Block {
 	private static final VoxelShape SHAPE = Shapes.or(box(0, 12, 0, 16, 16, 16), box(0, 0, 0, 1, 16, 1), box(0, 0, 15, 1, 16, 16), box(15, 0, 0, 16, 16, 1), box(15, 0, 15, 16, 16, 16));
 
 	public TitleWhitePavementVerticalBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(new DeferredSoundType(1.0f, 1.0f, () -> BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:title_off")), () -> BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("block.copper.step")),
-				() -> BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:title_on")), () -> BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("block.copper.hit")),
-				() -> BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("block.copper.fall")))).strength(100f, 5f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(new DeferredSoundType(1.0f, 1.0f, () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:title_off")), () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.step")),
+				() -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:title_on")), () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.hit")),
+				() -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.fall")))).strength(100f, 5f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class TitleWhitePavementVerticalBlock extends Block {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 15;
 	}
 

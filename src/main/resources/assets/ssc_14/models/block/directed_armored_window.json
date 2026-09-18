@@ -4,6 +4,5 @@
     "all": "ssc_14:block/directed_st_glass_armored_item",
     "particle": "ssc_14:block/directed_st_glass_armored_item",
     "1": "ssc_14:block/directed_st_glass_armored"
-  },
-  "render_type": "cutout"
+  }
 }

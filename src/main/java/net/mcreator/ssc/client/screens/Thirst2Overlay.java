@@ -1,7 +1,5 @@
 package net.mcreator.ssc.client.screens;
 
-import org.checkerframework.checker.units.qual.h;
-
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -11,7 +9,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.util.Mth;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
@@ -20,7 +18,7 @@ import net.mcreator.ssc.procedures.Thirst2BlinkingPrProcedure;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Thirst2Overlay {
-	private static final ResourceLocation SPRITE_0 = ResourceLocation.parse("ssc_14:textures/screens/thirsty3.png");
+	private static final Identifier SPRITE_0 = Identifier.parse("ssc_14:textures/screens/thirsty3.png");
 
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {

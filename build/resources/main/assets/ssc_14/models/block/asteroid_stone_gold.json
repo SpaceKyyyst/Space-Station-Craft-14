@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "ssc_14:block/asteroid_stone_gold",
-    "particle": "ssc_14:block/asteroid_stone_gold"
-  },
-  "render_type": "solid"
-}

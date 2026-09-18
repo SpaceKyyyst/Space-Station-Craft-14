@@ -1,3 +1,4 @@
+
 package net.mcreator.ssc.block.entity;
 
 import net.minecraft.world.level.storage.ValueOutput;

@@ -3,6 +3,6 @@
   "size": 1,
   "operation": "SET",
   "order": 10,
-  "render_toggle": true,
+  "render_toggle": false,
   "icon": "curios:slot/pda_slot"
 }

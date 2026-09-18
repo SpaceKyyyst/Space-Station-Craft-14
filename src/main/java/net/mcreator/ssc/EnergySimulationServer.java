@@ -32,87 +32,84 @@ public class EnergySimulationServer {
     private static final long LAMP_WATT = 12;
     private static final long LAMP_JOULES_PER_TICK = 1;
 
-	private static final Map<BlockPos, Long> energySnapshot = new HashMap<>();
-	private static int diagnosticLogCooldown = 0;
+    private static final Map<BlockPos, Long> energySnapshot = new HashMap<>();
+    private static int diagnosticLogCooldown = 0;
 
-	@SubscribeEvent
-	public static void onServerTick(ServerTickEvent.Post event) {
-		energySnapshot.clear();
+    @SubscribeEvent
+    public static void onServerTick(ServerTickEvent.Post event) {
+        energySnapshot.clear();
 
-		boolean displayDiag = false;
-		if (diagnosticLogCooldown++ >= 20) {
-			displayDiag = true;
-			diagnosticLogCooldown = 0;
-		}
+        boolean displayDiag = false;
+        if (diagnosticLogCooldown++ >= 20) {
+            displayDiag = true;
+            diagnosticLogCooldown = 0;
+        }
 
-		for (ServerLevel serverLevel : event.getServer().getAllLevels()) {
-			for (CableType type : CableType.values()) {
-				List<EnergyNetwork> networks = EnergyNetworkManager.getNetworks(serverLevel, type);
+        for (ServerLevel serverLevel : event.getServer().getAllLevels()) {
+            for (CableType type : CableType.values()) {
+                List<EnergyNetwork> networks = EnergyNetworkManager.getNetworks(serverLevel, type);
 
-				if (displayDiag && !networks.isEmpty()) {
-					System.out.println("[SSC14-SIM-DIAG] Активных цепей [" + type + "]: " + networks.size());
-				}
+                if (displayDiag && !networks.isEmpty()) {
+                    System.out.println("[SSC14-SIM-DIAG] Активных цепей [" + type + "]: " + networks.size());
+                }
 
-				for (EnergyNetwork network : networks) {
-					List<BlockPos> safeSources = new ArrayList<>(network.getSources());
-					Iterator<BlockPos> sourceIterator = safeSources.iterator();
+                for (EnergyNetwork network : networks) {
+                    List<BlockPos> safeSources = new ArrayList<>(network.getSources());
+                    Iterator<BlockPos> sourceIterator = safeSources.iterator();
 
-					while (sourceIterator.hasNext()) {
-						BlockPos pos = sourceIterator.next();
-						if (!serverLevel.isLoaded(pos)) continue;
+                    while (sourceIterator.hasNext()) {
+                        BlockPos pos = sourceIterator.next();
+                        if (!serverLevel.isLoaded(pos)) continue;
 
-						BlockEntity be = serverLevel.getBlockEntity(pos);
-						BlockState state = serverLevel.getBlockState(pos);
+                        BlockEntity be = serverLevel.getBlockEntity(pos);
+                        BlockState state = serverLevel.getBlockState(pos);
 
-						if (type == CableType.HV && !state.is(Ssc14ModBlocks.DEBU_GGENERATOR.get())) {
-							network.getSources().remove(pos);
-						} else if (type == CableType.MV && !(be instanceof PodstationBlockEntity)) {
-							network.getSources().remove(pos);
-						} else if (type == CableType.LV && !(be instanceof APCBlockEntity)) {
-							network.getSources().remove(pos);
-						} else if (!energySnapshot.containsKey(pos)) {
-							if (be instanceof PodstationBlockEntity podstation) {
-								energySnapshot.put(pos, podstation.getStoredEnergy());
-							} else if (be instanceof APCBlockEntity apc) {
-								energySnapshot.put(pos, apc.getStoredEnergy());
-							}
-						}
-					}
-				}
-			}
-		}
+                        if (type == CableType.HV && !state.is(Ssc14ModBlocks.DEBU_GGENERATOR.get())) {
+                            network.getSources().remove(pos);
+                        } else if (type == CableType.MV && !(be instanceof PodstationBlockEntity)) {
+                            network.getSources().remove(pos);
+                        } else if (type == CableType.LV && !(be instanceof APCBlockEntity)) {
+                            network.getSources().remove(pos);
+                        } else if (!energySnapshot.containsKey(pos)) {
+                            if (be instanceof PodstationBlockEntity podstation) {
+                                energySnapshot.put(pos, podstation.getStoredEnergy());
+                            } else if (be instanceof APCBlockEntity apc) {
+                                energySnapshot.put(pos, apc.getStoredEnergy());
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
-		// 1. Симулируем передачу энергии по всем трем слоям цепей
-		for (ServerLevel serverLevel : event.getServer().getAllLevels()) {
-			simulateNetworkLayer(serverLevel, CableType.HV);
-			simulateNetworkLayer(serverLevel, CableType.MV);
-			simulateNetworkLayer(serverLevel, CableType.LV);
-		}
+        for (ServerLevel serverLevel : event.getServer().getAllLevels()) {
+            simulateNetworkLayer(serverLevel, CableType.HV);
+            simulateNetworkLayer(serverLevel, CableType.MV);
+            simulateNetworkLayer(serverLevel, CableType.LV);
+        }
 
-		// 2. Глобальная проверка ламп: если лампа горит, но её нет ни в одной активной LV цепи — тушим её!
-		for (ServerLevel serverLevel : event.getServer().getAllLevels()) {
-			List<EnergyNetwork> lvNetworks = EnergyNetworkManager.getNetworks(serverLevel, CableType.LV);
-			Set<BlockPos> connectedLamps = new HashSet<>();
-			for (EnergyNetwork net : lvNetworks) {
-				connectedLamps.addAll(net.getConsumers());
-			}
+        for (ServerLevel serverLevel : event.getServer().getAllLevels()) {
+            List<EnergyNetwork> lvNetworks = EnergyNetworkManager.getNetworks(serverLevel, CableType.LV);
+            Set<BlockPos> connectedLamps = new HashSet<>();
+            for (EnergyNetwork net : lvNetworks) {
+                connectedLamps.addAll(net.getConsumers());
+            }
 
-			for (net.minecraft.server.level.ServerPlayer player : serverLevel.players()) {
-				BlockPos.betweenClosedStream(player.blockPosition().offset(-16, -8, -16), player.blockPosition().offset(16, 8, 16)).forEach(checkPos -> {
-					if (serverLevel.isLoaded(checkPos)) {
-						BlockState state = serverLevel.getBlockState(checkPos);
-						if (state.is(Ssc14ModBlocks.LAMP.get()) && state.getValue(net.mcreator.ssc.block.LampBlock.ACTIVE)) {
-							if (!connectedLamps.contains(checkPos)) {
-								System.out.println("[SSC14-GRAF] Найдена фантомная лампа без кабеля в точке " + checkPos + ". Принудительное отключение.");
-								serverLevel.setBlock(checkPos, state.setValue(net.mcreator.ssc.block.LampBlock.ACTIVE, false), 3);
-							}
-						}
-					}
-				});
-			}
-		}
-	} // Конец метода onServerTick
-	
+            for (net.minecraft.server.level.ServerPlayer player : serverLevel.players()) {
+                BlockPos.betweenClosedStream(player.blockPosition().offset(-16, -8, -16), player.blockPosition().offset(16, 8, 16)).forEach(checkPos -> {
+                    if (serverLevel.isLoaded(checkPos)) {
+                        BlockState state = serverLevel.getBlockState(checkPos);
+                        if (state.is(Ssc14ModBlocks.LAMP.get()) && state.getValue(net.mcreator.ssc.block.LampBlock.ACTIVE)) {
+                            if (!connectedLamps.contains(checkPos)) {
+                                System.out.println("[SSC14-GRAF] Найдена фантомная лампа без кабеля в точке " + checkPos + ". Принудительное отключение.");
+                                serverLevel.setBlock(checkPos, state.setValue(net.mcreator.ssc.block.LampBlock.ACTIVE, false), 3);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
     private static void simulateNetworkLayer(ServerLevel level, CableType type) {
         List<EnergyNetwork> networks = EnergyNetworkManager.getNetworks(level, type);
         if (networks.isEmpty()) return;
@@ -125,7 +122,6 @@ public class EnergySimulationServer {
             List<BlockPos> safeSources = new ArrayList<>(network.getSources());
             List<BlockPos> safeConsumers = new ArrayList<>(network.getConsumers());
 
-            // 1. Предварительный сбор данных о накопителях (Pre-Sync из SS14)
             for (BlockPos sourcePos : safeSources) {
                 if (!level.isLoaded(sourcePos)) continue;
                 BlockEntity be = level.getBlockEntity(sourcePos);
@@ -165,7 +161,6 @@ public class EnergySimulationServer {
                 network.outputMax = network.inputMax;
             }
 
-            // 2. Расчет генерации и теоретического максимума (Theoretical Supply)
             for (BlockPos sourcePos : safeSources) {
                 if (!level.isLoaded(sourcePos)) continue;
                 BlockState state = level.getBlockState(sourcePos);
@@ -179,21 +174,20 @@ public class EnergySimulationServer {
                         long snapshotEnergy = energySnapshot.getOrDefault(sourcePos, podstation.getStoredEnergy());
                         long potentialSupply = Math.min(snapshotEnergy, 150000 / 20);
                         
-                        totalMaxSupplyWatt += 150000; // Фиксированный макс. выход подстанции в Ваттах
+                        totalMaxSupplyWatt += 150000;
                         if (snapshotEnergy > 0) {
                             totalProducedJoules += potentialSupply;
                             network.batteryPower += potentialSupply * 20;
                             podstation.setStoredEnergySimulation(Math.max(0, podstation.getStoredEnergy() - potentialSupply));
                         }
                     } else if (type == CableType.LV && be instanceof APCBlockEntity apc) {
-                        // ТИКАЕМ ЛКП (Обновление трипов и блокстейтов)
                         apc.serverTick();
 
                         if (apc.isMainBreakerEnabled()) {
                             long snapshotEnergy = energySnapshot.getOrDefault(sourcePos, apc.getStoredEnergy());
                             long potentialSupply = Math.min(snapshotEnergy, 15000 / 20);
                             
-                            totalMaxSupplyWatt += 15000; // Макс. выход ЛКП в Ваттах
+                            totalMaxSupplyWatt += 15000;
                             if (snapshotEnergy > 0) {
                                 totalProducedJoules += potentialSupply;
                                 network.batteryPower += potentialSupply * 20;
@@ -209,10 +203,7 @@ public class EnergySimulationServer {
 
             network.theoreticalSupply = totalMaxSupplyWatt;
             network.currentPower = totalProducedJoules * 20;
-
-            // 3. Расчет потребления и распределение энергии по потребителям
             if (type == CableType.LV) {
-                // Логика ламп (LV субрегион)
                 long activeLampsCount = 0;
                 for (BlockPos lampPos : safeConsumers) {
                     if (level.isLoaded(lampPos)) {
@@ -238,9 +229,7 @@ public class EnergySimulationServer {
                     }
                 }
             } else {
-                // Логика крупных потребителей (HV подстанции / MV ЛКП)
                 if (!safeConsumers.isEmpty()) {
-                    // Подсчитываем суммарный DesiredPower (Идеальное потребление сети из GetNetworkStatistics)
                     long totalDemandJoules = 0;
                     for (BlockPos consumerPos : safeConsumers) {
                         if (!level.isLoaded(consumerPos)) continue;
@@ -257,7 +246,6 @@ public class EnergySimulationServer {
 
                     network.idealConsumption = totalDemandJoules * 20;
 
-                    // Распределяем реальные джоули пропорционально запросу (Математика SolverRatio из SS14)
                     if (totalProducedJoules > 0 && totalDemandJoules > 0) {
                         double supplyRatio = Math.min(1.0, (double) totalProducedJoules / totalDemandJoules);
 
@@ -276,7 +264,7 @@ public class EnergySimulationServer {
                                 long desired = Math.min(MAX_DEVICE_INPUT_JOULES, spaceLeft);
                                 long actualInserted = (long) (desired * supplyRatio);
 
-                                apc.lastTickReceivingJoules = actualInserted; // Сохраняем для логики Passthrough
+                                apc.lastTickReceivingJoules = actualInserted;
                                 apc.setStoredEnergySimulation(Math.min(apc.getMaxEnergy(), apc.getStoredEnergy() + actualInserted));
                             }
                         }
@@ -284,7 +272,6 @@ public class EnergySimulationServer {
                 }
             }
 
-            // 4. Запись данных в TileEntity главной кабельной обшивки для синхронизации
             int currentLayerMode = switch (type) { case LV -> 1; case MV -> 2; case HV -> 3; };
             
             if (!network.getCables().isEmpty()) {
@@ -294,7 +281,6 @@ public class EnergySimulationServer {
                 }
             }
 
-            // 5. Сетевая отправка пакетов игрокам с мультитулом
             for (net.minecraft.server.level.ServerPlayer player : level.players()) {
                 net.minecraft.world.item.ItemStack handItem = player.getMainHandItem();
                 if (handItem.is(net.mcreator.ssc.init.Ssc14ModItems.MULTITUL.get())) {

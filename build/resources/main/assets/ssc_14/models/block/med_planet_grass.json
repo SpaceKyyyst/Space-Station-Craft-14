@@ -1,8 +1,0 @@
-{
-  "parent": "block/tinted_cross",
-  "textures": {
-    "cross": "ssc_14:block/planet_grass",
-    "particle": "ssc_14:block/planet_grass"
-  },
-  "render_type": "cutout"
-}

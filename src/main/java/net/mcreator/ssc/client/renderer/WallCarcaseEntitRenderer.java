@@ -1,6 +1,6 @@
 package net.mcreator.ssc.client.renderer;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -9,8 +9,7 @@ import net.mcreator.ssc.entity.WallCarcaseEntitEntity;
 import net.mcreator.ssc.client.model.Modelframe_of_wall_JAVA;
 
 public class WallCarcaseEntitRenderer extends MobRenderer<WallCarcaseEntitEntity, LivingEntityRenderState, Modelframe_of_wall_JAVA> {
-	private WallCarcaseEntitEntity entity = null;
-	private final ResourceLocation entityTexture = ResourceLocation.parse("ssc_14:textures/entities/texture_of_frame_wall_ent.png");
+	private final Identifier entityTexture = Identifier.parse("ssc_14:textures/entities/texture_of_frame_wall_ent.png");
 
 	public WallCarcaseEntitRenderer(EntityRendererProvider.Context context) {
 		super(context, new Modelframe_of_wall_JAVA(context.bakeLayer(Modelframe_of_wall_JAVA.LAYER_LOCATION)), 0.5f);
@@ -24,11 +23,10 @@ public class WallCarcaseEntitRenderer extends MobRenderer<WallCarcaseEntitEntity
 	@Override
 	public void extractRenderState(WallCarcaseEntitEntity entity, LivingEntityRenderState state, float partialTicks) {
 		super.extractRenderState(entity, state, partialTicks);
-		this.entity = entity;
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(LivingEntityRenderState state) {
+	public Identifier getTextureLocation(LivingEntityRenderState state) {
 		return entityTexture;
 	}
 }

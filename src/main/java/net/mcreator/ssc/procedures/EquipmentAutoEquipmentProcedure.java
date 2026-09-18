@@ -10,15 +10,13 @@ import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandlerModifiable; // Берем актуальный интерфейс модовых инвентарей NeoForge
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
 import net.minecraft.tags.ItemTags;
-import net.minecraft.resources.ResourceLocation;
-
-import net.mcreator.ssc.Ssc14Mod;
+import net.minecraft.resources.Identifier; // ИСПРАВЛЕНО: победный Identifier
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -29,7 +27,8 @@ public class EquipmentAutoEquipmentProcedure {
 
     @SubscribeEvent
     public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-        if (event.getHand() != event.getEntity().getUsedItemHand()) {
+        // Замена метода получения активной руки на безопасную из самого события ПКМ
+        if (event.getHand() == null) {
             return;
         }
         execute(event, event.getEntity());
@@ -40,72 +39,61 @@ public class EquipmentAutoEquipmentProcedure {
     }
 
     private static void execute(@Nullable Event event, Entity entity) {
-        // Проверяем, что сущность - это игрок
         if (!(entity instanceof Player player)) {
             return;
         }
 
-        InteractionHand hand = player.getUsedItemHand();
+        // Берем руку из события, если оно передано, иначе дефолтную основную
+        InteractionHand hand = (event instanceof PlayerInteractEvent.RightClickItem rce) ? rce.getHand() : InteractionHand.MAIN_HAND;
         ItemStack itemInHand = player.getItemInHand(hand);
 
         if (itemInHand.isEmpty()) {
             return;
         }
 
-        // Проверяем, является ли предмет курьо И не входит ли он в тег "noautoequip"
-        if (Ssc14Mod.CuriosApiHelper.isCurioItem(itemInHand) && !itemInHand.is(ItemTags.create(ResourceLocation.parse("ssc14:noautoequip")))) {
+        // Проверяем Curios-теги через Identifier
+        if (top.theillusivec4.curios.api.CuriosApi.getCuriosInventory(player).isPresent() && !itemInHand.is(ItemTags.create(Identifier.parse("ssc14:noautoequip")))) {
             
-            // Получаем инвентарь Curios игрока
             Optional<ICuriosItemHandler> handlerOpt = CuriosApi.getCuriosInventory(player);
             if (handlerOpt.isEmpty()) {
                 return;
             }
 
             ICuriosItemHandler handler = handlerOpt.get();
-            
             String targetSlot = null;
             IItemHandlerModifiable targetInv = null;
 
-            // Перебираем все доступные слоты игрока напрямую из его обработчика
             for (Map.Entry<String, ICurioStacksHandler> entry : handler.getCurios().entrySet()) {
                 String slotId = entry.getKey();
                 ICurioStacksHandler stacksHandler = entry.getValue();
                 
-                // Получаем стандартный обработчик предметов NeoForge для этого слота
+                // Получаем модифицируемый обработчик предметов NeoForge
                 IItemHandlerModifiable inv = stacksHandler.getStacks();
+                if (inv == null) continue;
                 
-                // ПРОВЕРКА: спрашиваем у самого инвентаря, можно ли положить сюда этот предмет
                 if (inv.isItemValid(0, itemInHand)) {
                     ItemStack stackInSlot = inv.getStackInSlot(0);
 
                     if (stackInSlot.isEmpty()) {
                         targetSlot = slotId;
                         targetInv = inv;
-                        break; // Приоритет 1: нашли пустой подходящий слот, сразу используем его
+                        break; 
                     } else if (targetSlot == null) {
-                        // --- НОВАЯ ФИЛЬТРАЦИЯ ДЛЯ ВСТРОЕННЫХ ШЛЕМОВ ---
-                        // Если целевой слот - headdress, и в нём уже находится шлем из тега,
-                        // то мы ЗАПРЕЩАЕМ авто-замену в этот слот, чтобы шлем не выпал в руку.
-                        if ("headdress".equals(slotId) && stackInSlot.is(ItemTags.create(ResourceLocation.parse("ssc14:hardsuits_helmets")))) {
-                            continue; // Пропускаем этот слот, ищем другие подходящие
+                        if ("headdress".equals(slotId) && stackInSlot.is(ItemTags.create(Identifier.parse("ssc14:hardsuits_helmets")))) {
+                            continue; 
                         }
-
-                        // Приоритет 2: запоминаем первый подходящий слот на случай, если все они заняты (для обмена)
                         targetSlot = slotId;
                         targetInv = inv;
                     }
                 }
             }
 
-            // Если мы нашли куда надевать (пустой или занятый, но подходящий слот)
             if (targetSlot != null && targetInv != null) {
-                // Отменяем событие, чтобы предотвратить анимацию взмаха рукой и стандартное действие ПКМ
                 if (event instanceof PlayerInteractEvent.RightClickItem rightClickEvent) {
                     rightClickEvent.setCanceled(true);
                     rightClickEvent.setCancellationResult(InteractionResult.SUCCESS);
                 }
 
-                // Вся модификация инвентаря должна происходить ТОЛЬКО на сервере!
                 if (player.level().isClientSide()) {
                     return; 
                 }
@@ -113,23 +101,18 @@ public class EquipmentAutoEquipmentProcedure {
                 ItemStack equippedItem = targetInv.getStackInSlot(0);
 
                 if (equippedItem.isEmpty()) {
-                    // Слот пустой: просто надеваем предмет
+                    // АДАПТАЦИЯ: используем безопасный метод insertItem под требования NeoForge 26
                     targetInv.insertItem(0, itemInHand.copyWithCount(1), false);
                     itemInHand.shrink(1);
                 } else {
-                    // Дополнительная (двойная) проверка безопасности перед непосредственной заменой
-                    if ("headdress".equals(targetSlot) && equippedItem.is(ItemTags.create(ResourceLocation.parse("ssc14:hardsuits_helmets")))) {
-                        return; // Экстренный выход, если шлем как-то попал в targetSlot для обмена
+                    if ("headdress".equals(targetSlot) && equippedItem.is(ItemTags.create(Identifier.parse("ssc14:hardsuits_helmets")))) {
+                        return; 
                     }
 
-                    // Слот занят: выполняем обмен (swap)
-                    // 1. Забираем предмет из слота
+                    // АДАПТАЦИЯ: Безопасный обмен предметов через ванильные стандарты извлечения NeoForge
                     ItemStack extracted = targetInv.extractItem(0, 1, false);
-                    // 2. Кладем в слот предмет из руки
                     targetInv.insertItem(0, itemInHand.copyWithCount(1), false);
-                    // 3. Уменьшаем стак в руке
                     itemInHand.shrink(1);
-                    // 4. Кладем старый предмет в руку игрока
                     player.setItemInHand(hand, extracted);
                 }
             }

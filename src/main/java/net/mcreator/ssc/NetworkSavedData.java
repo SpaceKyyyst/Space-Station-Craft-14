@@ -8,6 +8,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.saveddata.SavedDataType;
+import net.minecraft.resources.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,15 +45,15 @@ public class NetworkSavedData extends SavedData {
         return data;
     }));
 
-    public static final SavedDataType<NetworkSavedData> TYPE = new SavedDataType<NetworkSavedData>(
-            "network_data",
+    // ИСПРАВЛЕНО: Строка названия заменена на фабричный метод Identifier.fromNamespaceAndPath под стандарты NeoForge 26.1.2
+    public static final SavedDataType<NetworkSavedData> TYPE = new SavedDataType<>(
+            Identifier.fromNamespaceAndPath("ssc14", "network_data"),
             () -> new NetworkSavedData(),
             CODEC
     );
 
     public List<NetworkConnection> connections = new ArrayList<>();
 
-    // ИСПРАВЛЕНО: Используем текущее измерение, а не overworld!
     public static NetworkSavedData get(Level world) {
         if (world instanceof ServerLevel serverLevel) {
             return serverLevel.getDataStorage().computeIfAbsent(TYPE);

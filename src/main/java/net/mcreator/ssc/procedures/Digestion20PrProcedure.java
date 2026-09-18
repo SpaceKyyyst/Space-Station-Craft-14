@@ -30,10 +30,9 @@ public class Digestion20PrProcedure {
         double modifier = getDigestionModifier(currentNutrients);
         int delayTicks = (int) Math.round(BASE_DIGESTION_TICKS * modifier);
         
-        // ⚠️ ОТЛОЖЕННОЕ ВЫПОЛНЕНИЕ — ПРАВИЛЬНАЯ ЛОГИКА!
         Ssc14Mod.queueServerWork(delayTicks, () -> {
-            // ✅ Пропускаем, если сущность удалена ИЛИ мы на клиенте
-            if (livingEntity == null || livingEntity.isRemoved() || livingEntity.level().isClientSide) {
+            // ИСПРАВЛЕНО: Добавлены скобочки к методу .isClientSide() для NeoForge 26.1.2
+            if (livingEntity == null || livingEntity.isRemoved() || livingEntity.level().isClientSide()) {
                 return;
             }
             processDigestion(livingEntity);
@@ -41,21 +40,17 @@ public class Digestion20PrProcedure {
     }
     
     private static void processDigestion(LivingEntity entity) {
-        // 1. Добавляем питательные вещества
         Double nutrientsBefore = getNutrientsValue(entity);
         if (nutrientsBefore != null) {
             setNutrientsValue(entity, nutrientsBefore + NUTRIENTS_PER_CYCLE);
         }
         
-        // 2. Уменьшаем счётчик пищеварения
         AttributeInstance digestiveAttr = entity.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES);
         if (digestiveAttr != null) {
             double newVal = Math.max(0, digestiveAttr.getValue() - 1);
             digestiveAttr.setBaseValue(Math.round(newVal));
         }
     }
-
-    // === Локальные хелперы ===
     
     private static boolean isMetabolismActive(LivingEntity entity) {
         if (entity == null) return false;

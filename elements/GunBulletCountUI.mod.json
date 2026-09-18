@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "overlay",
   "definition": {
     "priority": "NORMAL",
@@ -35,9 +35,7 @@
         "data": {
           "image": "bullet_ui_sprite_2.png",
           "use1Xscale": false,
-          "displayCondition": {
-            "name": "GunBulletChamberUIConditions"
-          },
+          "displayCondition": "GunBulletChamberUIConditions",
           "anchorPoint": "BOTTOM_CENTER",
           "x": 98,
           "y": 208,
@@ -47,9 +45,7 @@
     ],
     "baseTexture": "",
     "overlayTarget": "Ingame",
-    "displayCondition": {
-      "name": "GunBulletCountUI_Conditions"
-    },
+    "displayCondition": "GunBulletCountUI_Conditions",
     "gridSettings": {
       "sx": 18,
       "sy": 18,

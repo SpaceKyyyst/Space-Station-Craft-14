@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "block",
   "definition": {
     "texture": "asteroid_stone_base",
@@ -51,14 +51,10 @@
     "rarity": "COMMON",
     "immuneToFire": true,
     "creativeTabs": [
-      {
-        "value": "CUSTOM:SSC14Walls"
-      }
+      "CUSTOM:SSC14Walls"
     ],
     "destroyTool": "Not specified",
-    "customDrop": {
-      "value": ""
-    },
+    "customDrop": "",
     "dropAmount": 0,
     "xpAmountMin": 0,
     "xpAmountMax": 0,
@@ -78,14 +74,10 @@
     },
     "colorOnMap": "DEFAULT",
     "noteBlockInstrument": "harp",
-    "creativePickItem": {
-      "value": ""
-    },
+    "creativePickItem": "",
     "offsetType": "NONE",
     "aiPathNodeType": "DEFAULT",
-    "strippingResult": {
-      "value": ""
-    },
+    "strippingResult": "",
     "ignitedByLava": false,
     "flammability": 0,
     "fireSpreadSpeed": 0,
@@ -95,25 +87,13 @@
     "jumpFactor": 1.0,
     "reactionToPushing": "NORMAL",
     "isNotColidable": false,
+    "soundOnStep": "STONE",
     "isCustomSoundType": true,
-    "soundOnStep": {
-      "value": "STONE"
-    },
-    "breakSound": {
-      "value": "CUSTOM:break_stone"
-    },
-    "fallSound": {
-      "value": "block.stone.fall"
-    },
-    "hitSound": {
-      "value": "block.stone.hit"
-    },
-    "placeSound": {
-      "value": "block.stone.place"
-    },
-    "stepSound": {
-      "value": "block.stone.step"
-    },
+    "breakSound": "CUSTOM:break_stone",
+    "fallSound": "block.stone.fall",
+    "hitSound": "block.stone.hit",
+    "placeSound": "block.stone.place",
+    "stepSound": "block.stone.step",
     "luminance": {
       "fixedValue": 0.0
     },
@@ -144,9 +124,7 @@
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [
-      {
-        "value": "TAG:stone_ore_replaceables"
-      }
+      "TAG:stone_ore_replaceables"
     ],
     "generationShape": "UNIFORM",
     "frequencyPerChunks": 10,
