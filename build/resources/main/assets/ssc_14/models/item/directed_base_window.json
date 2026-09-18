@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "ssc_14:item/directed_st_glass"
-  },
-  "render_type": "translucent"
-}

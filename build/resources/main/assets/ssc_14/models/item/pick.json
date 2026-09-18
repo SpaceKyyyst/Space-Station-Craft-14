@@ -1,7 +1,0 @@
-{
-  "parent": "ssc_14:custom/ssc14_pick",
-  "textures": {
-    "1": "ssc_14:block/ssc14_pick_t",
-    "particle": "ssc_14:item/ssc_pick_techtecsture"
-  }
-}

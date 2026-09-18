@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "ssc_14:block/plasstal_wall_d6",
-    "particle": "ssc_14:block/plasstal_wall"
-  },
-  "render_type": "solid"
-}

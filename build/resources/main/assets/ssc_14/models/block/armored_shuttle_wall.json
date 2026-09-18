@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "ssc_14:block/shuttle_strond_wall",
-    "particle": "ssc_14:block/shuttle_strond_wall"
-  },
-  "render_type": "solid"
-}
