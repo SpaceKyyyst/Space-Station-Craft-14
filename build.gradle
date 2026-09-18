@@ -14,6 +14,7 @@ repositories {
 dependencies {
     implementation "maven.modrinth:ItemPhysic:1.8.11"
     implementation "maven.modrinth:creativecore:2.14.7-neoforge"
+    implementation "maven.modrinth:fusion-connected-textures:1.3.15a-neoforge-mc1.21.8"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 

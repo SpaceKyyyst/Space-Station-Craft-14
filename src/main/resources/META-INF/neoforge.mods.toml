@@ -37,6 +37,7 @@ description="\u041F\u043E\u0432\u0442\u043E\u0440\u0451\u043D\u043D\u0430\u044F 
     modId="fusion"
     type="required"
     versionRange="[0,)"
+    referralUrl="https://modrinth.com/mod/fusion-connected-textures"
     ordering="NONE"
     side="BOTH"
 [[dependencies.ssc_14]]
