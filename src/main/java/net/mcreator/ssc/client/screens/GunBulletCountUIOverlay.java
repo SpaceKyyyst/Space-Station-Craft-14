@@ -1,7 +1,5 @@
 package net.mcreator.ssc.client.screens;
 
-import org.checkerframework.checker.units.qual.h;
-
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -11,7 +9,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.util.Mth;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
@@ -21,9 +19,9 @@ import net.mcreator.ssc.procedures.GunBulletChamberUIConditionsProcedure;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class GunBulletCountUIOverlay {
-	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/mk_58_bullet_ui.png");
-	private static final ResourceLocation IMAGE_1 = ResourceLocation.parse("ssc_14:textures/screens/bullet_ui_sprite_2.png");
-	private static final ResourceLocation SPRITE_0 = ResourceLocation.parse("ssc_14:textures/screens/bullet_ui_sprites.png");
+	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/mk_58_bullet_ui.png");
+	private static final Identifier IMAGE_1 = Identifier.parse("ssc_14:textures/screens/bullet_ui_sprite_2.png");
+	private static final Identifier SPRITE_0 = Identifier.parse("ssc_14:textures/screens/bullet_ui_sprites.png");
 
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {

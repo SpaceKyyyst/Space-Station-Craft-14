@@ -6,7 +6,7 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.projectile.AbstractThrownPotion;
+import net.minecraft.world.entity.projectile.throwableitemprojectile.AbstractThrownPotion;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -21,7 +21,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.mcreator.ssc.procedures.SpannerEntUseProcedure;
@@ -47,7 +47,7 @@ public class IDConsoleENTITYEntity extends PathfinderMob {
 
 	@Override
 	public SoundEvent getDeathSound() {
-		return BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:device_destroy"));
+		return BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:device_destroy"));
 	}
 
 	@Override
@@ -84,6 +84,11 @@ public class IDConsoleENTITYEntity extends PathfinderMob {
 		Level world = this.level();
 		Entity entity = this;
 		return false;
+	}
+
+	@Override
+	public boolean canBreatheUnderwater() {
+		return !this.canDrownInFluidType(NeoForgeMod.WATER_TYPE.value());
 	}
 
 	public static void init(RegisterSpawnPlacementsEvent event) {

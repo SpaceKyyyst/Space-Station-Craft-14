@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "block",
   "definition": {
     "texture": "tile_fl_super_reinforced_texture",
@@ -87,14 +87,10 @@
     "rarity": "COMMON",
     "immuneToFire": true,
     "creativeTabs": [
-      {
-        "value": "CUSTOM:SSC14Coating"
-      }
+      "CUSTOM:SSC14Coating"
     ],
     "destroyTool": "Not specified",
-    "customDrop": {
-      "value": ""
-    },
+    "customDrop": "",
     "dropAmount": 1,
     "xpAmountMin": 0,
     "xpAmountMax": 0,
@@ -114,14 +110,10 @@
     },
     "colorOnMap": "DEFAULT",
     "noteBlockInstrument": "harp",
-    "creativePickItem": {
-      "value": ""
-    },
+    "creativePickItem": "",
     "offsetType": "NONE",
     "aiPathNodeType": "DEFAULT",
-    "strippingResult": {
-      "value": ""
-    },
+    "strippingResult": "",
     "ignitedByLava": false,
     "flammability": 0,
     "fireSpreadSpeed": 0,
@@ -131,33 +123,19 @@
     "jumpFactor": 1.0,
     "reactionToPushing": "NORMAL",
     "isNotColidable": false,
+    "soundOnStep": "COPPER",
     "isCustomSoundType": true,
-    "soundOnStep": {
-      "value": "COPPER"
-    },
-    "breakSound": {
-      "value": "CUSTOM:title_off"
-    },
-    "fallSound": {
-      "value": "block.copper.fall"
-    },
-    "hitSound": {
-      "value": "block.copper.hit"
-    },
-    "placeSound": {
-      "value": "CUSTOM:title_on"
-    },
-    "stepSound": {
-      "value": "block.copper.step"
-    },
+    "breakSound": "CUSTOM:title_off",
+    "fallSound": "block.copper.fall",
+    "hitSound": "block.copper.hit",
+    "placeSound": "CUSTOM:title_on",
+    "stepSound": "block.copper.step",
     "luminance": {
       "fixedValue": 0.0
     },
     "unbreakable": false,
     "vanillaToolTier": "NONE",
-    "placingCondition": {
-      "name": "Title_Placement_Conditions"
-    },
+    "placingCondition": "Title_Placement_Conditions",
     "isBonemealable": false,
     "sensitiveToVibration": false,
     "vibrationalEvents": [],
@@ -183,9 +161,7 @@
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [
-      {
-        "value": "TAG:stone_ore_replaceables"
-      }
+      "TAG:stone_ore_replaceables"
     ],
     "generationShape": "UNIFORM",
     "frequencyPerChunks": 10,

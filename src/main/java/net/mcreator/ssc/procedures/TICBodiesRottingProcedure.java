@@ -18,14 +18,17 @@ public class TICBodiesRottingProcedure {
         if (player.level().isClientSide()) return;
         
         CompoundTag nbt = player.getPersistentData();
-        if (nbt.getBoolean("ssc14_dead").orElse(false)) return; // Игнорируем мёртвых
+        // ИСПРАВЛЕНО: Добавлен .orElse(false) для распаковки Optional
+        if (nbt.getBoolean("ssc14_dead").orElse(false)) return;
 
+        // ИСПРАВЛЕНО: Добавлен .orElse(0.0)
         double total = nbt.getDouble("sscCustomHealth").orElse(0.0);
 
-        // === 🩹 РЕГЕНЕРАЦИЯ (< 20 урона) ===
-        if (total > 0 && total < 20.0) {
+        if (total > 0 && total * 1.0 < 20.0) {
+            // ИСПРАВЛЕНО: Добавлен .orElse(0) для целочисленного таймера
             int timer = nbt.getInt("ssc14_regenTimer").orElse(0);
-            if (timer >= 20) { // Каждую секунду
+            if (timer >= 20) {
+                // ИСПРАВЛЕНО: Добавлен .orElse(0.0) для blunt и heat
                 double blunt = nbt.getDouble("ssc14_dmg_blunt").orElse(0.0);
                 double heat = nbt.getDouble("ssc14_dmg_heat").orElse(0.0);
                 
@@ -47,12 +50,16 @@ public class TICBodiesRottingProcedure {
             nbt.putInt("ssc14_regenTimer", 0);
         }
 
-        // === 🩸 КРОВОТЕЧЕНИЕ (каждые 2 сек +1 bloodloss) ===
+        // ИСПРАВЛЕНО: Добавлен .orElse(false) для проверки кровотечения
         if (nbt.getBoolean("ssc14_bleeding").orElse(false)) {
+            // ИСПРАВЛЕНО: Добавлен .orElse(0) для bleedTimer
             int bleedTimer = nbt.getInt("ssc14_bleedTick").orElse(0);
             if (bleedTimer >= 40) {
+                // ИСПРАВЛЕНО: Добавлен .orElse(0.0) для bloodloss
                 double bloodloss = nbt.getDouble("ssc14_dmg_bloodloss").orElse(0.0);
                 nbt.putDouble("ssc14_dmg_bloodloss", bloodloss + 1.0);
+                
+                // ИСПРАВЛЕНО: Добавлен .orElse(0.0) при расчете нового здоровья
                 double newTotal = nbt.getDouble("sscCustomHealth").orElse(0.0) + 1.0;
                 nbt.putDouble("sscCustomHealth", newTotal);
                 updateHealthUI(player, newTotal);

@@ -48,10 +48,10 @@ public class MicrowaweBlock extends Block implements EntityBlock {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(1, 0, 3, 15, 9, 13);
 				case NORTH -> box(1, 0, 3, 15, 9, 13);
 				case EAST -> box(3, 0, 1, 13, 9, 15);
 				case WEST -> box(3, 0, 1, 13, 9, 15);
+				default -> box(1, 0, 3, 15, 9, 13);
 			};
 		});
 	}
@@ -67,7 +67,7 @@ public class MicrowaweBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 0;
 	}
 
@@ -84,7 +84,10 @@ public class MicrowaweBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(ON_OFF, true).setValue(ACTIVE, false);
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(ON_OFF, true).setValue(ACTIVE, false);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

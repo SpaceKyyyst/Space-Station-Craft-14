@@ -1,7 +1,5 @@
 package net.mcreator.ssc.client.screens;
 
-import org.checkerframework.checker.units.qual.h;
-
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -10,7 +8,7 @@ import net.neoforged.api.distmarker.Dist;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
@@ -18,12 +16,12 @@ import net.mcreator.ssc.procedures.*;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class ActionIndicatorOverlay {
-	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_1.png");
-	private static final ResourceLocation IMAGE_1 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_2.png");
-	private static final ResourceLocation IMAGE_2 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_3.png");
-	private static final ResourceLocation IMAGE_3 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_4.png");
-	private static final ResourceLocation IMAGE_4 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_5.png");
-	private static final ResourceLocation IMAGE_5 = ResourceLocation.parse("ssc_14:textures/screens/progress_bar_6.png");
+	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/progress_bar_1.png");
+	private static final Identifier IMAGE_1 = Identifier.parse("ssc_14:textures/screens/progress_bar_2.png");
+	private static final Identifier IMAGE_2 = Identifier.parse("ssc_14:textures/screens/progress_bar_3.png");
+	private static final Identifier IMAGE_3 = Identifier.parse("ssc_14:textures/screens/progress_bar_4.png");
+	private static final Identifier IMAGE_4 = Identifier.parse("ssc_14:textures/screens/progress_bar_5.png");
+	private static final Identifier IMAGE_5 = Identifier.parse("ssc_14:textures/screens/progress_bar_6.png");
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void eventHandler(RenderGuiEvent.Pre event) {

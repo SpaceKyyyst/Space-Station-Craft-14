@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "HelmetsEva",
@@ -9,15 +9,11 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
+    "equipSound": "",
     "hasModel": true,
     "baubleModel": "Modelhelmets_eva_equipped",
     "baubleModelTexture": "helmets_eva_equipped_texture.png",
-    "onEquip": {
-      "name": "EquipHelmetSoundPR"
-    },
+    "onEquip": "EquipHelmetSoundPR",
     "helmetModelPart": "eva",
     "bodyModelPart": "Empty",
     "armsModelPartL": "Empty",

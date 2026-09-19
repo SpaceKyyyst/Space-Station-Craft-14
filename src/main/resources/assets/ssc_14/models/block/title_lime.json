@@ -4,6 +4,5 @@
     "all": "ssc_14:block/tile_fl_lime_texture",
     "particle": "ssc_14:block/tile_fl_lime_texture",
     "2": "ssc_14:block/tile_fl_lime_texture"
-  },
-  "render_type": "cutout"
+  }
 }

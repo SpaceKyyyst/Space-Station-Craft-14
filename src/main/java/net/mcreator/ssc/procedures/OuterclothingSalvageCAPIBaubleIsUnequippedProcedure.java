@@ -5,7 +5,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import net.mcreator.ssc.init.Ssc14ModItems;
 
@@ -14,7 +14,7 @@ public class OuterclothingSalvageCAPIBaubleIsUnequippedProcedure {
 		if (entity == null)
 			return;
 		if (entity instanceof LivingEntity _entity) {
-			_entity.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(ResourceLocation.parse("ssc_14:salvage"));
+			_entity.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(Identifier.parse("ssc_14:salvage"));
 		}
 		if (hasEntityInInventory(entity, new ItemStack(Ssc14ModItems.HARDSUIT_SALVAGE_HELMET.get()))) {
 			if (entity instanceof net.minecraft.server.level.ServerPlayer _serverPlayer) {

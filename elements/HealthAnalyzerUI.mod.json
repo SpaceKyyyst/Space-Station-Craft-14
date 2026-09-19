@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "overlay",
   "definition": {
     "priority": "NORMAL",
@@ -126,9 +126,7 @@
       {
         "type": "entitymodel",
         "data": {
-          "entityModel": {
-            "name": "HealthAnalyzerUIEntityDisplay"
-          },
+          "entityModel": "HealthAnalyzerUIEntityDisplay",
           "scale": 15,
           "rotationX": 0,
           "followMouseMovement": false,
@@ -141,9 +139,7 @@
     ],
     "baseTexture": "",
     "overlayTarget": "Ingame",
-    "displayCondition": {
-      "name": "HealthAnalyzerUI_Display_Conditions"
-    },
+    "displayCondition": "HealthAnalyzerUI_Display_Conditions",
     "gridSettings": {
       "sx": 18,
       "sy": 18,

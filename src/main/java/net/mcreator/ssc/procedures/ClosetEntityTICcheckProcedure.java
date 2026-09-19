@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
@@ -20,7 +20,7 @@ public class ClosetEntityTICcheckProcedure {
 
     private static final String LOCKED_TAG = "ssc14:lockedInCloset";
     // Кэшируем TagKey один раз при загрузке класса (не в тике!)
-    private static final TagKey<Block> CLOSET_TAG = TagKey.create(Registries.BLOCK, ResourceLocation.parse("ssc14:closets"));
+    private static final TagKey<Block> CLOSET_TAG = TagKey.create(Registries.BLOCK, Identifier.parse("ssc14:closets"));
 
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Pre event) {

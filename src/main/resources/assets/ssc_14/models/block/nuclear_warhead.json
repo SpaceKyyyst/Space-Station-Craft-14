@@ -3,6 +3,5 @@
   "textures": {
     "all": "ssc_14:block/debug_nuke",
     "particle": "ssc_14:block/debug_nuke"
-  },
-  "render_type": "solid"
+  }
 }

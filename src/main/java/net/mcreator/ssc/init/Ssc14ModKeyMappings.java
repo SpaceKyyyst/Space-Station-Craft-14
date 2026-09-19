@@ -12,6 +12,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.Dist;
 
+import net.minecraft.resources.Identifier;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 
@@ -21,7 +22,8 @@ import com.mojang.blaze3d.platform.InputConstants;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Ssc14ModKeyMappings {
-	public static final KeyMapping DC_MOPEN = new KeyMapping("key.ssc_14.dc_mopen", GLFW.GLFW_KEY_T, "key.categories.ssc14") {
+	public static final KeyMapping.Category CATEGORY_SSC14 = new KeyMapping.Category(Identifier.parse("ssc_14:ssc14"));
+	public static final KeyMapping DC_MOPEN = new KeyMapping("key.ssc_14.dc_mopen", GLFW.GLFW_KEY_T, CATEGORY_SSC14) {
 		private boolean isDownOld = false;
 
 		@Override
@@ -34,7 +36,7 @@ public class Ssc14ModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping ROTATE = new KeyMapping("key.ssc_14.rotate", GLFW.GLFW_KEY_R, "key.categories.ssc14") {
+	public static final KeyMapping ROTATE = new KeyMapping("key.ssc_14.rotate", GLFW.GLFW_KEY_R, CATEGORY_SSC14) {
 		private boolean isDownOld = false;
 
 		@Override
@@ -47,7 +49,7 @@ public class Ssc14ModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping PULLTHE_OBJECT = new KeyMapping("key.ssc_14.pullthe_object", GLFW.GLFW_KEY_F, "key.categories.ssc14") {
+	public static final KeyMapping PULLTHE_OBJECT = new KeyMapping("key.ssc_14.pullthe_object", GLFW.GLFW_KEY_F, CATEGORY_SSC14) {
 		private boolean isDownOld = false;
 
 		@Override
@@ -65,7 +67,7 @@ public class Ssc14ModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping WORLD_OBJECT_CHECK = new KeyMapping("key.ssc_14.world_object_check", GLFW.GLFW_KEY_LEFT_SHIFT, "key.categories.ssc14") {
+	public static final KeyMapping WORLD_OBJECT_CHECK = new KeyMapping("key.ssc_14.world_object_check", GLFW.GLFW_KEY_LEFT_SHIFT, CATEGORY_SSC14) {
 		private boolean isDownOld = false;
 
 		@Override
@@ -83,7 +85,7 @@ public class Ssc14ModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping CRAWL = new KeyMapping("key.ssc_14.crawl", GLFW.GLFW_KEY_Z, "key.categories.movement") {
+	public static final KeyMapping CRAWL = new KeyMapping("key.ssc_14.crawl", GLFW.GLFW_KEY_Z, KeyMapping.Category.MOVEMENT) {
 		private boolean isDownOld = false;
 
 		@Override
@@ -96,8 +98,8 @@ public class Ssc14ModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping INTERACTION = new KeyMapping("key.ssc_14.interaction", GLFW.GLFW_KEY_E, "key.categories.inventory");
-	public static final KeyMapping SPECIFY = new KeyMapping("key.ssc_14.specify", InputConstants.Type.MOUSE, GLFW.GLFW_MOUSE_BUTTON_MIDDLE, "key.categories.multiplayer") {
+	public static final KeyMapping INTERACTION = new KeyMapping("key.ssc_14.interaction", GLFW.GLFW_KEY_E, KeyMapping.Category.INVENTORY);
+	public static final KeyMapping SPECIFY = new KeyMapping("key.ssc_14.specify", InputConstants.Type.MOUSE, GLFW.GLFW_MOUSE_BUTTON_MIDDLE, KeyMapping.Category.MULTIPLAYER) {
 		private boolean isDownOld = false;
 
 		@Override
@@ -115,6 +117,7 @@ public class Ssc14ModKeyMappings {
 
 	@SubscribeEvent
 	public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
+		event.registerCategory(CATEGORY_SSC14);
 		event.register(DC_MOPEN);
 		event.register(ROTATE);
 		event.register(PULLTHE_OBJECT);

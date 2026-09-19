@@ -4,15 +4,15 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.component.DataComponents;
@@ -67,10 +67,10 @@ public class FoodEatingPrProcedure {
 														}
 														if (world instanceof Level _level) {
 															if (!_level.isClientSide()) {
-																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:eating_sounds")), SoundSource.NEUTRAL,
+																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:eating_sounds")), SoundSource.NEUTRAL,
 																		(float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1), (float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1));
 															} else {
-																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:eating_sounds")), SoundSource.NEUTRAL,
+																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:eating_sounds")), SoundSource.NEUTRAL,
 																		(float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1), (float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1), false);
 															}
 														}
@@ -97,8 +97,8 @@ public class FoodEatingPrProcedure {
 																						? _livingEntity53.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																						: 0)));
 																}
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal(
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal(
 																			"Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043E\u0440\u0435\u0445\u043E\u0432\u043E, \u0432\u043E\u043B\u043E\u043A\u043D\u0438\u0441\u0442\u043E, \u0441\u043B\u0430\u0434\u043A\u043E \u0438 \u043A\u0430\u043A \u043E\u0432\u0451\u0441."),
 																			true);
 																Digestion20PrProcedure.execute(world, entity);
@@ -122,8 +122,8 @@ public class FoodEatingPrProcedure {
 																						? _livingEntity68.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																						: 0)));
 																}
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(
 																			Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0445\u043B\u0435\u0431, \u043C\u044F\u0441\u043E \u0438... \u041C\u042F\u0423."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.CHEESEBURGER.get()) {
@@ -146,8 +146,8 @@ public class FoodEatingPrProcedure {
 																						? _livingEntity83.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																						: 0)));
 																}
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(
 																			Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0445\u043B\u0435\u0431, \u043C\u044F\u0441\u043E \u0438 \u0441\u044B\u0440."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.BREAD.get()) {
@@ -170,8 +170,8 @@ public class FoodEatingPrProcedure {
 																						? _livingEntity98.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																						: 0)));
 																}
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0445\u043B\u0435\u0431."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0445\u043B\u0435\u0431."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.TOFU.get()) {
 																if (itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("Nutrients", 0) < 2) {
@@ -193,8 +193,8 @@ public class FoodEatingPrProcedure {
 																						? _livingEntity113.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																						: 0)));
 																}
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(
 																			Component.literal(
 																					"Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043F\u0440\u0435\u0441\u043D\u043E \u0438 \u043D\u0435\u043C\u043D\u043E\u0433\u043E \u0441\u043E\u0435\u0432\u043E."),
 																			true);
@@ -212,8 +212,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity121 && _livingEntity121.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity121.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0441\u044B\u0440\u043D\u043E."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0441\u044B\u0440\u043D\u043E."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.CHIPS.get()) {
 																if (world instanceof ServerLevel _level) {
@@ -228,8 +228,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity129 && _livingEntity129.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity129.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0445\u0440\u0443\u0441\u0442\u044F\u0449\u0435."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0445\u0440\u0443\u0441\u0442\u044F\u0449\u0435."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.BORITOS.get()) {
 																if (world instanceof ServerLevel _level) {
@@ -244,8 +244,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity137 && _livingEntity137.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity137.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0445\u0440\u0443\u0441\u0442\u044F\u0449\u0435."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0445\u0440\u0443\u0441\u0442\u044F\u0449\u0435."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.POPCORN.get()) {
 																if (world instanceof ServerLevel _level) {
@@ -260,8 +260,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity145 && _livingEntity145.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity145.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0432\u043E\u0437\u0434\u0443\u0448\u043D\u043E."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0432\u043E\u0437\u0434\u0443\u0448\u043D\u043E."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.BUN.get()) {
 																itemstack.shrink(1);
@@ -270,8 +270,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity152 && _livingEntity152.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity152.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0445\u043B\u0435\u0431."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0445\u043B\u0435\u0431."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.BREAD_SLICE.get()) {
 																itemstack.shrink(1);
@@ -280,8 +280,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity159 && _livingEntity159.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity159.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0445\u043B\u0435\u0431."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0445\u043B\u0435\u0431."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.TOFU_SLICE.get()) {
 																itemstack.shrink(1);
@@ -290,8 +290,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity166 && _livingEntity166.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity166.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(
 																			Component.literal(
 																					"Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043F\u0440\u0435\u0441\u043D\u043E \u0438 \u043D\u0435\u043C\u043D\u043E\u0433\u043E \u0441\u043E\u0435\u0432\u043E."),
 																			true);
@@ -303,8 +303,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity173 && _livingEntity173.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity173.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0445\u043B\u0435\u0431 \u0441 \u0442\u043E\u0444\u0443."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0445\u043B\u0435\u0431 \u0441 \u0442\u043E\u0444\u0443."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.CHEESE.get()) {
 																itemstack.shrink(1);
@@ -313,8 +313,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity180 && _livingEntity180.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity180.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0441\u044B\u0440\u043D\u043E."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u0441\u044B\u0440\u043D\u043E."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.CUTLET.get()) {
 																itemstack.shrink(1);
@@ -323,8 +323,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity187 && _livingEntity187.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity187.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal(
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal(
 																			"Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0441\u044B\u0440\u043E\u0435 \u043F\u0435\u0440\u0435\u043C\u043E\u043B\u043E\u0442\u043E\u0435 \u043C\u044F\u0441\u043E."),
 																			true);
 																Digestion20PrProcedure.execute(world, entity);
@@ -335,8 +335,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity194 && _livingEntity194.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity194.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u043A\u043E\u0442\u043B\u0435\u0442\u0430."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u043A\u043E\u0442\u043B\u0435\u0442\u0430."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.MEAT.get()) {
 																itemstack.shrink(1);
@@ -345,8 +345,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity201 && _livingEntity201.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity201.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0441\u044B\u0440\u043E\u0435 \u043C\u044F\u0441\u043E."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0441\u044B\u0440\u043E\u0435 \u043C\u044F\u0441\u043E."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.FRIED_MEAT.get()) {
 																itemstack.shrink(1);
@@ -355,8 +355,8 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity208 && _livingEntity208.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity208.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0441\u0442\u0435\u0439\u043A."), true);
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0441\u0442\u0435\u0439\u043A."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															} else if (itemstack.getItem() == Ssc14ModItems.ROTTEN_MEAT.get()) {
 																itemstack.shrink(1);
@@ -365,14 +365,14 @@ public class FoodEatingPrProcedure {
 																			.setBaseValue((1 + (entity instanceof LivingEntity _livingEntity215 && _livingEntity215.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)
 																					? _livingEntity215.getAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES).getValue()
 																					: 0)));
-																if (entity instanceof Player _player && !_player.level().isClientSide())
-																	_player.displayClientMessage(
+																if (entity instanceof ServerPlayer _player)
+																	_player.sendSystemMessage(
 																			Component.literal("Nom. \u041D\u0430 \u0432\u043A\u0443\u0441 \u043A\u0430\u043A \u0433\u043D\u0438\u043B\u044C \u0438 \u043F\u043B\u0435\u0441\u0435\u043D\u044C."), true);
 																Digestion20PrProcedure.execute(world, entity);
 															}
 														} else {
-															if (entity instanceof Player _player && !_player.level().isClientSide())
-																_player.displayClientMessage(Component.literal("\u0412 \u0432\u0430\u0441 \u0431\u043E\u043B\u044C\u0448\u0435 \u043D\u0435 \u0432\u043B\u0435\u0437\u0435\u0442!"), true);
+															if (entity instanceof ServerPlayer _player)
+																_player.sendSystemMessage(Component.literal("\u0412 \u0432\u0430\u0441 \u0431\u043E\u043B\u044C\u0448\u0435 \u043D\u0435 \u0432\u043B\u0435\u0437\u0435\u0442!"), true);
 														}
 														if (entity instanceof LivingEntity _livingEntity219 && _livingEntity219.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 															_livingEntity219.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);

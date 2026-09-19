@@ -1,6 +1,6 @@
 package net.mcreator.ssc.client.model;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
@@ -18,7 +18,7 @@ import net.minecraft.client.model.EntityModel;
 public class Modelhelmets_eva_large_equipped extends EntityModel<LivingEntityRenderState> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("ssc_14", "modelhelmets_eva_large_equipped"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath("ssc_14", "modelhelmets_eva_large_equipped"), "main");
 	public final ModelPart eva_large;
 
 	public Modelhelmets_eva_large_equipped(ModelPart root) {

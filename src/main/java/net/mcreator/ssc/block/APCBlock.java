@@ -1,10 +1,8 @@
-
 package net.mcreator.ssc.block;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -14,7 +12,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.MenuProvider;
@@ -24,7 +21,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.block.entity.APCBlockEntity;
-import net.mcreator.ssc.EnergyNetworkManager;
 
 import java.util.function.Function;
 
@@ -34,41 +30,17 @@ public class APCBlock extends Block implements EntityBlock {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public APCBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.LODESTONE).strength(30f, 10f).lightLevel(blockstate -> 3).noCollission().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.LODESTONE).strength(30f, 10f).lightLevel(blockstate -> 3).noCollision().postProcess((bs, br, bp) -> bp).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BLOCKSTATE, 0));
-	}
-
-	@Override
-	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
-		super.onPlace(blockstate, world, pos, oldState, moving);
-		if (!world.isClientSide()) {
-			// Принудительно пересобираем сеть под ЛКП
-			EnergyNetworkManager.updatePosition(world, pos.below());
-		}
-	}
-
-	@Override
-	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, net.minecraft.world.entity.player.Player entity, boolean willHarvest, FluidState fluid) {
-		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		if (!world.isClientSide()) {
-			EnergyNetworkManager.updatePosition(world, pos.below());
-		}
-		return retval;
-	}
-
-	@Override
-	public void wasExploded(ServerLevel world, BlockPos pos, Explosion e) {
-		super.wasExploded(world, pos, e);
-		EnergyNetworkManager.updatePosition(world, pos.below());
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> Shapes.or(box(3.5, 7, 0, 12.5, 12, 2), box(4, 5, 0, 12, 7, 1), box(5.5, 5.25, 0.5, 6.5, 7.25, 1.5), box(7.5, 5.25, 0.5, 8.5, 7.25, 1.5), box(9.5, 5.25, 0.5, 10.5, 7.25, 1.5));
 				case NORTH -> Shapes.or(box(3.5, 7, 14, 12.5, 12, 16), box(4, 5, 15, 12, 7, 16), box(9.5, 5.25, 14.5, 10.5, 7.25, 15.5), box(7.5, 5.25, 14.5, 8.5, 7.25, 15.5), box(5.5, 5.25, 14.5, 6.5, 7.25, 15.5));
 				case EAST -> Shapes.or(box(0, 7, 3.5, 2, 12, 12.5), box(0, 5, 4, 1, 7, 12), box(0.5, 5.25, 9.5, 1.5, 7.25, 10.5), box(0.5, 5.25, 7.5, 1.5, 7.25, 8.5), box(0.5, 5.25, 5.5, 1.5, 7.25, 6.5));
 				case WEST -> Shapes.or(box(14, 7, 3.5, 16, 12, 12.5), box(15, 5, 4, 16, 7, 12), box(14.5, 5.25, 5.5, 15.5, 7.25, 6.5), box(14.5, 5.25, 7.5, 15.5, 7.25, 8.5), box(14.5, 5.25, 9.5, 15.5, 7.25, 10.5));
+				default -> Shapes.or(box(3.5, 7, 0, 12.5, 12, 2), box(4, 5, 0, 12, 7, 1), box(5.5, 5.25, 0.5, 6.5, 7.25, 1.5), box(7.5, 5.25, 0.5, 8.5, 7.25, 1.5), box(9.5, 5.25, 0.5, 10.5, 7.25, 1.5));
 			};
 		});
 	}
@@ -91,7 +63,10 @@ public class APCBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BLOCKSTATE, 0);
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(BLOCKSTATE, 0);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -131,7 +106,7 @@ public class APCBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
+	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos, Direction direction) {
 		BlockEntity tileentity = world.getBlockEntity(pos);
 		if (tileentity instanceof APCBlockEntity be)
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);

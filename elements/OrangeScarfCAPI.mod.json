@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "OrangeScarf",
@@ -9,15 +9,11 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
+    "equipSound": "",
     "hasModel": true,
     "baubleModel": "Modelscarfs_equipped",
     "baubleModelTexture": "scarf_orange_equipped_texture.png",
-    "onEquip": {
-      "name": "Equip_BaseSound_PR_"
-    },
+    "onEquip": "Equip_BaseSound_PR_",
     "helmetModelPart": "head",
     "bodyModelPart": "torso",
     "armsModelPartL": "Empty",

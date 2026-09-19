@@ -13,21 +13,22 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.util.RandomSource;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
-import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.color.block.BlockTintSources;
 
 import net.mcreator.ssc.procedures.LowPlanetGrass_InstallationProcedure;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
+
+import java.util.List;
 
 public class MedPlanetGrassBlock extends Block {
 	private static final VoxelShape SHAPE = box(4, 0, 4, 12, 12, 12);
 
 	public MedPlanetGrassBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.GRASS).strength(0.1f, 1f).noCollission().isRedstoneConductor((bs, br, bp) -> false).replaceable().offsetType(Block.OffsetType.XZ));
+		super(properties.sound(SoundType.GRASS).strength(0.1f, 1f).noCollision().isRedstoneConductor((bs, br, bp) -> false).replaceable().offsetType(Block.OffsetType.XZ));
 	}
 
 	@Override
@@ -56,9 +57,7 @@ public class MedPlanetGrassBlock extends Block {
 		return !state.canSurvive(world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, world, scheduledTickAccess, currentPos, facing, facingPos, facingState, random);
 	}
 
-	public static void blockColorLoad(RegisterColorHandlersEvent.Block event) {
-		event.register((bs, world, pos, index) -> {
-			return world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : GrassColor.get(0.5D, 1.0D);
-		}, Ssc14ModBlocks.MED_PLANET_GRASS.get());
+	public static void blockColorLoad(RegisterColorHandlersEvent.BlockTintSources event) {
+		event.getBlockColors().register(List.of(BlockTintSources.grass()), Ssc14ModBlocks.MED_PLANET_GRASS.get());
 	}
 }

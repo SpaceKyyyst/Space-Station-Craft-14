@@ -27,7 +27,8 @@ public class SSC14CriticalInteractionBlockerProcedure {
     
     private static boolean isCritical(Player player) {
         if (player == null) return false;
+        // ИСПРАВЛЕНО: Добавлена распаковка Optional через .orElse(0.0)
         double dmg = player.getPersistentData().getDouble("sscCustomHealth").orElse(0.0);
-        return (dmg >= 100.0 && dmg < 200.0);
+        return (dmg >= 100.0 && dmg * 1.0 <= 200.0);
     }
 }

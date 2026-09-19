@@ -37,10 +37,10 @@ public class MachineFrameBlock extends Block {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(1, 0, 1, 15, 16, 15);
 				case NORTH -> box(1, 0, 1, 15, 16, 15);
 				case EAST -> box(1, 0, 1, 15, 16, 15);
 				case WEST -> box(1, 0, 1, 15, 16, 15);
+				default -> box(1, 0, 1, 15, 16, 15);
 			};
 		});
 	}
@@ -63,7 +63,10 @@ public class MachineFrameBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

@@ -10,7 +10,7 @@ import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.nbt.CompoundTag;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.mcreator.ssc.init.Ssc14ModItems;
@@ -94,28 +94,27 @@ public class IDCardAccessProcedure {
     private static void addMap(Supplier<Item> itemSupplier, String... accesses) {
         CARD_ACCESS_MAP.put(itemSupplier, accesses);
     }
-
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
-        if (!player.level().isClientSide) {
+        // ИСПРАВЛЕНО ПОД 1.21.4: Вызов метода .isClientSide() со скобками
+        if (!player.level().isClientSide()) {
             initCardMap();
             Set<String> currentAccesses = new HashSet<>();
 
-            // 1. Vanilla Inventory (руки, броня, основной инвентарь)
             Inventory inv = player.getInventory();
-            for (int i = 0; i < inv.getContainerSize(); i++) {
+            int vanillaSize = inv.getContainerSize();
+            for (int i = 0; vanillaSize > i; i++) {
                 collectAccesses(inv.getItem(i), currentAccesses);
             }
 
-            // 2. Curios API (PDA слот и другие кастомные слоты)
 			try {
 			    CuriosApi.getCuriosInventory(player).ifPresent(invCurios -> {
 			        for (ICurioStacksHandler handler : invCurios.getCurios().values()) {
-			            // В Curios 12.x получаем стандартный IItemHandler из слота
-			            IItemHandler curiosHandler = handler.getStacks();
+			            IItemHandlerModifiable curiosHandler = handler.getStacks();
 			            if (curiosHandler != null) {
-			                for (int i = 0; i < curiosHandler.getSlots(); i++) {
+			                int curiosSlots = curiosHandler.getSlots();
+			                for (int i = 0; curiosSlots > i; i++) {
 			                    collectAccesses(curiosHandler.getStackInSlot(i), currentAccesses);
 			                }
 			            }
@@ -125,7 +124,6 @@ public class IDCardAccessProcedure {
                 // Игнорируем ошибки Curios API для стабильности
             }
 
-            // 3. Синхронизация с NBT игрока
             CompoundTag data = player.getPersistentData();
             boolean changed = false;
             for (String key : ALL_ACCESSES) {
@@ -142,32 +140,25 @@ public class IDCardAccessProcedure {
         }
     }
 
-    /**
-     * Рекурсивный сбор доступов. Проверяет сам предмет и вложенные контейнеры.
-     */
     private static void collectAccesses(ItemStack stack, Set<String> collected) {
         if (stack.isEmpty()) return;
 
-        // Инициализация NBT карты
         initCardNBT(stack);
 
-        // Если это ID-карта, читаем доступы
         if (isIDCard(stack)) {
             collected.addAll(getAccesses(stack));
         }
 
-        // Проверка стандартных контейнеров (бандлы, шалкеры)
+        // ИСПРАВЛЕНО ПОД 1.21.4: Используем NonNullList вместо обычного ArrayList
         ItemContainerContents container = stack.get(DataComponents.CONTAINER);
         if (container != null) {
-            container.stream().forEach(item -> collectAccesses(item, collected));
+            net.minecraft.core.NonNullList<ItemStack> items = net.minecraft.core.NonNullList.create();
+            container.copyInto(items);
+            int totalItems = items.size();
+            for (int i = 0; totalItems > i; i++) {
+                collectAccesses(items.get(i), collected);
+            }
         }
-
-        // 🔧 TODO: Когда создашь КПК, добавь сюда проверку его инвентаря.
-        // Пример:
-        // if (stack.getItem() == Ssc14ModItems.PDA_ITEM.get()) {
-        //     PdaComponent pdaData = stack.get(Ssc14Components.PDA_DATA.get());
-        //     if (pdaData != null) pdaData.getInventory().forEach(item -> collectAccesses(item, collected));
-        // }
     }
 
     private static boolean isIDCard(ItemStack stack) {

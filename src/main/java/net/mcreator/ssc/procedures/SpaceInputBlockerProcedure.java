@@ -7,7 +7,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.Level;
@@ -20,14 +20,14 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 public class SpaceInputBlockerProcedure {
 
     private static final ResourceKey<Level> SPACE_DIM =
-        ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse("ssc_14:spaced"));
+        ResourceKey.create(Registries.DIMENSION, Identifier.parse("ssc_14:spaced"));
 
+    // ИСПРАВЛЕНО: Переведено на конкретный подкласс PlayerTickEvent.Post под NeoForge 26.1.2
     @SubscribeEvent
-    public static void onPlayerTick(PlayerTickEvent.Pre event) {
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
         if (player == null || !player.level().isClientSide()) return;
         
-        // 🔹 Пропускаем креатив/наблюдатель полностью
         if (!player.level().dimension().equals(SPACE_DIM) || 
             !player.isNoGravity() || 
             player.isCreative() || 
@@ -45,7 +45,6 @@ public class SpaceInputBlockerProcedure {
             Vec3 m = player.getDeltaMovement();
             float clientSmoothing = 1.05F;
             
-            // 🔹 Y не трогаем на клиенте тоже
             player.setDeltaMovement(m.x * clientSmoothing, m.y, m.z * clientSmoothing);
         }
     }

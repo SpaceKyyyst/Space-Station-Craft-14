@@ -1,7 +1,5 @@
 package net.mcreator.ssc.client.screens;
 
-import org.checkerframework.checker.units.qual.h;
-
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -11,7 +9,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.util.Mth;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
@@ -19,13 +17,13 @@ import net.mcreator.ssc.procedures.*;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class HealthUIOverlay {
-	private static final ResourceLocation SPRITE_0 = ResourceLocation.parse("ssc_14:textures/screens/dead_anim.png");
-	private static final ResourceLocation SPRITE_1 = ResourceLocation.parse("ssc_14:textures/screens/critical_anim.png");
-	private static final ResourceLocation SPRITE_2 = ResourceLocation.parse("ssc_14:textures/screens/health4_anim.png");
-	private static final ResourceLocation SPRITE_3 = ResourceLocation.parse("ssc_14:textures/screens/health3_anim.png");
-	private static final ResourceLocation SPRITE_4 = ResourceLocation.parse("ssc_14:textures/screens/health2_anim.png");
-	private static final ResourceLocation SPRITE_5 = ResourceLocation.parse("ssc_14:textures/screens/health1_anim.png");
-	private static final ResourceLocation SPRITE_6 = ResourceLocation.parse("ssc_14:textures/screens/health0_anim.png");
+	private static final Identifier SPRITE_0 = Identifier.parse("ssc_14:textures/screens/dead_anim.png");
+	private static final Identifier SPRITE_1 = Identifier.parse("ssc_14:textures/screens/critical_anim.png");
+	private static final Identifier SPRITE_2 = Identifier.parse("ssc_14:textures/screens/health4_anim.png");
+	private static final Identifier SPRITE_3 = Identifier.parse("ssc_14:textures/screens/health3_anim.png");
+	private static final Identifier SPRITE_4 = Identifier.parse("ssc_14:textures/screens/health2_anim.png");
+	private static final Identifier SPRITE_5 = Identifier.parse("ssc_14:textures/screens/health1_anim.png");
+	private static final Identifier SPRITE_6 = Identifier.parse("ssc_14:textures/screens/health0_anim.png");
 
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public static void eventHandler(RenderGuiEvent.Pre event) {

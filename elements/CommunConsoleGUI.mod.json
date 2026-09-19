@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -213,9 +213,7 @@
           "name": "imagebutton_comm_cons_gui_button",
           "image": "comm_cons_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CommConsREDcode"
-          },
+          "onClick": "CommConsREDcode",
           "x": 32,
           "y": 111,
           "locked": true
@@ -227,9 +225,7 @@
           "name": "imagebutton_comm_cons_gui_button1",
           "image": "comm_cons_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CommConsBLUEcode"
-          },
+          "onClick": "CommConsBLUEcode",
           "x": 32,
           "y": 125,
           "locked": true
@@ -241,9 +237,7 @@
           "name": "imagebutton_comm_cons_gui_button2",
           "image": "comm_cons_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CommConsPURPLEcode"
-          },
+          "onClick": "CommConsPURPLEcode",
           "x": 32,
           "y": 139,
           "locked": true
@@ -255,9 +249,7 @@
           "name": "imagebutton_comm_cons_gui_button3",
           "image": "comm_cons_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CommConsYELLOWcode"
-          },
+          "onClick": "CommConsYELLOWcode",
           "x": 32,
           "y": 153,
           "locked": true
@@ -269,9 +261,7 @@
           "name": "imagebutton_comm_cons_gui_button4",
           "image": "comm_cons_gui_button.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "CommConsGREENcode"
-          },
+          "onClick": "CommConsGREENcode",
           "x": 32,
           "y": 167,
           "locked": true

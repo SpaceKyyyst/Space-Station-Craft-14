@@ -5,16 +5,16 @@ import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Checkbox;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.IDcodeMenu;
 import net.mcreator.ssc.procedures.*;
@@ -26,6 +26,7 @@ import java.security.Security;
 import java.lang.ref.Cleaner;
 
 import com.mojang.brigadier.Command;
+import com.mojang.blaze3d.platform.InputConstants;
 
 import com.google.common.util.concurrent.Service;
 
@@ -116,53 +117,51 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 	private ImageButton imagebutton_avd;
 	private ImageButton imagebutton_idcode_all_on;
 	private ImageButton imagebutton_idcode_all_off;
-	private static final ResourceLocation BACKGROUND = ResourceLocation.parse("ssc_14:textures/screens/i_dcode.png");
-	private static final ResourceLocation IMAGE_0 = ResourceLocation.parse("ssc_14:textures/screens/i_dcode___copy.png");
-	private static final ResourceLocation IMAGE_1 = ResourceLocation.parse("ssc_14:textures/screens/id_code_menu_decor1.png");
-	private static final ResourceLocation IMAGE_2 = ResourceLocation.parse("ssc_14:textures/screens/id_code_menu_decor2.png");
-	private static final ResourceLocation IMAGE_3 = ResourceLocation.parse("ssc_14:textures/screens/id_code_menu_decor3.png");
-	private static final ResourceLocation IMAGE_4 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_5 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_6 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_7 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_8 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_9 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_10 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_11 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_12 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_13 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_14 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_15 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_16 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_17 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_18 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_19 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_20 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_21 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_22 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_23 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_24 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_25 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_26 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_27 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_28 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_29 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_30 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_31 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_32 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_33 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_34 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
-	private static final ResourceLocation IMAGE_35 = ResourceLocation.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier BACKGROUND = Identifier.parse("ssc_14:textures/screens/i_dcode.png");
+	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/i_dcode___copy.png");
+	private static final Identifier IMAGE_1 = Identifier.parse("ssc_14:textures/screens/id_code_menu_decor1.png");
+	private static final Identifier IMAGE_2 = Identifier.parse("ssc_14:textures/screens/id_code_menu_decor2.png");
+	private static final Identifier IMAGE_3 = Identifier.parse("ssc_14:textures/screens/id_code_menu_decor3.png");
+	private static final Identifier IMAGE_4 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_5 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_6 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_7 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_8 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_9 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_10 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_11 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_12 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_13 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_14 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_15 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_16 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_17 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_18 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_19 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_20 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_21 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_22 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_23 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_24 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_25 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_26 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_27 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_28 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_29 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_30 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_31 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_32 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_33 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_34 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_35 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
 
 	public IDcodeScreen(IDcodeMenu container, Inventory inventory, Component text) {
-		super(container, inventory, text);
+		super(container, inventory, text, 416, 235);
 		this.world = container.world;
 		this.x = container.x;
 		this.y = container.y;
 		this.z = container.z;
 		this.entity = container.entity;
-		this.imageWidth = 416;
-		this.imageHeight = 235;
 	}
 
 	@Override
@@ -175,123 +174,120 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		if (elementType == 1 && elementState instanceof Boolean logicState) {
 			if (name.equals("gun_room")) {
 				if (gun_room.selected() != logicState)
-					gun_room.onPress();
+					gun_room.onPress(null);
 			} else if (name.equals("HoS")) {
 				if (HoS.selected() != logicState)
-					HoS.onPress();
+					HoS.onPress(null);
 			} else if (name.equals("Brig")) {
 				if (Brig.selected() != logicState)
-					Brig.onPress();
+					Brig.onPress(null);
 			} else if (name.equals("Security")) {
 				if (Security.selected() != logicState)
-					Security.onPress();
+					Security.onPress(null);
 			} else if (name.equals("Detective")) {
 				if (Detective.selected() != logicState)
-					Detective.onPress();
+					Detective.onPress(null);
 			} else if (name.equals("Blue_Sh")) {
 				if (Blue_Sh.selected() != logicState)
-					Blue_Sh.onPress();
+					Blue_Sh.onPress(null);
 			} else if (name.equals("CE")) {
 				if (CE.selected() != logicState)
-					CE.onPress();
+					CE.onPress(null);
 			} else if (name.equals("CMO")) {
 				if (CMO.selected() != logicState)
-					CMO.onPress();
+					CMO.onPress(null);
 			} else if (name.equals("RD")) {
 				if (RD.selected() != logicState)
-					RD.onPress();
+					RD.onPress(null);
 			} else if (name.equals("PNT")) {
 				if (PNT.selected() != logicState)
-					PNT.onPress();
+					PNT.onPress(null);
 			} else if (name.equals("HoP")) {
 				if (HoP.selected() != logicState)
-					HoP.onPress();
+					HoP.onPress(null);
 			} else if (name.equals("Atmos")) {
 				if (Atmos.selected() != logicState)
-					Atmos.onPress();
+					Atmos.onPress(null);
 			} else if (name.equals("Ingeneer")) {
 				if (Ingeneer.selected() != logicState)
-					Ingeneer.onPress();
+					Ingeneer.onPress(null);
 			} else if (name.equals("Qm")) {
 				if (Qm.selected() != logicState)
-					Qm.onPress();
+					Qm.onPress(null);
 			} else if (name.equals("Utilizat")) {
 				if (Utilizat.selected() != logicState)
-					Utilizat.onPress();
+					Utilizat.onPress(null);
 			} else if (name.equals("Supply_Deportament")) {
 				if (Supply_Deportament.selected() != logicState)
-					Supply_Deportament.onPress();
+					Supply_Deportament.onPress(null);
 			} else if (name.equals("Technical")) {
 				if (Technical.selected() != logicState)
-					Technical.onPress();
+					Technical.onPress(null);
 			} else if (name.equals("Chemistry")) {
 				if (Chemistry.selected() != logicState)
-					Chemistry.onPress();
+					Chemistry.onPress(null);
 			} else if (name.equals("Medical")) {
 				if (Medical.selected() != logicState)
-					Medical.onPress();
+					Medical.onPress(null);
 			} else if (name.equals("Scientist")) {
 				if (Scientist.selected() != logicState)
-					Scientist.onPress();
+					Scientist.onPress(null);
 			} else if (name.equals("Out")) {
 				if (Out.selected() != logicState)
-					Out.onPress();
+					Out.onPress(null);
 			} else if (name.equals("Crio")) {
 				if (Crio.selected() != logicState)
-					Crio.onPress();
+					Crio.onPress(null);
 			} else if (name.equals("Capitan")) {
 				if (Capitan.selected() != logicState)
-					Capitan.onPress();
+					Capitan.onPress(null);
 			} else if (name.equals("Service")) {
 				if (Service.selected() != logicState)
-					Service.onPress();
+					Service.onPress(null);
 			} else if (name.equals("Kitchen")) {
 				if (Kitchen.selected() != logicState)
-					Kitchen.onPress();
+					Kitchen.onPress(null);
 			} else if (name.equals("Gidroponic")) {
 				if (Gidroponic.selected() != logicState)
-					Gidroponic.onPress();
+					Gidroponic.onPress(null);
 			} else if (name.equals("Bar")) {
 				if (Bar.selected() != logicState)
-					Bar.onPress();
+					Bar.onPress(null);
 			} else if (name.equals("Teatre")) {
 				if (Teatre.selected() != logicState)
-					Teatre.onPress();
+					Teatre.onPress(null);
 			} else if (name.equals("Cleaner")) {
 				if (Cleaner.selected() != logicState)
-					Cleaner.onPress();
+					Cleaner.onPress(null);
 			} else if (name.equals("Command")) {
 				if (Command.selected() != logicState)
-					Command.onPress();
+					Command.onPress(null);
 			} else if (name.equals("Uridic")) {
 				if (Uridic.selected() != logicState)
-					Uridic.onPress();
+					Uridic.onPress(null);
 			} else if (name.equals("Church")) {
 				if (Church.selected() != logicState)
-					Church.onPress();
+					Church.onPress(null);
 			} else if (name.equals("Job_Name_Readact")) {
 				if (Job_Name_Readact.selected() != logicState)
-					Job_Name_Readact.onPress();
+					Job_Name_Readact.onPress(null);
 			}
 		}
 		menuStateUpdateActive = false;
 	}
 
 	@Override
-	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-		super.render(guiGraphics, mouseX, mouseY, partialTicks);
-		Job_Name.render(guiGraphics, mouseX, mouseY, partialTicks);
-		boolean customTooltipShown = false;
+	public void extractRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 		if (mouseX > leftPos + 224 && mouseX < leftPos + 248 && mouseY > topPos + 177 && mouseY < topPos + 201) {
 			guiGraphics.setTooltipForNextFrame(font, Component.translatable("gui.ssc_14.i_dcode.tooltip_riedaktirovat_imia_dolzhnosti"), mouseX, mouseY);
-			customTooltipShown = true;
 		}
-		if (!customTooltipShown)
-			this.renderTooltip(guiGraphics, mouseX, mouseY);
+		super.extractRenderState(guiGraphics, mouseX, mouseY, partialTicks);
+		Job_Name.extractWidgetRenderState(guiGraphics, mouseX, mouseY, partialTicks);
 	}
 
 	@Override
-	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
+	public void extractBackground(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+		super.extractBackground(guiGraphics, mouseX, mouseY, partialTicks);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 416, 235, 416, 235);
 		if (IDcmdecor1Procedure.execute(entity)) {
@@ -402,72 +398,73 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 	}
 
 	@Override
-	public boolean keyPressed(int key, int b, int c) {
+	public boolean keyPressed(KeyEvent event) {
+		int key = InputConstants.getKey(event).getValue();
 		if (key == 256) {
 			this.minecraft.player.closeContainer();
 			return true;
 		}
 		if (Job_Name.isFocused())
-			return Job_Name.keyPressed(key, b, c);
-		return super.keyPressed(key, b, c);
+			return Job_Name.keyPressed(event);
+		return super.keyPressed(event);
 	}
 
 	@Override
-	public void resize(Minecraft minecraft, int width, int height) {
+	public void resize(int width, int height) {
 		String Job_NameValue = Job_Name.getValue();
-		super.resize(minecraft, width, height);
+		super.resize(width, height);
 		Job_Name.setValue(Job_NameValue);
 	}
 
 	@Override
-	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_schityvaiemaia_karta"), 106, 167, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_riedaktiruiemaia_karta"), 106, 203, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_oruzhieinaia"), 24, 10, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gsb"), 24, 31, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_brigh"), 24, 52, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_sb"), 24, 73, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_dietiektiv"), 24, 94, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_pnt"), 24, 115, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_krioson"), 24, 136, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_si"), 102, 10, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_atmosfiernyi"), 102, 31, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_inzhieniernyi"), 102, 52, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_vnieshnii"), 102, 73, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_km"), 102, 94, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_utilizator"), 102, 115, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_snabzhieniie"), 102, 136, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gv"), 189, 10, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_khimiia"), 189, 31, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_mieditsinskii"), 189, 52, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_nr"), 189, 73, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_nauchnyi"), 189, 94, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tiekhnichieskii"), 189, 115, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tsierkov"), 189, 136, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gp"), 276, 10, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_siervisnyi"), 276, 31, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_kukhnia"), 276, 52, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gidropon"), 276, 73, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_bar"), 276, 94, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tieatr"), 276, 115, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_uborshchik"), 276, 136, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_kapitan"), 354, 10, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_komand"), 354, 31, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_sinii_shchit"), 354, 52, -1, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.ssc_14.i_dcode.label_iuridich"), 354, 73, -1, false);
+	protected void extractLabels(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY) {
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_schityvaiemaia_karta"), 106, 167, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_riedaktiruiemaia_karta"), 106, 203, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_oruzhieinaia"), 24, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gsb"), 24, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_brigh"), 24, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_sb"), 24, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_dietiektiv"), 24, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_pnt"), 24, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_krioson"), 24, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_si"), 102, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_atmosfiernyi"), 102, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_inzhieniernyi"), 102, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_vnieshnii"), 102, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_km"), 102, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_utilizator"), 102, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_snabzhieniie"), 102, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gv"), 189, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_khimiia"), 189, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_mieditsinskii"), 189, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_nr"), 189, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_nauchnyi"), 189, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tiekhnichieskii"), 189, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tsierkov"), 189, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gp"), 276, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_siervisnyi"), 276, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_kukhnia"), 276, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gidropon"), 276, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_bar"), 276, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tieatr"), 276, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_uborshchik"), 276, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_kapitan"), 354, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_komand"), 354, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_sinii_shchit"), 354, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_iuridich"), 354, 73, -1, false);
 	}
 
 	@Override
 	public void init() {
 		super.init();
-		Job_Name = new EditBox(this.font, this.leftPos + 106, this.topPos + 180, 118, 18, Component.translatable("gui.ssc_14.i_dcode.Job_Name"));
+		Job_Name = new EditBox(this.font, this.leftPos + 105, this.topPos + 179, 120, 20, Component.translatable("gui.ssc_14.i_dcode.Job_Name"));
 		Job_Name.setMaxLength(8192);
 		Job_Name.setResponder(content -> {
 			if (!menuStateUpdateActive)
 				menu.sendMenuStateUpdate(entity, 0, "Job_Name", content, false);
 		});
 		this.addWidget(this.Job_Name);
-		imagebutton_kapitan = new ImageButton(this.leftPos + 13, this.topPos + 163, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/kapitan.png"), ResourceLocation.parse("ssc_14:textures/screens/kapitan.png")), e -> {
+		imagebutton_kapitan = new ImageButton(this.leftPos + 13, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/kapitan.png"), Identifier.parse("ssc_14:textures/screens/kapitan.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -476,12 +473,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_kapitan);
-		imagebutton_nt = new ImageButton(this.leftPos + 22, this.topPos + 163, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/nt.png"), ResourceLocation.parse("ssc_14:textures/screens/nt.png")), e -> {
+		imagebutton_nt = new ImageButton(this.leftPos + 22, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/nt.png"), Identifier.parse("ssc_14:textures/screens/nt.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -490,12 +487,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_nt);
-		imagebutton_gp = new ImageButton(this.leftPos + 13, this.topPos + 172, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/gp.png"), ResourceLocation.parse("ssc_14:textures/screens/gp.png")), e -> {
+		imagebutton_gp = new ImageButton(this.leftPos + 13, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gp.png"), Identifier.parse("ssc_14:textures/screens/gp.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -504,12 +501,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_gp);
-		imagebutton_gsb = new ImageButton(this.leftPos + 13, this.topPos + 199, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/gsb.png"), ResourceLocation.parse("ssc_14:textures/screens/gsb.png")), e -> {
+		imagebutton_gsb = new ImageButton(this.leftPos + 13, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gsb.png"), Identifier.parse("ssc_14:textures/screens/gsb.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -518,12 +515,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_gsb);
-		imagebutton_gv = new ImageButton(this.leftPos + 13, this.topPos + 208, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/gv.png"), ResourceLocation.parse("ssc_14:textures/screens/gv.png")), e -> {
+		imagebutton_gv = new ImageButton(this.leftPos + 13, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gv.png"), Identifier.parse("ssc_14:textures/screens/gv.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -532,12 +529,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_gv);
-		imagebutton_km = new ImageButton(this.leftPos + 13, this.topPos + 181, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/km.png"), ResourceLocation.parse("ssc_14:textures/screens/km.png")), e -> {
+		imagebutton_km = new ImageButton(this.leftPos + 13, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/km.png"), Identifier.parse("ssc_14:textures/screens/km.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -546,12 +543,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_km);
-		imagebutton_gruzchik = new ImageButton(this.leftPos + 31, this.topPos + 181, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/gruzchik.png"), ResourceLocation.parse("ssc_14:textures/screens/gruzchik.png")), e -> {
+		imagebutton_gruzchik = new ImageButton(this.leftPos + 31, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gruzchik.png"), Identifier.parse("ssc_14:textures/screens/gruzchik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -560,12 +557,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_gruzchik);
-		imagebutton_utilizator = new ImageButton(this.leftPos + 22, this.topPos + 181, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/utilizator.png"), ResourceLocation.parse("ssc_14:textures/screens/utilizator.png")), e -> {
+		imagebutton_utilizator = new ImageButton(this.leftPos + 22, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/utilizator.png"), Identifier.parse("ssc_14:textures/screens/utilizator.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -574,12 +571,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_utilizator);
-		imagebutton_passazhir = new ImageButton(this.leftPos + 58, this.topPos + 190, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/passazhir.png"), ResourceLocation.parse("ssc_14:textures/screens/passazhir.png")), e -> {
+		imagebutton_passazhir = new ImageButton(this.leftPos + 58, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/passazhir.png"), Identifier.parse("ssc_14:textures/screens/passazhir.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -588,12 +585,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_passazhir);
-		imagebutton_nr = new ImageButton(this.leftPos + 13, this.topPos + 217, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/nr.png"), ResourceLocation.parse("ssc_14:textures/screens/nr.png")), e -> {
+		imagebutton_nr = new ImageButton(this.leftPos + 13, this.topPos + 217, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/nr.png"), Identifier.parse("ssc_14:textures/screens/nr.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -602,13 +599,13 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_nr);
 		imagebutton_viedushchii_uchionyi = new ImageButton(this.leftPos + 22, this.topPos + 217, 8, 8,
-				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/viedushchii_uchionyi.png"), ResourceLocation.parse("ssc_14:textures/screens/viedushchii_uchionyi.png")), e -> {
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/viedushchii_uchionyi.png"), Identifier.parse("ssc_14:textures/screens/viedushchii_uchionyi.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					if (true) {
@@ -617,12 +614,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					}
 				}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_viedushchii_uchionyi);
-		imagebutton_uchionyi = new ImageButton(this.leftPos + 31, this.topPos + 217, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/uchionyi.png"), ResourceLocation.parse("ssc_14:textures/screens/uchionyi.png")), e -> {
+		imagebutton_uchionyi = new ImageButton(this.leftPos + 31, this.topPos + 217, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/uchionyi.png"), Identifier.parse("ssc_14:textures/screens/uchionyi.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -631,13 +628,13 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_uchionyi);
 		imagebutton_nauchnyi_assistient = new ImageButton(this.leftPos + 40, this.topPos + 217, 8, 8,
-				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/nauchnyi_assistient.png"), ResourceLocation.parse("ssc_14:textures/screens/nauchnyi_assistient.png")), e -> {
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/nauchnyi_assistient.png"), Identifier.parse("ssc_14:textures/screens/nauchnyi_assistient.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					if (true) {
@@ -646,12 +643,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					}
 				}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_nauchnyi_assistient);
-		imagebutton_si = new ImageButton(this.leftPos + 13, this.topPos + 190, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/si.png"), ResourceLocation.parse("ssc_14:textures/screens/si.png")), e -> {
+		imagebutton_si = new ImageButton(this.leftPos + 13, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/si.png"), Identifier.parse("ssc_14:textures/screens/si.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -660,12 +657,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_si);
-		imagebutton_atmos = new ImageButton(this.leftPos + 31, this.topPos + 190, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/atmos.png"), ResourceLocation.parse("ssc_14:textures/screens/atmos.png")), e -> {
+		imagebutton_atmos = new ImageButton(this.leftPos + 31, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/atmos.png"), Identifier.parse("ssc_14:textures/screens/atmos.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -674,13 +671,13 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_atmos);
 		imagebutton_viedushchii_inzhienier = new ImageButton(this.leftPos + 22, this.topPos + 190, 8, 8,
-				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/viedushchii_inzhienier.png"), ResourceLocation.parse("ssc_14:textures/screens/viedushchii_inzhienier.png")), e -> {
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/viedushchii_inzhienier.png"), Identifier.parse("ssc_14:textures/screens/viedushchii_inzhienier.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					if (true) {
@@ -689,13 +686,13 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					}
 				}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_viedushchii_inzhienier);
 		imagebutton_tiekhnichieskii_assistient = new ImageButton(this.leftPos + 49, this.topPos + 190, 8, 8,
-				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/tiekhnichieskii_assistient.png"), ResourceLocation.parse("ssc_14:textures/screens/tiekhnichieskii_assistient.png")), e -> {
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/tiekhnichieskii_assistient.png"), Identifier.parse("ssc_14:textures/screens/tiekhnichieskii_assistient.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					if (true) {
@@ -704,12 +701,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					}
 				}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_tiekhnichieskii_assistient);
-		imagebutton_inzhienier = new ImageButton(this.leftPos + 40, this.topPos + 190, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/inzhienier.png"), ResourceLocation.parse("ssc_14:textures/screens/inzhienier.png")), e -> {
+		imagebutton_inzhienier = new ImageButton(this.leftPos + 40, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/inzhienier.png"), Identifier.parse("ssc_14:textures/screens/inzhienier.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -718,12 +715,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_inzhienier);
-		imagebutton_paramiedik = new ImageButton(this.leftPos + 40, this.topPos + 208, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/paramiedik.png"), ResourceLocation.parse("ssc_14:textures/screens/paramiedik.png")), e -> {
+		imagebutton_paramiedik = new ImageButton(this.leftPos + 40, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/paramiedik.png"), Identifier.parse("ssc_14:textures/screens/paramiedik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -732,12 +729,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_paramiedik);
-		imagebutton_khimik = new ImageButton(this.leftPos + 31, this.topPos + 208, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/khimik.png"), ResourceLocation.parse("ssc_14:textures/screens/khimik.png")), e -> {
+		imagebutton_khimik = new ImageButton(this.leftPos + 31, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/khimik.png"), Identifier.parse("ssc_14:textures/screens/khimik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -746,12 +743,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_khimik);
-		imagebutton_vrach = new ImageButton(this.leftPos + 49, this.topPos + 208, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/vrach.png"), ResourceLocation.parse("ssc_14:textures/screens/vrach.png")), e -> {
+		imagebutton_vrach = new ImageButton(this.leftPos + 49, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/vrach.png"), Identifier.parse("ssc_14:textures/screens/vrach.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -760,13 +757,13 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_vrach);
 		imagebutton_viedushchii_vrach = new ImageButton(this.leftPos + 22, this.topPos + 208, 8, 8,
-				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/viedushchii_vrach.png"), ResourceLocation.parse("ssc_14:textures/screens/viedushchii_vrach.png")), e -> {
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/viedushchii_vrach.png"), Identifier.parse("ssc_14:textures/screens/viedushchii_vrach.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					if (true) {
@@ -775,12 +772,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					}
 				}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_viedushchii_vrach);
-		imagebutton_intiern = new ImageButton(this.leftPos + 67, this.topPos + 208, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/intiern.png"), ResourceLocation.parse("ssc_14:textures/screens/intiern.png")), e -> {
+		imagebutton_intiern = new ImageButton(this.leftPos + 67, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/intiern.png"), Identifier.parse("ssc_14:textures/screens/intiern.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -789,12 +786,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_intiern);
-		imagebutton_kadiet = new ImageButton(this.leftPos + 67, this.topPos + 199, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/kadiet.png"), ResourceLocation.parse("ssc_14:textures/screens/kadiet.png")), e -> {
+		imagebutton_kadiet = new ImageButton(this.leftPos + 67, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/kadiet.png"), Identifier.parse("ssc_14:textures/screens/kadiet.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -803,27 +800,26 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_kadiet);
-		imagebutton_instruktor_sb = new ImageButton(this.leftPos + 22, this.topPos + 199, 8, 8,
-				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/instruktor_sb.png"), ResourceLocation.parse("ssc_14:textures/screens/instruktor_sb.png")), e -> {
-					int x = IDcodeScreen.this.x;
-					int y = IDcodeScreen.this.y;
-					if (true) {
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(24, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 24, x, y, z);
-					}
-				}) {
+		imagebutton_instruktor_sb = new ImageButton(this.leftPos + 22, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/instruktor_sb.png"), Identifier.parse("ssc_14:textures/screens/instruktor_sb.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			if (true) {
+				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(24, x, y, z));
+				IDcodeButtonMessage.handleButtonAction(entity, 24, x, y, z);
+			}
+		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_instruktor_sb);
-		imagebutton_ofitsier = new ImageButton(this.leftPos + 58, this.topPos + 199, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/ofitsier.png"), ResourceLocation.parse("ssc_14:textures/screens/ofitsier.png")), e -> {
+		imagebutton_ofitsier = new ImageButton(this.leftPos + 58, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/ofitsier.png"), Identifier.parse("ssc_14:textures/screens/ofitsier.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -832,12 +828,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_ofitsier);
-		imagebutton_dietiektiv = new ImageButton(this.leftPos + 40, this.topPos + 199, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/dietiektiv.png"), ResourceLocation.parse("ssc_14:textures/screens/dietiektiv.png")), e -> {
+		imagebutton_dietiektiv = new ImageButton(this.leftPos + 40, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/dietiektiv.png"), Identifier.parse("ssc_14:textures/screens/dietiektiv.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -846,12 +842,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_dietiektiv);
-		imagebutton_psikhologh = new ImageButton(this.leftPos + 58, this.topPos + 208, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/psikhologh.png"), ResourceLocation.parse("ssc_14:textures/screens/psikhologh.png")), e -> {
+		imagebutton_psikhologh = new ImageButton(this.leftPos + 58, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/psikhologh.png"), Identifier.parse("ssc_14:textures/screens/psikhologh.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -860,12 +856,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_psikhologh);
-		imagebutton_brighmied = new ImageButton(this.leftPos + 49, this.topPos + 199, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/brighmied.png"), ResourceLocation.parse("ssc_14:textures/screens/brighmied.png")), e -> {
+		imagebutton_brighmied = new ImageButton(this.leftPos + 49, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/brighmied.png"), Identifier.parse("ssc_14:textures/screens/brighmied.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -874,12 +870,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_brighmied);
-		imagebutton_mim = new ImageButton(this.leftPos + 58, this.topPos + 163, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/mim.png"), ResourceLocation.parse("ssc_14:textures/screens/mim.png")), e -> {
+		imagebutton_mim = new ImageButton(this.leftPos + 58, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/mim.png"), Identifier.parse("ssc_14:textures/screens/mim.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -888,12 +884,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_mim);
-		imagebutton_smotritiel = new ImageButton(this.leftPos + 31, this.topPos + 199, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/smotritiel.png"), ResourceLocation.parse("ssc_14:textures/screens/smotritiel.png")), e -> {
+		imagebutton_smotritiel = new ImageButton(this.leftPos + 31, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/smotritiel.png"), Identifier.parse("ssc_14:textures/screens/smotritiel.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -902,12 +898,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_smotritiel);
-		imagebutton_osh = new ImageButton(this.leftPos + 49, this.topPos + 163, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/osh.png"), ResourceLocation.parse("ssc_14:textures/screens/osh.png")), e -> {
+		imagebutton_osh = new ImageButton(this.leftPos + 49, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/osh.png"), Identifier.parse("ssc_14:textures/screens/osh.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -916,12 +912,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_osh);
-		imagebutton_adutant = new ImageButton(this.leftPos + 31, this.topPos + 163, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/adutant.png"), ResourceLocation.parse("ssc_14:textures/screens/adutant.png")), e -> {
+		imagebutton_adutant = new ImageButton(this.leftPos + 31, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/adutant.png"), Identifier.parse("ssc_14:textures/screens/adutant.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -930,12 +926,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_adutant);
-		imagebutton_kloun = new ImageButton(this.leftPos + 67, this.topPos + 163, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/kloun.png"), ResourceLocation.parse("ssc_14:textures/screens/kloun.png")), e -> {
+		imagebutton_kloun = new ImageButton(this.leftPos + 67, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/kloun.png"), Identifier.parse("ssc_14:textures/screens/kloun.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -944,12 +940,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_kloun);
-		imagebutton_muzykant = new ImageButton(this.leftPos + 67, this.topPos + 190, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/muzykant.png"), ResourceLocation.parse("ssc_14:textures/screens/muzykant.png")), e -> {
+		imagebutton_muzykant = new ImageButton(this.leftPos + 67, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/muzykant.png"), Identifier.parse("ssc_14:textures/screens/muzykant.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -958,43 +954,41 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_muzykant);
-		imagebutton_zootiekhnik = new ImageButton(this.leftPos + 67, this.topPos + 181, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/zootiekhnik.png"), ResourceLocation.parse("ssc_14:textures/screens/zootiekhnik.png")),
-				e -> {
-					int x = IDcodeScreen.this.x;
-					int y = IDcodeScreen.this.y;
-					if (true) {
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(35, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 35, x, y, z);
-					}
-				}) {
+		imagebutton_zootiekhnik = new ImageButton(this.leftPos + 67, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/zootiekhnik.png"), Identifier.parse("ssc_14:textures/screens/zootiekhnik.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			if (true) {
+				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(35, x, y, z));
+				IDcodeButtonMessage.handleButtonAction(entity, 35, x, y, z);
+			}
+		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_zootiekhnik);
-		imagebutton_bibliotiekar = new ImageButton(this.leftPos + 58, this.topPos + 181, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/bibliotiekar.png"), ResourceLocation.parse("ssc_14:textures/screens/bibliotiekar.png")),
-				e -> {
-					int x = IDcodeScreen.this.x;
-					int y = IDcodeScreen.this.y;
-					if (true) {
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(36, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 36, x, y, z);
-					}
-				}) {
+		imagebutton_bibliotiekar = new ImageButton(this.leftPos + 58, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/bibliotiekar.png"), Identifier.parse("ssc_14:textures/screens/bibliotiekar.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			if (true) {
+				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(36, x, y, z));
+				IDcodeButtonMessage.handleButtonAction(entity, 36, x, y, z);
+			}
+		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_bibliotiekar);
 		imagebutton_siervisnyi_rabotnik = new ImageButton(this.leftPos + 22, this.topPos + 172, 8, 8,
-				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/siervisnyi_rabotnik.png"), ResourceLocation.parse("ssc_14:textures/screens/siervisnyi_rabotnik.png")), e -> {
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/siervisnyi_rabotnik.png"), Identifier.parse("ssc_14:textures/screens/siervisnyi_rabotnik.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					if (true) {
@@ -1003,12 +997,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					}
 				}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_siervisnyi_rabotnik);
-		imagebutton_uborshchik = new ImageButton(this.leftPos + 31, this.topPos + 172, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/uborshchik.png"), ResourceLocation.parse("ssc_14:textures/screens/uborshchik.png")), e -> {
+		imagebutton_uborshchik = new ImageButton(this.leftPos + 31, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/uborshchik.png"), Identifier.parse("ssc_14:textures/screens/uborshchik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -1017,12 +1011,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_uborshchik);
-		imagebutton_povar = new ImageButton(this.leftPos + 40, this.topPos + 172, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/povar.png"), ResourceLocation.parse("ssc_14:textures/screens/povar.png")), e -> {
+		imagebutton_povar = new ImageButton(this.leftPos + 40, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/povar.png"), Identifier.parse("ssc_14:textures/screens/povar.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -1031,12 +1025,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_povar);
-		imagebutton_botanik = new ImageButton(this.leftPos + 49, this.topPos + 172, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/botanik.png"), ResourceLocation.parse("ssc_14:textures/screens/botanik.png")), e -> {
+		imagebutton_botanik = new ImageButton(this.leftPos + 49, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/botanik.png"), Identifier.parse("ssc_14:textures/screens/botanik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -1045,12 +1039,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_botanik);
-		imagebutton_barmien = new ImageButton(this.leftPos + 58, this.topPos + 172, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/barmien.png"), ResourceLocation.parse("ssc_14:textures/screens/barmien.png")), e -> {
+		imagebutton_barmien = new ImageButton(this.leftPos + 58, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/barmien.png"), Identifier.parse("ssc_14:textures/screens/barmien.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -1059,12 +1053,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_barmien);
-		imagebutton_boksior = new ImageButton(this.leftPos + 49, this.topPos + 181, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/boksior.png"), ResourceLocation.parse("ssc_14:textures/screens/boksior.png")), e -> {
+		imagebutton_boksior = new ImageButton(this.leftPos + 49, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/boksior.png"), Identifier.parse("ssc_14:textures/screens/boksior.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -1073,27 +1067,26 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_boksior);
-		imagebutton_sviashchiennik = new ImageButton(this.leftPos + 67, this.topPos + 172, 8, 8,
-				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/sviashchiennik.png"), ResourceLocation.parse("ssc_14:textures/screens/sviashchiennik.png")), e -> {
-					int x = IDcodeScreen.this.x;
-					int y = IDcodeScreen.this.y;
-					if (true) {
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(43, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 43, x, y, z);
-					}
-				}) {
+		imagebutton_sviashchiennik = new ImageButton(this.leftPos + 67, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/sviashchiennik.png"), Identifier.parse("ssc_14:textures/screens/sviashchiennik.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			if (true) {
+				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(43, x, y, z));
+				IDcodeButtonMessage.handleButtonAction(entity, 43, x, y, z);
+			}
+		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_sviashchiennik);
-		imagebutton_rieportior = new ImageButton(this.leftPos + 40, this.topPos + 181, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/rieportior.png"), ResourceLocation.parse("ssc_14:textures/screens/rieportior.png")), e -> {
+		imagebutton_rieportior = new ImageButton(this.leftPos + 40, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/rieportior.png"), Identifier.parse("ssc_14:textures/screens/rieportior.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -1102,12 +1095,12 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_rieportior);
-		imagebutton_avd = new ImageButton(this.leftPos + 40, this.topPos + 163, 8, 8, new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/avd.png"), ResourceLocation.parse("ssc_14:textures/screens/avd.png")), e -> {
+		imagebutton_avd = new ImageButton(this.leftPos + 40, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/avd.png"), Identifier.parse("ssc_14:textures/screens/avd.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			if (true) {
@@ -1116,28 +1109,27 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			}
 		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_avd);
-		imagebutton_idcode_all_on = new ImageButton(this.leftPos + 86, this.topPos + 220, 24, 9,
-				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/idcode_all_on.png"), ResourceLocation.parse("ssc_14:textures/screens/idcode_all_on_2.png")), e -> {
-					int x = IDcodeScreen.this.x;
-					int y = IDcodeScreen.this.y;
-					if (true) {
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(46, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 46, x, y, z);
-					}
-				}) {
+		imagebutton_idcode_all_on = new ImageButton(this.leftPos + 86, this.topPos + 220, 24, 9, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/idcode_all_on.png"), Identifier.parse("ssc_14:textures/screens/idcode_all_on_2.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			if (true) {
+				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(46, x, y, z));
+				IDcodeButtonMessage.handleButtonAction(entity, 46, x, y, z);
+			}
+		}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
 		this.addRenderableWidget(imagebutton_idcode_all_on);
-		imagebutton_idcode_all_off = new ImageButton(this.leftPos + 113, this.topPos + 220, 25, 9,
-				new WidgetSprites(ResourceLocation.parse("ssc_14:textures/screens/idcode_all_off.png"), ResourceLocation.parse("ssc_14:textures/screens/idcode_all_off_2.png")), e -> {
+		imagebutton_idcode_all_off = new ImageButton(this.leftPos + 113, this.topPos + 220, 25, 9, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/idcode_all_off.png"), Identifier.parse("ssc_14:textures/screens/idcode_all_off_2.png")),
+				e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					if (true) {
@@ -1146,7 +1138,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					}
 				}) {
 			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};

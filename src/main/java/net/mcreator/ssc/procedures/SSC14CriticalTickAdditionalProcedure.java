@@ -26,19 +26,16 @@ public class SSC14CriticalTickAdditionalProcedure {
     private static void execute(@Nullable Event event, Entity entity) {
         if (entity == null) return;
         
-        // 🔧 Исправлено: используем entity, а не несуществующий player
         if (!(entity instanceof Player player)) return;
         
         var nbt = player.getPersistentData();
+        // ИСПРАВЛЕНО: Возвращена распаковка Optional через .orElse(0.0)
         double totalDamage = nbt.getDouble("sscCustomHealth").orElse(0.0);
         
-        // 🔧 Проверка: крит = 100-200 (как в основной логике)
         if (totalDamage >= 100.0) {
-            // 🚫 В крите: блокируем строительство
             player.getAbilities().mayBuild = false;
             player.onUpdateAbilities();
         } else {
-            // ✅ Вне крита: разрешаем строительство
             player.getAbilities().mayBuild = true;
             player.onUpdateAbilities();
         }

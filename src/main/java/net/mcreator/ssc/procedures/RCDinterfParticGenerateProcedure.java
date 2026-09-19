@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModParticleTypes;
 
@@ -50,7 +50,7 @@ public class RCDinterfParticGenerateProcedure {
         if (livingEntity.level() instanceof ServerLevel serverLevel) {
             if (mode == 1) {
                 BlockState targetState = serverLevel.getBlockState(clickedPos);
-                if (targetState.is(BlockTags.create(ResourceLocation.parse("ssc14:rcd_deconstruct")))) {
+                if (targetState.is(BlockTags.create(Identifier.parse("ssc14:rcd_deconstruct")))) {
                     spawnAimingParticles(serverLevel, clickedPos);
                 }
             } else if (mode >= 2 && mode <= 10) {

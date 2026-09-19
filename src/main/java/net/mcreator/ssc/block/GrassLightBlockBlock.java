@@ -12,16 +12,17 @@ import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.DirectionalBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.util.TriState;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
-import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.color.block.BlockTintSources;
 
 import net.mcreator.ssc.procedures.GrassLightBlock_GenerationProcedure;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
+
+import java.util.List;
 
 public class GrassLightBlockBlock extends Block {
 	public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
@@ -39,7 +40,10 @@ public class GrassLightBlockBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getNearestLookingDirection().getOpposite());
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getNearestLookingDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -61,9 +65,7 @@ public class GrassLightBlockBlock extends Block {
 		GrassLightBlock_GenerationProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
-	public static void blockColorLoad(RegisterColorHandlersEvent.Block event) {
-		event.register((bs, world, pos, index) -> {
-			return world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : GrassColor.get(0.5D, 1.0D);
-		}, Ssc14ModBlocks.GRASS_LIGHT_BLOCK.get());
+	public static void blockColorLoad(RegisterColorHandlersEvent.BlockTintSources event) {
+		event.getBlockColors().register(List.of(BlockTintSources.grass()), Ssc14ModBlocks.GRASS_LIGHT_BLOCK.get());
 	}
 }

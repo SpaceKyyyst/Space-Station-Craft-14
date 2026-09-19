@@ -11,7 +11,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 
@@ -68,15 +68,15 @@ public class SpannerEntUseProcedure {
 																? _livingEntity39.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 																: 0)
 														&& (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get() && entity instanceof WallCarcaseEntitEntity
-														&& (world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).is(BlockTags.create(ResourceLocation.parse("ssc14:airs")))) {
+														&& (world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).is(BlockTags.create(Identifier.parse("ssc14:airs")))) {
 													if (sourceentity instanceof LivingEntity _livingEntity48 && _livingEntity48.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 														_livingEntity48.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 													Ssc14Mod.queueServerWork(2, () -> {
 														if (world instanceof Level _level) {
 															if (!_level.isClientSide()) {
-																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1);
+																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1);
 															} else {
-																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1, false);
+																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1, false);
 															}
 														}
 														if (sourceentity instanceof LivingEntity _livingEntity50 && _livingEntity50.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
@@ -169,9 +169,9 @@ public class SpannerEntUseProcedure {
 																}
 																if (world instanceof Level _level) {
 																	if (!_level.isClientSide()) {
-																		_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:screwdriver")), SoundSource.NEUTRAL, 1, 1);
+																		_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:screwdriver")), SoundSource.NEUTRAL, 1, 1);
 																	} else {
-																		_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:screwdriver")), SoundSource.NEUTRAL, 1, 1, false);
+																		_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:screwdriver")), SoundSource.NEUTRAL, 1, 1, false);
 																	}
 																}
 																if (sourceentity instanceof LivingEntity _livingEntity119 && _livingEntity119.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
@@ -248,15 +248,15 @@ public class SpannerEntUseProcedure {
 																? _livingEntity169.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 																: 0)
 														&& (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get() && entity instanceof IDConsoleENTITYEntity
-														&& (world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).is(BlockTags.create(ResourceLocation.parse("ssc14:airs")))) {
+														&& (world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).is(BlockTags.create(Identifier.parse("ssc14:airs")))) {
 													if (sourceentity instanceof LivingEntity _livingEntity178 && _livingEntity178.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 														_livingEntity178.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 													Ssc14Mod.queueServerWork(2, () -> {
 														if (world instanceof Level _level) {
 															if (!_level.isClientSide()) {
-																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1);
+																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1);
 															} else {
-																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1, false);
+																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1, false);
 															}
 														}
 														if (sourceentity instanceof LivingEntity _livingEntity180 && _livingEntity180.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
@@ -329,15 +329,15 @@ public class SpannerEntUseProcedure {
 																? _livingEntity232.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 																: 0)
 														&& (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.SPANNER.get() && entity instanceof PlassteelWallCarcaseEntitEntity
-														&& (world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).is(BlockTags.create(ResourceLocation.parse("ssc14:airs")))) {
+														&& (world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).is(BlockTags.create(Identifier.parse("ssc14:airs")))) {
 													if (sourceentity instanceof LivingEntity _livingEntity241 && _livingEntity241.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 														_livingEntity241.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 													Ssc14Mod.queueServerWork(2, () -> {
 														if (world instanceof Level _level) {
 															if (!_level.isClientSide()) {
-																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1);
+																_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1);
 															} else {
-																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1, false);
+																_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:spanner_use")), SoundSource.NEUTRAL, 1, 1, false);
 															}
 														}
 														if (sourceentity instanceof LivingEntity _livingEntity243 && _livingEntity243.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))

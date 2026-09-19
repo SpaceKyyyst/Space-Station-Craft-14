@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "CEturtleJumpsuit",
@@ -9,15 +9,11 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
+    "equipSound": "",
     "hasModel": true,
     "baubleModel": "Modeljumpsuit_equipped",
     "baubleModelTexture": "jumpsuit_ce_turtle_equipped_texture.png",
-    "onEquip": {
-      "name": "Equip_BaseSound_PR_"
-    },
+    "onEquip": "Equip_BaseSound_PR_",
     "helmetModelPart": "Empty",
     "bodyModelPart": "torso",
     "armsModelPartL": "l_arm",

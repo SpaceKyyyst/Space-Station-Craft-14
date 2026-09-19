@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -26,9 +26,7 @@
           "name": "imagebutton_deconstruct_gui_texture",
           "image": "deconstruct_gui_texture.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIdeconstructButton"
-          },
+          "onClick": "RCDGUIdeconstructButton",
           "x": 239,
           "y": 46,
           "locked": true
@@ -51,9 +49,7 @@
           "name": "imagebutton_floorwall_gui_texture",
           "image": "floorwall_gui_texture.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIwallfloorModeButton"
-          },
+          "onClick": "RCDGUIwallfloorModeButton",
           "x": 164,
           "y": 46,
           "locked": true
@@ -65,9 +61,7 @@
           "name": "imagebutton_windowglill_gui_texture",
           "image": "windowglill_gui_texture.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIwindowsModeButton"
-          },
+          "onClick": "RCDGUIwindowsModeButton",
           "x": 132,
           "y": 104,
           "locked": true
@@ -101,18 +95,14 @@
           "name": "imagebutton_rcd_gui_exit_b",
           "image": "rcd_gui_exit_b.png",
           "hoveredImage": "",
-          "onClick": {
-            "name": "RCDGUIexitButton"
-          },
+          "onClick": "RCDGUIexitButton",
           "x": 206,
           "y": 112,
           "locked": true
         }
       }
     ],
-    "onTick": {
-      "name": "RCDGUI_check_"
-    },
+    "onTick": "RCDGUI_check_",
     "gridSettings": {
       "sx": 18,
       "sy": 18,

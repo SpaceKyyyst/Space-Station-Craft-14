@@ -1,23 +1,15 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "dimension",
   "definition": {
     "biomesInDimension": [
-      {
-        "value": "CUSTOM:PlanetaryPlantBiome"
-      },
-      {
-        "value": "CUSTOM:PlanetaryPlantMountainBiome"
-      }
+      "CUSTOM:PlanetaryPlantBiome",
+      "CUSTOM:PlanetaryPlantMountainBiome"
     ],
     "biomesInDimensionCaves": [],
     "worldGenType": "Normal world gen",
-    "mainFillerBlock": {
-      "value": "CUSTOM:AsteroidStoneBase"
-    },
-    "fluidBlock": {
-      "value": "Blocks.AIR"
-    },
+    "mainFillerBlock": "CUSTOM:AsteroidStoneBase",
+    "fluidBlock": "Blocks.AIR",
     "seaLevel": 0,
     "generateOreVeins": false,
     "generateAquifers": false,
@@ -41,6 +33,8 @@
     "fixedTimeValue": 0,
     "coordinateScale": 1.0,
     "infiniburnTag": "minecraft:infiniburn_overworld",
+    "enableCustomSkyboxTextures": false,
+    "enableCustomSunMoonTextures": false,
     "bedWorks": true,
     "hasSkyLight": true,
     "imitateOverworldBehaviour": false,
@@ -49,16 +43,10 @@
     "minMonsterSpawnLightLimit": 0,
     "maxMonsterSpawnLightLimit": 7,
     "monsterSpawnBlockLightLimit": 0,
-    "portalFrame": {
-      "value": ""
-    },
-    "portalParticles": {
-      "value": "PORTAL"
-    },
+    "portalFrame": "",
+    "portalParticles": "PORTAL",
     "portalLuminance": 0,
-    "portalSound": {
-      "value": "block.portal.ambient"
-    },
+    "portalSound": "block.portal.ambient",
     "enableIgniter": true,
     "igniterName": "Planet Pl Portal Igniter",
     "igniterRarity": "COMMON",
@@ -66,9 +54,7 @@
       "fixedValue": []
     },
     "creativeTabs": [
-      {
-        "value": "TOOLS"
-      }
+      "TOOLS"
     ],
     "texture": "",
     "portalTexture": "",

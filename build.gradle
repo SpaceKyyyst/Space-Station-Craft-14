@@ -6,22 +6,10 @@ plugins {
 version = '1.0'
 base.archivesName = "modid"
 
-repositories {
-    mavenCentral()
-    maven { url = 'https://api.modrinth.com/maven' }
-}
-
-dependencies {
-    implementation "maven.modrinth:ItemPhysic:1.8.11"
-    implementation "maven.modrinth:creativecore:2.14.7-neoforge"
-    implementation "maven.modrinth:fusion-connected-textures:1.3.15a-neoforge-mc1.21.8"
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-}
-
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
-    version = "21.8.31"
+    version = "26.1.2.71"
 
     runs {
         client {
@@ -56,3 +44,8 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 apply from: 'mcreator.gradle'
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xmaxerrs" << "5000"
+}
+

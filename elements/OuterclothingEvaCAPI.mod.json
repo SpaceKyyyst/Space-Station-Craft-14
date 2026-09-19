@@ -1,5 +1,5 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "curiosbauble",
   "definition": {
     "item": "OuterclothingEva",
@@ -9,18 +9,12 @@
     "enderMask": false,
     "friendlyPigs": false,
     "snowWalk": false,
-    "equipSound": {
-      "value": ""
-    },
+    "equipSound": "",
     "hasModel": true,
     "baubleModel": "Modelouterclothing_eva_equipped",
     "baubleModelTexture": "outerclothing_eva_equipped_texture.png",
-    "onEquip": {
-      "name": "OuterclothingEvaCAPIBaubleIsEquipped"
-    },
-    "onUnequip": {
-      "name": "OuterclothingEvaCAPIBaubleIsUnequipped"
-    },
+    "onEquip": "OuterclothingEvaCAPIBaubleIsEquipped",
+    "onUnequip": "OuterclothingEvaCAPIBaubleIsUnequipped",
     "helmetModelPart": "Empty",
     "bodyModelPart": "torso",
     "armsModelPartL": "l_arm",

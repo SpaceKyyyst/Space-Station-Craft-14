@@ -4,6 +4,5 @@
     "all": "ssc_14:block/apc_item",
     "particle": "ssc_14:block/apc_item",
     "0": "ssc_14:block/apc_t"
-  },
-  "render_type": "cutout"
+  }
 }

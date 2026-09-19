@@ -14,18 +14,16 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.util.RandomSource;
-
 import net.mcreator.ssc.init.*;
 import net.mcreator.ssc.Ssc14Mod;
 
 public class UniversalDeconstructionProcedureProcedure {
-
     public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
         if (entity == null || !(entity instanceof LivingEntity livingEntity)) return;
         if (!livingEntity.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB)) return;
@@ -54,13 +52,14 @@ public class UniversalDeconstructionProcedureProcedure {
 
                 if (tool == Ssc14ModItems.ACTIVE_WELDER.get() && world instanceof ServerLevel sl) {
                     sl.sendParticles(Ssc14ModParticleTypes.SPARK.get(), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 20, 0.2, 0.2, 0.2, 0.2);
-                    float pitch = 0.8F + (world instanceof Level l ? l.random : RandomSource.create()).nextFloat() * 0.4F;
+                    // ИСПРАВЛЕНО: l.random заменено на l.getRandom() под NeoForge 26.1.2
+                    float pitch = 0.8F + (world instanceof Level l ? l.getRandom() : RandomSource.create()).nextFloat() * 0.4F;
                     playLevelSound(world, pos, "ssc_14:welding_work", 0.2F, pitch);
                 }
 
                 livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(step);
 
-                if (step < 6) {
+                if (step != 6) {
                     Ssc14Mod.queueServerWork(stage.delays()[step - 1], () -> run(step + 1));
                 } else {
                     if (world instanceof ServerLevel sLevel) {
@@ -68,19 +67,15 @@ public class UniversalDeconstructionProcedureProcedure {
                     }
                 }
             }
-
             private void executeFinal(ServerLevel sLevel) {
                 if (entity.getX() + entity.getY() + entity.getZ() != posHash || livingEntity.getMainHandItem().getItem() != tool) { reset(); return; }
                 BlockState currentBs = sLevel.getBlockState(pos);
                 if (currentBs.getBlock() != blockstate.getBlock()) { reset(); return; }
 
-                // Сохраняем старое состояние для синхронизации
                 BlockState oldState = currentBs;
-
                 if (stage.dropBlockAsItem()) {
                     spawnItem(sLevel, new ItemStack(currentBs.getBlock()), stage.dropYOffset());
-                    // Флаг 3 (1 | 2) — обновляет блок на сервере и шлет пакет визуального изменения клиенту
-                    sLevel.setBlock(pos, Blocks.AIR.defaultBlockState(), 3); 
+                    sLevel.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
                 } else if (stage.dropItem() != null) {
                     spawnItem(sLevel, new ItemStack(stage.dropItem(), stage.dropAmount()), stage.dropYOffset());
                 }
@@ -103,14 +98,11 @@ public class UniversalDeconstructionProcedureProcedure {
                     stage.finalAction().accept(new SS14ConstructionRegistryProcedure.RunContext(sLevel, pos, resultState, entity));
                 }
 
-                // Принудительно заставляем мир отправить клиенту обновленный блок, если он изменился
                 BlockState finalState = sLevel.getBlockState(pos);
                 sLevel.sendBlockUpdated(pos, oldState, finalState, 3);
 
-                String soundId = (tool == Ssc14ModItems.SCREWDRIVER.get()) ? "ssc_14:screwdriver" : 
-                                 (tool == Ssc14ModItems.SPANNER.get()) ? "ssc_14:spanner_use" : "ssc_14:title_off";
+                String soundId = (tool == Ssc14ModItems.SCREWDRIVER.get()) ? "ssc_14:screwdriver" : (tool == Ssc14ModItems.SPANNER.get()) ? "ssc_14:spanner_use" : "ssc_14:title_off";
                 playLevelSound(sLevel, pos, soundId, 1.0F, 1.0F);
-
                 reset();
             }
 
@@ -125,14 +117,15 @@ public class UniversalDeconstructionProcedureProcedure {
                 livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
             }
         }
-
         new GlobalProcess().run(1);
     }
 
     private static void playLevelSound(LevelAccessor world, BlockPos pos, String soundId, float volume, float pitch) {
         if (world instanceof Level lvl) {
-            var sound = BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse(soundId));
-            if (sound != null) {
+            var soundHolder = BuiltInRegistries.SOUND_EVENT.get(Identifier.fromNamespaceAndPath("ssc_14", soundId.replace("ssc_14:", ""))).orElse(null);
+            if (soundHolder != null) {
+                // ИСПРАВЛЕНО: Извлекаем чистое звуковое событие из Holder.Reference через метод .value() pod NeoForge 26.x
+                net.minecraft.sounds.SoundEvent sound = soundHolder.value();
                 if (!lvl.isClientSide()) lvl.playSound(null, pos, sound, SoundSource.NEUTRAL, volume, pitch);
                 else lvl.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), sound, SoundSource.NEUTRAL, volume, pitch, false);
             }

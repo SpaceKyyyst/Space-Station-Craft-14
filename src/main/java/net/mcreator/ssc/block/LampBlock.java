@@ -1,4 +1,3 @@
-
 package net.mcreator.ssc.block;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -37,20 +36,17 @@ public class LampBlock extends Block implements EntityBlock {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public LampBlock(BlockBehaviour.Properties properties) {
-		// НАСТРОЙКА СВЕТА: Светит (14), только если лампа есть, не разбита и активна
-		super(properties.sound(SoundType.GLASS).strength(5f).noCollission()
-			.lightLevel(state -> (state.getValue(HAVE_LAMP) && !state.getValue(BROKEN) && state.getValue(ACTIVE)) ? 14 : 0)
-			.isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.GLASS).strength(5f).noCollision().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(1, 13, 0, 15, 15, 2);
 				case NORTH -> box(1, 13, 14, 15, 15, 16);
 				case EAST -> box(0, 13, 1, 2, 15, 15);
 				case WEST -> box(14, 13, 1, 16, 15, 15);
+				default -> box(1, 13, 0, 15, 15, 2);
 			};
 		});
 	}
@@ -73,9 +69,12 @@ public class LampBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
 		if (context.getClickedFace().getAxis() == Direction.Axis.Y)
-			return super.getStateForPlacement(context).setValue(FACING, Direction.NORTH).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false);
-		return super.getStateForPlacement(context).setValue(FACING, context.getClickedFace()).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false);
+			return state.setValue(FACING, Direction.NORTH).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false);
+		return state.setValue(FACING, context.getClickedFace()).setValue(HAVE_LAMP, true).setValue(BROKEN, false).setValue(ACTIVE, false);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -92,6 +91,10 @@ public class LampBlock extends Block implements EntityBlock {
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
+		double hitX = hit.getLocation().x;
+		double hitY = hit.getLocation().y;
+		double hitZ = hit.getLocation().z;
+		Direction direction = hit.getDirection();
 		InsertingLampProcedure.execute(world, x, y, z, blockstate, entity);
 		return InteractionResult.SUCCESS;
 	}
@@ -125,7 +128,7 @@ public class LampBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
+	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos, Direction direction) {
 		BlockEntity tileentity = world.getBlockEntity(pos);
 		if (tileentity instanceof LampBlockEntity be)
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);

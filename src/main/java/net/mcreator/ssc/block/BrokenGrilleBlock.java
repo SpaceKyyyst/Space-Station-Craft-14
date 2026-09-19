@@ -25,19 +25,19 @@ public class BrokenGrilleBlock extends Block {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public BrokenGrilleBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.CHAIN).strength(2f).noCollission().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.CHAIN).strength(2f).noCollision().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> Shapes.join(box(0, 0, 0, 16, 16, 5), box(2, 2, 0, 14, 14, 16), BooleanOp.ONLY_FIRST);
 				case NORTH -> Shapes.join(box(0, 0, 11, 16, 16, 16), box(2, 2, 0, 14, 14, 16), BooleanOp.ONLY_FIRST);
 				case EAST -> Shapes.join(box(0, 0, 0, 5, 16, 16), box(0, 2, 2, 16, 14, 14), BooleanOp.ONLY_FIRST);
 				case WEST -> Shapes.join(box(11, 0, 0, 16, 16, 16), box(0, 2, 2, 16, 14, 14), BooleanOp.ONLY_FIRST);
 				case UP -> Shapes.join(box(0, 0, 0, 16, 5, 16), box(2, 0, 2, 14, 16, 14), BooleanOp.ONLY_FIRST);
 				case DOWN -> Shapes.join(box(0, 11, 0, 16, 16, 16), box(2, 0, 2, 14, 16, 14), BooleanOp.ONLY_FIRST);
+				default -> Shapes.join(box(0, 0, 0, 16, 16, 5), box(2, 2, 0, 14, 14, 16), BooleanOp.ONLY_FIRST);
 			};
 		});
 	}
@@ -60,7 +60,10 @@ public class BrokenGrilleBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getNearestLookingDirection().getOpposite());
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getNearestLookingDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

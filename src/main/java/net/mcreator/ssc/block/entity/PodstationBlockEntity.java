@@ -20,16 +20,17 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
-import net.mcreator.ssc.IEnergyStorageBlock;
+import net.mcreator.ssc.IEnergyStorageBlock; // ИСПРАВЛЕНО: Интеграция в общую систему энергии
 
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 public class PodstationBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, IEnergyStorageBlock {
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(9, ItemStack.EMPTY);
-	
+
+	// --- ДАННЫЕ ЭНЕРГИИ ПОДСТАНЦИИ (По аналогии с APC) ---
 	private long storedEnergy = 0;
-	private static final long MAX_ENERGY = 2500000;
+	private static final long MAX_ENERGY = 15000000; // Вместимость подстанции (15 МДж)
 
 	private long netCurrent = 0;
 	private long netSupply = 0;
@@ -40,9 +41,7 @@ public class PodstationBlockEntity extends RandomizableContainerBlockEntity impl
 	}
 
 	@Override
-	public long getStoredEnergy() {
-		return this.storedEnergy;
-	}
+	public long getStoredEnergy() { return this.storedEnergy; }
 
 	@Override
 	public void setStoredEnergy(long joules) {
@@ -53,16 +52,13 @@ public class PodstationBlockEntity extends RandomizableContainerBlockEntity impl
 		}
 	}
 
-	// Безопасный метод симуляции без сброса энергосетей
 	public void setStoredEnergySimulation(long joules) {
 		this.storedEnergy = Math.clamp(joules, 0, MAX_ENERGY);
 		this.setChanged();
 	}
 
 	@Override
-	public long getMaxEnergy() {
-		return MAX_ENERGY;
-	}
+	public long getMaxEnergy() { return MAX_ENERGY; }
 
 	@Override
 	public long getNetworkCurrentPower() { return this.netCurrent; }
@@ -103,70 +99,45 @@ public class PodstationBlockEntity extends RandomizableContainerBlockEntity impl
 	}
 
 	@Override
-	public ClientboundBlockEntityDataPacket getUpdatePacket() {
-		return ClientboundBlockEntityDataPacket.create(this);
-	}
+	public ClientboundBlockEntityDataPacket getUpdatePacket() { return ClientboundBlockEntityDataPacket.create(this); }
 
 	@Override
-	public CompoundTag getUpdateTag(HolderLookup.Provider lookupProvider) {
-		return this.saveWithFullMetadata(lookupProvider);
-	}
+	public CompoundTag getUpdateTag(HolderLookup.Provider lookupProvider) { return this.saveWithFullMetadata(lookupProvider); }
 
 	@Override
-	public int getContainerSize() {
-		return stacks.size();
-	}
+	public int getContainerSize() { return stacks.size(); }
 
 	@Override
 	public boolean isEmpty() {
 		for (ItemStack itemstack : this.stacks)
-			if (!itemstack.isEmpty())
-				return false;
+			if (!itemstack.isEmpty()) return false;
 		return true;
 	}
 
 	@Override
-	public Component getDefaultName() {
-		return Component.literal("podstation");
-	}
+	public Component getDefaultName() { return Component.literal("podstation"); }
 
 	@Override
-	protected AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return ChestMenu.threeRows(id, inventory);
-	}
+	public AbstractContainerMenu createMenu(int id, Inventory inventory) { return ChestMenu.threeRows(id, inventory); }
 
 	@Override
-	public Component getDisplayName() {
-		return Component.literal("Podstation");
-	}
+	public Component getDisplayName() { return Component.literal("Podstation"); }
 
 	@Override
-	protected NonNullList<ItemStack> getItems() {
-		return this.stacks;
-	}
+	protected NonNullList<ItemStack> getItems() { return this.stacks; }
 
 	@Override
-	protected void setItems(NonNullList<ItemStack> stacks) {
-		this.stacks = stacks;
-	}
+	protected void setItems(NonNullList<ItemStack> stacks) { this.stacks = stacks; }
 
 	@Override
-	public boolean canPlaceItem(int index, ItemStack stack) {
-		return true;
-	}
+	public boolean canPlaceItem(int index, ItemStack stack) { return true; }
 
 	@Override
-	public int[] getSlotsForFace(Direction side) {
-		return IntStream.range(0, this.getContainerSize()).toArray();
-	}
+	public int[] getSlotsForFace(Direction side) { return IntStream.range(0, this.getContainerSize()).toArray(); }
 
 	@Override
-	public boolean canPlaceItemThroughFace(int index, ItemStack itemstack, @Nullable Direction direction) {
-		return this.canPlaceItem(index, itemstack);
-	}
+	public boolean canPlaceItemThroughFace(int index, ItemStack itemstack, @Nullable Direction direction) { return this.canPlaceItem(index, itemstack); }
 
 	@Override
-	public boolean canTakeItemThroughFace(int index, ItemStack itemstack, Direction direction) {
-		return true;
-	}
+	public boolean canTakeItemThroughFace(int index, ItemStack itemstack, Direction direction) { return true; }
 }

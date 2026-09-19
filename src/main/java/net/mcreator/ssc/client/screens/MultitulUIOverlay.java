@@ -35,10 +35,11 @@ public class MultitulUIOverlay {
 
 		CustomData customData = mainHand.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
 		int toolMode = 1;
-		if (!customData.isEmpty() && customData.getUnsafe().contains("Mode")) {
-			var modeOpt = customData.getUnsafe().getDouble("Mode");
-			if (modeOpt.isPresent()) {
-				toolMode = modeOpt.get().intValue();
+		
+		if (!customData.isEmpty()) {
+			var tag = customData.copyTag();
+			if (tag.contains("Mode")) {
+				toolMode = tag.getDouble("Mode").orElse(0.0).intValue();
 			}
 		}
 		if (toolMode < 1 || toolMode > 3) toolMode = 1;
@@ -75,14 +76,14 @@ public class MultitulUIOverlay {
 					}
 				}
 
-				event.getGuiGraphics().drawString(font, "Текущий режим цепи: " + modeLabel, w / 2 + 25, h / 2 - 64, 0xFFFFFF00, false);
+				// ИСПРАВЛЕНО: Все вызовы drawString заменены на метод text() строго по твоей рабочей шпаргалке!
+				event.getGuiGraphics().text(font, "Текущий режим цепи: " + modeLabel, w / 2 + 25, h / 2 - 64, 0xFFFFFF00, false);
 
 				if (!hasCable) {
-					event.getGuiGraphics().drawString(font, "Кабель этого вольтажа отсутствует", w / 2 + 25, h / 2 - 48, 0xFFFF5555, false);
+					event.getGuiGraphics().text(font, "Кабель этого вольтажа отсутствует", w / 2 + 25, h / 2 - 48, 0xFFFF5555, false);
 					return;
 				}
 
-				// Читаем чистые данные из пакетного клиентского кэша
 				long currentPower = MultitoolClientCache.currentPower;
 				long theoreticalSupply = MultitoolClientCache.theoreticalSupply;
 				long idealConsumption = MultitoolClientCache.idealConsumption;
@@ -92,17 +93,17 @@ public class MultitulUIOverlay {
 				long batteryPower = MultitoolClientCache.batteryPower;
 				
 				if (currentPower == 0 && theoreticalSupply == 0 && idealConsumption == 0) {
-					event.getGuiGraphics().drawString(font, "Кабель не подключен к узлу (0 W)", w / 2 + 25, h / 2 - 48, 0xFFFF5555, false);
+					event.getGuiGraphics().text(font, "Кабель не подключен к узлу (0 W)", w / 2 + 25, h / 2 - 48, 0xFFFF5555, false);
 					return;
 				}
 
 				String percentage = max == 0 ? "0%" : String.format("%.1f%%", ((double) stored / max) * 100);
 
-				event.getGuiGraphics().drawString(font, "Текущее питание: " + currentPower + " W", w / 2 + 25, h / 2 - 48, -1, false);
-				event.getGuiGraphics().drawString(font, "От батарей: " + (toolMode == 2 ? batteryPower : 0) + " W", w / 2 + 25, h / 2 - 32, -1, false);
-				event.getGuiGraphics().drawString(font, "Теоретическое снабжение: " + theoreticalSupply + " W", w / 2 + 25, h / 2 - 16, -1, false);
-				event.getGuiGraphics().drawString(font, "Идеальное потребление: " + idealConsumption + " W", w / 2 + 25, h / 2, -1, false);
-				event.getGuiGraphics().drawString(font, "Запас буфера цепи: " + stored + " / " + max + " J (" + percentage + ")", w / 2 + 25, h / 2 + 16, -1, false);
+				event.getGuiGraphics().text(font, "Текущее питание: " + currentPower + " W", w / 2 + 25, h / 2 - 48, -1, false);
+				event.getGuiGraphics().text(font, "От батарей: " + (toolMode == 2 ? batteryPower : 0) + " W", w / 2 + 25, h / 2 - 32, -1, false);
+				event.getGuiGraphics().text(font, "Теоретическое снабжение: " + theoreticalSupply + " W", w / 2 + 25, h / 2 - 16, -1, false);
+				event.getGuiGraphics().text(font, "Идеальное потребление: " + idealConsumption + " W", w / 2 + 25, h / 2, -1, false);
+				event.getGuiGraphics().text(font, "Запас буфера цепи: " + stored + " / " + max + " J (" + percentage + ")", w / 2 + 25, h / 2 + 16, -1, false);
 			}
 		}
 	}

@@ -55,7 +55,6 @@ public class SS14ConstructionRegistryProcedure {
         int[] normalDelays = {3, 3, 3, 3, 3, 3};
         int[] slowDelays = {10, 10, 10, 10, 10, 10};
 
-        // === 1. ЛОМ (CROWBAR) ===
         Item crowbar = Ssc14ModItems.CROWBAR.get();
 
         registerTagCheck("ssc14:tiles", crowbar, bs -> true, 
@@ -72,12 +71,10 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14ModBlocks.ARMORED_WINDOW.get(), crowbar, bs -> getInt(bs, "blockstate") == 2,
             new ConstructionStage(new int[]{3,3,3,3,3,3}, false, null, 1, 0.0, null, "blockstate", 3, false, null, null));
 
-        // === 2. СВАРКА (ACTIVE WELDER) ===
         Item welder = Ssc14ModItems.ACTIVE_WELDER.get();
 
         registerBlock(Ssc14ModBlocks.STEEL_WALL.get(), welder, bs -> true,
             new ConstructionStage(new int[]{20,20,20,20,20,20}, false, Ssc14ModItems.STEEL.get(), 1, 0.5, Ssc14ModBlocks.WALL_CARCASE.get(), null, -1, true, null, null));
-
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), welder, bs -> getInt(bs, "blockstate") == 2,
             new ConstructionStage(new int[]{13,13,13,13,13,13}, false, null, 1, 0.0, null, "blockstate", 3, true, null, null));
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), welder, bs -> getInt(bs, "blockstate") == 5,
@@ -98,13 +95,13 @@ public class SS14ConstructionRegistryProcedure {
                 BlockEntity be = ctx.world().getBlockEntity(ctx.pos());
                 if (be != null) {
                     CompoundTag nbt = be.getPersistentData();
-                    boolean wasWelded = nbt.getBoolean("welded").orElse(false); // ИСПРАВЛЕНО
+                    boolean wasWelded = nbt.getBoolean("welded").orElse(false);
                     nbt.putBoolean("welded", !wasWelded);
                     be.setChanged();
                 }
             })
         );
-        // === 3. КУСАЧКИ (NIPPERS) ===
+
         Item nippers = Ssc14ModItems.NIPPERS.get();
 
         registerBlock(Ssc14ModBlocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.LV) && bs.getValue(SheathingBlock.LV),
@@ -133,7 +130,6 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14ModBlocks.BROKEN_GRILLE.get(), nippers, bs -> true,
             new ConstructionStage(fastDelays, false, null, 1, 0.5, Blocks.AIR, null, -1, false, null, null));
 
-        // === 4. ПОЖАРНЫЙ ТОПОР (FIRE AXE) ===
         Item fireAxe = Ssc14ModItems.FIRE_AXE.get();
 
         registerBlock(Ssc14ModBlocks.SHEATHING.get(), fireAxe, bs -> true,
@@ -144,7 +140,6 @@ public class SS14ConstructionRegistryProcedure {
             new ConstructionStage(slowDelays, false, null, 1, 0.5, Ssc14ModBlocks.ROD_UP_FLOOR.get(), null, -1, false, hit -> hit == Direction.DOWN, 
             ctx -> dropBlockEntityWithNBT(ctx, Ssc14ModBlocks.TITLE_STEEL.get())));
 
-        // === 5. ОТВЕРТКА (SCREWDRIVER) ===
         Item screwdriver = Ssc14ModItems.SCREWDRIVER.get();
 
         registerBlock(Ssc14ModBlocks.BASE_WINDOW.get(), screwdriver, bs -> getInt(bs, "window_disassembly") == 0,
@@ -192,7 +187,6 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14ModBlocks.SMES.get(), screwdriver, bs -> true,
             new ConstructionStage(normalDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> handleStationFinal(ctx, Ssc14ModBlocks.SMES.get())));
 
-        // === 6. ГАЕЧНЫЙ КЛЮЧ (SPANNER) ===
         Item spanner = Ssc14ModItems.SPANNER.get();
 
         registerBlock(Ssc14ModBlocks.WALL_CARCASE.get(), spanner, bs -> true,
@@ -216,7 +210,7 @@ public class SS14ConstructionRegistryProcedure {
     }
 
     private static void registerTagCheck(String tagNamespace, Item tool, Predicate<BlockState> pred, ConstructionStage stage) {
-        Predicate<BlockState> tagAndCustomPred = bs -> bs.is(net.minecraft.tags.BlockTags.create(net.minecraft.resources.ResourceLocation.parse(tagNamespace))) && pred.test(bs);
+        Predicate<BlockState> tagAndCustomPred = bs -> bs.is(net.minecraft.tags.BlockTags.create(net.minecraft.resources.Identifier.parse(tagNamespace))) && pred.test(bs);
         REGISTRY.add(new AbstractMap.SimpleEntry<>(new InteractionKey(null, tool, tagAndCustomPred), stage));
     }
 
@@ -262,13 +256,16 @@ public class SS14ConstructionRegistryProcedure {
     }
 
     private static void handleMachineFrameFinal(RunContext ctx) {
-        var handler = ctx.world().getCapability(Capabilities.ItemHandler.BLOCK, ctx.pos(), null);
+        var rawCap = ctx.world().getCapability(Capabilities.Item.BLOCK, ctx.pos(), null);
+        net.neoforged.neoforge.items.IItemHandler handler = rawCap == null ? null : net.neoforged.neoforge.items.IItemHandler.of(rawCap);
         if (handler == null) return;
+        
         ItemStack slot0 = handler.getStackInSlot(0);
         if (slot0.isEmpty()) return;
         BlockEntity be = ctx.world().getBlockEntity(ctx.pos());
         if (be == null) return;
 
+        // ИСПРАВЛЕНО: Прямое приведение примитива double к int (без лишних методов .orElse)
         int plugCount = (int) be.getPersistentData().getDoubleOr("plug", 0.0);
         if (handler instanceof IItemHandlerModifiable mod) {
             for (int i = 0; i < 9; i++) { mod.setStackInSlot(i, ItemStack.EMPTY); plugCount++; }
@@ -290,7 +287,10 @@ public class SS14ConstructionRegistryProcedure {
         
         ctx.world().setBlock(ctx.pos(), targetBs, 3);
         
-        var handler = ctx.world().getCapability(Capabilities.ItemHandler.BLOCK, ctx.pos(), null);
+        // ИСПРАВЛЕНО: Безопасное чтение капабилити инвентаря подстанции под NeoForge 26.1.2
+        var rawCap = ctx.world().getCapability(Capabilities.Item.BLOCK, ctx.pos(), null);
+        net.neoforged.neoforge.items.IItemHandler handler = rawCap == null ? null : net.neoforged.neoforge.items.IItemHandler.of(rawCap);
+        
         if (handler instanceof IItemHandlerModifiable mod) {
             if (originalBlock == Ssc14ModBlocks.PODSTATION.get()) {
                 mod.setStackInSlot(0, new ItemStack(Ssc14ModItems.SUBSTATION_BOARD.get()));

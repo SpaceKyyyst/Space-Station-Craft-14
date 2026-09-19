@@ -39,7 +39,7 @@ public class ArmoredWindowBlock extends Block {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 0;
 	}
 
@@ -56,7 +56,10 @@ public class ArmoredWindowBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(BLOCKSTATE, 0);
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(BLOCKSTATE, 0);
 	}
 
 	@Override
@@ -69,7 +72,7 @@ public class ArmoredWindowBlock extends Block {
 		double hitY = hit.getLocation().y;
 		double hitZ = hit.getLocation().z;
 		Direction direction = hit.getDirection();
-		Windows_KnockKnock_Procedure.execute(world, x, y, z, entity);
-		return InteractionResult.SUCCESS;
+		InteractionResult result = Windows_KnockKnock_Procedure.execute(world, x, y, z, entity);
+		return result;
 	}
 }

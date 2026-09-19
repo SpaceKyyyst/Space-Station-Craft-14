@@ -7,7 +7,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -21,8 +21,9 @@ import java.util.*;
 @EventBusSubscriber
 public record ProcessReactionsMessage(int slotIndex, ItemStack carriedStack, String targetMarker) implements CustomPacketPayload {
 
+    // ИСПРАВЛЕНО: Регистрация ID типа сетевого пакета переведена на fromNamespaceAndPath
     public static final Type<ProcessReactionsMessage> TYPE = new Type<>(
-            ResourceLocation.fromNamespaceAndPath(Ssc14Mod.MODID, "process_reactions")
+            Identifier.fromNamespaceAndPath("ssc_14", "process_reactions")
     );
 
     public static final StreamCodec<RegistryFriendlyByteBuf, ProcessReactionsMessage> STREAM_CODEC = StreamCodec.composite(
@@ -52,15 +53,12 @@ public record ProcessReactionsMessage(int slotIndex, ItemStack carriedStack, Str
 
     private static void execute(ServerPlayer player, int slotIndex) {
         if (player.containerMenu == null) return;
-
-        // Защитная проверка индекса слота
         if (slotIndex < 0 || slotIndex >= player.containerMenu.slots.size()) return;
 
         Slot targetSlot = player.containerMenu.slots.get(slotIndex);
-        ItemStack targetStack = targetSlot.getItem(); // Куда льем (в инвентаре)
-        ItemStack mainHandStack = player.getMainHandItem(); // Из чего льем (в хотбаре/руке)
+        ItemStack targetStack = targetSlot.getItem(); 
+        ItemStack mainHandStack = player.getMainHandItem(); 
 
-        // Проверяем классы предметов
         if (!(targetStack.getItem() instanceof ReagentContainerItem) || !(mainHandStack.getItem() instanceof ReagentContainerItem)) {
             return;
         }
@@ -77,11 +75,9 @@ public record ProcessReactionsMessage(int slotIndex, ItemStack carriedStack, Str
 
         if (freeSpace <= 0) return;
 
-        // Переливаем порциями по 5 единиц
         int transferAmount = Math.min(5, Math.min(totalSourceVolume, freeSpace));
         Map<String, Integer> transferMap = calculateProportionalTransfer(sourceReagents, totalSourceVolume, transferAmount);
 
-        // Проводим изменения в жидкостях
         for (Map.Entry<String, Integer> entry : transferMap.entrySet()) {
             String reagentId = entry.getKey();
             int amount = entry.getValue();
@@ -91,17 +87,11 @@ public record ProcessReactionsMessage(int slotIndex, ItemStack carriedStack, Str
             }
         }
 
-        // Фиксируем измененный предмет в слоте инвентаря
         targetSlot.set(targetStack);
         targetSlot.setChanged();
 
-        // ФИКС: Явно обновляем предмет в руке (хотбаре) игрока на сервере
         player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, mainHandStack);
-
-        // ЗАПУСКАЕМ ХИМИЧЕСКУЮ РЕАКЦИЮ НА СЕРВЕРЕ намертво
         ModReagents.processReactions(targetSlot.getItem(), player);
-
-        // Синхронизируем абсолютно все изменения слотов и хотбара с клиентом
         player.containerMenu.broadcastChanges();
     }
 
@@ -126,7 +116,7 @@ public record ProcessReactionsMessage(int slotIndex, ItemStack carriedStack, Str
         }
         List<Map.Entry<String, Double>> sortedFractions = new ArrayList<>(fractionalParts.entrySet());
         sortedFractions.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
-        for (int i = 0; i < remaining && i < sortedFractions.size(); i++) {
+        for (int i = 0; remaining > i && i < sortedFractions.size(); i++) {
             String reagentId = sortedFractions.get(i).getKey();
             result.put(reagentId, result.get(reagentId) + 1);
         }

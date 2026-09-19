@@ -5,7 +5,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -26,12 +25,11 @@ import net.mcreator.ssc.procedures.Shutters_UPDATE_Procedure;
 import net.mcreator.ssc.procedures.Shutters_DEBUD_AKTIVATOR_PR_Procedure;
 import net.mcreator.ssc.block.entity.ShuttersBlockEntity;
 import net.mcreator.ssc.INetworkAction;
-
-import javax.annotation.Nullable;
+import net.mcreator.ssc.INetworkTrigger;
 
 import java.util.function.Function;
 
-public class ShuttersBlock extends Block implements EntityBlock, net.mcreator.ssc.INetworkAction, net.mcreator.ssc.INetworkTrigger {
+public class ShuttersBlock extends Block implements EntityBlock, INetworkAction, INetworkTrigger {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 	public static final BooleanProperty UP = BooleanProperty.create("up");
 	public static final BooleanProperty DOWN = BooleanProperty.create("down");
@@ -139,25 +137,9 @@ public class ShuttersBlock extends Block implements EntityBlock, net.mcreator.ss
 			};
 		});
 	}
-
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+	protected net.minecraft.world.phys.shapes.VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return shapes.apply(state);
-	}
-
-	@Override
-	public boolean propagatesSkylightDown(BlockState state) {
-		return true;
-	}
-
-	@Override
-	public int getLightBlock(BlockState state) {
-		return 0;
-	}
-
-	@Override
-	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return Shapes.empty();
 	}
 
 	@Override
@@ -171,30 +153,28 @@ public class ShuttersBlock extends Block implements EntityBlock, net.mcreator.ss
 		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(UP, false).setValue(DOWN, false).setValue(OPENING, false).setValue(OPEN, false);
 	}
 
-	public BlockState rotate(BlockState state, Rotation rot) {
+	@Override
+	protected BlockState rotate(BlockState state, Rotation rot) {
 		return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
-	public BlockState mirror(BlockState state, Mirror mirrorIn) {
+	@Override
+	protected BlockState mirror(BlockState state, Mirror mirrorIn) {
 		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
 	}
 
 	@Override
-	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, @Nullable Orientation orientation, boolean moving) {
+	protected void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, net.minecraft.world.level.redstone.Orientation orientation, boolean moving) {
 		super.neighborChanged(blockstate, world, pos, neighborBlock, orientation, moving);
 		Shutters_UPDATE_Procedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
 	}
 
 	@Override
-	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
+	protected InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		double hitX = hit.getLocation().x;
-		double hitY = hit.getLocation().y;
-		double hitZ = hit.getLocation().z;
-		Direction direction = hit.getDirection();
 		Shutters_DEBUD_AKTIVATOR_PR_Procedure.execute(world, x, y, z, blockstate, entity);
 		return InteractionResult.SUCCESS;
 	}
@@ -211,13 +191,6 @@ public class ShuttersBlock extends Block implements EntityBlock, net.mcreator.ss
 	}
 
 	@Override
-	public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
-		super.triggerEvent(state, world, pos, eventID, eventParam);
-		BlockEntity blockEntity = world.getBlockEntity(pos);
-		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
-	}
-	
-	@Override
 	public java.util.List<String> getAvailableActions() {
 		return java.util.List.of("open", "close", "toggle");
 	}
@@ -232,37 +205,37 @@ public class ShuttersBlock extends Block implements EntityBlock, net.mcreator.ss
 
 	@Override
 	public java.util.List<String> getAvailableTriggers() {
-	    return java.util.List.of("toggle");
+		return java.util.List.of("toggle");
 	}
 	
 	@Override
 	public String getTriggerName(String triggerId) {
-	    if ("toggle".equals(triggerId)) return "При активации";
-	    return triggerId;
+		if ("toggle".equals(triggerId)) return "При активации";
+		return triggerId;
 	}
 	
 	@Override
-	public void executeNetworkAction(String actionId, net.minecraft.world.level.Level world, net.minecraft.core.BlockPos pos) {
-	    net.minecraft.world.level.block.state.BlockState state = world.getBlockState(pos);
-	    
-	    // ИСПРАВЛЕНО: Находим ближайшего игрока вместо null
-	    net.minecraft.world.entity.player.Player nearestPlayer = null;
-	    if (world instanceof net.minecraft.server.level.ServerLevel serverLevel) {
-	        nearestPlayer = serverLevel.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 64.0, false);
-	    }
-	    
-	    if ("open".equals(actionId)) {
-	        net.mcreator.ssc.procedures.ShuttersOpeningPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
-	    } else if ("close".equals(actionId)) {
-	        net.mcreator.ssc.procedures.ShuttersClosingPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
-	    } else if ("toggle".equals(actionId)) {
-	        if (state.getBlock().getStateDefinition().getProperty("open") instanceof net.minecraft.world.level.block.state.properties.BooleanProperty _prop) {
-	            if (!state.getValue(_prop)) {
-	                net.mcreator.ssc.procedures.ShuttersOpeningPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
-	            } else {
-	                net.mcreator.ssc.procedures.ShuttersClosingPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
-	            }
-	        }
-	    }
+	public void executeNetworkAction(String actionId, Level world, BlockPos pos) {
+		BlockState state = world.getBlockState(pos);
+		
+		Player nearestPlayer = null;
+		if (world instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+			nearestPlayer = serverLevel.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 64.0, false);
+		}
+		
+		if ("open".equals(actionId)) {
+			net.mcreator.ssc.procedures.ShuttersOpeningPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
+		} else if ("close".equals(actionId)) {
+			net.mcreator.ssc.procedures.ShuttersClosingPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
+		} else if ("toggle".equals(actionId)) {
+			if (state.getBlock().getStateDefinition().getProperty("open") instanceof net.minecraft.world.level.block.state.properties.BooleanProperty _prop) {
+				boolean isOpen = state.getValue(_prop);
+				if (isOpen == false) {
+					net.mcreator.ssc.procedures.ShuttersOpeningPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
+				} else {
+					net.mcreator.ssc.procedures.ShuttersClosingPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
+				}
+			}
+		}
 	}
 }

@@ -11,7 +11,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.component.DataComponents;
@@ -25,10 +25,12 @@ public class NetworkConfigurator_USE_Procedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
 		if (entity == null)
 			return;
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:connectable")))) {
+		
+		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(Identifier.fromNamespaceAndPath("ssc14", "connectable")))) {
 			if (("").equals(itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getStringOr("First_Target_Type", ""))) {
-				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal("Вы начали соединение"), true);
+				// ИСПРАВЛЕНО: Безопасно кастим игрока к ServerPlayer, чтобы метод с булевым флагом сработал идеально строго по твоей шпаргалке
+				if (entity instanceof ServerPlayer _serverPlayer)
+					_serverPlayer.sendSystemMessage(Component.literal("Вы начали соединение"), true);
 				{
 					final String _tagName = "First_Target_X";
 					final double _tagValue = x;
@@ -49,8 +51,9 @@ public class NetworkConfigurator_USE_Procedure {
 					final String _tagValue = ("" + world.getBlockState(BlockPos.containing(x, y, z)));
 					CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putString(_tagName, _tagValue));
 				}
-				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal("Выбрана первая цель"), false);
+				// ИСПРАВЛЕНО: Безопасно кастим игрока к ServerPlayer
+				if (entity instanceof ServerPlayer _serverPlayer)
+					_serverPlayer.sendSystemMessage(Component.literal("Выбрана первая цель"), false);
 			} else {
 				if (entity instanceof ServerPlayer _ent) {
 					BlockPos _bpos = BlockPos.containing(x, y, z);
@@ -68,7 +71,6 @@ public class NetworkConfigurator_USE_Procedure {
 
 						@Override
 						public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-							// Записываем ТОЛЬКО ОДИН BlockPos (стандартный способ MCreator)
 							return new NetConfigGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
 						}
 					}, _bpos);

@@ -3,6 +3,5 @@
   "textures": {
     "all": "minecraft:block/debug",
     "particle": "minecraft:block/debug"
-  },
-  "render_type": "solid"
+  }
 }

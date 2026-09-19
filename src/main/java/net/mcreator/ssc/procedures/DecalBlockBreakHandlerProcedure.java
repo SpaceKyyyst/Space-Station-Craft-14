@@ -8,24 +8,23 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.level.BlockEvent;
+
+// ПРАВИЛЬНЫЙ ИМПОРТ ИЗ ВАШЕЙ ВЕРСИИ NEOFORGE 26.1.2:
+import net.neoforged.neoforge.event.level.block.BreakBlockEvent; 
 
 @EventBusSubscriber(modid = "ssc_14")
 public class DecalBlockBreakHandlerProcedure {
-
     @SubscribeEvent
-    public static void onBlockBreak(BlockEvent.BreakEvent event) {
+    public static void onBlockBreak(BreakBlockEvent event) { // Использован верный класс события
         LevelAccessor world = event.getLevel();
-        // Логика выполняется строго на сервере
         if (world.isClientSide()) return;
-
-        BlockPos pos = event.getPos();
         
+        BlockPos pos = event.getPos();
         if (world.getChunk(pos) instanceof LevelChunk chunk) {
-            // Проверяем все 6 сторон сломанного блока. 
-            // Если на какой-то из сторон была закреплена декаль — удаляем её.
-            for (Direction face : Direction.values()) {
-                DecalRegistry.removeDecalAt(chunk, pos, face);
+            Direction[] faces = Direction.values();
+            int total = faces.length;
+            for (int i = 0; total > i; i++) {
+                DecalRegistry.removeDecalAt(chunk, pos, faces[i]);
             }
         }
     }

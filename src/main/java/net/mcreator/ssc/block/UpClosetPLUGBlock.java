@@ -44,10 +44,10 @@ public class UpClosetPLUGBlock extends Block {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> Shapes.join(box(1, 0, 1, 15, 16, 15), box(2, 0, 2, 14, 15, 16), BooleanOp.ONLY_FIRST);
 				case NORTH -> Shapes.join(box(1, 0, 1, 15, 16, 15), box(2, 0, 0, 14, 15, 14), BooleanOp.ONLY_FIRST);
 				case EAST -> Shapes.join(box(1, 0, 1, 15, 16, 15), box(2, 0, 2, 16, 15, 14), BooleanOp.ONLY_FIRST);
 				case WEST -> Shapes.join(box(1, 0, 1, 15, 16, 15), box(0, 0, 2, 14, 15, 14), BooleanOp.ONLY_FIRST);
+				default -> Shapes.join(box(1, 0, 1, 15, 16, 15), box(2, 0, 2, 14, 15, 16), BooleanOp.ONLY_FIRST);
 			};
 		});
 	}
@@ -63,7 +63,7 @@ public class UpClosetPLUGBlock extends Block {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 0;
 	}
 
@@ -80,7 +80,10 @@ public class UpClosetPLUGBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -97,8 +100,8 @@ public class UpClosetPLUGBlock extends Block {
 	}
 
 	@Override
-	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
-		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
+	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, ItemStack toolStack, boolean willHarvest, FluidState fluid) {
+		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, toolStack, willHarvest, fluid);
 		Closet_DestroyProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		return retval;
 	}

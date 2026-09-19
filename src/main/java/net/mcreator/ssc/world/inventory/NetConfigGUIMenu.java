@@ -2,7 +2,7 @@
 package net.mcreator.ssc.world.inventory;
 
 import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandler; // ИСПРАВЛЕНО НА NEOFORGED
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -54,14 +54,12 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
     public BlockPos sourcePos;
     public BlockPos targetPos;
     private ContainerLevelAccess access = ContainerLevelAccess.NULL;
-    private IItemHandler internal;
+    private ItemStackHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
     private boolean bound = false;
     private Supplier<Boolean> boundItemMatcher = null;
     private Entity boundEntity = null;
     private BlockEntity boundBlockEntity = null;
-    
-    // Флаг для отправки синхронизации только один раз
     private boolean syncSent = false;
 
     public NetConfigGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
@@ -70,17 +68,12 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
         this.world = inv.player.level();
         this.internal = new ItemStackHandler(0);
 
-        System.out.println("[SSC14-DEBUG] GUI открыт!");
-
         if (extraData != null) {
             this.targetPos = extraData.readBlockPos();
-
             this.x = targetPos.getX();
             this.y = targetPos.getY();
             this.z = targetPos.getZ();
             access = ContainerLevelAccess.create(world, targetPos);
-
-            System.out.println("[SSC14-DEBUG] targetPos = " + targetPos);
 
             ItemStack mainHand = entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY;
             if (Ssc14ModItems.NETWORK_CONFIGURATOR.get() == mainHand.getItem()) {
@@ -88,16 +81,11 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
                 double fy = mainHand.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("First_Target_Y").orElse(0.0);
                 double fz = mainHand.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("First_Target_Z").orElse(0.0);
                 this.sourcePos = BlockPos.containing(fx, fy, fz);
-                System.out.println("[SSC14-DEBUG] Конфигуратор в руке! sourcePos = " + sourcePos);
             } else {
                 this.sourcePos = BlockPos.ZERO;
-                System.out.println("[SSC14-DEBUG] Конфигуратор НЕ в руке! sourcePos = ZERO");
             }
 
             populateGuiData();
-            
-            System.out.println("[SSC14-DEBUG] menuState размер: " + menuState.size());
-            System.out.println("[SSC14-DEBUG] menuState содержимое: " + menuState);
         }
     }
 
@@ -105,41 +93,27 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
         menuState.put("selected_trigger_idx", -1);
 
         BlockState sourceState = world.getBlockState(sourcePos);
-        System.out.println("[SSC14-DEBUG] sourceState блок: " + sourceState.getBlock().getClass().getSimpleName());
-        
         if (sourceState.getBlock() instanceof INetworkTrigger triggerBlock) {
-            System.out.println("[SSC14-DEBUG] Блок реализует INetworkTrigger!");
             List<String> triggers = triggerBlock.getAvailableTriggers();
-            System.out.println("[SSC14-DEBUG] Найдено триггеров: " + triggers.size());
             for (int i = 0; i < Math.min(triggers.size(), 8); i++) {
                 String id = triggers.get(i);
                 String text = triggerBlock.getTriggerName(id);
-                System.out.println("[SSC14-DEBUG] Триггер " + (i+1) + ": id=" + id + ", text=" + text);
                 menuState.put("L" + (i + 1) + "_id", id);
                 menuState.put("L" + (i + 1) + "_text", text);
                 menuState.put("L" + (i + 1) + "_active", true);
             }
-        } else {
-            System.out.println("[SSC14-DEBUG] ОШИБКА: Блок НЕ реализует INetworkTrigger!");
         }
 
         BlockState targetState = world.getBlockState(targetPos);
-        System.out.println("[SSC14-DEBUG] targetState блок: " + targetState.getBlock().getClass().getSimpleName());
-        
         if (targetState.getBlock() instanceof INetworkAction actionBlock) {
-            System.out.println("[SSC14-DEBUG] Блок реализует INetworkAction!");
             List<String> actions = actionBlock.getAvailableActions();
-            System.out.println("[SSC14-DEBUG] Найдено действий: " + actions.size());
             for (int i = 0; i < Math.min(actions.size(), 8); i++) {
                 String id = actions.get(i);
                 String text = actionBlock.getActionName(id);
-                System.out.println("[SSC14-DEBUG] Действие " + (i+1) + ": id=" + id + ", text=" + text);
                 menuState.put("R" + (i + 1) + "_id", id);
                 menuState.put("R" + (i + 1) + "_text", text);
                 menuState.put("R" + (i + 1) + "_active", true);
             }
-        } else {
-            System.out.println("[SSC14-DEBUG] ОШИБКА: Блок НЕ реализует INetworkAction!");
         }
         
         loadConnections();
@@ -162,14 +136,14 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
     }
 
     @Override
-    public boolean stillValid(Player player) {
-        if (this.bound) {
-            if (this.boundItemMatcher != null) return this.boundItemMatcher.get();
-            else if (this.boundBlockEntity != null) return AbstractContainerMenu.stillValid(this.access, player, this.boundBlockEntity.getBlockState().getBlock());
-            else if (this.boundEntity != null) return this.boundEntity.isAlive();
-        }
-        return true;
-    }
+	public boolean stillValid(Player player) {
+		if (this.bound) {
+			if (this.boundItemMatcher != null) return this.boundItemMatcher.get();
+			else if (this.boundBlockEntity != null) return AbstractContainerMenu.stillValid(this.access, player, this.boundBlockEntity.getBlockState().getBlock());
+			else if (this.boundEntity != null) return this.boundEntity.isAlive();
+		}
+		return true;
+	}
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
@@ -196,13 +170,10 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player entity = event.getEntity();
         if (entity.containerMenu instanceof NetConfigGUIMenu menu) {
-            // Отправляем синхронизацию только один раз
             if (!menu.syncSent && entity instanceof ServerPlayer serverPlayer) {
                 PacketDistributor.sendToPlayer(serverPlayer, new NetConfigGUISyncMessage(menu.menuState));
                 menu.syncSent = true;
-                System.out.println("[SSC14-DEBUG] Отправлен пакет синхронизации из onPlayerTick!");
             }
-            
             NetConfigGUI_TIC_Procedure.execute(menu.world, entity);
         }
     }

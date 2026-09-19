@@ -7,7 +7,7 @@ import net.neoforged.api.distmarker.Dist;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.util.context.ContextKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 
@@ -15,7 +15,7 @@ import com.google.common.reflect.TypeToken;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Ssc14ModRenderStateModifiers {
-	public static final ContextKey<LivingEntity> LIVING_ENTITY = new ContextKey<>(ResourceLocation.parse("c:living_entity_attachment"));
+	public static final ContextKey<LivingEntity> LIVING_ENTITY = new ContextKey<>(Identifier.parse("c:living_entity_attachment"));
 
 	@SubscribeEvent
 	public static void registerModifiers(RegisterRenderStateModifiersEvent event) {
@@ -27,6 +27,7 @@ public class Ssc14ModRenderStateModifiers {
 		newState.x = originalState.x;
 		newState.y = originalState.y;
 		newState.z = originalState.z;
+		newState.lightCoords = originalState.lightCoords;
 		newState.ageInTicks = originalState.ageInTicks;
 		newState.distanceToCameraSq = originalState.distanceToCameraSq;
 		newState.displayFireAnimation = originalState.displayFireAnimation;

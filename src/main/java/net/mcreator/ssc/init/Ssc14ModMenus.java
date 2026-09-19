@@ -53,7 +53,7 @@ public class Ssc14ModMenus {
 			getMenuState().put(elementType + ":" + name, elementState);
 			if (player instanceof ServerPlayer serverPlayer) {
 				PacketDistributor.sendToPlayer(serverPlayer, new MenuStateUpdateMessage(elementType, name, elementState));
-			} else if (player.level().isClientSide) {
+			} else if (player.level().isClientSide()) {
 				if (Minecraft.getInstance().screen instanceof Ssc14ModScreens.ScreenAccessor accessor && needClientUpdate)
 					accessor.updateMenuState(elementType, name, elementState);
 				ClientPacketDistributor.sendToServer(new MenuStateUpdateMessage(elementType, name, elementState));

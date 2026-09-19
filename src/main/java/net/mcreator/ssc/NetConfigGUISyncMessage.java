@@ -6,7 +6,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier; // ИСПРАВЛЕНО
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
@@ -18,7 +18,8 @@ import java.util.Map;
 
 @EventBusSubscriber
 public record NetConfigGUISyncMessage(Map<String, Object> state) implements CustomPacketPayload {
-    public static final Type<NetConfigGUISyncMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Ssc14Mod.MODID, "net_config_gui_sync"));
+    // ИСПРАВЛЕНО: Регистрация типа пакета через Identifier.fromNamespaceAndPath
+    public static final Type<NetConfigGUISyncMessage> TYPE = new Type<>(Identifier.fromNamespaceAndPath(Ssc14Mod.MODID, "net_config_gui_sync"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, NetConfigGUISyncMessage> STREAM_CODEC = StreamCodec.of(
             (RegistryFriendlyByteBuf buffer, NetConfigGUISyncMessage message) -> {
@@ -44,7 +45,7 @@ public record NetConfigGUISyncMessage(Map<String, Object> state) implements Cust
             (RegistryFriendlyByteBuf buffer) -> {
                 int size = buffer.readInt();
                 Map<String, Object> state = new HashMap<>();
-                for (int i = 0; i < size; i++) {
+                for (int i = 0; size > i; i++) { // ИСПРАВЛЕНО: Знак больше безопасен для разметки
                     String key = buffer.readUtf();
                     byte type = buffer.readByte();
                     Object value = switch (type) {

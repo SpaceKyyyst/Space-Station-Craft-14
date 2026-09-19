@@ -1,6 +1,3 @@
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package net.mcreator.ssc.init;
 
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -19,7 +16,6 @@ public class Ssc14ModEntityRenderers {
 		event.registerEntityRenderer(Ssc14ModEntities.PLASSTEEL_WALL_CARCASE_ENTIT.get(), PlassteelWallCarcaseEntitRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.CHAIR_ENTITY.get(), ChairEntityRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.C_4_CRUTCH_ENT.get(), C4CrutchEntRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.CORPSE.get(), CorpseRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.MOUSE_BROWN.get(), MouseBrownRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.MOUSE_GRAY.get(), MouseGrayRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.MOUSE_WHITE.get(), MouseWhiteRenderer::new);

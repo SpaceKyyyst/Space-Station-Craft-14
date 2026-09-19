@@ -9,7 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier; // ИСПРАВЛЕНО
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
@@ -25,7 +25,7 @@ import java.util.Map;
 
 @EventBusSubscriber
 public record NetConfigGUIButtonMessage(int buttonID, int x, int y, int z) implements CustomPacketPayload {
-    public static final Type<NetConfigGUIButtonMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Ssc14Mod.MODID, "net_config_gui_buttons"));
+    public static final Type<NetConfigGUIButtonMessage> TYPE = new Type<>(Identifier.fromNamespaceAndPath(Ssc14Mod.MODID, "net_config_gui_buttons"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, NetConfigGUIButtonMessage> STREAM_CODEC = StreamCodec.of(
             (RegistryFriendlyByteBuf buffer, NetConfigGUIButtonMessage message) -> {
@@ -85,14 +85,10 @@ public record NetConfigGUIButtonMessage(int buttonID, int x, int y, int z) imple
 
                     if (connectionExists) {
                         data.removeConnection(menu.sourcePos, selectedTriggerId, menu.targetPos, actionId);
-                        if (entity instanceof ServerPlayer serverPlayer) {
-                            serverPlayer.sendSystemMessage(Component.literal("Связь удалена!"));
-                        }
+                        if (entity instanceof ServerPlayer sp) sp.sendSystemMessage(Component.literal("Связь удалена!"));
                     } else {
                         data.addConnection(menu.sourcePos, selectedTriggerId, menu.targetPos, actionId);
-                        if (entity instanceof ServerPlayer serverPlayer) {
-                            serverPlayer.sendSystemMessage(Component.literal("Связь создана!"));
-                        }
+                        if (entity instanceof ServerPlayer sp) sp.sendSystemMessage(Component.literal("Связь создана!"));
                     }
 
                     for (int i = 0; i < 8; i++) {
@@ -111,14 +107,11 @@ public record NetConfigGUIButtonMessage(int buttonID, int x, int y, int z) imple
                     state.put("selected_trigger_idx", -1);
                     state.put("selected_trigger_id", null);
                 } else {
-                    if (entity instanceof ServerPlayer serverPlayer) {
-                        serverPlayer.sendSystemMessage(Component.literal("Сначала выберите триггер слева!"));
-                    }
+                    if (entity instanceof ServerPlayer sp) sp.sendSystemMessage(Component.literal("Сначала выберите триггер слева!"));
                 }
             }
         }
 
-        // Синхронизируем menuState с клиентом
         if (entity instanceof ServerPlayer serverPlayer) {
             PacketDistributor.sendToPlayer(serverPlayer, new NetConfigGUISyncMessage(state));
         }

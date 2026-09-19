@@ -1,6 +1,3 @@
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package net.mcreator.ssc.init;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -13,8 +10,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.Registries;
 
 import net.mcreator.ssc.entity.*;
@@ -24,27 +21,17 @@ import net.mcreator.ssc.Ssc14Mod;
 public class Ssc14ModEntities {
 	public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(Registries.ENTITY_TYPE, Ssc14Mod.MODID);
 	public static final DeferredHolder<EntityType<?>, EntityType<WallCarcaseEntitEntity>> WALL_CARCASE_ENTIT = register("wall_carcase_entit",
-			EntityType.Builder.<WallCarcaseEntitEntity>of(WallCarcaseEntitEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).fireImmune()
-
-					.sized(0.9f, 0.9f));
+			EntityType.Builder.<WallCarcaseEntitEntity>of(WallCarcaseEntitEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).fireImmune().sized(0.9f, 0.9f));
 	public static final DeferredHolder<EntityType<?>, EntityType<IDConsoleENTITYEntity>> ID_CONSOLE_ENTITY = register("id_console_entity",
-			EntityType.Builder.<IDConsoleENTITYEntity>of(IDConsoleENTITYEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).fireImmune()
-
-					.sized(0.9f, 1.1f));
+			EntityType.Builder.<IDConsoleENTITYEntity>of(IDConsoleENTITYEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).fireImmune().sized(0.9f, 1.1f));
 	public static final DeferredHolder<EntityType<?>, EntityType<PlassteelWallCarcaseEntitEntity>> PLASSTEEL_WALL_CARCASE_ENTIT = register("plassteel_wall_carcase_entit",
-			EntityType.Builder.<PlassteelWallCarcaseEntitEntity>of(PlassteelWallCarcaseEntitEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).fireImmune()
-
-					.sized(0.9f, 0.9f));
+			EntityType.Builder.<PlassteelWallCarcaseEntitEntity>of(PlassteelWallCarcaseEntitEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).fireImmune().sized(0.9f, 0.9f));
 	public static final DeferredHolder<EntityType<?>, EntityType<ChairEntityEntity>> CHAIR_ENTITY = register("chair_entity",
-			EntityType.Builder.<ChairEntityEntity>of(ChairEntityEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).fireImmune().ridingOffset(-0.6f).sized(0.1f, 0.1f));
+			EntityType.Builder.<ChairEntityEntity>of(ChairEntityEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).fireImmune().sized(0.1f, 0.1f));
 	public static final DeferredHolder<EntityType<?>, EntityType<C4CrutchEntEntity>> C_4_CRUTCH_ENT = register("c_4_crutch_ent",
 			EntityType.Builder.<C4CrutchEntEntity>of(C4CrutchEntEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
-					.ridingOffset(-0.6f).sized(0.01f, 0.01f));
-	public static final DeferredHolder<EntityType<?>, EntityType<CorpseEntity>> CORPSE = register("corpse",
-			EntityType.Builder.<CorpseEntity>of(CorpseEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
-
-					.sized(0.4f, 0.3f));
+					.sized(0.01f, 0.01f));
 	public static final DeferredHolder<EntityType<?>, EntityType<MouseBrownEntity>> MOUSE_BROWN = register("mouse_brown",
 			EntityType.Builder.<MouseBrownEntity>of(MouseBrownEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
@@ -69,7 +56,7 @@ public class Ssc14ModEntities {
 	// Start of user code block custom entities
 	// End of user code block custom entities
 	private static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
-		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Ssc14Mod.MODID, registryname))));
+		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Ssc14Mod.MODID, registryname))));
 	}
 
 	@SubscribeEvent
@@ -79,7 +66,6 @@ public class Ssc14ModEntities {
 		PlassteelWallCarcaseEntitEntity.init(event);
 		ChairEntityEntity.init(event);
 		C4CrutchEntEntity.init(event);
-		CorpseEntity.init(event);
 		MouseBrownEntity.init(event);
 		MouseGrayEntity.init(event);
 		MouseWhiteEntity.init(event);
@@ -93,7 +79,6 @@ public class Ssc14ModEntities {
 		event.put(PLASSTEEL_WALL_CARCASE_ENTIT.get(), PlassteelWallCarcaseEntitEntity.createAttributes().build());
 		event.put(CHAIR_ENTITY.get(), ChairEntityEntity.createAttributes().build());
 		event.put(C_4_CRUTCH_ENT.get(), C4CrutchEntEntity.createAttributes().build());
-		event.put(CORPSE.get(), CorpseEntity.createAttributes().build());
 		event.put(MOUSE_BROWN.get(), MouseBrownEntity.createAttributes().build());
 		event.put(MOUSE_GRAY.get(), MouseGrayEntity.createAttributes().build());
 		event.put(MOUSE_WHITE.get(), MouseWhiteEntity.createAttributes().build());

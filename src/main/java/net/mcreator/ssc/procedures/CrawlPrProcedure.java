@@ -6,10 +6,10 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Pose;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class CrawlPrProcedure {
-    public static final ResourceLocation CRAWL_SPEED_MOD_ID = ResourceLocation.fromNamespaceAndPath("ssc_14", "crawl_slowdown");
+    public static final Identifier CRAWL_SPEED_MOD_ID = Identifier.fromNamespaceAndPath("ssc_14", "crawl_slowdown");
 
     public static void execute(Entity entity) {
         if (!(entity instanceof Player player)) return;
@@ -23,13 +23,14 @@ public class CrawlPrProcedure {
                 speedAttr.addTransientModifier(new AttributeModifier(
                     CRAWL_SPEED_MOD_ID, -0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE
                 ));
-                // 🔥 Принудительно ставим позу
-                player.setForcedPose(Pose.SWIMMING);
+                
+                // ИСПРАВЛЕНО: В ванильном движке Minecraft для ползания используется поза SWIMMING
+                player.setPose(Pose.SWIMMING);
                 player.refreshDimensions();
             } else {
                 speedAttr.removeModifier(CRAWL_SPEED_MOD_ID);
-                // 🔥 Убираем принудительную позу
-                player.setForcedPose(null);
+                
+                player.setPose(Pose.STANDING);
                 player.refreshDimensions();
             }
         }

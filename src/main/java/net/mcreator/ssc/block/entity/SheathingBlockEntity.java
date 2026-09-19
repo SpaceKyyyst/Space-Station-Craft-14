@@ -27,45 +27,30 @@ import java.util.stream.IntStream;
 public class SheathingBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(0, ItemStack.EMPTY);
 
-	public final long[] layerCurrent = new long[4];
-	public final long[] layerSupply = new long[4];
-	public final long[] layerConsume = new long[4];
-	public final long[] layerStored = new long[4];
-	public final long[] layerMax = new long[4];
-
-	public long netCurrent = 0;
-	public long netSupply = 0;
-	public long netConsume = 0;
-	public long storedEnergy = 0;
-	public long maxEnergy = 0;
+	// --- ДАННЫЕ СЕТИ ДЛЯ МУЛЬТИТУЛА (ИСПРАВЛЕНО: Добавлены поля симуляции) ---
+	private long currentPower = 0;
+	private long theoreticalSupply = 0;
+	private long idealConsumption = 0;
+	private long outputStored = 0;
+	private long outputMax = 0;
+	private int activeLayerMode = 0;
 
 	public SheathingBlockEntity(BlockPos position, BlockState state) {
 		super(Ssc14ModBlockEntities.SHEATHING.get(), position, state);
 	}
 
-	public void setLayerNetworkData(int layer, long current, long supply, long consume, long stored, long max) {
-		if (layer < 1 || layer > 3) return;
-		
-		this.layerCurrent[layer] = current;
-		this.layerSupply[layer] = supply;
-		this.layerConsume[layer] = consume;
-		this.layerStored[layer] = stored;
-		this.layerMax[layer] = max;
-
-		this.netCurrent = current;
-		this.netSupply = supply;
-		this.netConsume = consume;
-		this.storedEnergy = stored;
-		this.maxEnergy = max;
-
+	/**
+	 * Записывает актуальные данные энергосети текущего слоя в кабельную обшивку.
+	 * Вызывается каждый тик из симулятора EnergySimulationServer.
+	 */
+	public void setLayerNetworkData(int layerMode, long currentPower, long theoreticalSupply, long idealConsumption, long outputStored, long outputMax) {
+		this.activeLayerMode = layerMode;
+		this.currentPower = currentPower;
+		this.theoreticalSupply = theoreticalSupply;
+		this.idealConsumption = idealConsumption;
+		this.outputStored = outputStored;
+		this.outputMax = outputMax;
 		this.setChanged();
-		if (this.level != null && !this.level.isClientSide()) {
-			this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
-		}
-	}
-
-	public void setNetworkData(long current, long supply, long consume, long stored, long max) {
-		setLayerNetworkData(1, current, supply, consume, stored, max);
 	}
 
 	@Override
@@ -74,20 +59,14 @@ public class SheathingBlockEntity extends RandomizableContainerBlockEntity imple
 		if (!this.tryLoadLootTable(valueInput))
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		ContainerHelper.loadAllItems(valueInput, this.stacks);
-		
-		for (int i = 1; i <= 3; i++) {
-			this.layerCurrent[i] = valueInput.getLongOr("layerCurrent_" + i, 0L);
-			this.layerSupply[i] = valueInput.getLongOr("layerSupply_" + i, 0L);
-			this.layerConsume[i] = valueInput.getLongOr("layerConsume_" + i, 0L);
-			this.layerStored[i] = valueInput.getLongOr("layerStored_" + i, 0L);
-			this.layerMax[i] = valueInput.getLongOr("layerMax_" + i, 0L);
-		}
 
-		this.netCurrent = this.layerCurrent[1];
-		this.netSupply = this.layerSupply[1];
-		this.netConsume = this.layerConsume[1];
-		this.storedEnergy = this.layerStored[1];
-		this.maxEnergy = this.layerMax[1];
+		// ИСПРАВЛЕНО: Чтение NBT-данных сети через ValueInput для NeoForge 26.x
+		this.activeLayerMode = valueInput.getIntOr("activeLayerMode", 0);
+		this.currentPower = valueInput.getLongOr("currentPower", 0L);
+		this.theoreticalSupply = valueInput.getLongOr("theoreticalSupply", 0L);
+		this.idealConsumption = valueInput.getLongOr("idealConsumption", 0L);
+		this.outputStored = valueInput.getLongOr("outputStored", 0L);
+		this.outputMax = valueInput.getLongOr("outputMax", 0L);
 	}
 
 	@Override
@@ -95,14 +74,14 @@ public class SheathingBlockEntity extends RandomizableContainerBlockEntity imple
 		super.saveAdditional(valueOutput);
 		if (!this.trySaveLootTable(valueOutput))
 			ContainerHelper.saveAllItems(valueOutput, this.stacks);
-			
-		for (int i = 1; i <= 3; i++) {
-			valueOutput.putLong("layerCurrent_" + i, this.layerCurrent[i]);
-			valueOutput.putLong("layerSupply_" + i, this.layerSupply[i]);
-			valueOutput.putLong("layerConsume_" + i, this.layerConsume[i]);
-			valueOutput.putLong("layerStored_" + i, this.layerStored[i]);
-			valueOutput.putLong("layerMax_" + i, this.layerMax[i]);
-		}
+
+		// ИСПРАВЛЕНО: Сохранение NBT-данных сети через ValueOutput для NeoForge 26.x
+		valueOutput.putInt("activeLayerMode", this.activeLayerMode);
+		valueOutput.putLong("currentPower", this.currentPower);
+		valueOutput.putLong("theoreticalSupply", this.theoreticalSupply);
+		valueOutput.putLong("idealConsumption", this.idealConsumption);
+		valueOutput.putLong("outputStored", this.outputStored);
+		valueOutput.putLong("outputMax", this.outputMax);
 	}
 
 	@Override
@@ -129,7 +108,7 @@ public class SheathingBlockEntity extends RandomizableContainerBlockEntity imple
 	}
 
 	@Override
-	protected Component getDefaultName() { // ИСПРАВЛЕНО: добавили protected
+	public Component getDefaultName() {
 		return Component.literal("sheathing");
 	}
 

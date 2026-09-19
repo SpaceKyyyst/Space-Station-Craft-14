@@ -8,7 +8,7 @@ import net.neoforged.bus.api.Event;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.GasType;
@@ -29,7 +29,7 @@ public class O2PercentTextProcedure {
 	}
 
 	private static String execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		if (!(world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(ResourceLocation.parse("ssc14:hermetic")))) {
+		if (!(world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(Identifier.parse("ssc14:hermetic")))) {
 			if (world instanceof ServerLevel serverLevel) {
 				AtmosCell cell = AtmosphereManager.get(serverLevel).getCellAt(BlockPos.containing(x, y, z));
 				if (cell != null) {

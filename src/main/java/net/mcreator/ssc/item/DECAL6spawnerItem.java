@@ -1,4 +1,5 @@
 
+
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.level.Level;

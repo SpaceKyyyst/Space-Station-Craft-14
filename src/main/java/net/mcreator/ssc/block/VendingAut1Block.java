@@ -44,17 +44,17 @@ public class VendingAut1Block extends Block implements EntityBlock {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public VendingAut1Block(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.ANVIL).strength(20f, 10f).noOcclusion().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.ANVIL).strength(20f, 10f).noOcclusion().postProcess((bs, br, bp) -> bp).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> box(1, 0, 1, 15, 16, 12);
 				case NORTH -> box(1, 0, 4, 15, 16, 15);
 				case EAST -> box(1, 0, 1, 12, 16, 15);
 				case WEST -> box(4, 0, 1, 15, 16, 15);
+				default -> box(1, 0, 1, 15, 16, 12);
 			};
 		});
 	}
@@ -70,7 +70,7 @@ public class VendingAut1Block extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state) {
+	public int getLightDampening(BlockState state) {
 		return 0;
 	}
 
@@ -87,7 +87,10 @@ public class VendingAut1Block extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
+		return state.setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

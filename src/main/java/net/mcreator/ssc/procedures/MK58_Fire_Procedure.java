@@ -4,8 +4,8 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,7 +15,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
@@ -49,10 +49,10 @@ public class MK58_Fire_Procedure {
 					}
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:gunshots_mk58")), SoundSource.MASTER, (float) 1.5,
+							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:gunshots_mk58")), SoundSource.MASTER, (float) 1.5,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 						} else {
-							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:gunshots_mk58")), SoundSource.MASTER, (float) 1.5,
+							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:gunshots_mk58")), SoundSource.MASTER, (float) 1.5,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 						}
 					}
@@ -71,10 +71,10 @@ public class MK58_Fire_Procedure {
 					} else {
 						if (world instanceof Level _level) {
 							if (!_level.isClientSide()) {
-								_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, (float) 1.5,
+								_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, (float) 1.5,
 										(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 							} else {
-								_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, (float) 1.5,
+								_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_open")), SoundSource.MASTER, (float) 1.5,
 										(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 							}
 						}
@@ -122,10 +122,10 @@ public class MK58_Fire_Procedure {
 					if (0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0)) {
 						if (world instanceof Level _level) {
 							if (!_level.isClientSide()) {
-								_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
+								_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
 										(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 							} else {
-								_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
+								_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
 										(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 							}
 						}
@@ -156,10 +156,10 @@ public class MK58_Fire_Procedure {
 				} else if (Ssc14ModItems.MK_58OPEN_NO_MAGZ.get() == itemstack.getItem()) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
+							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05));
 						} else {
-							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
+							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
 									(float) Mth.nextDouble(RandomSource.create(), 0.95, 1.05), false);
 						}
 					}
