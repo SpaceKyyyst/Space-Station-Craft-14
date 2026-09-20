@@ -1,0 +1,11 @@
+repositories {
+maven {
+  name = "Illusive Soulworks maven"
+  url = "https://maven.theillusivec4.top/"
+  }
+}
+
+dependencies {
+  runtimeOnly "top.theillusivec4.curios:curios-neoforge:15.0.0+26.1.2"
+  compileOnly "top.theillusivec4.curios:curios-neoforge:15.0.0+26.1.2:api"
+}
