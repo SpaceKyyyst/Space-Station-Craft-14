@@ -19,16 +19,15 @@ public class misc_rockguitar_backpack_equipped<T extends Entity> extends EntityM
 		PartDefinition torso = partdefinition.addOrReplaceChild("torso", CubeListBuilder.create().texOffs(0, 13).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 11.0F, 4.0F, new CubeDeformation(0.45F))
 		.texOffs(24, 13).addBox(-2.3806F, 5.0866F, 2.0F, 13.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 2.0F, 0.0F));
 
-		PartDefinition cube_r1 = torso.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(26, 0).addBox(-3.0F, -1.5F, -1.0F, 3.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-10.6298F, 3.1117F, 3.975F, 0.0F, -0.3927F, 0.3927F));
+		PartDefinition cube_r1 = torso.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(26, 7).addBox(-3.0F, -1.5F, -1.0F, 3.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-10.6298F, 3.1117F, 3.975F, 0.0F, -0.3927F, 0.3927F));
 
 		PartDefinition cube_r2 = torso.addOrReplaceChild("cube_r2", CubeListBuilder.create().texOffs(24, 23).addBox(0.0F, -1.5F, -1.0F, 10.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-10.6298F, 3.1117F, 3.975F, 0.0F, 0.0F, 0.3927F));
 
-		PartDefinition cube_r3 = torso.addOrReplaceChild("cube_r3", CubeListBuilder.create().texOffs(30, 2).addBox(0.0F, 0.0F, -1.0F, 0.0F, 5.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.0F, 10.0F, 3.025F, 0.0F, 0.0F, -0.3927F));
+		PartDefinition cube_r3 = torso.addOrReplaceChild("cube_r3", CubeListBuilder.create().texOffs(26, 0).addBox(0.0F, 0.0F, -1.0F, 5.0F, 5.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.0F, 10.0F, 3.0F, 0.0F, 0.0F, -0.3927F));
 
-		PartDefinition cube_r4 = torso.addOrReplaceChild("cube_r4", CubeListBuilder.create().texOffs(26, 2).addBox(0.0F, -5.0F, -1.0F, 0.0F, 5.0F, 2.0F, new CubeDeformation(0.0F))
-		.texOffs(0, 0).addBox(-6.0F, -5.0F, -1.0F, 11.0F, 11.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.0F, 10.0F, 3.025F, 0.0F, 0.0F, 1.1781F));
+		PartDefinition cube_r4 = torso.addOrReplaceChild("cube_r4", CubeListBuilder.create().texOffs(24, 18).addBox(-13.0F, 0.0F, -1.0F, 13.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(7.9134F, 14.6194F, 3.0F, 0.0F, 0.0F, 0.7854F));
 
-		PartDefinition cube_r5 = torso.addOrReplaceChild("cube_r5", CubeListBuilder.create().texOffs(24, 18).addBox(-13.0F, 0.0F, -1.0F, 13.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(7.9134F, 14.6194F, 3.0F, 0.0F, 0.0F, 0.7854F));
+		PartDefinition cube_r5 = torso.addOrReplaceChild("cube_r5", CubeListBuilder.create().texOffs(0, 0).addBox(-6.0F, -5.0F, -1.0F, 11.0F, 11.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.0F, 10.0F, 3.025F, 0.0F, 0.0F, 1.1781F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
