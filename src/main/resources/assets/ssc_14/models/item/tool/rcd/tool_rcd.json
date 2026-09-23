@@ -1,5 +1,5 @@
 {
-	"format_version": "26.3",
+	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
@@ -172,7 +172,6 @@
 			}
 		}
 	],
-	"display": {},
 	"groups": [
 		{
 			"name": "tool_rcd",

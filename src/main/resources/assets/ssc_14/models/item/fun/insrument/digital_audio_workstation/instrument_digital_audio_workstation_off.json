@@ -3,7 +3,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "ssc_14:item/fun/insrument/digital_audio_workstation/insrument_digital_audio_workstation_texture"
+		"0": "ssc_14:item/fun/insrument/digital_audio_workstation/insrument_digital_audio_workstation_texture",
+		"particle": "ssc_14:item/fun/insrument/digital_audio_workstation/insrument_digital_audio_workstation_texture"
 	},
 	"elements": [
 		{
