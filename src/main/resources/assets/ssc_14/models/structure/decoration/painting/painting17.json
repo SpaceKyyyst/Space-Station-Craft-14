@@ -1,0 +1,24 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "ssc_14:structure/decoration/painting/painting17_texture",
+		"particle": "ssc_14:structure/decoration/painting/painting17_texture"
+	},
+	"elements": [
+		{
+			"from": [0, 5, 15],
+			"to": [16, 11, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 15.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 3], "texture": "#0"},
+				"east": {"uv": [0, 7, 0.5, 10], "texture": "#0"},
+				"south": {"uv": [0, 3, 8, 6], "texture": "#0"},
+				"west": {"uv": [0.5, 7, 1, 10], "texture": "#0"},
+				"up": {"uv": [8, 6.5, 0, 6], "texture": "#0"},
+				"down": {"uv": [8, 6.5, 0, 7], "texture": "#0"}
+			}
+		}
+	]
+}
