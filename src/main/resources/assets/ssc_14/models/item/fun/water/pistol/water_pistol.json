@@ -1,0 +1,96 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "ssc_14:item/fun/water/pistol/water_pistol_texture",
+		"particle": "ssc_14:item/fun/water/pistol/water_pistol_texture"
+	},
+	"elements": [
+		{
+			"from": [7, 8, 5],
+			"to": [9, 10, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9, 9]},
+			"faces": {
+				"north": {"uv": [8, 2, 10, 4], "texture": "#0"},
+				"east": {"uv": [0, 0, 8, 2], "texture": "#0"},
+				"south": {"uv": [4, 8, 6, 10], "texture": "#0"},
+				"west": {"uv": [0, 2, 8, 4], "texture": "#0"},
+				"up": {"uv": [2, 12, 0, 4], "texture": "#0"},
+				"down": {"uv": [4, 4, 2, 12], "texture": "#0"}
+			}
+		},
+		{
+			"from": [6.5, 9, 11],
+			"to": [9.5, 10, 13],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 10, 12]},
+			"faces": {
+				"north": {"uv": [10, 2, 13, 3], "texture": "#0"},
+				"east": {"uv": [10, 4, 12, 5], "texture": "#0"},
+				"south": {"uv": [10, 3, 13, 4], "texture": "#0"},
+				"west": {"uv": [12, 4, 10, 5], "texture": "#0"},
+				"up": {"uv": [11, 2, 8, 0], "texture": "#0"},
+				"down": {"uv": [11, 0, 8, 2], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 6, 7],
+			"to": [8.5, 8, 7],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7, 7]},
+			"faces": {
+				"north": {"uv": [5, 10, 6, 12], "texture": "#0"},
+				"south": {"uv": [6, 10, 5, 12], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 6, 7],
+			"to": [8.5, 6, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6, 8.5]},
+			"faces": {
+				"up": {"uv": [5, 13, 4, 10], "texture": "#0"},
+				"down": {"uv": [4, 10, 5, 13], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 6, 8],
+			"to": [8, 8, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7, 9]},
+			"faces": {
+				"east": {"uv": [8, 4, 10, 6], "texture": "#0"},
+				"west": {"uv": [10, 4, 8, 6], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 4, 10],
+			"to": [8.5, 8, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6, 11]},
+			"faces": {
+				"north": {"uv": [6, 8, 7, 12], "texture": "#0"},
+				"east": {"uv": [4, 4, 6, 8], "texture": "#0"},
+				"south": {"uv": [8, 6, 9, 10], "texture": "#0"},
+				"west": {"uv": [6, 4, 4, 8], "texture": "#0"},
+				"down": {"uv": [11, 5, 10, 7], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.375, 3.875, 9.875],
+			"to": [8.625, 8.125, 12.125],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6, 11]},
+			"faces": {
+				"north": {"uv": [7, 8, 8, 12], "texture": "#0"},
+				"east": {"uv": [6, 4, 8, 8], "texture": "#0"},
+				"south": {"uv": [9, 6, 10, 10], "texture": "#0"},
+				"west": {"uv": [8, 4, 6, 8], "texture": "#0"},
+				"down": {"uv": [11, 7, 10, 9], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "water_pistol",
+			"origin": [8, 8, 8],
+			"scope": 0,
+			"color": 0,
+			"children": [0, 1, 2, 3, 4, 5, 6]
+		}
+	]
+}

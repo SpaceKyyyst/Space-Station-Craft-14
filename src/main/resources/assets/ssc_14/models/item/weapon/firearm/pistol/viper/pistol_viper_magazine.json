@@ -1,0 +1,138 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "ssc_14:item/weapon/firearm/pistol/viper/pistol_viper_texture",
+		"particle": "ssc_14:item/weapon/firearm/pistol/viper/pistol_viper_texture"
+	},
+	"elements": [
+		{
+			"from": [7.5, 8.5, 4.975],
+			"to": [8.5, 9.5, 6.975],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9, 5.975]},
+			"faces": {
+				"north": {"uv": [14, 3, 15, 4], "texture": "#0"},
+				"east": {"uv": [8, 3, 10, 4], "texture": "#0"},
+				"west": {"uv": [10, 3, 8, 4], "texture": "#0"},
+				"up": {"uv": [9, 13, 10, 15], "texture": "#0"},
+				"down": {"uv": [10, 15, 9, 13], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 7.5, 5.975],
+			"to": [8.5, 8.5, 12.975],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 9.475]},
+			"faces": {
+				"north": {"uv": [14, 4, 15, 5], "texture": "#0"},
+				"east": {"uv": [8, 0, 15, 1], "texture": "#0"},
+				"south": {"uv": [14, 4, 15, 5], "texture": "#0"},
+				"west": {"uv": [15, 0, 8, 1], "texture": "#0"},
+				"down": {"uv": [15, 0, 16, 7], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 6, 7],
+			"to": [8, 8, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7, 8.5]},
+			"faces": {
+				"east": {"uv": [8, 1, 11, 3], "texture": "#0"},
+				"west": {"uv": [11, 1, 8, 3], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.525, 3, 9],
+			"to": [8.475, 8, 12],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 8, 9]},
+			"faces": {
+				"north": {"uv": [12, 3, 13, 8], "texture": "#0"},
+				"east": {"uv": [6, 8, 9, 13], "texture": "#0"},
+				"south": {"uv": [12, 8, 13, 13], "texture": "#0"},
+				"west": {"uv": [9, 8, 6, 13], "texture": "#0"},
+				"down": {"uv": [14, 8, 15, 11], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7, 8, 5],
+			"to": [9, 10, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9, 9]},
+			"faces": {
+				"north": {"uv": [2, 14, 4, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 8, 2], "texture": "#0"},
+				"south": {"uv": [10, 13, 12, 15], "texture": "#0"},
+				"west": {"uv": [0, 2, 8, 4], "texture": "#0"},
+				"up": {"uv": [0, 4, 2, 12], "texture": "#0"},
+				"down": {"uv": [2, 4, 4, 12], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 9.5, 5],
+			"to": [8, 10.5, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 10, 5.5]},
+			"faces": {
+				"east": {"uv": [14, 7, 15, 8], "texture": "#0"},
+				"west": {"uv": [15, 7, 14, 8], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7, 9.5, 11],
+			"to": [9, 10.5, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 10, 11]},
+			"faces": {
+				"north": {"uv": [12, 13, 14, 14], "texture": "#0"},
+				"south": {"uv": [14, 13, 12, 14], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.025, 9, 12],
+			"to": [8.975, 10, 13.425],
+			"rotation": {"angle": 45, "axis": "x", "origin": [8, 10, 12]},
+			"faces": {
+				"east": {"uv": [14, 5, 15, 6], "texture": "#0"},
+				"west": {"uv": [14, 6, 15, 7], "texture": "#0"},
+				"up": {"uv": [10, 3, 12, 4], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.4, 2.875, 8.875],
+			"to": [8.6, 8.125, 12.125],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 8, 9]},
+			"faces": {
+				"north": {"uv": [13, 3, 14, 8], "texture": "#0"},
+				"east": {"uv": [9, 8, 12, 13], "texture": "#0"},
+				"south": {"uv": [13, 8, 14, 13], "texture": "#0"},
+				"west": {"uv": [12, 8, 9, 13], "texture": "#0"},
+				"down": {"uv": [6, 13, 7, 16], "texture": "#0"}
+			}
+		}
+	],
+	"display": {},
+	"groups": [
+		{
+			"name": "pistol_viper_magazine",
+			"origin": [8, 8, 8],
+			"scope": 0,
+			"color": 0,
+			"children": [
+				0,
+				1,
+				2,
+				3,
+				{
+					"name": "bolt",
+					"origin": [8, 9, 9],
+					"scope": 0,
+					"color": 1,
+					"children": [4, 5, 6, 7]
+				},
+				{
+					"name": "magazine",
+					"origin": [8, 8, 9],
+					"scope": 0,
+					"color": 2,
+					"children": [8]
+				}
+			]
+		}
+	]
+}
