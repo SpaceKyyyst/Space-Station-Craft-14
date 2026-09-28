@@ -1,0 +1,69 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "ssc_14:structure/door/airlock/basic/airlock_basic_texture",
+		"particle": "ssc_14:structure/door/airlock/basic/airlock_basic_texture"
+	},
+	"elements": [
+		{
+			"from": [15, -2, 5],
+			"to": [16, 32, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [15.5, 15, 8]},
+			"faces": {
+				"north": {"uv": [4, 0, 4.25, 8.5], "texture": "#0"},
+				"east": {"uv": [8, 0, 9.5, 8.5], "texture": "#0"},
+				"south": {"uv": [4.25, 0, 4, 8.5], "texture": "#0"},
+				"west": {"uv": [9.5, 0, 8, 8.5], "texture": "#0"},
+				"up": {"uv": [14.75, 4, 15, 5.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, -2, 5],
+			"to": [1, 32, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0.5, 15, 8]},
+			"faces": {
+				"north": {"uv": [7.75, 0, 8, 8.5], "texture": "#0"},
+				"east": {"uv": [8, 0, 9.5, 8.5], "texture": "#0"},
+				"south": {"uv": [8, 0, 7.75, 8.5], "texture": "#0"},
+				"west": {"uv": [9.5, 0, 8, 8.5], "texture": "#0"},
+				"up": {"uv": [11, 4, 11.25, 5.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, -16, 5],
+			"to": [16, -2, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, -9, 8]},
+			"faces": {
+				"north": {"uv": [4, 8.5, 8, 12], "texture": "#0"},
+				"east": {"uv": [8, 8.5, 9.5, 12], "texture": "#0"},
+				"south": {"uv": [8, 8.5, 4, 12], "texture": "#0"},
+				"west": {"uv": [9.5, 8.5, 8, 12], "texture": "#0"},
+				"up": {"uv": [11, 7, 15, 5.5], "texture": "#0"},
+				"down": {"uv": [11, 5.5, 15, 7], "texture": "#0"}
+			}
+		},
+		{
+			"from": [13, 16, 5],
+			"to": [15, 32, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [14, 24, 8]},
+			"faces": {
+				"north": {"uv": [6, 0, 6.5, 4], "texture": "#0"},
+				"south": {"uv": [6.5, 0, 6, 4], "texture": "#0"},
+				"west": {"uv": [9.5, 10.5, 11, 14.5], "texture": "#0"},
+				"up": {"uv": [12.5, 4, 13, 5.5], "texture": "#0"},
+				"down": {"uv": [11, 7, 11.5, 8.5], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "online",
+			"origin": [14, 26, 6],
+			"scope": 0,
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		}
+	]
+}
