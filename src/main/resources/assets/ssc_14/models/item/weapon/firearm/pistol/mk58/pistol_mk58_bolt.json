@@ -99,7 +99,7 @@
 	],
 	"groups": [
 		{
-			"name": "pistol_mk58_magazine_bolt",
+			"name": "pistol_mk58_bolt",
 			"origin": [8, 8, 8],
 			"scope": 0,
 			"color": 0,

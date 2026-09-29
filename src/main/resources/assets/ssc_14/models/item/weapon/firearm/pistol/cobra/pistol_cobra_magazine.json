@@ -96,9 +96,10 @@
 			}
 		}
 	],
+	"display": {},
 	"groups": [
 		{
-			"name": "pistol_cobra",
+			"name": "pistol_cobra_magazine",
 			"origin": [8, 8, 8],
 			"scope": 0,
 			"color": 0,
