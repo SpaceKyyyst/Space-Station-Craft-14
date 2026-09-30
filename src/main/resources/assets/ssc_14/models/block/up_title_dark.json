@@ -1,8 +1,8 @@
-{
+﻿{
   "parent": "ssc_14:custom/title_up",
   "textures": {
-    "all": "ssc_14:block/up_tile_dark_texture",
-    "particle": "ssc_14:block/up_tile_dark_texture",
-    "3": "ssc_14:block/up_tile_dark_texture"
+    "all": "ssc_14:block/up_tile_dark",
+    "particle": "ssc_14:block/up_tile_dark",
+    "3": "ssc_14:block/up_tile_dark"
   }
 }

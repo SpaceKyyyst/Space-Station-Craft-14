@@ -1,9 +1,9 @@
-{
+﻿{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "ssc_14:item/weapon/firearm/pistol/cobra/pistol_cobra_texture",
-		"particle": "ssc_14:item/weapon/firearm/pistol/cobra/pistol_cobra_texture"
+		"0": "ssc_14:item/weapon/firearm/pistol/cobra/pistol_cobra",
+		"particle": "ssc_14:item/weapon/firearm/pistol/cobra/pistol_cobra"
 	},
 	"elements": [
 		{

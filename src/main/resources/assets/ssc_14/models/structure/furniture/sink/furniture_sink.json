@@ -1,10 +1,10 @@
-{
+﻿{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "ssc_14:structure/furniture/sink/furniture_sink_texture",
-		"particle": "ssc_14:structure/furniture/sink/furniture_sink_texture"
+		"0": "ssc_14:structure/furniture/sink/furniture_sink",
+		"particle": "ssc_14:structure/furniture/sink/furniture_sink"
 	},
 	"elements": [
 		{

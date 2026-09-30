@@ -1,9 +1,9 @@
-{
+﻿{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "ssc_14:structure/wallmounted/authorization/wallmounted_authorization_texture",
-		"particle": "ssc_14:structure/wallmounted/authorization/wallmounted_authorization_texture"
+		"0": "ssc_14:structure/wallmounted/authorization/wallmounted_authorization",
+		"particle": "ssc_14:structure/wallmounted/authorization/wallmounted_authorization"
 	},
 	"elements": [
 		{

@@ -1,8 +1,8 @@
-{
+﻿{
   "parent": "ssc_14:custom/console",
   "textures": {
-    "all": "ssc_14:block/id_console_texture",
-    "particle": "ssc_14:block/id_console_texture",
-    "1": "ssc_14:block/id_console_texture_anim"
+    "all": "ssc_14:block/id_console",
+    "particle": "ssc_14:block/id_console",
+    "1": "ssc_14:block/id_console_anim"
   }
 }

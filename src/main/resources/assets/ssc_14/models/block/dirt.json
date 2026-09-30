@@ -1,12 +1,12 @@
-{
+﻿{
   "parent": "block/cube",
   "textures": {
-    "down": "ssc_14:block/fl_dirt1_texture",
-    "up": "ssc_14:block/fl_dirt3_texture",
-    "north": "ssc_14:block/fl_dirt2_texture",
-    "east": "ssc_14:block/fl_dirt2_texture",
-    "south": "ssc_14:block/fl_dirt4_texture",
-    "west": "ssc_14:block/fl_dirt3_texture",
-    "particle": "ssc_14:block/fl_dirt1_texture"
+    "down": "ssc_14:block/fl_dirt1",
+    "up": "ssc_14:block/fl_dirt3",
+    "north": "ssc_14:block/fl_dirt2",
+    "east": "ssc_14:block/fl_dirt2",
+    "south": "ssc_14:block/fl_dirt4",
+    "west": "ssc_14:block/fl_dirt3",
+    "particle": "ssc_14:block/fl_dirt1"
   }
 }

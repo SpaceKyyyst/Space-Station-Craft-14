@@ -1,10 +1,10 @@
-{
+﻿{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "ssc_14:structure/door/airlock/atmospheric/airlock_atmospheric_texture",
-		"particle": "ssc_14:structure/door/airlock/atmospheric/airlock_atmospheric_texture"
+		"0": "ssc_14:structure/door/airlock/atmospheric/airlock_atmospheric",
+		"particle": "ssc_14:structure/door/airlock/atmospheric/airlock_atmospheric"
 	},
 	"elements": [
 		{
