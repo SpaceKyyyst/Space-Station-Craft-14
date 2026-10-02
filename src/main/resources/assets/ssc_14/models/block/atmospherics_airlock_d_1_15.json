@@ -1,8 +1,8 @@
-{
+﻿{
   "parent": "ssc_14:custom/airlock_noaccess",
   "textures": {
     "all": "ssc_14:block/airlock_base_item",
     "particle": "ssc_14:block/airlock_atmos_item",
-    "0": "ssc_14:block/standard_airlock_atmospherics_texture"
+    "0": "ssc_14:block/standard_airlock_atmospherics"
   }
 }

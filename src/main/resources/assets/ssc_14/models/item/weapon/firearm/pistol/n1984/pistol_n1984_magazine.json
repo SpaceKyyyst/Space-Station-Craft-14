@@ -1,9 +1,9 @@
-{
+﻿{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "ssc_14:item/weapon/firearm/pistol/n1984/pistol_n1984_texture",
-		"particle": "ssc_14:item/weapon/firearm/pistol/n1984/pistol_n1984_texture"
+		"0": "ssc_14:item/weapon/firearm/pistol/n1984/pistol_n1984",
+		"particle": "ssc_14:item/weapon/firearm/pistol/n1984/pistol_n1984"
 	},
 	"elements": [
 		{

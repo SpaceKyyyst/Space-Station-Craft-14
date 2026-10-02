@@ -1,0 +1,72 @@
+﻿{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "ssc_14:structure/wallmounted/air_alarm/wallmounted_air_alarm",
+		"particle": "ssc_14:structure/wallmounted/air_alarm/wallmounted_air_alarm"
+	},
+	"elements": [
+		{
+			"from": [3.5, 4, 11],
+			"to": [12.5, 5, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.5, 12.5]},
+			"faces": {
+				"north": {"uv": [2, 12, 6.5, 12.5], "texture": "#0"},
+				"east": {"uv": [2, 11.5, 3.5, 12], "texture": "#0"},
+				"west": {"uv": [12, 10.5, 13.5, 11], "texture": "#0"},
+				"up": {"uv": [4.5, 9, 9, 10.5], "texture": "#0"},
+				"down": {"uv": [9, 9, 13.5, 10.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [3.625, 4.125, 11.125],
+			"to": [12.375, 4.875, 13.875],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.5, 12.5]},
+			"faces": {
+				"north": {"uv": [2, 12.5, 6.5, 13], "texture": "#0"},
+				"up": {"uv": [9.5, 7.5, 14, 9], "texture": "#0"},
+				"down": {"uv": [9.5, 0, 14, 1.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [3, 4, 14],
+			"to": [13, 11, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.5, 15]},
+			"faces": {
+				"north": {"uv": [0, 0, 5, 3.5], "texture": "#0"},
+				"east": {"uv": [0, 11.5, 1, 15], "texture": "#0"},
+				"south": {"uv": [0, 3.5, 5, 7], "texture": "#0"},
+				"west": {"uv": [1, 11.5, 2, 15], "texture": "#0"},
+				"up": {"uv": [7, 10.5, 12, 11.5], "texture": "#0"},
+				"down": {"uv": [7, 11.5, 12, 12.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [3.5, 4.5, 14.125],
+			"to": [12.5, 10.5, 14.125],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.5, 14.125]},
+			"faces": {
+				"north": {"uv": [5, 6, 9.5, 9], "texture": "#0"}
+			}
+		},
+		{
+			"from": [4.5, 1.875, 11.125],
+			"to": [11.5, 4.875, 11.125],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 4.875, 11.125]},
+			"faces": {
+				"north": {"uv": [0, 10, 3.5, 11.5], "texture": "#0"},
+				"south": {"uv": [3.5, 10.5, 7, 12], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "wallmounted_air_alarm_2_panel_open",
+			"origin": [8, 4.5, 12.5],
+			"scope": 0,
+			"color": 0,
+			"children": [0, 1, 2, 3, 4]
+		}
+	]
+}

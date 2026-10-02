@@ -1,8 +1,8 @@
-{
+﻿{
   "parent": "ssc_14:custom/smes",
   "textures": {
-    "all": "ssc_14:block/smes_texture",
-    "particle": "ssc_14:block/smes_texture",
-    "0": "ssc_14:block/smes_texture"
+    "all": "ssc_14:block/smes",
+    "particle": "ssc_14:block/smes",
+    "0": "ssc_14:block/smes"
   }
 }

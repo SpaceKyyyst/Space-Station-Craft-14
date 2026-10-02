@@ -1,9 +1,9 @@
-{
+﻿{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "ssc_14:item/fun/water/soaker/water_soaker_texture",
-		"particle": "ssc_14:item/fun/water/soaker/water_soaker_texture"
+		"0": "ssc_14:item/fun/water/soaker/water_soaker",
+		"particle": "ssc_14:item/fun/water/soaker/water_soaker"
 	},
 	"elements": [
 		{

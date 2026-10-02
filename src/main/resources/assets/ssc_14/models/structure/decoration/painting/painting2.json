@@ -3,8 +3,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "ssc_14:structure/decoration/painting/painting2_texture",
-		"particle": "ssc_14:structure/decoration/painting/painting2_texture"
+		"0": "ssc_14:structure/decoration/painting/painting2",
+		"particle": "ssc_14:structure/decoration/painting/painting2"
 	},
 	"elements": [
 		{

@@ -1,10 +1,10 @@
-{
+﻿{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "ssc_14:item/weapon/firearm/assault_rifle/lecter/assault_rifle_lecter_texture",
-		"particle": "ssc_14:item/weapon/firearm/assault_rifle/lecter/assault_rifle_lecter_texture"
+		"0": "ssc_14:item/weapon/firearm/assault_rifle/lecter/assault_rifle_lecter",
+		"particle": "ssc_14:item/weapon/firearm/assault_rifle/lecter/assault_rifle_lecter"
 	},
 	"elements": [
 		{

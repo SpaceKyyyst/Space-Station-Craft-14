@@ -1,0 +1,62 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "ssc_14:structure/wallmounted/apc/wallmounted_apc",
+		"particle": "ssc_14:structure/wallmounted/apc/wallmounted_apc"
+	},
+	"elements": [
+		{
+			"from": [4, 6, 14],
+			"to": [12, 11, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8.5, 15]},
+			"faces": {
+				"north": {"uv": [4, 5, 8, 7.5], "texture": "#0"},
+				"east": {"uv": [0, 11, 1, 13.5], "texture": "#0"},
+				"south": {"uv": [0, 2.5, 4, 5], "texture": "#0"},
+				"west": {"uv": [7.5, 11, 8.5, 13.5], "texture": "#0"},
+				"up": {"uv": [0, 10, 4, 11], "texture": "#0"},
+				"down": {"uv": [6.5, 10, 10.5, 11], "texture": "#0"}
+			}
+		},
+		{
+			"from": [6.5, 6.5, 14.25],
+			"to": [11.5, 10.5, 15.25],
+			"rotation": {"angle": 0, "axis": "y", "origin": [9, 8.5, 14.75]},
+			"faces": {
+				"north": {"uv": [6.5, 7.5, 9, 9.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 4, 15],
+			"to": [12, 6, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5, 15.5]},
+			"faces": {
+				"north": {"uv": [10.5, 2, 14.5, 3], "texture": "#0"},
+				"east": {"uv": [8, 6, 8.5, 7], "texture": "#0"},
+				"south": {"uv": [10.5, 1, 14.5, 2], "texture": "#0"},
+				"west": {"uv": [8.5, 6, 9, 7], "texture": "#0"},
+				"down": {"uv": [9.5, 11, 13.5, 11.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 4, 13],
+			"to": [11, 4, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [9.5, 4, 14]},
+			"faces": {
+				"up": {"uv": [4, 11.5, 5.5, 12.5], "texture": "#0"},
+				"down": {"uv": [11.5, 6.5, 13, 7.5], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "wallmounted_apc_charging_panel_open",
+			"origin": [8, 8.5, 15],
+			"scope": 0,
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		}
+	]
+}
