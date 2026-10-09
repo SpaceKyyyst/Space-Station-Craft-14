@@ -332,8 +332,7 @@
 	],
 	"display": {
 		"firstperson_righthand": {
-			"rotation": [-45, 0, 0],
-			"translation": [-3, 0, 0]
+			"rotation": [45, -22.5, 0]
 		}
 	},
 	"groups": [
