@@ -1,4 +1,4 @@
-﻿{
+{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
@@ -146,9 +146,9 @@
 			}
 		},
 		{
-			"from": [7.375, 10.875, 0.875],
+			"from": [7.375, 10.875, 0.625],
 			"to": [8.625, 18.125, 1.875],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14.5, 1.375]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14.5, 1.25]},
 			"faces": {
 				"north": {"uv": [7, 11, 7.5, 14.5], "rotation": 180, "texture": "#0"},
 				"east": {"uv": [11, 4.5, 14.5, 5], "rotation": 90, "texture": "#0"},
@@ -189,7 +189,7 @@
 				10,
 				11,
 				{
-					"name": "lid",
+					"name": "bolt",
 					"origin": [8, 10.5, 5.5],
 					"scope": 0,
 					"color": 1,
