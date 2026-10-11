@@ -60,6 +60,12 @@ public class MicrwGUIbutEProcedure {
     private static void checkRecipes(Level level, BlockPos pos, IItemHandlerModifiable inv, List<ItemStack> microwaveContents, int timer) {
         Map<Item, Integer> spawnItems = new HashMap<>();
 
+
+		//  =============== 
+		//		РЕЦЕПТЫ 
+        //  =============== 
+
+
         // РЕЦЕПТ №1: Соль 5u + Картофель -> [ 15 сек ] -> Космический фри
         if (timer == 15) {
             int potatoCount = 0;
@@ -138,6 +144,51 @@ public class MicrwGUIbutEProcedure {
                 decreaseItemCountInList(microwaveContents, Ssc14ModItems.BUN.get(), canCraft);
                 decreaseItemCountInList(microwaveContents, Ssc14ModItems.TOFU_SLICE.get(), canCraft);
                 spawnItems.merge(Ssc14ModItems.TOFU_BURGER.get(), canCraft, Integer::sum);
+            }
+        }
+
+        // Рецепт: DOUGH + TOFU_SLICE -> [ 15 сек ] -> TOFU_BREAD
+        if (timer == 15) {
+            int bunCount = 0, tofuCount = 0;
+            for (ItemStack stack : microwaveContents) {
+                if (stack.getItem() == Ssc14ModItems.DOUGH.get()) bunCount += stack.getCount();
+                if (stack.getItem() == Ssc14ModItems.TOFU_SLICE.get()) tofuCount += stack.getCount();
+            }
+            int canCraft = Math.min(bunCount, tofuCount);
+            if (canCraft > 0) {
+                decreaseItemCountInList(microwaveContents, Ssc14ModItems.BUN.get(), canCraft);
+                decreaseItemCountInList(microwaveContents, Ssc14ModItems.TOFU_SLICE.get(), canCraft);
+                spawnItems.merge(Ssc14ModItems.TOFU_BREAD.get(), canCraft, Integer::sum);
+            }
+        }
+
+        // Рецепт: MEAT + DOUGH -> [ 15 сек ] -> MEATLOAF
+        if (timer == 15) {
+            int bunCount = 0, tofuCount = 0;
+            for (ItemStack stack : microwaveContents) {
+                if (stack.getItem() == Ssc14ModItems.MEAT.get()) bunCount += stack.getCount();
+                if (stack.getItem() == Ssc14ModItems.DOUGH.get()) tofuCount += stack.getCount();
+            }
+            int canCraft = Math.min(bunCount, tofuCount);
+            if (canCraft > 0) {
+                decreaseItemCountInList(microwaveContents, Ssc14ModItems.BUN.get(), canCraft);
+                decreaseItemCountInList(microwaveContents, Ssc14ModItems.TOFU_SLICE.get(), canCraft);
+                spawnItems.merge(Ssc14ModItems.MEATLOAF.get(), canCraft, Integer::sum);
+            }
+        }
+
+        // Рецепт:  BREAD_SLICE + FLY_AMANITA -> [ 0 сек ] -> MOLDY_BREAD_PIECE
+        if (timer == 0) {
+            int bunCount = 0, tofuCount = 0;
+            for (ItemStack stack : microwaveContents) {
+                if (stack.getItem() == Ssc14ModItems.BREAD_SLICE.get()) bunCount += stack.getCount();
+                if (stack.getItem() == Ssc14ModItems.FLY_AMANITA.get()) tofuCount += stack.getCount();
+            }
+            int canCraft = Math.min(bunCount, tofuCount);
+            if (canCraft > 0) {
+                decreaseItemCountInList(microwaveContents, Ssc14ModItems.BUN.get(), canCraft);
+                decreaseItemCountInList(microwaveContents, Ssc14ModItems.TOFU_SLICE.get(), canCraft);
+                spawnItems.merge(Ssc14ModItems.MOLDY_BREAD_PIECE.get(), canCraft, Integer::sum);
             }
         }
 

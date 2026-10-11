@@ -1,0 +1,52 @@
+{
+  "mappings": {
+    "red": {
+      "name": "red",
+      "map": {
+        "0": "emerg_light_red_texture"
+      }
+    },
+    "yel": {
+      "name": "yel",
+      "map": {
+        "0": "emerg_light_yellow_texture"
+      }
+    },
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "emerg_light_green_texture"
+      }
+    },
+    "blue": {
+      "name": "blue",
+      "map": {
+        "0": "emerg_light_blue_texture"
+      }
+    },
+    "purp": {
+      "name": "purp",
+      "map": {
+        "0": "emerg_light_purple_texture"
+      }
+    },
+    "delt": {
+      "name": "delt",
+      "map": {
+        "0": "emerg_light_delta_texture"
+      }
+    },
+    "eps": {
+      "name": "eps",
+      "map": {
+        "0": "emerg_light_epsilon_texture"
+      }
+    },
+    "gamm": {
+      "name": "gamm",
+      "map": {
+        "0": "emerg_light_gamma_texture"
+      }
+    }
+  }
+}

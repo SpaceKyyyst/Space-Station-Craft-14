@@ -34,6 +34,6 @@
     "damageOnCrafting": false,
     "onRightClickedInAir": "WelderOnOffPr",
     "onEntityHitWith": "WeldingOffDAMAGE",
-    "onItemInUseTick": "Welding_Fuel_chek"
+    "onItemInUseTick": "WeldingFuelchek2"
   }
 }

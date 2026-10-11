@@ -177,6 +177,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.SMES.get().asItem());
 				tabData.accept(Ssc14ModBlocks.LAMP.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TECH_LAMP.get().asItem());
+				tabData.accept(Ssc14ModBlocks.EMERGENCY_LIGHT.get().asItem());
 				tabData.accept(Ssc14ModBlocks.SHUTTERS.get().asItem());
 				tabData.accept(Ssc14ModBlocks.BUTTON.get().asItem());
 				tabData.accept(Ssc14ModBlocks.MACHINE_FRAME.get().asItem());
@@ -184,6 +185,10 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.COMPUTER.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CONSOLE_OF_ID.get().asItem());
 				tabData.accept(Ssc14ModBlocks.COMMUNICATION_CONSOLE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.ORDER_CONSOLE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.ORDER_PALLET.get().asItem());
+				tabData.accept(Ssc14ModBlocks.SALE_CONSOLE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.SALE_PALLET.get().asItem());
 				tabData.accept(Ssc14ModBlocks.GAS_PRODUCER_O_2.get().asItem());
 				tabData.accept(Ssc14ModBlocks.COMMUNICATION_SERVERS.get().asItem());
 				tabData.accept(Ssc14ModBlocks.PORTABLE_SHEATER.get().asItem());
@@ -208,6 +213,17 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.OFICE_BLACK_CHAIR.get().asItem());
 				tabData.accept(Ssc14ModBlocks.OFICE_WHITE_CHAIR.get().asItem());
 				tabData.accept(Ssc14ModBlocks.BAR_CHAIR.get().asItem());
+				tabData.accept(Ssc14ModBlocks.ARM_CHAIR_BASE.get().asItem());
+				tabData.accept(Ssc14ModBlocks.ARM_CHAIR_BROWN.get().asItem());
+				tabData.accept(Ssc14ModBlocks.ARM_CHAIR_CARP.get().asItem());
+				tabData.accept(Ssc14ModBlocks.BANNER_NT.get().asItem());
+				tabData.accept(Ssc14ModBlocks.BANNER_MED.get().asItem());
+				tabData.accept(Ssc14ModBlocks.BANNER_RN_D.get().asItem());
+				tabData.accept(Ssc14ModBlocks.BANNER_SEC.get().asItem());
+				tabData.accept(Ssc14ModBlocks.BANNER_CARGO.get().asItem());
+				tabData.accept(Ssc14ModBlocks.BANNER_ENG.get().asItem());
+				tabData.accept(Ssc14ModBlocks.BANNER_SYND.get().asItem());
+				tabData.accept(Ssc14ModBlocks.FUEL_TANK.get().asItem());
 				tabData.accept(Ssc14ModBlocks.VENDING_AUT_1.get().asItem());
 				tabData.accept(Ssc14ModBlocks.EXTINGUISHER_CABINET.get().asItem());
 				tabData.accept(Ssc14ModBlocks.FENCE_POINT.get().asItem());
@@ -330,6 +346,8 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.ENCRYPTION_KEY_SERVICE.get());
 				tabData.accept(Ssc14ModItems.ENCRYPTION_KEY_CARGO.get());
 				tabData.accept(Ssc14ModItems.PEN.get());
+				tabData.accept(Ssc14ModItems.CREDITS.get());
+				tabData.accept(Ssc14ModItems.CREDITS_50.get());
 				tabData.accept(Ssc14ModItems.ENERGY_BAR.get());
 				tabData.accept(Ssc14ModItems.ENERGY_BAR_2.get());
 				tabData.accept(Ssc14ModItems.CHEESE_HONKERS.get());
@@ -353,8 +371,19 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.MEAT.get());
 				tabData.accept(Ssc14ModItems.FRIED_MEAT.get());
 				tabData.accept(Ssc14ModItems.POTATO.get());
+				tabData.accept(Ssc14ModItems.FLY_AMANITA.get());
 				tabData.accept(Ssc14ModItems.BREAD.get());
+				tabData.accept(Ssc14ModItems.BANANA_NUT_BREAD.get());
+				tabData.accept(Ssc14ModItems.CREAM_CHEESE_BREAD.get());
+				tabData.accept(Ssc14ModItems.MEATLOAF.get());
+				tabData.accept(Ssc14ModItems.SAUSAGE_BREAD.get());
+				tabData.accept(Ssc14ModItems.TOFU_BREAD.get());
 				tabData.accept(Ssc14ModItems.BREAD_SLICE.get());
+				tabData.accept(Ssc14ModItems.TOAST_WITH_BUTTER.get());
+				tabData.accept(Ssc14ModItems.BAGEL.get());
+				tabData.accept(Ssc14ModItems.POPPY_SEED_BAGEL.get());
+				tabData.accept(Ssc14ModItems.BAGUETTE.get());
+				tabData.accept(Ssc14ModItems.TACO_FLATBREAD.get());
 				tabData.accept(Ssc14ModItems.BUN.get());
 				tabData.accept(Ssc14ModItems.TOFU_BURGER.get());
 				tabData.accept(Ssc14ModItems.CHEESEBURGER.get());
@@ -460,6 +489,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.CHEF_JUMPSUIT.get());
 				tabData.accept(Ssc14ModItems.CM_OTURTLE_JUMPSUIT.get());
 				tabData.accept(Ssc14ModItems.HO_SPARADE_JUMPSUIT.get());
+				tabData.accept(Ssc14ModItems.MAID_JUMPSUIT.get());
 				tabData.accept(Ssc14ModItems.BACKPACK_2.get());
 				tabData.accept(Ssc14ModItems.COAT_ATMOS.get());
 				tabData.accept(Ssc14ModItems.COAT_SECURITY.get());
@@ -516,6 +546,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.ENERGY_BAR_TRASH.get());
 				tabData.accept(Ssc14ModItems.BULLET_35_CARTRIDGE.get());
 				tabData.accept(Ssc14ModItems.ROTTEN_MEAT.get());
+				tabData.accept(Ssc14ModItems.MOLDY_BREAD_PIECE.get());
 				tabData.accept(Ssc14ModItems.EGGSHELL.get());
 			}).withTabsBefore(SSC_14_OBJECTS.getId()).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14MOBS = REGISTRY.register("ssc_14mobs",
@@ -523,6 +554,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.MOUSE_BROWN_SPAWN_EGG.get());
 				tabData.accept(Ssc14ModItems.MOUSE_GRAY_SPAWN_EGG.get());
 				tabData.accept(Ssc14ModItems.MOUSE_WHITE_SPAWN_EGG.get());
+				tabData.accept(Ssc14ModItems.CARP_SPAWN_EGG.get());
 			}).withTabsBefore(SSC_14_ITEMS.getId()).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> DECALS = REGISTRY.register("decals",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.decals")).icon(() -> new ItemStack(Ssc14ModItems.DECAL_1SPAWNER.get())).displayItems((parameters, tabData) -> {
@@ -552,6 +584,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.NUCLEAR_WARHEAD.get().asItem());
 				tabData.accept(Ssc14ModItems.DEBUGACTIVATOR.get());
 				tabData.accept(Ssc14ModItems.DEBU_GITEM.get());
+				tabData.accept(Ssc14ModItems.DEBU_GCREDITS_DELETER.get());
 			}
 		}
 	}

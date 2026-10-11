@@ -23,6 +23,18 @@
       "map": {
         "1": "communication_console_texture"
       }
+    },
+    "bying": {
+      "name": "bying",
+      "map": {
+        "1": "bying_console_texture"
+      }
+    },
+    "sale": {
+      "name": "sale",
+      "map": {
+        "1": "sale_console_texture"
+      }
     }
   }
 }

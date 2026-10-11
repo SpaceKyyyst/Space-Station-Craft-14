@@ -22,6 +22,8 @@ import net.mcreator.ssc.network.Ssc14ModVariables;
 import java.util.List;
 import java.util.function.Supplier;
 
+import net.mcreator.ssc.PopupTextServerManager;
+
 @EventBusSubscriber(modid = "ssc_14")
 public class LocalChatEventHandler {
     private static final double NORMAL_RADIUS = 10.0;
@@ -75,28 +77,36 @@ public class LocalChatEventHandler {
         String messageText = originalText;
         RadioChannel selectedChannel = null;
 
-        for (RadioChannel channel : RADIO_CHANNELS) {
-            if (originalText.startsWith(channel.prefix)) {
-                type = MessageType.RADIO;
-                selectedChannel = channel;
-                messageText = originalText.substring(channel.prefix.length()).trim();
-                break;
-            }
+        if (sender.isSpectator()) {
+            type = MessageType.DEAD;
         }
 
-        if (type != MessageType.RADIO) {
-            if (originalText.startsWith(",")) {
-                type = MessageType.WHISPER;
-                messageText = originalText.substring(1).trim();
-            } else if (originalText.startsWith("%")) {
-                type = MessageType.EMOTE;
-                messageText = originalText.substring(1).trim();
-            } else if (originalText.startsWith("_")) {
-                type = MessageType.LOOC;
-                messageText = originalText.substring(1).trim();
-            } else if (originalText.startsWith("[")) {
-                type = MessageType.OOC;
-                messageText = originalText.substring(1).trim();
+        if (type != MessageType.DEAD) {
+            // Переводим текст в нижний регистр для безопасной проверки префиксов радио
+            String lowerText = originalText.toLowerCase(java.util.Locale.ROOT);
+            for (RadioChannel channel : RADIO_CHANNELS) {
+                if (lowerText.startsWith(channel.prefix)) {
+                    type = MessageType.RADIO;
+                    selectedChannel = channel;
+                    messageText = originalText.substring(channel.prefix.length()).trim();
+                    break;
+                }
+            }
+
+            if (type != MessageType.RADIO) {
+                if (originalText.startsWith(",")) {
+                    type = MessageType.WHISPER;
+                    messageText = originalText.substring(1).trim();
+                } else if (originalText.startsWith("%")) {
+                    type = MessageType.EMOTE;
+                    messageText = originalText.substring(1).trim();
+                } else if (originalText.startsWith("_")) {
+                    type = MessageType.LOOC;
+                    messageText = originalText.substring(1).trim();
+                } else if (originalText.startsWith("[")) {
+                    type = MessageType.OOC;
+                    messageText = originalText.substring(1).trim();
+                }
             }
         }
 
@@ -105,6 +115,25 @@ public class LocalChatEventHandler {
             playerName = "Неизвестный";
         }
         event.setCanceled(true);
+
+        int popupColor = 0xFFFFFFFF;
+        boolean shouldShowPopup = false;
+        boolean isItalic = false;
+        String popupText = messageText;
+
+        if (type == MessageType.DEAD) {
+            Component deadMessage = Component.literal("[Мёртвые] " + playerName + ": " + messageText)
+                .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0x76428a)));
+            var server = ServerLifecycleHooks.getCurrentServer();
+            if (server != null) {
+                for (Player target : server.getPlayerList().getPlayers()) {
+                    if (target.isSpectator() || target.isCreative()) {
+                        target.sendSystemMessage(deadMessage);
+                    }
+                }
+            }
+            return;
+        }
         if (type == MessageType.RADIO && selectedChannel != null) {
             boolean hasConnection = selectedChannel.hasConnection(sender.level());
             boolean hasValidHeadset = hasConnection && hasHeadsetWithKey(sender, selectedChannel.keyItem.get());
@@ -113,8 +142,7 @@ public class LocalChatEventHandler {
 
             if (hasValidHeadset) {
                 for (Player target : sender.level().players()) {
-                    if (sender.level().dimension() == target.level().dimension() && hasHeadsetWithKey(target, selectedChannel.keyItem.get())) {
-                        // ИСПРАВЛЕНО ПОД 1.21.4: sendSystemMessage вместо displayClientMessage
+                    if (target.isCreative() || (sender.level().dimension() == target.level().dimension() && hasHeadsetWithKey(target, selectedChannel.keyItem.get()))) {
                         target.sendSystemMessage(radioMessage);
                     }
                 }
@@ -122,12 +150,14 @@ public class LocalChatEventHandler {
             Component whisperMessage = Component.literal(playerName + " шепчет, \"" + messageText + "\"")
                 .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAAAAAA)).withItalic(true));
             for (Player target : sender.level().players()) {
-                if (sender.distanceTo(target) <= WHISPER_RADIUS) {
-                    // ИСПРАВЛЕНО ПОД 1.21.4: sendSystemMessage
+                if (target.isCreative() || sender.distanceTo(target) <= WHISPER_RADIUS) {
                     target.sendSystemMessage(whisperMessage);
                 }
             }
-            return;
+            popupColor = 0xAAAAAA;
+            isItalic = true;
+            shouldShowPopup = true;
+            popupText = "*" + messageText + "*";
         }
 
         if (type == MessageType.OOC) {
@@ -136,7 +166,6 @@ public class LocalChatEventHandler {
             var server = ServerLifecycleHooks.getCurrentServer();
             if (server != null) {
                 for (Player target : server.getPlayerList().getPlayers()) {
-                    // ИСПРАВЛЕНО ПОД 1.21.4: sendSystemMessage
                     target.sendSystemMessage(oocMessage);
                 }
             }
@@ -147,46 +176,60 @@ public class LocalChatEventHandler {
             Component loocMessage = Component.literal("LOOC: " + playerName + ": " + messageText)
                 .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0x46D7D2)));
             for (Player target : sender.level().players()) {
-                if (sender.distanceTo(target) <= NORMAL_RADIUS) {
-                    // ИСПРАВЛЕНО ПОД 1.21.4: sendSystemMessage
+                if (target.isCreative() || sender.distanceTo(target) <= NORMAL_RADIUS) {
                     target.sendSystemMessage(loocMessage);
                 }
             }
             return;
         }
 
-        Component formattedMessage;
-        double radius = 0;
-        switch (type) {
-            case WHISPER:
-                formattedMessage = Component.literal(playerName + " шепчет, \"" + messageText + "\"")
-                    .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAAAAAA)).withItalic(true));
-                radius = WHISPER_RADIUS;
-                break;
-            case EMOTE:
-                formattedMessage = Component.literal(playerName + " " + messageText)
-                    .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xD3D3D3)).withItalic(true));
-                radius = NORMAL_RADIUS;
-                break;
-            default:
-                formattedMessage = Component.literal(playerName + " говорит, \"" + messageText + "\"")
-                    .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xFFFFFF)));
-                radius = NORMAL_RADIUS;
-                break;
+        if (type != MessageType.RADIO) {
+            Component formattedMessage;
+            double radius = 0;
+            switch (type) {
+                case WHISPER:
+                    formattedMessage = Component.literal(playerName + " шепчет, \"" + messageText + "\"")
+                        .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAAAAAA)).withItalic(true));
+                    radius = WHISPER_RADIUS;
+                    popupColor = 0xAAAAAA; 
+                    isItalic = true;
+                    shouldShowPopup = true;
+                    popupText = "*" + messageText + "*";
+                    break;
+                case EMOTE:
+                    formattedMessage = Component.literal(playerName + " " + messageText)
+                        .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xD3D3D3)).withItalic(true));
+                    radius = NORMAL_RADIUS;
+                    popupColor = 0xD3D3D3; 
+                    isItalic = true;
+                    shouldShowPopup = true;
+                    popupText = playerName + " " + messageText;
+                    break;
+                default:
+                    formattedMessage = Component.literal(playerName + " говорит, \"" + messageText + "\"")
+                        .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xFFFFFF)));
+                    radius = NORMAL_RADIUS;
+                    popupColor = 0xFFFFFF; 
+                    isItalic = false;
+                    shouldShowPopup = true;
+                    break;
+            }
+
+            for (Player target : sender.level().players()) {
+                if (target.isCreative() || sender.distanceTo(target) <= radius) {
+                    target.sendSystemMessage(formattedMessage);
+                }
+            }
         }
 
-        for (Player target : sender.level().players()) {
-            if (sender.distanceTo(target) <= radius) {
-                // ИСПРАВЛЕНО ПОД 1.21.4: sendSystemMessage
-                target.sendSystemMessage(formattedMessage);
-            }
+        if (shouldShowPopup && !sender.level().isClientSide()) {
+            net.mcreator.ssc.PopupTextServerManager.addPopup(sender, popupText, popupColor, isItalic);
         }
     }
 
     private static boolean hasHeadsetWithKey(Player player, Item requiredKey) {
         var headsetTag = ItemTags.create(Identifier.fromNamespaceAndPath("ssc14", "headsets"));
         foundHeadset.set(false);
-
         var inventory = player.getInventory();
         int containerSize = inventory.getContainerSize();
         for (int i = 0; containerSize > i; i++) {
@@ -195,7 +238,6 @@ public class LocalChatEventHandler {
                 return true;
             }
         }
-
         try {
             CuriosApi.getCuriosInventory(player).ifPresent(invHandler -> {
                 var earHandler = invHandler.getStacksHandler("ear");
@@ -213,22 +255,17 @@ public class LocalChatEventHandler {
         } catch (Exception e) {
             System.err.println("Curios check error: " + e.getMessage());
         }
-
         boolean result = foundHeadset.get();
         foundHeadset.set(false);
         return result;
     }
 
     private static boolean hasSpecificKeyInside(ItemStack headset, Item requiredKey) {
-        // ИСПРАВЛЕНО ПОД 1.21.4: Используем гарантированно существующий метод ItemUtil.getStack из вашей утилиты!
         net.neoforged.neoforge.transfer.ResourceHandler<net.neoforged.neoforge.transfer.item.ItemResource> itemHandler = 
             headset.getCapability(net.neoforged.neoforge.capabilities.Capabilities.Item.ITEM, net.neoforged.neoforge.transfer.access.ItemAccess.forStack(headset));
-        
         if (itemHandler == null) {
             return false;
         }
-
-        // Безопасный перебор фиксированного диапазона слотов гарнитуры с помощью проверенной утилиты
         for (int i = 0; 9 > i; i++) {
             ItemStack itemInSlot = net.neoforged.neoforge.transfer.item.ItemUtil.getStack(itemHandler, i);
             if (!itemInSlot.isEmpty() && itemInSlot.is(requiredKey)) {
@@ -238,8 +275,8 @@ public class LocalChatEventHandler {
         return false;
     }
 
-	private static final java.util.concurrent.atomic.AtomicBoolean foundHeadset = new java.util.concurrent.atomic.AtomicBoolean(false);
+    private static final java.util.concurrent.atomic.AtomicBoolean foundHeadset = new java.util.concurrent.atomic.AtomicBoolean(false);
     private enum MessageType {
-        NORMAL, WHISPER, EMOTE, RADIO, LOOC, OOC
+        NORMAL, WHISPER, EMOTE, RADIO, LOOC, OOC, DEAD
     }
 }

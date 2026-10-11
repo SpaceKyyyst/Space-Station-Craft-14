@@ -1055,5 +1055,16 @@ public class Ssc14ModCuriosCompat {
 				Equip_BaseSound_PR_Procedure.execute(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
 		}, Ssc14ModItems.BACKPACK_2.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+
+			@Override
+			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
+				Equip_BaseSound_PR_Procedure.execute(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
+			}
+		}, Ssc14ModItems.MAID_JUMPSUIT.get());
 	}
 }

@@ -5,34 +5,42 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.resources.Identifier;
+import net.minecraft.nbt.CompoundTag;
 
 public class CrawlPrProcedure {
     public static final Identifier CRAWL_SPEED_MOD_ID = Identifier.fromNamespaceAndPath("ssc_14", "crawl_slowdown");
+    public static final String NBT_KEY = "ssc14_crawl_active";
 
     public static void execute(Entity entity) {
         if (!(entity instanceof Player player)) return;
-        if (player.level().isClientSide()) return;
+        
+        CompoundTag nbt = player.getPersistentData();
+        boolean isCrawling = nbt.getBoolean(NBT_KEY).orElse(false);
 
         var speedAttr = player.getAttribute(Attributes.MOVEMENT_SPEED);
         if (speedAttr != null) {
-            boolean isCrawling = speedAttr.hasModifier(CRAWL_SPEED_MOD_ID);
-            
             if (!isCrawling) {
-                speedAttr.addTransientModifier(new AttributeModifier(
-                    CRAWL_SPEED_MOD_ID, -0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE
-                ));
+                nbt.putBoolean(NBT_KEY, true);
                 
-                // ИСПРАВЛЕНО: В ванильном движке Minecraft для ползания используется поза SWIMMING
-                player.setPose(Pose.SWIMMING);
-                player.refreshDimensions();
+                if (!player.level().isClientSide() && !speedAttr.hasModifier(CRAWL_SPEED_MOD_ID)) {
+                    speedAttr.addTransientModifier(new AttributeModifier(
+                        CRAWL_SPEED_MOD_ID, -0.60, AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    ));
+                }
             } else {
-                speedAttr.removeModifier(CRAWL_SPEED_MOD_ID);
+                if (!player.level().noCollision(player, player.getType().getDimensions().makeBoundingBox(player.getX(), player.getY(), player.getZ()))) {
+                    return; 
+                }
+
+                nbt.putBoolean(NBT_KEY, false);
                 
-                player.setPose(Pose.STANDING);
-                player.refreshDimensions();
+                if (!player.level().isClientSide() && speedAttr.hasModifier(CRAWL_SPEED_MOD_ID)) {
+                    speedAttr.removeModifier(CRAWL_SPEED_MOD_ID);
+                }
             }
+            
+            player.refreshDimensions();
         }
     }
 }

@@ -120,6 +120,12 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetPinkBlockEntity>> CLOSET_PINK = register("closet_pink", Ssc14ModBlocks.CLOSET_PINK, ClosetPinkBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GlassAirlockD1BlockEntity>> GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1", Ssc14ModBlocks.GLASS_AIRLOCK_D_1, GlassAirlockD1BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BaseGlassAirlockD1BlockEntity>> BASE_GLASS_AIRLOCK_D_1 = register("base_glass_airlock_d_1", Ssc14ModBlocks.BASE_GLASS_AIRLOCK_D_1, BaseGlassAirlockD1BlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FuelTankBlockEntity>> FUEL_TANK = register("fuel_tank", Ssc14ModBlocks.FUEL_TANK, FuelTankBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OrderConsoleBlockEntity>> ORDER_CONSOLE = register("order_console", Ssc14ModBlocks.ORDER_CONSOLE, OrderConsoleBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OrderPalletBlockEntity>> ORDER_PALLET = register("order_pallet", Ssc14ModBlocks.ORDER_PALLET, OrderPalletBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SalePalletBlockEntity>> SALE_PALLET = register("sale_pallet", Ssc14ModBlocks.SALE_PALLET, SalePalletBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SaleConsoleBlockEntity>> SALE_CONSOLE = register("sale_console", Ssc14ModBlocks.SALE_CONSOLE, SaleConsoleBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EmergencyLightBlockEntity>> EMERGENCY_LIGHT = register("emergency_light", Ssc14ModBlocks.EMERGENCY_LIGHT, EmergencyLightBlockEntity::new);
 
 	private static <T extends BlockEntity> DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> register(String registryname, DeferredHolder<Block, Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {
 		return REGISTRY.register(registryname, () -> new BlockEntityType(supplier, block.get()));
@@ -227,5 +233,11 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, CLOSET_PINK.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, GLASS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, BASE_GLASS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
+		event.registerBlockEntity(Capabilities.Item.BLOCK, FUEL_TANK.get(), WorldlyContainerWrapper::new);
+		event.registerBlockEntity(Capabilities.Item.BLOCK, ORDER_CONSOLE.get(), WorldlyContainerWrapper::new);
+		event.registerBlockEntity(Capabilities.Item.BLOCK, ORDER_PALLET.get(), WorldlyContainerWrapper::new);
+		event.registerBlockEntity(Capabilities.Item.BLOCK, SALE_PALLET.get(), WorldlyContainerWrapper::new);
+		event.registerBlockEntity(Capabilities.Item.BLOCK, SALE_CONSOLE.get(), WorldlyContainerWrapper::new);
+		event.registerBlockEntity(Capabilities.Item.BLOCK, EMERGENCY_LIGHT.get(), WorldlyContainerWrapper::new);
 	}
 }

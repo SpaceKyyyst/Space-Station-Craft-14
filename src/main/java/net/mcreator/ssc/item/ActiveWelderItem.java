@@ -34,6 +34,7 @@ import net.mcreator.ssc.procedures.Welding_Fuel_chekProcedure;
 import net.mcreator.ssc.procedures.WelderOnOffPrProcedure;
 import net.mcreator.ssc.procedures.WelderOnDAMAGEProcedure;
 import net.mcreator.ssc.procedures.ActiveWelder_FuelMinProcedure;
+import net.mcreator.ssc.procedures.ActiveWelder_DROP_Procedure;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 import javax.annotation.Nullable;
@@ -94,5 +95,11 @@ public class ActiveWelderItem extends Item {
 		if (equipmentSlot == EquipmentSlot.MAINHAND)
 			Welding_Fuel_chekProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, itemstack);
 		ActiveWelder_FuelMinProcedure.execute(itemstack);
+	}
+
+	@Override
+	public boolean onDroppedByPlayer(ItemStack itemstack, Player entity) {
+		ActiveWelder_DROP_Procedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), itemstack);
+		return true;
 	}
 }

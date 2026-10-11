@@ -42,8 +42,10 @@ public class Ssc14ModModels {
 		event.registerLayerDefinition(Modelhelmet_security.LAYER_LOCATION, Modelhelmet_security::createBodyLayer);
 		event.registerLayerDefinition(Modelframe_of_wall_JAVA.LAYER_LOCATION, Modelframe_of_wall_JAVA::createBodyLayer);
 		event.registerLayerDefinition(Modelties_equipped.LAYER_LOCATION, Modelties_equipped::createBodyLayer);
+		event.registerLayerDefinition(Modelcarp.LAYER_LOCATION, Modelcarp::createBodyLayer);
 		event.registerLayerDefinition(Modelcoat_security_equipped.LAYER_LOCATION, Modelcoat_security_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelsocks_equipped.LAYER_LOCATION, Modelsocks_equipped::createBodyLayer);
+		event.registerLayerDefinition(Modelfelinid_m.LAYER_LOCATION, Modelfelinid_m::createBodyLayer);
 		event.registerLayerDefinition(Modelcolor_soles.LAYER_LOCATION, Modelcolor_soles::createBodyLayer);
 		event.registerLayerDefinition(Modelmask_gassecurity_equipped.LAYER_LOCATION, Modelmask_gassecurity_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelpda_equipped.LAYER_LOCATION, Modelpda_equipped::createBodyLayer);
@@ -62,6 +64,7 @@ public class Ssc14ModModels {
 		event.registerLayerDefinition(Modelhardsuit_helmet_salvage_equipped.LAYER_LOCATION, Modelhardsuit_helmet_salvage_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modeluniform_equipped.LAYER_LOCATION, Modeluniform_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelboots_combatboots.LAYER_LOCATION, Modelboots_combatboots::createBodyLayer);
+		event.registerLayerDefinition(Modelunath_m.LAYER_LOCATION, Modelunath_m::createBodyLayer);
 		event.registerLayerDefinition(Modelboots_workboots_equipped.LAYER_LOCATION, Modelboots_workboots_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelhelmet_cosmonaut_equipped.LAYER_LOCATION, Modelhelmet_cosmonaut_equipped::createBodyLayer);
 		event.registerLayerDefinition(Modelmantle_hos_shoulder_equipped.LAYER_LOCATION, Modelmantle_hos_shoulder_equipped::createBodyLayer);

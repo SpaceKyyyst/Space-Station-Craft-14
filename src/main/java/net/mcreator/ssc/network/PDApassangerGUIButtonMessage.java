@@ -15,9 +15,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.core.SectionPos;
 
-import net.mcreator.ssc.procedures.PenRemovePRProcedure;
-import net.mcreator.ssc.procedures.PDAflashlightPRProcedure;
-import net.mcreator.ssc.procedures.IDRemovePRProcedure;
+import net.mcreator.ssc.procedures.*;
 import net.mcreator.ssc.Ssc14Mod;
 
 @EventBusSubscriber
@@ -60,6 +58,18 @@ public record PDApassangerGUIButtonMessage(int buttonID, int x, int y, int z) im
 		if (buttonID == 2) {
 
 			PDAflashlightPRProcedure.execute(world, x, y, z, entity);
+		}
+		if (buttonID == 3) {
+
+			PDAmainButtonPRProcedure.execute(entity);
+		}
+		if (buttonID == 4) {
+
+			PDA2TABbuttonPRProcedure.execute(entity);
+		}
+		if (buttonID == 5) {
+
+			PDA3TABbuttonPRProcedure.execute(entity);
 		}
 	}
 

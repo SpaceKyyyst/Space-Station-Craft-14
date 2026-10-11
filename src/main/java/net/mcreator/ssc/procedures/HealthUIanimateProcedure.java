@@ -1,33 +1,24 @@
-package net.mcreator.ssc.procedures;
 
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.bus.api.Event;
+package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.entity.Entity;
 
-import javax.annotation.Nullable;
-
-@EventBusSubscriber
 public class HealthUIanimateProcedure {
-	@SubscribeEvent
-	public static void onPlayerTick(PlayerTickEvent.Post event) {
-		execute(event, event.getEntity());
-	}
 
 	public static double execute(Entity entity) {
-		return execute(null, entity);
-	}
+		if (entity == null) return 0.0;
 
-	private static double execute(@Nullable Event event, Entity entity) {
-		if (entity == null)
-			return 0;
-		if (entity.getPersistentData().getDoubleOr("health_ui_timer", 0) < 112) {
-			entity.getPersistentData().putDouble("health_ui_timer", (1 + entity.getPersistentData().getDoubleOr("health_ui_timer", 0)));
-		} else {
-			entity.getPersistentData().putDouble("health_ui_timer", 0);
-		}
-		return Math.round(entity.getPersistentData().getDoubleOr("health_ui_timer", 0) / 4);
+		// Получаем официальное ванильное время тиков мира
+		long gameTime = entity.level().getGameTime();
+
+		// УМНОЖАЕМ НА 2.8: Это ускоряет «внутренние часы» анимации, 
+		// чтобы весь цикл из 28 спрайтов прокручивался ровно за ~2 секунды!
+		double acceleratedTime = (double) (gameTime * 2.8);
+
+		// Делаем красивый зацикленный таймер от 0 до 112 с помощью остатка от деления
+		double loopTimer = acceleratedTime % 113.0;
+
+		// Возвращаем номер спрайта для твоего UI, делённый на 4, строго по твоей оригинальной логике
+		return Math.round(loopTimer / 4.0);
 	}
 }

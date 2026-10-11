@@ -1,12 +1,12 @@
-
 package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -16,6 +16,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
@@ -24,261 +25,279 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.resources.Identifier; // Оставляем Identifier, раз он используется в сети и регистрах MCreator
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
 import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
 import io.netty.buffer.Unpooled;
 import java.util.Optional;
-import java.util.List;
 
 public class BaseAirlockOpenCloseProcedure {
-    private static final String[] ACCESS_ROLES = {
-        "Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio", "Security",
-        "Ingeneer", "Command", "Detective", "PNT", "Scientist", "Supply_Deportament", "Atmos",
-        "Kitchen", "Uridic", "Gidroponic", "Teatre", "Bar", "Cleaner", "Utilizat", "Chemistry",
-        "Church", "CE", "Qm", "CMO", "RD", "HoP", "Capitan", "Blue_Sh"
-    };
+    // Persist only the active operation. Vanilla owns its one scheduled block tick,
+    // so unloading a chunk pauses the door without retaining/loading the world.
+    private static final String ACTION = "_ssc14_airlock_action";
+    private static final String STEP = "_ssc14_airlock_step";
+    private static final int OPENING = 1, CLOSING = 2, DENIED = 3, WAITING = 4;
+    // Corvax dd8b6e2f: 0.4s to change collision + 0.2s to finish, 5s auto-close.
+    private static final int AUTO_CLOSE_TICKS = 100;
+    private static final int DENY_TICKS = 9;
+    private static final int RETRY_TICKS = 20;
+    private static final int[] OPEN_FRAMES = {15, 12, 13, 14, 11};
+    private static final int[] CLOSE_FRAMES = {14, 13, 12, 15};
+	private static final String[] ACCESS_ROLES = {
+		"Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio", "Security", 
+		"Ingeneer", "Command", "Detective", "PNT", "Scientist", "Supply_Deportament", "Atmos", 
+		"Kitchen", "Uridic", "Gidroponic", "Teatre", "Bar", "Cleaner", "Utilizat", "Chemistry", 
+		"Church", "CE", "Qm", "CMO", "RD", "HoP", "Capitan", "Blue_Sh"
+	};
 
-    public static void execute(Level world, double x, double y, double z, BlockState blockstate, Entity entity) {
-        if (world.isClientSide() || entity == null) return;
+
+    public static void execute(Level world, double x, double y, double z, BlockState ignored, Entity entity) {
+        if (!(world instanceof ServerLevel level) || entity == null) return;
         BlockPos pos = BlockPos.containing(x, y, z);
-        BlockEntity be = world.getBlockEntity(pos);
-        if (be == null) return;
-
+        if (!level.hasChunkAt(pos)) return;
+        BlockState state = level.getBlockState(pos);
+        IntegerProperty prop = getSafeProperty(state, "arl_variat", IntegerProperty.class);
+        BlockEntity be = level.getBlockEntity(pos);
+        if (be == null || prop == null) return;
         CompoundTag nbt = be.getPersistentData();
-        // ИСПРАВЛЕНО ПОД 1.21.4: Безопасное извлечение boolean через .orElse(false)
-        if (nbt.contains("_ssc14_processing") && nbt.getBoolean("_ssc14_processing").orElse(false)) return;
-        nbt.putBoolean("_ssc14_processing", true);
-
-        try {
-            ItemStack mainHand = entity instanceof LivingEntity le ? le.getMainHandItem() : ItemStack.EMPTY;
-            boolean isSneaking = entity.isShiftKeyDown();
-
-            if (mainHand.getItem() == Ssc14ModItems.ACCESS_CONFIG.get() && !isSneaking) {
-                openGui((ServerPlayer) entity, "AccessConfigMENU", pos);
+        ItemStack hand = entity instanceof LivingEntity le ? le.getMainHandItem() : ItemStack.EMPTY;
+        if (entity instanceof ServerPlayer player && !entity.isShiftKeyDown()) {
+            if (hand.getItem() == Ssc14ModItems.ACCESS_CONFIG.get()) {
+                openGui(player, "AccessConfigMENU", pos);
                 return;
             }
-
-            BooleanProperty panelProp = getSafeProperty(blockstate, "panel_open", BooleanProperty.class);
-            boolean panelOpen = panelProp != null && blockstate.getValue(panelProp);
-            if (panelOpen && !isSneaking) {
-                openGui((ServerPlayer) entity, "CabelPannelAirlock", pos);
+            BooleanProperty panel = getSafeProperty(state, "panel_open", BooleanProperty.class);
+            if (panel != null && state.getValue(panel)) {
+                openGui(player, "CabelPannelAirlock", pos);
                 return;
             }
-
-            // ИСПРАВЛЕНО ПОД 1.21.4: Извлечение булевых значений шлюза
-            boolean bolted = nbt.contains("bolted") && nbt.getBoolean("bolted").orElse(false);
-            boolean welded = nbt.contains("welded") && nbt.getBoolean("welded").orElse(false);
-
-            IntegerProperty arlProp = getSafeProperty(blockstate, "arl_variat", IntegerProperty.class);
-            int currentState = arlProp != null ? blockstate.getValue(arlProp) : -1;
-            boolean hasPower = !(currentState == 1 || currentState == 9 || currentState == 10);
-
-            if (bolted || welded || !hasPower) return;
-
-            // ИСПРАВЛЕНО ПОД 1.21.4: .orElse(false)
-            boolean emergency = nbt.contains("emergency_acs") && nbt.getBoolean("emergency_acs").orElse(false);
-            boolean hasAccess = checkAccess(nbt, entity, emergency);
-
-            if (!hasAccess) {
-                if (currentState != 11 && !(currentState >= 12 && currentState <= 15)) {
-                    handleAccessDenied(world, pos, nbt, currentState, arlProp);
-                }
-                return;
-            }
-
-            if (arlProp == null) return;
-            if (currentState == 11) {
-                _playSound(world, pos, "ssc_14:airlock_close");
-                scheduleCloseAnimation(world, pos, nbt, arlProp);
-            } else if (currentState == 0 || currentState == 4 || currentState == 8) {
-                _playSound(world, pos, "ssc_14:airlock_open");
-                scheduleOpenAnimation(world, pos, arlProp);
-                scheduleAutoCloseCheck(world, pos, nbt, arlProp);
-            }
-        } finally {
-            nbt.putBoolean("_ssc14_processing", false);
         }
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <T> T getSafeProperty(BlockState state, String name, Class<T> type) {
-        var prop = state.getBlock().getStateDefinition().getProperty(name);
-        return type.isInstance(prop) ? (T) prop : null;
-    }
-    private static boolean checkAccess(CompoundTag blockNbt, Entity entity, boolean emergency) {
-        if (emergency) return true;
-        boolean anyRequired = false;
-        for (String role : ACCESS_ROLES) {
-            // ИСПРАВЛЕНО ПОД 1.21.4: .orElse(false) для карт доступа блоков шлюзов
-            if (blockNbt.contains(role) && blockNbt.getBoolean(role).orElse(false)) {
-                anyRequired = true;
-                break;
-            }
+        int current = state.getValue(prop);
+        int action = nbt.getIntOr(ACTION, 0);
+        // Old versions lost queued lambdas across restarts. Recover their unfinished
+        // animation on interaction, without scanning loaded chunks or doors every tick.
+        if (action == 0 && current >= 12 && current <= 15) {
+            begin(level, pos, be, WAITING, 11, autoCloseDelay(nbt));
+            updateTop(level, pos, true);
+            current = 11;
         }
-        if (!anyRequired) return true;
-
-        CompoundTag playerData = entity.getPersistentData();
-        for (String role : ACCESS_ROLES) {
-            // ИСПРАВЛЕНО ПОД 1.21.4: .orElse(false) для ролей игроков
-            if (blockNbt.contains(role) && blockNbt.getBoolean(role).orElse(false) 
-                && playerData.contains(role) && playerData.getBoolean(role).orElse(false)) {
-                return true;
+        if (action == OPENING || action == CLOSING) return;
+        if (nbt.getBooleanOr("bolted", false) || nbt.getBooleanOr("welded", false)
+                || !nbt.getBooleanOr("powered", true) || current == 1 || current == 9 || current == 10) return;
+        if (!checkAccess(nbt, entity, nbt.getBooleanOr("emergency_acs", false))) {
+            if (action == DENIED) return; // Do not restart denial for repeated unauthorized clicks.
+            if (current != 11 && !(current >= 12 && current <= 15)) {
+                nbt.putInt("_ssc14_airlock_denied_state", current);
+                begin(level, pos, be, DENIED, 8, DENY_TICKS);
+                _playSound(level, pos, "ssc_14:airlock_no_access");
             }
-        }
-        return false;
-    }
-
-    private static void handleAccessDenied(Level level, BlockPos pos, CompoundTag nbt, int prevState, IntegerProperty prop) {
-        // ИСПРАВЛЕНО ПОД 1.21.4: Проверка анимации отказа
-        if (nbt.contains("_ssc14_denied_anim") && nbt.getBoolean("_ssc14_denied_anim").orElse(false)) return;
-        nbt.putBoolean("_ssc14_processing", true);
-        nbt.putBoolean("_ssc14_denied_anim", true);
-        nbt.putInt("prev_arl_variat_on_deny", prevState);
-
-        _setBlockState(level, pos, 8, prop);
-        _playSound(level, pos, "ssc_14:airlock_no_access");
-
-        Ssc14Mod.queueServerWork(10, () -> {
-            if (level.isClientSide()) return;
-            BlockState current = level.getBlockState(pos);
-            IntegerProperty curProp = getSafeProperty(current, "arl_variat", IntegerProperty.class);
-            if (curProp != null && current.getValue(curProp) == 8) {
-                // ИСПРАВЛЕНО ПОД 1.21.4: .orElse(prevState)
-                int restoreState = nbt.contains("prev_arl_variat_on_deny") ? nbt.getInt("prev_arl_variat_on_deny").orElse(prevState) : prevState;
-                _setBlockState(level, pos, restoreState, curProp);
-            }
-            nbt.putBoolean("_ssc14_denied_anim", false);
-            nbt.putBoolean("_ssc14_processing", false);
-        });
-    }
-
-    private static void scheduleAutoCloseCheck(Level level, BlockPos pos, CompoundTag nbt, IntegerProperty prop) {
-        Ssc14Mod.queueServerWork(80, () -> tryAutoClose(level, pos, nbt, prop));
-    }
-
-    private static void tryAutoClose(Level level, BlockPos pos, CompoundTag nbt, IntegerProperty prop) {
-        if (level.isClientSide()) return;
-        BlockState current = level.getBlockState(pos);
-        IntegerProperty curProp = getSafeProperty(current, "arl_variat", IntegerProperty.class);
-        if (curProp == null) return;
-        int state = current.getValue(curProp);
-        if (state != 11) return;
-
-        if (!canCloseAirlock(level, pos, nbt)) {
-            Ssc14Mod.queueServerWork(10, () -> tryAutoClose(level, pos, nbt, prop));
             return;
         }
+        if (current == 11) {
+            // Manual closing uses the same safety sensor as automatic closing.
+            if (canCloseAirlock(level, pos, nbt)) startClose(level, pos, be);
+        } else if (current == 0 || current == 4 || current == 8) {
+            begin(level, pos, be, OPENING, OPEN_FRAMES[0], 4);
+            _playSound(level, pos, "ssc_14:airlock_open");
+        }
+    }
 
+    /** Called exclusively by the scheduled server tick of each lower airlock block. */
+    public static void tick(ServerLevel level, BlockPos pos) {
+        if (!level.hasChunkAt(pos)) return;
+        BlockEntity be = level.getBlockEntity(pos);
+        if (be == null) return;
+        BlockState state = level.getBlockState(pos);
+        IntegerProperty prop = getSafeProperty(state, "arl_variat", IntegerProperty.class);
+        if (prop == null) return;
+        CompoundTag nbt = be.getPersistentData();
+        int action = nbt.getIntOr(ACTION, 0);
+        int frame = nbt.getIntOr(STEP, 0);
+        if (action == WAITING) {
+            if (state.getValue(prop) != 11) { finish(be); return; }
+            if (canCloseAirlock(level, pos, nbt)) {
+                startClose(level, pos, be);
+            } else {
+                boolean locked = nbt.getBooleanOr("bolted", false) || nbt.getBooleanOr("welded", false)
+                        || !nbt.getBooleanOr("powered", true);
+                if (locked) finish(be); // Control/power events restart the timer when usable again.
+                else level.scheduleTick(pos, state.getBlock(), RETRY_TICKS);
+            }
+        } else if (action == DENIED) {
+            int previous = nbt.getIntOr("_ssc14_airlock_denied_state", 0);
+            // Preserve the special hacked variants; ordinary variants reflect current controls.
+            int restore = previous == 6 || previous == 7 ? previous : closedState(nbt);
+            finish(be);
+            if (state.getValue(prop) == 8) setState(level, pos, restore);
+        } else if (action == OPENING || action == CLOSING) {
+            int[] frames = action == OPENING ? OPEN_FRAMES : CLOSE_FRAMES;
+            // A command/replacement must not be overwritten by an obsolete animation.
+            if (frame < 0 || frame >= (action == OPENING ? frames.length - 1 : frames.length)
+                    || state.getValue(prop) != frames[frame]) {
+                finish(be);
+                return;
+            }
+            int next = frame + 1;
+            if (action == CLOSING && next == 2
+                    && (nbt.getBooleanOr("bolted", false) || nbt.getBooleanOr("welded", false)
+                    || (nbt.getBooleanOr("safe", true) && hasBlockingEntities(level, pos)))) {
+                // Corvax checks again at the collision transition, not only on click.
+                begin(level, pos, be, WAITING, 11, 4);
+                updateTop(level, pos, true);
+                return;
+            }
+            nbt.putInt(STEP, next);
+            be.setChanged();
+            if (action == OPENING) {
+                setState(level, pos, OPEN_FRAMES[next]);
+                if (next == 2) updateTop(level, pos, true);
+                if (next == 4) {
+                    refreshAutoClose(level, pos);
+                } else {
+                    level.scheduleTick(pos, state.getBlock(), next < 2 ? 4 : 2);
+                }
+            } else if (next == 4) {
+                finish(be);
+                setState(level, pos, closedState(nbt));
+            } else {
+                setState(level, pos, CLOSE_FRAMES[next]);
+                if (next == 2) updateTop(level, pos, false);
+                level.scheduleTick(pos, state.getBlock(), next < 2 ? 4 : 2);
+            }
+        }
+    }
+
+    private static int autoCloseDelay(CompoundTag nbt) {
+        // TIMR cut => modifier 0.01 in Corvax, not disabled automatic closing.
+        return nbt.getBooleanOr("timer", true) ? AUTO_CLOSE_TICKS : 1;
+    }
+
+    /** Power restoration and unbolting start a fresh full delay, as in Corvax. */
+    public static void refreshAutoClose(ServerLevel level, BlockPos pos) {
+        if (!level.hasChunkAt(pos)) return;
+        BlockState state = level.getBlockState(pos);
+        IntegerProperty prop = getSafeProperty(state, "arl_variat", IntegerProperty.class);
+        BlockEntity be = level.getBlockEntity(pos);
+        if (be == null || prop == null || state.getValue(prop) != 11) return;
+        CompoundTag nbt = be.getPersistentData();
+        if (!nbt.getBooleanOr("powered", true) || nbt.getBooleanOr("bolted", false)
+                || nbt.getBooleanOr("welded", false)) {
+            if (level.getBlockTicks().hasScheduledTick(pos, state.getBlock()))
+                level.getBlockTicks().clearArea(new BoundingBox(pos));
+            finish(be);
+        } else {
+            begin(level, pos, be, WAITING, 11, autoCloseDelay(nbt));
+        }
+    }
+
+    private static void begin(ServerLevel level, BlockPos pos, BlockEntity be, int action, int state, int delay) {
+        // Vanilla deduplicates by position and block, not by deadline. Explicitly
+        // replace an old auto-close tick before requesting an earlier animation tick.
+        Block block = level.getBlockState(pos).getBlock();
+        if (level.getBlockTicks().hasScheduledTick(pos, block) || level.getBlockTicks().willTickThisTick(pos, block)) {
+            level.getBlockTicks().clearArea(new BoundingBox(pos));
+        }
+        CompoundTag nbt = be.getPersistentData();
+        nbt.remove("_ssc14_processing");
+        nbt.remove("_ssc14_denied_anim");
+        nbt.remove("prev_arl_variat_on_deny");
+        nbt.putInt(ACTION, action);
+        nbt.putInt(STEP, 0);
+        be.setChanged();
+        setState(level, pos, state);
+        level.scheduleTick(pos, block, delay);
+    }
+
+    private static void startClose(ServerLevel level, BlockPos pos, BlockEntity be) {
+        begin(level, pos, be, CLOSING, CLOSE_FRAMES[0], 4);
         _playSound(level, pos, "ssc_14:airlock_close");
-        scheduleCloseAnimation(level, pos, nbt, curProp);
+    }
+
+    private static void finish(BlockEntity be) {
+        be.getPersistentData().remove(ACTION);
+        be.getPersistentData().remove(STEP);
+        be.getPersistentData().remove("_ssc14_airlock_denied_state");
+        be.setChanged();
+    }
+
+    private static int closedState(CompoundTag nbt) {
+        boolean welded = nbt.getBooleanOr("welded", false);
+        boolean bolted = nbt.getBooleanOr("bolted", false);
+        if (!nbt.getBooleanOr("powered", true)) return welded ? 10 : bolted ? 1 : 9;
+        if (bolted) return welded ? 3 : 2;
+        if (nbt.getBooleanOr("emergency_acs", false)) return welded ? 5 : 4;
+        return welded ? 16 : 0;
     }
 
     private static boolean canCloseAirlock(Level level, BlockPos pos, CompoundTag nbt) {
-        // ИСПРАВЛЕНО ПОД 1.21.4: Все проверки переписаны на извлечение из Optional
-        boolean bolted = nbt.contains("bolted") && nbt.getBoolean("bolted").orElse(false);
-        boolean welded = nbt.contains("welded") && nbt.getBoolean("welded").orElse(false);
-        if (bolted || welded) return false;
-        
-        if (nbt.contains("powered") && !nbt.getBoolean("powered").orElse(false)) return false;
-        
-        boolean safeMode = !nbt.contains("safe") || nbt.getBoolean("safe").orElse(false);
-        if (safeMode && hasBlockingEntities(level, pos)) return false;
-        
-        return true;
+        if (nbt.getBooleanOr("bolted", false) || nbt.getBooleanOr("welded", false)
+                || !nbt.getBooleanOr("powered", true)) return false;
+        return !nbt.getBooleanOr("safe", true) || !hasBlockingEntities(level, pos);
     }
 
     private static boolean hasBlockingEntities(Level level, BlockPos pos) {
-        AABB box = new AABB(pos.getX() - 0.2, pos.getY() - 0.2, pos.getZ() - 0.2, pos.getX() + 1.2, pos.getY() + 2.2, pos.getZ() + 1.2);
-        return !level.getEntitiesOfClass(Entity.class, box, e -> !(e instanceof ItemEntity)).isEmpty();
+        AABB box = new AABB(pos.getX() - 0.2, pos.getY() - 0.2, pos.getZ() - 0.2,
+                pos.getX() + 1.2, pos.getY() + 2.2, pos.getZ() + 1.2);
+        return !level.getEntitiesOfClass(Entity.class, box, e -> !(e instanceof ItemEntity) && !e.isSpectator()).isEmpty();
     }
 
-    private static void _setBlockState(Level level, BlockPos pos, int value, IntegerProperty prop) {
-        if (!level.hasChunkAt(pos) || level.getBlockState(pos).isAir()) return;
-        if (prop == null || !prop.getPossibleValues().contains(value)) return;
+    private static void setState(Level level, BlockPos pos, int value) {
+        if (!level.hasChunkAt(pos)) return;
         BlockState oldState = level.getBlockState(pos);
-        BlockState newState = oldState.setValue(prop, value);
-        level.setBlock(pos, newState, 3);
-        level.sendBlockUpdated(pos, oldState, newState, 3);
+        IntegerProperty prop = getSafeProperty(oldState, "arl_variat", IntegerProperty.class);
+        if (prop == null || !prop.getPossibleValues().contains(value) || oldState.getValue(prop) == value) return;
+        // setBlock with UPDATE_CLIENTS already sends the update. Do not send it twice.
+        level.setBlock(pos, oldState.setValue(prop, value), Block.UPDATE_ALL);
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    private static void _updateTopPlugState(Level level, BlockPos mainPos, boolean toOpen) {
-        BlockPos topPos = mainPos.above();
-        BlockState topState = level.getBlockState(topPos);
-        String topName = BuiltInRegistries.BLOCK.getKey(topState.getBlock()).getPath();
-        if (!topName.contains("airlock_up_plug")) return;
-
-        String targetName = toOpen 
-            ? (topName.endsWith("_open") ? topName : topName + "_open") 
-            : (topName.endsWith("_open") ? topName.substring(0, topName.length() - 5) : topName);
-
-        Optional<Block> optBlock = BuiltInRegistries.BLOCK.getOptional(Identifier.fromNamespaceAndPath("ssc_14", targetName));
-        if (optBlock.isEmpty() || optBlock.get() == topState.getBlock()) return;
-
-        Block targetBlock = optBlock.get();
-        BlockState newTopState = targetBlock.defaultBlockState();
-        for (Property<?> oldProp : topState.getProperties()) {
-            Property<?> newProp = newTopState.getBlock().getStateDefinition().getProperty(oldProp.getName());
-            if (newProp != null && newProp.getValueClass().isAssignableFrom(oldProp.getValueClass())) {
-                try {
-                    Property rawProp = (Property) newProp;
-                    Comparable value = (Comparable) topState.getValue(oldProp);
-                    newTopState = newTopState.setValue(rawProp, value);
-                } catch (Exception ignored) {}
-            }
+    private static void updateTop(Level level, BlockPos pos, boolean open) {
+        BlockPos top = pos.above();
+        if (!level.hasChunkAt(top)) return;
+        BlockState current = level.getBlockState(top);
+        Block closedBlock = Ssc14ModBlocks.AIRLOCK_UP_PLUG.get();
+        Block openBlock = Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get();
+        if (current.getBlock() != closedBlock && current.getBlock() != openBlock) return;
+        Block target = open ? openBlock : closedBlock;
+        if (current.getBlock() == target) return;
+        BlockState next = target.defaultBlockState();
+        if (current.hasProperty(HorizontalDirectionalBlock.FACING) && next.hasProperty(HorizontalDirectionalBlock.FACING)) {
+            next = next.setValue(HorizontalDirectionalBlock.FACING, current.getValue(HorizontalDirectionalBlock.FACING));
         }
-        level.setBlock(topPos, newTopState, 3);
-        level.sendBlockUpdated(topPos, topState, newTopState, 3);
+        level.setBlock(top, next, Block.UPDATE_ALL);
     }
 
-    private static void scheduleOpenAnimation(Level level, BlockPos pos, IntegerProperty prop) {
-        _setBlockState(level, pos, 15, prop);
-        Ssc14Mod.queueServerWork(4, () -> _setBlockState(level, pos, 12, prop));
-        Ssc14Mod.queueServerWork(8, () -> {
-            _setBlockState(level, pos, 13, prop);
-            _updateTopPlugState(level, pos, true);
-        });
-        Ssc14Mod.queueServerWork(12, () -> _setBlockState(level, pos, 14, prop));
-        Ssc14Mod.queueServerWork(16, () -> _setBlockState(level, pos, 11, prop));
+    private static <T> T getSafeProperty(BlockState state, String name, Class<T> type) {
+        var prop = state.getBlock().getStateDefinition().getProperty(name);
+        return type.isInstance(prop) ? type.cast(prop) : null;
     }
 
-    private static void scheduleCloseAnimation(Level level, BlockPos pos, CompoundTag nbt, IntegerProperty prop) {
-        _setBlockState(level, pos, 14, prop);
-        Ssc14Mod.queueServerWork(4, () -> _setBlockState(level, pos, 13, prop));
-        Ssc14Mod.queueServerWork(8, () -> {
-            _setBlockState(level, pos, 12, prop);
-            _updateTopPlugState(level, pos, false);
-        });
-        Ssc14Mod.queueServerWork(12, () -> _setBlockState(level, pos, 15, prop));
-        Ssc14Mod.queueServerWork(16, () -> {
-            // ИСПРАВЛЕНО ПОД 1.21.4: Тернарный оператор переведен на .orElse(false)
-            int target = nbt.contains("emergency_acs") && nbt.getBoolean("emergency_acs").orElse(false) ? 4 : 0;
-            _setBlockState(level, pos, target, prop);
-        });
-    }
+	private static boolean checkAccess(CompoundTag blockNbt, Entity entity, boolean emergency) {
+		if (emergency) return true;
+		boolean anyRequired = false;
+		for (String role : ACCESS_ROLES) if (blockNbt.getBoolean(role).orElse(false)) { anyRequired = true; break; }
+		if (!anyRequired) return true;
+		CompoundTag playerData = entity.getPersistentData();
+		for (String role : ACCESS_ROLES) if (blockNbt.getBoolean(role).orElse(false) && playerData.getBoolean(role).orElse(false)) return true;
+		return false;
+	}
 
-    private static void openGui(ServerPlayer player, String name, BlockPos pos) {
-        player.openMenu(new MenuProvider() {
-            @Override public Component getDisplayName() { return Component.literal(name); }
-            @Override public boolean shouldTriggerClientSideContainerClosingOnOpen() { return false; }
-            @Override public AbstractContainerMenu createMenu(int id, Inventory inv, Player p) {
-                return name.equals("AccessConfigMENU")
-                    ? new AccessConfigMENUMenu(id, inv, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos))
-                    : new CabelPannelAirlockMenu(id, inv, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-            }
-        }, pos);
-    }
+	private static void openGui(ServerPlayer player, String name, BlockPos pos) {
+		player.openMenu(new MenuProvider() {
+			@Override public Component getDisplayName() { return Component.literal(name); }
+			@Override public boolean shouldTriggerClientSideContainerClosingOnOpen() { return false; }
+			@Override public AbstractContainerMenu createMenu(int id, Inventory inv, Player p) {
+				return name.equals("AccessConfigMENU") 
+					? new AccessConfigMENUMenu(id, inv, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos))
+					: new CabelPannelAirlockMenu(id, inv, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+			}
+		}, pos);
+	}
 
-    private static void _playSound(Level level, BlockPos pos, String soundId) {
-        // ИСПРАВЛЕНО ПОД 1.21.4: Реестр возвращает Holder.Reference, извлекаем через .value()
-        var holder = BuiltInRegistries.SOUND_EVENT.get(Identifier.fromNamespaceAndPath("ssc_14", soundId.replace("ssc_14:", "")));
-        if (holder != null && holder.isPresent()) {
-            level.playSound(null, pos, holder.get().value(), SoundSource.BLOCKS, 1f, 1f);
-        }
-    }
+	private static void _playSound(Level level, BlockPos pos, String soundId) {
+		Optional<SoundEvent> opt = BuiltInRegistries.SOUND_EVENT.getOptional(Identifier.parse(soundId));
+		opt.ifPresent(s -> level.playSound(null, pos, s, SoundSource.BLOCKS, 1f, 1f));
+	}
 }

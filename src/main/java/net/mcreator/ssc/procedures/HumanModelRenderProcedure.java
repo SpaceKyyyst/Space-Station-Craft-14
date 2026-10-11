@@ -2,55 +2,116 @@
 package net.mcreator.ssc.procedures;
 
 import org.joml.Vector3f;
-
 import net.neoforged.neoforge.client.event.RenderPlayerEvent;
+import net.neoforged.neoforge.client.event.RenderArmEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.bus.api.Event;
 import net.neoforged.api.distmarker.Dist;
 
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.Identifier;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.Direction;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.model.player.PlayerModel;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 
 import net.mcreator.ssc.init.Ssc14ModRenderStateModifiers;
 import net.mcreator.ssc.init.Ssc14ModHumanoidModels;
+import net.mcreator.ssc.init.Ssc14ModAttributes;
 
-import javax.annotation.Nullable;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.Collection;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class HumanModelRenderProcedure {
 
+	public static Collection<Runnable> capes = new ConcurrentLinkedQueue<>();
+
 	@SubscribeEvent
 	public static void onPlayerRendered(RenderPlayerEvent.Pre event) {
-		// ИСПРАВЛЕНО НА ОСНОВЕ ПУСТЫШКИ: Достаем сущность игрока из стейта рендера
 		Entity entity = (Entity) event.getRenderState().getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
 		execute(event, entity, (EntityModel) event.getRenderer().getModel(), event.getPoseStack());
 	}
 
-	public static Collection<Runnable> capes = new ConcurrentLinkedQueue<>();
+	@SubscribeEvent
+	public static void onArmRendered(RenderArmEvent event) {
+		Minecraft mc = Minecraft.getInstance();
+		if (mc.player == null || mc.getEntityRenderDispatcher() == null) return;
+		if (mc.player.isSpectator()) return;
 
+		event.setCanceled(true);
+
+		var renderer = mc.getEntityRenderDispatcher().getRenderer(mc.player);
+		if (!(renderer instanceof AvatarRenderer avatarRenderer)) return;
+
+		PlayerModel vanillaModel = (PlayerModel) avatarRenderer.getModel();
+		
+		int raceId = 0;
+		if (mc.player.getAttributes().hasAttribute(Ssc14ModAttributes.RACE)) {
+			raceId = (int) mc.player.getAttribute(Ssc14ModAttributes.RACE).getBaseValue();
+		}
+
+		PlayerModel customModel = switch (raceId) {
+			case 1 -> Ssc14ModHumanoidModels.UNATH_MODEL;
+			case 2 -> Ssc14ModHumanoidModels.FELINID_MODEL;
+			default -> Ssc14ModHumanoidModels.HUMAN_MODEL;
+		};
+		
+		Identifier texture = switch (raceId) {
+			case 1 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/unath_m_texture.png");
+			case 2 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/felinid_m_texture.png");
+			case 3 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/slimeman_m_texture.png");
+			default -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png");
+		};
+
+		boolean isLeft = event.getArm() == HumanoidArm.LEFT;
+		ModelPart customArm = isLeft ? customModel.leftArm : customModel.rightArm;
+
+		PoseStack poseStack = event.getPoseStack();
+		poseStack.pushPose();
+
+		if (raceId == 4) {
+			poseStack.scale(1.0f, 0.80f, 1.0f);
+		}
+
+		customArm.resetPose();
+		if (isLeft) vanillaModel.leftArm.resetPose(); else vanillaModel.rightArm.resetPose();
+
+		customArm.loadPose(isLeft ? vanillaModel.leftArm.storePose() : vanillaModel.rightArm.storePose());
+
+		boolean armVisible = customArm.skipDraw;
+		customArm.skipDraw = false;
+
+		RenderType armRenderType = (raceId == 3) 
+			? RenderTypes.entityTranslucent(texture) 
+			: RenderTypes.armorCutoutNoCull(texture);
+
+		VertexConsumer buffer = Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(armRenderType);
+		customArm.render(poseStack, buffer, event.getPackedLight(), OverlayTexture.NO_OVERLAY);
+
+		customArm.skipDraw = armVisible;
+		poseStack.popPose();
+	}
 	public static void offsetScale(PlayerModel model, Vector3f offset) {
 		model.head.offsetScale(offset);
 		model.head.y += offset.x() > 0 ? 0.05 : -0.05;
@@ -67,17 +128,16 @@ public class HumanModelRenderProcedure {
 		model.leftPants.offsetScale(offset);
 		model.rightPants.offsetScale(offset);
 	}
+	
 	public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, RenderType renderType, AvatarRenderState state) {
 		LivingEntity eventEntity_ = (LivingEntity) playerRenderEvent.getRenderState().getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
 		PoseStack poseStack = playerRenderEvent.getPoseStack();
 		poseStack.pushPose();
 		
-		// ИСПРАВЛЕНО ПОД 1.21.4: Достаем NBT игрока через стейт рендера
 		CompoundTag playerData = state.getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY).getPersistentData();
 		float oldAnimationProgress = 0;
 		float oldAgeInTicks = 0;
 		if (playerData.contains("PlayerAnimationProgress")) {
-			// ИСПРАВЛЕНО ПОД NEW NBT API: Чтение float через getFloatOr
 			oldAnimationProgress = playerData.getFloatOr("PlayerAnimationProgress", 0);
 			oldAgeInTicks = playerData.getFloatOr("LastTickTime", 0);
 		}
@@ -88,6 +148,7 @@ public class HumanModelRenderProcedure {
 		} else if (oldAnimationProgress > 0) {
 			model.setupAnim(state);
 		}
+		
 		if (eventEntity_.hasPose(Pose.SLEEPING)) {
 			Direction direction = eventEntity_.getBedOrientation();
 			if (direction != null) {
@@ -96,10 +157,19 @@ public class HumanModelRenderProcedure {
 			}
 		}
 		
-		// Настраиваем углы вращения на основе стейта
 		playerRenderEvent.getRenderer().setupRotations(state, poseStack, state.bodyRot, 0);
 		poseStack.scale(-0.938f, -0.938f, 0.938f);
-		poseStack.translate(0.0D, -1.501, 0.0D);
+		
+		boolean isCrawling = playerData.getBoolean("ssc14_crawl_active").orElse(false); 
+		
+		if (isCrawling || state.pose == Pose.SWIMMING) {
+			poseStack.translate(0.0D, -0.5D, 0.5D); 
+			poseStack.mulPose(com.mojang.math.Axis.XP.rotationDegrees(90.0F));
+			poseStack.translate(0.0D, -1.0D, 0.0D);
+		} else {
+			poseStack.translate(0.0D, -1.501, 0.0D);
+		}
+		
 		Vector3f offset = new Vector3f(0.015f);
 		offsetScale(model, offset);
 		if (!capes.isEmpty()) {
@@ -107,22 +177,18 @@ public class HumanModelRenderProcedure {
 			capes.clear();
 		}
 		
-		// Отрисовываем буфер
 		model.renderToBuffer(poseStack, Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(renderType), state.lightCoords, LivingEntityRenderer.getOverlayCoords(state, 0));
 		offset.negate();
 		offsetScale(model, offset);
 		poseStack.popPose();
 	}
-
 	private static boolean hasHardsuitInSlot(Player player, String slotId, String tagMain, String tagAlt, String itemMain, String itemAlt) {
 		var invOpt = CuriosApi.getCuriosInventory(player);
 		if (invOpt.isEmpty()) return false;
 		var handler = invOpt.get().getStacksHandler(slotId);
 		if (handler.isEmpty()) return false;
-		
 		net.neoforged.neoforge.items.IItemHandlerModifiable stacks = handler.get().getStacks();
 		if (stacks == null) return false;
-		
 		int slotsCount = stacks.getSlots();
 		for (int i = 0; slotsCount > i; i++) {
 			ItemStack stack = stacks.getStackInSlot(i);
@@ -142,24 +208,41 @@ public class HumanModelRenderProcedure {
 	public static void execute(RenderPlayerEvent playerRenderEvent, Entity entity, EntityModel entityModel, PoseStack poseStack) {
 		if (entity == null || entityModel == null || playerRenderEvent == null || poseStack == null)
 			return;
+			
+		// Вычисляем точные динамические коэффициенты из ванильных атрибутов MCreator
 		double model_scale = entity instanceof LivingEntity _livingEntity0 && _livingEntity0.getAttributes().hasAttribute(Attributes.SCALE) ? _livingEntity0.getAttribute(Attributes.SCALE).getValue() : 1.0;
 		double clothes_scale = 1.0 / (entity instanceof LivingEntity _livingEntity1 && _livingEntity1.getAttributes().hasAttribute(Attributes.SCALE) ? _livingEntity1.getAttribute(Attributes.SCALE).getValue() : 1.0);
 		
-		if (!entity.isInvisible()) {
-			PlayerModel humanModel = Ssc14ModHumanoidModels.HUMAN_MODEL;
+		int raceId = 0;
+		if (entity instanceof LivingEntity _livingEntityRace && _livingEntityRace.getAttributes().hasAttribute(Ssc14ModAttributes.RACE)) {
+			raceId = (int) _livingEntityRace.getAttribute(Ssc14ModAttributes.RACE).getBaseValue();
+		}
 
-			humanModel.body.skipDraw = false;
-			humanModel.jacket.skipDraw = false;
-			humanModel.leftArm.skipDraw = false;
-			humanModel.rightArm.skipDraw = false;
-			humanModel.leftSleeve.skipDraw = false;
-			humanModel.rightSleeve.skipDraw = false;
-			humanModel.leftLeg.skipDraw = false;
-			humanModel.rightLeg.skipDraw = false;
-			humanModel.leftPants.skipDraw = false;
-			humanModel.rightPants.skipDraw = false;
-			humanModel.head.skipDraw = false;
-			humanModel.hat.skipDraw = false;
+		PlayerModel activeCustomModel = switch (raceId) {
+			case 1 -> Ssc14ModHumanoidModels.UNATH_MODEL;
+			case 2 -> Ssc14ModHumanoidModels.FELINID_MODEL;
+			default -> Ssc14ModHumanoidModels.HUMAN_MODEL;
+		};
+		
+		Identifier texture = switch (raceId) {
+			case 1 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/unath_m_texture.png");
+			case 2 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/felinid_m_texture.png");
+			case 3 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/slimeman_m_texture.png");
+			default -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png");
+		};
+
+		// 🔥 ПАТТЕРН МСРЕАТОР СИНХРОННЫЙ: Ужимаем по оси Y, опираясь строго на динамический model_scale
+		if (raceId == 4) {
+			poseStack.scale(1.0f, (float) model_scale, 1.0f);
+		}
+
+		if (!entity.isInvisible()) {
+			activeCustomModel.body.skipDraw = false; activeCustomModel.jacket.skipDraw = false;
+			activeCustomModel.leftArm.skipDraw = false; activeCustomModel.rightArm.skipDraw = false;
+			activeCustomModel.leftSleeve.skipDraw = false; activeCustomModel.rightSleeve.skipDraw = false;
+			activeCustomModel.leftLeg.skipDraw = false; activeCustomModel.rightLeg.skipDraw = false;
+			activeCustomModel.leftPants.skipDraw = false; activeCustomModel.rightPants.skipDraw = false;
+			activeCustomModel.head.skipDraw = false; activeCustomModel.hat.skipDraw = false;
 
 			boolean hasHardsuitBody = false;
 			boolean hasHardsuitHelmet = false;
@@ -170,43 +253,60 @@ public class HumanModelRenderProcedure {
 			}
 
 			if (hasHardsuitBody) {
-				humanModel.body.skipDraw = true;
-				humanModel.jacket.skipDraw = true;
-				humanModel.leftArm.skipDraw = true;
-				humanModel.rightArm.skipDraw = true;
-				humanModel.leftSleeve.skipDraw = true;
-				humanModel.rightSleeve.skipDraw = true;
-				humanModel.leftLeg.skipDraw = true;
-				humanModel.rightLeg.skipDraw = true;
-				humanModel.leftPants.skipDraw = true;
-				humanModel.rightPants.skipDraw = true;
+				activeCustomModel.body.skipDraw = true; activeCustomModel.jacket.skipDraw = true;
+				activeCustomModel.leftArm.skipDraw = true; activeCustomModel.rightArm.skipDraw = true;
+				activeCustomModel.leftSleeve.skipDraw = true; activeCustomModel.rightSleeve.skipDraw = true;
+				activeCustomModel.leftLeg.skipDraw = true; activeCustomModel.rightLeg.skipDraw = true;
+				activeCustomModel.leftPants.skipDraw = true; activeCustomModel.rightPants.skipDraw = true;
 			}
+			if (hasHardsuitHelmet) { activeCustomModel.head.skipDraw = true; activeCustomModel.hat.skipDraw = true; }
 
-			if (hasHardsuitHelmet) {
-				humanModel.head.skipDraw = true;
-				humanModel.hat.skipDraw = true;
-			}
+			RenderType bodyRenderType = (raceId == 3) ? RenderTypes.entityTranslucent(texture) : RenderTypes.armorCutoutNoCull(texture);
 
+			poseStack.pushPose();
+			// Внутри кастомного рендера применяем базовый масштаб
 			poseStack.scale((float) model_scale, (float) model_scale, (float) model_scale);
-			{
-				Identifier texture = (Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png"));
-				renderHumanoid(playerRenderEvent, Ssc14ModHumanoidModels.HUMAN_MODEL, RenderTypes.armorCutoutNoCull(texture), (AvatarRenderState) playerRenderEvent.getRenderState());
-			}
-			poseStack.scale((float) clothes_scale, (float) clothes_scale, (float) clothes_scale);
+			renderHumanoid(playerRenderEvent, activeCustomModel, bodyRenderType, (AvatarRenderState) playerRenderEvent.getRenderState());
+			poseStack.popPose();
 		}
 		
-		// Скрываем части оригинальной ванильной модели
-		((PlayerModel) entityModel).body.skipDraw = true;
-		((PlayerModel) entityModel).hat.skipDraw = true;
-		((PlayerModel) entityModel).head.skipDraw = true;
-		((PlayerModel) entityModel).jacket.skipDraw = true;
-		((PlayerModel) entityModel).leftArm.skipDraw = true;
-		((PlayerModel) entityModel).leftLeg.skipDraw = true;
-		((PlayerModel) entityModel).leftPants.skipDraw = true;
-		((PlayerModel) entityModel).leftSleeve.skipDraw = true;
-		((PlayerModel) entityModel).rightArm.skipDraw = true;
-		((PlayerModel) entityModel).rightLeg.skipDraw = true;
-		((PlayerModel) entityModel).rightPants.skipDraw = true;
-		((PlayerModel) entityModel).rightSleeve.skipDraw = true;
+		if (entityModel instanceof PlayerModel vanillaModel) {
+			activeCustomModel.head.loadPose(vanillaModel.head.storePose());
+			activeCustomModel.hat.loadPose(vanillaModel.hat.storePose());
+			activeCustomModel.body.loadPose(vanillaModel.body.storePose());
+			activeCustomModel.leftArm.loadPose(vanillaModel.leftArm.storePose());
+			activeCustomModel.rightArm.loadPose(vanillaModel.rightArm.storePose());
+			activeCustomModel.leftLeg.loadPose(vanillaModel.leftLeg.storePose());
+			activeCustomModel.rightLeg.loadPose(vanillaModel.rightLeg.storePose());
+			
+			activeCustomModel.jacket.loadPose(vanillaModel.jacket.storePose());
+			activeCustomModel.leftSleeve.loadPose(vanillaModel.leftSleeve.storePose());
+			activeCustomModel.rightSleeve.loadPose(vanillaModel.rightSleeve.storePose());
+			activeCustomModel.leftPants.loadPose(vanillaModel.leftPants.storePose());
+			activeCustomModel.rightPants.loadPose(vanillaModel.rightPants.storePose());
+
+			if (entity.getPersistentData().getBoolean("ssc14_crawl_active").orElse(false)) {
+				float swing = vanillaModel.leftLeg.xRot; 
+				activeCustomModel.head.xRot -= 1.4F; activeCustomModel.hat.xRot = activeCustomModel.head.xRot;
+				activeCustomModel.leftArm.xRot = -2.0F + (swing * 0.8F); activeCustomModel.leftArm.zRot = -0.2F;
+				activeCustomModel.leftSleeve.xRot = activeCustomModel.leftArm.xRot; activeCustomModel.leftSleeve.zRot = activeCustomModel.leftArm.zRot;
+				activeCustomModel.rightArm.xRot = -2.0F - (swing * 0.8F); activeCustomModel.rightArm.zRot = 0.2F;
+				activeCustomModel.rightSleeve.xRot = activeCustomModel.rightArm.xRot; activeCustomModel.rightSleeve.zRot = activeCustomModel.rightArm.zRot;
+				activeCustomModel.leftLeg.xRot = 0.2F - (swing * 0.8F); activeCustomModel.leftLeg.yRot = -0.3F; activeCustomModel.leftLeg.zRot = -0.2F;
+				activeCustomModel.leftPants.xRot = activeCustomModel.leftLeg.xRot; activeCustomModel.leftPants.yRot = activeCustomModel.leftLeg.yRot; activeCustomModel.leftPants.zRot = activeCustomModel.leftLeg.zRot;
+				activeCustomModel.rightLeg.xRot = 0.2F + (swing * 0.8F); activeCustomModel.rightLeg.yRot = 0.3F; activeCustomModel.rightLeg.zRot = 0.2F;
+				activeCustomModel.rightPants.xRot = activeCustomModel.rightLeg.xRot; activeCustomModel.rightPants.yRot = activeCustomModel.rightLeg.yRot; activeCustomModel.rightPants.zRot = activeCustomModel.rightLeg.zRot;
+			}
+
+			vanillaModel.body.skipDraw = true; vanillaModel.hat.skipDraw = true; vanillaModel.head.skipDraw = true;
+			vanillaModel.jacket.skipDraw = true; vanillaModel.leftArm.skipDraw = true; vanillaModel.leftLeg.skipDraw = true;
+			vanillaModel.leftPants.skipDraw = true; vanillaModel.leftSleeve.skipDraw = true; vanillaModel.rightArm.skipDraw = true;
+			vanillaModel.rightLeg.skipDraw = true; vanillaModel.rightPants.skipDraw = true; vanillaModel.rightSleeve.skipDraw = true;
+		}
+
+		// 🔥 КОПИЯ КОСТЫЛЯ ИЗ ШАБЛОНА СИНХРОННАЯ: Восстанавливаем матрицу строго по оси Y через clothes_scale
+		if (raceId == 4) {
+			poseStack.scale(1.0f, (float) clothes_scale, 1.0f);
+		}
 	}
 }

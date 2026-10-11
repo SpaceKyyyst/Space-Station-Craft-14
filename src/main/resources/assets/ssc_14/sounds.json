@@ -598,5 +598,69 @@
         "stream": false
       }
     ]
+  },
+  "effects_refill": {
+    "sounds": [
+      {
+        "name": "ssc_14:effects_refill",
+        "stream": false
+      }
+    ]
+  },
+  "mobs_bite": {
+    "sounds": [
+      {
+        "name": "ssc_14:mobs_bite",
+        "stream": false
+      }
+    ]
+  },
+  "voice_talk_speak_1": {
+    "sounds": [
+      {
+        "name": "ssc_14:voice_talk_speak_1",
+        "stream": false
+      }
+    ]
+  },
+  "voice_talk_speak_2": {
+    "sounds": [
+      {
+        "name": "ssc_14:voice_talk_speak_2",
+        "stream": false
+      }
+    ]
+  },
+  "voice_talk_speak_3": {
+    "sounds": [
+      {
+        "name": "ssc_14:voice_talk_speak_3",
+        "stream": false
+      }
+    ]
+  },
+  "voice_talk_speak_4": {
+    "sounds": [
+      {
+        "name": "ssc_14:voice_talk_speak_4",
+        "stream": false
+      }
+    ]
+  },
+  "cargo_buy_success": {
+    "sounds": [
+      {
+        "name": "ssc_14:cargo_buy_success",
+        "stream": false
+      }
+    ]
+  },
+  "cargo_buy_error": {
+    "sounds": [
+      {
+        "name": "ssc_14:cargo_buy_error",
+        "stream": false
+      }
+    ]
   }
 }

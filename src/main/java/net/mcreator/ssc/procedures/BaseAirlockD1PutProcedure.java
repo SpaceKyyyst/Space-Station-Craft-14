@@ -25,9 +25,13 @@ public class BaseAirlockD1PutProcedure {
 		BlockPos topPos = pos.above();
 		
 		initializeBlockNBT(world, pos, blockstate); // Передаем blockstate для проверки типа шлюза
-		ensureTopBlockExists(world, topPos, blockstate);
+        BlockEntity existing = world.getBlockEntity(pos);
+        int action = existing == null ? 0 : existing.getPersistentData().getIntOr("_ssc14_airlock_action", 0);
+        if (action != 1 && action != 2) ensureTopBlockExists(world, topPos, blockstate);
 		initializeClosedAirlockState(world, pos, blockstate);
 		generateRandomCableValues(world, pos);
+		BlockEntity be = world.getBlockEntity(pos);
+		if (be != null) be.setChanged();
 	}
 
 	private static void initializeBlockNBT(LevelAccessor world, BlockPos pos, BlockState state) {
@@ -46,6 +50,9 @@ public class BaseAirlockD1PutProcedure {
 		nbt.putBoolean("ai_access", true);
 		nbt.putBoolean("logs", true);
 		nbt.putBoolean("powered", true);
+        nbt.putBoolean("_ssc14_supply_powered", true);
+        nbt.putBoolean("energy_cabel_1", true);
+        nbt.putBoolean("energy_cabel_2", true);
 
 		// Сначала отключаем ВСЕ доступы по умолчанию (выставляем в false)
 		String[] allAccesses = {
@@ -173,7 +180,7 @@ public class BaseAirlockD1PutProcedure {
 		BlockState oldState = level.getBlockState(pos);
 		BlockState newState = oldState.setValue(prop, value);
 		level.setBlock(pos, newState, 3);
-		level.sendBlockUpdated(pos, oldState, newState, 3);
+
 	}
 
 	private static void generateRandomCableValues(LevelAccessor world, BlockPos pos) {

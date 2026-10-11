@@ -102,6 +102,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 128,
           "y": 71,
           "locked": true
@@ -120,6 +121,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 128,
           "y": 80,
           "locked": true
@@ -138,6 +140,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 128,
           "y": 89,
           "locked": true
@@ -156,6 +159,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 148,
           "y": 71,
           "locked": true
@@ -174,6 +178,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 180,
           "y": 80,
           "locked": true
@@ -192,6 +197,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 218,
           "y": 89,
           "locked": true
@@ -210,6 +216,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 218,
           "y": 89,
           "locked": true
@@ -228,6 +235,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 218,
           "y": 89,
           "locked": true
@@ -246,6 +254,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 218,
           "y": 89,
           "locked": true
@@ -264,6 +273,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 218,
           "y": 89,
           "locked": true
@@ -282,6 +292,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 218,
           "y": 89,
           "locked": true
@@ -300,6 +311,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 218,
           "y": 89,
           "locked": true
@@ -318,6 +330,7 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 218,
           "y": 89,
           "locked": true
@@ -336,12 +349,119 @@
             "falpha": 0.0
           },
           "hasShadow": false,
+          "displayCondition": "PDA_main_TAB_cond",
           "x": 218,
           "y": 89,
           "locked": true
         }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_pda_1_button",
+          "image": "pda_1_button.png",
+          "hoveredImage": "",
+          "onClick": "PDAmainButtonPR",
+          "x": 126,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_pda_1_button1",
+          "image": "pda_1_button.png",
+          "hoveredImage": "",
+          "onClick": "PDA2TABbuttonPR",
+          "x": 140,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_pda_1_button2",
+          "image": "pda_1_button.png",
+          "hoveredImage": "",
+          "onClick": "PDA3TABbuttonPR",
+          "x": 154,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "pda_main_tab.png",
+          "use1Xscale": false,
+          "displayCondition": "PDA_main_TAB_cond",
+          "x": 126,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "pda_2_tab.png",
+          "use1Xscale": false,
+          "displayCondition": "PDA2TABcond",
+          "x": 139,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "pda_3_tab.png",
+          "use1Xscale": false,
+          "displayCondition": "PDA3TABcond",
+          "x": 153,
+          "y": 56,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_pda_button_tab2",
+          "image": "pda_button_tab2.png",
+          "hoveredImage": "",
+          "displayCondition": "PDA2TABcond",
+          "x": 129,
+          "y": 71,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_pda_button_tab21",
+          "image": "pda_button_tab2.png",
+          "hoveredImage": "",
+          "displayCondition": "PDA2TABcond",
+          "x": 217,
+          "y": 71,
+          "locked": true
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_pda_button_tab22",
+          "image": "pda_button_tab2.png",
+          "hoveredImage": "",
+          "displayCondition": "PDA2TABcond",
+          "x": 129,
+          "y": 87,
+          "locked": false
+        }
       }
     ],
+    "onTick": "PDAGUIoffPR",
     "gridSettings": {
       "sx": 18,
       "sy": 18,

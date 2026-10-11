@@ -228,6 +228,22 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> GLASS_TABLE;
 	public static final DeferredBlock<Block> GLASS_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> BASE_GLASS_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> FUEL_TANK;
+	public static final DeferredBlock<Block> ORDER_CONSOLE;
+	public static final DeferredBlock<Block> ORDER_PALLET;
+	public static final DeferredBlock<Block> SALE_PALLET;
+	public static final DeferredBlock<Block> SALE_CONSOLE;
+	public static final DeferredBlock<Block> BANNER_NT;
+	public static final DeferredBlock<Block> BANNER_MED;
+	public static final DeferredBlock<Block> BANNER_RN_D;
+	public static final DeferredBlock<Block> BANNER_SEC;
+	public static final DeferredBlock<Block> BANNER_CARGO;
+	public static final DeferredBlock<Block> BANNER_ENG;
+	public static final DeferredBlock<Block> BANNER_SYND;
+	public static final DeferredBlock<Block> ARM_CHAIR_BASE;
+	public static final DeferredBlock<Block> ARM_CHAIR_BROWN;
+	public static final DeferredBlock<Block> ARM_CHAIR_CARP;
+	public static final DeferredBlock<Block> EMERGENCY_LIGHT;
 	static {
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
 		SHEATHING = register("sheathing", SheathingBlock::new);
@@ -437,6 +453,22 @@ public class Ssc14ModBlocks {
 		GLASS_TABLE = register("glass_table", GlassTableBlock::new);
 		GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1", GlassAirlockD1Block::new);
 		BASE_GLASS_AIRLOCK_D_1 = register("base_glass_airlock_d_1", BaseGlassAirlockD1Block::new);
+		FUEL_TANK = register("fuel_tank", FuelTankBlock::new);
+		ORDER_CONSOLE = register("order_console", OrderConsoleBlock::new);
+		ORDER_PALLET = register("order_pallet", OrderPalletBlock::new);
+		SALE_PALLET = register("sale_pallet", SalePalletBlock::new);
+		SALE_CONSOLE = register("sale_console", SaleConsoleBlock::new);
+		BANNER_NT = register("banner_nt", BannerNTBlock::new);
+		BANNER_MED = register("banner_med", BannerMedBlock::new);
+		BANNER_RN_D = register("banner_rn_d", BannerRnDBlock::new);
+		BANNER_SEC = register("banner_sec", BannerSecBlock::new);
+		BANNER_CARGO = register("banner_cargo", BannerCargoBlock::new);
+		BANNER_ENG = register("banner_eng", BannerEngBlock::new);
+		BANNER_SYND = register("banner_synd", BannerSyndBlock::new);
+		ARM_CHAIR_BASE = register("arm_chair_base", ArmChairBaseBlock::new);
+		ARM_CHAIR_BROWN = register("arm_chair_brown", ArmChairBrownBlock::new);
+		ARM_CHAIR_CARP = register("arm_chair_carp", ArmChairCarpBlock::new);
+		EMERGENCY_LIGHT = register("emergency_light", EmergencyLightBlock::new);
 	}
 
 	// Start of user code block custom blocks

@@ -43,6 +43,8 @@ public class Ssc14ModMenus {
 	public static final DeferredHolder<MenuType<?>, MenuType<MicrowaweGUIMenu>> MICROWAWE_GUI = REGISTRY.register("microwawe_gui", () -> IMenuTypeExtension.create(MicrowaweGUIMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<DECALScolorGUIMenu>> DECAL_SCOLOR_GUI = REGISTRY.register("decal_scolor_gui", () -> IMenuTypeExtension.create(DECALScolorGUIMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<BackpackGUIMenu>> BACKPACK_GUI = REGISTRY.register("backpack_gui", () -> IMenuTypeExtension.create(BackpackGUIMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<OrderGUIMenu>> ORDER_GUI = REGISTRY.register("order_gui", () -> IMenuTypeExtension.create(OrderGUIMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<SaleGUIMenu>> SALE_GUI = REGISTRY.register("sale_gui", () -> IMenuTypeExtension.create(SaleGUIMenu::new));
 
 	public interface MenuAccessor {
 		Map<String, Object> getMenuState();

@@ -32,7 +32,6 @@
     "attributeModifiers": [],
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
-    "onRightClickedOnBlock": "Nippers_Use",
     "onEntityHitWith": "NippersDAMAGE"
   }
 }

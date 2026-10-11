@@ -87,4 +87,12 @@ public class Ssc14ModSounds {
 	public static final DeferredHolder<SoundEvent, SoundEvent> FOAM_RIFLE_CHARGING = REGISTRY.register("foam_rifle_charging", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("ssc_14", "foam_rifle_charging")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> FOAM_RIFLE_SHOT = REGISTRY.register("foam_rifle_shot", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("ssc_14", "foam_rifle_shot")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> FOAM_RIFLE_DISCHARGE = REGISTRY.register("foam_rifle_discharge", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("ssc_14", "foam_rifle_discharge")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> EFFECTS_REFILL = REGISTRY.register("effects_refill", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("ssc_14", "effects_refill")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> MOBS_BITE = REGISTRY.register("mobs_bite", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("ssc_14", "mobs_bite")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> VOICE_TALK_SPEAK_1 = REGISTRY.register("voice_talk_speak_1", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("ssc_14", "voice_talk_speak_1")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> VOICE_TALK_SPEAK_2 = REGISTRY.register("voice_talk_speak_2", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("ssc_14", "voice_talk_speak_2")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> VOICE_TALK_SPEAK_3 = REGISTRY.register("voice_talk_speak_3", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("ssc_14", "voice_talk_speak_3")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> VOICE_TALK_SPEAK_4 = REGISTRY.register("voice_talk_speak_4", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("ssc_14", "voice_talk_speak_4")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> CARGO_BUY_SUCCESS = REGISTRY.register("cargo_buy_success", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("ssc_14", "cargo_buy_success")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> CARGO_BUY_ERROR = REGISTRY.register("cargo_buy_error", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("ssc_14", "cargo_buy_error")));
 }

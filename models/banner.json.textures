@@ -1,0 +1,46 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "2": "banner_nt_texture"
+      }
+    },
+    "synd": {
+      "name": "synd",
+      "map": {
+        "2": "banner_synd_texture"
+      }
+    },
+    "med": {
+      "name": "med",
+      "map": {
+        "2": "banner_med_texture"
+      }
+    },
+    "cargo": {
+      "name": "cargo",
+      "map": {
+        "2": "banner_carg_texture"
+      }
+    },
+    "eng": {
+      "name": "eng",
+      "map": {
+        "2": "banner_eng_texture"
+      }
+    },
+    "rnd": {
+      "name": "rnd",
+      "map": {
+        "2": "banner_rnd_texture"
+      }
+    },
+    "sec": {
+      "name": "sec",
+      "map": {
+        "2": "banner_sec_texture"
+      }
+    }
+  }
+}

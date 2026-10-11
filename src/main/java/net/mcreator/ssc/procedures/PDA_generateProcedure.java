@@ -1,7 +1,10 @@
 
 package net.mcreator.ssc.procedures;
 
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.access.ItemAccess;
+import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,7 +23,8 @@ import net.mcreator.ssc.init.Ssc14ModItems;
 public class PDA_generateProcedure {
 	
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
-		
+		if (itemstack == null || itemstack.isEmpty()) return;
+
         if (false == itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getBooleanOr("generate", false)) {
             {
                 final String _tagName = "generate";
@@ -28,28 +32,27 @@ public class PDA_generateProcedure {
                 CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putBoolean(_tagName, _tagValue));
             }
             
-            // ИСПРАВЛЕНО: Безопасное получение инвентаря предмета по стандартам NeoForge 26.1.2
-            var rawCap = itemstack.getCapability(Capabilities.Item.ITEM, null);
-            IItemHandler itemHandler = rawCap == null ? null : IItemHandler.of(rawCap);
-            
-            if (itemHandler != null) {
-                ItemStack _setstack = new ItemStack(Ssc14ModItems.PEN.get()).copy();
-                _setstack.setCount(1);
-                // В NeoForge 26.x во встроенных инвентарях используем прямую вставку или замену в слоте
-                if (itemHandler instanceof net.neoforged.neoforge.items.IItemHandlerModifiable modifiable) {
-                    modifiable.setStackInSlot(1, _setstack);
-                }
+            // ДОБАВЛЕНО: Безопасно пришиваем тег вкладки Tab = 1 строго при первой генерации КПК
+            {
+                final String _tagName = "Tab";
+                final double _tagValue = 1;
+                CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble(_tagName, _tagValue));
             }
             
-			if (Ssc14ModItems.PD_APASSANGER.get() == itemstack.getItem()) {
-				if (itemHandler != null) {
-					ItemStack _setstack = new ItemStack(Ssc14ModItems.ID_CARD_PASSANGER.get()).copy();
-					_setstack.setCount(1);
-					if (itemHandler instanceof net.neoforged.neoforge.items.IItemHandlerModifiable modifiable) {
-                        modifiable.setStackInSlot(0, _setstack);
+            // Твой рабочий проверенный код инжекта предметов через Transfer API
+            if (Ssc14ModItems.PD_APASSANGER.get() == itemstack.getItem()) {
+                try {
+                    if (itemstack.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(itemstack)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+                        setStackInSlot(_resourceHandler, 0, ItemResource.of(new ItemStack(Ssc14ModItems.ID_CARD_PASSANGER.get())), 1);
                     }
-				}
-			}
+                } catch (Exception ignored) {}
+            }
+
+            try {
+                if (itemstack.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(itemstack)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
+                    setStackInSlot(_resourceHandler, 1, ItemResource.of(new ItemStack(Ssc14ModItems.PEN.get())), 1);
+                }
+            } catch (Exception ignored) {}
         }
 
         if (!itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getBooleanOr("flashlight", false)) {
@@ -94,7 +97,18 @@ public class PDA_generateProcedure {
         writeLightPosToItem(itemstack, currentPos, key);
     }
     
+    private static void setStackInSlot(ResourceHandler<ItemResource> handler, int index, ItemResource resource, int amount) {
+        try (var tx = Transaction.openRoot()) {
+            if (!handler.getResource(index).isEmpty())
+                handler.extract(index, handler.getResource(index), handler.getAmountAsInt(index), tx);
+            if (!resource.isEmpty() && amount > 0)
+                handler.insert(index, resource, amount, tx);
+            tx.commit();
+        }
+    }
+    
     private static void cleanupLight(LevelAccessor world, Entity entity, ItemStack itemstack) {
+        if (entity == null) return;
         String key = "ssc14_light_pos_";
         var nbt = entity.getPersistentData();
         

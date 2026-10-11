@@ -1,0 +1,8 @@
+{
+  "_fv": 89,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable type=\"Number\" id=\"Tab_i\">Tab_i</variable></variables><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"return_number\"><value name=\"return\"><block type=\"math_dual_ops\" inline=\"false\"><field name=\"OP\">MINUS</field><value name=\"A\"><block type=\"block_nbt_num_get\"><value name=\"tagName\"><block type=\"text\"><field name=\"TEXT\">TAB</field></block></value><value name=\"x\"><block type=\"coord_x\"></block></value><value name=\"y\"><block type=\"coord_y\"></block></value><value name=\"z\"><block type=\"coord_z\"></block></value></block></value><value name=\"B\"><block type=\"math_number\"><field name=\"NUM\">1</field></block></value></block></value></block></next></block></xml>",
+    "skipDependencyNullCheck": false
+  }
+}

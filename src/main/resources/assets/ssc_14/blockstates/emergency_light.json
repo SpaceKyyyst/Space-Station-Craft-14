@@ -1,0 +1,124 @@
+{
+  "variants": {
+    "facing=north,st_code=0": {
+      "model": "ssc_14:block/emergency_light_0"
+    },
+    "facing=north,st_code=1": {
+      "model": "ssc_14:block/emergency_light_1"
+    },
+    "facing=north,st_code=2": {
+      "model": "ssc_14:block/emergency_light_2"
+    },
+    "facing=north,st_code=3": {
+      "model": "ssc_14:block/emergency_light_3"
+    },
+    "facing=north,st_code=4": {
+      "model": "ssc_14:block/emergency_light_4"
+    },
+    "facing=north,st_code=5": {
+      "model": "ssc_14:block/emergency_light_5"
+    },
+    "facing=north,st_code=6": {
+      "model": "ssc_14:block/emergency_light_6"
+    },
+    "facing=north,st_code=7": {
+      "model": "ssc_14:block/emergency_light_7"
+    },
+    "facing=east,st_code=0": {
+      "model": "ssc_14:block/emergency_light_0",
+      "y": 90
+    },
+    "facing=east,st_code=1": {
+      "model": "ssc_14:block/emergency_light_1",
+      "y": 90
+    },
+    "facing=east,st_code=2": {
+      "model": "ssc_14:block/emergency_light_2",
+      "y": 90
+    },
+    "facing=east,st_code=3": {
+      "model": "ssc_14:block/emergency_light_3",
+      "y": 90
+    },
+    "facing=east,st_code=4": {
+      "model": "ssc_14:block/emergency_light_4",
+      "y": 90
+    },
+    "facing=east,st_code=5": {
+      "model": "ssc_14:block/emergency_light_5",
+      "y": 90
+    },
+    "facing=east,st_code=6": {
+      "model": "ssc_14:block/emergency_light_6",
+      "y": 90
+    },
+    "facing=east,st_code=7": {
+      "model": "ssc_14:block/emergency_light_7",
+      "y": 90
+    },
+    "facing=south,st_code=0": {
+      "model": "ssc_14:block/emergency_light_0",
+      "y": 180
+    },
+    "facing=south,st_code=1": {
+      "model": "ssc_14:block/emergency_light_1",
+      "y": 180
+    },
+    "facing=south,st_code=2": {
+      "model": "ssc_14:block/emergency_light_2",
+      "y": 180
+    },
+    "facing=south,st_code=3": {
+      "model": "ssc_14:block/emergency_light_3",
+      "y": 180
+    },
+    "facing=south,st_code=4": {
+      "model": "ssc_14:block/emergency_light_4",
+      "y": 180
+    },
+    "facing=south,st_code=5": {
+      "model": "ssc_14:block/emergency_light_5",
+      "y": 180
+    },
+    "facing=south,st_code=6": {
+      "model": "ssc_14:block/emergency_light_6",
+      "y": 180
+    },
+    "facing=south,st_code=7": {
+      "model": "ssc_14:block/emergency_light_7",
+      "y": 180
+    },
+    "facing=west,st_code=0": {
+      "model": "ssc_14:block/emergency_light_0",
+      "y": 270
+    },
+    "facing=west,st_code=1": {
+      "model": "ssc_14:block/emergency_light_1",
+      "y": 270
+    },
+    "facing=west,st_code=2": {
+      "model": "ssc_14:block/emergency_light_2",
+      "y": 270
+    },
+    "facing=west,st_code=3": {
+      "model": "ssc_14:block/emergency_light_3",
+      "y": 270
+    },
+    "facing=west,st_code=4": {
+      "model": "ssc_14:block/emergency_light_4",
+      "y": 270
+    },
+    "facing=west,st_code=5": {
+      "model": "ssc_14:block/emergency_light_5",
+      "y": 270
+    },
+    "facing=west,st_code=6": {
+      "model": "ssc_14:block/emergency_light_6",
+      "y": 270
+    },
+    "facing=west,st_code=7": {
+      "model": "ssc_14:block/emergency_light_7",
+      "y": 270
+    }
+  }
+}

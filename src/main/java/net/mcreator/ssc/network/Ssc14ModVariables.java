@@ -155,11 +155,17 @@ public class Ssc14ModVariables {
 			return instance;
 		}, instance -> instance.save(new CompoundTag(), level.registryAccess())));
 		boolean _syncDirty = false;
+		public double Station_Budget = 0;
+		public String PalletRegistry = "\"\"";
 
 		public void read(CompoundTag nbt, HolderLookup.Provider lookupProvider) {
+			Station_Budget = nbt.getDoubleOr("Station_Budget", 0);
+			PalletRegistry = nbt.getStringOr("PalletRegistry", "");
 		}
 
 		public CompoundTag save(CompoundTag nbt, HolderLookup.Provider lookupProvider) {
+			nbt.putDouble("Station_Budget", Station_Budget);
+			nbt.putString("PalletRegistry", PalletRegistry);
 			return nbt;
 		}
 
@@ -186,7 +192,7 @@ public class Ssc14ModVariables {
 			return instance;
 		}, instance -> instance.save(new CompoundTag(), level.registryAccess())));
 		boolean _syncDirty = false;
-		public double station_code = 0;
+		public double station_code = 0.0;
 		public String station_name = "\"\"";
 		public boolean Base_Radio_Frequency = false;
 		public boolean Command_Radio_Frequency = false;

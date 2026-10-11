@@ -49,7 +49,7 @@ public class ChairEntityEntity extends PathfinderMob {
 
 	@Override
 	protected Vec3 getPassengerAttachmentPoint(Entity entity, EntityDimensions dimensions, float f) {
-		return super.getPassengerAttachmentPoint(entity, dimensions, f).add(0, 0.8f, 0);
+		return super.getPassengerAttachmentPoint(entity, dimensions, f).add(0, 0.9f, 0);
 	}
 
 	@Override

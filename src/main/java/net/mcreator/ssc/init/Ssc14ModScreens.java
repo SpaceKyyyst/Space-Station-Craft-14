@@ -33,6 +33,8 @@ public class Ssc14ModScreens {
 		event.register(Ssc14ModMenus.MICROWAWE_GUI.get(), MicrowaweGUIScreen::new);
 		event.register(Ssc14ModMenus.DECAL_SCOLOR_GUI.get(), DECALScolorGUIScreen::new);
 		event.register(Ssc14ModMenus.BACKPACK_GUI.get(), BackpackGUIScreen::new);
+		event.register(Ssc14ModMenus.ORDER_GUI.get(), OrderGUIScreen::new);
+		event.register(Ssc14ModMenus.SALE_GUI.get(), SaleGUIScreen::new);
 	}
 
 	public interface ScreenAccessor {

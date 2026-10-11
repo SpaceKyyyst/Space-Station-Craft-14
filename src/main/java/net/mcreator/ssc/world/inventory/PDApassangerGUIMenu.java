@@ -4,6 +4,9 @@ import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.Level;
@@ -18,6 +21,7 @@ import net.minecraft.world.Container;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
+import net.mcreator.ssc.procedures.PDAGUIoffPRProcedure;
 import net.mcreator.ssc.init.Ssc14ModMenus;
 
 import java.util.function.Supplier;
@@ -25,11 +29,12 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
+@EventBusSubscriber
 public class PDApassangerGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
-			if (!this.containsKey(key) && this.size() >= 21)
+			if (!this.containsKey(key) && this.size() >= 30)
 				return null;
 			return super.put(key, value);
 		}
@@ -102,5 +107,17 @@ public class PDApassangerGUIMenu extends AbstractContainerMenu implements Ssc14M
 	@Override
 	public Map<String, Object> getMenuState() {
 		return menuState;
+	}
+
+	@SubscribeEvent
+	public static void onPlayerTick(PlayerTickEvent.Post event) {
+		Player entity = event.getEntity();
+		if (entity.containerMenu instanceof PDApassangerGUIMenu menu) {
+			Level world = menu.world;
+			double x = menu.x;
+			double y = menu.y;
+			double z = menu.z;
+			PDAGUIoffPRProcedure.execute(entity);
+		}
 	}
 }

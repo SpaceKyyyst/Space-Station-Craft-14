@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ssc_14:block/banner_eng"
+    },
+    "facing=east": {
+      "model": "ssc_14:block/banner_eng",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "ssc_14:block/banner_eng",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ssc_14:block/banner_eng",
+      "y": 270
+    }
+  }
+}

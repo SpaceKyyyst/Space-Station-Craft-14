@@ -33,6 +33,7 @@
     "onRightClickedInAir": "WelderOnOffPr",
     "onEntityHitWith": "WelderOnDAMAGE",
     "onItemInInventoryTick": "ActiveWelder_FuelMin",
-    "onItemInUseTick": "Welding_Fuel_chek"
+    "onItemInUseTick": "Welding_Fuel_chek",
+    "onDroppedByPlayer": "ActiveWelder_DROP_"
   }
 }

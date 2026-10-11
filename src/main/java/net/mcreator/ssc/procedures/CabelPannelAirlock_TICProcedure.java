@@ -1,6 +1,5 @@
 package net.mcreator.ssc.procedures;
 
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.LevelAccessor;
@@ -8,46 +7,28 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.resources.Identifier;
-import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 
 public class CabelPannelAirlock_TICProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
-		if (entity == null)
-			return;
-		if (!((world
-				.getBlockState(
-						new BlockPos(
-								entity.level().clip(
-										new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX(),
-								entity.level().clip(
-										new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY(),
-								entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ())))
-				.is(BlockTags.create(Identifier.parse("ssc14:airlocks")))
-				&& true == (getPropertyByName(
-						(world.getBlockState(
-								new BlockPos(
-										entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX(),
-										entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY(),
-										entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
-												.getZ()))),
-						"panel_open") instanceof BooleanProperty _getbp9
-						&& (world.getBlockState(new BlockPos(
-								entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX(),
-								entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY(),
-								entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ())))
-								.getValue(_getbp9)))) {
-			if (entity instanceof Player _player)
-				_player.closeContainer();
-		}
-	}
+    private static final TagKey<Block> AIRLOCKS = BlockTags.create(Identifier.parse("ssc14:airlocks"));
 
-	private static Property<?> getPropertyByName(BlockState state, String name) {
-		for (Property<?> property : state.getProperties()) {
-			if (property.getName().equals(name)) {
-				return property;
-			}
-		}
-		return null;
-	}
+    public static void execute(LevelAccessor world, Entity entity) {
+        if (world.isClientSide() || !(entity instanceof Player player)) return;
+        // Reuse one raycast result instead of tracing the same ray nine times per player tick.
+        var eye = entity.getEyePosition(1f);
+        BlockHitResult hit = entity.level().clip(new ClipContext(eye,
+                eye.add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity));
+        if (hit.getType() != HitResult.Type.BLOCK || !entity.level().hasChunkAt(hit.getBlockPos())) {
+            player.closeContainer();
+            return;
+        }
+        BlockState state = world.getBlockState(hit.getBlockPos());
+        if (!state.is(AIRLOCKS)
+                || !(state.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty panel)
+                || !state.getValue(panel)) player.closeContainer();
+    }
 }

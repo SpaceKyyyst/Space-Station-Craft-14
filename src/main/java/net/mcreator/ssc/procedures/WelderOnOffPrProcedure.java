@@ -21,13 +21,13 @@ public class WelderOnOffPrProcedure {
 		if (entity == null)
 			return;
 		double fuel = 0;
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.WELDING.get()
+		if (entity.isShiftKeyDown() && (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.WELDING.get()
 				&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel", 0) > 600) {
 			fuel = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel", 0);
 			if (entity instanceof LivingEntity _entity) {
-				ItemStack _setstack6 = new ItemStack(Ssc14ModItems.ACTIVE_WELDER.get()).copy();
-				_setstack6.setCount(1);
-				_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack6);
+				ItemStack _setstack7 = new ItemStack(Ssc14ModItems.ACTIVE_WELDER.get()).copy();
+				_setstack7.setCount(1);
+				_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack7);
 				if (_entity instanceof Player _player)
 					_player.getInventory().setChanged();
 			}
@@ -46,9 +46,9 @@ public class WelderOnOffPrProcedure {
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()) {
 			fuel = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel", 0);
 			if (entity instanceof LivingEntity _entity) {
-				ItemStack _setstack14 = new ItemStack(Ssc14ModItems.WELDING.get()).copy();
-				_setstack14.setCount(1);
-				_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack14);
+				ItemStack _setstack15 = new ItemStack(Ssc14ModItems.WELDING.get()).copy();
+				_setstack15.setCount(1);
+				_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack15);
 				if (_entity instanceof Player _player)
 					_player.getInventory().setChanged();
 			}

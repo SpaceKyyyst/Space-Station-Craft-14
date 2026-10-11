@@ -30,8 +30,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.Welding_Fuel_chekProcedure;
 import net.mcreator.ssc.procedures.WeldingOffDAMAGEProcedure;
+import net.mcreator.ssc.procedures.WeldingFuelchek2Procedure;
 import net.mcreator.ssc.procedures.WelderOnOffPrProcedure;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
@@ -91,6 +91,6 @@ public class WeldingItem extends Item {
 	public void inventoryTick(ItemStack itemstack, ServerLevel world, Entity entity, @Nullable EquipmentSlot equipmentSlot) {
 		super.inventoryTick(itemstack, world, entity, equipmentSlot);
 		if (equipmentSlot == EquipmentSlot.MAINHAND)
-			Welding_Fuel_chekProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, itemstack);
+			WeldingFuelchek2Procedure.execute(entity);
 	}
 }

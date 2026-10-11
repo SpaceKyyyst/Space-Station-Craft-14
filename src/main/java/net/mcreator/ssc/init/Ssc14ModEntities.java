@@ -52,6 +52,10 @@ public class Ssc14ModEntities {
 			EntityType.Builder.<PosterEntity>of(PosterEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
 					.sized(0.1f, 1f));
+	public static final DeferredHolder<EntityType<?>, EntityType<CarpEntity>> CARP = register("carp",
+			EntityType.Builder.<CarpEntity>of(CarpEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+
+					.sized(0.5f, 0.5f));
 
 	// Start of user code block custom entities
 	// End of user code block custom entities
@@ -70,6 +74,7 @@ public class Ssc14ModEntities {
 		MouseGrayEntity.init(event);
 		MouseWhiteEntity.init(event);
 		PosterEntity.init(event);
+		CarpEntity.init(event);
 	}
 
 	@SubscribeEvent
@@ -83,5 +88,6 @@ public class Ssc14ModEntities {
 		event.put(MOUSE_GRAY.get(), MouseGrayEntity.createAttributes().build());
 		event.put(MOUSE_WHITE.get(), MouseWhiteEntity.createAttributes().build());
 		event.put(POSTER.get(), PosterEntity.createAttributes().build());
+		event.put(CARP.get(), CarpEntity.createAttributes().build());
 	}
 }

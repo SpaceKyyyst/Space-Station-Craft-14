@@ -18,9 +18,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.EventBusSubscriber;
 
-@EventBusSubscriber
+@EventBusSubscriber(value = Dist.CLIENT)
 public class MultitulUIOverlay {
 
 	@SubscribeEvent
@@ -32,10 +33,9 @@ public class MultitulUIOverlay {
 
 		ItemStack mainHand = player.getMainHandItem();
 		if (mainHand.isEmpty() || mainHand.getItem() != Ssc14ModItems.MULTITUL.get()) return;
-
 		CustomData customData = mainHand.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
 		int toolMode = 1;
-		
+
 		if (!customData.isEmpty()) {
 			var tag = customData.copyTag();
 			if (tag.contains("Mode")) {
@@ -67,7 +67,7 @@ public class MultitulUIOverlay {
 					case 3 -> "hv";
 					default -> "lv";
 				};
-				
+
 				boolean hasCable = false;
 				for (Property<?> property : state.getProperties()) {
 					if (property.getName().equals(targetPropName) && property instanceof BooleanProperty bp) {
@@ -76,7 +76,6 @@ public class MultitulUIOverlay {
 					}
 				}
 
-				// ИСПРАВЛЕНО: Все вызовы drawString заменены на метод text() строго по твоей рабочей шпаргалке!
 				event.getGuiGraphics().text(font, "Текущий режим цепи: " + modeLabel, w / 2 + 25, h / 2 - 64, 0xFFFFFF00, false);
 
 				if (!hasCable) {
@@ -87,11 +86,11 @@ public class MultitulUIOverlay {
 				long currentPower = MultitoolClientCache.currentPower;
 				long theoreticalSupply = MultitoolClientCache.theoreticalSupply;
 				long idealConsumption = MultitoolClientCache.idealConsumption;
-				
+
 				long stored = (toolMode == 3) ? MultitoolClientCache.outputStored : MultitoolClientCache.inputStored;
 				long max = (toolMode == 3) ? MultitoolClientCache.outputMax : MultitoolClientCache.inputMax;
 				long batteryPower = MultitoolClientCache.batteryPower;
-				
+
 				if (currentPower == 0 && theoreticalSupply == 0 && idealConsumption == 0) {
 					event.getGuiGraphics().text(font, "Кабель не подключен к узлу (0 W)", w / 2 + 25, h / 2 - 48, 0xFFFF5555, false);
 					return;
