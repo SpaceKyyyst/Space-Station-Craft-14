@@ -3,8 +3,8 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.141'
 }
 
-version = '1.0'
-base.archivesName = "modid"
+version = '0.1.27'
+base.archivesName = "ssc_14"
 
 repositories {
     mavenCentral()
