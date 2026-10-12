@@ -1,4 +1,4 @@
-﻿{
+{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
@@ -211,7 +211,13 @@
 			}
 		}
 	],
-	"display": {},
+	"display": {
+		"gui": {
+			"rotation": [30, -135, 0],
+			"translation": [0, 0.5, 0],
+			"scale": [0.75, 0.75, 0.75]
+		}
+	},
 	"groups": [
 		{
 			"name": "assault_rifle_m-90gl_magazine",

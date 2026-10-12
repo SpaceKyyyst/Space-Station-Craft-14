@@ -179,6 +179,10 @@
 		"firstperson_lefthand": {
 			"translation": [0, 0, -3],
 			"scale": [-1, 1, 1]
+		},
+		"gui": {
+			"rotation": [30, -135, 0],
+			"translation": [0.75, 0, 0]
 		}
 	},
 	"groups": [

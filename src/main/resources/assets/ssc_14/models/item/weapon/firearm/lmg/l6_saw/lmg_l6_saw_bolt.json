@@ -175,6 +175,11 @@
 		},
 		"firstperson_lefthand": {
 			"scale": [-1, 1, 1]
+		},
+		"gui": {
+			"rotation": [30, 135, 0],
+			"translation": [3, 0, 0],
+			"scale": [0.75, 0.75, 0.75]
 		}
 	},
 	"groups": [

@@ -214,6 +214,11 @@
 		},
 		"firstperson_lefthand": {
 			"scale": [-1, 1, 1]
+		},
+		"gui": {
+			"rotation": [30, -135, 0],
+			"translation": [-0.75, 0.5, 0],
+			"scale": [0.75, 0.75, 0.75]
 		}
 	},
 	"groups": [
