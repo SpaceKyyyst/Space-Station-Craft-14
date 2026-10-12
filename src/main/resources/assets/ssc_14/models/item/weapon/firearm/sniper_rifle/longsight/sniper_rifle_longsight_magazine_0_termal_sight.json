@@ -284,8 +284,15 @@
 		}
 	],
 	"display": {
+		"thirdperson_lefthand": {
+			"scale": [-1, 1, 1]
+		},
 		"firstperson_righthand": {
 			"rotation": [45, -22.5, 0]
+		},
+		"firstperson_lefthand": {
+			"rotation": [45, -22.5, 0],
+			"scale": [-1, 1, 1]
 		}
 	},
 	"groups": [

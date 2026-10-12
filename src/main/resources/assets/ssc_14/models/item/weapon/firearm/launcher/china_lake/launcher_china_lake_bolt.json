@@ -1,4 +1,4 @@
-﻿{
+{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
@@ -138,6 +138,24 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [30, 0, 0]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [30, 0, 0],
+			"scale": [-1, 1, 1]
+		},
+		"firstperson_righthand": {
+			"rotation": [45, 22.5, 0],
+			"translation": [-2, -2, 0]
+		},
+		"firstperson_lefthand": {
+			"rotation": [45, 22.5, 0],
+			"translation": [-2, -2, 0],
+			"scale": [-1, 1, 1]
+		}
+	},
 	"groups": [
 		{
 			"name": "launcher_china_lake_bolt",

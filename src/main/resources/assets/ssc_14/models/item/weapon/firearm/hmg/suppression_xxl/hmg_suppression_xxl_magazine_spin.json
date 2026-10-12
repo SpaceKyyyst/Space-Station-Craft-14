@@ -201,6 +201,22 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [15, 0, 0]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [15, 0, 0],
+			"scale": [-1, 1, 1]
+		},
+		"firstperson_righthand": {
+			"translation": [-5, 0, 2]
+		},
+		"firstperson_lefthand": {
+			"translation": [-5, 0, 2],
+			"scale": [-1, 1, 1]
+		}
+	},
 	"groups": [
 		{
 			"name": "hmg_suppression_xxl_magazine_spin",

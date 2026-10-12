@@ -196,6 +196,14 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_lefthand": {
+			"scale": [-1, 1, 1]
+		},
+		"firstperson_lefthand": {
+			"scale": [-1, 1, 1]
+		}
+	},
 	"groups": [
 		{
 			"name": "lmg_l6_saw_magazine_0_bolt",

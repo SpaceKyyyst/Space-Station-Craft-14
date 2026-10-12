@@ -1,4 +1,4 @@
-﻿{
+{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
@@ -106,6 +106,18 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_lefthand": {
+			"scale": [-1, 1, 1]
+		},
+		"firstperson_righthand": {
+			"translation": [-1, 1, 0]
+		},
+		"firstperson_lefthand": {
+			"translation": [-1, 1, 0],
+			"scale": [-1, 1, 1]
+		}
+	},
 	"groups": [
 		{
 			"name": "pistol_viper_magazine_bolt",

@@ -1,4 +1,4 @@
-﻿{
+{
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
@@ -208,7 +208,14 @@
 			}
 		}
 	],
-	"display": {},
+	"display": {
+		"thirdperson_lefthand": {
+			"scale": [-1, 1, 1]
+		},
+		"firstperson_lefthand": {
+			"scale": [-1, 1, 1]
+		}
+	},
 	"groups": [
 		{
 			"name": "assault_rifle_lecter_magazine_1",

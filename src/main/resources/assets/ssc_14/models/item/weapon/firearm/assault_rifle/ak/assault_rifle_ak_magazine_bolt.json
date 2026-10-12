@@ -176,6 +176,14 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_lefthand": {
+			"scale": [-1, 1, 1]
+		},
+		"firstperson_lefthand": {
+			"scale": [-1, 1, 1]
+		}
+	},
 	"groups": [
 		{
 			"name": "assault_rifle_ak_magazine_bolt",
