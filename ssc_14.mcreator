@@ -30129,7 +30129,8 @@
     "modPicture": "ssc14_newlogo",
     "requiredMods": [
       "fusion",
-      "itemphysic"
+      "itemphysic",
+      "curios"
     ],
     "dependencies": [],
     "dependants": [],

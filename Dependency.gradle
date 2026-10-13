@@ -1,0 +1,11 @@
+repositories {
+    maven {
+        name = 'Curios'
+        url = uri('https://maven.theillusivec4.top/')
+        content { includeGroup 'top.theillusivec4.curios' }
+    }
+}
+
+dependencies {
+    implementation 'top.theillusivec4.curios:curios-neoforge:15.0.0-beta.2+26.1.2'
+}
