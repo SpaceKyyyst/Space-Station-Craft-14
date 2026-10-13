@@ -150,7 +150,26 @@
 			}
 		}
 	],
-	"display": {},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [15, 0, 0]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [15, 0, 0],
+			"scale": [-1, 1, 1]
+		},
+		"firstperson_righthand": {
+			"translation": [-2, 0, 0]
+		},
+		"firstperson_lefthand": {
+			"translation": [-2, 0, 0],
+			"scale": [-1, 1, 1]
+		},
+		"gui": {
+			"rotation": [30, -150, 0],
+			"translation": [-1.5, 0, 0]
+		}
+	},
 	"groups": [
 		{
 			"name": "hammerhead_xm24",

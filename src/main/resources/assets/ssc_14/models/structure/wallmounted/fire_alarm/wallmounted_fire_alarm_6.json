@@ -1,0 +1,41 @@
+﻿{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "ssc_14:structure/wallmounted/fire_alarm/wallmounted_fire_alarm",
+		"particle": "ssc_14:structure/wallmounted/fire_alarm/wallmounted_fire_alarm"
+	},
+	"elements": [
+		{
+			"from": [6, 5, 14],
+			"to": [10, 11, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 15]},
+			"faces": {
+				"north": {"uv": [0, 0, 2, 3], "texture": "#0"},
+				"east": {"uv": [10, 2.5, 11, 5.5], "texture": "#0"},
+				"south": {"uv": [2, 0, 4, 3], "texture": "#0"},
+				"west": {"uv": [10, 5.5, 11, 8.5], "texture": "#0"},
+				"up": {"uv": [11, 8.5, 13, 9.5], "texture": "#0"},
+				"down": {"uv": [11, 9.5, 13, 10.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [6.125, 5.125, 14.125],
+			"to": [9.875, 10.875, 15.875],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 15]},
+			"faces": {
+				"north": {"uv": [6, 3, 8, 6], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "wallmounted_fire_alarm_6",
+			"origin": [8, 5, 15],
+			"scope": 0,
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

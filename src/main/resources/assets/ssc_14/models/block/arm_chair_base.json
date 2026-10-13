@@ -1,8 +1,0 @@
-{
-  "parent": "ssc_14:custom/armchair",
-  "textures": {
-    "all": "ssc_14:block/armchair_texture",
-    "particle": "ssc_14:block/armchair_texture",
-    "1": "ssc_14:block/armchair_texture"
-  }
-}

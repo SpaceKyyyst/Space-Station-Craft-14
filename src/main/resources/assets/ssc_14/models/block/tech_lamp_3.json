@@ -1,8 +1,8 @@
-{
+﻿{
   "parent": "ssc_14:custom/techlamp_2",
   "textures": {
-    "all": "ssc_14:block/techlamp_empty_texture",
-    "particle": "ssc_14:block/techlamp_on_texture",
-    "2": "ssc_14:block/techlamp_empty_texture"
+    "all": "ssc_14:block/techlamp_empty",
+    "particle": "ssc_14:block/techlamp_on",
+    "2": "ssc_14:block/techlamp_empty"
   }
 }

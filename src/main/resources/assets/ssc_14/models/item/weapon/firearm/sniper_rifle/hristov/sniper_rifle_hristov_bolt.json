@@ -331,8 +331,20 @@
 		}
 	],
 	"display": {
+		"thirdperson_lefthand": {
+			"scale": [-1, 1, 1]
+		},
 		"firstperson_righthand": {
-			"rotation": [45, -22.5, 0]
+			"rotation": [45, 22.5, 60]
+		},
+		"firstperson_lefthand": {
+			"rotation": [45, 22.5, 60],
+			"scale": [-1, 1, 1]
+		},
+		"gui": {
+			"rotation": [-150, -40, -180],
+			"translation": [-2.5, 1.5, 0],
+			"scale": [0.75, 0.75, 0.75]
 		}
 	},
 	"groups": [

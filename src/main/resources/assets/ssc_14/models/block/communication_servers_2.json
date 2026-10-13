@@ -1,8 +1,8 @@
-{
+﻿{
   "parent": "ssc_14:custom/communication_servers",
   "textures": {
-    "all": "ssc_14:block/telecom_server_eng_texture",
+    "all": "ssc_14:block/telecom_server_eng",
     "particle": "ssc_14:block/communication_server_item",
-    "2": "ssc_14:block/telecom_server_eng_texture"
+    "2": "ssc_14:block/telecom_server_eng"
   }
 }

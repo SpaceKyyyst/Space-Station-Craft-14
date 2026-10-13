@@ -1,8 +1,8 @@
-{
+﻿{
   "parent": "ssc_14:custom/extinguisher_cabinet",
   "textures": {
-    "all": "ssc_14:block/extinguisher_cabinet_texture",
-    "particle": "ssc_14:block/extinguisher_cabinet_texture",
-    "0": "ssc_14:block/extinguisher_cabinet_texture"
+    "all": "ssc_14:block/extinguisher_cabinet",
+    "particle": "ssc_14:block/extinguisher_cabinet",
+    "0": "ssc_14:block/extinguisher_cabinet"
   }
 }

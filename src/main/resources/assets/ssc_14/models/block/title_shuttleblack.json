@@ -1,8 +1,8 @@
-{
+﻿{
   "parent": "ssc_14:custom/tile_floor",
   "textures": {
-    "all": "ssc_14:block/tile_fl_shuttleblack_texture",
-    "particle": "ssc_14:block/tile_fl_shuttleblack_texture",
-    "2": "ssc_14:block/tile_fl_shuttleblack_texture"
+    "all": "ssc_14:block/tile_fl_shuttleblack",
+    "particle": "ssc_14:block/tile_fl_shuttleblack",
+    "2": "ssc_14:block/tile_fl_shuttleblack"
   }
 }

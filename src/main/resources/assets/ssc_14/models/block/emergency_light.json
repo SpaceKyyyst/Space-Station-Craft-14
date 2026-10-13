@@ -1,8 +1,0 @@
-{
-  "parent": "ssc_14:custom/directed_st_glass",
-  "textures": {
-    "all": "ssc_14:block/emerg_light_green_texture",
-    "particle": "ssc_14:block/emerg_light_green_texture",
-    "1": "ssc_14:block/directed_st_glass_t"
-  }
-}

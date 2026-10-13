@@ -1,8 +1,0 @@
-{
-  "parent": "ssc_14:custom/banner",
-  "textures": {
-    "all": "ssc_14:block/banner_rnd_texture",
-    "particle": "ssc_14:block/banner_rnd_texture",
-    "2": "ssc_14:block/banner_rnd_texture"
-  }
-}

@@ -1,7 +1,7 @@
-{
+﻿{
   "parent": "block/cube_all",
   "textures": {
-    "all": "ssc_14:block/no_texture",
-    "particle": "ssc_14:block/no_texture"
+    "all": "ssc_14:block/no",
+    "particle": "ssc_14:block/no"
   }
 }
