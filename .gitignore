@@ -5,3 +5,4 @@ build/
 .idea/
 *.iml
 .superpowers/
+__pycache__/
