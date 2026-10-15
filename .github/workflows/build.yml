@@ -1,0 +1,80 @@
+name: Build and release
+
+on:
+  push:
+    branches: [main, 'ShinozakiAichi/**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-java@v6.1.0
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: gradle/actions/setup-gradle@v6.4.0
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Check project metadata
+        run: |
+          python .github/scripts/test_checks.py
+          python .github/scripts/check_project.py
+      - name: Test release script without publishing
+        run: bash .github/scripts/test-release.sh
+      - name: Build and test
+        shell: bash
+        run: |
+          set -o pipefail
+          sh ./gradlew --no-daemon --console=plain build 2>&1 | tee build-output.log
+      - name: Annotate code and test errors
+        if: always()
+        run: python .github/scripts/report_checks.py
+      - name: Upload mod
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: mod-jar
+          path: build/libs/*.jar
+          if-no-files-found: error
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: test-reports
+          path: |
+            build/reports/tests/
+            build/reports/checkstyle/
+            build/test-results/
+            build-output.log
+          if-no-files-found: ignore
+
+  release:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          name: mod-jar
+          path: build/libs
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: bash .github/scripts/release.sh
