@@ -1,5 +1,6 @@
 plugins {
     id 'eclipse'
+    id 'checkstyle'
     id 'net.neoforged.moddev' version '2.0.141'
 }
 
@@ -89,5 +90,21 @@ tasks.register('domainTest', Test) {
 
 tasks.named('check') {
     dependsOn tasks.named('domainTest')
+}
+
+checkstyle {
+    toolVersion = '10.21.4'
+    configFile = file('config/checkstyle/checkstyle.xml')
+}
+
+// Start with the extracted domain, rather than a blanket generated-code suppression.
+tasks.withType(Checkstyle).configureEach {
+    enabled = name == 'checkstyleMain'
+    source = sourceSets.domain.allJava
+    classpath = files()
+    reports {
+        xml.required = true
+        html.required = true
+    }
 }
 
