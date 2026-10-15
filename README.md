@@ -14,6 +14,9 @@ Space-Station-Craft-14 - это мод на Minecraft, реализовываю�
 
 ## Сборка
 
+Архитектура: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Правила разработки и проверки: [CONTRIBUTING.md](CONTRIBUTING.md).
+
 Требуются JDK 25 и интернет для первой загрузки зависимостей. Проект рассчитан
 на Minecraft 26.1.2 и NeoForge 26.1.2.71. Gradle устанавливать отдельно не нужно.
 
