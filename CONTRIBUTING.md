@@ -17,6 +17,11 @@
 .\gradlew.bat build
 ```
 
+Быстрые тесты домена без запуска Minecraft: `.\gradlew.bat domainTest`.
+Они компилируют те же исходники правил, что и мод, но без Minecraft-зависимостей.
+Тесты находятся в `src/domainTest/java`, HTML-отчёт —
+`build/reports/tests/domainTest/index.html`. Задача включена в `check` и `build`.
+
 Linux/macOS: `sh ./gradlew build`. Использовать JDK 25 для полной сборки.
 `settings.gradle` содержит resolver Java toolchains; автоматическая загрузка JDK
 требует сети. Gradle Wrapper тоже загружает дистрибутив при первом запуске.
