@@ -4,14 +4,13 @@ package net.mcreator.ssc;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier; // ИСПРАВЛЕНО НА ОСНОВЕ РЕДДИТА
+import net.minecraft.resources.Identifier;
+import net.mcreator.ssc.combat.ResistanceRegistry;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.Optional;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ArmorResistanceHelper {
     
@@ -21,11 +20,10 @@ public class ArmorResistanceHelper {
     public static final String KEY_HEAT = "heat";
     public static final String KEY_EXPLOSIVE = "explosive";
 
-    private static final Map<String, Double> RESISTANCE_REGISTRY = new HashMap<>();
+    private static final ResistanceRegistry RESISTANCE_REGISTRY = new ResistanceRegistry();
 
     public static void registerResistance(String itemId, String damageType, double value) {
-        String key = itemId + ":" + damageType;
-        RESISTANCE_REGISTRY.put(key, Math.min(Math.max(value, 0.0), 1.0));
+        RESISTANCE_REGISTRY.register(itemId, damageType, value);
     }
 
     public static float applyArmorResistance(Player player, String damageType, float incomingDamage) {
@@ -47,17 +45,13 @@ public class ArmorResistanceHelper {
                 ItemStack stack = handler.getStackInSlot(slot);
                 if (stack.isEmpty()) continue;
 
-                // Заменяем класс на Identifier
                 Identifier itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
                 if (itemId == null) continue;
 
-                String key = itemId.toString() + ":" + damageType;
-
-                if (RESISTANCE_REGISTRY.containsKey(key)) {
-                    double resistance = RESISTANCE_REGISTRY.get(key);
-                    currentDamage *= (1.0f - (float)resistance);
-                    System.out.println("[SSC14-ARMOR] " + itemId + " | " + damageType + " | res=" + resistance + " | new_dmg=" + String.format("%.2f", currentDamage));
-                }
+                float previousDamage = currentDamage;
+                currentDamage = RESISTANCE_REGISTRY.apply(itemId.toString(), damageType, currentDamage);
+                Ssc14Mod.LOGGER.debug("Armor {} damage type {}: {} -> {}",
+                        itemId, damageType, previousDamage, currentDamage);
             }
         }
 
@@ -65,7 +59,6 @@ public class ArmorResistanceHelper {
     }
 
     public static void setResistance(ItemStack stack, String damageType, double value) {
-        // Заменяем класс на Identifier
         Identifier itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
         if (itemId != null) {
             registerResistance(itemId.toString(), damageType, value);

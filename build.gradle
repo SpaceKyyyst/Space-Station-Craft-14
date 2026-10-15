@@ -1,5 +1,6 @@
 plugins {
     id 'eclipse'
+    id 'checkstyle'
     id 'net.neoforged.moddev' version '2.0.141'
 }
 
@@ -56,8 +57,54 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 apply from: 'Dependency.gradle'
-//
-//tasks.withType(JavaCompile).configureEach {
-//    options.compilerArgs << "-Xmaxerrs" << "5000"
-//}
+
+// Compile domain rules without Minecraft or its runtime bootstrap.
+sourceSets {
+    domain {
+        java {
+            srcDir 'src/main/java'
+            include 'net/mcreator/ssc/GasType.java'
+            include 'net/mcreator/ssc/GasReaction.java'
+            include 'net/mcreator/ssc/combat/**'
+        }
+    }
+    domainTest {
+        compileClasspath += sourceSets.domain.output
+        runtimeClasspath += sourceSets.domain.output
+    }
+}
+
+dependencies {
+    domainTestImplementation platform('org.junit:junit-bom:5.11.4')
+    domainTestImplementation 'org.junit.jupiter:junit-jupiter'
+    domainTestRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.register('domainTest', Test) {
+    description = 'Tests domain rules without starting Minecraft.'
+    group = 'verification'
+    testClassesDirs = sourceSets.domainTest.output.classesDirs
+    classpath = sourceSets.domainTest.runtimeClasspath
+    useJUnitPlatform()
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('domainTest')
+}
+
+checkstyle {
+    toolVersion = '10.21.4'
+    configFile = file('config/checkstyle/checkstyle.xml')
+}
+
+// Start with the extracted domain, rather than a blanket generated-code suppression.
+tasks.withType(Checkstyle).configureEach {
+    enabled = name == 'checkstyleMain'
+    source = sourceSets.domain.allJava
+    classpath = files()
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
 
