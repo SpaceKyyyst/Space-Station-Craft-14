@@ -19,6 +19,14 @@
 
 ## Ограничения локальной проверки
 
+Первый полный запуск из объединённого `main` опубликован:
+[CI run 38798056219](https://github.com/ShinozakiAichi/Space-Station-Craft-14/actions/runs/38798056219),
+[релиз build.8](https://github.com/ShinozakiAichi/Space-Station-Craft-14/releases/tag/ssc_14-0.1.27-build.8-fe76913d8928).
+JAR скачан из релиза и проверен по `SHA256SUMS.txt`; SHA-256:
+`316e1764ada864172e28a77443c9a3e8ed0ab9aa27b000181e0e48917811e43b`.
+Этот результат относится к коммиту `fe76913d8928946d7d00577b9354244e9c3fbab3`.
+Последующие изменения нужно проверять по их собственным запускам CI.
+
 Исходная полная сборка в Windows остановилась на декомпиляции Minecraft:
 JVM не смогла выделить native memory (Windows error 1455). Исходный проект
 при этом успешно собрался в GitHub Actions. Это не ошибка компиляции мода.
