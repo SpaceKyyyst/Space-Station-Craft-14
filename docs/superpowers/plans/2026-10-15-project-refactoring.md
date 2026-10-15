@@ -45,3 +45,19 @@
 - Keep generated registries and resource identifiers intact: save compatibility.
 - Full gameplay migration requires a later measured iteration; no speculative
   rewrites of energy graphs or simulation balance in this increment.
+
+## Execution record
+
+- [x] Architecture and contribution workflow: `project-foundation`.
+- [x] Main release workflow, release-script tests, domain test harness: `main-release`.
+- [x] Additional user request: code checks and GitHub error annotations in `code-checks`.
+- [x] Armor domain extracted with six rule tests: `armor-domain`.
+- [x] Gas reaction regression tests: six failed before the fix; all nine pass after it.
+- [x] Domain suite: 16 passing tests; Checkstyle passing locally.
+- [x] Verification limits and remaining gameplay work documented in `docs/VERIFICATION.md`.
+- Final independent review and fork-main release are verified through GitHub history/Checks.
+
+Ruling: use a local Gradle init script for an ASCII build output directory, because
+Windows Test Worker failed to load compiled test classes from the Unicode path.
+Cost: local results do not verify this Windows path configuration; CI tests the
+unmodified build on Linux. The workaround is not committed.
