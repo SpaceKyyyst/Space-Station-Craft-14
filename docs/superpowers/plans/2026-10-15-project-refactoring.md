@@ -57,6 +57,10 @@
 - [x] Verification limits and remaining gameplay work documented in `docs/VERIFICATION.md`.
 - Final independent review and fork-main release are verified through GitHub history/Checks.
 
+Final review: two release recovery defects found and covered by failing tests.
+Fixed in `release-recovery`: validate/create the lightweight tag independently
+of release existence; publish a leftover draft after successful asset upload.
+
 Ruling: use a local Gradle init script for an ASCII build output directory, because
 Windows Test Worker failed to load compiled test classes from the Unicode path.
 Cost: local results do not verify this Windows path configuration; CI tests the
