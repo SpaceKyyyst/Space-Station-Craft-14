@@ -25,10 +25,23 @@ jobs:
           distribution: temurin
           java-version: '25'
       - uses: gradle/actions/setup-gradle@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check project metadata
+        run: |
+          python .github/scripts/test_checks.py
+          python .github/scripts/check_project.py
       - name: Test release script without publishing
         run: bash .github/scripts/test-release.sh
       - name: Build and test
-        run: sh ./gradlew --no-daemon build
+        shell: bash
+        run: |
+          set -o pipefail
+          sh ./gradlew --no-daemon --console=plain build 2>&1 | tee build-output.log
+      - name: Annotate code and test errors
+        if: always()
+        run: python .github/scripts/report_checks.py
       - name: Upload mod
         uses: actions/upload-artifact@v4
         with:
@@ -40,7 +53,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
-          path: build/reports/tests/
+          path: |
+            build/reports/tests/
+            build/reports/checkstyle/
+            build/test-results/
+            build-output.log
           if-no-files-found: ignore
 
   release:

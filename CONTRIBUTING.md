@@ -22,6 +22,13 @@
 Тесты находятся в `src/domainTest/java`, HTML-отчёт —
 `build/reports/tests/domainTest/index.html`. Задача включена в `check` и `build`.
 
+`checkstyleMain` проверяет чистый домен (газовые правила и `combat`); новые
+извлекаемые подсистемы нужно добавлять в `sourceSets.domain`. Компиляция проверяет
+весь мод. Правила Checkstyle находятся в `config/checkstyle/checkstyle.xml`.
+CI выводит ошибки javac, Checkstyle и JUnit в GitHub Checks и сохраняет отчёты.
+Проверка метаданных: `python .github/scripts/check_project.py` (Python 3.11+).
+Она проверяет согласованность версии мода и наличие файлов сборки.
+
 Linux/macOS: `sh ./gradlew build`. Использовать JDK 25 для полной сборки.
 `settings.gradle` содержит resolver Java toolchains; автоматическая загрузка JDK
 требует сети. Gradle Wrapper тоже загружает дистрибутив при первом запуске.
