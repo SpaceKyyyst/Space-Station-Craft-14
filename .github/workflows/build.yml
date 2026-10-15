@@ -25,6 +25,8 @@ jobs:
           distribution: temurin
           java-version: '25'
       - uses: gradle/actions/setup-gradle@v4
+      - name: Test release script without publishing
+        run: bash .github/scripts/test-release.sh
       - name: Build and test
         run: sh ./gradlew --no-daemon build
       - name: Upload mod
