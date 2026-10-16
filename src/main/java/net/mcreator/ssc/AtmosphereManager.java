@@ -101,7 +101,7 @@ public final class AtmosphereManager {
     public void onChunkLoaded(ChunkPos chunk) {
         for (AtmosRegion region : regions.values()) {
             BlockPos origin = region.getRegionOrigin();
-            int distance = Math.abs((origin.getX() >> 4) - chunk.x) + Math.abs((origin.getZ() >> 4) - chunk.z);
+            int distance = Math.abs((origin.getX() >> 4) - chunk.x()) + Math.abs((origin.getZ() >> 4) - chunk.z());
             if (distance <= 1) region.wakeGasCells();
         }
     }
