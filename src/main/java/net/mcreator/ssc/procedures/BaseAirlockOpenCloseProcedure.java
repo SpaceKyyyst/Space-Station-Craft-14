@@ -27,6 +27,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.mcreator.ssc.access.AirlockAccessPolicy;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
@@ -46,12 +47,7 @@ public class BaseAirlockOpenCloseProcedure {
     private static final int RETRY_TICKS = 20;
     private static final int[] OPEN_FRAMES = {15, 12, 13, 14, 11};
     private static final int[] CLOSE_FRAMES = {14, 13, 12, 15};
-	private static final String[] ACCESS_ROLES = {
-		"Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio", "Security", 
-		"Ingeneer", "Command", "Detective", "PNT", "Scientist", "Supply_Deportament", "Atmos", 
-		"Kitchen", "Uridic", "Gidroponic", "Teatre", "Bar", "Cleaner", "Utilizat", "Chemistry", 
-		"Church", "CE", "Qm", "CMO", "RD", "HoP", "Capitan", "Blue_Sh"
-	};
+
 
 
     public static void execute(Level world, double x, double y, double z, BlockState ignored, Entity entity) {
@@ -87,7 +83,7 @@ public class BaseAirlockOpenCloseProcedure {
         if (action == OPENING || action == CLOSING) return;
         if (nbt.getBooleanOr("bolted", false) || nbt.getBooleanOr("welded", false)
                 || !nbt.getBooleanOr("powered", true) || current == 1 || current == 9 || current == 10) return;
-        if (!checkAccess(nbt, entity, nbt.getBooleanOr("emergency_acs", false))) {
+        if (!AirlockAccessPolicy.permits(nbt, entity, nbt.getBooleanOr("emergency_acs", false))) {
             if (action == DENIED) return; // Do not restart denial for repeated unauthorized clicks.
             if (current != 11 && !(current >= 12 && current <= 15)) {
                 nbt.putInt("_ssc14_airlock_denied_state", current);
@@ -274,15 +270,6 @@ public class BaseAirlockOpenCloseProcedure {
         return type.isInstance(prop) ? type.cast(prop) : null;
     }
 
-	private static boolean checkAccess(CompoundTag blockNbt, Entity entity, boolean emergency) {
-		if (emergency) return true;
-		boolean anyRequired = false;
-		for (String role : ACCESS_ROLES) if (blockNbt.getBoolean(role).orElse(false)) { anyRequired = true; break; }
-		if (!anyRequired) return true;
-		CompoundTag playerData = entity.getPersistentData();
-		for (String role : ACCESS_ROLES) if (blockNbt.getBoolean(role).orElse(false) && playerData.getBoolean(role).orElse(false)) return true;
-		return false;
-	}
 
 	private static void openGui(ServerPlayer player, String name, BlockPos pos) {
 		player.openMenu(new MenuProvider() {

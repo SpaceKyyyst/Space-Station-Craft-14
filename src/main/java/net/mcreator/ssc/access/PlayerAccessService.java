@@ -30,6 +30,17 @@ public final class PlayerAccessService {
     }
 
     private static void synchronize(Player player) {
+        long mask = currentPermissions(player);
+        var data = player.getPersistentData();
+        for (int index = 0; index < IdCardRegistry.KEYS.size(); index++) {
+            String key = IdCardRegistry.KEYS.get(index);
+            boolean granted = (mask & (1L << index)) != 0;
+            if (data.getBooleanOr(key, false) != granted) data.putBoolean(key, granted);
+        }
+    }
+
+    /** Reads currently held cards; authorization must not rely on last tick's player data. */
+    public static long currentPermissions(Player player) {
         long mask = 0;
         var inventory = player.getInventory();
         for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
@@ -49,12 +60,7 @@ public final class PlayerAccessService {
             if (!curiosFailureLogged) LOGGER.warn("Cannot read Curios ID cards; only vanilla inventory access applies", exception);
             curiosFailureLogged = true;
         }
-        var data = player.getPersistentData();
-        for (int index = 0; index < IdCardRegistry.KEYS.size(); index++) {
-            String key = IdCardRegistry.KEYS.get(index);
-            boolean granted = (mask & (1L << index)) != 0;
-            if (data.getBooleanOr(key, false) != granted) data.putBoolean(key, granted);
-        }
+        return mask;
     }
 
     public static long permissions(ItemStack stack) {

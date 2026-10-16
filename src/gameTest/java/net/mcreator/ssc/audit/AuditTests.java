@@ -23,6 +23,33 @@ import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 public final class AuditTests {
     private static final Map<String, Consumer<GameTestHelper>> TESTS = new LinkedHashMap<>();
     static {
+        TESTS.put("airlock_current_inventory_access", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var requirement = new net.minecraft.nbt.CompoundTag();
+            requirement.putBoolean("Medical", true);
+            player.getPersistentData().putBoolean("Medical", true);
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
+                    "Stale player permissions granted entry without an ID card");
+            var card = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_MEDIC.get());
+            player.getInventory().setItem(9, card);
+            h.assertTrue(net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
+                    "Card in inventory must grant access immediately without a player tick");
+            net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA,
+                    card, tag -> tag.putBoolean("Medical", false));
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
+                    "Edited card permissions must take effect immediately");
+            player.getInventory().setItem(9, new net.minecraft.world.item.ItemStack(
+                    net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_MEDIC.get()));
+            net.mcreator.ssc.access.PlayerAccessService.tick(player);
+            player.getInventory().setItem(9, net.minecraft.world.item.ItemStack.EMPTY);
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
+                    "Removing the card must revoke access before the next player tick");
+            h.assertTrue(net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, true),
+                    "Emergency access must remain available");
+            h.assertTrue(net.mcreator.ssc.access.AirlockAccessPolicy.permits(new net.minecraft.nbt.CompoundTag(), player, false),
+                    "Unrestricted doors must remain accessible");
+            h.succeed();
+        });
         TESTS.put("energy_many_lamps_exact_demand", h -> {
             var world = h.getLevel();
             var origin = h.absolutePos(new BlockPos(0, 35, 0));
