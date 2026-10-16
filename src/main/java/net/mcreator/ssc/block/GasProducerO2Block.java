@@ -15,11 +15,16 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.GasProducerO2_tick_PR_Procedure;
 
-public class GasProducerO2Block extends Block {
+public class GasProducerO2Block extends Block implements net.mcreator.ssc.IAtmosBlock {
 	private static final VoxelShape SHAPE = Shapes.or(box(1, 0, 1, 15, 2, 15), box(4, 2, 4, 12, 4, 12), box(2, -8, 2, 14, 0, 14));
 
 	public GasProducerO2Block(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.ANVIL).strength(-1, 3600000).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+	}
+
+	@Override
+	public float getPermeability(BlockState state) {
+		return 1f;
 	}
 
 	@Override
