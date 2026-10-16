@@ -39,7 +39,8 @@ public class ToolsBlockClickProcedure {
 
 		BlockPos pos = BlockPos.containing(x, y, z);
 		if (entity instanceof net.minecraft.world.entity.player.Player player
-				&& net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos)) {
+				&& (net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos)
+					|| net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos))) {
 			if (event instanceof PlayerInteractEvent.RightClickBlock interaction) {
 				interaction.setCanceled(true);
 				interaction.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);

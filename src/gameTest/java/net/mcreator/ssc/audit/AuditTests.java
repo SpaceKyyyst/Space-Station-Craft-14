@@ -23,6 +23,39 @@ import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 public final class AuditTests {
     private static final Map<String, Consumer<GameTestHelper>> TESTS = new LinkedHashMap<>();
     static {
+        TESTS.put("airlock_disassembly_requires_isolation", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            var door = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get();
+            h.getLevel().setBlock(pos, door.defaultBlockState()
+                    .setValue(net.mcreator.ssc.block.BaseAirlockD1Block.PANEL_OPEN, true), 3);
+            player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
+            player.setShiftKeyDown(true);
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
+                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.SPANNER.get()));
+            var data = h.getLevel().getBlockEntity(pos).getPersistentData();
+            data.putBoolean("welded", true);
+            net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos);
+            h.assertTrue(h.getLevel().getBlockState(pos).is(door), "Powered door was dismantled");
+            data.putBoolean("powered", false);
+            data.putInt(net.mcreator.ssc.access.AirlockMaintenance.ARMOR, 2);
+            net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos);
+            h.assertTrue(h.getLevel().getBlockState(pos).is(door), "Armored door was dismantled");
+            data.putInt(net.mcreator.ssc.access.AirlockMaintenance.ARMOR, 0);
+            data.putBoolean("welded", false);
+            net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos);
+            h.assertTrue(h.getLevel().getBlockState(pos).is(door), "Unwelded door was dismantled");
+            data.putBoolean("welded", true);
+            net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos);
+            h.assertTrue(h.getLevel().getBlockState(pos).isAir() && h.getLevel().getBlockState(pos.above()).isAir(),
+                    "Disassembly left part of the door behind");
+            net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos);
+            int count = h.getLevel().getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class,
+                    new net.minecraft.world.phys.AABB(pos).inflate(1)).stream()
+                    .filter(e -> e.getItem().is(door.asItem())).mapToInt(e -> e.getItem().getCount()).sum();
+            h.assertTrue(count == 1, "Disassembly must drop exactly one door");
+            h.succeed();
+        });
         TESTS.put("airlock_reinforcement_materials_and_fuel", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
