@@ -80,7 +80,7 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 				e -> {
 					int x = RCDGUIwindowsScreen.this.x;
 					int y = RCDGUIwindowsScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(0, x, y, z));
 						RCDGUIwindowsButtonMessage.handleButtonAction(entity, 0, x, y, z);
 					}
@@ -94,7 +94,7 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 		imagebutton_steel_wall_gui_texture = new ImageButton(this.leftPos + 42, this.topPos + 30, 32, 32, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/grille.png"), Identifier.parse("ssc_14:textures/screens/grille.png")), e -> {
 			int x = RCDGUIwindowsScreen.this.x;
 			int y = RCDGUIwindowsScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(1, x, y, z));
 				RCDGUIwindowsButtonMessage.handleButtonAction(entity, 1, x, y, z);
 			}
@@ -109,7 +109,7 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/armored_window_gui.png"), Identifier.parse("ssc_14:textures/screens/armored_window_gui.png")), e -> {
 					int x = RCDGUIwindowsScreen.this.x;
 					int y = RCDGUIwindowsScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(2, x, y, z));
 						RCDGUIwindowsButtonMessage.handleButtonAction(entity, 2, x, y, z);
 					}
@@ -124,7 +124,7 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 				e -> {
 					int x = RCDGUIwindowsScreen.this.x;
 					int y = RCDGUIwindowsScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(3, x, y, z));
 						RCDGUIwindowsButtonMessage.handleButtonAction(entity, 3, x, y, z);
 					}
@@ -139,7 +139,7 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/directed_arm_window_gui.png"), Identifier.parse("ssc_14:textures/screens/directed_arm_window_gui.png")), e -> {
 					int x = RCDGUIwindowsScreen.this.x;
 					int y = RCDGUIwindowsScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(4, x, y, z));
 						RCDGUIwindowsButtonMessage.handleButtonAction(entity, 4, x, y, z);
 					}
@@ -154,7 +154,7 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/directed_window_gui.png"), Identifier.parse("ssc_14:textures/screens/directed_window_gui.png")), e -> {
 					int x = RCDGUIwindowsScreen.this.x;
 					int y = RCDGUIwindowsScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(5, x, y, z));
 						RCDGUIwindowsButtonMessage.handleButtonAction(entity, 5, x, y, z);
 					}

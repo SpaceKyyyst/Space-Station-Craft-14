@@ -118,7 +118,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png"), Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png")), e -> {
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(0, x, y, z));
 						VendingAut1GUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
 					}
@@ -133,7 +133,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png"), Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png")), e -> {
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(1, x, y, z));
 						VendingAut1GUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
 					}
@@ -148,7 +148,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png"), Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png")), e -> {
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(2, x, y, z));
 						VendingAut1GUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
 					}
@@ -163,7 +163,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png"), Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png")), e -> {
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(3, x, y, z));
 						VendingAut1GUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
 					}
@@ -178,7 +178,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png"), Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png")), e -> {
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(4, x, y, z));
 						VendingAut1GUIButtonMessage.handleButtonAction(entity, 4, x, y, z);
 					}
@@ -193,7 +193,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png"), Identifier.parse("ssc_14:textures/screens/vendind_gui_button.png")), e -> {
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(5, x, y, z));
 						VendingAut1GUIButtonMessage.handleButtonAction(entity, 5, x, y, z);
 					}
