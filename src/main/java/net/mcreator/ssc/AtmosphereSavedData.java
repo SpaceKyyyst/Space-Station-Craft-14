@@ -13,7 +13,7 @@ import net.minecraft.world.level.saveddata.SavedDataType;
 public final class AtmosphereSavedData extends SavedData {
     private static final SavedDataType<AtmosphereSavedData> TYPE = new SavedDataType<>(
             Identifier.fromNamespaceAndPath("ssc_14", "atmosphere"), AtmosphereSavedData::new,
-            CompoundTag.CODEC.xmap(AtmosphereSavedData::read, AtmosphereSavedData::write));
+            CompoundTag.CODEC.xmap(AtmosphereSavedData::decode, AtmosphereSavedData::encode));
     private final Map<Long, CompoundTag> storedRegions = new HashMap<>();
     private final Map<Long, AtmosRegion> liveRegions = new HashMap<>();
 
@@ -25,7 +25,7 @@ public final class AtmosphereSavedData extends SavedData {
     void track(long key, AtmosRegion region) { liveRegions.put(key, region); }
     Iterable<Long> savedRegionKeys() { return java.util.List.copyOf(storedRegions.keySet()); }
 
-    private static AtmosphereSavedData read(CompoundTag tag) {
+    static AtmosphereSavedData decode(CompoundTag tag) {
         AtmosphereSavedData data = new AtmosphereSavedData();
         ListTag regions = tag.getList("regions").orElseGet(ListTag::new);
         for (int i = 0; i < regions.size(); i++) {
@@ -39,7 +39,7 @@ public final class AtmosphereSavedData extends SavedData {
         return data;
     }
 
-    private CompoundTag write() {
+    CompoundTag encode() {
         CompoundTag tag = new CompoundTag();
         ListTag regions = new ListTag();
         storedRegions.values().forEach(region -> regions.add(region.copy()));
