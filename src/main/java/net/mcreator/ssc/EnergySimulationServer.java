@@ -36,6 +36,7 @@ public class EnergySimulationServer {
     @SubscribeEvent
     public static void onServerTick(ServerTickEvent.Post event) {
         for (ServerLevel level : event.getServer().getAllLevels()) {
+            EnergyNetworkManager.applyPendingUpdates(level);
             TickContext tick = prepareTick(level);
             simulateNetworkLayer(level, CableType.HV, tick);
             simulateNetworkLayer(level, CableType.MV, tick);

@@ -20,6 +20,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
+import net.mcreator.ssc.EnergyNetworkManager;
 import net.mcreator.ssc.IEnergyStorageBlock;
 import net.mcreator.ssc.block.APCBlock;
 
@@ -95,6 +96,24 @@ public class APCBlockEntity extends RandomizableContainerBlockEntity implements 
 		this.setChanged();
 	}
 	public boolean isTripFlag() { return this.tripFlag; }
+
+	@Override
+	public void onLoad() {
+		super.onLoad();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void setRemoved() {
+		super.setRemoved();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void onChunkUnloaded() {
+		super.onChunkUnloaded();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
 
 	@Override
 	public long getStoredEnergy() { return this.storedEnergy; }

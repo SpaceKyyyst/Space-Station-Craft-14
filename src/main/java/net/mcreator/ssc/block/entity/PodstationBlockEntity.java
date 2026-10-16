@@ -20,6 +20,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
+import net.mcreator.ssc.EnergyNetworkManager;
 import net.mcreator.ssc.IEnergyStorageBlock; // ИСПРАВЛЕНО: Интеграция в общую систему энергии
 
 import javax.annotation.Nullable;
@@ -38,6 +39,24 @@ public class PodstationBlockEntity extends RandomizableContainerBlockEntity impl
 
 	public PodstationBlockEntity(BlockPos position, BlockState state) {
 		super(Ssc14ModBlockEntities.PODSTATION.get(), position, state);
+	}
+
+	@Override
+	public void onLoad() {
+		super.onLoad();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void setRemoved() {
+		super.setRemoved();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void onChunkUnloaded() {
+		super.onChunkUnloaded();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
 	}
 
 	@Override

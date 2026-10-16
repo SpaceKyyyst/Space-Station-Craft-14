@@ -21,6 +21,7 @@ import java.util.WeakHashMap;
 /** Server-thread topology cache. Only loaded chunks participate in electrical networks. */
 public class EnergyNetworkManager {
     private static final Map<LevelAccessor, Map<CableType, List<EnergyNetwork>>> WORLD_NETWORKS = new WeakHashMap<>();
+    private static final Map<LevelAccessor, Set<BlockPos>> PENDING_UPDATES = new WeakHashMap<>();
     private static final Direction[] HORIZONTAL_DIRECTIONS = {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST};
     private static final int LAMP_HORIZONTAL_RADIUS = 2;
     private static final int LAMP_HEIGHT = 6;
@@ -39,6 +40,20 @@ public class EnergyNetworkManager {
         rebuildNetworks(level, Set.of(pos.immutable()));
     }
 
+    /** Lifecycle hooks only queue work; chunk loading must finish before the graph reads the level. */
+    public static void queueUpdate(LevelAccessor level, BlockPos pos) {
+        if (level != null && !level.isClientSide()) {
+            PENDING_UPDATES.computeIfAbsent(level, key -> new LinkedHashSet<>()).add(pos.immutable());
+        }
+    }
+
+    public static void applyPendingUpdates(LevelAccessor level) {
+        Set<BlockPos> changedPositions = PENDING_UPDATES.remove(level);
+        if (changedPositions != null && !changedPositions.isEmpty()) {
+            rebuildNetworks(level, changedPositions);
+        }
+    }
+
     private static void rebuildNetworks(LevelAccessor level, Set<BlockPos> changedPositions) {
         Set<BlockPos> candidates = new LinkedHashSet<>();
         for (BlockPos pos : changedPositions) {
@@ -54,6 +69,11 @@ public class EnergyNetworkManager {
             }
         }
         Set<BlockPos> previousLamps = new HashSet<>();
+        for (BlockPos pos : changedPositions) {
+            if (isLoaded(level, pos) && level.getBlockState(pos).is(Ssc14ModBlocks.LAMP.get())) {
+                previousLamps.add(pos);
+            }
+        }
         for (EnergyNetwork network : getNetworks(level, CableType.LV)) {
             previousLamps.addAll(network.getConsumers());
         }
