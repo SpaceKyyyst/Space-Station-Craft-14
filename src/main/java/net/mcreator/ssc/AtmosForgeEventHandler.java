@@ -61,6 +61,13 @@ public final class AtmosForgeEventHandler {
         }
     }
 
+    @SubscribeEvent
+    public static void onChunkUnload(ChunkEvent.Unload event) {
+        if (event.getLevel() instanceof ServerLevel level) {
+            AtmosphereManager.get(level).onChunkUnloaded(event.getChunk().getPos());
+        }
+    }
+
     private static void handleBlockChange(LevelAccessor level, BlockPos pos) {
         if (level instanceof ServerLevel serverLevel && pos != null) AtmosphereManager.get(serverLevel).onBlockChanged(pos);
     }

@@ -6,6 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import net.mcreator.ssc.atmosphere.StandardGasReactions;
+import net.mcreator.ssc.atmosphere.RegionWorkQueue;
 import net.mcreator.ssc.init.Ssc14ModParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,6 +23,7 @@ public final class AtmosphereManager {
     private static final float STEP_SECONDS = TICK_INTERVAL / 20f;
     private static final int MAX_REGIONS_PER_TICK = 128;
     private static final int MAX_BLOCK_CHANGES_PER_TICK = 1024;
+    private static final int MAX_CHUNK_LOADS_PER_TICK = 32;
     private static final int VISUAL_INTERVAL = 40;
     private static final double MAX_PARTICLE_DISTANCE_SQUARED = 64 * 64;
     private static final float BASE_SPAWN_CHANCE = 0.25f;
@@ -30,14 +32,16 @@ public final class AtmosphereManager {
     private final ServerLevel level;
     private final AtmosphereSavedData savedData;
     private final Map<Long, AtmosRegion> regions = new HashMap<>();
-    private final Set<Long> activeRegions = new LinkedHashSet<>();
+    private final Map<Long, Map<Long, AtmosRegion>> regionsByChunk = new HashMap<>();
+    private final RegionWorkQueue workQueue = new RegionWorkQueue();
+    private final Set<ChunkPos> pendingLoadedChunks = new LinkedHashSet<>();
     private final Set<BlockPos> pendingBlockChanges = new LinkedHashSet<>();
     private int tickCounter;
 
     private AtmosphereManager(ServerLevel level) {
         this.level = level;
         savedData = AtmosphereSavedData.get(level);
-        for (long key : savedData.savedRegionKeys()) activeRegions.add(key);
+        for (long key : savedData.savedRegionKeys()) schedule(key);
     }
 
     public static void initReactions() {
@@ -72,6 +76,7 @@ public final class AtmosphereManager {
                     () -> activate(key));
             region.initFromWorld(level);
             regions.put(key, region);
+            regionsByChunk.computeIfAbsent(ChunkPos.pack(pos), ignored -> new HashMap<>()).put(key, region);
             var saved = savedData.restore(key);
             if (saved != null) region.readFromNBT(saved);
             savedData.track(key, region);
@@ -80,8 +85,13 @@ public final class AtmosphereManager {
     }
 
     private void activate(long key) {
-        activeRegions.add(key);
+        schedule(key);
         savedData.setDirty();
+    }
+
+    private void schedule(long key) {
+        BlockPos origin = regionOrigin(key);
+        workQueue.schedule(key, ChunkPos.pack(origin), level.hasChunkAt(origin));
     }
 
     /** Deferred until the next server tick, after cancellable block events have resolved. */
@@ -99,10 +109,39 @@ public final class AtmosphereManager {
     }
 
     public void onChunkLoaded(ChunkPos chunk) {
-        for (AtmosRegion region : regions.values()) {
-            BlockPos origin = region.getRegionOrigin();
-            int distance = Math.abs((origin.getX() >> 4) - chunk.x()) + Math.abs((origin.getZ() >> 4) - chunk.z());
-            if (distance <= 1) region.wakeGasCells();
+        // ChunkEvent.Load can run before FULL; inspect the level on the next tick.
+        pendingLoadedChunks.add(chunk);
+    }
+
+    public void onChunkUnloaded(ChunkPos chunk) {
+        pendingLoadedChunks.remove(chunk);
+        workQueue.suspendChunk(chunk.pack());
+    }
+
+    private void processChunkLoads() {
+        int remaining = Math.min(MAX_CHUNK_LOADS_PER_TICK, pendingLoadedChunks.size());
+        while (remaining-- > 0) {
+            var iterator = pendingLoadedChunks.iterator();
+            ChunkPos chunk = iterator.next();
+            iterator.remove();
+            BlockPos origin = new BlockPos(chunk.x() << 4, 0, chunk.z() << 4);
+            if (!level.hasChunkAt(origin)) {
+                pendingLoadedChunks.add(chunk);
+                continue;
+            }
+            workQueue.resumeChunk(chunk.pack());
+            wakeChunk(chunk.pack());
+            for (Direction direction : Direction.Plane.HORIZONTAL) {
+                wakeChunk(ChunkPos.pack(origin.relative(direction, 16)));
+            }
+        }
+    }
+
+    private void wakeChunk(long chunkKey) {
+        Map<Long, AtmosRegion> chunkRegions = regionsByChunk.get(chunkKey);
+        if (chunkRegions == null) return;
+        for (AtmosRegion region : chunkRegions.values()) {
+            if (level.hasChunkAt(region.getRegionOrigin())) region.wakeGasCells();
         }
     }
 
@@ -118,23 +157,20 @@ public final class AtmosphereManager {
     }
 
     public void tick() {
+        processChunkLoads();
         processBlockChanges();
         tickCounter = (tickCounter + 1) % VISUAL_INTERVAL;
         if (tickCounter % TICK_INTERVAL != 0) return;
-        int remaining = Math.min(MAX_REGIONS_PER_TICK, activeRegions.size());
         // Remove work before executing it; changed cells enqueue the section for a later step.
-        while (remaining-- > 0) {
-            var iterator = activeRegions.iterator();
-            long key = iterator.next();
-            iterator.remove();
+        for (long key : workQueue.takeReady(MAX_REGIONS_PER_TICK)) {
             BlockPos origin = regionOrigin(key);
             if (!level.hasChunkAt(origin)) {
-                activeRegions.add(key);
+                schedule(key);
                 continue;
             }
             AtmosRegion region = getOrCreateRegion(origin);
             region.tick(STEP_SECONDS, reactions);
-            if (region.isActive()) activeRegions.add(key);
+            if (region.isActive()) schedule(key);
         }
         if (tickCounter == 0) sendGasVisuals();
     }
