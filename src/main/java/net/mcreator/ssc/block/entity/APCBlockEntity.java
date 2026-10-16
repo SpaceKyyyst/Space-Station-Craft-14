@@ -127,6 +127,7 @@ public class APCBlockEntity extends RandomizableContainerBlockEntity implements 
 		}
 	}
 
+	@Override
 	public void setStoredEnergySimulation(long joules) {
 		this.storedEnergy = Math.clamp(joules, 0, MAX_ENERGY);
 		this.setChanged();
@@ -155,14 +156,14 @@ public class APCBlockEntity extends RandomizableContainerBlockEntity implements 
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		ContainerHelper.loadAllItems(valueInput, this.stacks);
 		
-		this.storedEnergy = valueInput.getLongOr("storedEnergy", 0L);
+		this.storedEnergy = Math.clamp(valueInput.getLongOr("storedEnergy", 0L), 0, MAX_ENERGY);
 		this.netCurrent = valueInput.getLongOr("netCurrent", 0L);
 		this.netSupply = valueInput.getLongOr("netSupply", 0L);
 		this.netConsume = valueInput.getLongOr("netConsume", 0L);
 		
 		this.mainBreakerEnabled = valueInput.getBooleanOr("mainBreaker", true);
 		this.tripFlag = valueInput.getBooleanOr("tripFlag", false);
-		this.overloadTicks = valueInput.getIntOr("overloadTicks", 0);
+		this.overloadTicks = Math.clamp(valueInput.getIntOr("overloadTicks", 0), 0, TRIP_TICKS_THRESHOLD);
 	}
 
 	@Override

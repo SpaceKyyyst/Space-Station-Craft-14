@@ -71,6 +71,7 @@ public class PodstationBlockEntity extends RandomizableContainerBlockEntity impl
 		}
 	}
 
+	@Override
 	public void setStoredEnergySimulation(long joules) {
 		this.storedEnergy = Math.clamp(joules, 0, MAX_ENERGY);
 		this.setChanged();
@@ -99,7 +100,7 @@ public class PodstationBlockEntity extends RandomizableContainerBlockEntity impl
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		ContainerHelper.loadAllItems(valueInput, this.stacks);
 		
-		this.storedEnergy = valueInput.getLongOr("storedEnergy", 0L);
+		this.storedEnergy = Math.clamp(valueInput.getLongOr("storedEnergy", 0L), 0, MAX_ENERGY);
 		this.netCurrent = valueInput.getLongOr("netCurrent", 0L);
 		this.netSupply = valueInput.getLongOr("netSupply", 0L);
 		this.netConsume = valueInput.getLongOr("netConsume", 0L);
