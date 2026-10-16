@@ -24,6 +24,7 @@ java -version
 | `.\gradlew.bat runServer` | Выделенный сервер для разработки |
 | `.\gradlew.bat domainTest` | Тесты чистых игровых правил без запуска Minecraft |
 | `.\gradlew.bat checkstyleMain` | Статические проверки выделенного доменного кода |
+| `.\gradlew.bat -I config/gameplay-tests.init.gradle runGameplayTest` | Изолированные серверные регрессионные тесты |
 | `.\gradlew.bat clean` | Удаление результатов предыдущей сборки |
 
 Сервер Minecraft при первом запуске выводит условия использования и требования к настройке своего рабочего каталога. Клиент и сервер используют конфигурации из блока `neoForge.runs` в `build.gradle`.
@@ -35,6 +36,7 @@ java -version
 | `src/main/java/net/mcreator/ssc/` | Код мода, адаптеры и игровые подсистемы |
 | `src/main/resources/` | Ресурсы, данные и метаданные мода |
 | `src/domainTest/java/` | Тесты правил без Minecraft runtime |
+| `src/gameTest/` | Серверные сценарии NeoForge GameTest |
 | `elements/`, `models/`, `ssc_14.mcreator` | Исходные данные проекта MCreator |
 | `config/checkstyle/` | Правила статического анализа |
 | `.github/` | CI, проверки метаданных, публикация релизов |

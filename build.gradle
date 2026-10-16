@@ -66,6 +66,11 @@ sourceSets {
             include 'net/mcreator/ssc/GasType.java'
             include 'net/mcreator/ssc/GasReaction.java'
             include 'net/mcreator/ssc/combat/**'
+            include 'net/mcreator/ssc/atmosphere/**'
+            include 'net/mcreator/ssc/chemistry/**'
+            include 'net/mcreator/ssc/math/**'
+            include 'net/mcreator/ssc/scheduling/TickTaskQueue.java'
+            include 'net/mcreator/ssc/diagnostics/TickPhase.java'
         }
     }
     domainTest {
@@ -107,4 +112,3 @@ tasks.withType(Checkstyle).configureEach {
         html.required = true
     }
 }
-

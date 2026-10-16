@@ -23,7 +23,7 @@ import com.mojang.blaze3d.platform.InputConstants;
 @EventBusSubscriber(Dist.CLIENT)
 public class Ssc14ModKeyMappings {
 	public static final KeyMapping.Category CATEGORY_SSC14 = new KeyMapping.Category(Identifier.parse("ssc_14:ssc14"));
-	public static final KeyMapping DC_MOPEN = new KeyMapping("key.ssc_14.dc_mopen", GLFW.GLFW_KEY_T, CATEGORY_SSC14) {
+	public static final KeyMapping DC_MOPEN = new KeyMapping("key.ssc_14.dc_mopen", GLFW.GLFW_KEY_K, CATEGORY_SSC14) {
 		private boolean isDownOld = false;
 
 		@Override

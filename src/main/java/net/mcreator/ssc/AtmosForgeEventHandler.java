@@ -8,10 +8,27 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.level.LevelEvent;
+import net.neoforged.neoforge.event.level.ChunkEvent;
 import net.neoforged.neoforge.event.level.block.BreakBlockEvent; // ИСПРАВЛЕНО: Верный путь к пакету .block в NeoForge 26.x
 
 @EventBusSubscriber(modid = "ssc_14")
 public class AtmosForgeEventHandler {
+
+    @SubscribeEvent
+    public static void onLevelUnload(LevelEvent.Unload event) {
+        if (event.getLevel() instanceof ServerLevel level) AtmosphereManager.onWorldUnload(level);
+    }
+
+    @SubscribeEvent
+    public static void onChunkLoad(ChunkEvent.Load event) {
+        if (event.getLevel() instanceof ServerLevel level) AtmosphereManager.onChunkAvailabilityChanged(level, event.getChunk().getPos());
+    }
+
+    @SubscribeEvent
+    public static void onChunkUnload(ChunkEvent.Unload event) {
+        if (event.getLevel() instanceof ServerLevel level) AtmosphereManager.onChunkAvailabilityChanged(level, event.getChunk().getPos());
+    }
 
     @SubscribeEvent
     public static void onLevelTick(LevelTickEvent.Post event) {

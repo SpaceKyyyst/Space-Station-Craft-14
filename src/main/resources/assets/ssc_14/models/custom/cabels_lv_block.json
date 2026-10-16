@@ -1,7 +1,7 @@
 {
   "format_version": "1.21.11",
   "credit": "Made with Blockbench",
-  "parent": "cabels_lv_mv_hv_block",
+  "parent": "minecraft:block/block",
   "texture_size": [
     32,
     32

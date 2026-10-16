@@ -2,7 +2,7 @@
   "_fv": 89,
   "_type": "keybind",
   "definition": {
-    "triggerKey": "T",
+    "triggerKey": "K",
     "keyBindingName": "Open crft menu",
     "keyBindingCategoryKey": "ssc14",
     "onKeyPressed": "DCM_Open"

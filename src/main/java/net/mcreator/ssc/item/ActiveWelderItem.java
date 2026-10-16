@@ -90,6 +90,12 @@ public class ActiveWelderItem extends Item {
 	}
 
 	@Override
+	public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+		// Fuel updates arrive every tick; they must not keep the tool below the screen.
+		return slotChanged || !ItemStack.isSameItem(oldStack, newStack);
+	}
+
+	@Override
 	public void inventoryTick(ItemStack itemstack, ServerLevel world, Entity entity, @Nullable EquipmentSlot equipmentSlot) {
 		super.inventoryTick(itemstack, world, entity, equipmentSlot);
 		if (equipmentSlot == EquipmentSlot.MAINHAND)

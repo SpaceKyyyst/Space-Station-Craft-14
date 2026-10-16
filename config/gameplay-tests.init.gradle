@@ -1,0 +1,14 @@
+// Isolated integration build; its classes and resources never enter the release JAR.
+gradle.beforeProject { project ->
+    project.plugins.withId('net.neoforged.moddev') {
+        project.layout.buildDirectory.set(project.layout.projectDirectory.dir('build/gameplay-tests'))
+        project.sourceSets.main.java.srcDir(project.file('src/gameTest/java'))
+        project.sourceSets.main.resources.srcDir(project.file('src/gameTest/resources'))
+        project.neoForge.runs.create('gameplayTest') {
+            type = 'gameTestServer'
+            gameDirectory = project.layout.projectDirectory.dir('build/gameplay-tests/run')
+            programArgument '--report'
+            programArgument 'results.xml'
+        }
+    }
+}

@@ -207,33 +207,30 @@ public class ShuttersBlock extends Block implements EntityBlock, INetworkAction,
 	public java.util.List<String> getAvailableTriggers() {
 		return java.util.List.of("toggle");
 	}
-	
+
 	@Override
 	public String getTriggerName(String triggerId) {
 		if ("toggle".equals(triggerId)) return "При активации";
 		return triggerId;
 	}
-	
+
 	@Override
 	public void executeNetworkAction(String actionId, Level world, BlockPos pos) {
 		BlockState state = world.getBlockState(pos);
-		
-		Player nearestPlayer = null;
-		if (world instanceof net.minecraft.server.level.ServerLevel serverLevel) {
-			nearestPlayer = serverLevel.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 64.0, false);
-		}
-		
+
+		if (world.isClientSide()) return;
+
 		if ("open".equals(actionId)) {
-			net.mcreator.ssc.procedures.ShuttersOpeningPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
+			net.mcreator.ssc.procedures.ShuttersOpeningPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, null);
 		} else if ("close".equals(actionId)) {
-			net.mcreator.ssc.procedures.ShuttersClosingPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
+			net.mcreator.ssc.procedures.ShuttersClosingPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, null);
 		} else if ("toggle".equals(actionId)) {
 			if (state.getBlock().getStateDefinition().getProperty("open") instanceof net.minecraft.world.level.block.state.properties.BooleanProperty _prop) {
 				boolean isOpen = state.getValue(_prop);
 				if (isOpen == false) {
-					net.mcreator.ssc.procedures.ShuttersOpeningPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
+					net.mcreator.ssc.procedures.ShuttersOpeningPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, null);
 				} else {
-					net.mcreator.ssc.procedures.ShuttersClosingPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, nearestPlayer);
+					net.mcreator.ssc.procedures.ShuttersClosingPRProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), state, null);
 				}
 			}
 		}

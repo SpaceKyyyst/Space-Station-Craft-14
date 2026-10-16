@@ -72,9 +72,7 @@ public class Welding_Fuel_chekProcedure {
     // Внутренний метод для умного гашения сварки в руках при нуле топлива
     private static void shutdownWelder(LevelAccessor world, double x, double y, double z, LivingEntity livingEntity, ItemStack itemstack, double fuel, boolean inMainHand) {
         ItemStack deactivated = new ItemStack(Ssc14ModItems.WELDING.get());
-        if (itemstack.has(DataComponents.CUSTOM_DATA)) {
-            deactivated.set(DataComponents.CUSTOM_DATA, itemstack.get(DataComponents.CUSTOM_DATA));
-        }
+        deactivated.applyComponents(itemstack.getComponentsPatch());
         CompoundTag t = deactivated.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         t.putDouble("fuel", fuel);
         deactivated.set(DataComponents.CUSTOM_DATA, CustomData.of(t));

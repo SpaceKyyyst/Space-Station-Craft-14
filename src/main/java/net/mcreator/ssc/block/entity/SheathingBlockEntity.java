@@ -25,6 +25,12 @@ import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 public class SheathingBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        net.mcreator.ssc.EnergyNetworkManager.invalidate(getLevel(), getBlockPos());
+    }
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(0, ItemStack.EMPTY);
 
 	// --- ДАННЫЕ СЕТИ ДЛЯ МУЛЬТИТУЛА (ИСПРАВЛЕНО: Добавлены поля симуляции) ---

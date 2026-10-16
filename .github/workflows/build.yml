@@ -32,6 +32,7 @@ jobs:
         run: |
           python .github/scripts/test_checks.py
           python .github/scripts/check_project.py
+          python .github/scripts/check_resources.py
       - name: Test release script without publishing
         run: bash .github/scripts/test-release.sh
       - name: Build and test
@@ -42,6 +43,8 @@ jobs:
       - name: Annotate code and test errors
         if: always()
         run: python .github/scripts/report_checks.py
+      - name: Run gameplay regression tests
+        run: sh ./gradlew --no-daemon --console=plain -I config/gameplay-tests.init.gradle runGameplayTest
       - name: Upload mod
         uses: actions/upload-artifact@v7.0.2
         with:
@@ -58,6 +61,7 @@ jobs:
             build/reports/checkstyle/
             build/test-results/
             build-output.log
+            build/gameplay-tests/run/results.xml
           if-no-files-found: ignore
 
   release:

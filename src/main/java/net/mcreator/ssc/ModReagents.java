@@ -27,8 +27,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
-import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -38,8 +36,6 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.lang.reflect.Method;
 
 @EventBusSubscriber(modid = "ssc_14")
 public class ModReagents {
@@ -80,7 +76,7 @@ public class ModReagents {
 	    new Reagent("space_up", "reagent.ssc_14.space_up", 0x00FF00),
 	    new Reagent("starkist", "reagent.ssc_14.starkist", 0x9F3400),
 	    new Reagent("fourteen_loko", "reagent.ssc_14.fourteen_loko", 0xDEB928),
-	    
+
 	    // Соки (Juices)
 	    new Reagent("apple_juice", "reagent.ssc_14.apple_juice", 0xFDAD01),
 	    new Reagent("banana_juice", "reagent.ssc_14.banana_juice", 0xFFE777),
@@ -95,7 +91,7 @@ public class ModReagents {
 	    new Reagent("potato_juice", "reagent.ssc_14.potato_juice", 0x302000),
 	    new Reagent("tomato_juice", "reagent.ssc_14.tomato_juice", 0x731008),
 	    new Reagent("watermelon_juice", "reagent.ssc_14.watermelon_juice", 0xEF3520),
-	    
+
 	    // Алкоголь (Alcohol)
 	    new Reagent("absinthe", "reagent.ssc_14.absinthe", 0x33EE00),
 	    new Reagent("ale", "reagent.ssc_14.ale", 0x663100),
@@ -116,7 +112,7 @@ public class ModReagents {
 	    new Reagent("vodka", "reagent.ssc_14.vodka", 0xD1D1D1),
 	    new Reagent("whiskey", "reagent.ssc_14.whiskey", 0x664300),
 	    new Reagent("wine", "reagent.ssc_14.wine", 0x7E4043),
-	    
+
 	    // Коктейли (Cocktails)
 	    new Reagent("acidspit", "reagent.ssc_14.acidspit", 0x365000),
 	    new Reagent("allies_cocktail", "reagent.ssc_14.allies_cocktail", 0x00664D),
@@ -180,7 +176,7 @@ public class ModReagents {
 	    new Reagent("toxins_special", "reagent.ssc_14.toxins_special", 0x665C00),
 	    new Reagent("vodka_martini", "reagent.ssc_14.vodka_martini", 0x004666),
 	    new Reagent("vodka_tonic", "reagent.ssc_14.vodka_tonic", 0x0064C8),
-	    
+
 	    // Химикаты (Chemicals)
 	    new Reagent("potassium", "reagent.ssc_14.potassium", 0xC6C8CC),
 	    new Reagent("sodium", "reagent.ssc_14.sodium", 0xC6C8CC),
@@ -203,7 +199,7 @@ public class ModReagents {
 	    new Reagent("uranium", "reagent.ssc_14.uranium", 0x8FA191),
 	    new Reagent("radium", "reagent.ssc_14.radium", 0x00FF04),
 	    new Reagent("iodine", "reagent.ssc_14.iodine", 0xBC8A00),
-	    
+
 	    // Медицина (Medicine)
 	    new Reagent("bicaridine", "reagent.ssc_14.bicaridine", 0xFFAA00),
 	    new Reagent("kelotane", "reagent.ssc_14.kelotane", 0xBF3D19),
@@ -243,7 +239,7 @@ public class ModReagents {
 	    new Reagent("impedrezene", "reagent.ssc_14.impedrezene", 0x215263),
 	    new Reagent("ephedrine", "reagent.ssc_14.ephedrine", 0xD2FFFA),
 	    new Reagent("desoxyephedrine", "reagent.ssc_14.desoxyephedrine", 0xFAFAFA),
-	    
+
 	    // Токсины (Toxins)
 	    new Reagent("toxin", "reagent.ssc_14.toxin", 0xCF3600),
 	    new Reagent("plasma", "reagent.ssc_14.plasma", 0x7E009E),
@@ -257,7 +253,7 @@ public class ModReagents {
 	    new Reagent("fluorosulfuric_acid", "reagent.ssc_14.fluorosulfuric_acid", 0x5050FF),
 	    new Reagent("sulfuric_acid", "reagent.ssc_14.sulfuric_acid", 0xBF8C00),
 	    new Reagent("space_drugs", "reagent.ssc_14.space_drugs", 0x63806E),
-	    
+
 	    // Промышленные (Industrial)
 	    new Reagent("welding_fuel", "reagent.ssc_14.welding_fuel", 0xA76B1C),
 	    new Reagent("thermite", "reagent.ssc_14.thermite", 0x757245),
@@ -273,7 +269,7 @@ public class ModReagents {
 	    new Reagent("phenol", "reagent.ssc_14.phenol", 0xE7EA91),
 	    new Reagent("ammonia", "reagent.ssc_14.ammonia", 0x77B58E),
 	    new Reagent("diethylamine", "reagent.ssc_14.diethylamine", 0xA1000B),
-	    
+
 	    // Ботаника (Botany)
 	    new Reagent("ez_nutrient", "reagent.ssc_14.ez_nutrient", 0x664330),
 	    new Reagent("left4_zed", "reagent.ssc_14.left4_zed", 0x5B406C),
@@ -281,7 +277,7 @@ public class ModReagents {
 	    new Reagent("plant_bgone", "reagent.ssc_14.plant_bgone", 0x49002E),
 	    new Reagent("robust_harvest", "reagent.ssc_14.robust_harvest", 0x3E901C),
 	    new Reagent("weed_killer", "reagent.ssc_14.weed_killer", 0x968395),
-	    
+
 	    // Еда (Food)
 	    new Reagent("flour", "reagent.ssc_14.flour", 0xFFFFFF),
 	    new Reagent("sugar", "reagent.ssc_14.sugar", 0xFFFFFF),
@@ -295,7 +291,7 @@ public class ModReagents {
 	    new Reagent("oil", "reagent.ssc_14.oil", 0xB67823),
 	    new Reagent("theobromine", "reagent.ssc_14.theobromine", 0xF5F5F5),
 	    new Reagent("table_salt", "reagent.ssc_14.table_salt", 0xFFFFFF),
-	    
+
 	    // Прочее (Misc)
 	    new Reagent("carpetium", "reagent.ssc_14.carpetium", 0x800000),
 	    new Reagent("fiber", "reagent.ssc_14.fiber", 0x808080),
@@ -311,7 +307,7 @@ public class ModReagents {
 	public static final List<Reaction> CONFIG_REACTIONS = List.of(
 	    // ===== ВЗРЫВЧАТКА И ОПАСНЫЕ РЕАКЦИИ =====
 	    new Reaction(Map.of("potassium", 1, "water", 1), List.of(new ExplosionEffect(3.0f))),
-	    
+
 	    // ===== НАПИТКИ (Drinks) =====
 	    new Reaction(Map.of("tea", 2, "ice", 1), List.of(new ReagentGive("ice_tea", 3))),
 	    new Reaction(Map.of("lemonade", 1, "beer", 1), List.of(new ReagentGive("radler", 2))),
@@ -345,7 +341,7 @@ public class ModReagents {
 	    new Reaction(Map.of("iced_tea", 1, "sugar", 1), List.of(new ReagentGive("tortuga", 2))),
 	    new Reaction(Map.of("ice", 1, "green_tea", 2), List.of(new ReagentGive("iced_green_tea", 3))),
 	    new Reaction(Map.of("mead", 1, "blood", 1), List.of(new ReagentGive("red_mead", 2))),
-	    
+
 	    // ===== МЕДИЦИНА (Medicine) =====
 	    new Reaction(Map.of("carbon", 1, "inaprovaline", 1), List.of(new ReagentGive("bicaridine", 2))),
 	    new Reaction(Map.of("oxygen", 1, "sugar", 1, "carbon", 1), List.of(new ReagentGive("inaprovaline", 3))),
@@ -429,7 +425,7 @@ public class ModReagents {
 	    new Reaction(Map.of("silver", 10, "frost_oil", 5), List.of(new ReagentGive("silver_ingot", 1))),
 	    new Reaction(Map.of("gold", 10, "frost_oil", 5), List.of(new ReagentGive("gold_ingot", 1))),
 	    new Reaction(Map.of("potassium", 6, "sulfur", 2, "coal", 2), List.of(new ReagentGive("black_powder", 10))),
-	    
+
 	    // ===== БОТАНИКА (Botany) =====
 	    new Reaction(Map.of("potassium", 1, "phosphorus", 1, "nitrogen", 1), List.of(new ReagentGive("ez_nutrient", 3))),
 	    new Reaction(Map.of("ez_nutrient", 1, "sulfuric_acid", 1), List.of(new ReagentGive("robust_harvest", 1))),
@@ -438,11 +434,11 @@ public class ModReagents {
 
 	    // ===== ЕДА И КУЛИНАРИЯ (Food & Cooking) =====
     	new Reaction(Map.of("flour", 45, "water", 15), List.of(new SpawnItemEffect("ssc_14:dough", 1)))  // ДОБАВИТЬ ТУТ ЗАПЯТУЮ ПОСЛЕ ВОЗВРАЩЕНИЯ МЕХАНИКИ С БИБЛИЕЙ
-	    
+
 	    // ===== ПРОЧЕЕ =====  НА ДАННЫЙ МОМЕНТ ЗАКОММЕНТИРОВАНО, Т.К. ДАННОЙ МЕХАНИКИ НЕТ
 	    //new Reaction(Map.of("water", 1), List.of(new ReagentGive("holy_water", 1))),  Освящение воды
-	    //new Reaction(Map.of("blood", 1), List.of(new ReagentGive("wine", 1)))  Освящение крови -> вино  
-	); 
+	    //new Reaction(Map.of("blood", 1), List.of(new ReagentGive("wine", 1)))  Освящение крови -> вино
+	);
 
     private static final Map<String, Reagent> REAGENTS = new LinkedHashMap<>();
     private static final List<Reaction> REACTIONS = new ArrayList<>();
@@ -451,13 +447,14 @@ public class ModReagents {
         for (Reagent r : CONFIG_REAGENTS) {
             registerReagent(r);
             if (!r.getId().equals("water")) {
-                FLUID_TYPES.register(r.getId(), () -> new FluidType(FluidType.Properties.create()));
-                
-                FLUIDS.register(r.getId(), () -> new BaseFlowingFluid.Source(
-                    new BaseFlowingFluid.Properties(() -> FLUID_TYPES.getEntries().stream()
-                        .filter(reg -> reg.getId().getPath().equals(r.getId()))
-                        .findFirst().orElseThrow().get(), null, null)
-                ));
+                var type = FLUID_TYPES.register(r.getId(), () -> new FluidType(FluidType.Properties.create()));
+                var sourceId = Identifier.fromNamespaceAndPath("ssc_14", r.getId());
+                var flowingId = Identifier.fromNamespaceAndPath("ssc_14", r.getId() + "_flowing");
+                var properties = new BaseFlowingFluid.Properties(type,
+                        () -> BuiltInRegistries.FLUID.getValue(sourceId),
+                        () -> BuiltInRegistries.FLUID.getValue(flowingId));
+                FLUIDS.register(r.getId(), () -> new BaseFlowingFluid.Source(properties));
+                FLUIDS.register(r.getId() + "_flowing", () -> new BaseFlowingFluid.Flowing(properties));
             }
         }
         for (Reaction r : CONFIG_REACTIONS) registerReaction(r);
@@ -567,6 +564,7 @@ public class ModReagents {
     }
 
     public static boolean removeReagent(ItemStack stack, String id, int amount) {
+        if (amount <= 0) return false;
         net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
         CompoundTag root = customData != null ? customData.copyTag() : new CompoundTag();
         if (!root.contains(NBT_KEY_REAGENTS)) return false;
@@ -624,19 +622,17 @@ public class ModReagents {
     }
 
     public static int drinkReagents(ItemStack stack, int maxAmount, ServerPlayer player) {
-        Map<String, Integer> reagents = getReagents(stack);
-        if (reagents.isEmpty()) return 0;
-        int totalVolume = reagents.values().stream().mapToInt(Integer::intValue).sum();
-        int drinkAmount = Math.min(maxAmount, totalVolume); int alcohol = 0;
-        for (Map.Entry<String, Integer> entry : reagents.entrySet()) {
-            int amount = (int) Math.ceil((float) entry.getValue() * drinkAmount / totalVolume);
-            if (amount > 0) {
-                alcohol += AlcoholSystem.getAlcoholValue(entry.getKey()) * amount;
-                removeReagent(stack, entry.getKey(), amount);
+        Map<String, Integer> portion = net.mcreator.ssc.chemistry.MixturePortion.take(getReagents(stack), maxAmount);
+        int removed = 0;
+        int alcohol = 0;
+        for (Map.Entry<String, Integer> entry : portion.entrySet()) {
+            if (removeReagent(stack, entry.getKey(), entry.getValue())) {
+                removed += entry.getValue();
+                alcohol += AlcoholSystem.getAlcoholValue(entry.getKey()) * entry.getValue();
             }
         }
-        if (alcohol > 0) AlcoholSystem.giveAlcohol(player, alcohol);
-        return drinkAmount;
+        if (alcohol > 0 && player != null) AlcoholSystem.giveAlcohol(player, alcohol);
+        return removed;
     }
 
     public static class ReagentFluidHandler {
@@ -700,43 +696,4 @@ return null;
 }, itemsArray);
 }
 }
-    @SubscribeEvent
-    public static void registerClientExtensions(RegisterClientExtensionsEvent event) {
-        // РЕФЛЕКСИВНЫЙ ОБХОД КОМПИЛЯТОРА: Плевать на сигнатуры аргументов — инжектим напрямую!
-        for (Reagent r : CONFIG_REAGENTS) {
-            if (r.getId().equals("water")) continue;
-            
-            FLUID_TYPES.getEntries().stream()
-                .filter(reg -> reg.getId().getPath().equals(r.getId()))
-                .findFirst()
-                .ifPresent(fluidTypeHolder -> {
-                    try {
-                        FluidType type = fluidTypeHolder.get();
-                        
-                        // Создаем анонимный объект БЕЗ переопределений, чтобы компилятор пропустил
-                        IClientFluidTypeExtensions customExtensions = new IClientFluidTypeExtensions() {
-                            private final Identifier still = Identifier.fromNamespaceAndPath("ssc_14", "item/container/" + r.getId() + "_still");
-                            private final Identifier flow = Identifier.fromNamespaceAndPath("ssc_14", "item/container/" + r.getId() + "_flow");
-
-                            // Пишем методы БЕЗ @Override аннотаций, Java считает их просто кастомными методами объекта
-                            public Identifier getStillTexture() { return still; }
-                            public Identifier getFlowingTexture() { return flow; }
-                            public int getTintColor() { return 0xFF000000 | r.getColorRgb(); }
-                            
-                            // Запасные варианты для внутренних систем рендеринга NeoForge
-                            public Identifier getStillTexture(Object... args) { return still; }
-                            public Identifier getFlowingTexture(Object... args) { return flow; }
-                            public int getTintColor(Object... args) { return 0xFF000000 | r.getColorRgb(); }
-                        };
-
-                        // Регистрируем наш кастомный костыль напрямую в ивент-шину рендерера
-                        event.registerFluidType(customExtensions, type);
-
-                    } catch (Exception e) {
-                        // Если рефлексия где-то споткнется, мод не вылетит, а просто запишет ошибку в лог
-                        System.err.println("[SSC14-CRITICAL-REFLECT-ERROR] Ошибка инжекции графики для реагента: " + r.getId());
-                    }
-                });
-        }
-    }
 }
