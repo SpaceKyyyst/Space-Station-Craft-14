@@ -113,7 +113,7 @@ class GasMixtureTest {
         gas.setTemperature(1000);
         assertTrue(gas.tryReactions(StandardGasReactions.create()));
         assertEquals(0.95f, gas.getMoles(GasType.NITROUS_OXIDE.ordinal()));
-        assertEquals(0.025f, gas.getMoles(GasType.NITROGEN.ordinal()));
+        assertEquals(0.05f, gas.getMoles(GasType.NITROGEN.ordinal()));
         assertEquals(0.025f, gas.getMoles(GasType.OXYGEN.ordinal()));
     }
 

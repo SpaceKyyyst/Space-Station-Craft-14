@@ -58,8 +58,10 @@ public class SSC14CriticalTickProcedure {
                 
                 applyCriticalModifiers(player);
                 
-                player.getAbilities().mayBuild = false;
-                player.onUpdateAbilities();
+                if (player.getAbilities().mayBuild) {
+                    player.getAbilities().mayBuild = false;
+                    player.onUpdateAbilities();
+                }
             } else {
                 if (!player.getAbilities().mayBuild) {
                     player.getAbilities().mayBuild = true;

@@ -50,7 +50,7 @@ public final class EnergyGameTests {
     public static void registerTests(RegisterGameTestsEvent event) {
         var environment = event.registerEnvironment(id("energy_environment"));
         for (String name : TEST_NAMES) {
-            var data = new TestData<>(environment, id("atmosphere_test_room"), 100, 1, true);
+            var data = new TestData<>(environment, id("atmosphere_test_room"), 600, 1, true);
             event.registerTest(id(name), new FunctionGameTestInstance(ResourceKey.create(Registries.TEST_FUNCTION, id(name)), data));
         }
     }
@@ -63,7 +63,7 @@ public final class EnergyGameTests {
         APCBlockEntity apc = apc(helper, new BlockPos(2, 2, 2));
         apc.setStoredEnergy(INITIAL_CHARGE);
 
-        helper.runAfterDelay(5, () -> {
+        awaitEnergy(helper, () -> {
             EnergyNetwork joined = network(helper, CableType.LV, new BlockPos(2, 1, 2));
             helper.assertTrue(joined.getCables().contains(helper.absolutePos(new BlockPos(6, 1, 2))),
                     "Both sides must belong to the same live cable network before removal");
@@ -71,7 +71,11 @@ public final class EnergyGameTests {
             long chargeAtDisconnect = apc.getStoredEnergy();
             // Removing one cable layer keeps the sheathing and its block entity in place.
             helper.setBlock(4, 1, 2, cableState(false, false, false));
-            helper.runAfterDelay(3, () -> {
+            helper.runAfterDelay(1, () -> {
+                helper.assertTrue(!lampActive(helper, new BlockPos(8, 3, 2)), "Disconnected lamp must turn off on the first tick");
+                helper.assertTrue(apc.getStoredEnergy() == chargeAtDisconnect, "Invalid topology must not debit the APC");
+            });
+            awaitEnergy(helper, () -> {
                 EnergyNetwork left = network(helper, CableType.LV, new BlockPos(2, 1, 2));
                 EnergyNetwork right = network(helper, CableType.LV, new BlockPos(6, 1, 2));
                 helper.assertTrue(left != right, "Removing a bridge must preserve both disconnected networks");
@@ -94,7 +98,7 @@ public final class EnergyGameTests {
         helper.setBlock(9, 3, 2, Ssc14ModBlocks.LAMP.get());
         Circuit circuit = new Circuit(podstation(helper, new BlockPos(5, 2, 2)),
                 apc(helper, new BlockPos(8, 2, 2)));
-        helper.runAfterDelay(5, () -> {
+        awaitEnergy(helper, () -> {
             helper.assertTrue(circuit.substation.getStoredEnergy() > 0 && circuit.apc.getStoredEnergy() > 0,
                     "The generator must charge both initially empty storage devices through HV and MV");
             helper.assertTrue(lampActive(helper, new BlockPos(9, 3, 2)), "The full supply chain must light the LV lamp");
@@ -149,7 +153,7 @@ public final class EnergyGameTests {
         APCBlockEntity apc = apc(helper, new BlockPos(12, 2, 2));
         substation.setStoredEnergy(INITIAL_CHARGE);
         apc.setStoredEnergy(INITIAL_CHARGE);
-        helper.runAfterDelay(OBSERVATION_TICKS, () -> {
+        awaitEnergy(helper, () -> helper.runAfterDelay(OBSERVATION_TICKS, () -> {
             EnergyNetwork mv = network(helper, CableType.MV, new BlockPos(2, 1, 2));
             EnergyNetwork lv = network(helper, CableType.LV, new BlockPos(12, 1, 2));
             helper.assertTrue(mv.theoreticalSupply == SUBSTATION_WATTS && lv.theoreticalSupply == APC_WATTS,
@@ -160,6 +164,13 @@ public final class EnergyGameTests {
             helper.assertTrue(mv.currentPower == 0 && lv.currentPower == 0 && apc.lastTickDischargingJoules == 0,
                     "No-load networks must report zero delivered energy");
             helper.succeed();
+        }));
+    }
+
+    private static void awaitEnergy(GameTestHelper helper, Runnable action) {
+        helper.runAfterDelay(1, () -> {
+            if (net.mcreator.ssc.energy.EnergyTopologyService.rebuilding(helper.getLevel())) awaitEnergy(helper, action);
+            else helper.runAfterDelay(2, action);
         });
     }
 
@@ -171,7 +182,7 @@ public final class EnergyGameTests {
     private static EnergyNetwork network(GameTestHelper helper, CableType type, BlockPos relativeCable) {
         BlockPos absoluteCable = helper.absolutePos(relativeCable);
         EnergyNetwork found = EnergyNetworkManager.getNetworks(helper.getLevel(), type).stream()
-                .filter(network -> network.getCables().contains(absoluteCable)).findFirst().orElse(null);
+                .filter(network -> network.isTopologyReady() && network.getCables().contains(absoluteCable)).findFirst().orElse(null);
         helper.assertTrue(found != null, "Cable lifecycle must register the " + type + " network at " + relativeCable);
         return found;
     }

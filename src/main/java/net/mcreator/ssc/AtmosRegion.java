@@ -14,7 +14,7 @@ import net.minecraft.server.level.ServerLevel;
 public final class AtmosRegion {
     private static final int REGION_SIZE = 16;
     private static final int CELL_COUNT = REGION_SIZE * REGION_SIZE * REGION_SIZE;
-    private static final int MAX_DIRTY_CELLS = 2048;
+    private static final int MAX_DIRTY_CELLS = 256;
     private static final int VENT_SCAN_RANGE = 20;
     private static final float VISUAL_THRESHOLD = 0.05f;
     private final int regionX, regionY, regionZ;
@@ -154,6 +154,8 @@ public final class AtmosRegion {
             cells[index].diffuseTo(neighbor, permeability, seconds);
         }
     }
+
+    public AtmosCell peekCellAt(BlockPos pos) { return contains(pos) ? cells[packCellIndex(pos)] : null; }
 
     public AtmosCell getCellAt(BlockPos pos) { return contains(pos) ? cell(packCellIndex(pos)) : null; }
 

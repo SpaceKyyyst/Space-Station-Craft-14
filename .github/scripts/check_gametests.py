@@ -14,6 +14,12 @@ EXPECTED_TESTS = {
     "ssc_14:energy_bridge_removal",
     "ssc_14:energy_supply_chain",
     "ssc_14:energy_idle_storage",
+    "ssc_14:audit_energy_large_rebuild_budget_and_restart",
+    "ssc_14:audit_energy_many_lamps_exact_demand",
+    "ssc_14:audit_energy_shared_lamp_single_debit",
+    "ssc_14:audit_energy_lamp_changes_and_depletion",
+    "ssc_14:audit_pure_nitrous_oxide_decays",
+    "ssc_14:audit_trace_gas_crosses_region_boundary",
 }
 
 

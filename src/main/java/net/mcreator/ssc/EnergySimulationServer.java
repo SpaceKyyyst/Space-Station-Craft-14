@@ -29,44 +29,48 @@ public class EnergySimulationServer {
     private static final long SUBSTATION_WATT = 150000;
     private static final long APC_WATT = 15000;
     private static final long MAX_DEVICE_INPUT_JOULES = 50000 / TICKS_PER_SECOND;
-    // Preserve the existing integer-joule simulation and the existing 12 W UI rating.
-    private static final long LAMP_WATT = 12;
+    // One joule per tick corresponds to a 20 W lamp.
+    private static final long LAMP_WATT = 20;
     private static final long LAMP_JOULES_PER_TICK = 1;
 
     @SubscribeEvent
     public static void onServerTick(ServerTickEvent.Post event) {
+        try (var timing = net.mcreator.ssc.diagnostics.TickPhase.start("energy_simulation", 0)) {
         for (ServerLevel level : event.getServer().getAllLevels()) {
             EnergyNetworkManager.applyPendingUpdates(level);
             TickContext tick = prepareTick(level);
             simulateNetworkLayer(level, CableType.HV, tick);
             simulateNetworkLayer(level, CableType.MV, tick);
             simulateNetworkLayer(level, CableType.LV, tick);
-            updateLamps(level, tick);
+            tick.lamps.apply();
             EnergyNetworkTelemetry.publishToolData(level);
+        }
         }
     }
 
     /** A fresh context per dimension prevents equal coordinates from sharing energy snapshots. */
     private static TickContext prepareTick(ServerLevel level) {
-        TickContext tick = new TickContext();
+        TickContext tick = new TickContext(level);
         for (CableType type : CableType.values()) {
             for (EnergyNetwork network : EnergyNetworkManager.getNetworks(level, type)) {
+                if (!network.isTopologyReady()) continue;
                 network.getSources().removeIf(pos -> !isSource(level, pos, type));
-                network.getConsumers().removeIf(pos -> !isConsumer(level, pos, type));
+                network.getConsumers().removeIf(pos -> type == CableType.LV ? !tick.lamps.track(pos) : !isConsumer(level, pos, type));
                 for (BlockPos pos : network.getSources()) {
                     captureDevice(level, pos, tick);
                 }
-                for (BlockPos pos : network.getConsumers()) {
+                if (type != CableType.LV) for (BlockPos pos : network.getConsumers()) {
                     captureDevice(level, pos, tick);
                 }
             }
         }
         Map<BlockPos, Set<BlockPos>> apcLoads = new HashMap<>();
         for (EnergyNetwork network : EnergyNetworkManager.getNetworks(level, CableType.LV)) {
+            if (!network.isTopologyReady()) continue;
             for (BlockPos source : network.getSources()) {
                 Set<BlockPos> lamps = apcLoads.computeIfAbsent(source, key -> new HashSet<>());
                 for (BlockPos lamp : network.getConsumers()) {
-                    if (canLight(level.getBlockState(lamp))) {
+                    if (tick.lamps.needsPower(lamp)) {
                         lamps.add(lamp);
                     }
                 }
@@ -128,6 +132,11 @@ public class EnergySimulationServer {
     private static void simulateNetworkLayer(ServerLevel level, CableType type, TickContext tick) {
         for (EnergyNetwork network : EnergyNetworkManager.getNetworks(level, type)) {
             network.resetTickStats();
+            if (!network.isTopologyReady()) {
+                if (type == CableType.LV) for (var lamp : network.getConsumers()) tick.lamps.track(lamp);
+                network.acknowledgeShutdown();
+                continue;
+            }
             Map<BlockPos, Long> sources = availableSources(network, tick);
             long available = sum(sources.values());
             long delivered;
@@ -167,21 +176,14 @@ public class EnergySimulationServer {
     }
 
     private static long supplyLamps(ServerLevel level, EnergyNetwork network, long available, TickContext tick) {
-        List<BlockPos> lampsNeedingPower = new ArrayList<>();
+        long count = 0;
         for (BlockPos pos : network.getConsumers()) {
-            tick.connectedLamps.add(pos);
-            if (canLight(level.getBlockState(pos))) {
-                network.idealConsumption += LAMP_WATT;
-                if (!tick.poweredLamps.contains(pos)) {
-                    lampsNeedingPower.add(pos);
-                }
-            }
+            if (tick.lamps.needsPower(pos)) count++;
         }
-        long demand = lampsNeedingPower.size() * LAMP_JOULES_PER_TICK;
-        if (available < demand) {
-            return 0;
-        }
-        tick.poweredLamps.addAll(lampsNeedingPower);
+        long demand = count * LAMP_JOULES_PER_TICK;
+        network.idealConsumption = count * LAMP_WATT;
+        if (available < demand) return 0;
+        for (BlockPos pos : network.getConsumers()) tick.lamps.power(pos);
         return demand;
     }
 
@@ -214,6 +216,7 @@ public class EnergySimulationServer {
 
     private static void withdrawDeliveredEnergy(EnergyNetwork network, Map<BlockPos, Long> sources,
             long delivered, TickContext tick) {
+        if (delivered <= 0) return;
         long[] allocations = EnergyAllocation.distribute(delivered,
                 sources.values().stream().mapToLong(Long::longValue).toArray());
         int index = 0;
@@ -252,21 +255,6 @@ public class EnergySimulationServer {
         }
     }
 
-    private static boolean canLight(BlockState state) {
-        return state.is(Ssc14ModBlocks.LAMP.get()) && state.getValue(LampBlock.HAVE_LAMP)
-                && !state.getValue(LampBlock.BROKEN);
-    }
-
-    private static void updateLamps(ServerLevel level, TickContext tick) {
-        for (BlockPos lamp : tick.connectedLamps) {
-            BlockState state = level.getBlockState(lamp);
-            boolean active = tick.poweredLamps.contains(lamp);
-            if (state.getValue(LampBlock.ACTIVE) != active) {
-                level.setBlock(lamp, state.setValue(LampBlock.ACTIVE, active), 3);
-            }
-        }
-    }
-
     private static long sum(Iterable<Long> values) {
         long total = 0;
         for (long value : values) {
@@ -278,7 +266,7 @@ public class EnergySimulationServer {
     private static final class TickContext {
         private final Map<BlockPos, EnergyTickBudget> budgets = new HashMap<>();
         private final Map<BlockPos, IEnergyStorageBlock> storage = new HashMap<>();
-        private final Set<BlockPos> connectedLamps = new HashSet<>();
-        private final Set<BlockPos> poweredLamps = new HashSet<>();
+        private final net.mcreator.ssc.energy.LampTickBatch lamps;
+        TickContext(ServerLevel level) { lamps = new net.mcreator.ssc.energy.LampTickBatch(level); }
     }
 }

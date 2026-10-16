@@ -77,10 +77,7 @@ public class Multitul_UI_ConditionsProcedure {
 					if (!world.isClientSide()) {
 						if (entity instanceof ServerPlayer serverPlayer) {
 							
-							EnergyNetworkManager.applyPendingUpdates(world);
-							boolean cached = EnergyNetworkManager.getNetworks(world, targetType).stream()
-								.anyMatch(network -> network.getCables().contains(pos));
-							if (!cached) EnergyNetworkManager.updatePosition(world, pos);
+							EnergyNetworkManager.refreshPending(world);
 
 							boolean networkFound = false;
 							for (EnergyNetwork net : EnergyNetworkManager.getNetworks(world, targetType)) {

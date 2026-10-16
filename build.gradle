@@ -114,7 +114,12 @@ sourceSets {
             include 'net/mcreator/ssc/GasReaction.java'
             include 'net/mcreator/ssc/combat/**'
             include 'net/mcreator/ssc/atmosphere/**'
-            include 'net/mcreator/ssc/energy/**'
+            include 'net/mcreator/ssc/energy/ConnectedComponents.java'
+            include 'net/mcreator/ssc/energy/EnergyAllocation.java'
+            include 'net/mcreator/ssc/energy/EnergyTickBudget.java'
+            include 'net/mcreator/ssc/math/**'
+            include 'net/mcreator/ssc/scheduling/TickTaskQueue.java'
+            include 'net/mcreator/ssc/diagnostics/TickPhase.java'
             include 'net/mcreator/ssc/network/validation/**'
             include 'net/mcreator/ssc/chemistry/**'
         }
@@ -200,4 +205,3 @@ tasks.withType(Checkstyle).configureEach {
         html.required = true
     }
 }
-

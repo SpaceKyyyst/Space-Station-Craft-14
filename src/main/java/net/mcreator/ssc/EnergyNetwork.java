@@ -2,14 +2,18 @@
 package net.mcreator.ssc;
 
 import net.minecraft.core.BlockPos;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 
 public class EnergyNetwork {
     private final CableType type;
-    private final Set<BlockPos> cables = new LinkedHashSet<>();
-    private final Set<BlockPos> sources = new LinkedHashSet<>();
-    private final Set<BlockPos> consumers = new LinkedHashSet<>();
+    private final java.util.function.BooleanSupplier generationReady;
+    private boolean topologyValid = true;
+    private boolean shutdownProcessed;
+    private final Set<BlockPos> cables = new HashSet<>();
+    private final java.util.Map<Long, java.util.List<BlockPos>> cablesBySection = new java.util.HashMap<>();
+    private final Set<BlockPos> sources = new HashSet<>();
+    private final Set<BlockPos> consumers = new HashSet<>();
 
     // --- СТАТИСТИКА ДЛЯ МУЛЬТИТУЛА ---
     public long currentPower = 0;       // Текущее питание (Ватт)
@@ -22,8 +26,19 @@ public class EnergyNetwork {
     public long outputMax = 0;          // Макс. выходной запас
 
     public EnergyNetwork(CableType type) {
-        this.type = type;
+        this(type, () -> true);
     }
+
+    public EnergyNetwork(CableType type, java.util.function.BooleanSupplier generationReady) {
+        this.type = type;
+        this.generationReady = generationReady;
+    }
+
+    public boolean isTopologyReady() { return topologyValid && generationReady.getAsBoolean(); }
+    public void invalidateTopology() { topologyValid = false; resetTickStats(); }
+
+    public void acknowledgeShutdown() { shutdownProcessed = true; }
+    public boolean isShutdownProcessed() { return shutdownProcessed; }
 
     public void resetTickStats() {
         this.currentPower = 0;
@@ -40,6 +55,26 @@ public class EnergyNetwork {
     public Set<BlockPos> getCables() { return cables; }
     public Set<BlockPos> getSources() { return sources; }
     public Set<BlockPos> getConsumers() { return consumers; }
-    public void addCable(BlockPos pos) { this.cables.add(pos.immutable()); }
+    public void addCable(BlockPos pos) {
+        var immutable = pos.immutable();
+        if (cables.add(immutable)) {
+            long section = net.minecraft.core.SectionPos.asLong(pos.getX() >> 4, pos.getY() >> 4, pos.getZ() >> 4);
+            cablesBySection.computeIfAbsent(section, ignored -> new java.util.ArrayList<>()).add(immutable);
+        }
+    }
+
+    /** Exact radius check over nearby sections, independent of distant cable count. */
+    public boolean hasCableWithin(BlockPos position, int radius) {
+        for (int x = (position.getX() - radius) >> 4; x <= (position.getX() + radius) >> 4; x++) {
+            for (int y = (position.getY() - radius) >> 4; y <= (position.getY() + radius) >> 4; y++) {
+                for (int z = (position.getZ() - radius) >> 4; z <= (position.getZ() + radius) >> 4; z++) {
+                    var nearby = cablesBySection.get(net.minecraft.core.SectionPos.asLong(x, y, z));
+                    if (nearby == null) continue;
+                    for (var cable : nearby) if (position.closerThan(cable, radius)) return true;
+                }
+            }
+        }
+        return false;
+    }
     public int getCableCount() { return this.cables.size(); }
 }

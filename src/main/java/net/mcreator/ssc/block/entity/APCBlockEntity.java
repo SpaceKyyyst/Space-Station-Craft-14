@@ -120,7 +120,9 @@ public class APCBlockEntity extends RandomizableContainerBlockEntity implements 
 
 	@Override
 	public void setStoredEnergy(long joules) {
-		this.storedEnergy = Math.clamp(joules, 0, MAX_ENERGY);
+		long nextEnergy = Math.clamp(joules, 0, MAX_ENERGY);
+		if (this.storedEnergy == nextEnergy) return;
+		this.storedEnergy = nextEnergy;
 		this.setChanged();
 		if (this.level != null && !this.level.isClientSide()) {
 			this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
@@ -129,7 +131,9 @@ public class APCBlockEntity extends RandomizableContainerBlockEntity implements 
 
 	@Override
 	public void setStoredEnergySimulation(long joules) {
-		this.storedEnergy = Math.clamp(joules, 0, MAX_ENERGY);
+		long nextEnergy = Math.clamp(joules, 0, MAX_ENERGY);
+		if (this.storedEnergy == nextEnergy) return;
+		this.storedEnergy = nextEnergy;
 		this.setChanged();
 	}
 

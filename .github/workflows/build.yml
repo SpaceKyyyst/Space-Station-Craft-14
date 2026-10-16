@@ -35,6 +35,7 @@ jobs:
           python .github/scripts/test_checks.py
           python .github/scripts/test_gametests.py
           python .github/scripts/check_project.py
+          python .github/scripts/check_resources.py
       - name: Test release script without publishing
         run: bash .github/scripts/test-release.sh
       - name: Build and test
