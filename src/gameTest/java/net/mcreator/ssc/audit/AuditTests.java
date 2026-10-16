@@ -23,6 +23,40 @@ import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 public final class AuditTests {
     private static final Map<String, Consumer<GameTestHelper>> TESTS = new LinkedHashMap<>();
     static {
+        TESTS.put("airlock_wires_bound_to_panel", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            var other = pos.offset(2, 0, 0);
+            var door = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
+                    .setValue(net.mcreator.ssc.block.BaseAirlockD1Block.PANEL_OPEN, true);
+            h.getLevel().setBlock(pos, door, 3);
+            h.getLevel().setBlock(other, door, 3);
+            player.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 1.5);
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
+                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.NIPPERS.get()));
+            var buffer = new net.minecraft.network.FriendlyByteBuf(io.netty.buffer.Unpooled.buffer());
+            try {
+                buffer.writeBlockPos(pos);
+                player.containerMenu = new net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu(1, player.getInventory(), buffer);
+            } finally { buffer.release(); }
+            var data = h.getLevel().getBlockEntity(pos).getPersistentData();
+            for (int wire = 1; wire <= 8; wire++) {
+                net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, wire);
+                h.assertTrue(data.getBooleanOr("cabel_" + wire, false), "Wire was not cut on the bound door");
+                net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, wire);
+                h.assertTrue(!data.getBooleanOr("cabel_" + wire, false), "Wire was not mended");
+            }
+            net.mcreator.ssc.access.AirlockWireService.toggle(player, other, 1);
+            h.assertTrue(!h.getLevel().getBlockEntity(other).getPersistentData().getBooleanOr("cabel_1", false),
+                    "Panel edited another door");
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, net.minecraft.world.item.ItemStack.EMPTY);
+            net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, 1);
+            h.assertTrue(!data.getBooleanOr("cabel_1", false), "Wire cut without nippers");
+            h.getLevel().setBlock(pos, h.getLevel().getBlockState(pos)
+                    .setValue(net.mcreator.ssc.block.BaseAirlockD1Block.PANEL_OPEN, false), 3);
+            h.assertTrue(!player.containerMenu.stillValid(player), "Closed panel remained usable");
+            h.succeed();
+        });
         TESTS.put("airlock_current_inventory_access", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var requirement = new net.minecraft.nbt.CompoundTag();
