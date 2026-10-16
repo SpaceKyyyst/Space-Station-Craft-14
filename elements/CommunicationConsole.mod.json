@@ -12,7 +12,7 @@
     "customModelName": "console:communication",
     "rotationMode": 1,
     "enablePitch": false,
-    "emissiveRendering": true,
+    "emissiveRendering": false,
     "displayFluidOverlay": false,
     "states": [],
     "animations": [],
