@@ -5,10 +5,4 @@ build/
 .idea/
 *.iml
 .superpowers/
-docs/superpowers/
-SUPERPOWERS/
-.codex/
-.agents/
-AGENTS.md
-SKILL.md
 __pycache__/
