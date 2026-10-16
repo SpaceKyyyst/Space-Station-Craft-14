@@ -23,6 +23,36 @@ import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 public final class AuditTests {
     private static final Map<String, Consumer<GameTestHelper>> TESTS = new LinkedHashMap<>();
     static {
+        TESTS.put("airlock_controller_target_and_cut_bolts", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            var level = h.getLevel();
+            level.setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
+            var controller = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.AIRLOCK_CONTROLLER.get());
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, controller);
+            var data = level.getBlockEntity(pos).getPersistentData();
+            net.mcreator.ssc.procedures.AirlockController_DEBUG_prProcedure.execute(level,
+                    pos.getX(), pos.getY() + 1, pos.getZ(), level.getBlockState(pos.above()), player, controller);
+            h.assertTrue(data.getBooleanOr("bolted", false), "Upper-part click did not lower bolts on the root");
+            data.putBoolean("_ssc14_bolt_wire_cut", true);
+            net.mcreator.ssc.procedures.AirlockController_DEBUG_prProcedure.execute(level,
+                    pos.getX(), pos.getY(), pos.getZ(), level.getBlockState(pos), player, controller);
+            h.assertTrue(data.getBooleanOr("bolted", false), "Controller lifted bolts with a cut bolt wire");
+            data.putBoolean("_ssc14_bolt_wire_cut", false);
+            net.mcreator.ssc.procedures.AirlockController_DEBUG_prProcedure.execute(level,
+                    pos.getX(), pos.getY(), pos.getZ(), level.getBlockState(pos), player, controller);
+            h.assertTrue(!data.getBooleanOr("bolted", false), "Controller did not lift bolts after wire repair");
+            net.mcreator.ssc.procedures.AirlockController_Mode_SwitchingProcedure.execute(controller);
+            net.mcreator.ssc.procedures.AirlockController_DEBUG_prProcedure.execute(level,
+                    pos.getX(), pos.getY(), pos.getZ(), level.getBlockState(pos), player, controller);
+            h.assertTrue(data.getBooleanOr("emergency_acs", false), "Emergency mode was not enabled");
+            data.putBoolean("powered", false);
+            net.mcreator.ssc.procedures.AirlockController_DEBUG_prProcedure.execute(level,
+                    pos.getX(), pos.getY(), pos.getZ(), level.getBlockState(pos), player, controller);
+            h.assertTrue(data.getBooleanOr("emergency_acs", false), "Unpowered door accepted mode changes");
+            h.succeed();
+        });
         TESTS.put("airlock_disassembly_requires_isolation", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var pos = h.absolutePos(new BlockPos(2, 2, 2));

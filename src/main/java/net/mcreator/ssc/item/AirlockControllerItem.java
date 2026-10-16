@@ -25,9 +25,8 @@ public class AirlockControllerItem extends Item {
 
 	@Override
 	public InteractionResult use(Level world, Player entity, InteractionHand hand) {
-		InteractionResult ar = super.use(world, entity, hand);
-		AirlockController_Mode_SwitchingProcedure.execute(entity.getItemInHand(hand));
-		return ar;
+		if (!world.isClientSide()) AirlockController_Mode_SwitchingProcedure.execute(entity.getItemInHand(hand));
+		return InteractionResult.SUCCESS;
 	}
 
 	@Override
