@@ -51,6 +51,12 @@ neoForge {
         }
     }
 
+    unitTest {
+        enable()
+        testedMod = mods.mcreator
+        loadedMods = [mods.mcreator]
+    }
+
     runs {
         configureEach {
             loadedMods = [mods.mcreator]
