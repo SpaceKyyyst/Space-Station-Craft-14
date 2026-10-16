@@ -16,7 +16,9 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-import java.util.*;
+import java.util.Map;
+import net.mcreator.ssc.network.MenuPacketGuard;
+import net.mcreator.ssc.chemistry.ReagentTransferPlan;
 
 @EventBusSubscriber
 public record ProcessReactionsMessage(int slotIndex, ItemStack carriedStack, String targetMarker) implements CustomPacketPayload {
@@ -45,38 +47,33 @@ public record ProcessReactionsMessage(int slotIndex, ItemStack carriedStack, Str
                     execute(serverPlayer, message.slotIndex());
                 }
             }).exceptionally(e -> {
-                System.err.println("[SSC-SERVER] Ошибка сетевого пакета: " + e.getMessage());
+                Ssc14Mod.LOGGER.error("Failed to transfer reagents", e);
                 return null;
             });
         }
     }
 
     private static void execute(ServerPlayer player, int slotIndex) {
-        if (player.containerMenu == null) return;
+        if (!MenuPacketGuard.canUseMenu(player)) return;
         if (slotIndex < 0 || slotIndex >= player.containerMenu.slots.size()) return;
 
         Slot targetSlot = player.containerMenu.slots.get(slotIndex);
+        if (!targetSlot.isActive() || !targetSlot.mayPickup(player)) return;
         ItemStack targetStack = targetSlot.getItem(); 
         ItemStack mainHandStack = player.getMainHandItem(); 
 
-        if (!(targetStack.getItem() instanceof ReagentContainerItem) || !(mainHandStack.getItem() instanceof ReagentContainerItem)) {
+        if (targetStack == mainHandStack || !targetSlot.mayPlace(targetStack)
+                || !(targetStack.getItem() instanceof ReagentContainerItem targetItem)
+                || !(mainHandStack.getItem() instanceof ReagentContainerItem sourceItem)) {
             return;
         }
 
         Map<String, Integer> sourceReagents = ModReagents.getReagents(mainHandStack);
         if (sourceReagents.isEmpty()) return;
 
-        int totalSourceVolume = sourceReagents.values().stream().mapToInt(Integer::intValue).sum();
-        if (totalSourceVolume <= 0) return;
-
-        ReagentContainerItem targetItem = (ReagentContainerItem) targetStack.getItem();
-        int targetCurrentVolume = ModReagents.getReagents(targetStack).values().stream().mapToInt(Integer::intValue).sum();
-        int freeSpace = targetItem.getMaxCapacity() - targetCurrentVolume;
-
-        if (freeSpace <= 0) return;
-
-        int transferAmount = Math.min(5, Math.min(totalSourceVolume, freeSpace));
-        Map<String, Integer> transferMap = calculateProportionalTransfer(sourceReagents, totalSourceVolume, transferAmount);
+        Map<String, Integer> transferMap = ReagentTransferPlan.calculate(sourceReagents,
+                ModReagents.getReagents(targetStack), sourceItem.getMaxCapacity(), targetItem.getMaxCapacity());
+        if (transferMap.isEmpty()) return;
 
         for (Map.Entry<String, Integer> entry : transferMap.entrySet()) {
             String reagentId = entry.getKey();
@@ -93,34 +90,6 @@ public record ProcessReactionsMessage(int slotIndex, ItemStack carriedStack, Str
         player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, mainHandStack);
         ModReagents.processReactions(targetSlot.getItem(), player);
         player.containerMenu.broadcastChanges();
-    }
-
-    private static Map<String, Integer> calculateProportionalTransfer(Map<String, Integer> sourceReagents, int totalSourceVolume, int transferAmount) {
-        Map<String, Double> exactAmounts = new LinkedHashMap<>();
-        Map<String, Integer> result = new LinkedHashMap<>();
-        for (Map.Entry<String, Integer> entry : sourceReagents.entrySet()) {
-            String reagentId = entry.getKey();
-            int sourceAmount = entry.getValue();
-            double proportion = (double) sourceAmount / totalSourceVolume;
-            exactAmounts.put(reagentId, proportion * transferAmount);
-        }
-        int remaining = transferAmount;
-        Map<String, Double> fractionalParts = new LinkedHashMap<>();
-        for (Map.Entry<String, Double> entry : exactAmounts.entrySet()) {
-            String reagentId = entry.getKey();
-            double exact = entry.getValue();
-            int rounded = (int) Math.floor(exact);
-            result.put(reagentId, rounded);
-            remaining -= rounded;
-            fractionalParts.put(reagentId, exact - rounded);
-        }
-        List<Map.Entry<String, Double>> sortedFractions = new ArrayList<>(fractionalParts.entrySet());
-        sortedFractions.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
-        for (int i = 0; remaining > i && i < sortedFractions.size(); i++) {
-            String reagentId = sortedFractions.get(i).getKey();
-            result.put(reagentId, result.get(reagentId) + 1);
-        }
-        return result;
     }
 
     @SubscribeEvent
