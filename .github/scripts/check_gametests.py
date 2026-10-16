@@ -1,4 +1,4 @@
-"""Require completed, successful atmosphere tests from Minecraft's XML report."""
+"""Require completed, successful mod tests from Minecraft's XML report."""
 
 import sys
 import xml.etree.ElementTree as ET
@@ -10,6 +10,10 @@ EXPECTED_TESTS = {
     "ssc_14:atmosphere_cross_region",
     "ssc_14:atmosphere_reaction_tick",
     "ssc_14:airlock_gas_seal_frames",
+    "ssc_14:atmosphere_chunk_resume",
+    "ssc_14:energy_bridge_removal",
+    "ssc_14:energy_supply_chain",
+    "ssc_14:energy_idle_storage",
 }
 
 
@@ -40,7 +44,7 @@ def main() -> int:
         print(f"::error title=GameTest report::{escaped}")
     if errors:
         return 1
-    print(f"All {len(EXPECTED_TESTS)} required atmosphere GameTests passed.")
+    print(f"All {len(EXPECTED_TESTS)} required mod GameTests passed.")
     return 0
 
 
