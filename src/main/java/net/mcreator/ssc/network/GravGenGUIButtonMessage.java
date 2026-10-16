@@ -13,11 +13,11 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.SectionPos;
 
 import net.mcreator.ssc.procedures.GravGenONbuttonProcedure;
 import net.mcreator.ssc.procedures.GravGenOFFbuttonProcedure;
 import net.mcreator.ssc.Ssc14Mod;
+import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
 
 @EventBusSubscriber
 public record GravGenGUIButtonMessage(int buttonID, int x, int y, int z) implements CustomPacketPayload {
@@ -46,8 +46,8 @@ public record GravGenGUIButtonMessage(int buttonID, int x, int y, int z) impleme
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
 		// security measure to prevent arbitrary chunk generation
-		if (!world.getChunkSource().hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)))
-			return;
+		if (!(entity.containerMenu instanceof GravGenGUIMenu menu) || !MenuPacketGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
+            return;
 		if (buttonID == 0) {
 
 			GravGenOFFbuttonProcedure.execute(world, x, y, z);
@@ -60,6 +60,6 @@ public record GravGenGUIButtonMessage(int buttonID, int x, int y, int z) impleme
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(GravGenGUIButtonMessage.TYPE, GravGenGUIButtonMessage.STREAM_CODEC, GravGenGUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(GravGenGUIButtonMessage.TYPE, GravGenGUIButtonMessage.STREAM_CODEC, GravGenGUIButtonMessage::handleData);
 	}
 }

@@ -13,10 +13,10 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.SectionPos;
 
 import net.mcreator.ssc.procedures.DECALSGUIacceptProcedure;
 import net.mcreator.ssc.Ssc14Mod;
+import net.mcreator.ssc.world.inventory.DECALScolorGUIMenu;
 
 @EventBusSubscriber
 public record DECALScolorGUIButtonMessage(int buttonID, int x, int y, int z) implements CustomPacketPayload {
@@ -45,8 +45,8 @@ public record DECALScolorGUIButtonMessage(int buttonID, int x, int y, int z) imp
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
 		// security measure to prevent arbitrary chunk generation
-		if (!world.getChunkSource().hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)))
-			return;
+		if (!(entity.containerMenu instanceof DECALScolorGUIMenu menu) || !MenuPacketGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
+            return;
 		if (buttonID == 0) {
 
 			DECALSGUIacceptProcedure.execute(entity);
@@ -55,6 +55,6 @@ public record DECALScolorGUIButtonMessage(int buttonID, int x, int y, int z) imp
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(DECALScolorGUIButtonMessage.TYPE, DECALScolorGUIButtonMessage.STREAM_CODEC, DECALScolorGUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(DECALScolorGUIButtonMessage.TYPE, DECALScolorGUIButtonMessage.STREAM_CODEC, DECALScolorGUIButtonMessage::handleData);
 	}
 }

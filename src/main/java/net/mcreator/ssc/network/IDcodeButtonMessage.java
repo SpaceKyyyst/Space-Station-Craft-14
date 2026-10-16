@@ -13,10 +13,10 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.SectionPos;
 
 import net.mcreator.ssc.procedures.*;
 import net.mcreator.ssc.Ssc14Mod;
+import net.mcreator.ssc.world.inventory.IDcodeMenu;
 
 @EventBusSubscriber
 public record IDcodeButtonMessage(int buttonID, int x, int y, int z) implements CustomPacketPayload {
@@ -45,8 +45,8 @@ public record IDcodeButtonMessage(int buttonID, int x, int y, int z) implements 
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
 		// security measure to prevent arbitrary chunk generation
-		if (!world.getChunkSource().hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)))
-			return;
+		if (!(entity.containerMenu instanceof IDcodeMenu menu) || !MenuPacketGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
+            return;
 		if (buttonID == 0) {
 
 			CapitanJOBProcedure.execute(world, x, y, z, entity);
@@ -243,6 +243,6 @@ public record IDcodeButtonMessage(int buttonID, int x, int y, int z) implements 
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(IDcodeButtonMessage.TYPE, IDcodeButtonMessage.STREAM_CODEC, IDcodeButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(IDcodeButtonMessage.TYPE, IDcodeButtonMessage.STREAM_CODEC, IDcodeButtonMessage::handleData);
 	}
 }

@@ -47,8 +47,8 @@ public class Ssc14ModVariables {
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(SavedDataSyncMessage.TYPE, SavedDataSyncMessage.STREAM_CODEC, SavedDataSyncMessage::handleData);
-		Ssc14Mod.addNetworkMessage(PlayerVariablesSyncMessage.TYPE, PlayerVariablesSyncMessage.STREAM_CODEC, PlayerVariablesSyncMessage::handleData);
+		Ssc14Mod.addClientboundNetworkMessage(SavedDataSyncMessage.TYPE, SavedDataSyncMessage.STREAM_CODEC, SavedDataSyncMessage::handleData);
+		Ssc14Mod.addClientboundNetworkMessage(PlayerVariablesSyncMessage.TYPE, PlayerVariablesSyncMessage.STREAM_CODEC, PlayerVariablesSyncMessage::handleData);
 	}
 
 	@SubscribeEvent
