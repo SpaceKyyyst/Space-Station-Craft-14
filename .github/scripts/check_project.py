@@ -1,10 +1,35 @@
 """Validate build/metadata consistency without downloading Minecraft."""
 import re
+import subprocess
 import sys
 import tomllib
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[2]
+LOCAL_DIRECTORIES = frozenset({"superpowers", ".superpowers", ".codex", ".agents"})
+LOCAL_FILENAMES = frozenset({"agents.md", "skill.md"})
+
+
+def check_tracked_files(root: Path) -> list[tuple[str, str]]:
+    """Check the Git index; ignored and untracked local files remain private."""
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(root), "ls-files", "--cached", "-z"],
+            check=True, capture_output=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return [(".gitignore", "Cannot inspect tracked files; Git checkout is required")]
+
+    errors = []
+    for raw_path in result.stdout.split(b"\0"):
+        if not raw_path:
+            continue
+        path = raw_path.decode("utf-8", errors="replace")
+        parts = PurePosixPath(path).parts
+        if (any(part.casefold() in LOCAL_DIRECTORIES for part in parts)
+                or parts[-1].casefold() in LOCAL_FILENAMES):
+            errors.append((path, "Local tool files and instructions must not be tracked"))
+    return errors
 
 
 def check_project(root: Path) -> list[tuple[str, str]]:
@@ -34,9 +59,10 @@ def escape(value: str) -> str:
 
 
 if __name__ == "__main__":
-    issues = check_project(ROOT)
+    issues = check_project(ROOT) + check_tracked_files(ROOT)
     for path, message in issues:
-        print(f"::error file={path}::{escape(message)}")
+        annotation_path = escape(path).replace(":", "%3A").replace(",", "%2C")
+        print(f"::error file={annotation_path}::{escape(message)}")
     if not issues:
-        print("Project metadata and required build files are consistent.")
+        print("Project metadata, required build files and tracked paths are valid.")
     sys.exit(bool(issues))
