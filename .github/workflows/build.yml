@@ -2,9 +2,10 @@ name: Build and release
 
 on:
   push:
-    branches: [main, 'ShinozakiAichi/**']
+    branches: [main]
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
 permissions:
@@ -12,10 +13,11 @@ permissions:
 
 concurrency:
   group: build-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   build:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:
@@ -31,6 +33,7 @@ jobs:
       - name: Check project metadata
         run: |
           python .github/scripts/test_checks.py
+          python .github/scripts/test_gametests.py
           python .github/scripts/check_project.py
       - name: Test release script without publishing
         run: bash .github/scripts/test-release.sh
@@ -39,6 +42,16 @@ jobs:
         run: |
           set -o pipefail
           sh ./gradlew --no-daemon --console=plain build 2>&1 | tee build-output.log
+      - name: Test mod systems on a real server
+        id: gametests
+        timeout-minutes: 10
+        shell: bash
+        run: |
+          set -o pipefail
+          sh ./gradlew --no-daemon --console=plain runGameTestServer 2>&1 | tee gametest-output.log
+      - name: Verify GameTest results
+        if: always() && steps.gametests.outcome != 'skipped'
+        run: python .github/scripts/check_gametests.py build/test-results/gameTest/TEST-atmosphere.xml
       - name: Annotate code and test errors
         if: always()
         run: python .github/scripts/report_checks.py
@@ -56,8 +69,12 @@ jobs:
           path: |
             build/reports/tests/
             build/reports/checkstyle/
+            build/reports/pmd/
             build/test-results/
             build-output.log
+            gametest-output.log
+            build/gameTest/run/logs/
+            build/gameTest/run/crash-reports/
           if-no-files-found: ignore
 
   release:

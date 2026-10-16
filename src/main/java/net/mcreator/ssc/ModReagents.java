@@ -2,6 +2,8 @@
 package net.mcreator.ssc;
 
 import net.mcreator.ssc.item.ReagentContainerItem;
+import net.mcreator.ssc.chemistry.ReagentAmounts;
+import net.mcreator.ssc.chemistry.ReagentTransferPlan;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -536,6 +538,7 @@ public class ModReagents {
     }
 
     private static final String NBT_KEY_REAGENTS = "ssc_14_reagents";
+    private static final int MAX_REACTIONS_PER_ACTION = 1024;
 
     public static Map<String, Integer> getReagents(ItemStack stack) {
         net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
@@ -543,58 +546,64 @@ public class ModReagents {
         if (!tag.contains(NBT_KEY_REAGENTS)) return Collections.emptyMap();
         CompoundTag r = tag.getCompound(NBT_KEY_REAGENTS).orElse(new CompoundTag());
         Map<String, Integer> map = new LinkedHashMap<>();
-        for (String key : r.keySet()) { map.put(key, r.getInt(key).orElse(0)); }
+        for (String key : r.keySet()) {
+            int amount = r.getInt(key).orElse(0);
+            if (amount > 0 && !key.isBlank()) {
+                map.put(key, amount);
+            }
+        }
         return Collections.unmodifiableMap(map);
     }
 
     public static int getAvailableSpace(ItemStack stack) {
-        if (stack.getItem() instanceof ReagentContainerItem container) {
-            int currentVol = getReagents(stack).values().stream().mapToInt(Integer::intValue).sum();
-            return container.getMaxCapacity() - currentVol;
-        }
-        return Integer.MAX_VALUE;
+        return ReagentAmounts.availableSpace(getReagents(stack), getCapacity(stack));
+    }
+
+    private static int getCapacity(ItemStack stack) {
+        return stack.getItem() instanceof ReagentContainerItem container
+            ? container.getMaxCapacity() : Integer.MAX_VALUE;
     }
 
     public static boolean addReagent(ItemStack stack, String id, int amount) {
-        if (amount <= 0 || getAvailableSpace(stack) < amount) return false;
-        net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
-        CompoundTag root = customData != null ? customData.copyTag() : new CompoundTag();
-        CompoundTag r = root.getCompound(NBT_KEY_REAGENTS).orElse(new CompoundTag());
-        r.putInt(id, r.getInt(id).orElse(0) + amount);
-        root.put(NBT_KEY_REAGENTS, r);
-        stack.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(root));
+        Map<String, Integer> reagents = new LinkedHashMap<>(getReagents(stack));
+        if (stack.isEmpty() || !ReagentAmounts.canAdd(reagents, getCapacity(stack), id, amount)) return false;
+        reagents.put(id, reagents.getOrDefault(id, 0) + amount);
+        setReagents(stack, reagents);
         return true;
     }
 
     public static boolean removeReagent(ItemStack stack, String id, int amount) {
-        net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
-        CompoundTag root = customData != null ? customData.copyTag() : new CompoundTag();
-        if (!root.contains(NBT_KEY_REAGENTS)) return false;
-        CompoundTag r = root.getCompound(NBT_KEY_REAGENTS).orElse(new CompoundTag());
-        int prev = r.getInt(id).orElse(0);
+        if (stack.isEmpty() || id == null || amount <= 0) return false;
+        Map<String, Integer> reagents = new LinkedHashMap<>(getReagents(stack));
+        int prev = reagents.getOrDefault(id, 0);
         if (prev < amount) return false;
-        if (prev == amount) r.remove(id); else r.putInt(id, prev - amount);
-        root.put(NBT_KEY_REAGENTS, r);
-        stack.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(root));
+        if (prev == amount) reagents.remove(id); else reagents.put(id, prev - amount);
+        setReagents(stack, reagents);
         return true;
     }
 
     public static void processReactions(ItemStack stack, ServerPlayer player) {
+        if (stack.isEmpty() || player == null || player.level().isClientSide()) return;
         int iter = 0; boolean changed; boolean reactionHappened = false;
         do {
             changed = false;
             for (Reaction r : REACTIONS) {
-                while (canApplyReaction(stack, r)) {
-                    for (Map.Entry<String, Integer> need : r.getInputs().entrySet()) { removeReagent(stack, need.getKey(), need.getValue()); }
-                    for (IReactionEffect effect : r.getEffects()) { effect.apply(stack, player); }
+                while (iter < MAX_REACTIONS_PER_ACTION) {
+                    Optional<Map<String, Integer>> result = planReaction(stack, r);
+                    if (result.isEmpty()) break;
+                    setReagents(stack, result.get());
+                    for (IReactionEffect effect : r.getEffects()) {
+                        // Reagent outputs were committed together with the consumed inputs.
+                        if (!(effect instanceof ReagentGive)) effect.apply(stack, player);
+                    }
                     changed = true; reactionHappened = true;
-                    if (++iter > 1024) break;
+                    iter++;
                 }
-                if (iter > 1024) break;
+                if (iter >= MAX_REACTIONS_PER_ACTION) break;
             }
-        } while (changed && iter <= 1024);
+        } while (changed && iter < MAX_REACTIONS_PER_ACTION);
 
-        if (reactionHappened && player != null && !player.level().isClientSide()) {
+        if (reactionHappened) {
             Level _level = player.level();
             net.minecraft.core.BlockPos _pos = player.blockPosition();
             var soundHolder = BuiltInRegistries.SOUND_EVENT.get(Identifier.fromNamespaceAndPath("ssc_14", "chemistry_bubbles"));
@@ -605,11 +614,28 @@ public class ModReagents {
     }
 
     public static boolean canApplyReaction(ItemStack stack, Reaction reaction) {
-        Map<String, Integer> have = getReagents(stack);
-        for (Map.Entry<String, Integer> need : reaction.getInputs().entrySet()) {
-            if (have.getOrDefault(need.getKey(), 0) < need.getValue()) return false;
+        return planReaction(stack, reaction).isPresent();
+    }
+
+    private static Optional<Map<String, Integer>> planReaction(ItemStack stack, Reaction reaction) {
+        Map<String, Integer> outputs = new LinkedHashMap<>();
+        for (IReactionEffect effect : reaction.getEffects()) {
+            if (effect instanceof ReagentGive reagent) {
+                if (reagent.reagentId == null || reagent.reagentId.isBlank()) return Optional.empty();
+                long next = (long) outputs.getOrDefault(reagent.reagentId, 0) + reagent.amount;
+                if (reagent.amount <= 0 || next > Integer.MAX_VALUE) return Optional.empty();
+                outputs.put(reagent.reagentId, (int) next);
+            }
         }
-        return true;
+        return ReagentAmounts.react(getReagents(stack), getCapacity(stack), reaction.getInputs(), outputs);
+    }
+
+    private static void setReagents(ItemStack stack, Map<String, Integer> amounts) {
+        CompoundTag reagents = new CompoundTag();
+        amounts.forEach(reagents::putInt);
+        net.minecraft.world.item.component.CustomData.update(
+            net.minecraft.core.component.DataComponents.CUSTOM_DATA, stack,
+            root -> root.put(NBT_KEY_REAGENTS, reagents));
     }
 
     public static class AlcoholSystem {
@@ -624,18 +650,21 @@ public class ModReagents {
     }
 
     public static int drinkReagents(ItemStack stack, int maxAmount, ServerPlayer player) {
-        Map<String, Integer> reagents = getReagents(stack);
-        if (reagents.isEmpty()) return 0;
-        int totalVolume = reagents.values().stream().mapToInt(Integer::intValue).sum();
-        int drinkAmount = Math.min(maxAmount, totalVolume); int alcohol = 0;
-        for (Map.Entry<String, Integer> entry : reagents.entrySet()) {
-            int amount = (int) Math.ceil((float) entry.getValue() * drinkAmount / totalVolume);
-            if (amount > 0) {
-                alcohol += AlcoholSystem.getAlcoholValue(entry.getKey()) * amount;
-                removeReagent(stack, entry.getKey(), amount);
-            }
+        if (maxAmount <= 0 || stack.isEmpty() || player == null) return 0;
+        Map<String, Integer> reagents = new LinkedHashMap<>(getReagents(stack));
+        Map<String, Integer> portions = ReagentTransferPlan.allocate(reagents, maxAmount);
+        if (portions.isEmpty()) return 0;
+        int drinkAmount = 0;
+        long alcohol = 0;
+        for (Map.Entry<String, Integer> entry : portions.entrySet()) {
+            int remaining = reagents.get(entry.getKey()) - entry.getValue();
+            if (remaining == 0) reagents.remove(entry.getKey());
+            else reagents.put(entry.getKey(), remaining);
+            drinkAmount += entry.getValue();
+            alcohol += (long) AlcoholSystem.getAlcoholValue(entry.getKey()) * entry.getValue();
         }
-        if (alcohol > 0) AlcoholSystem.giveAlcohol(player, alcohol);
+        setReagents(stack, reagents);
+        if (alcohol > 0) AlcoholSystem.giveAlcohol(player, (int) Math.min(Integer.MAX_VALUE, alcohol));
         return drinkAmount;
     }
 

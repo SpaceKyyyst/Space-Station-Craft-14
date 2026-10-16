@@ -1,145 +1,212 @@
-
 package net.mcreator.ssc;
 
+import java.util.HashMap;
+import java.util.IdentityHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
+import net.mcreator.ssc.atmosphere.StandardGasReactions;
+import net.mcreator.ssc.atmosphere.RegionWorkQueue;
+import net.mcreator.ssc.init.Ssc14ModParticleTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
-import net.mcreator.ssc.init.Ssc14ModParticleTypes;
-import java.util.*;
+import net.minecraft.world.level.ChunkPos;
 
+/** Server-thread-only world adapter, persistence owner and fair section scheduler. */
 public final class AtmosphereManager {
-    private static final float MIN_SPAWN_DISTANCE = 0f;
-    private static final float MAX_SPAWN_DISTANCE = 64f; 
-    private static final float MIN_DENSITY_THRESHOLD = 0.0f;
-    private static final float MAX_DENSITY_EFFECT = 1.0f;
+    private static final Map<ServerLevel, AtmosphereManager> CACHE = new IdentityHashMap<>();
+    private static final int TICK_INTERVAL = 4;
+    private static final float STEP_SECONDS = TICK_INTERVAL / 20f;
+    private static final int MAX_REGIONS_PER_TICK = 128;
+    private static final int MAX_BLOCK_CHANGES_PER_TICK = 1024;
+    private static final int MAX_CHUNK_LOADS_PER_TICK = 32;
+    private static final int VISUAL_INTERVAL = 40;
+    private static final double MAX_PARTICLE_DISTANCE_SQUARED = 64 * 64;
     private static final float BASE_SPAWN_CHANCE = 0.25f;
-    private static final float PLASMA_CHANCE_MULTIPLIER = 1.3f;
-    private static final float TRITIUM_CHANCE_MULTIPLIER = 1.3f;
-    private static final float DEFAULT_GAS_CHANCE_MULTIPLIER = 1.0f;
-    private static final float SECOND_PARTICLE_CHANCE = 0.5f;
     private static final float PARTICLE_OFFSET_RANGE = 0.5f;
-
-    private static GasReaction[] REACTIONS;
-    private static final Map<String, AtmosphereManager> CACHE = new HashMap<>();
-    private static final int MAX_ACTIVE_REGIONS = 128;
-    
+    private static GasReaction[] reactions;
+    private final ServerLevel level;
+    private final AtmosphereSavedData savedData;
     private final Map<Long, AtmosRegion> regions = new HashMap<>();
-    private final Set<Long> activeRegions = new HashSet<>();
-    private int tickCounter = 0;
-    private static final int FAST_TICK_INTERVAL = 4;
-    private static final int SLOW_TICK_INTERVAL = 20;
-    private ServerLevel level;
+    private final Map<Long, Map<Long, AtmosRegion>> regionsByChunk = new HashMap<>();
+    private final RegionWorkQueue workQueue = new RegionWorkQueue();
+    private final Set<ChunkPos> pendingLoadedChunks = new LinkedHashSet<>();
+    private final Set<BlockPos> pendingBlockChanges = new LinkedHashSet<>();
+    private int tickCounter;
 
     private AtmosphereManager(ServerLevel level) {
         this.level = level;
+        savedData = AtmosphereSavedData.get(level);
+        for (long key : savedData.savedRegionKeys()) schedule(key);
     }
 
     public static void initReactions() {
-        if (REACTIONS != null) return;
-        
-        java.util.function.Function<int[], boolean[]> flags = indices -> {
-            boolean[] arr = new boolean[GasType.COUNT];
-            int total = indices.length;
-            for (int i = 0; i != total; i++) {
-                int idx = indices[i];
-                if (idx >= 0 && idx < GasType.COUNT) arr[idx] = true;
-            }
-            return arr;
-        };
-
-        java.util.function.Function<float[], float[]> values = v -> {
-            float[] arr = new float[GasType.COUNT];
-            System.arraycopy(v, 0, arr, 0, Math.min(v.length, GasType.COUNT));
-            return arr;
-        };
-
-        List<GasReaction> list = new ArrayList<>();
-        list.add(GasReaction.create("plasma_burn",
-            flags.apply(new int[]{GasType.PLASMA.ordinal(), GasType.OXYGEN.ordinal()}),
-            373f, 1643f,
-            values.apply(new float[]{0,0,0,0,0.05f,0,0,0,0,0}),
-            values.apply(new float[]{0,0,0.04f,0,0,0,0.0075f,0,0,0}),
-            5000f, 0.1f));
-
-        list.add(GasReaction.create("tritium_burn",
-            flags.apply(new int[]{GasType.TRITIUM.ordinal(), GasType.OXYGEN.ordinal()}),
-            373f, 1643f,
-            values.apply(new float[]{0,0,0,0,0,0,0.05f,0,0,0}),
-            values.apply(new float[]{0,0,0.03f,0,0,0,0,0,0,0.03f}),
-            8000f, 0.1f));
-
-        list.add(GasReaction.create("freon_synthesis",
-            flags.apply(new int[]{GasType.NITROGEN.ordinal(), GasType.OXYGEN.ordinal(), GasType.TRITIUM.ordinal()}),
-            73f, 253f,
-            values.apply(new float[]{0,0.01f,0,0,0,0,0.02f,0,0,0}),
-            values.apply(new float[]{0,0.01f,0,0,0,0,0,0.015f,0,0}),
-            -2000f, 0.05f));
-
-        list.add(GasReaction.create("freon_cool",
-            flags.apply(new int[]{GasType.FREON.ordinal(), GasType.NITROGEN.ordinal()}),
-            23f, 250f,
-            values.apply(new float[]{0,0.02f,0,0,0,0,0,0.01f,0,0}),
-            values.apply(new float[]{0,0.02f,0,0.01f,0,0,0,0,0,0}),
-            -3000f, 0.05f));
-
-        list.add(GasReaction.create("n2o_decay",
-            flags.apply(new int[]{GasType.NITROGEN.ordinal()}),
-            850f, 5000f,
-            values.apply(new float[]{0,0,0,0.05f,0,0,0,0,0,0}),
-            values.apply(new float[]{0.025f,0.025f,0,0,0,0,0,0,0,0}),
-            1000f, 0.1f));
-
-        list.add(GasReaction.create("ammonia_scrub",
-            flags.apply(new int[]{GasType.NITROGEN.ordinal()}),
-            323f, 350f,
-            values.apply(new float[]{0,0.01f,0,0,0,0.02f,0,0,0,0}),
-            values.apply(new float[]{0,0,0,0.01f,0,0,0,0,0,0.01f}),
-            -500f, 0.1f));
-
-        REACTIONS = list.toArray(new GasReaction[0]);
+        if (reactions == null) reactions = StandardGasReactions.create();
     }
 
-    // ИСПРАВЛЕНО: Изменен тип возвращаемого значения с void на AtmosphereManager
     public static AtmosphereManager get(ServerLevel level) {
         initReactions();
-        // ИСПРАВЛЕНО: В NeoForge 26.x у ResourceKey это публичное поле location БЕЗ скобочек
-        String key = level.dimension().identifier().toString();
-        return CACHE.computeIfAbsent(key, k -> new AtmosphereManager(level));
+        return CACHE.computeIfAbsent(level, AtmosphereManager::new);
     }
-    
-    private static long packRegionKey(int rx, int ry, int rz) {
-        return (((long)rx & 0x3FFFFFF) << 38) | (((long)ry & 0xFFF) << 26) | (rz & 0x3FFFFFF);
+
+    static long packRegionKey(int x, int y, int z) {
+        return (((long) x & 0x3FFFFFF) << 38) | (((long) y & 0xFFF) << 26) | (z & 0x3FFFFFF);
     }
 
     private long packRegionKey(BlockPos pos) {
         return packRegionKey(pos.getX() >> 4, pos.getY() >> 4, pos.getZ() >> 4);
     }
+
+    private static BlockPos regionOrigin(long key) {
+        int x = (int) (key >> 38);
+        int y = (int) (key << 26 >> 52);
+        int z = (int) (key << 38 >> 38);
+        return new BlockPos(x << 4, y << 4, z << 4);
+    }
+
     private AtmosRegion getOrCreateRegion(BlockPos pos) {
         long key = packRegionKey(pos);
         AtmosRegion region = regions.get(key);
         if (region == null) {
-            int rx = pos.getX() >> 4;
-            int ry = pos.getY() >> 4;
-            int rz = pos.getZ() >> 4;
-            region = new AtmosRegion(rx, ry, rz);
-            if (level != null) region.initFromWorld(level);
+            region = new AtmosRegion(pos.getX() >> 4, pos.getY() >> 4, pos.getZ() >> 4,
+                    () -> activate(key));
+            region.initFromWorld(level);
             regions.put(key, region);
+            regionsByChunk.computeIfAbsent(ChunkPos.pack(pos), ignored -> new HashMap<>()).put(key, region);
+            var saved = savedData.restore(key);
+            if (saved != null) region.readFromNBT(saved);
+            savedData.track(key, region);
         }
         return region;
     }
 
+    private void activate(long key) {
+        schedule(key);
+        savedData.setDirty();
+    }
+
+    private void schedule(long key) {
+        BlockPos origin = regionOrigin(key);
+        workQueue.schedule(key, ChunkPos.pack(origin), level.hasChunkAt(origin));
+    }
+
+    /** Deferred until the next server tick, after cancellable block events have resolved. */
     public void onBlockChanged(BlockPos pos) {
-        AtmosRegion region = getOrCreateRegion(pos);
-        region.updatePermeability(pos);
-        activeRegions.add(packRegionKey(pos));
+        if (regions.containsKey(packRegionKey(pos))) pendingBlockChanges.add(pos.immutable());
+        for (Direction direction : Direction.values()) {
+            BlockPos neighbor = pos.relative(direction);
+            if (regions.containsKey(packRegionKey(neighbor))) pendingBlockChanges.add(neighbor);
+        }
     }
 
     public AtmosCell getCellAt(BlockPos pos) {
+        if (level.isOutsideBuildHeight(pos) || !level.hasChunkAt(pos)) return null;
         return getOrCreateRegion(pos).getCellAt(pos);
     }
 
+    public void onChunkLoaded(ChunkPos chunk) {
+        // ChunkEvent.Load can run before FULL; inspect the level on the next tick.
+        pendingLoadedChunks.add(chunk);
+    }
+
+    public void onChunkUnloaded(ChunkPos chunk) {
+        pendingLoadedChunks.remove(chunk);
+        workQueue.suspendChunk(chunk.pack());
+    }
+
+    private void processChunkLoads() {
+        int remaining = Math.min(MAX_CHUNK_LOADS_PER_TICK, pendingLoadedChunks.size());
+        while (remaining-- > 0) {
+            var iterator = pendingLoadedChunks.iterator();
+            ChunkPos chunk = iterator.next();
+            iterator.remove();
+            BlockPos origin = new BlockPos(chunk.x() << 4, 0, chunk.z() << 4);
+            if (!level.hasChunkAt(origin)) {
+                pendingLoadedChunks.add(chunk);
+                continue;
+            }
+            workQueue.resumeChunk(chunk.pack());
+            wakeChunk(chunk.pack());
+            for (Direction direction : Direction.Plane.HORIZONTAL) {
+                wakeChunk(ChunkPos.pack(origin.relative(direction, 16)));
+            }
+        }
+    }
+
+    private void wakeChunk(long chunkKey) {
+        Map<Long, AtmosRegion> chunkRegions = regionsByChunk.get(chunkKey);
+        if (chunkRegions == null) return;
+        for (AtmosRegion region : chunkRegions.values()) {
+            if (level.hasChunkAt(region.getRegionOrigin())) region.wakeGasCells();
+        }
+    }
+
+    private void processBlockChanges() {
+        int remaining = Math.min(MAX_BLOCK_CHANGES_PER_TICK, pendingBlockChanges.size());
+        while (remaining-- > 0) {
+            var iterator = pendingBlockChanges.iterator();
+            BlockPos pos = iterator.next();
+            iterator.remove();
+            AtmosRegion region = regions.get(packRegionKey(pos));
+            if (region != null) region.updatePermeability(pos);
+        }
+    }
+
+    public void tick() {
+        processChunkLoads();
+        processBlockChanges();
+        tickCounter = (tickCounter + 1) % VISUAL_INTERVAL;
+        if (tickCounter % TICK_INTERVAL != 0) return;
+        // Remove work before executing it; changed cells enqueue the section for a later step.
+        for (long key : workQueue.takeReady(MAX_REGIONS_PER_TICK)) {
+            BlockPos origin = regionOrigin(key);
+            if (!level.hasChunkAt(origin)) {
+                schedule(key);
+                continue;
+            }
+            AtmosRegion region = getOrCreateRegion(origin);
+            region.tick(STEP_SECONDS, reactions);
+            if (region.isActive()) schedule(key);
+        }
+        if (tickCounter == 0) sendGasVisuals();
+    }
+
+    private void sendGasVisuals() {
+        for (ServerPlayer player : level.players()) {
+            int remaining = 32;
+            for (AtmosRegion region : regions.values()) {
+                if (remaining <= 0) break;
+                if (!level.hasChunkAt(region.getRegionOrigin())) continue;
+                var visuals = region.collectGasVisuals(player.blockPosition(), remaining);
+                remaining -= visuals.size();
+                for (AtmosRegion.GasVisualData visual : visuals) {
+                    double distance = player.position().distanceToSqr(visual.x, visual.y, visual.z);
+                    if (level.getRandom().nextFloat() >= calculateFinalSpawnChance(distance, visual.density, visual.gasIndex)) continue;
+                    ParticleOptions particle = getParticleForGas(visual.gasIndex,
+                            getParticleType(visual.gasIndex, false, level.getRandom()));
+                    if (particle != null) {
+                        // Targeted overload avoids broadcasting the same particle once per nearby player.
+                        level.sendParticles(player, particle, false, false,
+                                visual.x, visual.y, visual.z, 1,
+                                PARTICLE_OFFSET_RANGE, PARTICLE_OFFSET_RANGE, PARTICLE_OFFSET_RANGE, 0);
+                    }
+                }
+            }
+        }
+    }
+
+    private float calculateFinalSpawnChance(double distanceSquared, float density, int gasIndex) {
+        if (!Double.isFinite(distanceSquared) || !Float.isFinite(density) || distanceSquared < 0
+                || distanceSquared >= MAX_PARTICLE_DISTANCE_SQUARED || density <= 0) return 0;
+        double normalizedDistance = distanceSquared / MAX_PARTICLE_DISTANCE_SQUARED;
+        float multiplier = gasIndex == GasType.PLASMA.ordinal() || gasIndex == GasType.TRITIUM.ordinal() ? 1.3f : 1f;
+        return (float) (BASE_SPAWN_CHANCE * (1 - normalizedDistance * normalizedDistance)
+                * Math.min(1f, density) * multiplier);
+    }
     private int getParticleType(int gasIndex, boolean isSecondType, RandomSource random) {
         if (gasIndex == GasType.PLASMA.ordinal() || gasIndex == GasType.TRITIUM.ordinal()) {
             return isSecondType ? 2 : 1;
@@ -148,7 +215,7 @@ public final class AtmosphereManager {
     }
 
     private ParticleOptions getParticleForGas(int gasIndex, int type) {
-        try {
+
             switch (gasIndex) {
                 case 4:
                     return type == 1 ? Ssc14ModParticleTypes.PLASMA_PARTICLES_1.get() : Ssc14ModParticleTypes.PLASMA_PARTICLES_2.get();
@@ -185,144 +252,8 @@ public final class AtmosphereManager {
                 default:
                     return null;
             }
-        } catch (Exception e) {
-            return null;
-        }
+
     }
 
-    private float calculateFinalSpawnChance(double distSqr, float density, int gasIndex) {
-        float distanceFactor;
-        double maxDistSqr = MAX_SPAWN_DISTANCE * MAX_SPAWN_DISTANCE;
-        double minDistSqr = MIN_SPAWN_DISTANCE * MIN_SPAWN_DISTANCE;
-        
-        if (distSqr == minDistSqr || distSqr * 1.0 < minDistSqr) {
-            distanceFactor = 1.0f;
-        } else if (distSqr == maxDistSqr || distSqr > maxDistSqr) {
-            distanceFactor = 0.0f;
-        } else {
-            float t = (float)((distSqr - minDistSqr) / (maxDistSqr - minDistSqr));
-            distanceFactor = 1.0f - t * t;
-        }
-        
-        float densityFactor;
-        if (density == MIN_DENSITY_THRESHOLD || density * 1.0 < MIN_DENSITY_THRESHOLD) {
-            densityFactor = 0.0f;
-        } else if (density == MAX_DENSITY_EFFECT || density > MAX_DENSITY_EFFECT) {
-            densityFactor = 1.0f;
-        } else {
-            densityFactor = (density - MIN_DENSITY_THRESHOLD) / (MAX_DENSITY_EFFECT - MIN_DENSITY_THRESHOLD);
-        }
-        
-        float gasMultiplier;
-        if (gasIndex == GasType.PLASMA.ordinal()) {
-            gasMultiplier = PLASMA_CHANCE_MULTIPLIER;
-        } else if (gasIndex == GasType.TRITIUM.ordinal()) {
-            gasMultiplier = TRITIUM_CHANCE_MULTIPLIER;
-        } else {
-            gasMultiplier = DEFAULT_GAS_CHANCE_MULTIPLIER;
-        }
-        
-        return Math.min(1.0f, BASE_SPAWN_CHANCE * distanceFactor * densityFactor * gasMultiplier);
-    }
-
-    public void tick() {
-        if (level == null || level.isClientSide()) return;
-        
-        if (!activeRegions.isEmpty()) {
-            Set<Long> toRemove = new HashSet<>();
-            for (long key : activeRegions) {
-                AtmosRegion region = regions.get(key);
-                if (region == null) { toRemove.add(key); continue; }
-                BlockPos origin = region.getRegionOrigin();
-                boolean nearPlayer = false;
-                for (ServerPlayer player : level.players()) {
-                    if (player.blockPosition().distSqr(origin) < 256*256) {
-                        nearPlayer = true; break;
-                    }
-                }
-                if (!nearPlayer && !region.isActive) toRemove.add(key);
-            }
-            activeRegions.removeAll(toRemove);
-        }
-
-        tickCounter++;
-        boolean fastTick = tickCounter % FAST_TICK_INTERVAL == 0;
-        boolean slowTick = tickCounter % SLOW_TICK_INTERVAL == 0;
-        if (!fastTick && !slowTick) return;
-        
-        float deltaTime = fastTick ? 0.2f : 1.0f;
-
-        if (activeRegions.size() > MAX_ACTIVE_REGIONS) {
-            List<Long> toSort = new ArrayList<>(activeRegions);
-            toSort.sort((a, b) -> {
-                AtmosRegion ra = regions.get(a), rb = regions.get(b);
-                return Long.compare(
-                    ra != null ? ra.lastActivityTime : 0,
-                    rb != null ? rb.lastActivityTime : 0
-                );
-            });
-            int excess = toSort.size() - MAX_ACTIVE_REGIONS;
-            for (int i = 0; i != excess; i++) {
-                activeRegions.remove(toSort.get(i));
-            }
-        }
-
-        Set<Long> toTick = new HashSet<>(activeRegions);
-        // ИСПРАВЛЕНО: Объявлен локальный расчёт maxDistSqr для устранения ошибки cannot find symbol
-        double calculatedMaxDistSqr = MAX_SPAWN_DISTANCE * MAX_SPAWN_DISTANCE;
-
-        for (long key : toTick) {
-            AtmosRegion region = regions.get(key);
-            if (region == null) { activeRegions.remove(key); continue; }
-            region.tick(deltaTime, REACTIONS);
-
-            if (!region.getPendingVisuals().isEmpty() && !level.isClientSide()) {
-                for (AtmosRegion.GasVisualData data : region.getPendingVisuals()) {
-                    BlockPos particlePos = new BlockPos((int)data.x, (int)data.y, (int)data.z);
-                    for (ServerPlayer player : level.players()) {
-                        double distSqr = player.blockPosition().distSqr(particlePos);
-                        // ИСПРАВЛЕНО: Используем локальную переменную calculatedMaxDistSqr
-                        if (distSqr == calculatedMaxDistSqr || distSqr > calculatedMaxDistSqr) continue;
-                        
-                        float spawnChance = calculateFinalSpawnChance(distSqr, data.density, data.gasIndex);
-                        // ИСПРАВЛЕНО: Добавлен метод level.getRandom() вместо .random
-                        if (spawnChance == 0f || !(spawnChance > 0f) || level.getRandom().nextFloat() >= spawnChance) continue;
-                        
-                        int pType = getParticleType(data.gasIndex, false, level.getRandom());
-                        ParticleOptions particle = getParticleForGas(data.gasIndex, pType);
-                        if (particle != null) {
-                            level.sendParticles(
-                                particle,
-                                data.x + (level.getRandom().nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
-                                data.y + (level.getRandom().nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
-                                data.z + (level.getRandom().nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
-                                1, 0.0, 0.0, 0.0, 0.0 
-                            );
-                        }
-                        if (level.getRandom().nextFloat() < SECOND_PARTICLE_CHANCE) {
-                            int sType = getParticleType(data.gasIndex, true, level.getRandom());
-                            ParticleOptions second = getParticleForGas(data.gasIndex, sType);
-                            if (second != null && second != particle) {
-                                level.sendParticles(
-                                    second,
-                                    data.x + (level.getRandom().nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
-                                    data.y + (level.getRandom().nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
-                                    data.z + (level.getRandom().nextFloat() - 0.5f) * PARTICLE_OFFSET_RANGE,
-                                    1, 0.0, 0.0, 0.0, 0.0
-                                );
-                            }
-                        }
-                    }
-                }
-            }
-            if (!region.isActive && System.currentTimeMillis() - region.lastActivityTime > 15000) {
-                activeRegions.remove(key);
-            }
-        }
-    }
-
-    public static void onWorldUnload(ServerLevel level) {
-        // ИСПРАВЛЕНО: Изменен вызов .location() на актуальный метод .identifier()
-        CACHE.remove(level.dimension().identifier().toString());
-    }
+    public static void onWorldUnload(ServerLevel level) { CACHE.remove(level); }
 }

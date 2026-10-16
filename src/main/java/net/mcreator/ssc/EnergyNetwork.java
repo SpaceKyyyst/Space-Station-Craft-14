@@ -2,14 +2,14 @@
 package net.mcreator.ssc;
 
 import net.minecraft.core.BlockPos;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class EnergyNetwork {
     private final CableType type;
-    private final Set<BlockPos> cables = new HashSet<>();
-    private final Set<BlockPos> sources = new HashSet<>();
-    private final Set<BlockPos> consumers = new HashSet<>();
+    private final Set<BlockPos> cables = new LinkedHashSet<>();
+    private final Set<BlockPos> sources = new LinkedHashSet<>();
+    private final Set<BlockPos> consumers = new LinkedHashSet<>();
 
     // --- СТАТИСТИКА ДЛЯ МУЛЬТИТУЛА ---
     public long currentPower = 0;       // Текущее питание (Ватт)

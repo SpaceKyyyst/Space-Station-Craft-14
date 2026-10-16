@@ -24,6 +24,8 @@ java -version
 | `.\gradlew.bat runServer` | Выделенный сервер для разработки |
 | `.\gradlew.bat domainTest` | Тесты чистых игровых правил без запуска Minecraft |
 | `.\gradlew.bat checkstyleMain` | Статические проверки выделенного доменного кода |
+| `.\gradlew.bat pmdMain methodMetrics` | Проверки корректности всех Java-исходников и отчёт сложности методов |
+| `.\gradlew.bat runGameTestServer` | Серверные игровые сценарии из `src/gameTest/` |
 | `.\gradlew.bat clean` | Удаление результатов предыдущей сборки |
 
 Сервер Minecraft при первом запуске выводит условия использования и требования к настройке своего рабочего каталога. Клиент и сервер используют конфигурации из блока `neoForge.runs` в `build.gradle`.

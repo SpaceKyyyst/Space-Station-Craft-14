@@ -145,7 +145,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button6 = new ImageButton(this.leftPos + 35, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(0, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 0, x, y, z);
 			}
@@ -159,7 +159,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button5 = new ImageButton(this.leftPos + 47, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(1, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 1, x, y, z);
 			}
@@ -173,7 +173,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button4 = new ImageButton(this.leftPos + 58, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(2, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 2, x, y, z);
 			}
@@ -187,7 +187,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cabel_4 = new ImageButton(this.leftPos + 71, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(3, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 3, x, y, z);
 			}
@@ -201,7 +201,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button = new ImageButton(this.leftPos + 81, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(4, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 4, x, y, z);
 			}
@@ -215,7 +215,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button1 = new ImageButton(this.leftPos + 91, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(5, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 5, x, y, z);
 			}
@@ -229,7 +229,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button2 = new ImageButton(this.leftPos + 103, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(6, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 6, x, y, z);
 			}
@@ -243,7 +243,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button3 = new ImageButton(this.leftPos + 114, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(7, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 7, x, y, z);
 			}

@@ -58,6 +58,6 @@ public record RotateMessage(int eventType, int pressedms) implements CustomPacke
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(RotateMessage.TYPE, RotateMessage.STREAM_CODEC, RotateMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(RotateMessage.TYPE, RotateMessage.STREAM_CODEC, RotateMessage::handleData);
 	}
 }

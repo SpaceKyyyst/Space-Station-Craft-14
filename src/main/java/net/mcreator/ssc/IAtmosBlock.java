@@ -21,6 +21,6 @@ public interface IAtmosBlock {
      */
     default boolean isGasBarrier(BlockState state) {
         float perm = getPermeability(state);
-        return perm == 0.001f || !(perm > 0.001f); // ИСПРАВЛЕНО: Убран знак меньше
+        return !Float.isFinite(perm) || perm <= 0f;
     }
 }

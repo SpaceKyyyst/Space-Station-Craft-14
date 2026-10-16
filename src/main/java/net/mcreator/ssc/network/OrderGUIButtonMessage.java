@@ -14,11 +14,11 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.SectionPos;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.*;
 import net.mcreator.ssc.Ssc14Mod;
+import net.mcreator.ssc.world.inventory.OrderGUIMenu;
 
 @EventBusSubscriber
 public record OrderGUIButtonMessage(int buttonID, int x, int y, int z) implements CustomPacketPayload {
@@ -46,8 +46,8 @@ public record OrderGUIButtonMessage(int buttonID, int x, int y, int z) implement
 
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
-		if (!world.getChunkSource().hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)))
-			return;
+		if (!(entity.containerMenu instanceof OrderGUIMenu menu) || !MenuPacketGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
+            return;
 
 		if (!world.isClientSide()) {
 			// Если пришел ID от 0 до 14 — вызываем новую универсальную процедуру переключения вкладок
@@ -65,6 +65,6 @@ public record OrderGUIButtonMessage(int buttonID, int x, int y, int z) implement
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(OrderGUIButtonMessage.TYPE, OrderGUIButtonMessage.STREAM_CODEC, OrderGUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(OrderGUIButtonMessage.TYPE, OrderGUIButtonMessage.STREAM_CODEC, OrderGUIButtonMessage::handleData);
 	}
 }

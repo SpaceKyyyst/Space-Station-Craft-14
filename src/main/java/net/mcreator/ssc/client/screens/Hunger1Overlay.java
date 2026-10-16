@@ -33,7 +33,7 @@ public class Hunger1Overlay {
 			y = entity.getY();
 			z = entity.getZ();
 		}
-		if (true) {
+		{
 			if (Hunger1PrProcedure.execute(entity)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w - 37, h / 2 + -16, 0, 0, 32, 32, 32, 32);
 			}

@@ -13,7 +13,6 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.SectionPos;
 
 import net.mcreator.ssc.procedures.RCDGUIwallButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUItileButtonProcedure;
@@ -21,6 +20,7 @@ import net.mcreator.ssc.procedures.RCDGUIsheatingButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIcatwalkButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIbackButtonProcedure;
 import net.mcreator.ssc.Ssc14Mod;
+import net.mcreator.ssc.world.inventory.RCDGUIwallfloorMenu;
 
 @EventBusSubscriber
 public record RCDGUIwallfloorButtonMessage(int buttonID, int x, int y, int z) implements CustomPacketPayload {
@@ -49,8 +49,8 @@ public record RCDGUIwallfloorButtonMessage(int buttonID, int x, int y, int z) im
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
 		// security measure to prevent arbitrary chunk generation
-		if (!world.getChunkSource().hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)))
-			return;
+		if (!(entity.containerMenu instanceof RCDGUIwallfloorMenu menu) || !MenuPacketGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
+            return;
 		if (buttonID == 0) {
 
 			RCDGUIbackButtonProcedure.execute(world, x, y, z, entity);
@@ -75,6 +75,6 @@ public record RCDGUIwallfloorButtonMessage(int buttonID, int x, int y, int z) im
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(RCDGUIwallfloorButtonMessage.TYPE, RCDGUIwallfloorButtonMessage.STREAM_CODEC, RCDGUIwallfloorButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(RCDGUIwallfloorButtonMessage.TYPE, RCDGUIwallfloorButtonMessage.STREAM_CODEC, RCDGUIwallfloorButtonMessage::handleData);
 	}
 }
