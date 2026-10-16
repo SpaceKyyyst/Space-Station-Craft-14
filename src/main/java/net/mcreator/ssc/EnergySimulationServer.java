@@ -42,6 +42,7 @@ public class EnergySimulationServer {
             simulateNetworkLayer(level, CableType.MV, tick);
             simulateNetworkLayer(level, CableType.LV, tick);
             updateLamps(level, tick);
+            EnergyNetworkTelemetry.publishToolData(level);
         }
     }
 
@@ -138,7 +139,7 @@ public class EnergySimulationServer {
             withdrawDeliveredEnergy(network, sources, delivered, tick);
             network.currentPower = delivered * TICKS_PER_SECOND;
             captureNetworkStorage(network, tick);
-            EnergyNetworkTelemetry.publish(level, network);
+            EnergyNetworkTelemetry.publishCableData(level, network);
         }
     }
 
