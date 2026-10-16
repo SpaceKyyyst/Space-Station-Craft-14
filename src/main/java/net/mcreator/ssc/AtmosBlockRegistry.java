@@ -12,8 +12,9 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 /** Resolves permeability without loading chunks; legacy tag identifiers remain supported. */
 public final class AtmosBlockRegistry {
-    private static final int FIRST_OPEN_AIRLOCK_FRAME = 11;
-    private static final int LAST_OPEN_AIRLOCK_FRAME = 15;
+    private static final int OPEN_AIRLOCK_FRAME = 11;
+    private static final int OPENING_PASSABLE_FRAME = 13;
+    private static final int CLOSING_PASSABLE_FRAME = 14;
     private static final TagKey<Block> NON_HERMETIC = TagKey.create(Registries.BLOCK,
             Identifier.fromNamespaceAndPath("ssc_14", "non-hermetic"));
     private static final TagKey<Block> HERMETIC = TagKey.create(Registries.BLOCK,
@@ -31,7 +32,9 @@ public final class AtmosBlockRegistry {
         if (BuiltInRegistries.BLOCK.getKey(state.getBlock()).getNamespace().equals("ssc_14")
                 && state.getBlock().getStateDefinition().getProperty("arl_variat") instanceof IntegerProperty frame) {
             int value = state.getValue(frame);
-            return value >= FIRST_OPEN_AIRLOCK_FRAME && value <= LAST_OPEN_AIRLOCK_FRAME ? 1f : 0f;
+            // Frames 12 and 15 still have a closed collision shape during the animation.
+            return value == OPEN_AIRLOCK_FRAME || value == OPENING_PASSABLE_FRAME
+                    || value == CLOSING_PASSABLE_FRAME ? 1f : 0f;
         }
         if (state.is(HERMETIC)) return 0;
         if (state.is(IAtmosBlock.NON_HERMETIC_TAG) || state.is(NON_HERMETIC)) return 1;
