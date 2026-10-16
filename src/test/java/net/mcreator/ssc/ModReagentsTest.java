@@ -3,6 +3,8 @@ package net.mcreator.ssc;
 import java.util.List;
 import java.util.Map;
 import net.minecraft.SharedConstants;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.Bootstrap;
@@ -81,7 +83,8 @@ class ModReagentsTest {
     }
 
     private static ItemStack bottle(CompoundTag reagents) {
-        ItemStack stack = new ItemStack(Items.GLASS_BOTTLE);
+        // NBT-only tests do not load item components from datapacks or mutate registry holders.
+        ItemStack stack = new ItemStack(Holder.direct(Items.GLASS_BOTTLE, DataComponentMap.EMPTY));
         CompoundTag root = new CompoundTag();
         root.put("ssc_14_reagents", reagents);
         root.putString("other_mod", "preserved");
