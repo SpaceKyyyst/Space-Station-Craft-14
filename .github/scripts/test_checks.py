@@ -59,6 +59,19 @@ class ProjectChecksTest(unittest.TestCase):
         self.assertIn("line=7::bad style", output.getvalue())
         self.assertIn("Example.calculates: expected 1", output.getvalue())
 
+    def test_pmd_namespaces_and_metrics_are_handled_separately(self):
+        xml = ('<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0">'
+               '<file name="src/Example.java"><violation beginline="9" '
+               'rule="BrokenNullCheck"> null guard </violation></file>'
+               '<error filename="src/Bad.java" msg="parse failed"/></pmd>')
+        self.write("build/reports/pmd/main.xml", xml)
+        self.write("build/reports/pmd/method-metrics.xml", xml)
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            report(self.root)
+        self.assertEqual(1, output.getvalue().count("line=9::BrokenNullCheck: null guard"))
+        self.assertIn("file=src/Bad.java::parse failed", output.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

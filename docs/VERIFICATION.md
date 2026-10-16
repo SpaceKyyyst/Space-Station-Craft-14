@@ -5,6 +5,7 @@
 ```powershell
 .\gradlew.bat domainTest
 .\gradlew.bat checkstyleMain
+.\gradlew.bat pmdMain methodMetrics
 .\gradlew.bat build
 ```
 
@@ -13,12 +14,17 @@
 | Проверка | Что покрывает | Результат |
 | --- | --- | --- |
 | `domainTest` | Стабильность индексов газов, сопротивления брони, газовые реакции | `build/reports/tests/domainTest/index.html` |
-| `checkstyleMain` | `GasType`, `GasReaction`, пакет `combat` | `build/reports/checkstyle/main.html` |
-| `build` | Компиляция всего мода, тесты, Checkstyle, упаковка | `build/libs/` |
+| `checkstyleMain` | Выделенные доменные пакеты из `sourceSets.domain` | `build/reports/checkstyle/main.html` |
+| `pmdMain` | Все production Java-файлы: некорректные null-проверки, сравнения строк/NaN, индексы циклов, потерянные результаты immutable-операций и другие проверки из `config/pmd/correctness.xml` | `build/reports/pmd/main.html` |
+| `methodMetrics` | Цикломатическая сложность исполняемых методов и конструкторов | `build/reports/pmd/method-metrics.html` |
+| `test` | Проверки адаптеров с Minecraft-зависимостями | `build/reports/tests/test/index.html` |
+| `build` | Компиляция всего мода, тесты, Checkstyle, PMD, отчёт сложности, упаковка | `build/libs/` |
 
-Доменный набор содержит 16 тестов: один для индексов газов, шесть для брони и девять для реакций. Эти исходники компилируются без Minecraft-зависимостей из тех же файлов, которые используются при сборке мода.
+Доменные исходники компилируются без Minecraft-зависимостей из тех же файлов, которые используются при сборке мода. Точное число выполненных тестов и результаты доступны в JUnit-отчёте конкретной сборки.
 
 Checkstyle пока охватывает выделенный домен, а не весь сгенерированный код. При добавлении независимой подсистемы её исходники включаются в `sourceSets.domain` в `build.gradle`; тесты размещаются в `src/domainTest/java`.
+
+PMD проверяет весь production-код без исключения генерируемых каталогов и останавливает сборку при нарушениях выбранных правил. Отчёт `methodMetrics` намеренно включает методы с любой сложностью; его записи не являются ошибками и не означают ручную проверку поведения каждого метода. Абстрактные методы без тела и лямбды не представлены как самостоятельные методы. Эти проверки не подтверждают корректность игровой логики без тестовых сценариев.
 
 ## Проверки инфраструктуры
 
@@ -34,7 +40,9 @@ bash .github/scripts/test-release.sh
 
 ## GitHub Actions
 
-Workflow [build.yml](../.github/workflows/build.yml) выполняет проверки метаданных, тесты скриптов и полную сборку на Ubuntu 24.04 с Temurin 25. Ошибки компилятора, Checkstyle и JUnit выводятся в GitHub Checks. Журнал сборки и отчёты доступны в артефакте `test-reports`, JAR — в `mod-jar`.
+Workflow [build.yml](../.github/workflows/build.yml) выполняет проверки метаданных, тесты скриптов и полную сборку на Ubuntu 24.04 с Temurin 25. Ошибки компилятора, Checkstyle, PMD и JUnit выводятся в GitHub Checks. Журнал сборки и отчёты доступны в артефакте `test-reports`, JAR — в `mod-jar`.
+
+Dependabot еженедельно предлагает обновления Gradle-зависимостей и GitHub Actions отдельными pull request. Обновление платформы Minecraft/NeoForge требует проверки совместимости модов и сохранений; автоматического слияния обновлений нет.
 
 Точные события запуска заданы в секции `on` workflow. Ручной запуск доступен через Actions → Build and release → Run workflow.
 

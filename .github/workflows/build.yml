@@ -56,6 +56,7 @@ jobs:
           path: |
             build/reports/tests/
             build/reports/checkstyle/
+            build/reports/pmd/
             build/test-results/
             build-output.log
           if-no-files-found: ignore
