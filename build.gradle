@@ -22,10 +22,42 @@ dependencies {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
+// Keep server fixtures and test subscribers out of the published mod jar.
+sourceSets {
+    gameTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+configurations {
+    gameTestImplementation.extendsFrom implementation
+    gameTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+def gameTestReport = layout.buildDirectory.file('test-results/gameTest/TEST-atmosphere.xml')
+
 neoForge {
     version = "26.1.2.71"
+    addModdingDependenciesTo sourceSets.gameTest
+
+    mods {
+        mcreator {
+            sourceSet sourceSets.main
+        }
+        mcreatorGameTest {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.gameTest
+        }
+    }
 
     runs {
+        configureEach {
+            loadedMods = [mods.mcreator]
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+
         client {
             client()
 
@@ -39,17 +71,25 @@ neoForge {
         server {
             server()
         }
-
-        configureEach {
-            systemProperty 'forge.logging.markers', 'REGISTRIES'
-            logLevel = org.slf4j.event.Level.DEBUG
+        gameTestServer {
+            type = 'gameTestServer'
+            sourceSet = sourceSets.gameTest
+            loadedMods = [mods.mcreatorGameTest]
+            gameDirectory = layout.buildDirectory.dir('gameTest/run').get().asFile
+            programArguments = [
+                '--tests', 'ssc_14:*',
+                '--report', gameTestReport.get().asFile.absolutePath
+            ]
         }
     }
+}
 
-    mods {
-        mcreator {
-            sourceSet sourceSets.main
-        }
+tasks.named('runGameTestServer') {
+    doFirst {
+        def report = gameTestReport.get().asFile
+        report.parentFile.mkdirs()
+        // A failed startup must never leave a previous successful report behind.
+        java.nio.file.Files.deleteIfExists(report.toPath())
     }
 }
 
