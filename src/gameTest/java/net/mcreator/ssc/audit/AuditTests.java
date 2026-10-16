@@ -23,6 +23,51 @@ import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 public final class AuditTests {
     private static final Map<String, Consumer<GameTestHelper>> TESTS = new LinkedHashMap<>();
     static {
+        TESTS.put("airlock_reinforcement_materials_and_fuel", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
+            player.setShiftKeyDown(true);
+            var steel = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.STEEL.get(), 3);
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, steel);
+            net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
+            var data = h.getLevel().getBlockEntity(pos).getPersistentData();
+            String armor = net.mcreator.ssc.access.AirlockMaintenance.ARMOR;
+            h.assertTrue(steel.getCount() == 1 && data.getIntOr(armor, 0) == 1, "Attaching armor must consume two plates");
+            net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
+            h.assertTrue(steel.getCount() == 1, "Repeated attachment consumed more plates");
+            var welder = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ACTIVE_WELDER.get());
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, welder);
+            net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA,
+                    welder, tag -> tag.putDouble("fuel", 150));
+            net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
+            h.assertTrue(data.getIntOr(armor, 0) == 1, "Empty welder reinforced the door");
+            net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA,
+                    welder, tag -> tag.putDouble("fuel", 1000));
+            net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
+            h.assertTrue(data.getIntOr(armor, 0) == 2, "Welding did not secure armor");
+            h.assertTrue(welder.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA).copyTag().getDoubleOr("fuel", 0) == 900,
+                    "Welding must consume fuel once");
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
+                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.CROWBAR.get()));
+            net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
+            h.assertTrue(data.getIntOr(armor, 0) == 2, "Crowbar removed welded armor");
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, welder);
+            net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
+            h.assertTrue(data.getIntOr(armor, 0) == 1, "Welding did not release armor");
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
+                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.CROWBAR.get()));
+            net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
+            h.assertTrue(data.getIntOr(armor, 0) == 0, "Crowbar did not remove released armor");
+            net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
+            var drops = h.getLevel().getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class,
+                    new net.minecraft.world.phys.AABB(pos).inflate(1));
+            int count = drops.stream().filter(e -> e.getItem().is(net.mcreator.ssc.init.Ssc14ModItems.STEEL.get()))
+                    .mapToInt(e -> e.getItem().getCount()).sum();
+            h.assertTrue(count == 2, "Armor removal must return exactly two plates without duplication");
+            h.succeed();
+        });
         TESTS.put("airlock_wires_bound_to_panel", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var pos = h.absolutePos(new BlockPos(2, 2, 2));

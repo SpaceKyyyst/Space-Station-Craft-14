@@ -38,6 +38,14 @@ public class ToolsBlockClickProcedure {
 			return;
 
 		BlockPos pos = BlockPos.containing(x, y, z);
+		if (entity instanceof net.minecraft.world.entity.player.Player player
+				&& net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos)) {
+			if (event instanceof PlayerInteractEvent.RightClickBlock interaction) {
+				interaction.setCanceled(true);
+				interaction.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
+			}
+			return;
+		}
 		BlockState blockstate = world.getBlockState(pos);
 
 		UniversalDeconstructionProcedureProcedure.execute(world, x, y, z, blockstate, entity);

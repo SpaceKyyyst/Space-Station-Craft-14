@@ -24,7 +24,8 @@ public final class AirlockWireService {
         if (!player.isAlive() || player.isSpectator() || !level.hasChunkAt(pos)
                 || player.distanceToSqr(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5) > MAX_DISTANCE_SQUARED) return false;
         var state = level.getBlockState(pos);
-        return state.getBlock().getStateDefinition().getProperty("arl_variat") != null
+        return !AirlockMaintenance.isArmored(level, pos)
+                && state.getBlock().getStateDefinition().getProperty("arl_variat") != null
                 && state.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty panel
                 && state.getValue(panel) && level.getBlockEntity(pos) != null;
     }
