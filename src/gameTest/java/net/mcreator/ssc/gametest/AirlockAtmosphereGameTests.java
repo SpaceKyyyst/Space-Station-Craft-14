@@ -10,6 +10,10 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.gametest.framework.TestData;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
@@ -19,6 +23,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 @EventBusSubscriber(modid = "ssc_14")
 public final class AirlockAtmosphereGameTests {
     private static final Identifier TEST_ID = Identifier.fromNamespaceAndPath("ssc_14", "airlock_gas_seal_frames");
+    private static final VoxelShape CENTRAL_PASSAGE = Block.box(2, 0, 2, 14, 32, 14);
 
     private AirlockAtmosphereGameTests() { }
 
@@ -44,8 +49,10 @@ public final class AirlockAtmosphereGameTests {
                     .setValue(BaseAirlockD1Block.ARL_VARIAT, frame);
             level.setBlock(pos, state, 3);
             boolean expectedOpen = frame == 11 || frame == 13 || frame == 14;
-            helper.assertTrue(state.getCollisionShape(level, pos).isEmpty() == expectedOpen,
-                    "Airlock collision must follow the passable frames; frame=" + frame);
+            boolean blocksPassage = Shapes.joinIsNotEmpty(state.getCollisionShape(level, pos),
+                    CENTRAL_PASSAGE, BooleanOp.AND);
+            helper.assertTrue(blocksPassage != expectedOpen,
+                    "Airlock collision must clear the central passage in passable frames; frame=" + frame);
             helper.assertTrue(AtmosBlockRegistry.getPermeability(level, pos) == (expectedOpen ? 1f : 0f),
                     "Airlock gas seal must follow collision, including closed animation frames 12 and 15; frame=" + frame);
         }
