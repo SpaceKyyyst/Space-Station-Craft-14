@@ -13,6 +13,8 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.event.level.ChunkWatchEvent;
+import net.neoforged.neoforge.event.level.ChunkEvent;
+import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +94,20 @@ public class DecalNetwork {
 
     @EventBusSubscriber(modid = "ssc_14")
     public static class ForgeEvents {
+        @SubscribeEvent
+        public static void onChunkUnload(ChunkEvent.Unload event) {
+            if (event.getLevel().isClientSide()) {
+                CLIENT_DECAL_STORAGE.remove(event.getChunk().getPos());
+            }
+        }
+
+        @SubscribeEvent
+        public static void onLevelUnload(LevelEvent.Unload event) {
+            if (event.getLevel().isClientSide()) {
+                CLIENT_DECAL_STORAGE.clear();
+            }
+        }
+
         @SubscribeEvent
         public static void onChunkWatch(ChunkWatchEvent.Watch event) {
             LevelChunk chunk = event.getChunk();
