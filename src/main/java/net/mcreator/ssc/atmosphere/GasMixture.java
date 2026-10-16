@@ -1,105 +1,61 @@
-
 package net.mcreator.ssc.atmosphere;
 
-import net.mcreator.ssc.GasType;
+import java.util.Objects;
 import net.mcreator.ssc.GasReaction;
+import net.mcreator.ssc.GasType;
 
+/** One cubic metre of gas. All mutations notify the owning simulation. */
 public final class GasMixture {
-    private static final float R = 8.314f;
-    private static final float CELL_VOLUME = 1f;
-    private static final double EXCHANGE_RATE_PER_SECOND = 0.2;
-    private static final double MAX_EXCHANGE_FRACTION = 0.5;
+    public static final float DEFAULT_TEMPERATURE_K = 294.15f;
+    private static final double GAS_CONSTANT = 8.314;
+    private static final double DIFFUSION_RATE = 0.2;
     private static final double RELATIVE_MOLE_TOLERANCE = 1e-5;
     private static final double ABSOLUTE_MOLE_TOLERANCE = 1e-12;
     private static final float TEMPERATURE_TOLERANCE_K = 0.001f;
     private final float[] moles = new float[GasType.COUNT];
-    private float temperatureK = 294.15f;
-    private float cachedPressure = -1f;
-    private boolean dirty = true;
-    private boolean hasReactions = false;
+    private final Runnable changed;
+    private float temperature = DEFAULT_TEMPERATURE_K;
 
-    public float getMoles(int gasIndex) {
-        return gasIndex >= 0 && gasIndex < GasType.COUNT ? moles[gasIndex] : 0f;
+    public GasMixture() { this(() -> { }); }
+
+    public GasMixture(Runnable changed) {
+        this.changed = Objects.requireNonNull(changed, "changed");
     }
 
-    public void setMoles(int gasIndex, float value) {
-        if (gasIndex < 0 || gasIndex >= GasType.COUNT || !Float.isFinite(value)) return;
-        moles[gasIndex] = Math.max(0f, value);
-        dirty = true;
-        updateReactionFlag();
-    }
+    public float getMoles(int index) { return validIndex(index) ? moles[index] : 0f; }
 
-    public void addMoles(int gasIndex, float delta) {
-        if (delta == 0f) return;
-        setMoles(gasIndex, getMoles(gasIndex) + delta);
-    }
-
-    public float getTemperature() { return temperatureK; }
-
-    public void setTemperature(float tempK) {
-        if (!Float.isFinite(tempK)) return;
-        this.temperatureK = Math.max(1f, tempK);
-        dirty = true;
-        updateReactionFlag();
-    }
-
-    public float getPressure() {
-        if (dirty || cachedPressure < 0f) {
-            float total = 0f;
-            for (float m : moles) total += m;
-            cachedPressure = (float) Math.min(Float.MAX_VALUE, ((double) total * R * temperatureK) / CELL_VOLUME);
-            dirty = false;
+    /** Invalid external numbers are ignored; negative finite amounts clamp to vacuum. */
+    public void setMoles(int index, float amount) {
+        if (!validIndex(index) || !Float.isFinite(amount)) return;
+        float next = Math.max(0f, amount);
+        if (moles[index] != next) {
+            moles[index] = next;
+            changed.run();
         }
-        return cachedPressure;
     }
 
-    public float getTotalMoles() {
-        float sum = 0f;
-        for (float m : moles) sum += m;
-        return sum;
+    public void addMoles(int index, float amount) {
+        if (Float.isFinite(amount)) setMoles(index, getMoles(index) + amount);
     }
 
-    private void updateReactionFlag() {
-        hasReactions = getTotalMoles() > 0f;
-    }
+    public float getTemperature() { return temperature; }
 
-    public boolean canReact() {
-        return hasReactions;
-    }
-
-    public float diffuseTo(GasMixture target, float permeability, float deltaTime) {
-        if (!Float.isFinite(permeability) || !Float.isFinite(deltaTime)
-                || permeability <= 0f || deltaTime <= 0f || target == null || target == this) return 0f;
-        boolean different = false;
-        for (int i = 0; i < GasType.COUNT; i++) {
-            double difference = Math.abs((double) moles[i] - target.moles[i]);
-            if (difference > Math.max(ABSOLUTE_MOLE_TOLERANCE,
-                    Math.max(moles[i], target.moles[i]) * RELATIVE_MOLE_TOLERANCE)) different = true;
+    public void setTemperature(float kelvin) {
+        if (!Float.isFinite(kelvin)) return;
+        float next = Math.max(1f, kelvin);
+        if (temperature != next) {
+            temperature = next;
+            changed.run();
         }
-        if (!different && (getTotalMoles() == 0f || target.getTotalMoles() == 0f
-                || Math.abs(temperatureK - target.temperatureK) < TEMPERATURE_TOLERANCE_K)) return 0f;
+    }
 
-        // Exchange equal fractions of both equal-volume cells, including at equal pressure.
-        double rate = Math.min(MAX_EXCHANGE_FRACTION,
-                Math.min(1f, permeability) * EXCHANGE_RATE_PER_SECOND * deltaTime);
-        double energy1 = heatCapacity() * temperatureK;
-        double energy2 = target.heatCapacity() * target.temperatureK;
-        float transferred = 0f;
-        for (int i = 0; i < GasType.COUNT; i++) {
-            double delta = ((double) moles[i] - target.moles[i]) * rate;
-            moles[i] = (float) (moles[i] - delta);
-            target.moles[i] = (float) (target.moles[i] + delta);
-            transferred += (float) Math.abs(delta);
-        }
-        double capacity1 = heatCapacity();
-        double capacity2 = target.heatCapacity();
-        if (capacity1 > 0) setTemperature((float) ((energy1 * (1 - rate) + energy2 * rate) / capacity1));
-        if (capacity2 > 0) target.setTemperature((float) ((energy2 * (1 - rate) + energy1 * rate) / capacity2));
-        dirty = true;
-        target.dirty = true;
-        updateReactionFlag();
-        target.updateReactionFlag();
-        return transferred;
+    public float getTotalMoles() { return finiteFloat(totalMoles()); }
+    public float getPressure() { return finiteFloat(totalMoles() * GAS_CONSTANT * temperature); }
+
+    private double totalMoles() {
+        double total = 0;
+        for (float amount : moles) total += amount;
+        return total;
     }
 
     private double heatCapacity() {
@@ -110,19 +66,71 @@ public final class GasMixture {
         return capacity;
     }
 
+    /** Each reaction owns its actual prerequisites, including non-combustion reactions. */
+    public boolean canReact() { return totalMoles() > 0; }
+
     public boolean tryReactions(GasReaction[] reactions) {
-        if (!canReact()) return false;
-        boolean changed = false;
+        Objects.requireNonNull(reactions, "reactions");
+        boolean reacted = false;
+        float[] temperatureRef = {temperature};
         for (GasReaction reaction : reactions) {
-            float[] tempRef = new float[]{temperatureK};
-            if (reaction.apply(moles, tempRef)) {
-                temperatureK = tempRef[0];
-                dirty = true;
-                changed = true;
-                updateReactionFlag();
-            }
+            if (reaction.apply(moles, temperatureRef)) reacted = true;
         }
-        return changed;
+        if (reacted) {
+            temperature = temperatureRef[0];
+            changed.run();
+        }
+        return reacted;
     }
 
+    /**
+     * Exchanges equal-volume mixture fractions in O(G) time/space. Species and transported heat
+     * are conserved within float rounding; equal-pressure mixtures still mix.
+     * The rate is bounded at equilibrium even for long time steps.
+     */
+    public float diffuseTo(GasMixture target, float permeability, float seconds) {
+        if (target == null || target == this || !Float.isFinite(permeability)
+                || !Float.isFinite(seconds) || permeability <= 0 || seconds <= 0) return 0;
+        boolean different = false;
+        for (int i = 0; i < GasType.COUNT; i++) {
+            double difference = Math.abs((double) moles[i] - target.moles[i]);
+            if (difference > Math.max(ABSOLUTE_MOLE_TOLERANCE,
+                    Math.max(moles[i], target.moles[i]) * RELATIVE_MOLE_TOLERANCE)) different = true;
+        }
+        if (!different && (totalMoles() == 0 || target.totalMoles() == 0
+                || Math.abs(temperature - target.temperature) < TEMPERATURE_TOLERANCE_K)) return 0;
+        double rate = Math.min(0.5, Math.min(1, permeability) * DIFFUSION_RATE * seconds);
+        double sourceHeat = heatCapacity() * temperature;
+        double targetHeat = target.heatCapacity() * target.temperature;
+        double sourceCapacity = 0;
+        double targetCapacity = 0;
+        double transferred = 0;
+        float[] sourceNext = new float[GasType.COUNT];
+        float[] targetNext = new float[GasType.COUNT];
+        for (int i = 0; i < GasType.COUNT; i++) {
+            double delta = ((double) moles[i] - target.moles[i]) * rate;
+            sourceNext[i] = (float) (moles[i] - delta);
+            targetNext[i] = (float) (target.moles[i] + delta);
+            if (!Float.isFinite(sourceNext[i]) || !Float.isFinite(targetNext[i])) return 0;
+            double capacityPerMole = GasType.byIndex(i).getHeatCapacity();
+            sourceCapacity += sourceNext[i] * capacityPerMole;
+            targetCapacity += targetNext[i] * capacityPerMole;
+            transferred += Math.abs(delta);
+        }
+        float sourceTemperature = sourceCapacity > 0
+                ? (float) ((sourceHeat * (1 - rate) + targetHeat * rate) / sourceCapacity) : temperature;
+        float targetTemperature = targetCapacity > 0
+                ? (float) ((targetHeat * (1 - rate) + sourceHeat * rate) / targetCapacity) : target.temperature;
+        if (!Float.isFinite(sourceTemperature) || !Float.isFinite(targetTemperature)) return 0;
+        System.arraycopy(sourceNext, 0, moles, 0, GasType.COUNT);
+        System.arraycopy(targetNext, 0, target.moles, 0, GasType.COUNT);
+        temperature = Math.max(1f, sourceTemperature);
+        target.temperature = Math.max(1f, targetTemperature);
+        changed.run();
+        target.changed.run();
+        return finiteFloat(transferred);
+    }
+
+    private static boolean validIndex(int index) { return index >= 0 && index < GasType.COUNT; }
+    private static float finiteFloat(double value) { return (float) Math.min(Float.MAX_VALUE, value); }
 }

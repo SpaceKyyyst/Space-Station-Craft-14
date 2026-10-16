@@ -88,6 +88,13 @@ public final class EnergyTopologyService {
         return WORLDS.computeIfAbsent(level, ignored -> new WorldTopology());
     }
 
+    public static EnergyNetwork networkAt(LevelAccessor level, CableType type, BlockPos cable) {
+        var state = WORLDS.get(level);
+        if (state == null) return null;
+        var network = state.layer(type).owners.get(cable);
+        return network != null && network.isTopologyReady() ? network : null;
+    }
+
     public static List<EnergyNetwork> networks(LevelAccessor level, CableType type) {
         return Collections.unmodifiableList(world(level).layer(type).networks);
     }

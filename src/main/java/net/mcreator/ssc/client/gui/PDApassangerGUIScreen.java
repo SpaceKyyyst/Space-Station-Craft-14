@@ -138,7 +138,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/pda_empty_button_texture.png"), Identifier.parse("ssc_14:textures/screens/pda_empty_button_texture.png")), e -> {
 					int x = PDApassangerGUIScreen.this.x;
 					int y = PDApassangerGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(0, x, y, z));
 						PDApassangerGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
 					}
@@ -153,7 +153,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/pda_empty_button_texture.png"), Identifier.parse("ssc_14:textures/screens/pda_empty_button_texture.png")), e -> {
 					int x = PDApassangerGUIScreen.this.x;
 					int y = PDApassangerGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(1, x, y, z));
 						PDApassangerGUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
 					}
@@ -168,7 +168,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/pda_empty_button_texture.png"), Identifier.parse("ssc_14:textures/screens/pda_empty_button_texture.png")), e -> {
 					int x = PDApassangerGUIScreen.this.x;
 					int y = PDApassangerGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(2, x, y, z));
 						PDApassangerGUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
 					}
@@ -182,7 +182,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 		imagebutton_pda_1_button = new ImageButton(this.leftPos + 8, this.topPos + 11, 13, 11, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/pda_1_button.png"), Identifier.parse("ssc_14:textures/screens/pda_1_button.png")), e -> {
 			int x = PDApassangerGUIScreen.this.x;
 			int y = PDApassangerGUIScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(3, x, y, z));
 				PDApassangerGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
 			}
@@ -196,7 +196,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 		imagebutton_pda_1_button1 = new ImageButton(this.leftPos + 22, this.topPos + 11, 13, 11, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/pda_1_button.png"), Identifier.parse("ssc_14:textures/screens/pda_1_button.png")), e -> {
 			int x = PDApassangerGUIScreen.this.x;
 			int y = PDApassangerGUIScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(4, x, y, z));
 				PDApassangerGUIButtonMessage.handleButtonAction(entity, 4, x, y, z);
 			}
@@ -210,7 +210,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 		imagebutton_pda_1_button2 = new ImageButton(this.leftPos + 36, this.topPos + 11, 13, 11, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/pda_1_button.png"), Identifier.parse("ssc_14:textures/screens/pda_1_button.png")), e -> {
 			int x = PDApassangerGUIScreen.this.x;
 			int y = PDApassangerGUIScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(5, x, y, z));
 				PDApassangerGUIButtonMessage.handleButtonAction(entity, 5, x, y, z);
 			}

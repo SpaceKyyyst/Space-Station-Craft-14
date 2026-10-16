@@ -316,7 +316,7 @@ public final class AuditTests {
         TESTS.put("pure_nitrous_oxide_decays", h -> {
             try {
                 AtmosphereManager.get(h.getLevel());
-                var field = AtmosphereManager.class.getDeclaredField("REACTIONS"); field.setAccessible(true);
+                var field = AtmosphereManager.class.getDeclaredField("reactions"); field.setAccessible(true);
                 var recipe = java.util.Arrays.stream((GasReaction[]) field.get(null))
                         .filter(r -> r.id().equals("n2o_decay")).findFirst().orElseThrow();
                 var gas = new float[GasType.COUNT]; gas[GasType.NITROUS_OXIDE.ordinal()] = 1;
@@ -581,7 +581,7 @@ public final class AuditTests {
     private static void reaction(GameTestHelper h,String name){
         try {
             AtmosphereManager.get(h.getLevel());
-            var field=AtmosphereManager.class.getDeclaredField("REACTIONS");field.setAccessible(true);
+            var field=AtmosphereManager.class.getDeclaredField("reactions");field.setAccessible(true);
             GasReaction r=java.util.Arrays.stream((GasReaction[])field.get(null)).filter(x->x.id().equals(name)).findFirst().orElseThrow();
             float[] input=new float[GasType.COUNT]; boolean[] req=r.requiredGases();float[] consume=r.consumptionPerTick();
             AtmosCell cell=new AtmosCell();float temp=(r.minTemperatureK()+r.maxTemperatureK())/2;

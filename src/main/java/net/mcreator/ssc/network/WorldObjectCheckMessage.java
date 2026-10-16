@@ -63,6 +63,6 @@ public record WorldObjectCheckMessage(int eventType, int pressedms) implements C
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(WorldObjectCheckMessage.TYPE, WorldObjectCheckMessage.STREAM_CODEC, WorldObjectCheckMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(WorldObjectCheckMessage.TYPE, WorldObjectCheckMessage.STREAM_CODEC, WorldObjectCheckMessage::handleData);
 	}
 }

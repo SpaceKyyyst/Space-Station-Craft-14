@@ -1,36 +1,36 @@
 package net.mcreator.ssc;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import java.util.BitSet;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
+import net.mcreator.ssc.atmosphere.GasMixture;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.server.level.ServerLevel;
 
+/** Sparse section storage and bounded work scheduling; gas arithmetic lives in AtmosCell. */
 public final class AtmosRegion {
     private static final int REGION_SIZE = 16;
     private static final int CELL_COUNT = REGION_SIZE * REGION_SIZE * REGION_SIZE;
-    private static final float VISUAL_THRESHOLD_MOLES = 0.05f;
-    private static final int VISUAL_UPDATE_INTERVAL = 10;
-    private static final int MAX_CELLS_PER_STEP = 256;
-
+    private static final int MAX_DIRTY_CELLS = 256;
+    private static final int VENT_SCAN_RANGE = 20;
+    private static final float VISUAL_THRESHOLD = 0.05f;
     private final int regionX, regionY, regionZ;
     private final AtmosCell[] cells = new AtmosCell[CELL_COUNT];
-    private BitSet dirtyCells = new BitSet(CELL_COUNT);
-    private final BitSet validPermeability = new BitSet(CELL_COUNT);
-    private int workCursor;
-    private final float[][] facePermeability = new float[6][CELL_COUNT];
-
-    private ServerLevel level;
-
-    private int visualTickCounter = 0;
+    private final BitSet dirtyCells = new BitSet(CELL_COUNT);
+    private final Runnable changed;
     private final List<GasVisualData> pendingVisuals = new ArrayList<>();
+    private ServerLevel level;
+    private int nextCell;
+    public boolean isActive;
+    public long lastActivityTime;
 
     public static class GasVisualData {
         public final double x, y, z;
         public final int gasIndex;
         public final float density;
-
         public GasVisualData(double x, double y, double z, int gasIndex, float density) {
             this.x = x; this.y = y; this.z = z;
             this.gasIndex = gasIndex;
@@ -38,242 +38,171 @@ public final class AtmosRegion {
         }
     }
 
-    public AtmosRegion(int rx, int ry, int rz) {
-        this.regionX = rx; this.regionY = ry; this.regionZ = rz;
+    public AtmosRegion(int rx, int ry, int rz) { this(rx, ry, rz, () -> { }); }
+
+    AtmosRegion(int rx, int ry, int rz, Runnable changed) {
+        regionX = rx; regionY = ry; regionZ = rz;
+        this.changed = changed;
     }
 
     public int packCellIndex(BlockPos pos) {
-        int x = pos.getX() & 15, y = pos.getY() & 15, z = pos.getZ() & 15;
-        return (y << 8) | (z << 4) | x;
+        return ((pos.getY() & 15) << 8) | ((pos.getZ() & 15) << 4) | (pos.getX() & 15);
     }
 
     public BlockPos unpackCellIndex(int index, BlockPos origin) {
-        int x = index & 15, z = (index >> 4) & 15, y = (index >> 8) & 15;
-        return origin.offset(x, y, z);
+        return origin.offset(index & 15, (index >> 8) & 15, (index >> 4) & 15);
     }
 
-    public BlockPos getRegionOrigin() {
-        return new BlockPos(regionX << 4, regionY << 4, regionZ << 4);
-    }
+    public BlockPos getRegionOrigin() { return new BlockPos(regionX << 4, regionY << 4, regionZ << 4); }
 
-    private boolean isVentedToSpace(BlockPos pos) {
-        if (level == null) return false;
-        return (pos.getY() <= level.getMinY() || pos.getY() >= level.getMaxY() - 1)
-                && getBlockPermeability(level.getBlockState(pos), pos) > 0;
-    }
-
-    public void updatePermeability(BlockPos pos) {
-        if (level == null || !contains(pos)) return;
-        int idx = packCellIndex(pos);
-        validPermeability.clear(idx);
-        dirtyCells.set(idx);
-        for (int f = 0; f < 6; f++) {
-            BlockPos nPos = pos.relative(net.minecraft.core.Direction.from3DDataValue(f));
-            if (contains(nPos)) {
-                validPermeability.clear(packCellIndex(nPos));
-                dirtyCells.set(packCellIndex(nPos));
-            }
-        }
-    }
-
-    private void recalcCellFaces(BlockPos pos, int idx) {
-        BlockState state = level.getBlockState(pos);
-        float base = getBlockPermeability(state, pos);
-        for (int f = 0; f < 6; f++) {
-            BlockPos nPos = pos.relative(net.minecraft.core.Direction.from3DDataValue(f));
-            float neighborPerm = level.hasChunkAt(nPos) ? getBlockPermeability(level.getBlockState(nPos), nPos) : 0;
-            facePermeability[f][idx] = Math.min(base, neighborPerm);
-        }
-        validPermeability.set(idx);
-    }
-
-    private float getBlockPermeability(BlockState state, BlockPos pos) {
-        if (state.getBlock() instanceof IAtmosBlock ab) {
-            return ab.getPermeability(state);
-        }
-        if (state.is(IAtmosBlock.NON_HERMETIC_TAG)) return 1.0f;
-        if (state.isAir()) return 1.0f;
-        return state.getCollisionShape(level, pos).isEmpty() ? 1.0f : 0.0f;
-    }
-
-    public void initFromWorld(ServerLevel level) {
-        this.level = level;
-        validPermeability.clear();
-    }
-
-    public void initializeIfLoaded(ServerLevel serverLevel) {
-        if (level == null && serverLevel.hasChunkAt(getRegionOrigin())) initFromWorld(serverLevel);
-    }
-
-    public void invalidatePermeability() {
-        level = null;
-        validPermeability.clear();
-        for (int i = 0; i < CELL_COUNT; i++) {
-            if (cells[i] != null && cells[i].getTotalMoles() > 0) dirtyCells.set(i);
-        }
-    }
-
-    public List<GasVisualData> collectGasVisuals(BlockPos playerPos, int maxParticles) {
-        pendingVisuals.clear();
-        if (level == null || level.isClientSide()) return pendingVisuals;
-        if (playerPos.distSqr(getRegionOrigin()) > 4096) return pendingVisuals;
-
-        int spawned = 0;
-        for (int i = 0; i < CELL_COUNT && spawned < maxParticles; i++) {
-            AtmosCell cell = cells[i];
-            if (cell == null) continue;
-            for (int g = 0; g < GasType.COUNT; g++) {
-                float moles = cell.getMoles(g);
-                if (g >= GasType.PLASMA.ordinal() && moles > VISUAL_THRESHOLD_MOLES) {
-                    BlockPos pos = unpackCellIndex(i, getRegionOrigin());
-                    double px = pos.getX() + 0.5 + (level.getRandom().nextFloat() - 0.5f) * 0.3f;
-                    double py = pos.getY() + 0.5 + (level.getRandom().nextFloat() - 0.5f) * 0.3f;
-                    double pz = pos.getZ() + 0.5 + (level.getRandom().nextFloat() - 0.5f) * 0.3f;
-
-                    pendingVisuals.add(new GasVisualData(px, py, pz, g, Math.min(moles * 2f, 1.0f)));
-                    spawned++;
-                    if (spawned >= maxParticles) break;
-                }
-            }
-        }
-        return pendingVisuals;
-    }
-    public void tick(float deltaTime, GasReaction[] reactions) {
-        pendingVisuals.clear();
-
-        if (dirtyCells.isEmpty()) return;
-
-        BitSet pending = dirtyCells;
-        dirtyCells = new BitSet(CELL_COUNT);
-        for (int selected = 0; selected < MAX_CELLS_PER_STEP && !pending.isEmpty(); selected++) {
-            int index = pending.nextSetBit(workCursor);
-            if (index < 0) index = pending.nextSetBit(0);
-            dirtyCells.set(index);
-            pending.clear(index);
-            workCursor = (index + 1) % CELL_COUNT;
-        }
-        BitSet nextDirty = pending;
-
-        for (int i = dirtyCells.nextSetBit(0); i >= 0; i = dirtyCells.nextSetBit(i + 1)) {
-            AtmosCell cell = cells[i];
-            if (cell == null) continue;
-            if (cell.getTotalMoles() <= 0f) continue;
-            BlockPos pos = unpackCellIndex(i, getRegionOrigin());
-            if (isVentedToSpace(pos)) {
-                for (int g = 0; g < GasType.COUNT; g++) cell.setMoles(g, 0f);
-                cell.setTemperature(294.15f);
-                continue;
-            }
-        }
-
-        for (int i = dirtyCells.nextSetBit(0); i >= 0; i = dirtyCells.nextSetBit(i + 1)) {
-            if (cells[i] != null && cells[i].tryReactions(reactions)) {
-                nextDirty.set(i);
-            }
-        }
-
-        for (int i = dirtyCells.nextSetBit(0); i >= 0; i = dirtyCells.nextSetBit(i + 1)) {
-            AtmosCell cell = cells[i];
-            if (cell == null) continue;
-            if (cell.getTotalMoles() <= 0f) continue;
-            if (diffuseCell(i, deltaTime, nextDirty)) {
-                nextDirty.set(i);
-            }
-        }
-
-        dirtyCells = nextDirty;
-
-        visualTickCounter++;
-        if (visualTickCounter >= VISUAL_UPDATE_INTERVAL && level != null) {
-            for (var player : level.players()) {
-                if (player.blockPosition().distSqr(getRegionOrigin()) <= 4096) {
-                    collectGasVisuals(player.blockPosition(), 32);
-                    break;
-                }
-            }
-            visualTickCounter = 0;
-        }
-
-    }
-
-    private boolean diffuseCell(int idx, float dt, BitSet nextDirty) {
-        AtmosCell cell = cells[idx];
-        boolean changed = false;
-        BlockPos pos = unpackCellIndex(idx, getRegionOrigin());
-        if (level != null && !validPermeability.get(idx)) recalcCellFaces(pos, idx);
-
-        for (int f = 0; f < 6; f++) {
-            float perm = facePermeability[f][idx];
-            if (perm <= 0.001f) continue;
-
-            BlockPos nPos = pos.relative(net.minecraft.core.Direction.from3DDataValue(f));
-            if (level != null && (nPos.getY() < level.getMinY() || nPos.getY() >= level.getMaxY()
-                    || !level.hasChunkAt(nPos))) continue;
-            AtmosCell neighbor = getCellAt(nPos);
-            if (neighbor == null && level != null) neighbor = AtmosphereManager.get(level).getCellAt(nPos);
-            if (neighbor == null) continue;
-
-            float oldTemperature = neighbor.getTemperature();
-            float transferred = cell.diffuseTo(neighbor, perm, dt);
-            if (transferred > 0f || oldTemperature != neighbor.getTemperature()) {
-                changed = true;
-                if (contains(nPos)) nextDirty.set(packCellIndex(nPos));
-                else if (level != null) AtmosphereManager.get(level).markCellDirty(nPos);
-            }
-        }
-        return changed;
-    }
-
-    public AtmosCell getCellAt(BlockPos pos) {
-        if ((pos.getX() >> 4) != regionX || (pos.getY() >> 4) != regionY || (pos.getZ() >> 4) != regionZ) return null;
-        int index = packCellIndex(pos);
-        if (cells[index] == null) cells[index] = new AtmosCell();
+    private AtmosCell cell(int index) {
+        if (cells[index] == null) cells[index] = new AtmosCell(() -> markDirty(index));
         return cells[index];
     }
 
-    public AtmosCell peekCellAt(BlockPos pos) {
-        return contains(pos) ? cells[packCellIndex(pos)] : null;
+    private void markDirty(int index) {
+        dirtyCells.set(index);
+        isActive = true;
+        lastActivityTime = System.currentTimeMillis();
+        changed.run();
     }
 
-    public boolean contains(BlockPos p) {
-        return (p.getX() >> 4) == regionX && (p.getY() >> 4) == regionY && (p.getZ() >> 4) == regionZ;
+    private boolean isVentedToSpace(BlockPos pos) {
+        if (level == null || AtmosBlockRegistry.getPermeability(level, pos) <= 0) return false;
+        for (Direction direction : new Direction[]{Direction.UP, Direction.DOWN}) {
+            for (int distance = 1; distance <= VENT_SCAN_RANGE; distance++) {
+                BlockPos check = pos.relative(direction, distance);
+                if (level.isOutsideBuildHeight(check)) return true;
+                if (AtmosBlockRegistry.getPermeability(level, check) <= 0) break;
+            }
+        }
+        return false;
+    }
+
+    /** Faces are sampled at diffusion time, so door state and cancelled events cannot stale a cache. */
+    public void updatePermeability(BlockPos pos) {
+        if (!contains(pos)) return;
+        markCellDirty(pos);
+        for (Direction direction : Direction.values()) markCellDirty(pos.relative(direction));
+    }
+
+    public void initFromWorld(ServerLevel level) { this.level = level; }
+
+    public List<GasVisualData> collectGasVisuals(BlockPos playerPos, int maxParticles) {
+        pendingVisuals.clear();
+        if (level == null || maxParticles <= 0) return List.of();
+        BlockPos origin = getRegionOrigin();
+        if (playerPos.distSqr(origin) > 96 * 96) return List.of();
+        for (int i = 0; i < CELL_COUNT && pendingVisuals.size() < maxParticles; i++) {
+            AtmosCell cell = cells[i];
+            if (cell == null) continue;
+            BlockPos pos = unpackCellIndex(i, origin);
+            if (playerPos.distSqr(pos) > 64 * 64) continue;
+            for (int gas = 0; gas < GasType.COUNT && pendingVisuals.size() < maxParticles; gas++) {
+                // Oxygen, nitrogen, carbon dioxide and nitrous oxide have no particle registrations.
+                if (gas < GasType.PLASMA.ordinal()) continue;
+                float moles = cell.getMoles(gas);
+                if (moles > VISUAL_THRESHOLD) {
+                    pendingVisuals.add(new GasVisualData(pos.getX() + 0.5, pos.getY() + 0.5,
+                            pos.getZ() + 0.5, gas, Math.min(moles * 2f, 1f)));
+                }
+            }
+        }
+        return List.copyOf(pendingVisuals);
+    }
+
+    public void tick(float deltaTime, GasReaction[] reactions) {
+        pendingVisuals.clear();
+        if (!Float.isFinite(deltaTime) || deltaTime <= 0) return;
+        BitSet work = (BitSet) dirtyCells.clone();
+        int processed = 0;
+        int index = work.nextSetBit(nextCell);
+        if (index < 0) index = work.nextSetBit(0);
+        while (index >= 0 && processed < MAX_DIRTY_CELLS) {
+            work.clear(index);
+            dirtyCells.clear(index);
+            AtmosCell cell = cells[index];
+            if (cell != null && cell.getTotalMoles() > 0) {
+                BlockPos pos = unpackCellIndex(index, getRegionOrigin());
+                if (isVentedToSpace(pos)) {
+                    for (int gas = 0; gas < GasType.COUNT; gas++) cell.setMoles(gas, 0f);
+                    cell.setTemperature(GasMixture.DEFAULT_TEMPERATURE_K);
+                } else {
+                    cell.tryReactions(reactions);
+                    diffuseCell(index, deltaTime);
+                }
+            }
+            nextCell = (index + 1) % CELL_COUNT;
+            processed++;
+            index = work.nextSetBit(nextCell);
+            if (index < 0) index = work.nextSetBit(0);
+        }
+        isActive = !dirtyCells.isEmpty();
+    }
+
+    private void diffuseCell(int index, float seconds) {
+        if (level == null) return;
+        BlockPos pos = unpackCellIndex(index, getRegionOrigin());
+        float sourcePermeability = AtmosBlockRegistry.getPermeability(level, pos);
+        if (sourcePermeability <= 0) return;
+        for (Direction direction : Direction.values()) {
+            BlockPos neighborPos = pos.relative(direction);
+            float permeability = Math.min(sourcePermeability, AtmosBlockRegistry.getPermeability(level, neighborPos));
+            if (permeability <= 0) continue;
+            AtmosCell neighbor = contains(neighborPos) ? getCellAt(neighborPos)
+                    : AtmosphereManager.get(level).getCellAt(neighborPos);
+            cells[index].diffuseTo(neighbor, permeability, seconds);
+        }
+    }
+
+    public AtmosCell peekCellAt(BlockPos pos) { return contains(pos) ? cells[packCellIndex(pos)] : null; }
+
+    public AtmosCell getCellAt(BlockPos pos) { return contains(pos) ? cell(packCellIndex(pos)) : null; }
+
+    public boolean contains(BlockPos pos) {
+        return (pos.getX() >> 4) == regionX && (pos.getY() >> 4) == regionY && (pos.getZ() >> 4) == regionZ;
     }
 
     public void markCellDirty(BlockPos pos) {
-        if (!contains(pos)) return;
-        int idx = packCellIndex(pos);
-        dirtyCells.set(idx);
+        if (contains(pos)) markDirty(packCellIndex(pos));
     }
 
-    public boolean hasPendingWork() { return !dirtyCells.isEmpty(); }
-
-    public boolean isActive() { return hasPendingWork(); }
-    public List<GasVisualData> getPendingVisuals() { return pendingVisuals; }
-
-    public void writeToNBT(net.minecraft.nbt.CompoundTag tag) {
-        tag.putInt("x", regionX); tag.putInt("y", regionY); tag.putInt("z", regionZ);
-        net.minecraft.nbt.ListTag cellsTag = new net.minecraft.nbt.ListTag();
+    /** Recheck previously sleeping gas when an adjacent chunk becomes available. */
+    void wakeGasCells() {
         for (int i = 0; i < CELL_COUNT; i++) {
-            if (cells[i] != null && (cells[i].getTotalMoles() > 0f || cells[i].getTemperature() != 294.15f)) {
-                net.minecraft.nbt.CompoundTag cellTag = new net.minecraft.nbt.CompoundTag();
-                cellTag.putInt("idx", i); cells[i].writeToNBT(cellTag); cellsTag.add(cellTag);
+            if (cells[i] != null && cells[i].getTotalMoles() > 0) markDirty(i);
+        }
+    }
+
+    public boolean isActive() { return isActive; }
+    public List<GasVisualData> getPendingVisuals() { return List.copyOf(pendingVisuals); }
+
+    public void writeToNBT(CompoundTag tag) {
+        tag.putInt("x", regionX); tag.putInt("y", regionY); tag.putInt("z", regionZ);
+        ListTag savedCells = new ListTag();
+        for (int i = 0; i < CELL_COUNT; i++) {
+            AtmosCell cell = cells[i];
+            if (cell != null && (cell.getTotalMoles() > 0 || cell.getTemperature() != GasMixture.DEFAULT_TEMPERATURE_K)) {
+                CompoundTag saved = new CompoundTag();
+                saved.putInt("idx", i);
+                cell.writeToNBT(saved);
+                savedCells.add(saved);
             }
         }
-        tag.put("cells", cellsTag);
+        tag.put("cells", savedCells);
     }
 
-    public void readFromNBT(net.minecraft.nbt.CompoundTag tag) {
-        var entries = tag.getList("cells");
-        if (entries.isEmpty()) return;
-        var origin = getRegionOrigin();
-        for (int entryIndex = 0; entryIndex < entries.get().size(); entryIndex++) {
-            var entry = entries.get().getCompound(entryIndex);
-            if (entry.isEmpty()) continue;
-            int cellIndex = entry.get().getInt("idx").orElse(-1);
-            if (cellIndex < 0 || cellIndex >= CELL_COUNT) continue;
-            if (cells[cellIndex] == null) cells[cellIndex] = new AtmosCell();
-            cells[cellIndex].readFromNBT(entry.get());
-            markCellDirty(unpackCellIndex(cellIndex, origin));
+    public void readFromNBT(CompoundTag tag) {
+        java.util.Arrays.fill(cells, null);
+        dirtyCells.clear();
+        pendingVisuals.clear();
+        isActive = false;
+        ListTag savedCells = tag.getList("cells").orElseGet(ListTag::new);
+        for (int i = 0; i < savedCells.size(); i++) {
+            CompoundTag saved = savedCells.getCompound(i).orElse(null);
+            if (saved == null) continue;
+            int index = saved.getInt("idx").orElse(-1);
+            if (index >= 0 && index < CELL_COUNT) cell(index).readFromNBT(saved);
         }
     }
 }

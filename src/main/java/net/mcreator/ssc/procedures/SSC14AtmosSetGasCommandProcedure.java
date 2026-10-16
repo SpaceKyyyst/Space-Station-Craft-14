@@ -20,11 +20,11 @@ public class SSC14AtmosSetGasCommandProcedure {
         
         try {
             // 1. Получаем параметры команды
-            String gasName = commandParameterMessage(arguments, "gas_name").toLowerCase().trim();
+            String gasName = commandParameterMessage(arguments, "gas_name").toLowerCase(java.util.Locale.ROOT).trim();
             double gasAmount = DoubleArgumentType.getDouble(arguments, "gas_amount");
             
             // 2. Валидация
-            if (gasAmount < 0) {
+            if (!Double.isFinite(gasAmount) || gasAmount < 0) {
                 sendError(arguments.getSource(), "Количество газа не может быть отрицательным!");
                 return;
             }
@@ -67,7 +67,7 @@ public class SSC14AtmosSetGasCommandProcedure {
             
             // 6. Добавляем газ и активируем обновление
             cell.addMoles(gasType.ordinal(), (float) gasAmount);
-            net.mcreator.ssc.AtmosphereManager.get(serverLevel).onBlockChanged(pos);
+
             
             // 7. Отправляем подтверждение
             float pressure = cell.getPressure();
@@ -82,7 +82,7 @@ public class SSC14AtmosSetGasCommandProcedure {
             
         } catch (Exception e) {
             arguments.getSource().sendFailure(Component.literal("§c[SSC14] Ошибка выполнения: " + e.getMessage()));
-            e.printStackTrace();
+            net.mcreator.ssc.Ssc14Mod.LOGGER.error("Atmosphere command failed", e);
         }
     }
     
@@ -91,7 +91,7 @@ public class SSC14AtmosSetGasCommandProcedure {
         try {
             return MessageArgument.getMessage(arguments, parameter).getString();
         } catch (CommandSyntaxException e) {
-            e.printStackTrace();
+            net.mcreator.ssc.Ssc14Mod.LOGGER.error("Atmosphere command failed", e);
             return "";
         }
     }

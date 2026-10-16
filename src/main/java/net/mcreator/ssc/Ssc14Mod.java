@@ -22,7 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.Identifier;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.mcreator.ssc.world.features.StructureFeature;
@@ -74,20 +74,52 @@ public class Ssc14Mod {
 	private static boolean networkingRegistered = false;
 	private static final Map<CustomPacketPayload.Type<?>, NetworkMessage<?>> MESSAGES = new HashMap<>();
 
-	private record NetworkMessage<T extends CustomPacketPayload>(StreamCodec<? extends FriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
+	private enum PayloadDirection {
+		TO_SERVER, TO_CLIENT, BIDIRECTIONAL
 	}
 
-	public static <T extends CustomPacketPayload> void addNetworkMessage(CustomPacketPayload.Type<T> id, StreamCodec<? extends FriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
-		if (networkingRegistered)
-			throw new IllegalStateException("Cannot register new network messages after networking has been registered");
-		MESSAGES.put(id, new NetworkMessage<>(reader, handler));
+	private record NetworkMessage<T extends CustomPacketPayload>(CustomPacketPayload.Type<T> id,
+			StreamCodec<? super RegistryFriendlyByteBuf, T> reader, IPayloadHandler<T> handler, PayloadDirection direction) {
+		void register(PayloadRegistrar registrar) {
+			switch (direction) {
+				case TO_SERVER -> registrar.playToServer(id, reader, handler);
+				case TO_CLIENT -> registrar.playToClient(id, reader, handler);
+				case BIDIRECTIONAL -> registrar.playBidirectional(id, reader, handler, handler);
+			}
+		}
 	}
 
-	@SuppressWarnings({"rawtypes", "unchecked"})
+	public static <T extends CustomPacketPayload> void addServerboundNetworkMessage(CustomPacketPayload.Type<T> id,
+			StreamCodec<? super RegistryFriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
+		addNetworkMessage(id, reader, handler, PayloadDirection.TO_SERVER);
+	}
+
+	public static <T extends CustomPacketPayload> void addClientboundNetworkMessage(CustomPacketPayload.Type<T> id,
+			StreamCodec<? super RegistryFriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
+		addNetworkMessage(id, reader, handler, PayloadDirection.TO_CLIENT);
+	}
+
+	public static <T extends CustomPacketPayload> void addBidirectionalNetworkMessage(CustomPacketPayload.Type<T> id,
+			StreamCodec<? super RegistryFriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
+		addNetworkMessage(id, reader, handler, PayloadDirection.BIDIRECTIONAL);
+	}
+
+	private static <T extends CustomPacketPayload> void addNetworkMessage(CustomPacketPayload.Type<T> id,
+			StreamCodec<? super RegistryFriendlyByteBuf, T> reader, IPayloadHandler<T> handler, PayloadDirection direction) {
+		synchronized (MESSAGES) {
+			if (networkingRegistered)
+				throw new IllegalStateException("Cannot register new network messages after networking has been registered");
+			if (MESSAGES.putIfAbsent(id, new NetworkMessage<>(id, reader, handler, direction)) != null)
+				throw new IllegalStateException("Duplicate network message: " + id);
+		}
+	}
+
 	private void registerNetworking(final RegisterPayloadHandlersEvent event) {
 		final PayloadRegistrar registrar = event.registrar(MODID);
-		MESSAGES.forEach((id, networkMessage) -> registrar.playBidirectional(id, ((NetworkMessage) networkMessage).reader(), ((NetworkMessage) networkMessage).handler(), ((NetworkMessage) networkMessage).handler()));
-		networkingRegistered = true;
+		synchronized (MESSAGES) {
+			MESSAGES.values().forEach(message -> message.register(registrar));
+			networkingRegistered = true;
+		}
 	}
 
     public static void queueServerWork(int delay, Runnable action) {

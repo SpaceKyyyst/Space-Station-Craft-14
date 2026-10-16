@@ -86,7 +86,7 @@ public class SaleGUIScreen extends AbstractContainerScreen<SaleGUIMenu> implemen
 				e -> {
 					int x = SaleGUIScreen.this.x;
 					int y = SaleGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new SaleGUIButtonMessage(0, x, y, z));
 						SaleGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
 					}

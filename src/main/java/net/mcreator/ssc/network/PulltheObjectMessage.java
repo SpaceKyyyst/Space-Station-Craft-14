@@ -63,6 +63,6 @@ public record PulltheObjectMessage(int eventType, int pressedms) implements Cust
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(PulltheObjectMessage.TYPE, PulltheObjectMessage.STREAM_CODEC, PulltheObjectMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(PulltheObjectMessage.TYPE, PulltheObjectMessage.STREAM_CODEC, PulltheObjectMessage::handleData);
 	}
 }

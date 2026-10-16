@@ -38,7 +38,7 @@ public class ActionIndicatorOverlay {
 			y = entity.getY();
 			z = entity.getZ();
 		}
-		if (true) {
+		{
 			if (ActGUIProcedureProcedure.execute(entity)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}

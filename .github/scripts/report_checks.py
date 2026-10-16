@@ -1,4 +1,4 @@
-"""Convert javac, Checkstyle and JUnit failures into GitHub annotations."""
+"""Convert javac, Checkstyle, PMD and JUnit failures into GitHub annotations."""
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -29,6 +29,16 @@ def report(root):
         for file in ET.parse(report_file).getroot().findall("file"):
             for violation in file.findall("error"):
                 error(violation.get("message"), file.get("name"), violation.get("line"))
+    for report_file in (root / "build/reports/pmd").glob("*.xml"):
+        if report_file.name == "method-metrics.xml":
+            continue  # Metrics are an inventory, not failed correctness checks.
+        tree = ET.parse(report_file).getroot()
+        for file in tree.findall("{*}file"):
+            for violation in file.findall("{*}violation"):
+                message = f"{violation.get('rule')}: {(violation.text or '').strip()}"
+                error(message, file.get("name"), violation.get("beginline"))
+        for failure in tree.findall("{*}error"):
+            error(failure.get("msg"), failure.get("filename"))
     for report_file in (root / "build/test-results").glob("**/TEST-*.xml"):
         for case in ET.parse(report_file).getroot().iter("testcase"):
             for failure in list(case.findall("failure")) + list(case.findall("error")):

@@ -58,6 +58,6 @@ public record SpecifyMessage(int eventType, int pressedms) implements CustomPack
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(SpecifyMessage.TYPE, SpecifyMessage.STREAM_CODEC, SpecifyMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(SpecifyMessage.TYPE, SpecifyMessage.STREAM_CODEC, SpecifyMessage::handleData);
 	}
 }

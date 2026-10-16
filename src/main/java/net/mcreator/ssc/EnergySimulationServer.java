@@ -1,7 +1,10 @@
 package net.mcreator.ssc;
 
-import net.mcreator.ssc.block.entity.PodstationBlockEntity;
+import net.mcreator.ssc.block.LampBlock;
 import net.mcreator.ssc.block.entity.APCBlockEntity;
+import net.mcreator.ssc.block.entity.PodstationBlockEntity;
+import net.mcreator.ssc.energy.EnergyAllocation;
+import net.mcreator.ssc.energy.EnergyTickBudget;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -11,264 +14,259 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 @EventBusSubscriber
 public class EnergySimulationServer {
-
-    private static final long DEBUG_GEN_WATT = 100000;
-    private static final long DEBUG_GEN_JOULES_PER_TICK = DEBUG_GEN_WATT / 20;
-    private static final long MAX_DEVICE_INPUT_JOULES = 50000 / 20;
-    private static final int TICKS_PER_SECOND = 20;
-    private static final long SUBSTATION_OUTPUT_WATT = 150000;
-    private static final long APC_OUTPUT_WATT = 15000;
+    private static final long TICKS_PER_SECOND = 20;
+    private static final long GENERATOR_WATT = 100000;
+    private static final long SUBSTATION_WATT = 150000;
+    private static final long APC_WATT = 15000;
+    private static final long MAX_DEVICE_INPUT_JOULES = 50000 / TICKS_PER_SECOND;
+    // One joule per tick corresponds to a 20 W lamp.
     private static final long LAMP_WATT = 20;
     private static final long LAMP_JOULES_PER_TICK = 1;
-
-    private record SourceKey(ServerLevel level, BlockPos position) { }
-    private static final Map<SourceKey, Long> energySnapshot = new HashMap<>();
-    private static int diagnosticLogCooldown = 0;
 
     @SubscribeEvent
     public static void onServerTick(ServerTickEvent.Post event) {
         try (var timing = net.mcreator.ssc.diagnostics.TickPhase.start("energy_simulation", 0)) {
-            simulate(event);
+        for (ServerLevel level : event.getServer().getAllLevels()) {
+            EnergyNetworkManager.applyPendingUpdates(level);
+            TickContext tick = prepareTick(level);
+            simulateNetworkLayer(level, CableType.HV, tick);
+            simulateNetworkLayer(level, CableType.MV, tick);
+            simulateNetworkLayer(level, CableType.LV, tick);
+            tick.lamps.apply();
+            EnergyNetworkTelemetry.publishToolData(level);
+        }
         }
     }
 
-    private static void simulate(ServerTickEvent.Post event) {
-        energySnapshot.clear();
-
-        boolean displayDiag = false;
-        if (diagnosticLogCooldown++ >= 20) {
-            displayDiag = true;
-            diagnosticLogCooldown = 0;
-        }
-
-        for (ServerLevel serverLevel : event.getServer().getAllLevels()) {
-            EnergyNetworkManager.refreshPending(serverLevel);
-            for (CableType type : CableType.values()) {
-                List<EnergyNetwork> networks = EnergyNetworkManager.getNetworks(serverLevel, type);
-
-                if (displayDiag && !networks.isEmpty()) {
-                    Ssc14Mod.LOGGER.debug("[SSC14-SIM-DIAG] Активных цепей [" + type + "]: " + networks.size());
+    /** A fresh context per dimension prevents equal coordinates from sharing energy snapshots. */
+    private static TickContext prepareTick(ServerLevel level) {
+        TickContext tick = new TickContext(level);
+        for (CableType type : CableType.values()) {
+            for (EnergyNetwork network : EnergyNetworkManager.getNetworks(level, type)) {
+                if (!network.isTopologyReady()) continue;
+                network.getSources().removeIf(pos -> !isSource(level, pos, type));
+                network.getConsumers().removeIf(pos -> type == CableType.LV ? !tick.lamps.track(pos) : !isConsumer(level, pos, type));
+                for (BlockPos pos : network.getSources()) {
+                    captureDevice(level, pos, tick);
                 }
-
-                for (EnergyNetwork network : networks) {
-                    if (!network.isTopologyReady()) continue;
-                    Iterator<BlockPos> sourceIterator = network.getSources().iterator();
-
-                    while (sourceIterator.hasNext()) {
-                        BlockPos pos = sourceIterator.next();
-                        if (!serverLevel.isLoaded(pos)) continue;
-
-                        BlockEntity be = serverLevel.getBlockEntity(pos);
-                        BlockState state = serverLevel.getBlockState(pos);
-
-                        if (type == CableType.HV && !state.is(Ssc14ModBlocks.DEBU_GGENERATOR.get())) {
-                            sourceIterator.remove();
-                        } else if (type == CableType.MV && !(be instanceof PodstationBlockEntity)) {
-                            sourceIterator.remove();
-                        } else if (type == CableType.LV && !(be instanceof APCBlockEntity)) {
-                            sourceIterator.remove();
-                        } else if (!energySnapshot.containsKey(new SourceKey(serverLevel, pos))) {
-                            if (be instanceof PodstationBlockEntity podstation) {
-                                energySnapshot.put(new SourceKey(serverLevel, pos), podstation.getStoredEnergy());
-                            } else if (be instanceof APCBlockEntity apc) {
-                                energySnapshot.put(new SourceKey(serverLevel, pos), apc.getStoredEnergy());
-                                apc.lastTickDischargingJoules = 0;
-                                apc.lastTickReceivingJoules = 0;
-                                apc.serverTick();
-                            }
-                        }
+                if (type != CableType.LV) for (BlockPos pos : network.getConsumers()) {
+                    captureDevice(level, pos, tick);
+                }
+            }
+        }
+        Map<BlockPos, Set<BlockPos>> apcLoads = new HashMap<>();
+        for (EnergyNetwork network : EnergyNetworkManager.getNetworks(level, CableType.LV)) {
+            if (!network.isTopologyReady()) continue;
+            for (BlockPos source : network.getSources()) {
+                Set<BlockPos> lamps = apcLoads.computeIfAbsent(source, key -> new HashSet<>());
+                for (BlockPos lamp : network.getConsumers()) {
+                    if (tick.lamps.needsPower(lamp)) {
+                        lamps.add(lamp);
                     }
                 }
             }
         }
-
-        for (ServerLevel serverLevel : event.getServer().getAllLevels()) {
-            simulateNetworkLayer(serverLevel, CableType.HV);
-            simulateNetworkLayer(serverLevel, CableType.MV);
-            simulateNetworkLayer(serverLevel, CableType.LV);
+        for (Map.Entry<BlockPos, IEnergyStorageBlock> entry : tick.storage.entrySet()) {
+            IEnergyStorageBlock storage = entry.getValue();
+            storage.setNetworkCurrentPower(0);
+            storage.setNetworkTheoreticalSupply(0);
+            storage.setNetworkIdealConsumption(0);
+            if (storage instanceof APCBlockEntity apc) {
+                apc.lastTickReceivingJoules = 0;
+                apc.lastTickDischargingJoules = 0;
+                apc.setNetworkIdealConsumption(apcLoads.getOrDefault(entry.getKey(), Set.of()).size() * LAMP_WATT);
+                apc.serverTick();
+            }
         }
-
-        energySnapshot.clear();
+        return tick;
     }
-    private static void simulateNetworkLayer(ServerLevel level, CableType type) {
-        List<EnergyNetwork> networks = EnergyNetworkManager.getNetworks(level, type);
-        if (networks.isEmpty()) return;
 
-        var lamps = new net.mcreator.ssc.energy.LampTickBatch(level);
-        for (EnergyNetwork network : networks) {
+    private static boolean isSource(ServerLevel level, BlockPos pos, CableType type) {
+        if (!level.isLoaded(pos)) {
+            return false;
+        }
+        return switch (type) {
+            case HV -> level.getBlockState(pos).is(Ssc14ModBlocks.DEBU_GGENERATOR.get());
+            case MV -> level.getBlockEntity(pos) instanceof PodstationBlockEntity;
+            case LV -> level.getBlockEntity(pos) instanceof APCBlockEntity;
+        };
+    }
+
+    private static boolean isConsumer(ServerLevel level, BlockPos pos, CableType type) {
+        if (!level.isLoaded(pos)) {
+            return false;
+        }
+        return switch (type) {
+            case HV -> level.getBlockEntity(pos) instanceof PodstationBlockEntity;
+            case MV -> level.getBlockEntity(pos) instanceof APCBlockEntity;
+            case LV -> level.getBlockState(pos).is(Ssc14ModBlocks.LAMP.get());
+        };
+    }
+
+    private static void captureDevice(ServerLevel level, BlockPos pos, TickContext tick) {
+        if (tick.budgets.containsKey(pos)) {
+            return;
+        }
+        BlockEntity entity = level.getBlockEntity(pos);
+        if (entity instanceof IEnergyStorageBlock storage) {
+            long output = entity instanceof APCBlockEntity ? APC_WATT : SUBSTATION_WATT;
+            tick.storage.put(pos, storage);
+            tick.budgets.put(pos, new EnergyTickBudget(storage.getStoredEnergy(), storage.getMaxEnergy(),
+                    output / TICKS_PER_SECOND, MAX_DEVICE_INPUT_JOULES));
+        } else if (level.getBlockState(pos).is(Ssc14ModBlocks.DEBU_GGENERATOR.get())) {
+            long output = GENERATOR_WATT / TICKS_PER_SECOND;
+            tick.budgets.put(pos, new EnergyTickBudget(output, output, output, 0));
+        }
+    }
+
+    private static void simulateNetworkLayer(ServerLevel level, CableType type, TickContext tick) {
+        for (EnergyNetwork network : EnergyNetworkManager.getNetworks(level, type)) {
             network.resetTickStats();
             if (!network.isTopologyReady()) {
-                if (type == CableType.LV) for (var pos : network.getConsumers()) lamps.track(pos);
+                if (type == CableType.LV) for (var lamp : network.getConsumers()) tick.lamps.track(lamp);
                 network.acknowledgeShutdown();
                 continue;
             }
-            long totalProducedJoules = 0;
-            long totalMaxSupplyWatt = 0;
-            long consumedJoules = 0;
-            Map<BlockPos, Long> availableSources = new java.util.LinkedHashMap<>();
-
-            Set<BlockPos> sourcePositions = network.getSources();
-            Set<BlockPos> consumerPositions = network.getConsumers();
-
-            for (var consumerIterator = consumerPositions.iterator(); consumerIterator.hasNext();) {
-                BlockPos consumerPos = consumerIterator.next();
-                if (!level.isLoaded(consumerPos)) continue;
-                if (type == CableType.LV) {
-                    if (!lamps.track(consumerPos)) consumerIterator.remove();
-                    continue;
-                }
-                BlockEntity be = level.getBlockEntity(consumerPos);
-
-                if (type == CableType.HV && !(be instanceof PodstationBlockEntity)) {
-                    consumerIterator.remove();
-                } else if (type == CableType.MV && !(be instanceof APCBlockEntity)) {
-                    consumerIterator.remove();
-                } else {
-                    if (be instanceof PodstationBlockEntity podstation && type == CableType.HV) {
-                        network.outputStored += podstation.getStoredEnergy();
-                        network.outputMax += podstation.getMaxEnergy();
-                    } else if (be instanceof APCBlockEntity apc && type == CableType.MV) {
-                        network.outputStored += apc.getStoredEnergy();
-                        network.outputMax += apc.getMaxEnergy();
-                    }
-                }
-            }
-
-            for (BlockPos sourcePos : sourcePositions) {
-                if (!level.isLoaded(sourcePos)) continue;
-                BlockState state = level.getBlockState(sourcePos);
-
-                if (type == CableType.HV && state.is(Ssc14ModBlocks.DEBU_GGENERATOR.get())) {
-                    totalProducedJoules += DEBUG_GEN_JOULES_PER_TICK;
-                    availableSources.put(sourcePos, DEBUG_GEN_JOULES_PER_TICK);
-                    totalMaxSupplyWatt += DEBUG_GEN_WATT;
-                } else {
-                    BlockEntity be = level.getBlockEntity(sourcePos);
-                    if (type == CableType.MV && be instanceof PodstationBlockEntity podstation) {
-                        network.inputStored += podstation.getStoredEnergy();
-                        network.inputMax += podstation.getMaxEnergy();
-                        long snapshotEnergy = energySnapshot.getOrDefault(new SourceKey(level, sourcePos), podstation.getStoredEnergy());
-                        long potentialSupply = Math.min(snapshotEnergy, SUBSTATION_OUTPUT_WATT / TICKS_PER_SECOND);
-
-                        totalMaxSupplyWatt += SUBSTATION_OUTPUT_WATT;
-                        if (snapshotEnergy > 0) {
-                            totalProducedJoules += potentialSupply;
-                            availableSources.put(sourcePos, potentialSupply);
-
-                        }
-                    } else if (type == CableType.LV && be instanceof APCBlockEntity apc) {
-                        network.inputStored += apc.getStoredEnergy();
-                        network.inputMax += apc.getMaxEnergy();
-                        if (apc.isMainBreakerEnabled()) {
-                            long snapshotEnergy = energySnapshot.getOrDefault(new SourceKey(level, sourcePos), apc.getStoredEnergy());
-                            long potentialSupply = Math.min(snapshotEnergy, APC_OUTPUT_WATT / TICKS_PER_SECOND);
-
-                            totalMaxSupplyWatt += APC_OUTPUT_WATT;
-                            if (snapshotEnergy > 0) {
-                                totalProducedJoules += potentialSupply;
-                                availableSources.put(sourcePos, potentialSupply);
-
-                            }
-                        } else {
-                            apc.lastTickDischargingJoules = 0;
-                        }
-                    }
-                }
-            }
-
+            Map<BlockPos, Long> sources = availableSources(network, tick);
+            long available = sum(sources.values());
+            long delivered;
             if (type == CableType.LV) {
-                network.outputStored = network.inputStored;
-                network.outputMax = network.inputMax;
-            }
-            network.theoreticalSupply = totalMaxSupplyWatt;
-            network.currentPower = totalProducedJoules * 20;
-            if (type == CableType.LV) {
-                long activeLampsCount = 0;
-                for (BlockPos lampPos : consumerPositions) {
-                    if (lamps.needsPower(lampPos)) activeLampsCount++;
-                }
-                long requiredJoulesForLamps = activeLampsCount * LAMP_JOULES_PER_TICK;
-                network.idealConsumption = activeLampsCount * LAMP_WATT;
-                boolean hasEnoughPower = totalProducedJoules >= requiredJoulesForLamps && requiredJoulesForLamps > 0;
-                consumedJoules = hasEnoughPower ? requiredJoulesForLamps : 0;
-                if (hasEnoughPower) for (BlockPos lampPos : consumerPositions) lamps.power(lampPos);
+                delivered = supplyLamps(level, network, available, tick);
             } else {
-                if (!consumerPositions.isEmpty()) {
-                    long totalDemandJoules = 0;
-                    for (BlockPos consumerPos : consumerPositions) {
-                        if (!level.isLoaded(consumerPos)) continue;
-                        BlockEntity be = level.getBlockEntity(consumerPos);
-
-                        if (be instanceof PodstationBlockEntity podstation && type == CableType.HV) {
-                            long spaceLeft = podstation.getMaxEnergy() - energySnapshot.getOrDefault(new SourceKey(level, consumerPos), podstation.getStoredEnergy());
-                            totalDemandJoules += Math.min(MAX_DEVICE_INPUT_JOULES, spaceLeft);
-                        } else if (be instanceof APCBlockEntity apc && type == CableType.MV) {
-                            long spaceLeft = apc.getMaxEnergy() - energySnapshot.getOrDefault(new SourceKey(level, consumerPos), apc.getStoredEnergy());
-                            totalDemandJoules += Math.min(MAX_DEVICE_INPUT_JOULES, spaceLeft);
-                        }
-                    }
-
-                    network.idealConsumption = totalDemandJoules * 20;
-
-                    if (totalProducedJoules > 0 && totalDemandJoules > 0) {
-                        double supplyRatio = Math.min(1.0, (double) totalProducedJoules / totalDemandJoules);
-
-                        for (BlockPos consumerPos : consumerPositions) {
-                            if (!level.isLoaded(consumerPos)) continue;
-                            BlockEntity be = level.getBlockEntity(consumerPos);
-
-                            if (be instanceof PodstationBlockEntity podstation && type == CableType.HV) {
-                                long spaceLeft = podstation.getMaxEnergy() - energySnapshot.getOrDefault(new SourceKey(level, consumerPos), podstation.getStoredEnergy());
-                                long desired = Math.min(MAX_DEVICE_INPUT_JOULES, spaceLeft);
-                                long actualInserted = (long) (desired * supplyRatio);
-                                consumedJoules += actualInserted;
-
-                                podstation.setStoredEnergySimulation(Math.min(podstation.getMaxEnergy(), podstation.getStoredEnergy() + actualInserted));
-                            } else if (be instanceof APCBlockEntity apc && type == CableType.MV) {
-                                long spaceLeft = apc.getMaxEnergy() - energySnapshot.getOrDefault(new SourceKey(level, consumerPos), apc.getStoredEnergy());
-                                long desired = Math.min(MAX_DEVICE_INPUT_JOULES, spaceLeft);
-                                long actualInserted = (long) (desired * supplyRatio);
-                                consumedJoules += actualInserted;
-
-                                apc.lastTickReceivingJoules = actualInserted;
-                                apc.setStoredEnergySimulation(Math.min(apc.getMaxEnergy(), apc.getStoredEnergy() + actualInserted));
-                            }
-                        }
-                    }
-                }
+                delivered = supplyStorage(network, available, tick);
             }
-
-            if (consumedJoules > 0) {
-                long[] debits = net.mcreator.ssc.math.ProportionalAllocation.allocate(consumedJoules,
-                        availableSources.values().stream().mapToLong(Long::longValue).toArray());
-                int sourceIndex = 0;
-                for (BlockPos sourcePos : availableSources.keySet()) {
-                    long debit = debits[sourceIndex++];
-                    BlockEntity source = level.getBlockEntity(sourcePos);
-                    if (source instanceof PodstationBlockEntity podstation) {
-                        podstation.setStoredEnergySimulation(podstation.getStoredEnergy() - debit);
-                        network.batteryPower += debit * 20;
-                    } else if (source instanceof APCBlockEntity apc) {
-                        apc.setStoredEnergySimulation(apc.getStoredEnergy() - debit);
-                        apc.lastTickDischargingJoules += debit;
-                        network.batteryPower += debit * 20;
-                    }
-                    SourceKey key = new SourceKey(level, sourcePos);
-                    if (energySnapshot.containsKey(key)) energySnapshot.put(key, energySnapshot.get(key) - debit);
-                }
-            }
-            network.currentPower = consumedJoules * 20;
-
-            net.mcreator.ssc.energy.EnergyTelemetry.publish(level, network);
+            withdrawDeliveredEnergy(network, sources, delivered, tick);
+            network.currentPower = delivered * TICKS_PER_SECOND;
+            captureNetworkStorage(network, tick);
+            EnergyNetworkTelemetry.publishCableData(level, network);
         }
-        if (type == CableType.LV) lamps.apply();
+    }
+
+    private static Map<BlockPos, Long> availableSources(EnergyNetwork network, TickContext tick) {
+        Map<BlockPos, Long> sources = new LinkedHashMap<>();
+        for (BlockPos pos : network.getSources()) {
+            IEnergyStorageBlock storage = tick.storage.get(pos);
+            if (storage instanceof APCBlockEntity apc && !apc.isMainBreakerEnabled()) {
+                continue;
+            }
+            long rating = switch (network.getType()) {
+                case HV -> GENERATOR_WATT;
+                case MV -> SUBSTATION_WATT;
+                case LV -> APC_WATT;
+            };
+            network.theoreticalSupply += rating;
+            long available = tick.budgets.get(pos).availableOutput();
+            if (storage != null) {
+                available = Math.min(available, Math.max(0, storage.getStoredEnergy()));
+                storage.setNetworkTheoreticalSupply(rating);
+            }
+            sources.put(pos, available);
+        }
+        return sources;
+    }
+
+    private static long supplyLamps(ServerLevel level, EnergyNetwork network, long available, TickContext tick) {
+        long count = 0;
+        for (BlockPos pos : network.getConsumers()) {
+            if (tick.lamps.needsPower(pos)) count++;
+        }
+        long demand = count * LAMP_JOULES_PER_TICK;
+        network.idealConsumption = count * LAMP_WATT;
+        if (available < demand) return 0;
+        for (BlockPos pos : network.getConsumers()) tick.lamps.power(pos);
+        return demand;
+    }
+
+    private static long supplyStorage(EnergyNetwork network, long available, TickContext tick) {
+        List<BlockPos> consumers = new ArrayList<>(network.getConsumers());
+        long[] demands = new long[consumers.size()];
+        for (int i = 0; i < consumers.size(); i++) {
+            BlockPos pos = consumers.get(i);
+            IEnergyStorageBlock storage = tick.storage.get(pos);
+            demands[i] = Math.min(tick.budgets.get(pos).remainingInput(),
+                    Math.max(0, storage.getMaxEnergy() - storage.getStoredEnergy()));
+            network.idealConsumption += demands[i] * TICKS_PER_SECOND;
+        }
+        long[] allocation = EnergyAllocation.distribute(available, demands);
+        long delivered = 0;
+        for (int i = 0; i < consumers.size(); i++) {
+            BlockPos pos = consumers.get(i);
+            long accepted = tick.budgets.get(pos).acceptInput(allocation[i]);
+            if (accepted > 0) {
+                IEnergyStorageBlock storage = tick.storage.get(pos);
+                storage.setStoredEnergySimulation(storage.getStoredEnergy() + accepted);
+                if (storage instanceof APCBlockEntity apc) {
+                    apc.lastTickReceivingJoules += accepted;
+                }
+                delivered += accepted;
+            }
+        }
+        return delivered;
+    }
+
+    private static void withdrawDeliveredEnergy(EnergyNetwork network, Map<BlockPos, Long> sources,
+            long delivered, TickContext tick) {
+        if (delivered <= 0) return;
+        long[] allocations = EnergyAllocation.distribute(delivered,
+                sources.values().stream().mapToLong(Long::longValue).toArray());
+        int index = 0;
+        for (BlockPos pos : sources.keySet()) {
+            long withdrawn = tick.budgets.get(pos).takeOutput(allocations[index++]);
+            IEnergyStorageBlock storage = tick.storage.get(pos);
+            if (storage != null && withdrawn > 0) {
+                storage.setStoredEnergySimulation(storage.getStoredEnergy() - withdrawn);
+                storage.setNetworkCurrentPower(storage.getNetworkCurrentPower() + withdrawn * TICKS_PER_SECOND);
+                network.batteryPower += withdrawn * TICKS_PER_SECOND;
+                if (storage instanceof APCBlockEntity apc) {
+                    apc.lastTickDischargingJoules += withdrawn;
+                }
+            }
+        }
+    }
+
+    private static void captureNetworkStorage(EnergyNetwork network, TickContext tick) {
+        for (BlockPos pos : network.getSources()) {
+            IEnergyStorageBlock storage = tick.storage.get(pos);
+            if (storage != null) {
+                network.inputStored += storage.getStoredEnergy();
+                network.inputMax += storage.getMaxEnergy();
+            }
+        }
+        for (BlockPos pos : network.getConsumers()) {
+            IEnergyStorageBlock storage = tick.storage.get(pos);
+            if (storage != null) {
+                network.outputStored += storage.getStoredEnergy();
+                network.outputMax += storage.getMaxEnergy();
+            }
+        }
+        if (network.getType() == CableType.LV) {
+            network.outputStored = network.inputStored;
+            network.outputMax = network.inputMax;
+        }
+    }
+
+    private static long sum(Iterable<Long> values) {
+        long total = 0;
+        for (long value : values) {
+            total = Math.addExact(total, value);
+        }
+        return total;
+    }
+
+    private static final class TickContext {
+        private final Map<BlockPos, EnergyTickBudget> budgets = new HashMap<>();
+        private final Map<BlockPos, IEnergyStorageBlock> storage = new HashMap<>();
+        private final net.mcreator.ssc.energy.LampTickBatch lamps;
+        TickContext(ServerLevel level) { lamps = new net.mcreator.ssc.energy.LampTickBatch(level); }
     }
 }

@@ -8,6 +8,8 @@ import net.minecraft.world.level.LevelAccessor;
 /** Stable facade for generated block and procedure integration points. */
 public final class EnergyNetworkManager {
     private EnergyNetworkManager() { }
+    public static void queueUpdate(LevelAccessor level, BlockPos pos) { invalidate(level, pos); }
+    public static void applyPendingUpdates(LevelAccessor level) { refreshPending(level); }
     public static void invalidate(LevelAccessor level, BlockPos pos) { EnergyTopologyService.invalidate(level, pos); }
     public static void refreshPending(LevelAccessor level) { EnergyTopologyService.refreshPending(level); }
     public static List<EnergyNetwork> getNetworks(LevelAccessor level, CableType type) {

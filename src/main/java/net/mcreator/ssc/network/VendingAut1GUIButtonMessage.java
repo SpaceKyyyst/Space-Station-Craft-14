@@ -13,10 +13,10 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.SectionPos;
 
 import net.mcreator.ssc.procedures.*;
 import net.mcreator.ssc.Ssc14Mod;
+import net.mcreator.ssc.world.inventory.VendingAut1GUIMenu;
 
 @EventBusSubscriber
 public record VendingAut1GUIButtonMessage(int buttonID, int x, int y, int z) implements CustomPacketPayload {
@@ -45,8 +45,8 @@ public record VendingAut1GUIButtonMessage(int buttonID, int x, int y, int z) imp
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
 		// security measure to prevent arbitrary chunk generation
-		if (!world.getChunkSource().hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)))
-			return;
+		if (!(entity.containerMenu instanceof VendingAut1GUIMenu menu) || !MenuPacketGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
+            return;
 		if (buttonID == 0) {
 
 			VendAutGUIButton1Procedure.execute(world, x, y, z);
@@ -75,6 +75,6 @@ public record VendingAut1GUIButtonMessage(int buttonID, int x, int y, int z) imp
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(VendingAut1GUIButtonMessage.TYPE, VendingAut1GUIButtonMessage.STREAM_CODEC, VendingAut1GUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(VendingAut1GUIButtonMessage.TYPE, VendingAut1GUIButtonMessage.STREAM_CODEC, VendingAut1GUIButtonMessage::handleData);
 	}
 }

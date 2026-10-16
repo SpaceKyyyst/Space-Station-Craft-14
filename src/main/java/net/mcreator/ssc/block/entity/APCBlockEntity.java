@@ -20,6 +20,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
+import net.mcreator.ssc.EnergyNetworkManager;
 import net.mcreator.ssc.IEnergyStorageBlock;
 import net.mcreator.ssc.block.APCBlock;
 
@@ -97,6 +98,24 @@ public class APCBlockEntity extends RandomizableContainerBlockEntity implements 
 	public boolean isTripFlag() { return this.tripFlag; }
 
 	@Override
+	public void onLoad() {
+		super.onLoad();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void setRemoved() {
+		super.setRemoved();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void onChunkUnloaded() {
+		super.onChunkUnloaded();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
 	public long getStoredEnergy() { return this.storedEnergy; }
 
 	@Override
@@ -110,6 +129,7 @@ public class APCBlockEntity extends RandomizableContainerBlockEntity implements 
 		}
 	}
 
+	@Override
 	public void setStoredEnergySimulation(long joules) {
 		long nextEnergy = Math.clamp(joules, 0, MAX_ENERGY);
 		if (this.storedEnergy == nextEnergy) return;
@@ -140,14 +160,14 @@ public class APCBlockEntity extends RandomizableContainerBlockEntity implements 
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		ContainerHelper.loadAllItems(valueInput, this.stacks);
 		
-		this.storedEnergy = valueInput.getLongOr("storedEnergy", 0L);
+		this.storedEnergy = Math.clamp(valueInput.getLongOr("storedEnergy", 0L), 0, MAX_ENERGY);
 		this.netCurrent = valueInput.getLongOr("netCurrent", 0L);
 		this.netSupply = valueInput.getLongOr("netSupply", 0L);
 		this.netConsume = valueInput.getLongOr("netConsume", 0L);
 		
 		this.mainBreakerEnabled = valueInput.getBooleanOr("mainBreaker", true);
 		this.tripFlag = valueInput.getBooleanOr("tripFlag", false);
-		this.overloadTicks = valueInput.getIntOr("overloadTicks", 0);
+		this.overloadTicks = Math.clamp(valueInput.getIntOr("overloadTicks", 0), 0, TRIP_TICKS_THRESHOLD);
 	}
 
 	@Override

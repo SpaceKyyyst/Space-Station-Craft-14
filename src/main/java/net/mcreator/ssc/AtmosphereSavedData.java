@@ -1,6 +1,5 @@
 package net.mcreator.ssc;
 
-import com.mojang.serialization.Codec;
 import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.nbt.CompoundTag;
@@ -10,47 +9,47 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.saveddata.SavedDataType;
 
-/** Persistent gas state; permeability and simulation queues are rebuilt at runtime. */
+/** Lazily restores sections, preserving the existing region/cell NBT representation. */
 public final class AtmosphereSavedData extends SavedData {
-    public static final Codec<AtmosphereSavedData> CODEC = CompoundTag.CODEC.xmap(
-            AtmosphereSavedData::read, AtmosphereSavedData::write);
-    public static final SavedDataType<AtmosphereSavedData> TYPE = new SavedDataType<>(
-            Identifier.fromNamespaceAndPath("ssc_14", "atmosphere"), AtmosphereSavedData::new, CODEC);
-    private final Map<Long, AtmosRegion> regions = new HashMap<>();
+    public static final com.mojang.serialization.Codec<AtmosphereSavedData> CODEC = CompoundTag.CODEC.xmap(AtmosphereSavedData::decode, AtmosphereSavedData::encode);
+    private static final SavedDataType<AtmosphereSavedData> TYPE = new SavedDataType<>(
+            Identifier.fromNamespaceAndPath("ssc_14", "atmosphere"), AtmosphereSavedData::new,
+            CODEC);
+    private final Map<Long, CompoundTag> storedRegions = new HashMap<>();
+    private final Map<Long, AtmosRegion> liveRegions = new HashMap<>();
 
     public static AtmosphereSavedData get(ServerLevel level) {
         return level.getDataStorage().computeIfAbsent(TYPE);
     }
 
-    Map<Long, AtmosRegion> regions() { return regions; }
+    CompoundTag restore(long key) { return storedRegions.remove(key); }
+    void track(long key, AtmosRegion region) { liveRegions.put(key, region); }
+    Iterable<Long> savedRegionKeys() { return java.util.List.copyOf(storedRegions.keySet()); }
 
-    private CompoundTag write() {
-        var root = new CompoundTag();
-        var entries = new ListTag();
-        for (var region : regions.values()) {
-            var tag = new CompoundTag();
-            region.writeToNBT(tag);
-            if (!tag.getList("cells").orElseThrow().isEmpty()) entries.add(tag);
-        }
-        root.put("regions", entries);
-        return root;
-    }
-
-    private static AtmosphereSavedData read(CompoundTag root) {
-        var data = new AtmosphereSavedData();
-        var entries = root.getList("regions").orElse(new ListTag());
-        for (int index = 0; index < entries.size(); index++) {
-            var entry = entries.getCompound(index);
-            if (entry.isEmpty()) continue;
-            var tag = entry.get();
-            if (tag.getInt("x").isEmpty() || tag.getInt("y").isEmpty() || tag.getInt("z").isEmpty()) continue;
-            int x = tag.getInt("x").orElseThrow();
-            int y = tag.getInt("y").orElseThrow();
-            int z = tag.getInt("z").orElseThrow();
-            var region = new AtmosRegion(x, y, z);
-            region.readFromNBT(tag);
-            data.regions.put(AtmosphereManager.packRegionKey(x, y, z), region);
+    static AtmosphereSavedData decode(CompoundTag tag) {
+        AtmosphereSavedData data = new AtmosphereSavedData();
+        ListTag regions = tag.getList("regions").orElseGet(ListTag::new);
+        for (int i = 0; i < regions.size(); i++) {
+            CompoundTag region = regions.getCompound(i).orElse(null);
+            if (region == null || region.getInt("x").isEmpty() || region.getInt("y").isEmpty()
+                    || region.getInt("z").isEmpty()) continue;
+            long key = AtmosphereManager.packRegionKey(region.getInt("x").get(),
+                    region.getInt("y").get(), region.getInt("z").get());
+            data.storedRegions.put(key, region.copy());
         }
         return data;
+    }
+
+    CompoundTag encode() {
+        CompoundTag tag = new CompoundTag();
+        ListTag regions = new ListTag();
+        storedRegions.values().forEach(region -> regions.add(region.copy()));
+        for (AtmosRegion region : liveRegions.values()) {
+            CompoundTag saved = new CompoundTag();
+            region.writeToNBT(saved);
+            if (!saved.getList("cells").orElseGet(ListTag::new).isEmpty()) regions.add(saved);
+        }
+        tag.put("regions", regions);
+        return tag;
     }
 }
