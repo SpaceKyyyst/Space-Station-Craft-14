@@ -75,6 +75,6 @@ public record RCDGUIwindowsButtonMessage(int buttonID, int x, int y, int z) impl
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(RCDGUIwindowsButtonMessage.TYPE, RCDGUIwindowsButtonMessage.STREAM_CODEC, RCDGUIwindowsButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(RCDGUIwindowsButtonMessage.TYPE, RCDGUIwindowsButtonMessage.STREAM_CODEC, RCDGUIwindowsButtonMessage::handleData);
 	}
 }

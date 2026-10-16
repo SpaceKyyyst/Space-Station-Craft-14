@@ -61,6 +61,6 @@ public record IDcodeSlotMessage(int slotID, int x, int y, int z, int changeType,
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(IDcodeSlotMessage.TYPE, IDcodeSlotMessage.STREAM_CODEC, IDcodeSlotMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(IDcodeSlotMessage.TYPE, IDcodeSlotMessage.STREAM_CODEC, IDcodeSlotMessage::handleData);
 	}
 }

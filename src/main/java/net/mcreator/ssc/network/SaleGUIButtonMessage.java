@@ -58,6 +58,6 @@ public record SaleGUIButtonMessage(int buttonID, int x, int y, int z) implements
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(SaleGUIButtonMessage.TYPE, SaleGUIButtonMessage.STREAM_CODEC, SaleGUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(SaleGUIButtonMessage.TYPE, SaleGUIButtonMessage.STREAM_CODEC, SaleGUIButtonMessage::handleData);
 	}
 }

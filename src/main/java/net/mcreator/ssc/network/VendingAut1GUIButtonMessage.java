@@ -75,6 +75,6 @@ public record VendingAut1GUIButtonMessage(int buttonID, int x, int y, int z) imp
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(VendingAut1GUIButtonMessage.TYPE, VendingAut1GUIButtonMessage.STREAM_CODEC, VendingAut1GUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(VendingAut1GUIButtonMessage.TYPE, VendingAut1GUIButtonMessage.STREAM_CODEC, VendingAut1GUIButtonMessage::handleData);
 	}
 }

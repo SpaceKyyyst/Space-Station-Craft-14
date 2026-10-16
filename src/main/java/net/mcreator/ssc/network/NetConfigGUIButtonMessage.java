@@ -119,6 +119,6 @@ public record NetConfigGUIButtonMessage(int buttonID, int x, int y, int z) imple
 
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        Ssc14Mod.addNetworkMessage(NetConfigGUIButtonMessage.TYPE, NetConfigGUIButtonMessage.STREAM_CODEC, NetConfigGUIButtonMessage::handleData);
+        Ssc14Mod.addServerboundNetworkMessage(NetConfigGUIButtonMessage.TYPE, NetConfigGUIButtonMessage.STREAM_CODEC, NetConfigGUIButtonMessage::handleData);
     }
 }

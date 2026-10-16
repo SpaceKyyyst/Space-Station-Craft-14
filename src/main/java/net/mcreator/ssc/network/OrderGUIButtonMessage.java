@@ -65,6 +65,6 @@ public record OrderGUIButtonMessage(int buttonID, int x, int y, int z) implement
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(OrderGUIButtonMessage.TYPE, OrderGUIButtonMessage.STREAM_CODEC, OrderGUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(OrderGUIButtonMessage.TYPE, OrderGUIButtonMessage.STREAM_CODEC, OrderGUIButtonMessage::handleData);
 	}
 }

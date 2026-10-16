@@ -90,6 +90,6 @@ public record NetConfigGUISyncMessage(Map<String, Object> state) implements Cust
 
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        Ssc14Mod.addNetworkMessage(NetConfigGUISyncMessage.TYPE, NetConfigGUISyncMessage.STREAM_CODEC, NetConfigGUISyncMessage::handleData);
+        Ssc14Mod.addClientboundNetworkMessage(NetConfigGUISyncMessage.TYPE, NetConfigGUISyncMessage.STREAM_CODEC, NetConfigGUISyncMessage::handleData);
     }
 }

@@ -60,6 +60,6 @@ public record GravGenGUIButtonMessage(int buttonID, int x, int y, int z) impleme
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(GravGenGUIButtonMessage.TYPE, GravGenGUIButtonMessage.STREAM_CODEC, GravGenGUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(GravGenGUIButtonMessage.TYPE, GravGenGUIButtonMessage.STREAM_CODEC, GravGenGUIButtonMessage::handleData);
 	}
 }

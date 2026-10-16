@@ -75,6 +75,6 @@ public record RCDGUIwallfloorButtonMessage(int buttonID, int x, int y, int z) im
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(RCDGUIwallfloorButtonMessage.TYPE, RCDGUIwallfloorButtonMessage.STREAM_CODEC, RCDGUIwallfloorButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(RCDGUIwallfloorButtonMessage.TYPE, RCDGUIwallfloorButtonMessage.STREAM_CODEC, RCDGUIwallfloorButtonMessage::handleData);
 	}
 }

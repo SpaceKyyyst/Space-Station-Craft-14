@@ -70,6 +70,6 @@ public record RCDGUIButtonMessage(int buttonID, int x, int y, int z) implements 
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(RCDGUIButtonMessage.TYPE, RCDGUIButtonMessage.STREAM_CODEC, RCDGUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(RCDGUIButtonMessage.TYPE, RCDGUIButtonMessage.STREAM_CODEC, RCDGUIButtonMessage::handleData);
 	}
 }

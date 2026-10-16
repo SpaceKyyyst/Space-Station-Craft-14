@@ -243,6 +243,6 @@ public record IDcodeButtonMessage(int buttonID, int x, int y, int z) implements 
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(IDcodeButtonMessage.TYPE, IDcodeButtonMessage.STREAM_CODEC, IDcodeButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(IDcodeButtonMessage.TYPE, IDcodeButtonMessage.STREAM_CODEC, IDcodeButtonMessage::handleData);
 	}
 }

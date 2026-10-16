@@ -83,6 +83,6 @@ public record CabelPannelAirlockButtonMessage(int buttonID, int x, int y, int z)
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(CabelPannelAirlockButtonMessage.TYPE, CabelPannelAirlockButtonMessage.STREAM_CODEC, CabelPannelAirlockButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(CabelPannelAirlockButtonMessage.TYPE, CabelPannelAirlockButtonMessage.STREAM_CODEC, CabelPannelAirlockButtonMessage::handleData);
 	}
 }

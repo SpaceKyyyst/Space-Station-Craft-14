@@ -125,6 +125,6 @@ public record ProcessReactionsMessage(int slotIndex, ItemStack carriedStack, Str
 
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        Ssc14Mod.addNetworkMessage(TYPE, STREAM_CODEC, ProcessReactionsMessage::handleData);
+        Ssc14Mod.addServerboundNetworkMessage(TYPE, STREAM_CODEC, ProcessReactionsMessage::handleData);
     }
 }

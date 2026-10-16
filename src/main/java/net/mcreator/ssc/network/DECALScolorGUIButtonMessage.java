@@ -55,6 +55,6 @@ public record DECALScolorGUIButtonMessage(int buttonID, int x, int y, int z) imp
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(DECALScolorGUIButtonMessage.TYPE, DECALScolorGUIButtonMessage.STREAM_CODEC, DECALScolorGUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(DECALScolorGUIButtonMessage.TYPE, DECALScolorGUIButtonMessage.STREAM_CODEC, DECALScolorGUIButtonMessage::handleData);
 	}
 }

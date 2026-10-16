@@ -89,6 +89,6 @@ public record MacFrameGUISlotMessage(int slotID, int x, int y, int z, int change
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(MacFrameGUISlotMessage.TYPE, MacFrameGUISlotMessage.STREAM_CODEC, MacFrameGUISlotMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(MacFrameGUISlotMessage.TYPE, MacFrameGUISlotMessage.STREAM_CODEC, MacFrameGUISlotMessage::handleData);
 	}
 }

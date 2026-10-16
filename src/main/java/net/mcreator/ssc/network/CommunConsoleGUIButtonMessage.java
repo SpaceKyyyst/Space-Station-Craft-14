@@ -75,6 +75,6 @@ public record CommunConsoleGUIButtonMessage(int buttonID, int x, int y, int z) i
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(CommunConsoleGUIButtonMessage.TYPE, CommunConsoleGUIButtonMessage.STREAM_CODEC, CommunConsoleGUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(CommunConsoleGUIButtonMessage.TYPE, CommunConsoleGUIButtonMessage.STREAM_CODEC, CommunConsoleGUIButtonMessage::handleData);
 	}
 }

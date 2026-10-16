@@ -75,6 +75,6 @@ public record PDApassangerGUIButtonMessage(int buttonID, int x, int y, int z) im
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(PDApassangerGUIButtonMessage.TYPE, PDApassangerGUIButtonMessage.STREAM_CODEC, PDApassangerGUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(PDApassangerGUIButtonMessage.TYPE, PDApassangerGUIButtonMessage.STREAM_CODEC, PDApassangerGUIButtonMessage::handleData);
 	}
 }

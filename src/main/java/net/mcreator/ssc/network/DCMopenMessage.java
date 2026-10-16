@@ -58,6 +58,6 @@ public record DCMopenMessage(int eventType, int pressedms) implements CustomPack
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(DCMopenMessage.TYPE, DCMopenMessage.STREAM_CODEC, DCMopenMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(DCMopenMessage.TYPE, DCMopenMessage.STREAM_CODEC, DCMopenMessage::handleData);
 	}
 }

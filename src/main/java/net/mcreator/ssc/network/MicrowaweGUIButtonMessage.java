@@ -87,6 +87,6 @@ public record MicrowaweGUIButtonMessage(int buttonID, int x, int y, int z) imple
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(MicrowaweGUIButtonMessage.TYPE, MicrowaweGUIButtonMessage.STREAM_CODEC, MicrowaweGUIButtonMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(MicrowaweGUIButtonMessage.TYPE, MicrowaweGUIButtonMessage.STREAM_CODEC, MicrowaweGUIButtonMessage::handleData);
 	}
 }
