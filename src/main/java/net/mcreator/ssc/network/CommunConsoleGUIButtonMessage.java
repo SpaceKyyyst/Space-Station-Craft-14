@@ -13,7 +13,6 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.SectionPos;
 
 import net.mcreator.ssc.procedures.CommConsYELLOWcodeProcedure;
 import net.mcreator.ssc.procedures.CommConsREDcodeProcedure;
@@ -21,6 +20,7 @@ import net.mcreator.ssc.procedures.CommConsPURPLEcodeProcedure;
 import net.mcreator.ssc.procedures.CommConsGREENcodeProcedure;
 import net.mcreator.ssc.procedures.CommConsBLUEcodeProcedure;
 import net.mcreator.ssc.Ssc14Mod;
+import net.mcreator.ssc.world.inventory.CommunConsoleGUIMenu;
 
 @EventBusSubscriber
 public record CommunConsoleGUIButtonMessage(int buttonID, int x, int y, int z) implements CustomPacketPayload {
@@ -49,8 +49,8 @@ public record CommunConsoleGUIButtonMessage(int buttonID, int x, int y, int z) i
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
 		// security measure to prevent arbitrary chunk generation
-		if (!world.getChunkSource().hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)))
-			return;
+		if (!(entity.containerMenu instanceof CommunConsoleGUIMenu menu) || !MenuPacketGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
+            return;
 		if (buttonID == 0) {
 
 			CommConsREDcodeProcedure.execute(world);

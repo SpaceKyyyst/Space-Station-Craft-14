@@ -15,11 +15,13 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.SectionPos;
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.NetConfigGUISyncMessage;
 import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
 import net.mcreator.ssc.NetworkSavedData;
+import net.mcreator.ssc.INetworkAction;
+import net.mcreator.ssc.INetworkTrigger;
+import net.mcreator.ssc.init.Ssc14ModItems;
 
 import java.util.Map;
 
@@ -53,10 +55,14 @@ public record NetConfigGUIButtonMessage(int buttonID, int x, int y, int z) imple
 
     public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
         Level world = entity.level();
-        if (!world.getChunkSource().hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)))
+        if (!(entity.containerMenu instanceof NetConfigGUIMenu menu) || !MenuPacketGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
             return;
 
-        if (!(entity.containerMenu instanceof NetConfigGUIMenu menu)) return;
+        if (world.isClientSide() || buttonID < 0 || buttonID > 15 || menu.sourcePos == null || menu.targetPos == null
+                || !entity.getMainHandItem().is(Ssc14ModItems.NETWORK_CONFIGURATOR.get())
+                || !world.hasChunkAt(menu.sourcePos) || !world.mayInteract(entity, menu.sourcePos)
+                || !(world.getBlockState(menu.sourcePos).getBlock() instanceof INetworkTrigger trigger)
+                || !(world.getBlockState(menu.targetPos).getBlock() instanceof INetworkAction action)) return;
 
         Map<String, Object> state = menu.getMenuState();
         NetworkSavedData data = NetworkSavedData.get(world);
@@ -65,7 +71,7 @@ public record NetConfigGUIButtonMessage(int buttonID, int x, int y, int z) imple
             String triggerId = (String) state.get("L" + (buttonID + 1) + "_id");
             Boolean isActive = (Boolean) state.get("L" + (buttonID + 1) + "_active");
 
-            if (triggerId != null && Boolean.TRUE.equals(isActive)) {
+            if (triggerId != null && Boolean.TRUE.equals(isActive) && trigger.getAvailableTriggers().contains(triggerId)) {
                 state.put("selected_trigger_idx", buttonID);
                 state.put("selected_trigger_id", triggerId);
             }
@@ -74,11 +80,12 @@ public record NetConfigGUIButtonMessage(int buttonID, int x, int y, int z) imple
             String actionId = (String) state.get("R" + rightIndex + "_id");
             Boolean isActive = (Boolean) state.get("R" + rightIndex + "_active");
 
-            if (actionId != null && Boolean.TRUE.equals(isActive)) {
+            if (actionId != null && Boolean.TRUE.equals(isActive) && action.getAvailableActions().contains(actionId)) {
                 Integer selectedTriggerIdx = (Integer) state.get("selected_trigger_idx");
                 String selectedTriggerId = (String) state.get("selected_trigger_id");
 
-                if (selectedTriggerIdx != null && selectedTriggerId != null) {
+                if (selectedTriggerIdx != null && selectedTriggerIdx >= 0 && selectedTriggerIdx < 8
+                        && selectedTriggerId != null && trigger.getAvailableTriggers().contains(selectedTriggerId)) {
                     boolean connectionExists = data.connections.stream()
                         .anyMatch(c -> c.sourcePos.equals(menu.sourcePos) && c.triggerId.equals(selectedTriggerId)
                                     && c.targetPos.equals(menu.targetPos) && c.actionId.equals(actionId));
@@ -105,7 +112,7 @@ public record NetConfigGUIButtonMessage(int buttonID, int x, int y, int z) imple
                     }
 
                     state.put("selected_trigger_idx", -1);
-                    state.put("selected_trigger_id", null);
+                    state.remove("selected_trigger_id");
                 } else {
                     if (entity instanceof ServerPlayer sp) sp.sendSystemMessage(Component.literal("Сначала выберите триггер слева!"));
                 }

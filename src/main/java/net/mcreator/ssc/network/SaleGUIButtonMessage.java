@@ -14,10 +14,10 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.SectionPos;
 
 import net.mcreator.ssc.procedures.Sale_GUI_buttonSALEProcedure;
 import net.mcreator.ssc.Ssc14Mod;
+import net.mcreator.ssc.world.inventory.SaleGUIMenu;
 
 @EventBusSubscriber
 public record SaleGUIButtonMessage(int buttonID, int x, int y, int z) implements CustomPacketPayload {
@@ -45,8 +45,8 @@ public record SaleGUIButtonMessage(int buttonID, int x, int y, int z) implements
 
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
-		if (!world.getChunkSource().hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)))
-			return;
+		if (!(entity.containerMenu instanceof SaleGUIMenu menu) || !MenuPacketGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
+            return;
 			
 		if (!world.isClientSide()) {
 			if (buttonID == 0) {
