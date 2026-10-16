@@ -20,6 +20,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
+import net.mcreator.ssc.EnergyNetworkManager;
 
 import javax.annotation.Nullable;
 
@@ -30,6 +31,24 @@ public class DEBUGgeneratorBlockEntity extends RandomizableContainerBlockEntity 
 
 	public DEBUGgeneratorBlockEntity(BlockPos position, BlockState state) {
 		super(Ssc14ModBlockEntities.DEBU_GGENERATOR.get(), position, state);
+	}
+
+	@Override
+	public void onLoad() {
+		super.onLoad();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void setRemoved() {
+		super.setRemoved();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void onChunkUnloaded() {
+		super.onChunkUnloaded();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
 	}
 
 	@Override

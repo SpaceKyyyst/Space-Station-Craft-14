@@ -18,7 +18,7 @@ import net.mcreator.ssc.EnergyNetworkManager;
 
 public class Sheathing_Cab_InstalProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState oldBlockstate, Entity entity) {
-		if (entity == null || world == null)
+		if (entity == null || world == null || world.isClientSide())
 			return;
 
 		// 1. Проверяем направление клика (игрок должен кликнуть по верхней грани)
@@ -66,15 +66,13 @@ public class Sheathing_Cab_InstalProcedure {
 			if (!alreadyHasCable) {
 				// Устанавливаем обновленный блокстейт с кабелем в мир
 				BlockState updatedState = currentState.setValue(targetProperty, true);
-				world.setBlock(pos, updatedState, 3);
+				if (!world.setBlock(pos, updatedState, 3)) return;
 				
 				// Забираем 1 кабель из руки игрока
 				mainHandItem.shrink(1);
 
 				// ЖЕЛЕЗНЫЙ ТРИГГЕР: Принудительно заставляем систему проснуться и пересобрать энергосеть в этой точке!
-				if (!world.isClientSide()) {
-					EnergyNetworkManager.updatePosition(world, pos);
-				}
+				EnergyNetworkManager.queueUpdate(world, pos);
 			}
 		}
 	}
