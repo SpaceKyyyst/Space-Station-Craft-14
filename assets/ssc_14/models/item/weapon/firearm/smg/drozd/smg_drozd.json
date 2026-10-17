@@ -129,7 +129,7 @@
 		{
 			"from": [9, 7, 14],
 			"to": [9, 8, 17],
-			"rotation": {"angle": 22.5, "axis": "z", "origin": [9, 8, 15.5]},
+			"rotation": {"angle": 45, "axis": "z", "origin": [9, 8, 15.5]},
 			"faces": {
 				"east": {"uv": [8.5, 5, 10, 5.5], "texture": "#0"},
 				"west": {"uv": [10, 5, 8.5, 5.5], "texture": "#0"}
