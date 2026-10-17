@@ -20,13 +20,19 @@ import net.minecraft.world.phys.Vec3;
 public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEntityRenderer<T, AirlockDoorRenderer.State> {
     private static final int NO_OUTLINE = 0;
     private final Identifier texture;
+    private final Identifier panelTexture;
     private final AirlockDoorModel model = new AirlockDoorModel(1);
 
-    public AirlockDoorRenderer(Identifier texture) { this.texture = texture; }
+    public AirlockDoorRenderer(Identifier texture) {
+        this.texture = texture;
+        this.panelTexture = Identifier.fromNamespaceAndPath(texture.getNamespace(),
+                texture.getPath().replace(".png", "_panel_open.png"));
+    }
 
     public static final class State extends BlockEntityRenderState {
         float openness;
         float rotation;
+        boolean panelOpen;
     }
 
     @Override
@@ -37,6 +43,8 @@ public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEn
             ModelFeatureRenderer.CrumblingOverlay overlay) {
         BlockEntityRenderer.super.extractRenderState(entity, state, partialTick, camera, overlay);
         var block = entity.getBlockState();
+        var panel = block.getBlock().getStateDefinition().getProperty("panel_open");
+        state.panelOpen = panel instanceof net.minecraft.world.level.block.state.properties.BooleanProperty value && block.getValue(value);
         var property = block.getBlock().getStateDefinition().getProperty("arl_variat");
         int frame = property instanceof IntegerProperty value ? block.getValue(value) : 0;
         state.openness = switch (frame) { case 11 -> 1f; case 14 -> 0.9f; case 13 -> 0.8f; case 12 -> 0.2f; default -> 0f; };
@@ -58,7 +66,7 @@ public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEn
         poses.translate(0.5, 0, 0.5);
         poses.mulPose(Axis.YP.rotationDegrees(state.rotation));
         poses.scale(1, -1, -1);
-        collector.submitModel(model, state.openness, poses, texture, state.lightCoords,
+        collector.submitModel(model, state.openness, poses, state.panelOpen ? panelTexture : texture, state.lightCoords,
                 OverlayTexture.NO_OVERLAY, NO_OUTLINE, state.breakProgress);
         poses.popPose();
     }

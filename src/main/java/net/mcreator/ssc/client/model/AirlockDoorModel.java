@@ -21,6 +21,30 @@ public final class AirlockDoorModel extends net.minecraft.client.model.Model<Flo
         this.widthBlocks = widthBlocks;
         left = root.getChild("left_leaf");
         right = root.getChild("right_leaf");
+        // Block atlases use explicit face UVs, not the unfolded box layout of entity models.
+        root.visit(new com.mojang.blaze3d.vertex.PoseStack(), (pose, path, index, cube) -> {
+            for (int face = 0; face < cube.polygons.length; face++) {
+                var polygon = cube.polygons[face];
+                var vertices = polygon.vertices().clone();
+                for (int i = 0; i < vertices.length; i++) {
+                    var vertex = vertices[i];
+                    float u;
+                    float v;
+                    if (Math.abs(polygon.normal().z()) > 0.5f) {
+                        u = (vertex.x() / widthBlocks + 8) / 64f;
+                        v = vertex.y() <= 0 ? (vertex.y() + ABOVE_FLOOR) / 64f : 0.375f + vertex.y() / 128f;
+                    } else if (Math.abs(polygon.normal().x()) > 0.5f) {
+                        u = (vertex.z() + THICKNESS / 2) / 64f;
+                        v = vertex.y() <= 0 ? 0.5f + (vertex.y() + ABOVE_FLOOR) / 64f : 0.75f + vertex.y() / 64f;
+                    } else {
+                        u = (vertex.x() / widthBlocks + 20) / 64f;
+                        v = (vertex.z() + THICKNESS / 2 + 64) / 128f;
+                    }
+                    vertices[i] = vertex.remap(u, v);
+                }
+                cube.polygons[face] = new ModelPart.Polygon(vertices, polygon.normal());
+            }
+        });
     }
 
     public static LayerDefinition layer(int widthBlocks) {
@@ -30,14 +54,18 @@ public final class AirlockDoorModel extends net.minecraft.client.model.Model<Flo
         var parts = mesh.getRoot();
         parts.addOrReplaceChild("frame", CubeListBuilder.create()
                 .texOffs(0, 0).addBox(-halfWidth, -ABOVE_FLOOR, -THICKNESS / 2,
-                        AirlockMotion.FRAME_WIDTH, AirlockMotion.HEIGHT, THICKNESS)
+                        AirlockMotion.FRAME_WIDTH, ABOVE_FLOOR, THICKNESS)
+                .addBox(-halfWidth, 0, -THICKNESS / 2, AirlockMotion.FRAME_WIDTH, AirlockMotion.BELOW_FLOOR, THICKNESS)
                 .texOffs(0, 0).addBox(leaf, -ABOVE_FLOOR, -THICKNESS / 2,
-                        AirlockMotion.FRAME_WIDTH, AirlockMotion.HEIGHT, THICKNESS), PartPose.ZERO);
+                        AirlockMotion.FRAME_WIDTH, ABOVE_FLOOR, THICKNESS)
+                .addBox(leaf, 0, -THICKNESS / 2, AirlockMotion.FRAME_WIDTH, AirlockMotion.BELOW_FLOOR, THICKNESS), PartPose.ZERO);
         // The below-floor portion belongs to the leaves, so it opens with the passage.
         parts.addOrReplaceChild("left_leaf", CubeListBuilder.create().texOffs(16, 0)
-                .addBox(-leaf, -ABOVE_FLOOR, -THICKNESS / 2, leaf, AirlockMotion.HEIGHT, THICKNESS), PartPose.ZERO);
+                .addBox(-leaf, -ABOVE_FLOOR, -THICKNESS / 2, leaf, ABOVE_FLOOR, THICKNESS)
+                .addBox(-leaf, 0, -THICKNESS / 2, leaf, AirlockMotion.BELOW_FLOOR, THICKNESS), PartPose.ZERO);
         parts.addOrReplaceChild("right_leaf", CubeListBuilder.create().texOffs(32, 0)
-                .addBox(0, -ABOVE_FLOOR, -THICKNESS / 2, leaf, AirlockMotion.HEIGHT, THICKNESS), PartPose.ZERO);
+                .addBox(0, -ABOVE_FLOOR, -THICKNESS / 2, leaf, ABOVE_FLOOR, THICKNESS)
+                .addBox(0, 0, -THICKNESS / 2, leaf, AirlockMotion.BELOW_FLOOR, THICKNESS), PartPose.ZERO);
         return LayerDefinition.create(mesh, 64, TEXTURE_SIZE);
     }
 
