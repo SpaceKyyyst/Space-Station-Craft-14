@@ -51,10 +51,12 @@ public class AccessConfigMENUMenu extends AbstractContainerMenu implements Ssc14
 	private Supplier<Boolean> boundItemMatcher = null;
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
+    private final ItemStack configurator;
 
 	public AccessConfigMENUMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
 		super(Ssc14ModMenus.ACCESS_CONFIG_MENU.get(), id);
 		this.entity = inv.player;
+        this.configurator = inv.player.getMainHandItem();
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(0);
 		BlockPos pos = null;
@@ -64,6 +66,7 @@ public class AccessConfigMENUMenu extends AbstractContainerMenu implements Ssc14
 			this.y = pos.getY();
 			this.z = pos.getZ();
 			access = ContainerLevelAccess.create(world, pos);
+            boundBlockEntity = world.getBlockEntity(pos);
 		}
 	}
 
@@ -84,18 +87,17 @@ public class AccessConfigMENUMenu extends AbstractContainerMenu implements Ssc14
 	}
 
 	@Override
-	public boolean stillValid(Player player) {
-		if (this.bound) {
-			if (this.boundItemMatcher != null)
-				return this.boundItemMatcher.get();
-			else if (this.boundBlockEntity != null)
-				return AbstractContainerMenu.stillValid(this.access, player, this.boundBlockEntity.getBlockState().getBlock());
-			else if (this.boundEntity != null)
-				return this.boundEntity.isAlive();
-		}
-		return true;
-	}
-
+    public boolean stillValid(Player player) {
+        if (world.isClientSide()) return true;
+        var pos = new BlockPos(x, y, z);
+        return player.isAlive() && !player.isSpectator() && player.level() == world
+                && player.getMainHandItem() == configurator
+                && configurator.is(net.mcreator.ssc.init.Ssc14ModItems.ACCESS_CONFIG.get())
+                && world.hasChunkAt(pos) && world.getBlockEntity(pos) == boundBlockEntity && boundBlockEntity != null
+                && world.mayInteract(player, pos)
+                && player.distanceToSqr(pos.getCenter()) <= 36
+                && net.mcreator.ssc.access.AirlockPower.isDoor(world.getBlockState(pos));
+    }
 	@Override
 	public ItemStack quickMoveStack(Player playerIn, int index) {
 		return ItemStack.EMPTY;
