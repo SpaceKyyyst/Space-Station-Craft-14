@@ -22,7 +22,7 @@ public final class AirlockManualOpening {
     public static final int CROWBAR_TICKS = 40;
     public static final int HAND_TICKS = 600;
     private static final Map<Player, Job> JOBS = new WeakHashMap<>();
-    private record Job(BlockEntity door, ItemStack tool, Vec3 origin, long finish) { }
+    private record Job(BlockEntity door, ItemStack tool, Vec3 origin, int initialFrame, long finish) { }
     private AirlockManualOpening() { }
 
     public static boolean interact(Player player, BlockPos pos) {
@@ -37,7 +37,9 @@ public final class AirlockManualOpening {
         var panel = door.getBlockState().getBlock().getStateDefinition().getProperty("panel_open");
         if (tool.isEmpty() && panel instanceof net.minecraft.world.level.block.state.properties.BooleanProperty property
                 && door.getBlockState().getValue(property)) return false;
-        var job = new Job(door, tool, player.position(), level.getGameTime() + (tool.isEmpty() ? HAND_TICKS : CROWBAR_TICKS));
+        int initialFrame = door.getBlockState().getValue((IntegerProperty) door.getBlockState().getBlock().getStateDefinition().getProperty("arl_variat"));
+        if (initialFrame == 11 && tool.isEmpty()) return false;
+        var job = new Job(door, tool, player.position(), initialFrame, level.getGameTime() + (tool.isEmpty() ? HAND_TICKS : CROWBAR_TICKS));
         if (valid(player, job)) JOBS.putIfAbsent(player, job);
         return true;
     }
@@ -53,7 +55,7 @@ public final class AirlockManualOpening {
         if (!(state.getBlock().getStateDefinition().getProperty("arl_variat") instanceof IntegerProperty frame)) return false;
         int value = state.getValue(frame);
         var data = job.door.getPersistentData();
-        return (value < 11 || value > 15) && !data.getBooleanOr("powered", true)
+        return value == job.initialFrame && (value <= 11 || value > 15) && !data.getBooleanOr("powered", true)
                 && !data.getBooleanOr("bolted", false) && !data.getBooleanOr("welded", false);
     }
 
@@ -65,6 +67,7 @@ public final class AirlockManualOpening {
         var job = JOBS.get(player);
         if (job == null) return;
         if (!valid(player, job)) { JOBS.remove(player); return; }
+        AirlockWorkFeedback.progress(player, job.door.getBlockPos(), job.finish - level.getGameTime(), false);
         if (level.getGameTime() < job.finish) return;
         JOBS.remove(player);
         BaseAirlockOpenCloseProcedure.openManually(level, job.door.getBlockPos());

@@ -219,5 +219,6 @@ public class HydroponicsAirlockD1Block extends Block implements EntityBlock {
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighbor,
             net.minecraft.world.level.redstone.Orientation orientation, boolean moving) {
         net.mcreator.ssc.access.AirlockFloor.ensureLowerPart(level, pos);
+        if (level instanceof ServerLevel server) net.mcreator.ssc.access.AirlockSignals.changed(server, pos);
     }
 }
