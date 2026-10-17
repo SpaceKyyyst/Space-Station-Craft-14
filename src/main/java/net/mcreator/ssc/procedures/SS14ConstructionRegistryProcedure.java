@@ -144,7 +144,6 @@ public class SS14ConstructionRegistryProcedure {
         registerTagCheck("ssc14:airlocks", screwdriver, bs -> true,
             new ConstructionStage(normalDelays, false, null, 1, 0.0, null, null, -1, true, null, 
             ctx -> {
-                if (net.mcreator.ssc.access.AirlockMaintenance.isArmored(ctx.world(), ctx.pos())) return;
                 for (Property<?> p : ctx.state().getProperties()) {
                     if (p.getName().equals("panel_open") && p instanceof net.minecraft.world.level.block.state.properties.BooleanProperty bp) {
                         boolean currentOpen = ctx.state().getValue(bp);

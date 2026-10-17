@@ -46,6 +46,7 @@ public class CPlogLampPrProcedure {
         changed |= setFlag(nbt, "powered", powered);
         changed |= setFlag(nbt, "timer", intact[3]);
         changed |= setFlag(nbt, "ai_access", intact[4]);
+        if (nbt.getBooleanOr("logs", true) && !intact[5]) net.mcreator.ssc.access.AirlockEventLog.clear(be);
         changed |= setFlag(nbt, "logs", intact[5]);
         changed |= setFlag(nbt, "diods", intact[6]);
         changed |= setFlag(nbt, "safe", intact[7]);

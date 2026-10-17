@@ -1,4 +1,6 @@
 {
+  "message.ssc_14.airlock_work": "Airlock work: %s s remaining",
+  "message.ssc_14.airlock_log": "Airlock log (last 16 events):",
   "biome.ssc_14.spaceb": "Space",
   "subtitles.ssc14_sounds": "",
   "item.ssc_14.rod_floor": "Rod Floor",

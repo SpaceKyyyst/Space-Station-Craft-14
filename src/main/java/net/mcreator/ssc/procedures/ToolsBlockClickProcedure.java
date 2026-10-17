@@ -39,10 +39,12 @@ public class ToolsBlockClickProcedure {
 
 		BlockPos pos = BlockPos.containing(x, y, z);
 		if (entity instanceof net.minecraft.world.entity.player.Player player
-				&& (net.mcreator.ssc.access.AirlockWelding.interact(player, pos)
+				&& (net.mcreator.ssc.access.AirlockEventLog.inspect(player, pos)
+                    || net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos)
+                    || net.mcreator.ssc.access.AirlockWelding.interact(player, pos)
                     || net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos)
                     || net.mcreator.ssc.access.AirlockFloor.installTile(player, pos)
-                    || net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos)
+
 					|| net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos))) {
 			if (event instanceof PlayerInteractEvent.RightClickBlock interaction) {
 				interaction.setCanceled(true);
@@ -50,14 +52,15 @@ public class ToolsBlockClickProcedure {
 			}
 			return;
 		}
-		BlockState blockstate = world.getBlockState(pos);
+		pos = net.mcreator.ssc.access.AirlockMaintenance.root(world, pos);
+        BlockState blockstate = world.getBlockState(pos);
 
         // Tool work must not also trigger the door's ordinary right-click opening.
         if (entity instanceof net.minecraft.world.entity.player.Player player
                 && player.getMainHandItem().is(net.mcreator.ssc.init.Ssc14ModItems.SCREWDRIVER.get())
                 && blockstate.getBlock().getStateDefinition().getProperty("arl_variat") != null) {
             if (player.isAlive() && !player.isSpectator() && player.level().mayInteract(player, pos))
-                UniversalDeconstructionProcedureProcedure.execute(world, x, y, z, blockstate, entity);
+                UniversalDeconstructionProcedureProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate, entity);
             if (event instanceof PlayerInteractEvent.RightClickBlock interaction) {
                 interaction.setCanceled(true);
                 interaction.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
@@ -65,6 +68,6 @@ public class ToolsBlockClickProcedure {
             return;
         }
 
-		UniversalDeconstructionProcedureProcedure.execute(world, x, y, z, blockstate, entity);
+		UniversalDeconstructionProcedureProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate, entity);
 	}
 }

@@ -71,13 +71,7 @@ public final class AirlockWelding {
         if (job == null) return;
         if (!valid(player, job)) { JOBS.remove(player); return; }
         var pos = job.door.getBlockPos();
-        if (level.getGameTime() % 10 == 0) {
-            level.sendParticles(net.mcreator.ssc.init.Ssc14ModParticleTypes.SPARK.get(),
-                    pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 3, 0.15, 0.3, 0.15, 0.02);
-            net.minecraft.core.registries.BuiltInRegistries.SOUND_EVENT.getOptional(
-                    net.minecraft.resources.Identifier.parse("ssc_14:welding_work")).ifPresent(sound ->
-                    level.playSound(null, pos, sound, net.minecraft.sounds.SoundSource.BLOCKS, 0.2f, 1f));
-        }
+        AirlockWorkFeedback.progress(player, pos, job.finish - level.getGameTime(), true);
         if (level.getGameTime() < job.finish) return;
         JOBS.remove(player);
         var fuel = job.tool.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
