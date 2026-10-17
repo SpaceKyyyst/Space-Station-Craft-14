@@ -24,13 +24,40 @@ import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 public final class AuditTests {
     private static final Map<String, Consumer<GameTestHelper>> TESTS = new LinkedHashMap<>();
     static {
+        TESTS.put("airlock_crowbar_respects_bolts_and_opens_without_access", h -> {
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            player.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 1.5);
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
+                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.CROWBAR.get()));
+            var data = h.getLevel().getBlockEntity(pos).getPersistentData();
+            data.putBoolean("powered", false);
+            data.putBoolean("Capitan", true);
+            data.putBoolean("bolted", true);
+            net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos);
+            h.runAfterDelay(41, () -> {
+                net.mcreator.ssc.access.AirlockManualOpening.advance(player);
+                h.assertTrue(h.getLevel().getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) != 11, "Crowbar bypassed bolts");
+                data.putBoolean("bolted", false);
+                net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos);
+                h.runAfterDelay(41, () -> {
+                    net.mcreator.ssc.access.AirlockManualOpening.advance(player);
+                    h.runAfterDelay(14, () -> {
+                        h.assertTrue(h.getLevel().getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) == 11, "Crowbar failed to open unpowered door without ID");
+                        h.assertTrue(h.getLevel().getBlockState(pos.above()).is(Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get()), "Upper collision did not open");
+                        h.succeed();
+                    });
+                });
+            });
+        });
         TESTS.put("airlock_multitool_pulse_restores_without_mending", h -> {
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
             h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             var door = h.getLevel().getBlockEntity(pos);
             var data = door.getPersistentData();
             net.mcreator.ssc.access.AirlockWirePulses.start(door, 0);
-            h.assertTrue(data.getBooleanOr("powered", false), "One power pulse must leave redundant supply available");
+            h.assertTrue(!data.getBooleanOr("powered", true), "Either power wire pulse must disable the door");
             net.mcreator.ssc.access.AirlockWirePulses.start(door, 1);
             h.assertTrue(!data.getBooleanOr("powered", true), "Two power pulses must disable power");
             net.mcreator.ssc.access.AirlockWirePulses.start(door, 2);
