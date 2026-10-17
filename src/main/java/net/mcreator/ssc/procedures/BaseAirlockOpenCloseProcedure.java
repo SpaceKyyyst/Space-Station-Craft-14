@@ -27,6 +27,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.mcreator.ssc.access.AirlockAccessPolicy;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
@@ -39,19 +40,14 @@ public class BaseAirlockOpenCloseProcedure {
     // so unloading a chunk pauses the door without retaining/loading the world.
     private static final String ACTION = "_ssc14_airlock_action";
     private static final String STEP = "_ssc14_airlock_step";
-    private static final int OPENING = 1, CLOSING = 2, DENIED = 3, WAITING = 4;
+    private static final int OPENING = 1, CLOSING = 2, DENIED = 3, WAITING = 4, RELEASE_CRUSHED = 5;
     // Corvax dd8b6e2f: 0.4s to change collision + 0.2s to finish, 5s auto-close.
     private static final int AUTO_CLOSE_TICKS = 100;
     private static final int DENY_TICKS = 9;
     private static final int RETRY_TICKS = 20;
     private static final int[] OPEN_FRAMES = {15, 12, 13, 14, 11};
     private static final int[] CLOSE_FRAMES = {14, 13, 12, 15};
-	private static final String[] ACCESS_ROLES = {
-		"Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio", "Security", 
-		"Ingeneer", "Command", "Detective", "PNT", "Scientist", "Supply_Deportament", "Atmos", 
-		"Kitchen", "Uridic", "Gidroponic", "Teatre", "Bar", "Cleaner", "Utilizat", "Chemistry", 
-		"Church", "CE", "Qm", "CMO", "RD", "HoP", "Capitan", "Blue_Sh"
-	};
+
 
 
     public static void execute(Level world, double x, double y, double z, BlockState ignored, Entity entity) {
@@ -87,7 +83,7 @@ public class BaseAirlockOpenCloseProcedure {
         if (action == OPENING || action == CLOSING) return;
         if (nbt.getBooleanOr("bolted", false) || nbt.getBooleanOr("welded", false)
                 || !nbt.getBooleanOr("powered", true) || current == 1 || current == 9 || current == 10) return;
-        if (!checkAccess(nbt, entity, nbt.getBooleanOr("emergency_acs", false))) {
+        if (!AirlockAccessPolicy.permits(nbt, entity, nbt.getBooleanOr("emergency_acs", false))) {
             if (action == DENIED) return; // Do not restart denial for repeated unauthorized clicks.
             if (current != 11 && !(current >= 12 && current <= 15)) {
                 nbt.putInt("_ssc14_airlock_denied_state", current);
@@ -116,8 +112,12 @@ public class BaseAirlockOpenCloseProcedure {
         CompoundTag nbt = be.getPersistentData();
         int action = nbt.getIntOr(ACTION, 0);
         int frame = nbt.getIntOr(STEP, 0);
-        if (action == WAITING) {
+        if (action == RELEASE_CRUSHED) {
+            begin(level, pos, be, OPENING, OPEN_FRAMES[0], 4);
+            _playSound(level, pos, "ssc_14:airlock_open");
+        } else if (action == WAITING) {
             if (state.getValue(prop) != 11) { finish(be); return; }
+            if (nbt.getBooleanOr(net.mcreator.ssc.access.AirlockSignals.HOLD, false)) { finish(be); return; }
             if (canCloseAirlock(level, pos, nbt)) {
                 startClose(level, pos, be);
             } else {
@@ -160,11 +160,19 @@ public class BaseAirlockOpenCloseProcedure {
                     level.scheduleTick(pos, state.getBlock(), next < 2 ? 4 : 2);
                 }
             } else if (next == 4) {
+                nbt.putBoolean(net.mcreator.ssc.access.AirlockSignals.HOLD, false);
+                boolean crushed = nbt.getBooleanOr("_ssc14_crushed", false);
+                nbt.remove("_ssc14_crushed");
                 finish(be);
                 setState(level, pos, closedState(nbt));
+                if (crushed) begin(level, pos, be, RELEASE_CRUSHED, closedState(nbt), net.mcreator.ssc.access.AirlockCrushing.RELEASE_TICKS);
             } else {
                 setState(level, pos, CLOSE_FRAMES[next]);
-                if (next == 2) updateTop(level, pos, false);
+                if (next == 2) {
+                    updateTop(level, pos, false);
+                    if (!nbt.getBooleanOr("safe", true) && net.mcreator.ssc.access.AirlockCrushing.apply(level, pos))
+                        nbt.putBoolean("_ssc14_crushed", true);
+                }
                 level.scheduleTick(pos, state.getBlock(), next < 2 ? 4 : 2);
             }
         }
@@ -184,7 +192,7 @@ public class BaseAirlockOpenCloseProcedure {
         if (be == null || prop == null || state.getValue(prop) != 11) return;
         CompoundTag nbt = be.getPersistentData();
         if (!nbt.getBooleanOr("powered", true) || nbt.getBooleanOr("bolted", false)
-                || nbt.getBooleanOr("welded", false)) {
+                || nbt.getBooleanOr("welded", false) || nbt.getBooleanOr(net.mcreator.ssc.access.AirlockSignals.HOLD, false)) {
             if (level.getBlockTicks().hasScheduledTick(pos, state.getBlock()))
                 level.getBlockTicks().clearArea(new BoundingBox(pos));
             finish(be);
@@ -204,16 +212,57 @@ public class BaseAirlockOpenCloseProcedure {
         nbt.remove("_ssc14_processing");
         nbt.remove("_ssc14_denied_anim");
         nbt.remove("prev_arl_variat_on_deny");
+        if (action == OPENING || action == CLOSING || action == DENIED)
+            net.mcreator.ssc.access.AirlockEventLog.append(be, action == OPENING ? "OPEN" : action == CLOSING ? "CLOSE" : "ACCESS_DENIED");
         nbt.putInt(ACTION, action);
         nbt.putInt(STEP, 0);
+        nbt.putInt("_ssc14_visual_action", action);
+        nbt.putLong("_ssc14_visual_started", level.getGameTime());
         be.setChanged();
         setState(level, pos, state);
+        level.sendBlockUpdated(pos, level.getBlockState(pos), level.getBlockState(pos), Block.UPDATE_CLIENTS);
         level.scheduleTick(pos, block, delay);
     }
 
     private static void startClose(ServerLevel level, BlockPos pos, BlockEntity be) {
         begin(level, pos, be, CLOSING, CLOSE_FRAMES[0], 4);
         _playSound(level, pos, "ssc_14:airlock_close");
+    }
+
+    /** Device signals bypass ID credentials, but use the same physical interlocks as interaction. */
+    public static void requestSignal(ServerLevel level, BlockPos pos, boolean open, boolean toggle) {
+        if (!level.hasChunkAt(pos)) return;
+        var be = level.getBlockEntity(pos);
+        var state = level.getBlockState(pos);
+        var frame = getSafeProperty(state, "arl_variat", IntegerProperty.class);
+        if (be == null || frame == null) return;
+        var data = be.getPersistentData();
+        if (!data.getBooleanOr("powered", false) || data.getBooleanOr("bolted", false)
+                || data.getBooleanOr("welded", false)) return;
+        int value = state.getValue(frame);
+        int action = data.getIntOr(ACTION, 0);
+        if (action == OPENING || action == CLOSING || action == DENIED) return;
+        if (toggle) open = value != 11;
+        if (open && value != 11 && (value < 12 || value > 15)) {
+            begin(level, pos, be, OPENING, OPEN_FRAMES[0], 4);
+            _playSound(level, pos, "ssc_14:airlock_open");
+        } else if (!open && value == 11 && canCloseAirlock(level, pos, data)) startClose(level, pos, be);
+    }
+
+    public static void openManually(ServerLevel level, BlockPos pos) {
+        if (!level.hasChunkAt(pos)) return;
+        var be = level.getBlockEntity(pos);
+        var state = level.getBlockState(pos);
+        var frame = getSafeProperty(state, "arl_variat", IntegerProperty.class);
+        if (be == null || frame == null || state.getValue(frame) >= 12 && state.getValue(frame) <= 15) return;
+        var data = be.getPersistentData();
+        if (data.getBooleanOr("powered", true) || data.getBooleanOr("bolted", false) || data.getBooleanOr("welded", false)) return;
+        if (state.getValue(frame) == 11) {
+            if (!data.getBooleanOr("safe", true) || !hasBlockingEntities(level, pos)) startClose(level, pos, be);
+            return;
+        }
+        begin(level, pos, be, OPENING, OPEN_FRAMES[0], 4);
+        _playSound(level, pos, "ssc_14:airlock_open");
     }
 
     private static void finish(BlockEntity be) {
@@ -274,15 +323,6 @@ public class BaseAirlockOpenCloseProcedure {
         return type.isInstance(prop) ? type.cast(prop) : null;
     }
 
-	private static boolean checkAccess(CompoundTag blockNbt, Entity entity, boolean emergency) {
-		if (emergency) return true;
-		boolean anyRequired = false;
-		for (String role : ACCESS_ROLES) if (blockNbt.getBoolean(role).orElse(false)) { anyRequired = true; break; }
-		if (!anyRequired) return true;
-		CompoundTag playerData = entity.getPersistentData();
-		for (String role : ACCESS_ROLES) if (blockNbt.getBoolean(role).orElse(false) && playerData.getBoolean(role).orElse(false)) return true;
-		return false;
-	}
 
 	private static void openGui(ServerPlayer player, String name, BlockPos pos) {
 		player.openMenu(new MenuProvider() {

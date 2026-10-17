@@ -35,7 +35,7 @@ public class TitleSteeldirtyBlock extends Block implements EntityBlock {
 	public TitleSteeldirtyBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(new DeferredSoundType(1.0f, 1.0f, () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:title_off")), () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.step")),
 				() -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:title_on")), () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.hit")),
-				() -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.fall")))).strength(100f, 5f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+				() -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.fall")))).strength(100f, 5f).noOcclusion().dynamicShape().isRedstoneConductor((bs, br, bp) -> false));
 	}
 
 	@Override
@@ -105,4 +105,8 @@ public class TitleSteeldirtyBlock extends Block implements EntityBlock {
 		else
 			return 0;
 	}
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return net.mcreator.ssc.access.AirlockFloor.collision(level, pos, getShape(state, level, pos, context));
+    }
 }

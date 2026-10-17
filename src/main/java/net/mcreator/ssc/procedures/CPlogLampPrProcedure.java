@@ -28,12 +28,16 @@ public class CPlogLampPrProcedure {
         for (int i = 1; i <= 8; i++) {
             int function = nbt.getIntOr("log_cab_" + i, -1);
             if (function >= 0 && function < intact.length)
-                intact[function] = !nbt.getBooleanOr("cabel_" + i, false);
+                intact[function] = !nbt.getBooleanOr("cabel_" + i, false)
+                        && !net.mcreator.ssc.access.AirlockWirePulses.active(nbt, function, level.getGameTime());
         }
         boolean changed = false;
         changed |= setFlag(nbt, "energy_cabel_1", intact[0]);
         changed |= setFlag(nbt, "energy_cabel_2", intact[1]);
-        boolean powered = nbt.getBooleanOr("_ssc14_supply_powered", oldPower) && (intact[0] || intact[1]);
+        boolean powerPulse = net.mcreator.ssc.access.AirlockWirePulses.active(nbt, 0, level.getGameTime())
+                || net.mcreator.ssc.access.AirlockWirePulses.active(nbt, 1, level.getGameTime());
+        boolean powered = nbt.getBooleanOr("_ssc14_supply_powered", oldPower)
+                && (intact[0] || intact[1]) && !powerPulse;
         // Remember the supply separately: mending the wires must restore cable power.
         if (!nbt.contains("_ssc14_supply_powered")) {
             nbt.putBoolean("_ssc14_supply_powered", oldPower);
@@ -42,6 +46,7 @@ public class CPlogLampPrProcedure {
         changed |= setFlag(nbt, "powered", powered);
         changed |= setFlag(nbt, "timer", intact[3]);
         changed |= setFlag(nbt, "ai_access", intact[4]);
+        if (nbt.getBooleanOr("logs", true) && !intact[5]) net.mcreator.ssc.access.AirlockEventLog.clear(be);
         changed |= setFlag(nbt, "logs", intact[5]);
         changed |= setFlag(nbt, "diods", intact[6]);
         changed |= setFlag(nbt, "safe", intact[7]);

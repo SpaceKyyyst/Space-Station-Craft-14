@@ -27,7 +27,7 @@ public class TitleCafeteriaBlock extends Block {
 	public TitleCafeteriaBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(new DeferredSoundType(1.0f, 1.0f, () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:title_off")), () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.step")),
 				() -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:title_on")), () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.hit")),
-				() -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.fall")))).strength(100f, 5f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+				() -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("block.copper.fall")))).strength(100f, 5f).noOcclusion().dynamicShape().isRedstoneConductor((bs, br, bp) -> false));
 	}
 
 	@Override
@@ -60,4 +60,8 @@ public class TitleCafeteriaBlock extends Block {
 	public BlockState updateShape(BlockState state, LevelReader world, ScheduledTickAccess scheduledTickAccess, BlockPos currentPos, Direction facing, BlockPos facingPos, BlockState facingState, RandomSource random) {
 		return !state.canSurvive(world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, world, scheduledTickAccess, currentPos, facing, facingPos, facingState, random);
 	}
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return net.mcreator.ssc.access.AirlockFloor.collision(level, pos, getShape(state, level, pos, context));
+    }
 }
