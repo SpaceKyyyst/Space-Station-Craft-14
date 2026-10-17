@@ -215,6 +215,18 @@ public class BaseAirlockOpenCloseProcedure {
         _playSound(level, pos, "ssc_14:airlock_close");
     }
 
+    public static void openManually(ServerLevel level, BlockPos pos) {
+        if (!level.hasChunkAt(pos)) return;
+        var be = level.getBlockEntity(pos);
+        var state = level.getBlockState(pos);
+        var frame = getSafeProperty(state, "arl_variat", IntegerProperty.class);
+        if (be == null || frame == null || state.getValue(frame) >= 11 && state.getValue(frame) <= 15) return;
+        var data = be.getPersistentData();
+        if (data.getBooleanOr("powered", true) || data.getBooleanOr("bolted", false) || data.getBooleanOr("welded", false)) return;
+        begin(level, pos, be, OPENING, OPEN_FRAMES[0], 4);
+        _playSound(level, pos, "ssc_14:airlock_open");
+    }
+
     private static void finish(BlockEntity be) {
         be.getPersistentData().remove(ACTION);
         be.getPersistentData().remove(STEP);
