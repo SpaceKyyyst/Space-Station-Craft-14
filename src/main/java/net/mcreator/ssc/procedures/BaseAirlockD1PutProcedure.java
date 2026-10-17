@@ -50,8 +50,8 @@ public class BaseAirlockD1PutProcedure {
 		nbt.putBoolean("diods", true);
 		nbt.putBoolean("ai_access", true);
 		nbt.putBoolean("logs", true);
-		nbt.putBoolean("powered", true);
-        nbt.putBoolean("_ssc14_supply_powered", true);
+		nbt.putBoolean("powered", false);
+        nbt.putBoolean("_ssc14_supply_powered", false);
         nbt.putBoolean("energy_cabel_1", true);
         nbt.putBoolean("energy_cabel_2", true);
 

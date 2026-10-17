@@ -19,6 +19,11 @@ public final class EnergyTopologyEvents {
 
     @SubscribeEvent
     public static void load(ChunkEvent.Load event) {
+        if (event.getLevel() instanceof net.minecraft.server.level.ServerLevel level
+                && event.getChunk() instanceof net.minecraft.world.level.chunk.LevelChunk chunk)
+            for (var door : java.util.List.copyOf(chunk.getBlockEntities().values()))
+                if (net.mcreator.ssc.access.AirlockPower.isDoor(door.getBlockState()))
+                    net.mcreator.ssc.access.AirlockPower.supply(level, door.getBlockPos(), false);
         EnergyTopologyService.chunkAvailabilityChanged(event.getLevel(), event.getChunk().getPos());
     }
 
@@ -43,7 +48,8 @@ public final class EnergyTopologyEvents {
                 || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.APC.get())
                 || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.PODSTATION.get())
                 || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.DEBU_GGENERATOR.get())
-                || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.LAMP.get())) {
+                || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.LAMP.get())
+                || net.mcreator.ssc.access.AirlockPower.isDoor(state)) {
             EnergyNetworkManager.invalidate(level, position);
         }
     }
