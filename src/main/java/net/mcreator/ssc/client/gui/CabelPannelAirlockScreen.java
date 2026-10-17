@@ -101,23 +101,28 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		if (!panelFlag("cabel_8")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_8, this.leftPos + 115, this.topPos + 5, 0, 0, 7, 19, 7, 19);
 		}
-		if (panelFlag("powered")) {
+		if (indicatorLit("powered")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_9, this.leftPos + 31, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
-		if (panelFlag("bolted")) {
+		if (indicatorLit("bolted")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_10, this.leftPos + 69, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
-		if (panelFlag("timer")) {
+		if (indicatorLit("timer")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_11, this.leftPos + 107, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
-		if (panelFlag("ai_access")) {
+		if (indicatorLit("ai_access")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_12, this.leftPos + 133, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_13, this.leftPos + 31, this.topPos + -14, 0, 0, 9, 9, 9, 9);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_14, this.leftPos + 69, this.topPos + -14, 0, 0, 9, 9, 9, 9);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_15, this.leftPos + 107, this.topPos + -14, 0, 0, 9, 9, 9, 9);
+		if (indicatorLit("logs")) guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_13, this.leftPos + 31, this.topPos + -14, 0, 0, 9, 9, 9, 9);
+		if (indicatorLit("diods")) guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_14, this.leftPos + 69, this.topPos + -14, 0, 0, 9, 9, 9, 9);
+		if (indicatorLit("safe")) guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_15, this.leftPos + 107, this.topPos + -14, 0, 0, 9, 9, 9, 9);
 	}
 
+    private boolean indicatorLit(String function) {
+        var blockEntity = world.getBlockEntity(new net.minecraft.core.BlockPos(x, y, z));
+        return blockEntity != null && net.mcreator.ssc.access.AirlockPanelIndicators.lit(
+                blockEntity.getPersistentData(), function, world.getGameTime());
+    }
     private boolean panelFlag(String key) {
         var blockEntity = world.getBlockEntity(new net.minecraft.core.BlockPos(x, y, z));
         return blockEntity != null && blockEntity.getPersistentData().getBooleanOr(key, false);

@@ -23,6 +23,28 @@ import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 public final class AuditTests {
     private static final Map<String, Consumer<GameTestHelper>> TESTS = new LinkedHashMap<>();
     static {
+        TESTS.put("airlock_seven_panel_indicators", h -> {
+            var data = new net.minecraft.nbt.CompoundTag();
+            String[] functions = {"powered", "bolted", "timer", "ai_access", "logs", "diods", "safe"};
+            for (String function : functions) data.putBoolean(function, true);
+            data.putBoolean("energy_cabel_1", true);
+            data.putBoolean("energy_cabel_2", true);
+            for (String function : functions) {
+                h.assertTrue(net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, function, 0), "Enabled indicator missing: " + function);
+                if (!function.equals("powered")) {
+                    data.putBoolean(function, false);
+                    h.assertTrue(!net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, function, 0), "Disabled indicator still lit: " + function);
+                    data.putBoolean(function, true);
+                }
+            }
+            data.putBoolean("energy_cabel_1", false);
+            h.assertTrue(net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, "powered", 0)
+                    && !net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, "powered", 10), "Single power wire must produce blinking indication");
+            data.putBoolean("powered", false);
+            for (String function : functions)
+                h.assertTrue(!net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, function, 0), "Unpowered indicator still lit: " + function);
+            h.succeed();
+        });
         TESTS.put("airlock_controller_target_and_cut_bolts", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
