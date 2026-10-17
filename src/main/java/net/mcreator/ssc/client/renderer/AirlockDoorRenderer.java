@@ -33,6 +33,9 @@ public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEn
         float openness;
         float rotation;
         boolean panelOpen;
+        int indicator;
+        int protection;
+        boolean welded;
     }
 
     @Override
@@ -43,12 +46,18 @@ public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEn
             ModelFeatureRenderer.CrumblingOverlay overlay) {
         BlockEntityRenderer.super.extractRenderState(entity, state, partialTick, camera, overlay);
         var block = entity.getBlockState();
+        var data = entity.getPersistentData();
+        state.indicator = !data.getBooleanOr("powered", false) ? 0
+                : data.getBooleanOr("diods", true) && data.getBooleanOr("bolted", false) ? 2
+                : data.getBooleanOr("diods", true) && data.getBooleanOr("emergency_acs", false) ? 3 : 1;
+        state.welded = data.getBooleanOr("welded", false);
+        state.protection = data.getIntOr(net.mcreator.ssc.access.AirlockMaintenance.ARMOR, 0);
         var panel = block.getBlock().getStateDefinition().getProperty("panel_open");
         state.panelOpen = panel instanceof net.minecraft.world.level.block.state.properties.BooleanProperty value && block.getValue(value);
         var property = block.getBlock().getStateDefinition().getProperty("arl_variat");
         int frame = property instanceof IntegerProperty value ? block.getValue(value) : 0;
         state.openness = switch (frame) { case 11 -> 1f; case 14 -> 0.9f; case 13 -> 0.8f; case 12 -> 0.2f; default -> 0f; };
-        var data = entity.getPersistentData();
+
         if (entity.getLevel() != null && frame >= 12 && frame <= 15 && data.contains("_ssc14_visual_started")) {
             int action = data.getIntOr("_ssc14_visual_action", 0);
             float elapsed = entity.getLevel().getGameTime() - data.getLongOr("_ssc14_visual_started", 0) + partialTick;
@@ -66,7 +75,7 @@ public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEn
         poses.translate(0.5, 0, 0.5);
         poses.mulPose(Axis.YP.rotationDegrees(state.rotation));
         poses.scale(1, -1, -1);
-        collector.submitModel(model, state.openness, poses, state.panelOpen ? panelTexture : texture, state.lightCoords,
+        collector.submitModel(model, new AirlockDoorModel.Visual(state.openness, state.indicator, state.welded, state.protection), poses, state.panelOpen ? panelTexture : texture, state.lightCoords,
                 OverlayTexture.NO_OVERLAY, NO_OUTLINE, state.breakProgress);
         poses.popPose();
     }
