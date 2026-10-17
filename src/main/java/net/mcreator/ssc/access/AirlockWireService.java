@@ -34,12 +34,17 @@ public final class AirlockWireService {
         if (!(player.level() instanceof ServerLevel level) || wire < 1 || wire > WIRE_COUNT
                 || !(player.containerMenu instanceof CabelPannelAirlockMenu menu)
                 || !MenuPacketGuard.matches(player, menu, pos.getX(), pos.getY(), pos.getZ(), menu.x, menu.y, menu.z)
-                || !canUsePanel(player, pos)
-                || !(player.getMainHandItem().is(Ssc14ModItems.NIPPERS.get())
-                    || player.getOffhandItem().is(Ssc14ModItems.NIPPERS.get()))) return;
+                || !canUsePanel(player, pos) || !level.mayInteract(player, pos)) return;
         var blockEntity = level.getBlockEntity(pos);
         var data = blockEntity.getPersistentData();
         String key = "cabel_" + wire;
+        if (player.getMainHandItem().is(Ssc14ModItems.MULTITUL.get())
+                || player.getOffhandItem().is(Ssc14ModItems.MULTITUL.get())) {
+            if (!data.getBooleanOr(key, false)) AirlockWirePulses.start(blockEntity, data.getIntOr("log_cab_" + wire, -1));
+            return;
+        }
+        if (!(player.getMainHandItem().is(Ssc14ModItems.NIPPERS.get())
+                || player.getOffhandItem().is(Ssc14ModItems.NIPPERS.get()))) return;
         data.putBoolean(key, !data.getBooleanOr(key, false));
         blockEntity.setChanged();
         CPlogLampPrProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), level.getBlockState(pos));

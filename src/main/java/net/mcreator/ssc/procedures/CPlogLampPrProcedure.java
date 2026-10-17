@@ -28,7 +28,8 @@ public class CPlogLampPrProcedure {
         for (int i = 1; i <= 8; i++) {
             int function = nbt.getIntOr("log_cab_" + i, -1);
             if (function >= 0 && function < intact.length)
-                intact[function] = !nbt.getBooleanOr("cabel_" + i, false);
+                intact[function] = !nbt.getBooleanOr("cabel_" + i, false)
+                        && !net.mcreator.ssc.access.AirlockWirePulses.active(nbt, function, level.getGameTime());
         }
         boolean changed = false;
         changed |= setFlag(nbt, "energy_cabel_1", intact[0]);
