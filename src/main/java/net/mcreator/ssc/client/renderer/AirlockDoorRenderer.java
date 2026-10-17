@@ -18,6 +18,7 @@ import net.minecraft.world.phys.Vec3;
 
 /** Uses immutable extracted progress; shared model parts are posed only during submission rendering. */
 public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEntityRenderer<T, AirlockDoorRenderer.State> {
+    private static final int NO_OUTLINE = 0;
     private final Identifier texture;
     private final AirlockDoorModel model = new AirlockDoorModel(1);
 
@@ -58,7 +59,7 @@ public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEn
         poses.mulPose(Axis.YP.rotationDegrees(state.rotation));
         poses.scale(1, -1, -1);
         collector.submitModel(model, state.openness, poses, texture, state.lightCoords,
-                OverlayTexture.NO_OVERLAY, -1, state.breakProgress);
+                OverlayTexture.NO_OVERLAY, NO_OUTLINE, state.breakProgress);
         poses.popPose();
     }
 
