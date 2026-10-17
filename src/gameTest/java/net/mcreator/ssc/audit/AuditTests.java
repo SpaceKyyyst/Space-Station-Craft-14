@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.*;
 import net.minecraft.resources.Identifier;
@@ -23,6 +24,31 @@ import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 public final class AuditTests {
     private static final Map<String, Consumer<GameTestHelper>> TESTS = new LinkedHashMap<>();
     static {
+        TESTS.put("airlock_floor_preserves_tile_collision", h -> {
+            var level = h.getLevel();
+            var root = h.absolutePos(new BlockPos(2, 3, 2));
+            var floor = root.below();
+            level.setBlock(root, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            h.assertTrue(level.getBlockState(floor).is(Ssc14ModBlocks.AIRLOCK_THRESHOLD.get()), "Missing below-floor seal");
+            var crawl = Block.box(2, 0, 2, 14, 10, 14);
+            h.assertTrue(net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(
+                    level.getBlockState(floor).getCollisionShape(level, floor), crawl, net.minecraft.world.phys.shapes.BooleanOp.AND),
+                    "Closed door permits crawling underneath");
+            level.setBlock(floor.below(), Ssc14ModBlocks.SHEATHING.get().defaultBlockState(), 3);
+            level.setBlock(floor, Ssc14ModBlocks.TITLE_STEEL.get().defaultBlockState(), 3);
+            var closed = level.getBlockState(floor).getCollisionShape(level, floor);
+            h.assertTrue(net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(closed, crawl, net.minecraft.world.phys.shapes.BooleanOp.AND),
+                    "Installing a tile removed the door seal");
+            level.setBlock(root, level.getBlockState(root).setValue(net.mcreator.ssc.block.BaseAirlockD1Block.ARL_VARIAT, 11), 3);
+            var open = level.getBlockState(floor).getCollisionShape(level, floor);
+            h.assertTrue(!net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(open, crawl, net.minecraft.world.phys.shapes.BooleanOp.AND),
+                    "Open doorway retains closed underfloor collision");
+            h.assertTrue(net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(open, Block.box(2, 13, 2, 14, 16, 14),
+                    net.minecraft.world.phys.shapes.BooleanOp.AND), "Opening door removed tile collision");
+            level.setBlock(root, Blocks.AIR.defaultBlockState(), 3);
+            h.assertTrue(level.getBlockState(floor).is(Ssc14ModBlocks.TITLE_STEEL.get()), "Removing door destroyed tile");
+            h.succeed();
+        });
         TESTS.put("airlock_seven_panel_indicators", h -> {
             var data = new net.minecraft.nbt.CompoundTag();
             String[] functions = {"powered", "bolted", "timer", "ai_access", "logs", "diods", "safe"};

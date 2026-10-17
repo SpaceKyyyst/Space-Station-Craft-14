@@ -20,6 +20,7 @@ import java.util.function.Function;
 
 public class Ssc14ModBlocks {
 	public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(Ssc14Mod.MODID);
+    public static final DeferredBlock<Block> AIRLOCK_THRESHOLD = register("airlock_threshold", AirlockThresholdBlock::new);
 	public static final DeferredBlock<Block> ROD_FLOOR;
 	public static final DeferredBlock<Block> SHEATHING;
 	public static final DeferredBlock<Block> TITLE_STEEL;

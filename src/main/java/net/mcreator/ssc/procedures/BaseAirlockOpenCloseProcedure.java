@@ -202,8 +202,11 @@ public class BaseAirlockOpenCloseProcedure {
         nbt.remove("prev_arl_variat_on_deny");
         nbt.putInt(ACTION, action);
         nbt.putInt(STEP, 0);
+        nbt.putInt("_ssc14_visual_action", action);
+        nbt.putLong("_ssc14_visual_started", level.getGameTime());
         be.setChanged();
         setState(level, pos, state);
+        level.sendBlockUpdated(pos, level.getBlockState(pos), level.getBlockState(pos), Block.UPDATE_CLIENTS);
         level.scheduleTick(pos, block, delay);
     }
 

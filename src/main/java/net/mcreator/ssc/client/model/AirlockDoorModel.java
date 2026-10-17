@@ -8,18 +8,17 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 
 /** Block model with its origin at the centre of the doorway's floor plane; Y points down. */
-public final class AirlockDoorModel {
+public final class AirlockDoorModel extends net.minecraft.client.model.Model<Float> {
     private static final float THICKNESS = 6;
     private static final float ABOVE_FLOOR = AirlockMotion.HEIGHT - AirlockMotion.BELOW_FLOOR;
     private static final int TEXTURE_SIZE = 128;
-    private final ModelPart root;
     private final ModelPart left;
     private final ModelPart right;
     private final int widthBlocks;
 
     public AirlockDoorModel(int widthBlocks) {
+        super(layer(widthBlocks).bakeRoot(), net.minecraft.client.renderer.rendertype.RenderTypes::entityCutout);
         this.widthBlocks = widthBlocks;
-        root = layer(widthBlocks).bakeRoot();
         left = root.getChild("left_leaf");
         right = root.getChild("right_leaf");
     }
@@ -37,9 +36,9 @@ public final class AirlockDoorModel {
         // The below-floor portion belongs to the leaves, so it opens with the passage.
         parts.addOrReplaceChild("left_leaf", CubeListBuilder.create().texOffs(16, 0)
                 .addBox(-leaf, -ABOVE_FLOOR, -THICKNESS / 2, leaf, AirlockMotion.HEIGHT, THICKNESS), PartPose.ZERO);
-        parts.addOrReplaceChild("right_leaf", CubeListBuilder.create().texOffs(72, 0)
+        parts.addOrReplaceChild("right_leaf", CubeListBuilder.create().texOffs(32, 0)
                 .addBox(0, -ABOVE_FLOOR, -THICKNESS / 2, leaf, AirlockMotion.HEIGHT, THICKNESS), PartPose.ZERO);
-        return LayerDefinition.create(mesh, TEXTURE_SIZE, TEXTURE_SIZE);
+        return LayerDefinition.create(mesh, 64, TEXTURE_SIZE);
     }
 
     public void setOpenness(float openness) {
@@ -52,7 +51,8 @@ public final class AirlockDoorModel {
         right.xScale = pose.leafScale();
     }
 
-    public ModelPart root() {
-        return root;
+    @Override
+    public void setupAnim(Float openness) {
+        setOpenness(openness);
     }
 }
