@@ -24,6 +24,59 @@ import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 public final class AuditTests {
     private static final Map<String, Consumer<GameTestHelper>> TESTS = new LinkedHashMap<>();
     static {
+        TESTS.put("airlock_multitool_pulse_restores_without_mending", h -> {
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            var door = h.getLevel().getBlockEntity(pos);
+            var data = door.getPersistentData();
+            net.mcreator.ssc.access.AirlockWirePulses.start(door, 0);
+            h.assertTrue(data.getBooleanOr("powered", false), "One power pulse must leave redundant supply available");
+            net.mcreator.ssc.access.AirlockWirePulses.start(door, 1);
+            h.assertTrue(!data.getBooleanOr("powered", true), "Two power pulses must disable power");
+            net.mcreator.ssc.access.AirlockWirePulses.start(door, 2);
+            h.assertTrue(!data.getBooleanOr("bolted", false), "Unpowered pulse changed bolts");
+            net.mcreator.ssc.access.AirlockWirePulses.start(door, 7);
+            h.assertTrue(!data.getBooleanOr("safe", true), "Safety pulse not applied");
+            // A physical cut during the pulse must survive expiry.
+            for (int i = 1; i <= 8; i++) if (data.getIntOr("log_cab_" + i, -1) == 7) data.putBoolean("cabel_" + i, true);
+            h.runAfterDelay(202, () -> {
+                h.assertTrue(data.getBooleanOr("powered", false), "Power pulse did not expire");
+                h.assertTrue(!data.getBooleanOr("safe", true), "Pulse expiry mended a physical wire");
+                net.mcreator.ssc.access.AirlockWirePulses.start(door, 2);
+                h.assertTrue(data.getBooleanOr("bolted", false), "Powered pulse did not lower bolts");
+                net.mcreator.ssc.access.AirlockWirePulses.start(door, 2);
+                h.assertTrue(!data.getBooleanOr("bolted", true), "Second pulse did not raise bolts");
+                h.succeed();
+            });
+        });
+        TESTS.put("airlock_welding_completion_and_movement_cancel", h -> {
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            player.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 1.5);
+            var tool = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ACTIVE_WELDER.get());
+            var fuel = new net.minecraft.nbt.CompoundTag();
+            fuel.putDouble("fuel", 1000);
+            tool.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(fuel));
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, tool);
+            net.mcreator.ssc.access.AirlockWelding.interact(player, pos.above());
+            var data = h.getLevel().getBlockEntity(pos).getPersistentData();
+            h.assertTrue(!data.getBooleanOr("welded", false), "Welding completed immediately");
+            h.runAfterDelay(101, () -> {
+                net.mcreator.ssc.access.AirlockWelding.advance(player);
+                h.assertTrue(data.getBooleanOr("welded", false), "Welding did not complete");
+                h.assertTrue(tool.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA).copyTag().getDoubleOr("fuel", 0) == 900, "Incorrect welding fuel charge");
+                net.mcreator.ssc.access.AirlockWelding.interact(player, pos);
+                player.setPos(player.getX() + 1, player.getY(), player.getZ() - 1);
+                net.mcreator.ssc.access.AirlockWelding.advance(player);
+                h.runAfterDelay(101, () -> {
+                    net.mcreator.ssc.access.AirlockWelding.advance(player);
+                    h.assertTrue(data.getBooleanOr("welded", false), "Movement failed to cancel unwelding");
+                    h.assertTrue(tool.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA).copyTag().getDoubleOr("fuel", 0) == 900, "Cancelled welding consumed fuel");
+                    h.succeed();
+                });
+            });
+        });
         TESTS.put("airlock_floor_preserves_tile_collision", h -> {
             var level = h.getLevel();
             var root = h.absolutePos(new BlockPos(2, 3, 2));
@@ -208,6 +261,16 @@ public final class AuditTests {
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, net.minecraft.world.item.ItemStack.EMPTY);
             net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, 1);
             h.assertTrue(!data.getBooleanOr("cabel_1", false), "Wire cut without nippers");
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
+                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.MULTITUL.get()));
+            data.putInt("log_cab_1", 7);
+            data.putBoolean("cabel_1", true);
+            net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, 1);
+            h.assertTrue(!data.contains("_ssc14_wire_pulse_7"), "Multitool pulsed a severed wire");
+            data.putBoolean("cabel_1", false);
+            net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, 1);
+            h.assertTrue(data.contains("_ssc14_wire_pulse_7") && !data.getBooleanOr("cabel_1", true),
+                    "Multitool must pulse without cutting the wire");
             h.getLevel().setBlock(pos, h.getLevel().getBlockState(pos)
                     .setValue(net.mcreator.ssc.block.BaseAirlockD1Block.PANEL_OPEN, false), 3);
             h.assertTrue(!player.containerMenu.stillValid(player), "Closed panel remained usable");
