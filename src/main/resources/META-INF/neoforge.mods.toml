@@ -18,7 +18,7 @@ description="\u041F\u043E\u0432\u0442\u043E\u0440\u0451\u043D\u043D\u0430\u044F 
 [[dependencies.ssc_14]]
     modId="neoforge"
     type="required"
-    versionRange="[26.1.2.71,)"
+    versionRange="[26.1.2.109,)"
     ordering="AFTER"
     side="BOTH"
 
@@ -51,4 +51,17 @@ description="\u041F\u043E\u0432\u0442\u043E\u0440\u0451\u043D\u043D\u0430\u044F 
 
 
 # Start of user code block dependencies configuration
+[[dependencies.ssc_14]]
+    modId="handy"
+    type="required"
+    versionRange="[0.1.0,0.2)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.ssc_14]]
+    modId="ldlib2"
+    type="required"
+    versionRange="[26.1.2.39,)"
+    ordering="AFTER"
+    side="BOTH"
 # End of user code block dependencies configuration

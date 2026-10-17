@@ -962,5 +962,17 @@
   "item.ssc_14.taco_flatbread": "Лепёшка тако",
   "item.ssc_14.toast_with_butter": "Тост со сливочным маслом",
   "item.ssc_14.tofu_bread": "Хлеб из тофу",
-  "item.ssc_14.fly_amanita": "Мухомор"
+  "item.ssc_14.fly_amanita": "Мухомор",
+  "gui.ssc_14.handy.gravity.charge": "Заряд: %s",
+  "gui.ssc_14.handy.gravity.charged": "Полностью заряжен",
+  "gui.ssc_14.handy.gravity.charging": "Заряжается",
+  "gui.ssc_14.handy.gravity.close": "Закрыть",
+  "gui.ssc_14.handy.gravity.disable": "Выключить",
+  "gui.ssc_14.handy.gravity.discharging": "Разряжается",
+  "gui.ssc_14.handy.gravity.enable": "Включить",
+  "gui.ssc_14.handy.gravity.eta": "ETA: %s",
+  "gui.ssc_14.handy.gravity.off": "Выключено",
+  "gui.ssc_14.handy.gravity.on": "Включено",
+  "gui.ssc_14.handy.gravity.power": "Питание: %s",
+  "gui.ssc_14.handy.gravity.status": "Статус: %s"
 }
