@@ -34,7 +34,10 @@ public class CPlogLampPrProcedure {
         boolean changed = false;
         changed |= setFlag(nbt, "energy_cabel_1", intact[0]);
         changed |= setFlag(nbt, "energy_cabel_2", intact[1]);
-        boolean powered = nbt.getBooleanOr("_ssc14_supply_powered", oldPower) && (intact[0] || intact[1]);
+        boolean powerPulse = net.mcreator.ssc.access.AirlockWirePulses.active(nbt, 0, level.getGameTime())
+                || net.mcreator.ssc.access.AirlockWirePulses.active(nbt, 1, level.getGameTime());
+        boolean powered = nbt.getBooleanOr("_ssc14_supply_powered", oldPower)
+                && (intact[0] || intact[1]) && !powerPulse;
         // Remember the supply separately: mending the wires must restore cable power.
         if (!nbt.contains("_ssc14_supply_powered")) {
             nbt.putBoolean("_ssc14_supply_powered", oldPower);
