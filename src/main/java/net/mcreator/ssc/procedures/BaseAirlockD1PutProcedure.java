@@ -46,6 +46,10 @@ public class BaseAirlockD1PutProcedure {
 		nbt.putBoolean("welded", false);
 		nbt.putBoolean("emergency_acs", false);
 		nbt.putBoolean("timer", true);
+		nbt.putFloat("auto_close_modifier", 1.0f);
+		nbt.putBoolean("keep_open_on_click", false);
+		nbt.putBoolean("access_enabled", true);
+		nbt.putLong("access_deny_mask", 0L);
 		nbt.putBoolean("safe", true);
 		nbt.putBoolean("diods", true);
 		nbt.putBoolean("ai_access", true);
