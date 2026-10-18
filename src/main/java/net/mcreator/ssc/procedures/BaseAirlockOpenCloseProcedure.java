@@ -76,7 +76,9 @@ public class BaseAirlockOpenCloseProcedure {
         // Old versions lost queued lambdas across restarts. Recover their unfinished
         // animation on interaction, without scanning loaded chunks or doors every tick.
         if (action == 0 && current >= 12 && current <= 15) {
-            begin(level, pos, be, WAITING, 11, autoCloseDelay(nbt));
+            int delay = autoCloseDelay(nbt);
+            if (delay > 0) begin(level, pos, be, WAITING, 11, delay);
+            else setState(level, pos, 11);
             updateTop(level, pos, true);
             current = 11;
         }
@@ -179,8 +181,7 @@ public class BaseAirlockOpenCloseProcedure {
     }
 
     private static int autoCloseDelay(CompoundTag nbt) {
-        // TIMR cut => modifier 0.01 in Corvax, not disabled automatic closing.
-        return nbt.getBooleanOr("timer", true) ? AUTO_CLOSE_TICKS : 1;
+        return net.mcreator.ssc.access.AirlockAutoClosePolicy.delayTicks(nbt);
     }
 
     /** Power restoration and unbolting start a fresh full delay, as in Corvax. */
@@ -191,7 +192,8 @@ public class BaseAirlockOpenCloseProcedure {
         BlockEntity be = level.getBlockEntity(pos);
         if (be == null || prop == null || state.getValue(prop) != 11) return;
         CompoundTag nbt = be.getPersistentData();
-        if (!nbt.getBooleanOr("powered", true) || nbt.getBooleanOr("bolted", false)
+        if (!net.mcreator.ssc.access.AirlockAutoClosePolicy.enabled(nbt)
+                || !nbt.getBooleanOr("powered", true) || nbt.getBooleanOr("bolted", false)
                 || nbt.getBooleanOr("welded", false) || nbt.getBooleanOr(net.mcreator.ssc.access.AirlockSignals.HOLD, false)) {
             if (level.getBlockTicks().hasScheduledTick(pos, state.getBlock()))
                 level.getBlockTicks().clearArea(new BoundingBox(pos));
