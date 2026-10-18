@@ -15,13 +15,15 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.Vec3;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /** Uses immutable extracted progress; shared model parts are posed only during submission rendering. */
 public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEntityRenderer<T, AirlockDoorRenderer.State> {
     private static final int NO_OUTLINE = 0;
     private final Identifier texture;
     private final Identifier panelTexture;
-    private final AirlockDoorModel model = new AirlockDoorModel(1);
+    private final Map<Integer, AirlockDoorModel> models = new ConcurrentHashMap<>();
 
     public AirlockDoorRenderer(Identifier texture) {
         this.texture = texture;
@@ -36,6 +38,7 @@ public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEn
         int indicator;
         int protection;
         boolean welded;
+        int widthBlocks;
     }
 
     @Override
@@ -52,6 +55,7 @@ public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEn
                 : data.getBooleanOr("diods", true) && data.getBooleanOr("emergency_acs", false) ? 3 : 1;
         state.welded = data.getBooleanOr("welded", false);
         state.protection = data.getIntOr(net.mcreator.ssc.access.AirlockMaintenance.ARMOR, 0);
+        state.widthBlocks = Math.clamp(data.getIntOr("airlock_width", 1), 1, 3);
         var panel = block.getBlock().getStateDefinition().getProperty("panel_open");
         state.panelOpen = panel instanceof net.minecraft.world.level.block.state.properties.BooleanProperty value && block.getValue(value);
         var property = block.getBlock().getStateDefinition().getProperty("arl_variat");
@@ -75,6 +79,7 @@ public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEn
         poses.translate(0.5, 0, 0.5);
         poses.mulPose(Axis.YP.rotationDegrees(state.rotation));
         poses.scale(1, -1, -1);
+        AirlockDoorModel model = models.computeIfAbsent(state.widthBlocks, AirlockDoorModel::new);
         collector.submitModel(model, new AirlockDoorModel.Visual(state.openness, state.indicator, state.welded, state.protection), poses, state.panelOpen ? panelTexture : texture, state.lightCoords,
                 OverlayTexture.NO_OVERLAY, NO_OUTLINE, state.breakProgress);
         poses.popPose();
