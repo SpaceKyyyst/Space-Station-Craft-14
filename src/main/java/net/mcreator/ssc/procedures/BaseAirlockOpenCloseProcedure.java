@@ -98,6 +98,8 @@ public class BaseAirlockOpenCloseProcedure {
             // Manual closing uses the same safety sensor as automatic closing.
             if (canCloseAirlock(level, pos, nbt)) startClose(level, pos, be);
         } else if (current == 0 || current == 4 || current == 8) {
+            if (net.mcreator.ssc.access.AirlockAutoClosePolicy.keepOpenOnClick(nbt))
+                nbt.putFloat(net.mcreator.ssc.access.AirlockAutoClosePolicy.MODIFIER, 0.0f);
             begin(level, pos, be, OPENING, OPEN_FRAMES[0], 4);
             _playSound(level, pos, "ssc_14:airlock_open");
         }
@@ -163,6 +165,8 @@ public class BaseAirlockOpenCloseProcedure {
                 }
             } else if (next == 4) {
                 nbt.putBoolean(net.mcreator.ssc.access.AirlockSignals.HOLD, false);
+                if (nbt.getBooleanOr("timer", true))
+                    nbt.putFloat(net.mcreator.ssc.access.AirlockAutoClosePolicy.MODIFIER, 1.0f);
                 boolean crushed = nbt.getBooleanOr("_ssc14_crushed", false);
                 nbt.remove("_ssc14_crushed");
                 finish(be);
