@@ -43,7 +43,8 @@ public class BaseAirlockOpenCloseProcedure {
     private static final int OPENING = 1, CLOSING = 2, DENIED = 3, WAITING = 4, RELEASE_CRUSHED = 5;
     // Corvax dd8b6e2f: 0.4s to change collision + 0.2s to finish, 5s auto-close.
     private static final int AUTO_CLOSE_TICKS = 100;
-    private static final int DENY_TICKS = 9;
+    // SS14 AirlockComponent.DenyAnimationTime defaults to 0.3 seconds.
+    private static final int DENY_TICKS = 6;
     private static final int RETRY_TICKS = 20;
     private static final int[] OPEN_FRAMES = {15, 12, 13, 14, 11};
     private static final int[] CLOSE_FRAMES = {14, 13, 12, 15};
