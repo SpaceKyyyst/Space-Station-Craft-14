@@ -83,16 +83,8 @@ public class CabelPannelAirlockMenu extends AbstractContainerMenu implements Ssc
 
 	@Override
 	public boolean stillValid(Player player) {
-		if (this.bound) {
-			if (this.boundItemMatcher != null)
-				return this.boundItemMatcher.get();
-			else if (this.boundBlockEntity != null)
-				return AbstractContainerMenu.stillValid(this.access, player, this.boundBlockEntity.getBlockState().getBlock());
-			else if (this.boundEntity != null)
-				return this.boundEntity.isAlive();
-		}
-		return true;
-	}
+        return net.mcreator.ssc.access.AirlockWireService.canUsePanel(player, new BlockPos(x, y, z));
+    }
 
 	@Override
 	public ItemStack quickMoveStack(Player playerIn, int index) {

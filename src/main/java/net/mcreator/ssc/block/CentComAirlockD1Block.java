@@ -157,6 +157,7 @@ public class CentComAirlockD1Block extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		if (!context.getLevel().getBlockState(context.getClickedPos().above()).canBeReplaced()) return null;
 		return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(PANEL_OPEN, false).setValue(ARL_VARIAT, 0);
 	}
 
@@ -210,4 +211,14 @@ public class CentComAirlockD1Block extends Block implements EntityBlock {
 		BlockEntity blockEntity = world.getBlockEntity(pos);
 		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
 	}
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.INVISIBLE;
+    }
+    @Override
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighbor,
+            net.minecraft.world.level.redstone.Orientation orientation, boolean moving) {
+        net.mcreator.ssc.access.AirlockFloor.ensureLowerPart(level, pos);
+        if (level instanceof ServerLevel server) net.mcreator.ssc.access.AirlockSignals.changed(server, pos);
+    }
 }

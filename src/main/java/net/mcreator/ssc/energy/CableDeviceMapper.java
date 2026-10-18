@@ -33,7 +33,7 @@ public final class CableDeviceMapper {
                         BlockPos checkPos = cablePos.offset(xOffset, yOffset, zOffset);
                         if (!isLoaded(level, checkPos)) continue;
                         BlockState state = level.getBlockState(checkPos);
-                        if (state.is(Ssc14ModBlocks.LAMP.get())) {
+                        if (state.is(Ssc14ModBlocks.LAMP.get()) || net.mcreator.ssc.access.AirlockPower.isDoor(state)) {
                             network.getConsumers().add(checkPos.immutable());
                         }
                     }

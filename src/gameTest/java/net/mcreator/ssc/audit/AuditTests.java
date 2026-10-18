@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.*;
 import net.minecraft.resources.Identifier;
@@ -23,6 +24,466 @@ import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 public final class AuditTests {
     private static final Map<String, Consumer<GameTestHelper>> TESTS = new LinkedHashMap<>();
     static {
+        TESTS.put("airlock_ai_authority_wire_and_interlocks", h -> {
+            var level = h.getLevel();
+            var pos = h.absolutePos(new BlockPos(3, 3, 3));
+            level.setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            var data = level.getBlockEntity(pos).getPersistentData();
+            var open = net.mcreator.ssc.access.AirlockAiControl.Action.OPEN;
+            net.mcreator.ssc.access.AirlockAiControl.Authority allowed = (world, target) -> target.equals(pos);
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAiControl.request(level, pos, allowed, open), "AI operated without power");
+            net.mcreator.ssc.access.AirlockPower.supply(level, pos, true);
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAiControl.request(level, pos, (world, target) -> false, open), "AI bypassed authority");
+            data.putBoolean("ai_access", false);
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAiControl.request(level, pos, allowed, open), "AI bypassed disabled wire");
+            data.putBoolean("ai_access", true);
+            data.putBoolean("bolted", true);
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAiControl.request(level, pos, allowed, open), "AI opened bolted door");
+            data.putBoolean("_ssc14_bolt_wire_cut", true);
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAiControl.request(level, pos, allowed,
+                    net.mcreator.ssc.access.AirlockAiControl.Action.BOLTS_UP), "AI raised bolts through cut wire");
+            data.putBoolean("_ssc14_bolt_wire_cut", false);
+            h.assertTrue(net.mcreator.ssc.access.AirlockAiControl.request(level, pos, allowed,
+                    net.mcreator.ssc.access.AirlockAiControl.Action.BOLTS_UP), "AI could not raise intact powered bolts");
+            data.putBoolean("welded", true);
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAiControl.request(level, pos, allowed, open), "AI opened welded door");
+            data.putBoolean("welded", false);
+            h.assertTrue(net.mcreator.ssc.access.AirlockAiControl.request(level, pos.above(), allowed, open), "AI could not address upper door part");
+            h.runAfterDelay(15, () -> {
+                h.assertTrue(level.getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) == 11, "Authorized AI did not open door");
+                h.succeed();
+            });
+        });
+        TESTS.put("airlock_unsafe_crush_and_release", h -> {
+            var level = h.getLevel();
+            var pos = h.absolutePos(new BlockPos(3, 3, 3));
+            level.setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            net.mcreator.ssc.access.AirlockPower.supply(level, pos, true);
+            var door = level.getBlockEntity(pos);
+            door.getPersistentData().putBoolean("safe", false);
+            door.getPersistentData().putBoolean(net.mcreator.ssc.access.AirlockSignals.HOLD, true);
+            BaseAirlockOpenCloseProcedure.requestSignal(level, pos, true, false);
+            h.runAfterDelay(15, () -> {
+                var victim = h.spawn(net.minecraft.world.entity.EntityType.COW, new BlockPos(3, 3, 3));
+                victim.setNoAi(true);
+                victim.setNoGravity(true);
+                victim.setPos(pos.getX() + .5, pos.getY(), pos.getZ() + .5);
+                float health = victim.getHealth();
+                BaseAirlockOpenCloseProcedure.requestSignal(level, pos, false, false);
+                h.runAfterDelay(15, () -> {
+                    h.assertTrue(victim.getHealth() < health, "Unsafe close caused no crushing damage");
+                    h.runAfterDelay(50, () -> {
+                        h.assertTrue(level.getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) == 11, "Door did not release crushed entity");
+                        h.succeed();
+                    });
+                });
+            });
+        });
+        TESTS.put("airlock_configurator_inserted_card_only", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
+            var configurator = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ACCESS_CONFIG.get());
+            var card = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_PASSANGER.get());
+            net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA, card,
+                    tag -> tag.putBoolean("Technical", true));
+            configurator.set(net.minecraft.core.component.DataComponents.CONTAINER,
+                    net.minecraft.world.item.component.ItemContainerContents.fromItems(java.util.List.of(card)));
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, configurator);
+            player.getInventory().setItem(8, new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_CAPITAN.get()));
+            var buffer = new net.minecraft.network.FriendlyByteBuf(io.netty.buffer.Unpooled.buffer());
+            buffer.writeBlockPos(pos);
+            var menu = new net.mcreator.ssc.world.inventory.AccessConfigMENUMenu(1, player.getInventory(), buffer);
+            buffer.release();
+            player.containerMenu = menu;
+            menu.getMenuState().put("1:Technical", true);
+            menu.getMenuState().put("1:Capitan", true);
+            net.mcreator.ssc.access.AirlockConfigurator.synchronize(player, false);
+            var data = h.getLevel().getBlockEntity(pos).getPersistentData();
+            h.assertTrue(data.getBooleanOr("Technical", false), "Inserted card did not grant edit rights");
+            h.assertTrue(!data.getBooleanOr("Capitan", false), "Inventory card granted configurator rights");
+            configurator.remove(net.minecraft.core.component.DataComponents.CONTAINER);
+            menu.getMenuState().put("1:Technical", false);
+            net.mcreator.ssc.access.AirlockConfigurator.synchronize(player, false);
+            h.assertTrue(data.getBooleanOr("Technical", false), "Removed card retained edit rights");
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, configurator.copy());
+            h.assertTrue(!menu.stillValid(player), "Replacing the bound configurator kept menu valid");
+            h.succeed();
+        });
+        TESTS.put("airlock_logs_bounded_and_erased_by_wire", h -> {
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            var door = h.getLevel().getBlockEntity(pos);
+            for (int i = 0; i < 40; i++) net.mcreator.ssc.access.AirlockEventLog.append(door, "EVENT_" + i);
+            var data = door.getPersistentData();
+            h.assertTrue(data.getIntOr("_ssc14_log_size", 0) == 16, "Log exceeded capacity");
+            h.assertTrue(data.getStringOr("_ssc14_log_15", "").endsWith("EVENT_24"), "Wrong history eviction");
+            net.mcreator.ssc.access.AirlockWirePulses.start(door, 5);
+            net.mcreator.ssc.access.AirlockEventLog.append(door, "DISABLED");
+            h.assertTrue(!data.contains("_ssc14_log_0") && !data.contains("_ssc14_log_size"), "Disabled logging retained history");
+            h.succeed();
+        });
+        TESTS.put("airlock_redstone_open_hold_and_bolts", h -> {
+            var level = h.getLevel();
+            var pos = h.absolutePos(new BlockPos(3, 3, 3));
+            level.setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            net.mcreator.ssc.access.AirlockPower.supply(level, pos, true);
+            var facing = level.getBlockState(pos).getValue(net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING);
+            level.setBlock(pos.below(), net.minecraft.world.level.block.Blocks.REDSTONE_BLOCK.defaultBlockState(), 3);
+            level.setBlock(pos.relative(facing.getCounterClockWise()), net.minecraft.world.level.block.Blocks.REDSTONE_BLOCK.defaultBlockState(), 3);
+            h.runAfterDelay(130, () -> {
+                h.assertTrue(level.getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) == 11, "Hold failed to keep signal-opened door open");
+                level.removeBlock(pos.relative(facing.getCounterClockWise()), false);
+                level.removeBlock(pos.below(), false);
+                h.runAfterDelay(120, () -> {
+                    h.assertTrue(level.getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) == 11, "Hold pulse must latch until closure");
+                    BaseAirlockOpenCloseProcedure.requestSignal(level, pos, false, false);
+                    h.runAfterDelay(15, () -> {
+                    h.assertTrue(level.getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) == 0, "Explicit close failed while held open");
+                    h.assertTrue(!level.getBlockEntity(pos).getPersistentData().getBooleanOr(net.mcreator.ssc.access.AirlockSignals.HOLD, true), "Closing did not reset hold latch");
+                    level.setBlock(pos.relative(facing), net.minecraft.world.level.block.Blocks.REDSTONE_BLOCK.defaultBlockState(), 3);
+                    level.setBlock(pos.relative(facing.getCounterClockWise()), net.minecraft.world.level.block.Blocks.REDSTONE_BLOCK.defaultBlockState(), 3);
+                    h.runAfterDelay(15, () -> {
+                        h.assertTrue(level.getBlockEntity(pos).getPersistentData().getBooleanOr("bolted", false), "Bolt signal ignored");
+                        h.assertTrue(level.getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) != 11, "Open signal bypassed bolts");
+                        h.succeed();
+                    });
+                    });
+                });
+            });
+        });
+        TESTS.put("airlock_apc_twenty_watts_and_cable_break", h -> {
+            for (int x = 1; x <= 7; x++) h.setBlock(x, 1, 1,
+                    Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
+            h.setBlock(1, 2, 1, Ssc14ModBlocks.APC.get());
+            var pos = h.absolutePos(new BlockPos(7, 3, 1));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            var door = h.getLevel().getBlockEntity(pos);
+            h.assertTrue(!door.getPersistentData().getBooleanOr("powered", true), "New isolated door has free power");
+            var apc = (APCBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
+            apc.setStoredEnergySimulation(100000);
+            EnergyNetworkManager.updatePosition(h.getLevel(), h.absolutePos(new BlockPos(3, 1, 1)));
+            awaitEnergy(h, () -> {
+                h.assertTrue(door.getPersistentData().getBooleanOr("powered", false), "Connected airlock has no power");
+                long before = apc.getStoredEnergy();
+                h.runAfterDelay(20, () -> {
+                    h.assertTrue(before - apc.getStoredEnergy() == 20, "Airlock did not draw exactly 20 J in 20 ticks");
+                    h.getLevel().destroyBlock(h.absolutePos(new BlockPos(3, 1, 1)), false);
+                    h.runAfterDelay(1, () -> {
+                        h.assertTrue(!door.getPersistentData().getBooleanOr("powered", true), "Airlock stayed powered after cable cut");
+                        h.succeed();
+                    });
+                });
+            });
+        });
+        TESTS.put("airlock_crowbar_respects_bolts_and_opens_without_access", h -> {
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            player.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 1.5);
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
+                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.CROWBAR.get()));
+            var data = h.getLevel().getBlockEntity(pos).getPersistentData();
+            data.putBoolean("powered", false);
+            data.putBoolean("Capitan", true);
+            data.putBoolean("bolted", true);
+            net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos);
+            h.runAfterDelay(41, () -> {
+                net.mcreator.ssc.access.AirlockManualOpening.advance(player);
+                h.assertTrue(h.getLevel().getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) != 11, "Crowbar bypassed bolts");
+                data.putBoolean("bolted", false);
+                net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos);
+                h.runAfterDelay(41, () -> {
+                    net.mcreator.ssc.access.AirlockManualOpening.advance(player);
+                    h.runAfterDelay(14, () -> {
+                        h.assertTrue(h.getLevel().getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) == 11, "Crowbar failed to open unpowered door without ID");
+                        h.assertTrue(h.getLevel().getBlockState(pos.above()).is(Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get()), "Upper collision did not open");
+                        net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos);
+                        h.runAfterDelay(41, () -> {
+                            net.mcreator.ssc.access.AirlockManualOpening.advance(player);
+                            h.runAfterDelay(14, () -> {
+                                h.assertTrue(h.getLevel().getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) == 9, "Crowbar failed to close unpowered door");
+                                h.succeed();
+                            });
+                        });
+                    });
+                });
+            });
+        });
+        TESTS.put("airlock_multitool_pulse_restores_without_mending", h -> {
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            var door = h.getLevel().getBlockEntity(pos);
+            var data = door.getPersistentData();
+            net.mcreator.ssc.access.AirlockPower.supply(h.getLevel(), pos, true);
+            net.mcreator.ssc.access.AirlockWirePulses.start(door, 0);
+            h.assertTrue(!data.getBooleanOr("powered", true), "Either power wire pulse must disable the door");
+            net.mcreator.ssc.access.AirlockWirePulses.start(door, 1);
+            h.assertTrue(!data.getBooleanOr("powered", true), "Two power pulses must disable power");
+            net.mcreator.ssc.access.AirlockWirePulses.start(door, 2);
+            h.assertTrue(!data.getBooleanOr("bolted", false), "Unpowered pulse changed bolts");
+            net.mcreator.ssc.access.AirlockWirePulses.start(door, 7);
+            h.assertTrue(!data.getBooleanOr("safe", true), "Safety pulse not applied");
+            // A physical cut during the pulse must survive expiry.
+            for (int i = 1; i <= 8; i++) if (data.getIntOr("log_cab_" + i, -1) == 7) data.putBoolean("cabel_" + i, true);
+            h.runAfterDelay(202, () -> {
+                h.assertTrue(data.getBooleanOr("powered", false), "Power pulse did not expire");
+                h.assertTrue(!data.getBooleanOr("safe", true), "Pulse expiry mended a physical wire");
+                net.mcreator.ssc.access.AirlockWirePulses.start(door, 2);
+                h.assertTrue(data.getBooleanOr("bolted", false), "Powered pulse did not lower bolts");
+                net.mcreator.ssc.access.AirlockWirePulses.start(door, 2);
+                h.assertTrue(!data.getBooleanOr("bolted", true), "Second pulse did not raise bolts");
+                h.succeed();
+            });
+        });
+        TESTS.put("airlock_welding_completion_and_movement_cancel", h -> {
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            player.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 1.5);
+            var tool = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ACTIVE_WELDER.get());
+            var fuel = new net.minecraft.nbt.CompoundTag();
+            fuel.putDouble("fuel", 1000);
+            tool.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(fuel));
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, tool);
+            net.mcreator.ssc.access.AirlockWelding.interact(player, pos.above());
+            var data = h.getLevel().getBlockEntity(pos).getPersistentData();
+            h.assertTrue(!data.getBooleanOr("welded", false), "Welding completed immediately");
+            h.runAfterDelay(101, () -> {
+                net.mcreator.ssc.access.AirlockWelding.advance(player);
+                h.assertTrue(data.getBooleanOr("welded", false), "Welding did not complete");
+                h.assertTrue(tool.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA).copyTag().getDoubleOr("fuel", 0) == 900, "Incorrect welding fuel charge");
+                net.mcreator.ssc.access.AirlockWelding.interact(player, pos);
+                player.setPos(player.getX() + 1, player.getY(), player.getZ() - 1);
+                net.mcreator.ssc.access.AirlockWelding.advance(player);
+                h.runAfterDelay(101, () -> {
+                    net.mcreator.ssc.access.AirlockWelding.advance(player);
+                    h.assertTrue(data.getBooleanOr("welded", false), "Movement failed to cancel unwelding");
+                    h.assertTrue(tool.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA).copyTag().getDoubleOr("fuel", 0) == 900, "Cancelled welding consumed fuel");
+                    h.succeed();
+                });
+            });
+        });
+        TESTS.put("airlock_floor_preserves_tile_collision", h -> {
+            var level = h.getLevel();
+            var root = h.absolutePos(new BlockPos(2, 3, 2));
+            var floor = root.below();
+            level.setBlock(root, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            h.assertTrue(level.getBlockState(floor).is(Ssc14ModBlocks.AIRLOCK_THRESHOLD.get()), "Missing below-floor seal");
+            var crawl = Block.box(2, 0, 2, 14, 10, 14);
+            h.assertTrue(net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(
+                    level.getBlockState(floor).getCollisionShape(level, floor), crawl, net.minecraft.world.phys.shapes.BooleanOp.AND),
+                    "Closed door permits crawling underneath");
+            level.setBlock(floor.below(), Ssc14ModBlocks.SHEATHING.get().defaultBlockState(), 3);
+            level.setBlock(floor, Ssc14ModBlocks.TITLE_STEEL.get().defaultBlockState(), 3);
+            var closed = level.getBlockState(floor).getCollisionShape(level, floor);
+            h.assertTrue(net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(closed, crawl, net.minecraft.world.phys.shapes.BooleanOp.AND),
+                    "Installing a tile removed the door seal");
+            level.setBlock(root, level.getBlockState(root).setValue(net.mcreator.ssc.block.BaseAirlockD1Block.ARL_VARIAT, 11), 3);
+            var open = level.getBlockState(floor).getCollisionShape(level, floor);
+            h.assertTrue(!net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(open, crawl, net.minecraft.world.phys.shapes.BooleanOp.AND),
+                    "Open doorway retains closed underfloor collision");
+            h.assertTrue(net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(open, Block.box(2, 13, 2, 14, 16, 14),
+                    net.minecraft.world.phys.shapes.BooleanOp.AND), "Opening door removed tile collision");
+            level.setBlock(root, Blocks.AIR.defaultBlockState(), 3);
+            h.assertTrue(level.getBlockState(floor).is(Ssc14ModBlocks.TITLE_STEEL.get()), "Removing door destroyed tile");
+            h.succeed();
+        });
+        TESTS.put("airlock_seven_panel_indicators", h -> {
+            var data = new net.minecraft.nbt.CompoundTag();
+            String[] functions = {"powered", "bolted", "timer", "ai_access", "logs", "diods", "safe"};
+            for (String function : functions) data.putBoolean(function, true);
+            data.putBoolean("energy_cabel_1", true);
+            data.putBoolean("energy_cabel_2", true);
+            for (String function : functions) {
+                h.assertTrue(net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, function, 0), "Enabled indicator missing: " + function);
+                if (!function.equals("powered")) {
+                    data.putBoolean(function, false);
+                    h.assertTrue(!net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, function, 0), "Disabled indicator still lit: " + function);
+                    data.putBoolean(function, true);
+                }
+            }
+            data.putBoolean("energy_cabel_1", false);
+            h.assertTrue(net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, "powered", 0)
+                    && !net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, "powered", 10), "Single power wire must produce blinking indication");
+            data.putBoolean("powered", false);
+            for (String function : functions)
+                h.assertTrue(!net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, function, 0), "Unpowered indicator still lit: " + function);
+            h.succeed();
+        });
+        TESTS.put("airlock_controller_target_and_cut_bolts", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            var level = h.getLevel();
+            level.setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
+            net.mcreator.ssc.access.AirlockPower.supply(level, pos, true);
+            var controller = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.AIRLOCK_CONTROLLER.get());
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, controller);
+            var data = level.getBlockEntity(pos).getPersistentData();
+            net.mcreator.ssc.procedures.AirlockController_DEBUG_prProcedure.execute(level,
+                    pos.getX(), pos.getY() + 1, pos.getZ(), level.getBlockState(pos.above()), player, controller);
+            h.assertTrue(data.getBooleanOr("bolted", false), "Upper-part click did not lower bolts on the root");
+            data.putBoolean("_ssc14_bolt_wire_cut", true);
+            net.mcreator.ssc.procedures.AirlockController_DEBUG_prProcedure.execute(level,
+                    pos.getX(), pos.getY(), pos.getZ(), level.getBlockState(pos), player, controller);
+            h.assertTrue(data.getBooleanOr("bolted", false), "Controller lifted bolts with a cut bolt wire");
+            data.putBoolean("_ssc14_bolt_wire_cut", false);
+            net.mcreator.ssc.procedures.AirlockController_DEBUG_prProcedure.execute(level,
+                    pos.getX(), pos.getY(), pos.getZ(), level.getBlockState(pos), player, controller);
+            h.assertTrue(!data.getBooleanOr("bolted", false), "Controller did not lift bolts after wire repair");
+            net.mcreator.ssc.procedures.AirlockController_Mode_SwitchingProcedure.execute(controller);
+            net.mcreator.ssc.procedures.AirlockController_DEBUG_prProcedure.execute(level,
+                    pos.getX(), pos.getY(), pos.getZ(), level.getBlockState(pos), player, controller);
+            h.assertTrue(data.getBooleanOr("emergency_acs", false), "Emergency mode was not enabled");
+            data.putBoolean("powered", false);
+            net.mcreator.ssc.procedures.AirlockController_DEBUG_prProcedure.execute(level,
+                    pos.getX(), pos.getY(), pos.getZ(), level.getBlockState(pos), player, controller);
+            h.assertTrue(data.getBooleanOr("emergency_acs", false), "Unpowered door accepted mode changes");
+            h.succeed();
+        });
+        TESTS.put("airlock_disassembly_requires_isolation", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            var door = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get();
+            h.getLevel().setBlock(pos, door.defaultBlockState()
+                    .setValue(net.mcreator.ssc.block.BaseAirlockD1Block.PANEL_OPEN, true), 3);
+            player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
+            player.setShiftKeyDown(true);
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
+                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.SPANNER.get()));
+            var data = h.getLevel().getBlockEntity(pos).getPersistentData();
+            data.putBoolean("welded", true);
+            data.putBoolean("powered", true);
+            net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos);
+            h.assertTrue(h.getLevel().getBlockState(pos).is(door), "Powered door was dismantled");
+            data.putBoolean("powered", false);
+            data.putInt(net.mcreator.ssc.access.AirlockMaintenance.ARMOR, 2);
+            net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos);
+            h.assertTrue(h.getLevel().getBlockState(pos).is(door), "Armored door was dismantled");
+            data.putInt(net.mcreator.ssc.access.AirlockMaintenance.ARMOR, 0);
+            data.putBoolean("welded", false);
+            net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos);
+            h.assertTrue(h.getLevel().getBlockState(pos).is(door), "Unwelded door was dismantled");
+            data.putBoolean("welded", true);
+            net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos);
+            h.assertTrue(h.getLevel().getBlockState(pos).isAir() && h.getLevel().getBlockState(pos.above()).isAir(),
+                    "Disassembly left part of the door behind");
+            net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos);
+            int count = h.getLevel().getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class,
+                    new net.minecraft.world.phys.AABB(pos).inflate(1)).stream()
+                    .filter(e -> e.getItem().is(door.asItem())).mapToInt(e -> e.getItem().getCount()).sum();
+            h.assertTrue(count == 1, "Disassembly must drop exactly one door");
+            h.succeed();
+        });
+        TESTS.put("airlock_reinforcement_materials_and_fuel", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
+                    .setValue(BaseAirlockD1Block.PANEL_OPEN, true), 3);
+            player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
+            protectionSteps(h, player, pos, new int[][]{{0,1,40},{1,2,60},{1,1,200},{2,0,80}}, 0);
+        });
+        TESTS.put("airlock_plasteel_grille_outer_layer", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
+                    .setValue(BaseAirlockD1Block.PANEL_OPEN, true), 3);
+            h.getLevel().getBlockEntity(pos).getPersistentData().putBoolean("powered", false);
+            player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
+            protectionSteps(h, player, pos, new int[][]{
+                    {3,3,40},{1,4,100},{4,5,20},{3,6,40},{1,7,100},
+                    {1,6,300},{2,5,80},{5,4,10},{1,3,300},{2,0,80}}, 0);
+        });
+        TESTS.put("airlock_protection_cancels_when_panel_closes", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            var open = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState().setValue(BaseAirlockD1Block.PANEL_OPEN, true);
+            h.getLevel().setBlock(pos, open, 3);
+            player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
+            var stack = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.STEEL.get(), 2);
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, stack);
+            net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
+            h.getLevel().setBlock(pos, open.setValue(BaseAirlockD1Block.PANEL_OPEN, false), 3);
+            h.runAfterDelay(41, () -> {
+                net.mcreator.ssc.access.AirlockMaintenance.advance(player);
+                h.assertTrue(stack.getCount() == 2, "Canceled job consumed plates");
+                h.assertTrue(!net.mcreator.ssc.access.AirlockMaintenance.isArmored(h.getLevel(), pos), "Closed panel accepted armor");
+                h.succeed();
+            });
+        });
+        TESTS.put("airlock_wires_bound_to_panel", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var pos = h.absolutePos(new BlockPos(2, 2, 2));
+            var other = pos.offset(2, 0, 0);
+            var door = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
+                    .setValue(net.mcreator.ssc.block.BaseAirlockD1Block.PANEL_OPEN, true);
+            h.getLevel().setBlock(pos, door, 3);
+            h.getLevel().setBlock(other, door, 3);
+            player.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 1.5);
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
+                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.NIPPERS.get()));
+            var buffer = new net.minecraft.network.FriendlyByteBuf(io.netty.buffer.Unpooled.buffer());
+            try {
+                buffer.writeBlockPos(pos);
+                player.containerMenu = new net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu(1, player.getInventory(), buffer);
+            } finally { buffer.release(); }
+            var data = h.getLevel().getBlockEntity(pos).getPersistentData();
+            for (int wire = 1; wire <= 8; wire++) {
+                net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, wire);
+                h.assertTrue(data.getBooleanOr("cabel_" + wire, false), "Wire was not cut on the bound door");
+                net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, wire);
+                h.assertTrue(!data.getBooleanOr("cabel_" + wire, false), "Wire was not mended");
+            }
+            net.mcreator.ssc.access.AirlockWireService.toggle(player, other, 1);
+            h.assertTrue(!h.getLevel().getBlockEntity(other).getPersistentData().getBooleanOr("cabel_1", false),
+                    "Panel edited another door");
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, net.minecraft.world.item.ItemStack.EMPTY);
+            net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, 1);
+            h.assertTrue(!data.getBooleanOr("cabel_1", false), "Wire cut without nippers");
+            player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
+                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.MULTITUL.get()));
+            data.putInt("log_cab_1", 7);
+            data.putBoolean("cabel_1", true);
+            net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, 1);
+            h.assertTrue(!data.contains("_ssc14_wire_pulse_7"), "Multitool pulsed a severed wire");
+            data.putBoolean("cabel_1", false);
+            net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, 1);
+            h.assertTrue(data.contains("_ssc14_wire_pulse_7") && !data.getBooleanOr("cabel_1", true),
+                    "Multitool must pulse without cutting the wire");
+            h.getLevel().setBlock(pos, h.getLevel().getBlockState(pos)
+                    .setValue(net.mcreator.ssc.block.BaseAirlockD1Block.PANEL_OPEN, false), 3);
+            h.assertTrue(!player.containerMenu.stillValid(player), "Closed panel remained usable");
+            h.succeed();
+        });
+        TESTS.put("airlock_current_inventory_access", h -> {
+            var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
+            var requirement = new net.minecraft.nbt.CompoundTag();
+            requirement.putBoolean("Medical", true);
+            player.getPersistentData().putBoolean("Medical", true);
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
+                    "Stale player permissions granted entry without an ID card");
+            var card = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_MEDIC.get());
+            player.getInventory().setItem(9, card);
+            h.assertTrue(net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
+                    "Card in inventory must grant access immediately without a player tick");
+            net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA,
+                    card, tag -> tag.putBoolean("Medical", false));
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
+                    "Edited card permissions must take effect immediately");
+            player.getInventory().setItem(9, new net.minecraft.world.item.ItemStack(
+                    net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_MEDIC.get()));
+            net.mcreator.ssc.access.PlayerAccessService.tick(player);
+            player.getInventory().setItem(9, net.minecraft.world.item.ItemStack.EMPTY);
+            h.assertTrue(!net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
+                    "Removing the card must revoke access before the next player tick");
+            h.assertTrue(net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, true),
+                    "Emergency access must remain available");
+            h.assertTrue(net.mcreator.ssc.access.AirlockAccessPolicy.permits(new net.minecraft.nbt.CompoundTag(), player, false),
+                    "Unrestricted doors must remain accessible");
+            h.succeed();
+        });
         TESTS.put("energy_many_lamps_exact_demand", h -> {
             var world = h.getLevel();
             var origin = h.absolutePos(new BlockPos(0, 35, 0));
@@ -405,7 +866,8 @@ public final class AuditTests {
         });
         TESTS.put("gravity_charge_discharge",h->{
             var local=new BlockPos(3,2,3);var pos=h.absolutePos(local);h.setBlock(local,Ssc14ModBlocks.GRAVITY_GENERATOR.get());
-            var be=h.getLevel().getBlockEntity(pos);be.getPersistentData().putBoolean("active",true);
+            net.mcreator.ssc.access.AirlockPower.supply(h.getLevel(), pos, true);
+        var be=h.getLevel().getBlockEntity(pos);be.getPersistentData().putBoolean("active",true);
             for(int i=0;i<402;i++)net.mcreator.ssc.procedures.GravGenTICprocedureProcedure.execute(h.getLevel(),pos.getX(),pos.getY(),pos.getZ(),h.getBlockState(local));
             var prop=(net.minecraft.world.level.block.state.properties.BooleanProperty)h.getBlockState(local).getBlock().getStateDefinition().getProperty("gravity");
             h.assertTrue(h.getBlockState(local).getValue(prop),"Charged generator did not enable gravity");
@@ -574,7 +1036,7 @@ public final class AuditTests {
     @SubscribeEvent public static void tests(RegisterGameTestsEvent event){
         TESTS.forEach((name,body)->{
             var env=event.registerEnvironment(id(name));
-            var data=new TestData<>(env,Identifier.parse("ssc_14:audit_empty"),600,0,true);
+            var data=new TestData<>(env,Identifier.parse("ssc_14:audit_empty"),name.equals("airlock_plasteel_grille_outer_layer") ? 1400 : 600,0,true);
             event.registerTest(id(name),new FunctionGameTestInstance(ResourceKey.create(Registries.TEST_FUNCTION,id(name)),data));
         });
     }
@@ -636,9 +1098,49 @@ public final class AuditTests {
             });
         });
     }
+    private static void protectionSteps(GameTestHelper h, net.minecraft.world.entity.player.Player player,
+            BlockPos pos, int[][] steps, int index) {
+        if (index == steps.length) {
+            h.succeed(); return;
+        }
+        net.minecraft.world.item.Item item = switch (steps[index][0]) {
+            case 0 -> net.mcreator.ssc.init.Ssc14ModItems.STEEL.get();
+            case 1 -> net.mcreator.ssc.init.Ssc14ModItems.ACTIVE_WELDER.get();
+            case 2 -> net.mcreator.ssc.init.Ssc14ModItems.CROWBAR.get();
+            case 3 -> net.mcreator.ssc.init.Ssc14ModItems.PLASTEEL.get();
+            case 4 -> net.mcreator.ssc.init.Ssc14ModItems.ROOD.get();
+            default -> net.mcreator.ssc.init.Ssc14ModItems.NIPPERS.get();
+        };
+        var stack = new net.minecraft.world.item.ItemStack(item, steps[index][0] == 0 || steps[index][0] == 3 || steps[index][0] == 4 ? 2 : 1);
+        if (steps[index][0] == 1)
+            net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("fuel", 1000));
+        player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, stack);
+        int before = h.getLevel().getBlockEntity(pos).getPersistentData().getIntOr(net.mcreator.ssc.access.AirlockMaintenance.ARMOR, 0);
+        net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
+        net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
+        h.assertTrue(h.getLevel().getBlockEntity(pos).getPersistentData().getIntOr(net.mcreator.ssc.access.AirlockMaintenance.ARMOR, 0) == before, "Work completed without delay");
+        h.runAfterDelay(steps[index][2] + 1, () -> {
+            var area = new net.minecraft.world.phys.AABB(pos).inflate(2);
+            int dropsBefore = h.getLevel().getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class, area).stream().mapToInt(e -> e.getItem().getCount()).sum();
+            net.mcreator.ssc.access.AirlockMaintenance.advance(player);
+            h.assertTrue(h.getLevel().getBlockEntity(pos).getPersistentData().getIntOr(net.mcreator.ssc.access.AirlockMaintenance.ARMOR, 0) == steps[index][1], "Wrong protection stage " + index);
+            if (steps[index][0] == 1)
+                h.assertTrue(stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA).copyTag().getDoubleOr("fuel", 0) == 900, "Welder charged incorrectly");
+            h.getLevel().getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class,
+                    new net.minecraft.world.phys.AABB(pos).inflate(2)).forEach(drop -> {
+                        drop.setNoGravity(true); drop.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
+                    });
+            int dropsAfter = h.getLevel().getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class, area).stream().mapToInt(e -> e.getItem().getCount()).sum();
+            h.assertTrue(dropsAfter - dropsBefore == (steps[index][0] == 2 || steps[index][0] == 5 ? 2 : 0), "Wrong material refund at stage " + index);
+            net.mcreator.ssc.access.AirlockMaintenance.advance(player);
+            h.assertTrue(h.getLevel().getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class, area).stream().mapToInt(e -> e.getItem().getCount()).sum() == dropsAfter, "Repeated completion duplicated materials");
+            protectionSteps(h, player, pos, steps, index + 1);
+        });
+    }
     private static void door(GameTestHelper h,boolean denied){
         BlockPos local=new BlockPos(3,2,3), pos=h.absolutePos(local);
         h.setBlock(local,Ssc14ModBlocks.BASE_AIRLOCK_D_1.get());
+        net.mcreator.ssc.access.AirlockPower.supply(h.getLevel(), pos, true);
         var be=h.getLevel().getBlockEntity(pos);
         if(denied)be.getPersistentData().putBoolean("Capitan",true);
         var player=h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);

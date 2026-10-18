@@ -1,4 +1,6 @@
 {
+  "message.ssc_14.airlock_work": "Работа со шлюзом: осталось %s с",
+  "message.ssc_14.airlock_log": "Журнал шлюза (последние 16 событий):",
   "biome.ssc_14.spaceb": "Космос",
   "item.ssc_14.rod_floor": "Внешний каркас",
   "item.ssc_14.rood": "Стержень",
