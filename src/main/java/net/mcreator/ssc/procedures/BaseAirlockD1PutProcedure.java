@@ -54,7 +54,7 @@ public class BaseAirlockD1PutProcedure {
         nbt.putBoolean("_ssc14_supply_powered", false);
 		// Persist the geometry choice so the renderer and future multiblock placement
 		// use one authoritative value. Legacy doors remain the standard one-block width.
-		nbt.putInt("airlock_width", 1);
+		net.mcreator.ssc.access.AirlockGeometry.initialize(nbt);
         nbt.putBoolean("energy_cabel_1", true);
         nbt.putBoolean("energy_cabel_2", true);
 
