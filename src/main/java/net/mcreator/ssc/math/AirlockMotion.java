@@ -7,16 +7,13 @@ public final class AirlockMotion {
     public static final int BELOW_FLOOR = PIXELS_PER_BLOCK;
     public static final float FRAME_WIDTH = 1;
     public static final float RETRACTED_LEAF_WIDTH = 0.5f;
-    private static final int MIN_WIDTH = 1;
-    private static final int MAX_WIDTH = 3;
 
     private AirlockMotion() { }
 
     public record Pose(float leftOffset, float rightOffset, float leafScale) { }
 
     public static float leafWidth(int widthBlocks) {
-        if (widthBlocks < MIN_WIDTH || widthBlocks > MAX_WIDTH)
-            throw new IllegalArgumentException("Airlock width must be 1..3 blocks");
+        if (widthBlocks != 1) throw new IllegalArgumentException("Airlock width is fixed at one block");
         return widthBlocks * PIXELS_PER_BLOCK / 2f - FRAME_WIDTH;
     }
 
