@@ -133,6 +133,7 @@ sourceSets {
 dependencies {
     domainTestImplementation platform('org.junit:junit-bom:6.1.3')
     domainTestImplementation 'org.junit.jupiter:junit-jupiter'
+    domainTestImplementation 'org.junit.platform:junit-platform-launcher'
     domainTestRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation platform('org.junit:junit-bom:6.1.3')
     testImplementation 'org.junit.jupiter:junit-jupiter'
@@ -143,12 +144,12 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-tasks.register('domainTest', Test) {
+tasks.register('domainTest', JavaExec) {
     description = 'Tests domain rules without starting Minecraft.'
     group = 'verification'
-    testClassesDirs = sourceSets.domainTest.output.classesDirs
-    classpath = sourceSets.domainTest.runtimeClasspath
-    useJUnitPlatform()
+    dependsOn tasks.named('domainTestClasses')
+    classpath = sourceSets.domainTest.runtimeClasspath + sourceSets.domainTest.output
+    mainClass = 'net.mcreator.ssc.DomainTestLauncher'
 }
 
 tasks.named('check') {

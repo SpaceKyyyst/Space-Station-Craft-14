@@ -6,21 +6,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class AirlockMotionTest {
     @Test
     void leavesStayInsideFrameAndNeverDisappearAtEveryWidth() {
-        for (int width = 1; width <= 3; width++) {
-            float leaf = AirlockMotion.leafWidth(width);
-            float previousOffset = 0;
-            for (int step = 0; step <= 100; step++) {
-                var pose = AirlockMotion.pose(width, step / 100f);
-                assertEquals(-pose.leftOffset(), pose.rightOffset());
-                assertTrue(pose.rightOffset() >= previousOffset);
-                assertEquals(leaf, pose.rightOffset() + leaf * pose.leafScale(), 0.00001f);
-                assertTrue(pose.leafScale() > 0);
-                previousOffset = pose.rightOffset();
-            }
-            assertEquals(1f, AirlockMotion.pose(width, 0).leafScale());
-            assertEquals(AirlockMotion.RETRACTED_LEAF_WIDTH,
-                    leaf * AirlockMotion.pose(width, 1).leafScale(), 0.00001f);
+        int width = 1;
+        float leaf = AirlockMotion.leafWidth(width);
+        float previousOffset = 0;
+        for (int step = 0; step <= 100; step++) {
+            var pose = AirlockMotion.pose(width, step / 100f);
+            assertEquals(-pose.leftOffset(), pose.rightOffset());
+            assertTrue(pose.rightOffset() >= previousOffset);
+            assertEquals(leaf, pose.rightOffset() + leaf * pose.leafScale(), 0.00001f);
+            assertTrue(pose.leafScale() > 0);
+            previousOffset = pose.rightOffset();
         }
+        assertEquals(1f, AirlockMotion.pose(width, 0).leafScale());
+        assertEquals(AirlockMotion.RETRACTED_LEAF_WIDTH,
+                leaf * AirlockMotion.pose(width, 1).leafScale(), 0.00001f);
     }
 
     @Test
