@@ -26,8 +26,29 @@ import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 import io.netty.buffer.Unpooled;
+import com.lowdragmc.lowdraglib2.gui.ui.ModularUI;
+import com.ssc14.handy.api.BlockEntityUIProvider;
+import com.ssc14.handy.window.WindowProperties;
+import net.mcreator.ssc.gravity.ui.GravityGeneratorWindow;
+import net.minecraft.core.GlobalPos;
+import net.minecraft.world.entity.player.Player;
 
-public class GravityGeneratorBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+public class GravityGeneratorBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, BlockEntityUIProvider {
+	@Override
+	public boolean hasAccess(Player player, GlobalPos source) {
+		return GravityGeneratorWindow.canAccess(this, player, source);
+	}
+
+	@Override
+	public ModularUI getUI(GlobalPos source, Player player) {
+		return GravityGeneratorWindow.create(this, source, player);
+	}
+
+	@Override
+	public WindowProperties getWindowProperties() {
+		return new WindowProperties().width(GravityGeneratorWindow.WIDTH).height(GravityGeneratorWindow.HEIGHT)
+				.minWidth(GravityGeneratorWindow.WIDTH).minHeight(GravityGeneratorWindow.HEIGHT);
+	}
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(0, ItemStack.EMPTY);
 
 	public GravityGeneratorBlockEntity(BlockPos position, BlockState state) {
