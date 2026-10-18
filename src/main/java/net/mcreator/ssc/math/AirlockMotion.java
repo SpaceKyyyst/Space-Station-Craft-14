@@ -1,5 +1,7 @@
 package net.mcreator.ssc.math;
 
+import net.mcreator.ssc.access.AirlockGeometry;
+
 /** Pure geometry for two telescopic leaves, measured in model pixels. */
 public final class AirlockMotion {
     public static final int PIXELS_PER_BLOCK = 16;
@@ -7,14 +9,14 @@ public final class AirlockMotion {
     public static final int BELOW_FLOOR = PIXELS_PER_BLOCK;
     public static final float FRAME_WIDTH = 1;
     public static final float RETRACTED_LEAF_WIDTH = 0.5f;
-    private static final int MAX_WIDTH = 3;
 
     private AirlockMotion() { }
 
     public record Pose(float leftOffset, float rightOffset, float leafScale) { }
 
     public static float leafWidth(int widthBlocks) {
-        if (widthBlocks < 1 || widthBlocks > MAX_WIDTH) throw new IllegalArgumentException("Airlock width must be 1..3 blocks");
+        if (widthBlocks < AirlockGeometry.MIN_WIDTH || widthBlocks > AirlockGeometry.MAX_WIDTH)
+            throw new IllegalArgumentException("Airlock width must be 1..3 blocks");
         return widthBlocks * PIXELS_PER_BLOCK / 2f - FRAME_WIDTH;
     }
 
