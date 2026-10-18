@@ -39,7 +39,7 @@ public final class WelderFuelService {
         double nextFuel = Math.max(MINIMUM_FUEL, fuel - FUEL_PER_TICK);
         if (Double.compare(nextFuel, fuel) != 0) writeFuel(stack, nextFuel);
         if (level.getGameTime() % HUD_INTERVAL_TICKS == 0)
-            player.displayClientMessage(Component.literal("Fuel: " + Math.round((nextFuel - 1.0) / 100.0)), true);
+            player.sendSystemMessage(Component.literal("Fuel: " + Math.round((nextFuel - 1.0) / 100.0)), true);
     }
 
     private static void deactivate(ServerLevel level, ServerPlayer player, InteractionHand hand, ItemStack active, double fuel) {
