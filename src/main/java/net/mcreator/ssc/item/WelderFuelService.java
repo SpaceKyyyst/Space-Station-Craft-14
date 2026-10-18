@@ -6,11 +6,11 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.entity.player.Player;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 /** Owns the single server-side fuel tick for an active welder. */
@@ -23,7 +23,7 @@ public final class WelderFuelService {
     private WelderFuelService() {
     }
 
-    public static void tick(ServerLevel level, ServerPlayer player, InteractionHand hand, ItemStack stack) {
+    public static void tick(ServerLevel level, Player player, InteractionHand hand, ItemStack stack) {
         if (!stack.is(Ssc14ModItems.ACTIVE_WELDER.get())) return;
 
         double fuel = fuel(stack);
@@ -38,11 +38,12 @@ public final class WelderFuelService {
 
         double nextFuel = Math.max(MINIMUM_FUEL, fuel - FUEL_PER_TICK);
         if (Double.compare(nextFuel, fuel) != 0) writeFuel(stack, nextFuel);
-        if (level.getGameTime() % HUD_INTERVAL_TICKS == 0)
-            player.sendSystemMessage(Component.literal("Fuel: " + Math.round((nextFuel - 1.0) / 100.0)), true);
+        if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer
+                && level.getGameTime() % HUD_INTERVAL_TICKS == 0)
+            serverPlayer.sendSystemMessage(Component.literal("Fuel: " + Math.round((nextFuel - 1.0) / 100.0)), true);
     }
 
-    private static void deactivate(ServerLevel level, ServerPlayer player, InteractionHand hand, ItemStack active, double fuel) {
+    private static void deactivate(ServerLevel level, Player player, InteractionHand hand, ItemStack active, double fuel) {
         ItemStack inactive = new ItemStack(Ssc14ModItems.WELDING.get());
         inactive.applyComponents(active.getComponentsPatch());
         writeFuel(inactive, fuel);
