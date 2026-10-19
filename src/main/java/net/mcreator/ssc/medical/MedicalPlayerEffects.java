@@ -101,7 +101,7 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
             // A vetoed cleanup is retried only after that tick has advanced.
             state.putLong(LAST_CLEANUP_ATTEMPT, now);
         }
-        var external = state == null ? null : MedicalBlindnessContributions.remaining(state);
+        var external = state == null ? null : MedicalBlindnessContributions.remaining(state, player.getEffect(MobEffects.BLINDNESS));
         if (external == null) {
             player.removeEffect(MobEffects.BLINDNESS);
             return !player.hasEffect(MobEffects.BLINDNESS);
@@ -120,11 +120,6 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
         }
     }
 
-    public static void advanceEffectClock(Player player) {
-        if (!player.level().isClientSide()) {
-            player.getPersistentData().getCompound(OWNERSHIP).ifPresent(MedicalBlindnessContributions::advance);
-        }
-    }
     @Override
     public boolean canAcquirePose() {
         return player.getForcedPose() == null && player.getPose() == Pose.STANDING && !hasExternalSwimming();

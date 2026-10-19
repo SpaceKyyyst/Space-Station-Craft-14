@@ -39,12 +39,14 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 @EventBusSubscriber(modid = "ssc_14")
 public final class MedicalGameTests {
     private static final String[] NAMES = {"medical_build_events", "medical_modes_reset", "medical_blindness_merges",
-            "medical_player_lifecycle", "medical_full_player_tick", "medical_blindness_veto_retry", "medical_blindness_tick_phase"};
+            "medical_player_lifecycle", "medical_full_player_tick", "medical_blindness_veto_retry", "medical_blindness_tick_phase",
+            "medical_blindness_after_effects", "medical_blindness_one_tick"};
     private static final String OWNERSHIP = "ssc_14:medical_effects";
     private static final String VETO = "ssc_14:test_blindness_veto";
     private static final String PROBE = "ssc_14:test_blindness_probe";
     private static final String ATTEMPTS = "ssc_14:test_blindness_attempts";
     private static final String LATE_ADDITION = "ssc_14:test_blindness_late_pre";
+    private static final String AFTER_EFFECTS_DURATION = "ssc_14:test_blindness_after_effects";
 
     private MedicalGameTests() { }
 
@@ -60,6 +62,8 @@ public final class MedicalGameTests {
             registry.register(id(NAMES[4]), MedicalGameTests::fullTick);
             registry.register(id(NAMES[5]), MedicalGameTests::vetoRetry);
             registry.register(id(NAMES[6]), MedicalGameTests::tickPhase);
+            registry.register(id(NAMES[7]), helper -> afterEffects(helper, 40));
+            registry.register(id(NAMES[8]), helper -> afterEffects(helper, 1));
         });
     }
 
@@ -119,6 +123,22 @@ public final class MedicalGameTests {
         NeoForge.EVENT_BUS.post(new PlayerTickEvent.Pre(player));
         helper.assertTrue(player.getEffect(MobEffects.BLINDNESS).getDuration() == 39,
                 "External-only restoration must have exactly the already-ticked remaining duration");
+        helper.succeed();
+    }
+
+    private static void afterEffects(GameTestHelper helper, int duration) {
+        var player = criticalPlayer(helper);
+        player.getPersistentData().putInt(AFTER_EFFECTS_DURATION, duration);
+        player.doTick();
+        helper.assertTrue(player.getEffect(MobEffects.BLINDNESS).getDuration() == duration,
+                "An aiStep addition occurs after tickEffects and must not have ticked yet");
+        player.getPersistentData().putDouble(MedicalPlayerEffects.TOTAL_DAMAGE, 99);
+        NeoForge.EVENT_BUS.post(new PlayerTickEvent.Pre(player));
+        var recovered = player.getEffect(MobEffects.BLINDNESS);
+        helper.assertTrue(recovered != null && recovered.getDuration() == duration,
+                "Recovery must retain all " + duration + " ticks of the after-effects addition");
+        for (int tick = 0; tick < duration; tick++) player.doTick();
+        helper.assertTrue(!player.hasEffect(MobEffects.BLINDNESS), "The external effect must expire only after its real effect ticks");
         helper.succeed();
     }
 
@@ -288,6 +308,17 @@ public final class MedicalGameTests {
         public void onUpdateAbilities() {
             abilityUpdates++;
             super.onUpdateAbilities();
+        }
+        @Override
+        public void aiStep() {
+            super.aiStep();
+            // LivingEntity.tick calls aiStep after baseTick/tickEffects and before
+            // PlayerTick.Post. This fixture does not depend on Post subscriber order.
+            int duration = getPersistentData().getIntOr(AFTER_EFFECTS_DURATION, 0);
+            if (duration > 0) {
+                getPersistentData().remove(AFTER_EFFECTS_DURATION);
+                addEffect(blindness(duration, 1));
+            }
         }
     }
 }

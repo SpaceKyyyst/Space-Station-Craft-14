@@ -3,7 +3,6 @@ package net.mcreator.ssc.procedures;
 import net.mcreator.ssc.medical.MedicalPlayerEffects;
 import net.mcreator.ssc.medical.MedicalStatePolicy;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.bus.api.EventPriority;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
@@ -35,10 +34,4 @@ public final class SSC14CriticalTickProcedure {
         MedicalPlayerEffects.reconcile(player, BLINDNESS_DURATION_TICKS);
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void onPlayerTickPost(PlayerTickEvent.Post event) {
-        // Vanilla has now ticked effects, including additions made by later Pre
-        // subscribers. Advance before ordinary Post subscribers can add new effects.
-        MedicalPlayerEffects.advanceEffectClock(event.getEntity());
-    }
 }
