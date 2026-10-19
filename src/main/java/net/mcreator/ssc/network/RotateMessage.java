@@ -5,17 +5,15 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 
-import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.Identifier;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.SectionPos;
 
-import net.mcreator.ssc.procedures.Objects_Rotate_RRRProcedure;
+import net.mcreator.ssc.rotation.RotateCommand;
 import net.mcreator.ssc.Ssc14Mod;
 
 @EventBusSubscriber
@@ -32,27 +30,15 @@ public record RotateMessage(int eventType, int pressedms) implements CustomPacke
 	}
 
 	public static void handleData(final RotateMessage message, final IPayloadContext context) {
-		if (context.flow() == PacketFlow.SERVERBOUND) {
-			context.enqueueWork(() -> {
-				pressAction(context.player(), message.eventType, message.pressedms);
-			}).exceptionally(e -> {
-				context.connection().disconnect(Component.literal(e.getMessage()));
-				return null;
-			});
+		// Registration uses PayloadRegistrar's MAIN/serverbound handler.
+		if (context.flow() == PacketFlow.SERVERBOUND && context.player() instanceof ServerPlayer player) {
+			RotateCommand.execute(player, message.eventType);
 		}
 	}
 
 	public static void pressAction(Player entity, int type, int pressedms) {
-		Level world = entity.level();
-		double x = entity.getX();
-		double y = entity.getY();
-		double z = entity.getZ();
-		// security measure to prevent arbitrary chunk generation
-		if (!world.getChunkSource().hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)))
-			return;
-		if (type == 0) {
-
-			Objects_Rotate_RRRProcedure.execute(world, entity);
+		if (entity instanceof ServerPlayer player) {
+			RotateCommand.execute(player, type);
 		}
 	}
 
