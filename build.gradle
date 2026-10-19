@@ -117,6 +117,7 @@ sourceSets {
             include 'net/mcreator/ssc/combat/**'
             include 'net/mcreator/ssc/medical/MedicalStatePolicy.java'
             include 'net/mcreator/ssc/medical/MedicalEffectsController.java'
+            include 'net/mcreator/ssc/medical/MedicalPresentationController.java'
             include 'net/mcreator/ssc/atmosphere/**'
             include 'net/mcreator/ssc/energy/ConnectedComponents.java'
             include 'net/mcreator/ssc/energy/EnergyAllocation.java'

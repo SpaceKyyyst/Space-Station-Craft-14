@@ -40,7 +40,8 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 public final class MedicalGameTests {
     private static final String[] NAMES = {"medical_build_events", "medical_modes_reset", "medical_blindness_merges",
             "medical_player_lifecycle", "medical_full_player_tick", "medical_blindness_veto_retry", "medical_blindness_tick_phase",
-            "medical_blindness_after_effects", "medical_blindness_one_tick"};
+            "medical_blindness_after_effects", "medical_blindness_one_tick", "medical_blindness_forced_replacement",
+            "medical_blindness_saved_replacement", "medical_presentation_sync", "medical_presentation_tracking"};
     private static final String OWNERSHIP = "ssc_14:medical_effects";
     private static final String VETO = "ssc_14:test_blindness_veto";
     private static final String PROBE = "ssc_14:test_blindness_probe";
@@ -64,6 +65,10 @@ public final class MedicalGameTests {
             registry.register(id(NAMES[6]), MedicalGameTests::tickPhase);
             registry.register(id(NAMES[7]), helper -> afterEffects(helper, 40));
             registry.register(id(NAMES[8]), helper -> afterEffects(helper, 1));
+            registry.register(id(NAMES[9]), MedicalGameTests::forcedReplacement);
+            registry.register(id(NAMES[10]), MedicalGameTests::savedReplacement);
+            registry.register(id(NAMES[11]), MedicalGameTests::presentationSync);
+            registry.register(id(NAMES[12]), MedicalGameTests::presentationTracking);
         });
     }
 
@@ -240,17 +245,165 @@ public final class MedicalGameTests {
         helper.assertTrue(!replacement.getAbilities().mayBuild, "Clone must preserve Adventure rights");
 
         var reconnecting = criticalPlayer(helper);
-        var savedOwnership = reconnecting.getPersistentData().copy();
+        var savedOwnership = savePlayer(reconnecting);
         NeoForge.EVENT_BUS.post(new EntityLeaveLevelEvent(reconnecting, helper.getLevel()));
         helper.assertTrue(!reconnecting.hasEffect(MobEffects.BLINDNESS) && !reconnecting.getPersistentData().contains(OWNERSHIP),
                 "Leave adapter must release owned state");
-        reconnecting.addEffect(blindness(Integer.MAX_VALUE, 0));
-        reconnecting.getPersistentData().merge(savedOwnership);
+        reconnecting = loadPlayer(helper, savedOwnership);
         NeoForge.EVENT_BUS.post(new EntityJoinLevelEvent(reconnecting, helper.getLevel()));
         helper.assertTrue(!reconnecting.hasEffect(MobEffects.BLINDNESS) && reconnecting.getForcedPose() == null,
                 "Join must reconcile ownership saved before leave");
         helper.assertTrue(!reconnecting.getPersistentData().contains(OWNERSHIP), "Join must clear serialized ownership");
         helper.succeed();
+    }
+
+    private static void forcedReplacement(GameTestHelper helper) {
+        for (boolean merged : new boolean[] {false, true}) {
+            var direct = criticalPlayer(helper);
+            if (merged) direct.addEffect(blindness(40, 1));
+            var directReplacement = copyEffect(direct.getEffect(MobEffects.BLINDNESS));
+            direct.forceAddEffect(directReplacement, null);
+            MedicalPlayerEffects.release(direct);
+            helper.assertTrue(direct.getEffect(MobEffects.BLINDNESS) == directReplacement,
+                    "Immediate cleanup must preserve an equal-valued forced replacement, merged=" + merged);
+            var player = criticalPlayer(helper);
+            if (merged) player.addEffect(blindness(40, 1));
+            var replacement = blindness(600, 2);
+            player.forceAddEffect(replacement, null);
+            // Added after a silent replacement must not adopt that replacement either.
+            player.addEffect(blindness(10, 3));
+            MedicalPlayerEffects.reconcile(player, Integer.MAX_VALUE);
+            MedicalPlayerEffects.release(player);
+            helper.assertTrue(player.getEffect(MobEffects.BLINDNESS) == replacement,
+                    "Cleanup must preserve an unobserved forceAddEffect replacement, merged=" + merged);
+            helper.assertTrue(replacement.getAmplifier() == 3 && replacement.getDuration() == 10,
+                    "Cleanup must not replace the external chain with an obsolete external snapshot");
+            helper.assertTrue(!player.getPersistentData().contains(OWNERSHIP), "A replaced owned instance must yield cleanup ownership");
+        }
+        helper.succeed();
+    }
+
+    private static void savedReplacement(GameTestHelper helper) {
+        for (boolean merged : new boolean[] {false, true}) {
+            var player = criticalPlayer(helper);
+            if (merged) player.addEffect(blindness(40, 1));
+            // Equal details are deliberate: a numerical fingerprint alone cannot prove ownership.
+            var external = copyEffect(player.getEffect(MobEffects.BLINDNESS));
+            player.forceAddEffect(external, null);
+            var saved = savePlayer(player); // No reconciliation between replacement and save.
+            var loaded = loadPlayer(helper, saved);
+            var current = loaded.getEffect(MobEffects.BLINDNESS);
+            NeoForge.EVENT_BUS.post(new EntityJoinLevelEvent(loaded, helper.getLevel()));
+            helper.assertTrue(loaded.getEffect(MobEffects.BLINDNESS) == current,
+                    "Reload must preserve even an equal-valued external replacement, merged=" + merged);
+            helper.assertTrue(!loaded.getPersistentData().contains(OWNERSHIP), "Reload must yield replaced ownership");
+        }
+        // A genuine saved merged chain still owes cleanup, with exact remaining external duration.
+        var owned = criticalPlayer(helper);
+        owned.addEffect(blindness(40, 1));
+        owned.doTick();
+        var loaded = loadPlayer(helper, savePlayer(owned));
+        NeoForge.EVENT_BUS.post(new EntityJoinLevelEvent(loaded, helper.getLevel()));
+        helper.assertTrue(loaded.getEffect(MobEffects.BLINDNESS).getDuration() == 39,
+                "Reloaded genuine ownership must strip SSC and preserve the external duration");
+        for (int tick = 0; tick < 39; tick++) loaded.getEffect(MobEffects.BLINDNESS).tickClient();
+        helper.assertTrue(loaded.getEffect(MobEffects.BLINDNESS).getDuration() == 0, "Reload cleanup must remove hidden SSC");
+        helper.succeed();
+    }
+
+    private static MobEffectInstance copyEffect(MobEffectInstance effect) {
+        return MobEffectInstance.CODEC.parse(net.minecraft.nbt.NbtOps.INSTANCE,
+                MobEffectInstance.CODEC.encodeStart(net.minecraft.nbt.NbtOps.INSTANCE, effect).getOrThrow()).getOrThrow();
+    }
+
+    private static void presentationSync(GameTestHelper helper) {
+        var player = player(helper);
+        var ownerMessages = capturePresentation(player);
+        player.getPersistentData().putDouble(MedicalPlayerEffects.TOTAL_DAMAGE, 100);
+        MedicalPlayerEffects.reconcile(player, 220);
+        helper.assertTrue(ownerMessages.size() == 1, "Critical entry must send presentation to the owning client");
+        var entry = (net.mcreator.ssc.network.MedicalPresentationMessage) ownerMessages.getFirst();
+        helper.assertTrue(entry.active() && entry.matches(player.getId(), player.getUUID(), player.level().dimension().identifier()),
+                "Entry payload must identify the exact critical player and dimension");
+        MedicalPlayerEffects.reconcile(player, 220);
+        helper.assertTrue(ownerMessages.size() == 1, "Unchanged critical state must not broadcast every tick");
+        var tracker = player(helper);
+        var trackingMessages = capturePresentation(tracker);
+        NeoForge.EVENT_BUS.post(new PlayerEvent.StartTracking(tracker, player));
+        helper.assertTrue(trackingMessages.size() == 1, "A new tracking client must receive current presentation");
+        helper.assertTrue(trackingMessages.getFirst().equals(entry), "Tracking initialization must match the owner's presentation");
+        MedicalPlayerEffects.release(player);
+        helper.assertTrue(ownerMessages.size() == 2, "Recovery must release presentation on the owning client");
+        helper.assertTrue(!((net.mcreator.ssc.network.MedicalPresentationMessage) ownerMessages.getLast()).active(),
+                "Recovery payload must explicitly release the client pose");
+        NeoForge.EVENT_BUS.post(new PlayerEvent.PlayerLoggedInEvent(player));
+        helper.assertTrue(ownerMessages.size() == 3, "Login must initialize the owning client even without a state transition");
+        NeoForge.EVENT_BUS.post(new PlayerEvent.PlayerRespawnEvent(player, false));
+        helper.assertTrue(ownerMessages.size() == 4, "Respawn must initialize the replacement client player");
+        helper.succeed();
+    }
+
+    private static List<net.minecraft.network.protocol.common.custom.CustomPacketPayload> capturePresentation(CountingFakePlayer player) {
+        var messages = new java.util.ArrayList<net.minecraft.network.protocol.common.custom.CustomPacketPayload>();
+        player.connection = new net.minecraft.server.network.ServerGamePacketListenerImpl(player.level().getServer(),
+                new net.minecraft.network.Connection(net.minecraft.network.protocol.PacketFlow.SERVERBOUND), player,
+                net.minecraft.server.network.CommonListenerCookie.createInitial(player.getGameProfile(), false)) {
+            @Override
+            public void send(net.minecraft.network.protocol.Packet<?> packet) {
+                if (packet instanceof net.minecraft.network.protocol.common.ClientboundCustomPayloadPacket custom
+                        && custom.payload().type().id().equals(id("medical_presentation"))) messages.add(custom.payload());
+            }
+        };
+        return messages;
+    }
+
+    private static void presentationTracking(GameTestHelper helper) {
+        var player = player(helper);
+        var ownerMessages = capturePresentation(player);
+        var tracker = player(helper);
+        var trackingMessages = capturePresentation(tracker);
+        var chunks = helper.getLevel().getChunkSource();
+        chunks.addEntity(player);
+        try {
+            // Substitute only established subscription membership, not our publisher.
+            // The real ChunkMap broadcaster writes to a captured connection boundary.
+            var entities = net.minecraft.server.level.ChunkMap.class.getDeclaredField("entityMap");
+            entities.setAccessible(true);
+            var tracked = ((it.unimi.dsi.fastutil.ints.Int2ObjectMap<?>) entities.get(chunks.chunkMap)).get(player.getId());
+            var subscribers = tracked.getClass().getDeclaredField("seenBy");
+            subscribers.setAccessible(true);
+            @SuppressWarnings("unchecked")
+            var connections = (java.util.Set<net.minecraft.server.network.ServerPlayerConnection>) subscribers.get(tracked);
+            connections.add(tracker.connection);
+            player.getPersistentData().putDouble(MedicalPlayerEffects.TOTAL_DAMAGE, 100);
+            MedicalPlayerEffects.reconcile(player, 220);
+            helper.assertTrue(trackingMessages.size() == 1 && trackingMessages.equals(ownerMessages),
+                    "Entry must publish the same authoritative snapshot to real tracking and owner queues");
+            MedicalPlayerEffects.reconcile(player, 220);
+            helper.assertTrue(trackingMessages.size() == 1, "Unchanged state must not broadcast to trackers");
+            MedicalPlayerEffects.release(player);
+            helper.assertTrue(trackingMessages.size() == 2 && trackingMessages.equals(ownerMessages),
+                    "Recovery must release tracking-client presentation as well as the owner");
+        } catch (ReflectiveOperationException error) {
+            throw new AssertionError("Pinned-platform tracking fixture failed", error);
+        } finally {
+            chunks.removeEntity(player);
+        }
+        helper.succeed();
+    }
+
+    private static net.minecraft.nbt.CompoundTag savePlayer(CountingFakePlayer player) {
+        var output = net.minecraft.world.level.storage.TagValueOutput.createWithContext(
+                net.minecraft.util.ProblemReporter.DISCARDING, player.registryAccess());
+        player.saveWithoutId(output);
+        return output.buildResult();
+    }
+
+    private static CountingFakePlayer loadPlayer(GameTestHelper helper, net.minecraft.nbt.CompoundTag saved) {
+        var player = player(helper);
+        player.load(net.minecraft.world.level.storage.TagValueInput.create(
+                net.minecraft.util.ProblemReporter.DISCARDING, player.registryAccess(), saved));
+        return player;
     }
 
     private static void fullTick(GameTestHelper helper) {

@@ -55,11 +55,16 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
     private static void apply(Player player, boolean critical, int blindnessTicks) {
         var data = player.getPersistentData();
         var saved = data.getCompound(OWNERSHIP).orElse(null);
+        if (saved != null && saved.getBooleanOr(BLINDNESS, false)
+                && !MedicalBlindnessOwnership.owns(player, player.getEffect(MobEffects.BLINDNESS))) {
+            yieldBlindness(saved);
+        }
         var before = saved == null ? MedicalEffectsController.Ownership.NONE
                 : new MedicalEffectsController.Ownership(saved.getBooleanOr(BLINDNESS, false),
                         saved.getBooleanOr(POSE, false), saved.getBooleanOr(POSE_YIELDED, false));
         var adapter = new MedicalPlayerEffects(player);
         var after = MedicalEffectsController.apply(adapter, before, critical, blindnessTicks);
+        if (!after.blindness()) MedicalBlindnessOwnership.clear(player);
         if (after.equals(MedicalEffectsController.Ownership.NONE)) {
             if (saved != null) data.remove(OWNERSHIP);
         } else if (!after.equals(before)) {
@@ -74,6 +79,7 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
         // Ownership must be stored before Size observes the new pose. Movement then
         // rebuilds the box from these dimensions without an every-tick box override.
         if (after.pose() && !before.pose()) player.refreshDimensions();
+        MedicalPresentationSync.changed(player, before.pose(), after.pose());
     }
 
     @Override
@@ -86,13 +92,19 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
         var blindness = new MobEffectInstance(MobEffects.BLINDNESS, ticks, 0, false, false);
         OWN_BLINDNESS_ADDITION.set(blindness);
         try {
-            return player.addEffect(blindness);
+            boolean added = player.addEffect(blindness);
+            if (added && player.getEffect(MobEffects.BLINDNESS) == blindness) {
+                MedicalBlindnessOwnership.acquire(player, blindness);
+                return true;
+            }
+            return false;
         } finally {
             OWN_BLINDNESS_ADDITION.remove();
         }
     }
     @Override
     public boolean removeBlindness() {
+        if (!MedicalBlindnessOwnership.owns(player, player.getEffect(MobEffects.BLINDNESS))) return true;
         var state = player.getPersistentData().getCompound(OWNERSHIP).orElse(null);
         long now = player.level().getGameTime();
         if (state != null) {
@@ -160,11 +172,15 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
     @SubscribeEvent
     public static void onSize(EntityEvent.Size event) {
         if (event.getPose() == Pose.SWIMMING && event.getEntity() instanceof Player player
-                && !player.level().isClientSide() && player.getForcedPose() == Pose.SWIMMING
-                && player.getPersistentData().getCompound(OWNERSHIP).map(state -> state.getBooleanOr(POSE, false)).orElse(false)) {
+                && (player.level().isClientSide() ? MedicalClientPresentation.ownsPose(player) : ownsPose(player))) {
             event.setNewSize(EntityDimensions.scalable(CRITICAL_WIDTH, CRITICAL_HEIGHT)
                     .withEyeHeight(event.getNewSize().eyeHeight()));
         }
+    }
+
+    static boolean ownsPose(Player player) {
+        return player.getForcedPose() == Pose.SWIMMING
+                && player.getPersistentData().getCompound(OWNERSHIP).map(state -> state.getBooleanOr(POSE, false)).orElse(false);
     }
 
     @SubscribeEvent
@@ -174,14 +190,19 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
                 && event.getEffectInstance() != OWN_BLINDNESS_ADDITION.get()) {
             player.getPersistentData().getCompound(OWNERSHIP).ifPresent(state -> {
                 if (!state.getBooleanOr(BLINDNESS, false)) return;
-                if (event.getOldEffectInstance() == null) {
-                    state.putBoolean(BLINDNESS, false);
-                    MedicalBlindnessContributions.clear(state);
+                if (!MedicalBlindnessOwnership.owns(player, event.getOldEffectInstance())) {
+                    yieldBlindness(state);
                 } else {
                     MedicalBlindnessContributions.record(state, event.getOldEffectInstance(), event.getEffectInstance());
                 }
             });
         }
+    }
+
+    private static void yieldBlindness(CompoundTag state) {
+        state.putBoolean(BLINDNESS, false);
+        MedicalBlindnessContributions.clear(state);
+        state.remove(LAST_CLEANUP_ATTEMPT);
     }
 
     @SubscribeEvent
