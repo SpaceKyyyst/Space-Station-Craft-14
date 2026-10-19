@@ -21,6 +21,7 @@ public class Assimilation10PrProcedure {
     private static final double MOD_DEHYDRATED = 1.667;
 
     public static void execute(LevelAccessor world, Entity entity) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
         if (!(entity instanceof LivingEntity livingEntity)) return;
         if (!isHydrationActive(livingEntity)) return;
         
@@ -37,13 +38,13 @@ public class Assimilation10PrProcedure {
         
         int delayTicks = (int) Math.round(BASE_ABSORPTION_TICKS * hydrationModifier);
         
-        Ssc14Mod.queueServerWork(delayTicks, () -> {
+        Ssc14Mod.queueServerWork(serverOwner, delayTicks, () -> {
             // ИСПРАВЛЕНО: Добавлены скобочки к методу .isClientSide() под NeoForge 26.1.2
             if (livingEntity == null || livingEntity.isRemoved() || livingEntity.level().isClientSide()) {
                 return;
             }
             processAbsorption(livingEntity);
-        });
+        }).orThrow();
     }
     
     private static void processAbsorption(LivingEntity entity) {

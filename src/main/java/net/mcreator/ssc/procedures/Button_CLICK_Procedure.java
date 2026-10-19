@@ -15,6 +15,7 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class Button_CLICK_Procedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (false == (getPropertyByName((world.getBlockState(BlockPos.containing(x, y, z))), "active") instanceof BooleanProperty _getbp1 && (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getbp1))) {
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
@@ -29,7 +30,7 @@ public class Button_CLICK_Procedure {
 				if (_bs.getBlock().getStateDefinition().getProperty("active") instanceof BooleanProperty _booleanProp)
 					world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
 			}
-			Ssc14Mod.queueServerWork(20, () -> {
+			Ssc14Mod.queueServerWork(serverOwner, 20, () -> {
 				if (Ssc14ModBlocks.BUTTON.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()
 						&& true == (getPropertyByName((world.getBlockState(BlockPos.containing(x, y, z))), "active") instanceof BooleanProperty _getbp7 && (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getbp7))) {
 					{
@@ -39,7 +40,7 @@ public class Button_CLICK_Procedure {
 							world.setBlock(_pos, _bs.setValue(_booleanProp, false), 3);
 					}
 				}
-			});
+			}).orThrow();
 			// ОТПРАВКА ТРИГГЕРА В СЕТЬ (только на сервере!)
 			if (world instanceof Level _level && !_level.isClientSide()) {
 				net.mcreator.ssc.NetworkManager.trigger(_level, BlockPos.containing(x, y, z), "activate");

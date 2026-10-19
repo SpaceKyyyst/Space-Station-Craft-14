@@ -71,6 +71,7 @@ public class FoodEatingPrProcedure {
 
 	
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (entity == null || itemstack == null || itemstack.isEmpty()) return;
 		if (!(entity instanceof LivingEntity livingEntity)) return;
 
@@ -138,9 +139,9 @@ public class FoodEatingPrProcedure {
 			}
 
 			// Вызываем следующий автоматический шаг через 5 тиков
-			net.mcreator.ssc.Ssc14Mod.queueServerWork(5, () -> {
+			net.mcreator.ssc.Ssc14Mod.queueServerWork(serverOwner, 5, () -> {
 				execute(world, x, y, z, entity, handItem);
-			});
+			}).orThrow();
 		} else {
 			// Прогресс равен 6 — завершаем укус, сбрасываем бары
 			double currentDigestion = livingEntity.getAttributes().hasAttribute(Ssc14ModAttributes.DIGESTIVE_PROCESSES)

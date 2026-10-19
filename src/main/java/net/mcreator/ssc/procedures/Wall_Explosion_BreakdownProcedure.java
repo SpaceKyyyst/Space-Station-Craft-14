@@ -14,7 +14,8 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class Wall_Explosion_BreakdownProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		Ssc14Mod.queueServerWork(1, () -> {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
+		Ssc14Mod.queueServerWork(serverOwner, 1, () -> {
 			if (!world.getEntitiesOfClass(C4CrutchEntEntity.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.5), (z + 0.5))).inflate(2.5 / 2d), e -> true).isEmpty()) {
 				{
 					BlockPos _pos = BlockPos.containing(x, y, z);
@@ -43,6 +44,6 @@ public class Wall_Explosion_BreakdownProcedure {
 					world.destroyBlock(_pos, false);
 				}
 			}
-		});
+		}).orThrow();
 	}
 }

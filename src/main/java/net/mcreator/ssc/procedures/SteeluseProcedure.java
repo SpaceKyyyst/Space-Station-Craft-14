@@ -23,6 +23,7 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class SteeluseProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (entity == null)
 			return;
 		if (entity instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER))
@@ -31,13 +32,13 @@ public class SteeluseProcedure {
 			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.WALL_CARCASE.get()) {
 				if (entity instanceof LivingEntity _livingEntity8 && _livingEntity8.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 					_livingEntity8.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
-				Ssc14Mod.queueServerWork(7, () -> {
+				Ssc14Mod.queueServerWork(serverOwner, 7, () -> {
 					if (entity.getX() + entity.getZ() + entity
 							.getY() == (entity instanceof LivingEntity _livingEntity12 && _livingEntity12.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER) ? _livingEntity12.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue() : 0)
 							&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.STEEL.get()) {
 						if (entity instanceof LivingEntity _livingEntity15 && _livingEntity15.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 							_livingEntity15.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(2);
-						Ssc14Mod.queueServerWork(6, () -> {
+						Ssc14Mod.queueServerWork(serverOwner, 6, () -> {
 							if (entity.getX() + entity.getZ()
 									+ entity.getY() == (entity instanceof LivingEntity _livingEntity19 && _livingEntity19.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 											? _livingEntity19.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
@@ -45,7 +46,7 @@ public class SteeluseProcedure {
 									&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.STEEL.get()) {
 								if (entity instanceof LivingEntity _livingEntity22 && _livingEntity22.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 									_livingEntity22.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(3);
-								Ssc14Mod.queueServerWork(7, () -> {
+								Ssc14Mod.queueServerWork(serverOwner, 7, () -> {
 									if (entity.getX() + entity.getZ()
 											+ entity.getY() == (entity instanceof LivingEntity _livingEntity26 && _livingEntity26.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 													? _livingEntity26.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
@@ -53,7 +54,7 @@ public class SteeluseProcedure {
 											&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.STEEL.get()) {
 										if (entity instanceof LivingEntity _livingEntity29 && _livingEntity29.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 											_livingEntity29.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(4);
-										Ssc14Mod.queueServerWork(6, () -> {
+										Ssc14Mod.queueServerWork(serverOwner, 6, () -> {
 											if (entity.getX() + entity.getZ()
 													+ entity.getY() == (entity instanceof LivingEntity _livingEntity33 && _livingEntity33.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 															? _livingEntity33.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
@@ -61,14 +62,14 @@ public class SteeluseProcedure {
 													&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.STEEL.get()) {
 												if (entity instanceof LivingEntity _livingEntity36 && _livingEntity36.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 													_livingEntity36.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(5);
-												Ssc14Mod.queueServerWork(7, () -> {
+												Ssc14Mod.queueServerWork(serverOwner, 7, () -> {
 													if (entity.getX() + entity.getZ()
 															+ entity.getY() == (entity instanceof LivingEntity _livingEntity40 && _livingEntity40.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER)
 																	? _livingEntity40.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 																	: 0)
 															&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.STEEL.get()
 															&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.WALL_CARCASE.get()) {
-														Ssc14Mod.queueServerWork(6, () -> {
+														Ssc14Mod.queueServerWork(serverOwner, 6, () -> {
 															if (entity instanceof LivingEntity _livingEntity45 && _livingEntity45.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity45.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 															if (entity.getX() + entity.getZ()
@@ -98,32 +99,32 @@ public class SteeluseProcedure {
 																if (entity instanceof LivingEntity _livingEntity58 && _livingEntity58.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																	_livingEntity58.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 															}
-														});
+														}).orThrow();
 													} else {
 														if (entity instanceof LivingEntity _livingEntity60 && _livingEntity60.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 															_livingEntity60.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 													}
-												});
+												}).orThrow();
 											} else {
 												if (entity instanceof LivingEntity _livingEntity62 && _livingEntity62.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 													_livingEntity62.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 											}
-										});
+										}).orThrow();
 									} else {
 										if (entity instanceof LivingEntity _livingEntity64 && _livingEntity64.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 											_livingEntity64.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 									}
-								});
+								}).orThrow();
 							} else {
 								if (entity instanceof LivingEntity _livingEntity66 && _livingEntity66.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 									_livingEntity66.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 							}
-						});
+						}).orThrow();
 					} else {
 						if (entity instanceof LivingEntity _livingEntity68 && _livingEntity68.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 							_livingEntity68.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 					}
-				});
+				}).orThrow();
 			}
 		}
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.STEEL.get()

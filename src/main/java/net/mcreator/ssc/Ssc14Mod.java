@@ -28,6 +28,11 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.mcreator.ssc.world.features.StructureFeature;
 import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.mcreator.ssc.init.*;
+import net.mcreator.ssc.scheduling.ServerTaskScheduler;
+import net.mcreator.ssc.scheduling.SubmissionResult;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.LevelAccessor;
 
 import javax.annotation.Nullable;
 
@@ -122,13 +127,24 @@ public class Ssc14Mod {
 		}
 	}
 
-    public static void queueServerWork(int delay, Runnable action) {
-        var server = net.neoforged.neoforge.server.ServerLifecycleHooks.getCurrentServer();
-        if (server != null && server.isSameThread()) {
-            if (!net.mcreator.ssc.scheduling.ServerTaskScheduler.submit(server, delay, action)) {
-                throw new java.util.concurrent.RejectedExecutionException("Server task queue is unavailable or full");
-            }
-        }
+    /** Worker-safe admission; only the passed server's tick thread executes the action. */
+    public static SubmissionResult queueServerWork(MinecraftServer owner, int delay, Runnable action) {
+        return ServerTaskScheduler.submit(owner, delay, action);
+    }
+
+    public static SubmissionResult queueServerWork(ServerLevel owner, int delay, Runnable action) {
+        ServerTaskScheduler.validateSubmission(delay, action);
+        if (owner == null) return SubmissionResult.INVALID_OWNER;
+        return queueServerWork(owner.getServer(), delay, action);
+    }
+
+    /** Explicit side rejection for integrations that only have a LevelAccessor. */
+    public static SubmissionResult queueServerWork(LevelAccessor owner, int delay, Runnable action) {
+        ServerTaskScheduler.validateSubmission(delay, action);
+        if (owner == null) return SubmissionResult.INVALID_OWNER;
+        if (owner.isClientSide()) return SubmissionResult.CLIENT_SIDE;
+        if (owner instanceof ServerLevel level) return queueServerWork(level, delay, action);
+        return SubmissionResult.INVALID_OWNER;
     }
 
     @SubscribeEvent

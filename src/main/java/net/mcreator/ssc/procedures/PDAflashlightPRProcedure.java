@@ -17,6 +17,7 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class PDAflashlightPRProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (entity == null)
 			return;
 		if (false == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getBooleanOr("flashlight", false)) {
@@ -33,11 +34,11 @@ public class PDAflashlightPRProcedure {
 			}
 			if (Blocks.LIGHT == (world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).getBlock()) {
 				world.setBlock(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Blocks.AIR.defaultBlockState(), 3);
-				Ssc14Mod.queueServerWork(1, () -> {
+				Ssc14Mod.queueServerWork(serverOwner, 1, () -> {
 					if (Blocks.LIGHT == (world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).getBlock()) {
 						world.setBlock(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Blocks.AIR.defaultBlockState(), 3);
 					}
-				});
+				}).orThrow();
 			}
 		}
 		if (world instanceof Level _level) {

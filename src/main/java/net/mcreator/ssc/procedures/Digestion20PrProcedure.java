@@ -21,6 +21,7 @@ public class Digestion20PrProcedure {
     private static final double MOD_STARVATION = 1.667;
 
     public static void execute(LevelAccessor world, Entity entity) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
         if (!(entity instanceof LivingEntity livingEntity)) return;
         if (!isMetabolismActive(livingEntity)) return;
         
@@ -30,13 +31,13 @@ public class Digestion20PrProcedure {
         double modifier = getDigestionModifier(currentNutrients);
         int delayTicks = (int) Math.round(BASE_DIGESTION_TICKS * modifier);
         
-        Ssc14Mod.queueServerWork(delayTicks, () -> {
+        Ssc14Mod.queueServerWork(serverOwner, delayTicks, () -> {
             // ИСПРАВЛЕНО: Добавлены скобочки к методу .isClientSide() для NeoForge 26.1.2
             if (livingEntity == null || livingEntity.isRemoved() || livingEntity.level().isClientSide()) {
                 return;
             }
             processDigestion(livingEntity);
-        });
+        }).orThrow();
     }
     
     private static void processDigestion(LivingEntity entity) {

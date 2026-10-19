@@ -28,6 +28,7 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class VendAutGUIButton6Procedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (false == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "but_6") && 0 < itemFromBlockInventory(world, BlockPos.containing(x, y, z), 6).getCount()) {
 			if (!world.isClientSide()) {
 				BlockPos _bp = BlockPos.containing(x, y, z);
@@ -48,7 +49,7 @@ public class VendAutGUIButton6Procedure {
 							(float) Mth.nextDouble(RandomSource.create(), 0.9, 1.1), false);
 				}
 			}
-			Ssc14Mod.queueServerWork(20, () -> {
+			Ssc14Mod.queueServerWork(serverOwner, 20, () -> {
 				if (0 < itemFromBlockInventory(world, BlockPos.containing(x, y, z), 6).getCount()) {
 					if (!world.isClientSide()) {
 						BlockPos _bp = BlockPos.containing(x, y, z);
@@ -108,7 +109,7 @@ public class VendAutGUIButton6Procedure {
 						}
 					}
 				}
-			});
+			}).orThrow();
 		}
 	}
 

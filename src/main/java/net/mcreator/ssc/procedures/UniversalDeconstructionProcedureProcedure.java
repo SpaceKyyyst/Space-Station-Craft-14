@@ -25,6 +25,7 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class UniversalDeconstructionProcedureProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
         if (entity == null || !(entity instanceof LivingEntity livingEntity)) return;
         if (!livingEntity.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB)) return;
 
@@ -60,7 +61,7 @@ public class UniversalDeconstructionProcedureProcedure {
                 livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(step);
 
                 if (step != 6) {
-                    Ssc14Mod.queueServerWork(stage.delays()[step - 1], () -> run(step + 1));
+                    Ssc14Mod.queueServerWork(serverOwner, stage.delays()[step - 1], () -> run(step + 1)).orThrow();
                 } else {
                     if (world instanceof ServerLevel sLevel) {
                         executeFinal(sLevel);

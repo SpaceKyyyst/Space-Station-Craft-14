@@ -15,10 +15,11 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class Credits_USEProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (entity == null)
 			return;
 		if (Ssc14ModBlocks.ORDER_CONSOLE.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() || Ssc14ModBlocks.SALE_CONSOLE.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()) {
-			Ssc14Mod.queueServerWork(1, () -> {
+			Ssc14Mod.queueServerWork(serverOwner, 1, () -> {
 				if (Ssc14ModItems.CREDITS.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 					Ssc14ModVariables.WorldVariables.get(world).Station_Budget = Ssc14ModVariables.WorldVariables.get(world).Station_Budget + (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount();
 					Ssc14ModVariables.WorldVariables.get(world).markSyncDirty();
@@ -33,7 +34,7 @@ public class Credits_USEProcedure {
 					if (entity instanceof ServerPlayer _player)
 						_player.sendSystemMessage(Component.literal("[DEBUG]  \u0411\u042E\u0414\u0416\u0415\u0422  \u0421\u0422\u0410\u041D\u0426\u0418\u0418  \u041E\u041D\u0423\u041B\u0418\u0420\u041E\u0412\u0410\u041D"), false);
 				}
-			});
+			}).orThrow();
 		} else {
 			Credits_RMCProcedure.execute(entity);
 		}

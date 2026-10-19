@@ -8,6 +8,27 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TickTaskQueueTest {
+    @Test void validatesArgumentsWithoutConsumingCapacity() {
+        var queue = new TickTaskQueue(1, 1, error -> fail(error));
+        assertThrows(IllegalArgumentException.class, () -> queue.submit(-1, () -> fail()));
+        assertThrows(NullPointerException.class, () -> queue.submit(0, null));
+        assertTrue(queue.submit(0, () -> { }));
+        assertEquals(1, queue.tick(0));
+    }
+
+    @Test void budgetDefersAdmissionAndDelayStartsAtAdmission() {
+        var calls = new ArrayList<String>();
+        var queue = new TickTaskQueue(1, error -> fail(error));
+        queue.submit(0, () -> calls.add("first"));
+        queue.submit(2, () -> calls.add("second"));
+        assertEquals(1, queue.tick(10));
+        assertEquals(0, queue.tick(11));
+        assertEquals(0, queue.tick(12));
+        assertEquals(List.of("first"), calls);
+        assertEquals(1, queue.tick(13));
+        assertEquals(List.of("first", "second"), calls);
+    }
+
     @Test void capacityIncludesDelayedTasksAndIsReleasedAfterFailure() {
         var queue = new TickTaskQueue(2, 2, error -> { });
         assertTrue(queue.submit(5, () -> { throw new IllegalStateException("fixture"); }));
