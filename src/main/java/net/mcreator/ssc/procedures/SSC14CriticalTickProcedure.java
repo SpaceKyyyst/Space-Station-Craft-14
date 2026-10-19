@@ -32,5 +32,6 @@ public final class SSC14CriticalTickProcedure {
         }
         // Re-read after asphyxia: crossing 200 -> 201 releases this tick.
         MedicalPlayerEffects.reconcile(player, BLINDNESS_DURATION_TICKS);
+        MedicalPlayerEffects.advanceEffectClock(player);
     }
 }

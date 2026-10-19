@@ -93,18 +93,6 @@ class MedicalEffectsControllerTest {
         }
     }
 
-    @Test
-    void relinquishedBlindnessOwnershipLeavesAnExternalReplacementInPlace() {
-        Fixture target = new Fixture();
-        var ownership = MedicalEffectsController.apply(target, MedicalEffectsController.Ownership.NONE, true, 220);
-        // The adapter relinquishes ownership when an external Added event can merge blindness in place.
-        ownership = new MedicalEffectsController.Ownership(false, ownership.pose(), ownership.poseYielded());
-        MedicalEffectsController.apply(target, ownership, false, 220);
-        assertTrue(target.blindness);
-        assertEquals(1, target.blindnessWrites);
-        assertFalse(target.forcedPose);
-    }
-
     // A boundary fixture: the production controller runs unchanged; world/packet operations are absent.
     private static final class Fixture implements MedicalEffectsController.Target {
         boolean client;

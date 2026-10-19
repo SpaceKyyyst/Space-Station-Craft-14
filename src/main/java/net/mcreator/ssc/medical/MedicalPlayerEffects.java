@@ -5,16 +5,17 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.AABB;
 import net.mcreator.ssc.procedures.CrawlPrProcedure;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
+import net.neoforged.neoforge.event.entity.EntityEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
@@ -28,8 +29,8 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
     private static final String BLINDNESS = "blindness";
     private static final String POSE = "pose";
     private static final String POSE_YIELDED = "pose_yielded";
-    private static final double CRITICAL_WIDTH = 0.6;
-    private static final double CRITICAL_HEIGHT = 0.45;
+    private static final float CRITICAL_WIDTH = 0.6f;
+    private static final float CRITICAL_HEIGHT = 0.45f;
     private static final Identifier IMMOBILIZE = Identifier.fromNamespaceAndPath("ssc14", "crit_immobilize");
     private static final Identifier NO_JUMP = Identifier.fromNamespaceAndPath("ssc14", "crit_nojump");
     private final Player player;
@@ -61,7 +62,7 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
         if (after.equals(MedicalEffectsController.Ownership.NONE)) {
             if (saved != null) data.remove(OWNERSHIP);
         } else if (!after.equals(before)) {
-            var state = new CompoundTag();
+            var state = saved == null ? new CompoundTag() : saved;
             state.putBoolean(BLINDNESS, after.blindness());
             state.putBoolean(POSE, after.pose());
             state.putBoolean(POSE_YIELDED, after.poseYielded());
@@ -69,14 +70,9 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
         }
         if (data.getBooleanOr(CRITICAL, false) != critical) data.putBoolean(CRITICAL, critical);
         if (!critical && data.contains(ASPHYX_TIMER)) data.remove(ASPHYX_TIMER);
-        if (after.pose() && player.getForcedPose() == Pose.SWIMMING) {
-            // Vanilla movement rebuilds the box. Preserve the existing critical dimensions,
-            // comparing before the write rather than resending unchanged pose data each tick.
-            double halfWidth = CRITICAL_WIDTH / 2;
-            var desired = new AABB(player.getX() - halfWidth, player.getY(), player.getZ() - halfWidth,
-                    player.getX() + halfWidth, player.getY() + CRITICAL_HEIGHT, player.getZ() + halfWidth);
-            if (!desired.equals(player.getBoundingBox())) player.setBoundingBox(desired);
-        }
+        // Ownership must be stored before Size observes the new pose. Movement then
+        // rebuilds the box from these dimensions without an every-tick box override.
+        if (after.pose() && !before.pose()) player.refreshDimensions();
     }
 
     @Override
@@ -85,6 +81,7 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
     public boolean hasBlindness() { return player.hasEffect(MobEffects.BLINDNESS); }
     @Override
     public boolean addBlindness(int ticks) {
+        player.getPersistentData().getCompound(OWNERSHIP).ifPresent(MedicalBlindnessContributions::clear);
         var blindness = new MobEffectInstance(MobEffects.BLINDNESS, ticks, 0, false, false);
         OWN_BLINDNESS_ADDITION.set(blindness);
         try {
@@ -94,7 +91,28 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
         }
     }
     @Override
-    public void removeBlindness() { player.removeEffect(MobEffects.BLINDNESS); }
+    public void removeBlindness() {
+        var state = player.getPersistentData().getCompound(OWNERSHIP).orElse(null);
+        var external = state == null ? null : MedicalBlindnessContributions.remaining(state);
+        if (external == null) {
+            player.removeEffect(MobEffects.BLINDNESS);
+        } else {
+            // Replacing the merged instance strips every SSC hidden contribution while
+            // retaining the external-only active/hidden chain and its remaining duration.
+            OWN_BLINDNESS_ADDITION.set(external);
+            try {
+                player.forceAddEffect(external, null);
+            } finally {
+                OWN_BLINDNESS_ADDITION.remove();
+            }
+        }
+    }
+
+    public static void advanceEffectClock(Player player) {
+        if (!player.level().isClientSide()) {
+            player.getPersistentData().getCompound(OWNERSHIP).ifPresent(MedicalBlindnessContributions::advance);
+        }
+    }
     @Override
     public boolean canAcquirePose() {
         return player.getForcedPose() == null && player.getPose() == Pose.STANDING && !hasExternalSwimming();
@@ -133,12 +151,29 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
     }
 
     @SubscribeEvent
+    public static void onSize(EntityEvent.Size event) {
+        if (event.getPose() == Pose.SWIMMING && event.getEntity() instanceof Player player
+                && !player.level().isClientSide() && player.getForcedPose() == Pose.SWIMMING
+                && player.getPersistentData().getCompound(OWNERSHIP).map(state -> state.getBooleanOr(POSE, false)).orElse(false)) {
+            event.setNewSize(EntityDimensions.scalable(CRITICAL_WIDTH, CRITICAL_HEIGHT)
+                    .withEyeHeight(event.getNewSize().eyeHeight()));
+        }
+    }
+
+    @SubscribeEvent
     public static void onBlindnessAdded(MobEffectEvent.Added event) {
         if (event.getEntity() instanceof Player player && !player.level().isClientSide()
                 && event.getEffectInstance().getEffect().equals(MobEffects.BLINDNESS)
                 && event.getEffectInstance() != OWN_BLINDNESS_ADDITION.get()) {
-            // addEffect may merge into the original instance, so identity alone is insufficient.
-            player.getPersistentData().getCompound(OWNERSHIP).ifPresent(state -> state.putBoolean(BLINDNESS, false));
+            player.getPersistentData().getCompound(OWNERSHIP).ifPresent(state -> {
+                if (!state.getBooleanOr(BLINDNESS, false)) return;
+                if (event.getOldEffectInstance() == null) {
+                    state.putBoolean(BLINDNESS, false);
+                    MedicalBlindnessContributions.clear(state);
+                } else {
+                    MedicalBlindnessContributions.record(state, event.getOldEffectInstance(), event.getEffectInstance());
+                }
+            });
         }
     }
 
