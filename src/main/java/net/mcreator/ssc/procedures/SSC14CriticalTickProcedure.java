@@ -51,7 +51,6 @@ public class SSC14CriticalTickProcedure {
                     nbt.putDouble(PREFIX_TYPE + "asphyx", asphyx);
                     nbt.putDouble(KEY_TOTAL, totalDamage + 1.0);
                     nbt.putInt(KEY_ASPHYX_TIMER, 0);
-                    System.out.println("[SSC14] Удушье: +1 | Всего: " + (totalDamage + 1.0));
                 } else {
                     nbt.putInt(KEY_ASPHYX_TIMER, timer + 1);
                 }

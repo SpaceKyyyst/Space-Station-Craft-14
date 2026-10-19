@@ -96,7 +96,7 @@ jobs:
           $unicodeCheckout = Join-Path $env:RUNNER_TEMP 'Тест плагина'
           Copy-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $unicodeCheckout -Recurse
           Set-Location -LiteralPath $unicodeCheckout
-          .\gradlew.bat domainTest test --no-daemon
+          .\gradlew.bat domainTest test --no-daemon --no-build-cache
 
   release:
     needs: build
