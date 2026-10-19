@@ -9,6 +9,8 @@ import net.neoforged.bus.api.Event;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 
+import net.mcreator.ssc.combat.CriticalAbilityPolicy;
+
 import javax.annotation.Nullable;
 
 @EventBusSubscriber
@@ -32,11 +34,9 @@ public class SSC14CriticalTickAdditionalProcedure {
         // ИСПРАВЛЕНО: Возвращена распаковка Optional через .orElse(0.0)
         double totalDamage = nbt.getDouble("sscCustomHealth").orElse(0.0);
         
-        if (totalDamage >= 100.0) {
-            player.getAbilities().mayBuild = false;
-            player.onUpdateAbilities();
-        } else {
-            player.getAbilities().mayBuild = true;
+        boolean requiredMayBuild = totalDamage < 100.0;
+        if (CriticalAbilityPolicy.shouldSync(player.getAbilities().mayBuild, requiredMayBuild)) {
+            player.getAbilities().mayBuild = requiredMayBuild;
             player.onUpdateAbilities();
         }
     }
