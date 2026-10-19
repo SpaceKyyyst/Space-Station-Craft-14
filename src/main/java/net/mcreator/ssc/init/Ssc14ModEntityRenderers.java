@@ -1,6 +1,7 @@
 package net.mcreator.ssc.init;
 
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.Dist;
@@ -23,5 +24,16 @@ public class Ssc14ModEntityRenderers {
 		event.registerEntityRenderer(Ssc14ModEntities.FOAM_DART_PROJECTILE.get(), FoamDartProjectileRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.POSTER.get(), PosterRenderer::new);
 		event.registerEntityRenderer(Ssc14ModEntities.CARP.get(), CarpRenderer::new);
+		event.registerEntityRenderer(Ssc14ModEntities.TEST_SUN_ENTITY.get(), TestSunEntityRenderer::new);
+	}
+
+	@SubscribeEvent
+	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+		event.registerLayerDefinition(TestSunEntityRenderer.TestSunModel.LAYER_LOCATION, TestSunEntityRenderer.TestSunModel::createBodyLayer);
+	}
+
+	@SubscribeEvent
+	public static void onClientTick(ClientTickEvent.Post event) {
+		TestSunEntityRenderer.tickAllEffects();
 	}
 }

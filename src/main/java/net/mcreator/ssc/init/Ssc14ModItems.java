@@ -1123,6 +1123,7 @@ public class Ssc14ModItems {
 	}
 
 	// Start of user code block custom items
+	public static final DeferredItem<Item> TEST_SUN_ENTITY_SPAWN_EGG = register("test_sun_entity_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.TEST_SUN_ENTITY.get())));
 	// End of user code block custom items
 	private static <I extends Item> DeferredItem<I> register(String name, Function<Item.Properties, ? extends I> supplier) {
 		return REGISTRY.registerItem(name, supplier, Item.Properties::new);

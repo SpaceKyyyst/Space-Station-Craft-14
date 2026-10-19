@@ -953,6 +953,8 @@
   "attribute.ssc_14.race": "Race",
   "entity.ssc_14.carp": "Carp",
   "item.ssc_14.carp_spawn_egg": "Carp Spawn Egg",
+  "entity.ssc_14.test_sun_entity": "Test Sun Entity",
+  "item.ssc_14.test_sun_entity_spawn_egg": "Test Sun Entity Spawn Egg",
   "subtitles.mobs_bite": "",
   "subtitles.voice_talk_speak_1": "",
   "subtitles.voice_talk_speak_2": "",
