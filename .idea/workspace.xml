@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e49c73d7-9bcd-4ae2-a883-18b00e2c34e1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Dependency.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Dependency.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/ssc/init/Ssc14ModEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mcreator/ssc/init/Ssc14ModEntities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/ssc/init/Ssc14ModEntityRenderers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mcreator/ssc/init/Ssc14ModEntityRenderers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/ssc/init/Ssc14ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mcreator/ssc/init/Ssc14ModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/ssc/init/Ssc14ModTabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mcreator/ssc/init/Ssc14ModTabs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/ssc_14/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/ssc_14/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/ssc_14/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/ssc_14/lang/ru_ru.json" afterDir="false" />
+    <list default="true" id="e49c73d7-9bcd-4ae2-a883-18b00e2c34e1" name="Changes" comment="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +18,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="10336" />
+    <option name="cachedIndexableFilesCount" value="10338" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -84,23 +77,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000000001082592" />
-      <entry key="S10" value="1.0000145250340722" />
-      <entry key="S30" value="1.038616933683426" />
-      <entry key="S60" value="1.278402930353765" />
-      <entry key="M2" value="1.805139378894804" />
-      <entry key="M5" value="3.2972863792873617" />
-      <entry key="M10" value="5.028791813300592" />
-      <entry key="M15" value="5.998977629508804" />
-      <entry key="M30" value="7.285525241081904" />
-      <entry key="H1" value="8.080884299027513" />
-      <entry key="H2" value="8.523778344336202" />
-      <entry key="H4" value="8.757563748033352" />
-      <entry key="D1" value="8.958979166288522" />
-      <entry key="W1" value="8.9941246382295" />
+      <entry key="MS100" value="1.0016785861180084" />
+      <entry key="MS500" value="1.3938158442655926" />
+      <entry key="S2" value="2.8359324669412374" />
+      <entry key="S5" value="4.677078663795282" />
+      <entry key="S10" value="6.887154395457966" />
+      <entry key="S30" value="11.009708701173661" />
+      <entry key="S60" value="14.238918128641876" />
+      <entry key="M2" value="17.539840763030234" />
+      <entry key="M5" value="21.51213910708085" />
+      <entry key="M10" value="24.35023439716505" />
+      <entry key="M15" value="25.77922579000844" />
+      <entry key="M30" value="27.61002793156884" />
+      <entry key="H1" value="28.72301306976869" />
+      <entry key="H2" value="29.339254192283672" />
+      <entry key="H4" value="29.663828029537445" />
+      <entry key="D1" value="29.943145039468746" />
+      <entry key="W1" value="29.991857348839773" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -122,23 +115,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9395227492140118" />
-      <entry key="MS500" value="0.9876008614453725" />
-      <entry key="S2" value="0.9968856972203758" />
-      <entry key="S5" value="0.99875311319338" />
-      <entry key="S10" value="0.9993908768870592" />
-      <entry key="S30" value="1.0384000411439895" />
-      <entry key="S60" value="1.278266375221993" />
-      <entry key="M2" value="1.8050236833894047" />
-      <entry key="M5" value="3.297103317729496" />
-      <entry key="M10" value="5.028597555552292" />
-      <entry key="M15" value="5.998807696651767" />
-      <entry key="M30" value="7.285412910096011" />
-      <entry key="H1" value="8.080819567109282" />
-      <entry key="H2" value="8.523743579733614" />
-      <entry key="H4" value="8.757545730964159" />
-      <entry key="D1" value="8.958976072152595" />
-      <entry key="W1" value="8.994124193932544" />
+      <entry key="MS100" value="0.8966131975688774" />
+      <entry key="MS500" value="1.3676004013849428" />
+      <entry key="S2" value="2.8248193070893164" />
+      <entry key="S5" value="4.670058746600576" />
+      <entry key="S10" value="6.881959994230852" />
+      <entry key="S30" value="11.005121946508767" />
+      <entry key="S60" value="14.233885017852991" />
+      <entry key="M2" value="17.53566845130448" />
+      <entry key="M5" value="21.509723073021256" />
+      <entry key="M10" value="24.34879226485061" />
+      <entry key="M15" value="25.778189907463627" />
+      <entry key="M30" value="27.609463485206543" />
+      <entry key="H1" value="28.72271694395794" />
+      <entry key="H2" value="29.339102309813775" />
+      <entry key="H4" value="29.66375108607335" />
+      <entry key="D1" value="29.94313207212175" />
+      <entry key="W1" value="29.991855492792094" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -279,9 +272,63 @@
       <option name="presentableId" value="Default" />
       <updated>1792002811338</updated>
     </task>
+    <task id="LOCAL-00001" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792432834484</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1792432834484</updated>
+    </task>
+    <task id="LOCAL-00002" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792433012418</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1792433012418</updated>
+    </task>
+    <task id="LOCAL-00003" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792433024082</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1792433024082</updated>
+    </task>
+    <task id="LOCAL-00004" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792433217616</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1792433217616</updated>
+    </task>
+    <task id="LOCAL-00005" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792433287193</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1792433287193</updated>
+    </task>
+    <task id="LOCAL-00006" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792433344319</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1792433344319</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'main' of https://github.com/SpaceKyyyst/Space-Station-Craft-14" />
+    <MESSAGE value="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)" />
+    <option name="LAST_COMMIT_MESSAGE" value="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)" />
   </component>
 </project>
