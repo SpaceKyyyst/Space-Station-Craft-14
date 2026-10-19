@@ -56,7 +56,10 @@ class WindowsUnicodeWorkflowTest(unittest.TestCase):
             self.assertTrue((unicode_checkout / "gradlew.bat").is_file())
             self.assertEqual(workspace, Path(invocation["wrapper_dir"]))
             self.assertEqual(unicode_checkout, Path(invocation["cwd"]))
-            self.assertEqual(["--project-dir", str(unicode_checkout), "domainTest", "test",
+            self.assertNotIn(str(unicode_checkout), invocation["args"])
+            self.assertTrue(all(argument.isascii() for argument in invocation["args"]),
+                            "Java launcher arguments must remain ASCII in the Unicode cwd")
+            self.assertEqual(["--project-dir", ".", "domainTest", "test",
                               "--no-daemon", "--no-build-cache"], invocation["args"])
 
 
