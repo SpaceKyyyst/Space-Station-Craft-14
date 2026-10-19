@@ -80,6 +80,7 @@ jobs:
           if-no-files-found: ignore
 
   windows-unicode-tests:
+    name: Windows native-encoding path checks
     if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: windows-2025
     timeout-minutes: 40
@@ -90,13 +91,22 @@ jobs:
           distribution: temurin
           java-version: '25'
       - uses: gradle/actions/setup-gradle@v6.4.0
-      - name: Test from a Unicode project path
+      # Java launchers and Gradle argfiles use native.encoding (hosted Windows: Cp1252).
+      # Cyrillic proves bootstrap/configuration only; real workers use a representable non-ASCII path.
+      - name: Check Cyrillic bootstrap and configuration only
         shell: pwsh
         run: |
           $unicodeCheckout = Join-Path $env:RUNNER_TEMP 'Тест плагина'
           Copy-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $unicodeCheckout -Recurse
           Set-Location -LiteralPath $unicodeCheckout
-          & (Join-Path $env:GITHUB_WORKSPACE 'gradlew.bat') --project-dir . domainTest test --no-daemon --no-build-cache
+          & (Join-Path $env:GITHUB_WORKSPACE 'gradlew.bat') --project-dir . help --no-daemon --no-build-cache
+      - name: Test real workers from a native-encoding non-ASCII path
+        shell: pwsh
+        run: |
+          $nativeCheckout = Join-Path $env:RUNNER_TEMP 'Tést plugin'
+          Copy-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $nativeCheckout -Recurse
+          Set-Location -LiteralPath $nativeCheckout
+          .\gradlew.bat --project-dir . domainTest test --no-daemon --no-build-cache
 
   release:
     needs: build
