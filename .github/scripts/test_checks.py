@@ -1,8 +1,14 @@
+import base64
 import contextlib
 import io
 import json
+import os
+import re
+import shutil
 import subprocess
+import sys
 import tempfile
+import textwrap
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -10,6 +16,48 @@ from unittest.mock import patch
 from check_project import check_project, check_tracked_files
 from report_checks import report
 from check_resources import check_resources
+
+
+@unittest.skipUnless(os.name == "nt", "Windows workflow uses a batch wrapper")
+class WindowsUnicodeWorkflowTest(unittest.TestCase):
+    def test_bootstraps_from_workspace_with_unicode_project_directory(self):
+        powershell = shutil.which("pwsh") or shutil.which("powershell")
+        if powershell is None:
+            self.skipTest("PowerShell is required to execute the Windows workflow")
+        workflow = (Path(__file__).resolve().parents[1] / "workflows/build.yml").read_text(
+            encoding="utf-8")
+        job = workflow.split("  windows-unicode-tests:\n", 1)[1].split("\n  release:", 1)[0]
+        script = re.search(r"        run: \|\n((?:          .*\n)+)", job).group(1)
+        command = base64.b64encode(textwrap.dedent(script).encode("utf-16-le")).decode("ascii")
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            workspace = root / "ascii-checkout"
+            runner_temp = root / "runner temp"
+            workspace.mkdir()
+            runner_temp.mkdir()
+            capture = root / "invocation.json"
+            (workspace / "capture.py").write_text(
+                "import json, os, sys\nfrom pathlib import Path\n"
+                "Path(os.environ['WORKFLOW_CAPTURE']).write_text(json.dumps({"
+                "'wrapper_dir': str(Path(__file__).resolve().parent), "
+                "'cwd': os.getcwd(), 'args': sys.argv[1:]}), encoding='utf-8')\n",
+                encoding="utf-8")
+            (workspace / "gradlew.bat").write_text(
+                f'@"{sys.executable}" -B "%~dp0capture.py" %*\n', encoding="utf-8")
+            environment = dict(os.environ, GITHUB_WORKSPACE=str(workspace),
+                               RUNNER_TEMP=str(runner_temp), WORKFLOW_CAPTURE=str(capture))
+            result = subprocess.run(
+                [powershell, "-NoProfile", "-NonInteractive", "-EncodedCommand", command],
+                env=environment, cwd=workspace, capture_output=True, timeout=30)
+            self.assertEqual(0, result.returncode, result.stderr.decode(errors="replace"))
+            invocation = json.loads(capture.read_text(encoding="utf-8"))
+            unicode_checkout = runner_temp / "Тест плагина"
+            self.assertTrue((unicode_checkout / "gradlew.bat").is_file())
+            self.assertEqual(workspace, Path(invocation["wrapper_dir"]))
+            self.assertEqual(unicode_checkout, Path(invocation["cwd"]))
+            self.assertEqual(["--project-dir", str(unicode_checkout), "domainTest", "test",
+                              "--no-daemon", "--no-build-cache"], invocation["args"])
 
 
 class ProjectChecksTest(unittest.TestCase):
