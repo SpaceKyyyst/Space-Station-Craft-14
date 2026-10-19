@@ -77,46 +77,56 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		super.extractBackground(guiGraphics, mouseX, mouseY, partialTicks);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + -50, 0, 0, 160, 100, 160, 100);
-		if (CPcabel1Procedure.execute(world, entity)) {
+		if (!panelFlag("cabel_1")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, this.leftPos + 36, this.topPos + 5, 0, 0, 6, 19, 6, 19);
 		}
-		if (CPcabel2Procedure.execute(world, entity)) {
+		if (!panelFlag("cabel_2")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, this.leftPos + 48, this.topPos + 5, 0, 0, 5, 19, 5, 19);
 		}
-		if (CPcabel3Procedure.execute(world, entity)) {
+		if (!panelFlag("cabel_3")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, this.leftPos + 58, this.topPos + 5, 0, 0, 6, 19, 6, 19);
 		}
-		if (CPcabel4Procedure.execute(world, entity)) {
+		if (!panelFlag("cabel_4")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_4, this.leftPos + 72, this.topPos + 5, 0, 0, 7, 19, 7, 19);
 		}
-		if (CPcabel5Procedure.execute(world, entity)) {
+		if (!panelFlag("cabel_5")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_5, this.leftPos + 83, this.topPos + 5, 0, 0, 5, 19, 5, 19);
 		}
-		if (CPcabel6Procedure.execute(world, entity)) {
+		if (!panelFlag("cabel_6")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_6, this.leftPos + 91, this.topPos + 5, 0, 0, 8, 19, 8, 19);
 		}
-		if (CPcabel7Procedure.execute(world, entity)) {
+		if (!panelFlag("cabel_7")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_7, this.leftPos + 105, this.topPos + 5, 0, 0, 4, 19, 4, 19);
 		}
-		if (CPcabel8Procedure.execute(world, entity)) {
+		if (!panelFlag("cabel_8")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_8, this.leftPos + 115, this.topPos + 5, 0, 0, 7, 19, 7, 19);
 		}
-		if (CPlampind1Procedure.execute(world, entity)) {
+		if (indicatorLit("powered")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_9, this.leftPos + 31, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
-		if (CPlampind2Procedure.execute(world, entity)) {
+		if (indicatorLit("bolted")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_10, this.leftPos + 69, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
-		if (CPlampind3Procedure.execute(world, entity)) {
+		if (indicatorLit("timer")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_11, this.leftPos + 107, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
-		if (CPlampind4Procedure.execute(world, entity)) {
+		if (indicatorLit("ai_access")) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_12, this.leftPos + 133, this.topPos + -28, 0, 0, 9, 9, 9, 9);
 		}
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_13, this.leftPos + 31, this.topPos + -14, 0, 0, 9, 9, 9, 9);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_14, this.leftPos + 69, this.topPos + -14, 0, 0, 9, 9, 9, 9);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_15, this.leftPos + 107, this.topPos + -14, 0, 0, 9, 9, 9, 9);
+		if (indicatorLit("logs")) guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_13, this.leftPos + 31, this.topPos + -14, 0, 0, 9, 9, 9, 9);
+		if (indicatorLit("diods")) guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_14, this.leftPos + 69, this.topPos + -14, 0, 0, 9, 9, 9, 9);
+		if (indicatorLit("safe")) guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_15, this.leftPos + 107, this.topPos + -14, 0, 0, 9, 9, 9, 9);
 	}
+
+    private boolean indicatorLit(String function) {
+        var blockEntity = world.getBlockEntity(new net.minecraft.core.BlockPos(x, y, z));
+        return blockEntity != null && net.mcreator.ssc.access.AirlockPanelIndicators.lit(
+                blockEntity.getPersistentData(), function, world.getGameTime());
+    }
+    private boolean panelFlag(String key) {
+        var blockEntity = world.getBlockEntity(new net.minecraft.core.BlockPos(x, y, z));
+        return blockEntity != null && blockEntity.getPersistentData().getBooleanOr(key, false);
+    }
 
 	@Override
 	public boolean keyPressed(KeyEvent event) {
@@ -145,7 +155,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button6 = new ImageButton(this.leftPos + 35, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(0, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 0, x, y, z);
 			}
@@ -159,7 +169,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button5 = new ImageButton(this.leftPos + 47, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(1, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 1, x, y, z);
 			}
@@ -173,7 +183,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button4 = new ImageButton(this.leftPos + 58, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(2, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 2, x, y, z);
 			}
@@ -187,7 +197,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cabel_4 = new ImageButton(this.leftPos + 71, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(3, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 3, x, y, z);
 			}
@@ -201,7 +211,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button = new ImageButton(this.leftPos + 81, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(4, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 4, x, y, z);
 			}
@@ -215,7 +225,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button1 = new ImageButton(this.leftPos + 91, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(5, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 5, x, y, z);
 			}
@@ -229,7 +239,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button2 = new ImageButton(this.leftPos + 103, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(6, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 6, x, y, z);
 			}
@@ -243,7 +253,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 		imagebutton_cable_button3 = new ImageButton(this.leftPos + 114, this.topPos + 5, 8, 19, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/cable_button.png"), Identifier.parse("ssc_14:textures/screens/cable_button.png")), e -> {
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(7, x, y, z));
 				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 7, x, y, z);
 			}

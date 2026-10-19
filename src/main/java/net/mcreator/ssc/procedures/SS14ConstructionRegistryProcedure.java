@@ -5,6 +5,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.item.Item;
@@ -23,6 +24,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 
 import net.mcreator.ssc.init.*;
 import net.mcreator.ssc.block.SheathingBlock;
+import net.mcreator.ssc.EnergyNetworkManager;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -85,31 +87,14 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14ModBlocks.ARMORED_WINDOW.get(), welder, bs -> getInt(bs, "blockstate") == 3,
             new ConstructionStage(new int[]{27,27,27,27,27,27}, false, null, 1, 0.0, null, "blockstate", 4, true, null, null));
 
-        registerTagCheck("ssc14:airlocks", welder, 
-            bs -> {
-                int arl = getInt(bs, "arl_variat");
-                return arl != 11 && !(arl >= 12 && arl <= 15);
-            },
-            new ConstructionStage(new int[]{25,25,25,25,25,25}, false, null, 1, 0.0, null, "arl_variat", 0, true, null, 
-            ctx -> {
-                BlockEntity be = ctx.world().getBlockEntity(ctx.pos());
-                if (be != null) {
-                    CompoundTag nbt = be.getPersistentData();
-                    boolean wasWelded = nbt.getBoolean("welded").orElse(false);
-                    nbt.putBoolean("welded", !wasWelded);
-                    be.setChanged();
-                }
-            })
-        );
-
         Item nippers = Ssc14ModItems.NIPPERS.get();
 
         registerBlock(Ssc14ModBlocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.LV) && bs.getValue(SheathingBlock.LV),
-            new ConstructionStage(fastDelays, false, Ssc14ModItems.LOW_VOLTAGE_CABLE.get(), 1, 1.0, null, null, -1, false, hit -> hit == Direction.UP, null));
+            cableRemovalStage(fastDelays, SheathingBlock.LV, Ssc14ModItems.LOW_VOLTAGE_CABLE.get()));
         registerBlock(Ssc14ModBlocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.MV) && bs.getValue(SheathingBlock.MV),
-            new ConstructionStage(fastDelays, false, Ssc14ModItems.MEDIUM_VOLTAGE_CABLE.get(), 1, 1.0, null, null, -1, false, hit -> hit == Direction.UP, null));
+            cableRemovalStage(fastDelays, SheathingBlock.MV, Ssc14ModItems.MEDIUM_VOLTAGE_CABLE.get()));
         registerBlock(Ssc14ModBlocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.HV) && bs.getValue(SheathingBlock.HV),
-            new ConstructionStage(fastDelays, false, Ssc14ModItems.HIGH_VOLTAGE_CABLE.get(), 1, 1.0, null, null, -1, false, hit -> hit == Direction.UP, null));
+            cableRemovalStage(fastDelays, SheathingBlock.HV, Ssc14ModItems.HIGH_VOLTAGE_CABLE.get()));
 
         registerBlock(Ssc14ModBlocks.ROD_FLOOR.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
             new ConstructionStage(fastDelays, false, Ssc14ModItems.ROOD.get(), 1, 1.0, null, null, -1, false, null, null));
@@ -205,6 +190,21 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), spanner, bs -> getInt(bs, "blockstate") == 4,
             new ConstructionStage(normalDelays, false, null, 1, 0.0, null, "blockstate", 5, false, null, null));
     }
+    private static ConstructionStage cableRemovalStage(int[] delays, BooleanProperty property, Item cable) {
+        return new ConstructionStage(delays, false, null, 1, 1.0, null, null, -1, false,
+            hit -> hit == Direction.UP, ctx -> {
+                BlockState current = ctx.world().getBlockState(ctx.pos());
+                // Delayed operations can finish after another player has removed this same cable.
+                if (!(current.getBlock() instanceof SheathingBlock) || !current.getValue(property)) return;
+                if (!ctx.world().setBlock(ctx.pos(), current.setValue(property, false), 3)) return;
+                EnergyNetworkManager.queueUpdate(ctx.world(), ctx.pos());
+                ItemEntity drop = new ItemEntity(ctx.world(), ctx.pos().getX() + 0.5,
+                    ctx.pos().getY() + 1.0, ctx.pos().getZ() + 0.5, new ItemStack(cable));
+                drop.setPickUpDelay(10);
+                ctx.world().addFreshEntity(drop);
+            });
+    }
+
     private static void registerBlock(Block block, Item tool, Predicate<BlockState> pred, ConstructionStage stage) {
         REGISTRY.add(new AbstractMap.SimpleEntry<>(new InteractionKey(block, tool, pred), stage));
     }

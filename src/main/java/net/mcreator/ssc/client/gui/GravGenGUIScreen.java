@@ -96,7 +96,7 @@ public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> im
 		imagebutton_off_button = new ImageButton(this.leftPos + 98, this.topPos + 4, 25, 15, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/off_button.png"), Identifier.parse("ssc_14:textures/screens/off_button.png")), e -> {
 			int x = GravGenGUIScreen.this.x;
 			int y = GravGenGUIScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new GravGenGUIButtonMessage(0, x, y, z));
 				GravGenGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
 			}
@@ -110,7 +110,7 @@ public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> im
 		imagebutton_on_button = new ImageButton(this.leftPos + 72, this.topPos + 4, 25, 15, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/on_button.png"), Identifier.parse("ssc_14:textures/screens/on_button.png")), e -> {
 			int x = GravGenGUIScreen.this.x;
 			int y = GravGenGUIScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new GravGenGUIButtonMessage(1, x, y, z));
 				GravGenGUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
 			}

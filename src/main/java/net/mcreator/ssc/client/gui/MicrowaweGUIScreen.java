@@ -87,7 +87,7 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png"), Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png")), e -> {
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(0, x, y, z));
 						MicrowaweGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
 					}
@@ -102,7 +102,7 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png"), Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png")), e -> {
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(1, x, y, z));
 						MicrowaweGUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
 					}
@@ -117,7 +117,7 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png"), Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png")), e -> {
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(2, x, y, z));
 						MicrowaweGUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
 					}
@@ -132,7 +132,7 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png"), Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png")), e -> {
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(3, x, y, z));
 						MicrowaweGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
 					}
@@ -147,7 +147,7 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png"), Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png")), e -> {
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(4, x, y, z));
 						MicrowaweGUIButtonMessage.handleButtonAction(entity, 4, x, y, z);
 					}
@@ -162,7 +162,7 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png"), Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png")), e -> {
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(5, x, y, z));
 						MicrowaweGUIButtonMessage.handleButtonAction(entity, 5, x, y, z);
 					}
@@ -177,7 +177,7 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png"), Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png")), e -> {
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(6, x, y, z));
 						MicrowaweGUIButtonMessage.handleButtonAction(entity, 6, x, y, z);
 					}
@@ -192,7 +192,7 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png"), Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png")), e -> {
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(7, x, y, z));
 						MicrowaweGUIButtonMessage.handleButtonAction(entity, 7, x, y, z);
 					}
@@ -207,7 +207,7 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png"), Identifier.parse("ssc_14:textures/screens/microwawe_gui_button.png")), e -> {
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(8, x, y, z));
 						MicrowaweGUIButtonMessage.handleButtonAction(entity, 8, x, y, z);
 					}

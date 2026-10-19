@@ -1,7 +1,7 @@
 
 package net.mcreator.ssc.client.gui;
 
-import net.mcreator.ssc.network.MenuStateUpdateMessage;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -163,8 +163,7 @@ public class NetConfigGUIScreen extends AbstractContainerScreen<NetConfigGUIMenu
         WidgetSprites sprites = new WidgetSprites(BUTTON_TEX, BUTTON_TEX);
         ImageButton btn = new ImageButton(this.leftPos + posX, this.topPos + posY, 78, 11, sprites, e -> {
             if (isButtonActive(this.menu.getMenuState(), stateKey)) {
-				// Вместо Ssc14ModMessages.sendToServer(...) напишите:
-				NetConfigGUIButtonMessage.handleButtonAction(entity, buttonID, x, y, z);
+                ClientPacketDistributor.sendToServer(new NetConfigGUIButtonMessage(buttonID, x, y, z));
             }
         }) {
             @Override

@@ -20,11 +20,14 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
+import net.mcreator.ssc.EnergyNetworkManager;
+import net.mcreator.ssc.CableType;
 
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 public class SheathingBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(0, ItemStack.EMPTY);
 
 	// --- ДАННЫЕ СЕТИ ДЛЯ МУЛЬТИТУЛА (ИСПРАВЛЕНО: Добавлены поля симуляции) ---
@@ -51,6 +54,36 @@ public class SheathingBlockEntity extends RandomizableContainerBlockEntity imple
 		this.outputStored = outputStored;
 		this.outputMax = outputMax;
 		this.setChanged();
+	}
+
+	@Override
+	public void onLoad() {
+		super.onLoad();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void setBlockState(BlockState state) {
+		BlockState previous = getBlockState();
+		super.setBlockState(state);
+		for (CableType type : CableType.values()) {
+			if (type.hasCable(previous) != type.hasCable(state)) {
+				EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+				break;
+			}
+		}
+	}
+
+	@Override
+	public void setRemoved() {
+		super.setRemoved();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void onChunkUnloaded() {
+		super.onChunkUnloaded();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
 	}
 
 	@Override

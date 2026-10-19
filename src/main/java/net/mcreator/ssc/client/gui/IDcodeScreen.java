@@ -467,7 +467,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_kapitan = new ImageButton(this.leftPos + 13, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/kapitan.png"), Identifier.parse("ssc_14:textures/screens/kapitan.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(0, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 0, x, y, z);
 			}
@@ -481,7 +481,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_nt = new ImageButton(this.leftPos + 22, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/nt.png"), Identifier.parse("ssc_14:textures/screens/nt.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(1, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 1, x, y, z);
 			}
@@ -495,7 +495,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_gp = new ImageButton(this.leftPos + 13, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gp.png"), Identifier.parse("ssc_14:textures/screens/gp.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(2, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 2, x, y, z);
 			}
@@ -509,7 +509,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_gsb = new ImageButton(this.leftPos + 13, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gsb.png"), Identifier.parse("ssc_14:textures/screens/gsb.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(3, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 3, x, y, z);
 			}
@@ -523,7 +523,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_gv = new ImageButton(this.leftPos + 13, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gv.png"), Identifier.parse("ssc_14:textures/screens/gv.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(4, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 4, x, y, z);
 			}
@@ -537,7 +537,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_km = new ImageButton(this.leftPos + 13, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/km.png"), Identifier.parse("ssc_14:textures/screens/km.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(5, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 5, x, y, z);
 			}
@@ -551,7 +551,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_gruzchik = new ImageButton(this.leftPos + 31, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gruzchik.png"), Identifier.parse("ssc_14:textures/screens/gruzchik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(6, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 6, x, y, z);
 			}
@@ -565,7 +565,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_utilizator = new ImageButton(this.leftPos + 22, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/utilizator.png"), Identifier.parse("ssc_14:textures/screens/utilizator.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(7, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 7, x, y, z);
 			}
@@ -579,7 +579,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_passazhir = new ImageButton(this.leftPos + 58, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/passazhir.png"), Identifier.parse("ssc_14:textures/screens/passazhir.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(8, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 8, x, y, z);
 			}
@@ -593,7 +593,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_nr = new ImageButton(this.leftPos + 13, this.topPos + 217, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/nr.png"), Identifier.parse("ssc_14:textures/screens/nr.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(9, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 9, x, y, z);
 			}
@@ -608,7 +608,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/viedushchii_uchionyi.png"), Identifier.parse("ssc_14:textures/screens/viedushchii_uchionyi.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(10, x, y, z));
 						IDcodeButtonMessage.handleButtonAction(entity, 10, x, y, z);
 					}
@@ -622,7 +622,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_uchionyi = new ImageButton(this.leftPos + 31, this.topPos + 217, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/uchionyi.png"), Identifier.parse("ssc_14:textures/screens/uchionyi.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(11, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 11, x, y, z);
 			}
@@ -637,7 +637,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/nauchnyi_assistient.png"), Identifier.parse("ssc_14:textures/screens/nauchnyi_assistient.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(12, x, y, z));
 						IDcodeButtonMessage.handleButtonAction(entity, 12, x, y, z);
 					}
@@ -651,7 +651,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_si = new ImageButton(this.leftPos + 13, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/si.png"), Identifier.parse("ssc_14:textures/screens/si.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(13, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 13, x, y, z);
 			}
@@ -665,7 +665,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_atmos = new ImageButton(this.leftPos + 31, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/atmos.png"), Identifier.parse("ssc_14:textures/screens/atmos.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(14, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 14, x, y, z);
 			}
@@ -680,7 +680,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/viedushchii_inzhienier.png"), Identifier.parse("ssc_14:textures/screens/viedushchii_inzhienier.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(15, x, y, z));
 						IDcodeButtonMessage.handleButtonAction(entity, 15, x, y, z);
 					}
@@ -695,7 +695,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/tiekhnichieskii_assistient.png"), Identifier.parse("ssc_14:textures/screens/tiekhnichieskii_assistient.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(16, x, y, z));
 						IDcodeButtonMessage.handleButtonAction(entity, 16, x, y, z);
 					}
@@ -709,7 +709,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_inzhienier = new ImageButton(this.leftPos + 40, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/inzhienier.png"), Identifier.parse("ssc_14:textures/screens/inzhienier.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(17, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 17, x, y, z);
 			}
@@ -723,7 +723,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_paramiedik = new ImageButton(this.leftPos + 40, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/paramiedik.png"), Identifier.parse("ssc_14:textures/screens/paramiedik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(18, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 18, x, y, z);
 			}
@@ -737,7 +737,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_khimik = new ImageButton(this.leftPos + 31, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/khimik.png"), Identifier.parse("ssc_14:textures/screens/khimik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(19, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 19, x, y, z);
 			}
@@ -751,7 +751,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_vrach = new ImageButton(this.leftPos + 49, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/vrach.png"), Identifier.parse("ssc_14:textures/screens/vrach.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(20, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 20, x, y, z);
 			}
@@ -766,7 +766,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/viedushchii_vrach.png"), Identifier.parse("ssc_14:textures/screens/viedushchii_vrach.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(21, x, y, z));
 						IDcodeButtonMessage.handleButtonAction(entity, 21, x, y, z);
 					}
@@ -780,7 +780,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_intiern = new ImageButton(this.leftPos + 67, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/intiern.png"), Identifier.parse("ssc_14:textures/screens/intiern.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(22, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 22, x, y, z);
 			}
@@ -794,7 +794,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_kadiet = new ImageButton(this.leftPos + 67, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/kadiet.png"), Identifier.parse("ssc_14:textures/screens/kadiet.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(23, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 23, x, y, z);
 			}
@@ -808,7 +808,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_instruktor_sb = new ImageButton(this.leftPos + 22, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/instruktor_sb.png"), Identifier.parse("ssc_14:textures/screens/instruktor_sb.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(24, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 24, x, y, z);
 			}
@@ -822,7 +822,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_ofitsier = new ImageButton(this.leftPos + 58, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/ofitsier.png"), Identifier.parse("ssc_14:textures/screens/ofitsier.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(25, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 25, x, y, z);
 			}
@@ -836,7 +836,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_dietiektiv = new ImageButton(this.leftPos + 40, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/dietiektiv.png"), Identifier.parse("ssc_14:textures/screens/dietiektiv.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(26, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 26, x, y, z);
 			}
@@ -850,7 +850,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_psikhologh = new ImageButton(this.leftPos + 58, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/psikhologh.png"), Identifier.parse("ssc_14:textures/screens/psikhologh.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(27, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 27, x, y, z);
 			}
@@ -864,7 +864,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_brighmied = new ImageButton(this.leftPos + 49, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/brighmied.png"), Identifier.parse("ssc_14:textures/screens/brighmied.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(28, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 28, x, y, z);
 			}
@@ -878,7 +878,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_mim = new ImageButton(this.leftPos + 58, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/mim.png"), Identifier.parse("ssc_14:textures/screens/mim.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(29, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 29, x, y, z);
 			}
@@ -892,7 +892,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_smotritiel = new ImageButton(this.leftPos + 31, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/smotritiel.png"), Identifier.parse("ssc_14:textures/screens/smotritiel.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(30, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 30, x, y, z);
 			}
@@ -906,7 +906,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_osh = new ImageButton(this.leftPos + 49, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/osh.png"), Identifier.parse("ssc_14:textures/screens/osh.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(31, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 31, x, y, z);
 			}
@@ -920,7 +920,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_adutant = new ImageButton(this.leftPos + 31, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/adutant.png"), Identifier.parse("ssc_14:textures/screens/adutant.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(32, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 32, x, y, z);
 			}
@@ -934,7 +934,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_kloun = new ImageButton(this.leftPos + 67, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/kloun.png"), Identifier.parse("ssc_14:textures/screens/kloun.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(33, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 33, x, y, z);
 			}
@@ -948,7 +948,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_muzykant = new ImageButton(this.leftPos + 67, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/muzykant.png"), Identifier.parse("ssc_14:textures/screens/muzykant.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(34, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 34, x, y, z);
 			}
@@ -962,7 +962,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_zootiekhnik = new ImageButton(this.leftPos + 67, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/zootiekhnik.png"), Identifier.parse("ssc_14:textures/screens/zootiekhnik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(35, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 35, x, y, z);
 			}
@@ -976,7 +976,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_bibliotiekar = new ImageButton(this.leftPos + 58, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/bibliotiekar.png"), Identifier.parse("ssc_14:textures/screens/bibliotiekar.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(36, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 36, x, y, z);
 			}
@@ -991,7 +991,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/siervisnyi_rabotnik.png"), Identifier.parse("ssc_14:textures/screens/siervisnyi_rabotnik.png")), e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(37, x, y, z));
 						IDcodeButtonMessage.handleButtonAction(entity, 37, x, y, z);
 					}
@@ -1005,7 +1005,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_uborshchik = new ImageButton(this.leftPos + 31, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/uborshchik.png"), Identifier.parse("ssc_14:textures/screens/uborshchik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(38, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 38, x, y, z);
 			}
@@ -1019,7 +1019,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_povar = new ImageButton(this.leftPos + 40, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/povar.png"), Identifier.parse("ssc_14:textures/screens/povar.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(39, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 39, x, y, z);
 			}
@@ -1033,7 +1033,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_botanik = new ImageButton(this.leftPos + 49, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/botanik.png"), Identifier.parse("ssc_14:textures/screens/botanik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(40, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 40, x, y, z);
 			}
@@ -1047,7 +1047,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_barmien = new ImageButton(this.leftPos + 58, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/barmien.png"), Identifier.parse("ssc_14:textures/screens/barmien.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(41, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 41, x, y, z);
 			}
@@ -1061,7 +1061,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_boksior = new ImageButton(this.leftPos + 49, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/boksior.png"), Identifier.parse("ssc_14:textures/screens/boksior.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(42, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 42, x, y, z);
 			}
@@ -1075,7 +1075,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_sviashchiennik = new ImageButton(this.leftPos + 67, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/sviashchiennik.png"), Identifier.parse("ssc_14:textures/screens/sviashchiennik.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(43, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 43, x, y, z);
 			}
@@ -1089,7 +1089,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_rieportior = new ImageButton(this.leftPos + 40, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/rieportior.png"), Identifier.parse("ssc_14:textures/screens/rieportior.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(44, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 44, x, y, z);
 			}
@@ -1103,7 +1103,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_avd = new ImageButton(this.leftPos + 40, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/avd.png"), Identifier.parse("ssc_14:textures/screens/avd.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(45, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 45, x, y, z);
 			}
@@ -1117,7 +1117,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		imagebutton_idcode_all_on = new ImageButton(this.leftPos + 86, this.topPos + 220, 24, 9, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/idcode_all_on.png"), Identifier.parse("ssc_14:textures/screens/idcode_all_on_2.png")), e -> {
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
-			if (true) {
+			{
 				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(46, x, y, z));
 				IDcodeButtonMessage.handleButtonAction(entity, 46, x, y, z);
 			}
@@ -1132,7 +1132,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 				e -> {
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(47, x, y, z));
 						IDcodeButtonMessage.handleButtonAction(entity, 47, x, y, z);
 					}

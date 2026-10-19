@@ -12,11 +12,14 @@ public class NetworkRegister {
     @SubscribeEvent
     public static void register(final RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar("ssc_14");
-        
+        registrar.playToClient(net.mcreator.ssc.network.GasAnalyserData.TYPE,
+                net.mcreator.ssc.network.GasAnalyserData.CODEC,
+                net.mcreator.ssc.network.GasAnalyserData::handle);
+
         // Регистрируем пакет на клиентскую сторону
         registrar.playToClient(
-            MultitoolDataPacket.TYPE, 
-            MultitoolDataPacket.CODEC, 
+            MultitoolDataPacket.TYPE,
+            MultitoolDataPacket.CODEC,
             MultitoolDataPacket::handleClient
         );
     }

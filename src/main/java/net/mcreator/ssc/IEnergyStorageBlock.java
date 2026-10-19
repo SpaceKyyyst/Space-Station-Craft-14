@@ -4,6 +4,9 @@ package net.mcreator.ssc;
 public interface IEnergyStorageBlock {
     long getStoredEnergy();
     void setStoredEnergy(long joules);
+    default void setStoredEnergySimulation(long joules) {
+        setStoredEnergy(joules);
+    }
     long getMaxEnergy();
     
     // Новые методы для костыля мультитула

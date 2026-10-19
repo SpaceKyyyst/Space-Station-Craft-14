@@ -81,7 +81,7 @@ public class RCDGUIScreen extends AbstractContainerScreen<RCDGUIMenu> implements
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/deconstruct_gui_texture.png"), Identifier.parse("ssc_14:textures/screens/deconstruct_gui_texture.png")), e -> {
 					int x = RCDGUIScreen.this.x;
 					int y = RCDGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIButtonMessage(0, x, y, z));
 						RCDGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
 					}
@@ -105,7 +105,7 @@ public class RCDGUIScreen extends AbstractContainerScreen<RCDGUIMenu> implements
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/floorwall_gui_texture.png"), Identifier.parse("ssc_14:textures/screens/floorwall_gui_texture.png")), e -> {
 					int x = RCDGUIScreen.this.x;
 					int y = RCDGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIButtonMessage(2, x, y, z));
 						RCDGUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
 					}
@@ -120,7 +120,7 @@ public class RCDGUIScreen extends AbstractContainerScreen<RCDGUIMenu> implements
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/windowglill_gui_texture.png"), Identifier.parse("ssc_14:textures/screens/windowglill_gui_texture.png")), e -> {
 					int x = RCDGUIScreen.this.x;
 					int y = RCDGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIButtonMessage(3, x, y, z));
 						RCDGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
 					}
@@ -153,7 +153,7 @@ public class RCDGUIScreen extends AbstractContainerScreen<RCDGUIMenu> implements
 				e -> {
 					int x = RCDGUIScreen.this.x;
 					int y = RCDGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIButtonMessage(6, x, y, z));
 						RCDGUIButtonMessage.handleButtonAction(entity, 6, x, y, z);
 					}

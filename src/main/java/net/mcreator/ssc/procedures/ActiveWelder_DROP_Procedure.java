@@ -13,7 +13,7 @@ import net.mcreator.ssc.init.Ssc14ModItems;
 
 public class ActiveWelder_DROP_Procedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, ItemStack itemstack) {
-		if (itemstack.isEmpty()) return;
+		if (itemstack.isEmpty() || world.isClientSide()) return;
 
 		// Запоминаем и вытаскиваем точный остаток топлива и все кастомные теги выброшенного предмета
 		CustomData oldData = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
@@ -22,6 +22,7 @@ public class ActiveWelder_DROP_Procedure {
 
 		// Создаем выключенный сварочный аппарат для спавна на полу
 		ItemStack droppedDeactivatedWelder = new ItemStack(Ssc14ModItems.WELDING.get());
+		droppedDeactivatedWelder.applyComponents(itemstack.getComponentsPatch());
 		
 		// Переносим абсолютно весь слепок NBT данных (чтобы улучшения и кастомные теги не стерлись)
 		if (!oldData.isEmpty()) {

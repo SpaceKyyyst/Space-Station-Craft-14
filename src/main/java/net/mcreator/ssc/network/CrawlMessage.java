@@ -58,6 +58,6 @@ public record CrawlMessage(int eventType, int pressedms) implements CustomPacket
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(CrawlMessage.TYPE, CrawlMessage.STREAM_CODEC, CrawlMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(CrawlMessage.TYPE, CrawlMessage.STREAM_CODEC, CrawlMessage::handleData);
 	}
 }

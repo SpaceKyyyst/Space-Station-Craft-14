@@ -95,7 +95,7 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/comm_cons_gui_button.png"), Identifier.parse("ssc_14:textures/screens/comm_cons_gui_button.png")), e -> {
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new CommunConsoleGUIButtonMessage(0, x, y, z));
 						CommunConsoleGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
 					}
@@ -110,7 +110,7 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/comm_cons_gui_button.png"), Identifier.parse("ssc_14:textures/screens/comm_cons_gui_button.png")), e -> {
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new CommunConsoleGUIButtonMessage(1, x, y, z));
 						CommunConsoleGUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
 					}
@@ -125,7 +125,7 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/comm_cons_gui_button.png"), Identifier.parse("ssc_14:textures/screens/comm_cons_gui_button.png")), e -> {
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new CommunConsoleGUIButtonMessage(2, x, y, z));
 						CommunConsoleGUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
 					}
@@ -140,7 +140,7 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/comm_cons_gui_button.png"), Identifier.parse("ssc_14:textures/screens/comm_cons_gui_button.png")), e -> {
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new CommunConsoleGUIButtonMessage(3, x, y, z));
 						CommunConsoleGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
 					}
@@ -155,7 +155,7 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/comm_cons_gui_button.png"), Identifier.parse("ssc_14:textures/screens/comm_cons_gui_button.png")), e -> {
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new CommunConsoleGUIButtonMessage(4, x, y, z));
 						CommunConsoleGUIButtonMessage.handleButtonAction(entity, 4, x, y, z);
 					}

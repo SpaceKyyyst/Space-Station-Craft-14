@@ -30,6 +30,7 @@ public class BaseAirlockD1PutProcedure {
         if (action != 1 && action != 2) ensureTopBlockExists(world, topPos, blockstate);
 		initializeClosedAirlockState(world, pos, blockstate);
 		generateRandomCableValues(world, pos);
+        net.mcreator.ssc.access.AirlockFloor.ensureLowerPart(world, pos);
 		BlockEntity be = world.getBlockEntity(pos);
 		if (be != null) be.setChanged();
 	}
@@ -49,8 +50,8 @@ public class BaseAirlockD1PutProcedure {
 		nbt.putBoolean("diods", true);
 		nbt.putBoolean("ai_access", true);
 		nbt.putBoolean("logs", true);
-		nbt.putBoolean("powered", true);
-        nbt.putBoolean("_ssc14_supply_powered", true);
+		nbt.putBoolean("powered", false);
+        nbt.putBoolean("_ssc14_supply_powered", false);
         nbt.putBoolean("energy_cabel_1", true);
         nbt.putBoolean("energy_cabel_2", true);
 
@@ -115,6 +116,8 @@ public class BaseAirlockD1PutProcedure {
 			
 		BlockState currentTop = world.getBlockState(topPos);
 		if (currentTop.getBlock() == targetPlug) return;
+        if (!currentTop.canBeReplaced() && currentTop.getBlock() != Ssc14ModBlocks.AIRLOCK_UP_PLUG.get()
+                && currentTop.getBlock() != Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get()) return;
 		
 		BlockState plugState = targetPlug.defaultBlockState();
 		Property<?> sourceFacing = currentMain.getBlock().getStateDefinition().getProperty("facing");

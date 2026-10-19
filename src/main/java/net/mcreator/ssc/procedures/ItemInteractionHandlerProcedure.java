@@ -43,7 +43,7 @@ public class ItemInteractionHandlerProcedure {
         HANDLERS.put(from, (player, slot) -> {
             if (from != to) {
                 ItemStack newStack = new ItemStack(to, slot.getItem().getCount());
-                newStack.applyComponents(slot.getItem().getComponents());
+                newStack.applyComponents(slot.getItem().getComponentsPatch());
                 slot.set(newStack);
 
                 if (player instanceof ServerPlayer sp) {

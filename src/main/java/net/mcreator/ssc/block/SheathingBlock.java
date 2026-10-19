@@ -79,6 +79,7 @@ public class SheathingBlock extends Block implements EntityBlock {
 	@Override
 	protected void affectNeighborsAfterRemoval(BlockState blockstate, ServerLevel world, BlockPos blockpos, boolean flag) {
 		Containers.updateNeighboursAfterDestroy(blockstate, world, blockpos);
+		net.mcreator.ssc.EnergyNetworkManager.invalidate(world, blockpos);
 	}
 
 	@Override

@@ -39,7 +39,7 @@ public class ConsoleOfIDBlock extends Block implements EntityBlock {
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public ConsoleOfIDBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.ANVIL).strength(20f, 10f).lightLevel(blockstate -> 3).noOcclusion().postProcess((bs, br, bp) -> bp).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.ANVIL).strength(20f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 

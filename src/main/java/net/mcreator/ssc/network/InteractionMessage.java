@@ -39,6 +39,6 @@ public record InteractionMessage(int eventType, int pressedms) implements Custom
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addNetworkMessage(InteractionMessage.TYPE, InteractionMessage.STREAM_CODEC, InteractionMessage::handleData);
+		Ssc14Mod.addServerboundNetworkMessage(InteractionMessage.TYPE, InteractionMessage.STREAM_CODEC, InteractionMessage::handleData);
 	}
 }

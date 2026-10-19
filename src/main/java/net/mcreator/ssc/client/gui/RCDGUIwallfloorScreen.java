@@ -79,7 +79,7 @@ public class RCDGUIwallfloorScreen extends AbstractContainerScreen<RCDGUIwallflo
 				e -> {
 					int x = RCDGUIwallfloorScreen.this.x;
 					int y = RCDGUIwallfloorScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIwallfloorButtonMessage(0, x, y, z));
 						RCDGUIwallfloorButtonMessage.handleButtonAction(entity, 0, x, y, z);
 					}
@@ -94,7 +94,7 @@ public class RCDGUIwallfloorScreen extends AbstractContainerScreen<RCDGUIwallflo
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/steel_wall_gui_texture.png"), Identifier.parse("ssc_14:textures/screens/steel_wall_gui_texture.png")), e -> {
 					int x = RCDGUIwallfloorScreen.this.x;
 					int y = RCDGUIwallfloorScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIwallfloorButtonMessage(1, x, y, z));
 						RCDGUIwallfloorButtonMessage.handleButtonAction(entity, 1, x, y, z);
 					}
@@ -109,7 +109,7 @@ public class RCDGUIwallfloorScreen extends AbstractContainerScreen<RCDGUIwallflo
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/most_floor__gui_texture.png"), Identifier.parse("ssc_14:textures/screens/most_floor__gui_texture.png")), e -> {
 					int x = RCDGUIwallfloorScreen.this.x;
 					int y = RCDGUIwallfloorScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIwallfloorButtonMessage(2, x, y, z));
 						RCDGUIwallfloorButtonMessage.handleButtonAction(entity, 2, x, y, z);
 					}
@@ -124,7 +124,7 @@ public class RCDGUIwallfloorScreen extends AbstractContainerScreen<RCDGUIwallflo
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/tile_steel__gui_texture.png"), Identifier.parse("ssc_14:textures/screens/tile_steel__gui_texture.png")), e -> {
 					int x = RCDGUIwallfloorScreen.this.x;
 					int y = RCDGUIwallfloorScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIwallfloorButtonMessage(3, x, y, z));
 						RCDGUIwallfloorButtonMessage.handleButtonAction(entity, 3, x, y, z);
 					}
@@ -139,7 +139,7 @@ public class RCDGUIwallfloorScreen extends AbstractContainerScreen<RCDGUIwallflo
 				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/floor_gui_texture.png"), Identifier.parse("ssc_14:textures/screens/floor_gui_texture.png")), e -> {
 					int x = RCDGUIwallfloorScreen.this.x;
 					int y = RCDGUIwallfloorScreen.this.y;
-					if (true) {
+					{
 						ClientPacketDistributor.sendToServer(new RCDGUIwallfloorButtonMessage(4, x, y, z));
 						RCDGUIwallfloorButtonMessage.handleButtonAction(entity, 4, x, y, z);
 					}

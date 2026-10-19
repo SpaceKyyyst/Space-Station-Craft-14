@@ -20,6 +20,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
+import net.mcreator.ssc.EnergyNetworkManager;
 import net.mcreator.ssc.IEnergyStorageBlock; // ИСПРАВЛЕНО: Интеграция в общую систему энергии
 
 import javax.annotation.Nullable;
@@ -41,19 +42,42 @@ public class PodstationBlockEntity extends RandomizableContainerBlockEntity impl
 	}
 
 	@Override
+	public void onLoad() {
+		super.onLoad();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void setRemoved() {
+		super.setRemoved();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
+	public void onChunkUnloaded() {
+		super.onChunkUnloaded();
+		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+	}
+
+	@Override
 	public long getStoredEnergy() { return this.storedEnergy; }
 
 	@Override
 	public void setStoredEnergy(long joules) {
-		this.storedEnergy = Math.clamp(joules, 0, MAX_ENERGY);
+		long nextEnergy = Math.clamp(joules, 0, MAX_ENERGY);
+		if (this.storedEnergy == nextEnergy) return;
+		this.storedEnergy = nextEnergy;
 		this.setChanged();
 		if (this.level != null && !this.level.isClientSide()) {
 			this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
 		}
 	}
 
+	@Override
 	public void setStoredEnergySimulation(long joules) {
-		this.storedEnergy = Math.clamp(joules, 0, MAX_ENERGY);
+		long nextEnergy = Math.clamp(joules, 0, MAX_ENERGY);
+		if (this.storedEnergy == nextEnergy) return;
+		this.storedEnergy = nextEnergy;
 		this.setChanged();
 	}
 
@@ -80,7 +104,7 @@ public class PodstationBlockEntity extends RandomizableContainerBlockEntity impl
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		ContainerHelper.loadAllItems(valueInput, this.stacks);
 		
-		this.storedEnergy = valueInput.getLongOr("storedEnergy", 0L);
+		this.storedEnergy = Math.clamp(valueInput.getLongOr("storedEnergy", 0L), 0, MAX_ENERGY);
 		this.netCurrent = valueInput.getLongOr("netCurrent", 0L);
 		this.netSupply = valueInput.getLongOr("netSupply", 0L);
 		this.netConsume = valueInput.getLongOr("netConsume", 0L);

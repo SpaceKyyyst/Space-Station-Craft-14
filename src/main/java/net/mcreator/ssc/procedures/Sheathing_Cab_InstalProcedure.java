@@ -73,7 +73,7 @@ public class Sheathing_Cab_InstalProcedure {
 
 				// ЖЕЛЕЗНЫЙ ТРИГГЕР: Принудительно заставляем систему проснуться и пересобрать энергосеть в этой точке!
 				if (!world.isClientSide()) {
-					EnergyNetworkManager.updatePosition(world, pos);
+					EnergyNetworkManager.invalidate(world, pos);
 				}
 			}
 		}
