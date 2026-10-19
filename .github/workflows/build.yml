@@ -78,6 +78,25 @@ jobs:
             build/gameTest/run/crash-reports/
           if-no-files-found: ignore
 
+  windows-unicode-tests:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    runs-on: windows-2025
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-java@v6.1.0
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: gradle/actions/setup-gradle@v6.4.0
+      - name: Test from a Unicode project path
+        shell: pwsh
+        run: |
+          $unicodeCheckout = Join-Path $env:RUNNER_TEMP 'Тест плагина'
+          Copy-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $unicodeCheckout -Recurse
+          Set-Location -LiteralPath $unicodeCheckout
+          .\gradlew.bat domainTest test --no-daemon
+
   release:
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
