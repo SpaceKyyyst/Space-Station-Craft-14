@@ -11,6 +11,9 @@ import net.minecraft.world.phys.Vec3;
 public final class RotateCommand {
     private static final int PRESS = 0;
     private static final double MAX_ROTATION_RANGE = 5.0;
+    // Rotation changes one existing state. Generic neighbor physics and placement
+    // hooks can escape the loaded-only view and are outside this command's contract.
+    private static final int STATE_ONLY_UPDATE_FLAGS = Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE | Block.UPDATE_SKIP_ON_PLACE;
 
     private RotateCommand() { }
 
@@ -37,7 +40,7 @@ public final class RotateCommand {
             var current = view.getBlockState(pos);
             var rotated = RotationPolicy.rotate(current);
             if (rotated.isEmpty() || view.getBlockState(pos) != current) return false;
-            return level.setBlock(pos, rotated.get(), Block.UPDATE_ALL);
+            return level.setBlock(pos, rotated.get(), STATE_ONLY_UPDATE_FLAGS);
         } catch (LoadedRotationView.UnavailableChunk ignored) {
             return false;
         }

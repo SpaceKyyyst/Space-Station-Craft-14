@@ -11,6 +11,7 @@ import net.mcreator.ssc.rotation.RotateCommand;
 import net.mcreator.ssc.rotation.RotationPolicy;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.SectionPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
 import net.minecraft.gametest.framework.GameTestHelper;
@@ -18,6 +19,11 @@ import net.minecraft.gametest.framework.TestData;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.network.protocol.PacketFlow;
+import net.minecraft.network.protocol.game.ClientboundBlockUpdatePacket;
+import net.minecraft.server.level.ChunkHolder;
+import net.minecraft.server.level.ChunkMap;
+import net.minecraft.server.level.FullChunkStatus;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.Block;
@@ -38,7 +44,7 @@ public final class RotateGameTests {
     private static final String[] NAMES = {"rotate_exact_hit", "rotate_critical", "rotate_spectator", "rotate_invalid_intent",
             "rotate_miss", "rotate_reach", "rotate_facade", "rotate_world_border", "rotate_unloaded", "rotate_replaced_target",
             "rotate_loaded_traversal", "rotate_supported_states", "rotate_unsupported_states", "rotate_non_server_facade", "rotate_height",
-            "rotate_transport", "rotate_medical_thresholds"};
+            "rotate_transport", "rotate_medical_thresholds", "rotate_boundary_update_loading", "rotate_multipart_rejected", "rotate_client_sync"};
     private static BlockPos observedPosition;
     private static int neighborNotifications;
 
@@ -66,6 +72,9 @@ public final class RotateGameTests {
             registry.register(id(NAMES[14]), RotateGameTests::height);
             registry.register(id(NAMES[15]), RotateGameTests::transport);
             registry.register(id(NAMES[16]), RotateGameTests::medicalThresholds);
+            registry.register(id(NAMES[17]), RotateGameTests::boundaryUpdateLoading);
+            registry.register(id(NAMES[18]), RotateGameTests::multipartRejected);
+            registry.register(id(NAMES[19]), RotateGameTests::clientSync);
         });
     }
 
@@ -88,7 +97,7 @@ public final class RotateGameTests {
         }
         helper.assertTrue(helper.getLevel().getBlockState(fixture.target).getValue(HorizontalDirectionalBlock.FACING) == Direction.EAST,
                 "The actual nonzero-Z hit must rotate clockwise exactly once");
-        helper.assertTrue(neighborNotifications == 1, "Exactly one target update must notify its neighbors");
+        helper.assertTrue(neighborNotifications == 0, "State-only rotation must not dispatch potentially loading neighbor callbacks");
         assertDecoy(helper, fixture);
         helper.succeed();
     }
@@ -176,6 +185,83 @@ public final class RotateGameTests {
         helper.succeed();
     }
 
+    private static void boundaryUpdateLoading(GameTestHelper helper) {
+        var level = helper.getLevel();
+        int chunkX = helper.absolutePos(BlockPos.ZERO).getX() >> 4;
+        int chunkZ = 3000;
+        level.getChunk(chunkX, chunkZ);
+        var target = new BlockPos(chunkX * 16 + 15, 80, chunkZ * 16 + 8);
+        var original = Ssc14ModBlocks.MACHINE_FRAME.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
+        // Fixture installation must not itself request the unavailable east chunk.
+        level.setBlock(target, original, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+        var player = new FakePlayer(level, new GameProfile(UUID.randomUUID(), "rotate-boundary"));
+        player.setGameMode(GameType.SURVIVAL);
+        player.setPos(target.getX() + 0.5, target.getY() - 1, target.getZ() - 2.5);
+        player.setYRot(0);
+        player.setXRot(0);
+        helper.assertTrue(level.getChunkSource().getChunkNow(chunkX + 1, chunkZ) == null,
+                "The adjacent update chunk must start unavailable while the entire ray chunk is loaded");
+        RotateMessage.pressAction(player, 0, 0);
+        helper.assertTrue(level.getChunkSource().getChunkNow(chunkX + 1, chunkZ) == null,
+                "Successful-target validation must not let neighbor notifications load an unavailable chunk");
+        helper.assertTrue(level.getBlockState(target) == original.setValue(HorizontalDirectionalBlock.FACING, Direction.EAST),
+                "A supported state-only rotation must still succeed with an unavailable neighboring chunk");
+        helper.succeed();
+    }
+
+    private static void multipartRejected(GameTestHelper helper) {
+        var fixture = fixture(helper);
+        var level = helper.getLevel();
+        for (var block : new Block[] {Ssc14ModBlocks.CLOSET.get(), Ssc14ModBlocks.CLOSET_SECURE.get()}) {
+            var original = block.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
+            level.setBlock(fixture.target.above(), Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+            level.setBlock(fixture.target, original, Block.UPDATE_ALL);
+            var upper = level.getBlockState(fixture.target.above());
+            helper.assertTrue(upper.is(Ssc14ModBlocks.UP_CLOSET_PLUG.get()), "Normal closet placement must install its real upper plug");
+            RotateMessage.pressAction(fixture.player, 0, 0);
+            helper.assertTrue(level.getBlockState(fixture.target) == original, "Multipart base must be rejected before its facing changes");
+            helper.assertTrue(level.getBlockState(fixture.target.above()) == upper, "Rejected rotation must not replay placement or change the paired plug");
+        }
+        assertDecoy(helper, fixture);
+        helper.succeed();
+    }
+
+    private static void clientSync(GameTestHelper helper) {
+        var level = helper.getLevel();
+        // GameTest waits for the structure's chunk to become entity-ticking. Unlike
+        // remote security fixtures, this exercises the real client update queue.
+        var target = helper.absolutePos(new BlockPos(1, 50, 1));
+        var chunk = level.getChunkAt(target);
+        helper.assertTrue(chunk.getFullStatus().isOrAfter(FullChunkStatus.BLOCK_TICKING), "Sync fixture must be in a ticking chunk");
+        var original = Ssc14ModBlocks.MACHINE_FRAME.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
+        level.setBlock(target, original, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+        var player = new FakePlayer(level, new GameProfile(UUID.randomUUID(), "rotate-sync"));
+        player.setGameMode(GameType.SURVIVAL);
+        player.setPos(target.getX() + 0.5, target.getY() - 1, target.getZ() - 2.5);
+        player.setYRot(0);
+        player.setXRot(0);
+        try {
+            var lookup = ChunkMap.class.getDeclaredMethod("getVisibleChunkIfPresent", long.class);
+            lookup.setAccessible(true);
+            var holder = (ChunkHolder) lookup.invoke(level.getChunkSource().chunkMap, ChunkPos.pack(target.getX() >> 4, target.getZ() >> 4));
+            holder.broadcastChanges(chunk); // Drain fixture writes through the native broadcaster.
+            RotateMessage.pressAction(player, 0, 0);
+            var changes = ChunkHolder.class.getDeclaredField("changedBlocksPerSection");
+            changes.setAccessible(true);
+            var sections = (it.unimi.dsi.fastutil.shorts.ShortSet[]) changes.get(holder);
+            var changed = sections[level.getSectionIndex(target.getY())];
+            helper.assertTrue(changed != null && changed.size() == 1 && changed.contains(SectionPos.sectionRelativePos(target)),
+                    "Exactly the rotated target must enter the real pending client block-update queue");
+            var packet = new ClientboundBlockUpdatePacket(level, target);
+            helper.assertTrue(packet.getPos().equals(target)
+                    && packet.getBlockState() == original.setValue(HorizontalDirectionalBlock.FACING, Direction.EAST),
+                    "The broadcaster's block-update payload must expose the new facing at the exact target");
+        } catch (ReflectiveOperationException error) {
+            throw new AssertionError("Pinned-platform client update observation failed", error);
+        }
+        helper.succeed();
+    }
+
     private static void supportedStates(GameTestHelper helper) {
         var fixture = fixture(helper);
         for (Direction expected : new Direction[] {Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.NORTH}) {
@@ -187,6 +273,27 @@ public final class RotateGameTests {
         helper.assertTrue(RotateCommand.execute(fixture.player, 0), "Creative must retain supported rotation");
         helper.assertTrue(helper.getLevel().getBlockState(fixture.target).getValue(HorizontalDirectionalBlock.FACING) == Direction.EAST,
                 "Creative rotation must also advance once");
+        for (var block : new Block[] {Ssc14ModBlocks.MACHINE_FRAME.get(), Ssc14ModBlocks.COMPUTER.get(),
+                Ssc14ModBlocks.OFICE_BLACK_CHAIR.get(), Ssc14ModBlocks.OFICE_WHITE_CHAIR.get(), Ssc14ModBlocks.WOOD_CHAIR.get(),
+                Ssc14ModBlocks.STEEL_CHAIR.get(), Ssc14ModBlocks.BAR_CHAIR.get(), Ssc14ModBlocks.CONSOLE_OF_ID.get(),
+                Ssc14ModBlocks.PODSTATION.get(), Ssc14ModBlocks.SMES.get(), Ssc14ModBlocks.PORTABLE_SHEATER.get()}) {
+            var original = block.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
+            helper.getLevel().setBlock(fixture.target, original, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE | Block.UPDATE_SKIP_ON_PLACE);
+            // Use a broad component inside the owning voxel, rather than a thin
+            // chair leg or an over-height backrest at the traversal boundary.
+            var component = original.getShape(helper.getLevel(), fixture.target).toAabbs().stream().filter(box -> box.minY < 1)
+                    .max(java.util.Comparator.comparingDouble(box -> box.getXsize() * box.getZsize()))
+                    .orElseThrow(() -> new AssertionError("No outline in the owning voxel: " + block));
+            var center = component.getCenter();
+            var aim = new net.minecraft.world.phys.Vec3(center.x, (Math.max(0, component.minY) + Math.min(1, component.maxY)) / 2, center.z);
+            fixture.player.setPos(fixture.target.getX() + aim.x, fixture.target.getY() + aim.y - fixture.player.getEyeHeight(),
+                    fixture.target.getZ() - 2.5);
+            helper.assertTrue(RotationPolicy.rotate(original).isPresent(), "The current tag member must be eligible: " + block);
+            helper.assertTrue(helper.getLevel().getBlockState(fixture.target) == original, "Supported fixture state must be installed: " + block);
+            helper.assertTrue(RotateCommand.execute(fixture.player, 0), "Every supported current tag member must rotate: " + block);
+            helper.assertTrue(helper.getLevel().getBlockState(fixture.target)
+                    == original.setValue(HorizontalDirectionalBlock.FACING, Direction.EAST), "State-only rotation must preserve all other properties");
+        }
         assertDecoy(helper, fixture);
         helper.succeed();
     }
