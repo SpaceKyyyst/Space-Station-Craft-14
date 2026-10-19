@@ -1,43 +1,12 @@
-
 package net.mcreator.ssc.procedures;
 
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.bus.api.Event;
-
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 
-import net.mcreator.ssc.combat.CriticalAbilityPolicy;
-
-import javax.annotation.Nullable;
-
-@EventBusSubscriber
-public class SSC14CriticalTickAdditionalProcedure {
-    
-    @SubscribeEvent
-    public static void onPlayerTick(PlayerTickEvent.Post event) {
-        execute(event, event.getEntity());
-    }
+/** Generated procedure compatibility facade; medical reconciliation has one Pre-tick owner. */
+public final class SSC14CriticalTickAdditionalProcedure {
+    private SSC14CriticalTickAdditionalProcedure() { }
 
     public static void execute(Entity entity) {
-        execute(null, entity);
-    }
-
-    private static void execute(@Nullable Event event, Entity entity) {
-        if (entity == null) return;
-        
-        if (!(entity instanceof Player player)) return;
-        
-        var nbt = player.getPersistentData();
-        // ИСПРАВЛЕНО: Возвращена распаковка Optional через .orElse(0.0)
-        double totalDamage = nbt.getDouble("sscCustomHealth").orElse(0.0);
-        
-        boolean requiredMayBuild = totalDamage < 100.0;
-        if (CriticalAbilityPolicy.shouldSync(player.getAbilities().mayBuild, requiredMayBuild)) {
-            player.getAbilities().mayBuild = requiredMayBuild;
-            player.onUpdateAbilities();
-        }
+        // Abilities belong to the game mode and other ability owners.
     }
 }

@@ -15,6 +15,7 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class ID_Code_CHECKProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (entity == null)
 			return;
 		if (getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Bufer_LG") == false && getAmountInGUISlot(entity, 0) > 0 && getAmountInGUISlot(entity, 1) > 0) {
@@ -600,9 +601,9 @@ public class ID_Code_CHECKProcedure {
 						.literal(("ID \u043A\u0430\u0440\u0442\u0430 (" + ((entity instanceof Player _entity324 && _entity324.containerMenu instanceof Ssc14ModMenus.MenuAccessor _menu324) ? _menu324.getMenuState(0, "Job_Name", "") : "") + ")")));
 			}
 		}
-		Ssc14Mod.queueServerWork(1, () -> {
+		Ssc14Mod.queueServerWork(serverOwner, 1, () -> {
 			IDCode0CellprProcedure.execute(entity);
-		});
+		}).orThrow();
 	}
 
 	private static boolean getBlockNBTLogic(LevelAccessor world, BlockPos pos, String tag) {

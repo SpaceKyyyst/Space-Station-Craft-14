@@ -11,8 +11,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.GameType;
 import net.minecraft.core.registries.Registries;
@@ -21,6 +19,7 @@ import net.minecraft.tags.TagKey;
 import net.mcreator.ssc.init.Ssc14ModAttributes;
 import net.mcreator.ssc.init.Ssc14ModEntities;
 import net.mcreator.ssc.ArmorResistanceHelper;
+import net.mcreator.ssc.medical.MedicalPlayerEffects;
 
 import javax.annotation.Nullable;
 
@@ -31,13 +30,10 @@ public class OnPlayerTakeDamageSSC14Procedure {
     private static final String KEY_BLEEDING = "ssc14_bleeding";
     private static final String KEY_GIBBED = "ssc14_gibbed";
     private static final String KEY_ASH = "ssc14_ash";
-    private static final String KEY_CRITICAL = "ssc14_critical";
     private static final String PREFIX_TYPE = "ssc14_dmg_";
     
     // ИСПРАВЛЕНО: Теперь используем фабричный метод вместо приватного конструктора new Identifier()
     private static final Identifier SSC14_SLOWDOWN_ID = Identifier.fromNamespaceAndPath("ssc14", "slowdown");
-    private static final Identifier CRIT_IMMOBILIZE_ID = Identifier.fromNamespaceAndPath("ssc14", "crit_immobilize");
-    private static final Identifier CRIT_NOJUMP_ID = Identifier.fromNamespaceAndPath("ssc14", "crit_nojump");
 
     private static final double SLOW_60 = 60.0;
     private static final double SLOW_80 = 80.0;
@@ -45,8 +41,7 @@ public class OnPlayerTakeDamageSSC14Procedure {
     private static final double GIB_BLUNT = 400.0;
     private static final double GIB_CELLULAR = 200.0;
     private static final double GIB_HEAT = 1500.0;
-    private static final double CRIT_MIN = 100.0;
-    private static final double CRIT_MAX = 200.0;
+    private static final double DEATH_DAMAGE_THRESHOLD = 200.0;
 
     @SubscribeEvent
     public static void onEntityAttacked(LivingDamageEvent.Pre event) {
@@ -91,10 +86,10 @@ public class OnPlayerTakeDamageSSC14Procedure {
                           " | Всего: " + totalDamage);
 
         updateHealthUIAttribute(player, totalDamage);
-        updateCriticalState(player, nbt, totalDamage);
+        MedicalPlayerEffects.reconcile(player, Integer.MAX_VALUE);
         applySlowdownAttribute(player, totalDamage);
         
-        if (totalDamage >= CRIT_MAX && !nbt.getBoolean("ssc14_dead").orElse(false)) {
+        if (totalDamage >= DEATH_DAMAGE_THRESHOLD && !nbt.getBoolean("ssc14_dead").orElse(false)) {
             nbt.putBoolean("ssc14_dead", true);
             handleDeath(player, nbt);
             return;
@@ -146,26 +141,6 @@ public class OnPlayerTakeDamageSSC14Procedure {
         }
     }
 
-    private static void updateCriticalState(Player player, CompoundTag nbt, double totalDamage) {
-        boolean wasCritical = nbt.getBoolean(KEY_CRITICAL).orElse(false);
-        boolean shouldBeCritical = (totalDamage >= CRIT_MIN && totalDamage <= CRIT_MAX);
-        
-        if (shouldBeCritical && !wasCritical) {
-            nbt.putBoolean(KEY_CRITICAL, true);
-            player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, Integer.MAX_VALUE, 0, false, false));
-        } else if (!shouldBeCritical && wasCritical) {
-            nbt.putBoolean(KEY_CRITICAL, false);
-            player.removeEffect(MobEffects.BLINDNESS);
-            removeCriticalModifiers(player);
-        }
-    }
-
-    private static void removeCriticalModifiers(Player player) {
-        var speedAttr = player.getAttribute(Attributes.MOVEMENT_SPEED);
-        if (speedAttr != null && speedAttr.hasModifier(CRIT_IMMOBILIZE_ID)) speedAttr.removeModifier(CRIT_IMMOBILIZE_ID);
-        var jumpAttr = player.getAttribute(Attributes.JUMP_STRENGTH);
-        if (jumpAttr != null && jumpAttr.hasModifier(CRIT_NOJUMP_ID)) jumpAttr.removeModifier(CRIT_NOJUMP_ID);
-    }
 
     private static void updateHealthUIAttribute(Player player, double totalDamage) {
         var attr = player.getAttribute(Ssc14ModAttributes.HEALTH_U_IATTRIBUTE);

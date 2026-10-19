@@ -12,10 +12,18 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.gametest.framework.GameTestInfo;
+import net.minecraft.gametest.framework.GameTestListener;
+import net.minecraft.gametest.framework.GameTestRunner;
 import net.minecraft.gametest.framework.TestData;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.server.level.TicketType;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.mcreator.ssc.energy.EnergyTopologyService;
+import java.util.function.BooleanSupplier;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
@@ -25,7 +33,8 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 @EventBusSubscriber(modid = "ssc_14")
 public final class EnergyGameTests {
     private static final String[] TEST_NAMES = {
-        "energy_bridge_removal", "energy_supply_chain", "energy_idle_storage"
+        "energy_bridge_removal", "energy_supply_chain", "energy_idle_storage",
+        "energy_isolated_chunk_reload", "energy_bridge_chunk_reload"
     };
     private static final long TICKS_PER_SECOND = 20;
     private static final long GENERATOR_WATTS = 100_000;
@@ -34,6 +43,10 @@ public final class EnergyGameTests {
     private static final long DEVICE_INPUT_JOULES = 2_500;
     private static final long INITIAL_CHARGE = 50_000;
     private static final int OBSERVATION_TICKS = 20;
+    private static final int LIFECYCLE_TIMEOUT_TICKS = 1_200;
+    private static final int TRANSITION_TIMEOUT_TICKS = 300;
+    private static final int CHUNK_WIDTH = 16;
+    private static final int RELOAD_CYCLES = 3;
 
     private EnergyGameTests() { }
 
@@ -43,6 +56,8 @@ public final class EnergyGameTests {
             registry.register(id(TEST_NAMES[0]), EnergyGameTests::bridgeRemoval);
             registry.register(id(TEST_NAMES[1]), EnergyGameTests::supplyChain);
             registry.register(id(TEST_NAMES[2]), EnergyGameTests::idleStorage);
+            registry.register(id(TEST_NAMES[3]), EnergyGameTests::isolatedChunkReload);
+            registry.register(id(TEST_NAMES[4]), EnergyGameTests::bridgeChunkReload);
         });
     }
 
@@ -50,7 +65,7 @@ public final class EnergyGameTests {
     public static void registerTests(RegisterGameTestsEvent event) {
         var environment = event.registerEnvironment(id("energy_environment"));
         for (String name : TEST_NAMES) {
-            var data = new TestData<>(environment, id("atmosphere_test_room"), 600, 1, true);
+            var data = new TestData<>(environment, id("atmosphere_test_room"), LIFECYCLE_TIMEOUT_TICKS, 1, true);
             event.registerTest(id(name), new FunctionGameTestInstance(ResourceKey.create(Registries.TEST_FUNCTION, id(name)), data));
         }
     }
@@ -172,6 +187,183 @@ public final class EnergyGameTests {
             if (net.mcreator.ssc.energy.EnergyTopologyService.rebuilding(helper.getLevel())) awaitEnergy(helper, action);
             else helper.runAfterDelay(2, action);
         });
+    }
+
+    /** A remote, radius-zero ticket leaves the GameTest's own forced chunks untouched. */
+    private static void isolatedChunkReload(GameTestHelper helper) {
+        ChunkPos chunk = new ChunkPos(1_024, 1_024);
+        releaseTicketsOnCompletion(helper, chunk);
+        loadChunk(helper, chunk);
+        BlockPos cable = chunk.getBlockAt(2, 80, 2);
+        for (int x = 0; x < 7; x++) helper.getLevel().setBlockAndUpdate(cable.offset(x, 0, 0), cableState(true, true, true));
+        awaitTopology(helper, () -> {
+            assertLayerOwners(helper, cable, 7);
+            reloadIsolated(helper, chunk, cable, RELOAD_CYCLES);
+        });
+    }
+
+    private static void reloadIsolated(GameTestHelper helper, ChunkPos chunk, BlockPos cable, int remaining) {
+        BlockEntity previous = helper.getLevel().getBlockEntity(cable);
+        releaseChunk(helper, chunk);
+        awaitCondition(helper, () -> previous.isRemoved() && !helper.getLevel().hasChunkAt(cable),
+                "Isolated chunk must physically unload and remove its old cable entity", () -> awaitTopology(helper, () -> {
+                    assertNoOwners(helper, cable);
+                    loadChunk(helper, chunk);
+                    helper.assertTrue(helper.getLevel().getBlockEntity(cable) != previous,
+                            "Reload must deserialize a fresh cable block entity");
+                    awaitTopology(helper, () -> {
+                        assertLayerOwners(helper, cable, 7);
+                        if (remaining > 1) reloadIsolated(helper, chunk, cable, remaining - 1);
+                        else {
+                            releaseChunk(helper, chunk);
+                            helper.succeed();
+                        }
+                    });
+                }));
+    }
+
+    private static void bridgeChunkReload(GameTestHelper helper) {
+        ChunkPos left = new ChunkPos(1_056, 1_024);
+        ChunkPos right = new ChunkPos(left.x() + 1, left.z());
+        releaseTicketsOnCompletion(helper, left, right);
+        loadChunk(helper, left);
+        loadChunk(helper, right);
+        BlockPos origin = left.getBlockAt(0, 80, 0);
+        for (int x = 0; x < CHUNK_WIDTH; x++) for (int z = 0; z < CHUNK_WIDTH; z++)
+            helper.getLevel().setBlockAndUpdate(origin.offset(x, 0, z), cableState(true, true, true));
+        for (int x = CHUNK_WIDTH; x < CHUNK_WIDTH * 2; x++)
+            helper.getLevel().setBlockAndUpdate(origin.offset(x, 0, 2), cableState(true, true, true));
+        awaitTopology(helper, () -> {
+            assertBridgeOwners(helper, origin, true);
+            unloadBridge(helper, left, right, origin, () -> {
+                // Only the left half is available during this rebuild.
+                loadChunk(helper, left);
+                awaitTopology(helper, () -> {
+                    assertBridgeOwners(helper, origin, false);
+                    loadChunk(helper, right);
+                    helper.assertTrue(EnergyTopologyService.rebuilding(helper.getLevel()),
+                            "Loading the bridge must invalidate its neighbor before deferred rebuilding");
+                    // Also cancel queued work through a second physical unload.
+                    unloadBridge(helper, left, right, origin, () -> {
+                        loadChunk(helper, left);
+                        // 768 cable visits cannot finish in two shared budgets of at most 128 steps.
+                        helper.assertTrue(CHUNK_WIDTH * CHUNK_WIDTH * CableType.values().length
+                                        > 2 * EnergyTopologyService.MAX_WORK_UNITS_PER_TICK,
+                                "The reload fixture must exceed two ordinary topology tick budgets");
+                        helper.runAfterDelay(2, () -> {
+                            helper.assertTrue(EnergyTopologyService.workUnitsThisTick(helper.getLevel()) > 0,
+                                    "An ordinary server topology tick must advance the reloaded left half");
+                            helper.assertTrue(EnergyTopologyService.rebuilding(helper.getLevel()),
+                                    "The advanced left-half generation must still be incomplete before loading the bridge");
+                            helper.assertTrue(!helper.getLevel().hasChunkAt(origin.offset(CHUNK_WIDTH, 0, 2)),
+                                    "The other half must remain physically unavailable during rebuild progress");
+                            loadChunk(helper, right);
+                            awaitTopology(helper, () -> {
+                                assertBridgeOwners(helper, origin, true);
+                                helper.runAfterDelay(OBSERVATION_TICKS, () -> {
+                                    assertBridgeOwners(helper, origin, true);
+                                    helper.assertTrue(!EnergyTopologyService.rebuilding(helper.getLevel()),
+                                            "Repeated availability changes must leave no unfinished topology work");
+                                    releaseChunk(helper, left);
+                                    releaseChunk(helper, right);
+                                    helper.succeed();
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    }
+
+    private static void unloadBridge(GameTestHelper helper, ChunkPos left, ChunkPos right, BlockPos origin, Runnable action) {
+        BlockEntity leftEntity = helper.getLevel().getBlockEntity(origin);
+        BlockEntity rightEntity = helper.getLevel().getBlockEntity(origin.offset(CHUNK_WIDTH, 0, 2));
+        releaseChunk(helper, left);
+        releaseChunk(helper, right);
+        awaitCondition(helper, () -> leftEntity.isRemoved() && rightEntity.isRemoved()
+                        && !helper.getLevel().hasChunkAt(origin)
+                        && !helper.getLevel().hasChunkAt(origin.offset(CHUNK_WIDTH, 0, 2)),
+                "Both bridge chunks must physically unload before reloading", () -> awaitTopology(helper, () -> {
+                    assertNoOwners(helper, origin);
+                    assertNoOwners(helper, origin.offset(CHUNK_WIDTH, 0, 2));
+                    action.run();
+                }));
+    }
+
+    private static void assertBridgeOwners(GameTestHelper helper, BlockPos origin, boolean joined) {
+        int expected = CHUNK_WIDTH * CHUNK_WIDTH + (joined ? CHUNK_WIDTH : 0);
+        assertLayerOwners(helper, origin, expected);
+        for (CableType type : CableType.values()) {
+            var leftNetwork = EnergyTopologyService.networkAt(helper.getLevel(), type, origin);
+            var rightNetwork = EnergyTopologyService.networkAt(helper.getLevel(), type, origin.offset(CHUNK_WIDTH, 0, 2));
+            helper.assertTrue(joined ? leftNetwork == rightNetwork : rightNetwork == null,
+                    type + " bridge ownership must match actual chunk availability");
+        }
+    }
+
+    private static void assertLayerOwners(GameTestHelper helper, BlockPos cable, int cableCount) {
+        for (CableType type : CableType.values()) {
+            var owner = EnergyTopologyService.networkAt(helper.getLevel(), type, cable);
+            helper.assertTrue(owner != null && owner.getCableCount() == cableCount,
+                    type + " must recover exactly " + cableCount + " cables after real chunk loading");
+            for (BlockPos member : owner.getCables()) {
+                long owners = EnergyNetworkManager.getNetworks(helper.getLevel(), type).stream()
+                        .filter(network -> network.getCables().contains(member)).count();
+                helper.assertTrue(owners == 1 && EnergyTopologyService.networkAt(helper.getLevel(), type, member) == owner,
+                        type + " cable must have exactly one published owner after repeated reloads");
+            }
+        }
+    }
+
+    private static void assertNoOwners(GameTestHelper helper, BlockPos cable) {
+        for (CableType type : CableType.values()) {
+            helper.assertTrue(EnergyTopologyService.networkAt(helper.getLevel(), type, cable) == null,
+                    type + " unloaded cable must lose its live owner");
+            helper.assertTrue(EnergyNetworkManager.getNetworks(helper.getLevel(), type).stream()
+                            .noneMatch(network -> network.getCables().contains(cable)),
+                    type + " unloaded cable must not remain in a retired published network");
+        }
+    }
+
+    private static void loadChunk(GameTestHelper helper, ChunkPos chunk) {
+        helper.getLevel().getChunkSource().addTicketWithRadius(TicketType.FORCED, chunk, 0);
+        helper.getLevel().getChunk(chunk.x(), chunk.z());
+    }
+
+    private static void releaseChunk(GameTestHelper helper, ChunkPos chunk) {
+        helper.getLevel().getChunkSource().removeTicketWithRadius(TicketType.FORCED, chunk, 0);
+    }
+
+    private static void releaseTicketsOnCompletion(GameTestHelper helper, ChunkPos... chunks) {
+        helper.testInfo.addListener(new GameTestListener() {
+            @Override public void testStructureLoaded(GameTestInfo testInfo) { }
+            @Override public void testPassed(GameTestInfo testInfo, GameTestRunner runner) { release(); }
+            @Override public void testFailed(GameTestInfo testInfo, GameTestRunner runner) { release(); }
+            @Override public void testAddedForRerun(GameTestInfo original, GameTestInfo rerun, GameTestRunner runner) { release(); }
+            private void release() {
+                for (ChunkPos chunk : chunks) releaseChunk(helper, chunk);
+            }
+        });
+    }
+
+    private static void awaitTopology(GameTestHelper helper, Runnable action) {
+        // onLoad is dispatched by the next normal level tick, then its queued rebuild may span ticks.
+        helper.runAfterDelay(2, () -> awaitCondition(helper,
+                () -> !EnergyTopologyService.rebuilding(helper.getLevel()),
+                "Energy topology must converge within the bounded transition timeout", action));
+    }
+
+    private static void awaitCondition(GameTestHelper helper, BooleanSupplier condition, String message, Runnable action) {
+        awaitCondition(helper, condition, message, action, TRANSITION_TIMEOUT_TICKS);
+    }
+
+    private static void awaitCondition(GameTestHelper helper, BooleanSupplier condition, String message, Runnable action, int remaining) {
+        if (condition.getAsBoolean()) action.run();
+        else {
+            helper.assertTrue(remaining > 0, message);
+            helper.runAfterDelay(1, () -> awaitCondition(helper, condition, message, action, remaining - 1));
+        }
     }
 
     private static void assertPower(GameTestHelper helper, long power, long limit, String device) {

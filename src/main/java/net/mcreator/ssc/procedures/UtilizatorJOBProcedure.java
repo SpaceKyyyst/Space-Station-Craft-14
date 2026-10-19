@@ -17,6 +17,7 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class UtilizatorJOBProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (entity == null)
 			return;
 		if (getAmountInGUISlot(entity, 0) > 0 && getAmountInGUISlot(entity, 1) > 0) {
@@ -30,7 +31,7 @@ public class UtilizatorJOBProcedure {
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
-			Ssc14Mod.queueServerWork(1, () -> {
+			Ssc14Mod.queueServerWork(serverOwner, 1, () -> {
 				if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Ssc14ModMenus.MenuAccessor _menu3 ? _menu3.getSlots().get(0).getItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
 						.copyTag().getBooleanOr("Qm", false) == true
 						&& (entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Ssc14ModMenus.MenuAccessor _menu5 ? _menu5.getSlots().get(0).getItem() : ItemStack.EMPTY)
@@ -342,7 +343,7 @@ public class UtilizatorJOBProcedure {
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 					}
 				}
-			});
+			}).orThrow();
 		} else {
 			if (entity instanceof Player _player && _player.containerMenu instanceof Ssc14ModMenus.MenuAccessor _menu)
 				_menu.sendMenuStateUpdate(_player, 0, "Job_Name", "\u0412\u0421\u0422\u0410\u0412\u042C\u0422\u0415 \u041A\u0410\u0420\u0422\u042B", true);

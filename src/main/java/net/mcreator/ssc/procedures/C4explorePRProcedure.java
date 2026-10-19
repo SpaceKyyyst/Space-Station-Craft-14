@@ -22,6 +22,7 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class C4explorePRProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (getBlockNBTNumber(world, BlockPos.containing(x, y, z), "c4timer") >= getBlockNBTNumber(world, BlockPos.containing(x, y, z), "c4setting") * 20) {
 			world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
 			if (world instanceof Level _level && !_level.isClientSide())
@@ -39,7 +40,7 @@ public class C4explorePRProcedure {
 				}
 			}
 		} else {
-			Ssc14Mod.queueServerWork(1, () -> {
+			Ssc14Mod.queueServerWork(serverOwner, 1, () -> {
 				if (Ssc14ModBlocks.C_4.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()) {
 					if (!world.isClientSide()) {
 						BlockPos _bp = BlockPos.containing(x, y, z);
@@ -73,7 +74,7 @@ public class C4explorePRProcedure {
 						}
 					}
 				}
-			});
+			}).orThrow();
 		}
 	}
 

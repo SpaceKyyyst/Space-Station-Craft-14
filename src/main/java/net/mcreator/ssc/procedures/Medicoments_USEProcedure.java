@@ -66,6 +66,7 @@ public class Medicoments_USEProcedure {
     }
 
     private static void execute(@Nullable Event event, LevelAccessor world, Entity entity, Entity sourceentity) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
         if (entity == null || sourceentity == null) return;
         if (!(entity instanceof LivingEntity target)) return;
         if (!(sourceentity instanceof Player player)) return;
@@ -83,7 +84,7 @@ public class Medicoments_USEProcedure {
         
         if (!MEDICAMENT_EFFECTS.containsKey(itemId)) return;
         
-        startHealingProcess(player, target, heldItem, MEDICAMENT_EFFECTS.get(itemId));
+        startHealingProcess(serverOwner, player, target, heldItem, MEDICAMENT_EFFECTS.get(itemId));
     }
     
     private static String getItemId(Item item) {
@@ -123,7 +124,7 @@ public class Medicoments_USEProcedure {
         System.out.println("[SSC14-HEAL] Лечение отменено: " + target.getName().getString());
     }
     
-    private static void startHealingProcess(Player player, LivingEntity target, ItemStack itemStack, Map<String, Double> effects) {
+    private static void startHealingProcess(net.minecraft.server.level.ServerLevel serverOwner, Player player, LivingEntity target, ItemStack itemStack, Map<String, Double> effects) {
         UUID currentHealer = getCurrentHealer(target);
         
         if (currentHealer != null && currentHealer.equals(player.getUUID())) {
@@ -142,10 +143,10 @@ public class Medicoments_USEProcedure {
         double startPos = player.getX() + player.getY() + player.getZ();
         playerNbt.putDouble(POS_ATTR, startPos);
         
-        runHealingTimer(player, target, itemStack, effects, 0, startPos);
+        runHealingTimer(serverOwner, player, target, itemStack, effects, 0, startPos);
     }
     
-    private static void runHealingTimer(Player player, LivingEntity target, ItemStack itemStack, 
+    private static void runHealingTimer(net.minecraft.server.level.ServerLevel serverOwner, Player player, LivingEntity target, ItemStack itemStack,
                                        Map<String, Double> effects, int currentStep, double startPos) {
         updateProgressBar(target, currentStep);
         
@@ -159,9 +160,9 @@ public class Medicoments_USEProcedure {
             if (wasHealed && itemStack.getCount() > 0 && 
                 player.getMainHandItem().is(itemStack.getItem()) &&
                 hasHealableDamage(target, effects)) {
-                Ssc14Mod.queueServerWork(2, () -> 
-                    startHealingProcess(player, target, itemStack, effects)
-                );
+                Ssc14Mod.queueServerWork(serverOwner, 2, () ->
+                    startHealingProcess(serverOwner, player, target, itemStack, effects)
+                ).orThrow();
             }
             return;
         }
@@ -171,9 +172,9 @@ public class Medicoments_USEProcedure {
             return;
         }
         
-        Ssc14Mod.queueServerWork(STEP_DELAY_TICKS, () -> 
-            runHealingTimer(player, target, itemStack, effects, currentStep + 1, startPos)
-        );
+        Ssc14Mod.queueServerWork(serverOwner, STEP_DELAY_TICKS, () ->
+            runHealingTimer(serverOwner, player, target, itemStack, effects, currentStep + 1, startPos)
+        ).orThrow();
     }
     
     private static boolean canContinueHealing(Player player, LivingEntity target, ItemStack itemStack, double startPos) {

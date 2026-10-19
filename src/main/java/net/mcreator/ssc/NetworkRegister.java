@@ -12,6 +12,9 @@ public class NetworkRegister {
     @SubscribeEvent
     public static void register(final RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar("ssc_14");
+        registrar.playToClient(net.mcreator.ssc.network.MedicalPresentationMessage.TYPE,
+                net.mcreator.ssc.network.MedicalPresentationMessage.CODEC,
+                net.mcreator.ssc.network.MedicalPresentationMessage::handle);
         registrar.playToClient(net.mcreator.ssc.network.GasAnalyserData.TYPE,
                 net.mcreator.ssc.network.GasAnalyserData.CODEC,
                 net.mcreator.ssc.network.GasAnalyserData::handle);

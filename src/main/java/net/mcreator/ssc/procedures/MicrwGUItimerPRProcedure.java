@@ -10,6 +10,7 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class MicrwGUItimerPRProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (0 < getBlockNBTNumber(world, BlockPos.containing(x, y, z), "timer_2")) {
 			if (!world.isClientSide()) {
 				BlockPos _bp = BlockPos.containing(x, y, z);
@@ -21,9 +22,9 @@ public class MicrwGUItimerPRProcedure {
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
-			Ssc14Mod.queueServerWork(1, () -> {
+			Ssc14Mod.queueServerWork(serverOwner, 1, () -> {
 				MicrwGUItimerPRProcedure.execute(world, x, y, z);
-			});
+			}).orThrow();
 		} else {
 			if (!world.isClientSide()) {
 				BlockPos _bp = BlockPos.containing(x, y, z);

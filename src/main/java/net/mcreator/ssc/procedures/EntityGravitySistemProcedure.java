@@ -22,11 +22,18 @@ import net.minecraft.util.Mth;
 
 import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.mcreator.ssc.init.Ssc14ModItems;
+import net.mcreator.ssc.gravity.EntityGravityController;
+import net.mcreator.ssc.gravity.GravityPolicy;
 
 import javax.annotation.Nullable;
 
 @EventBusSubscriber
 public class EntityGravitySistemProcedure {
+    private static final int SUPPORT_DEPTH = 7;
+    private static final ResourceKey<net.minecraft.world.level.Level> SPACE_DIMENSION =
+        ResourceKey.create(Registries.DIMENSION, Identifier.parse("ssc_14:spaced"));
+    private static final net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block> AIR_BLOCKS =
+        BlockTags.create(Identifier.parse("ssc14:airs"));
 
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Pre event) {
@@ -41,42 +48,24 @@ public class EntityGravitySistemProcedure {
         if (entity == null) return;
         if (entity.level().isClientSide()) return;
         
-        double i = 0;
-        boolean enter = false;
-        
-        if ((entity.level().dimension()) == ResourceKey.create(Registries.DIMENSION, Identifier.parse("ssc_14:spaced"))) {
-            if (Ssc14ModVariables.station_gravity == true) {
-                // ИСПРАВЛЕНО: Цикл до 7 без знака меньше
-                for (int index0 = 0; index0 != 7; index0++) {
-                    if (!(world.getBlockState(BlockPos.containing(x, y - i, z))).is(BlockTags.create(Identifier.parse("ssc14:airs")))) {
-                        entity.setNoGravity(false);
-                        enter = true;
-                    } else if (!enter) {
-                        entity.setNoGravity(true);
-                    }
-                    i = i + 1;
-                }
-            } else {
-                if (hasEntityInInventory(entity, new ItemStack(Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get()))) {
-                    // ИСПРАВЛЕНО: Цикл до 7 без знака меньше
-                    for (int index1 = 0; index1 != 7; index1++) {
-                        if (!(world.getBlockState(BlockPos.containing(x, y - i, z))).is(BlockTags.create(Identifier.parse("ssc14:airs")))) {
-                            entity.setNoGravity(false);
-                            enter = true;
-                        } else if (!enter) {
-                            entity.setNoGravity(true);
-                        }
-                        i = i + 1;
-                    }
-                } else {
-                    entity.setNoGravity(true);
+        boolean inSpace = entity.level().dimension() == SPACE_DIMENSION;
+        boolean excluded = entity.isRemoved();
+        boolean stationGravity = Ssc14ModVariables.station_gravity;
+        boolean boots = inSpace && !excluded && !stationGravity
+            && hasEntityInInventory(entity, new ItemStack(Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get()));
+        boolean support = false;
+        if (inSpace && !excluded && (stationGravity || boots)) {
+            for (int depth = 0; depth < SUPPORT_DEPTH; depth++) {
+                if (!world.getBlockState(BlockPos.containing(x, y - depth, z)).is(AIR_BLOCKS)) {
+                    support = true;
+                    break;
                 }
             }
-        } else {
-            entity.setNoGravity(false);
         }
+        EntityGravityController.apply(entity, GravityPolicy.evaluate(
+            new GravityPolicy.EntitySnapshot(inSpace, stationGravity, boots, support, excluded)));
 
-        if (entity instanceof ServerPlayer sp && entity.isNoGravity() && !sp.isCreative() && !sp.isSpectator()) {
+        if (inSpace && entity instanceof ServerPlayer sp && entity.isNoGravity() && !sp.isCreative() && !sp.isSpectator()) {
             handleServerInertiaLock(sp, world, x, y, z);
         }
     }

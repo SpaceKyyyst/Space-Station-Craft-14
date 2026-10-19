@@ -14,6 +14,7 @@ import net.mcreator.ssc.Ssc14Mod;
 
 public class NuclearWarhead_ExpProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (false == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Ded13")) {
 			if (!world.isClientSide()) {
 				BlockPos _bp = BlockPos.containing(x, y, z);
@@ -46,15 +47,15 @@ public class NuclearWarhead_ExpProcedure {
 			if (world instanceof ServerLevel _level) {
 				_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("3...").withColor(0xff7f7f).withStyle(ChatFormatting.ITALIC), false);
 			}
-			Ssc14Mod.queueServerWork(20, () -> {
+			Ssc14Mod.queueServerWork(serverOwner, 20, () -> {
 				if (world instanceof ServerLevel _level) {
 					_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("2...").withColor(0xff3f3f).withStyle(ChatFormatting.ITALIC), false);
 				}
-				Ssc14Mod.queueServerWork(20, () -> {
+				Ssc14Mod.queueServerWork(serverOwner, 20, () -> {
 					if (world instanceof ServerLevel _level) {
 						_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("1...").withColor(0xff0000).withStyle(ChatFormatting.ITALIC), false);
 					}
-					Ssc14Mod.queueServerWork(20, () -> {
+					Ssc14Mod.queueServerWork(serverOwner, 20, () -> {
 						if (world instanceof ServerLevel _level) {
 							_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u0411\u0410-\u0410-\u0410\u0425!").withColor(0xff0000).withStyle(ChatFormatting.BOLD), false);
 						}
@@ -94,9 +95,9 @@ public class NuclearWarhead_ExpProcedure {
 								serverLevel.explode(null, ex, ey, ez, power, false, net.minecraft.world.level.Level.ExplosionInteraction.BLOCK);
 							}
 						}
-					});
-				});
-			});
+					}).orThrow();
+				}).orThrow();
+			}).orThrow();
 		}
 	}
 

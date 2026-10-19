@@ -39,6 +39,7 @@ import net.minecraft.nbt.CompoundTag;
 
 public class RSU_useOnBlock_Procedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
         if (entity == null || !(entity instanceof LivingEntity livingEntity)) return;
         if (!livingEntity.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB)) return;
         if (!itemstack.is(Ssc14ModItems.RSU.get())) return;
@@ -86,6 +87,7 @@ public class RSU_useOnBlock_Procedure {
     }
 
     private static void handleDeconstruction(LevelAccessor world, LivingEntity livingEntity, ItemStack itemstack, BlockPos pos, BlockState blockState) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
         if (!blockState.is(BlockTags.create(Identifier.fromNamespaceAndPath("ssc14", "rcd_deconstruct")))) return;
         if (blockState.isAir()) return;
 
@@ -107,7 +109,7 @@ public class RSU_useOnBlock_Procedure {
                     livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(progressStep + 1);
                     int delay = operationTicks / 5;
                     if (delay <= 0) delay = 1;
-                    Ssc14Mod.queueServerWork(delay, () -> run(progressStep + 1));
+                    Ssc14Mod.queueServerWork(serverOwner, delay, () -> run(progressStep + 1)).orThrow();
                 } else {
                     world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
                     
@@ -123,7 +125,7 @@ public class RSU_useOnBlock_Procedure {
                     
                     playSound(world, pos, "ssc_14:items_rcd_deconstruct", 1.0F, 1.0F);
                     livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
-                    Ssc14Mod.queueServerWork(5, () -> livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0));
+                    Ssc14Mod.queueServerWork(serverOwner, 5, () -> livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0)).orThrow();
                 }
             }
             void reset() { livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0); }
@@ -131,6 +133,7 @@ public class RSU_useOnBlock_Procedure {
         new DeconstructProcess().run(0);
     }
     private static void handleConstruction(LevelAccessor world, LivingEntity livingEntity, ItemStack itemstack, BlockPos placePos, int mode, Direction face) {
+        if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
         if (!world.getBlockState(placePos).isAir()) return;
         BuildConfig config = getBuildConfig(mode);
         if (config == null) return;
@@ -185,14 +188,14 @@ public class RSU_useOnBlock_Procedure {
                     livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(progressStep + 1);
                     int delay = operationTicks / 5;
                     if (delay <= 0) delay = 1;
-                    Ssc14Mod.queueServerWork(delay, () -> run(progressStep + 1));
+                    Ssc14Mod.queueServerWork(serverOwner, delay, () -> run(progressStep + 1)).orThrow();
                 } else {
                     world.setBlock(placePos, finalState, 3);
                     t.putDouble("Charges", currentCharges - config.cost());
                     itemstack.set(DataComponents.CUSTOM_DATA, CustomData.of(t));
                     playSound(world, placePos, "ssc_14:items_rcd_deconstruct", 1.0F, 1.0F);
                     livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
-                    Ssc14Mod.queueServerWork(5, () -> livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0));
+                    Ssc14Mod.queueServerWork(serverOwner, 5, () -> livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0)).orThrow();
                 }
             }
             void reset() { livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0); }
