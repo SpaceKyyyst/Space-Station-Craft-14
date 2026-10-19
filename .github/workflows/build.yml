@@ -38,7 +38,7 @@ jobs:
           python .github/scripts/check_resources.py
       - name: Test release script without publishing
         run: bash .github/scripts/test-release.sh
-      - name: Build and test
+      - name: Build, test, and verify domain coverage
         shell: bash
         run: |
           set -o pipefail
@@ -71,6 +71,7 @@ jobs:
             build/reports/tests/
             build/reports/checkstyle/
             build/reports/pmd/
+            build/reports/jacoco/
             build/test-results/
             build-output.log
             gametest-output.log
