@@ -2,6 +2,7 @@ plugins {
     id 'eclipse'
     id 'checkstyle'
     id 'pmd'
+    id 'jacoco'
     id 'net.neoforged.moddev' version '2.0.148'
 }
 
@@ -152,8 +153,56 @@ tasks.register('domainTest', Test) {
     useJUnitPlatform()
 }
 
+jacoco {
+    // Java 25 support starts with JaCoCo 0.8.14.
+    toolVersion = '0.8.14'
+}
+
+tasks.register('jacocoDomainTestReport', JacocoReport) {
+    description = 'Reports coverage of domain rules exercised by domainTest.'
+    group = 'verification'
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+tasks.register('jacocoDomainTestCoverageVerification', JacocoCoverageVerification) {
+    description = 'Enforces the measured instruction coverage baseline for domain rules.'
+    group = 'verification'
+    dependsOn tasks.named('jacocoDomainTestReport')
+    violationRules {
+        rule {
+            limit {
+                counter = 'INSTRUCTION'
+                value = 'COVEREDRATIO'
+                // Baseline: 3506 / 4339 = 80.8020281170777%, rounded down.
+                minimum = 0.80
+            }
+        }
+    }
+}
+
+tasks.withType(org.gradle.testing.jacoco.tasks.JacocoReportBase).configureEach {
+    if (name in ['jacocoDomainTestReport', 'jacocoDomainTestCoverageVerification']) {
+        dependsOn tasks.named('domainTest')
+        executionData tasks.named('domainTest').get()
+        classDirectories.setFrom(sourceSets.domain.output.classesDirs)
+        sourceDirectories.setFrom(sourceSets.domain.allJava.srcDirs)
+        // JaCoCo normally skips tasks when execution data is absent.
+        setOnlyIf { true }
+        doFirst { task ->
+            def executionFiles = task.executionData.files
+            if (executionFiles.empty || executionFiles.any { !it.isFile() || it.length() == 0 }) {
+                throw new GradleException('Domain test coverage requires non-empty domainTest execution data.')
+            }
+        }
+    }
+}
+
 tasks.named('check') {
     dependsOn tasks.named('domainTest')
+    dependsOn tasks.named('jacocoDomainTestCoverageVerification')
 }
 
 checkstyle {

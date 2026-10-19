@@ -1,8 +1,14 @@
+import base64
 import contextlib
 import io
 import json
+import os
+import re
+import shutil
 import subprocess
+import sys
 import tempfile
+import textwrap
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -10,6 +16,67 @@ from unittest.mock import patch
 from check_project import check_project, check_tracked_files
 from report_checks import report
 from check_resources import check_resources
+
+
+@unittest.skipUnless(os.name == "nt", "Windows workflow uses a batch wrapper")
+class WindowsUnicodeWorkflowTest(unittest.TestCase):
+    def test_separates_cyrillic_configuration_from_native_path_workers(self):
+        powershell = shutil.which("pwsh") or shutil.which("powershell")
+        if powershell is None:
+            self.skipTest("PowerShell is required to execute the Windows workflow")
+        workflow = (Path(__file__).resolve().parents[1] / "workflows/build.yml").read_text(
+            encoding="utf-8")
+        job = workflow.split("  windows-unicode-tests:\n", 1)[1].split("\n  release:", 1)[0]
+        scripts = re.findall(r"        run: \|\n((?:          .*\n)+)", job)
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            workspace = root / "ascii-checkout"
+            runner_temp = root / "runner temp"
+            workspace.mkdir()
+            runner_temp.mkdir()
+            capture = root / "invocations.jsonl"
+            (workspace / "capture.py").write_text(
+                "import json, os, sys\nfrom pathlib import Path\n"
+                "with Path(os.environ['WORKFLOW_CAPTURE']).open('a', encoding='utf-8') as output:\n"
+                " output.write(json.dumps({"
+                "'wrapper_dir': str(Path(__file__).resolve().parent), "
+                "'cwd': os.getcwd(), 'args': sys.argv[1:]}) + '\\n')\n"
+                "if 'help' in sys.argv[1:]:\n Path('configuration-only.marker').touch()\n",
+                encoding="utf-8")
+            (workspace / "gradlew.bat").write_text(
+                f'@"{sys.executable}" -B "%~dp0capture.py" %*\n', encoding="utf-8")
+            environment = dict(os.environ, GITHUB_WORKSPACE=str(workspace),
+                               RUNNER_TEMP=str(runner_temp), WORKFLOW_CAPTURE=str(capture))
+            for script in scripts:
+                command = base64.b64encode(
+                    textwrap.dedent(script).encode("utf-16-le")).decode("ascii")
+                result = subprocess.run(
+                    [powershell, "-NoProfile", "-NonInteractive", "-EncodedCommand", command],
+                    env=environment, cwd=workspace, capture_output=True, timeout=30)
+                self.assertEqual(0, result.returncode, result.stderr.decode(errors="replace"))
+            invocations = [json.loads(line) for line in capture.read_text(encoding="utf-8").splitlines()]
+            self.assertEqual(2, len(invocations))
+            configuration, workers = invocations
+            unicode_checkout = runner_temp / "Тест плагина"
+            native_checkout = runner_temp / "Tést plugin"
+            self.assertTrue((unicode_checkout / "gradlew.bat").is_file())
+            self.assertTrue((native_checkout / "gradlew.bat").is_file())
+            self.assertTrue((unicode_checkout / "configuration-only.marker").is_file())
+            self.assertFalse((native_checkout / "configuration-only.marker").exists(),
+                             "Workers must use a fresh original-checkout copy")
+            self.assertEqual(workspace, Path(configuration["wrapper_dir"]))
+            self.assertEqual(unicode_checkout, Path(configuration["cwd"]))
+            self.assertEqual(["--project-dir", ".", "help", "--no-daemon", "--no-build-cache"],
+                             configuration["args"])
+            self.assertEqual(native_checkout, Path(workers["wrapper_dir"]))
+            self.assertEqual(native_checkout, Path(workers["cwd"]))
+            self.assertEqual(["--project-dir", ".", "domainTest", "test",
+                              "--no-daemon", "--no-build-cache"], workers["args"])
+            for invocation in invocations:
+                self.assertNotIn(str(unicode_checkout), invocation["args"])
+                self.assertTrue(all(argument.isascii() for argument in invocation["args"]),
+                                "Cyrillic checkout must stay out of Java launcher arguments")
 
 
 class ProjectChecksTest(unittest.TestCase):
