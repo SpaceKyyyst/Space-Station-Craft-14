@@ -10,7 +10,8 @@ public final class MedicalEffectsController {
         boolean isClientSide();
         boolean hasBlindness();
         boolean addBlindness(int ticks);
-        void removeBlindness();
+        /** True only after the owned contribution is demonstrably absent. */
+        boolean removeBlindness();
         boolean canAcquirePose();
         boolean hasMedicalPose();
         void acquirePose();
@@ -24,9 +25,9 @@ public final class MedicalEffectsController {
         if (target.isClientSide()) return previous;
         target.reconcileModifiers(critical);
         if (!critical) {
-            if (previous.blindness() && target.hasBlindness()) target.removeBlindness();
+            boolean pendingBlindness = previous.blindness() && target.hasBlindness() && !target.removeBlindness();
             if (previous.pose() && target.hasMedicalPose()) target.releasePose();
-            return Ownership.NONE;
+            return pendingBlindness ? new Ownership(true, false, false) : Ownership.NONE;
         }
         boolean blindness = previous.blindness();
         if (!target.hasBlindness()) blindness = target.addBlindness(blindnessTicks);

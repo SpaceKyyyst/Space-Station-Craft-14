@@ -29,6 +29,7 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
     private static final String BLINDNESS = "blindness";
     private static final String POSE = "pose";
     private static final String POSE_YIELDED = "pose_yielded";
+    private static final String LAST_CLEANUP_ATTEMPT = "last_cleanup_attempt";
     private static final float CRITICAL_WIDTH = 0.6f;
     private static final float CRITICAL_HEIGHT = 0.45f;
     private static final Identifier IMMOBILIZE = Identifier.fromNamespaceAndPath("ssc14", "crit_immobilize");
@@ -91,11 +92,19 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
         }
     }
     @Override
-    public void removeBlindness() {
+    public boolean removeBlindness() {
         var state = player.getPersistentData().getCompound(OWNERSHIP).orElse(null);
+        long now = player.level().getGameTime();
+        if (state != null) {
+            if (state.getLong(LAST_CLEANUP_ATTEMPT).filter(previous -> previous == now).isPresent()) return false;
+            // Reset, lifecycle, and damage callbacks can all run within one server tick.
+            // A vetoed cleanup is retried only after that tick has advanced.
+            state.putLong(LAST_CLEANUP_ATTEMPT, now);
+        }
         var external = state == null ? null : MedicalBlindnessContributions.remaining(state);
         if (external == null) {
             player.removeEffect(MobEffects.BLINDNESS);
+            return !player.hasEffect(MobEffects.BLINDNESS);
         } else {
             // Replacing the merged instance strips every SSC hidden contribution while
             // retaining the external-only active/hidden chain and its remaining duration.
@@ -105,6 +114,9 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
             } finally {
                 OWN_BLINDNESS_ADDITION.remove();
             }
+            // forceAddEffect may silently refuse application. Retain ownership until
+            // this exact external-only instance became the active effect.
+            return player.getEffect(MobEffects.BLINDNESS) == external;
         }
     }
 

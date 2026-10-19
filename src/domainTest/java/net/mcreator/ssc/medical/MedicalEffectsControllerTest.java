@@ -5,6 +5,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MedicalEffectsControllerTest {
     @Test
+    void rejectedCleanupKeepsOnlyBlindnessOwnershipUntilAConfirmedRetry() {
+        Fixture target = new Fixture();
+        var ownership = MedicalEffectsController.apply(target, MedicalEffectsController.Ownership.NONE, true, 220);
+        target.rejectRemoval = true;
+        ownership = MedicalEffectsController.apply(target, ownership, false, 220);
+        assertTrue(ownership.blindness(), "A veto must not discard the only owner of SSC's hidden contribution");
+        assertFalse(ownership.pose());
+        assertFalse(target.forcedPose);
+        assertTrue(target.blindness);
+        target.rejectRemoval = false;
+        ownership = MedicalEffectsController.apply(target, ownership, false, 220);
+        assertEquals(MedicalEffectsController.Ownership.NONE, ownership);
+        assertFalse(target.blindness);
+    }
+
+    @Test
     void acquiresAndReleasesOnlyOwnedEffects() {
         Fixture target = new Fixture();
         var ownership = MedicalEffectsController.apply(target, MedicalEffectsController.Ownership.NONE, true, 220);
@@ -105,6 +121,7 @@ class MedicalEffectsControllerTest {
         int modifierCalls;
         int lastBlindnessTicks;
         boolean criticalModifiers;
+        boolean rejectRemoval;
         public boolean isClientSide() { return client; }
         public boolean hasBlindness() { return blindness; }
         public boolean addBlindness(int ticks) {
@@ -113,7 +130,11 @@ class MedicalEffectsControllerTest {
             blindness = acceptBlindness;
             return blindness;
         }
-        public void removeBlindness() { blindnessWrites++; blindness = false; }
+        public boolean removeBlindness() {
+            blindnessWrites++;
+            if (!rejectRemoval) blindness = false;
+            return !blindness;
+        }
         public boolean canAcquirePose() { return poseAvailable; }
         public boolean hasMedicalPose() { return forcedPose; }
         public void acquirePose() { poseWrites++; forcedPose = true; }

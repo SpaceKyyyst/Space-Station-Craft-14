@@ -20,6 +20,7 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.util.BlockSnapshot;
@@ -28,6 +29,7 @@ import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -37,8 +39,12 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 @EventBusSubscriber(modid = "ssc_14")
 public final class MedicalGameTests {
     private static final String[] NAMES = {"medical_build_events", "medical_modes_reset", "medical_blindness_merges",
-            "medical_player_lifecycle", "medical_full_player_tick"};
+            "medical_player_lifecycle", "medical_full_player_tick", "medical_blindness_veto_retry", "medical_blindness_tick_phase"};
     private static final String OWNERSHIP = "ssc_14:medical_effects";
+    private static final String VETO = "ssc_14:test_blindness_veto";
+    private static final String PROBE = "ssc_14:test_blindness_probe";
+    private static final String ATTEMPTS = "ssc_14:test_blindness_attempts";
+    private static final String LATE_ADDITION = "ssc_14:test_blindness_late_pre";
 
     private MedicalGameTests() { }
 
@@ -52,7 +58,68 @@ public final class MedicalGameTests {
             registry.register(id(NAMES[2]), MedicalGameTests::blindnessMerges);
             registry.register(id(NAMES[3]), MedicalGameTests::lifecycle);
             registry.register(id(NAMES[4]), MedicalGameTests::fullTick);
+            registry.register(id(NAMES[5]), MedicalGameTests::vetoRetry);
+            registry.register(id(NAMES[6]), MedicalGameTests::tickPhase);
         });
+    }
+
+    @SubscribeEvent
+    public static void vetoFixture(MobEffectEvent.Applicable event) {
+        var data = event.getEntity().getPersistentData();
+        if (data.getBooleanOr(PROBE, false) && event.getEffectInstance().getEffect().equals(MobEffects.BLINDNESS)) {
+            data.putInt(ATTEMPTS, data.getIntOr(ATTEMPTS, 0) + 1);
+            if (data.getBooleanOr(VETO, false)) event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void latePreFixture(PlayerTickEvent.Pre event) {
+        var data = event.getEntity().getPersistentData();
+        if (data.getBooleanOr(LATE_ADDITION, false)) {
+            data.remove(LATE_ADDITION);
+            event.getEntity().addEffect(blindness(40, 1));
+        }
+    }
+
+    private static void vetoRetry(GameTestHelper helper) {
+        var player = criticalPlayer(helper);
+        player.addEffect(blindness(40, 1));
+        var mixed = player.getEffect(MobEffects.BLINDNESS);
+        var data = player.getPersistentData();
+        data.putBoolean(PROBE, true);
+        data.putBoolean(VETO, true);
+        data.putDouble(MedicalPlayerEffects.TOTAL_DAMAGE, 99);
+        NeoForge.EVENT_BUS.post(new PlayerTickEvent.Pre(player));
+        helper.assertTrue(data.getCompound(OWNERSHIP).map(state -> state.getBooleanOr("blindness", false)).orElse(false),
+                "A denied external-only restoration must retain SSC cleanup ownership");
+        helper.assertTrue(player.getEffect(MobEffects.BLINDNESS) == mixed, "The mod veto must be honored");
+        helper.assertTrue(player.getForcedPose() == null, "A blindness veto must not retain unrelated owned pose");
+        helper.getLevel().getServer().getCommands().performPrefixedCommand(
+                player.createCommandSourceStack().withPermission(PermissionSet.ALL_PERMISSIONS), "ssc14 hels @s reset");
+        helper.assertTrue(data.getIntOr(ATTEMPTS, 0) == 1, "Repeated recovery/reset must not retry in the same server tick");
+        helper.runAfterDelay(1, () -> {
+            data.remove(VETO);
+            NeoForge.EVENT_BUS.post(new PlayerTickEvent.Pre(player));
+            helper.assertTrue(data.getIntOr(ATTEMPTS, 0) == 2, "The next server tick must retry normal application once");
+            helper.assertTrue(!data.contains(OWNERSHIP), "Successful replacement must release pending ownership");
+            helper.assertTrue(player.getEffect(MobEffects.BLINDNESS).getAmplifier() == 1,
+                    "Allowed recovery must preserve the external effect");
+            for (int tick = 0; tick < 40; tick++) player.doTick();
+            helper.assertTrue(!player.hasEffect(MobEffects.BLINDNESS), "SSC must not resurface after an initially vetoed recovery");
+            helper.succeed();
+        });
+    }
+
+    private static void tickPhase(GameTestHelper helper) {
+        var player = criticalPlayer(helper);
+        player.getPersistentData().putBoolean(LATE_ADDITION, true);
+        player.doTick();
+        helper.assertTrue(player.getEffect(MobEffects.BLINDNESS).getDuration() == 39, "The real effect tick must consume the later-Pre addition once");
+        player.getPersistentData().putDouble(MedicalPlayerEffects.TOTAL_DAMAGE, 99);
+        NeoForge.EVENT_BUS.post(new PlayerTickEvent.Pre(player));
+        helper.assertTrue(player.getEffect(MobEffects.BLINDNESS).getDuration() == 39,
+                "External-only restoration must have exactly the already-ticked remaining duration");
+        helper.succeed();
     }
 
     @SubscribeEvent
