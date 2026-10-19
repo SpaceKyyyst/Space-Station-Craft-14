@@ -27,7 +27,7 @@ import java.util.stream.IntStream;
 
 import io.netty.buffer.Unpooled;
 
-public class ScienceAirlockD1BlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+public class ScienceAirlockD1BlockEntity extends PoweredAirlockBlockEntity implements WorldlyContainer {
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(9, ItemStack.EMPTY);
 
 	public ScienceAirlockD1BlockEntity(BlockPos position, BlockState state) {

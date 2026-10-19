@@ -1,4 +1,6 @@
 {
+  "message.ssc_14.airlock_work": "Работа со шлюзом: осталось %s с",
+  "message.ssc_14.airlock_log": "Журнал шлюза (последние 16 событий):",
   "biome.ssc_14.spaceb": "Космос",
   "item.ssc_14.rod_floor": "Внешний каркас",
   "item.ssc_14.rood": "Стержень",
@@ -882,6 +884,8 @@
   "attribute.ssc_14.race": "Раса",
   "entity.ssc_14.carp": "Карп",
   "item.ssc_14.carp_spawn_egg": "Яйцо призыва карпа",
+  "entity.ssc_14.test_sun_entity": "Тестовое Солнце",
+  "item.ssc_14.test_sun_entity_spawn_egg": "Яйцо призыва тестового солнца",
   "subtitles.mobs_bite": "",
   "subtitles.voice_talk_speak_1": "",
   "subtitles.voice_talk_speak_2": "",
@@ -962,5 +966,17 @@
   "item.ssc_14.taco_flatbread": "Лепёшка тако",
   "item.ssc_14.toast_with_butter": "Тост со сливочным маслом",
   "item.ssc_14.tofu_bread": "Хлеб из тофу",
-  "item.ssc_14.fly_amanita": "Мухомор"
+  "item.ssc_14.fly_amanita": "Мухомор",
+  "gui.ssc_14.handy.gravity.charge": "Заряд: %s",
+  "gui.ssc_14.handy.gravity.charged": "Полностью заряжен",
+  "gui.ssc_14.handy.gravity.charging": "Заряжается",
+  "gui.ssc_14.handy.gravity.close": "Закрыть",
+  "gui.ssc_14.handy.gravity.disable": "Выключить",
+  "gui.ssc_14.handy.gravity.discharging": "Разряжается",
+  "gui.ssc_14.handy.gravity.enable": "Включить",
+  "gui.ssc_14.handy.gravity.eta": "ETA: %s",
+  "gui.ssc_14.handy.gravity.off": "Выключено",
+  "gui.ssc_14.handy.gravity.on": "Включено",
+  "gui.ssc_14.handy.gravity.power": "Питание: %s",
+  "gui.ssc_14.handy.gravity.status": "Статус: %s"
 }

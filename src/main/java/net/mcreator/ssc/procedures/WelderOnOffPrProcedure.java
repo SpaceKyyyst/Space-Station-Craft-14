@@ -18,7 +18,7 @@ import net.mcreator.ssc.init.Ssc14ModItems;
 
 public class WelderOnOffPrProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
-		if (entity == null)
+		if (entity == null || world.isClientSide())
 			return;
 		double fuel = 0;
 		if (entity.isShiftKeyDown() && (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.WELDING.get()
@@ -26,7 +26,8 @@ public class WelderOnOffPrProcedure {
 			fuel = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel", 0);
 			if (entity instanceof LivingEntity _entity) {
 				ItemStack _setstack7 = new ItemStack(Ssc14ModItems.ACTIVE_WELDER.get()).copy();
-				_setstack7.setCount(1);
+				_setstack7.applyComponents(_entity.getMainHandItem().getComponentsPatch());
+				_setstack7.setCount(_entity.getMainHandItem().getCount());
 				_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack7);
 				if (_entity instanceof Player _player)
 					_player.getInventory().setChanged();
@@ -47,7 +48,8 @@ public class WelderOnOffPrProcedure {
 			fuel = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel", 0);
 			if (entity instanceof LivingEntity _entity) {
 				ItemStack _setstack15 = new ItemStack(Ssc14ModItems.WELDING.get()).copy();
-				_setstack15.setCount(1);
+				_setstack15.applyComponents(_entity.getMainHandItem().getComponentsPatch());
+				_setstack15.setCount(_entity.getMainHandItem().getCount());
 				_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack15);
 				if (_entity instanceof Player _player)
 					_player.getInventory().setChanged();

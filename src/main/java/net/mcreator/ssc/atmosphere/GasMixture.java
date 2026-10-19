@@ -9,7 +9,9 @@ public final class GasMixture {
     public static final float DEFAULT_TEMPERATURE_K = 294.15f;
     private static final double GAS_CONSTANT = 8.314;
     private static final double DIFFUSION_RATE = 0.2;
-    private static final double TRANSFER_EPSILON = 1e-6;
+    private static final double RELATIVE_MOLE_TOLERANCE = 1e-5;
+    private static final double ABSOLUTE_MOLE_TOLERANCE = 1e-12;
+    private static final float TEMPERATURE_TOLERANCE_K = 0.001f;
     private final float[] moles = new float[GasType.COUNT];
     private final Runnable changed;
     private float temperature = DEFAULT_TEMPERATURE_K;
@@ -82,39 +84,43 @@ public final class GasMixture {
     }
 
     /**
-     * Exchanges partial pressures in O(G) time/space. Species and transported heat
+     * Exchanges equal-volume mixture fractions in O(G) time/space. Species and transported heat
      * are conserved within float rounding; equal-pressure mixtures still mix.
      * The rate is bounded at equilibrium even for long time steps.
      */
     public float diffuseTo(GasMixture target, float permeability, float seconds) {
         if (target == null || target == this || !Float.isFinite(permeability)
                 || !Float.isFinite(seconds) || permeability <= 0 || seconds <= 0) return 0;
-        double rate = Math.min(1, Math.min(1, permeability) * DIFFUSION_RATE * seconds);
+        boolean different = false;
+        for (int i = 0; i < GasType.COUNT; i++) {
+            double difference = Math.abs((double) moles[i] - target.moles[i]);
+            if (difference > Math.max(ABSOLUTE_MOLE_TOLERANCE,
+                    Math.max(moles[i], target.moles[i]) * RELATIVE_MOLE_TOLERANCE)) different = true;
+        }
+        if (!different && (totalMoles() == 0 || target.totalMoles() == 0
+                || Math.abs(temperature - target.temperature) < TEMPERATURE_TOLERANCE_K)) return 0;
+        double rate = Math.min(0.5, Math.min(1, permeability) * DIFFUSION_RATE * seconds);
         double sourceHeat = heatCapacity() * temperature;
         double targetHeat = target.heatCapacity() * target.temperature;
         double sourceCapacity = 0;
         double targetCapacity = 0;
         double transferred = 0;
-        float[] sourceNext = moles.clone();
-        float[] targetNext = target.moles.clone();
+        float[] sourceNext = new float[GasType.COUNT];
+        float[] targetNext = new float[GasType.COUNT];
         for (int i = 0; i < GasType.COUNT; i++) {
-            double delta = ((double) moles[i] * temperature - (double) target.moles[i] * target.temperature)
-                    / ((double) temperature + target.temperature) * rate;
-            if (Math.abs(delta) < TRANSFER_EPSILON) delta = 0;
+            double delta = ((double) moles[i] - target.moles[i]) * rate;
             sourceNext[i] = (float) (moles[i] - delta);
             targetNext[i] = (float) (target.moles[i] + delta);
             if (!Float.isFinite(sourceNext[i]) || !Float.isFinite(targetNext[i])) return 0;
             double capacityPerMole = GasType.byIndex(i).getHeatCapacity();
-            double transportedHeat = delta * capacityPerMole * (delta > 0 ? temperature : target.temperature);
-            sourceHeat -= transportedHeat;
-            targetHeat += transportedHeat;
             sourceCapacity += sourceNext[i] * capacityPerMole;
             targetCapacity += targetNext[i] * capacityPerMole;
             transferred += Math.abs(delta);
         }
-        if (transferred == 0) return 0;
-        float sourceTemperature = sourceCapacity > 0 ? (float) (sourceHeat / sourceCapacity) : temperature;
-        float targetTemperature = targetCapacity > 0 ? (float) (targetHeat / targetCapacity) : target.temperature;
+        float sourceTemperature = sourceCapacity > 0
+                ? (float) ((sourceHeat * (1 - rate) + targetHeat * rate) / sourceCapacity) : temperature;
+        float targetTemperature = targetCapacity > 0
+                ? (float) ((targetHeat * (1 - rate) + sourceHeat * rate) / targetCapacity) : target.temperature;
         if (!Float.isFinite(sourceTemperature) || !Float.isFinite(targetTemperature)) return 0;
         System.arraycopy(sourceNext, 0, moles, 0, GasType.COUNT);
         System.arraycopy(targetNext, 0, target.moles, 0, GasType.COUNT);

@@ -58,6 +58,8 @@ public class Ssc14ModEntities {
 					.sized(0.5f, 0.5f));
 
 	// Start of user code block custom entities
+	public static final DeferredHolder<EntityType<?>, EntityType<TestSunEntity>> TEST_SUN_ENTITY = register("test_sun_entity",
+			EntityType.Builder.<TestSunEntity>of(TestSunEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).fireImmune().sized(1.0f, 1.0f));
 	// End of user code block custom entities
 	private static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Ssc14Mod.MODID, registryname))));
@@ -75,6 +77,7 @@ public class Ssc14ModEntities {
 		MouseWhiteEntity.init(event);
 		PosterEntity.init(event);
 		CarpEntity.init(event);
+		TestSunEntity.init(event);
 	}
 
 	@SubscribeEvent
@@ -89,5 +92,6 @@ public class Ssc14ModEntities {
 		event.put(MOUSE_WHITE.get(), MouseWhiteEntity.createAttributes().build());
 		event.put(POSTER.get(), PosterEntity.createAttributes().build());
 		event.put(CARP.get(), CarpEntity.createAttributes().build());
+		event.put(TEST_SUN_ENTITY.get(), TestSunEntity.createAttributes().build());
 	}
 }

@@ -87,23 +87,6 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14ModBlocks.ARMORED_WINDOW.get(), welder, bs -> getInt(bs, "blockstate") == 3,
             new ConstructionStage(new int[]{27,27,27,27,27,27}, false, null, 1, 0.0, null, "blockstate", 4, true, null, null));
 
-        registerTagCheck("ssc14:airlocks", welder, 
-            bs -> {
-                int arl = getInt(bs, "arl_variat");
-                return arl != 11 && !(arl >= 12 && arl <= 15);
-            },
-            new ConstructionStage(new int[]{25,25,25,25,25,25}, false, null, 1, 0.0, null, "arl_variat", 0, true, null, 
-            ctx -> {
-                BlockEntity be = ctx.world().getBlockEntity(ctx.pos());
-                if (be != null) {
-                    CompoundTag nbt = be.getPersistentData();
-                    boolean wasWelded = nbt.getBoolean("welded").orElse(false);
-                    nbt.putBoolean("welded", !wasWelded);
-                    be.setChanged();
-                }
-            })
-        );
-
         Item nippers = Ssc14ModItems.NIPPERS.get();
 
         registerBlock(Ssc14ModBlocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.LV) && bs.getValue(SheathingBlock.LV),

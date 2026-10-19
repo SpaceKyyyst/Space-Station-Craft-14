@@ -1,13 +1,82 @@
+import base64
 import contextlib
 import io
+import json
+import os
+import re
+import shutil
 import subprocess
+import sys
 import tempfile
+import textwrap
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
 from check_project import check_project, check_tracked_files
 from report_checks import report
+from check_resources import check_resources
+
+
+@unittest.skipUnless(os.name == "nt", "Windows workflow uses a batch wrapper")
+class WindowsUnicodeWorkflowTest(unittest.TestCase):
+    def test_separates_cyrillic_configuration_from_native_path_workers(self):
+        powershell = shutil.which("pwsh") or shutil.which("powershell")
+        if powershell is None:
+            self.skipTest("PowerShell is required to execute the Windows workflow")
+        workflow = (Path(__file__).resolve().parents[1] / "workflows/build.yml").read_text(
+            encoding="utf-8")
+        job = workflow.split("  windows-unicode-tests:\n", 1)[1].split("\n  release:", 1)[0]
+        scripts = re.findall(r"        run: \|\n((?:          .*\n)+)", job)
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            workspace = root / "ascii-checkout"
+            runner_temp = root / "runner temp"
+            workspace.mkdir()
+            runner_temp.mkdir()
+            capture = root / "invocations.jsonl"
+            (workspace / "capture.py").write_text(
+                "import json, os, sys\nfrom pathlib import Path\n"
+                "with Path(os.environ['WORKFLOW_CAPTURE']).open('a', encoding='utf-8') as output:\n"
+                " output.write(json.dumps({"
+                "'wrapper_dir': str(Path(__file__).resolve().parent), "
+                "'cwd': os.getcwd(), 'args': sys.argv[1:]}) + '\\n')\n"
+                "if 'help' in sys.argv[1:]:\n Path('configuration-only.marker').touch()\n",
+                encoding="utf-8")
+            (workspace / "gradlew.bat").write_text(
+                f'@"{sys.executable}" -B "%~dp0capture.py" %*\n', encoding="utf-8")
+            environment = dict(os.environ, GITHUB_WORKSPACE=str(workspace),
+                               RUNNER_TEMP=str(runner_temp), WORKFLOW_CAPTURE=str(capture))
+            for script in scripts:
+                command = base64.b64encode(
+                    textwrap.dedent(script).encode("utf-16-le")).decode("ascii")
+                result = subprocess.run(
+                    [powershell, "-NoProfile", "-NonInteractive", "-EncodedCommand", command],
+                    env=environment, cwd=workspace, capture_output=True, timeout=30)
+                self.assertEqual(0, result.returncode, result.stderr.decode(errors="replace"))
+            invocations = [json.loads(line) for line in capture.read_text(encoding="utf-8").splitlines()]
+            self.assertEqual(2, len(invocations))
+            configuration, workers = invocations
+            unicode_checkout = runner_temp / "Тест плагина"
+            native_checkout = runner_temp / "Tést plugin"
+            self.assertTrue((unicode_checkout / "gradlew.bat").is_file())
+            self.assertTrue((native_checkout / "gradlew.bat").is_file())
+            self.assertTrue((unicode_checkout / "configuration-only.marker").is_file())
+            self.assertFalse((native_checkout / "configuration-only.marker").exists(),
+                             "Workers must use a fresh original-checkout copy")
+            self.assertEqual(workspace, Path(configuration["wrapper_dir"]))
+            self.assertEqual(unicode_checkout, Path(configuration["cwd"]))
+            self.assertEqual(["--project-dir", ".", "help", "--no-daemon", "--no-build-cache"],
+                             configuration["args"])
+            self.assertEqual(native_checkout, Path(workers["wrapper_dir"]))
+            self.assertEqual(native_checkout, Path(workers["cwd"]))
+            self.assertEqual(["--project-dir", ".", "domainTest", "test",
+                              "--no-daemon", "--no-build-cache"], workers["args"])
+            for invocation in invocations:
+                self.assertNotIn(str(unicode_checkout), invocation["args"])
+                self.assertTrue(all(argument.isascii() for argument in invocation["args"]),
+                                "Cyrillic checkout must stay out of Java launcher arguments")
 
 
 class ProjectChecksTest(unittest.TestCase):
@@ -124,6 +193,53 @@ class TrackedFilesTest(unittest.TestCase):
     def test_reports_unavailable_git_executable(self):
         with patch("check_project.subprocess.run", side_effect=FileNotFoundError):
             self.assertTrue(check_tracked_files(self.root))
+
+
+class ResourceChecksTest(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory()
+        self.addCleanup(self.directory.cleanup)
+        self.root = Path(self.directory.name)
+        self.assets = self.root / "src/main/resources/assets/ssc_14"
+        self.write("items/example.json", {"model": {"model": "ssc_14:block/example"}})
+        self.write("models/block/example.json", {
+            "parent": "ssc_14:custom/base", "textures": {"0": "ssc_14:block/present"}})
+        self.write("models/custom/base.json", {
+            "elements": [{"faces": {"north": {"texture": "#0"}}}]})
+        texture = self.assets / "textures/block/present.png"
+        texture.parent.mkdir(parents=True)
+        texture.touch()
+
+    def write(self, name, data):
+        path = self.assets / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(data), encoding="utf-8")
+
+    def test_accepts_texture_supplied_by_child_model(self):
+        self.assertEqual([], check_resources(self.root))
+
+    def test_reports_missing_inherited_face_texture(self):
+        (self.assets / "textures/block/present.png").unlink()
+        self.assertIn("missing texture", check_resources(self.root)[0])
+
+    def test_reports_unbound_inherited_slot(self):
+        self.write("models/custom/base.json", {
+            "elements": [{"faces": {"north": {"texture": "#2"}}}]})
+        self.assertIn("unresolved texture #2", check_resources(self.root)[0])
+
+    def test_reports_texture_alias_cycle(self):
+        self.write("models/block/example.json", {
+            "parent": "ssc_14:custom/base", "textures": {"0": "#1", "1": "#0"}})
+        self.assertIn("unresolved texture", check_resources(self.root)[0])
+
+    def test_reports_model_parent_cycle(self):
+        self.write("models/custom/base.json", {"parent": "ssc_14:block/example"})
+        self.assertIn("cyclic model parent", check_resources(self.root)[0])
+
+    def test_reports_missing_generated_item_layer(self):
+        self.write("models/block/example.json", {
+            "parent": "minecraft:item/generated", "textures": {"layer0": "ssc_14:item/absent"}})
+        self.assertIn("missing texture", check_resources(self.root)[0])
 
 
 if __name__ == "__main__":

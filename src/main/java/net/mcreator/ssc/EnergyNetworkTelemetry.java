@@ -14,12 +14,14 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 /** Adapts network measurements to the existing cable NBT and multitool packet formats. */
 final class EnergyNetworkTelemetry {
+    private static final int UPDATE_INTERVAL_TICKS = 4;
     private static final double MULTITOOL_REACH = 5.0;
 
     private EnergyNetworkTelemetry() {
     }
 
     static void publishCableData(ServerLevel level, EnergyNetwork network) {
+        if (level.getGameTime() % UPDATE_INTERVAL_TICKS != 0) return;
         int layer = switch (network.getType()) { case LV -> 1; case MV -> 2; case HV -> 3; };
         for (BlockPos pos : network.getCables()) {
             if (level.isLoaded(pos) && level.getBlockEntity(pos) instanceof SheathingBlockEntity cable) {
@@ -31,6 +33,7 @@ final class EnergyNetworkTelemetry {
     }
 
     static void publishToolData(ServerLevel level) {
+        if (level.getGameTime() % UPDATE_INTERVAL_TICKS != 0) return;
         for (ServerPlayer player : level.players()) {
             ItemStack item = player.getMainHandItem();
             if (!item.is(Ssc14ModItems.MULTITUL.get())) {
@@ -46,18 +49,14 @@ final class EnergyNetworkTelemetry {
                 continue;
             }
             CableType type = switch (mode) { case 2 -> CableType.MV; case 3 -> CableType.HV; default -> CableType.LV; };
-            boolean found = false;
-            for (EnergyNetwork network : EnergyNetworkManager.getNetworks(level, type)) {
-                if (network.getCables().contains(blockHit.getBlockPos())) {
-                    PacketDistributor.sendToPlayer(player, new MultitoolDataPacket(mode,
-                            network.currentPower, network.batteryPower, network.theoreticalSupply,
-                            network.idealConsumption, network.inputStored, network.inputMax,
-                            network.outputStored, network.outputMax));
-                    found = true;
-                    break;
-                }
+            var network = net.mcreator.ssc.energy.EnergyTopologyService.networkAt(level, type, blockHit.getBlockPos());
+            if (network != null) {
+                PacketDistributor.sendToPlayer(player, new MultitoolDataPacket(mode,
+                        network.currentPower, network.batteryPower, network.theoreticalSupply,
+                        network.idealConsumption, network.inputStored, network.inputMax,
+                        network.outputStored, network.outputMax));
             }
-            if (!found) {
+            else {
                 PacketDistributor.sendToPlayer(player, new MultitoolDataPacket(mode, 0, 0, 0, 0, 0, 0, 0, 0));
             }
         }

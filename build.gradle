@@ -2,7 +2,8 @@ plugins {
     id 'eclipse'
     id 'checkstyle'
     id 'pmd'
-    id 'net.neoforged.moddev' version '2.0.141'
+    id 'jacoco'
+    id 'net.neoforged.moddev' version '2.0.148'
 }
 
 version = '0.1.27'
@@ -14,6 +15,7 @@ repositories {
 }
 
 dependencies {
+    implementation "maven.modrinth:ldlib:mc26.1.x-26.1.2.39-neoforge"
     implementation "maven.modrinth:ItemPhysic:1.8.15"
     implementation "maven.modrinth:creativecore:2.14.16-neoforge"
     implementation "maven.modrinth:fusion-connected-textures:1.3.15-neoforge-mc26.1"
@@ -38,7 +40,7 @@ configurations {
 def gameTestReport = layout.buildDirectory.file('test-results/gameTest/TEST-atmosphere.xml')
 
 neoForge {
-    version = "26.1.2.71"
+    version = "26.1.2.109"
     addModdingDependenciesTo sourceSets.gameTest
 
     mods {
@@ -114,7 +116,12 @@ sourceSets {
             include 'net/mcreator/ssc/GasReaction.java'
             include 'net/mcreator/ssc/combat/**'
             include 'net/mcreator/ssc/atmosphere/**'
-            include 'net/mcreator/ssc/energy/**'
+            include 'net/mcreator/ssc/energy/ConnectedComponents.java'
+            include 'net/mcreator/ssc/energy/EnergyAllocation.java'
+            include 'net/mcreator/ssc/energy/EnergyTickBudget.java'
+            include 'net/mcreator/ssc/math/**'
+            include 'net/mcreator/ssc/scheduling/TickTaskQueue.java'
+            include 'net/mcreator/ssc/diagnostics/TickPhase.java'
             include 'net/mcreator/ssc/network/validation/**'
             include 'net/mcreator/ssc/chemistry/**'
         }
@@ -146,8 +153,56 @@ tasks.register('domainTest', Test) {
     useJUnitPlatform()
 }
 
+jacoco {
+    // Java 25 support starts with JaCoCo 0.8.14.
+    toolVersion = '0.8.14'
+}
+
+tasks.register('jacocoDomainTestReport', JacocoReport) {
+    description = 'Reports coverage of domain rules exercised by domainTest.'
+    group = 'verification'
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+tasks.register('jacocoDomainTestCoverageVerification', JacocoCoverageVerification) {
+    description = 'Enforces the measured instruction coverage baseline for domain rules.'
+    group = 'verification'
+    dependsOn tasks.named('jacocoDomainTestReport')
+    violationRules {
+        rule {
+            limit {
+                counter = 'INSTRUCTION'
+                value = 'COVEREDRATIO'
+                // Baseline: 3506 / 4339 = 80.8020281170777%, rounded down.
+                minimum = 0.80
+            }
+        }
+    }
+}
+
+tasks.withType(org.gradle.testing.jacoco.tasks.JacocoReportBase).configureEach {
+    if (name in ['jacocoDomainTestReport', 'jacocoDomainTestCoverageVerification']) {
+        dependsOn tasks.named('domainTest')
+        executionData tasks.named('domainTest').get()
+        classDirectories.setFrom(sourceSets.domain.output.classesDirs)
+        sourceDirectories.setFrom(sourceSets.domain.allJava.srcDirs)
+        // JaCoCo normally skips tasks when execution data is absent.
+        setOnlyIf { true }
+        doFirst { task ->
+            def executionFiles = task.executionData.files
+            if (executionFiles.empty || executionFiles.any { !it.isFile() || it.length() == 0 }) {
+                throw new GradleException('Domain test coverage requires non-empty domainTest execution data.')
+            }
+        }
+    }
+}
+
 tasks.named('check') {
     dependsOn tasks.named('domainTest')
+    dependsOn tasks.named('jacocoDomainTestCoverageVerification')
 }
 
 checkstyle {
@@ -200,4 +255,3 @@ tasks.withType(Checkstyle).configureEach {
         html.required = true
     }
 }
-

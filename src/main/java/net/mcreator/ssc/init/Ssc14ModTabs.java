@@ -555,7 +555,8 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.MOUSE_GRAY_SPAWN_EGG.get());
 				tabData.accept(Ssc14ModItems.MOUSE_WHITE_SPAWN_EGG.get());
 				tabData.accept(Ssc14ModItems.CARP_SPAWN_EGG.get());
-			}).withTabsBefore(SSC_14_ITEMS.getId()).build());
+			tabData.accept(Ssc14ModItems.TEST_SUN_ENTITY_SPAWN_EGG.get());
+		}).withTabsBefore(SSC_14_ITEMS.getId()).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> DECALS = REGISTRY.register("decals",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.decals")).icon(() -> new ItemStack(Ssc14ModItems.DECAL_1SPAWNER.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(Ssc14ModItems.DECAL_1DELETION.get());
@@ -574,6 +575,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.WALL_CARCASE_ENTIT_SPAWN_EGG.get());
 				tabData.accept(Ssc14ModItems.ID_CONSOLE_ENTITY_SPAWN_EGG.get());
 				tabData.accept(Ssc14ModItems.PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG.get());
+				tabData.accept(Ssc14ModItems.TEST_SUN_ENTITY_SPAWN_EGG.get());
 				tabData.accept(Ssc14ModItems.AIRLOCK_CONTROLLER.get());
 				tabData.accept(Ssc14ModBlocks.DEBUG_GRAV_GEN.get().asItem());
 				tabData.accept(Ssc14ModBlocks.DEBU_GGENERATOR.get().asItem());

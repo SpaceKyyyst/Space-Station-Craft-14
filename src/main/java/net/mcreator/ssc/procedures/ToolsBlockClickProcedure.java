@@ -38,8 +38,36 @@ public class ToolsBlockClickProcedure {
 			return;
 
 		BlockPos pos = BlockPos.containing(x, y, z);
-		BlockState blockstate = world.getBlockState(pos);
+		if (entity instanceof net.minecraft.world.entity.player.Player player
+				&& (net.mcreator.ssc.access.AirlockEventLog.inspect(player, pos)
+                    || net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos)
+                    || net.mcreator.ssc.access.AirlockWelding.interact(player, pos)
+                    || net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos)
+                    || net.mcreator.ssc.access.AirlockFloor.installTile(player, pos)
 
-		UniversalDeconstructionProcedureProcedure.execute(world, x, y, z, blockstate, entity);
+					|| net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos))) {
+			if (event instanceof PlayerInteractEvent.RightClickBlock interaction) {
+				interaction.setCanceled(true);
+				interaction.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
+			}
+			return;
+		}
+		pos = net.mcreator.ssc.access.AirlockMaintenance.root(world, pos);
+        BlockState blockstate = world.getBlockState(pos);
+
+        // Tool work must not also trigger the door's ordinary right-click opening.
+        if (entity instanceof net.minecraft.world.entity.player.Player player
+                && player.getMainHandItem().is(net.mcreator.ssc.init.Ssc14ModItems.SCREWDRIVER.get())
+                && blockstate.getBlock().getStateDefinition().getProperty("arl_variat") != null) {
+            if (player.isAlive() && !player.isSpectator() && player.level().mayInteract(player, pos))
+                UniversalDeconstructionProcedureProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate, entity);
+            if (event instanceof PlayerInteractEvent.RightClickBlock interaction) {
+                interaction.setCanceled(true);
+                interaction.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
+            }
+            return;
+        }
+
+		UniversalDeconstructionProcedureProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate, entity);
 	}
 }

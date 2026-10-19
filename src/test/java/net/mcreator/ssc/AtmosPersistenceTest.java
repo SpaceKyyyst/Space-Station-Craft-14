@@ -102,7 +102,8 @@ class AtmosPersistenceTest {
             cell.setTemperature(1000);
         }
         region.tick(0.2f, StandardGasReactions.create());
-        region.tick(0.2f, StandardGasReactions.create());
+        assertEquals(1f, region.getCellAt(new BlockPos(15, 15, 15)).getMoles(GasType.NITROUS_OXIDE.ordinal()));
+        for (int step = 1; step < 16; step++) region.tick(0.2f, StandardGasReactions.create());
         assertEquals(0.95f, region.getCellAt(new BlockPos(15, 15, 15)).getMoles(GasType.NITROUS_OXIDE.ordinal()));
     }
 

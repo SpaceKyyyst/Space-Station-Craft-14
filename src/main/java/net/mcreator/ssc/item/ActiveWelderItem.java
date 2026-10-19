@@ -30,10 +30,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.Welding_Fuel_chekProcedure;
 import net.mcreator.ssc.procedures.WelderOnOffPrProcedure;
 import net.mcreator.ssc.procedures.WelderOnDAMAGEProcedure;
-import net.mcreator.ssc.procedures.ActiveWelder_FuelMinProcedure;
 import net.mcreator.ssc.procedures.ActiveWelder_DROP_Procedure;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
@@ -90,11 +88,16 @@ public class ActiveWelderItem extends Item {
 	}
 
 	@Override
+	public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+		// Fuel updates arrive every tick; they must not keep the tool below the screen.
+		return slotChanged || !ItemStack.isSameItem(oldStack, newStack);
+	}
+
+	@Override
 	public void inventoryTick(ItemStack itemstack, ServerLevel world, Entity entity, @Nullable EquipmentSlot equipmentSlot) {
 		super.inventoryTick(itemstack, world, entity, equipmentSlot);
-		if (equipmentSlot == EquipmentSlot.MAINHAND)
-			Welding_Fuel_chekProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, itemstack);
-		ActiveWelder_FuelMinProcedure.execute(itemstack);
+		if (equipmentSlot == EquipmentSlot.MAINHAND && entity instanceof net.minecraft.server.level.ServerPlayer player)
+			WelderFuelService.tick(world, player, InteractionHand.MAIN_HAND, itemstack);
 	}
 
 	@Override

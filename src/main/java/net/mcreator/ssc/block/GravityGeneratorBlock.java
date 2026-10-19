@@ -16,27 +16,21 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.util.RandomSource;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.GlobalPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
 import net.mcreator.ssc.procedures.GravityGenerator_PlugBlock_Generate_Procedure;
 import net.mcreator.ssc.procedures.GravityGenerator_Placement_TermsProcedure;
 import net.mcreator.ssc.procedures.GravityGenerator_DestroyProcedure;
 import net.mcreator.ssc.procedures.GravGenTICprocedureProcedure;
 import net.mcreator.ssc.block.entity.GravityGeneratorBlockEntity;
 
-import io.netty.buffer.Unpooled;
 
 public class GravityGeneratorBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
@@ -121,18 +115,9 @@ public class GravityGeneratorBlock extends Block implements EntityBlock {
 	@Override
 	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
-		if (entity instanceof ServerPlayer player) {
-			player.openMenu(new MenuProvider() {
-				@Override
-				public Component getDisplayName() {
-					return Component.literal("Gravity Generator");
-				}
-
-				@Override
-				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new GravGenGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-				}
-			}, pos);
+		if (world.isClientSide() && world.getBlockEntity(pos) instanceof GravityGeneratorBlockEntity generator
+				&& generator.hasAccess(entity, new GlobalPos(world.dimension(), pos))) {
+			generator.openUI(generator, entity);
 		}
 		return InteractionResult.SUCCESS;
 	}

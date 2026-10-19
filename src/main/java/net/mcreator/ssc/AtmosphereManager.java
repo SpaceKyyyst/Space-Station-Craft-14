@@ -21,7 +21,7 @@ public final class AtmosphereManager {
     private static final Map<ServerLevel, AtmosphereManager> CACHE = new IdentityHashMap<>();
     private static final int TICK_INTERVAL = 4;
     private static final float STEP_SECONDS = TICK_INTERVAL / 20f;
-    private static final int MAX_REGIONS_PER_TICK = 128;
+    private static final int MAX_REGIONS_PER_TICK = 8;
     private static final int MAX_BLOCK_CHANGES_PER_TICK = 1024;
     private static final int MAX_CHUNK_LOADS_PER_TICK = 32;
     private static final int VISUAL_INTERVAL = 40;
@@ -102,6 +102,8 @@ public final class AtmosphereManager {
             if (regions.containsKey(packRegionKey(neighbor))) pendingBlockChanges.add(neighbor);
         }
     }
+
+    public AtmosCell readCellAt(BlockPos pos) { return getCellAt(pos); }
 
     public AtmosCell getCellAt(BlockPos pos) {
         if (level.isOutsideBuildHeight(pos) || !level.hasChunkAt(pos)) return null;

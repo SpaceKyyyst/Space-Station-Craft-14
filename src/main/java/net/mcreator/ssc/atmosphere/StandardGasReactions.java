@@ -59,7 +59,7 @@ public final class StandardGasReactions {
             flags.apply(new int[]{GasType.NITROUS_OXIDE.ordinal()}),
             850f, 5000f,
             values.apply(new float[]{0,0,0,0.05f,0,0,0,0,0,0}),
-            values.apply(new float[]{0.025f,0.025f,0,0,0,0,0,0,0,0}),
+            values.apply(new float[]{0.025f,0.05f,0,0,0,0,0,0,0,0}),
             1000f, 0.1f));
 
         list.add(GasReaction.create("ammonia_scrub",
