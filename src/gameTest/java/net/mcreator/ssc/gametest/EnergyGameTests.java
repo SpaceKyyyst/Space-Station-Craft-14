@@ -12,6 +12,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.gametest.framework.GameTestInfo;
+import net.minecraft.gametest.framework.GameTestListener;
+import net.minecraft.gametest.framework.GameTestRunner;
 import net.minecraft.gametest.framework.TestData;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -189,6 +192,7 @@ public final class EnergyGameTests {
     /** A remote, radius-zero ticket leaves the GameTest's own forced chunks untouched. */
     private static void isolatedChunkReload(GameTestHelper helper) {
         ChunkPos chunk = new ChunkPos(1_024, 1_024);
+        releaseTicketsOnCompletion(helper, chunk);
         loadChunk(helper, chunk);
         BlockPos cable = chunk.getBlockAt(2, 80, 2);
         for (int x = 0; x < 7; x++) helper.getLevel().setBlockAndUpdate(cable.offset(x, 0, 0), cableState(true, true, true));
@@ -221,6 +225,7 @@ public final class EnergyGameTests {
     private static void bridgeChunkReload(GameTestHelper helper) {
         ChunkPos left = new ChunkPos(1_056, 1_024);
         ChunkPos right = new ChunkPos(left.x() + 1, left.z());
+        releaseTicketsOnCompletion(helper, left, right);
         loadChunk(helper, left);
         loadChunk(helper, right);
         BlockPos origin = left.getBlockAt(0, 80, 0);
@@ -238,19 +243,31 @@ public final class EnergyGameTests {
                     loadChunk(helper, right);
                     helper.assertTrue(EnergyTopologyService.rebuilding(helper.getLevel()),
                             "Loading the bridge must invalidate its neighbor before deferred rebuilding");
-                    // A second unload interrupts the newly requested generation before a server tick can finish it.
+                    // Also cancel queued work through a second physical unload.
                     unloadBridge(helper, left, right, origin, () -> {
                         loadChunk(helper, left);
-                        loadChunk(helper, right);
-                        awaitTopology(helper, () -> {
-                            assertBridgeOwners(helper, origin, true);
-                            helper.runAfterDelay(OBSERVATION_TICKS, () -> {
+                        // 768 cable visits cannot finish in two shared budgets of at most 128 steps.
+                        helper.assertTrue(CHUNK_WIDTH * CHUNK_WIDTH * CableType.values().length
+                                        > 2 * EnergyTopologyService.MAX_WORK_UNITS_PER_TICK,
+                                "The reload fixture must exceed two ordinary topology tick budgets");
+                        helper.runAfterDelay(2, () -> {
+                            helper.assertTrue(EnergyTopologyService.workUnitsThisTick(helper.getLevel()) > 0,
+                                    "An ordinary server topology tick must advance the reloaded left half");
+                            helper.assertTrue(EnergyTopologyService.rebuilding(helper.getLevel()),
+                                    "The advanced left-half generation must still be incomplete before loading the bridge");
+                            helper.assertTrue(!helper.getLevel().hasChunkAt(origin.offset(CHUNK_WIDTH, 0, 2)),
+                                    "The other half must remain physically unavailable during rebuild progress");
+                            loadChunk(helper, right);
+                            awaitTopology(helper, () -> {
                                 assertBridgeOwners(helper, origin, true);
-                                helper.assertTrue(!EnergyTopologyService.rebuilding(helper.getLevel()),
-                                        "Repeated availability changes must leave no unfinished topology work");
-                                releaseChunk(helper, left);
-                                releaseChunk(helper, right);
-                                helper.succeed();
+                                helper.runAfterDelay(OBSERVATION_TICKS, () -> {
+                                    assertBridgeOwners(helper, origin, true);
+                                    helper.assertTrue(!EnergyTopologyService.rebuilding(helper.getLevel()),
+                                            "Repeated availability changes must leave no unfinished topology work");
+                                    releaseChunk(helper, left);
+                                    releaseChunk(helper, right);
+                                    helper.succeed();
+                                });
                             });
                         });
                     });
@@ -316,6 +333,18 @@ public final class EnergyGameTests {
 
     private static void releaseChunk(GameTestHelper helper, ChunkPos chunk) {
         helper.getLevel().getChunkSource().removeTicketWithRadius(TicketType.FORCED, chunk, 0);
+    }
+
+    private static void releaseTicketsOnCompletion(GameTestHelper helper, ChunkPos... chunks) {
+        helper.testInfo.addListener(new GameTestListener() {
+            @Override public void testStructureLoaded(GameTestInfo testInfo) { }
+            @Override public void testPassed(GameTestInfo testInfo, GameTestRunner runner) { release(); }
+            @Override public void testFailed(GameTestInfo testInfo, GameTestRunner runner) { release(); }
+            @Override public void testAddedForRerun(GameTestInfo original, GameTestInfo rerun, GameTestRunner runner) { release(); }
+            private void release() {
+                for (ChunkPos chunk : chunks) releaseChunk(helper, chunk);
+            }
+        });
     }
 
     private static void awaitTopology(GameTestHelper helper, Runnable action) {
