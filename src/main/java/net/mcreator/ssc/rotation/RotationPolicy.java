@@ -1,8 +1,6 @@
 package net.mcreator.ssc.rotation;
 
 import java.util.Optional;
-import net.mcreator.ssc.block.ClosetBlock;
-import net.mcreator.ssc.block.ClosetSecureBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
@@ -19,10 +17,8 @@ public final class RotationPolicy {
     private RotationPolicy() { }
 
     public static Optional<BlockState> rotate(BlockState state) {
-        // Both multipart blocks align an upper plug from onPlace. A one-target
-        // state change would leave the pair inconsistent; require a dedicated adapter.
-        if (state.getBlock() instanceof ClosetBlock || state.getBlock() instanceof ClosetSecureBlock) return Optional.empty();
-        return state.is(ROTATABLE) ? rotateOrientation(state) : Optional.empty();
+        return state.is(ROTATABLE) && StateOnlyRotationEligibility.supports(state.getBlock())
+                ? rotateOrientation(state) : Optional.empty();
     }
 
     static Optional<BlockState> rotateOrientation(BlockState state) {

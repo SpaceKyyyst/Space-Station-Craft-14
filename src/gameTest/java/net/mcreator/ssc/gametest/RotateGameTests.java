@@ -44,7 +44,8 @@ public final class RotateGameTests {
     private static final String[] NAMES = {"rotate_exact_hit", "rotate_critical", "rotate_spectator", "rotate_invalid_intent",
             "rotate_miss", "rotate_reach", "rotate_facade", "rotate_world_border", "rotate_unloaded", "rotate_replaced_target",
             "rotate_loaded_traversal", "rotate_supported_states", "rotate_unsupported_states", "rotate_non_server_facade", "rotate_height",
-            "rotate_transport", "rotate_medical_thresholds", "rotate_boundary_update_loading", "rotate_multipart_rejected", "rotate_client_sync"};
+            "rotate_transport", "rotate_medical_thresholds", "rotate_boundary_update_loading", "rotate_multipart_rejected", "rotate_client_sync",
+            "rotate_unapproved_tag_member"};
     private static BlockPos observedPosition;
     private static int neighborNotifications;
 
@@ -75,6 +76,7 @@ public final class RotateGameTests {
             registry.register(id(NAMES[17]), RotateGameTests::boundaryUpdateLoading);
             registry.register(id(NAMES[18]), RotateGameTests::multipartRejected);
             registry.register(id(NAMES[19]), RotateGameTests::clientSync);
+            registry.register(id(NAMES[20]), RotateGameTests::unapprovedTagMember);
         });
     }
 
@@ -198,6 +200,7 @@ public final class RotateGameTests {
         player.setGameMode(GameType.SURVIVAL);
         player.setPos(target.getX() + 0.5, target.getY() - 1, target.getZ() - 2.5);
         player.setYRot(0);
+        player.setYHeadRot(0);
         player.setXRot(0);
         helper.assertTrue(level.getChunkSource().getChunkNow(chunkX + 1, chunkZ) == null,
                 "The adjacent update chunk must start unavailable while the entire ray chunk is loaded");
@@ -239,6 +242,7 @@ public final class RotateGameTests {
         player.setGameMode(GameType.SURVIVAL);
         player.setPos(target.getX() + 0.5, target.getY() - 1, target.getZ() - 2.5);
         player.setYRot(0);
+        player.setYHeadRot(0);
         player.setXRot(0);
         try {
             var lookup = ChunkMap.class.getDeclaredMethod("getVisibleChunkIfPresent", long.class);
@@ -288,9 +292,16 @@ public final class RotateGameTests {
             var aim = new net.minecraft.world.phys.Vec3(center.x, (Math.max(0, component.minY) + Math.min(1, component.maxY)) / 2, center.z);
             fixture.player.setPos(fixture.target.getX() + aim.x, fixture.target.getY() + aim.y - fixture.player.getEyeHeight(),
                     fixture.target.getZ() - 2.5);
+            var eye = fixture.player.getEyePosition();
+            var end = eye.add(fixture.player.getViewVector(1).scale(5));
+            var outlineHit = original.getShape(helper.getLevel(), fixture.target).clip(eye, end, fixture.target);
+            helper.assertTrue(outlineHit != null, "Supported fixture ray must intersect its outline: " + block
+                    + ", target=" + fixture.target + ", eye=" + eye + ", aim=" + aim + ", end=" + end
+                    + ", headYaw=" + fixture.player.getYHeadRot() + ", bodyYaw=" + fixture.player.getYRot());
             helper.assertTrue(RotationPolicy.rotate(original).isPresent(), "The current tag member must be eligible: " + block);
             helper.assertTrue(helper.getLevel().getBlockState(fixture.target) == original, "Supported fixture state must be installed: " + block);
-            helper.assertTrue(RotateCommand.execute(fixture.player, 0), "Every supported current tag member must rotate: " + block);
+            helper.assertTrue(RotateCommand.execute(fixture.player, 0), "Every supported current tag member must rotate: " + block
+                    + ", target=" + fixture.target + ", eye=" + eye + ", hit=" + outlineHit);
             helper.assertTrue(helper.getLevel().getBlockState(fixture.target)
                     == original.setValue(HorizontalDirectionalBlock.FACING, Direction.EAST), "State-only rotation must preserve all other properties");
         }
@@ -314,11 +325,24 @@ public final class RotateGameTests {
         helper.succeed();
     }
 
+    private static void unapprovedTagMember(GameTestHelper helper) {
+        var fixture = fixture(helper);
+        var state = Blocks.FURNACE.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
+        helper.getLevel().setBlock(fixture.target, state, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+        helper.assertTrue(state.is(net.minecraft.tags.BlockTags.create(Identifier.parse("ssc14:rotatable"))),
+                "The fixture must really be tagged by the test datapack");
+        helper.assertTrue(!RotateCommand.execute(fixture.player, 0), "A tag addition must not authorize an unaudited block");
+        helper.assertTrue(helper.getLevel().getBlockState(fixture.target) == state, "An unaudited tagged block must remain unchanged");
+        assertDecoy(helper, fixture);
+        helper.succeed();
+    }
+
     private static void nonServerFacade(GameTestHelper helper) {
         var fixture = fixture(helper);
         var player = helper.makeMockPlayer(GameType.SURVIVAL);
         player.setPos(fixture.player.position());
         player.setYRot(0);
+        player.setYHeadRot(0);
         player.setXRot(0);
         RotateMessage.pressAction(player, 0, 0);
         Objects_Rotate_RRRProcedure.execute(helper.getLevel(), player);
@@ -410,6 +434,8 @@ public final class RotateGameTests {
         player.setGameMode(GameType.SURVIVAL);
         player.setPos(target.getX() + 0.5, target.getY() - 1, target.getZ() - 2.5);
         player.setYRot(0);
+        // LivingEntity randomizes head yaw separately; ray tracing uses that yaw.
+        player.setYHeadRot(0);
         player.setXRot(0);
         for (int dz = -8; dz <= 1; dz++) {
             helper.getLevel().setBlock(target.offset(0, 0, dz), Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
