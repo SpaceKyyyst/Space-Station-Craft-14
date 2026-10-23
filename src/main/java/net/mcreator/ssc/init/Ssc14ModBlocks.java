@@ -243,9 +243,9 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> BANNER_CARGO = Ssc14Blocks.BANNER_CARGO;
 	public static final DeferredBlock<Block> BANNER_ENG = Ssc14Blocks.BANNER_ENG;
 	public static final DeferredBlock<Block> BANNER_SYND = Ssc14Blocks.BANNER_SYND;
-	public static final DeferredBlock<Block> ARM_CHAIR_BASE;
-	public static final DeferredBlock<Block> ARM_CHAIR_BROWN;
-	public static final DeferredBlock<Block> ARM_CHAIR_CARP;
+	public static final DeferredBlock<Block> ARM_CHAIR_BASE = Ssc14Blocks.ARM_CHAIR_BASE;
+	public static final DeferredBlock<Block> ARM_CHAIR_BROWN = Ssc14Blocks.ARM_CHAIR_BROWN;
+	public static final DeferredBlock<Block> ARM_CHAIR_CARP = Ssc14Blocks.ARM_CHAIR_CARP;
 	public static final DeferredBlock<Block> EMERGENCY_LIGHT;
 	static {
 		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
@@ -427,9 +427,6 @@ public class Ssc14ModBlocks {
 		ORDER_PALLET = register("order_pallet", OrderPalletBlock::new);
 		SALE_PALLET = register("sale_pallet", SalePalletBlock::new);
 		SALE_CONSOLE = register("sale_console", SaleConsoleBlock::new);
-		ARM_CHAIR_BASE = register("arm_chair_base", ArmChairBaseBlock::new);
-		ARM_CHAIR_BROWN = register("arm_chair_brown", ArmChairBrownBlock::new);
-		ARM_CHAIR_CARP = register("arm_chair_carp", ArmChairCarpBlock::new);
 		EMERGENCY_LIGHT = register("emergency_light", EmergencyLightBlock::new);
 	}
 
