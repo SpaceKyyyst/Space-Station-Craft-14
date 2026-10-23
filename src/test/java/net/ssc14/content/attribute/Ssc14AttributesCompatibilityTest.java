@@ -11,6 +11,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 class Ssc14AttributesCompatibilityTest {
     private static final Set<String> EXPECTED_PATHS = Set.of(
@@ -39,6 +40,18 @@ class Ssc14AttributesCompatibilityTest {
     @Test
     void legacyRegistryKeepsItsPublicNoArgumentConstructor() throws ReflectiveOperationException {
         Ssc14ModAttributes.class.getConstructor();
+    }
+
+    @Test
+    void targetRegistryOwnsExactAttributesAndLegacyFacadeAliasesThem() throws ReflectiveOperationException {
+        Set<Field> targetHolders = publicHolders(Ssc14Attributes.class);
+        assertEquals(EXPECTED_PATHS, holderPaths(targetHolders));
+        assertSame(Ssc14Attributes.REGISTRY, Ssc14ModAttributes.REGISTRY);
+
+        for (Field targetField : targetHolders) {
+            assertSame(targetField.get(null), Ssc14ModAttributes.class.getField(targetField.getName()).get(null),
+                    targetField.getName());
+        }
     }
 
     private static Set<Field> publicHolders(Class<?> owner) {
