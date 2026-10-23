@@ -206,9 +206,9 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.CLOSET_ORANGE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CLOSET_PINK.get().asItem());
 				tabData.accept(Ssc14ModBlocks.CLOSET_SECURE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.STEEL_TABLE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.WOOD_TABLE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.GLASS_TABLE.get().asItem());
+				tabData.accept(Ssc14Blocks.STEEL_TABLE.get().asItem());
+				tabData.accept(Ssc14Blocks.WOOD_TABLE.get().asItem());
+				tabData.accept(Ssc14Blocks.GLASS_TABLE.get().asItem());
 				tabData.accept(Ssc14Blocks.STEEL_CHAIR.get().asItem());
 				tabData.accept(Ssc14Blocks.WOOD_CHAIR.get().asItem());
 				tabData.accept(Ssc14Blocks.OFICE_BLACK_CHAIR.get().asItem());

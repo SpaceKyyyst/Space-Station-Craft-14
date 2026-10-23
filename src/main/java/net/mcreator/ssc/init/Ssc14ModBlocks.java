@@ -101,7 +101,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> C_4;
 	public static final DeferredBlock<Block> MACHINE_FRAME;
 	public static final DeferredBlock<Block> MACHINE_FRAME_2;
-	public static final DeferredBlock<Block> STEEL_TABLE;
+	public static final DeferredBlock<Block> STEEL_TABLE = Ssc14Blocks.STEEL_TABLE;
 	public static final DeferredBlock<Block> STEEL_STAIRCASE = Ssc14Blocks.STEEL_STAIRCASE;
 	public static final DeferredBlock<Block> WHITE_STAIRCASE = Ssc14Blocks.WHITE_STAIRCASE;
 	public static final DeferredBlock<Block> DARK_STAIRCASE = Ssc14Blocks.DARK_STAIRCASE;
@@ -137,7 +137,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> EXTINGUISHER_CABINET;
 	public static final DeferredBlock<Block> TITLE_STEEL_PAVEMENT_VERTICAL;
 	public static final DeferredBlock<Block> COMMUNICATION_SERVERS;
-	public static final DeferredBlock<Block> WOOD_TABLE;
+	public static final DeferredBlock<Block> WOOD_TABLE = Ssc14Blocks.WOOD_TABLE;
 	public static final DeferredBlock<Block> GRAV_GEN_PLUG_BLOCK;
 	public static final DeferredBlock<Block> COMMUNICATION_CONSOLE;
 	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1;
@@ -228,7 +228,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> CLOSET_N_2;
 	public static final DeferredBlock<Block> CLOSET_ORANGE;
 	public static final DeferredBlock<Block> CLOSET_PINK;
-	public static final DeferredBlock<Block> GLASS_TABLE;
+	public static final DeferredBlock<Block> GLASS_TABLE = Ssc14Blocks.GLASS_TABLE;
 	public static final DeferredBlock<Block> GLASS_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> BASE_GLASS_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> FUEL_TANK;
@@ -310,7 +310,6 @@ public class Ssc14ModBlocks {
 		C_4 = register("c_4", C4Block::new);
 		MACHINE_FRAME = register("machine_frame", MachineFrameBlock::new);
 		MACHINE_FRAME_2 = register("machine_frame_2", MachineFrame2Block::new);
-		STEEL_TABLE = register("steel_table", SteelTableBlock::new);
 		KOSTILNIBLOK = register("kostilniblok", KostilniblokBlock::new);
 		DEBUG_GRAV_GEN = register("debug_grav_gen", DebugGravGenBlock::new);
 		NUCLEAR_WARHEAD = register("nuclear_warhead", NuclearWarheadBlock::new);
@@ -331,7 +330,6 @@ public class Ssc14ModBlocks {
 		EXTINGUISHER_CABINET = register("extinguisher_cabinet", ExtinguisherCabinetBlock::new);
 		TITLE_STEEL_PAVEMENT_VERTICAL = register("title_steel_pavement_vertical", TitleSteelPavementVerticalBlock::new);
 		COMMUNICATION_SERVERS = register("communication_servers", CommunicationServersBlock::new);
-		WOOD_TABLE = register("wood_table", WoodTableBlock::new);
 		GRAV_GEN_PLUG_BLOCK = register("grav_gen_plug_block", GravGenPlugBlockBlock::new);
 		COMMUNICATION_CONSOLE = register("communication_console", CommunicationConsoleBlock::new);
 		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
@@ -422,7 +420,6 @@ public class Ssc14ModBlocks {
 		CLOSET_N_2 = register("closet_n_2", ClosetN2Block::new);
 		CLOSET_ORANGE = register("closet_orange", ClosetOrangeBlock::new);
 		CLOSET_PINK = register("closet_pink", ClosetPinkBlock::new);
-		GLASS_TABLE = register("glass_table", GlassTableBlock::new);
 		GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1", GlassAirlockD1Block::new);
 		BASE_GLASS_AIRLOCK_D_1 = register("base_glass_airlock_d_1", BaseGlassAirlockD1Block::new);
 		FUEL_TANK = register("fuel_tank", FuelTankBlock::new);
