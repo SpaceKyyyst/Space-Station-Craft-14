@@ -72,6 +72,7 @@ sh ./gradlew runClient
 | --- | --- |
 | [Руководство разработчика](CONTRIBUTING.md) | Окружение, команды, работа с контентом и MCreator |
 | [Архитектура](docs/ARCHITECTURE.md) | Подсистемы, границы ответственности, контракты данных |
+| [Целевая архитектура / Target architecture](docs/TARGET_STRUCTURE.md) | Проверяемые слои, зависимости и рецепт постепенной миграции / Enforceable layers, dependencies, and incremental migration recipe |
 | [Совместимость / Compatibility](docs/COMPATIBILITY.md) | Зафиксированные registry, SavedData/NBT и network-контракты / Frozen registry, SavedData/NBT, and network contracts |
 | [Проверки и CI](docs/VERIFICATION.md) | Тесты, анализ кода, отчёты, автоматические релизы |
 | [Устранение проблем](docs/TROUBLESHOOTING.md) | Ошибки сборки, запуска и данные для bug report |
