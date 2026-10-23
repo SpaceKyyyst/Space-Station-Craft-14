@@ -27,6 +27,10 @@ import net.ssc14.content.block.geology.CaveFloor4Block;
 import net.ssc14.content.block.geology.CaveFloor5Block;
 import net.ssc14.content.block.geology.CaveFloor6Block;
 import net.ssc14.content.block.geology.CaveFloor7Block;
+import net.ssc14.content.block.furniture.BarChairBlock;
+import net.ssc14.content.block.furniture.OfficeChairBlock;
+import net.ssc14.content.block.furniture.SteelChairBlock;
+import net.ssc14.content.block.furniture.WoodChairBlock;
 import net.ssc14.content.block.surface.StaircaseBlock;
 import net.ssc14.content.block.surface.UpperStaircaseBlock;
 
@@ -101,6 +105,16 @@ public final class Ssc14Blocks {
             register("fence_g", FenceCornerBlock::new);
     public static final DeferredBlock<Block> FENCE_P =
             register("fence_p", FenceThreeWayBlock::new);
+    public static final DeferredBlock<Block> STEEL_CHAIR =
+            register("steel_chair", SteelChairBlock::new);
+    public static final DeferredBlock<Block> WOOD_CHAIR =
+            register("wood_chair", WoodChairBlock::new);
+    public static final DeferredBlock<Block> OFICE_BLACK_CHAIR =
+            register("ofice_black_chair", OfficeChairBlock::new);
+    public static final DeferredBlock<Block> OFICE_WHITE_CHAIR =
+            register("ofice_white_chair", OfficeChairBlock::new);
+    public static final DeferredBlock<Block> BAR_CHAIR =
+            register("bar_chair", BarChairBlock::new);
 
     private Ssc14Blocks() {
     }
