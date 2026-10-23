@@ -67,6 +67,8 @@ public final class Ssc14BlocksBannerGameTests {
                     expected.path() + " is not canonical");
             helper.assertTrue(Float.compare(10.0f, block.defaultDestroyTime()) == 0,
                     expected.path() + " destroy time changed");
+            helper.assertTrue(Float.compare(10.0f, block.getExplosionResistance()) == 0,
+                    expected.path() + " explosion resistance changed");
             helper.assertTrue(block.defaultBlockState().getSoundType() == SoundType.STEM,
                     expected.path() + " sound changed");
             helper.assertTrue(block.asItem().getDefaultInstance().getMaxStackSize() == 1,
@@ -88,6 +90,8 @@ public final class Ssc14BlocksBannerGameTests {
                     helper.getLevel(), absolute, CollisionContext.empty()).isEmpty(),
                     expected.path() + " visual shape changed");
             helper.assertTrue(state.propagatesSkylightDown(), expected.path() + " blocks skylight");
+            helper.assertTrue(((DirectionalBannerBlock) block).getLightDampening(state) == 0,
+                    expected.path() + " light dampening changed");
             helper.assertTrue(!state.isRedstoneConductor(helper.getLevel(), absolute),
                     expected.path() + " became a redstone conductor");
         }

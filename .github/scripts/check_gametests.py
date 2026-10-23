@@ -23,6 +23,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_registry_ids",
     "ssc_14:compatibility_network_contracts",
     "ssc_14:compatibility_attribute_contract",
+    "ssc_14:compatibility_block_banner_contract",
 }
 
 
