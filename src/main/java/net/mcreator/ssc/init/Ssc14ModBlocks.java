@@ -5,10 +5,6 @@ package net.mcreator.ssc.init;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.api.distmarker.Dist;
 
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.Block;
@@ -113,12 +109,12 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> KOSTILNIBLOK;
 	public static final DeferredBlock<Block> DEBUG_GRAV_GEN;
 	public static final DeferredBlock<Block> NUCLEAR_WARHEAD;
-	public static final DeferredBlock<Block> DIRT;
-	public static final DeferredBlock<Block> GRASS_LIGHT_BLOCK;
-	public static final DeferredBlock<Block> LOW_PLANET_GRASS;
-	public static final DeferredBlock<Block> MED_PLANET_GRASS;
-	public static final DeferredBlock<Block> PLANETARY_TREE_LOG;
-	public static final DeferredBlock<Block> PLANETARY_TREE_FOLIAGE;
+	public static final DeferredBlock<Block> DIRT = Ssc14Blocks.DIRT;
+	public static final DeferredBlock<Block> GRASS_LIGHT_BLOCK = Ssc14Blocks.GRASS_LIGHT_BLOCK;
+	public static final DeferredBlock<Block> LOW_PLANET_GRASS = Ssc14Blocks.LOW_PLANET_GRASS;
+	public static final DeferredBlock<Block> MED_PLANET_GRASS = Ssc14Blocks.MED_PLANET_GRASS;
+	public static final DeferredBlock<Block> PLANETARY_TREE_LOG = Ssc14Blocks.PLANETARY_TREE_LOG;
+	public static final DeferredBlock<Block> PLANETARY_TREE_FOLIAGE = Ssc14Blocks.PLANETARY_TREE_FOLIAGE;
 	public static final DeferredBlock<Block> UP_STEEL_STAIRCASE = Ssc14Blocks.UP_STEEL_STAIRCASE;
 	public static final DeferredBlock<Block> UP_WHITE_STAIRCASE = Ssc14Blocks.UP_WHITE_STAIRCASE;
 	public static final DeferredBlock<Block> UP_DARK_STAIRCASE = Ssc14Blocks.UP_DARK_STAIRCASE;
@@ -313,12 +309,6 @@ public class Ssc14ModBlocks {
 		KOSTILNIBLOK = register("kostilniblok", KostilniblokBlock::new);
 		DEBUG_GRAV_GEN = register("debug_grav_gen", DebugGravGenBlock::new);
 		NUCLEAR_WARHEAD = register("nuclear_warhead", NuclearWarheadBlock::new);
-		DIRT = register("dirt", DirtBlock::new);
-		GRASS_LIGHT_BLOCK = register("grass_light_block", GrassLightBlockBlock::new);
-		LOW_PLANET_GRASS = register("low_planet_grass", LowPlanetGrassBlock::new);
-		MED_PLANET_GRASS = register("med_planet_grass", MedPlanetGrassBlock::new);
-		PLANETARY_TREE_LOG = register("planetary_tree_log", PlanetaryTreeLogBlock::new);
-		PLANETARY_TREE_FOLIAGE = register("planetary_tree_foliage", PlanetaryTreeFoliageBlock::new);
 		SHUTTLE_WALL = register("shuttle_wall", ShuttleWallBlock::new);
 		ARMORED_SHUTTLE_WALL = register("armored_shuttle_wall", ArmoredShuttleWallBlock::new);
 		DIRECTED_BASE_WINDOW = register("directed_base_window", DirectedBaseWindowBlock::new);
@@ -441,14 +431,4 @@ public class Ssc14ModBlocks {
 		return REGISTRY.registerBlock(name, supplier);
 	}
 
-	@EventBusSubscriber(Dist.CLIENT)
-	public static class BlocksClientSideHandler {
-		@SubscribeEvent
-		public static void blockColorLoad(RegisterColorHandlersEvent.BlockTintSources event) {
-			GrassLightBlockBlock.blockColorLoad(event);
-			LowPlanetGrassBlock.blockColorLoad(event);
-			MedPlanetGrassBlock.blockColorLoad(event);
-			PlanetaryTreeFoliageBlock.blockColorLoad(event);
-		}
-	}
 }

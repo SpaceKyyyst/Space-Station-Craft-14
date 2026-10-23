@@ -7,10 +7,6 @@ lwjgl src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java
 minecraft-client src/main/java/net/mcreator/ssc/ClientDecalRenderer.java
 minecraft-client src/main/java/net/mcreator/ssc/MultitoolDataPacket.java
 minecraft-client src/main/java/net/mcreator/ssc/ReagentTransferHandler.java
-minecraft-client src/main/java/net/mcreator/ssc/block/GrassLightBlockBlock.java
-minecraft-client src/main/java/net/mcreator/ssc/block/LowPlanetGrassBlock.java
-minecraft-client src/main/java/net/mcreator/ssc/block/MedPlanetGrassBlock.java
-minecraft-client src/main/java/net/mcreator/ssc/block/PlanetaryTreeFoliageBlock.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModHumanoidModels.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModMenus.java
@@ -22,11 +18,6 @@ minecraft-client src/main/java/net/mcreator/ssc/procedures/SkyRenderProcedure.ja
 minecraft-client src/main/java/net/mcreator/ssc/procedures/SpaceInputBlockerProcedure.java
 neoforge-client src/main/java/net/mcreator/ssc/ClientDecalRenderer.java
 neoforge-client src/main/java/net/mcreator/ssc/ReagentTransferHandler.java
-neoforge-client src/main/java/net/mcreator/ssc/block/GrassLightBlockBlock.java
-neoforge-client src/main/java/net/mcreator/ssc/block/LowPlanetGrassBlock.java
-neoforge-client src/main/java/net/mcreator/ssc/block/MedPlanetGrassBlock.java
-neoforge-client src/main/java/net/mcreator/ssc/block/PlanetaryTreeFoliageBlock.java
-neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModBlocks.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModEntityRenderers.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModHumanoidModels.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java

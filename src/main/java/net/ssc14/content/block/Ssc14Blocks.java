@@ -27,6 +27,11 @@ import net.ssc14.content.block.geology.CaveFloor4Block;
 import net.ssc14.content.block.geology.CaveFloor5Block;
 import net.ssc14.content.block.geology.CaveFloor6Block;
 import net.ssc14.content.block.geology.CaveFloor7Block;
+import net.ssc14.content.block.planetary.PlanetDirtBlock;
+import net.ssc14.content.block.planetary.PlanetGrassPlantBlock;
+import net.ssc14.content.block.planetary.PlanetGrassSoilBlock;
+import net.ssc14.content.block.planetary.PlanetaryTreeFoliageBlock;
+import net.ssc14.content.block.planetary.PlanetaryTreeLogBlock;
 import net.ssc14.content.block.furniture.ArmChairBlock;
 import net.ssc14.content.block.furniture.BarChairBlock;
 import net.ssc14.content.block.furniture.GlassTableBlock;
@@ -131,6 +136,18 @@ public final class Ssc14Blocks {
             register("arm_chair_brown", ArmChairBlock::new);
     public static final DeferredBlock<Block> ARM_CHAIR_CARP =
             register("arm_chair_carp", ArmChairBlock::new);
+    public static final DeferredBlock<Block> DIRT =
+            register("dirt", PlanetDirtBlock::new);
+    public static final DeferredBlock<Block> GRASS_LIGHT_BLOCK =
+            register("grass_light_block", PlanetGrassSoilBlock::new);
+    public static final DeferredBlock<Block> LOW_PLANET_GRASS =
+            register("low_planet_grass", PlanetGrassPlantBlock::new);
+    public static final DeferredBlock<Block> MED_PLANET_GRASS =
+            register("med_planet_grass", PlanetGrassPlantBlock::new);
+    public static final DeferredBlock<Block> PLANETARY_TREE_LOG =
+            register("planetary_tree_log", PlanetaryTreeLogBlock::new);
+    public static final DeferredBlock<Block> PLANETARY_TREE_FOLIAGE =
+            register("planetary_tree_foliage", PlanetaryTreeFoliageBlock::new);
 
     private Ssc14Blocks() {
     }
