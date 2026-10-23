@@ -31,6 +31,7 @@ import net.mcreator.ssc.scheduling.ServerTaskScheduler;
 import net.mcreator.ssc.scheduling.SubmissionResult;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
+import net.ssc14.content.sound.Ssc14SoundEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.LevelAccessor;
@@ -60,7 +61,7 @@ public class Ssc14Mod {
 			modEventBus.addListener(Ssc14ModCuriosCompat::registerCapabilities);
 			modEventBus.addListener(Ssc14ModCuriosRenderers::registerRenderers);
 		}
-		Ssc14ModSounds.REGISTRY.register(modEventBus);
+		Ssc14SoundEvents.REGISTRY.register(modEventBus);
 		Ssc14ModBlocks.REGISTRY.register(modEventBus);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
