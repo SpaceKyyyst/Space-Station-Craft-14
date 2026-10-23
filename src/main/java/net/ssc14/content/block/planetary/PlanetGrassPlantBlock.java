@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
@@ -39,7 +40,10 @@ public class PlanetGrassPlantBlock extends Block {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return level.getBlockState(pos.below()).is(Ssc14Blocks.GRASS_LIGHT_BLOCK.get());
+        if (level instanceof LevelAccessor) {
+            return level.getBlockState(pos.below()).is(Ssc14Blocks.GRASS_LIGHT_BLOCK.get());
+        }
+        return super.canSurvive(state, level, pos);
     }
 
     @Override

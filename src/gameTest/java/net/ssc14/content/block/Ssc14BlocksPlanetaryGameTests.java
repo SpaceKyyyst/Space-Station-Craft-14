@@ -1,5 +1,6 @@
 package net.ssc14.content.block;
 
+import java.lang.reflect.Proxy;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -11,6 +12,7 @@ import net.minecraft.gametest.framework.TestData;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.TriState;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SoundType;
@@ -88,6 +90,15 @@ public final class Ssc14BlocksPlanetaryGameTests {
                 Ssc14Blocks.LOW_PLANET_GRASS.get().defaultBlockState()) == TriState.TRUE,
                 "grass soil no longer sustains plants");
 
+        LevelReader readOnlyView = (LevelReader) Proxy.newProxyInstance(
+                LevelReader.class.getClassLoader(), new Class<?>[] {LevelReader.class},
+                (proxy, method, arguments) -> {
+                    throw new AssertionError("fallback unexpectedly queried " + method.getName());
+                });
+        helper.assertTrue(Ssc14Blocks.LOW_PLANET_GRASS.get().defaultBlockState()
+                        .canSurvive(readOnlyView, BlockPos.ZERO),
+                "planetary grass non-LevelAccessor fallback changed");
+
         BlockState log = Ssc14Blocks.PLANETARY_TREE_LOG.get().defaultBlockState();
         helper.assertTrue(log.getValue(PlanetaryTreeLogBlock.AXIS) == Direction.Axis.Y,
                 "planetary log default axis changed");
@@ -122,6 +133,8 @@ public final class Ssc14BlocksPlanetaryGameTests {
             helper.setBlock(soilRelative, net.minecraft.world.level.block.Blocks.AIR);
             helper.assertTrue(!plantState.canSurvive(helper.getLevel(), plantAbsolute),
                     BuiltInRegistries.BLOCK.getKey(plant) + " survives without grass soil");
+            helper.assertTrue(helper.getBlockState(plantRelative).isAir(),
+                    BuiltInRegistries.BLOCK.getKey(plant) + " was not removed with its substrate");
             helper.setBlock(soilRelative, soil);
         }
         helper.succeed();
