@@ -80,14 +80,15 @@ JUnit-тесты проверяют точные наборы ключей, зн
 
 ### Сетевые контракты
 
-Dedicated-server GameTest наблюдает фактически зарегистрированные payload, а не
-только объявленные `TYPE`. Baseline содержит 33 контракта:
+Dedicated-server GameTest наблюдает payload только после успешного вызова
+регистрации NeoForge, а не по объявленным `TYPE` или очереди намерений. Baseline
+содержит 33 контракта:
 
 | Направление и версия | Количество |
 | --- | ---: |
-| Serverbound, unversioned | 24 |
-| Clientbound, unversioned | 7 |
-| Bidirectional, unversioned | 1 |
+| Serverbound, version `ssc_14` | 24 |
+| Clientbound, version `ssc_14` | 7 |
+| Bidirectional, version `ssc_14` | 1 |
 | Clientbound, version `1` | 1 |
 
 Manifest фиксирует для каждого payload его ID, направление и channel version.
@@ -194,14 +195,15 @@ retain additional fields without data loss.
 
 ### Network contracts
 
-The dedicated-server GameTest observes payloads that were actually registered,
-not merely declared `TYPE` fields. The baseline contains 33 contracts:
+The dedicated-server GameTest observes a payload only after NeoForge accepts its
+registration call, rather than reading declared `TYPE` fields or queued intent.
+The baseline contains 33 contracts:
 
 | Direction and version | Count |
 | --- | ---: |
-| Serverbound, unversioned | 24 |
-| Clientbound, unversioned | 7 |
-| Bidirectional, unversioned | 1 |
+| Serverbound, version `ssc_14` | 24 |
+| Clientbound, version `ssc_14` | 7 |
+| Bidirectional, version `ssc_14` | 1 |
 | Clientbound, version `1` | 1 |
 
 For every payload, the manifest freezes its ID, direction, and channel version.

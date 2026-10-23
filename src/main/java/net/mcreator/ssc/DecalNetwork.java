@@ -15,11 +15,9 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.event.level.ChunkWatchEvent;
 import net.neoforged.neoforge.event.level.ChunkEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
-import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import net.mcreator.ssc.network.validation.ChunkPacketCoordinates;
 import net.mcreator.ssc.network.validation.PayloadLimits;
@@ -27,10 +25,6 @@ import net.mcreator.ssc.network.validation.PayloadLimits;
 @EventBusSubscriber(modid = "ssc_14")
 public class DecalNetwork {
     public static final Map<ChunkPos, List<DecalData>> CLIENT_DECAL_STORAGE = new ConcurrentHashMap<>();
-
-    static Set<String> networkCompatibilityContracts() {
-        return Set.of("clientbound 1 " + ClientboundChunkDecalsPacket.TYPE.id());
-    }
 
     public record ClientboundChunkDecalsPacket(ChunkPos chunkPos, List<DecalData> decals) implements CustomPacketPayload {
         // Even minimal decal entries consume at least 15 bytes of the payload.
@@ -73,7 +67,9 @@ public class DecalNetwork {
 
     @SubscribeEvent
     public static void registerPackets(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar registrar = event.registrar("ssc_14").versioned("1");
+        String version = "1";
+        CompatibilityPayloadRegistrar registrar = new CompatibilityPayloadRegistrar(
+                event.registrar("ssc_14").versioned(version), version);
         registrar.playToClient(
             ClientboundChunkDecalsPacket.TYPE,
             ClientboundChunkDecalsPacket.STREAM_CODEC,

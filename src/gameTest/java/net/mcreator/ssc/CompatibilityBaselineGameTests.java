@@ -76,10 +76,7 @@ public final class CompatibilityBaselineGameTests {
     static void networkContractsMatchBaseline(GameTestHelper helper) {
         try {
             Set<String> expected = readNetworkManifest(NETWORK_MANIFEST);
-            Set<String> actual = new TreeSet<>();
-            actual.addAll(Ssc14Mod.networkCompatibilityContracts());
-            actual.addAll(NetworkRegister.networkCompatibilityContracts());
-            actual.addAll(DecalNetwork.networkCompatibilityContracts());
+            Set<String> actual = CompatibilityPayloadRegistrar.registeredContracts();
             Set<String> differences = new TreeSet<>();
             stringDifference(differences, "missing", expected, actual);
             stringDifference(differences, "unexpected", actual, expected);
@@ -154,7 +151,7 @@ public final class CompatibilityBaselineGameTests {
                 if (!Set.of("serverbound", "clientbound", "bidirectional").contains(columns[0])) {
                     throw new IllegalArgumentException("Line " + lineNumber + " has unknown direction " + columns[0]);
                 }
-                if (!"unversioned".equals(columns[1]) && !columns[1].matches("[1-9][0-9]*")) {
+                if (!columns[1].matches("[A-Za-z0-9._-]+")) {
                     throw new IllegalArgumentException("Line " + lineNumber + " has invalid version " + columns[1]);
                 }
                 Identifier identifier = Identifier.parse(columns[2]);
