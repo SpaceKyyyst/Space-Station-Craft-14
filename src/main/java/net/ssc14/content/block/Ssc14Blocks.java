@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.block.decoration.DirectionalBannerBlock;
 import net.ssc14.content.block.geology.AsteroidStoneBaseBlock;
 import net.ssc14.content.block.geology.AsteroidStoneCoalBlock;
 import net.ssc14.content.block.geology.AsteroidStoneDiamondBlock;
@@ -74,6 +75,20 @@ public final class Ssc14Blocks {
             register("up_white_staircase", UpperStaircaseBlock::new);
     public static final DeferredBlock<Block> UP_DARK_STAIRCASE =
             register("up_dark_staircase", UpperStaircaseBlock::new);
+    public static final DeferredBlock<Block> BANNER_NT =
+            register("banner_nt", DirectionalBannerBlock::new);
+    public static final DeferredBlock<Block> BANNER_MED =
+            register("banner_med", DirectionalBannerBlock::new);
+    public static final DeferredBlock<Block> BANNER_RN_D =
+            register("banner_rn_d", DirectionalBannerBlock::new);
+    public static final DeferredBlock<Block> BANNER_SEC =
+            register("banner_sec", DirectionalBannerBlock::new);
+    public static final DeferredBlock<Block> BANNER_CARGO =
+            register("banner_cargo", DirectionalBannerBlock::new);
+    public static final DeferredBlock<Block> BANNER_ENG =
+            register("banner_eng", DirectionalBannerBlock::new);
+    public static final DeferredBlock<Block> BANNER_SYND =
+            register("banner_synd", DirectionalBannerBlock::new);
 
     private Ssc14Blocks() {
     }
