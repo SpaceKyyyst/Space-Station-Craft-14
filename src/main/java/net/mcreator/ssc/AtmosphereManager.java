@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Set;
 import net.mcreator.ssc.atmosphere.StandardGasReactions;
 import net.mcreator.ssc.atmosphere.RegionWorkQueue;
-import net.mcreator.ssc.init.Ssc14ModParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
@@ -15,6 +14,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
+import net.ssc14.content.particle.Ssc14ParticleTypes;
 
 /** Server-thread-only world adapter, persistence owner and fair section scheduler. */
 public final class AtmosphereManager {
@@ -220,36 +220,36 @@ public final class AtmosphereManager {
 
             switch (gasIndex) {
                 case 4:
-                    return type == 1 ? Ssc14ModParticleTypes.PLASMA_PARTICLES_1.get() : Ssc14ModParticleTypes.PLASMA_PARTICLES_2.get();
+                    return type == 1 ? Ssc14ParticleTypes.PLASMA_PARTICLES_1.get() : Ssc14ParticleTypes.PLASMA_PARTICLES_2.get();
                 case 6:
-                    return type == 1 ? Ssc14ModParticleTypes.TRITIUM_PARTICLES_1.get() : Ssc14ModParticleTypes.TRITIUM_PARTICLES_2.get();
+                    return type == 1 ? Ssc14ParticleTypes.TRITIUM_PARTICLES_1.get() : Ssc14ParticleTypes.TRITIUM_PARTICLES_2.get();
                 case 9:
                     return switch (type) {
-                        case 1 -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_1.get();
-                        case 2 -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_2.get();
-                        case 3 -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_3.get();
-                        default -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_4.get();
+                        case 1 -> Ssc14ParticleTypes.WATER_VAPOR_PARTICLES_1.get();
+                        case 2 -> Ssc14ParticleTypes.WATER_VAPOR_PARTICLES_2.get();
+                        case 3 -> Ssc14ParticleTypes.WATER_VAPOR_PARTICLES_3.get();
+                        default -> Ssc14ParticleTypes.WATER_VAPOR_PARTICLES_4.get();
                     };
                 case 5:
                     return switch (type) {
-                        case 1 -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_1.get();
-                        case 2 -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_2.get();
-                        case 3 -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_3.get();
-                        default -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_4.get();
+                        case 1 -> Ssc14ParticleTypes.AMMONIA_PARTICLES_1.get();
+                        case 2 -> Ssc14ParticleTypes.AMMONIA_PARTICLES_2.get();
+                        case 3 -> Ssc14ParticleTypes.AMMONIA_PARTICLES_3.get();
+                        default -> Ssc14ParticleTypes.AMMONIA_PARTICLES_4.get();
                     };
                 case 7:
                     return switch (type) {
-                        case 1 -> Ssc14ModParticleTypes.FREON_PARTICLES_1.get();
-                        case 2 -> Ssc14ModParticleTypes.FREON_PARTICLES_2.get();
-                        case 3 -> Ssc14ModParticleTypes.FREON_PARTICLES_3.get();
-                        default -> Ssc14ModParticleTypes.FREON_PARTICLES_4.get();
+                        case 1 -> Ssc14ParticleTypes.FREON_PARTICLES_1.get();
+                        case 2 -> Ssc14ParticleTypes.FREON_PARTICLES_2.get();
+                        case 3 -> Ssc14ParticleTypes.FREON_PARTICLES_3.get();
+                        default -> Ssc14ParticleTypes.FREON_PARTICLES_4.get();
                     };
                 case 8:
                     return switch (type) {
-                        case 1 -> Ssc14ModParticleTypes.HELIUM_PARTICLES_1.get();
-                        case 2 -> Ssc14ModParticleTypes.HELIUM_PARTICLES_2.get();
-                        case 3 -> Ssc14ModParticleTypes.HELIUM_PARTICLES_3.get();
-                        default -> Ssc14ModParticleTypes.HELIUM_PARTICLES_4.get();
+                        case 1 -> Ssc14ParticleTypes.HELIUM_PARTICLES_1.get();
+                        case 2 -> Ssc14ParticleTypes.HELIUM_PARTICLES_2.get();
+                        case 3 -> Ssc14ParticleTypes.HELIUM_PARTICLES_3.get();
+                        default -> Ssc14ParticleTypes.HELIUM_PARTICLES_4.get();
                     };
                 default:
                     return null;
