@@ -25,6 +25,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_attribute_contract",
     "ssc_14:compatibility_block_banner_contract",
     "ssc_14:compatibility_block_fence_contract",
+    "ssc_14:compatibility_block_chair_contract",
 }
 
 
