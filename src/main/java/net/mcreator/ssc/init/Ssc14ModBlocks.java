@@ -102,9 +102,9 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> MACHINE_FRAME;
 	public static final DeferredBlock<Block> MACHINE_FRAME_2;
 	public static final DeferredBlock<Block> STEEL_TABLE;
-	public static final DeferredBlock<Block> STEEL_STAIRCASE;
-	public static final DeferredBlock<Block> WHITE_STAIRCASE;
-	public static final DeferredBlock<Block> DARK_STAIRCASE;
+	public static final DeferredBlock<Block> STEEL_STAIRCASE = Ssc14Blocks.STEEL_STAIRCASE;
+	public static final DeferredBlock<Block> WHITE_STAIRCASE = Ssc14Blocks.WHITE_STAIRCASE;
+	public static final DeferredBlock<Block> DARK_STAIRCASE = Ssc14Blocks.DARK_STAIRCASE;
 	public static final DeferredBlock<Block> STEEL_CHAIR;
 	public static final DeferredBlock<Block> WOOD_CHAIR;
 	public static final DeferredBlock<Block> OFICE_BLACK_CHAIR;
@@ -119,9 +119,9 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> MED_PLANET_GRASS;
 	public static final DeferredBlock<Block> PLANETARY_TREE_LOG;
 	public static final DeferredBlock<Block> PLANETARY_TREE_FOLIAGE;
-	public static final DeferredBlock<Block> UP_STEEL_STAIRCASE;
-	public static final DeferredBlock<Block> UP_WHITE_STAIRCASE;
-	public static final DeferredBlock<Block> UP_DARK_STAIRCASE;
+	public static final DeferredBlock<Block> UP_STEEL_STAIRCASE = Ssc14Blocks.UP_STEEL_STAIRCASE;
+	public static final DeferredBlock<Block> UP_WHITE_STAIRCASE = Ssc14Blocks.UP_WHITE_STAIRCASE;
+	public static final DeferredBlock<Block> UP_DARK_STAIRCASE = Ssc14Blocks.UP_DARK_STAIRCASE;
 	public static final DeferredBlock<Block> SHUTTLE_WALL;
 	public static final DeferredBlock<Block> ARMORED_SHUTTLE_WALL;
 	public static final DeferredBlock<Block> DIRECTED_BASE_WINDOW;
@@ -311,9 +311,6 @@ public class Ssc14ModBlocks {
 		MACHINE_FRAME = register("machine_frame", MachineFrameBlock::new);
 		MACHINE_FRAME_2 = register("machine_frame_2", MachineFrame2Block::new);
 		STEEL_TABLE = register("steel_table", SteelTableBlock::new);
-		STEEL_STAIRCASE = register("steel_staircase", SteelStaircaseBlock::new);
-		WHITE_STAIRCASE = register("white_staircase", WhiteStaircaseBlock::new);
-		DARK_STAIRCASE = register("dark_staircase", DarkStaircaseBlock::new);
 		STEEL_CHAIR = register("steel_chair", SteelChairBlock::new);
 		WOOD_CHAIR = register("wood_chair", WoodChairBlock::new);
 		OFICE_BLACK_CHAIR = register("ofice_black_chair", OficeBlackChairBlock::new);
@@ -328,9 +325,6 @@ public class Ssc14ModBlocks {
 		MED_PLANET_GRASS = register("med_planet_grass", MedPlanetGrassBlock::new);
 		PLANETARY_TREE_LOG = register("planetary_tree_log", PlanetaryTreeLogBlock::new);
 		PLANETARY_TREE_FOLIAGE = register("planetary_tree_foliage", PlanetaryTreeFoliageBlock::new);
-		UP_STEEL_STAIRCASE = register("up_steel_staircase", UpSteelStaircaseBlock::new);
-		UP_WHITE_STAIRCASE = register("up_white_staircase", UpWhiteStaircaseBlock::new);
-		UP_DARK_STAIRCASE = register("up_dark_staircase", UpDarkStaircaseBlock::new);
 		SHUTTLE_WALL = register("shuttle_wall", ShuttleWallBlock::new);
 		ARMORED_SHUTTLE_WALL = register("armored_shuttle_wall", ArmoredShuttleWallBlock::new);
 		DIRECTED_BASE_WINDOW = register("directed_base_window", DirectedBaseWindowBlock::new);

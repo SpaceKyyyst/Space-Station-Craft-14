@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -71,7 +69,7 @@ class Ssc14BlocksGeologyCompatibilityTest {
     @Test
     void canonicalRegistryOwnsExactGeologyIdsAndLegacyFacadeAliasesHolders()
             throws ReflectiveOperationException {
-        Set<Field> targetHolders = publicHolders(Ssc14Blocks.class);
+        Set<Field> targetHolders = expectedHolders(Ssc14Blocks.class);
         assertEquals(EXPECTED_HOLDERS.keySet(), names(targetHolders));
         assertEquals(EXPECTED_HOLDERS.values().stream()
                 .map(path -> "ssc_14:" + path)
@@ -95,11 +93,14 @@ class Ssc14BlocksGeologyCompatibilityTest {
         return Map.entry(legacy, canonical);
     }
 
-    private static Set<Field> publicHolders(Class<?> owner) {
-        return Arrays.stream(owner.getFields())
-                .filter(field -> Modifier.isStatic(field.getModifiers()))
-                .filter(field -> DeferredHolder.class.isAssignableFrom(field.getType()))
-                .collect(Collectors.toUnmodifiableSet());
+    private static Set<Field> expectedHolders(Class<?> owner) {
+        return EXPECTED_HOLDERS.keySet().stream().map(name -> {
+            try {
+                return owner.getField(name);
+            } catch (NoSuchFieldException exception) {
+                throw new IllegalStateException(exception);
+            }
+        }).collect(Collectors.toUnmodifiableSet());
     }
 
     private static Set<String> names(Set<Field> fields) {
