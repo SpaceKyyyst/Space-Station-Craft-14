@@ -227,10 +227,10 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.FUEL_TANK.get().asItem());
 				tabData.accept(Ssc14ModBlocks.VENDING_AUT_1.get().asItem());
 				tabData.accept(Ssc14ModBlocks.EXTINGUISHER_CABINET.get().asItem());
-				tabData.accept(Ssc14ModBlocks.FENCE_POINT.get().asItem());
-				tabData.accept(Ssc14ModBlocks.FENCE_LINE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.FENCE_G.get().asItem());
-				tabData.accept(Ssc14ModBlocks.FENCE_P.get().asItem());
+				tabData.accept(Ssc14Blocks.FENCE_POINT.get().asItem());
+				tabData.accept(Ssc14Blocks.FENCE_LINE.get().asItem());
+				tabData.accept(Ssc14Blocks.FENCE_G.get().asItem());
+				tabData.accept(Ssc14Blocks.FENCE_P.get().asItem());
 				tabData.accept(Ssc14Blocks.DARK_STAIRCASE.get().asItem());
 				tabData.accept(Ssc14Blocks.STEEL_STAIRCASE.get().asItem());
 				tabData.accept(Ssc14Blocks.WHITE_STAIRCASE.get().asItem());

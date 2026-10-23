@@ -7,6 +7,10 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.block.decoration.DirectionalBannerBlock;
+import net.ssc14.content.block.decoration.FenceCornerBlock;
+import net.ssc14.content.block.decoration.FenceLineBlock;
+import net.ssc14.content.block.decoration.FencePointBlock;
+import net.ssc14.content.block.decoration.FenceThreeWayBlock;
 import net.ssc14.content.block.geology.AsteroidStoneBaseBlock;
 import net.ssc14.content.block.geology.AsteroidStoneCoalBlock;
 import net.ssc14.content.block.geology.AsteroidStoneDiamondBlock;
@@ -89,6 +93,14 @@ public final class Ssc14Blocks {
             register("banner_eng", DirectionalBannerBlock::new);
     public static final DeferredBlock<Block> BANNER_SYND =
             register("banner_synd", DirectionalBannerBlock::new);
+    public static final DeferredBlock<Block> FENCE_POINT =
+            register("fence_point", FencePointBlock::new);
+    public static final DeferredBlock<Block> FENCE_LINE =
+            register("fence_line", FenceLineBlock::new);
+    public static final DeferredBlock<Block> FENCE_G =
+            register("fence_g", FenceCornerBlock::new);
+    public static final DeferredBlock<Block> FENCE_P =
+            register("fence_p", FenceThreeWayBlock::new);
 
     private Ssc14Blocks() {
     }

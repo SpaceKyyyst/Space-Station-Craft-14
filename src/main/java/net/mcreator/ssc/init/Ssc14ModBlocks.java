@@ -129,10 +129,10 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> CLOSET_SECURE;
 	public static final DeferredBlock<Block> UP_CLOSET_PLUG;
 	public static final DeferredBlock<Block> CLOSET;
-	public static final DeferredBlock<Block> FENCE_LINE;
-	public static final DeferredBlock<Block> FENCE_G;
-	public static final DeferredBlock<Block> FENCE_POINT;
-	public static final DeferredBlock<Block> FENCE_P;
+	public static final DeferredBlock<Block> FENCE_LINE = Ssc14Blocks.FENCE_LINE;
+	public static final DeferredBlock<Block> FENCE_G = Ssc14Blocks.FENCE_G;
+	public static final DeferredBlock<Block> FENCE_POINT = Ssc14Blocks.FENCE_POINT;
+	public static final DeferredBlock<Block> FENCE_P = Ssc14Blocks.FENCE_P;
 	public static final DeferredBlock<Block> DEBUG_13;
 	public static final DeferredBlock<Block> EXTINGUISHER_CABINET;
 	public static final DeferredBlock<Block> TITLE_STEEL_PAVEMENT_VERTICAL;
@@ -332,10 +332,6 @@ public class Ssc14ModBlocks {
 		CLOSET_SECURE = register("closet_secure", ClosetSecureBlock::new);
 		UP_CLOSET_PLUG = register("up_closet_plug", UpClosetPLUGBlock::new);
 		CLOSET = register("closet", ClosetBlock::new);
-		FENCE_LINE = register("fence_line", FenceLineBlock::new);
-		FENCE_G = register("fence_g", FenceGBlock::new);
-		FENCE_POINT = register("fence_point", FencePointBlock::new);
-		FENCE_P = register("fence_p", FencePBlock::new);
 		DEBUG_13 = register("debug_13", DEBUG13Block::new);
 		EXTINGUISHER_CABINET = register("extinguisher_cabinet", ExtinguisherCabinetBlock::new);
 		TITLE_STEEL_PAVEMENT_VERTICAL = register("title_steel_pavement_vertical", TitleSteelPavementVerticalBlock::new);
