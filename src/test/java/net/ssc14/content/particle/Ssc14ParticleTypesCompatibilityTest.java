@@ -63,6 +63,11 @@ class Ssc14ParticleTypesCompatibilityTest {
         }
     }
 
+    @Test
+    void legacyFacadeKeepsItsPublicNoArgumentConstructor() throws ReflectiveOperationException {
+        Ssc14ModParticleTypes.class.getConstructor();
+    }
+
     private static Set<String> publicHolderNames(Class<?> owner) {
         return Arrays.stream(owner.getFields())
                 .filter(field -> Modifier.isStatic(field.getModifiers()))

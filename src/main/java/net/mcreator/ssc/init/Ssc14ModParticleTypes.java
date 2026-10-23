@@ -42,6 +42,8 @@ public class Ssc14ModParticleTypes {
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DECONSTRUCT_PX = Ssc14ParticleTypes.DECONSTRUCT_PX;
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DECONSTRUCT_PZ = Ssc14ParticleTypes.DECONSTRUCT_PZ;
 
-	private Ssc14ModParticleTypes() {
+	/** Retained for source and binary compatibility with the generated legacy API. */
+	@Deprecated(forRemoval = false)
+	public Ssc14ModParticleTypes() {
 	}
 }
