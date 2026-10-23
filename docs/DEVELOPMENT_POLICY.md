@@ -4,7 +4,7 @@
 
 SSC14 — открытый проект для русскоязычного и англоязычного сообщества. Каждая задача должна иметь ограниченный scope. Одна подсистема соответствует одной короткоживущей ветке и одному pull request. Коммиты внутри PR представляют завершённые логические изменения. Не смешивайте несвязанные изменения.
 
-Создавайте ветку от актуального `main`. Для веток в fork используйте формат `<GitHub login>/<task-name>`. Не делайте прямые коммиты в `main`, force-push опубликованной истории или слияние без проверок и review.
+Создавайте ветку от актуального `main`. Для веток в fork используйте формат `<GitHub login>/<task-name>`. Открывайте из fork Draft PR в `SpaceKyyyst/Space-Station-Craft-14:main`. Переводите PR в Ready for review только после заполнения шаблона, проверки итогового diff и успешного выполнения всех применимых проверок. Не делайте прямые коммиты в `main`, force-push опубликованной истории или слияние без проверок и review.
 
 Формат заголовка коммита: `type(scope): Русское описание / English description`. Тело коммита содержит секции `RU:` и `EN:` с фактическими изменениями, причиной и выполненными проверками. Pull request, issue и публичная документация должны содержать технически эквивалентные разделы RU и EN. Java API, идентификаторы, имена веток и labels остаются на английском. Применяйте labels по [отдельной политике](LABELS.md).
 
@@ -24,7 +24,7 @@ SSC14 — открытый проект для русскоязычного и �
 
 SSC14 is an open-source project for Russian- and English-speaking communities. Keep every task narrowly scoped. One subsystem maps to one short-lived branch and one pull request. Commits inside a PR represent complete logical changes. Do not mix unrelated changes.
 
-Create a branch from the current `main`. Use `<GitHub login>/<task-name>` for branches in a fork. Do not commit directly to `main`, force-push published history, or merge without required checks and review.
+Create a branch from the current `main`. Use `<GitHub login>/<task-name>` for branches in a fork. Open a Draft PR from the fork into `SpaceKyyyst/Space-Station-Craft-14:main`. Mark it Ready for review only after completing the template, reviewing the final diff, and passing every applicable check. Do not commit directly to `main`, force-push published history, or merge without required checks and review.
 
 Commit title format: `type(scope): Russian description / English description`. The commit body contains `RU:` and `EN:` sections with the actual changes, reason, and completed checks. Pull requests, issues, and public documentation must contain technically equivalent RU and EN sections. Java APIs, identifiers, branch names, and labels remain in English. Apply labels according to the [label policy](LABELS.md).
 

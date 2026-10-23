@@ -25,7 +25,7 @@ java -version
 | `.\gradlew.bat runClient` | Клиент Minecraft для разработки |
 | `.\gradlew.bat runServer` | Dedicated server для разработки |
 | `.\gradlew.bat domainTest` | Тесты чистых игровых правил |
-| `.\gradlew.bat checkstyleMain` | Статические проверки Java-кода |
+| `.\gradlew.bat checkstyleMain` | Checkstyle для выделенного `domain` source set |
 | `.\gradlew.bat pmdMain methodMetrics` | PMD и отчёт сложности методов |
 | `.\gradlew.bat runGameTestServer` | Серверные сценарии из `src/gameTest/` |
 | `.\gradlew.bat clean` | Удаление результатов предыдущей сборки |
@@ -80,7 +80,7 @@ Run commands from the project root. On Linux or macOS, replace `.\gradlew.bat` w
 | `.\gradlew.bat runClient` | Minecraft development client |
 | `.\gradlew.bat runServer` | Development dedicated server |
 | `.\gradlew.bat domainTest` | Pure game-rule tests without the Minecraft runtime |
-| `.\gradlew.bat checkstyleMain` | Static checks for Java code |
+| `.\gradlew.bat checkstyleMain` | Checkstyle for the dedicated `domain` source set |
 | `.\gradlew.bat pmdMain methodMetrics` | PMD and method-complexity report |
 | `.\gradlew.bat runGameTestServer` | Server scenarios from `src/gameTest/` |
 | `.\gradlew.bat clean` | Remove previous build outputs |
