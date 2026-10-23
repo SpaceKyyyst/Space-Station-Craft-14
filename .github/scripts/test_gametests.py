@@ -44,6 +44,9 @@ class GameTestReportTests(unittest.TestCase):
     def test_compatibility_registry_baseline_is_required(self):
         self.assertIn("ssc_14:compatibility_registry_ids", EXPECTED_TESTS)
 
+    def test_compatibility_network_baseline_is_required(self):
+        self.assertIn("ssc_14:compatibility_network_contracts", EXPECTED_TESTS)
+
     def test_empty_suite_fails(self):
         self.report(set())
         self.assertEqual(len(EXPECTED_TESTS), len(check_report(self.path)))

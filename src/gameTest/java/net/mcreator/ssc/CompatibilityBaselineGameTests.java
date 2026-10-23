@@ -25,28 +25,34 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 /** Runtime compatibility gates for identifiers that must survive the migration. */
 @EventBusSubscriber(modid = Ssc14Mod.MODID)
 public final class CompatibilityBaselineGameTests {
-    private static final String TEST_NAME = "compatibility_registry_ids";
-    private static final String MANIFEST = "/compatibility/registry-ids.txt";
+    private static final String REGISTRY_TEST_NAME = "compatibility_registry_ids";
+    private static final String NETWORK_TEST_NAME = "compatibility_network_contracts";
+    private static final String REGISTRY_MANIFEST = "/compatibility/registry-ids.txt";
+    private static final String NETWORK_MANIFEST = "/compatibility/network-contracts.txt";
 
     private CompatibilityBaselineGameTests() { }
 
     @SubscribeEvent
     public static void registerFunctions(RegisterEvent event) {
-        event.register(Registries.TEST_FUNCTION, helper ->
-                helper.register(id(TEST_NAME), CompatibilityBaselineGameTests::registryIdsMatchBaseline));
+        event.register(Registries.TEST_FUNCTION, helper -> {
+            helper.register(id(REGISTRY_TEST_NAME), CompatibilityBaselineGameTests::registryIdsMatchBaseline);
+            helper.register(id(NETWORK_TEST_NAME), CompatibilityBaselineGameTests::networkContractsMatchBaseline);
+        });
     }
 
     @SubscribeEvent
     public static void registerTests(RegisterGameTestsEvent event) {
         var environment = event.registerEnvironment(id("compatibility_environment"));
         var data = new TestData<>(environment, id("audit_empty"), 20, 1, true);
-        event.registerTest(id(TEST_NAME), new FunctionGameTestInstance(
-                ResourceKey.create(Registries.TEST_FUNCTION, id(TEST_NAME)), data));
+        for (String testName : new String[] {REGISTRY_TEST_NAME, NETWORK_TEST_NAME}) {
+            event.registerTest(id(testName), new FunctionGameTestInstance(
+                    ResourceKey.create(Registries.TEST_FUNCTION, id(testName)), data));
+        }
     }
 
     static void registryIdsMatchBaseline(GameTestHelper helper) {
         try {
-            Map<String, Set<Identifier>> expected = readRegistryManifest(MANIFEST);
+            Map<String, Set<Identifier>> expected = readRegistryManifest(REGISTRY_MANIFEST);
             Map<String, Registry<?>> registries = registries();
             Set<String> differences = new TreeSet<>();
             for (Map.Entry<String, Registry<?>> entry : registries.entrySet()) {
@@ -64,6 +70,26 @@ public final class CompatibilityBaselineGameTests {
             helper.succeed();
         } catch (IOException | IllegalArgumentException exception) {
             helper.fail("Invalid registry compatibility manifest: " + exception.getMessage());
+        }
+    }
+
+    static void networkContractsMatchBaseline(GameTestHelper helper) {
+        try {
+            Set<String> expected = readNetworkManifest(NETWORK_MANIFEST);
+            Set<String> actual = new TreeSet<>();
+            actual.addAll(Ssc14Mod.networkCompatibilityContracts());
+            actual.addAll(NetworkRegister.networkCompatibilityContracts());
+            actual.addAll(DecalNetwork.networkCompatibilityContracts());
+            Set<String> differences = new TreeSet<>();
+            stringDifference(differences, "missing", expected, actual);
+            stringDifference(differences, "unexpected", actual, expected);
+            if (!differences.isEmpty()) {
+                helper.fail("Network compatibility drift:\n" + String.join("\n", differences));
+                return;
+            }
+            helper.succeed();
+        } catch (IOException | IllegalArgumentException exception) {
+            helper.fail("Invalid network compatibility manifest: " + exception.getMessage());
         }
     }
 
@@ -111,11 +137,49 @@ public final class CompatibilityBaselineGameTests {
         return result;
     }
 
+    private static Set<String> readNetworkManifest(String resource) throws IOException {
+        InputStream stream = CompatibilityBaselineGameTests.class.getResourceAsStream(resource);
+        if (stream == null) throw new IllegalArgumentException("Missing resource " + resource);
+        Set<String> result = new TreeSet<>();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))) {
+            int lineNumber = 0;
+            for (String line; (line = reader.readLine()) != null;) {
+                lineNumber++;
+                String trimmed = line.trim();
+                if (trimmed.isEmpty() || trimmed.startsWith("#")) continue;
+                String[] columns = trimmed.split("\\s+");
+                if (columns.length != 3) {
+                    throw new IllegalArgumentException("Line " + lineNumber + " must have exactly 3 columns");
+                }
+                if (!Set.of("serverbound", "clientbound", "bidirectional").contains(columns[0])) {
+                    throw new IllegalArgumentException("Line " + lineNumber + " has unknown direction " + columns[0]);
+                }
+                if (!"unversioned".equals(columns[1]) && !columns[1].matches("[1-9][0-9]*")) {
+                    throw new IllegalArgumentException("Line " + lineNumber + " has invalid version " + columns[1]);
+                }
+                Identifier identifier = Identifier.parse(columns[2]);
+                if (!Ssc14Mod.MODID.equals(identifier.getNamespace())) {
+                    throw new IllegalArgumentException("Line " + lineNumber + " has unsupported namespace " + identifier);
+                }
+                if (!result.add(String.join(" ", columns))) {
+                    throw new IllegalArgumentException("Line " + lineNumber + " duplicates " + trimmed);
+                }
+            }
+        }
+        return result;
+    }
+
     private static void difference(Set<String> output, String registry, String kind,
             Set<Identifier> left, Set<Identifier> right) {
         Set<Identifier> delta = new TreeSet<>(left);
         delta.removeAll(right);
         for (Identifier identifier : delta) output.add(registry + " " + kind + " " + identifier);
+    }
+
+    private static void stringDifference(Set<String> output, String kind, Set<String> left, Set<String> right) {
+        Set<String> delta = new TreeSet<>(left);
+        delta.removeAll(right);
+        for (String contract : delta) output.add(kind + " " + contract);
     }
 
     private static Identifier id(String path) {

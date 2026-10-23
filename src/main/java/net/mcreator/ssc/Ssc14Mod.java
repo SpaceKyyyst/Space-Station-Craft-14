@@ -38,6 +38,8 @@ import javax.annotation.Nullable;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeSet;
 
 import java.lang.invoke.MethodType;
 import java.lang.invoke.MethodHandles;
@@ -80,7 +82,13 @@ public class Ssc14Mod {
 	private static final Map<CustomPacketPayload.Type<?>, NetworkMessage<?>> MESSAGES = new HashMap<>();
 
 	private enum PayloadDirection {
-		TO_SERVER, TO_CLIENT, BIDIRECTIONAL
+		TO_SERVER("serverbound"), TO_CLIENT("clientbound"), BIDIRECTIONAL("bidirectional");
+
+		private final String compatibilityName;
+
+		PayloadDirection(String compatibilityName) {
+			this.compatibilityName = compatibilityName;
+		}
 	}
 
 	private record NetworkMessage<T extends CustomPacketPayload>(CustomPacketPayload.Type<T> id,
@@ -116,6 +124,16 @@ public class Ssc14Mod {
 				throw new IllegalStateException("Cannot register new network messages after networking has been registered");
 			if (MESSAGES.putIfAbsent(id, new NetworkMessage<>(id, reader, handler, direction)) != null)
 				throw new IllegalStateException("Duplicate network message: " + id);
+		}
+	}
+
+	static Set<String> networkCompatibilityContracts() {
+		synchronized (MESSAGES) {
+			Set<String> contracts = new TreeSet<>();
+			for (NetworkMessage<?> message : MESSAGES.values()) {
+				contracts.add(message.direction.compatibilityName + " unversioned " + message.id.id());
+			}
+			return Set.copyOf(contracts);
 		}
 	}
 
