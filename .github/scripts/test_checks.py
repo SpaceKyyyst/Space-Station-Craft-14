@@ -18,6 +18,60 @@ from report_checks import report
 from check_resources import check_resources
 
 
+class PullRequestWorkflowPolicyTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.workflow = (
+            Path(__file__).resolve().parents[1] / "workflows/build.yml"
+        ).read_text(encoding="utf-8")
+
+    def job(self, name, next_name):
+        marker = f"  {name}:\n"
+        self.assertIn(marker, self.workflow, f"workflow job {name!r} is missing")
+        return self.workflow.split(marker, 1)[1].split(
+            f"\n  {next_name}:", 1
+        )[0]
+
+    def test_metadata_changes_and_ready_transition_trigger_pull_request_checks(self):
+        trigger = self.workflow.split("permissions:\n", 1)[0]
+
+        for event_type in (
+            "opened",
+            "synchronize",
+            "reopened",
+            "edited",
+            "labeled",
+            "unlabeled",
+            "ready_for_review",
+        ):
+            self.assertIn(event_type, trigger)
+
+    def test_policy_job_runs_on_drafts_with_read_only_full_history(self):
+        policy = self.job("policy", "build")
+
+        self.assertIn("github.event_name == 'pull_request'", policy)
+        self.assertNotIn("pull_request.draft", policy)
+        self.assertIn("fetch-depth: 0", policy)
+        self.assertIn("test_policy_checks.py", policy)
+        self.assertIn("policy_checks.py", policy)
+        self.assertIn("GITHUB_EVENT_PATH", policy)
+        self.assertIn("GITHUB_WORKSPACE", policy)
+        self.assertRegex(
+            self.workflow,
+            r"permissions:\s+contents:\s+read\s+concurrency:",
+        )
+
+    def test_heavy_jobs_stay_deferred_until_draft_becomes_ready(self):
+        build = self.job("build", "windows-unicode-tests")
+        windows = self.job("windows-unicode-tests", "release")
+
+        self.assertIn("!github.event.pull_request.draft", build)
+        self.assertIn("!github.event.pull_request.draft", windows)
+        self.assertIn("runGameTestServer", build)
+        self.assertIn("check_gametests.py", build)
+        self.assertIn("gradlew.bat", windows)
+
+
 @unittest.skipUnless(os.name == "nt", "Windows workflow uses a batch wrapper")
 class WindowsUnicodeWorkflowTest(unittest.TestCase):
     def test_separates_cyrillic_configuration_from_native_path_workers(self):
