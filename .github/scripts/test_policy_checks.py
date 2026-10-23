@@ -245,7 +245,7 @@ class PolicyCliTest(unittest.TestCase):
         self.git("add", "dependency.txt")
         self.git("commit", "--quiet", "-m", "build(deps): bump example from 1 to 2")
         automation_head = self.git("rev-parse", "HEAD").stdout.decode().strip()
-        body = "## RU\nОбновлена зависимость.\n## EN\nUpdated dependency.\n"
+        body = "Bumps example from 1 to 2.\n"
 
         result = self.run_cli(
             body,

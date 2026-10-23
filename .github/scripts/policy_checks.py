@@ -273,8 +273,10 @@ def run_policy_checks(event: dict, repository: Path) -> list[str]:
     if not base or not head:
         return ["Pull request event is missing immutable base/head SHAs"]
 
-    errors = validate_pr_body(body) + validate_labels(labels)
     require_bilingual = actor.casefold() not in AUTOMATION_ACTORS
+    errors = validate_labels(labels)
+    if require_bilingual:
+        errors = validate_pr_body(body) + errors
     for index, message in enumerate(read_commit_messages(repository, base, head), start=1):
         errors.extend(
             f"Commit {index}: {error}"
