@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.stream.Collectors;
 import net.mcreator.ssc.init.Ssc14ModAttributes;
+import net.ssc14.common.Ssc14Identity;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +35,7 @@ class Ssc14AttributesCompatibilityTest {
         assertEquals(EXPECTED_PATHS.stream()
                 .map(path -> path.toUpperCase(Locale.ROOT))
                 .collect(Collectors.toUnmodifiableSet()), holderNames(holders));
-        assertEquals(EXPECTED_PATHS, holderPaths(holders));
+        assertEquals(expectedIds(), holderIds(holders));
     }
 
     @Test
@@ -45,7 +46,7 @@ class Ssc14AttributesCompatibilityTest {
     @Test
     void targetRegistryOwnsExactAttributesAndLegacyFacadeAliasesThem() throws ReflectiveOperationException {
         Set<Field> targetHolders = publicHolders(Ssc14Attributes.class);
-        assertEquals(EXPECTED_PATHS, holderPaths(targetHolders));
+        assertEquals(expectedIds(), holderIds(targetHolders));
         assertSame(Ssc14Attributes.REGISTRY, Ssc14ModAttributes.REGISTRY);
 
         for (Field targetField : targetHolders) {
@@ -65,10 +66,16 @@ class Ssc14AttributesCompatibilityTest {
         return holders.stream().map(Field::getName).collect(Collectors.toUnmodifiableSet());
     }
 
-    private static Set<String> holderPaths(Set<Field> holders) {
+    private static Set<String> expectedIds() {
+        return EXPECTED_PATHS.stream()
+                .map(path -> Ssc14Identity.MOD_ID + ":" + path)
+                .collect(Collectors.toUnmodifiableSet());
+    }
+
+    private static Set<String> holderIds(Set<Field> holders) {
         return holders.stream().map(field -> {
             try {
-                return ((DeferredHolder<?, ?>) field.get(null)).getId().getPath();
+                return ((DeferredHolder<?, ?>) field.get(null)).getId().toString();
             } catch (IllegalAccessException exception) {
                 throw new IllegalStateException(exception);
             }
