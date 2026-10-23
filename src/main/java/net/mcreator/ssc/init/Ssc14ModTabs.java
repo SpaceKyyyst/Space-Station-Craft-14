@@ -125,8 +125,8 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.TITLE_HULL.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_ROCKVAULT.get().asItem());
 				tabData.accept(Ssc14Blocks.CAVE_FLOOR_1.get().asItem());
-				tabData.accept(Ssc14ModBlocks.DIRT.get().asItem());
-				tabData.accept(Ssc14ModBlocks.GRASS_LIGHT_BLOCK.get().asItem());
+				tabData.accept(Ssc14Blocks.DIRT.get().asItem());
+				tabData.accept(Ssc14Blocks.GRASS_LIGHT_BLOCK.get().asItem());
 			}).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_WALLS = REGISTRY.register("ssc_14_walls",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14_walls")).icon(() -> new ItemStack(Ssc14ModBlocks.STEEL_WALL.get())).displayItems((parameters, tabData) -> {
@@ -273,10 +273,10 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModItems.POSTER_PODS.get());
 				tabData.accept(Ssc14ModItems.POSTER_MEDIUM_SECURE.get());
 				tabData.accept(Ssc14ModBlocks.GRAVITY_GENERATOR.get().asItem());
-				tabData.accept(Ssc14ModBlocks.LOW_PLANET_GRASS.get().asItem());
-				tabData.accept(Ssc14ModBlocks.MED_PLANET_GRASS.get().asItem());
-				tabData.accept(Ssc14ModBlocks.PLANETARY_TREE_LOG.get().asItem());
-				tabData.accept(Ssc14ModBlocks.PLANETARY_TREE_FOLIAGE.get().asItem());
+				tabData.accept(Ssc14Blocks.LOW_PLANET_GRASS.get().asItem());
+				tabData.accept(Ssc14Blocks.MED_PLANET_GRASS.get().asItem());
+				tabData.accept(Ssc14Blocks.PLANETARY_TREE_LOG.get().asItem());
+				tabData.accept(Ssc14Blocks.PLANETARY_TREE_FOLIAGE.get().asItem());
 			}).withTabsBefore(SSC_14_WALLS.getId()).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_ITEMS = REGISTRY.register("ssc_14_items",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14_items")).icon(() -> new ItemStack(Ssc14ModItems.GLASS.get())).displayItems((parameters, tabData) -> {
