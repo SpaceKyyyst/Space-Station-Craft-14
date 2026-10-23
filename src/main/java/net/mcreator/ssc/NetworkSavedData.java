@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NetworkSavedData extends SavedData {
+    public static final Identifier DATA_ID = Identifier.fromNamespaceAndPath("ssc14", "network_data");
+
     public static class NetworkConnection {
         public BlockPos sourcePos;
         public String triggerId;
@@ -47,7 +49,7 @@ public class NetworkSavedData extends SavedData {
 
     // ИСПРАВЛЕНО: Строка названия заменена на фабричный метод Identifier.fromNamespaceAndPath под стандарты NeoForge 26.1.2
     public static final SavedDataType<NetworkSavedData> TYPE = new SavedDataType<>(
-            Identifier.fromNamespaceAndPath("ssc14", "network_data"),
+            DATA_ID,
             () -> new NetworkSavedData(),
             CODEC
     );

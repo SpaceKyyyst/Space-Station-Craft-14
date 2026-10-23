@@ -4,10 +4,19 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.mcreator.ssc.atmosphere.StandardGasReactions;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AtmosPersistenceTest {
+    @Test
+    void regionSerializationKeepsCoordinateCellAndGasKeys() {
+        CompoundTag region = savedRegion(-3, 1, 5, GasType.OXYGEN, 7, 300);
+        assertEquals(Set.of("x", "y", "z", "cells"), region.keySet());
+        CompoundTag cell = region.getList("cells").orElseThrow().getCompound(0).orElseThrow();
+        assertEquals(Set.of("idx", "temp", "m_0"), cell.keySet());
+    }
+
     @Test
     void cellRoundTripPreservesStableGasKeysAndClearsReusedTag() {
         AtmosCell cell = new AtmosCell();
@@ -121,6 +130,7 @@ class AtmosPersistenceTest {
         live.getCellAt(BlockPos.ZERO).setTemperature(500);
 
         CompoundTag encoded = data.encode();
+        assertEquals(Set.of("regions"), encoded.keySet());
         assertEquals(2, encoded.getList("regions").orElseThrow().size());
         AtmosphereSavedData restored = AtmosphereSavedData.decode(encoded);
         assertEquals(dormant, restored.restore(dormantKey), "An unvisited region must survive unchanged");

@@ -149,7 +149,8 @@ public class Ssc14ModVariables {
 	}
 
 	public static class WorldVariables extends SavedData {
-		public static final SavedDataType<WorldVariables> TYPE = new SavedDataType<>(Identifier.parse("ssc_14:worldvars"), level -> new WorldVariables(), level -> CompoundTag.CODEC.xmap(tag -> {
+		public static final Identifier DATA_ID = Identifier.parse("ssc_14:worldvars");
+		public static final SavedDataType<WorldVariables> TYPE = new SavedDataType<>(DATA_ID, level -> new WorldVariables(), level -> CompoundTag.CODEC.xmap(tag -> {
 			WorldVariables instance = new WorldVariables();
 			instance.read(tag, level.registryAccess());
 			return instance;
@@ -186,7 +187,8 @@ public class Ssc14ModVariables {
 	}
 
 	public static class MapVariables extends SavedData {
-		public static final SavedDataType<MapVariables> TYPE = new SavedDataType<>(Identifier.parse("ssc_14:mapvars"), level -> new MapVariables(), level -> CompoundTag.CODEC.xmap(tag -> {
+		public static final Identifier DATA_ID = Identifier.parse("ssc_14:mapvars");
+		public static final SavedDataType<MapVariables> TYPE = new SavedDataType<>(DATA_ID, level -> new MapVariables(), level -> CompoundTag.CODEC.xmap(tag -> {
 			MapVariables instance = new MapVariables();
 			instance.read(tag, level.registryAccess());
 			return instance;

@@ -11,9 +11,10 @@ import net.minecraft.world.level.saveddata.SavedDataType;
 
 /** Lazily restores sections, preserving the existing region/cell NBT representation. */
 public final class AtmosphereSavedData extends SavedData {
+    public static final Identifier DATA_ID = Identifier.fromNamespaceAndPath("ssc_14", "atmosphere");
     public static final com.mojang.serialization.Codec<AtmosphereSavedData> CODEC = CompoundTag.CODEC.xmap(AtmosphereSavedData::decode, AtmosphereSavedData::encode);
     private static final SavedDataType<AtmosphereSavedData> TYPE = new SavedDataType<>(
-            Identifier.fromNamespaceAndPath("ssc_14", "atmosphere"), AtmosphereSavedData::new,
+            DATA_ID, AtmosphereSavedData::new,
             CODEC);
     private final Map<Long, CompoundTag> storedRegions = new HashMap<>();
     private final Map<Long, AtmosRegion> liveRegions = new HashMap<>();

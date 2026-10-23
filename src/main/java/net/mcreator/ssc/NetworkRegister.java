@@ -4,14 +4,15 @@ package net.mcreator.ssc;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 @EventBusSubscriber
 public class NetworkRegister {
 
     @SubscribeEvent
     public static void register(final RegisterPayloadHandlersEvent event) {
-        final PayloadRegistrar registrar = event.registrar("ssc_14");
+        final String version = "ssc_14";
+        final CompatibilityPayloadRegistrar registrar = new CompatibilityPayloadRegistrar(
+                event.registrar(version), version);
         registrar.playToClient(net.mcreator.ssc.network.MedicalPresentationMessage.TYPE,
                 net.mcreator.ssc.network.MedicalPresentationMessage.CODEC,
                 net.mcreator.ssc.network.MedicalPresentationMessage::handle);

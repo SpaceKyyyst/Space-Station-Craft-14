@@ -15,7 +15,6 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.event.level.ChunkWatchEvent;
 import net.neoforged.neoforge.event.level.ChunkEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
-import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +67,9 @@ public class DecalNetwork {
 
     @SubscribeEvent
     public static void registerPackets(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar registrar = event.registrar("ssc_14").versioned("1");
+        String version = "1";
+        CompatibilityPayloadRegistrar registrar = new CompatibilityPayloadRegistrar(
+                event.registrar("ssc_14").versioned(version), version);
         registrar.playToClient(
             ClientboundChunkDecalsPacket.TYPE,
             ClientboundChunkDecalsPacket.STREAM_CODEC,

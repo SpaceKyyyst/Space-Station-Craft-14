@@ -5,7 +5,6 @@ import org.apache.logging.log4j.LogManager;
 
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.network.handling.IPayloadHandler;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
@@ -48,6 +47,7 @@ import java.lang.invoke.MethodHandle;
 public class Ssc14Mod {
 	public static final Logger LOGGER = LogManager.getLogger(Ssc14Mod.class);
 	public static final String MODID = "ssc_14";
+	private static final String NETWORK_VERSION = MODID;
 
 	public Ssc14Mod(IEventBus modEventBus) {
 		// Start of user code block mod constructor
@@ -85,7 +85,7 @@ public class Ssc14Mod {
 
 	private record NetworkMessage<T extends CustomPacketPayload>(CustomPacketPayload.Type<T> id,
 			StreamCodec<? super RegistryFriendlyByteBuf, T> reader, IPayloadHandler<T> handler, PayloadDirection direction) {
-		void register(PayloadRegistrar registrar) {
+		void register(CompatibilityPayloadRegistrar registrar) {
 			switch (direction) {
 				case TO_SERVER -> registrar.playToServer(id, reader, handler);
 				case TO_CLIENT -> registrar.playToClient(id, reader, handler);
@@ -120,7 +120,8 @@ public class Ssc14Mod {
 	}
 
 	private void registerNetworking(final RegisterPayloadHandlersEvent event) {
-		final PayloadRegistrar registrar = event.registrar(MODID);
+		final CompatibilityPayloadRegistrar registrar = new CompatibilityPayloadRegistrar(
+				event.registrar(NETWORK_VERSION), NETWORK_VERSION);
 		synchronized (MESSAGES) {
 			MESSAGES.values().forEach(message -> message.register(registrar));
 			networkingRegistered = true;
