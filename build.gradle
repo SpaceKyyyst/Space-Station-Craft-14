@@ -127,6 +127,7 @@ sourceSets {
             include 'net/mcreator/ssc/diagnostics/TickPhase.java'
             include 'net/mcreator/ssc/network/validation/**'
             include 'net/mcreator/ssc/chemistry/**'
+            include 'net/ssc14/core/**'
         }
     }
     domainTest {

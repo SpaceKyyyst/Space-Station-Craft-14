@@ -2,7 +2,7 @@ package net.mcreator.ssc.chemistry;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import net.mcreator.ssc.math.ProportionalAllocation;
+import net.ssc14.core.math.ProportionalAllocation;
 
 /** Computes a portion without mutating the container. */
 public final class MixturePortion {
