@@ -10,8 +10,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.mcreator.ssc.entity.PosterEntity;
-import net.mcreator.ssc.init.Ssc14ModEntities;
+import net.ssc14.content.entity.PosterEntity;
+import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 import java.util.Map;
@@ -99,7 +99,7 @@ public class Posters_InstallProcedure {
             z = (double) spawnPos.getZ() + getSmartOffset(hitZ);
         }
 
-        PosterEntity poster = new PosterEntity(Ssc14ModEntities.POSTER.get(), level);
+        PosterEntity poster = new PosterEntity(Ssc14EntityTypes.POSTER.get(), level);
         poster.absSnapTo(x, y, z, 0.0F, 0.0F);
         poster.setFacingDirection(clickedFace);
         poster.setPosterType(currentPosterType);

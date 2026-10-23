@@ -14,7 +14,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.entity.ChairEntityEntity;
+import net.ssc14.content.entity.ChairEntityEntity;
 
 import java.util.Comparator;
 

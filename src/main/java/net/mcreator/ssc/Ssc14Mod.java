@@ -31,6 +31,8 @@ import net.mcreator.ssc.scheduling.ServerTaskScheduler;
 import net.mcreator.ssc.scheduling.SubmissionResult;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.attribute.Ssc14Attributes;
+import net.ssc14.content.entity.Ssc14EntityBehavior;
+import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.ssc14.content.sound.Ssc14SoundEvents;
 import net.minecraft.server.MinecraftServer;
@@ -66,7 +68,8 @@ public class Ssc14Mod {
 		Ssc14ModBlocks.REGISTRY.register(modEventBus);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
-		Ssc14ModEntities.REGISTRY.register(modEventBus);
+		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
+		Ssc14EntityTypes.REGISTRY.register(modEventBus);
 		Ssc14ModTabs.REGISTRY.register(modEventBus);
 		Ssc14ModVariables.ATTACHMENT_TYPES.register(modEventBus);
 		StructureFeature.REGISTRY.register(modEventBus);

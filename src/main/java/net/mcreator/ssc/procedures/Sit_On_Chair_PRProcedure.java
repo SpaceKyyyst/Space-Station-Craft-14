@@ -8,8 +8,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModEntities;
-import net.mcreator.ssc.entity.ChairEntityEntity;
+import net.ssc14.content.entity.Ssc14EntityTypes;
+import net.ssc14.content.entity.ChairEntityEntity;
 
 import java.util.Comparator;
 
@@ -18,7 +18,7 @@ public class Sit_On_Chair_PRProcedure {
 		if (entity == null)
 			return;
 		if (world instanceof ServerLevel _level) {
-			Entity entityToSpawn = Ssc14ModEntities.CHAIR_ENTITY.get().spawn(_level, BlockPos.containing(x + 0.5, y, z + 0.5), EntitySpawnReason.MOB_SUMMONED);
+			Entity entityToSpawn = Ssc14EntityTypes.CHAIR_ENTITY.get().spawn(_level, BlockPos.containing(x + 0.5, y, z + 0.5), EntitySpawnReason.MOB_SUMMONED);
 			if (entityToSpawn != null) {
 				entityToSpawn.setDeltaMovement(0, 0, 0);
 			}

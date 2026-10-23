@@ -18,9 +18,9 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.init.Ssc14ModAttributes;
-import net.mcreator.ssc.entity.WallCarcaseEntitEntity;
-import net.mcreator.ssc.entity.PlassteelWallCarcaseEntitEntity;
-import net.mcreator.ssc.entity.IDConsoleENTITYEntity;
+import net.ssc14.content.entity.WallCarcaseEntitEntity;
+import net.ssc14.content.entity.PlassteelWallCarcaseEntitEntity;
+import net.ssc14.content.entity.IDConsoleENTITYEntity;
 import net.mcreator.ssc.Ssc14Mod;
 
 public class SpannerEntUseProcedure {

@@ -1,5 +1,7 @@
 package net.mcreator.ssc.init;
 
+import net.ssc14.content.entity.Ssc14EntityTypes;
+
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -596,10 +598,10 @@ public class Ssc14ModItems {
 		SPANNER = register("spanner", SpannerItem::new);
 		BASE_AIRLOCK_D_1 = block(Ssc14ModBlocks.BASE_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
 		UP_TITLE = block(Ssc14ModBlocks.UP_TITLE, new Item.Properties().stacksTo(30).fireResistant());
-		WALL_CARCASE_ENTIT_SPAWN_EGG = register("wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.WALL_CARCASE_ENTIT.get())));
+		WALL_CARCASE_ENTIT_SPAWN_EGG = register("wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.WALL_CARCASE_ENTIT.get())));
 		ID_CARD_PASSANGER = register("id_card_passanger", IDCardPassangerItem::new);
 		CONSOLE_OF_ID = block(Ssc14ModBlocks.CONSOLE_OF_ID, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
-		ID_CONSOLE_ENTITY_SPAWN_EGG = register("id_console_entity_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.ID_CONSOLE_ENTITY.get())));
+		ID_CONSOLE_ENTITY_SPAWN_EGG = register("id_console_entity_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.ID_CONSOLE_ENTITY.get())));
 		GAS_ANALYSER = register("gas_analyser", GasAnalyserItem::new);
 		BASE_WINDOW = block(Ssc14ModBlocks.BASE_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
 		GLASS_SHARD = register("glass_shard", GlassShardItem::new);
@@ -661,7 +663,7 @@ public class Ssc14ModItems {
 		ENERGY_BAR = register("energy_bar", EnergyBarItem::new);
 		ENERGY_BAR_TRASH = register("energy_bar_trash", EnergyBarTrashItem::new);
 		ENERGY_BAR_2 = register("energy_bar_2", EnergyBar2Item::new);
-		PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG = register("plassteel_wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.PLASSTEEL_WALL_CARCASE_ENTIT.get())));
+		PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG = register("plassteel_wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.PLASSTEEL_WALL_CARCASE_ENTIT.get())));
 		TITLE_DARK = block(Ssc14ModBlocks.TITLE_DARK, new Item.Properties().stacksTo(30).fireResistant());
 		AIRLOCK_CONTROLLER = register("airlock_controller", AirlockControllerItem::new);
 		APC = block(Ssc14ModBlocks.APC, new Item.Properties().stacksTo(1).fireResistant());
@@ -884,9 +886,9 @@ public class Ssc14ModItems {
 		BORITOS_TRASH = register("boritos_trash", BoritosTrashItem::new);
 		POPCORN = register("popcorn", PopcornItem::new);
 		POPCORN_TRASH = register("popcorn_trash", PopcornTrashItem::new);
-		MOUSE_BROWN_SPAWN_EGG = register("mouse_brown_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.MOUSE_BROWN.get())));
-		MOUSE_GRAY_SPAWN_EGG = register("mouse_gray_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.MOUSE_GRAY.get())));
-		MOUSE_WHITE_SPAWN_EGG = register("mouse_white_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.MOUSE_WHITE.get())));
+		MOUSE_BROWN_SPAWN_EGG = register("mouse_brown_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.MOUSE_BROWN.get())));
+		MOUSE_GRAY_SPAWN_EGG = register("mouse_gray_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.MOUSE_GRAY.get())));
+		MOUSE_WHITE_SPAWN_EGG = register("mouse_white_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.MOUSE_WHITE.get())));
 		DIRECTED_ARMORED_WINDOW = block(Ssc14ModBlocks.DIRECTED_ARMORED_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
 		BARTENDER_JUMPSUIT = register("bartender_jumpsuit", BartenderJumpsuitItem::new);
 		BRIGMEDIC_JUMPSUIT = register("brigmedic_jumpsuit", BrigmedicJumpsuitItem::new);
@@ -1088,7 +1090,7 @@ public class Ssc14ModItems {
 		DECAL_5SPAWNER = register("decal_5spawner", DECAL5spawnerItem::new);
 		DECAL_6SPAWNER = register("decal_6spawner", DECAL6spawnerItem::new);
 		FUEL_TANK = block(Ssc14ModBlocks.FUEL_TANK, new Item.Properties().stacksTo(1));
-		CARP_SPAWN_EGG = register("carp_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14ModEntities.CARP.get())));
+		CARP_SPAWN_EGG = register("carp_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.CARP.get())));
 		ORDER_CONSOLE = block(Ssc14ModBlocks.ORDER_CONSOLE, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
 		MAID_JUMPSUIT = register("maid_jumpsuit", MaidJumpsuitItem::new);
 		ORDER_PALLET = block(Ssc14ModBlocks.ORDER_PALLET, new Item.Properties().stacksTo(1));

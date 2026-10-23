@@ -1,6 +1,8 @@
 
 package net.mcreator.ssc.procedures;
 
+import net.ssc14.content.entity.Ssc14EntityTypes;
+
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -175,11 +177,11 @@ public class SS14ConstructionRegistryProcedure {
         Item spanner = Ssc14ModItems.SPANNER.get();
 
         registerBlock(Ssc14ModBlocks.WALL_CARCASE.get(), spanner, bs -> true,
-            new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14ModEntities.WALL_CARCASE_ENTIT.get())));
+            new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14EntityTypes.WALL_CARCASE_ENTIT.get())));
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get(), spanner, bs -> true,
-            new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14ModEntities.PLASSTEEL_WALL_CARCASE_ENTIT.get())));
+            new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14EntityTypes.PLASSTEEL_WALL_CARCASE_ENTIT.get())));
         registerBlock(Ssc14ModBlocks.CONSOLE_OF_ID.get(), spanner, bs -> true,
-            new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14ModEntities.ID_CONSOLE_ENTITY.get())));
+            new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14EntityTypes.ID_CONSOLE_ENTITY.get())));
 
         registerBlock(Ssc14ModBlocks.BASE_WINDOW.get(), spanner, bs -> getInt(bs, "window_disassembly") == 1,
             new ConstructionStage(slowDelays, false, Ssc14ModItems.GLASS.get(), 2, 0.5, null, null, -1, false, null, ctx -> ctx.world().setBlock(ctx.pos(), Blocks.AIR.defaultBlockState(), 3)));

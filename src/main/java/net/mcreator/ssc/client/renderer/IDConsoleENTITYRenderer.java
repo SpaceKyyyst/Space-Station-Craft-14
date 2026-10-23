@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
-import net.mcreator.ssc.entity.IDConsoleENTITYEntity;
+import net.ssc14.content.entity.IDConsoleENTITYEntity;
 import net.mcreator.ssc.client.model.ModelConsole_of_ID_DisConnected_ENTITY;
 
 public class IDConsoleENTITYRenderer extends MobRenderer<IDConsoleENTITYEntity, LivingEntityRenderState, ModelConsole_of_ID_DisConnected_ENTITY> {

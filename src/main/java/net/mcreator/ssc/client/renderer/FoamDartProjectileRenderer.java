@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 
-import net.mcreator.ssc.entity.FoamDartProjectileEntity;
+import net.ssc14.content.entity.FoamDartProjectileEntity;
 import net.mcreator.ssc.client.model.Modelfoam_dart;
 
 import com.mojang.math.Axis;

@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.ArmorModelSet;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.HumanoidModel;
 
-import net.mcreator.ssc.entity.C4CrutchEntEntity;
+import net.ssc14.content.entity.C4CrutchEntEntity;
 
 public class C4CrutchEntRenderer extends HumanoidMobRenderer<C4CrutchEntEntity, HumanoidRenderState, HumanoidModel<HumanoidRenderState>> {
 	private final Identifier entityTexture = Identifier.parse("ssc_14:textures/entities/chair_entiti.png");
