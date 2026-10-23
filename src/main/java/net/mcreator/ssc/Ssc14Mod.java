@@ -30,6 +30,7 @@ import net.mcreator.ssc.init.*;
 import net.mcreator.ssc.scheduling.ServerTaskScheduler;
 import net.mcreator.ssc.scheduling.SubmissionResult;
 import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.LevelAccessor;
@@ -68,7 +69,7 @@ public class Ssc14Mod {
 		Ssc14ModVariables.ATTACHMENT_TYPES.register(modEventBus);
 		StructureFeature.REGISTRY.register(modEventBus);
 		Ssc14ModMenus.REGISTRY.register(modEventBus);
-		Ssc14ModParticleTypes.REGISTRY.register(modEventBus);
+		Ssc14ParticleTypes.REGISTRY.register(modEventBus);
 		Ssc14ModAttributes.REGISTRY.register(modEventBus);
 		// Start of user code block mod init
 		ModReagents.register(modEventBus);
