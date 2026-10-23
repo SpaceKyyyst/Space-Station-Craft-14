@@ -744,9 +744,9 @@ public class Ssc14ModItems {
 		APC_BOARD = register("apc_board", APCBoardItem::new);
 		STEEL_TABLE = block(Ssc14ModBlocks.STEEL_TABLE, new Item.Properties().stacksTo(1));
 		LOW_BATTERIE = register("low_batterie", LowBatterieItem::new);
-		STEEL_STAIRCASE = block(Ssc14ModBlocks.STEEL_STAIRCASE, new Item.Properties().stacksTo(1));
-		WHITE_STAIRCASE = block(Ssc14ModBlocks.WHITE_STAIRCASE, new Item.Properties().stacksTo(1));
-		DARK_STAIRCASE = block(Ssc14ModBlocks.DARK_STAIRCASE, new Item.Properties().stacksTo(1));
+		STEEL_STAIRCASE = block(Ssc14Blocks.STEEL_STAIRCASE, new Item.Properties().stacksTo(1));
+		WHITE_STAIRCASE = block(Ssc14Blocks.WHITE_STAIRCASE, new Item.Properties().stacksTo(1));
+		DARK_STAIRCASE = block(Ssc14Blocks.DARK_STAIRCASE, new Item.Properties().stacksTo(1));
 		STEEL_CHAIR = block(Ssc14ModBlocks.STEEL_CHAIR, new Item.Properties().stacksTo(1));
 		WOOD_CHAIR = block(Ssc14ModBlocks.WOOD_CHAIR, new Item.Properties().stacksTo(1));
 		OFICE_BLACK_CHAIR = block(Ssc14ModBlocks.OFICE_BLACK_CHAIR, new Item.Properties().stacksTo(1));
@@ -761,9 +761,9 @@ public class Ssc14ModItems {
 		MED_PLANET_GRASS = block(Ssc14ModBlocks.MED_PLANET_GRASS, new Item.Properties().stacksTo(1));
 		PLANETARY_TREE_LOG = block(Ssc14ModBlocks.PLANETARY_TREE_LOG, new Item.Properties().stacksTo(1));
 		PLANETARY_TREE_FOLIAGE = block(Ssc14ModBlocks.PLANETARY_TREE_FOLIAGE, new Item.Properties().stacksTo(1));
-		UP_STEEL_STAIRCASE = block(Ssc14ModBlocks.UP_STEEL_STAIRCASE, new Item.Properties().stacksTo(1));
-		UP_WHITE_STAIRCASE = block(Ssc14ModBlocks.UP_WHITE_STAIRCASE, new Item.Properties().stacksTo(1));
-		UP_DARK_STAIRCASE = block(Ssc14ModBlocks.UP_DARK_STAIRCASE, new Item.Properties().stacksTo(1));
+		UP_STEEL_STAIRCASE = block(Ssc14Blocks.UP_STEEL_STAIRCASE, new Item.Properties().stacksTo(1));
+		UP_WHITE_STAIRCASE = block(Ssc14Blocks.UP_WHITE_STAIRCASE, new Item.Properties().stacksTo(1));
+		UP_DARK_STAIRCASE = block(Ssc14Blocks.UP_DARK_STAIRCASE, new Item.Properties().stacksTo(1));
 		SHUTTLE_WALL = block(Ssc14ModBlocks.SHUTTLE_WALL, new Item.Properties().stacksTo(1).fireResistant());
 		ARMORED_SHUTTLE_WALL = block(Ssc14ModBlocks.ARMORED_SHUTTLE_WALL, new Item.Properties().stacksTo(1).fireResistant());
 		DIRECTED_BASE_WINDOW = block(Ssc14ModBlocks.DIRECTED_BASE_WINDOW, new Item.Properties().stacksTo(1).fireResistant());

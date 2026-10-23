@@ -22,6 +22,8 @@ import net.ssc14.content.block.geology.CaveFloor4Block;
 import net.ssc14.content.block.geology.CaveFloor5Block;
 import net.ssc14.content.block.geology.CaveFloor6Block;
 import net.ssc14.content.block.geology.CaveFloor7Block;
+import net.ssc14.content.block.surface.StaircaseBlock;
+import net.ssc14.content.block.surface.UpperStaircaseBlock;
 
 /** Canonical owner of SSC14 block registrations. */
 public final class Ssc14Blocks {
@@ -60,6 +62,18 @@ public final class Ssc14Blocks {
             register("cave_floor_6", CaveFloor6Block::new);
     public static final DeferredBlock<Block> CAVE_FLOOR_7 =
             register("cave_floor_7", CaveFloor7Block::new);
+    public static final DeferredBlock<Block> STEEL_STAIRCASE =
+            register("steel_staircase", StaircaseBlock::new);
+    public static final DeferredBlock<Block> WHITE_STAIRCASE =
+            register("white_staircase", StaircaseBlock::new);
+    public static final DeferredBlock<Block> DARK_STAIRCASE =
+            register("dark_staircase", StaircaseBlock::new);
+    public static final DeferredBlock<Block> UP_STEEL_STAIRCASE =
+            register("up_steel_staircase", UpperStaircaseBlock::new);
+    public static final DeferredBlock<Block> UP_WHITE_STAIRCASE =
+            register("up_white_staircase", UpperStaircaseBlock::new);
+    public static final DeferredBlock<Block> UP_DARK_STAIRCASE =
+            register("up_dark_staircase", UpperStaircaseBlock::new);
 
     private Ssc14Blocks() {
     }
