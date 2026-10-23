@@ -52,7 +52,9 @@ jobs:
       - name: Check project metadata
         run: |
           python .github/scripts/test_checks.py
+          python .github/scripts/test_architecture.py
           python .github/scripts/test_gametests.py
+          python .github/scripts/check_architecture.py
           python .github/scripts/check_project.py
           python .github/scripts/check_resources.py
       - name: Test release script without publishing
