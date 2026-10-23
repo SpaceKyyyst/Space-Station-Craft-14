@@ -72,6 +72,32 @@ class PullRequestWorkflowPolicyTest(unittest.TestCase):
         self.assertIn("gradlew.bat", windows)
 
 
+class GovernancePolicyDocumentationTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        docs = Path(__file__).resolve().parents[2] / "docs"
+        cls.development = (docs / "DEVELOPMENT_POLICY.md").read_text(encoding="utf-8")
+        cls.labels = (docs / "LABELS.md").read_text(encoding="utf-8")
+
+    def test_documents_every_automated_pull_request_gate(self):
+        for term in (
+            "Conventional Commits",
+            "Dependabot",
+            "type:*",
+            "area:*",
+            "бинарных артефактов",
+            "binary artifacts",
+            "ready_for_review",
+        ):
+            self.assertIn(term, self.development)
+
+    def test_describes_the_label_taxonomy_as_active(self):
+        self.assertIn("Таксономия активна", self.labels)
+        self.assertIn("The taxonomy is active", self.labels)
+        self.assertNotIn("предлагаемый набор", self.labels)
+        self.assertNotIn("Proposed minimal set", self.labels)
+
+
 @unittest.skipUnless(os.name == "nt", "Windows workflow uses a batch wrapper")
 class WindowsUnicodeWorkflowTest(unittest.TestCase):
     def test_separates_cyrillic_configuration_from_native_path_workers(self):
