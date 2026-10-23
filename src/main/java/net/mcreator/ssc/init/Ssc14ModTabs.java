@@ -16,6 +16,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.Registries;
 
 import net.mcreator.ssc.Ssc14Mod;
+import net.ssc14.content.block.Ssc14Blocks;
 
 @EventBusSubscriber
 public class Ssc14ModTabs {
@@ -123,7 +124,7 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.TITLE_HULLREINFORCED.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_HULL.get().asItem());
 				tabData.accept(Ssc14ModBlocks.TITLE_ROCKVAULT.get().asItem());
-				tabData.accept(Ssc14ModBlocks.CAVE_FLOOR_1.get().asItem());
+				tabData.accept(Ssc14Blocks.CAVE_FLOOR_1.get().asItem());
 				tabData.accept(Ssc14ModBlocks.DIRT.get().asItem());
 				tabData.accept(Ssc14ModBlocks.GRASS_LIGHT_BLOCK.get().asItem());
 			}).build());
@@ -139,15 +140,15 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.ARMORED_WINDOW.get().asItem());
 				tabData.accept(Ssc14ModBlocks.DIRECTED_BASE_WINDOW.get().asItem());
 				tabData.accept(Ssc14ModBlocks.DIRECTED_ARMORED_WINDOW.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ASTEROID_STONE_BASE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ASTEROID_STONE_IRON.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ASTEROID_STONE_QUARTZ.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ASTEROID_STONE_COAL.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ASTEROID_STONE_GOLD.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ASTEROID_STONE_PLASMA.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ASTEROID_STONE_SILVER.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ASTEROID_STONE_URAN.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ASTEROID_STONE_DIAMOND.get().asItem());
+				tabData.accept(Ssc14Blocks.ASTEROID_STONE_BASE.get().asItem());
+				tabData.accept(Ssc14Blocks.ASTEROID_STONE_IRON.get().asItem());
+				tabData.accept(Ssc14Blocks.ASTEROID_STONE_QUARTZ.get().asItem());
+				tabData.accept(Ssc14Blocks.ASTEROID_STONE_COAL.get().asItem());
+				tabData.accept(Ssc14Blocks.ASTEROID_STONE_GOLD.get().asItem());
+				tabData.accept(Ssc14Blocks.ASTEROID_STONE_PLASMA.get().asItem());
+				tabData.accept(Ssc14Blocks.ASTEROID_STONE_SILVER.get().asItem());
+				tabData.accept(Ssc14Blocks.ASTEROID_STONE_URAN.get().asItem());
+				tabData.accept(Ssc14Blocks.ASTEROID_STONE_DIAMOND.get().asItem());
 			}).withTabsBefore(SSC_14_COATING.getId()).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_OBJECTS = REGISTRY.register("ssc_14_objects",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14_objects")).icon(() -> new ItemStack(Ssc14ModBlocks.CONSOLE_OF_ID.get())).displayItems((parameters, tabData) -> {

@@ -1,6 +1,7 @@
 package net.mcreator.ssc.init;
 
 import net.ssc14.content.entity.Ssc14EntityTypes;
+import net.ssc14.content.block.Ssc14Blocks;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -702,24 +703,24 @@ public class Ssc14ModItems {
 		DEBUG_TECH_LAMP = block(Ssc14ModBlocks.DEBUG_TECH_LAMP, new Item.Properties().stacksTo(1).fireResistant());
 		GRILLE = block(Ssc14ModBlocks.GRILLE, new Item.Properties().stacksTo(1).fireResistant());
 		BROKEN_GRILLE = block(Ssc14ModBlocks.BROKEN_GRILLE, new Item.Properties().stacksTo(1).fireResistant());
-		ASTEROID_STONE_BASE = block(Ssc14ModBlocks.ASTEROID_STONE_BASE, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_BASE = block(Ssc14Blocks.ASTEROID_STONE_BASE, new Item.Properties().stacksTo(1).fireResistant());
 		RAW_IRON = register("raw_iron", RawIronItem::new);
 		RAW_QUARTZ = register("raw_quartz", RawQuartzItem::new);
-		ASTEROID_STONE_IRON = block(Ssc14ModBlocks.ASTEROID_STONE_IRON, new Item.Properties().stacksTo(1).fireResistant());
-		ASTEROID_STONE_QUARTZ = block(Ssc14ModBlocks.ASTEROID_STONE_QUARTZ, new Item.Properties().stacksTo(1).fireResistant());
-		ASTEROID_STONE_COAL = block(Ssc14ModBlocks.ASTEROID_STONE_COAL, new Item.Properties().stacksTo(1).fireResistant());
-		ASTEROID_STONE_GOLD = block(Ssc14ModBlocks.ASTEROID_STONE_GOLD, new Item.Properties().stacksTo(1).fireResistant());
-		ASTEROID_STONE_PLASMA = block(Ssc14ModBlocks.ASTEROID_STONE_PLASMA, new Item.Properties().stacksTo(1).fireResistant());
-		ASTEROID_STONE_SILVER = block(Ssc14ModBlocks.ASTEROID_STONE_SILVER, new Item.Properties().stacksTo(1).fireResistant());
-		ASTEROID_STONE_URAN = block(Ssc14ModBlocks.ASTEROID_STONE_URAN, new Item.Properties().stacksTo(1).fireResistant());
-		ASTEROID_STONE_DIAMOND = block(Ssc14ModBlocks.ASTEROID_STONE_DIAMOND, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_IRON = block(Ssc14Blocks.ASTEROID_STONE_IRON, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_QUARTZ = block(Ssc14Blocks.ASTEROID_STONE_QUARTZ, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_COAL = block(Ssc14Blocks.ASTEROID_STONE_COAL, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_GOLD = block(Ssc14Blocks.ASTEROID_STONE_GOLD, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_PLASMA = block(Ssc14Blocks.ASTEROID_STONE_PLASMA, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_SILVER = block(Ssc14Blocks.ASTEROID_STONE_SILVER, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_URAN = block(Ssc14Blocks.ASTEROID_STONE_URAN, new Item.Properties().stacksTo(1).fireResistant());
+		ASTEROID_STONE_DIAMOND = block(Ssc14Blocks.ASTEROID_STONE_DIAMOND, new Item.Properties().stacksTo(1).fireResistant());
 		RAW_COAL = register("raw_coal", RawCoalItem::new);
 		RAW_GOLD = register("raw_gold", RawGoldItem::new);
 		RAW_PLASMA = register("raw_plasma", RawPlasmaItem::new);
 		RAW_SILVER = register("raw_silver", RawSilverItem::new);
 		RAW_URAN = register("raw_uran", RawUranItem::new);
 		RAW_DIAMOND = register("raw_diamond", RawDiamondItem::new);
-		CAVE_FLOOR_1 = block(Ssc14ModBlocks.CAVE_FLOOR_1, new Item.Properties().stacksTo(1).fireResistant());
+		CAVE_FLOOR_1 = block(Ssc14Blocks.CAVE_FLOOR_1, new Item.Properties().stacksTo(1).fireResistant());
 		GRAVITY_GENERATOR = block(Ssc14ModBlocks.GRAVITY_GENERATOR, new Item.Properties().stacksTo(1).fireResistant());
 		TITLE_WHITE = block(Ssc14ModBlocks.TITLE_WHITE, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_WHITE_DIAGONAL_MINI = block(Ssc14ModBlocks.TITLE_WHITE_DIAGONAL_MINI, new Item.Properties().stacksTo(30).fireResistant());

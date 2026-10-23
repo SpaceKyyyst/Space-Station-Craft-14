@@ -14,12 +14,14 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.Block;
 
 import net.mcreator.ssc.block.*;
-import net.mcreator.ssc.Ssc14Mod;
+import net.ssc14.content.block.Ssc14Blocks;
 
 import java.util.function.Function;
 
 public class Ssc14ModBlocks {
-	public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(Ssc14Mod.MODID);
+	/** @deprecated Use {@link Ssc14Blocks#REGISTRY}. */
+	@Deprecated(forRemoval = false)
+	public static final DeferredRegister.Blocks REGISTRY = Ssc14Blocks.REGISTRY;
     public static final DeferredBlock<Block> AIRLOCK_THRESHOLD = register("airlock_threshold", AirlockThresholdBlock::new);
 	public static final DeferredBlock<Block> ROD_FLOOR;
 	public static final DeferredBlock<Block> SHEATHING;
@@ -68,22 +70,22 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> DEBUG_TECH_LAMP;
 	public static final DeferredBlock<Block> GRILLE;
 	public static final DeferredBlock<Block> BROKEN_GRILLE;
-	public static final DeferredBlock<Block> ASTEROID_STONE_BASE;
-	public static final DeferredBlock<Block> ASTEROID_STONE_IRON;
-	public static final DeferredBlock<Block> ASTEROID_STONE_QUARTZ;
-	public static final DeferredBlock<Block> ASTEROID_STONE_COAL;
-	public static final DeferredBlock<Block> ASTEROID_STONE_GOLD;
-	public static final DeferredBlock<Block> ASTEROID_STONE_PLASMA;
-	public static final DeferredBlock<Block> ASTEROID_STONE_SILVER;
-	public static final DeferredBlock<Block> ASTEROID_STONE_URAN;
-	public static final DeferredBlock<Block> ASTEROID_STONE_DIAMOND;
-	public static final DeferredBlock<Block> CAVE_FLOOR_1;
-	public static final DeferredBlock<Block> CAVE_FLOOR_2;
-	public static final DeferredBlock<Block> CAVE_FLOOR_3;
-	public static final DeferredBlock<Block> CAVE_FLOOR_4;
-	public static final DeferredBlock<Block> CAVE_FLOOR_5;
-	public static final DeferredBlock<Block> CAVE_FLOOR_6;
-	public static final DeferredBlock<Block> CAVE_FLOOR_7;
+	public static final DeferredBlock<Block> ASTEROID_STONE_BASE = Ssc14Blocks.ASTEROID_STONE_BASE;
+	public static final DeferredBlock<Block> ASTEROID_STONE_IRON = Ssc14Blocks.ASTEROID_STONE_IRON;
+	public static final DeferredBlock<Block> ASTEROID_STONE_QUARTZ = Ssc14Blocks.ASTEROID_STONE_QUARTZ;
+	public static final DeferredBlock<Block> ASTEROID_STONE_COAL = Ssc14Blocks.ASTEROID_STONE_COAL;
+	public static final DeferredBlock<Block> ASTEROID_STONE_GOLD = Ssc14Blocks.ASTEROID_STONE_GOLD;
+	public static final DeferredBlock<Block> ASTEROID_STONE_PLASMA = Ssc14Blocks.ASTEROID_STONE_PLASMA;
+	public static final DeferredBlock<Block> ASTEROID_STONE_SILVER = Ssc14Blocks.ASTEROID_STONE_SILVER;
+	public static final DeferredBlock<Block> ASTEROID_STONE_URAN = Ssc14Blocks.ASTEROID_STONE_URAN;
+	public static final DeferredBlock<Block> ASTEROID_STONE_DIAMOND = Ssc14Blocks.ASTEROID_STONE_DIAMOND;
+	public static final DeferredBlock<Block> CAVE_FLOOR_1 = Ssc14Blocks.CAVE_FLOOR_1;
+	public static final DeferredBlock<Block> CAVE_FLOOR_2 = Ssc14Blocks.CAVE_FLOOR_2;
+	public static final DeferredBlock<Block> CAVE_FLOOR_3 = Ssc14Blocks.CAVE_FLOOR_3;
+	public static final DeferredBlock<Block> CAVE_FLOOR_4 = Ssc14Blocks.CAVE_FLOOR_4;
+	public static final DeferredBlock<Block> CAVE_FLOOR_5 = Ssc14Blocks.CAVE_FLOOR_5;
+	public static final DeferredBlock<Block> CAVE_FLOOR_6 = Ssc14Blocks.CAVE_FLOOR_6;
+	public static final DeferredBlock<Block> CAVE_FLOOR_7 = Ssc14Blocks.CAVE_FLOOR_7;
 	public static final DeferredBlock<Block> GRAVITY_GENERATOR;
 	public static final DeferredBlock<Block> TITLE_WHITE;
 	public static final DeferredBlock<Block> TITLE_WHITE_DIAGONAL_MINI;
@@ -293,22 +295,6 @@ public class Ssc14ModBlocks {
 		DEBUG_TECH_LAMP = register("debug_tech_lamp", DEBUGTechLampBlock::new);
 		GRILLE = register("grille", GrilleBlock::new);
 		BROKEN_GRILLE = register("broken_grille", BrokenGrilleBlock::new);
-		ASTEROID_STONE_BASE = register("asteroid_stone_base", AsteroidStoneBaseBlock::new);
-		ASTEROID_STONE_IRON = register("asteroid_stone_iron", AsteroidStoneIronBlock::new);
-		ASTEROID_STONE_QUARTZ = register("asteroid_stone_quartz", AsteroidStoneQuartzBlock::new);
-		ASTEROID_STONE_COAL = register("asteroid_stone_coal", AsteroidStoneCoalBlock::new);
-		ASTEROID_STONE_GOLD = register("asteroid_stone_gold", AsteroidStoneGoldBlock::new);
-		ASTEROID_STONE_PLASMA = register("asteroid_stone_plasma", AsteroidStonePlasmaBlock::new);
-		ASTEROID_STONE_SILVER = register("asteroid_stone_silver", AsteroidStoneSilverBlock::new);
-		ASTEROID_STONE_URAN = register("asteroid_stone_uran", AsteroidStoneUranBlock::new);
-		ASTEROID_STONE_DIAMOND = register("asteroid_stone_diamond", AsteroidStoneDiamondBlock::new);
-		CAVE_FLOOR_1 = register("cave_floor_1", CaveFloor1Block::new);
-		CAVE_FLOOR_2 = register("cave_floor_2", CaveFloor2Block::new);
-		CAVE_FLOOR_3 = register("cave_floor_3", CaveFloor3Block::new);
-		CAVE_FLOOR_4 = register("cave_floor_4", CaveFloor4Block::new);
-		CAVE_FLOOR_5 = register("cave_floor_5", CaveFloor5Block::new);
-		CAVE_FLOOR_6 = register("cave_floor_6", CaveFloor6Block::new);
-		CAVE_FLOOR_7 = register("cave_floor_7", CaveFloor7Block::new);
 		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);
 		TITLE_WHITE = register("title_white", TitleWhiteBlock::new);
 		TITLE_WHITE_DIAGONAL_MINI = register("title_white_diagonal_mini", TitleWhiteDiagonalMiniBlock::new);
@@ -474,6 +460,11 @@ public class Ssc14ModBlocks {
 
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
+	/** Ensures all not-yet-migrated legacy entries are added before bus registration. */
+	public static void initializeLegacyEntries() {
+		// Class initialization performs the transitional registrations.
+	}
+
 	private static <B extends Block> DeferredBlock<B> register(String name, Function<BlockBehaviour.Properties, ? extends B> supplier) {
 		return REGISTRY.registerBlock(name, supplier);
 	}
