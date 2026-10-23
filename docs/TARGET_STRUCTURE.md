@@ -87,6 +87,11 @@ Integration, блоки/предметы/меню — в Content, экраны/r
 находиться под `net.ssc14.integration.neoforge`, но создаётся только тогда,
 когда есть реальная сборка зависимостей; placeholder и marker-классы запрещены.
 
+Реестр типов частиц — первая миграция в Content. Новым реестром владеет
+`net.ssc14.content.particle.Ssc14ParticleTypes`, а сгенерированные потребители
+временно работают через deprecated-фасад `Ssc14ModParticleTypes`. Registry ID
+не изменены и защищены манифестом совместимости Stage 4.
+
 ### Серверный авторитет и UI
 
 Сервер является источником истины для инвентарей, атмосферы, энергии, химии,
@@ -238,6 +243,11 @@ The first real example moves `ProportionalAllocation` to `net.ssc14.core.math` w
 a delegating legacy facade. The composition root belongs under
 `net.ssc14.integration.neoforge`, but it is created only when real dependency wiring
 exists; placeholder and marker classes are forbidden.
+
+The particle-type registry is the first Content migration. The new registry is
+owned by `net.ssc14.content.particle.Ssc14ParticleTypes`, while generated consumers
+temporarily remain behind the deprecated `Ssc14ModParticleTypes` facade. Registry
+IDs are unchanged and protected by the Stage 4 compatibility manifest.
 
 ### Server authority and UI
 

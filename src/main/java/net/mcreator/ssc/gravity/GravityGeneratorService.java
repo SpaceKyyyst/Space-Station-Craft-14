@@ -1,11 +1,11 @@
 package net.mcreator.ssc.gravity;
 
 import net.mcreator.ssc.block.GravityGeneratorBlock;
-import net.mcreator.ssc.init.Ssc14ModParticleTypes;
 import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
+import net.ssc14.content.particle.Ssc14ParticleTypes;
 
 /** Charge simulation and throttled visual synchronization for a loaded generator. */
 public final class GravityGeneratorService {
@@ -46,13 +46,13 @@ public final class GravityGeneratorService {
         if (charge <= 1) return;
         ParticleOptions particle;
         double speed = 0;
-        if (charge > MAX_CHARGE * 3 / 4) particle = Ssc14ModParticleTypes.GRAV_GEN_ACTIVE_PARTICLE.get();
-        else if (charge > MAX_CHARGE / 2) particle = Ssc14ModParticleTypes.GRAV_GEN_PARTICLE_2.get();
+        if (charge > MAX_CHARGE * 3 / 4) particle = Ssc14ParticleTypes.GRAV_GEN_ACTIVE_PARTICLE.get();
+        else if (charge > MAX_CHARGE / 2) particle = Ssc14ParticleTypes.GRAV_GEN_PARTICLE_2.get();
         else if (charge > MAX_CHARGE / 4) {
-            particle = Ssc14ModParticleTypes.GRAV_GEN_PARTICLE_3.get();
+            particle = Ssc14ParticleTypes.GRAV_GEN_PARTICLE_3.get();
             speed = 0.01;
         } else {
-            particle = Ssc14ModParticleTypes.GRAV_GEN_PARTICLE_4.get();
+            particle = Ssc14ParticleTypes.GRAV_GEN_PARTICLE_4.get();
             speed = 0.1;
         }
         level.sendParticles(particle, position.getX() + 0.5, position.getY() + 1.5, position.getZ() + 0.5,

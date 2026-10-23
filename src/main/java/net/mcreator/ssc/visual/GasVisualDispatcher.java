@@ -3,11 +3,11 @@ package net.mcreator.ssc.visual;
 import java.util.List;
 import net.mcreator.ssc.AtmosRegion.GasVisualData;
 import net.mcreator.ssc.GasType;
-import net.mcreator.ssc.init.Ssc14ModParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.ssc14.content.particle.Ssc14ParticleTypes;
 
 /** One directed send per recipient; never broadcasts again inside the player loop. */
 public final class GasVisualDispatcher {
@@ -55,30 +55,30 @@ public final class GasVisualDispatcher {
 
     private static ParticleOptions particle(GasType gas, int variant) {
         return switch (gas) {
-            case PLASMA, TRITIUM -> variant == 0 ? Ssc14ModParticleTypes.PLASMA_PARTICLES_1.get() : Ssc14ModParticleTypes.PLASMA_PARTICLES_2.get();
+            case PLASMA, TRITIUM -> variant == 0 ? Ssc14ParticleTypes.PLASMA_PARTICLES_1.get() : Ssc14ParticleTypes.PLASMA_PARTICLES_2.get();
             case WATER_VAPOR -> switch (variant) {
-                case 0 -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_1.get();
-                case 1 -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_2.get();
-                case 2 -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_3.get();
-                default -> Ssc14ModParticleTypes.WATER_VAPOR_PARTICLES_4.get();
+                case 0 -> Ssc14ParticleTypes.WATER_VAPOR_PARTICLES_1.get();
+                case 1 -> Ssc14ParticleTypes.WATER_VAPOR_PARTICLES_2.get();
+                case 2 -> Ssc14ParticleTypes.WATER_VAPOR_PARTICLES_3.get();
+                default -> Ssc14ParticleTypes.WATER_VAPOR_PARTICLES_4.get();
             };
             case AMMONIA -> switch (variant) {
-                case 0 -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_1.get();
-                case 1 -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_2.get();
-                case 2 -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_3.get();
-                default -> Ssc14ModParticleTypes.AMMONIA_PARTICLES_4.get();
+                case 0 -> Ssc14ParticleTypes.AMMONIA_PARTICLES_1.get();
+                case 1 -> Ssc14ParticleTypes.AMMONIA_PARTICLES_2.get();
+                case 2 -> Ssc14ParticleTypes.AMMONIA_PARTICLES_3.get();
+                default -> Ssc14ParticleTypes.AMMONIA_PARTICLES_4.get();
             };
             case FREON -> switch (variant) {
-                case 0 -> Ssc14ModParticleTypes.FREON_PARTICLES_1.get();
-                case 1 -> Ssc14ModParticleTypes.FREON_PARTICLES_2.get();
-                case 2 -> Ssc14ModParticleTypes.FREON_PARTICLES_3.get();
-                default -> Ssc14ModParticleTypes.FREON_PARTICLES_4.get();
+                case 0 -> Ssc14ParticleTypes.FREON_PARTICLES_1.get();
+                case 1 -> Ssc14ParticleTypes.FREON_PARTICLES_2.get();
+                case 2 -> Ssc14ParticleTypes.FREON_PARTICLES_3.get();
+                default -> Ssc14ParticleTypes.FREON_PARTICLES_4.get();
             };
             case HELIUM -> switch (variant) {
-                case 0 -> Ssc14ModParticleTypes.HELIUM_PARTICLES_1.get();
-                case 1 -> Ssc14ModParticleTypes.HELIUM_PARTICLES_2.get();
-                case 2 -> Ssc14ModParticleTypes.HELIUM_PARTICLES_3.get();
-                default -> Ssc14ModParticleTypes.HELIUM_PARTICLES_4.get();
+                case 0 -> Ssc14ParticleTypes.HELIUM_PARTICLES_1.get();
+                case 1 -> Ssc14ParticleTypes.HELIUM_PARTICLES_2.get();
+                case 2 -> Ssc14ParticleTypes.HELIUM_PARTICLES_3.get();
+                default -> Ssc14ParticleTypes.HELIUM_PARTICLES_4.get();
             };
             default -> null;
         };

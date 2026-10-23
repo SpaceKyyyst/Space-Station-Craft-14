@@ -29,6 +29,8 @@ import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.mcreator.ssc.init.*;
 import net.mcreator.ssc.scheduling.ServerTaskScheduler;
 import net.mcreator.ssc.scheduling.SubmissionResult;
+import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.LevelAccessor;
@@ -46,7 +48,7 @@ import java.lang.invoke.MethodHandle;
 @Mod("ssc_14")
 public class Ssc14Mod {
 	public static final Logger LOGGER = LogManager.getLogger(Ssc14Mod.class);
-	public static final String MODID = "ssc_14";
+	public static final String MODID = Ssc14Identity.MOD_ID;
 	private static final String NETWORK_VERSION = MODID;
 
 	public Ssc14Mod(IEventBus modEventBus) {
@@ -67,7 +69,7 @@ public class Ssc14Mod {
 		Ssc14ModVariables.ATTACHMENT_TYPES.register(modEventBus);
 		StructureFeature.REGISTRY.register(modEventBus);
 		Ssc14ModMenus.REGISTRY.register(modEventBus);
-		Ssc14ModParticleTypes.REGISTRY.register(modEventBus);
+		Ssc14ParticleTypes.REGISTRY.register(modEventBus);
 		Ssc14ModAttributes.REGISTRY.register(modEventBus);
 		// Start of user code block mod init
 		ModReagents.register(modEventBus);
