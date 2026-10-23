@@ -30,13 +30,18 @@ public final class ChairInteractionService {
     }
 
     public static void seat(LevelAccessor world, BlockPos pos, Entity entity) {
+        seat(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+    }
+
+    public static void seat(
+            LevelAccessor world, double x, double y, double z, Entity entity) {
         if (entity == null) {
             return;
         }
-        Vec3 seatPosition = Vec3.atLowerCornerWithOffset(pos, 0.5, 0.0, 0.5);
+        Vec3 seatPosition = new Vec3(x + 0.5, y, z + 0.5);
         if (world instanceof ServerLevel level) {
             Entity spawned = Ssc14EntityTypes.CHAIR_ENTITY.get().spawn(
-                    level, BlockPos.containing(seatPosition), EntitySpawnReason.MOB_SUMMONED);
+                    level, BlockPos.containing(x + 0.5, y, z + 0.5), EntitySpawnReason.MOB_SUMMONED);
             if (spawned != null) {
                 spawned.setDeltaMovement(Vec3.ZERO);
             }
@@ -46,10 +51,15 @@ public final class ChairInteractionService {
     }
 
     public static void synchronizeRotation(LevelAccessor world, BlockPos pos) {
+        synchronizeRotation(world, pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    public static void synchronizeRotation(
+            LevelAccessor world, double x, double y, double z) {
         if (world.isClientSide()) {
             return;
         }
-        Vec3 playerCenter = Vec3.atCenterOf(pos);
+        Vec3 playerCenter = new Vec3(x + 0.5, y + 0.5, z + 0.5);
         if (world.getEntitiesOfClass(Player.class,
                 new AABB(Vec3.ZERO, Vec3.ZERO).move(playerCenter).inflate(PLAYER_PROBE_INFLATE),
                 candidate -> true).isEmpty()) {
@@ -60,7 +70,7 @@ public final class ChairInteractionService {
                 || !(player.getRootVehicle() instanceof ChairEntityEntity)) {
             return;
         }
-        Vec3 seatPosition = Vec3.atLowerCornerWithOffset(pos, 0.5, 0.0, 0.5);
+        Vec3 seatPosition = new Vec3(x + 0.5, y, z + 0.5);
         ChairEntityEntity chair =
                 findNearest(world, ChairEntityEntity.class, seatPosition, SEAT_SEARCH_SIZE).orElse(null);
         if (chair == null) {
@@ -69,9 +79,11 @@ public final class ChairInteractionService {
         Direction direction = directionForYaw(player.getYRot());
         int yaw = yawFor(direction);
         applyEntityRotation(chair, yaw);
-        updateBlockDirection(world, pos, direction);
-        if (world.getBlockState(pos).is(Blocks.STRUCTURE_BLOCK) && world instanceof ServerLevel level) {
-            level.sendParticles(ParticleTypes.ASH, pos.getX(), pos.getY(), pos.getZ(),
+        BlockPos blockPos = BlockPos.containing(x, y, z);
+        updateBlockDirection(world, blockPos, direction);
+        if (world.getBlockState(blockPos).is(Blocks.STRUCTURE_BLOCK)
+                && world instanceof ServerLevel level) {
+            level.sendParticles(ParticleTypes.ASH, x, y, z,
                     0, 0.0, 0.0, 0.0, 0.0);
         }
     }

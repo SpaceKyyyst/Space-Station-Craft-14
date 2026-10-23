@@ -1,6 +1,5 @@
 package net.mcreator.ssc.procedures;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
 import net.ssc14.content.block.furniture.ChairInteractionService;
 
@@ -11,6 +10,6 @@ public final class OficeChair_AutorotateProcedure {
     }
 
     public static void execute(LevelAccessor world, double x, double y, double z) {
-        ChairInteractionService.synchronizeRotation(world, BlockPos.containing(x, y, z));
+        ChairInteractionService.synchronizeRotation(world, x, y, z);
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.gametest.framework.TestData;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.GameType;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
@@ -109,6 +110,11 @@ public final class Ssc14BlocksChairGameTests {
         helper.assertTrue(player.isPassenger(), "chair interaction no longer mounts the player");
         helper.assertTrue(player.getRootVehicle() instanceof ChairEntityEntity,
                 "chair interaction mounted a different entity type");
+        ChairEntityEntity chair = (ChairEntityEntity) player.getRootVehicle();
+        Vec3 expectedSeat = helper.absoluteVec(new Vec3(1.5, 2.0, 1.5));
+        helper.assertTrue(chair.position().equals(expectedSeat), "chair entity spawn position changed");
+        helper.assertTrue(chair.getDeltaMovement().equals(Vec3.ZERO), "chair entity spawn velocity changed");
+
         helper.succeed();
     }
 
