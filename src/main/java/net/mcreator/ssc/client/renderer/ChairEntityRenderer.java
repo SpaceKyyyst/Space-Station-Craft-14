@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.ArmorModelSet;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.HumanoidModel;
 
-import net.mcreator.ssc.entity.ChairEntityEntity;
+import net.ssc14.content.entity.ChairEntityEntity;
 
 public class ChairEntityRenderer extends HumanoidMobRenderer<ChairEntityEntity, HumanoidRenderState, HumanoidModel<HumanoidRenderState>> {
 	private final Identifier entityTexture = Identifier.parse("ssc_14:textures/entities/chair_entiti.png");

@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
-import net.mcreator.ssc.entity.MouseWhiteEntity;
+import net.ssc14.content.entity.MouseWhiteEntity;
 import net.mcreator.ssc.client.model.Modelmouses;
 
 public class MouseWhiteRenderer extends MobRenderer<MouseWhiteEntity, LivingEntityRenderState, Modelmouses> {

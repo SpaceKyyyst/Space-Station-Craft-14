@@ -3,7 +3,7 @@ package net.mcreator.ssc.procedures;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 
-import net.mcreator.ssc.entity.C4CrutchEntEntity;
+import net.ssc14.content.entity.C4CrutchEntEntity;
 import net.mcreator.ssc.Ssc14Mod;
 
 public class C4_Crutch_Ent_TICProcedure {

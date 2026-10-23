@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.rendertype.RenderTypes; 
 import net.minecraft.resources.Identifier; 
 import net.minecraft.core.Direction;
-import net.mcreator.ssc.entity.PosterEntity;
+import net.ssc14.content.entity.PosterEntity;
 
 public class PosterRenderer extends EntityRenderer<PosterEntity, PosterRenderer.PosterRenderState> {
 

@@ -16,7 +16,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModParticleTypes;
-import net.mcreator.ssc.init.Ssc14ModEntities;
+import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.Ssc14Mod;
 
@@ -34,7 +34,7 @@ public class C4explorePRProcedure {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.SPARK.get()), (x + 0.5), (y + 0.5), (z + 0.5), 100, 0, 0, 0, 0.3);
 			if (world instanceof ServerLevel _level) {
-				Entity entityToSpawn = Ssc14ModEntities.C_4_CRUTCH_ENT.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.5, z + 0.5), EntitySpawnReason.MOB_SUMMONED);
+				Entity entityToSpawn = Ssc14EntityTypes.C_4_CRUTCH_ENT.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.5, z + 0.5), EntitySpawnReason.MOB_SUMMONED);
 				if (entityToSpawn != null) {
 					entityToSpawn.setDeltaMovement(0, 0, 0);
 				}

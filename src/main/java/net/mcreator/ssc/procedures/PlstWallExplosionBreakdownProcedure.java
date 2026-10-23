@@ -9,7 +9,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.entity.C4CrutchEntEntity;
+import net.ssc14.content.entity.C4CrutchEntEntity;
 import net.mcreator.ssc.Ssc14Mod;
 
 public class PlstWallExplosionBreakdownProcedure {

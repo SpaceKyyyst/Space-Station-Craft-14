@@ -21,8 +21,8 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.init.Ssc14ModEntities;
-import net.mcreator.ssc.entity.Bullet35Entity;
+import net.ssc14.content.entity.Ssc14EntityTypes;
+import net.ssc14.content.entity.Bullet35Entity;
 
 public class MK58_Fire_Procedure {
 	public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
@@ -41,7 +41,7 @@ public class MK58_Fire_Procedure {
 						Entity _shootFrom = entity;
 						Level projectileLevel = _shootFrom.level();
 						if (!projectileLevel.isClientSide()) {
-							Projectile _entityToSpawn = initArrowProjectile(new Bullet35Entity(Ssc14ModEntities.BULLET_35.get(), projectileLevel), entity, 16, true, false, false, AbstractArrow.Pickup.DISALLOWED);
+							Projectile _entityToSpawn = initArrowProjectile(new Bullet35Entity(Ssc14EntityTypes.BULLET_35.get(), projectileLevel), entity, 16, true, false, false, AbstractArrow.Pickup.DISALLOWED);
 							_entityToSpawn.setPos(_shootFrom.getX(), _shootFrom.getEyeY() - 0.1, _shootFrom.getZ());
 							_entityToSpawn.shoot(_shootFrom.getLookAngle().x, _shootFrom.getLookAngle().y, _shootFrom.getLookAngle().z, 4, (float) 0.1);
 							projectileLevel.addFreshEntity(_entityToSpawn);

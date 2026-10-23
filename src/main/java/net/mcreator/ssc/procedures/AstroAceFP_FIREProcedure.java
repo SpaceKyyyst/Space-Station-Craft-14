@@ -14,8 +14,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModEntities;
-import net.mcreator.ssc.entity.FoamDartProjectileEntity;
+import net.ssc14.content.entity.Ssc14EntityTypes;
+import net.ssc14.content.entity.FoamDartProjectileEntity;
 
 public class AstroAceFP_FIREProcedure {
 	public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
@@ -33,7 +33,7 @@ public class AstroAceFP_FIREProcedure {
 				Entity _shootFrom = entity;
 				Level projectileLevel = _shootFrom.level();
 				if (!projectileLevel.isClientSide()) {
-					Projectile _entityToSpawn = initArrowProjectile(new FoamDartProjectileEntity(Ssc14ModEntities.FOAM_DART_PROJECTILE.get(), projectileLevel), entity, 0, true, false, false, AbstractArrow.Pickup.ALLOWED);
+					Projectile _entityToSpawn = initArrowProjectile(new FoamDartProjectileEntity(Ssc14EntityTypes.FOAM_DART_PROJECTILE.get(), projectileLevel), entity, 0, true, false, false, AbstractArrow.Pickup.ALLOWED);
 					_entityToSpawn.setPos(_shootFrom.getX(), _shootFrom.getEyeY() - 0.1, _shootFrom.getZ());
 					_entityToSpawn.shoot(_shootFrom.getLookAngle().x, _shootFrom.getLookAngle().y, _shootFrom.getLookAngle().z, 2, 1);
 					projectileLevel.addFreshEntity(_entityToSpawn);

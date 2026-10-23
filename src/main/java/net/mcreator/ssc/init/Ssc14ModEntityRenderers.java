@@ -1,5 +1,7 @@
 package net.mcreator.ssc.init;
 
+import net.ssc14.content.entity.Ssc14EntityTypes;
+
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -28,17 +30,17 @@ public class Ssc14ModEntityRenderers {
         event.registerBlockEntityRenderer(Ssc14ModBlockEntities.VIROLOGY_AIRLOCK_D_1.get(), context -> new AirlockDoorRenderer<>(net.minecraft.resources.Identifier.parse("ssc_14:textures/block/standard_airlock_virology.png")));
         event.registerBlockEntityRenderer(Ssc14ModBlockEntities.GLASS_AIRLOCK_D_1.get(), context -> new AirlockDoorRenderer<>(net.minecraft.resources.Identifier.parse("ssc_14:textures/block/glass_airlock.png")));
         event.registerBlockEntityRenderer(Ssc14ModBlockEntities.BASE_GLASS_AIRLOCK_D_1.get(), context -> new AirlockDoorRenderer<>(net.minecraft.resources.Identifier.parse("ssc_14:textures/block/glass_airlock_basic.png")));
-		event.registerEntityRenderer(Ssc14ModEntities.WALL_CARCASE_ENTIT.get(), WallCarcaseEntitRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.ID_CONSOLE_ENTITY.get(), IDConsoleENTITYRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.PLASSTEEL_WALL_CARCASE_ENTIT.get(), PlassteelWallCarcaseEntitRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.CHAIR_ENTITY.get(), ChairEntityRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.C_4_CRUTCH_ENT.get(), C4CrutchEntRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.MOUSE_BROWN.get(), MouseBrownRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.MOUSE_GRAY.get(), MouseGrayRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.MOUSE_WHITE.get(), MouseWhiteRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.BULLET_35.get(), Bullet35Renderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.FOAM_DART_PROJECTILE.get(), FoamDartProjectileRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.POSTER.get(), PosterRenderer::new);
-		event.registerEntityRenderer(Ssc14ModEntities.CARP.get(), CarpRenderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.WALL_CARCASE_ENTIT.get(), WallCarcaseEntitRenderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.ID_CONSOLE_ENTITY.get(), IDConsoleENTITYRenderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.PLASSTEEL_WALL_CARCASE_ENTIT.get(), PlassteelWallCarcaseEntitRenderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.CHAIR_ENTITY.get(), ChairEntityRenderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.C_4_CRUTCH_ENT.get(), C4CrutchEntRenderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.MOUSE_BROWN.get(), MouseBrownRenderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.MOUSE_GRAY.get(), MouseGrayRenderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.MOUSE_WHITE.get(), MouseWhiteRenderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.BULLET_35.get(), Bullet35Renderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.FOAM_DART_PROJECTILE.get(), FoamDartProjectileRenderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.POSTER.get(), PosterRenderer::new);
+		event.registerEntityRenderer(Ssc14EntityTypes.CARP.get(), CarpRenderer::new);
 	}
 }
