@@ -214,9 +214,9 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14Blocks.OFICE_BLACK_CHAIR.get().asItem());
 				tabData.accept(Ssc14Blocks.OFICE_WHITE_CHAIR.get().asItem());
 				tabData.accept(Ssc14Blocks.BAR_CHAIR.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ARM_CHAIR_BASE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ARM_CHAIR_BROWN.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ARM_CHAIR_CARP.get().asItem());
+				tabData.accept(Ssc14Blocks.ARM_CHAIR_BASE.get().asItem());
+				tabData.accept(Ssc14Blocks.ARM_CHAIR_BROWN.get().asItem());
+				tabData.accept(Ssc14Blocks.ARM_CHAIR_CARP.get().asItem());
 				tabData.accept(Ssc14Blocks.BANNER_NT.get().asItem());
 				tabData.accept(Ssc14Blocks.BANNER_MED.get().asItem());
 				tabData.accept(Ssc14Blocks.BANNER_RN_D.get().asItem());

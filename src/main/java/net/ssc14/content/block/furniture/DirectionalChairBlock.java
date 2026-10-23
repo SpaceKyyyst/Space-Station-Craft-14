@@ -30,8 +30,14 @@ public abstract class DirectionalChairBlock extends Block {
     protected DirectionalChairBlock(
             BlockBehaviour.Properties properties, SoundType sound,
             Function<Direction, VoxelShape> shapeProvider) {
+        this(properties, sound, 5.0f, shapeProvider);
+    }
+
+    protected DirectionalChairBlock(
+            BlockBehaviour.Properties properties, SoundType sound, float strength,
+            Function<Direction, VoxelShape> shapeProvider) {
         super(properties.sound(sound)
-                .strength(5.0f)
+                .strength(strength)
                 .noCollision()
                 .isRedstoneConductor((state, world, pos) -> false));
         registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
