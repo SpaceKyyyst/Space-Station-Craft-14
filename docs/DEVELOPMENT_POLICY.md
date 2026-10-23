@@ -16,6 +16,20 @@ SSC14 — открытый проект для русскоязычного и �
 4. Проверьте client/server boundary и server-side authorization для network/UI changes.
 5. Убедитесь, что diff не содержит private-файлы, secrets, логи, кэш, build outputs и локальные отчёты.
 
+### Автоматические quality gates
+
+Для pull request в `main` policy job запускается также на Draft PR и повторяется для событий `opened`, `synchronize`, `reopened`, `edited`, `labeled`, `unlabeled` и `ready_for_review`. Сборка Gradle, unit-тесты, GameTest, Checkstyle, PMD и Windows path checks выполняются после перевода PR в Ready; `ready_for_review` гарантированно запускает их повторно.
+
+Policy job проверяет:
+
+- Conventional Commits в формате `type(scope): Русское описание / English description` и непустые секции `RU:`/`EN:` в теле каждого коммита;
+- непустые и расположенные в порядке `## RU`, затем `## EN` секции PR после удаления HTML-комментариев шаблона;
+- ровно один `type:*` и минимум один `area:*` label;
+- отсутствие private-файлов, локальных инструкций, кэша, build outputs, логов и случайных бинарных артефактов;
+- только явно разрешённые бинарные resources и Gradle wrapper JAR.
+
+Исключение ограничено PR от Dependabot (`dependabot[bot]`): для них не требуется RU/EN в commit messages и PR body. Conventional Commits, labels, проверка путей и бинарных файлов, сборка, тесты и статический анализ остаются обязательными. Событие, отправленное ботом или сопровождающим, не меняет автора PR и не расширяет исключение.
+
 Не меняйте registry IDs, порядок сериализуемых enum, NBT/SavedData и network contracts без согласованной миграции и регрессионных тестов. Не удаляйте resources только из-за их расположения. Не добавляйте architecture layers, если они не решают конкретную задачу.
 
 Никогда не публикуйте private prompts, agent instructions, internal plans, notes, reports, secrets или personal data. Ignore-правила не защищают уже tracked content: всегда проверяйте index и diff.
@@ -35,6 +49,20 @@ Before opening a PR:
 3. Verify registry IDs, resources, serialization, save data, and network contracts when the PR touches them.
 4. Verify the client/server boundary and server-side authorization for network or UI changes.
 5. Ensure the diff contains no private files, secrets, logs, caches, build outputs, or local reports.
+
+### Automated quality gates
+
+For pull requests into `main`, the policy job also runs on Draft PRs and reruns for `opened`, `synchronize`, `reopened`, `edited`, `labeled`, `unlabeled`, and `ready_for_review` events. The Gradle build, unit tests, GameTest, Checkstyle, PMD, and Windows path checks run after the PR becomes Ready; `ready_for_review` always triggers them again.
+
+The policy job enforces:
+
+- Conventional Commits in `type(scope): Russian description / English description` format and non-empty `RU:`/`EN:` sections in every commit body;
+- non-empty PR sections ordered as `## RU` followed by `## EN`, after template HTML comments are removed;
+- exactly one `type:*` label and at least one `area:*` label;
+- no private files, local instructions, caches, build outputs, logs, or accidental binary artifacts;
+- only explicitly allowed binary resources and the Gradle wrapper JAR.
+
+The exception is limited to PRs authored by Dependabot (`dependabot[bot]`): RU/EN text is not required in commit messages or the PR body. Conventional Commits, labels, path and binary checks, build, tests, and static analysis remain mandatory. Whether a bot or maintainer sent the current event does not change the PR author or broaden the exception.
 
 Do not change registry IDs, the order of serialized enums, NBT/SavedData, or network contracts without an agreed migration and regression tests. Do not delete resources only because of their location. Do not add architecture layers unless they solve a concrete task.
 
