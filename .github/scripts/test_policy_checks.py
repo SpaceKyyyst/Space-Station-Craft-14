@@ -195,7 +195,7 @@ class PolicyCliTest(unittest.TestCase):
             ["git", "-C", str(self.root), *args], check=True, capture_output=True
         )
 
-    def run_cli(self, body, labels):
+    def run_cli(self, body, labels, *, user="contributor", sender=None, head=None):
         self.event.write_text(
             json.dumps(
                 {
@@ -203,9 +203,10 @@ class PolicyCliTest(unittest.TestCase):
                         "body": body,
                         "labels": [{"name": label} for label in labels],
                         "base": {"sha": self.base},
-                        "head": {"sha": self.head},
+                        "head": {"sha": head or self.head},
+                        "user": {"login": user},
                     },
-                    "sender": {"login": "contributor"},
+                    "sender": {"login": sender or user},
                 }
             ),
             encoding="utf-8",
@@ -238,6 +239,23 @@ class PolicyCliTest(unittest.TestCase):
         self.assertEqual(1, result.returncode)
         self.assertIn("::error::", result.stdout)
         self.assertIn("type:", result.stdout)
+
+    def test_cli_uses_pull_request_author_for_dependabot_exception(self):
+        (self.root / "dependency.txt").write_text("2\n", encoding="utf-8")
+        self.git("add", "dependency.txt")
+        self.git("commit", "--quiet", "-m", "build(deps): bump example from 1 to 2")
+        automation_head = self.git("rev-parse", "HEAD").stdout.decode().strip()
+        body = "## RU\nОбновлена зависимость.\n## EN\nUpdated dependency.\n"
+
+        result = self.run_cli(
+            body,
+            ["type:ci", "area:build"],
+            user="dependabot[bot]",
+            sender="maintainer",
+            head=automation_head,
+        )
+
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
 
 
 if __name__ == "__main__":

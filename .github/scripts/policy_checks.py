@@ -269,7 +269,7 @@ def run_policy_checks(event: dict, repository: Path) -> list[str]:
               if isinstance(label, dict)]
     base = pull_request.get("base", {}).get("sha", "")
     head = pull_request.get("head", {}).get("sha", "")
-    actor = event.get("sender", {}).get("login", "")
+    actor = pull_request.get("user", {}).get("login", "")
     if not base or not head:
         return ["Pull request event is missing immutable base/head SHAs"]
 
