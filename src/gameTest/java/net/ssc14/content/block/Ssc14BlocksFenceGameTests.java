@@ -8,8 +8,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.gametest.framework.TestData;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
@@ -35,10 +39,14 @@ import net.ssc14.content.block.decoration.FenceThreeWayBlock;
 public final class Ssc14BlocksFenceGameTests {
     private static final Identifier TEST_ID = id("compatibility_block_fence_contract");
     private static final List<ExpectedBlock> EXPECTED = List.of(
-            expected(Ssc14Blocks.FENCE_POINT, "fence_point", FencePointBlock.class, Kind.POINT),
-            expected(Ssc14Blocks.FENCE_LINE, "fence_line", FenceLineBlock.class, Kind.LINE),
-            expected(Ssc14Blocks.FENCE_G, "fence_g", FenceCornerBlock.class, Kind.CORNER),
-            expected(Ssc14Blocks.FENCE_P, "fence_p", FenceThreeWayBlock.class, Kind.THREE_WAY));
+            expected(Ssc14Blocks.FENCE_POINT, "fence_point", FencePointBlock.class,
+                    net.mcreator.ssc.block.FencePointBlock.Item.class, Kind.POINT),
+            expected(Ssc14Blocks.FENCE_LINE, "fence_line", FenceLineBlock.class,
+                    net.mcreator.ssc.block.FenceLineBlock.Item.class, Kind.LINE),
+            expected(Ssc14Blocks.FENCE_G, "fence_g", FenceCornerBlock.class,
+                    net.mcreator.ssc.block.FenceGBlock.Item.class, Kind.CORNER),
+            expected(Ssc14Blocks.FENCE_P, "fence_p", FenceThreeWayBlock.class,
+                    net.mcreator.ssc.block.FencePBlock.Item.class, Kind.THREE_WAY));
 
     private Ssc14BlocksFenceGameTests() {
     }
@@ -72,8 +80,16 @@ public final class Ssc14BlocksFenceGameTests {
             helper.assertTrue(Float.compare(4.0f, block.getExplosionResistance()) == 0,
                     expected.path() + " explosion resistance changed");
             helper.assertTrue(state.getSoundType() == SoundType.CHAIN, expected.path() + " sound changed");
-            helper.assertTrue(block.asItem().getDefaultInstance().getMaxStackSize() == 1,
+            Item item = block.asItem();
+            helper.assertTrue(expected.itemImplementation().isInstance(item),
+                    expected.path() + " custom BlockItem implementation changed");
+            helper.assertTrue(item.getDefaultInstance().getMaxStackSize() == 1,
                     expected.path() + " item stack limit changed");
+            List<Component> tooltip = new java.util.ArrayList<>();
+            item.appendHoverText(item.getDefaultInstance(), Item.TooltipContext.of(helper.getLevel()),
+                    TooltipDisplay.DEFAULT, tooltip::add, TooltipFlag.NORMAL);
+            helper.assertTrue(tooltip.contains(Component.translatable(expected.tooltipKey())),
+                    expected.path() + " tooltip translation key changed");
             helper.assertTrue(state.getValue(DirectionalFenceBlock.FACING) == Direction.NORTH,
                     expected.path() + " default facing changed");
             helper.assertTrue(state.rotate(Rotation.CLOCKWISE_90)
@@ -136,8 +152,10 @@ public final class Ssc14BlocksFenceGameTests {
     }
 
     private static ExpectedBlock expected(
-            DeferredBlock<Block> holder, String path, Class<? extends Block> implementation, Kind kind) {
-        return new ExpectedBlock(holder, path, implementation, kind);
+            DeferredBlock<Block> holder, String path, Class<? extends Block> implementation,
+            Class<? extends Item> itemImplementation, Kind kind) {
+        return new ExpectedBlock(holder, path, implementation, itemImplementation,
+                "block.ssc_14." + path + ".description_0", kind);
     }
 
     private static Identifier id(String path) {
@@ -147,6 +165,7 @@ public final class Ssc14BlocksFenceGameTests {
     private enum Kind { POINT, LINE, CORNER, THREE_WAY }
 
     private record ExpectedBlock(
-            DeferredBlock<Block> holder, String path, Class<? extends Block> implementation, Kind kind) {
+            DeferredBlock<Block> holder, String path, Class<? extends Block> implementation,
+            Class<? extends Item> itemImplementation, String tooltipKey, Kind kind) {
     }
 }
