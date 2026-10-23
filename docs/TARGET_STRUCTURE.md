@@ -92,6 +92,11 @@ Integration, блоки/предметы/меню — в Content, экраны/r
 временно работают через deprecated-фасад `Ssc14ModParticleTypes`. Registry ID
 не изменены и защищены манифестом совместимости Stage 4.
 
+Реестр звуков продолжает этот подход: всеми 81 регистрациями владеет
+`net.ssc14.content.sound.Ssc14SoundEvents`, а `Ssc14ModSounds` временно сохраняет
+предыдущий Java API как deprecated-фасад. Sound ID и `sounds.json` не изменены;
+строковые runtime-потребители продолжают использовать стабильные resource ID.
+
 ### Серверный авторитет и UI
 
 Сервер является источником истины для инвентарей, атмосферы, энергии, химии,
@@ -248,6 +253,11 @@ The particle-type registry is the first Content migration. The new registry is
 owned by `net.ssc14.content.particle.Ssc14ParticleTypes`, while generated consumers
 temporarily remain behind the deprecated `Ssc14ModParticleTypes` facade. Registry
 IDs are unchanged and protected by the Stage 4 compatibility manifest.
+
+The sound registry follows the same approach: all 81 registrations are owned by
+`net.ssc14.content.sound.Ssc14SoundEvents`, while `Ssc14ModSounds` temporarily
+preserves the previous Java API as a deprecated facade. Sound IDs and `sounds.json`
+are unchanged; string-based runtime consumers keep using stable resource IDs.
 
 ### Server authority and UI
 
