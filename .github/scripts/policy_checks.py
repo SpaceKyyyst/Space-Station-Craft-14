@@ -109,7 +109,11 @@ def validate_pr_body(body: str) -> list[str]:
         return ["Pull request RU and EN sections are in the wrong order"]
 
     errors = []
-    ru_content = _meaningful_markdown(visible[ru.end():en.start()])
+    russian_tail = visible[ru.end():en.start()]
+    next_section = re.search(r"(?m)^##\s+\S.*$", russian_tail)
+    if next_section is not None:
+        russian_tail = russian_tail[:next_section.start()]
+    ru_content = _meaningful_markdown(russian_tail)
     english_tail = visible[en.end():]
     next_section = re.search(r"(?m)^##\s+\S.*$", english_tail)
     if next_section is not None:
@@ -212,9 +216,18 @@ def read_commit_messages(repository: Path, base: str, head: str) -> list[str]:
 
 
 def read_changed_files(repository: Path, base: str, head: str) -> list[ChangedFile]:
-    binary_paths = _read_binary_paths(repository, base, head)
+    comparison_base = _git(repository, "merge-base", base, head).decode(
+        "ascii", errors="strict"
+    ).strip()
+    binary_paths = _read_binary_paths(repository, comparison_base, head)
     output = _git(
-        repository, "diff", "--name-status", "-z", "--find-renames", base, head
+        repository,
+        "diff",
+        "--name-status",
+        "-z",
+        "--find-renames",
+        comparison_base,
+        head,
     )
     fields = output.split(b"\0")
     changes = []

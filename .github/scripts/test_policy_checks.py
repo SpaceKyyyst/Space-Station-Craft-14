@@ -11,6 +11,7 @@ from policy_checks import (
     validate_commit_message,
     validate_labels,
     validate_pr_body,
+    read_changed_files,
 )
 
 
@@ -82,6 +83,17 @@ class PullRequestBodyPolicyTest(unittest.TestCase):
         errors = validate_pr_body(body)
 
         self.assertTrue(any("EN" in error for error in errors))
+
+    def test_does_not_treat_intermediate_section_as_russian_content(self):
+        body = (
+            "## RU\n<!-- Заполните -->\n"
+            "## Checklist\n- [x] Reviewed\n"
+            "## EN\nImplemented validation.\n"
+        )
+
+        errors = validate_pr_body(body)
+
+        self.assertTrue(any("RU" in error for error in errors))
 
     def test_rejects_english_section_before_russian_section(self):
         errors = validate_pr_body("## EN\nDone.\n## RU\nСделано.\n")
@@ -256,6 +268,44 @@ class PolicyCliTest(unittest.TestCase):
         )
 
         self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+
+
+class GitDiffCollectionTest(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory()
+        self.addCleanup(self.directory.cleanup)
+        self.root = Path(self.directory.name)
+        self.git("init", "--quiet")
+        self.git("config", "user.name", "Diff Test")
+        self.git("config", "user.email", "diff@example.invalid")
+
+    def git(self, *args):
+        return subprocess.run(
+            ["git", "-C", str(self.root), *args], check=True, capture_output=True
+        )
+
+    def test_collects_only_pr_changes_when_target_branch_has_advanced(self):
+        legacy = self.root / "libs/legacy.jar"
+        legacy.parent.mkdir(parents=True)
+        legacy.write_bytes(b"\x00legacy")
+        self.git("add", "libs/legacy.jar")
+        self.git("commit", "--quiet", "-m", "base")
+        target_branch = self.git("branch", "--show-current").stdout.decode().strip()
+
+        self.git("switch", "--quiet", "-c", "feature")
+        (self.root / "policy.txt").write_text("policy\n", encoding="utf-8")
+        self.git("add", "policy.txt")
+        self.git("commit", "--quiet", "-m", "feature")
+        feature_head = self.git("rev-parse", "HEAD").stdout.decode().strip()
+
+        self.git("switch", "--quiet", target_branch)
+        self.git("rm", "--quiet", "libs/legacy.jar")
+        self.git("commit", "--quiet", "-m", "remove legacy binary")
+        target_head = self.git("rev-parse", "HEAD").stdout.decode().strip()
+
+        changes = read_changed_files(self.root, target_head, feature_head)
+
+        self.assertEqual(["policy.txt"], [change.path for change in changes])
 
 
 if __name__ == "__main__":
