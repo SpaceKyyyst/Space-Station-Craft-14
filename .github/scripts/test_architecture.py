@@ -349,5 +349,75 @@ class LegacyClientDebtTest(unittest.TestCase):
         )
 
 
+class TargetArchitectureDocumentationTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.root = Path(__file__).resolve().parents[2]
+        cls.target_path = cls.root / "docs/TARGET_STRUCTURE.md"
+
+    def test_documents_equivalent_russian_and_english_technical_contracts(self):
+        self.assertTrue(self.target_path.is_file(), "docs/TARGET_STRUCTURE.md is missing")
+        document = self.target_path.read_text(encoding="utf-8")
+        ru_marker = "<!-- architecture-contract:ru -->"
+        en_marker = "<!-- architecture-contract:en -->"
+        self.assertEqual(1, document.count(ru_marker))
+        self.assertEqual(1, document.count(en_marker))
+        russian = document.split(ru_marker, 1)[1].split(en_marker, 1)[0]
+        english = document.split(en_marker, 1)[1]
+
+        shared_terms = (
+            "net.ssc14.core",
+            "net.ssc14.common",
+            "net.ssc14.integration",
+            "net.ssc14.content",
+            "net.ssc14.client",
+            "net.mcreator.ssc",
+            "core -> core",
+            "common -> core, common",
+            "integration -> core, common, integration",
+            "content -> core, common, integration, content",
+            "client -> core, common, integration, content, client",
+            "net.minecraft.client",
+            "net.neoforged.neoforge.client",
+            "com.mojang.blaze3d",
+            "org.lwjgl",
+            "characterize -> move -> facade -> consumers -> compatibility verification "
+            "-> legacy removal",
+            "py -3 .github/scripts/test_architecture.py",
+            "py -3 .github/scripts/check_architecture.py",
+            "py -3 .github/scripts/check_project.py",
+            "git diff --check",
+            ".\\gradlew.bat runGameTestServer --no-daemon --no-build-cache --console=plain",
+        )
+        for section_name, section in (("RU", russian), ("EN", english)):
+            for term in shared_terms:
+                with self.subTest(section=section_name, term=term):
+                    self.assertIn(term, section)
+
+        for term in (
+            "legacy-адаптер",
+            "composition root",
+            "сервер является источником истины",
+            "совместимость persistence и network",
+            "пустые пакеты и классы запрещены",
+        ):
+            self.assertIn(term.casefold(), russian.casefold())
+        for term in (
+            "legacy adapter",
+            "composition root",
+            "server is authoritative",
+            "persistence and network compatibility",
+            "empty packages and classes are forbidden",
+        ):
+            self.assertIn(term.casefold(), english.casefold())
+
+    def test_current_architecture_navigation_links_to_target_contract(self):
+        readme = (self.root / "README.md").read_text(encoding="utf-8")
+        current = (self.root / "docs/ARCHITECTURE.md").read_text(encoding="utf-8")
+
+        self.assertIn("docs/TARGET_STRUCTURE.md", readme)
+        self.assertIn("TARGET_STRUCTURE.md", current)
+
+
 if __name__ == "__main__":
     unittest.main()
