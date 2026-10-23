@@ -195,6 +195,118 @@ class ArchitectureMatrixTest(unittest.TestCase):
             analyze_architecture(self.root),
         )
 
+    def test_enforces_ordinary_and_static_wildcard_imports(self):
+        self.write_java(
+            "net/ssc14/core/Wildcard.java",
+            """
+            package net.ssc14.core;
+            import static net.ssc14.client.ClientConstants.*;
+            final class Wildcard {}
+            """,
+        )
+        self.write_java(
+            "net/mcreator/ssc/WildcardLegacy.java",
+            """
+            package net.mcreator.ssc;
+            import net.minecraft.client.*;
+            final class WildcardLegacy {}
+            """,
+        )
+
+        self.assertEqual(
+            [
+                (
+                    "src/main/java/net/mcreator/ssc/WildcardLegacy.java",
+                    "unapproved client import for family 'minecraft-client'",
+                ),
+                (
+                    "src/main/java/net/ssc14/core/Wildcard.java",
+                    "target layer 'core' cannot import target layer 'client': "
+                    "net.ssc14.client.ClientConstants.*",
+                ),
+            ],
+            analyze_architecture(self.root),
+        )
+
+    def test_parses_multiline_same_line_and_commented_imports(self):
+        source = """
+            package net.ssc14.common; import java.util.
+                List; import net.minecraft.client.Minecraft;
+            import net.ssc14./* package separator */client.Screen;
+            final class Formatted {}
+        """
+        self.assertEqual(
+            JavaUnit(
+                package="net.ssc14.common",
+                imports=(
+                    "java.util.List",
+                    "net.minecraft.client.Minecraft",
+                    "net.ssc14.client.Screen",
+                ),
+            ),
+            parse_java_source(textwrap.dedent(source)),
+        )
+        self.write_java("net/ssc14/common/Formatted.java", source)
+
+        self.assertEqual(
+            [
+                (
+                    "src/main/java/net/ssc14/common/Formatted.java",
+                    "target layer 'common' cannot import client API family "
+                    "'minecraft-client': net.minecraft.client.Minecraft",
+                ),
+                (
+                    "src/main/java/net/ssc14/common/Formatted.java",
+                    "target layer 'common' cannot import target layer 'client': "
+                    "net.ssc14.client.Screen",
+                ),
+                (
+                    "src/main/java/net/ssc14/common/Formatted.java",
+                    "unapproved client import for family 'minecraft-client'",
+                ),
+            ],
+            analyze_architecture(self.root),
+        )
+
+    def test_rejects_target_packages_declared_outside_target_path(self):
+        self.write_java(
+            "net/mcreator/ssc/MisplacedCore.java",
+            """
+            package net.ssc14.core;
+            import net.minecraft.world.level.Level;
+            final class MisplacedCore {}
+            """,
+        )
+        self.write_java(
+            "net/mcreator/ssc/MisplacedUnknown.java",
+            "package net.ssc14.unknown;\nfinal class MisplacedUnknown {}\n",
+        )
+
+        self.assertEqual(
+            [
+                (
+                    "src/main/java/net/mcreator/ssc/MisplacedCore.java",
+                    "core may import only java.* and jdk.* outside net.ssc14: "
+                    "net.minecraft.world.level.Level",
+                ),
+                (
+                    "src/main/java/net/mcreator/ssc/MisplacedCore.java",
+                    "target package 'net.ssc14.core' must be located under "
+                    "'src/main/java/net/ssc14/core'",
+                ),
+                (
+                    "src/main/java/net/mcreator/ssc/MisplacedUnknown.java",
+                    "target package 'net.ssc14.unknown' must be located under "
+                    "'src/main/java/net/ssc14/unknown'",
+                ),
+                (
+                    "src/main/java/net/mcreator/ssc/MisplacedUnknown.java",
+                    "unknown direct target layer 'unknown'",
+                ),
+            ],
+            analyze_architecture(self.root),
+        )
+
 
 class LegacyClientDebtTest(unittest.TestCase):
     def setUp(self):

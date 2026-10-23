@@ -108,24 +108,27 @@ def parse_java_source(source: str) -> JavaUnit:
     sanitized = _strip_comments_and_literals(source)
     package: str | None = None
     imports: list[str] = []
-    declaration = re.compile(r"^[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)*$")
-    package_line = re.compile(r"^package\s+([^;]+)\s*;\s*$")
-    import_line = re.compile(r"^import\s+(?:static\s+)?([^;]+)\s*;\s*$")
-
-    for raw_line in sanitized.splitlines():
-        line = raw_line.strip()
-        if not line:
-            continue
-        package_match = package_line.fullmatch(line)
+    identifier = r"[A-Za-z_$][\w$]*"
+    qualified_name = rf"{identifier}(?:\s*\.\s*{identifier})*"
+    package_declaration = re.compile(rf"package\s+({qualified_name})\s*;")
+    import_declaration = re.compile(
+        rf"import\s+(?:static\s+)?({qualified_name}(?:\s*\.\s*\*)?)\s*;"
+    )
+    position = 0
+    while position < len(sanitized):
+        whitespace = re.match(r"\s*", sanitized[position:])
+        position += len(whitespace.group(0))
+        if position >= len(sanitized):
+            break
+        package_match = package_declaration.match(sanitized, position)
         if package_match:
-            candidate = package_match.group(1).strip()
-            package = candidate if declaration.fullmatch(candidate) else None
+            package = re.sub(r"\s+", "", package_match.group(1))
+            position = package_match.end()
             continue
-        import_match = import_line.fullmatch(line)
+        import_match = import_declaration.match(sanitized, position)
         if import_match:
-            candidate = import_match.group(1).strip()
-            if declaration.fullmatch(candidate):
-                imports.append(candidate)
+            imports.append(re.sub(r"\s+", "", import_match.group(1)))
+            position = import_match.end()
             continue
         break
     return JavaUnit(package=package, imports=tuple(imports))
@@ -267,11 +270,36 @@ def analyze_architecture(root: Path) -> list[tuple[str, str]]:
         for source_path in sorted(source_root.rglob("*.java"))
     }
     for source_path, unit in units.items():
+        path = source_path.relative_to(root).as_posix()
         try:
             target_relative = source_path.relative_to(target_path_root)
         except ValueError:
+            if unit.package == TARGET_ROOT or (
+                unit.package is not None and unit.package.startswith(f"{TARGET_ROOT}.")
+            ):
+                declared_layer = _target_layer(unit.package)
+                expected_root = (
+                    f"src/main/java/net/ssc14/{declared_layer}"
+                    if declared_layer is not None
+                    else "src/main/java/net/ssc14"
+                )
+                diagnostics.append(
+                    (
+                        path,
+                        f"target package '{unit.package}' must be located under "
+                        f"'{expected_root}'",
+                    )
+                )
+                if declared_layer not in TARGET_LAYERS:
+                    if declared_layer is None:
+                        diagnostics.append((path, "target package must be inside a named layer"))
+                    else:
+                        diagnostics.append(
+                            (path, f"unknown direct target layer '{declared_layer}'")
+                        )
+                else:
+                    diagnostics.extend(_target_diagnostics(path, declared_layer, unit))
             continue
-        path = source_path.relative_to(root).as_posix()
         if len(target_relative.parts) < 2:
             diagnostics.append((path, "target source must be inside a named layer"))
             continue
