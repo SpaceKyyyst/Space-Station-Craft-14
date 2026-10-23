@@ -53,7 +53,7 @@ MCreator regeneration может заменить Java-файлы. Перед г
 
 ### Процесс вклада
 
-Следуйте [публичной политике разработки](docs/DEVELOPMENT_POLICY.md). Команды проверки и описание CI находятся в [руководстве по проверкам](docs/VERIFICATION.md). При ошибке сборки см. [руководство по устранению проблем](docs/TROUBLESHOOTING.md).
+Следуйте [публичной политике разработки](docs/DEVELOPMENT_POLICY.md) и [стандарту публичных текстов](docs/WRITING_STANDARD.md). Команды проверки и описание CI находятся в [руководстве по проверкам](docs/VERIFICATION.md). При ошибке сборки см. [руководство по устранению проблем](docs/TROUBLESHOOTING.md).
 
 ## EN
 
@@ -108,4 +108,4 @@ MCreator regeneration can replace Java files. Before generation, preserve curren
 
 ### Contribution workflow
 
-Follow the [public development policy](docs/DEVELOPMENT_POLICY.md). Verification commands and CI behavior are documented in the [verification guide](docs/VERIFICATION.md). For build failures, see the [troubleshooting guide](docs/TROUBLESHOOTING.md).
+Follow the [public development policy](docs/DEVELOPMENT_POLICY.md) and the [public writing standard](docs/WRITING_STANDARD.md). Verification commands and CI behavior are documented in the [verification guide](docs/VERIFICATION.md). For build failures, see the [troubleshooting guide](docs/TROUBLESHOOTING.md).
