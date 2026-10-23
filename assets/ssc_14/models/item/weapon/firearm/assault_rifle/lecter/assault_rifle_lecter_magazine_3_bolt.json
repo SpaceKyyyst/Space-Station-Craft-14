@@ -100,15 +100,6 @@
 			}
 		},
 		{
-			"from": [6.975, 7, 7],
-			"to": [9.025, 8, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.5, 8.5]},
-			"faces": {
-				"east": {"uv": [10.5, 7.5, 12, 8], "texture": "#0"},
-				"west": {"uv": [12, 7.5, 10.5, 8], "texture": "#0"}
-			}
-		},
-		{
 			"from": [8, 5, 7],
 			"to": [8, 7, 10],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6, 8.5]},
@@ -206,6 +197,15 @@
 				"west": {"uv": [9, 0, 7.5, 2.5], "texture": "#0"},
 				"down": {"uv": [7.5, 10.5, 8, 12], "texture": "#0"}
 			}
+		},
+		{
+			"from": [6.975, 7, 7],
+			"to": [9.025, 8, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.5, 8.5]},
+			"faces": {
+				"east": {"uv": [10.5, 7.5, 12, 8], "texture": "#0"},
+				"west": {"uv": [12, 7.5, 10.5, 8], "texture": "#0"}
+			}
 		}
 	],
 	"display": {
@@ -243,20 +243,19 @@
 				12,
 				13,
 				14,
-				15,
 				{
 					"name": "bolt",
 					"origin": [8, 7.5, 7],
 					"scope": 0,
 					"color": 1,
-					"children": [16]
+					"children": [15]
 				},
 				{
 					"name": "magazine",
 					"origin": [7.5, 4, 6],
 					"scope": 0,
 					"color": 2,
-					"children": [17]
+					"children": [16, 17]
 				}
 			]
 		}
