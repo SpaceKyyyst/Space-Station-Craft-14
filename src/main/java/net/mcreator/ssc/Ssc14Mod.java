@@ -30,6 +30,7 @@ import net.mcreator.ssc.init.*;
 import net.mcreator.ssc.scheduling.ServerTaskScheduler;
 import net.mcreator.ssc.scheduling.SubmissionResult;
 import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.ssc14.content.sound.Ssc14SoundEvents;
 import net.minecraft.server.MinecraftServer;
@@ -71,7 +72,7 @@ public class Ssc14Mod {
 		StructureFeature.REGISTRY.register(modEventBus);
 		Ssc14ModMenus.REGISTRY.register(modEventBus);
 		Ssc14ParticleTypes.REGISTRY.register(modEventBus);
-		Ssc14ModAttributes.REGISTRY.register(modEventBus);
+		Ssc14Attributes.REGISTRY.register(modEventBus);
 		// Start of user code block mod init
 		ModReagents.register(modEventBus);
 		// End of user code block mod init
