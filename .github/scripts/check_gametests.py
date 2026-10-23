@@ -20,6 +20,7 @@ EXPECTED_TESTS = {
     "ssc_14:audit_energy_lamp_changes_and_depletion",
     "ssc_14:audit_pure_nitrous_oxide_decays",
     "ssc_14:audit_trace_gas_crosses_region_boundary",
+    "ssc_14:compatibility_registry_ids",
 }
 
 

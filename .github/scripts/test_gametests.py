@@ -41,6 +41,9 @@ class GameTestReportTests(unittest.TestCase):
         self.report(EXPECTED_TESTS - {omitted})
         self.assertEqual([f"GameTest did not run: {omitted}"], check_report(self.path))
 
+    def test_compatibility_registry_baseline_is_required(self):
+        self.assertIn("ssc_14:compatibility_registry_ids", EXPECTED_TESTS)
+
     def test_empty_suite_fails(self):
         self.report(set())
         self.assertEqual(len(EXPECTED_TESTS), len(check_report(self.path)))
