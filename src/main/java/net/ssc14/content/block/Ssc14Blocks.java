@@ -221,6 +221,98 @@ public final class Ssc14Blocks {
             register("title_boxing", FloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_CAFETERIA =
             register("title_cafeteria", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_CARPETCLOWN =
+            register("title_carpetclown", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_CARPETOFFICE =
+            register("title_carpetoffice", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_CHECKERDARK =
+            register("title_checkerdark", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_CLOWN =
+            register("title_clown", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_DARKTEST =
+            register("title_darktest", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLEEIGHTIES =
+            register("titleeighties", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_ELEVATORSHAFT =
+            register("title_elevatorshaft", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_EXOBORG =
+            register("title_exoborg", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_FREEZER =
+            register("title_freezer", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_GOLD =
+            register("title_gold", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_GRATINGMAINT =
+            register("title_gratingmaint", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_GREENCIRCUIT =
+            register("title_greencircuit", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_GYM =
+            register("title_gym", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_HULLREINFORCED =
+            register("title_hullreinforced", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_HULL =
+            register("title_hull", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_HYDRO =
+            register("title_hydro", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_KITCHEN =
+            register("title_kitchen", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_LAUNDRY =
+            register("title_laundry", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_LIME =
+            register("title_lime", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_LINO =
+            register("title_lino", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_METALDIAMOND =
+            register("title_metaldiamond", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_MIME =
+            register("title_mime", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_MININGFLOORDARK =
+            register("title_miningfloordark", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_MININGFLOORLIGHT =
+            register("title_miningfloorlight", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_MININGFLOOR =
+            register("title_miningfloor", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_MONO =
+            register("title_mono", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_REDCIRCUIT =
+            register("title_redcircuit", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_REINFORCED =
+            register("title_reinforced", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_ROCKVAULT =
+            register("title_rockvault", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_SHOWROOM =
+            register("title_showroom", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_SHUTTLEBLACK =
+            register("title_shuttleblack", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_SHUTTLEBLUE =
+            register("title_shuttleblue", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_SHUTTLEGREY =
+            register("title_shuttlegrey", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_SHUTTLEORANGE =
+            register("title_shuttleorange", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_SHUTTLEPURPLE =
+            register("title_shuttlepurple", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_SHUTTLERED =
+            register("title_shuttlered", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_SHUTTLEWHITE =
+            register("title_shuttlewhite", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_SILVER =
+            register("title_silver", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEELDIRTY =
+            register("title_steeldirty", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEELMAINT =
+            register("title_steelmaint", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_SUPERREINFORCED =
+            register("title_superreinforced", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_TECHMAINTDARK =
+            register("title_techmaintdark", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_TECHMAINT =
+            register("title_techmaint", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WOODLARGE =
+            register("title_woodlarge", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WOOD =
+            register("title_wood", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WOODTILE =
+            register("title_woodtile", FloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_DARK_DIAGONAL_MINI =
             register("title_dark_diagonal_mini", FloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_DARK_DIAGONAL =
