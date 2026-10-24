@@ -42,6 +42,7 @@ import net.ssc14.content.block.fuel.FuelTankInteractionService;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
 import net.ssc14.content.block.debug.StationCodeDebugInteractionService;
 import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
+import net.ssc14.content.block.debug.DebugGravityStateService;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.block.storage.SecureClosetInteractionService;
 import net.ssc14.content.block.storage.ExtinguisherCabinetInteractionService;
@@ -99,6 +100,7 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14MachineBlockEntities::registerCapabilities);
 		Ssc14DebugBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14DebugBlockEntities::registerCapabilities);
+		DebugGravityStateService.install(enabled -> Ssc14ModVariables.station_gravity = enabled);
 		Ssc14CableBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14CableBlockEntities::registerCapabilities);
 		Ssc14EnergyMachineBlockEntities.REGISTRY.register(modEventBus);

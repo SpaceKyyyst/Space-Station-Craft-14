@@ -18,11 +18,17 @@ public final class Ssc14DebugBlockEntities {
             KOSTILNIBLOK = REGISTRY.register("kostilniblok",
                     () -> new BlockEntityType<>(FailureSentinelBlockEntity::new,
                             Ssc14Blocks.KOSTILNIBLOK.get()));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DebugGravityGeneratorBlockEntity>>
+            DEBUG_GRAV_GEN = REGISTRY.register("debug_grav_gen",
+                    () -> new BlockEntityType<>(DebugGravityGeneratorBlockEntity::new,
+                            Ssc14Blocks.DEBUG_GRAV_GEN.get()));
 
     private Ssc14DebugBlockEntities() { }
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.Item.BLOCK, KOSTILNIBLOK.get(),
+                WorldlyContainerWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, DEBUG_GRAV_GEN.get(),
                 WorldlyContainerWrapper::new);
     }
 }
