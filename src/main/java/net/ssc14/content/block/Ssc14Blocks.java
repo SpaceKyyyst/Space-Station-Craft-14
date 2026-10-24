@@ -9,6 +9,7 @@ import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.block.catwalk.CatwalkFloorBlock;
 import net.ssc14.content.block.ceiling.CeilingTileBlock;
 import net.ssc14.content.block.commerce.SalePalletBlock;
+import net.ssc14.content.block.commerce.OrderPalletBlock;
 import net.ssc14.content.block.decoration.DirectionalBannerBlock;
 import net.ssc14.content.block.decoration.FenceCornerBlock;
 import net.ssc14.content.block.decoration.FenceLineBlock;
@@ -99,6 +100,8 @@ public final class Ssc14Blocks {
     public static final DeferredBlock<Block> SMES = register("smes", SmesBlock::new);
     public static final DeferredBlock<Block> SALE_PALLET =
             register("sale_pallet", SalePalletBlock::new);
+    public static final DeferredBlock<Block> ORDER_PALLET =
+            register("order_pallet", OrderPalletBlock::new);
 
     public static final DeferredBlock<Block> ASTEROID_STONE_BASE =
             register("asteroid_stone_base", AsteroidStoneBaseBlock::new);
