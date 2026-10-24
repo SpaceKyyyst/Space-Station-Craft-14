@@ -10,6 +10,7 @@ import net.ssc14.content.block.catwalk.CatwalkFloorBlock;
 import net.ssc14.content.block.ceiling.CeilingTileBlock;
 import net.ssc14.content.block.commerce.SalePalletBlock;
 import net.ssc14.content.block.commerce.OrderPalletBlock;
+import net.ssc14.content.block.commerce.VendingUpperPlugBlock;
 import net.ssc14.content.block.fuel.FuelTankBlock;
 import net.ssc14.content.block.debug.StationCodeDebugBlock;
 import net.ssc14.content.block.airlock.AirlockThresholdBlock;
@@ -108,6 +109,8 @@ public final class Ssc14Blocks {
             register("sale_pallet", SalePalletBlock::new);
     public static final DeferredBlock<Block> ORDER_PALLET =
             register("order_pallet", OrderPalletBlock::new);
+    public static final DeferredBlock<Block> VENDING_KOSTIL =
+            register("vending_kostil", VendingUpperPlugBlock::new);
     public static final DeferredBlock<Block> FUEL_TANK =
             register("fuel_tank", FuelTankBlock::new);
     public static final DeferredBlock<Block> DEBUG_13 =

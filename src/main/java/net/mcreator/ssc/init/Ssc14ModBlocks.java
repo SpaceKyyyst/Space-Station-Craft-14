@@ -139,7 +139,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> GAS_PRODUCER_O_2;
 	public static final DeferredBlock<Block> VENDING_AUT_1;
-	public static final DeferredBlock<Block> VENDING_KOSTIL;
+	public static final DeferredBlock<Block> VENDING_KOSTIL = Ssc14Blocks.VENDING_KOSTIL;
 	public static final DeferredBlock<Block> DIRECTED_ARMORED_WINDOW = Ssc14Blocks.DIRECTED_ARMORED_WINDOW;
 	public static final DeferredBlock<Block> SHUTTERS;
 	public static final DeferredBlock<Block> BUTTON;
@@ -261,7 +261,6 @@ public class Ssc14ModBlocks {
 		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
 		GAS_PRODUCER_O_2 = register("gas_producer_o_2", GasProducerO2Block::new);
 		VENDING_AUT_1 = register("vending_aut_1", VendingAut1Block::new);
-		VENDING_KOSTIL = register("vending_kostil", VendingKOSTILBlock::new);
 		SHUTTERS = register("shutters", ShuttersBlock::new);
 		BUTTON = register("button", ButtonBlock::new);
 		MICROWAWE = register("microwawe", MicrowaweBlock::new);
