@@ -35,6 +35,9 @@ import net.ssc14.content.entity.Ssc14EntityBehavior;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
+import net.ssc14.content.block.lighting.EmergencyLightingService;
+import net.ssc14.content.block.lighting.LightingEnergyService;
+import net.ssc14.content.block.lighting.Ssc14LightingBlockEntities;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.ssc14.content.sound.Ssc14SoundEvents;
 import net.minecraft.server.MinecraftServer;
@@ -69,10 +72,15 @@ public class Ssc14Mod {
 		Ssc14SoundEvents.REGISTRY.register(modEventBus);
 		Ssc14ModBlocks.initializeLegacyEntries();
 		Ssc14Blocks.REGISTRY.register(modEventBus);
+		Ssc14LightingBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14LightingBlockEntities::registerCapabilities);
 		Ssc14ClosetBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14ClosetBlockEntities::registerCapabilities);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
+		LightingEnergyService.install(EnergyNetworkManager::queueUpdate);
+		EmergencyLightingService.install(level ->
+				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
 		Ssc14EntityTypes.REGISTRY.register(modEventBus);
 		Ssc14ModTabs.REGISTRY.register(modEventBus);
