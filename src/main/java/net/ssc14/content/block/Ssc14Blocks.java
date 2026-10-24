@@ -30,6 +30,8 @@ import net.ssc14.content.block.geology.CaveFloor6Block;
 import net.ssc14.content.block.geology.CaveFloor7Block;
 import net.ssc14.content.block.grille.BrokenGrilleBlock;
 import net.ssc14.content.block.grille.GrilleBlock;
+import net.ssc14.content.block.floor.FloorTileBlock;
+import net.ssc14.content.block.floor.InsetFloorTileBlock;
 import net.ssc14.content.block.planetary.PlanetDirtBlock;
 import net.ssc14.content.block.planetary.PlanetGrassPlantBlock;
 import net.ssc14.content.block.planetary.PlanetGrassSoilBlock;
@@ -184,6 +186,82 @@ public final class Ssc14Blocks {
             register("broken_grille", BrokenGrilleBlock::new);
     public static final DeferredBlock<Block> CATWALK_FLOOR =
             register("catwalk_floor", CatwalkFloorBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEEL =
+            register("title_steel", InsetFloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_DARK =
+            register("title_dark", InsetFloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WHITE =
+            register("title_white", InsetFloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_ARCADEBLUE =
+            register("title_arcadeblue", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLEARCADEBLUE_2 =
+            register("titlearcadeblue_2", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_ARCADERED =
+            register("title_arcadered", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_BAR =
+            register("title_bar", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_BLUE_CIRCUIT =
+            register("title_blue_circuit", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_BLUE =
+            register("title_blue", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_BOXING =
+            register("title_boxing", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_CAFETERIA =
+            register("title_cafeteria", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_DARK_DIAGONAL_MINI =
+            register("title_dark_diagonal_mini", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_DARK_DIAGONAL =
+            register("title_dark_diagonal", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_DARK_MINI =
+            register("title_dark_mini", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_DARK_MONO =
+            register("title_dark_mono", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_DARK_OFFSET =
+            register("title_dark_offset", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_DARK_PAVEMENT =
+            register("title_dark_pavement", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_DARK_PAVEMENT_VERTICAL =
+            register("title_dark_pavement_vertical", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_DARK_HERRINGBONE =
+            register("title_dark_herringbone", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_DARK_PLASTIC =
+            register("title_dark_plastic", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_PLASTIC =
+            register("title_plastic", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEEL_DIAGONAL_MINI =
+            register("title_steel_diagonal_mini", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEEL_DIAGONAL =
+            register("title_steel_diagonal", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEEL_MINI =
+            register("title_steel_mini", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEEL_MONO =
+            register("title_steel_mono", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEEL_OFFSET =
+            register("title_steel_offset", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEEL_PAVEMENT =
+            register("title_steel_pavement", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEEL_HERRINGBONE =
+            register("title_steel_herringbone", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEEL_PAVEMENT_VERTICAL =
+            register("title_steel_pavement_vertical", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WHITE_DIAGONAL_MINI =
+            register("title_white_diagonal_mini", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WHITE_DIAGONAL =
+            register("title_white_diagonal", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WHITE_HERRINGBONE =
+            register("title_white_herringbone", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WHITE_MINI =
+            register("title_white_mini", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WHITE_MONO =
+            register("title_white_mono", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WHITE_OFFSET =
+            register("title_white_offset", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WHITE_PAVEMENT =
+            register("title_white_pavement", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WHITE_PAVEMENT_VERTICAL =
+            register("title_white_pavement_vertical", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WHITE_PLASTIC =
+            register("title_white_plastic", FloorTileBlock::new);
 
     private Ssc14Blocks() {
     }

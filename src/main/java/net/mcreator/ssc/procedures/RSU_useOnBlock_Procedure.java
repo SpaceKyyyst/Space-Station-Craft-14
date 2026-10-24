@@ -287,7 +287,7 @@ public class RSU_useOnBlock_Procedure {
     private static BuildConfig getBuildConfig(int mode) {
         return switch (mode) {
             case 2 -> new BuildConfig(20, 2, 5, Ssc14ModBlocks.STEEL_WALL.get().defaultBlockState(), false);
-            case 3 -> new BuildConfig(0, 0, 1, Ssc14ModBlocks.TITLE_STEEL.get().defaultBlockState(), false);
+            case 3 -> new BuildConfig(0, 0, 1, Ssc14Blocks.TITLE_STEEL.get().defaultBlockState(), false);
             case 4 -> new BuildConfig(20, 1, 1, Ssc14ModBlocks.SHEATHING.get().defaultBlockState(), false);
             case 5 -> new BuildConfig(0, 0, 1, Ssc14Blocks.CATWALK_FLOOR.get().defaultBlockState(), false);
             case 6 -> new BuildConfig(20, 1, 1, Ssc14Blocks.GRILLE.get().defaultBlockState(), false);
