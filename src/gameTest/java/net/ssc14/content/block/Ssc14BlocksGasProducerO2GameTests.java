@@ -49,7 +49,7 @@ public final class Ssc14BlocksGasProducerO2GameTests {
                 "gas producer shape changed");
         helper.assertTrue(block.getPermeability(state) == 1.0F
                         && state.propagatesSkylightDown()
-                        && state.getLightBlock() == 0,
+                        && block.getLightDampening(state) == 0,
                 "gas producer atmosphere or light contract changed");
         helper.assertTrue(state.getVisualShape(helper.getLevel(), pos,
                         net.minecraft.world.phys.shapes.CollisionContext.empty()).isEmpty(),
