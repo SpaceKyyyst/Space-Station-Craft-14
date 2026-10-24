@@ -12,6 +12,7 @@ import net.ssc14.content.block.commerce.SalePalletBlock;
 import net.ssc14.content.block.commerce.OrderPalletBlock;
 import net.ssc14.content.block.fuel.FuelTankBlock;
 import net.ssc14.content.block.debug.StationCodeDebugBlock;
+import net.ssc14.content.block.airlock.AirlockThresholdBlock;
 import net.ssc14.content.block.decoration.DirectionalBannerBlock;
 import net.ssc14.content.block.decoration.FenceCornerBlock;
 import net.ssc14.content.block.decoration.FenceLineBlock;
@@ -108,6 +109,8 @@ public final class Ssc14Blocks {
             register("fuel_tank", FuelTankBlock::new);
     public static final DeferredBlock<Block> DEBUG_13 =
             register("debug_13", StationCodeDebugBlock::new);
+    public static final DeferredBlock<Block> AIRLOCK_THRESHOLD =
+            register("airlock_threshold", AirlockThresholdBlock::new);
 
     public static final DeferredBlock<Block> ASTEROID_STONE_BASE =
             register("asteroid_stone_base", AsteroidStoneBaseBlock::new);
