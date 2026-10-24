@@ -9,7 +9,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.ssc14.handy.server.ui.ServerUIManager;
 import com.ssc14.handy.window.access.Source;
 import net.mcreator.ssc.Ssc14Mod;
-import net.mcreator.ssc.block.entity.GravityGeneratorBlockEntity;
+import net.ssc14.content.block.gravity.GravityGeneratorBlockEntity;
 import net.mcreator.ssc.procedures.GravGenGUIETAtextProcedure;
 import net.mcreator.ssc.procedures.GravGenGUIpercentTextProcedure;
 import net.minecraft.core.GlobalPos;

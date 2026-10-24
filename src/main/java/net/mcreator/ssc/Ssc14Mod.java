@@ -31,6 +31,8 @@ import net.mcreator.ssc.init.*;
 import net.mcreator.ssc.scheduling.ServerTaskScheduler;
 import net.mcreator.ssc.scheduling.SubmissionResult;
 import net.mcreator.ssc.world.inventory.MacFrameGUIMenu;
+import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
+import net.mcreator.ssc.gravity.ui.GravityGeneratorWindow;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.content.entity.Ssc14EntityBehavior;
@@ -41,6 +43,9 @@ import net.ssc14.content.block.commerce.OrderPalletRegistryService;
 import net.ssc14.content.block.fuel.FuelTankInteractionService;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
 import net.ssc14.content.block.gravity.GravityGeneratorPlugLifecycleService;
+import net.ssc14.content.block.gravity.GravityGeneratorLifecycleService;
+import net.ssc14.content.block.gravity.GravityGeneratorUiService;
+import net.ssc14.content.block.gravity.Ssc14GravityBlockEntities;
 import net.ssc14.content.block.debug.StationCodeDebugInteractionService;
 import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
 import net.ssc14.content.block.debug.DebugGravityStateService;
@@ -105,6 +110,8 @@ public class Ssc14Mod {
 		Ssc14DebugBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14DebugBlockEntities::registerCapabilities);
 		DebugGravityStateService.install(enabled -> Ssc14ModVariables.station_gravity = enabled);
+		Ssc14GravityBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14GravityBlockEntities::registerCapabilities);
 		Ssc14ExplosiveBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14ExplosiveBlockEntities::registerCapabilities);
 		Ssc14CableBlockEntities.REGISTRY.register(modEventBus);
@@ -193,6 +200,65 @@ public class Ssc14Mod {
 								level, pos.getX(), pos.getY(), pos.getZ());
 					}
 				});
+		GravityGeneratorLifecycleService.install(new GravityGeneratorLifecycleService.Adapter() {
+			@Override
+			public boolean canSurvive(LevelAccessor level, net.minecraft.core.BlockPos pos) {
+				return net.mcreator.ssc.procedures.GravityGenerator_Placement_TermsProcedure.execute(
+						level, pos.getX(), pos.getY(), pos.getZ());
+			}
+
+			@Override
+			public void placed(net.minecraft.world.level.Level level,
+					net.minecraft.core.BlockPos pos,
+					net.minecraft.world.level.block.state.BlockState state) {
+				net.mcreator.ssc.procedures.GravityGenerator_PlugBlock_Generate_Procedure.execute(
+						level, pos.getX(), pos.getY(), pos.getZ(), state);
+			}
+
+			@Override
+			public void tick(ServerLevel level, net.minecraft.core.BlockPos pos,
+					net.minecraft.world.level.block.state.BlockState state) {
+				net.mcreator.ssc.procedures.GravGenTICprocedureProcedure.execute(
+						level, pos.getX(), pos.getY(), pos.getZ(), state);
+			}
+
+			@Override
+			public void destroyed() {
+				net.mcreator.ssc.procedures.GravityGenerator_DestroyProcedure.execute();
+			}
+		});
+		GravityGeneratorUiService.install(new GravityGeneratorUiService.Adapter() {
+			@Override
+			public boolean canAccess(
+					net.ssc14.content.block.gravity.GravityGeneratorBlockEntity generator,
+					Player player, net.minecraft.core.GlobalPos source) {
+				return GravityGeneratorWindow.canAccess(generator, player, source);
+			}
+
+			@Override
+			public com.lowdragmc.lowdraglib2.gui.ui.ModularUI create(
+					net.ssc14.content.block.gravity.GravityGeneratorBlockEntity generator,
+					net.minecraft.core.GlobalPos source, Player player) {
+				return GravityGeneratorWindow.create(generator, source, player);
+			}
+
+			@Override
+			public com.ssc14.handy.window.WindowProperties windowProperties() {
+				return new com.ssc14.handy.window.WindowProperties()
+						.width(GravityGeneratorWindow.WIDTH).height(GravityGeneratorWindow.HEIGHT)
+						.minWidth(GravityGeneratorWindow.WIDTH)
+						.minHeight(GravityGeneratorWindow.HEIGHT);
+			}
+
+			@Override
+			public net.minecraft.world.inventory.AbstractContainerMenu createMenu(
+					net.ssc14.content.block.gravity.GravityGeneratorBlockEntity generator,
+					int id, net.minecraft.world.entity.player.Inventory inventory) {
+				return new GravGenGUIMenu(id, inventory,
+						new FriendlyByteBuf(Unpooled.buffer())
+								.writeBlockPos(generator.getBlockPos()));
+			}
+		});
 		StationCodeDebugInteractionService.install((level, pos, player) ->
 				net.mcreator.ssc.procedures.DEBUG13PriShchielchkiePKMPoBlokuProcedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ(), player));

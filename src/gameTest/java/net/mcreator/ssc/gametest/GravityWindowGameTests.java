@@ -1,6 +1,6 @@
 package net.mcreator.ssc.gametest;
 
-import net.mcreator.ssc.block.entity.GravityGeneratorBlockEntity;
+import net.ssc14.content.block.gravity.GravityGeneratorBlockEntity;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.gravity.EntityGravityController;
 import net.mcreator.ssc.gravity.GravityPolicy;

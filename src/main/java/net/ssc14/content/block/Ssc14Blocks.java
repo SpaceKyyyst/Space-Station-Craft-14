@@ -47,6 +47,7 @@ import net.ssc14.content.block.geology.CaveFloor7Block;
 import net.ssc14.content.block.grille.BrokenGrilleBlock;
 import net.ssc14.content.block.grille.GrilleBlock;
 import net.ssc14.content.block.gravity.GravityGeneratorPlugBlock;
+import net.ssc14.content.block.gravity.GravityGeneratorBlock;
 import net.ssc14.content.block.lighting.DebugLightBlock;
 import net.ssc14.content.block.lighting.EmergencyLightBlock;
 import net.ssc14.content.block.lighting.EnergyLampBlock;
@@ -133,6 +134,8 @@ public final class Ssc14Blocks {
             register("nuclear_warhead", NuclearWarheadBlock::new);
     public static final DeferredBlock<Block> GRAV_GEN_PLUG_BLOCK =
             register("grav_gen_plug_block", GravityGeneratorPlugBlock::new);
+    public static final DeferredBlock<Block> GRAVITY_GENERATOR =
+            register("gravity_generator", GravityGeneratorBlock::new);
     public static final DeferredBlock<Block> AIRLOCK_THRESHOLD =
             register("airlock_threshold", AirlockThresholdBlock::new);
     public static final DeferredBlock<Block> UP_CLOSET_PLUG =
