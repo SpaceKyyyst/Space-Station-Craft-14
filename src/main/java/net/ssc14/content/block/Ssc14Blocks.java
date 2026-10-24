@@ -32,6 +32,8 @@ import net.ssc14.content.block.geology.CaveFloor7Block;
 import net.ssc14.content.block.grille.BrokenGrilleBlock;
 import net.ssc14.content.block.grille.GrilleBlock;
 import net.ssc14.content.block.floor.FloorTileBlock;
+import net.ssc14.content.block.floor.FiveVariantFloorTileBlock;
+import net.ssc14.content.block.floor.FourVariantFloorTileBlock;
 import net.ssc14.content.block.floor.InsetFloorTileBlock;
 import net.ssc14.content.block.planetary.PlanetDirtBlock;
 import net.ssc14.content.block.planetary.PlanetGrassPlantBlock;
@@ -261,6 +263,8 @@ public final class Ssc14Blocks {
             register("title_lime", FloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_LINO =
             register("title_lino", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_MEAT =
+            register("title_meat", FourVariantFloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_METALDIAMOND =
             register("title_metaldiamond", FloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_MIME =
@@ -297,6 +301,8 @@ public final class Ssc14Blocks {
             register("title_shuttlewhite", FloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_SILVER =
             register("title_silver", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_STEELDAMAGED =
+            register("title_steeldamaged", FiveVariantFloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_STEELDIRTY =
             register("title_steeldirty", FloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_STEELMAINT =
@@ -311,6 +317,8 @@ public final class Ssc14Blocks {
             register("title_woodlarge", FloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_WOOD =
             register("title_wood", FloorTileBlock::new);
+    public static final DeferredBlock<Block> TITLE_WOODBROKEN =
+            register("title_woodbroken", FiveVariantFloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_WOODTILE =
             register("title_woodtile", FloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_DARK_DIAGONAL_MINI =

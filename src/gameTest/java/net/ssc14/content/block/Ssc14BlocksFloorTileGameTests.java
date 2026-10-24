@@ -30,6 +30,7 @@ import net.ssc14.content.block.floor.AbstractFloorTileBlock;
 import net.ssc14.content.block.floor.FloorTileBlock;
 import net.ssc14.content.block.floor.FloorTileSupportPolicy;
 import net.ssc14.content.block.floor.InsetFloorTileBlock;
+import net.ssc14.content.block.floor.RandomizedFloorTileBlock;
 
 @EventBusSubscriber(modid = Ssc14Identity.MOD_ID)
 public final class Ssc14BlocksFloorTileGameTests {
@@ -66,6 +67,7 @@ public final class Ssc14BlocksFloorTileGameTests {
             expected("TITLE_LAUNDRY", "title_laundry", false),
             expected("TITLE_LIME", "title_lime", false),
             expected("TITLE_LINO", "title_lino", false),
+            expected("TITLE_MEAT", "title_meat", false),
             expected("TITLE_METALDIAMOND", "title_metaldiamond", false),
             expected("TITLE_MIME", "title_mime", false),
             expected("TITLE_MININGFLOORDARK", "title_miningfloordark", false),
@@ -84,6 +86,7 @@ public final class Ssc14BlocksFloorTileGameTests {
             expected("TITLE_SHUTTLERED", "title_shuttlered", false),
             expected("TITLE_SHUTTLEWHITE", "title_shuttlewhite", false),
             expected("TITLE_SILVER", "title_silver", false),
+            expected("TITLE_STEELDAMAGED", "title_steeldamaged", false),
             expected("TITLE_STEELDIRTY", "title_steeldirty", false),
             expected("TITLE_STEELMAINT", "title_steelmaint", false),
             expected("TITLE_SUPERREINFORCED", "title_superreinforced", false),
@@ -91,6 +94,7 @@ public final class Ssc14BlocksFloorTileGameTests {
             expected("TITLE_TECHMAINT", "title_techmaint", false),
             expected("TITLE_WOODLARGE", "title_woodlarge", false),
             expected("TITLE_WOOD", "title_wood", false),
+            expected("TITLE_WOODBROKEN", "title_woodbroken", false),
             expected("TITLE_WOODTILE", "title_woodtile", false),
             expected("TITLE_DARK_DIAGONAL_MINI", "title_dark_diagonal_mini", false),
             expected("TITLE_DARK_DIAGONAL", "title_dark_diagonal", false),
@@ -188,6 +192,10 @@ public final class Ssc14BlocksFloorTileGameTests {
                     expected.path() + " shape changed");
         }
 
+        assertStateRange(helper, get("TITLE_MEAT"), 4);
+        assertStateRange(helper, get("TITLE_STEELDAMAGED"), 5);
+        assertStateRange(helper, get("TITLE_WOODBROKEN"), 5);
+
         AbstractFloorTileBlock tile = get("TITLE_STEEL");
         var tileState = tile.defaultBlockState();
         level.setBlock(support, Ssc14Blocks.CAVE_FLOOR_1.get().defaultBlockState(), Block.UPDATE_ALL);
@@ -206,6 +214,16 @@ public final class Ssc14BlocksFloorTileGameTests {
         assertDoorwayCollisions(helper, pos, tileState, inset, Direction.NORTH);
         assertDoorwayCollisions(helper, pos, tileState, inset, Direction.EAST);
         helper.succeed();
+    }
+
+    private static void assertStateRange(GameTestHelper helper, AbstractFloorTileBlock block,
+            int maximumState) {
+        helper.assertTrue(block instanceof RandomizedFloorTileBlock,
+                BuiltInRegistries.BLOCK.getKey(block) + " randomized family changed");
+        RandomizedFloorTileBlock randomized = (RandomizedFloorTileBlock) block;
+        helper.assertTrue(randomized.stateProperty().getPossibleValues().stream()
+                        .mapToInt(Integer::intValue).max().orElseThrow() == maximumState,
+                BuiltInRegistries.BLOCK.getKey(block) + " state range changed");
     }
 
     private static void assertDoorwayCollisions(GameTestHelper helper, BlockPos pos,

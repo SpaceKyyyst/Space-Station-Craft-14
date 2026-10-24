@@ -114,10 +114,10 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14Blocks.TITLE_WOOD.get().asItem());
 				tabData.accept(Ssc14Blocks.TITLE_WOODTILE.get().asItem());
 				tabData.accept(Ssc14Blocks.TITLE_WOODLARGE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.TITLE_WOODBROKEN.get().asItem());
-				tabData.accept(Ssc14ModBlocks.TITLE_STEELDAMAGED.get().asItem());
+				tabData.accept(Ssc14Blocks.TITLE_WOODBROKEN.get().asItem());
+				tabData.accept(Ssc14Blocks.TITLE_STEELDAMAGED.get().asItem());
 				tabData.accept(Ssc14Blocks.TITLE_STEELDIRTY.get().asItem());
-				tabData.accept(Ssc14ModBlocks.TITLE_MEAT.get().asItem());
+				tabData.accept(Ssc14Blocks.TITLE_MEAT.get().asItem());
 				tabData.accept(Ssc14Blocks.TITLE_ELEVATORSHAFT.get().asItem());
 				tabData.accept(Ssc14Blocks.TITLE_EXOBORG.get().asItem());
 				tabData.accept(Ssc14Blocks.TITLE_DARKTEST.get().asItem());

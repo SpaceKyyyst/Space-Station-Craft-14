@@ -14,6 +14,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.ssc14.content.block.floor.AbstractFloorTileBlock;
+import net.ssc14.content.block.floor.RandomizedFloorTileBlock;
 import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksFloorTileCompatibilityTest {
@@ -49,6 +50,7 @@ class Ssc14BlocksFloorTileCompatibilityTest {
             expected("TITLE_LAUNDRY", "title_laundry", "TitleLaundryBlock", false),
             expected("TITLE_LIME", "title_lime", "TitleLimeBlock", false),
             expected("TITLE_LINO", "title_lino", "TitleLinoBlock", false),
+            expected("TITLE_MEAT", "title_meat", "TitleMeatBlock", false),
             expected("TITLE_METALDIAMOND", "title_metaldiamond", "TitleMetaldiamondBlock", false),
             expected("TITLE_MIME", "title_mime", "TitleMimeBlock", false),
             expected("TITLE_MININGFLOORDARK", "title_miningfloordark", "TitleMiningfloordarkBlock", false),
@@ -67,6 +69,7 @@ class Ssc14BlocksFloorTileCompatibilityTest {
             expected("TITLE_SHUTTLERED", "title_shuttlered", "TitleShuttleredBlock", false),
             expected("TITLE_SHUTTLEWHITE", "title_shuttlewhite", "TitleShuttlewhiteBlock", false),
             expected("TITLE_SILVER", "title_silver", "TitleSilverBlock", false),
+            expected("TITLE_STEELDAMAGED", "title_steeldamaged", "TitleSteeldamagedBlock", false),
             expected("TITLE_STEELDIRTY", "title_steeldirty", "TitleSteeldirtyBlock", false),
             expected("TITLE_STEELMAINT", "title_steelmaint", "TitleSteelmaintBlock", false),
             expected("TITLE_SUPERREINFORCED", "title_superreinforced", "TitleSuperreinforcedBlock", false),
@@ -74,6 +77,7 @@ class Ssc14BlocksFloorTileCompatibilityTest {
             expected("TITLE_TECHMAINT", "title_techmaint", "TitleTechmaintBlock", false),
             expected("TITLE_WOODLARGE", "title_woodlarge", "TitleWoodlargeBlock", false),
             expected("TITLE_WOOD", "title_wood", "TitleWoodBlock", false),
+            expected("TITLE_WOODBROKEN", "title_woodbroken", "TitleWoodbrokenBlock", false),
             expected("TITLE_WOODTILE", "title_woodtile", "TitleWoodtileBlock", false),
             expected("TITLE_DARK_DIAGONAL_MINI", "title_dark_diagonal_mini", "TitleDarkDiagonalMiniBlock", false),
             expected("TITLE_DARK_DIAGONAL", "title_dark_diagonal", "TitleDarkDiagonalBlock", false),
@@ -128,6 +132,26 @@ class Ssc14BlocksFloorTileCompatibilityTest {
         var execute = Title_Placement_ConditionsProcedure.class.getMethod("execute",
                 LevelAccessor.class, double.class, double.class, double.class);
         assertSame(boolean.class, execute.getReturnType());
+    }
+
+    @Test
+    void randomizedVariantsKeepExactStateRanges() throws Exception {
+        assertRandomizedVariant("TITLE_MEAT", "TitleMeatBlock", 4);
+        assertRandomizedVariant("TITLE_STEELDAMAGED", "TitleSteeldamagedBlock", 5);
+        assertRandomizedVariant("TITLE_WOODBROKEN", "TitleWoodbrokenBlock", 5);
+    }
+
+    private static void assertRandomizedVariant(String field, String legacyClass,
+            int maximumState) throws Exception {
+        Class<?> legacy = Class.forName("net.mcreator.ssc.block." + legacyClass);
+        assertTrue(RandomizedFloorTileBlock.class.isAssignableFrom(legacy), legacyClass);
+        var property = legacy.getField("STATE").get(null);
+        assertTrue(property instanceof net.minecraft.world.level.block.state.properties.IntegerProperty);
+        assertEquals(maximumState,
+                ((net.minecraft.world.level.block.state.properties.IntegerProperty) property)
+                        .getPossibleValues().stream().mapToInt(Integer::intValue).max().orElseThrow());
+        assertSame(Ssc14Blocks.class.getField(field).get(null),
+                Ssc14ModBlocks.class.getField(field).get(null));
     }
 
     @Test
