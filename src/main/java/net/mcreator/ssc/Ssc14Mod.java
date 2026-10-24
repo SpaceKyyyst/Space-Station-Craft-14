@@ -40,6 +40,7 @@ import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.OrderPalletRegistryService;
 import net.ssc14.content.block.fuel.FuelTankInteractionService;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
+import net.ssc14.content.block.debug.StationCodeDebugInteractionService;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.block.lighting.EmergencyLightingService;
 import net.ssc14.content.block.lighting.LightingEnergyService;
@@ -137,6 +138,9 @@ public class Ssc14Mod {
 						level, pos.getX(), pos.getY(), pos.getZ(), player);
 			}
 		});
+		StationCodeDebugInteractionService.install((level, pos, player) ->
+				net.mcreator.ssc.procedures.DEBUG13PriShchielchkiePKMPoBlokuProcedure.execute(
+						level, pos.getX(), pos.getY(), pos.getZ(), player));
 		EmergencyLightingService.install(level ->
 				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
 		MachineFrameAssemblyService.install(Ssc14ModItems.LOW_VOLTAGE_CABLE,
