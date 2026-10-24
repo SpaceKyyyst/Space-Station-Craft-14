@@ -40,6 +40,7 @@ import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.OrderPalletRegistryService;
 import net.ssc14.content.block.fuel.FuelTankInteractionService;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
+import net.ssc14.content.block.gravity.GravityGeneratorPlugLifecycleService;
 import net.ssc14.content.block.debug.StationCodeDebugInteractionService;
 import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
 import net.ssc14.content.block.debug.DebugGravityStateService;
@@ -176,6 +177,22 @@ public class Ssc14Mod {
 		NuclearWarheadInteractionService.install((level, pos) ->
 				net.mcreator.ssc.procedures.NuclearWarhead_ExpProcedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ()));
+		GravityGeneratorPlugLifecycleService.install(
+				new GravityGeneratorPlugLifecycleService.Adapter() {
+					@Override
+					public void neighborChanged(net.minecraft.world.level.Level level,
+							net.minecraft.core.BlockPos pos) {
+						net.mcreator.ssc.procedures.GravGenPlugBlock_Trigger_Procedure.execute(
+								level, pos.getX(), pos.getY(), pos.getZ());
+					}
+
+					@Override
+					public void destroyed(net.minecraft.world.level.Level level,
+							net.minecraft.core.BlockPos pos) {
+						net.mcreator.ssc.procedures.GravGenPlugBlock_Destroy_Procedure.execute(
+								level, pos.getX(), pos.getY(), pos.getZ());
+					}
+				});
 		StationCodeDebugInteractionService.install((level, pos, player) ->
 				net.mcreator.ssc.procedures.DEBUG13PriShchielchkiePKMPoBlokuProcedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ(), player));
