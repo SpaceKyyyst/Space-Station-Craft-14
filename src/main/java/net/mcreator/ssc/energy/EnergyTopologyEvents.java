@@ -44,7 +44,7 @@ public final class EnergyTopologyEvents {
 
     private static void invalidateDevice(net.minecraft.world.level.LevelAccessor level, net.minecraft.core.BlockPos position) {
         var state = level.getBlockState(position);
-        if (state.getBlock() instanceof net.mcreator.ssc.block.SheathingBlock
+        if (state.getBlock() instanceof net.ssc14.content.block.energy.SheathingBlock
                 || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.APC.get())
                 || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.PODSTATION.get())
                 || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.DEBU_GGENERATOR.get())

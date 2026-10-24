@@ -43,6 +43,8 @@ import net.ssc14.content.block.lighting.Ssc14LightingBlockEntities;
 import net.ssc14.content.block.machinery.MachineFrameAssemblyService;
 import net.ssc14.content.block.machinery.MachineFrameMenuService;
 import net.ssc14.content.block.machinery.Ssc14MachineBlockEntities;
+import net.ssc14.content.block.energy.CableTopologyService;
+import net.ssc14.content.block.energy.Ssc14CableBlockEntities;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.ssc14.content.sound.Ssc14SoundEvents;
 import net.minecraft.server.MinecraftServer;
@@ -85,9 +87,22 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14ClosetBlockEntities::registerCapabilities);
 		Ssc14MachineBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14MachineBlockEntities::registerCapabilities);
+		Ssc14CableBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14CableBlockEntities::registerCapabilities);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
 		LightingEnergyService.install(EnergyNetworkManager::queueUpdate);
+		CableTopologyService.install(new CableTopologyService.Adapter() {
+			@Override
+			public void queueUpdate(LevelAccessor level, net.minecraft.core.BlockPos pos) {
+				EnergyNetworkManager.queueUpdate(level, pos);
+			}
+
+			@Override
+			public void invalidate(LevelAccessor level, net.minecraft.core.BlockPos pos) {
+				EnergyNetworkManager.invalidate(level, pos);
+			}
+		});
 		EmergencyLightingService.install(level ->
 				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
 		MachineFrameAssemblyService.install(Ssc14ModItems.LOW_VOLTAGE_CABLE,

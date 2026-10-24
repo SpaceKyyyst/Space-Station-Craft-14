@@ -4,7 +4,7 @@ import net.mcreator.ssc.CableType;
 import net.mcreator.ssc.EnergyNetwork;
 import net.mcreator.ssc.EnergyNetworkManager;
 import net.mcreator.ssc.block.LampBlock;
-import net.mcreator.ssc.block.SheathingBlock;
+import net.ssc14.content.block.energy.SheathingBlock;
 import net.mcreator.ssc.block.entity.APCBlockEntity;
 import net.mcreator.ssc.block.entity.PodstationBlockEntity;
 import net.mcreator.ssc.init.Ssc14ModBlocks;

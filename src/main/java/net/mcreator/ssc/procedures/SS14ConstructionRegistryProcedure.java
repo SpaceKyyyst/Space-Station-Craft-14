@@ -26,7 +26,7 @@ import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
 import net.mcreator.ssc.init.*;
-import net.mcreator.ssc.block.SheathingBlock;
+import net.ssc14.content.block.energy.SheathingBlock;
 import net.mcreator.ssc.EnergyNetworkManager;
 
 import java.util.*;
