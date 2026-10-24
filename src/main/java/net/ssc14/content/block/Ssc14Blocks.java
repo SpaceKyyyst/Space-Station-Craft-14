@@ -59,6 +59,7 @@ import net.ssc14.content.block.lighting.ServiceableLightBlock;
 import net.ssc14.content.block.lighting.WallMountedLightBlock;
 import net.ssc14.content.block.machinery.AssembledMachineFrameBlock;
 import net.ssc14.content.block.machinery.MachineFrameBlock;
+import net.ssc14.content.block.machinery.MicrowaveBlock;
 import net.ssc14.content.block.machinery.ComputerBlock;
 import net.ssc14.content.block.machinery.PortableSheaterBlock;
 import net.ssc14.content.block.floor.FloorTileBlock;
@@ -112,6 +113,8 @@ public final class Ssc14Blocks {
             register("machine_frame_2", AssembledMachineFrameBlock::new);
     public static final DeferredBlock<Block> PORTABLE_SHEATER =
             register("portable_sheater", PortableSheaterBlock::new);
+    public static final DeferredBlock<Block> MICROWAWE =
+            register("microwawe", MicrowaveBlock::new);
     public static final DeferredBlock<Block> SHEATHING =
             register("sheathing", SheathingBlock::new);
     public static final DeferredBlock<Block> APC = register("apc", ApcBlock::new);

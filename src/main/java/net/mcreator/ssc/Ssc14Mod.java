@@ -32,6 +32,7 @@ import net.mcreator.ssc.scheduling.ServerTaskScheduler;
 import net.mcreator.ssc.scheduling.SubmissionResult;
 import net.mcreator.ssc.world.inventory.MacFrameGUIMenu;
 import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
+import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
 import net.mcreator.ssc.world.inventory.CommunConsoleGUIMenu;
 import net.mcreator.ssc.gravity.ui.GravityGeneratorWindow;
 import net.ssc14.common.Ssc14Identity;
@@ -66,6 +67,7 @@ import net.ssc14.content.block.lighting.LightingEnergyService;
 import net.ssc14.content.block.lighting.Ssc14LightingBlockEntities;
 import net.ssc14.content.block.machinery.MachineFrameAssemblyService;
 import net.ssc14.content.block.machinery.MachineFrameMenuService;
+import net.ssc14.content.block.machinery.MicrowaveMenuService;
 import net.ssc14.content.block.machinery.Ssc14MachineBlockEntities;
 import net.ssc14.content.block.energy.CableTopologyService;
 import net.ssc14.content.block.energy.Ssc14CableBlockEntities;
@@ -336,6 +338,8 @@ public class Ssc14Mod {
 		MachineFrameAssemblyService.install(Ssc14ModItems.LOW_VOLTAGE_CABLE,
 				Ssc14Blocks.MACHINE_FRAME_2);
 		MachineFrameMenuService.install((id, inventory, pos) -> new MacFrameGUIMenu(
+				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
+		MicrowaveMenuService.install((id, inventory, pos) -> new MicrowaweGUIMenu(
 				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
 		Ssc14EntityTypes.REGISTRY.register(modEventBus);
