@@ -30,7 +30,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> UP_TITLE = Ssc14Blocks.UP_TITLE;
 	public static final DeferredBlock<Block> CONSOLE_OF_ID;
 	public static final DeferredBlock<Block> BASE_WINDOW = Ssc14Blocks.BASE_WINDOW;
-	public static final DeferredBlock<Block> PORTABLE_SHEATER;
+	public static final DeferredBlock<Block> PORTABLE_SHEATER = Ssc14Blocks.PORTABLE_SHEATER;
 	public static final DeferredBlock<Block> PLASTEEL_WALL = Ssc14Blocks.PLASTEEL_WALL;
 	public static final DeferredBlock<Block> PLASTEEL_WALL_CARCASE = Ssc14Blocks.PLASTEEL_WALL_CARCASE;
 	public static final DeferredBlock<Block> TITLE_DARK = Ssc14Blocks.TITLE_DARK;
@@ -246,7 +246,6 @@ public class Ssc14ModBlocks {
 	static {
 		BASE_AIRLOCK_D_1 = register("base_airlock_d_1", BaseAirlockD1Block::new);
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
-		PORTABLE_SHEATER = register("portable_sheater", PortableSheaterBlock::new);
 		AIRLOCK_UP_PLUG = register("airlock_up_plug", AirlockUpPlugBlock::new);
 		AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", AirlockUpPlugOPENBlock::new);
 		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);

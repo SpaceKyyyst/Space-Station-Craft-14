@@ -18,11 +18,17 @@ public final class Ssc14MachineBlockEntities {
             MACHINE_FRAME_2 = REGISTRY.register("machine_frame_2",
                     () -> new BlockEntityType<>(MachineFrameBlockEntity::new,
                             Ssc14Blocks.MACHINE_FRAME_2.get()));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PortableSheaterBlockEntity>>
+            PORTABLE_SHEATER = REGISTRY.register("portable_sheater",
+                    () -> new BlockEntityType<>(PortableSheaterBlockEntity::new,
+                            Ssc14Blocks.PORTABLE_SHEATER.get()));
 
     private Ssc14MachineBlockEntities() { }
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.Item.BLOCK, MACHINE_FRAME_2.get(),
+                WorldlyContainerWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, PORTABLE_SHEATER.get(),
                 WorldlyContainerWrapper::new);
     }
 }
