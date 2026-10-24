@@ -122,6 +122,9 @@ class GameTestReportTests(unittest.TestCase):
     def test_airlock_threshold_block_contract_is_required(self):
         self.assertIn("ssc_14:compatibility_block_airlock_threshold_contract", EXPECTED_TESTS)
 
+    def test_upper_closet_plug_block_contract_is_required(self):
+        self.assertIn("ssc_14:compatibility_block_upper_closet_plug_contract", EXPECTED_TESTS)
+
     def test_empty_suite_fails(self):
         self.report(set())
         self.assertEqual(len(EXPECTED_TESTS), len(check_report(self.path)))

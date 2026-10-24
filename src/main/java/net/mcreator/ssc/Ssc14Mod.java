@@ -42,6 +42,7 @@ import net.ssc14.content.block.fuel.FuelTankInteractionService;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
 import net.ssc14.content.block.debug.StationCodeDebugInteractionService;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
+import net.ssc14.content.block.storage.UpperClosetPlugInteractionService;
 import net.ssc14.content.block.lighting.EmergencyLightingService;
 import net.ssc14.content.block.lighting.LightingEnergyService;
 import net.ssc14.content.block.lighting.Ssc14LightingBlockEntities;
@@ -140,6 +141,9 @@ public class Ssc14Mod {
 		});
 		StationCodeDebugInteractionService.install((level, pos, player) ->
 				net.mcreator.ssc.procedures.DEBUG13PriShchielchkiePKMPoBlokuProcedure.execute(
+						level, pos.getX(), pos.getY(), pos.getZ(), player));
+		UpperClosetPlugInteractionService.install((level, pos, player) ->
+				net.mcreator.ssc.procedures.UpClosetPLUG_clickProcedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ(), player));
 		EmergencyLightingService.install(level ->
 				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
