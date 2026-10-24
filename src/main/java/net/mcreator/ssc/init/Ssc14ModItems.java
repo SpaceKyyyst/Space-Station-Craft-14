@@ -604,7 +604,7 @@ public class Ssc14ModItems {
 		CONSOLE_OF_ID = block(Ssc14ModBlocks.CONSOLE_OF_ID, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
 		ID_CONSOLE_ENTITY_SPAWN_EGG = register("id_console_entity_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.ID_CONSOLE_ENTITY.get())));
 		GAS_ANALYSER = register("gas_analyser", GasAnalyserItem::new);
-		BASE_WINDOW = block(Ssc14ModBlocks.BASE_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
+		BASE_WINDOW = block(Ssc14Blocks.BASE_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
 		GLASS_SHARD = register("glass_shard", GlassShardItem::new);
 		GLASS = register("glass", GlassItem::new);
 		ACCESS_CONFIG = register("access_config", AccessConfigItem::new);
@@ -696,7 +696,7 @@ public class Ssc14ModItems {
 		LIGHT_BULB = register("light_bulb", LightBulbItem::new);
 		LED_LIGHT_TUBE_BROKEN = register("led_light_tube_broken", LedLightTubeBrokenItem::new);
 		LIGHT_BULB_BROKEN = register("light_bulb_broken", LightBulbBrokenItem::new);
-		ARMORED_WINDOW = block(Ssc14ModBlocks.ARMORED_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
+		ARMORED_WINDOW = block(Ssc14Blocks.ARMORED_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
 		ARM_GLASS_SHARD = register("arm_glass_shard", ArmGlassShardItem::new);
 		ARM_GLASS = register("arm_glass", ArmGlassItem::new);
 		DEBUG_LAMP = block(Ssc14ModBlocks.DEBUG_LAMP, new Item.Properties().stacksTo(1).fireResistant());
@@ -766,7 +766,7 @@ public class Ssc14ModItems {
 		UP_DARK_STAIRCASE = block(Ssc14Blocks.UP_DARK_STAIRCASE, new Item.Properties().stacksTo(1));
 		SHUTTLE_WALL = block(Ssc14ModBlocks.SHUTTLE_WALL, new Item.Properties().stacksTo(1).fireResistant());
 		ARMORED_SHUTTLE_WALL = block(Ssc14ModBlocks.ARMORED_SHUTTLE_WALL, new Item.Properties().stacksTo(1).fireResistant());
-		DIRECTED_BASE_WINDOW = block(Ssc14ModBlocks.DIRECTED_BASE_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
+		DIRECTED_BASE_WINDOW = block(Ssc14Blocks.DIRECTED_BASE_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
 		RED_SCARF = register("red_scarf", RedScarfItem::new);
 		BLACK_SCARF = register("black_scarf", BlackScarfItem::new);
 		BLACK_GREEN_SCARF = register("black_green_scarf", BlackGreenScarfItem::new);
@@ -890,7 +890,7 @@ public class Ssc14ModItems {
 		MOUSE_BROWN_SPAWN_EGG = register("mouse_brown_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.MOUSE_BROWN.get())));
 		MOUSE_GRAY_SPAWN_EGG = register("mouse_gray_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.MOUSE_GRAY.get())));
 		MOUSE_WHITE_SPAWN_EGG = register("mouse_white_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.MOUSE_WHITE.get())));
-		DIRECTED_ARMORED_WINDOW = block(Ssc14ModBlocks.DIRECTED_ARMORED_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
+		DIRECTED_ARMORED_WINDOW = block(Ssc14Blocks.DIRECTED_ARMORED_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
 		BARTENDER_JUMPSUIT = register("bartender_jumpsuit", BartenderJumpsuitItem::new);
 		BRIGMEDIC_JUMPSUIT = register("brigmedic_jumpsuit", BrigmedicJumpsuitItem::new);
 		CAPFORMAL_JUMPSUIT = register("capformal_jumpsuit", CapformalJumpsuitItem::new);

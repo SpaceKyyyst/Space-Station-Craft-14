@@ -136,10 +136,10 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.SHUTTLE_WALL.get().asItem());
 				tabData.accept(Ssc14ModBlocks.ARMORED_SHUTTLE_WALL.get().asItem());
-				tabData.accept(Ssc14ModBlocks.BASE_WINDOW.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ARMORED_WINDOW.get().asItem());
-				tabData.accept(Ssc14ModBlocks.DIRECTED_BASE_WINDOW.get().asItem());
-				tabData.accept(Ssc14ModBlocks.DIRECTED_ARMORED_WINDOW.get().asItem());
+				tabData.accept(Ssc14Blocks.BASE_WINDOW.get().asItem());
+				tabData.accept(Ssc14Blocks.ARMORED_WINDOW.get().asItem());
+				tabData.accept(Ssc14Blocks.DIRECTED_BASE_WINDOW.get().asItem());
+				tabData.accept(Ssc14Blocks.DIRECTED_ARMORED_WINDOW.get().asItem());
 				tabData.accept(Ssc14Blocks.ASTEROID_STONE_BASE.get().asItem());
 				tabData.accept(Ssc14Blocks.ASTEROID_STONE_IRON.get().asItem());
 				tabData.accept(Ssc14Blocks.ASTEROID_STONE_QUARTZ.get().asItem());

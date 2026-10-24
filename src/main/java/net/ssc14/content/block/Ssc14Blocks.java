@@ -42,6 +42,10 @@ import net.ssc14.content.block.furniture.WoodChairBlock;
 import net.ssc14.content.block.furniture.WoodTableBlock;
 import net.ssc14.content.block.surface.StaircaseBlock;
 import net.ssc14.content.block.surface.UpperStaircaseBlock;
+import net.ssc14.content.block.window.ArmoredWindowBlock;
+import net.ssc14.content.block.window.BaseWindowBlock;
+import net.ssc14.content.block.window.DirectedArmoredWindowBlock;
+import net.ssc14.content.block.window.DirectedBaseWindowBlock;
 
 /** Canonical owner of SSC14 block registrations. */
 public final class Ssc14Blocks {
@@ -148,6 +152,14 @@ public final class Ssc14Blocks {
             register("planetary_tree_log", PlanetaryTreeLogBlock::new);
     public static final DeferredBlock<Block> PLANETARY_TREE_FOLIAGE =
             register("planetary_tree_foliage", PlanetaryTreeFoliageBlock::new);
+    public static final DeferredBlock<Block> BASE_WINDOW =
+            register("base_window", BaseWindowBlock::new);
+    public static final DeferredBlock<Block> ARMORED_WINDOW =
+            register("armored_window", ArmoredWindowBlock::new);
+    public static final DeferredBlock<Block> DIRECTED_BASE_WINDOW =
+            register("directed_base_window", DirectedBaseWindowBlock::new);
+    public static final DeferredBlock<Block> DIRECTED_ARMORED_WINDOW =
+            register("directed_armored_window", DirectedArmoredWindowBlock::new);
 
     private Ssc14Blocks() {
     }
