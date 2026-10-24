@@ -23,6 +23,9 @@ import net.ssc14.content.block.machinery.MachineFrameBlockEntity;
 import net.ssc14.content.block.machinery.Ssc14MachineBlockEntities;
 import net.ssc14.content.block.energy.SheathingBlockEntity;
 import net.ssc14.content.block.energy.Ssc14CableBlockEntities;
+import net.ssc14.content.block.energy.ApcBlockEntity;
+import net.ssc14.content.block.energy.PodstationBlockEntity;
+import net.ssc14.content.block.energy.Ssc14EnergyMachineBlockEntities;
 
 @EventBusSubscriber
 public class Ssc14ModBlockEntities {
@@ -31,8 +34,8 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BaseAirlockD1BlockEntity>> BASE_AIRLOCK_D_1 = register("base_airlock_d_1", Ssc14ModBlocks.BASE_AIRLOCK_D_1, BaseAirlockD1BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ConsoleOfIDBlockEntity>> CONSOLE_OF_ID = register("console_of_id", Ssc14ModBlocks.CONSOLE_OF_ID, ConsoleOfIDBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PortableSheaterBlockEntity>> PORTABLE_SHEATER = register("portable_sheater", Ssc14ModBlocks.PORTABLE_SHEATER, PortableSheaterBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<APCBlockEntity>> APC = register("apc", Ssc14ModBlocks.APC, APCBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PodstationBlockEntity>> PODSTATION = register("podstation", Ssc14ModBlocks.PODSTATION, PodstationBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ApcBlockEntity>> APC = Ssc14EnergyMachineBlockEntities.APC;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PodstationBlockEntity>> PODSTATION = Ssc14EnergyMachineBlockEntities.PODSTATION;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DEBUGgeneratorBlockEntity>> DEBU_GGENERATOR = register("debu_ggenerator", Ssc14ModBlocks.DEBU_GGENERATOR, DEBUGgeneratorBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LightingBlockEntity>> LAMP = Ssc14LightingBlockEntities.LAMP;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AirlockUpPlugBlockEntity>> AIRLOCK_UP_PLUG = register("airlock_up_plug", Ssc14ModBlocks.AIRLOCK_UP_PLUG, AirlockUpPlugBlockEntity::new);
@@ -95,8 +98,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, BASE_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, CONSOLE_OF_ID.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, PORTABLE_SHEATER.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, APC.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, PODSTATION.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, DEBU_GGENERATOR.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG_OPEN.get(), WorldlyContainerWrapper::new);

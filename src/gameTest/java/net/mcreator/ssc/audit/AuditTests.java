@@ -16,7 +16,7 @@ import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.mcreator.ssc.*;
 import net.mcreator.ssc.block.*;
-import net.mcreator.ssc.block.entity.APCBlockEntity;
+import net.ssc14.content.block.energy.ApcBlockEntity;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 
@@ -161,7 +161,7 @@ public final class AuditTests {
             h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             var door = h.getLevel().getBlockEntity(pos);
             h.assertTrue(!door.getPersistentData().getBooleanOr("powered", true), "New isolated door has free power");
-            var apc = (APCBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
+            var apc = (ApcBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
             apc.setStoredEnergySimulation(100000);
             EnergyNetworkManager.updatePosition(h.getLevel(), h.absolutePos(new BlockPos(3, 1, 1)));
             awaitEnergy(h, () -> {
@@ -492,7 +492,7 @@ public final class AuditTests {
                 world.setBlockAndUpdate(origin.offset(x, 3, z), Ssc14ModBlocks.LAMP.get().defaultBlockState());
             }
             world.setBlockAndUpdate(origin.above(), Ssc14ModBlocks.APC.get().defaultBlockState());
-            var apc = (APCBlockEntity) world.getBlockEntity(origin.above());
+            var apc = (ApcBlockEntity) world.getBlockEntity(origin.above());
             apc.setStoredEnergySimulation(100000);
             EnergyNetworkManager.updatePosition(world, origin);
             awaitEnergy(h, () -> {
@@ -531,15 +531,15 @@ public final class AuditTests {
             for (int z : new int[]{1, 5}) {
                 h.setBlock(1, 1, z, Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
                 h.setBlock(1, 2, z, Ssc14ModBlocks.APC.get());
-                ((APCBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, z)))).setStoredEnergySimulation(1000);
+                ((ApcBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, z)))).setStoredEnergySimulation(1000);
                 EnergyNetworkManager.updatePosition(world, h.absolutePos(new BlockPos(1, 1, z)));
             }
             var lamp = new BlockPos(1, 3, 3);
             h.setBlock(lamp, Ssc14ModBlocks.LAMP.get());
             EnergyNetworkManager.invalidate(world, h.absolutePos(lamp));
             awaitEnergy(h, () -> {
-                var first = (APCBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
-                var second = (APCBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, 5)));
+                var first = (ApcBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
+                var second = (ApcBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, 5)));
                 long before = first.getStoredEnergy() + second.getStoredEnergy();
                 h.runAfterDelay(20, () -> {
                     h.assertTrue(h.getBlockState(lamp).getValue(LampBlock.ACTIVE), "Shared lamp is off");
@@ -554,7 +554,7 @@ public final class AuditTests {
             h.setBlock(1, 2, 1, Ssc14ModBlocks.APC.get());
             var lamp = new BlockPos(1, 3, 1);
             h.setBlock(lamp, Ssc14ModBlocks.LAMP.get());
-            var apc = (APCBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
+            var apc = (ApcBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
             apc.setStoredEnergySimulation(1000);
             EnergyNetworkManager.updatePosition(world, h.absolutePos(new BlockPos(1, 1, 1)));
             awaitEnergy(h, () -> {
@@ -592,7 +592,7 @@ public final class AuditTests {
             var lamp = origin.offset(32, 2, 15);
             world.setBlockAndUpdate(origin.above(), Ssc14ModBlocks.APC.get().defaultBlockState());
             world.setBlockAndUpdate(lamp, Ssc14ModBlocks.LAMP.get().defaultBlockState());
-            var apc = (APCBlockEntity) world.getBlockEntity(origin.above());
+            var apc = (ApcBlockEntity) world.getBlockEntity(origin.above());
             apc.setStoredEnergySimulation(1000000);
             EnergyNetworkManager.updatePosition(world, bridge);
             for (int n = 0; n < 10; n++) EnergyNetworkManager.refreshPending(world);
@@ -1063,7 +1063,7 @@ public final class AuditTests {
     private static void energy(GameTestHelper h,boolean cut){
         for(int x=1;x<=5;x++) h.setBlock(x,1,1,Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV,true));
         h.setBlock(1,2,1,Ssc14ModBlocks.APC.get());h.setBlock(5,3,1,Ssc14ModBlocks.LAMP.get());
-        APCBlockEntity apc=(APCBlockEntity)h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1,2,1)));
+        ApcBlockEntity apc=(ApcBlockEntity)h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1,2,1)));
         apc.setStoredEnergySimulation(1000000);
         EnergyNetworkManager.updatePosition(h.getLevel(),h.absolutePos(new BlockPos(3,1,1)));
         awaitEnergy(h,()->{
@@ -1084,8 +1084,8 @@ public final class AuditTests {
         h.setBlock(1, 2, 1, Ssc14ModBlocks.APC.get());
         h.setBlock(2, 2, 1, Ssc14ModBlocks.APC.get());
         if (lamp) h.setBlock(5, 3, 1, Ssc14ModBlocks.LAMP.get());
-        var first = (APCBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
-        var second = (APCBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(2, 2, 1)));
+        var first = (ApcBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
+        var second = (ApcBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(2, 2, 1)));
         first.setStoredEnergySimulation(1000);
         second.setStoredEnergySimulation(1000);
         EnergyNetworkManager.updatePosition(h.getLevel(), h.absolutePos(new BlockPos(3, 1, 1)));
