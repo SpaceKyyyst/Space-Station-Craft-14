@@ -59,6 +59,8 @@ import net.ssc14.content.block.structure.RodFloorBlock;
 import net.ssc14.content.block.structure.RodUpFloorBlock;
 import net.ssc14.content.block.structure.UperSheathingBlock;
 import net.ssc14.content.block.structure.WallCarcaseBlock;
+import net.ssc14.content.block.storage.ClosetBlockEntity;
+import net.ssc14.content.block.storage.StationClosetBlock;
 import net.ssc14.content.block.window.ArmoredWindowBlock;
 import net.ssc14.content.block.window.BaseWindowBlock;
 import net.ssc14.content.block.window.DirectedArmoredWindowBlock;
@@ -157,6 +159,50 @@ public final class Ssc14Blocks {
             register("arm_chair_brown", ArmChairBlock::new);
     public static final DeferredBlock<Block> ARM_CHAIR_CARP =
             register("arm_chair_carp", ArmChairBlock::new);
+    public static final DeferredBlock<Block> CLOSET =
+            register("closet", properties ->
+                    new StationClosetBlock(properties, (pos, state) ->
+                            new ClosetBlockEntity("closet", "Closet", pos, state)));
+    public static final DeferredBlock<Block> CLOSET_EMERG =
+            register("closet_emerg", properties ->
+                    new StationClosetBlock(properties, (pos, state) ->
+                            new ClosetBlockEntity("closet_emerg", "Emergency closet", pos, state)));
+    public static final DeferredBlock<Block> CLOSET_FIRE =
+            register("closet_fire", properties ->
+                    new StationClosetBlock(properties, (pos, state) ->
+                            new ClosetBlockEntity("closet_fire", "Fire closet", pos, state)));
+    public static final DeferredBlock<Block> CLOSET_BLACK =
+            register("closet_black", properties ->
+                    new StationClosetBlock(properties, (pos, state) ->
+                            new ClosetBlockEntity("closet_black", "Black closet", pos, state)));
+    public static final DeferredBlock<Block> CLOSET_BLUE =
+            register("closet_blue", properties ->
+                    new StationClosetBlock(properties, (pos, state) ->
+                            new ClosetBlockEntity("closet_blue", "Blue closet", pos, state)));
+    public static final DeferredBlock<Block> CLOSET_GRAY =
+            register("closet_gray", properties ->
+                    new StationClosetBlock(properties, (pos, state) ->
+                            new ClosetBlockEntity("closet_gray", "Gray closet", pos, state)));
+    public static final DeferredBlock<Block> CLOSET_GREEN =
+            register("closet_green", properties ->
+                    new StationClosetBlock(properties, (pos, state) ->
+                            new ClosetBlockEntity("closet_green", "Green closet", pos, state)));
+    public static final DeferredBlock<Block> CLOSET_MIXED =
+            register("closet_mixed", properties ->
+                    new StationClosetBlock(properties, (pos, state) ->
+                            new ClosetBlockEntity("closet_mixed", "Mixed closet", pos, state)));
+    public static final DeferredBlock<Block> CLOSET_N_2 =
+            register("closet_n_2", properties ->
+                    new StationClosetBlock(properties, (pos, state) ->
+                            new ClosetBlockEntity("closet_n_2", "N2 closet", pos, state)));
+    public static final DeferredBlock<Block> CLOSET_ORANGE =
+            register("closet_orange", properties ->
+                    new StationClosetBlock(properties, (pos, state) ->
+                            new ClosetBlockEntity("closet_orange", "Orange closet", pos, state)));
+    public static final DeferredBlock<Block> CLOSET_PINK =
+            register("closet_pink", properties ->
+                    new StationClosetBlock(properties, (pos, state) ->
+                            new ClosetBlockEntity("closet_pink", "Pink closet", pos, state)));
     public static final DeferredBlock<Block> DIRT =
             register("dirt", PlanetDirtBlock::new);
     public static final DeferredBlock<Block> GRASS_LIGHT_BLOCK =
