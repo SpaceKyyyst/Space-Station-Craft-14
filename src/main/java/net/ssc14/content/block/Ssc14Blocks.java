@@ -78,6 +78,7 @@ import net.ssc14.content.block.structure.RodUpFloorBlock;
 import net.ssc14.content.block.structure.UperSheathingBlock;
 import net.ssc14.content.block.structure.WallCarcaseBlock;
 import net.ssc14.content.block.storage.ClosetBlockEntity;
+import net.ssc14.content.block.storage.ExtinguisherCabinetBlock;
 import net.ssc14.content.block.storage.SecureClosetBlock;
 import net.ssc14.content.block.storage.StationClosetBlock;
 import net.ssc14.content.block.storage.UpperClosetPlugBlock;
@@ -117,6 +118,8 @@ public final class Ssc14Blocks {
             register("up_closet_plug", UpperClosetPlugBlock::new);
     public static final DeferredBlock<Block> CLOSET_SECURE =
             register("closet_secure", SecureClosetBlock::new);
+    public static final DeferredBlock<Block> EXTINGUISHER_CABINET =
+            register("extinguisher_cabinet", ExtinguisherCabinetBlock::new);
 
     public static final DeferredBlock<Block> ASTEROID_STONE_BASE =
             register("asteroid_stone_base", AsteroidStoneBaseBlock::new);

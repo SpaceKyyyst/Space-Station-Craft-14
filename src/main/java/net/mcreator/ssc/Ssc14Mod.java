@@ -43,6 +43,7 @@ import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
 import net.ssc14.content.block.debug.StationCodeDebugInteractionService;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.block.storage.SecureClosetInteractionService;
+import net.ssc14.content.block.storage.ExtinguisherCabinetInteractionService;
 import net.ssc14.content.block.storage.UpperClosetPlugInteractionService;
 import net.ssc14.content.block.lighting.EmergencyLightingService;
 import net.ssc14.content.block.lighting.LightingEnergyService;
@@ -149,6 +150,8 @@ public class Ssc14Mod {
 		SecureClosetInteractionService.install((level, pos, state, player) ->
 				net.mcreator.ssc.procedures.Closet_OpenClose_PrProcedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ(), state, player));
+		ExtinguisherCabinetInteractionService.install(
+				Ssc14ModItems.EXTINGUISHER, Ssc14ModItems.EXTINGUISHER_OPEN);
 		EmergencyLightingService.install(level ->
 				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
 		MachineFrameAssemblyService.install(Ssc14ModItems.LOW_VOLTAGE_CABLE,
