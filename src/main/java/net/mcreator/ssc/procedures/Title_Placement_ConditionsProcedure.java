@@ -1,15 +1,13 @@
 package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
+import net.ssc14.content.block.floor.FloorTileSupportPolicy;
 
+/** @deprecated Use {@link FloorTileSupportPolicy}. */
+@Deprecated
 public class Title_Placement_ConditionsProcedure {
 	public static boolean execute(LevelAccessor world, double x, double y, double z) {
-		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(Identifier.parse("ssc14:suitable_for_tiles")))) {
-			return true;
-		}
-		return false;
+		return FloorTileSupportPolicy.canSupport(world, BlockPos.containing(x, y, z));
 	}
 }

@@ -122,11 +122,11 @@ public class SS14ConstructionRegistryProcedure {
 
         registerBlock(Ssc14ModBlocks.SHEATHING.get(), fireAxe, bs -> true,
             new ConstructionStage(slowDelays, false, null, 1, 1.0, Ssc14Blocks.ROD_FLOOR.get(), null, -1, false, hit -> hit == Direction.UP,
-            ctx -> dropBlockEntityWithNBT(ctx, Ssc14ModBlocks.TITLE_STEEL.get())));
+            ctx -> dropBlockEntityWithNBT(ctx, Ssc14Blocks.TITLE_STEEL.get())));
         
         registerBlock(Ssc14Blocks.UPER_SHEATHING.get(), fireAxe, bs -> true,
             new ConstructionStage(slowDelays, false, null, 1, 0.5, Ssc14Blocks.ROD_UP_FLOOR.get(), null, -1, false, hit -> hit == Direction.DOWN,
-            ctx -> dropBlockEntityWithNBT(ctx, Ssc14ModBlocks.TITLE_STEEL.get())));
+            ctx -> dropBlockEntityWithNBT(ctx, Ssc14Blocks.TITLE_STEEL.get())));
 
         Item screwdriver = Ssc14ModItems.SCREWDRIVER.get();
 

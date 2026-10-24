@@ -2,14 +2,12 @@ package net.mcreator.ssc.access;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.ssc14.content.block.floor.FloorTileDoorwayCollision;
 
 /** The floor keeps its own block and shape; the doorway contributes an additional seal. */
 public final class AirlockFloor {
@@ -32,15 +30,7 @@ public final class AirlockFloor {
     }
 
     public static VoxelShape collision(BlockGetter level, BlockPos floor, VoxelShape tile) {
-        var door = level.getBlockState(floor.above());
-        if (!(door.getBlock().getStateDefinition().getProperty("arl_variat") instanceof IntegerProperty property)) return tile;
-        int frame = door.getValue(property);
-        boolean open = frame == 11 || frame == 13 || frame == 14;
-        boolean alongX = door.getValue(HorizontalDirectionalBlock.FACING).getAxis() == Direction.Axis.Z;
-        VoxelShape seal = alongX
-                ? (open ? Shapes.or(Block.box(0, 0, 5, 1, 16, 11), Block.box(15, 0, 5, 16, 16, 11)) : Block.box(0, 0, 5, 16, 16, 11))
-                : (open ? Shapes.or(Block.box(5, 0, 0, 11, 16, 1), Block.box(5, 0, 15, 11, 16, 16)) : Block.box(5, 0, 0, 11, 16, 16));
-        return Shapes.or(tile, seal);
+        return FloorTileDoorwayCollision.collision(level, floor, tile);
     }
 
     public static void ensureLowerPart(LevelAccessor level, BlockPos root) {
