@@ -1,26 +1,9 @@
 
 package net.mcreator.ssc;
 
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.tags.TagKey;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-
-public interface IAtmosBlock {
-    // ИСПРАВЛЕНО: Новый пакет Identifier ядра 26.x
-    TagKey<net.minecraft.world.level.block.Block> NON_HERMETIC_TAG =
-        TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("ssc14", "non-hermetic"));
-
-    /**
-     * Коэффициент проницаемости: 0.0 = герметично, 1.0 = полностью открыто
-     */
-    float getPermeability(BlockState state);
-
-    /**
-     * Блокирует ли блок распространение газов полностью
-     */
-    default boolean isGasBarrier(BlockState state) {
-        float perm = getPermeability(state);
-        return !Float.isFinite(perm) || perm <= 0f;
-    }
+/** @deprecated Use {@link net.ssc14.content.atmosphere.AtmosphericBlock}. */
+@Deprecated(forRemoval = false)
+public interface IAtmosBlock extends net.ssc14.content.atmosphere.AtmosphericBlock {
+    net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block> NON_HERMETIC_TAG =
+            LEGACY_NON_HERMETIC_TAG;
 }

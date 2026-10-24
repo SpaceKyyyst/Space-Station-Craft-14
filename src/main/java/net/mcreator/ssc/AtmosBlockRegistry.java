@@ -9,6 +9,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.ssc14.content.atmosphere.AtmosphericBlock;
 
 /** Resolves permeability without loading chunks; legacy tag identifiers remain supported. */
 public final class AtmosBlockRegistry {
@@ -25,7 +26,7 @@ public final class AtmosBlockRegistry {
     public static float getPermeability(ServerLevel level, BlockPos pos) {
         if (level.isOutsideBuildHeight(pos) || !level.hasChunkAt(pos)) return 0;
         BlockState state = level.getBlockState(pos);
-        if (state.getBlock() instanceof IAtmosBlock block) {
+        if (state.getBlock() instanceof AtmosphericBlock block) {
             float value = block.getPermeability(state);
             return Float.isFinite(value) ? Math.clamp(value, 0f, 1f) : 0f;
         }
@@ -37,7 +38,7 @@ public final class AtmosBlockRegistry {
                     || value == CLOSING_PASSABLE_FRAME ? 1f : 0f;
         }
         if (state.is(HERMETIC)) return 0;
-        if (state.is(IAtmosBlock.NON_HERMETIC_TAG) || state.is(NON_HERMETIC)) return 1;
+        if (state.is(AtmosphericBlock.LEGACY_NON_HERMETIC_TAG) || state.is(NON_HERMETIC)) return 1;
         return state.isAir() || state.getCollisionShape(level, pos).isEmpty() ? 1f : 0f;
     }
 }
