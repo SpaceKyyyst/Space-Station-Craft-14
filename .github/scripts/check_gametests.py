@@ -61,6 +61,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_computer_contract",
     "ssc_14:compatibility_block_gas_producer_o2_contract",
     "ssc_14:compatibility_block_communication_servers_contract",
+    "ssc_14:compatibility_block_communication_console_contract",
 }
 
 

@@ -32,6 +32,7 @@ import net.mcreator.ssc.scheduling.ServerTaskScheduler;
 import net.mcreator.ssc.scheduling.SubmissionResult;
 import net.mcreator.ssc.world.inventory.MacFrameGUIMenu;
 import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
+import net.mcreator.ssc.world.inventory.CommunConsoleGUIMenu;
 import net.mcreator.ssc.gravity.ui.GravityGeneratorWindow;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.attribute.Ssc14Attributes;
@@ -41,6 +42,7 @@ import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.OrderPalletRegistryService;
 import net.ssc14.content.block.communication.CommunicationServerLifecycleService;
+import net.ssc14.content.block.communication.CommunicationConsoleIntegrationService;
 import net.ssc14.content.block.communication.Ssc14CommunicationBlockEntities;
 import net.ssc14.content.block.fuel.FuelTankInteractionService;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
@@ -283,6 +285,39 @@ public class Ssc14Mod {
 							Player player) {
 						net.mcreator.ssc.procedures.CommunicationServers_Click_USEProcedure.execute(
 								level, pos.getX(), pos.getY(), pos.getZ(), state, player);
+					}
+				});
+		CommunicationConsoleIntegrationService.install(
+				new CommunicationConsoleIntegrationService.Adapter() {
+					@Override
+					public void use(net.minecraft.world.level.Level level,
+							net.minecraft.core.BlockPos pos, Player player) {
+						if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
+							serverPlayer.openMenu(new net.minecraft.world.MenuProvider() {
+								@Override
+								public net.minecraft.network.chat.Component getDisplayName() {
+									return net.minecraft.network.chat.Component.literal("Communication console");
+								}
+
+								@Override
+								public net.minecraft.world.inventory.AbstractContainerMenu createMenu(
+										int id, net.minecraft.world.entity.player.Inventory inventory,
+										Player menuPlayer) {
+									return new CommunConsoleGUIMenu(id, inventory,
+											new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+								}
+							}, pos);
+						}
+						net.mcreator.ssc.procedures.ConsolesOpenMenuSoundProcedure.execute(
+								level, pos.getX(), pos.getY(), pos.getZ());
+					}
+
+					@Override
+					public net.minecraft.world.inventory.AbstractContainerMenu createMenu(
+							int id, net.minecraft.world.entity.player.Inventory inventory,
+							net.minecraft.core.BlockPos pos) {
+						return new CommunConsoleGUIMenu(id, inventory,
+								new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
 					}
 				});
 		StationCodeDebugInteractionService.install((level, pos, player) ->

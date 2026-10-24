@@ -135,7 +135,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> COMMUNICATION_SERVERS = Ssc14Blocks.COMMUNICATION_SERVERS;
 	public static final DeferredBlock<Block> WOOD_TABLE = Ssc14Blocks.WOOD_TABLE;
 	public static final DeferredBlock<Block> GRAV_GEN_PLUG_BLOCK = Ssc14Blocks.GRAV_GEN_PLUG_BLOCK;
-	public static final DeferredBlock<Block> COMMUNICATION_CONSOLE;
+	public static final DeferredBlock<Block> COMMUNICATION_CONSOLE = Ssc14Blocks.COMMUNICATION_CONSOLE;
 	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> GAS_PRODUCER_O_2 = Ssc14Blocks.GAS_PRODUCER_O_2;
 	public static final DeferredBlock<Block> VENDING_AUT_1;
@@ -248,7 +248,6 @@ public class Ssc14ModBlocks {
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
 		AIRLOCK_UP_PLUG = register("airlock_up_plug", AirlockUpPlugBlock::new);
 		AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", AirlockUpPlugOPENBlock::new);
-		COMMUNICATION_CONSOLE = register("communication_console", CommunicationConsoleBlock::new);
 		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
 		VENDING_AUT_1 = register("vending_aut_1", VendingAut1Block::new);
 		SHUTTERS = register("shutters", ShuttersBlock::new);
