@@ -121,7 +121,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> SHUTTLE_WALL = Ssc14Blocks.SHUTTLE_WALL;
 	public static final DeferredBlock<Block> ARMORED_SHUTTLE_WALL = Ssc14Blocks.ARMORED_SHUTTLE_WALL;
 	public static final DeferredBlock<Block> DIRECTED_BASE_WINDOW = Ssc14Blocks.DIRECTED_BASE_WINDOW;
-	public static final DeferredBlock<Block> COMPUTER;
+	public static final DeferredBlock<Block> COMPUTER = Ssc14Blocks.COMPUTER;
 	public static final DeferredBlock<Block> CLOSET_SECURE = Ssc14Blocks.CLOSET_SECURE;
 	public static final DeferredBlock<Block> UP_CLOSET_PLUG = Ssc14Blocks.UP_CLOSET_PLUG;
 	public static final DeferredBlock<Block> CLOSET = Ssc14Blocks.CLOSET;
@@ -248,7 +248,6 @@ public class Ssc14ModBlocks {
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
 		AIRLOCK_UP_PLUG = register("airlock_up_plug", AirlockUpPlugBlock::new);
 		AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", AirlockUpPlugOPENBlock::new);
-		COMPUTER = register("computer", ComputerBlock::new);
 		COMMUNICATION_SERVERS = register("communication_servers", CommunicationServersBlock::new);
 		COMMUNICATION_CONSOLE = register("communication_console", CommunicationConsoleBlock::new);
 		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
