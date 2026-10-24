@@ -12,6 +12,7 @@ import net.ssc14.content.block.ceiling.CeilingTileBlock;
 import net.ssc14.content.block.commerce.SalePalletBlock;
 import net.ssc14.content.block.commerce.OrderPalletBlock;
 import net.ssc14.content.block.commerce.VendingUpperPlugBlock;
+import net.ssc14.content.block.communication.CommunicationServersBlock;
 import net.ssc14.content.block.fuel.FuelTankBlock;
 import net.ssc14.content.block.debug.FailureSentinelBlock;
 import net.ssc14.content.block.debug.DebugGravityGeneratorBlock;
@@ -128,6 +129,8 @@ public final class Ssc14Blocks {
             register("fuel_tank", FuelTankBlock::new);
     public static final DeferredBlock<Block> GAS_PRODUCER_O_2 =
             register("gas_producer_o_2", GasProducerO2Block::new);
+    public static final DeferredBlock<Block> COMMUNICATION_SERVERS =
+            register("communication_servers", CommunicationServersBlock::new);
     public static final DeferredBlock<Block> DEBUG_13 =
             register("debug_13", StationCodeDebugBlock::new);
     public static final DeferredBlock<Block> KOSTILNIBLOK =
