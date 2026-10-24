@@ -229,7 +229,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> BASE_GLASS_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> FUEL_TANK;
 	public static final DeferredBlock<Block> ORDER_CONSOLE;
-	public static final DeferredBlock<Block> ORDER_PALLET;
+	public static final DeferredBlock<Block> ORDER_PALLET = Ssc14Blocks.ORDER_PALLET;
 	public static final DeferredBlock<Block> SALE_PALLET = Ssc14Blocks.SALE_PALLET;
 	public static final DeferredBlock<Block> SALE_CONSOLE;
 	public static final DeferredBlock<Block> BANNER_NT = Ssc14Blocks.BANNER_NT;
@@ -286,7 +286,6 @@ public class Ssc14ModBlocks {
 		BASE_GLASS_AIRLOCK_D_1 = register("base_glass_airlock_d_1", BaseGlassAirlockD1Block::new);
 		FUEL_TANK = register("fuel_tank", FuelTankBlock::new);
 		ORDER_CONSOLE = register("order_console", OrderConsoleBlock::new);
-		ORDER_PALLET = register("order_pallet", OrderPalletBlock::new);
 		SALE_CONSOLE = register("sale_console", SaleConsoleBlock::new);
 	}
 

@@ -37,6 +37,7 @@ import net.ssc14.content.entity.Ssc14EntityBehavior;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
+import net.ssc14.content.block.commerce.OrderPalletRegistryService;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.block.lighting.EmergencyLightingService;
 import net.ssc14.content.block.lighting.LightingEnergyService;
@@ -107,6 +108,14 @@ public class Ssc14Mod {
 			@Override
 			public void invalidate(LevelAccessor level, net.minecraft.core.BlockPos pos) {
 				EnergyNetworkManager.invalidate(level, pos);
+			}
+		});
+		OrderPalletRegistryService.install((level, pos) -> {
+			var variables = Ssc14ModVariables.WorldVariables.get(level);
+			String key = pos.getX() + "," + pos.getY() + "," + pos.getZ() + ";";
+			if (!variables.PalletRegistry.contains(key)) {
+				variables.PalletRegistry += key;
+				variables.setDirty();
 			}
 		});
 		EmergencyLightingService.install(level ->

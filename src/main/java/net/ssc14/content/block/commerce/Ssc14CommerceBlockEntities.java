@@ -18,11 +18,17 @@ public final class Ssc14CommerceBlockEntities {
             SALE_PALLET = REGISTRY.register("sale_pallet",
                     () -> new BlockEntityType<>(SalePalletBlockEntity::new,
                             Ssc14Blocks.SALE_PALLET.get()));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OrderPalletBlockEntity>>
+            ORDER_PALLET = REGISTRY.register("order_pallet",
+                    () -> new BlockEntityType<>(OrderPalletBlockEntity::new,
+                            Ssc14Blocks.ORDER_PALLET.get()));
 
     private Ssc14CommerceBlockEntities() { }
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.Item.BLOCK, SALE_PALLET.get(),
+                WorldlyContainerWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, ORDER_PALLET.get(),
                 WorldlyContainerWrapper::new);
     }
 }
