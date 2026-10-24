@@ -2,6 +2,7 @@
 package net.mcreator.ssc.procedures;
 
 import net.ssc14.content.entity.Ssc14EntityTypes;
+import net.ssc14.content.block.Ssc14Blocks;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -72,7 +73,7 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), crowbar, bs -> getInt(bs, "blockstate") == 6,
             new ConstructionStage(new int[]{3,3,3,3,3,3}, false, null, 1, 0.0, null, "blockstate", 7, false, null, null));
 
-        registerBlock(Ssc14ModBlocks.ARMORED_WINDOW.get(), crowbar, bs -> getInt(bs, "blockstate") == 2,
+        registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), crowbar, bs -> getInt(bs, "blockstate") == 2,
             new ConstructionStage(new int[]{3,3,3,3,3,3}, false, null, 1, 0.0, null, "blockstate", 3, false, null, null));
 
         Item welder = Ssc14ModItems.ACTIVE_WELDER.get();
@@ -84,9 +85,9 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), welder, bs -> getInt(bs, "blockstate") == 5,
             new ConstructionStage(new int[]{27,27,27,27,27,27}, false, null, 1, 0.0, null, "blockstate", 6, true, null, null));
 
-        registerBlock(Ssc14ModBlocks.ARMORED_WINDOW.get(), welder, bs -> getInt(bs, "blockstate") == 0,
+        registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), welder, bs -> getInt(bs, "blockstate") == 0,
             new ConstructionStage(new int[]{20,20,20,20,20,20}, false, null, 1, 0.0, null, "blockstate", 1, true, null, null));
-        registerBlock(Ssc14ModBlocks.ARMORED_WINDOW.get(), welder, bs -> getInt(bs, "blockstate") == 3,
+        registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), welder, bs -> getInt(bs, "blockstate") == 3,
             new ConstructionStage(new int[]{27,27,27,27,27,27}, false, null, 1, 0.0, null, "blockstate", 4, true, null, null));
 
         Item nippers = Ssc14ModItems.NIPPERS.get();
@@ -129,7 +130,7 @@ public class SS14ConstructionRegistryProcedure {
 
         Item screwdriver = Ssc14ModItems.SCREWDRIVER.get();
 
-        registerBlock(Ssc14ModBlocks.BASE_WINDOW.get(), screwdriver, bs -> getInt(bs, "window_disassembly") == 0,
+        registerBlock(Ssc14Blocks.BASE_WINDOW.get(), screwdriver, bs -> getInt(bs, "window_disassembly") == 0,
             new ConstructionStage(normalDelays, false, null, 1, 0.0, null, "window_disassembly", 1, false, null, 
             ctx -> updatePropertyRaw(ctx, "blockstate", 1)));
 
@@ -138,9 +139,9 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), screwdriver, bs -> getInt(bs, "blockstate") == 7,
             new ConstructionStage(new int[]{2,1,2,1,2,1}, false, null, 1, 0.0, null, "blockstate", 8, false, null, null));
 
-        registerBlock(Ssc14ModBlocks.ARMORED_WINDOW.get(), screwdriver, bs -> getInt(bs, "blockstate") == 1,
+        registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), screwdriver, bs -> getInt(bs, "blockstate") == 1,
             new ConstructionStage(new int[]{2,1,2,1,2,1}, false, null, 1, 0.0, null, "blockstate", 2, false, null, null));
-        registerBlock(Ssc14ModBlocks.ARMORED_WINDOW.get(), screwdriver, bs -> getInt(bs, "blockstate") == 4,
+        registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), screwdriver, bs -> getInt(bs, "blockstate") == 4,
             new ConstructionStage(normalDelays, false, null, 1, 0.0, null, "blockstate", 5, false, null, null));
 
         registerTagCheck("ssc14:airlocks", screwdriver, bs -> true,
@@ -183,10 +184,10 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14ModBlocks.CONSOLE_OF_ID.get(), spanner, bs -> true,
             new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14EntityTypes.ID_CONSOLE_ENTITY.get())));
 
-        registerBlock(Ssc14ModBlocks.BASE_WINDOW.get(), spanner, bs -> getInt(bs, "window_disassembly") == 1,
+        registerBlock(Ssc14Blocks.BASE_WINDOW.get(), spanner, bs -> getInt(bs, "window_disassembly") == 1,
             new ConstructionStage(slowDelays, false, Ssc14ModItems.GLASS.get(), 2, 0.5, null, null, -1, false, null, ctx -> ctx.world().setBlock(ctx.pos(), Blocks.AIR.defaultBlockState(), 3)));
 
-        registerBlock(Ssc14ModBlocks.ARMORED_WINDOW.get(), spanner, bs -> getInt(bs, "blockstate") == 5,
+        registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), spanner, bs -> getInt(bs, "blockstate") == 5,
             new ConstructionStage(slowDelays, false, Ssc14ModItems.ARM_GLASS.get(), 2, 0.5, null, null, -1, false, null, ctx -> ctx.world().setBlock(ctx.pos(), Blocks.AIR.defaultBlockState(), 3)));
 
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), spanner, bs -> getInt(bs, "blockstate") == 4,

@@ -29,7 +29,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> BASE_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> UP_TITLE;
 	public static final DeferredBlock<Block> CONSOLE_OF_ID;
-	public static final DeferredBlock<Block> BASE_WINDOW;
+	public static final DeferredBlock<Block> BASE_WINDOW = Ssc14Blocks.BASE_WINDOW;
 	public static final DeferredBlock<Block> PORTABLE_SHEATER;
 	public static final DeferredBlock<Block> PLASTEEL_WALL;
 	public static final DeferredBlock<Block> PLASTEEL_WALL_CARCASE;
@@ -61,7 +61,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_DARK_PLASTIC;
 	public static final DeferredBlock<Block> SMES;
 	public static final DeferredBlock<Block> TECH_LAMP;
-	public static final DeferredBlock<Block> ARMORED_WINDOW;
+	public static final DeferredBlock<Block> ARMORED_WINDOW = Ssc14Blocks.ARMORED_WINDOW;
 	public static final DeferredBlock<Block> DEBUG_LAMP;
 	public static final DeferredBlock<Block> DEBUG_TECH_LAMP;
 	public static final DeferredBlock<Block> GRILLE;
@@ -120,7 +120,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> UP_DARK_STAIRCASE = Ssc14Blocks.UP_DARK_STAIRCASE;
 	public static final DeferredBlock<Block> SHUTTLE_WALL;
 	public static final DeferredBlock<Block> ARMORED_SHUTTLE_WALL;
-	public static final DeferredBlock<Block> DIRECTED_BASE_WINDOW;
+	public static final DeferredBlock<Block> DIRECTED_BASE_WINDOW = Ssc14Blocks.DIRECTED_BASE_WINDOW;
 	public static final DeferredBlock<Block> COMPUTER;
 	public static final DeferredBlock<Block> CLOSET_SECURE;
 	public static final DeferredBlock<Block> UP_CLOSET_PLUG;
@@ -140,7 +140,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> GAS_PRODUCER_O_2;
 	public static final DeferredBlock<Block> VENDING_AUT_1;
 	public static final DeferredBlock<Block> VENDING_KOSTIL;
-	public static final DeferredBlock<Block> DIRECTED_ARMORED_WINDOW;
+	public static final DeferredBlock<Block> DIRECTED_ARMORED_WINDOW = Ssc14Blocks.DIRECTED_ARMORED_WINDOW;
 	public static final DeferredBlock<Block> SHUTTERS;
 	public static final DeferredBlock<Block> BUTTON;
 	public static final DeferredBlock<Block> MICROWAWE;
@@ -254,7 +254,6 @@ public class Ssc14ModBlocks {
 		BASE_AIRLOCK_D_1 = register("base_airlock_d_1", BaseAirlockD1Block::new);
 		UP_TITLE = register("up_title", UpTitleBlock::new);
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
-		BASE_WINDOW = register("base_window", BaseWindowBlock::new);
 		PORTABLE_SHEATER = register("portable_sheater", PortableSheaterBlock::new);
 		PLASTEEL_WALL = register("plasteel_wall", PlasteelWallBlock::new);
 		PLASTEEL_WALL_CARCASE = register("plasteel_wall_carcase", PlasteelWallCarcaseBlock::new);
@@ -286,7 +285,6 @@ public class Ssc14ModBlocks {
 		TITLE_DARK_PLASTIC = register("title_dark_plastic", TitleDarkPlasticBlock::new);
 		SMES = register("smes", SMESBlock::new);
 		TECH_LAMP = register("tech_lamp", TechLampBlock::new);
-		ARMORED_WINDOW = register("armored_window", ArmoredWindowBlock::new);
 		DEBUG_LAMP = register("debug_lamp", DEBUGLampBlock::new);
 		DEBUG_TECH_LAMP = register("debug_tech_lamp", DEBUGTechLampBlock::new);
 		GRILLE = register("grille", GrilleBlock::new);
@@ -311,7 +309,6 @@ public class Ssc14ModBlocks {
 		NUCLEAR_WARHEAD = register("nuclear_warhead", NuclearWarheadBlock::new);
 		SHUTTLE_WALL = register("shuttle_wall", ShuttleWallBlock::new);
 		ARMORED_SHUTTLE_WALL = register("armored_shuttle_wall", ArmoredShuttleWallBlock::new);
-		DIRECTED_BASE_WINDOW = register("directed_base_window", DirectedBaseWindowBlock::new);
 		COMPUTER = register("computer", ComputerBlock::new);
 		CLOSET_SECURE = register("closet_secure", ClosetSecureBlock::new);
 		UP_CLOSET_PLUG = register("up_closet_plug", UpClosetPLUGBlock::new);
@@ -326,7 +323,6 @@ public class Ssc14ModBlocks {
 		GAS_PRODUCER_O_2 = register("gas_producer_o_2", GasProducerO2Block::new);
 		VENDING_AUT_1 = register("vending_aut_1", VendingAut1Block::new);
 		VENDING_KOSTIL = register("vending_kostil", VendingKOSTILBlock::new);
-		DIRECTED_ARMORED_WINDOW = register("directed_armored_window", DirectedArmoredWindowBlock::new);
 		SHUTTERS = register("shutters", ShuttersBlock::new);
 		BUTTON = register("button", ButtonBlock::new);
 		MICROWAWE = register("microwawe", MicrowaweBlock::new);

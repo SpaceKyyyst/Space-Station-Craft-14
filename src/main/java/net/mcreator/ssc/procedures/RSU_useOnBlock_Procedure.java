@@ -1,6 +1,8 @@
 
 package net.mcreator.ssc.procedures;
 
+import net.ssc14.content.block.Ssc14Blocks;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -206,8 +208,8 @@ public class RSU_useOnBlock_Procedure {
     private static boolean isFastDeconstruct(BlockState blockState) {
         net.minecraft.world.level.block.Block block = blockState.getBlock();
         return block == Ssc14ModBlocks.GRILLE.get() ||
-               block == Ssc14ModBlocks.DIRECTED_BASE_WINDOW.get() ||
-               block == Ssc14ModBlocks.DIRECTED_ARMORED_WINDOW.get() ||
+               block == Ssc14Blocks.DIRECTED_BASE_WINDOW.get() ||
+               block == Ssc14Blocks.DIRECTED_ARMORED_WINDOW.get() ||
                blockState.is(BlockTags.create(Identifier.fromNamespaceAndPath("ssc14", "tiles"))) ||
                blockState.is(BlockTags.create(Identifier.fromNamespaceAndPath("ssc14", "tiles_up")));
     }
@@ -289,10 +291,10 @@ public class RSU_useOnBlock_Procedure {
             case 4 -> new BuildConfig(20, 1, 1, Ssc14ModBlocks.SHEATHING.get().defaultBlockState(), false);
             case 5 -> new BuildConfig(0, 0, 1, Ssc14ModBlocks.CATWALK_FLOOR.get().defaultBlockState(), false);
             case 6 -> new BuildConfig(20, 1, 1, Ssc14ModBlocks.GRILLE.get().defaultBlockState(), false);
-            case 7 -> new BuildConfig(20, 2, 3, Ssc14ModBlocks.BASE_WINDOW.get().defaultBlockState(), false);
-            case 8 -> new BuildConfig(20, 1, 2, Ssc14ModBlocks.DIRECTED_BASE_WINDOW.get().defaultBlockState(), true);
-            case 9 -> new BuildConfig(20, 1, 3, Ssc14ModBlocks.DIRECTED_ARMORED_WINDOW.get().defaultBlockState(), true);
-            case 10 -> new BuildConfig(20, 2, 4, Ssc14ModBlocks.ARMORED_WINDOW.get().defaultBlockState(), false);
+            case 7 -> new BuildConfig(20, 2, 3, Ssc14Blocks.BASE_WINDOW.get().defaultBlockState(), false);
+            case 8 -> new BuildConfig(20, 1, 2, Ssc14Blocks.DIRECTED_BASE_WINDOW.get().defaultBlockState(), true);
+            case 9 -> new BuildConfig(20, 1, 3, Ssc14Blocks.DIRECTED_ARMORED_WINDOW.get().defaultBlockState(), true);
+            case 10 -> new BuildConfig(20, 2, 4, Ssc14Blocks.ARMORED_WINDOW.get().defaultBlockState(), false);
             default -> null;
         };
     }
