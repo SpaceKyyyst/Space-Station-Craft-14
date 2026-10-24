@@ -130,7 +130,7 @@ public class SteeluseProcedure {
 			}
 		}
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.STEEL.get()
-				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModBlocks.TITLE_STEEL.get().asItem()) {
+				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14Blocks.TITLE_STEEL.get().asItem()) {
 			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.ROD_FLOOR.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
