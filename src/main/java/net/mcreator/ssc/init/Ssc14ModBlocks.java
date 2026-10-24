@@ -134,7 +134,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_STEEL_PAVEMENT_VERTICAL = Ssc14Blocks.TITLE_STEEL_PAVEMENT_VERTICAL;
 	public static final DeferredBlock<Block> COMMUNICATION_SERVERS;
 	public static final DeferredBlock<Block> WOOD_TABLE = Ssc14Blocks.WOOD_TABLE;
-	public static final DeferredBlock<Block> GRAV_GEN_PLUG_BLOCK;
+	public static final DeferredBlock<Block> GRAV_GEN_PLUG_BLOCK = Ssc14Blocks.GRAV_GEN_PLUG_BLOCK;
 	public static final DeferredBlock<Block> COMMUNICATION_CONSOLE;
 	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> GAS_PRODUCER_O_2;
@@ -251,7 +251,6 @@ public class Ssc14ModBlocks {
 		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);
 		COMPUTER = register("computer", ComputerBlock::new);
 		COMMUNICATION_SERVERS = register("communication_servers", CommunicationServersBlock::new);
-		GRAV_GEN_PLUG_BLOCK = register("grav_gen_plug_block", GravGenPlugBlockBlock::new);
 		COMMUNICATION_CONSOLE = register("communication_console", CommunicationConsoleBlock::new);
 		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
 		GAS_PRODUCER_O_2 = register("gas_producer_o_2", GasProducerO2Block::new);
