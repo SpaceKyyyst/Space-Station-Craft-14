@@ -122,7 +122,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> ARMORED_SHUTTLE_WALL = Ssc14Blocks.ARMORED_SHUTTLE_WALL;
 	public static final DeferredBlock<Block> DIRECTED_BASE_WINDOW = Ssc14Blocks.DIRECTED_BASE_WINDOW;
 	public static final DeferredBlock<Block> COMPUTER;
-	public static final DeferredBlock<Block> CLOSET_SECURE;
+	public static final DeferredBlock<Block> CLOSET_SECURE = Ssc14Blocks.CLOSET_SECURE;
 	public static final DeferredBlock<Block> UP_CLOSET_PLUG = Ssc14Blocks.UP_CLOSET_PLUG;
 	public static final DeferredBlock<Block> CLOSET = Ssc14Blocks.CLOSET;
 	public static final DeferredBlock<Block> FENCE_LINE = Ssc14Blocks.FENCE_LINE;
@@ -255,7 +255,6 @@ public class Ssc14ModBlocks {
 		DEBUG_GRAV_GEN = register("debug_grav_gen", DebugGravGenBlock::new);
 		NUCLEAR_WARHEAD = register("nuclear_warhead", NuclearWarheadBlock::new);
 		COMPUTER = register("computer", ComputerBlock::new);
-		CLOSET_SECURE = register("closet_secure", ClosetSecureBlock::new);
 		EXTINGUISHER_CABINET = register("extinguisher_cabinet", ExtinguisherCabinetBlock::new);
 		COMMUNICATION_SERVERS = register("communication_servers", CommunicationServersBlock::new);
 		GRAV_GEN_PLUG_BLOCK = register("grav_gen_plug_block", GravGenPlugBlockBlock::new);
