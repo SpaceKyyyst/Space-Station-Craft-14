@@ -21,6 +21,13 @@ public final class Ssc14EnergyMachineBlockEntities {
             PODSTATION = REGISTRY.register("podstation",
                     () -> new BlockEntityType<>(PodstationBlockEntity::new,
                             Ssc14Blocks.PODSTATION.get()));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DebugGeneratorBlockEntity>>
+            DEBU_GGENERATOR = REGISTRY.register("debu_ggenerator",
+                    () -> new BlockEntityType<>(DebugGeneratorBlockEntity::new,
+                            Ssc14Blocks.DEBU_GGENERATOR.get()));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SmesBlockEntity>> SMES =
+            REGISTRY.register("smes", () -> new BlockEntityType<>(SmesBlockEntity::new,
+                    Ssc14Blocks.SMES.get()));
 
     private Ssc14EnergyMachineBlockEntities() { }
 
@@ -28,6 +35,10 @@ public final class Ssc14EnergyMachineBlockEntities {
         event.registerBlockEntity(Capabilities.Item.BLOCK, APC.get(),
                 WorldlyContainerWrapper::new);
         event.registerBlockEntity(Capabilities.Item.BLOCK, PODSTATION.get(),
+                WorldlyContainerWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, DEBU_GGENERATOR.get(),
+                WorldlyContainerWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, SMES.get(),
                 WorldlyContainerWrapper::new);
     }
 }

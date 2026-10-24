@@ -36,7 +36,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_DARK = Ssc14Blocks.TITLE_DARK;
 	public static final DeferredBlock<Block> APC = Ssc14Blocks.APC;
 	public static final DeferredBlock<Block> PODSTATION = Ssc14Blocks.PODSTATION;
-	public static final DeferredBlock<Block> DEBU_GGENERATOR;
+	public static final DeferredBlock<Block> DEBU_GGENERATOR = Ssc14Blocks.DEBU_GGENERATOR;
 	public static final DeferredBlock<Block> LAMP = Ssc14Blocks.LAMP;
 	public static final DeferredBlock<Block> AIRLOCK_UP_PLUG;
 	public static final DeferredBlock<Block> AIRLOCK_UP_PLUG_OPEN;
@@ -59,7 +59,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_DARK_PAVEMENT_VERTICAL = Ssc14Blocks.TITLE_DARK_PAVEMENT_VERTICAL;
 	public static final DeferredBlock<Block> TITLE_DARK_HERRINGBONE = Ssc14Blocks.TITLE_DARK_HERRINGBONE;
 	public static final DeferredBlock<Block> TITLE_DARK_PLASTIC = Ssc14Blocks.TITLE_DARK_PLASTIC;
-	public static final DeferredBlock<Block> SMES;
+	public static final DeferredBlock<Block> SMES = Ssc14Blocks.SMES;
 	public static final DeferredBlock<Block> TECH_LAMP = Ssc14Blocks.TECH_LAMP;
 	public static final DeferredBlock<Block> ARMORED_WINDOW = Ssc14Blocks.ARMORED_WINDOW;
 	public static final DeferredBlock<Block> DEBUG_LAMP = Ssc14Blocks.DEBUG_LAMP;
@@ -247,10 +247,8 @@ public class Ssc14ModBlocks {
 		BASE_AIRLOCK_D_1 = register("base_airlock_d_1", BaseAirlockD1Block::new);
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
 		PORTABLE_SHEATER = register("portable_sheater", PortableSheaterBlock::new);
-		DEBU_GGENERATOR = register("debu_ggenerator", DEBUGgeneratorBlock::new);
 		AIRLOCK_UP_PLUG = register("airlock_up_plug", AirlockUpPlugBlock::new);
 		AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", AirlockUpPlugOPENBlock::new);
-		SMES = register("smes", SMESBlock::new);
 		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);
 		C_4 = register("c_4", C4Block::new);
 		KOSTILNIBLOK = register("kostilniblok", KostilniblokBlock::new);
