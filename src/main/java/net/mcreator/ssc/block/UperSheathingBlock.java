@@ -1,11 +1,7 @@
 package net.mcreator.ssc.block;
-
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.Block;
-
-public class UperSheathingBlock extends Block {
-	public UperSheathingBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.IRON).strength(-1f, 20f));
-	}
+/** @deprecated Use {@link net.ssc14.content.block.structure.UperSheathingBlock}. */
+@Deprecated(forRemoval = false)
+public class UperSheathingBlock extends net.ssc14.content.block.structure.UperSheathingBlock {
+    public UperSheathingBlock(BlockBehaviour.Properties properties) { super(properties); }
 }

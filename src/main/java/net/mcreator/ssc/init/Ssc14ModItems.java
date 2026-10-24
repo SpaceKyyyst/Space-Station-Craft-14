@@ -577,7 +577,7 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> TOFU_BREAD;
 	public static final DeferredItem<Item> FLY_AMANITA;
 	static {
-		ROD_FLOOR = block(Ssc14ModBlocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
+		ROD_FLOOR = block(Ssc14Blocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = register("rood", RoodItem::new);
 		SHEATHING = block(Ssc14ModBlocks.SHEATHING, new Item.Properties().stacksTo(1).fireResistant());
 		STEEL = register("steel", SteelItem::new);
@@ -588,13 +588,13 @@ public class Ssc14ModItems {
 		CROWBAR = register("crowbar", ScrapItem::new);
 		TITLE_STEEL = block(Ssc14ModBlocks.TITLE_STEEL, new Item.Properties().stacksTo(30).fireResistant());
 		STEEL_WALL = block(Ssc14ModBlocks.STEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
-		WALL_CARCASE = block(Ssc14ModBlocks.WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
+		WALL_CARCASE = block(Ssc14Blocks.WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
 		WELDING = register("welding", WeldingItem::new);
 		ACTIVE_WELDER = register("active_welder", ActiveWelderItem::new);
 		NIPPERS = register("nippers", NippersItem::new);
 		FIRE_AXE = register("fire_axe", FireAxeItem::new);
-		UPER_SHEATHING = block(Ssc14ModBlocks.UPER_SHEATHING, new Item.Properties().stacksTo(1).fireResistant());
-		ROD_UP_FLOOR = block(Ssc14ModBlocks.ROD_UP_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
+		UPER_SHEATHING = block(Ssc14Blocks.UPER_SHEATHING, new Item.Properties().stacksTo(1).fireResistant());
+		ROD_UP_FLOOR = block(Ssc14Blocks.ROD_UP_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		SCREWDRIVER = register("screwdriver", ScrewdriverItem::new);
 		SPANNER = register("spanner", SpannerItem::new);
 		BASE_AIRLOCK_D_1 = block(Ssc14ModBlocks.BASE_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
@@ -660,7 +660,7 @@ public class Ssc14ModItems {
 		PLASMA = register("plasma", PlasmaItem::new);
 		PLASTIC = register("plastic", PlasticItem::new);
 		PLASTEEL_WALL = block(Ssc14ModBlocks.PLASTEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
-		PLASTEEL_WALL_CARCASE = block(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
+		PLASTEEL_WALL_CARCASE = block(Ssc14Blocks.PLASTEEL_WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
 		ENERGY_BAR = register("energy_bar", EnergyBarItem::new);
 		ENERGY_BAR_TRASH = register("energy_bar_trash", EnergyBarTrashItem::new);
 		ENERGY_BAR_2 = register("energy_bar_2", EnergyBar2Item::new);

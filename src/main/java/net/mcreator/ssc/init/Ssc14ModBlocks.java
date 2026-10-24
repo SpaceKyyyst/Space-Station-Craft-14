@@ -19,20 +19,20 @@ public class Ssc14ModBlocks {
 	@Deprecated(forRemoval = false)
 	public static final DeferredRegister.Blocks REGISTRY = Ssc14Blocks.REGISTRY;
     public static final DeferredBlock<Block> AIRLOCK_THRESHOLD = register("airlock_threshold", AirlockThresholdBlock::new);
-	public static final DeferredBlock<Block> ROD_FLOOR;
+	public static final DeferredBlock<Block> ROD_FLOOR = Ssc14Blocks.ROD_FLOOR;
 	public static final DeferredBlock<Block> SHEATHING;
 	public static final DeferredBlock<Block> TITLE_STEEL;
 	public static final DeferredBlock<Block> STEEL_WALL;
-	public static final DeferredBlock<Block> WALL_CARCASE;
-	public static final DeferredBlock<Block> UPER_SHEATHING;
-	public static final DeferredBlock<Block> ROD_UP_FLOOR;
+	public static final DeferredBlock<Block> WALL_CARCASE = Ssc14Blocks.WALL_CARCASE;
+	public static final DeferredBlock<Block> UPER_SHEATHING = Ssc14Blocks.UPER_SHEATHING;
+	public static final DeferredBlock<Block> ROD_UP_FLOOR = Ssc14Blocks.ROD_UP_FLOOR;
 	public static final DeferredBlock<Block> BASE_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> UP_TITLE;
 	public static final DeferredBlock<Block> CONSOLE_OF_ID;
 	public static final DeferredBlock<Block> BASE_WINDOW = Ssc14Blocks.BASE_WINDOW;
 	public static final DeferredBlock<Block> PORTABLE_SHEATER;
 	public static final DeferredBlock<Block> PLASTEEL_WALL;
-	public static final DeferredBlock<Block> PLASTEEL_WALL_CARCASE;
+	public static final DeferredBlock<Block> PLASTEEL_WALL_CARCASE = Ssc14Blocks.PLASTEEL_WALL_CARCASE;
 	public static final DeferredBlock<Block> TITLE_DARK;
 	public static final DeferredBlock<Block> APC;
 	public static final DeferredBlock<Block> PODSTATION;
@@ -244,19 +244,14 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> ARM_CHAIR_CARP = Ssc14Blocks.ARM_CHAIR_CARP;
 	public static final DeferredBlock<Block> EMERGENCY_LIGHT;
 	static {
-		ROD_FLOOR = register("rod_floor", RodFloorBlock::new);
 		SHEATHING = register("sheathing", SheathingBlock::new);
 		TITLE_STEEL = register("title_steel", TitleSteelBlock::new);
 		STEEL_WALL = register("steel_wall", SteelWallBlock::new);
-		WALL_CARCASE = register("wall_carcase", WallCarcaseBlock::new);
-		UPER_SHEATHING = register("uper_sheathing", UperSheathingBlock::new);
-		ROD_UP_FLOOR = register("rod_up_floor", RodUpFloorBlock::new);
 		BASE_AIRLOCK_D_1 = register("base_airlock_d_1", BaseAirlockD1Block::new);
 		UP_TITLE = register("up_title", UpTitleBlock::new);
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
 		PORTABLE_SHEATER = register("portable_sheater", PortableSheaterBlock::new);
 		PLASTEEL_WALL = register("plasteel_wall", PlasteelWallBlock::new);
-		PLASTEEL_WALL_CARCASE = register("plasteel_wall_carcase", PlasteelWallCarcaseBlock::new);
 		TITLE_DARK = register("title_dark", TitleDarkBlock::new);
 		APC = register("apc", APCBlock::new);
 		PODSTATION = register("podstation", PodstationBlock::new);

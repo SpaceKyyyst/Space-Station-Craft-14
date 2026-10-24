@@ -42,6 +42,11 @@ import net.ssc14.content.block.furniture.WoodChairBlock;
 import net.ssc14.content.block.furniture.WoodTableBlock;
 import net.ssc14.content.block.surface.StaircaseBlock;
 import net.ssc14.content.block.surface.UpperStaircaseBlock;
+import net.ssc14.content.block.structure.PlasteelWallCarcaseBlock;
+import net.ssc14.content.block.structure.RodFloorBlock;
+import net.ssc14.content.block.structure.RodUpFloorBlock;
+import net.ssc14.content.block.structure.UperSheathingBlock;
+import net.ssc14.content.block.structure.WallCarcaseBlock;
 import net.ssc14.content.block.window.ArmoredWindowBlock;
 import net.ssc14.content.block.window.BaseWindowBlock;
 import net.ssc14.content.block.window.DirectedArmoredWindowBlock;
@@ -160,6 +165,16 @@ public final class Ssc14Blocks {
             register("directed_base_window", DirectedBaseWindowBlock::new);
     public static final DeferredBlock<Block> DIRECTED_ARMORED_WINDOW =
             register("directed_armored_window", DirectedArmoredWindowBlock::new);
+    public static final DeferredBlock<Block> ROD_FLOOR =
+            register("rod_floor", RodFloorBlock::new);
+    public static final DeferredBlock<Block> ROD_UP_FLOOR =
+            register("rod_up_floor", RodUpFloorBlock::new);
+    public static final DeferredBlock<Block> UPER_SHEATHING =
+            register("uper_sheathing", UperSheathingBlock::new);
+    public static final DeferredBlock<Block> WALL_CARCASE =
+            register("wall_carcase", WallCarcaseBlock::new);
+    public static final DeferredBlock<Block> PLASTEEL_WALL_CARCASE =
+            register("plasteel_wall_carcase", PlasteelWallCarcaseBlock::new);
 
     private Ssc14Blocks() {
     }

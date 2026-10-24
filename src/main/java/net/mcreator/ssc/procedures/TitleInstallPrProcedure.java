@@ -1,5 +1,7 @@
 package net.mcreator.ssc.procedures;
 
+import net.ssc14.content.block.Ssc14Blocks;
+
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -45,7 +47,7 @@ public class TitleInstallPrProcedure {
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModBlocks.TITLE_STEEL.get().asItem()
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModBlocks.TITLE_DARK.get().asItem()
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModBlocks.UP_TITLE.get().asItem()) {
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ROD_FLOOR.get()) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.ROD_FLOOR.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockState _bs = Ssc14ModBlocks.SHEATHING.get().defaultBlockState();
@@ -84,10 +86,10 @@ public class TitleInstallPrProcedure {
 					}
 				}
 			}
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ROD_UP_FLOOR.get()) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.ROD_UP_FLOOR.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockState _bs = Ssc14ModBlocks.UPER_SHEATHING.get().defaultBlockState();
+					BlockState _bs = Ssc14Blocks.UPER_SHEATHING.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Property<?> _propertyOld : _bso.getProperties()) {
 						Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());

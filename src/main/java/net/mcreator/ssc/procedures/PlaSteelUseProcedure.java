@@ -1,5 +1,7 @@
 package net.mcreator.ssc.procedures;
 
+import net.ssc14.content.block.Ssc14Blocks;
+
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.LevelAccessor;
@@ -20,7 +22,7 @@ public class PlaSteelUseProcedure {
 			return;
 		if (entity instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER))
 			_livingEntity3.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).setBaseValue((entity.getX() + entity.getZ() + entity.getY()));
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.WALL_CARCASE.get()) {
+		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.WALL_CARCASE.get()) {
 			if (entity instanceof LivingEntity _livingEntity6 && _livingEntity6.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity6.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(serverOwner, 3, () -> {
@@ -65,12 +67,12 @@ public class PlaSteelUseProcedure {
 																		? _livingEntity45.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 																		: 0)
 																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.PLASTEEL.get()
-																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.WALL_CARCASE.get()) {
+																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.WALL_CARCASE.get()) {
 															if (entity instanceof LivingEntity _livingEntity50 && _livingEntity50.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity50.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
 															{
 																BlockPos _bp = BlockPos.containing(x, y, z);
-																BlockState _bs = Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get().defaultBlockState();
+																BlockState _bs = Ssc14Blocks.PLASTEEL_WALL_CARCASE.get().defaultBlockState();
 																BlockState _bso = world.getBlockState(_bp);
 																for (Property<?> _propertyOld : _bso.getProperties()) {
 																	Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
@@ -115,7 +117,7 @@ public class PlaSteelUseProcedure {
 						_livingEntity65.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
 				}
 			}).orThrow();
-		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get()) {
+		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.PLASTEEL_WALL_CARCASE.get()) {
 			if (entity instanceof LivingEntity _livingEntity69 && _livingEntity69.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 				_livingEntity69.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 			Ssc14Mod.queueServerWork(serverOwner, 3, () -> {
@@ -160,7 +162,7 @@ public class PlaSteelUseProcedure {
 																		? _livingEntity108.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 																		: 0)
 																&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.PLASTEEL.get()
-																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get()) {
+																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.PLASTEEL_WALL_CARCASE.get()) {
 															{
 																BlockPos _bp = BlockPos.containing(x, y, z);
 																BlockState _bs = Ssc14ModBlocks.PLASTEEL_WALL.get().defaultBlockState();

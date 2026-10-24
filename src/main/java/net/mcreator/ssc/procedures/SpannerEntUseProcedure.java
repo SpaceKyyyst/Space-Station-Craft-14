@@ -1,5 +1,7 @@
 package net.mcreator.ssc.procedures;
 
+import net.ssc14.content.block.Ssc14Blocks;
+
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
@@ -82,7 +84,7 @@ public class SpannerEntUseProcedure {
 														}
 														if (sourceentity instanceof LivingEntity _livingEntity50 && _livingEntity50.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 															_livingEntity50.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														world.setBlock(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Ssc14ModBlocks.WALL_CARCASE.get().defaultBlockState(), 3);
+														world.setBlock(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Ssc14Blocks.WALL_CARCASE.get().defaultBlockState(), 3);
 														if (!entity.level().isClientSide())
 															entity.discard();
 													}).orThrow();
@@ -343,7 +345,7 @@ public class SpannerEntUseProcedure {
 														}
 														if (sourceentity instanceof LivingEntity _livingEntity243 && _livingEntity243.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 															_livingEntity243.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
-														world.setBlock(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get().defaultBlockState(), 3);
+														world.setBlock(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Ssc14Blocks.PLASTEEL_WALL_CARCASE.get().defaultBlockState(), 3);
 														if (!entity.level().isClientSide())
 															entity.discard();
 													}).orThrow();

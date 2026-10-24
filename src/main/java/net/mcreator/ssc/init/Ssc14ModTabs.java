@@ -23,10 +23,10 @@ public class Ssc14ModTabs {
 	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Ssc14Mod.MODID);
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_COATING = REGISTRY.register("ssc_14_coating",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14_coating")).icon(() -> new ItemStack(Ssc14ModBlocks.TITLE_STEEL.get())).displayItems((parameters, tabData) -> {
-				tabData.accept(Ssc14ModBlocks.ROD_FLOOR.get().asItem());
+				tabData.accept(Ssc14Blocks.ROD_FLOOR.get().asItem());
 				tabData.accept(Ssc14ModBlocks.SHEATHING.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ROD_UP_FLOOR.get().asItem());
-				tabData.accept(Ssc14ModBlocks.UPER_SHEATHING.get().asItem());
+				tabData.accept(Ssc14Blocks.ROD_UP_FLOOR.get().asItem());
+				tabData.accept(Ssc14Blocks.UPER_SHEATHING.get().asItem());
 				tabData.accept(Ssc14ModBlocks.UP_TITLE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.UP_TITLE_STEEL.get().asItem());
 				tabData.accept(Ssc14ModBlocks.UP_TITLE_DARK.get().asItem());
@@ -131,9 +131,9 @@ public class Ssc14ModTabs {
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_WALLS = REGISTRY.register("ssc_14_walls",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14_walls")).icon(() -> new ItemStack(Ssc14ModBlocks.STEEL_WALL.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(Ssc14ModBlocks.STEEL_WALL.get().asItem());
-				tabData.accept(Ssc14ModBlocks.WALL_CARCASE.get().asItem());
+				tabData.accept(Ssc14Blocks.WALL_CARCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.PLASTEEL_WALL.get().asItem());
-				tabData.accept(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get().asItem());
+				tabData.accept(Ssc14Blocks.PLASTEEL_WALL_CARCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.SHUTTLE_WALL.get().asItem());
 				tabData.accept(Ssc14ModBlocks.ARMORED_SHUTTLE_WALL.get().asItem());
 				tabData.accept(Ssc14Blocks.BASE_WINDOW.get().asItem());
@@ -169,8 +169,8 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.VIROLOGY_AIRLOCK_D_1.get().asItem());
 				tabData.accept(Ssc14ModBlocks.GLASS_AIRLOCK_D_1.get().asItem());
 				tabData.accept(Ssc14ModBlocks.BASE_GLASS_AIRLOCK_D_1.get().asItem());
-				tabData.accept(Ssc14ModBlocks.WALL_CARCASE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get().asItem());
+				tabData.accept(Ssc14Blocks.WALL_CARCASE.get().asItem());
+				tabData.accept(Ssc14Blocks.PLASTEEL_WALL_CARCASE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.GRILLE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.BROKEN_GRILLE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.APC.get().asItem());

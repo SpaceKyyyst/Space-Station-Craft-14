@@ -24,11 +24,11 @@ public class WOCtextP2Procedure {
 		X = entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(10)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX();
 		Y = entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(10)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY();
 		Z = entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(10)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ();
-		if (Ssc14ModBlocks.ROD_FLOOR.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()
+		if (Ssc14Blocks.ROD_FLOOR.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()
 				&& 0 < (getPropertyByName((world.getBlockState(BlockPos.containing(X, Y, Z))), "blockstate") instanceof IntegerProperty _getip6 ? (world.getBlockState(BlockPos.containing(X, Y, Z))).getValue(_getip6) : -1)
 				|| Ssc14ModBlocks.SHEATHING.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()
 						&& 0 < (getPropertyByName((world.getBlockState(BlockPos.containing(X, Y, Z))), "blockstate") instanceof IntegerProperty _getip10 ? (world.getBlockState(BlockPos.containing(X, Y, Z))).getValue(_getip10) : -1)
-				|| Ssc14ModBlocks.ROD_UP_FLOOR.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() || Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()
+				|| Ssc14Blocks.ROD_UP_FLOOR.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() || Ssc14Blocks.PLASTEEL_WALL_CARCASE.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()
 				|| Ssc14ModBlocks.PLASTEEL_WALL.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()
 						&& (0 == (getPropertyByName((world.getBlockState(BlockPos.containing(X, Y, Z))), "blockstate") instanceof IntegerProperty _getip18 ? (world.getBlockState(BlockPos.containing(X, Y, Z))).getValue(_getip18) : -1)
 								|| 8 == (getPropertyByName((world.getBlockState(BlockPos.containing(X, Y, Z))), "blockstate") instanceof IntegerProperty _getip20 ? (world.getBlockState(BlockPos.containing(X, Y, Z))).getValue(_getip20) : -1))
@@ -41,9 +41,9 @@ public class WOCtextP2Procedure {
 				|| Ssc14Blocks.ARMORED_WINDOW.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()
 						&& 2 == (getPropertyByName((world.getBlockState(BlockPos.containing(X, Y, Z))), "blockstate") instanceof IntegerProperty _getip36 ? (world.getBlockState(BlockPos.containing(X, Y, Z))).getValue(_getip36) : -1)) {
 			loc_buf_t = "\u041B\u043E\u043C";
-		} else if (Ssc14ModBlocks.SHEATHING.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() || Ssc14ModBlocks.UPER_SHEATHING.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()) {
+		} else if (Ssc14ModBlocks.SHEATHING.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() || Ssc14Blocks.UPER_SHEATHING.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()) {
 			loc_buf_t = "\u041F\u043E\u0436\u0430\u0440\u043D\u044B\u0439 \u0442\u043E\u043F\u043E\u0440";
-		} else if (Ssc14ModBlocks.WALL_CARCASE.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()) {
+		} else if (Ssc14Blocks.WALL_CARCASE.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()) {
 			loc_buf_t = "\u0421\u043D\u0430\u0447\u0430\u043B\u0430 \u043E\u0442\u043A\u0440\u0443\u0442\u0438\u0442\u0438\u0435";
 		} else if (Ssc14ModBlocks.STEEL_WALL.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()
 				|| Ssc14ModBlocks.PLASTEEL_WALL.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()
