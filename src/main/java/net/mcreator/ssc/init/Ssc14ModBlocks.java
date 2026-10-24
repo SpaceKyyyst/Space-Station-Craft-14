@@ -18,7 +18,7 @@ public class Ssc14ModBlocks {
 	/** @deprecated Use {@link Ssc14Blocks#REGISTRY}. */
 	@Deprecated(forRemoval = false)
 	public static final DeferredRegister.Blocks REGISTRY = Ssc14Blocks.REGISTRY;
-    public static final DeferredBlock<Block> AIRLOCK_THRESHOLD = register("airlock_threshold", AirlockThresholdBlock::new);
+    public static final DeferredBlock<Block> AIRLOCK_THRESHOLD = Ssc14Blocks.AIRLOCK_THRESHOLD;
 	public static final DeferredBlock<Block> ROD_FLOOR = Ssc14Blocks.ROD_FLOOR;
 	public static final DeferredBlock<Block> SHEATHING = Ssc14Blocks.SHEATHING;
 	public static final DeferredBlock<Block> TITLE_STEEL = Ssc14Blocks.TITLE_STEEL;
