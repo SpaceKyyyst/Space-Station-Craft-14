@@ -19,6 +19,9 @@ public final class Ssc14ClosetBlockEntities {
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET =
             register("closet", "Closet", Ssc14Blocks.CLOSET);
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>>
+            CLOSET_SECURE = register(
+                    "closet_secure", "Closet Secure", Ssc14Blocks.CLOSET_SECURE);
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET_EMERG =
             register("closet_emerg", "Emergency closet", Ssc14Blocks.CLOSET_EMERG);
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET_FIRE =
@@ -44,6 +47,8 @@ public final class Ssc14ClosetBlockEntities {
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.Item.BLOCK, CLOSET.get(),
+                WorldlyContainerWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, CLOSET_SECURE.get(),
                 WorldlyContainerWrapper::new);
         event.registerBlockEntity(Capabilities.Item.BLOCK, CLOSET_EMERG.get(),
                 WorldlyContainerWrapper::new);
