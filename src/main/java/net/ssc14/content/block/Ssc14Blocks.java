@@ -38,6 +38,10 @@ import net.ssc14.content.block.planetary.PlanetGrassPlantBlock;
 import net.ssc14.content.block.planetary.PlanetGrassSoilBlock;
 import net.ssc14.content.block.planetary.PlanetaryTreeFoliageBlock;
 import net.ssc14.content.block.planetary.PlanetaryTreeLogBlock;
+import net.ssc14.content.block.wall.ArmoredShuttleWallBlock;
+import net.ssc14.content.block.wall.PlasteelWallBlock;
+import net.ssc14.content.block.wall.ShuttleWallBlock;
+import net.ssc14.content.block.wall.SteelWallBlock;
 import net.ssc14.content.block.furniture.ArmChairBlock;
 import net.ssc14.content.block.furniture.BarChairBlock;
 import net.ssc14.content.block.furniture.GlassTableBlock;
@@ -181,6 +185,14 @@ public final class Ssc14Blocks {
             register("wall_carcase", WallCarcaseBlock::new);
     public static final DeferredBlock<Block> PLASTEEL_WALL_CARCASE =
             register("plasteel_wall_carcase", PlasteelWallCarcaseBlock::new);
+    public static final DeferredBlock<Block> STEEL_WALL =
+            register("steel_wall", SteelWallBlock::new);
+    public static final DeferredBlock<Block> PLASTEEL_WALL =
+            register("plasteel_wall", PlasteelWallBlock::new);
+    public static final DeferredBlock<Block> SHUTTLE_WALL =
+            register("shuttle_wall", ShuttleWallBlock::new);
+    public static final DeferredBlock<Block> ARMORED_SHUTTLE_WALL =
+            register("armored_shuttle_wall", ArmoredShuttleWallBlock::new);
     public static final DeferredBlock<Block> GRILLE =
             register("grille", GrilleBlock::new);
     public static final DeferredBlock<Block> BROKEN_GRILLE =

@@ -68,9 +68,9 @@ public class SS14ConstructionRegistryProcedure {
         registerTagCheck("ssc14:tiles_up", crowbar, bs -> true, 
             new ConstructionStage(new int[]{33,33,33,33,33,33}, true, null, 1, 1.0, null, null, -1, false, null, null));
 
-        registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), crowbar, bs -> getInt(bs, "blockstate") == 3,
+        registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), crowbar, bs -> getInt(bs, "blockstate") == 3,
             new ConstructionStage(new int[]{3,3,3,3,3,3}, false, null, 1, 0.0, null, "blockstate", 4, false, null, null));
-        registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), crowbar, bs -> getInt(bs, "blockstate") == 6,
+        registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), crowbar, bs -> getInt(bs, "blockstate") == 6,
             new ConstructionStage(new int[]{3,3,3,3,3,3}, false, null, 1, 0.0, null, "blockstate", 7, false, null, null));
 
         registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), crowbar, bs -> getInt(bs, "blockstate") == 2,
@@ -78,11 +78,11 @@ public class SS14ConstructionRegistryProcedure {
 
         Item welder = Ssc14ModItems.ACTIVE_WELDER.get();
 
-        registerBlock(Ssc14ModBlocks.STEEL_WALL.get(), welder, bs -> true,
+        registerBlock(Ssc14Blocks.STEEL_WALL.get(), welder, bs -> true,
             new ConstructionStage(new int[]{20,20,20,20,20,20}, false, Ssc14ModItems.STEEL.get(), 1, 0.5, Ssc14Blocks.WALL_CARCASE.get(), null, -1, true, null, null));
-        registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), welder, bs -> getInt(bs, "blockstate") == 2,
+        registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), welder, bs -> getInt(bs, "blockstate") == 2,
             new ConstructionStage(new int[]{13,13,13,13,13,13}, false, null, 1, 0.0, null, "blockstate", 3, true, null, null));
-        registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), welder, bs -> getInt(bs, "blockstate") == 5,
+        registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), welder, bs -> getInt(bs, "blockstate") == 5,
             new ConstructionStage(new int[]{27,27,27,27,27,27}, false, null, 1, 0.0, null, "blockstate", 6, true, null, null));
 
         registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), welder, bs -> getInt(bs, "blockstate") == 0,
@@ -104,9 +104,9 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14Blocks.ROD_UP_FLOOR.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
             new ConstructionStage(fastDelays, false, Ssc14ModItems.ROOD.get(), 1, 0.0, null, null, -1, false, null, null));
 
-        registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
+        registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
             new ConstructionStage(normalDelays, false, null, 1, 1.0, null, "blockstate", 1, false, null, null));
-        registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), nippers, bs -> getInt(bs, "blockstate") == 8,
+        registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), nippers, bs -> getInt(bs, "blockstate") == 8,
             new ConstructionStage(new int[]{3,1,2,1,2,1}, false, Ssc14ModItems.PLASTEEL.get(), 1, 0.0, Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(), null, -1, false, null, null));
 
         registerBlock(Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(), nippers, bs -> true,
@@ -134,9 +134,9 @@ public class SS14ConstructionRegistryProcedure {
             new ConstructionStage(normalDelays, false, null, 1, 0.0, null, "window_disassembly", 1, false, null, 
             ctx -> updatePropertyRaw(ctx, "blockstate", 1)));
 
-        registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), screwdriver, bs -> getInt(bs, "blockstate") == 1,
+        registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), screwdriver, bs -> getInt(bs, "blockstate") == 1,
             new ConstructionStage(normalDelays, false, null, 1, 0.0, null, "blockstate", 2, false, null, null));
-        registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), screwdriver, bs -> getInt(bs, "blockstate") == 7,
+        registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), screwdriver, bs -> getInt(bs, "blockstate") == 7,
             new ConstructionStage(new int[]{2,1,2,1,2,1}, false, null, 1, 0.0, null, "blockstate", 8, false, null, null));
 
         registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), screwdriver, bs -> getInt(bs, "blockstate") == 1,
@@ -190,7 +190,7 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), spanner, bs -> getInt(bs, "blockstate") == 5,
             new ConstructionStage(slowDelays, false, Ssc14ModItems.ARM_GLASS.get(), 2, 0.5, null, null, -1, false, null, ctx -> ctx.world().setBlock(ctx.pos(), Blocks.AIR.defaultBlockState(), 3)));
 
-        registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), spanner, bs -> getInt(bs, "blockstate") == 4,
+        registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), spanner, bs -> getInt(bs, "blockstate") == 4,
             new ConstructionStage(normalDelays, false, null, 1, 0.0, null, "blockstate", 5, false, null, null));
     }
     private static ConstructionStage cableRemovalStage(int[] delays, BooleanProperty property, Item cable) {

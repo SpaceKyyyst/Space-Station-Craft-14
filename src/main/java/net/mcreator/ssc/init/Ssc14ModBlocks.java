@@ -22,7 +22,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> ROD_FLOOR = Ssc14Blocks.ROD_FLOOR;
 	public static final DeferredBlock<Block> SHEATHING;
 	public static final DeferredBlock<Block> TITLE_STEEL = Ssc14Blocks.TITLE_STEEL;
-	public static final DeferredBlock<Block> STEEL_WALL;
+	public static final DeferredBlock<Block> STEEL_WALL = Ssc14Blocks.STEEL_WALL;
 	public static final DeferredBlock<Block> WALL_CARCASE = Ssc14Blocks.WALL_CARCASE;
 	public static final DeferredBlock<Block> UPER_SHEATHING = Ssc14Blocks.UPER_SHEATHING;
 	public static final DeferredBlock<Block> ROD_UP_FLOOR = Ssc14Blocks.ROD_UP_FLOOR;
@@ -31,7 +31,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> CONSOLE_OF_ID;
 	public static final DeferredBlock<Block> BASE_WINDOW = Ssc14Blocks.BASE_WINDOW;
 	public static final DeferredBlock<Block> PORTABLE_SHEATER;
-	public static final DeferredBlock<Block> PLASTEEL_WALL;
+	public static final DeferredBlock<Block> PLASTEEL_WALL = Ssc14Blocks.PLASTEEL_WALL;
 	public static final DeferredBlock<Block> PLASTEEL_WALL_CARCASE = Ssc14Blocks.PLASTEEL_WALL_CARCASE;
 	public static final DeferredBlock<Block> TITLE_DARK = Ssc14Blocks.TITLE_DARK;
 	public static final DeferredBlock<Block> APC;
@@ -118,8 +118,8 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> UP_STEEL_STAIRCASE = Ssc14Blocks.UP_STEEL_STAIRCASE;
 	public static final DeferredBlock<Block> UP_WHITE_STAIRCASE = Ssc14Blocks.UP_WHITE_STAIRCASE;
 	public static final DeferredBlock<Block> UP_DARK_STAIRCASE = Ssc14Blocks.UP_DARK_STAIRCASE;
-	public static final DeferredBlock<Block> SHUTTLE_WALL;
-	public static final DeferredBlock<Block> ARMORED_SHUTTLE_WALL;
+	public static final DeferredBlock<Block> SHUTTLE_WALL = Ssc14Blocks.SHUTTLE_WALL;
+	public static final DeferredBlock<Block> ARMORED_SHUTTLE_WALL = Ssc14Blocks.ARMORED_SHUTTLE_WALL;
 	public static final DeferredBlock<Block> DIRECTED_BASE_WINDOW = Ssc14Blocks.DIRECTED_BASE_WINDOW;
 	public static final DeferredBlock<Block> COMPUTER;
 	public static final DeferredBlock<Block> CLOSET_SECURE;
@@ -245,11 +245,9 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> EMERGENCY_LIGHT;
 	static {
 		SHEATHING = register("sheathing", SheathingBlock::new);
-		STEEL_WALL = register("steel_wall", SteelWallBlock::new);
 		BASE_AIRLOCK_D_1 = register("base_airlock_d_1", BaseAirlockD1Block::new);
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
 		PORTABLE_SHEATER = register("portable_sheater", PortableSheaterBlock::new);
-		PLASTEEL_WALL = register("plasteel_wall", PlasteelWallBlock::new);
 		APC = register("apc", APCBlock::new);
 		PODSTATION = register("podstation", PodstationBlock::new);
 		DEBU_GGENERATOR = register("debu_ggenerator", DEBUGgeneratorBlock::new);
@@ -267,8 +265,6 @@ public class Ssc14ModBlocks {
 		KOSTILNIBLOK = register("kostilniblok", KostilniblokBlock::new);
 		DEBUG_GRAV_GEN = register("debug_grav_gen", DebugGravGenBlock::new);
 		NUCLEAR_WARHEAD = register("nuclear_warhead", NuclearWarheadBlock::new);
-		SHUTTLE_WALL = register("shuttle_wall", ShuttleWallBlock::new);
-		ARMORED_SHUTTLE_WALL = register("armored_shuttle_wall", ArmoredShuttleWallBlock::new);
 		COMPUTER = register("computer", ComputerBlock::new);
 		CLOSET_SECURE = register("closet_secure", ClosetSecureBlock::new);
 		UP_CLOSET_PLUG = register("up_closet_plug", UpClosetPLUGBlock::new);
