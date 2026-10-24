@@ -46,7 +46,7 @@ public class TitleInstallPrProcedure {
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14Blocks.TITLE_STEEL.get().asItem()
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14Blocks.TITLE_DARK.get().asItem()
-				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModBlocks.UP_TITLE.get().asItem()) {
+				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14Blocks.UP_TITLE.get().asItem()) {
 			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.ROD_FLOOR.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);

@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.block.catwalk.CatwalkFloorBlock;
+import net.ssc14.content.block.ceiling.CeilingTileBlock;
 import net.ssc14.content.block.decoration.DirectionalBannerBlock;
 import net.ssc14.content.block.decoration.FenceCornerBlock;
 import net.ssc14.content.block.decoration.FenceLineBlock;
@@ -262,6 +263,12 @@ public final class Ssc14Blocks {
             register("title_white_pavement_vertical", FloorTileBlock::new);
     public static final DeferredBlock<Block> TITLE_WHITE_PLASTIC =
             register("title_white_plastic", FloorTileBlock::new);
+    public static final DeferredBlock<Block> UP_TITLE =
+            register("up_title", CeilingTileBlock::new);
+    public static final DeferredBlock<Block> UP_TITLE_STEEL =
+            register("up_title_steel", CeilingTileBlock::new);
+    public static final DeferredBlock<Block> UP_TITLE_DARK =
+            register("up_title_dark", CeilingTileBlock::new);
 
     private Ssc14Blocks() {
     }

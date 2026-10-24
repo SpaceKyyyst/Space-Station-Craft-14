@@ -598,7 +598,7 @@ public class Ssc14ModItems {
 		SCREWDRIVER = register("screwdriver", ScrewdriverItem::new);
 		SPANNER = register("spanner", SpannerItem::new);
 		BASE_AIRLOCK_D_1 = block(Ssc14ModBlocks.BASE_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		UP_TITLE = block(Ssc14ModBlocks.UP_TITLE, new Item.Properties().stacksTo(30).fireResistant());
+		UP_TITLE = block(Ssc14Blocks.UP_TITLE, new Item.Properties().stacksTo(30).fireResistant());
 		WALL_CARCASE_ENTIT_SPAWN_EGG = register("wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.WALL_CARCASE_ENTIT.get())));
 		ID_CARD_PASSANGER = register("id_card_passanger", IDCardPassangerItem::new);
 		CONSOLE_OF_ID = block(Ssc14ModBlocks.CONSOLE_OF_ID, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
@@ -673,8 +673,8 @@ public class Ssc14ModItems {
 		LAMP = block(Ssc14ModBlocks.LAMP, new Item.Properties().stacksTo(1).fireResistant());
 		TITLE_STEEL_DIAGONAL_MINI = block(Ssc14Blocks.TITLE_STEEL_DIAGONAL_MINI, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_STEEL_DIAGONAL = block(Ssc14Blocks.TITLE_STEEL_DIAGONAL, new Item.Properties().stacksTo(30).fireResistant());
-		UP_TITLE_STEEL = block(Ssc14ModBlocks.UP_TITLE_STEEL, new Item.Properties().stacksTo(30).fireResistant());
-		UP_TITLE_DARK = block(Ssc14ModBlocks.UP_TITLE_DARK, new Item.Properties().stacksTo(30).fireResistant());
+		UP_TITLE_STEEL = block(Ssc14Blocks.UP_TITLE_STEEL, new Item.Properties().stacksTo(30).fireResistant());
+		UP_TITLE_DARK = block(Ssc14Blocks.UP_TITLE_DARK, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_STEEL_MINI = block(Ssc14Blocks.TITLE_STEEL_MINI, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_STEEL_MONO = block(Ssc14Blocks.TITLE_STEEL_MONO, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_STEEL_OFFSET = block(Ssc14Blocks.TITLE_STEEL_OFFSET, new Item.Properties().stacksTo(30).fireResistant());
