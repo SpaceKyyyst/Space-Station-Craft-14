@@ -38,6 +38,8 @@ import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.OrderPalletRegistryService;
+import net.ssc14.content.block.fuel.FuelTankInteractionService;
+import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.block.lighting.EmergencyLightingService;
 import net.ssc14.content.block.lighting.LightingEnergyService;
@@ -96,6 +98,8 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14EnergyMachineBlockEntities::registerCapabilities);
 		Ssc14CommerceBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14CommerceBlockEntities::registerCapabilities);
+		Ssc14FuelBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14FuelBlockEntities::registerCapabilities);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
 		LightingEnergyService.install(EnergyNetworkManager::queueUpdate);
@@ -116,6 +120,21 @@ public class Ssc14Mod {
 			if (!variables.PalletRegistry.contains(key)) {
 				variables.PalletRegistry += key;
 				variables.setDirty();
+			}
+		});
+		FuelTankInteractionService.install(new FuelTankInteractionService.Adapter() {
+			@Override
+			public void initialize(net.minecraft.world.level.Level level,
+					net.minecraft.core.BlockPos pos) {
+				net.mcreator.ssc.procedures.FuelTank_GENERATE_Procedure.execute(
+						level, pos.getX(), pos.getY(), pos.getZ());
+			}
+
+			@Override
+			public void interact(net.minecraft.world.level.Level level,
+					net.minecraft.core.BlockPos pos, Player player) {
+				net.mcreator.ssc.procedures.FuelTank_USE_Procedure.execute(
+						level, pos.getX(), pos.getY(), pos.getZ(), player);
 			}
 		});
 		EmergencyLightingService.install(level ->

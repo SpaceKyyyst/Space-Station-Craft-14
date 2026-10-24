@@ -44,6 +44,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_energy_device_contract",
     "ssc_14:compatibility_block_sale_pallet_contract",
     "ssc_14:compatibility_block_order_pallet_contract",
+    "ssc_14:compatibility_block_fuel_tank_contract",
 }
 
 

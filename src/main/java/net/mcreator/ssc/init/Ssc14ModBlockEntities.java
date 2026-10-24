@@ -31,6 +31,8 @@ import net.ssc14.content.block.energy.Ssc14EnergyMachineBlockEntities;
 import net.ssc14.content.block.commerce.SalePalletBlockEntity;
 import net.ssc14.content.block.commerce.OrderPalletBlockEntity;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
+import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
+import net.ssc14.content.block.fuel.FuelTankBlockEntity;
 
 @EventBusSubscriber
 public class Ssc14ModBlockEntities {
@@ -87,7 +89,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET_PINK = Ssc14ClosetBlockEntities.CLOSET_PINK;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GlassAirlockD1BlockEntity>> GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1", Ssc14ModBlocks.GLASS_AIRLOCK_D_1, GlassAirlockD1BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BaseGlassAirlockD1BlockEntity>> BASE_GLASS_AIRLOCK_D_1 = register("base_glass_airlock_d_1", Ssc14ModBlocks.BASE_GLASS_AIRLOCK_D_1, BaseGlassAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FuelTankBlockEntity>> FUEL_TANK = register("fuel_tank", Ssc14ModBlocks.FUEL_TANK, FuelTankBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FuelTankBlockEntity>> FUEL_TANK = Ssc14FuelBlockEntities.FUEL_TANK;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OrderConsoleBlockEntity>> ORDER_CONSOLE = register("order_console", Ssc14ModBlocks.ORDER_CONSOLE, OrderConsoleBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OrderPalletBlockEntity>> ORDER_PALLET = Ssc14CommerceBlockEntities.ORDER_PALLET;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SalePalletBlockEntity>> SALE_PALLET = Ssc14CommerceBlockEntities.SALE_PALLET;
@@ -133,7 +135,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, VIROLOGY_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, GLASS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, BASE_GLASS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, FUEL_TANK.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, ORDER_CONSOLE.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, SALE_CONSOLE.get(), WorldlyContainerWrapper::new);
 	}
