@@ -85,7 +85,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> GRAVITY_GENERATOR;
 	public static final DeferredBlock<Block> TITLE_WHITE;
 	public static final DeferredBlock<Block> TITLE_WHITE_DIAGONAL_MINI;
-	public static final DeferredBlock<Block> CATWALK_FLOOR;
+	public static final DeferredBlock<Block> CATWALK_FLOOR = Ssc14Blocks.CATWALK_FLOOR;
 	public static final DeferredBlock<Block> TITLE_WHITE_DIAGONAL;
 	public static final DeferredBlock<Block> TITLE_WHITE_HERRINGBONE;
 	public static final DeferredBlock<Block> TITLE_WHITE_MINI;
@@ -285,7 +285,6 @@ public class Ssc14ModBlocks {
 		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);
 		TITLE_WHITE = register("title_white", TitleWhiteBlock::new);
 		TITLE_WHITE_DIAGONAL_MINI = register("title_white_diagonal_mini", TitleWhiteDiagonalMiniBlock::new);
-		CATWALK_FLOOR = register("catwalk_floor", CatwalkFloorBlock::new);
 		TITLE_WHITE_DIAGONAL = register("title_white_diagonal", TitleWhiteDiagonalBlock::new);
 		TITLE_WHITE_HERRINGBONE = register("title_white_herringbone", TitleWhiteHerringboneBlock::new);
 		TITLE_WHITE_MINI = register("title_white_mini", TitleWhiteMiniBlock::new);

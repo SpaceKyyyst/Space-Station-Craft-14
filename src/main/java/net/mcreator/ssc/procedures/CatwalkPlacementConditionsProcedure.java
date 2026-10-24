@@ -1,15 +1,16 @@
 package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
+import net.ssc14.content.block.catwalk.CatwalkSupportPolicy;
 
-public class CatwalkPlacementConditionsProcedure {
+/** @deprecated Use {@link CatwalkSupportPolicy}. */
+@Deprecated(forRemoval = false)
+public final class CatwalkPlacementConditionsProcedure {
+	private CatwalkPlacementConditionsProcedure() {
+	}
+
 	public static boolean execute(LevelAccessor world, double x, double y, double z) {
-		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(Identifier.parse("ssc14:suitable_for_catwalk")))) {
-			return true;
-		}
-		return false;
+		return CatwalkSupportPolicy.canSupport(world, BlockPos.containing(x, y, z));
 	}
 }

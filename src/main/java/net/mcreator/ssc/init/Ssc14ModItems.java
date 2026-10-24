@@ -724,7 +724,7 @@ public class Ssc14ModItems {
 		GRAVITY_GENERATOR = block(Ssc14ModBlocks.GRAVITY_GENERATOR, new Item.Properties().stacksTo(1).fireResistant());
 		TITLE_WHITE = block(Ssc14ModBlocks.TITLE_WHITE, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_WHITE_DIAGONAL_MINI = block(Ssc14ModBlocks.TITLE_WHITE_DIAGONAL_MINI, new Item.Properties().stacksTo(30).fireResistant());
-		CATWALK_FLOOR = block(Ssc14ModBlocks.CATWALK_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
+		CATWALK_FLOOR = block(Ssc14Blocks.CATWALK_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		TITLE_WHITE_DIAGONAL = block(Ssc14ModBlocks.TITLE_WHITE_DIAGONAL, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_WHITE_HERRINGBONE = block(Ssc14ModBlocks.TITLE_WHITE_HERRINGBONE, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_WHITE_MINI = block(Ssc14ModBlocks.TITLE_WHITE_MINI, new Item.Properties().stacksTo(30).fireResistant());
