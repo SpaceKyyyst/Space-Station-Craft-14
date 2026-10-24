@@ -21,11 +21,13 @@ import net.ssc14.content.block.lighting.LightingBlockEntity;
 import net.ssc14.content.block.lighting.Ssc14LightingBlockEntities;
 import net.ssc14.content.block.machinery.MachineFrameBlockEntity;
 import net.ssc14.content.block.machinery.Ssc14MachineBlockEntities;
+import net.ssc14.content.block.energy.SheathingBlockEntity;
+import net.ssc14.content.block.energy.Ssc14CableBlockEntities;
 
 @EventBusSubscriber
 public class Ssc14ModBlockEntities {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Ssc14Mod.MODID);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SheathingBlockEntity>> SHEATHING = register("sheathing", Ssc14ModBlocks.SHEATHING, SheathingBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SheathingBlockEntity>> SHEATHING = Ssc14CableBlockEntities.SHEATHING;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BaseAirlockD1BlockEntity>> BASE_AIRLOCK_D_1 = register("base_airlock_d_1", Ssc14ModBlocks.BASE_AIRLOCK_D_1, BaseAirlockD1BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ConsoleOfIDBlockEntity>> CONSOLE_OF_ID = register("console_of_id", Ssc14ModBlocks.CONSOLE_OF_ID, ConsoleOfIDBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PortableSheaterBlockEntity>> PORTABLE_SHEATER = register("portable_sheater", Ssc14ModBlocks.PORTABLE_SHEATER, PortableSheaterBlockEntity::new);
@@ -90,7 +92,6 @@ public class Ssc14ModBlockEntities {
 
 	@SubscribeEvent
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-		event.registerBlockEntity(Capabilities.Item.BLOCK, SHEATHING.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, BASE_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, CONSOLE_OF_ID.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, PORTABLE_SHEATER.get(), WorldlyContainerWrapper::new);

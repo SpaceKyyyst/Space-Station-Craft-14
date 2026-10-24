@@ -3,7 +3,7 @@ package net.mcreator.ssc.energy;
 import net.mcreator.ssc.CableType;
 import net.mcreator.ssc.EnergyNetwork;
 import net.mcreator.ssc.MultitoolDataPacket;
-import net.mcreator.ssc.block.entity.SheathingBlockEntity;
+import net.ssc14.content.block.energy.SheathingBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.neoforged.neoforge.network.PacketDistributor;

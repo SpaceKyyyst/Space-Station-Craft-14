@@ -20,7 +20,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredRegister.Blocks REGISTRY = Ssc14Blocks.REGISTRY;
     public static final DeferredBlock<Block> AIRLOCK_THRESHOLD = register("airlock_threshold", AirlockThresholdBlock::new);
 	public static final DeferredBlock<Block> ROD_FLOOR = Ssc14Blocks.ROD_FLOOR;
-	public static final DeferredBlock<Block> SHEATHING;
+	public static final DeferredBlock<Block> SHEATHING = Ssc14Blocks.SHEATHING;
 	public static final DeferredBlock<Block> TITLE_STEEL = Ssc14Blocks.TITLE_STEEL;
 	public static final DeferredBlock<Block> STEEL_WALL = Ssc14Blocks.STEEL_WALL;
 	public static final DeferredBlock<Block> WALL_CARCASE = Ssc14Blocks.WALL_CARCASE;
@@ -244,7 +244,6 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> ARM_CHAIR_CARP = Ssc14Blocks.ARM_CHAIR_CARP;
 	public static final DeferredBlock<Block> EMERGENCY_LIGHT = Ssc14Blocks.EMERGENCY_LIGHT;
 	static {
-		SHEATHING = register("sheathing", SheathingBlock::new);
 		BASE_AIRLOCK_D_1 = register("base_airlock_d_1", BaseAirlockD1Block::new);
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
 		PORTABLE_SHEATER = register("portable_sheater", PortableSheaterBlock::new);

@@ -13,6 +13,7 @@ import net.ssc14.content.block.decoration.FenceCornerBlock;
 import net.ssc14.content.block.decoration.FenceLineBlock;
 import net.ssc14.content.block.decoration.FencePointBlock;
 import net.ssc14.content.block.decoration.FenceThreeWayBlock;
+import net.ssc14.content.block.energy.SheathingBlock;
 import net.ssc14.content.block.geology.AsteroidStoneBaseBlock;
 import net.ssc14.content.block.geology.AsteroidStoneCoalBlock;
 import net.ssc14.content.block.geology.AsteroidStoneDiamondBlock;
@@ -83,6 +84,8 @@ public final class Ssc14Blocks {
             register("machine_frame", MachineFrameBlock::new);
     public static final DeferredBlock<Block> MACHINE_FRAME_2 =
             register("machine_frame_2", AssembledMachineFrameBlock::new);
+    public static final DeferredBlock<Block> SHEATHING =
+            register("sheathing", SheathingBlock::new);
 
     public static final DeferredBlock<Block> ASTEROID_STONE_BASE =
             register("asteroid_stone_base", AsteroidStoneBaseBlock::new);

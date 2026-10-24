@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.WeakHashMap;
 import net.mcreator.ssc.CableType;
 import net.mcreator.ssc.EnergyNetwork;
-import net.mcreator.ssc.block.SheathingBlock;
+import net.ssc14.content.block.energy.SheathingBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.ChunkPos;

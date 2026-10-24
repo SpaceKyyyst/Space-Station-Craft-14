@@ -1,7 +1,7 @@
 
 package net.mcreator.ssc;
 
-import net.mcreator.ssc.block.SheathingBlock;
+import net.ssc14.content.block.energy.SheathingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 

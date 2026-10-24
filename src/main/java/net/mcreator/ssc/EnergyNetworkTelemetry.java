@@ -1,6 +1,6 @@
 package net.mcreator.ssc;
 
-import net.mcreator.ssc.block.entity.SheathingBlockEntity;
+import net.ssc14.content.block.energy.SheathingBlockEntity;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
