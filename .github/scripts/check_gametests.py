@@ -47,6 +47,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_fuel_tank_contract",
     "ssc_14:compatibility_block_debug_13_contract",
     "ssc_14:compatibility_block_airlock_threshold_contract",
+    "ssc_14:compatibility_block_upper_closet_plug_contract",
 }
 
 

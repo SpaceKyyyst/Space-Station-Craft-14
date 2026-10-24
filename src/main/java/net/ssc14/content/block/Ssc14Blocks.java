@@ -79,6 +79,7 @@ import net.ssc14.content.block.structure.UperSheathingBlock;
 import net.ssc14.content.block.structure.WallCarcaseBlock;
 import net.ssc14.content.block.storage.ClosetBlockEntity;
 import net.ssc14.content.block.storage.StationClosetBlock;
+import net.ssc14.content.block.storage.UpperClosetPlugBlock;
 import net.ssc14.content.block.window.ArmoredWindowBlock;
 import net.ssc14.content.block.window.BaseWindowBlock;
 import net.ssc14.content.block.window.DirectedArmoredWindowBlock;
@@ -111,6 +112,8 @@ public final class Ssc14Blocks {
             register("debug_13", StationCodeDebugBlock::new);
     public static final DeferredBlock<Block> AIRLOCK_THRESHOLD =
             register("airlock_threshold", AirlockThresholdBlock::new);
+    public static final DeferredBlock<Block> UP_CLOSET_PLUG =
+            register("up_closet_plug", UpperClosetPlugBlock::new);
 
     public static final DeferredBlock<Block> ASTEROID_STONE_BASE =
             register("asteroid_stone_base", AsteroidStoneBaseBlock::new);
