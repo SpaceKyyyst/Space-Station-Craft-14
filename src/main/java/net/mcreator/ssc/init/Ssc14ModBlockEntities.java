@@ -37,6 +37,8 @@ import net.ssc14.content.block.fuel.FuelTankBlockEntity;
 import net.ssc14.content.block.debug.FailureSentinelBlockEntity;
 import net.ssc14.content.block.debug.DebugGravityGeneratorBlockEntity;
 import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
+import net.ssc14.content.block.explosives.C4ChargeBlockEntity;
+import net.ssc14.content.block.explosives.Ssc14ExplosiveBlockEntities;
 
 @EventBusSubscriber
 public class Ssc14ModBlockEntities {
@@ -53,7 +55,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AirlockUpPlugOPENBlockEntity>> AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN, AirlockUpPlugOPENBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SmesBlockEntity>> SMES = Ssc14EnergyMachineBlockEntities.SMES;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GravityGeneratorBlockEntity>> GRAVITY_GENERATOR = register("gravity_generator", Ssc14ModBlocks.GRAVITY_GENERATOR, GravityGeneratorBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<C4BlockEntity>> C_4 = register("c_4", Ssc14ModBlocks.C_4, C4BlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<C4ChargeBlockEntity>> C_4 = Ssc14ExplosiveBlockEntities.C_4;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MachineFrameBlockEntity>> MACHINE_FRAME_2 = Ssc14MachineBlockEntities.MACHINE_FRAME_2;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FailureSentinelBlockEntity>> KOSTILNIBLOK = Ssc14DebugBlockEntities.KOSTILNIBLOK;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DebugGravityGeneratorBlockEntity>> DEBUG_GRAV_GEN = Ssc14DebugBlockEntities.DEBUG_GRAV_GEN;
@@ -111,7 +113,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG_OPEN.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, GRAVITY_GENERATOR.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, C_4.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, NUCLEAR_WARHEAD.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, COMMUNICATION_SERVERS.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, COMMUNICATION_CONSOLE.get(), WorldlyContainerWrapper::new);
