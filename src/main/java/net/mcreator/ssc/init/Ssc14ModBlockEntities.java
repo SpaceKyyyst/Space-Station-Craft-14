@@ -28,6 +28,8 @@ import net.ssc14.content.block.energy.PodstationBlockEntity;
 import net.ssc14.content.block.energy.DebugGeneratorBlockEntity;
 import net.ssc14.content.block.energy.SmesBlockEntity;
 import net.ssc14.content.block.energy.Ssc14EnergyMachineBlockEntities;
+import net.ssc14.content.block.commerce.SalePalletBlockEntity;
+import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 
 @EventBusSubscriber
 public class Ssc14ModBlockEntities {
@@ -87,7 +89,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FuelTankBlockEntity>> FUEL_TANK = register("fuel_tank", Ssc14ModBlocks.FUEL_TANK, FuelTankBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OrderConsoleBlockEntity>> ORDER_CONSOLE = register("order_console", Ssc14ModBlocks.ORDER_CONSOLE, OrderConsoleBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OrderPalletBlockEntity>> ORDER_PALLET = register("order_pallet", Ssc14ModBlocks.ORDER_PALLET, OrderPalletBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SalePalletBlockEntity>> SALE_PALLET = register("sale_pallet", Ssc14ModBlocks.SALE_PALLET, SalePalletBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SalePalletBlockEntity>> SALE_PALLET = Ssc14CommerceBlockEntities.SALE_PALLET;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SaleConsoleBlockEntity>> SALE_CONSOLE = register("sale_console", Ssc14ModBlocks.SALE_CONSOLE, SaleConsoleBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LightingBlockEntity>> EMERGENCY_LIGHT = Ssc14LightingBlockEntities.EMERGENCY_LIGHT;
 
@@ -133,7 +135,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, FUEL_TANK.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, ORDER_CONSOLE.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, ORDER_PALLET.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, SALE_PALLET.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, SALE_CONSOLE.get(), WorldlyContainerWrapper::new);
 	}
 }

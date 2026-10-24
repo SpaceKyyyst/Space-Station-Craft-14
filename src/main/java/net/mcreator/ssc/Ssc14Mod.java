@@ -36,6 +36,7 @@ import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.content.entity.Ssc14EntityBehavior;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.block.lighting.EmergencyLightingService;
 import net.ssc14.content.block.lighting.LightingEnergyService;
@@ -92,6 +93,8 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14CableBlockEntities::registerCapabilities);
 		Ssc14EnergyMachineBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14EnergyMachineBlockEntities::registerCapabilities);
+		Ssc14CommerceBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14CommerceBlockEntities::registerCapabilities);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
 		LightingEnergyService.install(EnergyNetworkManager::queueUpdate);
