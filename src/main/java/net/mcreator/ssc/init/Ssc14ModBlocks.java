@@ -143,7 +143,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> DIRECTED_ARMORED_WINDOW = Ssc14Blocks.DIRECTED_ARMORED_WINDOW;
 	public static final DeferredBlock<Block> SHUTTERS;
 	public static final DeferredBlock<Block> BUTTON;
-	public static final DeferredBlock<Block> MICROWAWE;
+	public static final DeferredBlock<Block> MICROWAWE = Ssc14Blocks.MICROWAWE;
 	public static final DeferredBlock<Block> TITLE_ARCADEBLUE = Ssc14Blocks.TITLE_ARCADEBLUE;
 	public static final DeferredBlock<Block> TITLEARCADEBLUE_2 = Ssc14Blocks.TITLEARCADEBLUE_2;
 	public static final DeferredBlock<Block> TITLE_ARCADERED = Ssc14Blocks.TITLE_ARCADERED;
@@ -252,7 +252,6 @@ public class Ssc14ModBlocks {
 		VENDING_AUT_1 = register("vending_aut_1", VendingAut1Block::new);
 		SHUTTERS = register("shutters", ShuttersBlock::new);
 		BUTTON = register("button", ButtonBlock::new);
-		MICROWAWE = register("microwawe", MicrowaweBlock::new);
 		ATMOSPHERICS_AIRLOCK_D_1 = register("atmospherics_airlock_d_1", AtmosphericsAirlockD1Block::new);
 		CARGO_AIRLOCK_D_1 = register("cargo_airlock_d_1", CargoAirlockD1Block::new);
 		CENT_COM_AIRLOCK_D_1 = register("cent_com_airlock_d_1", CentComAirlockD1Block::new);

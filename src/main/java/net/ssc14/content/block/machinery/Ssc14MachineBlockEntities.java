@@ -22,6 +22,10 @@ public final class Ssc14MachineBlockEntities {
             PORTABLE_SHEATER = REGISTRY.register("portable_sheater",
                     () -> new BlockEntityType<>(PortableSheaterBlockEntity::new,
                             Ssc14Blocks.PORTABLE_SHEATER.get()));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MicrowaveBlockEntity>>
+            MICROWAWE = REGISTRY.register("microwawe",
+                    () -> new BlockEntityType<>(MicrowaveBlockEntity::new,
+                            Ssc14Blocks.MICROWAWE.get()));
 
     private Ssc14MachineBlockEntities() { }
 
@@ -29,6 +33,8 @@ public final class Ssc14MachineBlockEntities {
         event.registerBlockEntity(Capabilities.Item.BLOCK, MACHINE_FRAME_2.get(),
                 WorldlyContainerWrapper::new);
         event.registerBlockEntity(Capabilities.Item.BLOCK, PORTABLE_SHEATER.get(),
+                WorldlyContainerWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, MICROWAWE.get(),
                 WorldlyContainerWrapper::new);
     }
 }
