@@ -165,7 +165,7 @@ public class PlaSteelUseProcedure {
 																&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.PLASTEEL_WALL_CARCASE.get()) {
 															{
 																BlockPos _bp = BlockPos.containing(x, y, z);
-																BlockState _bs = Ssc14ModBlocks.PLASTEEL_WALL.get().defaultBlockState();
+																BlockState _bs = Ssc14Blocks.PLASTEEL_WALL.get().defaultBlockState();
 																BlockState _bso = world.getBlockState(_bp);
 																for (Property<?> _propertyOld : _bso.getProperties()) {
 																	Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());

@@ -587,7 +587,7 @@ public class Ssc14ModItems {
 		HIGH_VOLTAGE_CABLE = register("high_voltage_cable", HighVoltageCableItem::new);
 		CROWBAR = register("crowbar", ScrapItem::new);
 		TITLE_STEEL = block(Ssc14Blocks.TITLE_STEEL, new Item.Properties().stacksTo(30).fireResistant());
-		STEEL_WALL = block(Ssc14ModBlocks.STEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
+		STEEL_WALL = block(Ssc14Blocks.STEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
 		WALL_CARCASE = block(Ssc14Blocks.WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
 		WELDING = register("welding", WeldingItem::new);
 		ACTIVE_WELDER = register("active_welder", ActiveWelderItem::new);
@@ -659,7 +659,7 @@ public class Ssc14ModItems {
 		URAN = register("uran", UranItem::new);
 		PLASMA = register("plasma", PlasmaItem::new);
 		PLASTIC = register("plastic", PlasticItem::new);
-		PLASTEEL_WALL = block(Ssc14ModBlocks.PLASTEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
+		PLASTEEL_WALL = block(Ssc14Blocks.PLASTEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
 		PLASTEEL_WALL_CARCASE = block(Ssc14Blocks.PLASTEEL_WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
 		ENERGY_BAR = register("energy_bar", EnergyBarItem::new);
 		ENERGY_BAR_TRASH = register("energy_bar_trash", EnergyBarTrashItem::new);
@@ -764,8 +764,8 @@ public class Ssc14ModItems {
 		UP_STEEL_STAIRCASE = block(Ssc14Blocks.UP_STEEL_STAIRCASE, new Item.Properties().stacksTo(1));
 		UP_WHITE_STAIRCASE = block(Ssc14Blocks.UP_WHITE_STAIRCASE, new Item.Properties().stacksTo(1));
 		UP_DARK_STAIRCASE = block(Ssc14Blocks.UP_DARK_STAIRCASE, new Item.Properties().stacksTo(1));
-		SHUTTLE_WALL = block(Ssc14ModBlocks.SHUTTLE_WALL, new Item.Properties().stacksTo(1).fireResistant());
-		ARMORED_SHUTTLE_WALL = block(Ssc14ModBlocks.ARMORED_SHUTTLE_WALL, new Item.Properties().stacksTo(1).fireResistant());
+		SHUTTLE_WALL = block(Ssc14Blocks.SHUTTLE_WALL, new Item.Properties().stacksTo(1).fireResistant());
+		ARMORED_SHUTTLE_WALL = block(Ssc14Blocks.ARMORED_SHUTTLE_WALL, new Item.Properties().stacksTo(1).fireResistant());
 		DIRECTED_BASE_WINDOW = block(Ssc14Blocks.DIRECTED_BASE_WINDOW, new Item.Properties().stacksTo(1).fireResistant());
 		RED_SCARF = register("red_scarf", RedScarfItem::new);
 		BLACK_SCARF = register("black_scarf", BlackScarfItem::new);

@@ -129,13 +129,13 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14Blocks.GRASS_LIGHT_BLOCK.get().asItem());
 			}).build());
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SSC_14_WALLS = REGISTRY.register("ssc_14_walls",
-			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14_walls")).icon(() -> new ItemStack(Ssc14ModBlocks.STEEL_WALL.get())).displayItems((parameters, tabData) -> {
-				tabData.accept(Ssc14ModBlocks.STEEL_WALL.get().asItem());
+			() -> CreativeModeTab.builder().title(Component.translatable("item_group.ssc_14.ssc_14_walls")).icon(() -> new ItemStack(Ssc14Blocks.STEEL_WALL.get())).displayItems((parameters, tabData) -> {
+				tabData.accept(Ssc14Blocks.STEEL_WALL.get().asItem());
 				tabData.accept(Ssc14Blocks.WALL_CARCASE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.PLASTEEL_WALL.get().asItem());
+				tabData.accept(Ssc14Blocks.PLASTEEL_WALL.get().asItem());
 				tabData.accept(Ssc14Blocks.PLASTEEL_WALL_CARCASE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.SHUTTLE_WALL.get().asItem());
-				tabData.accept(Ssc14ModBlocks.ARMORED_SHUTTLE_WALL.get().asItem());
+				tabData.accept(Ssc14Blocks.SHUTTLE_WALL.get().asItem());
+				tabData.accept(Ssc14Blocks.ARMORED_SHUTTLE_WALL.get().asItem());
 				tabData.accept(Ssc14Blocks.BASE_WINDOW.get().asItem());
 				tabData.accept(Ssc14Blocks.ARMORED_WINDOW.get().asItem());
 				tabData.accept(Ssc14Blocks.DIRECTED_BASE_WINDOW.get().asItem());
