@@ -106,7 +106,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> OFICE_BLACK_CHAIR = Ssc14Blocks.OFICE_BLACK_CHAIR;
 	public static final DeferredBlock<Block> OFICE_WHITE_CHAIR = Ssc14Blocks.OFICE_WHITE_CHAIR;
 	public static final DeferredBlock<Block> BAR_CHAIR = Ssc14Blocks.BAR_CHAIR;
-	public static final DeferredBlock<Block> KOSTILNIBLOK;
+	public static final DeferredBlock<Block> KOSTILNIBLOK = Ssc14Blocks.KOSTILNIBLOK;
 	public static final DeferredBlock<Block> DEBUG_GRAV_GEN;
 	public static final DeferredBlock<Block> NUCLEAR_WARHEAD;
 	public static final DeferredBlock<Block> DIRT = Ssc14Blocks.DIRT;
@@ -250,7 +250,6 @@ public class Ssc14ModBlocks {
 		AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", AirlockUpPlugOPENBlock::new);
 		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);
 		C_4 = register("c_4", C4Block::new);
-		KOSTILNIBLOK = register("kostilniblok", KostilniblokBlock::new);
 		DEBUG_GRAV_GEN = register("debug_grav_gen", DebugGravGenBlock::new);
 		NUCLEAR_WARHEAD = register("nuclear_warhead", NuclearWarheadBlock::new);
 		COMPUTER = register("computer", ComputerBlock::new);

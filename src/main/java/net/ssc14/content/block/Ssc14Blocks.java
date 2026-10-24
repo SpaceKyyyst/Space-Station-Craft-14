@@ -12,6 +12,7 @@ import net.ssc14.content.block.commerce.SalePalletBlock;
 import net.ssc14.content.block.commerce.OrderPalletBlock;
 import net.ssc14.content.block.commerce.VendingUpperPlugBlock;
 import net.ssc14.content.block.fuel.FuelTankBlock;
+import net.ssc14.content.block.debug.FailureSentinelBlock;
 import net.ssc14.content.block.debug.StationCodeDebugBlock;
 import net.ssc14.content.block.airlock.AirlockThresholdBlock;
 import net.ssc14.content.block.decoration.DirectionalBannerBlock;
@@ -118,6 +119,8 @@ public final class Ssc14Blocks {
             register("fuel_tank", FuelTankBlock::new);
     public static final DeferredBlock<Block> DEBUG_13 =
             register("debug_13", StationCodeDebugBlock::new);
+    public static final DeferredBlock<Block> KOSTILNIBLOK =
+            register("kostilniblok", FailureSentinelBlock::new);
     public static final DeferredBlock<Block> AIRLOCK_THRESHOLD =
             register("airlock_threshold", AirlockThresholdBlock::new);
     public static final DeferredBlock<Block> UP_CLOSET_PLUG =
