@@ -31,6 +31,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_planetary_contract",
     "ssc_14:compatibility_block_window_contract",
     "ssc_14:compatibility_block_structure_contract",
+    "ssc_14:compatibility_block_grille_contract",
 }
 
 

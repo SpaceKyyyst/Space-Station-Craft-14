@@ -32,7 +32,7 @@ public class WOCtextP2Procedure {
 				|| Ssc14ModBlocks.PLASTEEL_WALL.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()
 						&& (0 == (getPropertyByName((world.getBlockState(BlockPos.containing(X, Y, Z))), "blockstate") instanceof IntegerProperty _getip18 ? (world.getBlockState(BlockPos.containing(X, Y, Z))).getValue(_getip18) : -1)
 								|| 8 == (getPropertyByName((world.getBlockState(BlockPos.containing(X, Y, Z))), "blockstate") instanceof IntegerProperty _getip20 ? (world.getBlockState(BlockPos.containing(X, Y, Z))).getValue(_getip20) : -1))
-				|| Ssc14ModBlocks.GRILLE.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() || Ssc14ModBlocks.BROKEN_GRILLE.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()) {
+				|| Ssc14Blocks.GRILLE.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() || Ssc14Blocks.BROKEN_GRILLE.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()) {
 			loc_buf_t = "\u041A\u0443\u0441\u0430\u0447\u043A\u0438";
 		} else if ((world.getBlockState(BlockPos.containing(X, Y, Z))).is(BlockTags.create(Identifier.parse("ssc14:tiles")))
 				|| Ssc14ModBlocks.PLASTEEL_WALL.get() == (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock()

@@ -112,10 +112,10 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(), nippers, bs -> true,
             new ConstructionStage(new int[]{3,3,3,1,3,3}, false, Ssc14ModItems.PLASTEEL.get(), 1, 0.0, Ssc14Blocks.WALL_CARCASE.get(), null, -1, false, null, null));
 
-        registerBlock(Ssc14ModBlocks.GRILLE.get(), nippers, bs -> true,
+        registerBlock(Ssc14Blocks.GRILLE.get(), nippers, bs -> true,
             new ConstructionStage(new int[]{1,2,1,2,1,2}, false, Ssc14ModItems.ROOD.get(), 1, 0.1, Blocks.AIR, null, -1, false, null, null));
 
-        registerBlock(Ssc14ModBlocks.BROKEN_GRILLE.get(), nippers, bs -> true,
+        registerBlock(Ssc14Blocks.BROKEN_GRILLE.get(), nippers, bs -> true,
             new ConstructionStage(fastDelays, false, null, 1, 0.5, Blocks.AIR, null, -1, false, null, null));
 
         Item fireAxe = Ssc14ModItems.FIRE_AXE.get();

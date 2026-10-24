@@ -64,8 +64,8 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> ARMORED_WINDOW = Ssc14Blocks.ARMORED_WINDOW;
 	public static final DeferredBlock<Block> DEBUG_LAMP;
 	public static final DeferredBlock<Block> DEBUG_TECH_LAMP;
-	public static final DeferredBlock<Block> GRILLE;
-	public static final DeferredBlock<Block> BROKEN_GRILLE;
+	public static final DeferredBlock<Block> GRILLE = Ssc14Blocks.GRILLE;
+	public static final DeferredBlock<Block> BROKEN_GRILLE = Ssc14Blocks.BROKEN_GRILLE;
 	public static final DeferredBlock<Block> ASTEROID_STONE_BASE = Ssc14Blocks.ASTEROID_STONE_BASE;
 	public static final DeferredBlock<Block> ASTEROID_STONE_IRON = Ssc14Blocks.ASTEROID_STONE_IRON;
 	public static final DeferredBlock<Block> ASTEROID_STONE_QUARTZ = Ssc14Blocks.ASTEROID_STONE_QUARTZ;
@@ -282,8 +282,6 @@ public class Ssc14ModBlocks {
 		TECH_LAMP = register("tech_lamp", TechLampBlock::new);
 		DEBUG_LAMP = register("debug_lamp", DEBUGLampBlock::new);
 		DEBUG_TECH_LAMP = register("debug_tech_lamp", DEBUGTechLampBlock::new);
-		GRILLE = register("grille", GrilleBlock::new);
-		BROKEN_GRILLE = register("broken_grille", BrokenGrilleBlock::new);
 		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);
 		TITLE_WHITE = register("title_white", TitleWhiteBlock::new);
 		TITLE_WHITE_DIAGONAL_MINI = register("title_white_diagonal_mini", TitleWhiteDiagonalMiniBlock::new);
