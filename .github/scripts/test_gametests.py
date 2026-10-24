@@ -83,6 +83,9 @@ class GameTestReportTests(unittest.TestCase):
     def test_floor_tile_block_contract_is_required(self):
         self.assertIn("ssc_14:compatibility_block_floor_tile_contract", EXPECTED_TESTS)
 
+    def test_ceiling_tile_block_contract_is_required(self):
+        self.assertIn("ssc_14:compatibility_block_ceiling_tile_contract", EXPECTED_TESTS)
+
     def test_empty_suite_fails(self):
         self.report(set())
         self.assertEqual(len(EXPECTED_TESTS), len(check_report(self.path)))

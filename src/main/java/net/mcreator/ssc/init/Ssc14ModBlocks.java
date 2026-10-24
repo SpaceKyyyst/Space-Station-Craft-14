@@ -27,7 +27,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> UPER_SHEATHING = Ssc14Blocks.UPER_SHEATHING;
 	public static final DeferredBlock<Block> ROD_UP_FLOOR = Ssc14Blocks.ROD_UP_FLOOR;
 	public static final DeferredBlock<Block> BASE_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> UP_TITLE;
+	public static final DeferredBlock<Block> UP_TITLE = Ssc14Blocks.UP_TITLE;
 	public static final DeferredBlock<Block> CONSOLE_OF_ID;
 	public static final DeferredBlock<Block> BASE_WINDOW = Ssc14Blocks.BASE_WINDOW;
 	public static final DeferredBlock<Block> PORTABLE_SHEATER;
@@ -42,8 +42,8 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> AIRLOCK_UP_PLUG_OPEN;
 	public static final DeferredBlock<Block> TITLE_STEEL_DIAGONAL_MINI = Ssc14Blocks.TITLE_STEEL_DIAGONAL_MINI;
 	public static final DeferredBlock<Block> TITLE_STEEL_DIAGONAL = Ssc14Blocks.TITLE_STEEL_DIAGONAL;
-	public static final DeferredBlock<Block> UP_TITLE_STEEL;
-	public static final DeferredBlock<Block> UP_TITLE_DARK;
+	public static final DeferredBlock<Block> UP_TITLE_STEEL = Ssc14Blocks.UP_TITLE_STEEL;
+	public static final DeferredBlock<Block> UP_TITLE_DARK = Ssc14Blocks.UP_TITLE_DARK;
 	public static final DeferredBlock<Block> TITLE_STEEL_MINI = Ssc14Blocks.TITLE_STEEL_MINI;
 	public static final DeferredBlock<Block> TITLE_STEEL_MONO = Ssc14Blocks.TITLE_STEEL_MONO;
 	public static final DeferredBlock<Block> TITLE_STEEL_OFFSET = Ssc14Blocks.TITLE_STEEL_OFFSET;
@@ -247,7 +247,6 @@ public class Ssc14ModBlocks {
 		SHEATHING = register("sheathing", SheathingBlock::new);
 		STEEL_WALL = register("steel_wall", SteelWallBlock::new);
 		BASE_AIRLOCK_D_1 = register("base_airlock_d_1", BaseAirlockD1Block::new);
-		UP_TITLE = register("up_title", UpTitleBlock::new);
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
 		PORTABLE_SHEATER = register("portable_sheater", PortableSheaterBlock::new);
 		PLASTEEL_WALL = register("plasteel_wall", PlasteelWallBlock::new);
@@ -257,8 +256,6 @@ public class Ssc14ModBlocks {
 		LAMP = register("lamp", LampBlock::new);
 		AIRLOCK_UP_PLUG = register("airlock_up_plug", AirlockUpPlugBlock::new);
 		AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", AirlockUpPlugOPENBlock::new);
-		UP_TITLE_STEEL = register("up_title_steel", UpTitleSteelBlock::new);
-		UP_TITLE_DARK = register("up_title_dark", UpTitleDarkBlock::new);
 		SMES = register("smes", SMESBlock::new);
 		TECH_LAMP = register("tech_lamp", TechLampBlock::new);
 		DEBUG_LAMP = register("debug_lamp", DEBUGLampBlock::new);

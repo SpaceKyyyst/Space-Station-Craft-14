@@ -27,9 +27,9 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.SHEATHING.get().asItem());
 				tabData.accept(Ssc14Blocks.ROD_UP_FLOOR.get().asItem());
 				tabData.accept(Ssc14Blocks.UPER_SHEATHING.get().asItem());
-				tabData.accept(Ssc14ModBlocks.UP_TITLE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.UP_TITLE_STEEL.get().asItem());
-				tabData.accept(Ssc14ModBlocks.UP_TITLE_DARK.get().asItem());
+				tabData.accept(Ssc14Blocks.UP_TITLE.get().asItem());
+				tabData.accept(Ssc14Blocks.UP_TITLE_STEEL.get().asItem());
+				tabData.accept(Ssc14Blocks.UP_TITLE_DARK.get().asItem());
 				tabData.accept(Ssc14Blocks.CATWALK_FLOOR.get().asItem());
 				tabData.accept(Ssc14Blocks.TITLE_STEEL.get().asItem());
 				tabData.accept(Ssc14Blocks.TITLE_STEEL_DIAGONAL_MINI.get().asItem());

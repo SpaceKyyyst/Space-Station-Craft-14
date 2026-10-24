@@ -1,15 +1,13 @@
 package net.mcreator.ssc.procedures;
 
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
+import net.ssc14.content.block.ceiling.CeilingSupportPolicy;
 
+/** @deprecated Use {@link CeilingSupportPolicy}. */
+@Deprecated
 public class CeilingPlacementConditionsProcedure {
 	public static boolean execute(LevelAccessor world, double x, double y, double z) {
-		if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(Identifier.parse("ssc14:suitable_for_ceiling")))) {
-			return true;
-		}
-		return false;
+		return CeilingSupportPolicy.isSuitableSupport(world, BlockPos.containing(x, y + 1, z));
 	}
 }
