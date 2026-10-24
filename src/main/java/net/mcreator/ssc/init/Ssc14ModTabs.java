@@ -171,8 +171,8 @@ public class Ssc14ModTabs {
 				tabData.accept(Ssc14ModBlocks.BASE_GLASS_AIRLOCK_D_1.get().asItem());
 				tabData.accept(Ssc14Blocks.WALL_CARCASE.get().asItem());
 				tabData.accept(Ssc14Blocks.PLASTEEL_WALL_CARCASE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.GRILLE.get().asItem());
-				tabData.accept(Ssc14ModBlocks.BROKEN_GRILLE.get().asItem());
+				tabData.accept(Ssc14Blocks.GRILLE.get().asItem());
+				tabData.accept(Ssc14Blocks.BROKEN_GRILLE.get().asItem());
 				tabData.accept(Ssc14ModBlocks.APC.get().asItem());
 				tabData.accept(Ssc14ModBlocks.PODSTATION.get().asItem());
 				tabData.accept(Ssc14ModBlocks.SMES.get().asItem());

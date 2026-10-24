@@ -701,8 +701,8 @@ public class Ssc14ModItems {
 		ARM_GLASS = register("arm_glass", ArmGlassItem::new);
 		DEBUG_LAMP = block(Ssc14ModBlocks.DEBUG_LAMP, new Item.Properties().stacksTo(1).fireResistant());
 		DEBUG_TECH_LAMP = block(Ssc14ModBlocks.DEBUG_TECH_LAMP, new Item.Properties().stacksTo(1).fireResistant());
-		GRILLE = block(Ssc14ModBlocks.GRILLE, new Item.Properties().stacksTo(1).fireResistant());
-		BROKEN_GRILLE = block(Ssc14ModBlocks.BROKEN_GRILLE, new Item.Properties().stacksTo(1).fireResistant());
+		GRILLE = block(Ssc14Blocks.GRILLE, new Item.Properties().stacksTo(1).fireResistant());
+		BROKEN_GRILLE = block(Ssc14Blocks.BROKEN_GRILLE, new Item.Properties().stacksTo(1).fireResistant());
 		ASTEROID_STONE_BASE = block(Ssc14Blocks.ASTEROID_STONE_BASE, new Item.Properties().stacksTo(1).fireResistant());
 		RAW_IRON = register("raw_iron", RawIronItem::new);
 		RAW_QUARTZ = register("raw_quartz", RawQuartzItem::new);

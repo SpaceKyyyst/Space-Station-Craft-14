@@ -27,6 +27,8 @@ import net.ssc14.content.block.geology.CaveFloor4Block;
 import net.ssc14.content.block.geology.CaveFloor5Block;
 import net.ssc14.content.block.geology.CaveFloor6Block;
 import net.ssc14.content.block.geology.CaveFloor7Block;
+import net.ssc14.content.block.grille.BrokenGrilleBlock;
+import net.ssc14.content.block.grille.GrilleBlock;
 import net.ssc14.content.block.planetary.PlanetDirtBlock;
 import net.ssc14.content.block.planetary.PlanetGrassPlantBlock;
 import net.ssc14.content.block.planetary.PlanetGrassSoilBlock;
@@ -175,6 +177,10 @@ public final class Ssc14Blocks {
             register("wall_carcase", WallCarcaseBlock::new);
     public static final DeferredBlock<Block> PLASTEEL_WALL_CARCASE =
             register("plasteel_wall_carcase", PlasteelWallCarcaseBlock::new);
+    public static final DeferredBlock<Block> GRILLE =
+            register("grille", GrilleBlock::new);
+    public static final DeferredBlock<Block> BROKEN_GRILLE =
+            register("broken_grille", BrokenGrilleBlock::new);
 
     private Ssc14Blocks() {
     }
