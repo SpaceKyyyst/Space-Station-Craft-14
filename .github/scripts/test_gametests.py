@@ -128,6 +128,9 @@ class GameTestReportTests(unittest.TestCase):
     def test_secure_closet_block_contract_is_required(self):
         self.assertIn("ssc_14:compatibility_block_secure_closet_contract", EXPECTED_TESTS)
 
+    def test_extinguisher_cabinet_block_contract_is_required(self):
+        self.assertIn("ssc_14:compatibility_block_extinguisher_cabinet_contract", EXPECTED_TESTS)
+
     def test_empty_suite_fails(self):
         self.report(set())
         self.assertEqual(len(EXPECTED_TESTS), len(check_report(self.path)))
