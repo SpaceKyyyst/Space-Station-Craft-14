@@ -31,6 +31,12 @@ import net.ssc14.content.block.geology.CaveFloor6Block;
 import net.ssc14.content.block.geology.CaveFloor7Block;
 import net.ssc14.content.block.grille.BrokenGrilleBlock;
 import net.ssc14.content.block.grille.GrilleBlock;
+import net.ssc14.content.block.lighting.DebugLightBlock;
+import net.ssc14.content.block.lighting.EmergencyLightBlock;
+import net.ssc14.content.block.lighting.EnergyLampBlock;
+import net.ssc14.content.block.lighting.LightingBlockEntity;
+import net.ssc14.content.block.lighting.ServiceableLightBlock;
+import net.ssc14.content.block.lighting.WallMountedLightBlock;
 import net.ssc14.content.block.floor.FloorTileBlock;
 import net.ssc14.content.block.floor.FiveVariantFloorTileBlock;
 import net.ssc14.content.block.floor.FourVariantFloorTileBlock;
@@ -159,6 +165,23 @@ public final class Ssc14Blocks {
             register("arm_chair_brown", ArmChairBlock::new);
     public static final DeferredBlock<Block> ARM_CHAIR_CARP =
             register("arm_chair_carp", ArmChairBlock::new);
+    public static final DeferredBlock<Block> LAMP =
+            register("lamp", properties -> new EnergyLampBlock(properties,
+                    (pos, state) -> new LightingBlockEntity(
+                            "lamp", "Lamp", true, pos, state)));
+    public static final DeferredBlock<Block> TECH_LAMP =
+            register("tech_lamp", properties -> new ServiceableLightBlock(
+                    properties, WallMountedLightBlock.Geometry.TECHNICAL));
+    public static final DeferredBlock<Block> DEBUG_LAMP =
+            register("debug_lamp", properties -> new DebugLightBlock(
+                    properties, WallMountedLightBlock.Geometry.TUBE));
+    public static final DeferredBlock<Block> DEBUG_TECH_LAMP =
+            register("debug_tech_lamp", properties -> new DebugLightBlock(
+                    properties, WallMountedLightBlock.Geometry.TECHNICAL));
+    public static final DeferredBlock<Block> EMERGENCY_LIGHT =
+            register("emergency_light", properties -> new EmergencyLightBlock(properties,
+                    (pos, state) -> new LightingBlockEntity(
+                            "emergency_light", "Emergency Light", false, pos, state)));
     public static final DeferredBlock<Block> CLOSET =
             register("closet", properties ->
                     new StationClosetBlock(properties, (pos, state) ->

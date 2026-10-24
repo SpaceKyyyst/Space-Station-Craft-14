@@ -37,7 +37,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> APC;
 	public static final DeferredBlock<Block> PODSTATION;
 	public static final DeferredBlock<Block> DEBU_GGENERATOR;
-	public static final DeferredBlock<Block> LAMP;
+	public static final DeferredBlock<Block> LAMP = Ssc14Blocks.LAMP;
 	public static final DeferredBlock<Block> AIRLOCK_UP_PLUG;
 	public static final DeferredBlock<Block> AIRLOCK_UP_PLUG_OPEN;
 	public static final DeferredBlock<Block> TITLE_STEEL_DIAGONAL_MINI = Ssc14Blocks.TITLE_STEEL_DIAGONAL_MINI;
@@ -60,10 +60,10 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_DARK_HERRINGBONE = Ssc14Blocks.TITLE_DARK_HERRINGBONE;
 	public static final DeferredBlock<Block> TITLE_DARK_PLASTIC = Ssc14Blocks.TITLE_DARK_PLASTIC;
 	public static final DeferredBlock<Block> SMES;
-	public static final DeferredBlock<Block> TECH_LAMP;
+	public static final DeferredBlock<Block> TECH_LAMP = Ssc14Blocks.TECH_LAMP;
 	public static final DeferredBlock<Block> ARMORED_WINDOW = Ssc14Blocks.ARMORED_WINDOW;
-	public static final DeferredBlock<Block> DEBUG_LAMP;
-	public static final DeferredBlock<Block> DEBUG_TECH_LAMP;
+	public static final DeferredBlock<Block> DEBUG_LAMP = Ssc14Blocks.DEBUG_LAMP;
+	public static final DeferredBlock<Block> DEBUG_TECH_LAMP = Ssc14Blocks.DEBUG_TECH_LAMP;
 	public static final DeferredBlock<Block> GRILLE = Ssc14Blocks.GRILLE;
 	public static final DeferredBlock<Block> BROKEN_GRILLE = Ssc14Blocks.BROKEN_GRILLE;
 	public static final DeferredBlock<Block> ASTEROID_STONE_BASE = Ssc14Blocks.ASTEROID_STONE_BASE;
@@ -242,7 +242,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> ARM_CHAIR_BASE = Ssc14Blocks.ARM_CHAIR_BASE;
 	public static final DeferredBlock<Block> ARM_CHAIR_BROWN = Ssc14Blocks.ARM_CHAIR_BROWN;
 	public static final DeferredBlock<Block> ARM_CHAIR_CARP = Ssc14Blocks.ARM_CHAIR_CARP;
-	public static final DeferredBlock<Block> EMERGENCY_LIGHT;
+	public static final DeferredBlock<Block> EMERGENCY_LIGHT = Ssc14Blocks.EMERGENCY_LIGHT;
 	static {
 		SHEATHING = register("sheathing", SheathingBlock::new);
 		BASE_AIRLOCK_D_1 = register("base_airlock_d_1", BaseAirlockD1Block::new);
@@ -251,13 +251,9 @@ public class Ssc14ModBlocks {
 		APC = register("apc", APCBlock::new);
 		PODSTATION = register("podstation", PodstationBlock::new);
 		DEBU_GGENERATOR = register("debu_ggenerator", DEBUGgeneratorBlock::new);
-		LAMP = register("lamp", LampBlock::new);
 		AIRLOCK_UP_PLUG = register("airlock_up_plug", AirlockUpPlugBlock::new);
 		AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", AirlockUpPlugOPENBlock::new);
 		SMES = register("smes", SMESBlock::new);
-		TECH_LAMP = register("tech_lamp", TechLampBlock::new);
-		DEBUG_LAMP = register("debug_lamp", DEBUGLampBlock::new);
-		DEBUG_TECH_LAMP = register("debug_tech_lamp", DEBUGTechLampBlock::new);
 		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);
 		C_4 = register("c_4", C4Block::new);
 		MACHINE_FRAME = register("machine_frame", MachineFrameBlock::new);
@@ -300,7 +296,6 @@ public class Ssc14ModBlocks {
 		ORDER_PALLET = register("order_pallet", OrderPalletBlock::new);
 		SALE_PALLET = register("sale_pallet", SalePalletBlock::new);
 		SALE_CONSOLE = register("sale_console", SaleConsoleBlock::new);
-		EMERGENCY_LIGHT = register("emergency_light", EmergencyLightBlock::new);
 	}
 
 	// Start of user code block custom blocks

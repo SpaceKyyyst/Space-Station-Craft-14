@@ -37,6 +37,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_ceiling_tile_contract",
     "ssc_14:compatibility_block_station_wall_contract",
     "ssc_14:compatibility_block_closet_contract",
+    "ssc_14:compatibility_block_lighting_contract",
 }
 
 
