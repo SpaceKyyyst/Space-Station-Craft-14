@@ -50,6 +50,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_upper_closet_plug_contract",
     "ssc_14:compatibility_block_secure_closet_contract",
     "ssc_14:compatibility_block_extinguisher_cabinet_contract",
+    "ssc_14:compatibility_block_vending_plug_contract",
 }
 
 
