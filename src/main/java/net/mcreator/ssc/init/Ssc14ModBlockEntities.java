@@ -42,6 +42,8 @@ import net.ssc14.content.block.explosives.Ssc14ExplosiveBlockEntities;
 import net.ssc14.content.block.explosives.NuclearWarheadBlockEntity;
 import net.ssc14.content.block.gravity.GravityGeneratorBlockEntity;
 import net.ssc14.content.block.gravity.Ssc14GravityBlockEntities;
+import net.ssc14.content.block.communication.CommunicationServersBlockEntity;
+import net.ssc14.content.block.communication.Ssc14CommunicationBlockEntities;
 
 @EventBusSubscriber
 public class Ssc14ModBlockEntities {
@@ -65,7 +67,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<NuclearWarheadBlockEntity>> NUCLEAR_WARHEAD = Ssc14ExplosiveBlockEntities.NUCLEAR_WARHEAD;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET_SECURE = Ssc14ClosetBlockEntities.CLOSET_SECURE;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET = Ssc14ClosetBlockEntities.CLOSET;
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CommunicationServersBlockEntity>> COMMUNICATION_SERVERS = register("communication_servers", Ssc14ModBlocks.COMMUNICATION_SERVERS, CommunicationServersBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CommunicationServersBlockEntity>> COMMUNICATION_SERVERS = Ssc14CommunicationBlockEntities.COMMUNICATION_SERVERS;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CommunicationConsoleBlockEntity>> COMMUNICATION_CONSOLE = register("communication_console", Ssc14ModBlocks.COMMUNICATION_CONSOLE, CommunicationConsoleBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TechAirlockD1BlockEntity>> TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", Ssc14ModBlocks.TECH_AIRLOCK_D_1, TechAirlockD1BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<VendingAut1BlockEntity>> VENDING_AUT_1 = register("vending_aut_1", Ssc14ModBlocks.VENDING_AUT_1, VendingAut1BlockEntity::new);
@@ -115,7 +117,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, CONSOLE_OF_ID.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG_OPEN.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, COMMUNICATION_SERVERS.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, COMMUNICATION_CONSOLE.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, TECH_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, VENDING_AUT_1.get(), WorldlyContainerWrapper::new);

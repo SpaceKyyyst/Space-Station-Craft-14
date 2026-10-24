@@ -40,6 +40,8 @@ import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.OrderPalletRegistryService;
+import net.ssc14.content.block.communication.CommunicationServerLifecycleService;
+import net.ssc14.content.block.communication.Ssc14CommunicationBlockEntities;
 import net.ssc14.content.block.fuel.FuelTankInteractionService;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
 import net.ssc14.content.block.gravity.GravityGeneratorPlugLifecycleService;
@@ -123,6 +125,8 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14CommerceBlockEntities::registerCapabilities);
 		Ssc14FuelBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14FuelBlockEntities::registerCapabilities);
+		Ssc14CommunicationBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14CommunicationBlockEntities::registerCapabilities);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
 		LightingEnergyService.install(EnergyNetworkManager::queueUpdate);
@@ -263,6 +267,24 @@ public class Ssc14Mod {
 		GasProducerO2TickService.install((level, pos) ->
 				net.mcreator.ssc.procedures.GasProducerO2_tick_PR_Procedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ()));
+		CommunicationServerLifecycleService.install(
+				new CommunicationServerLifecycleService.Adapter() {
+					@Override
+					public void tick(ServerLevel level, net.minecraft.core.BlockPos pos,
+							net.minecraft.world.level.block.state.BlockState state) {
+						net.mcreator.ssc.procedures.CommunicationServers_TIC_PR_Procedure.execute(
+								level, pos.getX(), pos.getY(), pos.getZ(), state);
+					}
+
+					@Override
+					public void use(net.minecraft.world.level.Level level,
+							net.minecraft.core.BlockPos pos,
+							net.minecraft.world.level.block.state.BlockState state,
+							Player player) {
+						net.mcreator.ssc.procedures.CommunicationServers_Click_USEProcedure.execute(
+								level, pos.getX(), pos.getY(), pos.getZ(), state, player);
+					}
+				});
 		StationCodeDebugInteractionService.install((level, pos, player) ->
 				net.mcreator.ssc.procedures.DEBUG13PriShchielchkiePKMPoBlokuProcedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ(), player));
