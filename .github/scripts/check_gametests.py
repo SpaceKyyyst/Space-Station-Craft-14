@@ -40,6 +40,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_lighting_contract",
     "ssc_14:compatibility_block_machine_frame_contract",
     "ssc_14:compatibility_block_sheathing_contract",
+    "ssc_14:compatibility_block_energy_machine_contract",
 }
 
 

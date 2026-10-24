@@ -45,6 +45,7 @@ import net.ssc14.content.block.machinery.MachineFrameMenuService;
 import net.ssc14.content.block.machinery.Ssc14MachineBlockEntities;
 import net.ssc14.content.block.energy.CableTopologyService;
 import net.ssc14.content.block.energy.Ssc14CableBlockEntities;
+import net.ssc14.content.block.energy.Ssc14EnergyMachineBlockEntities;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.ssc14.content.sound.Ssc14SoundEvents;
 import net.minecraft.server.MinecraftServer;
@@ -89,6 +90,8 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14MachineBlockEntities::registerCapabilities);
 		Ssc14CableBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14CableBlockEntities::registerCapabilities);
+		Ssc14EnergyMachineBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14EnergyMachineBlockEntities::registerCapabilities);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
 		LightingEnergyService.install(EnergyNetworkManager::queueUpdate);

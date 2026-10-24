@@ -1,8 +1,9 @@
 package net.mcreator.ssc;
 
 import net.mcreator.ssc.block.LampBlock;
-import net.mcreator.ssc.block.entity.APCBlockEntity;
-import net.mcreator.ssc.block.entity.PodstationBlockEntity;
+import net.ssc14.content.block.energy.ApcBlockEntity;
+import net.ssc14.content.block.energy.EnergyStorage;
+import net.ssc14.content.block.energy.PodstationBlockEntity;
 import net.mcreator.ssc.energy.EnergyAllocation;
 import net.mcreator.ssc.energy.EnergyTickBudget;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
@@ -76,12 +77,12 @@ public class EnergySimulationServer {
                 }
             }
         }
-        for (Map.Entry<BlockPos, IEnergyStorageBlock> entry : tick.storage.entrySet()) {
-            IEnergyStorageBlock storage = entry.getValue();
+        for (Map.Entry<BlockPos, EnergyStorage> entry : tick.storage.entrySet()) {
+            EnergyStorage storage = entry.getValue();
             storage.setNetworkCurrentPower(0);
             storage.setNetworkTheoreticalSupply(0);
             storage.setNetworkIdealConsumption(0);
-            if (storage instanceof APCBlockEntity apc) {
+            if (storage instanceof ApcBlockEntity apc) {
                 apc.lastTickReceivingJoules = 0;
                 apc.lastTickDischargingJoules = 0;
                 apc.setNetworkIdealConsumption(apcLoads.getOrDefault(entry.getKey(), Set.of()).size() * LV_LOAD_WATT);
@@ -98,7 +99,7 @@ public class EnergySimulationServer {
         return switch (type) {
             case HV -> level.getBlockState(pos).is(Ssc14ModBlocks.DEBU_GGENERATOR.get());
             case MV -> level.getBlockEntity(pos) instanceof PodstationBlockEntity;
-            case LV -> level.getBlockEntity(pos) instanceof APCBlockEntity;
+            case LV -> level.getBlockEntity(pos) instanceof ApcBlockEntity;
         };
     }
 
@@ -108,7 +109,7 @@ public class EnergySimulationServer {
         }
         return switch (type) {
             case HV -> level.getBlockEntity(pos) instanceof PodstationBlockEntity;
-            case MV -> level.getBlockEntity(pos) instanceof APCBlockEntity;
+            case MV -> level.getBlockEntity(pos) instanceof ApcBlockEntity;
             case LV -> level.getBlockState(pos).is(Ssc14ModBlocks.LAMP.get());
         };
     }
@@ -118,8 +119,8 @@ public class EnergySimulationServer {
             return;
         }
         BlockEntity entity = level.getBlockEntity(pos);
-        if (entity instanceof IEnergyStorageBlock storage) {
-            long output = entity instanceof APCBlockEntity ? APC_WATT : SUBSTATION_WATT;
+        if (entity instanceof EnergyStorage storage) {
+            long output = entity instanceof ApcBlockEntity ? APC_WATT : SUBSTATION_WATT;
             tick.storage.put(pos, storage);
             tick.budgets.put(pos, new EnergyTickBudget(storage.getStoredEnergy(), storage.getMaxEnergy(),
                     output / TICKS_PER_SECOND, MAX_DEVICE_INPUT_JOULES));
@@ -155,8 +156,8 @@ public class EnergySimulationServer {
     private static Map<BlockPos, Long> availableSources(EnergyNetwork network, TickContext tick) {
         Map<BlockPos, Long> sources = new LinkedHashMap<>();
         for (BlockPos pos : network.getSources()) {
-            IEnergyStorageBlock storage = tick.storage.get(pos);
-            if (storage instanceof APCBlockEntity apc && !apc.isMainBreakerEnabled()) {
+            EnergyStorage storage = tick.storage.get(pos);
+            if (storage instanceof ApcBlockEntity apc && !apc.isMainBreakerEnabled()) {
                 continue;
             }
             long rating = switch (network.getType()) {
@@ -192,7 +193,7 @@ public class EnergySimulationServer {
         long[] demands = new long[consumers.size()];
         for (int i = 0; i < consumers.size(); i++) {
             BlockPos pos = consumers.get(i);
-            IEnergyStorageBlock storage = tick.storage.get(pos);
+            EnergyStorage storage = tick.storage.get(pos);
             demands[i] = Math.min(tick.budgets.get(pos).remainingInput(),
                     Math.max(0, storage.getMaxEnergy() - storage.getStoredEnergy()));
             network.idealConsumption += demands[i] * TICKS_PER_SECOND;
@@ -203,9 +204,9 @@ public class EnergySimulationServer {
             BlockPos pos = consumers.get(i);
             long accepted = tick.budgets.get(pos).acceptInput(allocation[i]);
             if (accepted > 0) {
-                IEnergyStorageBlock storage = tick.storage.get(pos);
+                EnergyStorage storage = tick.storage.get(pos);
                 storage.setStoredEnergySimulation(storage.getStoredEnergy() + accepted);
-                if (storage instanceof APCBlockEntity apc) {
+                if (storage instanceof ApcBlockEntity apc) {
                     apc.lastTickReceivingJoules += accepted;
                 }
                 delivered += accepted;
@@ -222,12 +223,12 @@ public class EnergySimulationServer {
         int index = 0;
         for (BlockPos pos : sources.keySet()) {
             long withdrawn = tick.budgets.get(pos).takeOutput(allocations[index++]);
-            IEnergyStorageBlock storage = tick.storage.get(pos);
+            EnergyStorage storage = tick.storage.get(pos);
             if (storage != null && withdrawn > 0) {
                 storage.setStoredEnergySimulation(storage.getStoredEnergy() - withdrawn);
                 storage.setNetworkCurrentPower(storage.getNetworkCurrentPower() + withdrawn * TICKS_PER_SECOND);
                 network.batteryPower += withdrawn * TICKS_PER_SECOND;
-                if (storage instanceof APCBlockEntity apc) {
+                if (storage instanceof ApcBlockEntity apc) {
                     apc.lastTickDischargingJoules += withdrawn;
                 }
             }
@@ -236,14 +237,14 @@ public class EnergySimulationServer {
 
     private static void captureNetworkStorage(EnergyNetwork network, TickContext tick) {
         for (BlockPos pos : network.getSources()) {
-            IEnergyStorageBlock storage = tick.storage.get(pos);
+            EnergyStorage storage = tick.storage.get(pos);
             if (storage != null) {
                 network.inputStored += storage.getStoredEnergy();
                 network.inputMax += storage.getMaxEnergy();
             }
         }
         for (BlockPos pos : network.getConsumers()) {
-            IEnergyStorageBlock storage = tick.storage.get(pos);
+            EnergyStorage storage = tick.storage.get(pos);
             if (storage != null) {
                 network.outputStored += storage.getStoredEnergy();
                 network.outputMax += storage.getMaxEnergy();
@@ -265,7 +266,7 @@ public class EnergySimulationServer {
 
     private static final class TickContext {
         private final Map<BlockPos, EnergyTickBudget> budgets = new HashMap<>();
-        private final Map<BlockPos, IEnergyStorageBlock> storage = new HashMap<>();
+        private final Map<BlockPos, EnergyStorage> storage = new HashMap<>();
         private final net.mcreator.ssc.energy.LowVoltageTickBatch loads;
         TickContext(ServerLevel level) { loads = new net.mcreator.ssc.energy.LowVoltageTickBatch(level); }
     }

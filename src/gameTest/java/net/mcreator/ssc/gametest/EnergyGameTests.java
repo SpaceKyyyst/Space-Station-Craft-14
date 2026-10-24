@@ -5,8 +5,8 @@ import net.mcreator.ssc.EnergyNetwork;
 import net.mcreator.ssc.EnergyNetworkManager;
 import net.mcreator.ssc.block.LampBlock;
 import net.ssc14.content.block.energy.SheathingBlock;
-import net.mcreator.ssc.block.entity.APCBlockEntity;
-import net.mcreator.ssc.block.entity.PodstationBlockEntity;
+import net.ssc14.content.block.energy.ApcBlockEntity;
+import net.ssc14.content.block.energy.PodstationBlockEntity;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -75,7 +75,7 @@ public final class EnergyGameTests {
         for (int x = 2; x <= 6; x++) helper.setBlock(x, 1, 2, cable);
         helper.setBlock(2, 2, 2, Ssc14ModBlocks.APC.get());
         helper.setBlock(8, 3, 2, Ssc14ModBlocks.LAMP.get());
-        APCBlockEntity apc = apc(helper, new BlockPos(2, 2, 2));
+        ApcBlockEntity apc = apc(helper, new BlockPos(2, 2, 2));
         apc.setStoredEnergy(INITIAL_CHARGE);
 
         awaitEnergy(helper, () -> {
@@ -165,7 +165,7 @@ public final class EnergyGameTests {
         helper.setBlock(12, 1, 2, cableState(false, false, true));
         helper.setBlock(12, 2, 2, Ssc14ModBlocks.APC.get());
         PodstationBlockEntity substation = podstation(helper, new BlockPos(2, 2, 2));
-        APCBlockEntity apc = apc(helper, new BlockPos(12, 2, 2));
+        ApcBlockEntity apc = apc(helper, new BlockPos(12, 2, 2));
         substation.setStoredEnergy(INITIAL_CHARGE);
         apc.setStoredEnergy(INITIAL_CHARGE);
         awaitEnergy(helper, () -> helper.runAfterDelay(OBSERVATION_TICKS, () -> {
@@ -379,10 +379,10 @@ public final class EnergyGameTests {
         return found;
     }
 
-    private static APCBlockEntity apc(GameTestHelper helper, BlockPos relativePos) {
+    private static ApcBlockEntity apc(GameTestHelper helper, BlockPos relativePos) {
         var entity = helper.getLevel().getBlockEntity(helper.absolutePos(relativePos));
-        helper.assertTrue(entity instanceof APCBlockEntity, "Placing the APC must create its block entity");
-        return (APCBlockEntity) entity;
+        helper.assertTrue(entity instanceof ApcBlockEntity, "Placing the APC must create its block entity");
+        return (ApcBlockEntity) entity;
     }
 
     private static PodstationBlockEntity podstation(GameTestHelper helper, BlockPos relativePos) {
@@ -402,5 +402,5 @@ public final class EnergyGameTests {
 
     private static Identifier id(String path) { return Identifier.fromNamespaceAndPath("ssc_14", path); }
 
-    private record Circuit(PodstationBlockEntity substation, APCBlockEntity apc) { }
+    private record Circuit(PodstationBlockEntity substation, ApcBlockEntity apc) { }
 }
