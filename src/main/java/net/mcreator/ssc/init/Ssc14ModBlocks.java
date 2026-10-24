@@ -129,7 +129,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> FENCE_G = Ssc14Blocks.FENCE_G;
 	public static final DeferredBlock<Block> FENCE_POINT = Ssc14Blocks.FENCE_POINT;
 	public static final DeferredBlock<Block> FENCE_P = Ssc14Blocks.FENCE_P;
-	public static final DeferredBlock<Block> DEBUG_13;
+	public static final DeferredBlock<Block> DEBUG_13 = Ssc14Blocks.DEBUG_13;
 	public static final DeferredBlock<Block> EXTINGUISHER_CABINET;
 	public static final DeferredBlock<Block> TITLE_STEEL_PAVEMENT_VERTICAL = Ssc14Blocks.TITLE_STEEL_PAVEMENT_VERTICAL;
 	public static final DeferredBlock<Block> COMMUNICATION_SERVERS;
@@ -257,7 +257,6 @@ public class Ssc14ModBlocks {
 		COMPUTER = register("computer", ComputerBlock::new);
 		CLOSET_SECURE = register("closet_secure", ClosetSecureBlock::new);
 		UP_CLOSET_PLUG = register("up_closet_plug", UpClosetPLUGBlock::new);
-		DEBUG_13 = register("debug_13", DEBUG13Block::new);
 		EXTINGUISHER_CABINET = register("extinguisher_cabinet", ExtinguisherCabinetBlock::new);
 		COMMUNICATION_SERVERS = register("communication_servers", CommunicationServersBlock::new);
 		GRAV_GEN_PLUG_BLOCK = register("grav_gen_plug_block", GravGenPlugBlockBlock::new);
