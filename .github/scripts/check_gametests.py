@@ -52,6 +52,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_extinguisher_cabinet_contract",
     "ssc_14:compatibility_block_vending_plug_contract",
     "ssc_14:compatibility_block_portable_sheater_contract",
+    "ssc_14:compatibility_block_failure_sentinel_contract",
 }
 
 
