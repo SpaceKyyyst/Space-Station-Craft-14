@@ -34,6 +34,7 @@ import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.content.entity.Ssc14EntityBehavior;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.ssc14.content.sound.Ssc14SoundEvents;
 import net.minecraft.server.MinecraftServer;
@@ -68,6 +69,8 @@ public class Ssc14Mod {
 		Ssc14SoundEvents.REGISTRY.register(modEventBus);
 		Ssc14ModBlocks.initializeLegacyEntries();
 		Ssc14Blocks.REGISTRY.register(modEventBus);
+		Ssc14ClosetBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14ClosetBlockEntities::registerCapabilities);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
