@@ -94,7 +94,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_WHITE_PAVEMENT = Ssc14Blocks.TITLE_WHITE_PAVEMENT;
 	public static final DeferredBlock<Block> TITLE_WHITE_PAVEMENT_VERTICAL = Ssc14Blocks.TITLE_WHITE_PAVEMENT_VERTICAL;
 	public static final DeferredBlock<Block> TITLE_WHITE_PLASTIC = Ssc14Blocks.TITLE_WHITE_PLASTIC;
-	public static final DeferredBlock<Block> C_4;
+	public static final DeferredBlock<Block> C_4 = Ssc14Blocks.C_4;
 	public static final DeferredBlock<Block> MACHINE_FRAME = Ssc14Blocks.MACHINE_FRAME;
 	public static final DeferredBlock<Block> MACHINE_FRAME_2 = Ssc14Blocks.MACHINE_FRAME_2;
 	public static final DeferredBlock<Block> STEEL_TABLE = Ssc14Blocks.STEEL_TABLE;
@@ -249,7 +249,6 @@ public class Ssc14ModBlocks {
 		AIRLOCK_UP_PLUG = register("airlock_up_plug", AirlockUpPlugBlock::new);
 		AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", AirlockUpPlugOPENBlock::new);
 		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);
-		C_4 = register("c_4", C4Block::new);
 		NUCLEAR_WARHEAD = register("nuclear_warhead", NuclearWarheadBlock::new);
 		COMPUTER = register("computer", ComputerBlock::new);
 		COMMUNICATION_SERVERS = register("communication_servers", CommunicationServersBlock::new);

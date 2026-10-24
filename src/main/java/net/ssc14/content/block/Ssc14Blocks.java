@@ -26,6 +26,7 @@ import net.ssc14.content.block.energy.ApcBlock;
 import net.ssc14.content.block.energy.PodstationBlock;
 import net.ssc14.content.block.energy.DebugGeneratorBlock;
 import net.ssc14.content.block.energy.SmesBlock;
+import net.ssc14.content.block.explosives.C4ChargeBlock;
 import net.ssc14.content.block.geology.AsteroidStoneBaseBlock;
 import net.ssc14.content.block.geology.AsteroidStoneCoalBlock;
 import net.ssc14.content.block.geology.AsteroidStoneDiamondBlock;
@@ -124,6 +125,8 @@ public final class Ssc14Blocks {
             register("kostilniblok", FailureSentinelBlock::new);
     public static final DeferredBlock<Block> DEBUG_GRAV_GEN =
             register("debug_grav_gen", DebugGravityGeneratorBlock::new);
+    public static final DeferredBlock<Block> C_4 =
+            register("c_4", C4ChargeBlock::new);
     public static final DeferredBlock<Block> AIRLOCK_THRESHOLD =
             register("airlock_threshold", AirlockThresholdBlock::new);
     public static final DeferredBlock<Block> UP_CLOSET_PLUG =

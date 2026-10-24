@@ -43,6 +43,8 @@ import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
 import net.ssc14.content.block.debug.StationCodeDebugInteractionService;
 import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
 import net.ssc14.content.block.debug.DebugGravityStateService;
+import net.ssc14.content.block.explosives.C4ChargeInteractionService;
+import net.ssc14.content.block.explosives.Ssc14ExplosiveBlockEntities;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.block.storage.SecureClosetInteractionService;
 import net.ssc14.content.block.storage.ExtinguisherCabinetInteractionService;
@@ -101,6 +103,8 @@ public class Ssc14Mod {
 		Ssc14DebugBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14DebugBlockEntities::registerCapabilities);
 		DebugGravityStateService.install(enabled -> Ssc14ModVariables.station_gravity = enabled);
+		Ssc14ExplosiveBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14ExplosiveBlockEntities::registerCapabilities);
 		Ssc14CableBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14CableBlockEntities::registerCapabilities);
 		Ssc14EnergyMachineBlockEntities.REGISTRY.register(modEventBus);
@@ -144,6 +148,28 @@ public class Ssc14Mod {
 					net.minecraft.core.BlockPos pos, Player player) {
 				net.mcreator.ssc.procedures.FuelTank_USE_Procedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ(), player);
+			}
+		});
+		C4ChargeInteractionService.install(new C4ChargeInteractionService.Adapter() {
+			@Override
+			public void plant(net.minecraft.world.level.Level level,
+					net.minecraft.core.BlockPos pos) {
+				net.mcreator.ssc.procedures.C4_PlantProcedure.execute(
+						level, pos.getX(), pos.getY(), pos.getZ());
+			}
+
+			@Override
+			public void activate(net.minecraft.world.level.Level level,
+					net.minecraft.core.BlockPos pos, Player player) {
+				net.mcreator.ssc.procedures.C4_activate_PRProcedure.execute(
+						level, pos.getX(), pos.getY(), pos.getZ(), player);
+			}
+
+			@Override
+			public void detonate(net.minecraft.world.level.Level level,
+					net.minecraft.core.BlockPos pos) {
+				net.mcreator.ssc.procedures.C4_detonateProcedure.execute(
+						level, pos.getX(), pos.getY(), pos.getZ());
 			}
 		});
 		StationCodeDebugInteractionService.install((level, pos, player) ->
