@@ -35,6 +35,7 @@ import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
 import net.ssc14.content.block.fuel.FuelTankBlockEntity;
 import net.ssc14.content.block.debug.FailureSentinelBlockEntity;
+import net.ssc14.content.block.debug.DebugGravityGeneratorBlockEntity;
 import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
 
 @EventBusSubscriber
@@ -55,7 +56,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<C4BlockEntity>> C_4 = register("c_4", Ssc14ModBlocks.C_4, C4BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MachineFrameBlockEntity>> MACHINE_FRAME_2 = Ssc14MachineBlockEntities.MACHINE_FRAME_2;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FailureSentinelBlockEntity>> KOSTILNIBLOK = Ssc14DebugBlockEntities.KOSTILNIBLOK;
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DebugGravGenBlockEntity>> DEBUG_GRAV_GEN = register("debug_grav_gen", Ssc14ModBlocks.DEBUG_GRAV_GEN, DebugGravGenBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DebugGravityGeneratorBlockEntity>> DEBUG_GRAV_GEN = Ssc14DebugBlockEntities.DEBUG_GRAV_GEN;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<NuclearWarheadBlockEntity>> NUCLEAR_WARHEAD = register("nuclear_warhead", Ssc14ModBlocks.NUCLEAR_WARHEAD, NuclearWarheadBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET_SECURE = Ssc14ClosetBlockEntities.CLOSET_SECURE;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET = Ssc14ClosetBlockEntities.CLOSET;
@@ -111,7 +112,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG_OPEN.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, GRAVITY_GENERATOR.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, C_4.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, DEBUG_GRAV_GEN.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, NUCLEAR_WARHEAD.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, COMMUNICATION_SERVERS.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, COMMUNICATION_CONSOLE.get(), WorldlyContainerWrapper::new);
