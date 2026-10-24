@@ -56,6 +56,7 @@ import net.ssc14.content.block.lighting.ServiceableLightBlock;
 import net.ssc14.content.block.lighting.WallMountedLightBlock;
 import net.ssc14.content.block.machinery.AssembledMachineFrameBlock;
 import net.ssc14.content.block.machinery.MachineFrameBlock;
+import net.ssc14.content.block.machinery.ComputerBlock;
 import net.ssc14.content.block.machinery.PortableSheaterBlock;
 import net.ssc14.content.block.floor.FloorTileBlock;
 import net.ssc14.content.block.floor.FiveVariantFloorTileBlock;
@@ -102,6 +103,8 @@ public final class Ssc14Blocks {
 
     public static final DeferredBlock<Block> MACHINE_FRAME =
             register("machine_frame", MachineFrameBlock::new);
+    public static final DeferredBlock<Block> COMPUTER =
+            register("computer", ComputerBlock::new);
     public static final DeferredBlock<Block> MACHINE_FRAME_2 =
             register("machine_frame_2", AssembledMachineFrameBlock::new);
     public static final DeferredBlock<Block> PORTABLE_SHEATER =
