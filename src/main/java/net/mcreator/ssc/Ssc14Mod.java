@@ -21,6 +21,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.Identifier;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.core.registries.BuiltInRegistries;
 
@@ -29,6 +30,7 @@ import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.mcreator.ssc.init.*;
 import net.mcreator.ssc.scheduling.ServerTaskScheduler;
 import net.mcreator.ssc.scheduling.SubmissionResult;
+import net.mcreator.ssc.world.inventory.MacFrameGUIMenu;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.content.entity.Ssc14EntityBehavior;
@@ -38,6 +40,9 @@ import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.block.lighting.EmergencyLightingService;
 import net.ssc14.content.block.lighting.LightingEnergyService;
 import net.ssc14.content.block.lighting.Ssc14LightingBlockEntities;
+import net.ssc14.content.block.machinery.MachineFrameAssemblyService;
+import net.ssc14.content.block.machinery.MachineFrameMenuService;
+import net.ssc14.content.block.machinery.Ssc14MachineBlockEntities;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.ssc14.content.sound.Ssc14SoundEvents;
 import net.minecraft.server.MinecraftServer;
@@ -52,6 +57,8 @@ import java.util.HashMap;
 import java.lang.invoke.MethodType;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodHandle;
+
+import io.netty.buffer.Unpooled;
 
 
 @Mod("ssc_14")
@@ -76,11 +83,17 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14LightingBlockEntities::registerCapabilities);
 		Ssc14ClosetBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14ClosetBlockEntities::registerCapabilities);
+		Ssc14MachineBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14MachineBlockEntities::registerCapabilities);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
 		LightingEnergyService.install(EnergyNetworkManager::queueUpdate);
 		EmergencyLightingService.install(level ->
 				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
+		MachineFrameAssemblyService.install(Ssc14ModItems.LOW_VOLTAGE_CABLE,
+				Ssc14Blocks.MACHINE_FRAME_2);
+		MachineFrameMenuService.install((id, inventory, pos) -> new MacFrameGUIMenu(
+				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
 		Ssc14EntityTypes.REGISTRY.register(modEventBus);
 		Ssc14ModTabs.REGISTRY.register(modEventBus);

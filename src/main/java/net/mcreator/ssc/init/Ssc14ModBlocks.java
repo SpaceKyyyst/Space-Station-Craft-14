@@ -95,8 +95,8 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_WHITE_PAVEMENT_VERTICAL = Ssc14Blocks.TITLE_WHITE_PAVEMENT_VERTICAL;
 	public static final DeferredBlock<Block> TITLE_WHITE_PLASTIC = Ssc14Blocks.TITLE_WHITE_PLASTIC;
 	public static final DeferredBlock<Block> C_4;
-	public static final DeferredBlock<Block> MACHINE_FRAME;
-	public static final DeferredBlock<Block> MACHINE_FRAME_2;
+	public static final DeferredBlock<Block> MACHINE_FRAME = Ssc14Blocks.MACHINE_FRAME;
+	public static final DeferredBlock<Block> MACHINE_FRAME_2 = Ssc14Blocks.MACHINE_FRAME_2;
 	public static final DeferredBlock<Block> STEEL_TABLE = Ssc14Blocks.STEEL_TABLE;
 	public static final DeferredBlock<Block> STEEL_STAIRCASE = Ssc14Blocks.STEEL_STAIRCASE;
 	public static final DeferredBlock<Block> WHITE_STAIRCASE = Ssc14Blocks.WHITE_STAIRCASE;
@@ -256,8 +256,6 @@ public class Ssc14ModBlocks {
 		SMES = register("smes", SMESBlock::new);
 		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);
 		C_4 = register("c_4", C4Block::new);
-		MACHINE_FRAME = register("machine_frame", MachineFrameBlock::new);
-		MACHINE_FRAME_2 = register("machine_frame_2", MachineFrame2Block::new);
 		KOSTILNIBLOK = register("kostilniblok", KostilniblokBlock::new);
 		DEBUG_GRAV_GEN = register("debug_grav_gen", DebugGravGenBlock::new);
 		NUCLEAR_WARHEAD = register("nuclear_warhead", NuclearWarheadBlock::new);
