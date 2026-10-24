@@ -987,7 +987,7 @@ public class Ssc14ModItems {
 		TITLE_LAUNDRY = block(Ssc14Blocks.TITLE_LAUNDRY, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_LIME = block(Ssc14Blocks.TITLE_LIME, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_LINO = block(Ssc14Blocks.TITLE_LINO, new Item.Properties().stacksTo(30).fireResistant());
-		TITLE_MEAT = block(Ssc14ModBlocks.TITLE_MEAT, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_MEAT = block(Ssc14Blocks.TITLE_MEAT, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_METALDIAMOND = block(Ssc14Blocks.TITLE_METALDIAMOND, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_MIME = block(Ssc14Blocks.TITLE_MIME, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_MININGFLOORDARK = block(Ssc14Blocks.TITLE_MININGFLOORDARK, new Item.Properties().stacksTo(30).fireResistant());
@@ -1006,13 +1006,13 @@ public class Ssc14ModItems {
 		TITLE_SHUTTLERED = block(Ssc14Blocks.TITLE_SHUTTLERED, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_SHUTTLEWHITE = block(Ssc14Blocks.TITLE_SHUTTLEWHITE, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_SILVER = block(Ssc14Blocks.TITLE_SILVER, new Item.Properties().stacksTo(30).fireResistant());
-		TITLE_STEELDAMAGED = block(Ssc14ModBlocks.TITLE_STEELDAMAGED, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_STEELDAMAGED = block(Ssc14Blocks.TITLE_STEELDAMAGED, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_STEELDIRTY = block(Ssc14Blocks.TITLE_STEELDIRTY, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_STEELMAINT = block(Ssc14Blocks.TITLE_STEELMAINT, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_SUPERREINFORCED = block(Ssc14Blocks.TITLE_SUPERREINFORCED, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_TECHMAINTDARK = block(Ssc14Blocks.TITLE_TECHMAINTDARK, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_TECHMAINT = block(Ssc14Blocks.TITLE_TECHMAINT, new Item.Properties().stacksTo(30).fireResistant());
-		TITLE_WOODBROKEN = block(Ssc14ModBlocks.TITLE_WOODBROKEN, new Item.Properties().stacksTo(30).fireResistant());
+		TITLE_WOODBROKEN = block(Ssc14Blocks.TITLE_WOODBROKEN, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_WOODLARGE = block(Ssc14Blocks.TITLE_WOODLARGE, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_WOOD = block(Ssc14Blocks.TITLE_WOOD, new Item.Properties().stacksTo(30).fireResistant());
 		TITLE_WOODTILE = block(Ssc14Blocks.TITLE_WOODTILE, new Item.Properties().stacksTo(30).fireResistant());

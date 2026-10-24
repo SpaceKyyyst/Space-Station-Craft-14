@@ -172,7 +172,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_LAUNDRY = Ssc14Blocks.TITLE_LAUNDRY;
 	public static final DeferredBlock<Block> TITLE_LIME = Ssc14Blocks.TITLE_LIME;
 	public static final DeferredBlock<Block> TITLE_LINO = Ssc14Blocks.TITLE_LINO;
-	public static final DeferredBlock<Block> TITLE_MEAT;
+	public static final DeferredBlock<Block> TITLE_MEAT = Ssc14Blocks.TITLE_MEAT;
 	public static final DeferredBlock<Block> TITLE_METALDIAMOND = Ssc14Blocks.TITLE_METALDIAMOND;
 	public static final DeferredBlock<Block> TITLE_MIME = Ssc14Blocks.TITLE_MIME;
 	public static final DeferredBlock<Block> TITLE_MININGFLOORDARK = Ssc14Blocks.TITLE_MININGFLOORDARK;
@@ -191,13 +191,13 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_SHUTTLERED = Ssc14Blocks.TITLE_SHUTTLERED;
 	public static final DeferredBlock<Block> TITLE_SHUTTLEWHITE = Ssc14Blocks.TITLE_SHUTTLEWHITE;
 	public static final DeferredBlock<Block> TITLE_SILVER = Ssc14Blocks.TITLE_SILVER;
-	public static final DeferredBlock<Block> TITLE_STEELDAMAGED;
+	public static final DeferredBlock<Block> TITLE_STEELDAMAGED = Ssc14Blocks.TITLE_STEELDAMAGED;
 	public static final DeferredBlock<Block> TITLE_STEELDIRTY = Ssc14Blocks.TITLE_STEELDIRTY;
 	public static final DeferredBlock<Block> TITLE_STEELMAINT = Ssc14Blocks.TITLE_STEELMAINT;
 	public static final DeferredBlock<Block> TITLE_SUPERREINFORCED = Ssc14Blocks.TITLE_SUPERREINFORCED;
 	public static final DeferredBlock<Block> TITLE_TECHMAINTDARK = Ssc14Blocks.TITLE_TECHMAINTDARK;
 	public static final DeferredBlock<Block> TITLE_TECHMAINT = Ssc14Blocks.TITLE_TECHMAINT;
-	public static final DeferredBlock<Block> TITLE_WOODBROKEN;
+	public static final DeferredBlock<Block> TITLE_WOODBROKEN = Ssc14Blocks.TITLE_WOODBROKEN;
 	public static final DeferredBlock<Block> TITLE_WOODLARGE = Ssc14Blocks.TITLE_WOODLARGE;
 	public static final DeferredBlock<Block> TITLE_WOOD = Ssc14Blocks.TITLE_WOOD;
 	public static final DeferredBlock<Block> TITLE_WOODTILE = Ssc14Blocks.TITLE_WOODTILE;
@@ -281,9 +281,6 @@ public class Ssc14ModBlocks {
 		SHUTTERS = register("shutters", ShuttersBlock::new);
 		BUTTON = register("button", ButtonBlock::new);
 		MICROWAWE = register("microwawe", MicrowaweBlock::new);
-		TITLE_MEAT = register("title_meat", TitleMeatBlock::new);
-		TITLE_STEELDAMAGED = register("title_steeldamaged", TitleSteeldamagedBlock::new);
-		TITLE_WOODBROKEN = register("title_woodbroken", TitleWoodbrokenBlock::new);
 		ATMOSPHERICS_AIRLOCK_D_1 = register("atmospherics_airlock_d_1", AtmosphericsAirlockD1Block::new);
 		CARGO_AIRLOCK_D_1 = register("cargo_airlock_d_1", CargoAirlockD1Block::new);
 		CENT_COM_AIRLOCK_D_1 = register("cent_com_airlock_d_1", CentComAirlockD1Block::new);

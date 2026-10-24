@@ -45,9 +45,6 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShuttersBlockEntity>> SHUTTERS = register("shutters", Ssc14ModBlocks.SHUTTERS, ShuttersBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ButtonBlockEntity>> BUTTON = register("button", Ssc14ModBlocks.BUTTON, ButtonBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MicrowaweBlockEntity>> MICROWAWE = register("microwawe", Ssc14ModBlocks.MICROWAWE, MicrowaweBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleMeatBlockEntity>> TITLE_MEAT = register("title_meat", Ssc14ModBlocks.TITLE_MEAT, TitleMeatBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleSteeldamagedBlockEntity>> TITLE_STEELDAMAGED = register("title_steeldamaged", Ssc14ModBlocks.TITLE_STEELDAMAGED, TitleSteeldamagedBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TitleWoodbrokenBlockEntity>> TITLE_WOODBROKEN = register("title_woodbroken", Ssc14ModBlocks.TITLE_WOODBROKEN, TitleWoodbrokenBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AtmosphericsAirlockD1BlockEntity>> ATMOSPHERICS_AIRLOCK_D_1 = register("atmospherics_airlock_d_1", Ssc14ModBlocks.ATMOSPHERICS_AIRLOCK_D_1,
 			AtmosphericsAirlockD1BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CargoAirlockD1BlockEntity>> CARGO_AIRLOCK_D_1 = register("cargo_airlock_d_1", Ssc14ModBlocks.CARGO_AIRLOCK_D_1, CargoAirlockD1BlockEntity::new);
@@ -113,9 +110,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, SHUTTERS.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, BUTTON.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, MICROWAWE.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, TITLE_MEAT.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, TITLE_STEELDAMAGED.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, TITLE_WOODBROKEN.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, ATMOSPHERICS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, CARGO_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, CENT_COM_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
