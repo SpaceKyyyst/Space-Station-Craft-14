@@ -37,6 +37,8 @@ import net.ssc14.content.block.lighting.EnergyLampBlock;
 import net.ssc14.content.block.lighting.LightingBlockEntity;
 import net.ssc14.content.block.lighting.ServiceableLightBlock;
 import net.ssc14.content.block.lighting.WallMountedLightBlock;
+import net.ssc14.content.block.machinery.AssembledMachineFrameBlock;
+import net.ssc14.content.block.machinery.MachineFrameBlock;
 import net.ssc14.content.block.floor.FloorTileBlock;
 import net.ssc14.content.block.floor.FiveVariantFloorTileBlock;
 import net.ssc14.content.block.floor.FourVariantFloorTileBlock;
@@ -76,6 +78,11 @@ import net.ssc14.content.block.window.DirectedBaseWindowBlock;
 public final class Ssc14Blocks {
     public static final DeferredRegister.Blocks REGISTRY =
             DeferredRegister.createBlocks(Ssc14Identity.MOD_ID);
+
+    public static final DeferredBlock<Block> MACHINE_FRAME =
+            register("machine_frame", MachineFrameBlock::new);
+    public static final DeferredBlock<Block> MACHINE_FRAME_2 =
+            register("machine_frame_2", AssembledMachineFrameBlock::new);
 
     public static final DeferredBlock<Block> ASTEROID_STONE_BASE =
             register("asteroid_stone_base", AsteroidStoneBaseBlock::new);
