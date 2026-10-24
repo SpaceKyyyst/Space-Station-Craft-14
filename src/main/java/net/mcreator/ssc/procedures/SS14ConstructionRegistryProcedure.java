@@ -79,7 +79,7 @@ public class SS14ConstructionRegistryProcedure {
         Item welder = Ssc14ModItems.ACTIVE_WELDER.get();
 
         registerBlock(Ssc14ModBlocks.STEEL_WALL.get(), welder, bs -> true,
-            new ConstructionStage(new int[]{20,20,20,20,20,20}, false, Ssc14ModItems.STEEL.get(), 1, 0.5, Ssc14ModBlocks.WALL_CARCASE.get(), null, -1, true, null, null));
+            new ConstructionStage(new int[]{20,20,20,20,20,20}, false, Ssc14ModItems.STEEL.get(), 1, 0.5, Ssc14Blocks.WALL_CARCASE.get(), null, -1, true, null, null));
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), welder, bs -> getInt(bs, "blockstate") == 2,
             new ConstructionStage(new int[]{13,13,13,13,13,13}, false, null, 1, 0.0, null, "blockstate", 3, true, null, null));
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), welder, bs -> getInt(bs, "blockstate") == 5,
@@ -99,18 +99,18 @@ public class SS14ConstructionRegistryProcedure {
         registerBlock(Ssc14ModBlocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.HV) && bs.getValue(SheathingBlock.HV),
             cableRemovalStage(fastDelays, SheathingBlock.HV, Ssc14ModItems.HIGH_VOLTAGE_CABLE.get()));
 
-        registerBlock(Ssc14ModBlocks.ROD_FLOOR.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
+        registerBlock(Ssc14Blocks.ROD_FLOOR.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
             new ConstructionStage(fastDelays, false, Ssc14ModItems.ROOD.get(), 1, 1.0, null, null, -1, false, null, null));
-        registerBlock(Ssc14ModBlocks.ROD_UP_FLOOR.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
+        registerBlock(Ssc14Blocks.ROD_UP_FLOOR.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
             new ConstructionStage(fastDelays, false, Ssc14ModItems.ROOD.get(), 1, 0.0, null, null, -1, false, null, null));
 
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
             new ConstructionStage(normalDelays, false, null, 1, 1.0, null, "blockstate", 1, false, null, null));
         registerBlock(Ssc14ModBlocks.PLASTEEL_WALL.get(), nippers, bs -> getInt(bs, "blockstate") == 8,
-            new ConstructionStage(new int[]{3,1,2,1,2,1}, false, Ssc14ModItems.PLASTEEL.get(), 1, 0.0, Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get(), null, -1, false, null, null));
+            new ConstructionStage(new int[]{3,1,2,1,2,1}, false, Ssc14ModItems.PLASTEEL.get(), 1, 0.0, Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(), null, -1, false, null, null));
 
-        registerBlock(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get(), nippers, bs -> true,
-            new ConstructionStage(new int[]{3,3,3,1,3,3}, false, Ssc14ModItems.PLASTEEL.get(), 1, 0.0, Ssc14ModBlocks.WALL_CARCASE.get(), null, -1, false, null, null));
+        registerBlock(Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(), nippers, bs -> true,
+            new ConstructionStage(new int[]{3,3,3,1,3,3}, false, Ssc14ModItems.PLASTEEL.get(), 1, 0.0, Ssc14Blocks.WALL_CARCASE.get(), null, -1, false, null, null));
 
         registerBlock(Ssc14ModBlocks.GRILLE.get(), nippers, bs -> true,
             new ConstructionStage(new int[]{1,2,1,2,1,2}, false, Ssc14ModItems.ROOD.get(), 1, 0.1, Blocks.AIR, null, -1, false, null, null));
@@ -121,11 +121,11 @@ public class SS14ConstructionRegistryProcedure {
         Item fireAxe = Ssc14ModItems.FIRE_AXE.get();
 
         registerBlock(Ssc14ModBlocks.SHEATHING.get(), fireAxe, bs -> true,
-            new ConstructionStage(slowDelays, false, null, 1, 1.0, Ssc14ModBlocks.ROD_FLOOR.get(), null, -1, false, hit -> hit == Direction.UP, 
+            new ConstructionStage(slowDelays, false, null, 1, 1.0, Ssc14Blocks.ROD_FLOOR.get(), null, -1, false, hit -> hit == Direction.UP,
             ctx -> dropBlockEntityWithNBT(ctx, Ssc14ModBlocks.TITLE_STEEL.get())));
         
-        registerBlock(Ssc14ModBlocks.UPER_SHEATHING.get(), fireAxe, bs -> true,
-            new ConstructionStage(slowDelays, false, null, 1, 0.5, Ssc14ModBlocks.ROD_UP_FLOOR.get(), null, -1, false, hit -> hit == Direction.DOWN, 
+        registerBlock(Ssc14Blocks.UPER_SHEATHING.get(), fireAxe, bs -> true,
+            new ConstructionStage(slowDelays, false, null, 1, 0.5, Ssc14Blocks.ROD_UP_FLOOR.get(), null, -1, false, hit -> hit == Direction.DOWN,
             ctx -> dropBlockEntityWithNBT(ctx, Ssc14ModBlocks.TITLE_STEEL.get())));
 
         Item screwdriver = Ssc14ModItems.SCREWDRIVER.get();
@@ -177,9 +177,9 @@ public class SS14ConstructionRegistryProcedure {
 
         Item spanner = Ssc14ModItems.SPANNER.get();
 
-        registerBlock(Ssc14ModBlocks.WALL_CARCASE.get(), spanner, bs -> true,
+        registerBlock(Ssc14Blocks.WALL_CARCASE.get(), spanner, bs -> true,
             new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14EntityTypes.WALL_CARCASE_ENTIT.get())));
-        registerBlock(Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get(), spanner, bs -> true,
+        registerBlock(Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(), spanner, bs -> true,
             new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14EntityTypes.PLASSTEEL_WALL_CARCASE_ENTIT.get())));
         registerBlock(Ssc14ModBlocks.CONSOLE_OF_ID.get(), spanner, bs -> true,
             new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14EntityTypes.ID_CONSOLE_ENTITY.get())));

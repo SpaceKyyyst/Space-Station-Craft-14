@@ -1,5 +1,7 @@
 package net.mcreator.ssc.procedures;
 
+import net.ssc14.content.block.Ssc14Blocks;
+
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -25,7 +27,7 @@ public class PlstWallExplosionBreakdownProcedure {
 			} else if (!world.getEntitiesOfClass(C4CrutchEntEntity.class, new AABB(Vec3.ZERO, Vec3.ZERO).move(new Vec3((x + 0.5), (y + 0.5), (z + 0.5))).inflate(10 / 2d), e -> true).isEmpty()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockState _bs = Ssc14ModBlocks.PLASTEEL_WALL_CARCASE.get().defaultBlockState();
+					BlockState _bs = Ssc14Blocks.PLASTEEL_WALL_CARCASE.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Property<?> _propertyOld : _bso.getProperties()) {
 						Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());

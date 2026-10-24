@@ -1,5 +1,7 @@
 package net.mcreator.ssc.procedures;
 
+import net.ssc14.content.block.Ssc14Blocks;
+
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.LevelAccessor;
@@ -27,7 +29,7 @@ public class SteelWall_DestroyProcedure {
 		if (!(entity instanceof Player _plr0 && _plr0.gameMode() == GameType.CREATIVE)) {
 			{
 				BlockPos _bp = BlockPos.containing(x, y, z);
-				BlockState _bs = Ssc14ModBlocks.WALL_CARCASE.get().defaultBlockState();
+				BlockState _bs = Ssc14Blocks.WALL_CARCASE.get().defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Property<?> _propertyOld : _bso.getProperties()) {
 					Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());

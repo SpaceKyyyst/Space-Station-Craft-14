@@ -1,5 +1,7 @@
 package net.mcreator.ssc.procedures;
 
+import net.ssc14.content.block.Ssc14Blocks;
+
 import net.minecraft.world.level.storage.TagValueInput;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,7 +31,7 @@ public class SteeluseProcedure {
 		if (entity instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(Ssc14ModAttributes.XY_ZPLAYER))
 			_livingEntity3.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).setBaseValue((entity.getX() + entity.getZ() + entity.getY()));
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.STEEL.get()) {
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.WALL_CARCASE.get()) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.WALL_CARCASE.get()) {
 				if (entity instanceof LivingEntity _livingEntity8 && _livingEntity8.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 					_livingEntity8.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(1);
 				Ssc14Mod.queueServerWork(serverOwner, 7, () -> {
@@ -68,7 +70,7 @@ public class SteeluseProcedure {
 																	? _livingEntity40.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 																	: 0)
 															&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.STEEL.get()
-															&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.WALL_CARCASE.get()) {
+															&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.WALL_CARCASE.get()) {
 														Ssc14Mod.queueServerWork(serverOwner, 6, () -> {
 															if (entity instanceof LivingEntity _livingEntity45 && _livingEntity45.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB))
 																_livingEntity45.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(6);
@@ -77,7 +79,7 @@ public class SteeluseProcedure {
 																			? _livingEntity49.getAttribute(Ssc14ModAttributes.XY_ZPLAYER).getValue()
 																			: 0)
 																	&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.STEEL.get()
-																	&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.WALL_CARCASE.get()) {
+																	&& (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.WALL_CARCASE.get()) {
 																{
 																	BlockPos _bp = BlockPos.containing(x, y, z);
 																	BlockState _bs = Ssc14ModBlocks.STEEL_WALL.get().defaultBlockState();
@@ -129,7 +131,7 @@ public class SteeluseProcedure {
 		}
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.STEEL.get()
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModBlocks.TITLE_STEEL.get().asItem()) {
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ROD_FLOOR.get()) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.ROD_FLOOR.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockState _bs = Ssc14ModBlocks.SHEATHING.get().defaultBlockState();
@@ -168,10 +170,10 @@ public class SteeluseProcedure {
 					}
 				}
 			}
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14ModBlocks.ROD_UP_FLOOR.get()) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.ROD_UP_FLOOR.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockState _bs = Ssc14ModBlocks.UPER_SHEATHING.get().defaultBlockState();
+					BlockState _bs = Ssc14Blocks.UPER_SHEATHING.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Property<?> _propertyOld : _bso.getProperties()) {
 						Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
