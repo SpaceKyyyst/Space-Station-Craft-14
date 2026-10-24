@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.block.catwalk.CatwalkFloorBlock;
 import net.ssc14.content.block.decoration.DirectionalBannerBlock;
 import net.ssc14.content.block.decoration.FenceCornerBlock;
 import net.ssc14.content.block.decoration.FenceLineBlock;
@@ -181,6 +182,8 @@ public final class Ssc14Blocks {
             register("grille", GrilleBlock::new);
     public static final DeferredBlock<Block> BROKEN_GRILLE =
             register("broken_grille", BrokenGrilleBlock::new);
+    public static final DeferredBlock<Block> CATWALK_FLOOR =
+            register("catwalk_floor", CatwalkFloorBlock::new);
 
     private Ssc14Blocks() {
     }

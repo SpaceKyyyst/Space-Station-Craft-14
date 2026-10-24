@@ -143,7 +143,7 @@ public class RSU_useOnBlock_Procedure {
         if (mode == 3) {
             if (!Title_Placement_ConditionsProcedure.execute(world, placePos.getX(), placePos.getY(), placePos.getZ())) return;
         } else if (mode == 5) {
-            if (!CatwalkPlacementConditionsProcedure.execute(world, placePos.getX(), placePos.getY(), placePos.getZ())) return;
+            if (!net.ssc14.content.block.catwalk.CatwalkSupportPolicy.canSupport(world, placePos)) return;
         }
 
         CustomData cData = itemstack.get(DataComponents.CUSTOM_DATA);
@@ -289,7 +289,7 @@ public class RSU_useOnBlock_Procedure {
             case 2 -> new BuildConfig(20, 2, 5, Ssc14ModBlocks.STEEL_WALL.get().defaultBlockState(), false);
             case 3 -> new BuildConfig(0, 0, 1, Ssc14ModBlocks.TITLE_STEEL.get().defaultBlockState(), false);
             case 4 -> new BuildConfig(20, 1, 1, Ssc14ModBlocks.SHEATHING.get().defaultBlockState(), false);
-            case 5 -> new BuildConfig(0, 0, 1, Ssc14ModBlocks.CATWALK_FLOOR.get().defaultBlockState(), false);
+            case 5 -> new BuildConfig(0, 0, 1, Ssc14Blocks.CATWALK_FLOOR.get().defaultBlockState(), false);
             case 6 -> new BuildConfig(20, 1, 1, Ssc14Blocks.GRILLE.get().defaultBlockState(), false);
             case 7 -> new BuildConfig(20, 2, 3, Ssc14Blocks.BASE_WINDOW.get().defaultBlockState(), false);
             case 8 -> new BuildConfig(20, 1, 2, Ssc14Blocks.DIRECTED_BASE_WINDOW.get().defaultBlockState(), true);
