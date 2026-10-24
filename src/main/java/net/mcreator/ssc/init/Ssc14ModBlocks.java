@@ -137,7 +137,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> GRAV_GEN_PLUG_BLOCK = Ssc14Blocks.GRAV_GEN_PLUG_BLOCK;
 	public static final DeferredBlock<Block> COMMUNICATION_CONSOLE;
 	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> GAS_PRODUCER_O_2;
+	public static final DeferredBlock<Block> GAS_PRODUCER_O_2 = Ssc14Blocks.GAS_PRODUCER_O_2;
 	public static final DeferredBlock<Block> VENDING_AUT_1;
 	public static final DeferredBlock<Block> VENDING_KOSTIL = Ssc14Blocks.VENDING_KOSTIL;
 	public static final DeferredBlock<Block> DIRECTED_ARMORED_WINDOW = Ssc14Blocks.DIRECTED_ARMORED_WINDOW;
@@ -251,7 +251,6 @@ public class Ssc14ModBlocks {
 		COMMUNICATION_SERVERS = register("communication_servers", CommunicationServersBlock::new);
 		COMMUNICATION_CONSOLE = register("communication_console", CommunicationConsoleBlock::new);
 		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
-		GAS_PRODUCER_O_2 = register("gas_producer_o_2", GasProducerO2Block::new);
 		VENDING_AUT_1 = register("vending_aut_1", VendingAut1Block::new);
 		SHUTTERS = register("shutters", ShuttersBlock::new);
 		BUTTON = register("button", ButtonBlock::new);

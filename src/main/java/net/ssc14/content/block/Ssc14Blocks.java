@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.block.catwalk.CatwalkFloorBlock;
+import net.ssc14.content.block.atmosphere.GasProducerO2Block;
 import net.ssc14.content.block.ceiling.CeilingTileBlock;
 import net.ssc14.content.block.commerce.SalePalletBlock;
 import net.ssc14.content.block.commerce.OrderPalletBlock;
@@ -125,6 +126,8 @@ public final class Ssc14Blocks {
             register("vending_kostil", VendingUpperPlugBlock::new);
     public static final DeferredBlock<Block> FUEL_TANK =
             register("fuel_tank", FuelTankBlock::new);
+    public static final DeferredBlock<Block> GAS_PRODUCER_O_2 =
+            register("gas_producer_o_2", GasProducerO2Block::new);
     public static final DeferredBlock<Block> DEBUG_13 =
             register("debug_13", StationCodeDebugBlock::new);
     public static final DeferredBlock<Block> KOSTILNIBLOK =
