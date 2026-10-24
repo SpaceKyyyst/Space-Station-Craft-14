@@ -45,6 +45,7 @@ import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
 import net.ssc14.content.block.debug.DebugGravityStateService;
 import net.ssc14.content.block.explosives.C4ChargeInteractionService;
 import net.ssc14.content.block.explosives.Ssc14ExplosiveBlockEntities;
+import net.ssc14.content.block.explosives.NuclearWarheadInteractionService;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.block.storage.SecureClosetInteractionService;
 import net.ssc14.content.block.storage.ExtinguisherCabinetInteractionService;
@@ -172,6 +173,9 @@ public class Ssc14Mod {
 						level, pos.getX(), pos.getY(), pos.getZ());
 			}
 		});
+		NuclearWarheadInteractionService.install((level, pos) ->
+				net.mcreator.ssc.procedures.NuclearWarhead_ExpProcedure.execute(
+						level, pos.getX(), pos.getY(), pos.getZ()));
 		StationCodeDebugInteractionService.install((level, pos, player) ->
 				net.mcreator.ssc.procedures.DEBUG13PriShchielchkiePKMPoBlokuProcedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ(), player));

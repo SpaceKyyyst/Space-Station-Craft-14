@@ -55,6 +55,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_failure_sentinel_contract",
     "ssc_14:compatibility_block_debug_gravity_contract",
     "ssc_14:compatibility_block_c4_contract",
+    "ssc_14:compatibility_block_nuclear_warhead_contract",
 }
 
 

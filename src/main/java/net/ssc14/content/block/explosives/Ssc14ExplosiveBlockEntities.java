@@ -17,11 +17,16 @@ public final class Ssc14ExplosiveBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<C4ChargeBlockEntity>>
             C_4 = REGISTRY.register("c_4", () -> new BlockEntityType<>(
                     C4ChargeBlockEntity::new, Ssc14Blocks.C_4.get()));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<NuclearWarheadBlockEntity>>
+            NUCLEAR_WARHEAD = REGISTRY.register("nuclear_warhead", () -> new BlockEntityType<>(
+                    NuclearWarheadBlockEntity::new, Ssc14Blocks.NUCLEAR_WARHEAD.get()));
 
     private Ssc14ExplosiveBlockEntities() { }
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.Item.BLOCK, C_4.get(),
+                WorldlyContainerWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, NUCLEAR_WARHEAD.get(),
                 WorldlyContainerWrapper::new);
     }
 }
