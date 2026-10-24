@@ -1,6 +1,6 @@
 package net.mcreator.ssc.gravity;
 
-import net.mcreator.ssc.block.GravityGeneratorBlock;
+import net.ssc14.content.block.gravity.GravityGeneratorBlock;
 import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;

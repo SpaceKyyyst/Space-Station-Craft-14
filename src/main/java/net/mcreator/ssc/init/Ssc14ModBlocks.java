@@ -82,7 +82,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> CAVE_FLOOR_5 = Ssc14Blocks.CAVE_FLOOR_5;
 	public static final DeferredBlock<Block> CAVE_FLOOR_6 = Ssc14Blocks.CAVE_FLOOR_6;
 	public static final DeferredBlock<Block> CAVE_FLOOR_7 = Ssc14Blocks.CAVE_FLOOR_7;
-	public static final DeferredBlock<Block> GRAVITY_GENERATOR;
+	public static final DeferredBlock<Block> GRAVITY_GENERATOR = Ssc14Blocks.GRAVITY_GENERATOR;
 	public static final DeferredBlock<Block> TITLE_WHITE = Ssc14Blocks.TITLE_WHITE;
 	public static final DeferredBlock<Block> TITLE_WHITE_DIAGONAL_MINI = Ssc14Blocks.TITLE_WHITE_DIAGONAL_MINI;
 	public static final DeferredBlock<Block> CATWALK_FLOOR = Ssc14Blocks.CATWALK_FLOOR;
@@ -248,7 +248,6 @@ public class Ssc14ModBlocks {
 		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
 		AIRLOCK_UP_PLUG = register("airlock_up_plug", AirlockUpPlugBlock::new);
 		AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", AirlockUpPlugOPENBlock::new);
-		GRAVITY_GENERATOR = register("gravity_generator", GravityGeneratorBlock::new);
 		COMPUTER = register("computer", ComputerBlock::new);
 		COMMUNICATION_SERVERS = register("communication_servers", CommunicationServersBlock::new);
 		COMMUNICATION_CONSOLE = register("communication_console", CommunicationConsoleBlock::new);
