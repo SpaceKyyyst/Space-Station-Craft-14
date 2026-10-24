@@ -19,11 +19,18 @@ public final class Ssc14CommunicationBlockEntities {
             REGISTRY.register("communication_servers",
                     () -> new BlockEntityType<>(CommunicationServersBlockEntity::new,
                             Ssc14Blocks.COMMUNICATION_SERVERS.get()));
+    public static final DeferredHolder<BlockEntityType<?>,
+            BlockEntityType<CommunicationConsoleBlockEntity>> COMMUNICATION_CONSOLE =
+            REGISTRY.register("communication_console",
+                    () -> new BlockEntityType<>(CommunicationConsoleBlockEntity::new,
+                            Ssc14Blocks.COMMUNICATION_CONSOLE.get()));
 
     private Ssc14CommunicationBlockEntities() { }
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.Item.BLOCK, COMMUNICATION_SERVERS.get(),
+                WorldlyContainerWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, COMMUNICATION_CONSOLE.get(),
                 WorldlyContainerWrapper::new);
     }
 }
