@@ -230,7 +230,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> FUEL_TANK;
 	public static final DeferredBlock<Block> ORDER_CONSOLE;
 	public static final DeferredBlock<Block> ORDER_PALLET;
-	public static final DeferredBlock<Block> SALE_PALLET;
+	public static final DeferredBlock<Block> SALE_PALLET = Ssc14Blocks.SALE_PALLET;
 	public static final DeferredBlock<Block> SALE_CONSOLE;
 	public static final DeferredBlock<Block> BANNER_NT = Ssc14Blocks.BANNER_NT;
 	public static final DeferredBlock<Block> BANNER_MED = Ssc14Blocks.BANNER_MED;
@@ -287,7 +287,6 @@ public class Ssc14ModBlocks {
 		FUEL_TANK = register("fuel_tank", FuelTankBlock::new);
 		ORDER_CONSOLE = register("order_console", OrderConsoleBlock::new);
 		ORDER_PALLET = register("order_pallet", OrderPalletBlock::new);
-		SALE_PALLET = register("sale_pallet", SalePalletBlock::new);
 		SALE_CONSOLE = register("sale_console", SaleConsoleBlock::new);
 	}
 
