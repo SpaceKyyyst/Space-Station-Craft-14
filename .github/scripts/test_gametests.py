@@ -182,6 +182,9 @@ class GameTestReportTests(unittest.TestCase):
     def test_id_console_contract_is_required(self):
         self.assertIn("ssc_14:compatibility_block_id_console_contract", EXPECTED_TESTS)
 
+    def test_shutters_contract_is_required(self):
+        self.assertIn("ssc_14:compatibility_block_shutters_contract", EXPECTED_TESTS)
+
     def test_empty_suite_fails(self):
         self.report(set())
         self.assertEqual(len(EXPECTED_TESTS), len(check_report(self.path)))

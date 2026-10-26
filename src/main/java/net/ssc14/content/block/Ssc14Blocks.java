@@ -23,6 +23,7 @@ import net.ssc14.content.block.debug.FailureSentinelBlock;
 import net.ssc14.content.block.debug.DebugGravityGeneratorBlock;
 import net.ssc14.content.block.debug.StationCodeDebugBlock;
 import net.ssc14.content.block.airlock.AirlockThresholdBlock;
+import net.ssc14.content.block.airlock.ShuttersBlock;
 import net.ssc14.content.block.access.IdConsoleBlock;
 import net.ssc14.content.block.decoration.DirectionalBannerBlock;
 import net.ssc14.content.block.decoration.FenceCornerBlock;
@@ -166,6 +167,8 @@ public final class Ssc14Blocks {
             register("gravity_generator", GravityGeneratorBlock::new);
     public static final DeferredBlock<Block> AIRLOCK_THRESHOLD =
             register("airlock_threshold", AirlockThresholdBlock::new);
+    public static final DeferredBlock<Block> SHUTTERS =
+            register("shutters", ShuttersBlock::new);
     public static final DeferredBlock<Block> CONSOLE_OF_ID =
             register("console_of_id", IdConsoleBlock::new);
     public static final DeferredBlock<Block> UP_CLOSET_PLUG =

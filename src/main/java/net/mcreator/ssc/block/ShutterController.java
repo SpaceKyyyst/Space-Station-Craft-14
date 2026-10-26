@@ -30,21 +30,25 @@ public final class ShutterController {
     private static boolean needsChange(Level level, BlockPos pos, boolean open) {
         if (!level.isLoaded(pos)) return false;
         var state = level.getBlockState(pos);
-        return state.getBlock() instanceof ShuttersBlock && state.getValue(ShuttersBlock.OPEN) != open;
+        return state.getBlock() instanceof net.ssc14.content.block.airlock.ShuttersBlock
+                && state.getValue(net.ssc14.content.block.airlock.ShuttersBlock.OPEN) != open;
     }
 
     private static void animate(ServerLevel level, BlockPos pos, boolean open) {
         if (!needsChange(level, pos, open)) return;
         var state = level.getBlockState(pos);
-        if (state.getValue(ShuttersBlock.OPENING)) return;
-        level.setBlock(pos, state.setValue(ShuttersBlock.OPENING, true), 3);
+        if (state.getValue(net.ssc14.content.block.airlock.ShuttersBlock.OPENING)) return;
+        level.setBlock(pos, state.setValue(
+                net.ssc14.content.block.airlock.ShuttersBlock.OPENING, true), 3);
         level.playSound(null, pos, BuiltInRegistries.SOUND_EVENT.getValue(
                 Identifier.parse("ssc_14:machines_shutter")), SoundSource.BLOCKS, 1, 1);
         Ssc14Mod.queueServerWork(level, ANIMATION_TICKS, () -> {
             if (!needsChange(level, pos, open)) return;
             var current = level.getBlockState(pos);
-            if (!current.getValue(ShuttersBlock.OPENING)) return;
-            level.setBlock(pos, current.setValue(ShuttersBlock.OPENING, false).setValue(ShuttersBlock.OPEN, open), 3);
+            if (!current.getValue(net.ssc14.content.block.airlock.ShuttersBlock.OPENING)) return;
+            level.setBlock(pos, current.setValue(
+                    net.ssc14.content.block.airlock.ShuttersBlock.OPENING, false).setValue(
+                            net.ssc14.content.block.airlock.ShuttersBlock.OPEN, open), 3);
             NetworkManager.trigger(level, pos, "toggle");
             Ssc14Mod.queueServerWork(level, ANIMATION_TICKS, () -> animate(level, open ? pos.above() : pos.below(), open)).orThrow();
         }).orThrow();

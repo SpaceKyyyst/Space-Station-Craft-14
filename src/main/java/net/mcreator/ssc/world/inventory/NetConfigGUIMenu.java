@@ -27,7 +27,7 @@ import net.mcreator.ssc.procedures.NetConfigGUI_TIC_Procedure;
 import net.mcreator.ssc.procedures.NetConfigGUI_CLOSE_Procedure;
 import net.mcreator.ssc.init.Ssc14ModMenus;
 import net.ssc14.common.network.NetworkTrigger;
-import net.mcreator.ssc.INetworkAction;
+import net.ssc14.common.network.NetworkAction;
 import net.mcreator.ssc.NetworkSavedData;
 import net.mcreator.ssc.NetConfigGUISyncMessage;
 import net.mcreator.ssc.init.Ssc14ModItems;
@@ -105,7 +105,7 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
         }
 
         BlockState targetState = world.getBlockState(targetPos);
-        if (targetState.getBlock() instanceof INetworkAction actionBlock) {
+        if (targetState.getBlock() instanceof NetworkAction actionBlock) {
             List<String> actions = actionBlock.getAvailableActions();
             for (int i = 0; i < Math.min(actions.size(), 8); i++) {
                 String id = actions.get(i);
