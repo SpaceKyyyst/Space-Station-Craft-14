@@ -926,7 +926,7 @@ public class Ssc14ModItems {
 		TOFU = Ssc14Items.TOFU;
 		TOFU_BURGER = Ssc14Items.TOFU_BURGER;
 		TOFU_SLICE = Ssc14Items.TOFU_SLICE;
-		CHEESE_WHEEL = register("cheese_wheel", CheeseWheelItem::new);
+		CHEESE_WHEEL = Ssc14Items.CHEESE_WHEEL;
 		CHEESE = Ssc14Items.CHEESE;
 		CUTLET = Ssc14Items.CUTLET;
 		FRIED_CUTLET = Ssc14Items.FRIED_CUTLET;
@@ -936,8 +936,8 @@ public class Ssc14ModItems {
 		CHEESEBURGER = Ssc14Items.CHEESEBURGER;
 		CATBURGER = Ssc14Items.CATBURGER;
 		HEADSET_BRIGMEDIC = register("headset_brigmedic", HeadsetBrigmedicItem::new);
-		POTATO = register("potato", PotatoItem::new);
-		SPACE_FRIES = register("space_fries", SpaceFriesItem::new);
+		POTATO = Ssc14Items.POTATO;
+		SPACE_FRIES = Ssc14Items.SPACE_FRIES;
 		MULTITUL = register("multitul", MultitulItem::new);
 		HEADSET_CARGO = register("headset_cargo", HeadsetCargoItem::new);
 		HEADSET_CENTCOM = register("headset_centcom", HeadsetCentcomItem::new);
@@ -1110,18 +1110,18 @@ public class Ssc14ModItems {
 		ARM_CHAIR_BROWN = block(Ssc14ModBlocks.ARM_CHAIR_BROWN, new Item.Properties().stacksTo(1));
 		ARM_CHAIR_CARP = block(Ssc14ModBlocks.ARM_CHAIR_CARP, new Item.Properties().stacksTo(1));
 		EMERGENCY_LIGHT = block(Ssc14ModBlocks.EMERGENCY_LIGHT, new Item.Properties().stacksTo(1).fireResistant());
-		BAGEL = register("bagel", BagelItem::new);
-		BAGUETTE = register("baguette", BaguetteItem::new);
-		BANANA_NUT_BREAD = register("banana_nut_bread", BananaNutBreadItem::new);
-		CREAM_CHEESE_BREAD = register("cream_cheese_bread", CreamCheeseBreadItem::new);
-		MEATLOAF = register("meatloaf", MeatloafItem::new);
-		MOLDY_BREAD_PIECE = register("moldy_bread_piece", MoldyBreadPieceItem::new);
-		POPPY_SEED_BAGEL = register("poppy_seed_bagel", PoppySeedBagelItem::new);
-		SAUSAGE_BREAD = register("sausage_bread", SausageBreadItem::new);
-		TACO_FLATBREAD = register("taco_flatbread", TacoFlatbreadItem::new);
-		TOAST_WITH_BUTTER = register("toast_with_butter", ToastWithButterItem::new);
-		TOFU_BREAD = register("tofu_bread", TofuBreadItem::new);
-		FLY_AMANITA = register("fly_amanita", FlyAmanitaItem::new);
+		BAGEL = Ssc14Items.BAGEL;
+		BAGUETTE = Ssc14Items.BAGUETTE;
+		BANANA_NUT_BREAD = Ssc14Items.BANANA_NUT_BREAD;
+		CREAM_CHEESE_BREAD = Ssc14Items.CREAM_CHEESE_BREAD;
+		MEATLOAF = Ssc14Items.MEATLOAF;
+		MOLDY_BREAD_PIECE = Ssc14Items.MOLDY_BREAD_PIECE;
+		POPPY_SEED_BAGEL = Ssc14Items.POPPY_SEED_BAGEL;
+		SAUSAGE_BREAD = Ssc14Items.SAUSAGE_BREAD;
+		TACO_FLATBREAD = Ssc14Items.TACO_FLATBREAD;
+		TOAST_WITH_BUTTER = Ssc14Items.TOAST_WITH_BUTTER;
+		TOFU_BREAD = Ssc14Items.TOFU_BREAD;
+		FLY_AMANITA = Ssc14Items.FLY_AMANITA;
 	}
 
 	// Start of user code block custom items
