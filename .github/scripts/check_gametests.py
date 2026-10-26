@@ -75,6 +75,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_item_machine_component_contract",
     "ssc_14:compatibility_item_lighting_component_contract",
     "ssc_14:compatibility_item_encryption_key_contract",
+    "ssc_14:compatibility_item_scarf_contract",
 }
 
 

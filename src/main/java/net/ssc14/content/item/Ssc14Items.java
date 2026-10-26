@@ -4,6 +4,7 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.item.clothing.ScarfItem;
 import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
 import net.ssc14.content.item.lighting.LightingComponentItem;
 import net.ssc14.content.item.machinery.MachineComponentItem;
@@ -65,6 +66,19 @@ public final class Ssc14Items {
             encryptionKey("encryption_key_service");
     public static final DeferredItem<Item> ENCRYPTION_KEY_CARGO =
             encryptionKey("encryption_key_cargo");
+    public static final DeferredItem<Item> RED_SCARF = scarf("red_scarf");
+    public static final DeferredItem<Item> BLACK_SCARF = scarf("black_scarf");
+    public static final DeferredItem<Item> BLACK_GREEN_SCARF = scarf("black_green_scarf");
+    public static final DeferredItem<Item> BLUE_SCARF = scarf("blue_scarf");
+    public static final DeferredItem<Item> BROWN_SCARF = scarf("brown_scarf");
+    public static final DeferredItem<Item> GREEN_SCARF = scarf("green_scarf");
+    public static final DeferredItem<Item> LIGHT_BLUE_SCARF = scarf("light_blue_scarf");
+    public static final DeferredItem<Item> LIGHT_BLUE_WHITE_SCARF = scarf("light_blue_white_scarf");
+    public static final DeferredItem<Item> ORANGE_SCARF = scarf("orange_scarf");
+    public static final DeferredItem<Item> PURPLE_SCARF = scarf("purple_scarf");
+    public static final DeferredItem<Item> SINDY_SCARF = scarf("sindy_scarf");
+    public static final DeferredItem<Item> TRNS_SCARF = scarf("trns_scarf");
+    public static final DeferredItem<Item> YELLOW_SCARF = scarf("yellow_scarf");
 
     private Ssc14Items() { }
 
@@ -83,5 +97,9 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> encryptionKey(String name) {
         return REGISTRY.<Item>registerItem(name, RadioEncryptionKeyItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> scarf(String name) {
+        return REGISTRY.<Item>registerItem(name, ScarfItem::new, Item.Properties::new);
     }
 }
