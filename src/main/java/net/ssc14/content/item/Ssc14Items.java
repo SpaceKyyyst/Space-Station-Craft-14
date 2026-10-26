@@ -4,6 +4,7 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.item.machinery.MachineComponentItem;
 import net.ssc14.content.item.material.MaterialItem;
 
 /** Canonical owner of SSC14 item registrations. */
@@ -26,10 +27,29 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> RAW_SILVER = material("raw_silver");
     public static final DeferredItem<Item> RAW_URAN = material("raw_uran");
     public static final DeferredItem<Item> RAW_DIAMOND = material("raw_diamond");
+    public static final DeferredItem<Item> CAPACITOR =
+            machineComponent("capacitor", MachineComponentItem.BULK_STACK_SIZE);
+    public static final DeferredItem<Item> MATTER_BIN =
+            machineComponent("matter_bin", MachineComponentItem.BULK_STACK_SIZE);
+    public static final DeferredItem<Item> MICRO_MANIPULATOR =
+            machineComponent("micro_manipulator", MachineComponentItem.BULK_STACK_SIZE);
+    public static final DeferredItem<Item> SUBSTATION_BOARD =
+            machineComponent("substation_board", MachineComponentItem.SINGLE_STACK_SIZE);
+    public static final DeferredItem<Item> SMES_BOARD =
+            machineComponent("smes_board", MachineComponentItem.SINGLE_STACK_SIZE);
+    public static final DeferredItem<Item> APC_BOARD =
+            machineComponent("apc_board", MachineComponentItem.SINGLE_STACK_SIZE);
+    public static final DeferredItem<Item> LOW_BATTERIE =
+            machineComponent("low_batterie", MachineComponentItem.SINGLE_STACK_SIZE);
 
     private Ssc14Items() { }
 
     private static DeferredItem<Item> material(String name) {
         return REGISTRY.<Item>registerItem(name, MaterialItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> machineComponent(String name, int maxStackSize) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new MachineComponentItem(properties, maxStackSize), Item.Properties::new);
     }
 }
