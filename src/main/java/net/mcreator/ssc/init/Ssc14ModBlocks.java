@@ -28,7 +28,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> ROD_UP_FLOOR = Ssc14Blocks.ROD_UP_FLOOR;
 	public static final DeferredBlock<Block> BASE_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> UP_TITLE = Ssc14Blocks.UP_TITLE;
-	public static final DeferredBlock<Block> CONSOLE_OF_ID;
+	public static final DeferredBlock<Block> CONSOLE_OF_ID = Ssc14Blocks.CONSOLE_OF_ID;
 	public static final DeferredBlock<Block> BASE_WINDOW = Ssc14Blocks.BASE_WINDOW;
 	public static final DeferredBlock<Block> PORTABLE_SHEATER = Ssc14Blocks.PORTABLE_SHEATER;
 	public static final DeferredBlock<Block> PLASTEEL_WALL = Ssc14Blocks.PLASTEEL_WALL;
@@ -245,7 +245,6 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> EMERGENCY_LIGHT = Ssc14Blocks.EMERGENCY_LIGHT;
 	static {
 		BASE_AIRLOCK_D_1 = register("base_airlock_d_1", BaseAirlockD1Block::new);
-		CONSOLE_OF_ID = register("console_of_id", ConsoleOfIDBlock::new);
 		AIRLOCK_UP_PLUG = register("airlock_up_plug", AirlockUpPlugBlock::new);
 		AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", AirlockUpPlugOPENBlock::new);
 		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
