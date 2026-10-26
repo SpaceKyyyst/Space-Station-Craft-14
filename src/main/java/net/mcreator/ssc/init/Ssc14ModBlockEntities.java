@@ -49,6 +49,8 @@ import net.ssc14.content.block.gravity.Ssc14GravityBlockEntities;
 import net.ssc14.content.block.communication.CommunicationServersBlockEntity;
 import net.ssc14.content.block.communication.CommunicationConsoleBlockEntity;
 import net.ssc14.content.block.communication.Ssc14CommunicationBlockEntities;
+import net.ssc14.content.block.access.IdConsoleBlockEntity;
+import net.ssc14.content.block.access.Ssc14AccessBlockEntities;
 import net.ssc14.content.block.control.NetworkButtonBlockEntity;
 import net.ssc14.content.block.control.Ssc14ControlBlockEntities;
 
@@ -57,7 +59,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Ssc14Mod.MODID);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SheathingBlockEntity>> SHEATHING = Ssc14CableBlockEntities.SHEATHING;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BaseAirlockD1BlockEntity>> BASE_AIRLOCK_D_1 = register("base_airlock_d_1", Ssc14ModBlocks.BASE_AIRLOCK_D_1, BaseAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ConsoleOfIDBlockEntity>> CONSOLE_OF_ID = register("console_of_id", Ssc14ModBlocks.CONSOLE_OF_ID, ConsoleOfIDBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<IdConsoleBlockEntity>> CONSOLE_OF_ID = Ssc14AccessBlockEntities.CONSOLE_OF_ID;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PortableSheaterBlockEntity>> PORTABLE_SHEATER = Ssc14MachineBlockEntities.PORTABLE_SHEATER;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ApcBlockEntity>> APC = Ssc14EnergyMachineBlockEntities.APC;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PodstationBlockEntity>> PODSTATION = Ssc14EnergyMachineBlockEntities.PODSTATION;
@@ -121,7 +123,6 @@ public class Ssc14ModBlockEntities {
 	@SubscribeEvent
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, BASE_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, CONSOLE_OF_ID.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG_OPEN.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, TECH_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
