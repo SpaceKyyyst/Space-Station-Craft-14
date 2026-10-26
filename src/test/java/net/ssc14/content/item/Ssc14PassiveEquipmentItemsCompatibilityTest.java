@@ -1,0 +1,74 @@
+package net.ssc14.content.item;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+import net.mcreator.ssc.init.Ssc14ModItems;
+import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.ssc14.content.item.clothing.PassiveEquipmentItem;
+import org.junit.jupiter.api.Test;
+
+class Ssc14PassiveEquipmentItemsCompatibilityTest {
+    private static final Map<String, String> EXPECTED_HOLDERS = Map.ofEntries(
+            Map.entry("ISOLATED_GLOVES", "isolated_gloves"),
+            Map.entry("COMBAT_BOOTS_ITEM", "combat_boots_item"),
+            Map.entry("HELMET_SECURITY", "helmet_security"),
+            Map.entry("BELT_SECURITY", "belt_security"),
+            Map.entry("HELMETS_EVA", "helmets_eva"),
+            Map.entry("GAS_MASK", "gas_mask"),
+            Map.entry("WORK_BOOTS", "work_boots"),
+            Map.entry("COAT_ATMOS", "coat_atmos"),
+            Map.entry("COAT_SECURITY", "coat_security"),
+            Map.entry("GLASS_GLASSES", "glass_glasses"),
+            Map.entry("BLACK_GLOVES", "black_gloves"),
+            Map.entry("HELMET_COSMONAUT", "helmet_cosmonaut"),
+            Map.entry("BELT_SECURITY_WEBBING", "belt_security_webbing"),
+            Map.entry("BELT_INSTRUMENTAL", "belt_instrumental"),
+            Map.entry("MASK_GAS_SECURITY", "mask_gas_security"),
+            Map.entry("HARDSUIT_SALVAGE", "hardsuit_salvage"),
+            Map.entry("HARDSUIT_SALVAGE_HELMET", "hardsuit_salvage_helmet"));
+
+    private static final Class<?>[] LEGACY_TYPES = {
+            net.mcreator.ssc.item.IsolatedGlovesItem.class,
+            net.mcreator.ssc.item.CombatBootsItemItem.class,
+            net.mcreator.ssc.item.HelmetSecurityItem.class,
+            net.mcreator.ssc.item.BeltSecurityItem.class,
+            net.mcreator.ssc.item.HelmetsEvaItem.class,
+            net.mcreator.ssc.item.GasMaskItem.class,
+            net.mcreator.ssc.item.WorkBootsItem.class,
+            net.mcreator.ssc.item.CoatAtmosItem.class,
+            net.mcreator.ssc.item.CoatSecurityItem.class,
+            net.mcreator.ssc.item.GlassGlassesItem.class,
+            net.mcreator.ssc.item.BlackGlovesItem.class,
+            net.mcreator.ssc.item.HelmetCosmonautItem.class,
+            net.mcreator.ssc.item.BeltSecurityWebbingItem.class,
+            net.mcreator.ssc.item.BeltInstrumentalItem.class,
+            net.mcreator.ssc.item.MaskGasSecurityItem.class,
+            net.mcreator.ssc.item.HardsuitSalvageItem.class,
+            net.mcreator.ssc.item.HardsuitSalvageHelmetItem.class
+    };
+
+    @Test
+    void canonicalRegistryOwnsPassiveEquipmentIdsAndLegacyHoldersRemainAliases() throws Exception {
+        for (Map.Entry<String, String> expected : EXPECTED_HOLDERS.entrySet()) {
+            Field canonicalField = Ssc14Items.class.getField(expected.getKey());
+            Field legacyField = Ssc14ModItems.class.getField(expected.getKey());
+            Object canonicalHolder = canonicalField.get(null);
+            assertSame(canonicalHolder, legacyField.get(null), expected.getKey());
+            assertEquals("ssc_14:" + expected.getValue(),
+                    ((DeferredHolder<?, ?>) canonicalHolder).getId().toString(), expected.getKey());
+        }
+    }
+
+    @Test
+    void legacyPassiveEquipmentTypesDelegateToCanonicalImplementation() throws Exception {
+        for (Class<?> legacyType : LEGACY_TYPES) {
+            assertTrue(PassiveEquipmentItem.class.isAssignableFrom(legacyType), legacyType.getName());
+            legacyType.getConstructor(Item.Properties.class);
+        }
+    }
+}

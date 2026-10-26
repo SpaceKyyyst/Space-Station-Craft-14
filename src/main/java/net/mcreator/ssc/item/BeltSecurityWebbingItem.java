@@ -1,8 +1,11 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.clothing.PassiveEquipmentItem;
 
-public class BeltSecurityWebbingItem extends Item {
+/** @deprecated Use {@link PassiveEquipmentItem}. */
+@Deprecated(forRemoval = false)
+public class BeltSecurityWebbingItem extends PassiveEquipmentItem {
 	public BeltSecurityWebbingItem(Item.Properties properties) {
 		super(properties.stacksTo(1));
 	}
