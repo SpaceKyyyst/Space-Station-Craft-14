@@ -4,6 +4,7 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
 import net.ssc14.content.item.lighting.LightingComponentItem;
 import net.ssc14.content.item.machinery.MachineComponentItem;
 import net.ssc14.content.item.material.MaterialItem;
@@ -48,6 +49,22 @@ public final class Ssc14Items {
             lightingComponent("led_light_tube_broken");
     public static final DeferredItem<Item> LIGHT_BULB_BROKEN =
             lightingComponent("light_bulb_broken");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_PASSANGER =
+            encryptionKey("encryption_key_passanger");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_COMMAND =
+            encryptionKey("encryption_key_command");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_ENGENEER =
+            encryptionKey("encryption_key_engeneer");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_MEDICAL =
+            encryptionKey("encryption_key_medical");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_RND =
+            encryptionKey("encryption_key_rnd");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_SECURITY =
+            encryptionKey("encryption_key_security");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_SERVICE =
+            encryptionKey("encryption_key_service");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_CARGO =
+            encryptionKey("encryption_key_cargo");
 
     private Ssc14Items() { }
 
@@ -62,5 +79,9 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> lightingComponent(String name) {
         return REGISTRY.<Item>registerItem(name, LightingComponentItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> encryptionKey(String name) {
+        return REGISTRY.<Item>registerItem(name, RadioEncryptionKeyItem::new, Item.Properties::new);
     }
 }

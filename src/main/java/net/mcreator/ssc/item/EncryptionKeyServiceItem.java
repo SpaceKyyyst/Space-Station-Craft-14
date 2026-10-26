@@ -1,9 +1,12 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
 
-public class EncryptionKeyServiceItem extends Item {
+/** @deprecated Use {@link RadioEncryptionKeyItem}. */
+@Deprecated(forRemoval = false)
+public class EncryptionKeyServiceItem extends RadioEncryptionKeyItem {
 	public EncryptionKeyServiceItem(Item.Properties properties) {
-		super(properties.stacksTo(1).fireResistant());
+		super(properties);
 	}
 }
