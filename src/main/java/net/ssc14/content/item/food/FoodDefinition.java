@@ -20,4 +20,10 @@ public record FoodDefinition(
     public static FoodDefinition withoutTrash(int maxBites, String tasteMessage) {
         return new FoodDefinition(maxBites, tasteMessage, null);
     }
+
+    public static FoodDefinition withTrash(int maxBites, String tasteMessage,
+            Supplier<? extends Item> trash) {
+        return new FoodDefinition(
+                maxBites, tasteMessage, Objects.requireNonNull(trash, "Trash supplier"));
+    }
 }

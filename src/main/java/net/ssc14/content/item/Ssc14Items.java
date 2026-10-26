@@ -234,6 +234,21 @@ public final class Ssc14Items {
             edibleFood("fried_meat", Ssc14FoodDefinitions.FRIED_MEAT);
     public static final DeferredItem<Item> ROTTEN_MEAT =
             edibleFood("rotten_meat", Ssc14FoodDefinitions.ROTTEN_MEAT);
+    public static final DeferredItem<Item> ENERGY_BAR_2 =
+            edibleFood("energy_bar_2", Ssc14FoodDefinitions.ENERGY_BAR_2);
+    public static final DeferredItem<Item> CATBURGER =
+            edibleFood("catburger", Ssc14FoodDefinitions.CATBURGER);
+    public static final DeferredItem<Item> CHEESEBURGER =
+            edibleFood("cheeseburger", Ssc14FoodDefinitions.CHEESEBURGER);
+    public static final DeferredItem<Item> CHEESE_HONKERS =
+            edibleFood("cheese_honkers",
+                    Ssc14FoodDefinitions.cheeseHonkers(CHEESE_HONKERS_TRASH));
+    public static final DeferredItem<Item> CHIPS =
+            edibleFood("chips", Ssc14FoodDefinitions.chips(CHIPS_TRASH));
+    public static final DeferredItem<Item> BORITOS =
+            edibleFood("boritos", Ssc14FoodDefinitions.boritos(BORITOS_TRASH));
+    public static final DeferredItem<Item> POPCORN =
+            edibleFood("popcorn", Ssc14FoodDefinitions.popcorn(POPCORN_TRASH));
 
     private Ssc14Items() { }
 
