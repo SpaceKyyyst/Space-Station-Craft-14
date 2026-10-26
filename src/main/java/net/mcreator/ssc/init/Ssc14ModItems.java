@@ -662,7 +662,7 @@ public class Ssc14ModItems {
 		PLASTEEL_WALL_CARCASE = block(Ssc14Blocks.PLASTEEL_WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
 		ENERGY_BAR = register("energy_bar", EnergyBarItem::new);
 		ENERGY_BAR_TRASH = Ssc14Items.ENERGY_BAR_TRASH;
-		ENERGY_BAR_2 = register("energy_bar_2", EnergyBar2Item::new);
+		ENERGY_BAR_2 = Ssc14Items.ENERGY_BAR_2;
 		PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG = Ssc14Items.PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG;
 		TITLE_DARK = block(Ssc14Blocks.TITLE_DARK, new Item.Properties().stacksTo(30).fireResistant());
 		AIRLOCK_CONTROLLER = register("airlock_controller", AirlockControllerItem::new);
@@ -878,13 +878,13 @@ public class Ssc14ModItems {
 		GAS_PRODUCER_O_2 = block(Ssc14ModBlocks.GAS_PRODUCER_O_2, new Item.Properties().stacksTo(1));
 		REAGENT_CONTAINER = register("reagent_container", ReagentContainerItem::new);
 		VENDING_AUT_1 = block(Ssc14ModBlocks.VENDING_AUT_1, new Item.Properties().fireResistant());
-		CHEESE_HONKERS = register("cheese_honkers", CheeseHonkersItem::new);
+		CHEESE_HONKERS = Ssc14Items.CHEESE_HONKERS;
 		CHEESE_HONKERS_TRASH = Ssc14Items.CHEESE_HONKERS_TRASH;
-		CHIPS = register("chips", ChipsItem::new);
+		CHIPS = Ssc14Items.CHIPS;
 		CHIPS_TRASH = Ssc14Items.CHIPS_TRASH;
-		BORITOS = register("boritos", BoritosItem::new);
+		BORITOS = Ssc14Items.BORITOS;
 		BORITOS_TRASH = Ssc14Items.BORITOS_TRASH;
-		POPCORN = register("popcorn", PopcornItem::new);
+		POPCORN = Ssc14Items.POPCORN;
 		POPCORN_TRASH = Ssc14Items.POPCORN_TRASH;
 		MOUSE_BROWN_SPAWN_EGG = Ssc14Items.MOUSE_BROWN_SPAWN_EGG;
 		MOUSE_GRAY_SPAWN_EGG = Ssc14Items.MOUSE_GRAY_SPAWN_EGG;
@@ -933,8 +933,8 @@ public class Ssc14ModItems {
 		MEAT = Ssc14Items.MEAT;
 		FRIED_MEAT = Ssc14Items.FRIED_MEAT;
 		ROTTEN_MEAT = Ssc14Items.ROTTEN_MEAT;
-		CHEESEBURGER = register("cheeseburger", CheeseburgerItem::new);
-		CATBURGER = register("catburger", CatburgerItem::new);
+		CHEESEBURGER = Ssc14Items.CHEESEBURGER;
+		CATBURGER = Ssc14Items.CATBURGER;
 		HEADSET_BRIGMEDIC = register("headset_brigmedic", HeadsetBrigmedicItem::new);
 		POTATO = register("potato", PotatoItem::new);
 		SPACE_FRIES = register("space_fries", SpaceFriesItem::new);
