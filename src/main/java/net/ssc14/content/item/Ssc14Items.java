@@ -6,6 +6,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.item.clothing.ScarfItem;
 import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
+import net.ssc14.content.item.food.FoodPackagingWasteItem;
 import net.ssc14.content.item.lighting.LightingComponentItem;
 import net.ssc14.content.item.machinery.MachineComponentItem;
 import net.ssc14.content.item.material.MaterialItem;
@@ -79,6 +80,12 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> SINDY_SCARF = scarf("sindy_scarf");
     public static final DeferredItem<Item> TRNS_SCARF = scarf("trns_scarf");
     public static final DeferredItem<Item> YELLOW_SCARF = scarf("yellow_scarf");
+    public static final DeferredItem<Item> ENERGY_BAR_TRASH = foodPackagingWaste("energy_bar_trash");
+    public static final DeferredItem<Item> CHEESE_HONKERS_TRASH =
+            foodPackagingWaste("cheese_honkers_trash");
+    public static final DeferredItem<Item> CHIPS_TRASH = foodPackagingWaste("chips_trash");
+    public static final DeferredItem<Item> BORITOS_TRASH = foodPackagingWaste("boritos_trash");
+    public static final DeferredItem<Item> POPCORN_TRASH = foodPackagingWaste("popcorn_trash");
 
     private Ssc14Items() { }
 
@@ -101,5 +108,9 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> scarf(String name) {
         return REGISTRY.<Item>registerItem(name, ScarfItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> foodPackagingWaste(String name) {
+        return REGISTRY.<Item>registerItem(name, FoodPackagingWasteItem::new, Item.Properties::new);
     }
 }
