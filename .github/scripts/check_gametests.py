@@ -80,6 +80,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_item_uniform_accessory_contract",
     "ssc_14:compatibility_item_uniform_jumpsuit_contract",
     "ssc_14:compatibility_item_passive_equipment_contract",
+    "ssc_14:compatibility_item_medical_supply_contract",
 }
 
 
