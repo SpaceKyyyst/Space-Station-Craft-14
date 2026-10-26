@@ -39,6 +39,7 @@ import net.mcreator.ssc.integration.LegacyIdConsoleIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyNetworkButtonIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyShuttersIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockUpperPlugIntegrationAdapter;
+import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyVendingMachineIntegrationAdapter;
 import net.mcreator.ssc.gravity.ui.GravityGeneratorWindow;
 import net.ssc14.common.Ssc14Identity;
@@ -50,6 +51,7 @@ import net.ssc14.content.block.access.IdConsoleIntegrationService;
 import net.ssc14.content.block.access.Ssc14AccessBlockEntities;
 import net.ssc14.content.block.airlock.ShuttersIntegrationService;
 import net.ssc14.content.block.airlock.AirlockUpperPlugIntegrationService;
+import net.ssc14.content.block.airlock.AirlockDoorIntegrationService;
 import net.ssc14.content.block.airlock.Ssc14AirlockBlockEntities;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.OrderPalletRegistryService;
@@ -373,6 +375,7 @@ public class Ssc14Mod {
 		ShuttersIntegrationService.install(new LegacyShuttersIntegrationAdapter());
 		AirlockUpperPlugIntegrationService.install(
 				new LegacyAirlockUpperPlugIntegrationAdapter());
+		AirlockDoorIntegrationService.install(new LegacyAirlockDoorIntegrationAdapter());
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
 		Ssc14EntityTypes.REGISTRY.register(modEventBus);
 		Ssc14ModTabs.REGISTRY.register(modEventBus);

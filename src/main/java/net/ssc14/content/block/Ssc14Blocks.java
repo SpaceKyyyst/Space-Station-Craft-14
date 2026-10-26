@@ -23,6 +23,7 @@ import net.ssc14.content.block.debug.FailureSentinelBlock;
 import net.ssc14.content.block.debug.DebugGravityGeneratorBlock;
 import net.ssc14.content.block.debug.StationCodeDebugBlock;
 import net.ssc14.content.block.airlock.AirlockThresholdBlock;
+import net.ssc14.content.block.airlock.BaseAirlockD1Block;
 import net.ssc14.content.block.airlock.AirlockUpperPlugBlock;
 import net.ssc14.content.block.airlock.ClosedAirlockUpperPlugBlockEntity;
 import net.ssc14.content.block.airlock.OpenAirlockUpperPlugBlockEntity;
@@ -170,6 +171,8 @@ public final class Ssc14Blocks {
             register("gravity_generator", GravityGeneratorBlock::new);
     public static final DeferredBlock<Block> AIRLOCK_THRESHOLD =
             register("airlock_threshold", AirlockThresholdBlock::new);
+    public static final DeferredBlock<Block> BASE_AIRLOCK_D_1 =
+            register("base_airlock_d_1", BaseAirlockD1Block::new);
     public static final DeferredBlock<Block> AIRLOCK_UP_PLUG = register(
             "airlock_up_plug", properties -> new AirlockUpperPlugBlock(
                     properties, false, ClosedAirlockUpperPlugBlockEntity::new));

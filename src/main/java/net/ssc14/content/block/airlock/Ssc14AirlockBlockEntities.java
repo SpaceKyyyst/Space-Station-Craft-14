@@ -17,6 +17,10 @@ public final class Ssc14AirlockBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShuttersBlockEntity>>
             SHUTTERS = REGISTRY.register("shutters", () -> new BlockEntityType<>(
                     ShuttersBlockEntity::new, Ssc14Blocks.SHUTTERS.get()));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BaseAirlockD1BlockEntity>>
+            BASE_AIRLOCK_D_1 = REGISTRY.register("base_airlock_d_1",
+                    () -> new BlockEntityType<>(BaseAirlockD1BlockEntity::new,
+                            Ssc14Blocks.BASE_AIRLOCK_D_1.get()));
     public static final DeferredHolder<BlockEntityType<?>,
             BlockEntityType<ClosedAirlockUpperPlugBlockEntity>> AIRLOCK_UP_PLUG =
             REGISTRY.register("airlock_up_plug", () -> new BlockEntityType<>(
@@ -32,6 +36,8 @@ public final class Ssc14AirlockBlockEntities {
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.Item.BLOCK, SHUTTERS.get(),
+                WorldlyContainerWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, BASE_AIRLOCK_D_1.get(),
                 WorldlyContainerWrapper::new);
         event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG.get(),
                 WorldlyContainerWrapper::new);
