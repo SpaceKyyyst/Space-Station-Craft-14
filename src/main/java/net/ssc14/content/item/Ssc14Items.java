@@ -4,6 +4,7 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.item.lighting.LightingComponentItem;
 import net.ssc14.content.item.machinery.MachineComponentItem;
 import net.ssc14.content.item.material.MaterialItem;
 
@@ -41,6 +42,12 @@ public final class Ssc14Items {
             machineComponent("apc_board", MachineComponentItem.SINGLE_STACK_SIZE);
     public static final DeferredItem<Item> LOW_BATTERIE =
             machineComponent("low_batterie", MachineComponentItem.SINGLE_STACK_SIZE);
+    public static final DeferredItem<Item> LED_LIGHT_TUBE = lightingComponent("led_light_tube");
+    public static final DeferredItem<Item> LIGHT_BULB = lightingComponent("light_bulb");
+    public static final DeferredItem<Item> LED_LIGHT_TUBE_BROKEN =
+            lightingComponent("led_light_tube_broken");
+    public static final DeferredItem<Item> LIGHT_BULB_BROKEN =
+            lightingComponent("light_bulb_broken");
 
     private Ssc14Items() { }
 
@@ -51,5 +58,9 @@ public final class Ssc14Items {
     private static DeferredItem<Item> machineComponent(String name, int maxStackSize) {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new MachineComponentItem(properties, maxStackSize), Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> lightingComponent(String name) {
+        return REGISTRY.<Item>registerItem(name, LightingComponentItem::new, Item.Properties::new);
     }
 }

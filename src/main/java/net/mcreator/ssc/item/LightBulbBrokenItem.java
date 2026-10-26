@@ -1,9 +1,12 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.lighting.LightingComponentItem;
 
-public class LightBulbBrokenItem extends Item {
+/** @deprecated Use {@link LightingComponentItem}. */
+@Deprecated(forRemoval = false)
+public class LightBulbBrokenItem extends LightingComponentItem {
 	public LightBulbBrokenItem(Item.Properties properties) {
-		super(properties.stacksTo(1));
+		super(properties);
 	}
 }

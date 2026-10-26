@@ -693,10 +693,10 @@ public class Ssc14ModItems {
 		TITLE_DARK_PLASTIC = block(Ssc14Blocks.TITLE_DARK_PLASTIC, new Item.Properties().stacksTo(30).fireResistant());
 		SMES = block(Ssc14ModBlocks.SMES, new Item.Properties().stacksTo(1).fireResistant());
 		TECH_LAMP = block(Ssc14ModBlocks.TECH_LAMP, new Item.Properties().stacksTo(1).fireResistant());
-		LED_LIGHT_TUBE = register("led_light_tube", LedLightTubeItem::new);
-		LIGHT_BULB = register("light_bulb", LightBulbItem::new);
-		LED_LIGHT_TUBE_BROKEN = register("led_light_tube_broken", LedLightTubeBrokenItem::new);
-		LIGHT_BULB_BROKEN = register("light_bulb_broken", LightBulbBrokenItem::new);
+		LED_LIGHT_TUBE = Ssc14Items.LED_LIGHT_TUBE;
+		LIGHT_BULB = Ssc14Items.LIGHT_BULB;
+		LED_LIGHT_TUBE_BROKEN = Ssc14Items.LED_LIGHT_TUBE_BROKEN;
+		LIGHT_BULB_BROKEN = Ssc14Items.LIGHT_BULB_BROKEN;
 		ARMORED_WINDOW = block(Ssc14Blocks.ARMORED_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
 		ARM_GLASS_SHARD = register("arm_glass_shard", ArmGlassShardItem::new);
 		ARM_GLASS = Ssc14Items.ARM_GLASS;
