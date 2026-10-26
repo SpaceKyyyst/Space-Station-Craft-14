@@ -6,6 +6,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.item.clothing.ScarfItem;
 import net.ssc14.content.item.clothing.UniformAccessoryItem;
+import net.ssc14.content.item.clothing.UniformJumpsuitItem;
 import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
 import net.ssc14.content.item.food.FoodPackagingWasteItem;
 import net.ssc14.content.item.lighting.LightingComponentItem;
@@ -98,6 +99,36 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> STOCKINGS_ORANGE = uniformAccessory("stockings_orange");
     public static final DeferredItem<Item> STOCKINGS_PURPLE = uniformAccessory("stockings_purple");
     public static final DeferredItem<Item> STOCKINGS_YELLOW = uniformAccessory("stockings_yellow");
+    public static final DeferredItem<Item> SECURITY_JUMPSUIT = uniformJumpsuit("security_jumpsuit");
+    public static final DeferredItem<Item> PASSANGER_JUMPSUIT = uniformJumpsuit("passanger_jumpsuit");
+    public static final DeferredItem<Item> ATMOS_JUMPSUIT = uniformJumpsuit("atmos_jumpsuit");
+    public static final DeferredItem<Item> BOTANIST_JUMPSUIT = uniformJumpsuit("botanist_jumpsuit");
+    public static final DeferredItem<Item> CAPTAIN_JUMPSUIT = uniformJumpsuit("captain_jumpsuit");
+    public static final DeferredItem<Item> CARGO_JUMPSUIT = uniformJumpsuit("cargo_jumpsuit");
+    public static final DeferredItem<Item> CE_JUMPSUIT = uniformJumpsuit("ce_jumpsuit");
+    public static final DeferredItem<Item> CHEMIST_JUMPSUIT = uniformJumpsuit("chemist_jumpsuit");
+    public static final DeferredItem<Item> CMO_JUMPSUIT = uniformJumpsuit("cmo_jumpsuit");
+    public static final DeferredItem<Item> ENGENEER_JUMPSUIT = uniformJumpsuit("engeneer_jumpsuit");
+    public static final DeferredItem<Item> HO_P_JUMPSUIT = uniformJumpsuit("ho_p_jumpsuit");
+    public static final DeferredItem<Item> HO_S_JUMPSUIT = uniformJumpsuit("ho_s_jumpsuit");
+    public static final DeferredItem<Item> MEDICAL_JUMPSUIT = uniformJumpsuit("medical_jumpsuit");
+    public static final DeferredItem<Item> QM_JUMPSUIT = uniformJumpsuit("qm_jumpsuit");
+    public static final DeferredItem<Item> RD_JUMPSUIT = uniformJumpsuit("rd_jumpsuit");
+    public static final DeferredItem<Item> RND_JUMPSUIT = uniformJumpsuit("rnd_jumpsuit");
+    public static final DeferredItem<Item> WARDEN_JUMPSUIT = uniformJumpsuit("warden_jumpsuit");
+    public static final DeferredItem<Item> BARTENDER_JUMPSUIT = uniformJumpsuit("bartender_jumpsuit");
+    public static final DeferredItem<Item> BRIGMEDIC_JUMPSUIT = uniformJumpsuit("brigmedic_jumpsuit");
+    public static final DeferredItem<Item> CAPFORMAL_JUMPSUIT = uniformJumpsuit("capformal_jumpsuit");
+    public static final DeferredItem<Item> CASUAL_JUMPSUIT = uniformJumpsuit("casual_jumpsuit");
+    public static final DeferredItem<Item> C_ETURTLE_JUMPSUIT = uniformJumpsuit("c_eturtle_jumpsuit");
+    public static final DeferredItem<Item> CENTCOM_AGENT_JUMPSUIT = uniformJumpsuit("centcom_agent_jumpsuit");
+    public static final DeferredItem<Item> CENTCOM_OFFICER_JUMPSUIT = uniformJumpsuit("centcom_officer_jumpsuit");
+    public static final DeferredItem<Item> CENTCOM_OFFICIAL_JUMPSUIT = uniformJumpsuit("centcom_official_jumpsuit");
+    public static final DeferredItem<Item> CHAPLAIN_JUMPSUIT = uniformJumpsuit("chaplain_jumpsuit");
+    public static final DeferredItem<Item> CHEF_JUMPSUIT = uniformJumpsuit("chef_jumpsuit");
+    public static final DeferredItem<Item> CM_OTURTLE_JUMPSUIT = uniformJumpsuit("cm_oturtle_jumpsuit");
+    public static final DeferredItem<Item> HO_SPARADE_JUMPSUIT = uniformJumpsuit("ho_sparade_jumpsuit");
+    public static final DeferredItem<Item> MAID_JUMPSUIT = uniformJumpsuit("maid_jumpsuit");
 
     private Ssc14Items() { }
 
@@ -128,5 +159,9 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> uniformAccessory(String name) {
         return REGISTRY.<Item>registerItem(name, UniformAccessoryItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> uniformJumpsuit(String name) {
+        return REGISTRY.<Item>registerItem(name, UniformJumpsuitItem::new, Item.Properties::new);
     }
 }
