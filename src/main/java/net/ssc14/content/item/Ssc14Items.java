@@ -8,6 +8,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.entity.Ssc14EntityTypes;
+import net.ssc14.content.item.access.IdCardItem;
 import net.ssc14.content.item.clothing.ScarfItem;
 import net.ssc14.content.item.clothing.PassiveEquipmentItem;
 import net.ssc14.content.item.clothing.UniformAccessoryItem;
@@ -65,6 +66,52 @@ public final class Ssc14Items {
             lightingComponent("led_light_tube_broken");
     public static final DeferredItem<Item> LIGHT_BULB_BROKEN =
             lightingComponent("light_bulb_broken");
+    public static final DeferredItem<Item> ID_CARD_PASSANGER = idCard("id_card_passanger");
+    public static final DeferredItem<Item> ID_CARD_CAPITAN = idCard("id_card_capitan");
+    public static final DeferredItem<Item> ID_CARD_PNT = idCard("id_card_pnt");
+    public static final DeferredItem<Item> ID_CARD_ADUTANT = idCard("id_card_adutant");
+    public static final DeferredItem<Item> ID_CARD_AVD = idCard("id_card_avd");
+    public static final DeferredItem<Item> ID_CARD_OSH = idCard("id_card_osh");
+    public static final DeferredItem<Item> ID_CARD_MIME = idCard("id_card_mime");
+    public static final DeferredItem<Item> ID_CARD_CLOWN = idCard("id_card_clown");
+    public static final DeferredItem<Item> ID_CARD_HO_P = idCard("id_card_ho_p");
+    public static final DeferredItem<Item> ID_CARD_SERVICE_W = idCard("id_card_service_w");
+    public static final DeferredItem<Item> ID_CARD_CLEANER = idCard("id_card_cleaner");
+    public static final DeferredItem<Item> ID_CARD_CHEF = idCard("id_card_chef");
+    public static final DeferredItem<Item> ID_CARD_BOTANIK = idCard("id_card_botanik");
+    public static final DeferredItem<Item> ID_CARD_BARMEN = idCard("id_card_barmen");
+    public static final DeferredItem<Item> ID_CARD_PRIEST = idCard("id_card_priest");
+    public static final DeferredItem<Item> ID_CARD_QM = idCard("id_card_qm");
+    public static final DeferredItem<Item> ID_CARD_UTILIZATOR = idCard("id_card_utilizator");
+    public static final DeferredItem<Item> ID_CARD_LOADER = idCard("id_card_loader");
+    public static final DeferredItem<Item> ID_CARD_REPORTER = idCard("id_card_reporter");
+    public static final DeferredItem<Item> ID_CARD_BOXER = idCard("id_card_boxer");
+    public static final DeferredItem<Item> ID_CARD_BIBLIOTEKAR = idCard("id_card_bibliotekar");
+    public static final DeferredItem<Item> ID_CARD_ZOOTECHNIK = idCard("id_card_zootechnik");
+    public static final DeferredItem<Item> ID_CARD_CE = idCard("id_card_ce");
+    public static final DeferredItem<Item> ID_CARD_VE = idCard("id_card_ve");
+    public static final DeferredItem<Item> ID_CARD_ATMOS = idCard("id_card_atmos");
+    public static final DeferredItem<Item> ID_CARD_ENGENEER = idCard("id_card_engeneer");
+    public static final DeferredItem<Item> ID_CARD_TECH_ASSISTENT = idCard("id_card_tech_assistent");
+    public static final DeferredItem<Item> ID_CARD_MUSICANT = idCard("id_card_musicant");
+    public static final DeferredItem<Item> ID_CARD_HO_S = idCard("id_card_ho_s");
+    public static final DeferredItem<Item> ID_CARD_INSTRUCTOR_S = idCard("id_card_instructor_s");
+    public static final DeferredItem<Item> ID_CARD_WARD = idCard("id_card_ward");
+    public static final DeferredItem<Item> ID_CARD_DETECTIVE = idCard("id_card_detective");
+    public static final DeferredItem<Item> ID_CARD_BRIG_MED = idCard("id_card_brig_med");
+    public static final DeferredItem<Item> ID_CARD_OFICER_S = idCard("id_card_oficer_s");
+    public static final DeferredItem<Item> ID_CARD_KADET_S = idCard("id_card_kadet_s");
+    public static final DeferredItem<Item> ID_CARD_CMO = idCard("id_card_cmo");
+    public static final DeferredItem<Item> ID_CARD_VM = idCard("id_card_vm");
+    public static final DeferredItem<Item> ID_CARD_CHIMIC = idCard("id_card_chimic");
+    public static final DeferredItem<Item> ID_CARD_PARAMED = idCard("id_card_paramed");
+    public static final DeferredItem<Item> ID_CARD_MEDIC = idCard("id_card_medic");
+    public static final DeferredItem<Item> ID_CARD_PSIHOLOG = idCard("id_card_psiholog");
+    public static final DeferredItem<Item> ID_CARD_INTERN = idCard("id_card_intern");
+    public static final DeferredItem<Item> ID_CARD_RD = idCard("id_card_rd");
+    public static final DeferredItem<Item> ID_CARD_VS = idCard("id_card_vs");
+    public static final DeferredItem<Item> ID_CARD_SCIENTIST = idCard("id_card_scientist");
+    public static final DeferredItem<Item> ID_CARD_SCI_ASSISTENT = idCard("id_card_sci_assistent");
     public static final DeferredItem<Item> ENCRYPTION_KEY_PASSANGER =
             encryptionKey("encryption_key_passanger");
     public static final DeferredItem<Item> ENCRYPTION_KEY_COMMAND =
@@ -283,6 +330,10 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> lightingComponent(String name) {
         return REGISTRY.<Item>registerItem(name, LightingComponentItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> idCard(String name) {
+        return REGISTRY.<Item>registerItem(name, IdCardItem::new, Item.Properties::new);
     }
 
     private static DeferredItem<Item> encryptionKey(String name) {
