@@ -35,6 +35,7 @@ import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
 import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
 import net.mcreator.ssc.world.inventory.CommunConsoleGUIMenu;
 import net.mcreator.ssc.integration.LegacyCommerceConsoleIntegrationAdapter;
+import net.mcreator.ssc.integration.LegacyIdConsoleIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyNetworkButtonIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyVendingMachineIntegrationAdapter;
 import net.mcreator.ssc.gravity.ui.GravityGeneratorWindow;
@@ -43,6 +44,8 @@ import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.content.entity.Ssc14EntityBehavior;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.block.access.IdConsoleIntegrationService;
+import net.ssc14.content.block.access.Ssc14AccessBlockEntities;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.OrderPalletRegistryService;
 import net.ssc14.content.block.commerce.CommerceConsoleIntegrationService;
@@ -115,6 +118,8 @@ public class Ssc14Mod {
 		Ssc14SoundEvents.REGISTRY.register(modEventBus);
 		Ssc14ModBlocks.initializeLegacyEntries();
 		Ssc14Blocks.REGISTRY.register(modEventBus);
+		Ssc14AccessBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14AccessBlockEntities::registerCapabilities);
 		Ssc14LightingBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14LightingBlockEntities::registerCapabilities);
 		Ssc14ClosetBlockEntities.REGISTRY.register(modEventBus);
@@ -353,6 +358,7 @@ public class Ssc14Mod {
 		CommerceConsoleIntegrationService.install(
 				new LegacyCommerceConsoleIntegrationAdapter(
 						net.mcreator.ssc.procedures.ConsolesOpenMenuSoundProcedure::execute));
+		IdConsoleIntegrationService.install(new LegacyIdConsoleIntegrationAdapter());
 		VendingMachineIntegrationService.install(
 				new LegacyVendingMachineIntegrationAdapter());
 		NetworkButtonInteractionService.install(
