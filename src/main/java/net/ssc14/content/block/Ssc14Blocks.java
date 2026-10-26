@@ -14,6 +14,7 @@ import net.ssc14.content.block.commerce.OrderPalletBlock;
 import net.ssc14.content.block.commerce.OrderConsoleBlock;
 import net.ssc14.content.block.commerce.SaleConsoleBlock;
 import net.ssc14.content.block.commerce.VendingUpperPlugBlock;
+import net.ssc14.content.block.commerce.VendingMachineBlock;
 import net.ssc14.content.block.communication.CommunicationServersBlock;
 import net.ssc14.content.block.communication.CommunicationConsoleBlock;
 import net.ssc14.content.block.fuel.FuelTankBlock;
@@ -135,6 +136,8 @@ public final class Ssc14Blocks {
             register("sale_console", SaleConsoleBlock::new);
     public static final DeferredBlock<Block> VENDING_KOSTIL =
             register("vending_kostil", VendingUpperPlugBlock::new);
+    public static final DeferredBlock<Block> VENDING_AUT_1 =
+            register("vending_aut_1", VendingMachineBlock::new);
     public static final DeferredBlock<Block> FUEL_TANK =
             register("fuel_tank", FuelTankBlock::new);
     public static final DeferredBlock<Block> GAS_PRODUCER_O_2 =
