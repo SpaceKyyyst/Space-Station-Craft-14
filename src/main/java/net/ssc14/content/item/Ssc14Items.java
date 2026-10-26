@@ -5,6 +5,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.item.clothing.ScarfItem;
+import net.ssc14.content.item.clothing.UniformAccessoryItem;
 import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
 import net.ssc14.content.item.food.FoodPackagingWasteItem;
 import net.ssc14.content.item.lighting.LightingComponentItem;
@@ -86,6 +87,17 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> CHIPS_TRASH = foodPackagingWaste("chips_trash");
     public static final DeferredItem<Item> BORITOS_TRASH = foodPackagingWaste("boritos_trash");
     public static final DeferredItem<Item> POPCORN_TRASH = foodPackagingWaste("popcorn_trash");
+    public static final DeferredItem<Item> TIE_BLACK = uniformAccessory("tie_black");
+    public static final DeferredItem<Item> TIE_RED = uniformAccessory("tie_red");
+    public static final DeferredItem<Item> TIE_SCIENCE = uniformAccessory("tie_science");
+    public static final DeferredItem<Item> STOCKINGS_BLUE = uniformAccessory("stockings_blue");
+    public static final DeferredItem<Item> STOCKINGS_CYAN = uniformAccessory("stockings_cyan");
+    public static final DeferredItem<Item> STOCKINGS_D_PINK = uniformAccessory("stockings_d_pink");
+    public static final DeferredItem<Item> STOCKINGS_GREEN = uniformAccessory("stockings_green");
+    public static final DeferredItem<Item> STOCKINGS_L_PINK = uniformAccessory("stockings_l_pink");
+    public static final DeferredItem<Item> STOCKINGS_ORANGE = uniformAccessory("stockings_orange");
+    public static final DeferredItem<Item> STOCKINGS_PURPLE = uniformAccessory("stockings_purple");
+    public static final DeferredItem<Item> STOCKINGS_YELLOW = uniformAccessory("stockings_yellow");
 
     private Ssc14Items() { }
 
@@ -112,5 +124,9 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> foodPackagingWaste(String name) {
         return REGISTRY.<Item>registerItem(name, FoodPackagingWasteItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> uniformAccessory(String name) {
+        return REGISTRY.<Item>registerItem(name, UniformAccessoryItem::new, Item.Properties::new);
     }
 }
