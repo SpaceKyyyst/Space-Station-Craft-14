@@ -86,6 +86,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_item_cooking_ingredient_contract",
     "ssc_14:compatibility_item_edible_food_contract",
     "ssc_14:compatibility_item_packaged_food_contract",
+    "ssc_14:compatibility_item_food_prop_contract",
 }
 
 

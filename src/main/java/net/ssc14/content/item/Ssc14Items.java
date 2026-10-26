@@ -17,6 +17,7 @@ import net.ssc14.content.item.food.CookingIngredientItem;
 import net.ssc14.content.item.food.EdibleFoodItem;
 import net.ssc14.content.item.food.FoodPackagingWasteItem;
 import net.ssc14.content.item.food.FoodDefinition;
+import net.ssc14.content.item.food.FoodPropItem;
 import net.ssc14.content.item.food.Ssc14FoodDefinitions;
 import net.ssc14.content.item.lighting.LightingComponentItem;
 import net.ssc14.content.item.machinery.MachineComponentItem;
@@ -249,6 +250,25 @@ public final class Ssc14Items {
             edibleFood("boritos", Ssc14FoodDefinitions.boritos(BORITOS_TRASH));
     public static final DeferredItem<Item> POPCORN =
             edibleFood("popcorn", Ssc14FoodDefinitions.popcorn(POPCORN_TRASH));
+    public static final DeferredItem<Item> BAGEL = foodProp("bagel");
+    public static final DeferredItem<Item> BAGUETTE = foodProp("baguette");
+    public static final DeferredItem<Item> BANANA_NUT_BREAD = foodProp("banana_nut_bread");
+    public static final DeferredItem<Item> CHEESE_WHEEL = foodProp("cheese_wheel");
+    public static final DeferredItem<Item> CREAM_CHEESE_BREAD =
+            foodProp("cream_cheese_bread");
+    public static final DeferredItem<Item> FLY_AMANITA = foodProp("fly_amanita");
+    public static final DeferredItem<Item> MEATLOAF = foodProp("meatloaf");
+    public static final DeferredItem<Item> MOLDY_BREAD_PIECE =
+            foodProp("moldy_bread_piece");
+    public static final DeferredItem<Item> POPPY_SEED_BAGEL =
+            foodProp("poppy_seed_bagel");
+    public static final DeferredItem<Item> POTATO = foodProp("potato");
+    public static final DeferredItem<Item> SAUSAGE_BREAD = foodProp("sausage_bread");
+    public static final DeferredItem<Item> SPACE_FRIES = foodProp("space_fries");
+    public static final DeferredItem<Item> TACO_FLATBREAD = foodProp("taco_flatbread");
+    public static final DeferredItem<Item> TOAST_WITH_BUTTER =
+            foodProp("toast_with_butter");
+    public static final DeferredItem<Item> TOFU_BREAD = foodProp("tofu_bread");
 
     private Ssc14Items() { }
 
@@ -284,6 +304,10 @@ public final class Ssc14Items {
     private static DeferredItem<Item> edibleFood(String name, FoodDefinition definition) {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new EdibleFoodItem(properties, definition), Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> foodProp(String name) {
+        return REGISTRY.<Item>registerItem(name, FoodPropItem::new, Item.Properties::new);
     }
 
     private static DeferredItem<Item> uniformAccessory(String name) {
