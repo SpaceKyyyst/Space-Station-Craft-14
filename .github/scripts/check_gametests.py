@@ -72,6 +72,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_base_airlock_contract",
     "ssc_14:compatibility_block_department_airlocks_contract",
     "ssc_14:compatibility_item_material_contract",
+    "ssc_14:compatibility_item_machine_component_contract",
 }
 
 

@@ -1,9 +1,12 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.machinery.MachineComponentItem;
 
-public class APCBoardItem extends Item {
+/** @deprecated Use {@link MachineComponentItem}. */
+@Deprecated(forRemoval = false)
+public class APCBoardItem extends MachineComponentItem {
 	public APCBoardItem(Item.Properties properties) {
-		super(properties.stacksTo(1));
+		super(properties, SINGLE_STACK_SIZE);
 	}
 }
