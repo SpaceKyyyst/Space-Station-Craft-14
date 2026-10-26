@@ -811,10 +811,10 @@ public class Ssc14ModItems {
 		FENCE_G = register("fence_g", properties -> new FenceGBlock.Item(properties.stacksTo(1)));
 		FENCE_POINT = register("fence_point", properties -> new FencePointBlock.Item(properties.stacksTo(1)));
 		FENCE_P = register("fence_p", properties -> new FencePBlock.Item(properties.stacksTo(1)));
-		BRUTEPACK = register("brutepack", BrutepackItem::new);
-		BLOODPACK = register("bloodpack", BloodpackItem::new);
-		GAUZE = register("gauze", GauzeItem::new);
-		OINTMENT = register("ointment", OintmentItem::new);
+		BRUTEPACK = Ssc14Items.BRUTEPACK;
+		BLOODPACK = Ssc14Items.BLOODPACK;
+		GAUZE = Ssc14Items.GAUZE;
+		OINTMENT = Ssc14Items.OINTMENT;
 		DEBUG_13 = block(Ssc14ModBlocks.DEBUG_13);
 		DECAL_1SPAWNER = register("decal_1spawner", DECAL1spawnerItem::new);
 		DECAL_1DELETION = register("decal_1deletion", DECAL1deletionItem::new);

@@ -13,6 +13,7 @@ import net.ssc14.content.item.food.FoodPackagingWasteItem;
 import net.ssc14.content.item.lighting.LightingComponentItem;
 import net.ssc14.content.item.machinery.MachineComponentItem;
 import net.ssc14.content.item.material.MaterialItem;
+import net.ssc14.content.item.medical.MedicalSupplyItem;
 
 /** Canonical owner of SSC14 item registrations. */
 public final class Ssc14Items {
@@ -147,6 +148,10 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> MASK_GAS_SECURITY = passiveEquipment("mask_gas_security");
     public static final DeferredItem<Item> HARDSUIT_SALVAGE = passiveEquipment("hardsuit_salvage");
     public static final DeferredItem<Item> HARDSUIT_SALVAGE_HELMET = passiveEquipment("hardsuit_salvage_helmet");
+    public static final DeferredItem<Item> BRUTEPACK = medicalSupply("brutepack");
+    public static final DeferredItem<Item> BLOODPACK = medicalSupply("bloodpack");
+    public static final DeferredItem<Item> GAUZE = medicalSupply("gauze");
+    public static final DeferredItem<Item> OINTMENT = medicalSupply("ointment");
 
     private Ssc14Items() { }
 
@@ -185,5 +190,9 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> passiveEquipment(String name) {
         return REGISTRY.<Item>registerItem(name, PassiveEquipmentItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> medicalSupply(String name) {
+        return REGISTRY.<Item>registerItem(name, MedicalSupplyItem::new, Item.Properties::new);
     }
 }
