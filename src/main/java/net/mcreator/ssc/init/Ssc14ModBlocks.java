@@ -228,10 +228,10 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> GLASS_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> BASE_GLASS_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> FUEL_TANK = Ssc14Blocks.FUEL_TANK;
-	public static final DeferredBlock<Block> ORDER_CONSOLE;
+	public static final DeferredBlock<Block> ORDER_CONSOLE = Ssc14Blocks.ORDER_CONSOLE;
 	public static final DeferredBlock<Block> ORDER_PALLET = Ssc14Blocks.ORDER_PALLET;
 	public static final DeferredBlock<Block> SALE_PALLET = Ssc14Blocks.SALE_PALLET;
-	public static final DeferredBlock<Block> SALE_CONSOLE;
+	public static final DeferredBlock<Block> SALE_CONSOLE = Ssc14Blocks.SALE_CONSOLE;
 	public static final DeferredBlock<Block> BANNER_NT = Ssc14Blocks.BANNER_NT;
 	public static final DeferredBlock<Block> BANNER_MED = Ssc14Blocks.BANNER_MED;
 	public static final DeferredBlock<Block> BANNER_RN_D = Ssc14Blocks.BANNER_RN_D;
@@ -267,8 +267,6 @@ public class Ssc14ModBlocks {
 		VIROLOGY_AIRLOCK_D_1 = register("virology_airlock_d_1", VirologyAirlockD1Block::new);
 		GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1", GlassAirlockD1Block::new);
 		BASE_GLASS_AIRLOCK_D_1 = register("base_glass_airlock_d_1", BaseGlassAirlockD1Block::new);
-		ORDER_CONSOLE = register("order_console", OrderConsoleBlock::new);
-		SALE_CONSOLE = register("sale_console", SaleConsoleBlock::new);
 	}
 
 	// Start of user code block custom blocks

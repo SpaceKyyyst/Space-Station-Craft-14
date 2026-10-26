@@ -34,6 +34,7 @@ import net.mcreator.ssc.world.inventory.MacFrameGUIMenu;
 import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
 import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
 import net.mcreator.ssc.world.inventory.CommunConsoleGUIMenu;
+import net.mcreator.ssc.integration.LegacyCommerceConsoleIntegrationAdapter;
 import net.mcreator.ssc.gravity.ui.GravityGeneratorWindow;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.attribute.Ssc14Attributes;
@@ -42,6 +43,7 @@ import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.OrderPalletRegistryService;
+import net.ssc14.content.block.commerce.CommerceConsoleIntegrationService;
 import net.ssc14.content.block.communication.CommunicationServerLifecycleService;
 import net.ssc14.content.block.communication.CommunicationConsoleIntegrationService;
 import net.ssc14.content.block.communication.Ssc14CommunicationBlockEntities;
@@ -341,6 +343,9 @@ public class Ssc14Mod {
 				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
 		MicrowaveMenuService.install((id, inventory, pos) -> new MicrowaweGUIMenu(
 				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
+		CommerceConsoleIntegrationService.install(
+				new LegacyCommerceConsoleIntegrationAdapter(
+						net.mcreator.ssc.procedures.ConsolesOpenMenuSoundProcedure::execute));
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
 		Ssc14EntityTypes.REGISTRY.register(modEventBus);
 		Ssc14ModTabs.REGISTRY.register(modEventBus);
