@@ -173,6 +173,38 @@ public final class Ssc14Blocks {
             register("airlock_threshold", AirlockThresholdBlock::new);
     public static final DeferredBlock<Block> BASE_AIRLOCK_D_1 =
             register("base_airlock_d_1", BaseAirlockD1Block::new);
+    public static final DeferredBlock<Block> TECH_AIRLOCK_D_1 = register("tech_airlock_d_1",
+            net.ssc14.content.block.airlock.TechAirlockD1Block::new);
+    public static final DeferredBlock<Block> ATMOSPHERICS_AIRLOCK_D_1 = register(
+            "atmospherics_airlock_d_1", net.ssc14.content.block.airlock.AtmosphericsAirlockD1Block::new);
+    public static final DeferredBlock<Block> CARGO_AIRLOCK_D_1 = register("cargo_airlock_d_1",
+            net.ssc14.content.block.airlock.CargoAirlockD1Block::new);
+    public static final DeferredBlock<Block> CENT_COM_AIRLOCK_D_1 = register("cent_com_airlock_d_1",
+            net.ssc14.content.block.airlock.CentComAirlockD1Block::new);
+    public static final DeferredBlock<Block> CHEMISTRY_AIRLOCK_D_1 = register("chemistry_airlock_d_1",
+            net.ssc14.content.block.airlock.ChemistryAirlockD1Block::new);
+    public static final DeferredBlock<Block> COMMAND_AIRLOCK_D_1 = register("command_airlock_d_1",
+            net.ssc14.content.block.airlock.CommandAirlockD1Block::new);
+    public static final DeferredBlock<Block> ENGINEERING_AIRLOCK_D_1 = register(
+            "engineering_airlock_d_1", net.ssc14.content.block.airlock.EngineeringAirlockD1Block::new);
+    public static final DeferredBlock<Block> HYDROPONICS_AIRLOCK_D_1 = register(
+            "hydroponics_airlock_d_1", net.ssc14.content.block.airlock.HydroponicsAirlockD1Block::new);
+    public static final DeferredBlock<Block> MEDICAL_AIRLOCK_D_1 = register("medical_airlock_d_1",
+            net.ssc14.content.block.airlock.MedicalAirlockD1Block::new);
+    public static final DeferredBlock<Block> SALVAGE_AIRLOCK_D_1 = register("salvage_airlock_d_1",
+            net.ssc14.content.block.airlock.SalvageAirlockD1Block::new);
+    public static final DeferredBlock<Block> SCIENCE_AIRLOCK_D_1 = register("science_airlock_d_1",
+            net.ssc14.content.block.airlock.ScienceAirlockD1Block::new);
+    public static final DeferredBlock<Block> SECURITY_AIRLOCK_D_1 = register("security_airlock_d_1",
+            net.ssc14.content.block.airlock.SecurityAirlockD1Block::new);
+    public static final DeferredBlock<Block> SYNDICATE_AIRLOCK_D_1 = register("syndicate_airlock_d_1",
+            net.ssc14.content.block.airlock.SyndicateAirlockD1Block::new);
+    public static final DeferredBlock<Block> VIROLOGY_AIRLOCK_D_1 = register("virology_airlock_d_1",
+            net.ssc14.content.block.airlock.VirologyAirlockD1Block::new);
+    public static final DeferredBlock<Block> GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1",
+            net.ssc14.content.block.airlock.GlassAirlockD1Block::new);
+    public static final DeferredBlock<Block> BASE_GLASS_AIRLOCK_D_1 = register(
+            "base_glass_airlock_d_1", net.ssc14.content.block.airlock.BaseGlassAirlockD1Block::new);
     public static final DeferredBlock<Block> AIRLOCK_UP_PLUG = register(
             "airlock_up_plug", properties -> new AirlockUpperPlugBlock(
                     properties, false, ClosedAirlockUpperPlugBlockEntity::new));

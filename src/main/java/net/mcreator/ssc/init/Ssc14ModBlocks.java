@@ -6,13 +6,10 @@ package net.mcreator.ssc.init;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.Block;
 
 import net.mcreator.ssc.block.*;
 import net.ssc14.content.block.Ssc14Blocks;
-
-import java.util.function.Function;
 
 public class Ssc14ModBlocks {
 	/** @deprecated Use {@link Ssc14Blocks#REGISTRY}. */
@@ -136,7 +133,7 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> WOOD_TABLE = Ssc14Blocks.WOOD_TABLE;
 	public static final DeferredBlock<Block> GRAV_GEN_PLUG_BLOCK = Ssc14Blocks.GRAV_GEN_PLUG_BLOCK;
 	public static final DeferredBlock<Block> COMMUNICATION_CONSOLE = Ssc14Blocks.COMMUNICATION_CONSOLE;
-	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> TECH_AIRLOCK_D_1 = Ssc14Blocks.TECH_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> GAS_PRODUCER_O_2 = Ssc14Blocks.GAS_PRODUCER_O_2;
 	public static final DeferredBlock<Block> VENDING_AUT_1 = Ssc14Blocks.VENDING_AUT_1;
 	public static final DeferredBlock<Block> VENDING_KOSTIL = Ssc14Blocks.VENDING_KOSTIL;
@@ -201,19 +198,19 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> TITLE_WOODLARGE = Ssc14Blocks.TITLE_WOODLARGE;
 	public static final DeferredBlock<Block> TITLE_WOOD = Ssc14Blocks.TITLE_WOOD;
 	public static final DeferredBlock<Block> TITLE_WOODTILE = Ssc14Blocks.TITLE_WOODTILE;
-	public static final DeferredBlock<Block> ATMOSPHERICS_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> CARGO_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> CENT_COM_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> CHEMISTRY_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> COMMAND_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> ENGINEERING_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> HYDROPONICS_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> MEDICAL_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> SALVAGE_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> SCIENCE_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> SECURITY_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> SYNDICATE_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> VIROLOGY_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> ATMOSPHERICS_AIRLOCK_D_1 = Ssc14Blocks.ATMOSPHERICS_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> CARGO_AIRLOCK_D_1 = Ssc14Blocks.CARGO_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> CENT_COM_AIRLOCK_D_1 = Ssc14Blocks.CENT_COM_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> CHEMISTRY_AIRLOCK_D_1 = Ssc14Blocks.CHEMISTRY_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> COMMAND_AIRLOCK_D_1 = Ssc14Blocks.COMMAND_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> ENGINEERING_AIRLOCK_D_1 = Ssc14Blocks.ENGINEERING_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> HYDROPONICS_AIRLOCK_D_1 = Ssc14Blocks.HYDROPONICS_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> MEDICAL_AIRLOCK_D_1 = Ssc14Blocks.MEDICAL_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> SALVAGE_AIRLOCK_D_1 = Ssc14Blocks.SALVAGE_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> SCIENCE_AIRLOCK_D_1 = Ssc14Blocks.SCIENCE_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> SECURITY_AIRLOCK_D_1 = Ssc14Blocks.SECURITY_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> SYNDICATE_AIRLOCK_D_1 = Ssc14Blocks.SYNDICATE_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> VIROLOGY_AIRLOCK_D_1 = Ssc14Blocks.VIROLOGY_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> CLOSET_EMERG = Ssc14Blocks.CLOSET_EMERG;
 	public static final DeferredBlock<Block> CLOSET_FIRE = Ssc14Blocks.CLOSET_FIRE;
 	public static final DeferredBlock<Block> CLOSET_BLACK = Ssc14Blocks.CLOSET_BLACK;
@@ -225,8 +222,8 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> CLOSET_ORANGE = Ssc14Blocks.CLOSET_ORANGE;
 	public static final DeferredBlock<Block> CLOSET_PINK = Ssc14Blocks.CLOSET_PINK;
 	public static final DeferredBlock<Block> GLASS_TABLE = Ssc14Blocks.GLASS_TABLE;
-	public static final DeferredBlock<Block> GLASS_AIRLOCK_D_1;
-	public static final DeferredBlock<Block> BASE_GLASS_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> GLASS_AIRLOCK_D_1 = Ssc14Blocks.GLASS_AIRLOCK_D_1;
+	public static final DeferredBlock<Block> BASE_GLASS_AIRLOCK_D_1 = Ssc14Blocks.BASE_GLASS_AIRLOCK_D_1;
 	public static final DeferredBlock<Block> FUEL_TANK = Ssc14Blocks.FUEL_TANK;
 	public static final DeferredBlock<Block> ORDER_CONSOLE = Ssc14Blocks.ORDER_CONSOLE;
 	public static final DeferredBlock<Block> ORDER_PALLET = Ssc14Blocks.ORDER_PALLET;
@@ -243,34 +240,11 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> ARM_CHAIR_BROWN = Ssc14Blocks.ARM_CHAIR_BROWN;
 	public static final DeferredBlock<Block> ARM_CHAIR_CARP = Ssc14Blocks.ARM_CHAIR_CARP;
 	public static final DeferredBlock<Block> EMERGENCY_LIGHT = Ssc14Blocks.EMERGENCY_LIGHT;
-	static {
-		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
-		ATMOSPHERICS_AIRLOCK_D_1 = register("atmospherics_airlock_d_1", AtmosphericsAirlockD1Block::new);
-		CARGO_AIRLOCK_D_1 = register("cargo_airlock_d_1", CargoAirlockD1Block::new);
-		CENT_COM_AIRLOCK_D_1 = register("cent_com_airlock_d_1", CentComAirlockD1Block::new);
-		CHEMISTRY_AIRLOCK_D_1 = register("chemistry_airlock_d_1", ChemistryAirlockD1Block::new);
-		COMMAND_AIRLOCK_D_1 = register("command_airlock_d_1", CommandAirlockD1Block::new);
-		ENGINEERING_AIRLOCK_D_1 = register("engineering_airlock_d_1", EngineeringAirlockD1Block::new);
-		HYDROPONICS_AIRLOCK_D_1 = register("hydroponics_airlock_d_1", HydroponicsAirlockD1Block::new);
-		MEDICAL_AIRLOCK_D_1 = register("medical_airlock_d_1", MedicalAirlockD1Block::new);
-		SALVAGE_AIRLOCK_D_1 = register("salvage_airlock_d_1", SalvageAirlockD1Block::new);
-		SCIENCE_AIRLOCK_D_1 = register("science_airlock_d_1", ScienceAirlockD1Block::new);
-		SECURITY_AIRLOCK_D_1 = register("security_airlock_d_1", SecurityAirlockD1Block::new);
-		SYNDICATE_AIRLOCK_D_1 = register("syndicate_airlock_d_1", SyndicateAirlockD1Block::new);
-		VIROLOGY_AIRLOCK_D_1 = register("virology_airlock_d_1", VirologyAirlockD1Block::new);
-		GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1", GlassAirlockD1Block::new);
-		BASE_GLASS_AIRLOCK_D_1 = register("base_glass_airlock_d_1", BaseGlassAirlockD1Block::new);
-	}
-
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
-	/** Ensures all not-yet-migrated legacy entries are added before bus registration. */
+	/** Preserves the historical initialization call after registry ownership migration. */
 	public static void initializeLegacyEntries() {
-		// Class initialization performs the transitional registrations.
-	}
-
-	private static <B extends Block> DeferredBlock<B> register(String name, Function<BlockBehaviour.Properties, ? extends B> supplier) {
-		return REGISTRY.registerBlock(name, supplier);
+		// Compatibility no-op.
 	}
 
 }
