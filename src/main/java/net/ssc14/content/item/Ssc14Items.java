@@ -1,9 +1,13 @@
 package net.ssc14.content.item;
 
+import java.util.function.Supplier;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.item.clothing.ScarfItem;
 import net.ssc14.content.item.clothing.PassiveEquipmentItem;
 import net.ssc14.content.item.clothing.UniformAccessoryItem;
@@ -188,6 +192,20 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> POSTER_VAULT = poster("poster_vault");
     public static final DeferredItem<Item> POSTER_VIROLOGY = poster("poster_virology");
     public static final DeferredItem<Item> POSTER_XENOARCH = poster("poster_xenoarch");
+    public static final DeferredItem<Item> WALL_CARCASE_ENTIT_SPAWN_EGG =
+            spawnEgg("wall_carcase_entit_spawn_egg", Ssc14EntityTypes.WALL_CARCASE_ENTIT);
+    public static final DeferredItem<Item> ID_CONSOLE_ENTITY_SPAWN_EGG =
+            spawnEgg("id_console_entity_spawn_egg", Ssc14EntityTypes.ID_CONSOLE_ENTITY);
+    public static final DeferredItem<Item> PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG =
+            spawnEgg("plassteel_wall_carcase_entit_spawn_egg", Ssc14EntityTypes.PLASSTEEL_WALL_CARCASE_ENTIT);
+    public static final DeferredItem<Item> MOUSE_BROWN_SPAWN_EGG =
+            spawnEgg("mouse_brown_spawn_egg", Ssc14EntityTypes.MOUSE_BROWN);
+    public static final DeferredItem<Item> MOUSE_GRAY_SPAWN_EGG =
+            spawnEgg("mouse_gray_spawn_egg", Ssc14EntityTypes.MOUSE_GRAY);
+    public static final DeferredItem<Item> MOUSE_WHITE_SPAWN_EGG =
+            spawnEgg("mouse_white_spawn_egg", Ssc14EntityTypes.MOUSE_WHITE);
+    public static final DeferredItem<Item> CARP_SPAWN_EGG =
+            spawnEgg("carp_spawn_egg", Ssc14EntityTypes.CARP);
 
     private Ssc14Items() { }
 
@@ -234,5 +252,11 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> poster(String name) {
         return REGISTRY.<Item>registerItem(name, properties -> new PosterItem(properties, name));
+    }
+
+    private static DeferredItem<Item> spawnEgg(
+            String name, Supplier<? extends EntityType<?>> entityType) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new SpawnEggItem(properties.spawnEgg(entityType.get())));
     }
 }
