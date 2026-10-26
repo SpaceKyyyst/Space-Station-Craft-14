@@ -1,20 +1,12 @@
 package net.mcreator.ssc.item;
 
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.InteractionResult;
+import net.ssc14.content.item.poster.PosterItem;
 
-import net.mcreator.ssc.procedures.Posters_InstallProcedure;
-
-public class PosterVaultItem extends Item {
-	public PosterVaultItem(Item.Properties properties) {
-		super(properties.stacksTo(1));
-	}
-
-	@Override
-	public InteractionResult useOn(UseOnContext context) {
-		super.useOn(context);
-		Posters_InstallProcedure.execute(context);	// ВЫЗОВ ПРОЦЕДУРЫ
-		return InteractionResult.SUCCESS;
-	}
+/** @deprecated Use {@link PosterItem}. */
+@Deprecated(forRemoval = false)
+public class PosterVaultItem extends PosterItem {
+    public PosterVaultItem(Item.Properties properties) {
+        super(properties, "poster_vault");
+    }
 }
