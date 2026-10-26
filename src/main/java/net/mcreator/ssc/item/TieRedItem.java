@@ -1,8 +1,11 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.clothing.UniformAccessoryItem;
 
-public class TieRedItem extends Item {
+/** @deprecated Use {@link UniformAccessoryItem}. */
+@Deprecated(forRemoval = false)
+public class TieRedItem extends UniformAccessoryItem {
 	public TieRedItem(Item.Properties properties) {
 		super(properties.stacksTo(1));
 	}
