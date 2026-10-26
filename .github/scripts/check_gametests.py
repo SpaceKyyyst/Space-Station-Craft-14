@@ -65,6 +65,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_microwave_contract",
     "ssc_14:compatibility_block_commerce_console_contract",
     "ssc_14:compatibility_block_vending_machine_contract",
+    "ssc_14:compatibility_block_network_button_contract",
 }
 
 

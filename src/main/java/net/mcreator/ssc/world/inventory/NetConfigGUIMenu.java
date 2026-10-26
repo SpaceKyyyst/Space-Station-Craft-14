@@ -26,7 +26,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.mcreator.ssc.procedures.NetConfigGUI_TIC_Procedure;
 import net.mcreator.ssc.procedures.NetConfigGUI_CLOSE_Procedure;
 import net.mcreator.ssc.init.Ssc14ModMenus;
-import net.mcreator.ssc.INetworkTrigger;
+import net.ssc14.common.network.NetworkTrigger;
 import net.mcreator.ssc.INetworkAction;
 import net.mcreator.ssc.NetworkSavedData;
 import net.mcreator.ssc.NetConfigGUISyncMessage;
@@ -93,7 +93,7 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
         menuState.put("selected_trigger_idx", -1);
 
         BlockState sourceState = world.getBlockState(sourcePos);
-        if (sourceState.getBlock() instanceof INetworkTrigger triggerBlock) {
+        if (sourceState.getBlock() instanceof NetworkTrigger triggerBlock) {
             List<String> triggers = triggerBlock.getAvailableTriggers();
             for (int i = 0; i < Math.min(triggers.size(), 8); i++) {
                 String id = triggers.get(i);

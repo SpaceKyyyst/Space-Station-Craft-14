@@ -49,6 +49,8 @@ import net.ssc14.content.block.gravity.Ssc14GravityBlockEntities;
 import net.ssc14.content.block.communication.CommunicationServersBlockEntity;
 import net.ssc14.content.block.communication.CommunicationConsoleBlockEntity;
 import net.ssc14.content.block.communication.Ssc14CommunicationBlockEntities;
+import net.ssc14.content.block.control.NetworkButtonBlockEntity;
+import net.ssc14.content.block.control.Ssc14ControlBlockEntities;
 
 @EventBusSubscriber
 public class Ssc14ModBlockEntities {
@@ -77,7 +79,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TechAirlockD1BlockEntity>> TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", Ssc14ModBlocks.TECH_AIRLOCK_D_1, TechAirlockD1BlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<VendingMachineBlockEntity>> VENDING_AUT_1 = Ssc14CommerceBlockEntities.VENDING_AUT_1;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShuttersBlockEntity>> SHUTTERS = register("shutters", Ssc14ModBlocks.SHUTTERS, ShuttersBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ButtonBlockEntity>> BUTTON = register("button", Ssc14ModBlocks.BUTTON, ButtonBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<NetworkButtonBlockEntity>> BUTTON = Ssc14ControlBlockEntities.BUTTON;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MicrowaveBlockEntity>> MICROWAWE = Ssc14MachineBlockEntities.MICROWAWE;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AtmosphericsAirlockD1BlockEntity>> ATMOSPHERICS_AIRLOCK_D_1 = register("atmospherics_airlock_d_1", Ssc14ModBlocks.ATMOSPHERICS_AIRLOCK_D_1,
 			AtmosphericsAirlockD1BlockEntity::new);
@@ -124,7 +126,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG_OPEN.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, TECH_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, SHUTTERS.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, BUTTON.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, ATMOSPHERICS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, CARGO_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, CENT_COM_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);

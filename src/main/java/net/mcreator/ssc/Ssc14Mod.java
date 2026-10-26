@@ -35,6 +35,7 @@ import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
 import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
 import net.mcreator.ssc.world.inventory.CommunConsoleGUIMenu;
 import net.mcreator.ssc.integration.LegacyCommerceConsoleIntegrationAdapter;
+import net.mcreator.ssc.integration.LegacyNetworkButtonIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyVendingMachineIntegrationAdapter;
 import net.mcreator.ssc.gravity.ui.GravityGeneratorWindow;
 import net.ssc14.common.Ssc14Identity;
@@ -46,6 +47,8 @@ import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.OrderPalletRegistryService;
 import net.ssc14.content.block.commerce.CommerceConsoleIntegrationService;
 import net.ssc14.content.block.commerce.VendingMachineIntegrationService;
+import net.ssc14.content.block.control.NetworkButtonInteractionService;
+import net.ssc14.content.block.control.Ssc14ControlBlockEntities;
 import net.ssc14.content.block.communication.CommunicationServerLifecycleService;
 import net.ssc14.content.block.communication.CommunicationConsoleIntegrationService;
 import net.ssc14.content.block.communication.Ssc14CommunicationBlockEntities;
@@ -131,6 +134,8 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14EnergyMachineBlockEntities::registerCapabilities);
 		Ssc14CommerceBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14CommerceBlockEntities::registerCapabilities);
+		Ssc14ControlBlockEntities.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14ControlBlockEntities::registerCapabilities);
 		Ssc14FuelBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14FuelBlockEntities::registerCapabilities);
 		Ssc14CommunicationBlockEntities.REGISTRY.register(modEventBus);
@@ -350,6 +355,8 @@ public class Ssc14Mod {
 						net.mcreator.ssc.procedures.ConsolesOpenMenuSoundProcedure::execute));
 		VendingMachineIntegrationService.install(
 				new LegacyVendingMachineIntegrationAdapter());
+		NetworkButtonInteractionService.install(
+				new LegacyNetworkButtonIntegrationAdapter());
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
 		Ssc14EntityTypes.REGISTRY.register(modEventBus);
 		Ssc14ModTabs.REGISTRY.register(modEventBus);
