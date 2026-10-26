@@ -35,6 +35,7 @@ import net.ssc14.content.block.commerce.OrderPalletBlockEntity;
 import net.ssc14.content.block.commerce.OrderConsoleBlockEntity;
 import net.ssc14.content.block.commerce.SaleConsoleBlockEntity;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
+import net.ssc14.content.block.commerce.VendingMachineBlockEntity;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
 import net.ssc14.content.block.fuel.FuelTankBlockEntity;
 import net.ssc14.content.block.debug.FailureSentinelBlockEntity;
@@ -74,7 +75,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CommunicationServersBlockEntity>> COMMUNICATION_SERVERS = Ssc14CommunicationBlockEntities.COMMUNICATION_SERVERS;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CommunicationConsoleBlockEntity>> COMMUNICATION_CONSOLE = Ssc14CommunicationBlockEntities.COMMUNICATION_CONSOLE;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TechAirlockD1BlockEntity>> TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", Ssc14ModBlocks.TECH_AIRLOCK_D_1, TechAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<VendingAut1BlockEntity>> VENDING_AUT_1 = register("vending_aut_1", Ssc14ModBlocks.VENDING_AUT_1, VendingAut1BlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<VendingMachineBlockEntity>> VENDING_AUT_1 = Ssc14CommerceBlockEntities.VENDING_AUT_1;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShuttersBlockEntity>> SHUTTERS = register("shutters", Ssc14ModBlocks.SHUTTERS, ShuttersBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ButtonBlockEntity>> BUTTON = register("button", Ssc14ModBlocks.BUTTON, ButtonBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MicrowaveBlockEntity>> MICROWAWE = Ssc14MachineBlockEntities.MICROWAWE;
@@ -122,7 +123,6 @@ public class Ssc14ModBlockEntities {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG_OPEN.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, TECH_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, VENDING_AUT_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, SHUTTERS.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, BUTTON.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, ATMOSPHERICS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
