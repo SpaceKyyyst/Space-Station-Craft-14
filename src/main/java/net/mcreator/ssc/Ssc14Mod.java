@@ -47,6 +47,7 @@ import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.content.entity.Ssc14EntityBehavior;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.content.block.access.IdConsoleIntegrationService;
 import net.ssc14.content.block.access.Ssc14AccessBlockEntities;
 import net.ssc14.content.block.airlock.ShuttersIntegrationService;
@@ -155,6 +156,7 @@ public class Ssc14Mod {
 		Ssc14CommunicationBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14CommunicationBlockEntities::registerCapabilities);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
+		Ssc14Items.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
 		LightingEnergyService.install(EnergyNetworkManager::queueUpdate);
 		CableTopologyService.install(new CableTopologyService.Adapter() {
