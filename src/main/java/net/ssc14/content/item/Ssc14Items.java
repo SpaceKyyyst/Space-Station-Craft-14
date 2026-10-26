@@ -13,7 +13,10 @@ import net.ssc14.content.item.clothing.ScarfItem;
 import net.ssc14.content.item.clothing.PassiveEquipmentItem;
 import net.ssc14.content.item.clothing.UniformAccessoryItem;
 import net.ssc14.content.item.clothing.UniformJumpsuitItem;
+import net.ssc14.content.item.communication.HeadsetDefinition;
+import net.ssc14.content.item.communication.HeadsetItem;
 import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
+import net.ssc14.content.item.communication.Ssc14HeadsetDefinitions;
 import net.ssc14.content.item.food.CookingIngredientItem;
 import net.ssc14.content.item.food.EdibleFoodItem;
 import net.ssc14.content.item.food.FoodPackagingWasteItem;
@@ -128,6 +131,34 @@ public final class Ssc14Items {
             encryptionKey("encryption_key_service");
     public static final DeferredItem<Item> ENCRYPTION_KEY_CARGO =
             encryptionKey("encryption_key_cargo");
+    public static final DeferredItem<Item> HEADSET_BASE =
+            headset("headset_base", Ssc14HeadsetDefinitions.BASE);
+    public static final DeferredItem<Item> HEADSET_BRIGMEDIC =
+            headset("headset_brigmedic", Ssc14HeadsetDefinitions.BRIGMEDIC);
+    public static final DeferredItem<Item> HEADSET_CARGO =
+            headset("headset_cargo", Ssc14HeadsetDefinitions.CARGO);
+    public static final DeferredItem<Item> HEADSET_CENTCOM =
+            headset("headset_centcom", Ssc14HeadsetDefinitions.CENTCOM);
+    public static final DeferredItem<Item> HEADSET_COMMAND =
+            headset("headset_command", Ssc14HeadsetDefinitions.COMMAND);
+    public static final DeferredItem<Item> HEADSET_ENGINEERING =
+            headset("headset_engineering", Ssc14HeadsetDefinitions.ENGINEERING);
+    public static final DeferredItem<Item> HEADSET_MEDICAL =
+            headset("headset_medical", Ssc14HeadsetDefinitions.MEDICAL);
+    public static final DeferredItem<Item> HEADSET_MEDICAL_SCIENCE =
+            headset("headset_medical_science", Ssc14HeadsetDefinitions.MEDICAL_SCIENCE);
+    public static final DeferredItem<Item> HEADSET_MINING =
+            headset("headset_mining", Ssc14HeadsetDefinitions.MINING);
+    public static final DeferredItem<Item> HEADSET_ROBOTICS =
+            headset("headset_robotics", Ssc14HeadsetDefinitions.ROBOTICS);
+    public static final DeferredItem<Item> HEADSET_SCIENCE =
+            headset("headset_science", Ssc14HeadsetDefinitions.SCIENCE);
+    public static final DeferredItem<Item> HEADSET_SECURITY =
+            headset("headset_security", Ssc14HeadsetDefinitions.SECURITY);
+    public static final DeferredItem<Item> HEADSET_SERVICE =
+            headset("headset_service", Ssc14HeadsetDefinitions.SERVICE);
+    public static final DeferredItem<Item> HEADSET_SYNDICATE =
+            headset("headset_syndicate", Ssc14HeadsetDefinitions.SYNDICATE);
     public static final DeferredItem<Item> RED_SCARF = scarf("red_scarf");
     public static final DeferredItem<Item> BLACK_SCARF = scarf("black_scarf");
     public static final DeferredItem<Item> BLACK_GREEN_SCARF = scarf("black_green_scarf");
@@ -338,6 +369,12 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> encryptionKey(String name) {
         return REGISTRY.<Item>registerItem(name, RadioEncryptionKeyItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> headset(
+            String name, HeadsetDefinition definition) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new HeadsetItem(properties, definition), Item.Properties::new);
     }
 
     private static DeferredItem<Item> scarf(String name) {
