@@ -230,6 +230,9 @@ class GameTestReportTests(unittest.TestCase):
     def test_spawn_egg_items_contract_is_required(self):
         self.assertIn("ssc_14:compatibility_item_spawn_egg_contract", EXPECTED_TESTS)
 
+    def test_cooking_ingredient_items_contract_is_required(self):
+        self.assertIn("ssc_14:compatibility_item_cooking_ingredient_contract", EXPECTED_TESTS)
+
     def test_empty_suite_fails(self):
         self.report(set())
         self.assertEqual(len(EXPECTED_TESTS), len(check_report(self.path)))
