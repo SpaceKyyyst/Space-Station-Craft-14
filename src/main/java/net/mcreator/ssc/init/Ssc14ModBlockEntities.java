@@ -9,8 +9,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.mcreator.ssc.block.entity.*;
@@ -83,25 +81,24 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET = Ssc14ClosetBlockEntities.CLOSET;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CommunicationServersBlockEntity>> COMMUNICATION_SERVERS = Ssc14CommunicationBlockEntities.COMMUNICATION_SERVERS;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CommunicationConsoleBlockEntity>> COMMUNICATION_CONSOLE = Ssc14CommunicationBlockEntities.COMMUNICATION_CONSOLE;
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TechAirlockD1BlockEntity>> TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", Ssc14ModBlocks.TECH_AIRLOCK_D_1, TechAirlockD1BlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.TechAirlockD1BlockEntity>> TECH_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.TECH_AIRLOCK_D_1;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<VendingMachineBlockEntity>> VENDING_AUT_1 = Ssc14CommerceBlockEntities.VENDING_AUT_1;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShuttersBlockEntity>> SHUTTERS = Ssc14AirlockBlockEntities.SHUTTERS;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<NetworkButtonBlockEntity>> BUTTON = Ssc14ControlBlockEntities.BUTTON;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MicrowaveBlockEntity>> MICROWAWE = Ssc14MachineBlockEntities.MICROWAWE;
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AtmosphericsAirlockD1BlockEntity>> ATMOSPHERICS_AIRLOCK_D_1 = register("atmospherics_airlock_d_1", Ssc14ModBlocks.ATMOSPHERICS_AIRLOCK_D_1,
-			AtmosphericsAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CargoAirlockD1BlockEntity>> CARGO_AIRLOCK_D_1 = register("cargo_airlock_d_1", Ssc14ModBlocks.CARGO_AIRLOCK_D_1, CargoAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CentComAirlockD1BlockEntity>> CENT_COM_AIRLOCK_D_1 = register("cent_com_airlock_d_1", Ssc14ModBlocks.CENT_COM_AIRLOCK_D_1, CentComAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ChemistryAirlockD1BlockEntity>> CHEMISTRY_AIRLOCK_D_1 = register("chemistry_airlock_d_1", Ssc14ModBlocks.CHEMISTRY_AIRLOCK_D_1, ChemistryAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CommandAirlockD1BlockEntity>> COMMAND_AIRLOCK_D_1 = register("command_airlock_d_1", Ssc14ModBlocks.COMMAND_AIRLOCK_D_1, CommandAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EngineeringAirlockD1BlockEntity>> ENGINEERING_AIRLOCK_D_1 = register("engineering_airlock_d_1", Ssc14ModBlocks.ENGINEERING_AIRLOCK_D_1, EngineeringAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<HydroponicsAirlockD1BlockEntity>> HYDROPONICS_AIRLOCK_D_1 = register("hydroponics_airlock_d_1", Ssc14ModBlocks.HYDROPONICS_AIRLOCK_D_1, HydroponicsAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MedicalAirlockD1BlockEntity>> MEDICAL_AIRLOCK_D_1 = register("medical_airlock_d_1", Ssc14ModBlocks.MEDICAL_AIRLOCK_D_1, MedicalAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SalvageAirlockD1BlockEntity>> SALVAGE_AIRLOCK_D_1 = register("salvage_airlock_d_1", Ssc14ModBlocks.SALVAGE_AIRLOCK_D_1, SalvageAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ScienceAirlockD1BlockEntity>> SCIENCE_AIRLOCK_D_1 = register("science_airlock_d_1", Ssc14ModBlocks.SCIENCE_AIRLOCK_D_1, ScienceAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SecurityAirlockD1BlockEntity>> SECURITY_AIRLOCK_D_1 = register("security_airlock_d_1", Ssc14ModBlocks.SECURITY_AIRLOCK_D_1, SecurityAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SyndicateAirlockD1BlockEntity>> SYNDICATE_AIRLOCK_D_1 = register("syndicate_airlock_d_1", Ssc14ModBlocks.SYNDICATE_AIRLOCK_D_1, SyndicateAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<VirologyAirlockD1BlockEntity>> VIROLOGY_AIRLOCK_D_1 = register("virology_airlock_d_1", Ssc14ModBlocks.VIROLOGY_AIRLOCK_D_1, VirologyAirlockD1BlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.AtmosphericsAirlockD1BlockEntity>> ATMOSPHERICS_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.ATMOSPHERICS_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.CargoAirlockD1BlockEntity>> CARGO_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.CARGO_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.CentComAirlockD1BlockEntity>> CENT_COM_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.CENT_COM_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.ChemistryAirlockD1BlockEntity>> CHEMISTRY_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.CHEMISTRY_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.CommandAirlockD1BlockEntity>> COMMAND_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.COMMAND_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.EngineeringAirlockD1BlockEntity>> ENGINEERING_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.ENGINEERING_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.HydroponicsAirlockD1BlockEntity>> HYDROPONICS_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.HYDROPONICS_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.MedicalAirlockD1BlockEntity>> MEDICAL_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.MEDICAL_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.SalvageAirlockD1BlockEntity>> SALVAGE_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.SALVAGE_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.ScienceAirlockD1BlockEntity>> SCIENCE_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.SCIENCE_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.SecurityAirlockD1BlockEntity>> SECURITY_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.SECURITY_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.SyndicateAirlockD1BlockEntity>> SYNDICATE_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.SYNDICATE_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.VirologyAirlockD1BlockEntity>> VIROLOGY_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.VIROLOGY_AIRLOCK_D_1;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET_EMERG = Ssc14ClosetBlockEntities.CLOSET_EMERG;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET_FIRE = Ssc14ClosetBlockEntities.CLOSET_FIRE;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET_BLACK = Ssc14ClosetBlockEntities.CLOSET_BLACK;
@@ -112,8 +109,8 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET_N_2 = Ssc14ClosetBlockEntities.CLOSET_N_2;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET_ORANGE = Ssc14ClosetBlockEntities.CLOSET_ORANGE;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET_PINK = Ssc14ClosetBlockEntities.CLOSET_PINK;
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GlassAirlockD1BlockEntity>> GLASS_AIRLOCK_D_1 = register("glass_airlock_d_1", Ssc14ModBlocks.GLASS_AIRLOCK_D_1, GlassAirlockD1BlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BaseGlassAirlockD1BlockEntity>> BASE_GLASS_AIRLOCK_D_1 = register("base_glass_airlock_d_1", Ssc14ModBlocks.BASE_GLASS_AIRLOCK_D_1, BaseGlassAirlockD1BlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.GlassAirlockD1BlockEntity>> GLASS_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.GLASS_AIRLOCK_D_1;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<net.ssc14.content.block.airlock.BaseGlassAirlockD1BlockEntity>> BASE_GLASS_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.BASE_GLASS_AIRLOCK_D_1;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FuelTankBlockEntity>> FUEL_TANK = Ssc14FuelBlockEntities.FUEL_TANK;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OrderConsoleBlockEntity>> ORDER_CONSOLE = Ssc14CommerceBlockEntities.ORDER_CONSOLE;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OrderPalletBlockEntity>> ORDER_PALLET = Ssc14CommerceBlockEntities.ORDER_PALLET;
@@ -121,27 +118,7 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SaleConsoleBlockEntity>> SALE_CONSOLE = Ssc14CommerceBlockEntities.SALE_CONSOLE;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LightingBlockEntity>> EMERGENCY_LIGHT = Ssc14LightingBlockEntities.EMERGENCY_LIGHT;
 
-	private static <T extends BlockEntity> DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> register(String registryname, DeferredHolder<Block, Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {
-		return REGISTRY.register(registryname, () -> new BlockEntityType(supplier, block.get()));
-	}
-
 	@SubscribeEvent
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-		event.registerBlockEntity(Capabilities.Item.BLOCK, TECH_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, ATMOSPHERICS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, CARGO_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, CENT_COM_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, CHEMISTRY_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, COMMAND_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, ENGINEERING_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, HYDROPONICS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, MEDICAL_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, SALVAGE_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, SCIENCE_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, SECURITY_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, SYNDICATE_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, VIROLOGY_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, GLASS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, BASE_GLASS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 	}
 }

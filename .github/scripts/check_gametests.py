@@ -70,6 +70,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_shutters_contract",
     "ssc_14:compatibility_block_airlock_upper_plugs_contract",
     "ssc_14:compatibility_block_base_airlock_contract",
+    "ssc_14:compatibility_block_department_airlocks_contract",
 }
 
 
