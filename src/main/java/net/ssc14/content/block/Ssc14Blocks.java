@@ -23,6 +23,9 @@ import net.ssc14.content.block.debug.FailureSentinelBlock;
 import net.ssc14.content.block.debug.DebugGravityGeneratorBlock;
 import net.ssc14.content.block.debug.StationCodeDebugBlock;
 import net.ssc14.content.block.airlock.AirlockThresholdBlock;
+import net.ssc14.content.block.airlock.AirlockUpperPlugBlock;
+import net.ssc14.content.block.airlock.ClosedAirlockUpperPlugBlockEntity;
+import net.ssc14.content.block.airlock.OpenAirlockUpperPlugBlockEntity;
 import net.ssc14.content.block.airlock.ShuttersBlock;
 import net.ssc14.content.block.access.IdConsoleBlock;
 import net.ssc14.content.block.decoration.DirectionalBannerBlock;
@@ -167,6 +170,12 @@ public final class Ssc14Blocks {
             register("gravity_generator", GravityGeneratorBlock::new);
     public static final DeferredBlock<Block> AIRLOCK_THRESHOLD =
             register("airlock_threshold", AirlockThresholdBlock::new);
+    public static final DeferredBlock<Block> AIRLOCK_UP_PLUG = register(
+            "airlock_up_plug", properties -> new AirlockUpperPlugBlock(
+                    properties, false, ClosedAirlockUpperPlugBlockEntity::new));
+    public static final DeferredBlock<Block> AIRLOCK_UP_PLUG_OPEN = register(
+            "airlock_up_plug_open", properties -> new AirlockUpperPlugBlock(
+                    properties, true, OpenAirlockUpperPlugBlockEntity::new));
     public static final DeferredBlock<Block> SHUTTERS =
             register("shutters", ShuttersBlock::new);
     public static final DeferredBlock<Block> CONSOLE_OF_ID =

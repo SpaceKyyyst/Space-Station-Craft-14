@@ -55,6 +55,8 @@ import net.ssc14.content.block.control.NetworkButtonBlockEntity;
 import net.ssc14.content.block.control.Ssc14ControlBlockEntities;
 import net.ssc14.content.block.airlock.ShuttersBlockEntity;
 import net.ssc14.content.block.airlock.Ssc14AirlockBlockEntities;
+import net.ssc14.content.block.airlock.ClosedAirlockUpperPlugBlockEntity;
+import net.ssc14.content.block.airlock.OpenAirlockUpperPlugBlockEntity;
 
 @EventBusSubscriber
 public class Ssc14ModBlockEntities {
@@ -67,8 +69,8 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PodstationBlockEntity>> PODSTATION = Ssc14EnergyMachineBlockEntities.PODSTATION;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DebugGeneratorBlockEntity>> DEBU_GGENERATOR = Ssc14EnergyMachineBlockEntities.DEBU_GGENERATOR;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LightingBlockEntity>> LAMP = Ssc14LightingBlockEntities.LAMP;
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AirlockUpPlugBlockEntity>> AIRLOCK_UP_PLUG = register("airlock_up_plug", Ssc14ModBlocks.AIRLOCK_UP_PLUG, AirlockUpPlugBlockEntity::new);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AirlockUpPlugOPENBlockEntity>> AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN, AirlockUpPlugOPENBlockEntity::new);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosedAirlockUpperPlugBlockEntity>> AIRLOCK_UP_PLUG = Ssc14AirlockBlockEntities.AIRLOCK_UP_PLUG;
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OpenAirlockUpperPlugBlockEntity>> AIRLOCK_UP_PLUG_OPEN = Ssc14AirlockBlockEntities.AIRLOCK_UP_PLUG_OPEN;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SmesBlockEntity>> SMES = Ssc14EnergyMachineBlockEntities.SMES;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GravityGeneratorBlockEntity>> GRAVITY_GENERATOR = Ssc14GravityBlockEntities.GRAVITY_GENERATOR;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<C4ChargeBlockEntity>> C_4 = Ssc14ExplosiveBlockEntities.C_4;
@@ -125,8 +127,6 @@ public class Ssc14ModBlockEntities {
 	@SubscribeEvent
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
 		event.registerBlockEntity(Capabilities.Item.BLOCK, BASE_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG.get(), WorldlyContainerWrapper::new);
-		event.registerBlockEntity(Capabilities.Item.BLOCK, AIRLOCK_UP_PLUG_OPEN.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, TECH_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, ATMOSPHERICS_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);
 		event.registerBlockEntity(Capabilities.Item.BLOCK, CARGO_AIRLOCK_D_1.get(), WorldlyContainerWrapper::new);

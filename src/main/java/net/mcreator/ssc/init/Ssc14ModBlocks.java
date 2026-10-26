@@ -38,8 +38,8 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> PODSTATION = Ssc14Blocks.PODSTATION;
 	public static final DeferredBlock<Block> DEBU_GGENERATOR = Ssc14Blocks.DEBU_GGENERATOR;
 	public static final DeferredBlock<Block> LAMP = Ssc14Blocks.LAMP;
-	public static final DeferredBlock<Block> AIRLOCK_UP_PLUG;
-	public static final DeferredBlock<Block> AIRLOCK_UP_PLUG_OPEN;
+	public static final DeferredBlock<Block> AIRLOCK_UP_PLUG = Ssc14Blocks.AIRLOCK_UP_PLUG;
+	public static final DeferredBlock<Block> AIRLOCK_UP_PLUG_OPEN = Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN;
 	public static final DeferredBlock<Block> TITLE_STEEL_DIAGONAL_MINI = Ssc14Blocks.TITLE_STEEL_DIAGONAL_MINI;
 	public static final DeferredBlock<Block> TITLE_STEEL_DIAGONAL = Ssc14Blocks.TITLE_STEEL_DIAGONAL;
 	public static final DeferredBlock<Block> UP_TITLE_STEEL = Ssc14Blocks.UP_TITLE_STEEL;
@@ -245,8 +245,6 @@ public class Ssc14ModBlocks {
 	public static final DeferredBlock<Block> EMERGENCY_LIGHT = Ssc14Blocks.EMERGENCY_LIGHT;
 	static {
 		BASE_AIRLOCK_D_1 = register("base_airlock_d_1", BaseAirlockD1Block::new);
-		AIRLOCK_UP_PLUG = register("airlock_up_plug", AirlockUpPlugBlock::new);
-		AIRLOCK_UP_PLUG_OPEN = register("airlock_up_plug_open", AirlockUpPlugOPENBlock::new);
 		TECH_AIRLOCK_D_1 = register("tech_airlock_d_1", TechAirlockD1Block::new);
 		ATMOSPHERICS_AIRLOCK_D_1 = register("atmospherics_airlock_d_1", AtmosphericsAirlockD1Block::new);
 		CARGO_AIRLOCK_D_1 = register("cargo_airlock_d_1", CargoAirlockD1Block::new);
