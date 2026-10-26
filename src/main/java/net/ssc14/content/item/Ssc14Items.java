@@ -13,6 +13,7 @@ import net.ssc14.content.item.clothing.PassiveEquipmentItem;
 import net.ssc14.content.item.clothing.UniformAccessoryItem;
 import net.ssc14.content.item.clothing.UniformJumpsuitItem;
 import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
+import net.ssc14.content.item.food.CookingIngredientItem;
 import net.ssc14.content.item.food.FoodPackagingWasteItem;
 import net.ssc14.content.item.lighting.LightingComponentItem;
 import net.ssc14.content.item.machinery.MachineComponentItem;
@@ -206,6 +207,10 @@ public final class Ssc14Items {
             spawnEgg("mouse_white_spawn_egg", Ssc14EntityTypes.MOUSE_WHITE);
     public static final DeferredItem<Item> CARP_SPAWN_EGG =
             spawnEgg("carp_spawn_egg", Ssc14EntityTypes.CARP);
+    public static final DeferredItem<Item> DOUGH = cookingIngredient("dough");
+    public static final DeferredItem<Item> DOUGH_PIECE = cookingIngredient("dough_piece");
+    public static final DeferredItem<Item> EGG = cookingIngredient("egg");
+    public static final DeferredItem<Item> EGGSHELL = cookingIngredient("eggshell");
 
     private Ssc14Items() { }
 
@@ -232,6 +237,10 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> foodPackagingWaste(String name) {
         return REGISTRY.<Item>registerItem(name, FoodPackagingWasteItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> cookingIngredient(String name) {
+        return REGISTRY.<Item>registerItem(name, CookingIngredientItem::new, Item.Properties::new);
     }
 
     private static DeferredItem<Item> uniformAccessory(String name) {

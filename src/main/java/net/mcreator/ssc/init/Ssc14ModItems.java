@@ -907,8 +907,8 @@ public class Ssc14ModItems {
 		BUTTON = block(Ssc14ModBlocks.BUTTON, new Item.Properties().stacksTo(1));
 		NETWORK_CONFIGURATOR = register("network_configurator", NetworkConfiguratorItem::new);
 		MICROWAWE = block(Ssc14ModBlocks.MICROWAWE, new Item.Properties().stacksTo(1));
-		DOUGH = register("dough", DoughItem::new);
-		DOUGH_PIECE = register("dough_piece", DoughPieceItem::new);
+		DOUGH = Ssc14Items.DOUGH;
+		DOUGH_PIECE = Ssc14Items.DOUGH_PIECE;
 		BREAD = register("bread", BreadItem::new);
 		BREAD_SLICE = register("bread_slice", BreadSliceItem::new);
 		BUN = register("bun", BunItem::new);
@@ -920,8 +920,8 @@ public class Ssc14ModItems {
 		MILK_OPEN = register("milk_open", MilkOpenItem::new);
 		ALL_PURPOSE_SAUCE = register("all_purpose_sauce", AllPurposeSauceItem::new);
 		ALL_PURPOSE_SAUCE_OPEN = register("all_purpose_sauce_open", AllPurposeSauceOpenItem::new);
-		EGG = register("egg", EggItem::new);
-		EGGSHELL = register("eggshell", EggshellItem::new);
+		EGG = Ssc14Items.EGG;
+		EGGSHELL = Ssc14Items.EGGSHELL;
 		EGG_CARTON = register("egg_carton", EggCartonItem::new);
 		TOFU = register("tofu", TofuItem::new);
 		TOFU_BURGER = register("tofu_burger", TofuBurgerItem::new);
