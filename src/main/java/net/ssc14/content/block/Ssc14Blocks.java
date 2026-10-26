@@ -11,6 +11,8 @@ import net.ssc14.content.block.atmosphere.GasProducerO2Block;
 import net.ssc14.content.block.ceiling.CeilingTileBlock;
 import net.ssc14.content.block.commerce.SalePalletBlock;
 import net.ssc14.content.block.commerce.OrderPalletBlock;
+import net.ssc14.content.block.commerce.OrderConsoleBlock;
+import net.ssc14.content.block.commerce.SaleConsoleBlock;
 import net.ssc14.content.block.commerce.VendingUpperPlugBlock;
 import net.ssc14.content.block.communication.CommunicationServersBlock;
 import net.ssc14.content.block.communication.CommunicationConsoleBlock;
@@ -127,6 +129,10 @@ public final class Ssc14Blocks {
             register("sale_pallet", SalePalletBlock::new);
     public static final DeferredBlock<Block> ORDER_PALLET =
             register("order_pallet", OrderPalletBlock::new);
+    public static final DeferredBlock<Block> ORDER_CONSOLE =
+            register("order_console", OrderConsoleBlock::new);
+    public static final DeferredBlock<Block> SALE_CONSOLE =
+            register("sale_console", SaleConsoleBlock::new);
     public static final DeferredBlock<Block> VENDING_KOSTIL =
             register("vending_kostil", VendingUpperPlugBlock::new);
     public static final DeferredBlock<Block> FUEL_TANK =
