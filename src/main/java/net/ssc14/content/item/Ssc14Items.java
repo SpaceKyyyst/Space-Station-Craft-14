@@ -14,7 +14,10 @@ import net.ssc14.content.item.clothing.UniformAccessoryItem;
 import net.ssc14.content.item.clothing.UniformJumpsuitItem;
 import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
 import net.ssc14.content.item.food.CookingIngredientItem;
+import net.ssc14.content.item.food.EdibleFoodItem;
 import net.ssc14.content.item.food.FoodPackagingWasteItem;
+import net.ssc14.content.item.food.FoodDefinition;
+import net.ssc14.content.item.food.Ssc14FoodDefinitions;
 import net.ssc14.content.item.lighting.LightingComponentItem;
 import net.ssc14.content.item.machinery.MachineComponentItem;
 import net.ssc14.content.item.material.MaterialItem;
@@ -211,6 +214,26 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> DOUGH_PIECE = cookingIngredient("dough_piece");
     public static final DeferredItem<Item> EGG = cookingIngredient("egg");
     public static final DeferredItem<Item> EGGSHELL = cookingIngredient("eggshell");
+    public static final DeferredItem<Item> BREAD = edibleFood("bread", Ssc14FoodDefinitions.BREAD);
+    public static final DeferredItem<Item> BREAD_SLICE =
+            edibleFood("bread_slice", Ssc14FoodDefinitions.BREAD_SLICE);
+    public static final DeferredItem<Item> BUN = edibleFood("bun", Ssc14FoodDefinitions.BUN);
+    public static final DeferredItem<Item> TOFU = edibleFood("tofu", Ssc14FoodDefinitions.TOFU);
+    public static final DeferredItem<Item> TOFU_BURGER =
+            edibleFood("tofu_burger", Ssc14FoodDefinitions.TOFU_BURGER);
+    public static final DeferredItem<Item> TOFU_SLICE =
+            edibleFood("tofu_slice", Ssc14FoodDefinitions.TOFU_SLICE);
+    public static final DeferredItem<Item> CHEESE =
+            edibleFood("cheese", Ssc14FoodDefinitions.CHEESE);
+    public static final DeferredItem<Item> CUTLET =
+            edibleFood("cutlet", Ssc14FoodDefinitions.CUTLET);
+    public static final DeferredItem<Item> FRIED_CUTLET =
+            edibleFood("fried_cutlet", Ssc14FoodDefinitions.FRIED_CUTLET);
+    public static final DeferredItem<Item> MEAT = edibleFood("meat", Ssc14FoodDefinitions.MEAT);
+    public static final DeferredItem<Item> FRIED_MEAT =
+            edibleFood("fried_meat", Ssc14FoodDefinitions.FRIED_MEAT);
+    public static final DeferredItem<Item> ROTTEN_MEAT =
+            edibleFood("rotten_meat", Ssc14FoodDefinitions.ROTTEN_MEAT);
 
     private Ssc14Items() { }
 
@@ -241,6 +264,11 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> cookingIngredient(String name) {
         return REGISTRY.<Item>registerItem(name, CookingIngredientItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> edibleFood(String name, FoodDefinition definition) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new EdibleFoodItem(properties, definition), Item.Properties::new);
     }
 
     private static DeferredItem<Item> uniformAccessory(String name) {

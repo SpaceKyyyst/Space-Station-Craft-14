@@ -84,6 +84,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_item_poster_contract",
     "ssc_14:compatibility_item_spawn_egg_contract",
     "ssc_14:compatibility_item_cooking_ingredient_contract",
+    "ssc_14:compatibility_item_edible_food_contract",
 }
 
 
