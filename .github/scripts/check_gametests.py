@@ -67,6 +67,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_block_vending_machine_contract",
     "ssc_14:compatibility_block_network_button_contract",
     "ssc_14:compatibility_block_id_console_contract",
+    "ssc_14:compatibility_block_shutters_contract",
 }
 
 

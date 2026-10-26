@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.server.level.ServerLevel;
 import java.util.List;
+import net.ssc14.common.network.NetworkAction;
 
 public class NetworkManager {
 
@@ -30,13 +31,13 @@ public class NetworkManager {
         }
         BlockState state = world.getBlockState(targetPos);
         // Проверяем сам блок
-        if (state.getBlock() instanceof INetworkAction actionBlock && actionBlock.getAvailableActions().contains(actionId)) {
+        if (state.getBlock() instanceof NetworkAction actionBlock && actionBlock.getAvailableActions().contains(actionId)) {
             actionBlock.executeNetworkAction(actionId, world, targetPos);
             return;
         }
         // Проверяем BlockEntity (если логика внутри него)
         BlockEntity be = world.getBlockEntity(targetPos);
-        if (be instanceof INetworkAction actionBe && actionBe.getAvailableActions().contains(actionId)) {
+        if (be instanceof NetworkAction actionBe && actionBe.getAvailableActions().contains(actionId)) {
             actionBe.executeNetworkAction(actionId, world, targetPos);
         }
     }
