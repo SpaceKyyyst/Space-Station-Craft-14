@@ -20,7 +20,7 @@ import net.mcreator.ssc.NetConfigGUISyncMessage;
 import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
 import net.mcreator.ssc.NetworkSavedData;
 import net.mcreator.ssc.INetworkAction;
-import net.mcreator.ssc.INetworkTrigger;
+import net.ssc14.common.network.NetworkTrigger;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 import java.util.Map;
@@ -61,7 +61,7 @@ public record NetConfigGUIButtonMessage(int buttonID, int x, int y, int z) imple
         if (world.isClientSide() || buttonID < 0 || buttonID > 15 || menu.sourcePos == null || menu.targetPos == null
                 || !entity.getMainHandItem().is(Ssc14ModItems.NETWORK_CONFIGURATOR.get())
                 || !world.hasChunkAt(menu.sourcePos) || !world.mayInteract(entity, menu.sourcePos)
-                || !(world.getBlockState(menu.sourcePos).getBlock() instanceof INetworkTrigger trigger)
+                || !(world.getBlockState(menu.sourcePos).getBlock() instanceof NetworkTrigger trigger)
                 || !(world.getBlockState(menu.targetPos).getBlock() instanceof INetworkAction action)) return;
 
         Map<String, Object> state = menu.getMenuState();
