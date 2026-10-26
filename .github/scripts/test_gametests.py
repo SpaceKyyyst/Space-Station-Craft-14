@@ -218,6 +218,9 @@ class GameTestReportTests(unittest.TestCase):
     def test_uniform_jumpsuit_items_contract_is_required(self):
         self.assertIn("ssc_14:compatibility_item_uniform_jumpsuit_contract", EXPECTED_TESTS)
 
+    def test_passive_equipment_items_contract_is_required(self):
+        self.assertIn("ssc_14:compatibility_item_passive_equipment_contract", EXPECTED_TESTS)
+
     def test_empty_suite_fails(self):
         self.report(set())
         self.assertEqual(len(EXPECTED_TESTS), len(check_report(self.path)))

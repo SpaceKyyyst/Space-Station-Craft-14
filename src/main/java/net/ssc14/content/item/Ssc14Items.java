@@ -5,6 +5,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.item.clothing.ScarfItem;
+import net.ssc14.content.item.clothing.PassiveEquipmentItem;
 import net.ssc14.content.item.clothing.UniformAccessoryItem;
 import net.ssc14.content.item.clothing.UniformJumpsuitItem;
 import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
@@ -129,6 +130,23 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> CM_OTURTLE_JUMPSUIT = uniformJumpsuit("cm_oturtle_jumpsuit");
     public static final DeferredItem<Item> HO_SPARADE_JUMPSUIT = uniformJumpsuit("ho_sparade_jumpsuit");
     public static final DeferredItem<Item> MAID_JUMPSUIT = uniformJumpsuit("maid_jumpsuit");
+    public static final DeferredItem<Item> ISOLATED_GLOVES = passiveEquipment("isolated_gloves");
+    public static final DeferredItem<Item> COMBAT_BOOTS_ITEM = passiveEquipment("combat_boots_item");
+    public static final DeferredItem<Item> HELMET_SECURITY = passiveEquipment("helmet_security");
+    public static final DeferredItem<Item> BELT_SECURITY = passiveEquipment("belt_security");
+    public static final DeferredItem<Item> HELMETS_EVA = passiveEquipment("helmets_eva");
+    public static final DeferredItem<Item> GAS_MASK = passiveEquipment("gas_mask");
+    public static final DeferredItem<Item> WORK_BOOTS = passiveEquipment("work_boots");
+    public static final DeferredItem<Item> COAT_ATMOS = passiveEquipment("coat_atmos");
+    public static final DeferredItem<Item> COAT_SECURITY = passiveEquipment("coat_security");
+    public static final DeferredItem<Item> GLASS_GLASSES = passiveEquipment("glass_glasses");
+    public static final DeferredItem<Item> BLACK_GLOVES = passiveEquipment("black_gloves");
+    public static final DeferredItem<Item> HELMET_COSMONAUT = passiveEquipment("helmet_cosmonaut");
+    public static final DeferredItem<Item> BELT_SECURITY_WEBBING = passiveEquipment("belt_security_webbing");
+    public static final DeferredItem<Item> BELT_INSTRUMENTAL = passiveEquipment("belt_instrumental");
+    public static final DeferredItem<Item> MASK_GAS_SECURITY = passiveEquipment("mask_gas_security");
+    public static final DeferredItem<Item> HARDSUIT_SALVAGE = passiveEquipment("hardsuit_salvage");
+    public static final DeferredItem<Item> HARDSUIT_SALVAGE_HELMET = passiveEquipment("hardsuit_salvage_helmet");
 
     private Ssc14Items() { }
 
@@ -163,5 +181,9 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> uniformJumpsuit(String name) {
         return REGISTRY.<Item>registerItem(name, UniformJumpsuitItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> passiveEquipment(String name) {
+        return REGISTRY.<Item>registerItem(name, PassiveEquipmentItem::new, Item.Properties::new);
     }
 }
