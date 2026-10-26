@@ -663,7 +663,7 @@ public class Ssc14ModItems {
 		PLASTEEL_WALL = block(Ssc14Blocks.PLASTEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
 		PLASTEEL_WALL_CARCASE = block(Ssc14Blocks.PLASTEEL_WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
 		ENERGY_BAR = register("energy_bar", EnergyBarItem::new);
-		ENERGY_BAR_TRASH = register("energy_bar_trash", EnergyBarTrashItem::new);
+		ENERGY_BAR_TRASH = Ssc14Items.ENERGY_BAR_TRASH;
 		ENERGY_BAR_2 = register("energy_bar_2", EnergyBar2Item::new);
 		PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG = register("plassteel_wall_carcase_entit_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.PLASSTEEL_WALL_CARCASE_ENTIT.get())));
 		TITLE_DARK = block(Ssc14Blocks.TITLE_DARK, new Item.Properties().stacksTo(30).fireResistant());
@@ -881,13 +881,13 @@ public class Ssc14ModItems {
 		REAGENT_CONTAINER = register("reagent_container", ReagentContainerItem::new);
 		VENDING_AUT_1 = block(Ssc14ModBlocks.VENDING_AUT_1, new Item.Properties().fireResistant());
 		CHEESE_HONKERS = register("cheese_honkers", CheeseHonkersItem::new);
-		CHEESE_HONKERS_TRASH = register("cheese_honkers_trash", CheeseHonkersTrashItem::new);
+		CHEESE_HONKERS_TRASH = Ssc14Items.CHEESE_HONKERS_TRASH;
 		CHIPS = register("chips", ChipsItem::new);
-		CHIPS_TRASH = register("chips_trash", ChipsTrashItem::new);
+		CHIPS_TRASH = Ssc14Items.CHIPS_TRASH;
 		BORITOS = register("boritos", BoritosItem::new);
-		BORITOS_TRASH = register("boritos_trash", BoritosTrashItem::new);
+		BORITOS_TRASH = Ssc14Items.BORITOS_TRASH;
 		POPCORN = register("popcorn", PopcornItem::new);
-		POPCORN_TRASH = register("popcorn_trash", PopcornTrashItem::new);
+		POPCORN_TRASH = Ssc14Items.POPCORN_TRASH;
 		MOUSE_BROWN_SPAWN_EGG = register("mouse_brown_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.MOUSE_BROWN.get())));
 		MOUSE_GRAY_SPAWN_EGG = register("mouse_gray_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.MOUSE_GRAY.get())));
 		MOUSE_WHITE_SPAWN_EGG = register("mouse_white_spawn_egg", properties -> new SpawnEggItem(properties.spawnEgg(Ssc14EntityTypes.MOUSE_WHITE.get())));
