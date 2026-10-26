@@ -14,6 +14,7 @@ import net.ssc14.content.item.lighting.LightingComponentItem;
 import net.ssc14.content.item.machinery.MachineComponentItem;
 import net.ssc14.content.item.material.MaterialItem;
 import net.ssc14.content.item.medical.MedicalSupplyItem;
+import net.ssc14.content.item.poster.PosterItem;
 
 /** Canonical owner of SSC14 item registrations. */
 public final class Ssc14Items {
@@ -152,6 +153,41 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> BLOODPACK = medicalSupply("bloodpack");
     public static final DeferredItem<Item> GAUZE = medicalSupply("gauze");
     public static final DeferredItem<Item> OINTMENT = medicalSupply("ointment");
+    public static final DeferredItem<Item> POSTER_RANDOM_ANYTHING = poster("poster_random_anything");
+    public static final DeferredItem<Item> POSTER_ANOMALY = poster("poster_anomaly");
+    public static final DeferredItem<Item> POSTER_ARMORY = poster("poster_armory");
+    public static final DeferredItem<Item> POSTER_ATMOS = poster("poster_atmos");
+    public static final DeferredItem<Item> POSTER_BAR = poster("poster_bar");
+    public static final DeferredItem<Item> POSTER_BRIDGE = poster("poster_bridge");
+    public static final DeferredItem<Item> POSTER_CARGO = poster("poster_cargo");
+    public static final DeferredItem<Item> POSTER_CHAPEL = poster("poster_chapel");
+    public static final DeferredItem<Item> POSTER_CHEM = poster("poster_chem");
+    public static final DeferredItem<Item> POSTER_COMMANDER = poster("poster_commander");
+    public static final DeferredItem<Item> POSTER_DEATHSPOSAL = poster("poster_deathsposal");
+    public static final DeferredItem<Item> POSTER_DETECTIVE = poster("poster_detective");
+    public static final DeferredItem<Item> POSTER_DRAMA = poster("poster_drama");
+    public static final DeferredItem<Item> POSTER_ENG = poster("poster_eng");
+    public static final DeferredItem<Item> POSTER_EVA = poster("poster_eva");
+    public static final DeferredItem<Item> POSTER_GRAVI = poster("poster_gravi");
+    public static final DeferredItem<Item> POSTER_HYDRO = poster("poster_hydro");
+    public static final DeferredItem<Item> POSTER_JANITOR = poster("poster_janitor");
+    public static final DeferredItem<Item> POSTER_KITCHEN = poster("poster_kitchen");
+    public static final DeferredItem<Item> POSTER_LAW = poster("poster_law");
+    public static final DeferredItem<Item> POSTER_MAIL = poster("poster_mail");
+    public static final DeferredItem<Item> POSTER_MEDBAY = poster("poster_medbay");
+    public static final DeferredItem<Item> POSTER_MEDIUM_SECURE = poster("poster_medium_secure");
+    public static final DeferredItem<Item> POSTER_PODS = poster("poster_pods");
+    public static final DeferredItem<Item> POSTER_PRISON = poster("poster_prison");
+    public static final DeferredItem<Item> POSTER_RND = poster("poster_rnd");
+    public static final DeferredItem<Item> POSTER_SALVAGE = poster("poster_salvage");
+    public static final DeferredItem<Item> POSTER_SCI = poster("poster_sci");
+    public static final DeferredItem<Item> POSTER_SECURITY = poster("poster_security");
+    public static final DeferredItem<Item> POSTER_SPACE = poster("poster_space");
+    public static final DeferredItem<Item> POSTER_SURGERY = poster("poster_surgery");
+    public static final DeferredItem<Item> POSTER_TELECOMS = poster("poster_telecoms");
+    public static final DeferredItem<Item> POSTER_VAULT = poster("poster_vault");
+    public static final DeferredItem<Item> POSTER_VIROLOGY = poster("poster_virology");
+    public static final DeferredItem<Item> POSTER_XENOARCH = poster("poster_xenoarch");
 
     private Ssc14Items() { }
 
@@ -194,5 +230,9 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> medicalSupply(String name) {
         return REGISTRY.<Item>registerItem(name, MedicalSupplyItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> poster(String name) {
+        return REGISTRY.<Item>registerItem(name, properties -> new PosterItem(properties, name));
     }
 }
