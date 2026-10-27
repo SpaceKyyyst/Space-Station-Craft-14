@@ -905,7 +905,7 @@ public class Ssc14ModItems {
 		DEBUGACTIVATOR = Ssc14Items.DEBUGACTIVATOR;
 		SHUTTERS = block(Ssc14ModBlocks.SHUTTERS, new Item.Properties().stacksTo(1));
 		BUTTON = block(Ssc14ModBlocks.BUTTON, new Item.Properties().stacksTo(1));
-		NETWORK_CONFIGURATOR = register("network_configurator", NetworkConfiguratorItem::new);
+		NETWORK_CONFIGURATOR = Ssc14Items.NETWORK_CONFIGURATOR;
 		MICROWAWE = block(Ssc14ModBlocks.MICROWAWE, new Item.Properties().stacksTo(1));
 		DOUGH = Ssc14Items.DOUGH;
 		DOUGH_PIECE = Ssc14Items.DOUGH_PIECE;

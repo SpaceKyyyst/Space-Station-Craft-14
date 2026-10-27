@@ -30,7 +30,7 @@ import net.ssc14.common.network.NetworkTrigger;
 import net.ssc14.common.network.NetworkAction;
 import net.mcreator.ssc.NetworkSavedData;
 import net.mcreator.ssc.NetConfigGUISyncMessage;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 
 import java.util.function.Supplier;
 import java.util.Map;
@@ -76,7 +76,7 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
             access = ContainerLevelAccess.create(world, targetPos);
 
             ItemStack mainHand = entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY;
-            if (Ssc14ModItems.NETWORK_CONFIGURATOR.get() == mainHand.getItem()) {
+            if (mainHand.is(Ssc14Items.NETWORK_CONFIGURATOR.get())) {
                 double fx = mainHand.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("First_Target_X").orElse(0.0);
                 double fy = mainHand.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("First_Target_Y").orElse(0.0);
                 double fz = mainHand.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("First_Target_Z").orElse(0.0);
