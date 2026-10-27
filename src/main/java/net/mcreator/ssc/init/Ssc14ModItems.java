@@ -604,7 +604,7 @@ public class Ssc14ModItems {
 		ID_CONSOLE_ENTITY_SPAWN_EGG = Ssc14Items.ID_CONSOLE_ENTITY_SPAWN_EGG;
 		GAS_ANALYSER = register("gas_analyser", GasAnalyserItem::new);
 		BASE_WINDOW = block(Ssc14Blocks.BASE_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
-		GLASS_SHARD = register("glass_shard", GlassShardItem::new);
+		GLASS_SHARD = Ssc14Items.GLASS_SHARD;
 		GLASS = Ssc14Items.GLASS;
 		ACCESS_CONFIG = register("access_config", AccessConfigItem::new);
 		ID_CARD_CAPITAN = Ssc14Items.ID_CARD_CAPITAN;
@@ -696,7 +696,7 @@ public class Ssc14ModItems {
 		LED_LIGHT_TUBE_BROKEN = Ssc14Items.LED_LIGHT_TUBE_BROKEN;
 		LIGHT_BULB_BROKEN = Ssc14Items.LIGHT_BULB_BROKEN;
 		ARMORED_WINDOW = block(Ssc14Blocks.ARMORED_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
-		ARM_GLASS_SHARD = register("arm_glass_shard", ArmGlassShardItem::new);
+		ARM_GLASS_SHARD = Ssc14Items.ARM_GLASS_SHARD;
 		ARM_GLASS = Ssc14Items.ARM_GLASS;
 		DEBUG_LAMP = block(Ssc14ModBlocks.DEBUG_LAMP, new Item.Properties().stacksTo(1).fireResistant());
 		DEBUG_TECH_LAMP = block(Ssc14ModBlocks.DEBUG_TECH_LAMP, new Item.Properties().stacksTo(1).fireResistant());
