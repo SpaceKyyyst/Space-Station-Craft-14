@@ -23,7 +23,6 @@ neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModHumanoidModels.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModMenus.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModModels.java
-neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModParticles.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModRenderStateModifiers.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModScreens.java
 neoforge-client src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java
