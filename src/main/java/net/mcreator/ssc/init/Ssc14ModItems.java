@@ -665,7 +665,7 @@ public class Ssc14ModItems {
 		ENERGY_BAR_2 = Ssc14Items.ENERGY_BAR_2;
 		PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG = Ssc14Items.PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG;
 		TITLE_DARK = block(Ssc14Blocks.TITLE_DARK, new Item.Properties().stacksTo(30).fireResistant());
-		AIRLOCK_CONTROLLER = register("airlock_controller", AirlockControllerItem::new);
+		AIRLOCK_CONTROLLER = Ssc14Items.AIRLOCK_CONTROLLER;
 		APC = block(Ssc14ModBlocks.APC, new Item.Properties().stacksTo(1).fireResistant());
 		PODSTATION = block(Ssc14ModBlocks.PODSTATION, new Item.Properties().stacksTo(1).fireResistant());
 		DEBU_GGENERATOR = block(Ssc14ModBlocks.DEBU_GGENERATOR, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
