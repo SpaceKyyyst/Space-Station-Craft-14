@@ -98,6 +98,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_item_glass_shard_contract",
     "ssc_14:compatibility_item_portable_menu_contract",
     "ssc_14:compatibility_item_firearm_contract",
+    "ssc_14:compatibility_item_mechanical_tool_contract",
 }
 
 

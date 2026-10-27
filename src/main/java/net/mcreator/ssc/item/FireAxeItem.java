@@ -1,72 +1,13 @@
 package net.mcreator.ssc.item;
 
-import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
-import net.neoforged.neoforge.common.ItemAbility;
-import net.neoforged.neoforge.common.ItemAbilities;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.ToolMaterial;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.tags.TagKey;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.resources.Identifier;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.BlockPos;
+import net.ssc14.content.item.tool.MechanicalHandToolItem;
+import net.ssc14.content.item.tool.MechanicalToolProfile;
 
-import net.mcreator.ssc.procedures.FireAxeDAMAGEProcedure;
-import net.mcreator.ssc.init.Ssc14ModItems;
-
-@EventBusSubscriber
-public class FireAxeItem extends Item {
-	private static final ToolMaterial TOOL_MATERIAL = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 0, 4f, 0, 1, TagKey.create(Registries.ITEM, Identifier.parse("ssc_14:fire_axe_repair_items")));
-
-	public FireAxeItem(Item.Properties properties) {
-		super(TOOL_MATERIAL.applyToolProperties(properties, BlockTags.MINEABLE_WITH_PICKAXE, -0.9f, -3.25f, 0)
-				.attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, -0.9, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-						.add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -3.25, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build())
-				.fireResistant());
-	}
-
-	@SubscribeEvent
-	public static void modifyDefaultComponents(ModifyDefaultComponentsEvent event) {
-		event.modify(Ssc14ModItems.FIRE_AXE.get(), (builder, _, _) -> builder.set(DataComponents.MAX_DAMAGE, null));
-	}
-
-	@Override
-	public boolean isCorrectToolForDrops(ItemStack itemstack, BlockState blockstate) {
-		return !blockstate.is(BlockTags.NEEDS_STONE_TOOL) && !blockstate.is(BlockTags.NEEDS_IRON_TOOL) && !blockstate.is(BlockTags.NEEDS_DIAMOND_TOOL);
-	}
-
-	@Override
-	public boolean canPerformAction(ItemInstance stack, ItemAbility toolAction) {
-		return ItemAbilities.DEFAULT_AXE_ACTIONS.contains(toolAction) || ItemAbilities.DEFAULT_HOE_ACTIONS.contains(toolAction) || ItemAbilities.DEFAULT_SHOVEL_ACTIONS.contains(toolAction) || toolAction == ItemAbilities.SWORD_SWEEP;
-	}
-
-	@Override
-	public float getDestroySpeed(ItemStack itemstack, BlockState blockstate) {
-		return 4f;
-	}
-
-	@Override
-	public boolean mineBlock(ItemStack itemstack, Level world, BlockState blockstate, BlockPos pos, LivingEntity entity) {
-		itemstack.hurtAndBreak(1, entity, entity.getUsedItemHand().asEquipmentSlot());
-		return true;
-	}
-
-	@Override
-	public void hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
-		itemstack.hurtAndBreak(2, entity, entity.getUsedItemHand().asEquipmentSlot());
-		FireAxeDAMAGEProcedure.execute(entity.level(), entity);
-	}
+/** @deprecated Use the canonical fire-axe registration. */
+@Deprecated(forRemoval = false)
+public class FireAxeItem extends MechanicalHandToolItem {
+    public FireAxeItem(Item.Properties properties) {
+        super(properties, MechanicalToolProfile.FIRE_AXE);
+    }
 }

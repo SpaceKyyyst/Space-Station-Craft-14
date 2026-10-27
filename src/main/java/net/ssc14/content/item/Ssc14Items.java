@@ -44,6 +44,9 @@ import net.ssc14.content.item.reagent.ReagentContainerDefinition;
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.content.item.reagent.SealedReagentContainerItem;
 import net.ssc14.content.item.reagent.Ssc14ReagentContainers;
+import net.ssc14.content.item.tool.AsteroidPickItem;
+import net.ssc14.content.item.tool.MechanicalHandToolItem;
+import net.ssc14.content.item.tool.MechanicalToolProfile;
 import net.ssc14.content.item.utility.DebugActivatorItem;
 import net.ssc14.content.item.utility.RcdCartridgeItem;
 import net.ssc14.content.item.utility.TrafficConeItem;
@@ -127,6 +130,18 @@ public final class Ssc14Items {
             pistolMagazine("magazine_pistol_35", PistolMagazineState.LOADED);
     public static final DeferredItem<Item> MAGAZINE_PISTOL_35EMPTY =
             pistolMagazine("magazine_pistol_35empty", PistolMagazineState.EMPTY);
+    public static final DeferredItem<Item> CROWBAR =
+            mechanicalTool("crowbar", MechanicalToolProfile.CROWBAR);
+    public static final DeferredItem<Item> NIPPERS =
+            mechanicalTool("nippers", MechanicalToolProfile.NIPPERS);
+    public static final DeferredItem<Item> FIRE_AXE =
+            mechanicalTool("fire_axe", MechanicalToolProfile.FIRE_AXE);
+    public static final DeferredItem<Item> SCREWDRIVER =
+            mechanicalTool("screwdriver", MechanicalToolProfile.SCREWDRIVER);
+    public static final DeferredItem<Item> SPANNER =
+            mechanicalTool("spanner", MechanicalToolProfile.SPANNER);
+    public static final DeferredItem<Item> PICK =
+            REGISTRY.registerItem("pick", AsteroidPickItem::new, Item.Properties::new);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -530,6 +545,13 @@ public final class Ssc14Items {
             String name, PistolMagazineState state) {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new PistolMagazineItem(properties, state),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> mechanicalTool(
+            String name, MechanicalToolProfile profile) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new MechanicalHandToolItem(properties, profile),
                 Item.Properties::new);
     }
 
