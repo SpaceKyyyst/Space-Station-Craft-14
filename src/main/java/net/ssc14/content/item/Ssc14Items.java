@@ -56,6 +56,7 @@ import net.ssc14.content.item.tool.GasAnalyserItem;
 import net.ssc14.content.item.tool.MechanicalHandToolItem;
 import net.ssc14.content.item.tool.MechanicalToolProfile;
 import net.ssc14.content.item.tool.MultitoolItem;
+import net.ssc14.content.item.tool.NetworkConfiguratorItem;
 import net.ssc14.content.item.tool.WelderItem;
 import net.ssc14.content.item.tool.WelderState;
 import net.ssc14.content.item.utility.DebugActivatorItem;
@@ -164,6 +165,9 @@ public final class Ssc14Items {
                     Item.Properties::new);
     public static final DeferredItem<Item> MULTITOOL =
             REGISTRY.registerItem("multitul", MultitoolItem::new,
+                    Item.Properties::new);
+    public static final DeferredItem<Item> NETWORK_CONFIGURATOR =
+            REGISTRY.registerItem("network_configurator", NetworkConfiguratorItem::new,
                     Item.Properties::new);
     public static final DeferredItem<Item> WELDING =
             welder("welding", WelderState.INACTIVE);

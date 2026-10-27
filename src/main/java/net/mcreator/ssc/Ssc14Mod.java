@@ -37,6 +37,7 @@ import net.mcreator.ssc.world.inventory.CommunConsoleGUIMenu;
 import net.mcreator.ssc.integration.LegacyCommerceConsoleIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyIdConsoleIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyNetworkButtonIntegrationAdapter;
+import net.mcreator.ssc.integration.LegacyNetworkConfiguratorMenuAdapter;
 import net.mcreator.ssc.integration.LegacyShuttersIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockUpperPlugIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
@@ -56,6 +57,7 @@ import net.ssc14.content.item.decal.DecalToolInteractionService;
 import net.ssc14.content.item.container.PortableMenuInteractionService;
 import net.ssc14.content.item.weapon.FirearmInteractionService;
 import net.ssc14.content.item.tool.AirlockControllerService;
+import net.ssc14.content.item.tool.NetworkConfiguratorService;
 import net.ssc14.content.block.access.IdConsoleIntegrationService;
 import net.ssc14.content.block.access.Ssc14AccessBlockEntities;
 import net.ssc14.content.block.airlock.ShuttersIntegrationService;
@@ -382,6 +384,7 @@ public class Ssc14Mod {
 				new LegacyVendingMachineIntegrationAdapter());
 		NetworkButtonInteractionService.install(
 				new LegacyNetworkButtonIntegrationAdapter());
+		NetworkConfiguratorService.install(new LegacyNetworkConfiguratorMenuAdapter());
 		ShuttersIntegrationService.install(new LegacyShuttersIntegrationAdapter());
 		AirlockUpperPlugIntegrationService.install(
 				new LegacyAirlockUpperPlugIntegrationAdapter());
