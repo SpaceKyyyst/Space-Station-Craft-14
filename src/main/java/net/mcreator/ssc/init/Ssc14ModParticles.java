@@ -7,6 +7,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.ssc14.client.particle.Ssc14ParticleProviderBinder;
 import net.ssc14.client.particle.GasCloudParticle;
+import net.ssc14.client.particle.DeconstructionParticle;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 
 /** Compatibility bootstrap for transitional particle provider implementations. */
@@ -43,9 +44,9 @@ public final class Ssc14ModParticles {
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.RCD_INTERFERENCE_P, RCDInterferencePParticle::provider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.SPECIFY_P, SpecifyPParticle::provider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.BULLET_FLIGHT_P, BulletFlightPParticle::provider);
-        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.DECONSTRUCT_P, DeconstructPParticle::provider);
-        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.DECONSTRUCT_PX, DeconstructPXParticle::provider);
-        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.DECONSTRUCT_PZ, DeconstructPZParticle::provider);
+        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.DECONSTRUCT_P, DeconstructionParticle::provider);
+        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.DECONSTRUCT_PX, DeconstructionParticle::provider);
+        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.DECONSTRUCT_PZ, DeconstructionParticle::provider);
     }
 
     private Ssc14ModParticles() { }
