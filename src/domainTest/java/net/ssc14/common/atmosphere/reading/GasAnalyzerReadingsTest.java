@@ -1,4 +1,4 @@
-package net.mcreator.ssc.network.validation;
+package net.ssc14.common.atmosphere.reading;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

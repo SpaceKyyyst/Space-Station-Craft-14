@@ -1,8 +1,9 @@
-package net.mcreator.ssc.network;
+package net.ssc14.client.atmosphere;
 
 import java.lang.ref.WeakReference;
 import java.util.Optional;
 import net.minecraft.world.level.Level;
+import net.ssc14.integration.neoforge.atmosphere.network.GasAnalyzerSnapshotMessage;
 
 /** Client-thread cache tied to one world instance; it cannot retain a disconnected world. */
 public final class GasAnalyzerClientCache {

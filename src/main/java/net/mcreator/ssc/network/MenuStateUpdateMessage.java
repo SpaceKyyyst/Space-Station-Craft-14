@@ -18,7 +18,7 @@ import net.ssc14.client.menu.MenuStateReceiver;
 import net.mcreator.ssc.init.Ssc14ModMenus;
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.network.validation.MenuStateRules;
-import net.mcreator.ssc.network.validation.PayloadLimits;
+import net.ssc14.core.network.PayloadLimits;
 
 @EventBusSubscriber
 public record MenuStateUpdateMessage(int elementType, String name, Object elementState) implements CustomPacketPayload {

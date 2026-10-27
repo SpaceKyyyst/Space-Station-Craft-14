@@ -1,4 +1,4 @@
-package net.mcreator.ssc.network.validation;
+package net.ssc14.core.network;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;

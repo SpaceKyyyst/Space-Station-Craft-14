@@ -12,7 +12,7 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
-import net.mcreator.ssc.network.validation.PayloadLimits;
+import net.ssc14.core.network.PayloadLimits;
 
 import java.util.HashMap;
 import java.util.Map;
