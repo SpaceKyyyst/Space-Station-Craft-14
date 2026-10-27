@@ -66,4 +66,20 @@ public final class Ssc14PlayerVariables implements ValueIOSerializable {
     public void clearSyncDirty() {
         syncDirty = false;
     }
+
+    public void copyPersistentStateFrom(Ssc14PlayerVariables source) {
+        sscCustomHealth = source.sscCustomHealth;
+        ssc14_dmg_blunt = source.ssc14_dmg_blunt;
+        ssc14_dmg_slash = source.ssc14_dmg_slash;
+        ssc14_dmg_piercing = source.ssc14_dmg_piercing;
+        ssc14_dmg_heat = source.ssc14_dmg_heat;
+        ssc14_dmg_shock = source.ssc14_dmg_shock;
+        ssc14_dmg_cold = source.ssc14_dmg_cold;
+        ssc14_dmg_caustic = source.ssc14_dmg_caustic;
+        ssc14_dmg_poison = source.ssc14_dmg_poison;
+        ssc14_dmg_radiation = source.ssc14_dmg_radiation;
+        ssc14_dmg_asphyx = source.ssc14_dmg_asphyx;
+        ssc14_dmg_bloodloss = source.ssc14_dmg_bloodloss;
+        ssc14_dmg_cellular = source.ssc14_dmg_cellular;
+    }
 }

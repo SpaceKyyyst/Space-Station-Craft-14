@@ -2,7 +2,6 @@ package net.mcreator.ssc.network;
 
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.network.PacketDistributor;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -14,7 +13,6 @@ import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.Identifier;
@@ -27,10 +25,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.HolderLookup;
 
 import net.mcreator.ssc.Ssc14Mod;
-import net.ssc14.integration.neoforge.player.Ssc14PlayerVariables;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerVariablesSyncPayload;
-
-import static net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments.PLAYER_VARIABLES;
 
 @EventBusSubscriber
 public class Ssc14ModVariables {
@@ -40,66 +35,6 @@ public class Ssc14ModVariables {
 	public static void init(FMLCommonSetupEvent event) {
 		Ssc14Mod.addClientboundNetworkMessage(SavedDataSyncMessage.TYPE, SavedDataSyncMessage.STREAM_CODEC, SavedDataSyncMessage::handleData);
 		Ssc14Mod.addClientboundNetworkMessage(Ssc14PlayerVariablesSyncPayload.TYPE, Ssc14PlayerVariablesSyncPayload.STREAM_CODEC, Ssc14PlayerVariablesSyncPayload::handleData);
-	}
-
-	@SubscribeEvent
-	public static void onPlayerLoggedInSyncPlayerVariables(PlayerEvent.PlayerLoggedInEvent event) {
-		if (event.getEntity() instanceof ServerPlayer player) {
-			for (Entity entityiterator : player.level().players())
-				if (entityiterator != player && entityiterator instanceof ServerPlayer playeriterator)
-					PacketDistributor.sendToPlayer(player, new Ssc14PlayerVariablesSyncPayload(playeriterator.getData(PLAYER_VARIABLES), playeriterator.getId()));
-			PacketDistributor.sendToPlayersInDimension(player.level(), new Ssc14PlayerVariablesSyncPayload(player.getData(PLAYER_VARIABLES), player.getId()));
-		}
-	}
-
-	@SubscribeEvent
-	public static void onPlayerRespawnedSyncPlayerVariables(PlayerEvent.PlayerRespawnEvent event) {
-		if (event.getEntity() instanceof ServerPlayer player) {
-			for (Entity entityiterator : player.level().players())
-				if (entityiterator != player && entityiterator instanceof ServerPlayer playeriterator)
-					PacketDistributor.sendToPlayer(player, new Ssc14PlayerVariablesSyncPayload(playeriterator.getData(PLAYER_VARIABLES), playeriterator.getId()));
-			PacketDistributor.sendToPlayersInDimension(player.level(), new Ssc14PlayerVariablesSyncPayload(player.getData(PLAYER_VARIABLES), player.getId()));
-		}
-	}
-
-	@SubscribeEvent
-	public static void onPlayerChangedDimensionSyncPlayerVariables(PlayerEvent.PlayerChangedDimensionEvent event) {
-		if (event.getEntity() instanceof ServerPlayer player) {
-			for (Entity entityiterator : player.level().players())
-				if (entityiterator != player && entityiterator instanceof ServerPlayer playeriterator)
-					PacketDistributor.sendToPlayer(player, new Ssc14PlayerVariablesSyncPayload(playeriterator.getData(PLAYER_VARIABLES), playeriterator.getId()));
-			PacketDistributor.sendToPlayersInDimension(player.level(), new Ssc14PlayerVariablesSyncPayload(player.getData(PLAYER_VARIABLES), player.getId()));
-		}
-	}
-
-	@SubscribeEvent
-	public static void onPlayerTickUpdateSyncPlayerVariables(PlayerTickEvent.Post event) {
-		if (event.getEntity() instanceof ServerPlayer player && player.getData(PLAYER_VARIABLES).isSyncDirty()) {
-			PacketDistributor.sendToPlayersInDimension(player.level(), new Ssc14PlayerVariablesSyncPayload(player.getData(PLAYER_VARIABLES), player.getId()));
-			player.getData(PLAYER_VARIABLES).clearSyncDirty();
-		}
-	}
-
-	@SubscribeEvent
-	public static void clonePlayer(PlayerEvent.Clone event) {
-		Ssc14PlayerVariables original = event.getOriginal().getData(PLAYER_VARIABLES);
-		Ssc14PlayerVariables clone = new Ssc14PlayerVariables();
-		if (!event.isWasDeath()) {
-			clone.sscCustomHealth = original.sscCustomHealth;
-			clone.ssc14_dmg_blunt = original.ssc14_dmg_blunt;
-			clone.ssc14_dmg_slash = original.ssc14_dmg_slash;
-			clone.ssc14_dmg_piercing = original.ssc14_dmg_piercing;
-			clone.ssc14_dmg_heat = original.ssc14_dmg_heat;
-			clone.ssc14_dmg_shock = original.ssc14_dmg_shock;
-			clone.ssc14_dmg_cold = original.ssc14_dmg_cold;
-			clone.ssc14_dmg_caustic = original.ssc14_dmg_caustic;
-			clone.ssc14_dmg_poison = original.ssc14_dmg_poison;
-			clone.ssc14_dmg_radiation = original.ssc14_dmg_radiation;
-			clone.ssc14_dmg_asphyx = original.ssc14_dmg_asphyx;
-			clone.ssc14_dmg_bloodloss = original.ssc14_dmg_bloodloss;
-			clone.ssc14_dmg_cellular = original.ssc14_dmg_cellular;
-		}
-		event.getEntity().setData(PLAYER_VARIABLES, clone);
 	}
 
 	@SubscribeEvent
