@@ -9,15 +9,12 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 
-import net.minecraft.world.level.storage.TagValueOutput;
-import net.minecraft.world.level.storage.TagValueInput;
 import net.minecraft.world.level.saveddata.SavedDataType;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.util.ProblemReporter;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.Identifier;
@@ -31,6 +28,7 @@ import net.minecraft.core.HolderLookup;
 
 import net.mcreator.ssc.Ssc14Mod;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerVariables;
+import net.ssc14.integration.neoforge.player.Ssc14PlayerVariablesSyncPayload;
 
 import static net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments.PLAYER_VARIABLES;
 
@@ -41,7 +39,7 @@ public class Ssc14ModVariables {
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
 		Ssc14Mod.addClientboundNetworkMessage(SavedDataSyncMessage.TYPE, SavedDataSyncMessage.STREAM_CODEC, SavedDataSyncMessage::handleData);
-		Ssc14Mod.addClientboundNetworkMessage(PlayerVariablesSyncMessage.TYPE, PlayerVariablesSyncMessage.STREAM_CODEC, PlayerVariablesSyncMessage::handleData);
+		Ssc14Mod.addClientboundNetworkMessage(Ssc14PlayerVariablesSyncPayload.TYPE, Ssc14PlayerVariablesSyncPayload.STREAM_CODEC, Ssc14PlayerVariablesSyncPayload::handleData);
 	}
 
 	@SubscribeEvent
@@ -49,8 +47,8 @@ public class Ssc14ModVariables {
 		if (event.getEntity() instanceof ServerPlayer player) {
 			for (Entity entityiterator : player.level().players())
 				if (entityiterator != player && entityiterator instanceof ServerPlayer playeriterator)
-					PacketDistributor.sendToPlayer(player, new PlayerVariablesSyncMessage(playeriterator.getData(PLAYER_VARIABLES), playeriterator.getId()));
-			PacketDistributor.sendToPlayersInDimension(player.level(), new PlayerVariablesSyncMessage(player.getData(PLAYER_VARIABLES), player.getId()));
+					PacketDistributor.sendToPlayer(player, new Ssc14PlayerVariablesSyncPayload(playeriterator.getData(PLAYER_VARIABLES), playeriterator.getId()));
+			PacketDistributor.sendToPlayersInDimension(player.level(), new Ssc14PlayerVariablesSyncPayload(player.getData(PLAYER_VARIABLES), player.getId()));
 		}
 	}
 
@@ -59,8 +57,8 @@ public class Ssc14ModVariables {
 		if (event.getEntity() instanceof ServerPlayer player) {
 			for (Entity entityiterator : player.level().players())
 				if (entityiterator != player && entityiterator instanceof ServerPlayer playeriterator)
-					PacketDistributor.sendToPlayer(player, new PlayerVariablesSyncMessage(playeriterator.getData(PLAYER_VARIABLES), playeriterator.getId()));
-			PacketDistributor.sendToPlayersInDimension(player.level(), new PlayerVariablesSyncMessage(player.getData(PLAYER_VARIABLES), player.getId()));
+					PacketDistributor.sendToPlayer(player, new Ssc14PlayerVariablesSyncPayload(playeriterator.getData(PLAYER_VARIABLES), playeriterator.getId()));
+			PacketDistributor.sendToPlayersInDimension(player.level(), new Ssc14PlayerVariablesSyncPayload(player.getData(PLAYER_VARIABLES), player.getId()));
 		}
 	}
 
@@ -69,15 +67,15 @@ public class Ssc14ModVariables {
 		if (event.getEntity() instanceof ServerPlayer player) {
 			for (Entity entityiterator : player.level().players())
 				if (entityiterator != player && entityiterator instanceof ServerPlayer playeriterator)
-					PacketDistributor.sendToPlayer(player, new PlayerVariablesSyncMessage(playeriterator.getData(PLAYER_VARIABLES), playeriterator.getId()));
-			PacketDistributor.sendToPlayersInDimension(player.level(), new PlayerVariablesSyncMessage(player.getData(PLAYER_VARIABLES), player.getId()));
+					PacketDistributor.sendToPlayer(player, new Ssc14PlayerVariablesSyncPayload(playeriterator.getData(PLAYER_VARIABLES), playeriterator.getId()));
+			PacketDistributor.sendToPlayersInDimension(player.level(), new Ssc14PlayerVariablesSyncPayload(player.getData(PLAYER_VARIABLES), player.getId()));
 		}
 	}
 
 	@SubscribeEvent
 	public static void onPlayerTickUpdateSyncPlayerVariables(PlayerTickEvent.Post event) {
 		if (event.getEntity() instanceof ServerPlayer player && player.getData(PLAYER_VARIABLES).isSyncDirty()) {
-			PacketDistributor.sendToPlayersInDimension(player.level(), new PlayerVariablesSyncMessage(player.getData(PLAYER_VARIABLES), player.getId()));
+			PacketDistributor.sendToPlayersInDimension(player.level(), new Ssc14PlayerVariablesSyncPayload(player.getData(PLAYER_VARIABLES), player.getId()));
 			player.getData(PLAYER_VARIABLES).clearSyncDirty();
 		}
 	}
@@ -283,38 +281,4 @@ public class Ssc14ModVariables {
 		}
 	}
 
-	public record PlayerVariablesSyncMessage(Ssc14PlayerVariables data, int player) implements CustomPacketPayload {
-		public static final Type<PlayerVariablesSyncMessage> TYPE = new Type<>(Identifier.fromNamespaceAndPath(Ssc14Mod.MODID, "player_variables_sync"));
-		public static final StreamCodec<RegistryFriendlyByteBuf, PlayerVariablesSyncMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, PlayerVariablesSyncMessage message) -> {
-			TagValueOutput output = TagValueOutput.createWithContext(ProblemReporter.DISCARDING, buffer.registryAccess());
-			message.data.serialize(output);
-			buffer.writeInt(message.player());
-			buffer.writeNbt(output.buildResult());
-		}, (RegistryFriendlyByteBuf buffer) -> {
-			PlayerVariablesSyncMessage message = new PlayerVariablesSyncMessage(new Ssc14PlayerVariables(), buffer.readInt());
-			message.data.deserialize(TagValueInput.create(ProblemReporter.DISCARDING, buffer.registryAccess(), buffer.readNbt()));
-			return message;
-		});
-
-		@Override
-		public Type<PlayerVariablesSyncMessage> type() {
-			return TYPE;
-		}
-
-		public static void handleData(final PlayerVariablesSyncMessage message, final IPayloadContext context) {
-			if (context.flow() == PacketFlow.CLIENTBOUND && message.data != null) {
-				context.enqueueWork(() -> {
-					Entity player = context.player().level().getEntity(message.player);
-					if (player == null)
-						return;
-					TagValueOutput output = TagValueOutput.createWithContext(ProblemReporter.DISCARDING, context.player().registryAccess());
-					message.data.serialize(output);
-					player.getData(PLAYER_VARIABLES).deserialize(TagValueInput.create(ProblemReporter.DISCARDING, context.player().registryAccess(), output.buildResult()));
-				}).exceptionally(e -> {
-					context.connection().disconnect(Component.literal(e.getMessage()));
-					return null;
-				});
-			}
-		}
-	}
 }
