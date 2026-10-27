@@ -19,6 +19,7 @@ import net.minecraft.client.KeyMapping;
 import net.mcreator.ssc.network.*;
 import net.ssc14.content.player.crawl.CrawlService;
 import net.ssc14.integration.neoforge.player.network.CrawlMessage;
+import net.ssc14.integration.neoforge.rotation.network.RotateMessage;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
