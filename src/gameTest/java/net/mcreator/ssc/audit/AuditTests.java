@@ -306,19 +306,19 @@ public final class AuditTests {
             data.putBoolean("energy_cabel_1", true);
             data.putBoolean("energy_cabel_2", true);
             for (String function : functions) {
-                h.assertTrue(net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, function, 0), "Enabled indicator missing: " + function);
+                h.assertTrue(net.ssc14.client.airlock.AirlockPanelIndicators.lit(data, function, 0), "Enabled indicator missing: " + function);
                 if (!function.equals("powered")) {
                     data.putBoolean(function, false);
-                    h.assertTrue(!net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, function, 0), "Disabled indicator still lit: " + function);
+                    h.assertTrue(!net.ssc14.client.airlock.AirlockPanelIndicators.lit(data, function, 0), "Disabled indicator still lit: " + function);
                     data.putBoolean(function, true);
                 }
             }
             data.putBoolean("energy_cabel_1", false);
-            h.assertTrue(net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, "powered", 0)
-                    && !net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, "powered", 10), "Single power wire must produce blinking indication");
+            h.assertTrue(net.ssc14.client.airlock.AirlockPanelIndicators.lit(data, "powered", 0)
+                    && !net.ssc14.client.airlock.AirlockPanelIndicators.lit(data, "powered", 10), "Single power wire must produce blinking indication");
             data.putBoolean("powered", false);
             for (String function : functions)
-                h.assertTrue(!net.mcreator.ssc.access.AirlockPanelIndicators.lit(data, function, 0), "Unpowered indicator still lit: " + function);
+                h.assertTrue(!net.ssc14.client.airlock.AirlockPanelIndicators.lit(data, function, 0), "Unpowered indicator still lit: " + function);
             h.succeed();
         });
         TESTS.put("airlock_controller_target_and_cut_bolts", h -> {

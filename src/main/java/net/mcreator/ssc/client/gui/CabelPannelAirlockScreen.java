@@ -120,7 +120,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 
     private boolean indicatorLit(String function) {
         var blockEntity = world.getBlockEntity(new net.minecraft.core.BlockPos(x, y, z));
-        return blockEntity != null && net.mcreator.ssc.access.AirlockPanelIndicators.lit(
+        return blockEntity != null && net.ssc14.client.airlock.AirlockPanelIndicators.lit(
                 blockEntity.getPersistentData(), function, world.getGameTime());
     }
     private boolean panelFlag(String key) {

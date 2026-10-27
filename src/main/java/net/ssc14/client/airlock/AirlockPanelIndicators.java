@@ -1,6 +1,7 @@
-package net.mcreator.ssc.access;
+package net.ssc14.client.airlock;
 
 import net.minecraft.nbt.CompoundTag;
+import net.ssc14.common.airlock.AirlockWireState;
 
 /** Presentation of the seven panel indicators from synchronized server state. */
 public final class AirlockPanelIndicators {
@@ -23,7 +24,7 @@ public final class AirlockPanelIndicators {
             case "safe" -> 7;
             default -> -1;
         };
-        if (wireFunction >= 0 && AirlockWirePulses.active(data, wireFunction, gameTime))
+        if (wireFunction >= 0 && AirlockWireState.active(data, wireFunction, gameTime))
             return (gameTime / BLINK_HALF_PERIOD_TICKS) % 2 == 0;
         return data.getBooleanOr(function, false);
     }
