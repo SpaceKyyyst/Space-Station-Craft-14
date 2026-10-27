@@ -1,6 +1,6 @@
 package net.mcreator.ssc.gametest;
 
-import net.mcreator.ssc.AtmosBlockRegistry;
+import net.ssc14.content.atmosphere.runtime.AtmosBlockRegistry;
 import net.mcreator.ssc.block.BaseAirlockD1Block;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;

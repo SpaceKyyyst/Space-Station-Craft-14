@@ -41,7 +41,7 @@ public class SSC14AtmosGasTemperatureCommandProcedure {
             var pos = player.blockPosition();
             
             // 4. Получаем ячейку атмосферы
-            var cell = net.mcreator.ssc.AtmosphereManager.get(serverLevel).getCellAt(pos);
+            var cell = net.ssc14.content.atmosphere.runtime.AtmosphereManager.get(serverLevel).getCellAt(pos);
             if (cell == null) {
                 sendError(source, "Не удалось получить данные об атмосфере в этом блоке.\n§7Попробуй поставить/сломать блок рядом, чтобы активировать регион.");
                 return;

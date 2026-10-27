@@ -1,5 +1,7 @@
 package net.mcreator.ssc;
 
+import net.ssc14.content.atmosphere.runtime.AtmosphereManager;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.LevelAccessor;

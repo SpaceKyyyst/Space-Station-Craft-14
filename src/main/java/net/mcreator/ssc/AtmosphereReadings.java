@@ -2,6 +2,7 @@ package net.mcreator.ssc;
 
 import net.ssc14.common.atmosphere.model.GasType;
 import net.ssc14.integration.neoforge.atmosphere.AtmosCell;
+import net.ssc14.content.atmosphere.runtime.AtmosphereManager;
 import java.util.Optional;
 import net.mcreator.ssc.network.GasAnalyzerClientCache;
 import net.mcreator.ssc.network.GasAnalyzerSnapshotMessage;
