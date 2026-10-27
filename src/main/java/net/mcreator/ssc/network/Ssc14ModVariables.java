@@ -1,13 +1,10 @@
 package net.mcreator.ssc.network;
 
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
-import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -35,12 +32,10 @@ import net.minecraft.core.HolderLookup;
 import net.mcreator.ssc.Ssc14Mod;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerVariables;
 
-import java.util.function.Supplier;
+import static net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments.PLAYER_VARIABLES;
 
 @EventBusSubscriber
 public class Ssc14ModVariables {
-	public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, Ssc14Mod.MODID);
-	public static final Supplier<AttachmentType<Ssc14PlayerVariables>> PLAYER_VARIABLES = ATTACHMENT_TYPES.register("player_variables", () -> AttachmentType.serializable(Ssc14PlayerVariables::new).build());
 	public static boolean station_gravity = false;
 
 	@SubscribeEvent
