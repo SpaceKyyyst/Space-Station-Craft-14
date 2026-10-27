@@ -29,7 +29,6 @@ import net.ssc14.integration.neoforge.player.Ssc14PlayerVariablesSyncPayload;
 
 @EventBusSubscriber
 public class Ssc14ModVariables {
-	public static boolean station_gravity = false;
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

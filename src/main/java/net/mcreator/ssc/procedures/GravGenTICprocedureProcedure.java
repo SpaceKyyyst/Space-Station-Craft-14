@@ -1,6 +1,6 @@
 package net.mcreator.ssc.procedures;
 
-import net.mcreator.ssc.gravity.GravityGeneratorService;
+import net.ssc14.content.block.gravity.GravityGeneratorService;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.LevelAccessor;

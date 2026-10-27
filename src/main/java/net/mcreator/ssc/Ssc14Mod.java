@@ -42,7 +42,7 @@ import net.mcreator.ssc.integration.LegacyAirlockUpperPlugIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockControllerInteractionAdapter;
 import net.mcreator.ssc.integration.LegacyVendingMachineIntegrationAdapter;
-import net.mcreator.ssc.gravity.ui.GravityGeneratorWindow;
+import net.ssc14.content.gravity.ui.GravityGeneratorWindow;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.content.entity.Ssc14EntityBehavior;
@@ -147,7 +147,7 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14MachineBlockEntities::registerCapabilities);
 		Ssc14DebugBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14DebugBlockEntities::registerCapabilities);
-		DebugGravityStateService.install(enabled -> Ssc14ModVariables.station_gravity = enabled);
+		DebugGravityStateService.install(net.ssc14.content.gravity.StationGravityState::setEnabled);
 		Ssc14GravityBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14GravityBlockEntities::registerCapabilities);
 		Ssc14ExplosiveBlockEntities.REGISTRY.register(modEventBus);

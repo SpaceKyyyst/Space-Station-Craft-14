@@ -1,6 +1,5 @@
 package net.ssc14.content.block;
 
-import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -80,15 +79,15 @@ public final class Ssc14BlocksDebugGravityGameTests {
                         helper.getLevel(), absolutePos, Direction.NORTH) > 0,
                 "debug gravity generator comparator output changed");
 
-        Ssc14ModVariables.station_gravity = false;
+        net.ssc14.content.gravity.StationGravityState.setEnabled(false);
         block.tick(block.defaultBlockState(), helper.getLevel(), absolutePos,
                 RandomSource.create(1L));
-        helper.assertTrue(Ssc14ModVariables.station_gravity,
+        helper.assertTrue(net.ssc14.content.gravity.StationGravityState.isEnabled(),
                 "debug gravity generator tick did not enable station gravity");
         var player = helper.makeMockPlayer(GameType.SURVIVAL);
         block.onDestroyedByPlayer(block.defaultBlockState(), helper.getLevel(), absolutePos,
                 player, ItemStack.EMPTY, false, Fluids.EMPTY.defaultFluidState());
-        helper.assertTrue(!Ssc14ModVariables.station_gravity,
+        helper.assertTrue(!net.ssc14.content.gravity.StationGravityState.isEnabled(),
                 "destroying debug gravity generator did not disable station gravity");
         helper.succeed();
     }
