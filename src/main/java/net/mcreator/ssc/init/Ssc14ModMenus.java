@@ -14,6 +14,7 @@ import net.minecraft.client.Minecraft;
 
 import net.mcreator.ssc.world.inventory.*;
 import net.mcreator.ssc.network.MenuStateUpdateMessage;
+import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.content.menu.Ssc14MenuTypes;
 
 import java.util.Map;
@@ -85,7 +86,7 @@ public class Ssc14ModMenus {
 			if (player instanceof ServerPlayer serverPlayer) {
 				PacketDistributor.sendToPlayer(serverPlayer, new MenuStateUpdateMessage(elementType, name, elementState));
 			} else if (player.level().isClientSide()) {
-				if (Minecraft.getInstance().screen instanceof Ssc14ModScreens.ScreenAccessor accessor && needClientUpdate)
+				if (Minecraft.getInstance().screen instanceof MenuStateReceiver accessor && needClientUpdate)
 					accessor.updateMenuState(elementType, name, elementState);
 				ClientPacketDistributor.sendToServer(new MenuStateUpdateMessage(elementType, name, elementState));
 			}
