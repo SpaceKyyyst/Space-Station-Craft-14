@@ -1,0 +1,67 @@
+package net.mcreator.ssc.network;
+
+import java.util.Map;
+import net.mcreator.ssc.ModReagents;
+import net.mcreator.ssc.Ssc14Mod;
+import net.minecraft.network.protocol.PacketFlow;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.ssc14.common.chemistry.ReagentTransferPlan;
+import net.ssc14.content.item.reagent.ReagentContainerItem;
+import net.ssc14.integration.neoforge.chemistry.network.ProcessReactionsMessage;
+
+/** Transitional handler until the reagent container runtime moves to the target namespace. */
+@EventBusSubscriber
+public final class ProcessReactionsRegistration {
+    private ProcessReactionsRegistration() { }
+
+    public static void handle(ProcessReactionsMessage message, IPayloadContext context) {
+        if (context.flow() != PacketFlow.SERVERBOUND) return;
+        context.enqueueWork(() -> {
+            if (context.player() instanceof ServerPlayer player) execute(player, message.slotIndex());
+        }).exceptionally(error -> {
+            Ssc14Mod.LOGGER.error("Failed to transfer reagents", error);
+            return null;
+        });
+    }
+
+    private static void execute(ServerPlayer player, int slotIndex) {
+        if (!MenuPacketGuard.canUseMenu(player)
+                || slotIndex < 0 || slotIndex >= player.containerMenu.slots.size()) return;
+        Slot targetSlot = player.containerMenu.slots.get(slotIndex);
+        if (!targetSlot.isActive() || !targetSlot.mayPickup(player)) return;
+        ItemStack targetStack = targetSlot.getItem();
+        ItemStack sourceStack = player.getMainHandItem();
+        if (targetStack == sourceStack || !targetSlot.mayPlace(targetStack)
+                || !(targetStack.getItem() instanceof ReagentContainerItem targetItem)
+                || !(sourceStack.getItem() instanceof ReagentContainerItem sourceItem)) return;
+
+        Map<String, Integer> sourceReagents = ModReagents.getReagents(sourceStack);
+        if (sourceReagents.isEmpty()) return;
+        Map<String, Integer> transfer = ReagentTransferPlan.calculate(sourceReagents,
+                ModReagents.getReagents(targetStack), sourceItem.getMaxCapacity(), targetItem.getMaxCapacity());
+        for (var entry : transfer.entrySet()) {
+            if (entry.getValue() > 0) {
+                ModReagents.removeReagent(sourceStack, entry.getKey(), entry.getValue());
+                ModReagents.addReagent(targetStack, entry.getKey(), entry.getValue());
+            }
+        }
+        if (transfer.isEmpty()) return;
+        targetSlot.set(targetStack);
+        targetSlot.setChanged();
+        player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, sourceStack);
+        ModReagents.processReactions(targetSlot.getItem(), player);
+        player.containerMenu.broadcastChanges();
+    }
+
+    @SubscribeEvent
+    public static void register(FMLCommonSetupEvent event) {
+        Ssc14Mod.addServerboundNetworkMessage(ProcessReactionsMessage.TYPE,
+                ProcessReactionsMessage.STREAM_CODEC, ProcessReactionsRegistration::handle);
+    }
+}
