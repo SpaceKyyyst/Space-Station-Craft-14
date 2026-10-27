@@ -34,19 +34,20 @@ import net.ssc14.content.block.decoration.FenceCornerBlock;
 import net.ssc14.content.block.decoration.FenceLineBlock;
 import net.ssc14.content.block.decoration.FencePointBlock;
 import net.ssc14.content.block.decoration.FenceThreeWayBlock;
+import net.ssc14.content.item.block.FenceBlockItem;
 
 @EventBusSubscriber(modid = Ssc14Identity.MOD_ID)
 public final class Ssc14BlocksFenceGameTests {
     private static final Identifier TEST_ID = id("compatibility_block_fence_contract");
     private static final List<ExpectedBlock> EXPECTED = List.of(
             expected(Ssc14Blocks.FENCE_POINT, "fence_point", FencePointBlock.class,
-                    net.mcreator.ssc.block.FencePointBlock.Item.class, Kind.POINT),
+                    FenceBlockItem.class, Kind.POINT),
             expected(Ssc14Blocks.FENCE_LINE, "fence_line", FenceLineBlock.class,
-                    net.mcreator.ssc.block.FenceLineBlock.Item.class, Kind.LINE),
+                    FenceBlockItem.class, Kind.LINE),
             expected(Ssc14Blocks.FENCE_G, "fence_g", FenceCornerBlock.class,
-                    net.mcreator.ssc.block.FenceGBlock.Item.class, Kind.CORNER),
+                    FenceBlockItem.class, Kind.CORNER),
             expected(Ssc14Blocks.FENCE_P, "fence_p", FenceThreeWayBlock.class,
-                    net.mcreator.ssc.block.FencePBlock.Item.class, Kind.THREE_WAY));
+                    FenceBlockItem.class, Kind.THREE_WAY));
 
     private Ssc14BlocksFenceGameTests() {
     }

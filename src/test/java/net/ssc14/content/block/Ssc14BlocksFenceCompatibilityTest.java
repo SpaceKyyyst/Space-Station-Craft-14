@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.lang.reflect.Field;
 import java.util.Map;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -43,11 +44,27 @@ class Ssc14BlocksFenceCompatibilityTest {
     @Test
     void legacyFenceBlocksAndNestedItemsRemainConstructorCompatible()
             throws ReflectiveOperationException {
+        Class<?> canonicalItemType = Class.forName(
+                "net.ssc14.content.item.block.FenceBlockItem");
         for (Class<?> legacyType : LEGACY_TYPES) {
             assertTrue(DirectionalFenceBlock.class.isAssignableFrom(legacyType), legacyType.getName());
             legacyType.getConstructor(BlockBehaviour.Properties.class);
             Class<?> itemType = Class.forName(legacyType.getName() + "$Item");
+            assertTrue(canonicalItemType.isAssignableFrom(itemType), itemType.getName());
             itemType.getConstructor(Item.Properties.class);
+        }
+    }
+
+    @Test
+    void canonicalItemRegistryOwnsFenceItemsAndLegacyHoldersRemainAliases()
+            throws ReflectiveOperationException {
+        Class<?> canonicalItems = Class.forName("net.ssc14.content.item.Ssc14Items");
+        for (Map.Entry<String, String> expected : EXPECTED_HOLDERS.entrySet()) {
+            Object canonicalHolder = canonicalItems.getField(expected.getKey()).get(null);
+            assertSame(canonicalHolder,
+                    Ssc14ModItems.class.getField(expected.getKey()).get(null));
+            assertEquals("ssc_14:" + expected.getValue(),
+                    ((DeferredHolder<?, ?>) canonicalHolder).getId().toString());
         }
     }
 }

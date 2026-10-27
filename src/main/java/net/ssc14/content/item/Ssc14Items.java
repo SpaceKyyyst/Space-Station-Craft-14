@@ -9,6 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.item.access.IdCardItem;
+import net.ssc14.content.item.block.FenceBlockItem;
 import net.ssc14.content.item.combat.AmmunitionItem;
 import net.ssc14.content.item.combat.GlassShardItem;
 import net.ssc14.content.item.combat.GlassShardKind;
@@ -55,6 +56,7 @@ import net.ssc14.content.item.weapon.Mk58Item;
 import net.ssc14.content.item.weapon.Mk58State;
 import net.ssc14.content.item.weapon.PistolMagazineItem;
 import net.ssc14.content.item.weapon.PistolMagazineState;
+import net.ssc14.content.block.Ssc14Blocks;
 
 /** Canonical owner of SSC14 item registrations. */
 public final class Ssc14Items {
@@ -142,6 +144,14 @@ public final class Ssc14Items {
             mechanicalTool("spanner", MechanicalToolProfile.SPANNER);
     public static final DeferredItem<Item> PICK =
             REGISTRY.registerItem("pick", AsteroidPickItem::new, Item.Properties::new);
+    public static final DeferredItem<Item> FENCE_LINE = fenceBlockItem(
+            "fence_line", Ssc14Blocks.FENCE_LINE);
+    public static final DeferredItem<Item> FENCE_G = fenceBlockItem(
+            "fence_g", Ssc14Blocks.FENCE_G);
+    public static final DeferredItem<Item> FENCE_POINT = fenceBlockItem(
+            "fence_point", Ssc14Blocks.FENCE_POINT);
+    public static final DeferredItem<Item> FENCE_P = fenceBlockItem(
+            "fence_p", Ssc14Blocks.FENCE_P);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -552,6 +562,17 @@ public final class Ssc14Items {
             String name, MechanicalToolProfile profile) {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new MechanicalHandToolItem(properties, profile),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> fenceBlockItem(
+            String name,
+            net.neoforged.neoforge.registries.DeferredBlock<
+                    ? extends net.minecraft.world.level.block.Block> block) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new FenceBlockItem(
+                        block.get(), properties,
+                        "block.ssc_14." + name + ".description_0"),
                 Item.Properties::new);
     }
 

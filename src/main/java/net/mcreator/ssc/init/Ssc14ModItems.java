@@ -805,10 +805,10 @@ public class Ssc14ModItems {
 		WARDEN_JUMPSUIT = Ssc14Items.WARDEN_JUMPSUIT;
 		BLACK_SOLES_ITEM = Ssc14Items.BLACK_SOLES_ITEM;
 		CLOSET = block(Ssc14ModBlocks.CLOSET, new Item.Properties().stacksTo(1).fireResistant());
-		FENCE_LINE = register("fence_line", properties -> new FenceLineBlock.Item(properties.stacksTo(1)));
-		FENCE_G = register("fence_g", properties -> new FenceGBlock.Item(properties.stacksTo(1)));
-		FENCE_POINT = register("fence_point", properties -> new FencePointBlock.Item(properties.stacksTo(1)));
-		FENCE_P = register("fence_p", properties -> new FencePBlock.Item(properties.stacksTo(1)));
+		FENCE_LINE = Ssc14Items.FENCE_LINE;
+		FENCE_G = Ssc14Items.FENCE_G;
+		FENCE_POINT = Ssc14Items.FENCE_POINT;
+		FENCE_P = Ssc14Items.FENCE_P;
 		BRUTEPACK = Ssc14Items.BRUTEPACK;
 		BLOODPACK = Ssc14Items.BLOODPACK;
 		GAUZE = Ssc14Items.GAUZE;

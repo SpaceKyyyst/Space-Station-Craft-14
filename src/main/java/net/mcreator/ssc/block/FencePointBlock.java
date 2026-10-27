@@ -1,29 +1,20 @@
 package net.mcreator.ssc.block;
 
-import java.util.function.Consumer;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.item.block.FenceBlockItem;
 
 /** @deprecated Use {@link net.ssc14.content.block.decoration.FencePointBlock}. */
 @Deprecated(forRemoval = false)
 public class FencePointBlock extends net.ssc14.content.block.decoration.FencePointBlock {
     public FencePointBlock(BlockBehaviour.Properties properties) { super(properties); }
 
-    public static class Item extends BlockItem {
+    /** @deprecated Use {@link FenceBlockItem}. */
+    @Deprecated(forRemoval = false)
+    public static class Item extends FenceBlockItem {
         public Item(net.minecraft.world.item.Item.Properties properties) {
-            super(Ssc14ModBlocks.FENCE_POINT.get(), properties);
-        }
-
-        @Override
-        public void appendHoverText(ItemStack stack, net.minecraft.world.item.Item.TooltipContext context,
-                TooltipDisplay display, Consumer<Component> consumer, TooltipFlag flag) {
-            super.appendHoverText(stack, context, display, consumer, flag);
-            consumer.accept(Component.translatable("block.ssc_14.fence_point.description_0"));
+            super(Ssc14Blocks.FENCE_POINT.get(), properties,
+                    "block.ssc_14.fence_point.description_0");
         }
     }
 }
