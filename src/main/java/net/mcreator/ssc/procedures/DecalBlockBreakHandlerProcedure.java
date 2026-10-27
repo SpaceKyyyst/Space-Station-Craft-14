@@ -1,7 +1,7 @@
 
 package net.mcreator.ssc.procedures;
 
-import net.mcreator.ssc.DecalRegistry;
+import net.ssc14.content.decal.DecalService;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelAccessor;
@@ -24,7 +24,7 @@ public class DecalBlockBreakHandlerProcedure {
             Direction[] faces = Direction.values();
             int total = faces.length;
             for (int i = 0; total > i; i++) {
-                DecalRegistry.removeDecalAt(chunk, pos, faces[i]);
+                DecalService.removeDecalAt(chunk, pos, faces[i]);
             }
         }
     }

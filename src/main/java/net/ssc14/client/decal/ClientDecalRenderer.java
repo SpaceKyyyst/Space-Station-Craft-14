@@ -1,7 +1,8 @@
 
-package net.mcreator.ssc;
+package net.ssc14.client.decal;
 
 import net.ssc14.integration.neoforge.decal.DecalData;
+import net.ssc14.integration.neoforge.decal.DecalNetwork;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -15,31 +16,25 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
-import net.neoforged.neoforge.client.event.RenderLevelStageEvent; // ИСПРАВЛЕНО: Верный пакет импорта в NeoForge
+import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.common.EventBusSubscriber;
 import org.joml.Matrix4f;
 import java.util.List;
 
-public class ClientDecalRenderer {
-    private static boolean registered = false;
+@EventBusSubscriber(value = Dist.CLIENT, modid = "ssc_14")
+public final class ClientDecalRenderer {
+    private ClientDecalRenderer() { }
 
-    public static void ensureRegistered() {
-        if (registered) return;
-        registered = true;
-        
-        // ИСПРАВЛЕНО: Подписываемся напрямую на конкретную стадию (подкласс события)
-        NeoForge.EVENT_BUS.addListener(RenderLevelStageEvent.AfterTranslucentBlocks.class, event -> {
-            renderDecals(event);
-        });
-        
-        NeoForge.EVENT_BUS.addListener(ClientPlayerNetworkEvent.LoggingOut.class, e -> {
-            DecalNetwork.CLIENT_DECAL_STORAGE.clear();
-        });
+    @SubscribeEvent
+    public static void onLogout(ClientPlayerNetworkEvent.LoggingOut event) {
+        DecalNetwork.CLIENT_DECAL_STORAGE.clear();
     }
 
-    // ИСПРАВЛЕНО: Сигнатура метода теперь принимает конкретный подкласс события стадии
-    private static void renderDecals(RenderLevelStageEvent.AfterTranslucentBlocks event) {
+    @SubscribeEvent
+    public static void renderDecals(RenderLevelStageEvent.AfterTranslucentBlocks event) {
         Minecraft mc = Minecraft.getInstance();
         ClientLevel level = mc.level;
         if (level == null || DecalNetwork.CLIENT_DECAL_STORAGE.isEmpty()) return;

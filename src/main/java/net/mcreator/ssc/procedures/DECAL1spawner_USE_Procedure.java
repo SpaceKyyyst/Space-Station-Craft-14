@@ -1,7 +1,7 @@
 
 package net.mcreator.ssc.procedures;
 
-import net.mcreator.ssc.DecalRegistry;
+import net.ssc14.content.decal.DecalService;
 import net.ssc14.integration.neoforge.decal.DecalData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -48,7 +48,7 @@ public class DECAL1spawner_USE_Procedure {
             }
 
             DecalData newDecal = new DecalData(pos, face, decalId, 0, finalColor);
-            DecalRegistry.addDecal(chunk, newDecal);
+            DecalService.addDecal(chunk, newDecal);
         }
     }
 }

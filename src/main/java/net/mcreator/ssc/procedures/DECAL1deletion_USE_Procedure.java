@@ -1,7 +1,7 @@
 
 package net.mcreator.ssc.procedures;
 
-import net.mcreator.ssc.DecalRegistry;
+import net.ssc14.content.decal.DecalService;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +27,7 @@ public class DECAL1deletion_USE_Procedure {
             BlockPos pos = blockHit.getBlockPos();
             if (world instanceof ServerLevel serverLevel) {
                 // Корректно передаем ServerLevel
-                DecalRegistry.removeDecalsInRadius(serverLevel, pos, 1.5D);
+                DecalService.removeDecalsInRadius(serverLevel, pos, 1.5D);
             }
         }
     }

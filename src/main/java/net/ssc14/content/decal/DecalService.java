@@ -1,4 +1,4 @@
-package net.mcreator.ssc;
+package net.ssc14.content.decal;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -7,12 +7,12 @@ import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.ssc14.integration.neoforge.decal.DecalData;
+import net.ssc14.integration.neoforge.decal.DecalNetwork;
 import net.ssc14.integration.neoforge.decal.Ssc14DecalAttachments;
 
-/** @deprecated Use the canonical decal attachment store. */
-@Deprecated(forRemoval = false)
-public final class DecalRegistry {
-    private DecalRegistry() { }
+/** Authoritative mutations for the canonical decal attachment store. */
+public final class DecalService {
+    private DecalService() { }
 
     public static void addDecal(LevelChunk chunk, DecalData decal) {
         Ssc14DecalAttachments.add(chunk, decal);
