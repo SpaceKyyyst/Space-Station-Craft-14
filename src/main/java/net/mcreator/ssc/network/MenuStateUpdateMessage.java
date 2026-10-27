@@ -14,7 +14,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.init.Ssc14ModScreens;
+import net.ssc14.client.menu.MenuStateReceiver;
 import net.mcreator.ssc.init.Ssc14ModMenus;
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.network.validation.MenuStateRules;
@@ -69,7 +69,7 @@ public record MenuStateUpdateMessage(int elementType, String name, Object elemen
 					return;
 				}
 				menu.getMenuState().put(message.elementType + ":" + message.name, message.elementState);
-				if (context.flow() == PacketFlow.CLIENTBOUND && Minecraft.getInstance().screen instanceof Ssc14ModScreens.ScreenAccessor accessor) {
+				if (context.flow() == PacketFlow.CLIENTBOUND && Minecraft.getInstance().screen instanceof MenuStateReceiver accessor) {
 					accessor.updateMenuState(message.elementType, message.name, message.elementState);
 				}
 			}

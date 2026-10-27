@@ -1,43 +1,49 @@
-/*
- *	MCreator note: This file will be REGENERATED on each build.
- */
 package net.mcreator.ssc.init;
 
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.api.distmarker.Dist;
-
 import net.mcreator.ssc.client.gui.*;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.client.menu.Ssc14ScreenBinder;
 
+/** Compatibility bootstrap for legacy screen implementations. */
+@Deprecated(forRemoval = false)
 @EventBusSubscriber(Dist.CLIENT)
-public class Ssc14ModScreens {
-	@SubscribeEvent
-	public static void clientLoad(RegisterMenuScreensEvent event) {
-		event.register(Ssc14ModMenus.DOP_CRAFT_MENU.get(), DopCraftMenuScreen::new);
-		event.register(Ssc14ModMenus.I_DCODE.get(), IDcodeScreen::new);
-		event.register(Ssc14ModMenus.ACCESS_CONFIG_MENU.get(), AccessConfigMENUScreen::new);
-		event.register(Ssc14ModMenus.ACCESS_CONFIG_GUI.get(), AccessConfigGUIScreen::new);
-		event.register(Ssc14ModMenus.CABEL_PANNEL_AIRLOCK.get(), CabelPannelAirlockScreen::new);
-		event.register(Ssc14ModMenus.GRAV_GEN_GUI.get(), GravGenGUIScreen::new);
-		event.register(Ssc14ModMenus.MAC_FRAME_GUI.get(), MacFrameGUIScreen::new);
-		event.register(Ssc14ModMenus.PD_APASSANGER_GUI.get(), PDApassangerGUIScreen::new);
-		event.register(Ssc14ModMenus.RCDGUI.get(), RCDGUIScreen::new);
-		event.register(Ssc14ModMenus.RCDGU_IWALLFLOOR.get(), RCDGUIwallfloorScreen::new);
-		event.register(Ssc14ModMenus.HEADSET_GU_IKOSTIL.get(), HeadsetGUIkostilScreen::new);
-		event.register(Ssc14ModMenus.COMMUN_CONSOLE_GUI.get(), CommunConsoleGUIScreen::new);
-		event.register(Ssc14ModMenus.VENDING_AUT_1_GUI.get(), VendingAut1GUIScreen::new);
-		event.register(Ssc14ModMenus.RCDGU_IWINDOWS.get(), RCDGUIwindowsScreen::new);
-		event.register(Ssc14ModMenus.NET_CONFIG_GUI.get(), NetConfigGUIScreen::new);
-		event.register(Ssc14ModMenus.EGG_CARTON_GUI.get(), EggCartonGUIScreen::new);
-		event.register(Ssc14ModMenus.MICROWAWE_GUI.get(), MicrowaweGUIScreen::new);
-		event.register(Ssc14ModMenus.DECAL_SCOLOR_GUI.get(), DECALScolorGUIScreen::new);
-		event.register(Ssc14ModMenus.BACKPACK_GUI.get(), BackpackGUIScreen::new);
-		event.register(Ssc14ModMenus.ORDER_GUI.get(), OrderGUIScreen::new);
-		event.register(Ssc14ModMenus.SALE_GUI.get(), SaleGUIScreen::new);
-	}
+public final class Ssc14ModScreens {
+    static {
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.DOP_CRAFT_MENU, DopCraftMenuScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.I_DCODE, IDcodeScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.ACCESS_CONFIG_MENU, AccessConfigMENUScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.ACCESS_CONFIG_GUI, AccessConfigGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.CABEL_PANNEL_AIRLOCK, CabelPannelAirlockScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.GRAV_GEN_GUI, GravGenGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.MAC_FRAME_GUI, MacFrameGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.PD_APASSANGER_GUI, PDApassangerGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.RCDGUI, RCDGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.RCDGU_IWALLFLOOR, RCDGUIwallfloorScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.HEADSET_GU_IKOSTIL, HeadsetGUIkostilScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.COMMUN_CONSOLE_GUI, CommunConsoleGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.VENDING_AUT_1_GUI, VendingAut1GUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.RCDGU_IWINDOWS, RCDGUIwindowsScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.NET_CONFIG_GUI, NetConfigGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.EGG_CARTON_GUI, EggCartonGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.MICROWAWE_GUI, MicrowaweGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.DECAL_SCOLOR_GUI, DECALScolorGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.BACKPACK_GUI, BackpackGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.ORDER_GUI, OrderGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.SALE_GUI, SaleGUIScreen::new);
+    }
 
-	public interface ScreenAccessor {
-		void updateMenuState(int elementType, String name, Object elementState);
-	}
+    private Ssc14ModScreens() { }
+
+    @SubscribeEvent
+    public static void clientLoad(RegisterMenuScreensEvent event) {
+        Ssc14ScreenBinder.registerScreens(event);
+    }
+
+    /** @deprecated implement {@link MenuStateReceiver} directly. */
+    @Deprecated(forRemoval = false)
+    public interface ScreenAccessor extends MenuStateReceiver { }
 }
