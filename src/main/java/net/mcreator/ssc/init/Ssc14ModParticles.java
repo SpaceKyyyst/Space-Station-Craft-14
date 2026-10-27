@@ -1,6 +1,5 @@
 package net.mcreator.ssc.init;
 
-import net.mcreator.ssc.client.particle.*;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -10,6 +9,7 @@ import net.ssc14.client.particle.GasCloudParticle;
 import net.ssc14.client.particle.DeconstructionParticle;
 import net.ssc14.client.particle.GravityFieldParticle;
 import net.ssc14.client.particle.UtilityEffectParticle;
+import net.ssc14.client.particle.ExtinguisherSprayParticle;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 
 /** Compatibility bootstrap for transitional particle provider implementations. */
