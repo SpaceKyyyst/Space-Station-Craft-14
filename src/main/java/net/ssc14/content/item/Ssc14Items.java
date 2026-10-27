@@ -219,6 +219,176 @@ public final class Ssc14Items {
             bannerBlockItem("banner_eng", Ssc14Blocks.BANNER_ENG);
     public static final DeferredItem<Item> BANNER_SYND =
             bannerBlockItem("banner_synd", Ssc14Blocks.BANNER_SYND);
+    public static final DeferredItem<Item> TITLE_STEEL =
+            tileBlockItem("title_steel", Ssc14Blocks.TITLE_STEEL);
+    public static final DeferredItem<Item> TITLE_DARK =
+            tileBlockItem("title_dark", Ssc14Blocks.TITLE_DARK);
+    public static final DeferredItem<Item> TITLE_STEEL_DIAGONAL_MINI =
+            tileBlockItem("title_steel_diagonal_mini", Ssc14Blocks.TITLE_STEEL_DIAGONAL_MINI);
+    public static final DeferredItem<Item> TITLE_STEEL_DIAGONAL =
+            tileBlockItem("title_steel_diagonal", Ssc14Blocks.TITLE_STEEL_DIAGONAL);
+    public static final DeferredItem<Item> TITLE_STEEL_MINI =
+            tileBlockItem("title_steel_mini", Ssc14Blocks.TITLE_STEEL_MINI);
+    public static final DeferredItem<Item> TITLE_STEEL_MONO =
+            tileBlockItem("title_steel_mono", Ssc14Blocks.TITLE_STEEL_MONO);
+    public static final DeferredItem<Item> TITLE_STEEL_OFFSET =
+            tileBlockItem("title_steel_offset", Ssc14Blocks.TITLE_STEEL_OFFSET);
+    public static final DeferredItem<Item> TITLE_STEEL_PAVEMENT =
+            tileBlockItem("title_steel_pavement", Ssc14Blocks.TITLE_STEEL_PAVEMENT);
+    public static final DeferredItem<Item> TITLE_STEEL_HERRINGBONE =
+            tileBlockItem("title_steel_herringbone", Ssc14Blocks.TITLE_STEEL_HERRINGBONE);
+    public static final DeferredItem<Item> TITLE_PLASTIC =
+            tileBlockItem("title_plastic", Ssc14Blocks.TITLE_PLASTIC);
+    public static final DeferredItem<Item> TITLE_DARK_DIAGONAL_MINI =
+            tileBlockItem("title_dark_diagonal_mini", Ssc14Blocks.TITLE_DARK_DIAGONAL_MINI);
+    public static final DeferredItem<Item> TITLE_DARK_DIAGONAL =
+            tileBlockItem("title_dark_diagonal", Ssc14Blocks.TITLE_DARK_DIAGONAL);
+    public static final DeferredItem<Item> TITLE_DARK_MINI =
+            tileBlockItem("title_dark_mini", Ssc14Blocks.TITLE_DARK_MINI);
+    public static final DeferredItem<Item> TITLE_DARK_MONO =
+            tileBlockItem("title_dark_mono", Ssc14Blocks.TITLE_DARK_MONO);
+    public static final DeferredItem<Item> TITLE_DARK_OFFSET =
+            tileBlockItem("title_dark_offset", Ssc14Blocks.TITLE_DARK_OFFSET);
+    public static final DeferredItem<Item> TITLE_DARK_PAVEMENT =
+            tileBlockItem("title_dark_pavement", Ssc14Blocks.TITLE_DARK_PAVEMENT);
+    public static final DeferredItem<Item> TITLE_DARK_PAVEMENT_VERTICAL =
+            tileBlockItem("title_dark_pavement_vertical", Ssc14Blocks.TITLE_DARK_PAVEMENT_VERTICAL);
+    public static final DeferredItem<Item> TITLE_DARK_HERRINGBONE =
+            tileBlockItem("title_dark_herringbone", Ssc14Blocks.TITLE_DARK_HERRINGBONE);
+    public static final DeferredItem<Item> TITLE_DARK_PLASTIC =
+            tileBlockItem("title_dark_plastic", Ssc14Blocks.TITLE_DARK_PLASTIC);
+    public static final DeferredItem<Item> TITLE_WHITE =
+            tileBlockItem("title_white", Ssc14Blocks.TITLE_WHITE);
+    public static final DeferredItem<Item> TITLE_WHITE_DIAGONAL_MINI =
+            tileBlockItem("title_white_diagonal_mini", Ssc14Blocks.TITLE_WHITE_DIAGONAL_MINI);
+    public static final DeferredItem<Item> TITLE_WHITE_DIAGONAL =
+            tileBlockItem("title_white_diagonal", Ssc14Blocks.TITLE_WHITE_DIAGONAL);
+    public static final DeferredItem<Item> TITLE_WHITE_HERRINGBONE =
+            tileBlockItem("title_white_herringbone", Ssc14Blocks.TITLE_WHITE_HERRINGBONE);
+    public static final DeferredItem<Item> TITLE_WHITE_MINI =
+            tileBlockItem("title_white_mini", Ssc14Blocks.TITLE_WHITE_MINI);
+    public static final DeferredItem<Item> TITLE_WHITE_MONO =
+            tileBlockItem("title_white_mono", Ssc14Blocks.TITLE_WHITE_MONO);
+    public static final DeferredItem<Item> TITLE_WHITE_OFFSET =
+            tileBlockItem("title_white_offset", Ssc14Blocks.TITLE_WHITE_OFFSET);
+    public static final DeferredItem<Item> TITLE_WHITE_PAVEMENT =
+            tileBlockItem("title_white_pavement", Ssc14Blocks.TITLE_WHITE_PAVEMENT);
+    public static final DeferredItem<Item> TITLE_WHITE_PAVEMENT_VERTICAL =
+            tileBlockItem("title_white_pavement_vertical", Ssc14Blocks.TITLE_WHITE_PAVEMENT_VERTICAL);
+    public static final DeferredItem<Item> TITLE_WHITE_PLASTIC =
+            tileBlockItem("title_white_plastic", Ssc14Blocks.TITLE_WHITE_PLASTIC);
+    public static final DeferredItem<Item> TITLE_STEEL_PAVEMENT_VERTICAL =
+            tileBlockItem("title_steel_pavement_vertical", Ssc14Blocks.TITLE_STEEL_PAVEMENT_VERTICAL);
+    public static final DeferredItem<Item> TITLE_ARCADEBLUE =
+            tileBlockItem("title_arcadeblue", Ssc14Blocks.TITLE_ARCADEBLUE);
+    public static final DeferredItem<Item> TITLE_ARCADERED =
+            tileBlockItem("title_arcadered", Ssc14Blocks.TITLE_ARCADERED);
+    public static final DeferredItem<Item> TITLE_BAR =
+            tileBlockItem("title_bar", Ssc14Blocks.TITLE_BAR);
+    public static final DeferredItem<Item> TITLE_BLUE_CIRCUIT =
+            tileBlockItem("title_blue_circuit", Ssc14Blocks.TITLE_BLUE_CIRCUIT);
+    public static final DeferredItem<Item> TITLE_BLUE =
+            tileBlockItem("title_blue", Ssc14Blocks.TITLE_BLUE);
+    public static final DeferredItem<Item> TITLE_BOXING =
+            tileBlockItem("title_boxing", Ssc14Blocks.TITLE_BOXING);
+    public static final DeferredItem<Item> TITLE_CAFETERIA =
+            tileBlockItem("title_cafeteria", Ssc14Blocks.TITLE_CAFETERIA);
+    public static final DeferredItem<Item> TITLE_CARPETCLOWN =
+            tileBlockItem("title_carpetclown", Ssc14Blocks.TITLE_CARPETCLOWN);
+    public static final DeferredItem<Item> TITLE_CARPETOFFICE =
+            tileBlockItem("title_carpetoffice", Ssc14Blocks.TITLE_CARPETOFFICE);
+    public static final DeferredItem<Item> TITLE_CHECKERDARK =
+            tileBlockItem("title_checkerdark", Ssc14Blocks.TITLE_CHECKERDARK);
+    public static final DeferredItem<Item> TITLE_CLOWN =
+            tileBlockItem("title_clown", Ssc14Blocks.TITLE_CLOWN);
+    public static final DeferredItem<Item> TITLE_DARKTEST =
+            tileBlockItem("title_darktest", Ssc14Blocks.TITLE_DARKTEST);
+    public static final DeferredItem<Item> TITLE_ELEVATORSHAFT =
+            tileBlockItem("title_elevatorshaft", Ssc14Blocks.TITLE_ELEVATORSHAFT);
+    public static final DeferredItem<Item> TITLE_EXOBORG =
+            tileBlockItem("title_exoborg", Ssc14Blocks.TITLE_EXOBORG);
+    public static final DeferredItem<Item> TITLE_FREEZER =
+            tileBlockItem("title_freezer", Ssc14Blocks.TITLE_FREEZER);
+    public static final DeferredItem<Item> TITLE_GOLD =
+            tileBlockItem("title_gold", Ssc14Blocks.TITLE_GOLD);
+    public static final DeferredItem<Item> TITLE_GRATINGMAINT =
+            tileBlockItem("title_gratingmaint", Ssc14Blocks.TITLE_GRATINGMAINT);
+    public static final DeferredItem<Item> TITLE_GREENCIRCUIT =
+            tileBlockItem("title_greencircuit", Ssc14Blocks.TITLE_GREENCIRCUIT);
+    public static final DeferredItem<Item> TITLE_GYM =
+            tileBlockItem("title_gym", Ssc14Blocks.TITLE_GYM);
+    public static final DeferredItem<Item> TITLE_HULLREINFORCED =
+            tileBlockItem("title_hullreinforced", Ssc14Blocks.TITLE_HULLREINFORCED);
+    public static final DeferredItem<Item> TITLE_HULL =
+            tileBlockItem("title_hull", Ssc14Blocks.TITLE_HULL);
+    public static final DeferredItem<Item> TITLE_HYDRO =
+            tileBlockItem("title_hydro", Ssc14Blocks.TITLE_HYDRO);
+    public static final DeferredItem<Item> TITLE_KITCHEN =
+            tileBlockItem("title_kitchen", Ssc14Blocks.TITLE_KITCHEN);
+    public static final DeferredItem<Item> TITLE_LAUNDRY =
+            tileBlockItem("title_laundry", Ssc14Blocks.TITLE_LAUNDRY);
+    public static final DeferredItem<Item> TITLE_LIME =
+            tileBlockItem("title_lime", Ssc14Blocks.TITLE_LIME);
+    public static final DeferredItem<Item> TITLE_LINO =
+            tileBlockItem("title_lino", Ssc14Blocks.TITLE_LINO);
+    public static final DeferredItem<Item> TITLE_MEAT =
+            tileBlockItem("title_meat", Ssc14Blocks.TITLE_MEAT);
+    public static final DeferredItem<Item> TITLE_METALDIAMOND =
+            tileBlockItem("title_metaldiamond", Ssc14Blocks.TITLE_METALDIAMOND);
+    public static final DeferredItem<Item> TITLE_MIME =
+            tileBlockItem("title_mime", Ssc14Blocks.TITLE_MIME);
+    public static final DeferredItem<Item> TITLE_MININGFLOORDARK =
+            tileBlockItem("title_miningfloordark", Ssc14Blocks.TITLE_MININGFLOORDARK);
+    public static final DeferredItem<Item> TITLE_MININGFLOORLIGHT =
+            tileBlockItem("title_miningfloorlight", Ssc14Blocks.TITLE_MININGFLOORLIGHT);
+    public static final DeferredItem<Item> TITLE_MININGFLOOR =
+            tileBlockItem("title_miningfloor", Ssc14Blocks.TITLE_MININGFLOOR);
+    public static final DeferredItem<Item> TITLE_MONO =
+            tileBlockItem("title_mono", Ssc14Blocks.TITLE_MONO);
+    public static final DeferredItem<Item> TITLE_REDCIRCUIT =
+            tileBlockItem("title_redcircuit", Ssc14Blocks.TITLE_REDCIRCUIT);
+    public static final DeferredItem<Item> TITLE_REINFORCED =
+            tileBlockItem("title_reinforced", Ssc14Blocks.TITLE_REINFORCED);
+    public static final DeferredItem<Item> TITLE_ROCKVAULT =
+            tileBlockItem("title_rockvault", Ssc14Blocks.TITLE_ROCKVAULT);
+    public static final DeferredItem<Item> TITLE_SHOWROOM =
+            tileBlockItem("title_showroom", Ssc14Blocks.TITLE_SHOWROOM);
+    public static final DeferredItem<Item> TITLE_SHUTTLEBLACK =
+            tileBlockItem("title_shuttleblack", Ssc14Blocks.TITLE_SHUTTLEBLACK);
+    public static final DeferredItem<Item> TITLE_SHUTTLEBLUE =
+            tileBlockItem("title_shuttleblue", Ssc14Blocks.TITLE_SHUTTLEBLUE);
+    public static final DeferredItem<Item> TITLE_SHUTTLEGREY =
+            tileBlockItem("title_shuttlegrey", Ssc14Blocks.TITLE_SHUTTLEGREY);
+    public static final DeferredItem<Item> TITLE_SHUTTLEORANGE =
+            tileBlockItem("title_shuttleorange", Ssc14Blocks.TITLE_SHUTTLEORANGE);
+    public static final DeferredItem<Item> TITLE_SHUTTLEPURPLE =
+            tileBlockItem("title_shuttlepurple", Ssc14Blocks.TITLE_SHUTTLEPURPLE);
+    public static final DeferredItem<Item> TITLE_SHUTTLERED =
+            tileBlockItem("title_shuttlered", Ssc14Blocks.TITLE_SHUTTLERED);
+    public static final DeferredItem<Item> TITLE_SHUTTLEWHITE =
+            tileBlockItem("title_shuttlewhite", Ssc14Blocks.TITLE_SHUTTLEWHITE);
+    public static final DeferredItem<Item> TITLE_SILVER =
+            tileBlockItem("title_silver", Ssc14Blocks.TITLE_SILVER);
+    public static final DeferredItem<Item> TITLE_STEELDAMAGED =
+            tileBlockItem("title_steeldamaged", Ssc14Blocks.TITLE_STEELDAMAGED);
+    public static final DeferredItem<Item> TITLE_STEELDIRTY =
+            tileBlockItem("title_steeldirty", Ssc14Blocks.TITLE_STEELDIRTY);
+    public static final DeferredItem<Item> TITLE_STEELMAINT =
+            tileBlockItem("title_steelmaint", Ssc14Blocks.TITLE_STEELMAINT);
+    public static final DeferredItem<Item> TITLE_SUPERREINFORCED =
+            tileBlockItem("title_superreinforced", Ssc14Blocks.TITLE_SUPERREINFORCED);
+    public static final DeferredItem<Item> TITLE_TECHMAINTDARK =
+            tileBlockItem("title_techmaintdark", Ssc14Blocks.TITLE_TECHMAINTDARK);
+    public static final DeferredItem<Item> TITLE_TECHMAINT =
+            tileBlockItem("title_techmaint", Ssc14Blocks.TITLE_TECHMAINT);
+    public static final DeferredItem<Item> TITLE_WOODBROKEN =
+            tileBlockItem("title_woodbroken", Ssc14Blocks.TITLE_WOODBROKEN);
+    public static final DeferredItem<Item> TITLE_WOODLARGE =
+            tileBlockItem("title_woodlarge", Ssc14Blocks.TITLE_WOODLARGE);
+    public static final DeferredItem<Item> TITLE_WOOD =
+            tileBlockItem("title_wood", Ssc14Blocks.TITLE_WOOD);
+    public static final DeferredItem<Item> TITLE_WOODTILE =
+            tileBlockItem("title_woodtile", Ssc14Blocks.TITLE_WOODTILE);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -675,6 +845,14 @@ public final class Ssc14Items {
             String name, DeferredBlock<? extends Block> block) {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new BlockItem(block.get(), properties.stacksTo(1)),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> tileBlockItem(
+            String name, DeferredBlock<? extends Block> block) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(),
+                        properties.stacksTo(30).fireResistant()),
                 Item.Properties::new);
     }
 
