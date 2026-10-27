@@ -1,9 +1,10 @@
-package net.mcreator.ssc.medical;
+package net.ssc14.client.medical;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
-import net.mcreator.ssc.procedures.CrawlPrProcedure;
+import net.ssc14.common.medical.MedicalPresentationController;
+import net.ssc14.common.player.PlayerStateKeys;
 
 /** No medical policy: mirrors a server-owned pose on local and remote client players. */
 public final class MedicalClientPresentation implements MedicalPresentationController.Target {
@@ -29,7 +30,7 @@ public final class MedicalClientPresentation implements MedicalPresentationContr
         MedicalPresentationController.apply(new MedicalClientPresentation(player, state), previous, active);
     }
 
-    static boolean ownsPose(Player player) {
+    public static boolean ownsPose(Player player) {
         return player.getPersistentData().contains(STATE) && player.getForcedPose() == Pose.SWIMMING;
     }
 
@@ -49,7 +50,7 @@ public final class MedicalClientPresentation implements MedicalPresentationContr
             player.setForcedPose(previous);
             if (previous != null) player.setPose(previous);
             else if (player.getPose() == Pose.SWIMMING && !player.isInWater() && !player.isSwimming()
-                    && !player.getPersistentData().getBooleanOr(CrawlPrProcedure.NBT_KEY, false)) player.setPose(Pose.STANDING);
+                    && !player.getPersistentData().getBooleanOr(PlayerStateKeys.CRAWL_ACTIVE, false)) player.setPose(Pose.STANDING);
         }
         player.refreshDimensions();
     }

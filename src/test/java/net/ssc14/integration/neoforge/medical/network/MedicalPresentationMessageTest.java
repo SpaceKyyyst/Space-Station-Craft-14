@@ -1,9 +1,10 @@
-package net.mcreator.ssc.medical;
+package net.ssc14.integration.neoforge.medical.network;
+
+import net.ssc14.client.medical.MedicalPresentationHandler;
 
 import io.netty.buffer.Unpooled;
 import java.lang.reflect.Proxy;
 import java.util.UUID;
-import net.mcreator.ssc.network.MedicalPresentationMessage;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.resources.Identifier;
@@ -55,6 +56,6 @@ class MedicalPresentationMessageTest {
                     if (method.getName().equals("flow")) return PacketFlow.SERVERBOUND;
                     throw new AssertionError("Serverbound presentation must never access " + method.getName());
                 });
-        MedicalPresentationMessage.handle(new MedicalPresentationMessage(42, PLAYER, LEVEL, true), context);
+        MedicalPresentationHandler.handle(new MedicalPresentationMessage(42, PLAYER, LEVEL, true), context);
     }
 }

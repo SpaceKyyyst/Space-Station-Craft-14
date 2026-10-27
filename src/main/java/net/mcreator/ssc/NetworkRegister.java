@@ -13,9 +13,9 @@ public class NetworkRegister {
         final String version = "ssc_14";
         final CompatibilityPayloadRegistrar registrar = new CompatibilityPayloadRegistrar(
                 event.registrar(version), version);
-        registrar.playToClient(net.mcreator.ssc.network.MedicalPresentationMessage.TYPE,
-                net.mcreator.ssc.network.MedicalPresentationMessage.CODEC,
-                net.mcreator.ssc.network.MedicalPresentationMessage::handle);
+        registrar.playToClient(net.ssc14.integration.neoforge.medical.network.MedicalPresentationMessage.TYPE,
+                net.ssc14.integration.neoforge.medical.network.MedicalPresentationMessage.CODEC,
+                net.ssc14.client.medical.MedicalPresentationHandler::handle);
         registrar.playToClient(net.mcreator.ssc.network.GasAnalyserData.TYPE,
                 net.mcreator.ssc.network.GasAnalyserData.CODEC,
                 net.mcreator.ssc.network.GasAnalyserData::handle);

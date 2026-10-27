@@ -1,4 +1,4 @@
-package net.mcreator.ssc.medical;
+package net.ssc14.common.medical;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;

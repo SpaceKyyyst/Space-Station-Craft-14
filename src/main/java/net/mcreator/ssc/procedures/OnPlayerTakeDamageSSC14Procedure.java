@@ -19,7 +19,7 @@ import net.minecraft.tags.TagKey;
 import net.mcreator.ssc.init.Ssc14ModAttributes;
 import net.mcreator.ssc.init.Ssc14ModEntities;
 import net.mcreator.ssc.ArmorResistanceHelper;
-import net.mcreator.ssc.medical.MedicalPlayerEffects;
+import net.ssc14.content.medical.MedicalPlayerEffects;
 
 import javax.annotation.Nullable;
 
