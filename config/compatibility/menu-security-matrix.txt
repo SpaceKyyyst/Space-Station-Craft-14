@@ -1,0 +1,22 @@
+# Menu | server validation policy | unbound behavior | server-side slot count
+AccessConfigGUIMenu | generated-bound | unbound-allowed | slots=3
+AccessConfigMENUMenu | access-configurator | server-strict | slots=0
+BackpackGUIMenu | generated-bound | unbound-allowed | slots=23
+CabelPannelAirlockMenu | airlock-wire-service | server-strict | slots=0
+CommunConsoleGUIMenu | generated-bound | unbound-allowed | slots=0
+DECALScolorGUIMenu | generated-bound | unbound-allowed | slots=0
+DopCraftMenuMenu | generated-bound | unbound-allowed | slots=8
+EggCartonGUIMenu | generated-bound | unbound-allowed | slots=12
+GravGenGUIMenu | generated-bound | unbound-allowed | slots=0
+HeadsetGUIkostilMenu | generated-bound | unbound-allowed | slots=0
+IDcodeMenu | generated-bound | unbound-allowed | slots=4
+MacFrameGUIMenu | generated-bound | unbound-allowed | slots=11
+MicrowaweGUIMenu | generated-bound | unbound-allowed | slots=14
+NetConfigGUIMenu | generated-bound | unbound-allowed | slots=0
+OrderGUIMenu | generated-bound | unbound-allowed | slots=12
+PDApassangerGUIMenu | generated-bound | unbound-allowed | slots=0
+RCDGUIMenu | generated-bound | unbound-allowed | slots=0
+RCDGUIwallfloorMenu | generated-bound | unbound-allowed | slots=0
+RCDGUIwindowsMenu | generated-bound | unbound-allowed | slots=0
+SaleGUIMenu | generated-bound | unbound-allowed | slots=0
+VendingAut1GUIMenu | generated-bound | unbound-allowed | slots=27
