@@ -1,5 +1,7 @@
 package net.mcreator.ssc;
 
+import net.ssc14.integration.neoforge.energy.network.MultitoolDataPacket;
+
 import net.ssc14.content.energy.CableType;
 import net.ssc14.content.energy.EnergyNetwork;
 

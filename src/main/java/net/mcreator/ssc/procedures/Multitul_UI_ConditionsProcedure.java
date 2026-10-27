@@ -23,7 +23,7 @@ import net.mcreator.ssc.init.Ssc14ModItems;
 import net.ssc14.content.energy.CableType;
 import net.ssc14.content.energy.EnergyNetwork;
 import net.mcreator.ssc.EnergyNetworkManager;
-import net.mcreator.ssc.MultitoolDataPacket;
+import net.ssc14.integration.neoforge.energy.network.MultitoolDataPacket;
 
 public class Multitul_UI_ConditionsProcedure {
 	public static boolean execute(LevelAccessor world, Entity entity) {

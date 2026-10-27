@@ -2,6 +2,8 @@
 package net.mcreator.ssc;
 
 import net.ssc14.integration.neoforge.network.CompatibilityPayloadRegistrar;
+import net.ssc14.integration.neoforge.energy.network.MultitoolDataPacket;
+import net.ssc14.client.energy.MultitoolDataHandler;
 
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -26,7 +28,7 @@ public class NetworkRegister {
         registrar.playToClient(
             MultitoolDataPacket.TYPE,
             MultitoolDataPacket.CODEC,
-            MultitoolDataPacket::handleClient
+            MultitoolDataHandler::handle
         );
     }
 }

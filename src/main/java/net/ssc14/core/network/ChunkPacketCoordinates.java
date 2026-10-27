@@ -1,4 +1,4 @@
-package net.mcreator.ssc.network.validation;
+package net.ssc14.core.network;
 
 /** Existing decal wire layout: X occupies the high word, Z the low word. */
 public final class ChunkPacketCoordinates {
