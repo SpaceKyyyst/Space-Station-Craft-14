@@ -1,14 +1,10 @@
 
-package net.mcreator.ssc;
-
-import net.ssc14.client.energy.MultitoolClientCache;
+package net.ssc14.integration.neoforge.energy.network;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
-import net.neoforged.neoforge.network.handling.IPayloadContext;
-import net.minecraft.client.Minecraft;
 
 public record MultitoolDataPacket(int mode, long current, long battery, long theoretical, long ideal, 
                                   long inStored, long inMax, long outStored, long outMax) implements CustomPacketPayload {
@@ -45,18 +41,4 @@ public record MultitoolDataPacket(int mode, long current, long battery, long the
         return TYPE;
     }
 
-    public static void handleClient(final MultitoolDataPacket packet, final IPayloadContext context) {
-        // Метод context.enqueueWork теперь идеально отработает в связке с PacketDistributor
-        context.enqueueWork(() -> {
-            MultitoolClientCache.currentMode = packet.mode;
-            MultitoolClientCache.currentPower = packet.current;
-            MultitoolClientCache.batteryPower = packet.battery;
-            MultitoolClientCache.theoreticalSupply = packet.theoretical;
-            MultitoolClientCache.idealConsumption = packet.ideal;
-            MultitoolClientCache.inputStored = packet.inStored;
-            MultitoolClientCache.inputMax = packet.inMax;
-            MultitoolClientCache.outputStored = packet.outStored;
-            MultitoolClientCache.outputMax = packet.outMax;
-        });
-    }
 }

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import net.mcreator.ssc.network.validation.ChunkPacketCoordinates;
+import net.ssc14.core.network.ChunkPacketCoordinates;
 import net.ssc14.core.network.PayloadLimits;
 
 @EventBusSubscriber(modid = "ssc_14")

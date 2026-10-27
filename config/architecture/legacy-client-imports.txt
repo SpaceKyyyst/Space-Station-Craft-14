@@ -5,7 +5,6 @@ blaze3d src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java
 blaze3d src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java
 lwjgl src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java
 minecraft-client src/main/java/net/mcreator/ssc/ClientDecalRenderer.java
-minecraft-client src/main/java/net/mcreator/ssc/MultitoolDataPacket.java
 minecraft-client src/main/java/net/mcreator/ssc/ReagentTransferHandler.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModHumanoidModels.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java
