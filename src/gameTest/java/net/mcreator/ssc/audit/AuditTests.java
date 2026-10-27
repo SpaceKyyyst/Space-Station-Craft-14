@@ -831,7 +831,7 @@ public final class AuditTests {
         TESTS.put("airlock_denies_access", h -> door(h,true));
     }
     static {
-        ReagentContainerConfig.CAPACITIES.forEach((itemId,capacity)->TESTS.put("container_"+itemId.getPath(),h->{
+        net.ssc14.content.item.reagent.Ssc14ReagentContainers.CAPACITIES.forEach((itemId,capacity)->TESTS.put("container_"+itemId.getPath(),h->{
             var item=net.minecraft.core.registries.BuiltInRegistries.ITEM.getValue(itemId);
             h.assertTrue(item instanceof net.ssc14.content.item.reagent.ReagentContainerItem,"Configured container is not registered as ReagentContainerItem: "+itemId);
             var stack=new net.minecraft.world.item.ItemStack(item);

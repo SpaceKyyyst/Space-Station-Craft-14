@@ -1,4 +1,4 @@
-package net.mcreator.ssc;
+package net.ssc14.integration.neoforge.network;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -10,37 +10,37 @@ import net.neoforged.neoforge.network.handling.IPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 /** Records a contract only after NeoForge accepts the corresponding registration. */
-final class CompatibilityPayloadRegistrar {
+public final class CompatibilityPayloadRegistrar {
     private static final Set<String> REGISTERED_CONTRACTS = ConcurrentHashMap.newKeySet();
 
     private final PayloadRegistrar delegate;
     private final String version;
 
-    CompatibilityPayloadRegistrar(PayloadRegistrar delegate, String version) {
+    public CompatibilityPayloadRegistrar(PayloadRegistrar delegate, String version) {
         this.delegate = delegate;
         this.version = version;
     }
 
-    <T extends CustomPacketPayload> void playToServer(CustomPacketPayload.Type<T> type,
+    public <T extends CustomPacketPayload> void playToServer(CustomPacketPayload.Type<T> type,
             StreamCodec<? super RegistryFriendlyByteBuf, T> codec, IPayloadHandler<T> handler) {
         delegate.playToServer(type, codec, handler);
         record("serverbound", type);
     }
 
-    <T extends CustomPacketPayload> void playToClient(CustomPacketPayload.Type<T> type,
+    public <T extends CustomPacketPayload> void playToClient(CustomPacketPayload.Type<T> type,
             StreamCodec<? super RegistryFriendlyByteBuf, T> codec, IPayloadHandler<T> handler) {
         delegate.playToClient(type, codec, handler);
         record("clientbound", type);
     }
 
-    <T extends CustomPacketPayload> void playBidirectional(CustomPacketPayload.Type<T> type,
+    public <T extends CustomPacketPayload> void playBidirectional(CustomPacketPayload.Type<T> type,
             StreamCodec<? super RegistryFriendlyByteBuf, T> codec, IPayloadHandler<T> clientHandler,
             IPayloadHandler<T> serverHandler) {
         delegate.playBidirectional(type, codec, clientHandler, serverHandler);
         record("bidirectional", type);
     }
 
-    static Set<String> registeredContracts() {
+    public static Set<String> registeredContracts() {
         return Set.copyOf(new TreeSet<>(REGISTERED_CONTRACTS));
     }
 

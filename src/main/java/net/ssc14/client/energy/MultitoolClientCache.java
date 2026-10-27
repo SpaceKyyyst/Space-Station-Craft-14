@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc;
+package net.ssc14.client.energy;
 
 public class MultitoolClientCache {
     public static int currentMode = 1; // Текущий выбранный режим (1 - НВ, 2 - СВ, 3 - ВВ)
