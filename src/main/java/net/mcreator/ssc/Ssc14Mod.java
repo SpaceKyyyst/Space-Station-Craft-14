@@ -50,7 +50,6 @@ import net.ssc14.content.entity.Ssc14EntityBehavior;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.item.Ssc14Items;
-import net.ssc14.content.item.combat.GlassShardInteractionService;
 import net.ssc14.content.item.construction.ConstructionItemInteractionService;
 import net.ssc14.content.item.currency.CurrencyInteractionService;
 import net.ssc14.content.item.decal.DecalToolInteractionService;
@@ -395,7 +394,6 @@ public class Ssc14Mod {
 				LegacyConstructionItemInteractionAdapter.INSTANCE);
 		DecalToolInteractionService.install(LegacyDecalToolInteractionAdapter.INSTANCE);
 		CurrencyInteractionService.install(LegacyCurrencyInteractionAdapter.INSTANCE);
-		GlassShardInteractionService.install(LegacyGlassShardInteractionAdapter.INSTANCE);
 		PortableMenuInteractionService.install(LegacyPortableMenuInteractionAdapter.INSTANCE);
 		FirearmInteractionService.install(LegacyFirearmInteractionAdapter.INSTANCE);
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
