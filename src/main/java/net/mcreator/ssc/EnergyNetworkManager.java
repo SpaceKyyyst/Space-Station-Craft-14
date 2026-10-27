@@ -2,6 +2,8 @@ package net.mcreator.ssc;
 
 import java.util.List;
 import net.mcreator.ssc.energy.EnergyTopologyService;
+import net.ssc14.content.energy.CableType;
+import net.ssc14.content.energy.EnergyNetwork;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
 

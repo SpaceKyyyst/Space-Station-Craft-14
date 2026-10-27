@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc;
+package net.ssc14.content.energy;
 
 import net.minecraft.core.BlockPos;
 import java.util.HashSet;

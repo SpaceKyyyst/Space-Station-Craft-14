@@ -1,4 +1,4 @@
-package net.mcreator.ssc.energy;
+package net.ssc14.core.energy;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

@@ -1,11 +1,14 @@
 package net.mcreator.ssc;
 
+import net.ssc14.content.energy.CableType;
+import net.ssc14.content.energy.EnergyNetwork;
+
 import net.mcreator.ssc.block.LampBlock;
 import net.ssc14.content.block.energy.ApcBlockEntity;
 import net.ssc14.content.block.energy.EnergyStorage;
 import net.ssc14.content.block.energy.PodstationBlockEntity;
-import net.mcreator.ssc.energy.EnergyAllocation;
-import net.mcreator.ssc.energy.EnergyTickBudget;
+import net.ssc14.core.energy.EnergyAllocation;
+import net.ssc14.core.energy.EnergyTickBudget;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

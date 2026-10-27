@@ -1,7 +1,7 @@
 package net.mcreator.ssc.gametest;
 
-import net.mcreator.ssc.CableType;
-import net.mcreator.ssc.EnergyNetwork;
+import net.ssc14.content.energy.CableType;
+import net.ssc14.content.energy.EnergyNetwork;
 import net.mcreator.ssc.EnergyNetworkManager;
 import net.mcreator.ssc.block.LampBlock;
 import net.ssc14.content.block.energy.SheathingBlock;

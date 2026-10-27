@@ -1,5 +1,8 @@
 package net.mcreator.ssc.audit;
 
+import net.ssc14.content.energy.CableType;
+import net.ssc14.content.energy.EnergyNetwork;
+
 import net.ssc14.common.atmosphere.model.GasType;
 import net.ssc14.common.atmosphere.reaction.GasReaction;
 import net.ssc14.content.atmosphere.runtime.AtmosphereManager;

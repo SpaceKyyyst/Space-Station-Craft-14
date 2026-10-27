@@ -20,8 +20,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.CableType;
-import net.mcreator.ssc.EnergyNetwork;
+import net.ssc14.content.energy.CableType;
+import net.ssc14.content.energy.EnergyNetwork;
 import net.mcreator.ssc.EnergyNetworkManager;
 import net.mcreator.ssc.MultitoolDataPacket;
 
