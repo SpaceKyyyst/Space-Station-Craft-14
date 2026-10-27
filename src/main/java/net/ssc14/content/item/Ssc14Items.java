@@ -29,6 +29,9 @@ import net.ssc14.content.item.machinery.MachineComponentItem;
 import net.ssc14.content.item.material.MaterialItem;
 import net.ssc14.content.item.medical.MedicalSupplyItem;
 import net.ssc14.content.item.poster.PosterItem;
+import net.ssc14.content.item.utility.DebugActivatorItem;
+import net.ssc14.content.item.utility.RcdCartridgeItem;
+import net.ssc14.content.item.utility.TrafficConeItem;
 import net.ssc14.content.item.utility.UtilityItem;
 
 /** Canonical owner of SSC14 item registrations. */
@@ -55,6 +58,14 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
     public static final DeferredItem<Item> HEALTH_ANALYZER = utility("health_analyzer");
+    public static final DeferredItem<Item> RC_DCARTRIDGE =
+            REGISTRY.registerItem("rc_dcartridge", RcdCartridgeItem::new,
+                    Item.Properties::new);
+    public static final DeferredItem<Item> CONE =
+            REGISTRY.registerItem("cone", TrafficConeItem::new, Item.Properties::new);
+    public static final DeferredItem<Item> DEBUGACTIVATOR =
+            REGISTRY.registerItem("debugactivator", DebugActivatorItem::new,
+                    Item.Properties::new);
     public static final DeferredItem<Item> BULLET_35ITEM = ammunition("bullet_35item");
     public static final DeferredItem<Item> FOAM_DART = ammunition("foam_dart");
     public static final DeferredItem<Item> BULLET_35_CARTRIDGE =
