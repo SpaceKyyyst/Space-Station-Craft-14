@@ -1,4 +1,4 @@
-package net.mcreator.ssc.diagnostics;
+package net.ssc14.core.diagnostics;
 
 import jdk.jfr.Category;
 import jdk.jfr.Event;

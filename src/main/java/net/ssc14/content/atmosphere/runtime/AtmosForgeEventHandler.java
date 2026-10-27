@@ -20,7 +20,7 @@ public final class AtmosForgeEventHandler {
     @SubscribeEvent
     public static void onLevelTick(LevelTickEvent.Post event) {
         if (event.getLevel() instanceof ServerLevel level) {
-            try (var timing = net.mcreator.ssc.diagnostics.TickPhase.start("atmosphere", 0)) {
+            try (var timing = net.ssc14.core.diagnostics.TickPhase.start("atmosphere", 0)) {
                 AtmosphereManager.get(level).tick();
             }
             if (level.getGameTime() % ANALYZER_SYNC_INTERVAL == 0) {

@@ -18,7 +18,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.NetConfigGUISyncMessage;
 import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
-import net.mcreator.ssc.NetworkSavedData;
+import net.ssc14.content.network.NetworkSavedData;
 import net.ssc14.common.network.NetworkAction;
 import net.ssc14.common.network.NetworkTrigger;
 import net.ssc14.content.item.Ssc14Items;

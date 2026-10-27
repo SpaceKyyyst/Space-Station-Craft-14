@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc;
+package net.ssc14.content.network;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

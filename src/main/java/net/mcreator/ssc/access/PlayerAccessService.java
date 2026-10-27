@@ -24,7 +24,7 @@ public final class PlayerAccessService {
 
     public static void tick(Player player) {
         if (player.level().isClientSide()) return;
-        try (var timing = net.mcreator.ssc.diagnostics.TickPhase.start("player_access", player.getInventory().getContainerSize())) {
+        try (var timing = net.ssc14.core.diagnostics.TickPhase.start("player_access", player.getInventory().getContainerSize())) {
             synchronize(player);
         }
     }

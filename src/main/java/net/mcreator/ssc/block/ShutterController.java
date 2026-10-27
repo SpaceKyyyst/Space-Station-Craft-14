@@ -1,6 +1,6 @@
 package net.mcreator.ssc.block;
 
-import net.mcreator.ssc.NetworkManager;
+import net.ssc14.content.network.NetworkManager;
 import net.mcreator.ssc.Ssc14Mod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
