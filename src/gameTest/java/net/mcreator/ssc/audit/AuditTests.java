@@ -815,11 +815,11 @@ public final class AuditTests {
         });
         TESTS.put("analyser_packet_roundtrip", h -> {
             AtmosCell cell = new AtmosCell(); cell.setMoles(0,10); cell.setMoles(1,30);
-            var expected = net.mcreator.ssc.network.GasAnalyserData.from("minecraft:overworld", BlockPos.ZERO, cell);
+            var expected = net.ssc14.integration.neoforge.atmosphere.network.GasAnalyserData.from("minecraft:overworld", BlockPos.ZERO, cell);
             var buffer = new net.minecraft.network.FriendlyByteBuf(io.netty.buffer.Unpooled.buffer());
             try {
-                net.mcreator.ssc.network.GasAnalyserData.CODEC.encode(buffer, expected);
-                var actual = net.mcreator.ssc.network.GasAnalyserData.CODEC.decode(buffer);
+                net.ssc14.integration.neoforge.atmosphere.network.GasAnalyserData.CODEC.encode(buffer, expected);
+                var actual = net.ssc14.integration.neoforge.atmosphere.network.GasAnalyserData.CODEC.decode(buffer);
                 h.assertTrue(actual.dimension().equals(expected.dimension()) && actual.position().equals(expected.position()), "Snapshot location changed");
                 h.assertTrue(actual.pressure()==cell.getPressure() && actual.temperature()==cell.getTemperature(), "Snapshot measurements changed");
                 h.assertTrue(java.util.Arrays.equals(actual.moles(),expected.moles()), "Gas amounts changed");

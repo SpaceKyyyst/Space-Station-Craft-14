@@ -4,6 +4,7 @@ package net.mcreator.ssc;
 import net.ssc14.integration.neoforge.network.CompatibilityPayloadRegistrar;
 import net.ssc14.integration.neoforge.energy.network.MultitoolDataPacket;
 import net.ssc14.client.energy.MultitoolDataHandler;
+import net.ssc14.integration.neoforge.atmosphere.network.GasAnalyserData;
 
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -20,9 +21,9 @@ public class NetworkRegister {
         registrar.playToClient(net.ssc14.integration.neoforge.medical.network.MedicalPresentationMessage.TYPE,
                 net.ssc14.integration.neoforge.medical.network.MedicalPresentationMessage.CODEC,
                 net.ssc14.client.medical.MedicalPresentationHandler::handle);
-        registrar.playToClient(net.mcreator.ssc.network.GasAnalyserData.TYPE,
-                net.mcreator.ssc.network.GasAnalyserData.CODEC,
-                net.mcreator.ssc.network.GasAnalyserData::handle);
+        registrar.playToClient(GasAnalyserData.TYPE,
+                GasAnalyserData.CODEC,
+                GasAnalyserData::handle);
 
         // Регистрируем пакет на клиентскую сторону
         registrar.playToClient(

@@ -1,4 +1,4 @@
-package net.mcreator.ssc.network;
+package net.ssc14.integration.neoforge.atmosphere.network;
 
 import net.ssc14.integration.neoforge.atmosphere.AtmosCell;
 import net.ssc14.common.atmosphere.model.GasType;
