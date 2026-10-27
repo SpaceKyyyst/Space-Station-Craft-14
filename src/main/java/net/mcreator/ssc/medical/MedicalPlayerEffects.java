@@ -1,6 +1,7 @@
 package net.mcreator.ssc.medical;
 
 import net.ssc14.integration.neoforge.medical.MedicalBlindnessOwnership;
+import net.ssc14.common.medical.MedicalStatePolicy;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.Identifier;
@@ -24,7 +25,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 /** Minecraft boundary for owned medical modifiers, blindness, and forced pose. */
 @EventBusSubscriber(modid = "ssc_14")
 public final class MedicalPlayerEffects implements MedicalEffectsController.Target {
-    public static final String TOTAL_DAMAGE = "sscCustomHealth";
+    public static final String TOTAL_DAMAGE = MedicalStatePolicy.TOTAL_DAMAGE_KEY;
     public static final String ASPHYX_TIMER = "ssc14_asphyxTimer";
     private static final String CRITICAL = "ssc14_critical";
     private static final String OWNERSHIP = "ssc_14:medical_effects";

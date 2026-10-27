@@ -1,4 +1,4 @@
-package net.mcreator.ssc.gravity;
+package net.ssc14.common.gravity;
 
 /** The existing space/station/boots rule, independent of Minecraft state. */
 public final class GravityPolicy {

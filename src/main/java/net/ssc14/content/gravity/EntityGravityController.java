@@ -1,4 +1,4 @@
-package net.mcreator.ssc.gravity;
+package net.ssc14.content.gravity;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
@@ -6,6 +6,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
+import net.ssc14.common.gravity.GravityPolicy;
 
 /** Server adapter. Ownership follows entity serialization without retaining entity references. */
 @EventBusSubscriber(modid = "ssc_14")

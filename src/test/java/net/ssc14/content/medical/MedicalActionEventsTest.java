@@ -1,4 +1,4 @@
-package net.mcreator.ssc.medical;
+package net.ssc14.content.medical;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Blocks;

@@ -1,10 +1,10 @@
-package net.mcreator.ssc.gravity;
+package net.ssc14.content.gravity;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Marker;
 import org.junit.jupiter.api.Test;
 
-import static net.mcreator.ssc.gravity.GravityPolicy.Decision.*;
+import static net.ssc14.common.gravity.GravityPolicy.Decision.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EntityGravityControllerTest {

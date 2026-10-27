@@ -1,8 +1,8 @@
-package net.mcreator.ssc.gravity;
+package net.ssc14.common.gravity;
 
 import org.junit.jupiter.api.Test;
 
-import static net.mcreator.ssc.gravity.GravityPolicy.Decision.*;
+import static net.ssc14.common.gravity.GravityPolicy.Decision.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GravityPolicyTest {

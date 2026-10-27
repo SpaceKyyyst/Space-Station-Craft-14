@@ -22,8 +22,8 @@ import net.minecraft.util.Mth;
 
 import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.gravity.EntityGravityController;
-import net.mcreator.ssc.gravity.GravityPolicy;
+import net.ssc14.content.gravity.EntityGravityController;
+import net.ssc14.common.gravity.GravityPolicy;
 
 import javax.annotation.Nullable;
 
