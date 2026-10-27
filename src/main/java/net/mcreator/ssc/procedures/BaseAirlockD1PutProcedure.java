@@ -30,7 +30,7 @@ public class BaseAirlockD1PutProcedure {
         if (action != 1 && action != 2) ensureTopBlockExists(world, topPos, blockstate);
 		initializeClosedAirlockState(world, pos, blockstate);
 		generateRandomCableValues(world, pos);
-        net.mcreator.ssc.access.AirlockFloor.ensureLowerPart(world, pos);
+        net.ssc14.content.block.airlock.AirlockFloor.ensureLowerPart(world, pos);
 		BlockEntity be = world.getBlockEntity(pos);
 		if (be != null) be.setChanged();
 	}

@@ -165,12 +165,12 @@ public class BaseAirlockOpenCloseProcedure {
                 nbt.remove("_ssc14_crushed");
                 finish(be);
                 setState(level, pos, closedState(nbt));
-                if (crushed) begin(level, pos, be, RELEASE_CRUSHED, closedState(nbt), net.mcreator.ssc.access.AirlockCrushing.RELEASE_TICKS);
+                if (crushed) begin(level, pos, be, RELEASE_CRUSHED, closedState(nbt), net.ssc14.content.block.airlock.AirlockCrushing.RELEASE_TICKS);
             } else {
                 setState(level, pos, CLOSE_FRAMES[next]);
                 if (next == 2) {
                     updateTop(level, pos, false);
-                    if (!nbt.getBooleanOr("safe", true) && net.mcreator.ssc.access.AirlockCrushing.apply(level, pos))
+                    if (!nbt.getBooleanOr("safe", true) && net.ssc14.content.block.airlock.AirlockCrushing.apply(level, pos))
                         nbt.putBoolean("_ssc14_crushed", true);
                 }
                 level.scheduleTick(pos, state.getBlock(), next < 2 ? 4 : 2);

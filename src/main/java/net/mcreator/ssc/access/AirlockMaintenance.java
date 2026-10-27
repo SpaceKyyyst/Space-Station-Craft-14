@@ -1,5 +1,8 @@
 package net.mcreator.ssc.access;
 
+import net.ssc14.common.airlock.AirlockProtection;
+import net.ssc14.content.block.airlock.AirlockWorkFeedback;
+
 import java.util.Map;
 import java.util.WeakHashMap;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
