@@ -50,6 +50,7 @@ import net.ssc14.content.item.tool.AsteroidPickItem;
 import net.ssc14.content.item.tool.MechanicalHandToolItem;
 import net.ssc14.content.item.tool.MechanicalToolProfile;
 import net.ssc14.content.item.utility.DebugActivatorItem;
+import net.ssc14.content.item.utility.DebugBroadcastItem;
 import net.ssc14.content.item.utility.RcdCartridgeItem;
 import net.ssc14.content.item.utility.TrafficConeItem;
 import net.ssc14.content.item.utility.UtilityItem;
@@ -164,6 +165,9 @@ public final class Ssc14Items {
             REGISTRY.registerItem("cone", TrafficConeItem::new, Item.Properties::new);
     public static final DeferredItem<Item> DEBUGACTIVATOR =
             REGISTRY.registerItem("debugactivator", DebugActivatorItem::new,
+                    Item.Properties::new);
+    public static final DeferredItem<Item> DEBU_GITEM =
+            REGISTRY.registerItem("debu_gitem", DebugBroadcastItem::new,
                     Item.Properties::new);
     public static final DeferredItem<Item> REAGENT_CONTAINER =
             reagentContainer("reagent_container", Ssc14ReagentContainers.DEFAULT_CAPACITY);
