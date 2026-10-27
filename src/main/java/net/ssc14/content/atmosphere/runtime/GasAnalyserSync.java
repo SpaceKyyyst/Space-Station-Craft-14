@@ -1,7 +1,8 @@
-package net.mcreator.ssc.network;
+package net.ssc14.content.atmosphere.runtime;
 
 import net.ssc14.content.atmosphere.runtime.AtmosphereManager;
 import net.ssc14.content.item.tool.GasAnalyserOverlayService;
+import net.ssc14.integration.neoforge.atmosphere.network.GasAnalyserData;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
