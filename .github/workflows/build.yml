@@ -54,9 +54,11 @@ jobs:
           python .github/scripts/test_checks.py
           python .github/scripts/test_architecture.py
           python .github/scripts/test_procedure_graph.py
+          python .github/scripts/test_menu_security.py
           python .github/scripts/test_gametests.py
           python .github/scripts/check_architecture.py
           python .github/scripts/check_procedure_graph.py
+          python .github/scripts/check_menu_security.py
           python .github/scripts/check_project.py
           python .github/scripts/check_resources.py
       - name: Test release script without publishing
