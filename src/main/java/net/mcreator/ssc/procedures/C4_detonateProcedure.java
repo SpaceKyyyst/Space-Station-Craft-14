@@ -10,7 +10,7 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModParticleTypes;
+import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 
 public class C4_detonateProcedure {
@@ -23,7 +23,7 @@ public class C4_detonateProcedure {
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, (x + 0.5), (y + 0.5), (z + 0.5), 10, 0, 0, 0, 0.4);
 		if (world instanceof ServerLevel _level)
-			_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.SPARK.get()), (x + 0.5), (y + 0.5), (z + 0.5), 100, 0, 0, 0, 0.3);
+			_level.sendParticles((SimpleParticleType) (Ssc14ParticleTypes.SPARK.get()), (x + 0.5), (y + 0.5), (z + 0.5), 100, 0, 0, 0, 0.3);
 		if (world instanceof ServerLevel _level) {
 			Entity entityToSpawn = Ssc14EntityTypes.C_4_CRUTCH_ENT.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.5, z + 0.5), EntitySpawnReason.MOB_SUMMONED);
 			if (entityToSpawn != null) {

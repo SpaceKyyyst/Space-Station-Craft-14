@@ -11,7 +11,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.particles.SimpleParticleType;
 
-import net.mcreator.ssc.init.Ssc14ModParticleTypes;
+import net.ssc14.content.particle.Ssc14ParticleTypes;
 
 import java.util.Optional;
 import java.util.List;
@@ -80,7 +80,7 @@ public class Specify_CLICK_Procedure {
 			double Z = finalHitVec.z + (toPlayer.z * 0.125);
 
 			if (world instanceof ServerLevel _level) {
-				_level.sendParticles((SimpleParticleType) (Ssc14ModParticleTypes.SPECIFY_P.get()), X, Y, Z, 1, 0, 0, 0, 0);
+				_level.sendParticles((SimpleParticleType) (Ssc14ParticleTypes.SPECIFY_P.get()), X, Y, Z, 1, 0, 0, 0, 0);
 			}
 		}
 	}
