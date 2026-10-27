@@ -20,10 +20,10 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.util.Mth;
 
-import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.ssc14.content.gravity.EntityGravityController;
 import net.ssc14.common.gravity.GravityPolicy;
+import net.ssc14.content.gravity.StationGravityState;
 
 import javax.annotation.Nullable;
 
@@ -50,7 +50,7 @@ public class EntityGravitySistemProcedure {
         
         boolean inSpace = entity.level().dimension() == SPACE_DIMENSION;
         boolean excluded = entity.isRemoved();
-        boolean stationGravity = Ssc14ModVariables.station_gravity;
+        boolean stationGravity = StationGravityState.isEnabled();
         boolean boots = inSpace && !excluded && !stationGravity
             && hasEntityInInventory(entity, new ItemStack(Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get()));
         boolean support = false;

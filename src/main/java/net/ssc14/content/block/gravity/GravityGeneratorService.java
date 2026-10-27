@@ -1,11 +1,10 @@
-package net.mcreator.ssc.gravity;
+package net.ssc14.content.block.gravity;
 
-import net.ssc14.content.block.gravity.GravityGeneratorBlock;
-import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
+import net.ssc14.content.gravity.StationGravityState;
 
 /** Charge simulation and throttled visual synchronization for a loaded generator. */
 public final class GravityGeneratorService {
@@ -38,7 +37,7 @@ public final class GravityGeneratorService {
         }
         if (nextState != state) level.setBlock(position, nextState, 3);
         else if (changed && level.getGameTime() % VISUAL_INTERVAL_TICKS == 0) level.sendBlockUpdated(position, state, state, 3);
-        Ssc14ModVariables.station_gravity = gravity;
+        StationGravityState.setEnabled(gravity);
         if (level.getGameTime() % VISUAL_INTERVAL_TICKS == 0) emitParticle(level, position, nextCharge);
     }
 

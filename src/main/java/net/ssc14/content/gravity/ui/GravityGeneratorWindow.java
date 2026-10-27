@@ -1,4 +1,4 @@
-package net.mcreator.ssc.gravity.ui;
+package net.ssc14.content.gravity.ui;
 
 import com.lowdragmc.lowdraglib2.gui.sync.bindings.impl.DataBindingBuilder;
 import com.lowdragmc.lowdraglib2.gui.ui.ModularUI;
@@ -8,19 +8,20 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.ssc14.handy.server.ui.ServerUIManager;
 import com.ssc14.handy.window.access.Source;
-import net.mcreator.ssc.Ssc14Mod;
 import net.ssc14.content.block.gravity.GravityGeneratorBlockEntity;
-import net.mcreator.ssc.procedures.GravGenGUIETAtextProcedure;
-import net.mcreator.ssc.procedures.GravGenGUIpercentTextProcedure;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.function.Supplier;
+import java.util.Locale;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /** One slot-free Handy window; all mutations and displayed values originate on the server. */
 public final class GravityGeneratorWindow {
+    private static final Logger LOGGER = LogManager.getLogger(GravityGeneratorWindow.class);
     public static final int WIDTH = 250;
     public static final int HEIGHT = 174;
     private static final double MAX_DISTANCE_SQUARED = 64;
@@ -47,7 +48,7 @@ public final class GravityGeneratorWindow {
         root.lss("background", "#202832");
         // Handy can request a UI directly, without a preceding block interaction.
         if (!canAccess(generator, player, source)) {
-            Ssc14Mod.LOGGER.debug("Rejected gravity window request at {}", source);
+            LOGGER.debug("Rejected gravity window request at {}", source);
             return ModularUI.of(UI.of(root), player);
         }
 
@@ -59,9 +60,9 @@ public final class GravityGeneratorWindow {
                         ? "gui.ssc_14.handy.gravity.on" : "gui.ssc_14.handy.gravity.off")));
         addValue(root, () -> Component.translatable("gui.ssc_14.handy.gravity.status", status(generator)));
         addValue(root, () -> Component.translatable("gui.ssc_14.handy.gravity.charge",
-                GravGenGUIpercentTextProcedure.execute(generator.getLevel(), source.pos().getX(), source.pos().getY(), source.pos().getZ())));
+                chargePercent(generator)));
         addValue(root, () -> Component.translatable("gui.ssc_14.handy.gravity.eta",
-                GravGenGUIETAtextProcedure.execute(generator.getLevel(), source.pos().getX(), source.pos().getY(), source.pos().getZ())));
+                elapsedTime(generator)));
         addButton(root, "gui.ssc_14.handy.gravity.enable", () -> setEnabled(generator, source, player, true));
         addButton(root, "gui.ssc_14.handy.gravity.disable", () -> setEnabled(generator, source, player, false));
         addButton(root, "gui.ssc_14.handy.gravity.close", () -> {
@@ -92,7 +93,7 @@ public final class GravityGeneratorWindow {
 
     private static void setEnabled(GravityGeneratorBlockEntity generator, GlobalPos source, Player player, boolean enabled) {
         if (!(player instanceof ServerPlayer) || !canAccess(generator, player, source)) {
-            Ssc14Mod.LOGGER.debug("Rejected gravity window action at {}", source);
+            LOGGER.debug("Rejected gravity window action at {}", source);
             return;
         }
         generator.getPersistentData().putBoolean("active", enabled);
@@ -100,5 +101,17 @@ public final class GravityGeneratorWindow {
         var level = player.level();
         var state = generator.getBlockState();
         level.sendBlockUpdated(source.pos(), state, state, 3);
+    }
+
+    private static String chargePercent(GravityGeneratorBlockEntity generator) {
+        return Math.round(generator.getPersistentData().getDoubleOr("b_energy", 0) / 20) + " %";
+    }
+
+    private static String elapsedTime(GravityGeneratorBlockEntity generator) {
+        var data = generator.getPersistentData();
+        int energy = Math.clamp(data.getIntOr("b_energy", 0), 0, FULL_CHARGE);
+        if (energy == 0 || energy == FULL_CHARGE) return "N/D";
+        int seconds = Math.clamp((data.getBooleanOr("active", false) ? FULL_CHARGE - energy : energy) / 20, 0, 100);
+        return String.format(Locale.ROOT, "%02d:%02d", seconds / 60, seconds % 60);
     }
 }
