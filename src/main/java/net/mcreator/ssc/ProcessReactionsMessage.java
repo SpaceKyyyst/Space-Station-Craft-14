@@ -18,7 +18,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import java.util.Map;
 import net.mcreator.ssc.network.MenuPacketGuard;
-import net.mcreator.ssc.chemistry.ReagentTransferPlan;
+import net.ssc14.common.chemistry.ReagentTransferPlan;
 
 @EventBusSubscriber
 public record ProcessReactionsMessage(int slotIndex, ItemStack carriedStack, String targetMarker) implements CustomPacketPayload {

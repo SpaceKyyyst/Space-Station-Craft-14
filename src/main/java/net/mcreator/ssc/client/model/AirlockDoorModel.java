@@ -1,6 +1,6 @@
 package net.mcreator.ssc.client.model;
 
-import net.mcreator.ssc.math.AirlockMotion;
+import net.ssc14.common.airlock.AirlockMotion;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;

@@ -1,4 +1,4 @@
-package net.mcreator.ssc.math;
+package net.ssc14.common.airlock;
 
 /** Pure geometry for two telescopic leaves, measured in model pixels. */
 public final class AirlockMotion {
