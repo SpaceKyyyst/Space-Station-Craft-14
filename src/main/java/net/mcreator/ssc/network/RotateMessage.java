@@ -13,7 +13,7 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 
-import net.mcreator.ssc.rotation.RotateCommand;
+import net.ssc14.content.rotation.RotateCommand;
 import net.mcreator.ssc.Ssc14Mod;
 
 @EventBusSubscriber
