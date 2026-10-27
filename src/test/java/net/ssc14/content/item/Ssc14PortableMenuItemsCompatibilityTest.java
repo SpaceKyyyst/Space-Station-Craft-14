@@ -13,7 +13,9 @@ import org.junit.jupiter.api.Test;
 class Ssc14PortableMenuItemsCompatibilityTest {
     private static final List<ExpectedItem> ITEMS = List.of(
             item("ACCESS_CONFIG", "access_config", "AccessConfigItem"),
-            item("BACKPACK_2", "backpack_2", "Backpack2Item"));
+            item("BACKPACK_2", "backpack_2", "Backpack2Item"),
+            item("PD_APASSANGER", "pd_apassanger", "PDApassangerItem"),
+            item("EGG_CARTON", "egg_carton", "EggCartonItem"));
 
     @Test
     void canonicalRegistryOwnsPortableMenuIdsAndLegacyHoldersRemainAliases()
@@ -48,6 +50,8 @@ class Ssc14PortableMenuItemsCompatibilityTest {
         var inventorySlots = kindType.getMethod("inventorySlots");
         assertEquals(1, inventorySlots.invoke(enumValue(kindType, "ACCESS_CONFIG")));
         assertEquals(21, inventorySlots.invoke(enumValue(kindType, "BACKPACK")));
+        assertEquals(2, inventorySlots.invoke(enumValue(kindType, "PASSENGER_PDA")));
+        assertEquals(11, inventorySlots.invoke(enumValue(kindType, "EGG_CARTON")));
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})

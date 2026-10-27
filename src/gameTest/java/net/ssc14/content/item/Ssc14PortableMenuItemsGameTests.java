@@ -8,6 +8,9 @@ import java.util.UUID;
 import java.util.function.Consumer;
 import net.mcreator.ssc.world.inventory.AccessConfigGUIMenu;
 import net.mcreator.ssc.world.inventory.BackpackGUIMenu;
+import net.mcreator.ssc.world.inventory.EggCartonGUIMenu;
+import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
+import net.mcreator.ssc.procedures.PDAGUIoffPRProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,6 +23,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -44,7 +48,11 @@ public final class Ssc14PortableMenuItemsGameTests {
             item(Ssc14Items.ACCESS_CONFIG, "access_config",
                     PortableMenuItemKind.ACCESS_CONFIG, true, 1),
             item(Ssc14Items.BACKPACK_2, "backpack_2",
-                    PortableMenuItemKind.BACKPACK, false, 21));
+                    PortableMenuItemKind.BACKPACK, false, 21),
+            item(Ssc14Items.PD_APASSANGER, "pd_apassanger",
+                    PortableMenuItemKind.PASSENGER_PDA, true, 2),
+            item(Ssc14Items.EGG_CARTON, "egg_carton",
+                    PortableMenuItemKind.EGG_CARTON, false, 11));
 
     private Ssc14PortableMenuItemsGameTests() { }
 
@@ -65,6 +73,7 @@ public final class Ssc14PortableMenuItemsGameTests {
     private static void verifyContract(GameTestHelper helper) {
         verifyDefinitionsAndCapabilities(helper);
         verifyMenuBindings(helper);
+        verifyInventoryInitialization(helper);
         helper.succeed();
     }
 
@@ -129,6 +138,81 @@ public final class Ssc14PortableMenuItemsGameTests {
         helper.assertTrue(!player.containerMenu.stillValid(player),
                 "backpack menu ignored replacement of the bound hand");
         player.closeContainer();
+
+        ItemStack offhandPda = Ssc14Items.PD_APASSANGER.get().getDefaultInstance();
+        player.setItemInHand(InteractionHand.OFF_HAND, offhandPda);
+        Ssc14Items.PD_APASSANGER.get().use(
+                helper.getLevel(), player, InteractionHand.OFF_HAND);
+        helper.assertTrue(!(player.containerMenu instanceof PDApassangerGUIMenu),
+                "passenger PDA unexpectedly opens from the off hand");
+        player.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
+
+        ItemStack pda = Ssc14Items.PD_APASSANGER.get().getDefaultInstance();
+        player.setItemInHand(InteractionHand.MAIN_HAND, pda);
+        Ssc14Items.PD_APASSANGER.get().use(
+                helper.getLevel(), player, InteractionHand.MAIN_HAND);
+        helper.assertTrue(player.containerMenu instanceof PDApassangerGUIMenu,
+                "passenger PDA no longer opens its menu");
+        player.assertPayload(helper, InteractionHand.MAIN_HAND);
+        player.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
+        PDAGUIoffPRProcedure.execute(player);
+        helper.assertTrue(!(player.containerMenu instanceof PDApassangerGUIMenu),
+                "passenger PDA menu no longer closes after removing the main-hand PDA");
+        player.closeContainer();
+
+        ItemStack eggCarton = Ssc14Items.EGG_CARTON.get().getDefaultInstance();
+        player.setItemInHand(InteractionHand.OFF_HAND, eggCarton);
+        Ssc14Items.EGG_CARTON.get().use(
+                helper.getLevel(), player, InteractionHand.OFF_HAND);
+        helper.assertTrue(player.containerMenu instanceof EggCartonGUIMenu,
+                "egg carton no longer opens its menu");
+        player.assertPayload(helper, InteractionHand.OFF_HAND);
+        helper.assertTrue(player.containerMenu.stillValid(player),
+                "egg carton menu is not bound to the held item");
+        player.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
+        helper.assertTrue(!player.containerMenu.stillValid(player),
+                "egg carton menu ignored replacement of the bound hand");
+        player.closeContainer();
+    }
+
+    private static void verifyInventoryInitialization(GameTestHelper helper) {
+        MenuOpeningFakePlayer player = new MenuOpeningFakePlayer(helper,
+                new GameProfile(UUID.randomUUID(), "portable-menu-inventory-test"));
+
+        ItemStack pda = Ssc14Items.PD_APASSANGER.get().getDefaultInstance();
+        Ssc14Items.PD_APASSANGER.get().inventoryTick(
+                pda, helper.getLevel(), player, EquipmentSlot.MAINHAND);
+        ResourceHandler<ItemResource> pdaInventory = pda.getCapability(
+                Capabilities.Item.ITEM, ItemAccess.forStack(pda));
+        helper.assertTrue(pdaInventory != null,
+                "passenger PDA inventory capability disappeared during initialization");
+        helper.assertTrue(pdaInventory.getResource(0).getItem()
+                        == Ssc14Items.ID_CARD_PASSANGER.get(),
+                "passenger PDA no longer initializes its ID card slot");
+        helper.assertTrue(pdaInventory.getResource(1).getItem() == Ssc14Items.PEN.get(),
+                "passenger PDA no longer initializes its pen slot");
+        helper.assertTrue(pda.getOrDefault(DataComponents.CUSTOM_DATA,
+                        net.minecraft.world.item.component.CustomData.EMPTY)
+                        .copyTag().getBooleanOr("generate", false),
+                "passenger PDA initialization marker disappeared");
+
+        ItemStack eggCarton = Ssc14Items.EGG_CARTON.get().getDefaultInstance();
+        Ssc14Items.EGG_CARTON.get().inventoryTick(
+                eggCarton, helper.getLevel(), player, EquipmentSlot.MAINHAND);
+        ResourceHandler<ItemResource> eggInventory = eggCarton.getCapability(
+                Capabilities.Item.ITEM, ItemAccess.forStack(eggCarton));
+        helper.assertTrue(eggInventory != null,
+                "egg carton inventory capability disappeared during initialization");
+        helper.assertTrue(eggInventory.getResource(0).isEmpty(),
+                "egg carton slot zero initialization changed");
+        for (int slot = 1; slot <= 10; slot++) {
+            helper.assertTrue(eggInventory.getResource(slot).getItem() == Ssc14Items.EGG.get(),
+                    "egg carton slot " + slot + " is no longer initialized with an egg");
+        }
+        helper.assertTrue(eggCarton.getOrDefault(DataComponents.CUSTOM_DATA,
+                        net.minecraft.world.item.component.CustomData.EMPTY)
+                        .copyTag().getBooleanOr("generated", false),
+                "egg carton initialization marker disappeared");
     }
 
     private static final class MenuOpeningFakePlayer extends FakePlayer {
