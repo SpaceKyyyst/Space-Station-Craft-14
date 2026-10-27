@@ -389,6 +389,74 @@ public final class Ssc14Items {
             tileBlockItem("title_wood", Ssc14Blocks.TITLE_WOOD);
     public static final DeferredItem<Item> TITLE_WOODTILE =
             tileBlockItem("title_woodtile", Ssc14Blocks.TITLE_WOODTILE);
+    public static final DeferredItem<Item> ROD_FLOOR =
+            fireResistantBlockItem("rod_floor", Ssc14Blocks.ROD_FLOOR, 1);
+    public static final DeferredItem<Item> STEEL_WALL =
+            fireResistantBlockItem("steel_wall", Ssc14Blocks.STEEL_WALL, 30);
+    public static final DeferredItem<Item> WALL_CARCASE =
+            fireResistantBlockItem("wall_carcase", Ssc14Blocks.WALL_CARCASE, 30);
+    public static final DeferredItem<Item> UPER_SHEATHING =
+            fireResistantBlockItem("uper_sheathing", Ssc14Blocks.UPER_SHEATHING, 1);
+    public static final DeferredItem<Item> ROD_UP_FLOOR =
+            fireResistantBlockItem("rod_up_floor", Ssc14Blocks.ROD_UP_FLOOR, 1);
+    public static final DeferredItem<Item> UP_TITLE =
+            fireResistantBlockItem("up_title", Ssc14Blocks.UP_TITLE, 30);
+    public static final DeferredItem<Item> BASE_WINDOW =
+            fireResistantBlockItem("base_window", Ssc14Blocks.BASE_WINDOW, 30);
+    public static final DeferredItem<Item> PLASTEEL_WALL =
+            fireResistantBlockItem("plasteel_wall", Ssc14Blocks.PLASTEEL_WALL, 30);
+    public static final DeferredItem<Item> PLASTEEL_WALL_CARCASE =
+            fireResistantBlockItem("plasteel_wall_carcase", Ssc14Blocks.PLASTEEL_WALL_CARCASE, 30);
+    public static final DeferredItem<Item> UP_TITLE_STEEL =
+            fireResistantBlockItem("up_title_steel", Ssc14Blocks.UP_TITLE_STEEL, 30);
+    public static final DeferredItem<Item> UP_TITLE_DARK =
+            fireResistantBlockItem("up_title_dark", Ssc14Blocks.UP_TITLE_DARK, 30);
+    public static final DeferredItem<Item> ARMORED_WINDOW =
+            fireResistantBlockItem("armored_window", Ssc14Blocks.ARMORED_WINDOW, 30);
+    public static final DeferredItem<Item> GRILLE =
+            fireResistantBlockItem("grille", Ssc14Blocks.GRILLE, 1);
+    public static final DeferredItem<Item> BROKEN_GRILLE =
+            fireResistantBlockItem("broken_grille", Ssc14Blocks.BROKEN_GRILLE, 1);
+    public static final DeferredItem<Item> CAVE_FLOOR_1 =
+            fireResistantBlockItem("cave_floor_1", Ssc14Blocks.CAVE_FLOOR_1, 1);
+    public static final DeferredItem<Item> CATWALK_FLOOR =
+            fireResistantBlockItem("catwalk_floor", Ssc14Blocks.CATWALK_FLOOR, 1);
+    public static final DeferredItem<Item> STEEL_STAIRCASE =
+            blockItem("steel_staircase", Ssc14Blocks.STEEL_STAIRCASE, 1);
+    public static final DeferredItem<Item> WHITE_STAIRCASE =
+            blockItem("white_staircase", Ssc14Blocks.WHITE_STAIRCASE, 1);
+    public static final DeferredItem<Item> DARK_STAIRCASE =
+            blockItem("dark_staircase", Ssc14Blocks.DARK_STAIRCASE, 1);
+    public static final DeferredItem<Item> DIRT =
+            blockItem("dirt", Ssc14Blocks.DIRT, 1);
+    public static final DeferredItem<Item> GRASS_LIGHT_BLOCK =
+            blockItem("grass_light_block", Ssc14Blocks.GRASS_LIGHT_BLOCK, 1);
+    public static final DeferredItem<Item> LOW_PLANET_GRASS =
+            blockItem("low_planet_grass", Ssc14Blocks.LOW_PLANET_GRASS, 1);
+    public static final DeferredItem<Item> MED_PLANET_GRASS =
+            blockItem("med_planet_grass", Ssc14Blocks.MED_PLANET_GRASS, 1);
+    public static final DeferredItem<Item> PLANETARY_TREE_LOG =
+            blockItem("planetary_tree_log", Ssc14Blocks.PLANETARY_TREE_LOG, 1);
+    public static final DeferredItem<Item> PLANETARY_TREE_FOLIAGE =
+            blockItem("planetary_tree_foliage", Ssc14Blocks.PLANETARY_TREE_FOLIAGE, 1);
+    public static final DeferredItem<Item> UP_STEEL_STAIRCASE =
+            blockItem("up_steel_staircase", Ssc14Blocks.UP_STEEL_STAIRCASE, 1);
+    public static final DeferredItem<Item> UP_WHITE_STAIRCASE =
+            blockItem("up_white_staircase", Ssc14Blocks.UP_WHITE_STAIRCASE, 1);
+    public static final DeferredItem<Item> UP_DARK_STAIRCASE =
+            blockItem("up_dark_staircase", Ssc14Blocks.UP_DARK_STAIRCASE, 1);
+    public static final DeferredItem<Item> SHUTTLE_WALL =
+            fireResistantBlockItem("shuttle_wall", Ssc14Blocks.SHUTTLE_WALL, 1);
+    public static final DeferredItem<Item> ARMORED_SHUTTLE_WALL =
+            fireResistantBlockItem("armored_shuttle_wall", Ssc14Blocks.ARMORED_SHUTTLE_WALL, 1);
+    public static final DeferredItem<Item> DIRECTED_BASE_WINDOW =
+            fireResistantBlockItem("directed_base_window", Ssc14Blocks.DIRECTED_BASE_WINDOW, 1);
+    public static final DeferredItem<Item> DIRECTED_ARMORED_WINDOW =
+            fireResistantBlockItem("directed_armored_window", Ssc14Blocks.DIRECTED_ARMORED_WINDOW, 1);
+    public static final DeferredItem<Item> TITLEARCADEBLUE_2 =
+            fireResistantBlockItem("titlearcadeblue_2", Ssc14Blocks.TITLEARCADEBLUE_2, 30);
+    public static final DeferredItem<Item> TITLEEIGHTIES =
+            fireResistantBlockItem("titleeighties", Ssc14Blocks.TITLEEIGHTIES, 30);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -853,6 +921,21 @@ public final class Ssc14Items {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new BlockItem(block.get(),
                         properties.stacksTo(30).fireResistant()),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> blockItem(String name,
+            DeferredBlock<? extends Block> block, int stackSize) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(), properties.stacksTo(stackSize)),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> fireResistantBlockItem(String name,
+            DeferredBlock<? extends Block> block, int stackSize) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(),
+                        properties.stacksTo(stackSize).fireResistant()),
                 Item.Properties::new);
     }
 
