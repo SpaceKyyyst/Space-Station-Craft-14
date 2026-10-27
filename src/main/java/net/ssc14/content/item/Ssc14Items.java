@@ -61,6 +61,7 @@ import net.ssc14.content.item.utility.DebugBroadcastItem;
 import net.ssc14.content.item.utility.RcdCartridgeItem;
 import net.ssc14.content.item.utility.TrafficConeItem;
 import net.ssc14.content.item.utility.UtilityItem;
+import net.ssc14.content.item.weapon.FoamDartLauncherItem;
 import net.ssc14.content.item.weapon.Mk58Item;
 import net.ssc14.content.item.weapon.Mk58State;
 import net.ssc14.content.item.weapon.PistolMagazineItem;
@@ -214,6 +215,9 @@ public final class Ssc14Items {
                     ALL_PURPOSE_SAUCE_OPEN);
     public static final DeferredItem<Item> BULLET_35ITEM = ammunition("bullet_35item");
     public static final DeferredItem<Item> FOAM_DART = ammunition("foam_dart");
+    public static final DeferredItem<Item> ASTRO_ACE_FOAM_POWER =
+            REGISTRY.registerItem("astro_ace_foam_power", FoamDartLauncherItem::new,
+                    Item.Properties::new);
     public static final DeferredItem<Item> BULLET_35_CARTRIDGE =
             ammunition("bullet_35_cartridge");
     public static final DeferredItem<Item> CAPACITOR =
