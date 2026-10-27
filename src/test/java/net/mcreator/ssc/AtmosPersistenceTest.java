@@ -1,6 +1,7 @@
 package net.mcreator.ssc;
 
 import net.ssc14.common.atmosphere.model.GasType;
+import net.ssc14.integration.neoforge.atmosphere.AtmosCell;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;

@@ -1,6 +1,6 @@
 package net.mcreator.ssc.procedures;
 
-import net.mcreator.ssc.AtmosCell;
+import net.ssc14.integration.neoforge.atmosphere.AtmosCell;
 import net.mcreator.ssc.AtmosphereManager;
 import net.ssc14.common.atmosphere.model.GasType;
 import net.minecraft.core.BlockPos;

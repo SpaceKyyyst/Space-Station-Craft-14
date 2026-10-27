@@ -2,13 +2,14 @@ package net.mcreator.ssc;
 
 import net.ssc14.common.atmosphere.model.GasType;
 import net.ssc14.common.atmosphere.reaction.GasReaction;
+import net.ssc14.integration.neoforge.atmosphere.AtmosCell;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import net.ssc14.common.atmosphere.reaction.StandardGasReactions;
-import net.mcreator.ssc.atmosphere.RegionWorkQueue;
+import net.ssc14.core.atmosphere.RegionWorkQueue;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
