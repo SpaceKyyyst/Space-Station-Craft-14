@@ -9,6 +9,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.ssc14.common.airlock.AirlockWireState;
 
 public class CPlogLampPrProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, BlockState ignored) {
@@ -29,13 +30,13 @@ public class CPlogLampPrProcedure {
             int function = nbt.getIntOr("log_cab_" + i, -1);
             if (function >= 0 && function < intact.length)
                 intact[function] = !nbt.getBooleanOr("cabel_" + i, false)
-                        && !net.mcreator.ssc.access.AirlockWirePulses.active(nbt, function, level.getGameTime());
+                        && !AirlockWireState.active(nbt, function, level.getGameTime());
         }
         boolean changed = false;
         changed |= setFlag(nbt, "energy_cabel_1", intact[0]);
         changed |= setFlag(nbt, "energy_cabel_2", intact[1]);
-        boolean powerPulse = net.mcreator.ssc.access.AirlockWirePulses.active(nbt, 0, level.getGameTime())
-                || net.mcreator.ssc.access.AirlockWirePulses.active(nbt, 1, level.getGameTime());
+        boolean powerPulse = AirlockWireState.active(nbt, 0, level.getGameTime())
+                || AirlockWireState.active(nbt, 1, level.getGameTime());
         boolean powered = nbt.getBooleanOr("_ssc14_supply_powered", oldPower)
                 && (intact[0] || intact[1]) && !powerPulse;
         // Remember the supply separately: mending the wires must restore cable power.

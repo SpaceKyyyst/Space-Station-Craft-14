@@ -12,28 +12,28 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.ChunkEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
+import net.ssc14.common.airlock.AirlockWireState;
 
 /** Only doors with pending pulses are visited; deadlines survive chunk unloading. */
 @EventBusSubscriber(modid = "ssc_14")
 public final class AirlockWirePulses {
-    public static final int DURATION_TICKS = 200;
-    private static final String PREFIX = "_ssc14_wire_pulse_";
+    public static final int DURATION_TICKS = AirlockWireState.DURATION_TICKS;
     private static final Set<BlockEntity> ACTIVE = Collections.newSetFromMap(new WeakHashMap<>());
 
     private AirlockWirePulses() { }
 
     public static boolean active(CompoundTag data, int function, long now) {
-        return data.getLongOr(PREFIX + function, 0) > now;
+        return AirlockWireState.active(data, function, now);
     }
 
     public static void start(BlockEntity door, int function) {
-        if (!(door.getLevel() instanceof ServerLevel level) || function < 0 || function > 7) return;
+        if (!(door.getLevel() instanceof ServerLevel level) || !AirlockWireState.validFunction(function)) return;
         var data = door.getPersistentData();
         if (function == 2) {
             if (!data.getBooleanOr("powered", true) || data.getBooleanOr("_ssc14_bolt_wire_cut", false)) return;
             data.putBoolean("bolted", !data.getBooleanOr("bolted", false));
         } else {
-            data.putLong(PREFIX + function, level.getGameTime() + DURATION_TICKS);
+            data.putLong(AirlockWireState.deadlineKey(function), level.getGameTime() + DURATION_TICKS);
             ACTIVE.add(door);
         }
         refresh(door);
@@ -55,7 +55,7 @@ public final class AirlockWirePulses {
             for (var door : chunk.getBlockEntities().values()) {
                 if (door.getBlockState().getBlock().getStateDefinition().getProperty("arl_variat") == null) continue;
                 for (int function = 0; function < 8; function++) {
-                    if (door.getPersistentData().contains(PREFIX + function)) { ACTIVE.add(door); break; }
+                    if (door.getPersistentData().contains(AirlockWireState.deadlineKey(function))) { ACTIVE.add(door); break; }
                 }
             }
         }
@@ -72,7 +72,7 @@ public final class AirlockWirePulses {
             var data = door.getPersistentData();
             boolean pending = false, expired = false;
             for (int function = 0; function < 8; function++) {
-                String key = PREFIX + function;
+                String key = AirlockWireState.deadlineKey(function);
                 if (!data.contains(key)) continue;
                 if (active(data, function, level.getGameTime())) pending = true;
                 else { data.remove(key); expired = true; }
