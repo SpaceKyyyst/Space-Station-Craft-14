@@ -660,7 +660,7 @@ public class Ssc14ModItems {
 		PLASTIC = Ssc14Items.PLASTIC;
 		PLASTEEL_WALL = block(Ssc14Blocks.PLASTEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
 		PLASTEEL_WALL_CARCASE = block(Ssc14Blocks.PLASTEEL_WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
-		ENERGY_BAR = register("energy_bar", EnergyBarItem::new);
+		ENERGY_BAR = Ssc14Items.ENERGY_BAR;
 		ENERGY_BAR_TRASH = Ssc14Items.ENERGY_BAR_TRASH;
 		ENERGY_BAR_2 = Ssc14Items.ENERGY_BAR_2;
 		PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG = Ssc14Items.PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG;
