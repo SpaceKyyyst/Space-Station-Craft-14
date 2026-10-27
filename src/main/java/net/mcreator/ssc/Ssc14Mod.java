@@ -40,6 +40,7 @@ import net.mcreator.ssc.integration.LegacyNetworkButtonIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyShuttersIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockUpperPlugIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
+import net.mcreator.ssc.integration.LegacyAirlockControllerInteractionAdapter;
 import net.mcreator.ssc.integration.LegacyVendingMachineIntegrationAdapter;
 import net.mcreator.ssc.gravity.ui.GravityGeneratorWindow;
 import net.ssc14.common.Ssc14Identity;
@@ -54,6 +55,7 @@ import net.ssc14.content.item.currency.CurrencyInteractionService;
 import net.ssc14.content.item.decal.DecalToolInteractionService;
 import net.ssc14.content.item.container.PortableMenuInteractionService;
 import net.ssc14.content.item.weapon.FirearmInteractionService;
+import net.ssc14.content.item.tool.AirlockControllerService;
 import net.ssc14.content.block.access.IdConsoleIntegrationService;
 import net.ssc14.content.block.access.Ssc14AccessBlockEntities;
 import net.ssc14.content.block.airlock.ShuttersIntegrationService;
@@ -384,6 +386,7 @@ public class Ssc14Mod {
 		AirlockUpperPlugIntegrationService.install(
 				new LegacyAirlockUpperPlugIntegrationAdapter());
 		AirlockDoorIntegrationService.install(new LegacyAirlockDoorIntegrationAdapter());
+		AirlockControllerService.install(new LegacyAirlockControllerInteractionAdapter());
 		ConstructionItemInteractionService.install(
 				LegacyConstructionItemInteractionAdapter.INSTANCE);
 		DecalToolInteractionService.install(LegacyDecalToolInteractionAdapter.INSTANCE);

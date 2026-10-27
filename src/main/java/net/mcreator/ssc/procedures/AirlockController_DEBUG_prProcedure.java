@@ -1,66 +1,18 @@
 package net.mcreator.ssc.procedures;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.init.Ssc14ModItems;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.ssc14.content.item.tool.AirlockControllerService;
 
-/** Compatibility adapter for the controller's block interaction. */
-public class AirlockController_DEBUG_prProcedure {
-    private static final double MAX_DISTANCE_SQUARED = 64;
+/** @deprecated Use {@link AirlockControllerService}. */
+@Deprecated(forRemoval = false)
+public final class AirlockController_DEBUG_prProcedure {
+    private AirlockController_DEBUG_prProcedure() { }
 
     public static void execute(LevelAccessor world, double x, double y, double z,
-            BlockState ignored, Entity entity, ItemStack controller) {
-        if (!(world instanceof ServerLevel level) || !(entity instanceof Player player)
-                || player.level() != level || !player.isAlive() || player.isSpectator()
-                || !controller.is(Ssc14ModItems.AIRLOCK_CONTROLLER.get())
-                || controller != player.getMainHandItem() && controller != player.getOffhandItem()) return;
-        BlockPos pos = BlockPos.containing(x, y, z);
-        if (!level.hasChunkAt(pos)) return;
-        var state = level.getBlockState(pos);
-        if (state.is(Ssc14ModBlocks.AIRLOCK_UP_PLUG.get()) || state.is(Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get())) {
-            pos = pos.below();
-            state = level.getBlockState(pos);
-        }
-        if (state.getBlock().getStateDefinition().getProperty("arl_variat") == null
-                || !level.mayInteract(player, pos)
-                || player.distanceToSqr(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5) > MAX_DISTANCE_SQUARED) return;
-        var blockEntity = level.getBlockEntity(pos);
-        if (blockEntity == null) return;
-        var data = blockEntity.getPersistentData();
-        if (!data.getBooleanOr("powered", true)) return;
-        int mode = (int) controller.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("mode", 0);
-        if (mode == 2) {
-            BaseAirlockOpenCloseProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), state, player);
-            return;
-        }
-        String sound;
-        if (mode == 0) {
-            boolean bolted = data.getBooleanOr("bolted", false);
-            if (bolted && data.getBooleanOr("_ssc14_bolt_wire_cut", false)) return;
-            data.putBoolean("bolted", !bolted);
-            sound = bolted ? "airlock_bolt_off" : "airlock_bolt_on";
-        } else if (mode == 1) {
-            boolean emergency = data.getBooleanOr("emergency_acs", false);
-            data.putBoolean("emergency_acs", !emergency);
-            sound = emergency ? "airlock_emergency_off" : "airlock_emergency_on";
-        } else return;
-        blockEntity.setChanged();
-        BaseAirlockD1PutProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), state);
-        BaseAirlockOpenCloseProcedure.refreshAutoClose(level, pos);
-        var after = level.getBlockState(pos);
-        if (state == after) level.sendBlockUpdated(pos, after, after, 3);
-        var event = BuiltInRegistries.SOUND_EVENT.getOptional(Identifier.fromNamespaceAndPath("ssc_14", sound));
-        if (event.isPresent()) level.playSound(null, pos, event.get(), SoundSource.BLOCKS, 1, 1);
+            BlockState state, Entity entity, ItemStack controller) {
+        AirlockControllerService.interact(world, x, y, z, state, entity, controller);
     }
 }
