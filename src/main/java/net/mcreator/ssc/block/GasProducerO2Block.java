@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 @Deprecated(forRemoval = false)
 public class GasProducerO2Block
         extends net.ssc14.content.block.atmosphere.GasProducerO2Block
-        implements net.mcreator.ssc.IAtmosBlock {
+        implements net.ssc14.content.atmosphere.AtmosphericBlock {
     public GasProducerO2Block(BlockBehaviour.Properties properties) {
         super(properties);
     }

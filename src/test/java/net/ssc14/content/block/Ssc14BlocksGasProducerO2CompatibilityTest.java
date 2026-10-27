@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.IAtmosBlock;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -23,10 +22,9 @@ class Ssc14BlocksGasProducerO2CompatibilityTest {
 
     @Test
     void legacyAtmosphereTypesRemainCompatibleWithCanonicalContracts() throws Exception {
-        assertTrue(AtmosphericBlock.class.isAssignableFrom(IAtmosBlock.class));
         Class<?> legacy = Class.forName("net.mcreator.ssc.block.GasProducerO2Block");
         assertTrue(GasProducerO2Block.class.isAssignableFrom(legacy));
-        assertTrue(IAtmosBlock.class.isAssignableFrom(legacy));
+        assertTrue(AtmosphericBlock.class.isAssignableFrom(legacy));
         legacy.getConstructor(BlockBehaviour.Properties.class);
     }
 
