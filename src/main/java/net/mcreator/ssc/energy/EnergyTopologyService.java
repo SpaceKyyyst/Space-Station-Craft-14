@@ -157,7 +157,7 @@ public final class EnergyTopologyService {
         }
         if (state.workUnits >= MAX_WORK_UNITS_PER_TICK || state.elapsedNanos >= MAX_REBUILD_NANOS_PER_TICK) return;
         long start = System.nanoTime();
-        try (var timing = net.mcreator.ssc.diagnostics.TickPhase.start("energy_topology", state.workUnits)) {
+        try (var timing = net.ssc14.core.diagnostics.TickPhase.start("energy_topology", state.workUnits)) {
             int idleLayers = 0;
             var types = CableType.values();
             while (state.workUnits < MAX_WORK_UNITS_PER_TICK

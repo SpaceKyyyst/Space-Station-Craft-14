@@ -43,7 +43,7 @@ public class Button_CLICK_Procedure {
 			}).orThrow();
 			// ОТПРАВКА ТРИГГЕРА В СЕТЬ (только на сервере!)
 			if (world instanceof Level _level && !_level.isClientSide()) {
-				net.mcreator.ssc.NetworkManager.trigger(_level, BlockPos.containing(x, y, z), "activate");
+				net.ssc14.content.network.NetworkManager.trigger(_level, BlockPos.containing(x, y, z), "activate");
 			}
 		} else {
 			if (world instanceof Level _level)

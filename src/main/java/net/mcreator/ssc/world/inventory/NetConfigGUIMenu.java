@@ -28,7 +28,7 @@ import net.mcreator.ssc.procedures.NetConfigGUI_CLOSE_Procedure;
 import net.mcreator.ssc.init.Ssc14ModMenus;
 import net.ssc14.common.network.NetworkTrigger;
 import net.ssc14.common.network.NetworkAction;
-import net.mcreator.ssc.NetworkSavedData;
+import net.ssc14.content.network.NetworkSavedData;
 import net.mcreator.ssc.NetConfigGUISyncMessage;
 import net.ssc14.content.item.Ssc14Items;
 

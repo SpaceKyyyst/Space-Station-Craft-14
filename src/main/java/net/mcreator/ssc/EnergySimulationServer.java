@@ -39,7 +39,7 @@ public class EnergySimulationServer {
 
     @SubscribeEvent
     public static void onServerTick(ServerTickEvent.Post event) {
-        try (var timing = net.mcreator.ssc.diagnostics.TickPhase.start("energy_simulation", 0)) {
+        try (var timing = net.ssc14.core.diagnostics.TickPhase.start("energy_simulation", 0)) {
         for (ServerLevel level : event.getServer().getAllLevels()) {
             EnergyNetworkManager.applyPendingUpdates(level);
             TickContext tick = prepareTick(level);
