@@ -7,7 +7,6 @@ import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.network.handling.IPayloadHandler;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.capabilities.EntityCapability;
 import net.neoforged.fml.loading.FMLEnvironment;
@@ -29,8 +28,8 @@ import net.ssc14.integration.neoforge.worldgen.Ssc14StructureFeature;
 import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
 import net.mcreator.ssc.init.*;
-import net.mcreator.ssc.scheduling.ServerTaskScheduler;
-import net.mcreator.ssc.scheduling.SubmissionResult;
+import net.ssc14.integration.neoforge.server.ServerTaskSubmission;
+import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
 import net.mcreator.ssc.world.inventory.MacFrameGUIMenu;
 import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
 import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
@@ -469,28 +468,23 @@ public class Ssc14Mod {
 	}
 
     /** Worker-safe admission; only the passed server's tick thread executes the action. */
-    public static SubmissionResult queueServerWork(MinecraftServer owner, int delay, Runnable action) {
-        return ServerTaskScheduler.submit(owner, delay, action);
+    public static ServerTaskSubmission queueServerWork(MinecraftServer owner, int delay, Runnable action) {
+        return ServerWorkScheduler.submit(owner, delay, action);
     }
 
-    public static SubmissionResult queueServerWork(ServerLevel owner, int delay, Runnable action) {
-        ServerTaskScheduler.validateSubmission(delay, action);
-        if (owner == null) return SubmissionResult.INVALID_OWNER;
+    public static ServerTaskSubmission queueServerWork(ServerLevel owner, int delay, Runnable action) {
+        ServerWorkScheduler.validateSubmission(delay, action);
+        if (owner == null) return ServerTaskSubmission.INVALID_OWNER;
         return queueServerWork(owner.getServer(), delay, action);
     }
 
     /** Explicit side rejection for integrations that only have a LevelAccessor. */
-    public static SubmissionResult queueServerWork(LevelAccessor owner, int delay, Runnable action) {
-        ServerTaskScheduler.validateSubmission(delay, action);
-        if (owner == null) return SubmissionResult.INVALID_OWNER;
-        if (owner.isClientSide()) return SubmissionResult.CLIENT_SIDE;
+    public static ServerTaskSubmission queueServerWork(LevelAccessor owner, int delay, Runnable action) {
+        ServerWorkScheduler.validateSubmission(delay, action);
+        if (owner == null) return ServerTaskSubmission.INVALID_OWNER;
+        if (owner.isClientSide()) return ServerTaskSubmission.CLIENT_SIDE;
         if (owner instanceof ServerLevel level) return queueServerWork(level, delay, action);
-        return SubmissionResult.INVALID_OWNER;
-    }
-
-    @SubscribeEvent
-    public void tick(ServerTickEvent.Post event) {
-        net.mcreator.ssc.scheduling.ServerTaskScheduler.tick(event.getServer());
+        return ServerTaskSubmission.INVALID_OWNER;
     }
 
 	private static Object minecraft;

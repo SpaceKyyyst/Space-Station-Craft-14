@@ -1,4 +1,4 @@
-package net.mcreator.ssc.scheduling;
+package net.ssc14.integration.neoforge.server;
 
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 import sun.misc.Unsafe;
 import static org.junit.jupiter.api.Assertions.*;
 
-class ServerTaskSchedulerTest {
+class ServerWorkSchedulerTest {
     private final List<MinecraftServer> owners = new ArrayList<>();
     private final List<LogEvent> logs = new ArrayList<>();
     private Logger logger;
@@ -53,7 +53,7 @@ class ServerTaskSchedulerTest {
     @AfterEach
     void stopOwners() {
         try {
-            owners.forEach(owner -> ServerTaskScheduler.stopped(new ServerStoppedEvent(owner)));
+            owners.forEach(owner -> ServerWorkScheduler.stopped(new ServerStoppedEvent(owner)));
         } finally {
             logger.removeAppender(appender);
             logger.setAdditive(originalAdditivity);
@@ -73,9 +73,9 @@ class ServerTaskSchedulerTest {
         worker.join();
         assertEquals("ACCEPTED", result.get().toString());
         assertNull(ranOn.get());
-        ServerTaskScheduler.tick(other);
+        ServerWorkScheduler.tick(other);
         assertNull(ranOn.get(), "Another server must not execute this owner's task");
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.tick(owner);
         assertSame(Thread.currentThread(), ranOn.get());
     }
 
@@ -83,11 +83,11 @@ class ServerTaskSchedulerTest {
     void workerCannotExecuteAnOwnersTick() throws Exception {
         var owner = server(true);
         var ranOn = new AtomicReference<Thread>();
-        ServerTaskScheduler.submit(owner, 0, () -> ranOn.set(Thread.currentThread()));
+        ServerWorkScheduler.submit(owner, 0, () -> ranOn.set(Thread.currentThread()));
         var failure = new AtomicReference<Throwable>();
         var worker = new Thread(() -> {
             try {
-                ServerTaskScheduler.tick(owner);
+                ServerWorkScheduler.tick(owner);
             } catch (Throwable error) {
                 failure.set(error);
             }
@@ -96,7 +96,7 @@ class ServerTaskSchedulerTest {
         worker.join();
         assertInstanceOf(IllegalStateException.class, failure.get());
         assertNull(ranOn.get());
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.tick(owner);
         assertSame(Thread.currentThread(), ranOn.get());
     }
 
@@ -104,8 +104,8 @@ class ServerTaskSchedulerTest {
     void unavailableStoppedAndInvalidOwnersAreDistinct() throws Exception {
         var owner = server(false);
         assertEquals("UNAVAILABLE", Ssc14Mod.queueServerWork(owner, 0, () -> fail()).toString());
-        ServerTaskScheduler.started(new ServerStartedEvent(owner));
-        ServerTaskScheduler.stopped(new ServerStoppedEvent(owner));
+        ServerWorkScheduler.started(new ServerStartedEvent(owner));
+        ServerWorkScheduler.stopped(new ServerStoppedEvent(owner));
         assertEquals("STOPPED", Ssc14Mod.queueServerWork(owner, 0, () -> fail()).toString());
         assertEquals("INVALID_OWNER", Ssc14Mod.queueServerWork((MinecraftServer) null, 0, () -> fail()).toString());
         assertEquals("INVALID_OWNER", Ssc14Mod.queueServerWork((ServerLevel) null, 0, () -> fail()).toString());
@@ -139,9 +139,9 @@ class ServerTaskSchedulerTest {
         setField(ServerLevel.class, level, "server", owner);
         var calls = new ArrayList<String>();
         assertEquals("ACCEPTED", Ssc14Mod.queueServerWork(level, 0, () -> calls.add("owner")).toString());
-        ServerTaskScheduler.tick(other);
+        ServerWorkScheduler.tick(other);
         assertTrue(calls.isEmpty());
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.tick(owner);
         assertEquals(List.of("owner"), calls);
     }
 
@@ -158,7 +158,7 @@ class ServerTaskSchedulerTest {
         } while (result.toString().equals("ACCEPTED"));
         assertTrue(accepted > 0);
         assertEquals("FULL", result.toString());
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.tick(owner);
         assertEquals("ACCEPTED", Ssc14Mod.queueServerWork(owner, 0, () -> { }).toString());
     }
 
@@ -167,11 +167,11 @@ class ServerTaskSchedulerTest {
         var first = server(true);
         var calls = new ArrayList<String>();
         Ssc14Mod.queueServerWork(first, 0, () -> calls.add("old"));
-        ServerTaskScheduler.stopped(new ServerStoppedEvent(first));
+        ServerWorkScheduler.stopped(new ServerStoppedEvent(first));
         var replacement = server(true);
         Ssc14Mod.queueServerWork(replacement, 0, () -> calls.add("new"));
-        ServerTaskScheduler.tick(first);
-        ServerTaskScheduler.tick(replacement);
+        ServerWorkScheduler.tick(first);
+        ServerWorkScheduler.tick(replacement);
         assertEquals(List.of("new"), calls);
         assertEquals("STOPPED", Ssc14Mod.queueServerWork(first, 0, () -> fail()).toString());
     }
@@ -183,7 +183,7 @@ class ServerTaskSchedulerTest {
         Ssc14Mod.queueServerWork(owner, 0, () -> calls.add("stale"));
         setField(MinecraftServer.class, owner, "stopped", true);
         assertEquals("STOPPED", Ssc14Mod.queueServerWork(owner, 0, () -> fail()).toString());
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.tick(owner);
         assertTrue(calls.isEmpty());
     }
 
@@ -193,7 +193,7 @@ class ServerTaskSchedulerTest {
         var calls = new ArrayList<String>();
         Ssc14Mod.queueServerWork(owner, 0, () -> { throw new IllegalStateException("Expected task fixture failure"); });
         Ssc14Mod.queueServerWork(owner, 0, () -> calls.add("next"));
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.tick(owner);
         assertEquals(List.of("next"), calls);
         assertEquals(1, logs.size());
         assertEquals(Level.ERROR, logs.getFirst().getLevel());
@@ -206,10 +206,10 @@ class ServerTaskSchedulerTest {
         var calls = new ArrayList<String>();
         Ssc14Mod.queueServerWork(owner, 0, () -> {
             calls.add("stop");
-            ServerTaskScheduler.stopped(new ServerStoppedEvent(owner));
+            ServerWorkScheduler.stopped(new ServerStoppedEvent(owner));
         });
         Ssc14Mod.queueServerWork(owner, 0, () -> calls.add("after stop"));
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.tick(owner);
         assertEquals(List.of("stop"), calls);
     }
 
@@ -218,11 +218,11 @@ class ServerTaskSchedulerTest {
         var owner = server(true);
         var calls = new ArrayList<String>();
         Ssc14Mod.queueServerWork(owner, 0, () -> calls.add("kept"));
-        ServerTaskScheduler.started(new ServerStartedEvent(owner));
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.started(new ServerStartedEvent(owner));
+        ServerWorkScheduler.tick(owner);
         assertEquals(List.of("kept"), calls);
-        ServerTaskScheduler.stopped(new ServerStoppedEvent(owner));
-        ServerTaskScheduler.started(new ServerStartedEvent(owner));
+        ServerWorkScheduler.stopped(new ServerStoppedEvent(owner));
+        ServerWorkScheduler.started(new ServerStartedEvent(owner));
         assertEquals("STOPPED", Ssc14Mod.queueServerWork(owner, 0, () -> fail()).toString());
     }
 
@@ -235,15 +235,15 @@ class ServerTaskSchedulerTest {
             Ssc14Mod.queueServerWork(owner, 0, () -> calls.add("recursive"));
         });
         Ssc14Mod.queueServerWork(owner, 2, () -> calls.add("second"));
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.tick(owner);
         setField(MinecraftServer.class, owner, "tickCount", 1);
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.tick(owner);
         assertTrue(calls.isEmpty());
         setField(MinecraftServer.class, owner, "tickCount", 2);
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.tick(owner);
         assertEquals(List.of("first", "second"), calls);
         setField(MinecraftServer.class, owner, "tickCount", 3);
-        ServerTaskScheduler.tick(owner);
+        ServerWorkScheduler.tick(owner);
         assertEquals(List.of("first", "second", "recursive"), calls);
     }
 
@@ -264,7 +264,7 @@ class ServerTaskSchedulerTest {
         var owner = allocate(DedicatedServer.class);
         setField(MinecraftServer.class, owner, "serverThread", Thread.currentThread());
         owners.add(owner);
-        if (started) ServerTaskScheduler.started(new ServerStartedEvent(owner));
+        if (started) ServerWorkScheduler.started(new ServerStartedEvent(owner));
         return owner;
     }
 

@@ -1,4 +1,4 @@
-package net.mcreator.ssc.chemistry;
+package net.ssc14.common.chemistry;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

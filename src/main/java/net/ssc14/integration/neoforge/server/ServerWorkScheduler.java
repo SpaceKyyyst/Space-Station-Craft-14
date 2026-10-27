@@ -12,6 +12,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.ssc14.common.Ssc14Identity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -78,6 +79,11 @@ public final class ServerWorkScheduler {
         if (session != null && session.active && !owner.isStopped()) {
             session.queue.tick(Integer.toUnsignedLong(owner.getTickCount()));
         }
+    }
+
+    @SubscribeEvent
+    public static void onServerTick(ServerTickEvent.Post event) {
+        tick(event.getServer());
     }
 
     public static void validateSubmission(int delay, Runnable action) {

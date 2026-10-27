@@ -3,8 +3,8 @@ package net.mcreator.ssc;
 
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
-import net.mcreator.ssc.chemistry.ReagentAmounts;
-import net.mcreator.ssc.chemistry.ReagentTransferPlan;
+import net.ssc14.common.chemistry.ReagentAmounts;
+import net.ssc14.common.chemistry.ReagentTransferPlan;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
