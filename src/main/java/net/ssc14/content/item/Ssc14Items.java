@@ -35,6 +35,7 @@ import net.ssc14.content.item.food.EdibleFoodItem;
 import net.ssc14.content.item.food.FoodPackagingWasteItem;
 import net.ssc14.content.item.food.FoodDefinition;
 import net.ssc14.content.item.food.FoodPropItem;
+import net.ssc14.content.item.food.PackagedEnergyBarItem;
 import net.ssc14.content.item.food.Ssc14FoodDefinitions;
 import net.ssc14.content.item.lighting.LightingComponentItem;
 import net.ssc14.content.item.machinery.MachineComponentItem;
@@ -313,6 +314,7 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> TRNS_SCARF = scarf("trns_scarf");
     public static final DeferredItem<Item> YELLOW_SCARF = scarf("yellow_scarf");
     public static final DeferredItem<Item> ENERGY_BAR_TRASH = foodPackagingWaste("energy_bar_trash");
+    public static final DeferredItem<Item> ENERGY_BAR = packagedEnergyBar("energy_bar");
     public static final DeferredItem<Item> CHEESE_HONKERS_TRASH =
             foodPackagingWaste("cheese_honkers_trash");
     public static final DeferredItem<Item> CHIPS_TRASH = foodPackagingWaste("chips_trash");
@@ -629,6 +631,10 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> foodPackagingWaste(String name) {
         return REGISTRY.<Item>registerItem(name, FoodPackagingWasteItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> packagedEnergyBar(String name) {
+        return REGISTRY.<Item>registerItem(name, PackagedEnergyBarItem::new, Item.Properties::new);
     }
 
     private static DeferredItem<Item> cookingIngredient(String name) {
