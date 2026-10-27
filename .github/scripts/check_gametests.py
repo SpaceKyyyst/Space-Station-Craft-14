@@ -96,6 +96,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_item_decal_tool_contract",
     "ssc_14:compatibility_item_currency_contract",
     "ssc_14:compatibility_item_glass_shard_contract",
+    "ssc_14:compatibility_item_portable_menu_contract",
 }
 
 

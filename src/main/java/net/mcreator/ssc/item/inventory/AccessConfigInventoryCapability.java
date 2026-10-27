@@ -12,6 +12,7 @@ import net.minecraft.core.component.DataComponents;
 
 import net.mcreator.ssc.world.inventory.AccessConfigGUIMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.container.PortableMenuItemKind;
 
 @EventBusSubscriber
 public class AccessConfigInventoryCapability extends ItemAccessItemHandler {
@@ -25,7 +26,8 @@ public class AccessConfigInventoryCapability extends ItemAccessItemHandler {
 	}
 
 	public AccessConfigInventoryCapability(ItemAccess access) {
-		super(access, DataComponents.CONTAINER, 1);
+		super(access, DataComponents.CONTAINER,
+				PortableMenuItemKind.ACCESS_CONFIG.inventorySlots());
 	}
 
 	@Override
