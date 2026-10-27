@@ -25,7 +25,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.core.registries.BuiltInRegistries;
 
-import net.mcreator.ssc.world.features.StructureFeature;
+import net.ssc14.integration.neoforge.worldgen.Ssc14StructureFeature;
 import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
 import net.mcreator.ssc.init.*;
@@ -405,7 +405,7 @@ public class Ssc14Mod {
 		Ssc14EntityTypes.REGISTRY.register(modEventBus);
 		Ssc14ModTabs.REGISTRY.register(modEventBus);
 		Ssc14PlayerAttachments.register(modEventBus);
-		StructureFeature.REGISTRY.register(modEventBus);
+		Ssc14StructureFeature.register(modEventBus);
 		Ssc14ModMenus.REGISTRY.register(modEventBus);
 		Ssc14ParticleTypes.REGISTRY.register(modEventBus);
 		Ssc14Attributes.REGISTRY.register(modEventBus);
