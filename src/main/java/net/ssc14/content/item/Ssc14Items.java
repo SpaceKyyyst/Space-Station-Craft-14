@@ -10,6 +10,8 @@ import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.item.access.IdCardItem;
 import net.ssc14.content.item.combat.AmmunitionItem;
+import net.ssc14.content.item.combat.GlassShardItem;
+import net.ssc14.content.item.combat.GlassShardKind;
 import net.ssc14.content.item.clothing.ScarfItem;
 import net.ssc14.content.item.clothing.PassiveEquipmentItem;
 import net.ssc14.content.item.clothing.UniformAccessoryItem;
@@ -95,6 +97,10 @@ public final class Ssc14Items {
             currency("credits_50", CurrencyKind.CREDIT_50);
     public static final DeferredItem<Item> DEBU_GCREDITS_DELETER =
             currency("debu_gcredits_deleter", CurrencyKind.DEBUG_DELETER);
+    public static final DeferredItem<Item> GLASS_SHARD =
+            glassShard("glass_shard", GlassShardKind.STANDARD);
+    public static final DeferredItem<Item> ARM_GLASS_SHARD =
+            glassShard("arm_glass_shard", GlassShardKind.ARMORED);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -473,6 +479,12 @@ public final class Ssc14Items {
     private static DeferredItem<Item> currency(String name, CurrencyKind kind) {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new CurrencyItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> glassShard(String name, GlassShardKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new GlassShardItem(properties, kind),
                 Item.Properties::new);
     }
 
