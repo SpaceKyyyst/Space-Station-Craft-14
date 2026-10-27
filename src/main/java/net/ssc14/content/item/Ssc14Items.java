@@ -1,9 +1,11 @@
 package net.ssc14.content.item;
 
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -457,6 +459,228 @@ public final class Ssc14Items {
             fireResistantBlockItem("titlearcadeblue_2", Ssc14Blocks.TITLEARCADEBLUE_2, 30);
     public static final DeferredItem<Item> TITLEEIGHTIES =
             fireResistantBlockItem("titleeighties", Ssc14Blocks.TITLEEIGHTIES, 30);
+    public static final DeferredItem<Item> SHEATHING =
+            configuredBlockItem("sheathing", Ssc14Blocks.SHEATHING,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> BASE_AIRLOCK_D_1 =
+            configuredBlockItem("base_airlock_d_1", Ssc14Blocks.BASE_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CONSOLE_OF_ID =
+            configuredBlockItem("console_of_id", Ssc14Blocks.CONSOLE_OF_ID,
+                    properties -> properties.stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+    public static final DeferredItem<Item> PORTABLE_SHEATER =
+            configuredBlockItem("portable_sheater", Ssc14Blocks.PORTABLE_SHEATER,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> APC =
+            configuredBlockItem("apc", Ssc14Blocks.APC,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> PODSTATION =
+            configuredBlockItem("podstation", Ssc14Blocks.PODSTATION,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> DEBU_GGENERATOR =
+            configuredBlockItem("debu_ggenerator", Ssc14Blocks.DEBU_GGENERATOR,
+                    properties -> properties.stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+    public static final DeferredItem<Item> LAMP =
+            configuredBlockItem("lamp", Ssc14Blocks.LAMP,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> SMES =
+            configuredBlockItem("smes", Ssc14Blocks.SMES,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> TECH_LAMP =
+            configuredBlockItem("tech_lamp", Ssc14Blocks.TECH_LAMP,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> DEBUG_LAMP =
+            configuredBlockItem("debug_lamp", Ssc14Blocks.DEBUG_LAMP,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> DEBUG_TECH_LAMP =
+            configuredBlockItem("debug_tech_lamp", Ssc14Blocks.DEBUG_TECH_LAMP,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> GRAVITY_GENERATOR =
+            configuredBlockItem("gravity_generator", Ssc14Blocks.GRAVITY_GENERATOR,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> C_4 =
+            configuredBlockItem("c_4", Ssc14Blocks.C_4,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> MACHINE_FRAME =
+            configuredBlockItem("machine_frame", Ssc14Blocks.MACHINE_FRAME,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> MACHINE_FRAME_2 =
+            configuredBlockItem("machine_frame_2", Ssc14Blocks.MACHINE_FRAME_2,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> STEEL_TABLE =
+            configuredBlockItem("steel_table", Ssc14Blocks.STEEL_TABLE,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> STEEL_CHAIR =
+            configuredBlockItem("steel_chair", Ssc14Blocks.STEEL_CHAIR,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> WOOD_CHAIR =
+            configuredBlockItem("wood_chair", Ssc14Blocks.WOOD_CHAIR,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> OFICE_BLACK_CHAIR =
+            configuredBlockItem("ofice_black_chair", Ssc14Blocks.OFICE_BLACK_CHAIR,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> OFICE_WHITE_CHAIR =
+            configuredBlockItem("ofice_white_chair", Ssc14Blocks.OFICE_WHITE_CHAIR,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> BAR_CHAIR =
+            configuredBlockItem("bar_chair", Ssc14Blocks.BAR_CHAIR,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> KOSTILNIBLOK =
+            configuredBlockItem("kostilniblok", Ssc14Blocks.KOSTILNIBLOK,
+                    properties -> properties.stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+    public static final DeferredItem<Item> DEBUG_GRAV_GEN =
+            configuredBlockItem("debug_grav_gen", Ssc14Blocks.DEBUG_GRAV_GEN,
+                    properties -> properties.stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+    public static final DeferredItem<Item> NUCLEAR_WARHEAD =
+            configuredBlockItem("nuclear_warhead", Ssc14Blocks.NUCLEAR_WARHEAD,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> COMPUTER =
+            configuredBlockItem("computer", Ssc14Blocks.COMPUTER,
+                    properties -> properties.stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+    public static final DeferredItem<Item> CLOSET_SECURE =
+            configuredBlockItem("closet_secure", Ssc14Blocks.CLOSET_SECURE,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET =
+            configuredBlockItem("closet", Ssc14Blocks.CLOSET,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> DEBUG_13 =
+            configuredBlockItem("debug_13", Ssc14Blocks.DEBUG_13,
+                    properties -> properties);
+    public static final DeferredItem<Item> EXTINGUISHER_CABINET =
+            configuredBlockItem("extinguisher_cabinet", Ssc14Blocks.EXTINGUISHER_CABINET,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> COMMUNICATION_SERVERS =
+            configuredBlockItem("communication_servers", Ssc14Blocks.COMMUNICATION_SERVERS,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> WOOD_TABLE =
+            configuredBlockItem("wood_table", Ssc14Blocks.WOOD_TABLE,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> COMMUNICATION_CONSOLE =
+            configuredBlockItem("communication_console", Ssc14Blocks.COMMUNICATION_CONSOLE,
+                    properties -> properties.stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+    public static final DeferredItem<Item> TECH_AIRLOCK_D_1 =
+            configuredBlockItem("tech_airlock_d_1", Ssc14Blocks.TECH_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> GAS_PRODUCER_O_2 =
+            configuredBlockItem("gas_producer_o_2", Ssc14Blocks.GAS_PRODUCER_O_2,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> VENDING_AUT_1 =
+            configuredBlockItem("vending_aut_1", Ssc14Blocks.VENDING_AUT_1,
+                    properties -> properties.fireResistant());
+    public static final DeferredItem<Item> SHUTTERS =
+            configuredBlockItem("shutters", Ssc14Blocks.SHUTTERS,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> BUTTON =
+            configuredBlockItem("button", Ssc14Blocks.BUTTON,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> MICROWAWE =
+            configuredBlockItem("microwawe", Ssc14Blocks.MICROWAWE,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> ATMOSPHERICS_AIRLOCK_D_1 =
+            configuredBlockItem("atmospherics_airlock_d_1", Ssc14Blocks.ATMOSPHERICS_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CARGO_AIRLOCK_D_1 =
+            configuredBlockItem("cargo_airlock_d_1", Ssc14Blocks.CARGO_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CENT_COM_AIRLOCK_D_1 =
+            configuredBlockItem("cent_com_airlock_d_1", Ssc14Blocks.CENT_COM_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CHEMISTRY_AIRLOCK_D_1 =
+            configuredBlockItem("chemistry_airlock_d_1", Ssc14Blocks.CHEMISTRY_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> COMMAND_AIRLOCK_D_1 =
+            configuredBlockItem("command_airlock_d_1", Ssc14Blocks.COMMAND_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> ENGINEERING_AIRLOCK_D_1 =
+            configuredBlockItem("engineering_airlock_d_1", Ssc14Blocks.ENGINEERING_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> HYDROPONICS_AIRLOCK_D_1 =
+            configuredBlockItem("hydroponics_airlock_d_1", Ssc14Blocks.HYDROPONICS_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> MEDICAL_AIRLOCK_D_1 =
+            configuredBlockItem("medical_airlock_d_1", Ssc14Blocks.MEDICAL_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> SALVAGE_AIRLOCK_D_1 =
+            configuredBlockItem("salvage_airlock_d_1", Ssc14Blocks.SALVAGE_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> SCIENCE_AIRLOCK_D_1 =
+            configuredBlockItem("science_airlock_d_1", Ssc14Blocks.SCIENCE_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> SECURITY_AIRLOCK_D_1 =
+            configuredBlockItem("security_airlock_d_1", Ssc14Blocks.SECURITY_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> SYNDICATE_AIRLOCK_D_1 =
+            configuredBlockItem("syndicate_airlock_d_1", Ssc14Blocks.SYNDICATE_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> VIROLOGY_AIRLOCK_D_1 =
+            configuredBlockItem("virology_airlock_d_1", Ssc14Blocks.VIROLOGY_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_EMERG =
+            configuredBlockItem("closet_emerg", Ssc14Blocks.CLOSET_EMERG,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_FIRE =
+            configuredBlockItem("closet_fire", Ssc14Blocks.CLOSET_FIRE,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_BLACK =
+            configuredBlockItem("closet_black", Ssc14Blocks.CLOSET_BLACK,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_BLUE =
+            configuredBlockItem("closet_blue", Ssc14Blocks.CLOSET_BLUE,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_GRAY =
+            configuredBlockItem("closet_gray", Ssc14Blocks.CLOSET_GRAY,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_GREEN =
+            configuredBlockItem("closet_green", Ssc14Blocks.CLOSET_GREEN,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_MIXED =
+            configuredBlockItem("closet_mixed", Ssc14Blocks.CLOSET_MIXED,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_N_2 =
+            configuredBlockItem("closet_n_2", Ssc14Blocks.CLOSET_N_2,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_ORANGE =
+            configuredBlockItem("closet_orange", Ssc14Blocks.CLOSET_ORANGE,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_PINK =
+            configuredBlockItem("closet_pink", Ssc14Blocks.CLOSET_PINK,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> GLASS_TABLE =
+            configuredBlockItem("glass_table", Ssc14Blocks.GLASS_TABLE,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> GLASS_AIRLOCK_D_1 =
+            configuredBlockItem("glass_airlock_d_1", Ssc14Blocks.GLASS_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> BASE_GLASS_AIRLOCK_D_1 =
+            configuredBlockItem("base_glass_airlock_d_1", Ssc14Blocks.BASE_GLASS_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> FUEL_TANK =
+            configuredBlockItem("fuel_tank", Ssc14Blocks.FUEL_TANK,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> ORDER_CONSOLE =
+            configuredBlockItem("order_console", Ssc14Blocks.ORDER_CONSOLE,
+                    properties -> properties.stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+    public static final DeferredItem<Item> ORDER_PALLET =
+            configuredBlockItem("order_pallet", Ssc14Blocks.ORDER_PALLET,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> SALE_PALLET =
+            configuredBlockItem("sale_pallet", Ssc14Blocks.SALE_PALLET,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> SALE_CONSOLE =
+            configuredBlockItem("sale_console", Ssc14Blocks.SALE_CONSOLE,
+                    properties -> properties.stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+    public static final DeferredItem<Item> ARM_CHAIR_BASE =
+            configuredBlockItem("arm_chair_base", Ssc14Blocks.ARM_CHAIR_BASE,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> ARM_CHAIR_BROWN =
+            configuredBlockItem("arm_chair_brown", Ssc14Blocks.ARM_CHAIR_BROWN,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> ARM_CHAIR_CARP =
+            configuredBlockItem("arm_chair_carp", Ssc14Blocks.ARM_CHAIR_CARP,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> EMERGENCY_LIGHT =
+            configuredBlockItem("emergency_light", Ssc14Blocks.EMERGENCY_LIGHT,
+                    properties -> properties.stacksTo(1).fireResistant());
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -936,6 +1160,14 @@ public final class Ssc14Items {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new BlockItem(block.get(),
                         properties.stacksTo(stackSize).fireResistant()),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> configuredBlockItem(String name,
+            DeferredBlock<? extends Block> block,
+            UnaryOperator<Item.Properties> configuration) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(), configuration.apply(properties)),
                 Item.Properties::new);
     }
 
