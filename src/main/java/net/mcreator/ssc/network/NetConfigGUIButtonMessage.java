@@ -16,7 +16,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.mcreator.ssc.Ssc14Mod;
-import net.mcreator.ssc.NetConfigGUISyncMessage;
+import net.ssc14.integration.neoforge.network.NetConfigGUISyncMessage;
 import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
 import net.ssc14.content.network.NetworkSavedData;
 import net.ssc14.common.network.NetworkAction;

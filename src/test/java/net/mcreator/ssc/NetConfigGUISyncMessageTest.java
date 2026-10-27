@@ -3,6 +3,7 @@ package net.mcreator.ssc;
 import io.netty.buffer.Unpooled;
 import java.util.HashMap;
 import java.util.Map;
+import net.ssc14.integration.neoforge.network.NetConfigGUISyncMessage;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import org.junit.jupiter.api.Test;

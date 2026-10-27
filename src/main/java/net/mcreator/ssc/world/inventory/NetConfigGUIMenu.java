@@ -29,7 +29,7 @@ import net.mcreator.ssc.init.Ssc14ModMenus;
 import net.ssc14.common.network.NetworkTrigger;
 import net.ssc14.common.network.NetworkAction;
 import net.ssc14.content.network.NetworkSavedData;
-import net.mcreator.ssc.NetConfigGUISyncMessage;
+import net.ssc14.integration.neoforge.network.NetConfigGUISyncMessage;
 import net.ssc14.content.item.Ssc14Items;
 
 import java.util.function.Supplier;
