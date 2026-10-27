@@ -1,4 +1,4 @@
-package net.mcreator.ssc.medical;
+package net.ssc14.integration.neoforge.medical;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -16,18 +16,21 @@ import net.neoforged.neoforge.attachment.IAttachmentSerializer;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
-/** Entity-local identity guard; a save checkpoint is issued only for the still-owned instance. */
+/** Persists identity ownership of SSC14's blindness effect chain. */
 @EventBusSubscriber(modid = "ssc_14")
 public final class MedicalBlindnessOwnership {
     private static final String CHECKPOINT = "owned_chain";
     private static final AttachmentType<MedicalBlindnessOwnership> TYPE = AttachmentType
             .builder(holder -> new MedicalBlindnessOwnership((Player) holder))
             .serialize(new Serializer()).build();
+
     private final Player player;
     private MobEffectInstance instance;
     private CompoundTag checkpoint;
 
-    private MedicalBlindnessOwnership(Player player) { this.player = player; }
+    private MedicalBlindnessOwnership(Player player) {
+        this.player = player;
+    }
 
     @SubscribeEvent
     public static void register(RegisterEvent event) {
@@ -35,30 +38,33 @@ public final class MedicalBlindnessOwnership {
                 Identifier.parse("ssc_14:medical_blindness_owner"), () -> TYPE);
     }
 
-    static void acquire(Player player, MobEffectInstance effect) {
+    public static void acquire(Player player, MobEffectInstance effect) {
         var ownership = player.getData(TYPE);
         ownership.instance = effect;
         ownership.checkpoint = null;
     }
 
-    static boolean owns(Player player, MobEffectInstance current) {
+    public static boolean owns(Player player, MobEffectInstance current) {
         return player.hasData(TYPE) && player.getData(TYPE).matches(current);
     }
 
-    static void clear(Player player) { player.removeData(TYPE); }
+    public static void clear(Player player) {
+        player.removeData(TYPE);
+    }
 
     private boolean matches(MobEffectInstance current) {
-        // Loading attachments precedes loading effects. Bind lazily at the first
-        // reconciliation, before any tick can age the exactly saved chain.
         if (instance == null && checkpoint != null) {
-            if (current != null && checkpoint.equals(encode(current))) instance = current;
+            if (current != null && checkpoint.equals(encode(current))) {
+                instance = current;
+            }
             checkpoint = null;
         }
         return current != null && current == instance;
     }
 
     private static CompoundTag encode(MobEffectInstance effect) {
-        return (CompoundTag) MobEffectInstance.CODEC.encodeStart(NbtOps.INSTANCE, effect).getOrThrow();
+        return (CompoundTag) MobEffectInstance.CODEC
+                .encodeStart(NbtOps.INSTANCE, effect).getOrThrow();
     }
 
     private static final class Serializer implements IAttachmentSerializer<MedicalBlindnessOwnership> {
@@ -72,9 +78,9 @@ public final class MedicalBlindnessOwnership {
         @Override
         public boolean write(MedicalBlindnessOwnership ownership, ValueOutput output) {
             var current = ownership.player.getEffect(MobEffects.BLINDNESS);
-            // Saving can precede the next medical tick after another mod's forceAddEffect.
-            // Never certify that replacement, even if all of its numerical values match.
-            if (ownership.matches(current)) output.store(CHECKPOINT, CompoundTag.CODEC, encode(current));
+            if (ownership.matches(current)) {
+                output.store(CHECKPOINT, CompoundTag.CODEC, encode(current));
+            }
             return true;
         }
     }
