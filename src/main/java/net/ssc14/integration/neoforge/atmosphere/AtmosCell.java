@@ -1,4 +1,4 @@
-package net.mcreator.ssc;
+package net.ssc14.integration.neoforge.atmosphere;
 
 import net.ssc14.common.atmosphere.model.GasType;
 import net.ssc14.common.atmosphere.model.GasMixture;
@@ -10,7 +10,7 @@ public final class AtmosCell {
     private final GasMixture mixture;
 
     public AtmosCell() { mixture = new GasMixture(); }
-    AtmosCell(Runnable changed) { mixture = new GasMixture(changed); }
+    public AtmosCell(Runnable changed) { mixture = new GasMixture(changed); }
 
     public float getMoles(int gasIndex) { return mixture.getMoles(gasIndex); }
     public void setMoles(int gasIndex, float value) { mixture.setMoles(gasIndex, value); }

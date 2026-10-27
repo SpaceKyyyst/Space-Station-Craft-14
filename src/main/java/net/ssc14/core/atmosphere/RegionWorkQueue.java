@@ -1,4 +1,4 @@
-package net.mcreator.ssc.atmosphere;
+package net.ssc14.core.atmosphere;
 
 import java.util.ArrayList;
 import java.util.HashMap;

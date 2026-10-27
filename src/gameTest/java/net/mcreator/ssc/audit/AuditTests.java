@@ -2,6 +2,7 @@ package net.mcreator.ssc.audit;
 
 import net.ssc14.common.atmosphere.model.GasType;
 import net.ssc14.common.atmosphere.reaction.GasReaction;
+import net.ssc14.integration.neoforge.atmosphere.AtmosCell;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Consumer;

@@ -2,6 +2,7 @@ package net.mcreator.ssc;
 
 import net.ssc14.common.atmosphere.model.GasType;
 import net.ssc14.common.atmosphere.reaction.GasReaction;
+import net.ssc14.integration.neoforge.atmosphere.AtmosCell;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;

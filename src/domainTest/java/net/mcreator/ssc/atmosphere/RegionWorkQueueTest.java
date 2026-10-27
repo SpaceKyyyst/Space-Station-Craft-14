@@ -1,5 +1,6 @@
 package net.mcreator.ssc.atmosphere;
 
+import net.ssc14.core.atmosphere.RegionWorkQueue;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
