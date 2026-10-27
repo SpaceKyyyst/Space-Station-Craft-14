@@ -363,7 +363,7 @@ public class Ssc14Mod {
 				net.mcreator.ssc.procedures.Closet_OpenClose_PrProcedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ(), state, player));
 		ExtinguisherCabinetInteractionService.install(
-				Ssc14ModItems.EXTINGUISHER, Ssc14ModItems.EXTINGUISHER_OPEN);
+				Ssc14Items.EXTINGUISHER, Ssc14Items.EXTINGUISHER_OPEN);
 		EmergencyLightingService.install(level ->
 				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
 		MachineFrameAssemblyService.install(Ssc14ModItems.LOW_VOLTAGE_CABLE,
