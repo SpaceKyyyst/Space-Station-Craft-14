@@ -1,29 +1,24 @@
 
-package net.mcreator.ssc;
+package net.ssc14.integration.neoforge.network;
 
-import net.neoforged.neoforge.network.handling.IPayloadContext;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.resources.Identifier; // ИСПРАВЛЕНО
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
+import net.ssc14.common.Ssc14Identity;
 import net.ssc14.core.network.PayloadLimits;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@EventBusSubscriber
 public record NetConfigGUISyncMessage(Map<String, Object> state) implements CustomPacketPayload {
     public NetConfigGUISyncMessage {
         state = PayloadLimits.snapshot(state);
     }
     // ИСПРАВЛЕНО: Регистрация типа пакета через Identifier.fromNamespaceAndPath
-    public static final Type<NetConfigGUISyncMessage> TYPE = new Type<>(Identifier.fromNamespaceAndPath(Ssc14Mod.MODID, "net_config_gui_sync"));
+    public static final Type<NetConfigGUISyncMessage> TYPE = new Type<>(
+            Identifier.fromNamespaceAndPath(Ssc14Identity.MOD_ID, "net_config_gui_sync"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, NetConfigGUISyncMessage> STREAM_CODEC = StreamCodec.of(
             (RegistryFriendlyByteBuf buffer, NetConfigGUISyncMessage message) -> {
@@ -75,24 +70,4 @@ public record NetConfigGUISyncMessage(Map<String, Object> state) implements Cust
         return TYPE;
     }
 
-	public static void handleData(final NetConfigGUISyncMessage message, final IPayloadContext context) {
-	    if (context.flow() == PacketFlow.CLIENTBOUND) {
-	        context.enqueueWork(() -> {
-	            Player player = context.player();
-	            if (player.containerMenu instanceof NetConfigGUIMenu menu) {
-	                menu.menuState.clear();
-	                menu.menuState.putAll(message.state);
-	            }
-	        }).exceptionally(e -> {
-	            Ssc14Mod.LOGGER.error("Failed to apply network configurator state", e);
-	            context.connection().disconnect(net.minecraft.network.chat.Component.literal("Invalid network configurator state"));
-	            return null;
-	        });
-	    }
-	}
-
-    @SubscribeEvent
-    public static void registerMessage(FMLCommonSetupEvent event) {
-        Ssc14Mod.addClientboundNetworkMessage(NetConfigGUISyncMessage.TYPE, NetConfigGUISyncMessage.STREAM_CODEC, NetConfigGUISyncMessage::handleData);
-    }
 }
