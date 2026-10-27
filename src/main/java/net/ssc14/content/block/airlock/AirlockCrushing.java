@@ -1,4 +1,4 @@
-package net.mcreator.ssc.access;
+package net.ssc14.content.block.airlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;

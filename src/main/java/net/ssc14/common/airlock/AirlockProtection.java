@@ -1,4 +1,4 @@
-package net.mcreator.ssc.access;
+package net.ssc14.common.airlock;
 
 /** Construction graph from Corvax airlock.yml; persisted values 0..2 remain compatible. */
 public final class AirlockProtection {

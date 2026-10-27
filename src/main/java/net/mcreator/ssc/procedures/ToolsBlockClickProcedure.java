@@ -43,7 +43,7 @@ public class ToolsBlockClickProcedure {
                     || net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos)
                     || net.mcreator.ssc.access.AirlockWelding.interact(player, pos)
                     || net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos)
-                    || net.mcreator.ssc.access.AirlockFloor.installTile(player, pos)
+                    || net.ssc14.content.block.airlock.AirlockFloor.installTile(player, pos)
 
 					|| net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos))) {
 			if (event instanceof PlayerInteractEvent.RightClickBlock interaction) {
