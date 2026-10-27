@@ -5,7 +5,7 @@ import net.ssc14.content.block.control.NetworkButtonBlock;
 
 /** @deprecated canonical implementation lives in {@code net.ssc14}. */
 @Deprecated
-public class ButtonBlock extends NetworkButtonBlock implements net.mcreator.ssc.INetworkTrigger {
+public class ButtonBlock extends NetworkButtonBlock implements net.ssc14.common.network.NetworkTrigger {
     public ButtonBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }

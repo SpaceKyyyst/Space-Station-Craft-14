@@ -34,7 +34,7 @@ class Ssc14BlocksNetworkButtonCompatibilityTest {
     void legacyButtonTypesRemainConstructorCompatibleWrappers() throws Exception {
         Class<?> legacyBlock = Class.forName("net.mcreator.ssc.block.ButtonBlock");
         assertTrue(NetworkButtonBlock.class.isAssignableFrom(legacyBlock));
-        assertTrue(net.mcreator.ssc.INetworkTrigger.class.isAssignableFrom(legacyBlock));
+        assertTrue(NetworkTrigger.class.isAssignableFrom(legacyBlock));
         legacyBlock.getConstructor(BlockBehaviour.Properties.class);
         assertTrue(NetworkButtonBlockEntity.class.isAssignableFrom(Class.forName(
                 "net.mcreator.ssc.block.entity.ButtonBlockEntity")));

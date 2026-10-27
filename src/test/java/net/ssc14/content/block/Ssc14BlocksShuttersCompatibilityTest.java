@@ -36,7 +36,8 @@ class Ssc14BlocksShuttersCompatibilityTest {
     void legacyTypesRemainCompatibleWrappers() throws Exception {
         Class<?> legacyBlock = Class.forName("net.mcreator.ssc.block.ShuttersBlock");
         assertTrue(ShuttersBlock.class.isAssignableFrom(legacyBlock));
-        assertTrue(net.mcreator.ssc.INetworkAction.class.isAssignableFrom(legacyBlock));
+        assertTrue(NetworkAction.class.isAssignableFrom(legacyBlock));
+        assertTrue(NetworkTrigger.class.isAssignableFrom(legacyBlock));
         legacyBlock.getConstructor(BlockBehaviour.Properties.class);
         assertTrue(ShuttersBlockEntity.class.isAssignableFrom(Class.forName(
                 "net.mcreator.ssc.block.entity.ShuttersBlockEntity")));
