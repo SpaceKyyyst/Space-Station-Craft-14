@@ -1,6 +1,6 @@
 package net.mcreator.ssc.procedures;
 
-import net.mcreator.ssc.AtmosphereReadings;
+import net.ssc14.client.atmosphere.AtmosphereReadings;
 import net.minecraft.world.level.LevelAccessor;
 
 public final class TemperatureTextRedactProcedure {

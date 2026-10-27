@@ -1,6 +1,4 @@
-package net.mcreator.ssc;
-
-import net.ssc14.content.atmosphere.runtime.AtmosphereManager;
+package net.ssc14.content.atmosphere.runtime;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -28,7 +26,7 @@ public final class AtmosForgeEventHandler {
             if (level.getGameTime() % ANALYZER_SYNC_INTERVAL == 0) {
                 for (var player : level.players()) {
                     if (GasAnalyserOverlayService.isVisible(player)) {
-                        AtmosphereReadings.read(level, player.getX(), player.getY(), player.getZ())
+                        ServerAtmosphereReadings.read(level, player.getX(), player.getY(), player.getZ())
                                 .ifPresent(snapshot -> net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(player, snapshot));
                     }
                 }
