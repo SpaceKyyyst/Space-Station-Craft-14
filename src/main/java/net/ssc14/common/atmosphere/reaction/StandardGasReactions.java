@@ -1,13 +1,13 @@
-package net.mcreator.ssc.atmosphere;
+package net.ssc14.common.atmosphere.reaction;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.mcreator.ssc.GasReaction;
 import net.ssc14.common.atmosphere.model.GasType;
 
-/** Gameplay reaction definitions, independent of world and transport scheduling. */
-public final class AtmosphereReactions {
-    private AtmosphereReactions() { }
+/** Stable reaction IDs and balancing values shared by server simulation and tests. */
+public final class StandardGasReactions {
+    private StandardGasReactions() { }
+
     public static GasReaction[] create() {
         java.util.function.Function<int[], boolean[]> flags = indices -> {
             boolean[] arr = new boolean[GasType.COUNT];

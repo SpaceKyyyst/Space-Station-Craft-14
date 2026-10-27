@@ -1,7 +1,8 @@
 package net.mcreator.ssc;
 
 import net.ssc14.common.atmosphere.model.GasType;
-import net.mcreator.ssc.atmosphere.GasMixture;
+import net.ssc14.common.atmosphere.model.GasMixture;
+import net.ssc14.common.atmosphere.reaction.GasReaction;
 import net.minecraft.nbt.CompoundTag;
 
 /** Minecraft persistence adapter; the public cell API and NBT keys remain stable. */

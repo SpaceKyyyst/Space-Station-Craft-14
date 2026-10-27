@@ -1,8 +1,7 @@
-package net.mcreator.ssc.atmosphere;
+package net.ssc14.common.atmosphere.model;
 
 import java.util.Objects;
-import net.mcreator.ssc.GasReaction;
-import net.ssc14.common.atmosphere.model.GasType;
+import net.ssc14.common.atmosphere.reaction.GasReaction;
 
 /** One cubic metre of gas. All mutations notify the owning simulation. */
 public final class GasMixture {

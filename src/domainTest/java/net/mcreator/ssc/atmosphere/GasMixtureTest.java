@@ -1,8 +1,10 @@
 package net.mcreator.ssc.atmosphere;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import net.mcreator.ssc.GasReaction;
+import net.ssc14.common.atmosphere.model.GasMixture;
 import net.ssc14.common.atmosphere.model.GasType;
+import net.ssc14.common.atmosphere.reaction.GasReaction;
+import net.ssc14.common.atmosphere.reaction.StandardGasReactions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
