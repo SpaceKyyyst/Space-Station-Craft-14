@@ -1,6 +1,8 @@
 
 package net.mcreator.ssc.procedures;
 
+import net.ssc14.content.particle.Ssc14ParticleTypes;
+
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -52,7 +54,7 @@ public class UniversalDeconstructionProcedureProcedure {
                 if (world.getBlockState(pos).getBlock() != blockstate.getBlock()) { reset(); return; }
 
                 if (tool == Ssc14ModItems.ACTIVE_WELDER.get() && world instanceof ServerLevel sl) {
-                    sl.sendParticles(Ssc14ModParticleTypes.SPARK.get(), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 20, 0.2, 0.2, 0.2, 0.2);
+                    sl.sendParticles(Ssc14ParticleTypes.SPARK.get(), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 20, 0.2, 0.2, 0.2, 0.2);
                     // ИСПРАВЛЕНО: l.random заменено на l.getRandom() под NeoForge 26.1.2
                     float pitch = 0.8F + (world instanceof Level l ? l.getRandom() : RandomSource.create()).nextFloat() * 0.4F;
                     playLevelSound(world, pos, "ssc_14:welding_work", 0.2F, pitch);

@@ -34,7 +34,7 @@ import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.init.Ssc14ModAttributes;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.init.Ssc14ModParticleTypes;
+import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.mcreator.ssc.world.inventory.RCDGUIMenu;
 import io.netty.buffer.Unpooled;
 import net.minecraft.nbt.CompoundTag;
@@ -228,15 +228,15 @@ public class RSU_useOnBlock_Procedure {
             double py = pos.getY() + 0.5 + dir.getStepY() * offset;
             double pz = pos.getZ() + 0.5 + dir.getStepZ() * offset;
             SimpleParticleType particleType;
-            if (dir == Direction.UP || dir == Direction.DOWN) { particleType = Ssc14ModParticleTypes.DECONSTRUCT_P.get(); } 
-            else if (dir == Direction.EAST || dir == Direction.WEST) { particleType = Ssc14ModParticleTypes.DECONSTRUCT_PX.get(); } 
-            else { particleType = Ssc14ModParticleTypes.DECONSTRUCT_PZ.get(); }
+            if (dir == Direction.UP || dir == Direction.DOWN) { particleType = Ssc14ParticleTypes.DECONSTRUCT_P.get(); }
+            else if (dir == Direction.EAST || dir == Direction.WEST) { particleType = Ssc14ParticleTypes.DECONSTRUCT_PX.get(); }
+            else { particleType = Ssc14ParticleTypes.DECONSTRUCT_PZ.get(); }
             serverLevel.sendParticles(particleType, px, py, pz, 1, 0.0, 0.0, 0.0, 0.0);
         }
     }
 
     private static void spawnDirectedWindowParticles(ServerLevel serverLevel, BlockPos pos, Direction facing) {
-        SimpleParticleType particle = Ssc14ModParticleTypes.RCD_INTERFERENCE_P.get();
+        SimpleParticleType particle = Ssc14ParticleTypes.RCD_INTERFERENCE_P.get();
         double thickness = 3.0 / 16.0;
         double halfThickness = thickness / 2.0;
         double cx = pos.getX() + 0.5 + facing.getStepX() * (0.5 - halfThickness);
