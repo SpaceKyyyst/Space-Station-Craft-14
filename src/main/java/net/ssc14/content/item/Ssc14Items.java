@@ -30,6 +30,8 @@ import net.ssc14.content.item.currency.CurrencyItem;
 import net.ssc14.content.item.currency.CurrencyKind;
 import net.ssc14.content.item.decal.DecalToolItem;
 import net.ssc14.content.item.decal.DecalToolKind;
+import net.ssc14.content.item.equipment.MagneticBootsItem;
+import net.ssc14.content.item.equipment.MagneticBootsState;
 import net.ssc14.content.item.food.CookingIngredientItem;
 import net.ssc14.content.item.food.EdibleFoodItem;
 import net.ssc14.content.item.food.FoodPackagingWasteItem;
@@ -169,6 +171,10 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> DEBU_GITEM =
             REGISTRY.registerItem("debu_gitem", DebugBroadcastItem::new,
                     Item.Properties::new);
+    public static final DeferredItem<Item> MAGNETIC_BOOTS_ITEM =
+            magneticBoots("magnetic_boots_item", MagneticBootsState.INACTIVE);
+    public static final DeferredItem<Item> MAGNETIC_BOOTS_ACTIVE_ITEM =
+            magneticBoots("magnetic_boots_active_item", MagneticBootsState.ACTIVE);
     public static final DeferredItem<Item> REAGENT_CONTAINER =
             reagentContainer("reagent_container", Ssc14ReagentContainers.DEFAULT_CAPACITY);
     public static final DeferredItem<Item> FLOUR_OPEN =
@@ -631,6 +637,12 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> scarf(String name) {
         return REGISTRY.<Item>registerItem(name, ScarfItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> magneticBoots(
+            String name, MagneticBootsState state) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new MagneticBootsItem(properties, state), Item.Properties::new);
     }
 
     private static DeferredItem<Item> foodPackagingWaste(String name) {
