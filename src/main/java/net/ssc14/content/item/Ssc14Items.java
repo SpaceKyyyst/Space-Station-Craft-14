@@ -21,6 +21,8 @@ import net.ssc14.content.item.communication.Ssc14HeadsetDefinitions;
 import net.ssc14.content.item.construction.CableCoilItem;
 import net.ssc14.content.item.construction.ConstructionItemKind;
 import net.ssc14.content.item.construction.ConstructionSheetItem;
+import net.ssc14.content.item.currency.CurrencyItem;
+import net.ssc14.content.item.currency.CurrencyKind;
 import net.ssc14.content.item.decal.DecalToolItem;
 import net.ssc14.content.item.decal.DecalToolKind;
 import net.ssc14.content.item.food.CookingIngredientItem;
@@ -87,6 +89,12 @@ public final class Ssc14Items {
             decalTool("decal_5spawner", DecalToolKind.SPAWNER_5);
     public static final DeferredItem<Item> DECAL_6SPAWNER =
             decalTool("decal_6spawner", DecalToolKind.SPAWNER_6);
+    public static final DeferredItem<Item> CREDITS =
+            currency("credits", CurrencyKind.CREDIT);
+    public static final DeferredItem<Item> CREDITS_50 =
+            currency("credits_50", CurrencyKind.CREDIT_50);
+    public static final DeferredItem<Item> DEBU_GCREDITS_DELETER =
+            currency("debu_gcredits_deleter", CurrencyKind.DEBUG_DELETER);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -459,6 +467,12 @@ public final class Ssc14Items {
     private static DeferredItem<Item> decalTool(String name, DecalToolKind kind) {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new DecalToolItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> currency(String name, CurrencyKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new CurrencyItem(properties, kind),
                 Item.Properties::new);
     }
 

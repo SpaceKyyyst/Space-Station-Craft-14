@@ -49,6 +49,7 @@ import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.content.item.construction.ConstructionItemInteractionService;
+import net.ssc14.content.item.currency.CurrencyInteractionService;
 import net.ssc14.content.item.decal.DecalToolInteractionService;
 import net.ssc14.content.block.access.IdConsoleIntegrationService;
 import net.ssc14.content.block.access.Ssc14AccessBlockEntities;
@@ -383,6 +384,7 @@ public class Ssc14Mod {
 		ConstructionItemInteractionService.install(
 				LegacyConstructionItemInteractionAdapter.INSTANCE);
 		DecalToolInteractionService.install(LegacyDecalToolInteractionAdapter.INSTANCE);
+		CurrencyInteractionService.install(LegacyCurrencyInteractionAdapter.INSTANCE);
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
 		Ssc14EntityTypes.REGISTRY.register(modEventBus);
 		Ssc14ModTabs.REGISTRY.register(modEventBus);

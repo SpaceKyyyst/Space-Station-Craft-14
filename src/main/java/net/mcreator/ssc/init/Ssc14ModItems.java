@@ -1095,9 +1095,9 @@ public class Ssc14ModItems {
 		MAID_JUMPSUIT = Ssc14Items.MAID_JUMPSUIT;
 		ORDER_PALLET = block(Ssc14ModBlocks.ORDER_PALLET, new Item.Properties().stacksTo(1));
 		SALE_PALLET = block(Ssc14ModBlocks.SALE_PALLET, new Item.Properties().stacksTo(1));
-		CREDITS = register("credits", CreditsItem::new);
-		CREDITS_50 = register("credits_50", Credits50Item::new);
-		DEBU_GCREDITS_DELETER = register("debu_gcredits_deleter", DEBUGcreditsDELETERItem::new);
+		CREDITS = Ssc14Items.CREDITS;
+		CREDITS_50 = Ssc14Items.CREDITS_50;
+		DEBU_GCREDITS_DELETER = Ssc14Items.DEBU_GCREDITS_DELETER;
 		SALE_CONSOLE = block(Ssc14ModBlocks.SALE_CONSOLE, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
 		BANNER_NT = block(Ssc14Blocks.BANNER_NT, new Item.Properties().stacksTo(1));
 		BANNER_MED = block(Ssc14Blocks.BANNER_MED, new Item.Properties().stacksTo(1));
