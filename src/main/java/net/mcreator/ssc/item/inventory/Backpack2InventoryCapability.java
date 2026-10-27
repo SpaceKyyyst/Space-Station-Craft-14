@@ -12,6 +12,7 @@ import net.minecraft.core.component.DataComponents;
 
 import net.mcreator.ssc.world.inventory.BackpackGUIMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.container.PortableMenuItemKind;
 
 @EventBusSubscriber
 public class Backpack2InventoryCapability extends ItemAccessItemHandler {
@@ -25,7 +26,8 @@ public class Backpack2InventoryCapability extends ItemAccessItemHandler {
 	}
 
 	public Backpack2InventoryCapability(ItemAccess access) {
-		super(access, DataComponents.CONTAINER, 21);
+		super(access, DataComponents.CONTAINER,
+				PortableMenuItemKind.BACKPACK.inventorySlots());
 	}
 
 	@Override

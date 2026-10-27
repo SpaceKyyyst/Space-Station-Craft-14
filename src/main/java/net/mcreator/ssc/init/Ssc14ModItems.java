@@ -606,7 +606,7 @@ public class Ssc14ModItems {
 		BASE_WINDOW = block(Ssc14Blocks.BASE_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
 		GLASS_SHARD = Ssc14Items.GLASS_SHARD;
 		GLASS = Ssc14Items.GLASS;
-		ACCESS_CONFIG = register("access_config", AccessConfigItem::new);
+		ACCESS_CONFIG = Ssc14Items.ACCESS_CONFIG;
 		ID_CARD_CAPITAN = Ssc14Items.ID_CARD_CAPITAN;
 		ID_CARD_PNT = Ssc14Items.ID_CARD_PNT;
 		ID_CARD_ADUTANT = Ssc14Items.ID_CARD_ADUTANT;
@@ -1083,7 +1083,7 @@ public class Ssc14ModItems {
 		POSTER_XENOARCH = Ssc14Items.POSTER_XENOARCH;
 		HARDSUIT_SALVAGE = Ssc14Items.HARDSUIT_SALVAGE;
 		HARDSUIT_SALVAGE_HELMET = Ssc14Items.HARDSUIT_SALVAGE_HELMET;
-		BACKPACK_2 = register("backpack_2", Backpack2Item::new);
+		BACKPACK_2 = Ssc14Items.BACKPACK_2;
 		DEBU_GITEM = register("debu_gitem", DEBUGitemItem::new);
 		DECAL_3SPAWNER = Ssc14Items.DECAL_3SPAWNER;
 		DECAL_4SPAWNER = Ssc14Items.DECAL_4SPAWNER;

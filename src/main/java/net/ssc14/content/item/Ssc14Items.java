@@ -20,6 +20,8 @@ import net.ssc14.content.item.communication.HeadsetDefinition;
 import net.ssc14.content.item.communication.HeadsetItem;
 import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
 import net.ssc14.content.item.communication.Ssc14HeadsetDefinitions;
+import net.ssc14.content.item.container.PortableMenuItem;
+import net.ssc14.content.item.container.PortableMenuItemKind;
 import net.ssc14.content.item.construction.CableCoilItem;
 import net.ssc14.content.item.construction.ConstructionItemKind;
 import net.ssc14.content.item.construction.ConstructionSheetItem;
@@ -101,6 +103,10 @@ public final class Ssc14Items {
             glassShard("glass_shard", GlassShardKind.STANDARD);
     public static final DeferredItem<Item> ARM_GLASS_SHARD =
             glassShard("arm_glass_shard", GlassShardKind.ARMORED);
+    public static final DeferredItem<Item> ACCESS_CONFIG =
+            portableMenu("access_config", PortableMenuItemKind.ACCESS_CONFIG);
+    public static final DeferredItem<Item> BACKPACK_2 =
+            portableMenu("backpack_2", PortableMenuItemKind.BACKPACK);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -485,6 +491,13 @@ public final class Ssc14Items {
     private static DeferredItem<Item> glassShard(String name, GlassShardKind kind) {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new GlassShardItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> portableMenu(
+            String name, PortableMenuItemKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new PortableMenuItem(properties, kind),
                 Item.Properties::new);
     }
 
