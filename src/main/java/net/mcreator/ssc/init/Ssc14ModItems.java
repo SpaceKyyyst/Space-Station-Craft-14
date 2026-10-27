@@ -826,8 +826,8 @@ public class Ssc14ModItems {
 		OUTERCLOTHING_EVA = Ssc14Items.OUTERCLOTHING_EVA;
 		HELMETS_EVA = Ssc14Items.HELMETS_EVA;
 		EXTINGUISHER_CABINET = block(Ssc14ModBlocks.EXTINGUISHER_CABINET, new Item.Properties().stacksTo(1));
-		EXTINGUISHER = register("extinguisher", ExtinguisherItem::new);
-		EXTINGUISHER_OPEN = register("extinguisher_open", ExtinguisherOpenItem::new);
+		EXTINGUISHER = Ssc14Items.EXTINGUISHER;
+		EXTINGUISHER_OPEN = Ssc14Items.EXTINGUISHER_OPEN;
 		PEN = Ssc14Items.PEN;
 		RSU = register("rsu", RSUItem::new);
 		TITLE_STEEL_PAVEMENT_VERTICAL = block(Ssc14Blocks.TITLE_STEEL_PAVEMENT_VERTICAL, new Item.Properties().stacksTo(30).fireResistant());

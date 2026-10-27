@@ -48,6 +48,8 @@ import net.ssc14.content.item.reagent.ReagentContainerDefinition;
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.content.item.reagent.SealedReagentContainerItem;
 import net.ssc14.content.item.reagent.Ssc14ReagentContainers;
+import net.ssc14.content.item.safety.ExtinguisherItem;
+import net.ssc14.content.item.safety.ExtinguisherState;
 import net.ssc14.content.item.tool.AsteroidPickItem;
 import net.ssc14.content.item.tool.MechanicalHandToolItem;
 import net.ssc14.content.item.tool.MechanicalToolProfile;
@@ -175,6 +177,10 @@ public final class Ssc14Items {
             magneticBoots("magnetic_boots_item", MagneticBootsState.INACTIVE);
     public static final DeferredItem<Item> MAGNETIC_BOOTS_ACTIVE_ITEM =
             magneticBoots("magnetic_boots_active_item", MagneticBootsState.ACTIVE);
+    public static final DeferredItem<Item> EXTINGUISHER =
+            extinguisher("extinguisher", ExtinguisherState.CLOSED);
+    public static final DeferredItem<Item> EXTINGUISHER_OPEN =
+            extinguisher("extinguisher_open", ExtinguisherState.OPEN);
     public static final DeferredItem<Item> REAGENT_CONTAINER =
             reagentContainer("reagent_container", Ssc14ReagentContainers.DEFAULT_CAPACITY);
     public static final DeferredItem<Item> FLOUR_OPEN =
@@ -643,6 +649,12 @@ public final class Ssc14Items {
             String name, MagneticBootsState state) {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new MagneticBootsItem(properties, state), Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> extinguisher(
+            String name, ExtinguisherState state) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new ExtinguisherItem(properties, state), Item.Properties::new);
     }
 
     private static DeferredItem<Item> foodPackagingWaste(String name) {
