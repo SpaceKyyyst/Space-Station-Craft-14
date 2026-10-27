@@ -10,6 +10,7 @@ import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.level.ChunkEvent;
 import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
+import net.ssc14.content.item.tool.GasAnalyserOverlayService;
 
 @EventBusSubscriber(modid = "ssc_14")
 public final class AtmosForgeEventHandler {
@@ -24,7 +25,7 @@ public final class AtmosForgeEventHandler {
             }
             if (level.getGameTime() % ANALYZER_SYNC_INTERVAL == 0) {
                 for (var player : level.players()) {
-                    if (net.mcreator.ssc.procedures.GasAnalyserGUI_pr_1Procedure.execute(player)) {
+                    if (GasAnalyserOverlayService.isVisible(player)) {
                         AtmosphereReadings.read(level, player.getX(), player.getY(), player.getZ())
                                 .ifPresent(snapshot -> net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(player, snapshot));
                     }

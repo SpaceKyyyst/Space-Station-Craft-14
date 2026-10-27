@@ -2,7 +2,7 @@ package net.mcreator.ssc.client.screens;
 
 import net.mcreator.ssc.GasType;
 import net.mcreator.ssc.client.GasAnalyserReadings;
-import net.mcreator.ssc.procedures.GasAnalyserGUI_pr_1Procedure;
+import net.ssc14.content.item.tool.GasAnalyserOverlayService;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -19,7 +19,7 @@ public final class GasAnalyserGUIOverlay {
     @SubscribeEvent
     public static void render(RenderGuiEvent.Pre event) {
         var minecraft = Minecraft.getInstance();
-        if (!GasAnalyserGUI_pr_1Procedure.execute(minecraft.player)) return;
+        if (!GasAnalyserOverlayService.isVisible(minecraft.player)) return;
         var graphics = event.getGuiGraphics();
         int x = 6;
         int y = Math.max(6, (graphics.guiHeight() - 186) / 2);

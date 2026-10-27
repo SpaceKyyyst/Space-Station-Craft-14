@@ -1,7 +1,7 @@
 package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.AtmosphereManager;
-import net.mcreator.ssc.procedures.GasAnalyserGUI_pr_1Procedure;
+import net.ssc14.content.item.tool.GasAnalyserOverlayService;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -17,7 +17,7 @@ public final class GasAnalyserSync {
     public static void tick(PlayerTickEvent.Post event) {
         if (!(event.getEntity() instanceof ServerPlayer player)
                 || player.tickCount % UPDATE_INTERVAL_TICKS != 0
-                || !GasAnalyserGUI_pr_1Procedure.execute(player)) return;
+                || !GasAnalyserOverlayService.isVisible(player)) return;
         var position = player.blockPosition();
         var cell = AtmosphereManager.get(player.level()).readCellAt(position);
         if (cell != null) PacketDistributor.sendToPlayer(player, GasAnalyserData.from(player.level().dimension().identifier().toString(), position, cell));
