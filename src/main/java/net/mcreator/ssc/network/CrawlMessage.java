@@ -15,7 +15,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.core.SectionPos;
 
-import net.mcreator.ssc.procedures.CrawlPrProcedure;
+import net.ssc14.content.player.crawl.CrawlService;
 import net.mcreator.ssc.Ssc14Mod;
 
 @EventBusSubscriber
@@ -52,7 +52,7 @@ public record CrawlMessage(int eventType, int pressedms) implements CustomPacket
 			return;
 		if (type == 0) {
 
-			CrawlPrProcedure.execute(entity);
+			CrawlService.execute(entity);
 		}
 	}
 
