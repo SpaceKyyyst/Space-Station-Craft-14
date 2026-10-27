@@ -1,7 +1,7 @@
 package net.mcreator.ssc;
 
 import net.ssc14.common.atmosphere.model.GasType;
-import net.mcreator.ssc.atmosphere.GasMixture;
+import net.ssc14.common.atmosphere.model.GasMixture;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

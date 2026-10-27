@@ -112,8 +112,7 @@ sourceSets {
     domain {
         java {
             srcDir 'src/main/java'
-            include 'net/ssc14/common/atmosphere/model/GasType.java'
-            include 'net/mcreator/ssc/GasReaction.java'
+            include 'net/ssc14/common/atmosphere/**'
             include 'net/mcreator/ssc/combat/**'
             include 'net/mcreator/ssc/medical/MedicalStatePolicy.java'
             include 'net/mcreator/ssc/medical/MedicalEffectsController.java'
