@@ -18,7 +18,7 @@ import net.minecraft.tags.TagKey;
 
 import net.mcreator.ssc.init.Ssc14ModAttributes;
 import net.mcreator.ssc.init.Ssc14ModEntities;
-import net.mcreator.ssc.ArmorResistanceHelper;
+import net.ssc14.integration.neoforge.combat.ArmorResistanceService;
 import net.ssc14.content.medical.MedicalPlayerEffects;
 
 import javax.annotation.Nullable;
@@ -63,7 +63,7 @@ public class OnPlayerTakeDamageSSC14Procedure {
 
         String damageType = mapDamageType(source, player);
         
-        float finalDamage = ArmorResistanceHelper.applyArmorResistance(player, damageType, incoming);
+        float finalDamage = ArmorResistanceService.applyArmorResistance(player, damageType, incoming);
         
         if (finalDamage <= 0.001f) {
             damageEvent.setNewDamage(0);
