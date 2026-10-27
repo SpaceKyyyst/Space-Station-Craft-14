@@ -1,20 +1,15 @@
 package net.mcreator.ssc.init;
 
-import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.item.Ssc14Items;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.BlockItem;
 
 import net.mcreator.ssc.item.inventory.*;
 import net.mcreator.ssc.item.*;
@@ -578,7 +573,7 @@ public class Ssc14ModItems {
 	static {
 		ROD_FLOOR = Ssc14Items.ROD_FLOOR;
 		ROOD = Ssc14Items.ROOD;
-		SHEATHING = block(Ssc14ModBlocks.SHEATHING, new Item.Properties().stacksTo(1).fireResistant());
+		SHEATHING = Ssc14Items.SHEATHING;
 		STEEL = Ssc14Items.STEEL;
 		PLASTEEL = Ssc14Items.PLASTEEL;
 		LOW_VOLTAGE_CABLE = Ssc14Items.LOW_VOLTAGE_CABLE;
@@ -596,11 +591,11 @@ public class Ssc14ModItems {
 		ROD_UP_FLOOR = Ssc14Items.ROD_UP_FLOOR;
 		SCREWDRIVER = Ssc14Items.SCREWDRIVER;
 		SPANNER = Ssc14Items.SPANNER;
-		BASE_AIRLOCK_D_1 = block(Ssc14ModBlocks.BASE_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
+		BASE_AIRLOCK_D_1 = Ssc14Items.BASE_AIRLOCK_D_1;
 		UP_TITLE = Ssc14Items.UP_TITLE;
 		WALL_CARCASE_ENTIT_SPAWN_EGG = Ssc14Items.WALL_CARCASE_ENTIT_SPAWN_EGG;
 		ID_CARD_PASSANGER = Ssc14Items.ID_CARD_PASSANGER;
-		CONSOLE_OF_ID = block(Ssc14ModBlocks.CONSOLE_OF_ID, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+		CONSOLE_OF_ID = Ssc14Items.CONSOLE_OF_ID;
 		ID_CONSOLE_ENTITY_SPAWN_EGG = Ssc14Items.ID_CONSOLE_ENTITY_SPAWN_EGG;
 		GAS_ANALYSER = Ssc14Items.GAS_ANALYSER;
 		BASE_WINDOW = Ssc14Items.BASE_WINDOW;
@@ -652,7 +647,7 @@ public class Ssc14ModItems {
 		ID_CARD_VS = Ssc14Items.ID_CARD_VS;
 		ID_CARD_SCIENTIST = Ssc14Items.ID_CARD_SCIENTIST;
 		ID_CARD_SCI_ASSISTENT = Ssc14Items.ID_CARD_SCI_ASSISTENT;
-		PORTABLE_SHEATER = block(Ssc14ModBlocks.PORTABLE_SHEATER, new Item.Properties().stacksTo(1));
+		PORTABLE_SHEATER = Ssc14Items.PORTABLE_SHEATER;
 		SILVER = Ssc14Items.SILVER;
 		SSC_14_GOLD = Ssc14Items.SSC_14_GOLD;
 		URAN = Ssc14Items.URAN;
@@ -666,10 +661,10 @@ public class Ssc14ModItems {
 		PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG = Ssc14Items.PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG;
 		TITLE_DARK = Ssc14Items.TITLE_DARK;
 		AIRLOCK_CONTROLLER = Ssc14Items.AIRLOCK_CONTROLLER;
-		APC = block(Ssc14ModBlocks.APC, new Item.Properties().stacksTo(1).fireResistant());
-		PODSTATION = block(Ssc14ModBlocks.PODSTATION, new Item.Properties().stacksTo(1).fireResistant());
-		DEBU_GGENERATOR = block(Ssc14ModBlocks.DEBU_GGENERATOR, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
-		LAMP = block(Ssc14ModBlocks.LAMP, new Item.Properties().stacksTo(1).fireResistant());
+		APC = Ssc14Items.APC;
+		PODSTATION = Ssc14Items.PODSTATION;
+		DEBU_GGENERATOR = Ssc14Items.DEBU_GGENERATOR;
+		LAMP = Ssc14Items.LAMP;
 		TITLE_STEEL_DIAGONAL_MINI = Ssc14Items.TITLE_STEEL_DIAGONAL_MINI;
 		TITLE_STEEL_DIAGONAL = Ssc14Items.TITLE_STEEL_DIAGONAL;
 		UP_TITLE_STEEL = Ssc14Items.UP_TITLE_STEEL;
@@ -689,8 +684,8 @@ public class Ssc14ModItems {
 		TITLE_DARK_PAVEMENT_VERTICAL = Ssc14Items.TITLE_DARK_PAVEMENT_VERTICAL;
 		TITLE_DARK_HERRINGBONE = Ssc14Items.TITLE_DARK_HERRINGBONE;
 		TITLE_DARK_PLASTIC = Ssc14Items.TITLE_DARK_PLASTIC;
-		SMES = block(Ssc14ModBlocks.SMES, new Item.Properties().stacksTo(1).fireResistant());
-		TECH_LAMP = block(Ssc14ModBlocks.TECH_LAMP, new Item.Properties().stacksTo(1).fireResistant());
+		SMES = Ssc14Items.SMES;
+		TECH_LAMP = Ssc14Items.TECH_LAMP;
 		LED_LIGHT_TUBE = Ssc14Items.LED_LIGHT_TUBE;
 		LIGHT_BULB = Ssc14Items.LIGHT_BULB;
 		LED_LIGHT_TUBE_BROKEN = Ssc14Items.LED_LIGHT_TUBE_BROKEN;
@@ -698,8 +693,8 @@ public class Ssc14ModItems {
 		ARMORED_WINDOW = Ssc14Items.ARMORED_WINDOW;
 		ARM_GLASS_SHARD = Ssc14Items.ARM_GLASS_SHARD;
 		ARM_GLASS = Ssc14Items.ARM_GLASS;
-		DEBUG_LAMP = block(Ssc14ModBlocks.DEBUG_LAMP, new Item.Properties().stacksTo(1).fireResistant());
-		DEBUG_TECH_LAMP = block(Ssc14ModBlocks.DEBUG_TECH_LAMP, new Item.Properties().stacksTo(1).fireResistant());
+		DEBUG_LAMP = Ssc14Items.DEBUG_LAMP;
+		DEBUG_TECH_LAMP = Ssc14Items.DEBUG_TECH_LAMP;
 		GRILLE = Ssc14Items.GRILLE;
 		BROKEN_GRILLE = Ssc14Items.BROKEN_GRILLE;
 		ASTEROID_STONE_BASE = Ssc14Items.ASTEROID_STONE_BASE;
@@ -720,7 +715,7 @@ public class Ssc14ModItems {
 		RAW_URAN = Ssc14Items.RAW_URAN;
 		RAW_DIAMOND = Ssc14Items.RAW_DIAMOND;
 		CAVE_FLOOR_1 = Ssc14Items.CAVE_FLOOR_1;
-		GRAVITY_GENERATOR = block(Ssc14ModBlocks.GRAVITY_GENERATOR, new Item.Properties().stacksTo(1).fireResistant());
+		GRAVITY_GENERATOR = Ssc14Items.GRAVITY_GENERATOR;
 		TITLE_WHITE = Ssc14Items.TITLE_WHITE;
 		TITLE_WHITE_DIAGONAL_MINI = Ssc14Items.TITLE_WHITE_DIAGONAL_MINI;
 		CATWALK_FLOOR = Ssc14Items.CATWALK_FLOOR;
@@ -732,28 +727,28 @@ public class Ssc14ModItems {
 		TITLE_WHITE_PAVEMENT = Ssc14Items.TITLE_WHITE_PAVEMENT;
 		TITLE_WHITE_PAVEMENT_VERTICAL = Ssc14Items.TITLE_WHITE_PAVEMENT_VERTICAL;
 		TITLE_WHITE_PLASTIC = Ssc14Items.TITLE_WHITE_PLASTIC;
-		C_4 = block(Ssc14ModBlocks.C_4, new Item.Properties().stacksTo(1));
-		MACHINE_FRAME = block(Ssc14ModBlocks.MACHINE_FRAME, new Item.Properties().stacksTo(1));
-		MACHINE_FRAME_2 = block(Ssc14ModBlocks.MACHINE_FRAME_2, new Item.Properties().stacksTo(1));
+		C_4 = Ssc14Items.C_4;
+		MACHINE_FRAME = Ssc14Items.MACHINE_FRAME;
+		MACHINE_FRAME_2 = Ssc14Items.MACHINE_FRAME_2;
 		CAPACITOR = Ssc14Items.CAPACITOR;
 		MATTER_BIN = Ssc14Items.MATTER_BIN;
 		MICRO_MANIPULATOR = Ssc14Items.MICRO_MANIPULATOR;
 		SUBSTATION_BOARD = Ssc14Items.SUBSTATION_BOARD;
 		SMES_BOARD = Ssc14Items.SMES_BOARD;
 		APC_BOARD = Ssc14Items.APC_BOARD;
-		STEEL_TABLE = block(Ssc14ModBlocks.STEEL_TABLE, new Item.Properties().stacksTo(1));
+		STEEL_TABLE = Ssc14Items.STEEL_TABLE;
 		LOW_BATTERIE = Ssc14Items.LOW_BATTERIE;
 		STEEL_STAIRCASE = Ssc14Items.STEEL_STAIRCASE;
 		WHITE_STAIRCASE = Ssc14Items.WHITE_STAIRCASE;
 		DARK_STAIRCASE = Ssc14Items.DARK_STAIRCASE;
-		STEEL_CHAIR = block(Ssc14ModBlocks.STEEL_CHAIR, new Item.Properties().stacksTo(1));
-		WOOD_CHAIR = block(Ssc14ModBlocks.WOOD_CHAIR, new Item.Properties().stacksTo(1));
-		OFICE_BLACK_CHAIR = block(Ssc14ModBlocks.OFICE_BLACK_CHAIR, new Item.Properties().stacksTo(1));
-		OFICE_WHITE_CHAIR = block(Ssc14ModBlocks.OFICE_WHITE_CHAIR, new Item.Properties().stacksTo(1));
-		BAR_CHAIR = block(Ssc14ModBlocks.BAR_CHAIR, new Item.Properties().stacksTo(1));
-		KOSTILNIBLOK = block(Ssc14ModBlocks.KOSTILNIBLOK, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
-		DEBUG_GRAV_GEN = block(Ssc14ModBlocks.DEBUG_GRAV_GEN, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
-		NUCLEAR_WARHEAD = block(Ssc14ModBlocks.NUCLEAR_WARHEAD, new Item.Properties().stacksTo(1));
+		STEEL_CHAIR = Ssc14Items.STEEL_CHAIR;
+		WOOD_CHAIR = Ssc14Items.WOOD_CHAIR;
+		OFICE_BLACK_CHAIR = Ssc14Items.OFICE_BLACK_CHAIR;
+		OFICE_WHITE_CHAIR = Ssc14Items.OFICE_WHITE_CHAIR;
+		BAR_CHAIR = Ssc14Items.BAR_CHAIR;
+		KOSTILNIBLOK = Ssc14Items.KOSTILNIBLOK;
+		DEBUG_GRAV_GEN = Ssc14Items.DEBUG_GRAV_GEN;
+		NUCLEAR_WARHEAD = Ssc14Items.NUCLEAR_WARHEAD;
 		DIRT = Ssc14Items.DIRT;
 		GRASS_LIGHT_BLOCK = Ssc14Items.GRASS_LIGHT_BLOCK;
 		LOW_PLANET_GRASS = Ssc14Items.LOW_PLANET_GRASS;
@@ -783,8 +778,8 @@ public class Ssc14ModItems {
 		PICK = Ssc14Items.PICK;
 		SECURITY_JUMPSUIT = Ssc14Items.SECURITY_JUMPSUIT;
 		COMBAT_BOOTS_ITEM = Ssc14Items.COMBAT_BOOTS_ITEM;
-		COMPUTER = block(Ssc14ModBlocks.COMPUTER, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
-		CLOSET_SECURE = block(Ssc14ModBlocks.CLOSET_SECURE, new Item.Properties().stacksTo(1).fireResistant());
+		COMPUTER = Ssc14Items.COMPUTER;
+		CLOSET_SECURE = Ssc14Items.CLOSET_SECURE;
 		MAGNETIC_BOOTS_ITEM = Ssc14Items.MAGNETIC_BOOTS_ITEM;
 		MAGNETIC_BOOTS_ACTIVE_ITEM = Ssc14Items.MAGNETIC_BOOTS_ACTIVE_ITEM;
 		PASSANGER_JUMPSUIT = Ssc14Items.PASSANGER_JUMPSUIT;
@@ -804,7 +799,7 @@ public class Ssc14ModItems {
 		RND_JUMPSUIT = Ssc14Items.RND_JUMPSUIT;
 		WARDEN_JUMPSUIT = Ssc14Items.WARDEN_JUMPSUIT;
 		BLACK_SOLES_ITEM = Ssc14Items.BLACK_SOLES_ITEM;
-		CLOSET = block(Ssc14ModBlocks.CLOSET, new Item.Properties().stacksTo(1).fireResistant());
+		CLOSET = Ssc14Items.CLOSET;
 		FENCE_LINE = Ssc14Items.FENCE_LINE;
 		FENCE_G = Ssc14Items.FENCE_G;
 		FENCE_POINT = Ssc14Items.FENCE_POINT;
@@ -813,7 +808,7 @@ public class Ssc14ModItems {
 		BLOODPACK = Ssc14Items.BLOODPACK;
 		GAUZE = Ssc14Items.GAUZE;
 		OINTMENT = Ssc14Items.OINTMENT;
-		DEBUG_13 = block(Ssc14ModBlocks.DEBUG_13);
+		DEBUG_13 = Ssc14Items.DEBUG_13;
 		DECAL_1SPAWNER = Ssc14Items.DECAL_1SPAWNER;
 		DECAL_1DELETION = Ssc14Items.DECAL_1DELETION;
 		CLOAKS_CAP = Ssc14Items.CLOAKS_CAP;
@@ -825,7 +820,7 @@ public class Ssc14ModItems {
 		PD_APASSANGER = Ssc14Items.PD_APASSANGER;
 		OUTERCLOTHING_EVA = Ssc14Items.OUTERCLOTHING_EVA;
 		HELMETS_EVA = Ssc14Items.HELMETS_EVA;
-		EXTINGUISHER_CABINET = block(Ssc14ModBlocks.EXTINGUISHER_CABINET, new Item.Properties().stacksTo(1));
+		EXTINGUISHER_CABINET = Ssc14Items.EXTINGUISHER_CABINET;
 		EXTINGUISHER = Ssc14Items.EXTINGUISHER;
 		EXTINGUISHER_OPEN = Ssc14Items.EXTINGUISHER_OPEN;
 		PEN = Ssc14Items.PEN;
@@ -836,7 +831,7 @@ public class Ssc14ModItems {
 		HEALTH_ANALYZER = Ssc14Items.HEALTH_ANALYZER;
 		GLASS_SECURITY = Ssc14Items.GLASS_SECURITY;
 		GAS_MASK = Ssc14Items.GAS_MASK;
-		COMMUNICATION_SERVERS = block(Ssc14ModBlocks.COMMUNICATION_SERVERS, new Item.Properties().stacksTo(1));
+		COMMUNICATION_SERVERS = Ssc14Items.COMMUNICATION_SERVERS;
 		ENCRYPTION_KEY_PASSANGER = Ssc14Items.ENCRYPTION_KEY_PASSANGER;
 		ENCRYPTION_KEY_COMMAND = Ssc14Items.ENCRYPTION_KEY_COMMAND;
 		ENCRYPTION_KEY_ENGENEER = Ssc14Items.ENCRYPTION_KEY_ENGENEER;
@@ -845,7 +840,7 @@ public class Ssc14ModItems {
 		ENCRYPTION_KEY_SECURITY = Ssc14Items.ENCRYPTION_KEY_SECURITY;
 		ENCRYPTION_KEY_SERVICE = Ssc14Items.ENCRYPTION_KEY_SERVICE;
 		ENCRYPTION_KEY_CARGO = Ssc14Items.ENCRYPTION_KEY_CARGO;
-		WOOD_TABLE = block(Ssc14ModBlocks.WOOD_TABLE, new Item.Properties().stacksTo(1));
+		WOOD_TABLE = Ssc14Items.WOOD_TABLE;
 		WORK_BOOTS = Ssc14Items.WORK_BOOTS;
 		CLOAKS_HO_S = Ssc14Items.CLOAKS_HO_S;
 		MANTLES_HO_S_SHOULDER_CAP = Ssc14Items.MANTLES_HO_S_SHOULDER_CAP;
@@ -873,11 +868,11 @@ public class Ssc14ModItems {
 		STOCKINGS_ORANGE = Ssc14Items.STOCKINGS_ORANGE;
 		STOCKINGS_PURPLE = Ssc14Items.STOCKINGS_PURPLE;
 		STOCKINGS_YELLOW = Ssc14Items.STOCKINGS_YELLOW;
-		COMMUNICATION_CONSOLE = block(Ssc14ModBlocks.COMMUNICATION_CONSOLE, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
-		TECH_AIRLOCK_D_1 = block(Ssc14ModBlocks.TECH_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		GAS_PRODUCER_O_2 = block(Ssc14ModBlocks.GAS_PRODUCER_O_2, new Item.Properties().stacksTo(1));
+		COMMUNICATION_CONSOLE = Ssc14Items.COMMUNICATION_CONSOLE;
+		TECH_AIRLOCK_D_1 = Ssc14Items.TECH_AIRLOCK_D_1;
+		GAS_PRODUCER_O_2 = Ssc14Items.GAS_PRODUCER_O_2;
 		REAGENT_CONTAINER = Ssc14Items.REAGENT_CONTAINER;
-		VENDING_AUT_1 = block(Ssc14ModBlocks.VENDING_AUT_1, new Item.Properties().fireResistant());
+		VENDING_AUT_1 = Ssc14Items.VENDING_AUT_1;
 		CHEESE_HONKERS = Ssc14Items.CHEESE_HONKERS;
 		CHEESE_HONKERS_TRASH = Ssc14Items.CHEESE_HONKERS_TRASH;
 		CHIPS = Ssc14Items.CHIPS;
@@ -903,10 +898,10 @@ public class Ssc14ModItems {
 		CM_OTURTLE_JUMPSUIT = Ssc14Items.CM_OTURTLE_JUMPSUIT;
 		HO_SPARADE_JUMPSUIT = Ssc14Items.HO_SPARADE_JUMPSUIT;
 		DEBUGACTIVATOR = Ssc14Items.DEBUGACTIVATOR;
-		SHUTTERS = block(Ssc14ModBlocks.SHUTTERS, new Item.Properties().stacksTo(1));
-		BUTTON = block(Ssc14ModBlocks.BUTTON, new Item.Properties().stacksTo(1));
+		SHUTTERS = Ssc14Items.SHUTTERS;
+		BUTTON = Ssc14Items.BUTTON;
 		NETWORK_CONFIGURATOR = Ssc14Items.NETWORK_CONFIGURATOR;
-		MICROWAWE = block(Ssc14ModBlocks.MICROWAWE, new Item.Properties().stacksTo(1));
+		MICROWAWE = Ssc14Items.MICROWAWE;
 		DOUGH = Ssc14Items.DOUGH;
 		DOUGH_PIECE = Ssc14Items.DOUGH_PIECE;
 		BREAD = Ssc14Items.BREAD;
@@ -1015,36 +1010,36 @@ public class Ssc14ModItems {
 		TITLE_WOODLARGE = Ssc14Items.TITLE_WOODLARGE;
 		TITLE_WOOD = Ssc14Items.TITLE_WOOD;
 		TITLE_WOODTILE = Ssc14Items.TITLE_WOODTILE;
-		ATMOSPHERICS_AIRLOCK_D_1 = block(Ssc14ModBlocks.ATMOSPHERICS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		CARGO_AIRLOCK_D_1 = block(Ssc14ModBlocks.CARGO_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		CENT_COM_AIRLOCK_D_1 = block(Ssc14ModBlocks.CENT_COM_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		CHEMISTRY_AIRLOCK_D_1 = block(Ssc14ModBlocks.CHEMISTRY_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		COMMAND_AIRLOCK_D_1 = block(Ssc14ModBlocks.COMMAND_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		ENGINEERING_AIRLOCK_D_1 = block(Ssc14ModBlocks.ENGINEERING_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		HYDROPONICS_AIRLOCK_D_1 = block(Ssc14ModBlocks.HYDROPONICS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		MEDICAL_AIRLOCK_D_1 = block(Ssc14ModBlocks.MEDICAL_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		SALVAGE_AIRLOCK_D_1 = block(Ssc14ModBlocks.SALVAGE_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		SCIENCE_AIRLOCK_D_1 = block(Ssc14ModBlocks.SCIENCE_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		SECURITY_AIRLOCK_D_1 = block(Ssc14ModBlocks.SECURITY_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		SYNDICATE_AIRLOCK_D_1 = block(Ssc14ModBlocks.SYNDICATE_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		VIROLOGY_AIRLOCK_D_1 = block(Ssc14ModBlocks.VIROLOGY_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		CLOSET_EMERG = block(Ssc14ModBlocks.CLOSET_EMERG, new Item.Properties().stacksTo(1).fireResistant());
-		CLOSET_FIRE = block(Ssc14ModBlocks.CLOSET_FIRE, new Item.Properties().stacksTo(1).fireResistant());
-		CLOSET_BLACK = block(Ssc14ModBlocks.CLOSET_BLACK, new Item.Properties().stacksTo(1).fireResistant());
-		CLOSET_BLUE = block(Ssc14ModBlocks.CLOSET_BLUE, new Item.Properties().stacksTo(1).fireResistant());
-		CLOSET_GRAY = block(Ssc14ModBlocks.CLOSET_GRAY, new Item.Properties().stacksTo(1).fireResistant());
-		CLOSET_GREEN = block(Ssc14ModBlocks.CLOSET_GREEN, new Item.Properties().stacksTo(1).fireResistant());
-		CLOSET_MIXED = block(Ssc14ModBlocks.CLOSET_MIXED, new Item.Properties().stacksTo(1).fireResistant());
-		CLOSET_N_2 = block(Ssc14ModBlocks.CLOSET_N_2, new Item.Properties().stacksTo(1).fireResistant());
-		CLOSET_ORANGE = block(Ssc14ModBlocks.CLOSET_ORANGE, new Item.Properties().stacksTo(1).fireResistant());
-		CLOSET_PINK = block(Ssc14ModBlocks.CLOSET_PINK, new Item.Properties().stacksTo(1).fireResistant());
+		ATMOSPHERICS_AIRLOCK_D_1 = Ssc14Items.ATMOSPHERICS_AIRLOCK_D_1;
+		CARGO_AIRLOCK_D_1 = Ssc14Items.CARGO_AIRLOCK_D_1;
+		CENT_COM_AIRLOCK_D_1 = Ssc14Items.CENT_COM_AIRLOCK_D_1;
+		CHEMISTRY_AIRLOCK_D_1 = Ssc14Items.CHEMISTRY_AIRLOCK_D_1;
+		COMMAND_AIRLOCK_D_1 = Ssc14Items.COMMAND_AIRLOCK_D_1;
+		ENGINEERING_AIRLOCK_D_1 = Ssc14Items.ENGINEERING_AIRLOCK_D_1;
+		HYDROPONICS_AIRLOCK_D_1 = Ssc14Items.HYDROPONICS_AIRLOCK_D_1;
+		MEDICAL_AIRLOCK_D_1 = Ssc14Items.MEDICAL_AIRLOCK_D_1;
+		SALVAGE_AIRLOCK_D_1 = Ssc14Items.SALVAGE_AIRLOCK_D_1;
+		SCIENCE_AIRLOCK_D_1 = Ssc14Items.SCIENCE_AIRLOCK_D_1;
+		SECURITY_AIRLOCK_D_1 = Ssc14Items.SECURITY_AIRLOCK_D_1;
+		SYNDICATE_AIRLOCK_D_1 = Ssc14Items.SYNDICATE_AIRLOCK_D_1;
+		VIROLOGY_AIRLOCK_D_1 = Ssc14Items.VIROLOGY_AIRLOCK_D_1;
+		CLOSET_EMERG = Ssc14Items.CLOSET_EMERG;
+		CLOSET_FIRE = Ssc14Items.CLOSET_FIRE;
+		CLOSET_BLACK = Ssc14Items.CLOSET_BLACK;
+		CLOSET_BLUE = Ssc14Items.CLOSET_BLUE;
+		CLOSET_GRAY = Ssc14Items.CLOSET_GRAY;
+		CLOSET_GREEN = Ssc14Items.CLOSET_GREEN;
+		CLOSET_MIXED = Ssc14Items.CLOSET_MIXED;
+		CLOSET_N_2 = Ssc14Items.CLOSET_N_2;
+		CLOSET_ORANGE = Ssc14Items.CLOSET_ORANGE;
+		CLOSET_PINK = Ssc14Items.CLOSET_PINK;
 		WOOD = Ssc14Items.WOOD;
-		GLASS_TABLE = block(Ssc14ModBlocks.GLASS_TABLE, new Item.Properties().stacksTo(1));
-		GLASS_AIRLOCK_D_1 = block(Ssc14ModBlocks.GLASS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
+		GLASS_TABLE = Ssc14Items.GLASS_TABLE;
+		GLASS_AIRLOCK_D_1 = Ssc14Items.GLASS_AIRLOCK_D_1;
 		ASTRO_ACE_FOAM_POWER = Ssc14Items.ASTRO_ACE_FOAM_POWER;
 		FOAM_DART = Ssc14Items.FOAM_DART;
 		BULLET_35_CARTRIDGE = Ssc14Items.BULLET_35_CARTRIDGE;
-		BASE_GLASS_AIRLOCK_D_1 = block(Ssc14ModBlocks.BASE_GLASS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
+		BASE_GLASS_AIRLOCK_D_1 = Ssc14Items.BASE_GLASS_AIRLOCK_D_1;
 		POSTER_RANDOM_ANYTHING = Ssc14Items.POSTER_RANDOM_ANYTHING;
 		DECAL_2SPAWNER = Ssc14Items.DECAL_2SPAWNER;
 		POSTER_ANOMALY = Ssc14Items.POSTER_ANOMALY;
@@ -1089,16 +1084,16 @@ public class Ssc14ModItems {
 		DECAL_4SPAWNER = Ssc14Items.DECAL_4SPAWNER;
 		DECAL_5SPAWNER = Ssc14Items.DECAL_5SPAWNER;
 		DECAL_6SPAWNER = Ssc14Items.DECAL_6SPAWNER;
-		FUEL_TANK = block(Ssc14ModBlocks.FUEL_TANK, new Item.Properties().stacksTo(1));
+		FUEL_TANK = Ssc14Items.FUEL_TANK;
 		CARP_SPAWN_EGG = Ssc14Items.CARP_SPAWN_EGG;
-		ORDER_CONSOLE = block(Ssc14ModBlocks.ORDER_CONSOLE, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+		ORDER_CONSOLE = Ssc14Items.ORDER_CONSOLE;
 		MAID_JUMPSUIT = Ssc14Items.MAID_JUMPSUIT;
-		ORDER_PALLET = block(Ssc14ModBlocks.ORDER_PALLET, new Item.Properties().stacksTo(1));
-		SALE_PALLET = block(Ssc14ModBlocks.SALE_PALLET, new Item.Properties().stacksTo(1));
+		ORDER_PALLET = Ssc14Items.ORDER_PALLET;
+		SALE_PALLET = Ssc14Items.SALE_PALLET;
 		CREDITS = Ssc14Items.CREDITS;
 		CREDITS_50 = Ssc14Items.CREDITS_50;
 		DEBU_GCREDITS_DELETER = Ssc14Items.DEBU_GCREDITS_DELETER;
-		SALE_CONSOLE = block(Ssc14ModBlocks.SALE_CONSOLE, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+		SALE_CONSOLE = Ssc14Items.SALE_CONSOLE;
 		BANNER_NT = Ssc14Items.BANNER_NT;
 		BANNER_MED = Ssc14Items.BANNER_MED;
 		BANNER_RN_D = Ssc14Items.BANNER_RN_D;
@@ -1106,10 +1101,10 @@ public class Ssc14ModItems {
 		BANNER_CARGO = Ssc14Items.BANNER_CARGO;
 		BANNER_ENG = Ssc14Items.BANNER_ENG;
 		BANNER_SYND = Ssc14Items.BANNER_SYND;
-		ARM_CHAIR_BASE = block(Ssc14ModBlocks.ARM_CHAIR_BASE, new Item.Properties().stacksTo(1));
-		ARM_CHAIR_BROWN = block(Ssc14ModBlocks.ARM_CHAIR_BROWN, new Item.Properties().stacksTo(1));
-		ARM_CHAIR_CARP = block(Ssc14ModBlocks.ARM_CHAIR_CARP, new Item.Properties().stacksTo(1));
-		EMERGENCY_LIGHT = block(Ssc14ModBlocks.EMERGENCY_LIGHT, new Item.Properties().stacksTo(1).fireResistant());
+		ARM_CHAIR_BASE = Ssc14Items.ARM_CHAIR_BASE;
+		ARM_CHAIR_BROWN = Ssc14Items.ARM_CHAIR_BROWN;
+		ARM_CHAIR_CARP = Ssc14Items.ARM_CHAIR_CARP;
+		EMERGENCY_LIGHT = Ssc14Items.EMERGENCY_LIGHT;
 		BAGEL = Ssc14Items.BAGEL;
 		BAGUETTE = Ssc14Items.BAGUETTE;
 		BANANA_NUT_BREAD = Ssc14Items.BANANA_NUT_BREAD;
@@ -1128,14 +1123,6 @@ public class Ssc14ModItems {
 	// End of user code block custom items
 	private static <I extends Item> DeferredItem<I> register(String name, Function<Item.Properties, ? extends I> supplier) {
 		return REGISTRY.registerItem(name, supplier, Item.Properties::new);
-	}
-
-	private static DeferredItem<Item> block(DeferredHolder<Block, Block> block) {
-		return block(block, new Item.Properties());
-	}
-
-	private static DeferredItem<Item> block(DeferredHolder<Block, Block> block, Item.Properties properties) {
-		return REGISTRY.registerItem(block.getId().getPath(), prop -> new BlockItem(block.get(), prop), () -> properties);
 	}
 
 	@SubscribeEvent
