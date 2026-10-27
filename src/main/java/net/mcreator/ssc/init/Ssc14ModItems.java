@@ -822,7 +822,7 @@ public class Ssc14ModItems {
 		HELMET_SECURITY = Ssc14Items.HELMET_SECURITY;
 		BELT_SECURITY = Ssc14Items.BELT_SECURITY;
 		HEADSET_BASE = Ssc14Items.HEADSET_BASE;
-		PD_APASSANGER = register("pd_apassanger", PDApassangerItem::new);
+		PD_APASSANGER = Ssc14Items.PD_APASSANGER;
 		OUTERCLOTHING_EVA = Ssc14Items.OUTERCLOTHING_EVA;
 		HELMETS_EVA = Ssc14Items.HELMETS_EVA;
 		EXTINGUISHER_CABINET = block(Ssc14ModBlocks.EXTINGUISHER_CABINET, new Item.Properties().stacksTo(1));
@@ -922,7 +922,7 @@ public class Ssc14ModItems {
 		ALL_PURPOSE_SAUCE_OPEN = Ssc14Items.ALL_PURPOSE_SAUCE_OPEN;
 		EGG = Ssc14Items.EGG;
 		EGGSHELL = Ssc14Items.EGGSHELL;
-		EGG_CARTON = register("egg_carton", EggCartonItem::new);
+		EGG_CARTON = Ssc14Items.EGG_CARTON;
 		TOFU = Ssc14Items.TOFU;
 		TOFU_BURGER = Ssc14Items.TOFU_BURGER;
 		TOFU_SLICE = Ssc14Items.TOFU_SLICE;

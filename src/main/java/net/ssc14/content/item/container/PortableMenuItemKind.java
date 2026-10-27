@@ -5,7 +5,9 @@ import net.minecraft.world.item.Item;
 /** Stable roles and item properties for portable menu-backed items. */
 public enum PortableMenuItemKind {
     ACCESS_CONFIG("Access Configurator", true, 1),
-    BACKPACK("Backpack", false, 21);
+    BACKPACK("Backpack", false, 21),
+    PASSENGER_PDA("PDA passanger", true, 2),
+    EGG_CARTON("Egg Carton", false, 11);
 
     private final String menuTitle;
     private final boolean fireResistant;

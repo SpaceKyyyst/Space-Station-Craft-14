@@ -107,6 +107,10 @@ public final class Ssc14Items {
             portableMenu("access_config", PortableMenuItemKind.ACCESS_CONFIG);
     public static final DeferredItem<Item> BACKPACK_2 =
             portableMenu("backpack_2", PortableMenuItemKind.BACKPACK);
+    public static final DeferredItem<Item> PD_APASSANGER =
+            portableMenu("pd_apassanger", PortableMenuItemKind.PASSENGER_PDA);
+    public static final DeferredItem<Item> EGG_CARTON =
+            portableMenu("egg_carton", PortableMenuItemKind.EGG_CARTON);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
