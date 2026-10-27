@@ -18,6 +18,9 @@ import net.ssc14.content.item.communication.HeadsetDefinition;
 import net.ssc14.content.item.communication.HeadsetItem;
 import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
 import net.ssc14.content.item.communication.Ssc14HeadsetDefinitions;
+import net.ssc14.content.item.construction.CableCoilItem;
+import net.ssc14.content.item.construction.ConstructionItemKind;
+import net.ssc14.content.item.construction.ConstructionSheetItem;
 import net.ssc14.content.item.food.CookingIngredientItem;
 import net.ssc14.content.item.food.EdibleFoodItem;
 import net.ssc14.content.item.food.FoodPackagingWasteItem;
@@ -58,6 +61,16 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> RAW_SILVER = material("raw_silver");
     public static final DeferredItem<Item> RAW_URAN = material("raw_uran");
     public static final DeferredItem<Item> RAW_DIAMOND = material("raw_diamond");
+    public static final DeferredItem<Item> STEEL = constructionSheet(
+            "steel", ConstructionItemKind.STEEL_SHEET);
+    public static final DeferredItem<Item> PLASTEEL = constructionSheet(
+            "plasteel", ConstructionItemKind.PLASTEEL_SHEET);
+    public static final DeferredItem<Item> LOW_VOLTAGE_CABLE = cableCoil(
+            "low_voltage_cable", ConstructionItemKind.LOW_VOLTAGE_CABLE);
+    public static final DeferredItem<Item> MEDIUM_VOLTAGE_CABLE = cableCoil(
+            "medium_voltage_cable", ConstructionItemKind.MEDIUM_VOLTAGE_CABLE);
+    public static final DeferredItem<Item> HIGH_VOLTAGE_CABLE = cableCoil(
+            "high_voltage_cable", ConstructionItemKind.HIGH_VOLTAGE_CABLE);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -412,6 +425,19 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> material(String name) {
         return REGISTRY.<Item>registerItem(name, MaterialItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> constructionSheet(
+            String name, ConstructionItemKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new ConstructionSheetItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> cableCoil(String name, ConstructionItemKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new CableCoilItem(properties, kind),
+                Item.Properties::new);
     }
 
     private static DeferredItem<Item> utility(String name) {

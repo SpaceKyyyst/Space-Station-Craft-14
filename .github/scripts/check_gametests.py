@@ -92,6 +92,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_item_inert_contract",
     "ssc_14:compatibility_item_static_utility_contract",
     "ssc_14:compatibility_item_reagent_container_contract",
+    "ssc_14:compatibility_item_construction_material_contract",
 }
 
 

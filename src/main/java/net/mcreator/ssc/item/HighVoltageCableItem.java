@@ -1,20 +1,13 @@
 package net.mcreator.ssc.item;
 
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.InteractionResult;
+import net.ssc14.content.item.construction.CableCoilItem;
+import net.ssc14.content.item.construction.ConstructionItemKind;
 
-import net.mcreator.ssc.procedures.Sheathing_Cab_InstalProcedure;
-
-public class HighVoltageCableItem extends Item {
+/** @deprecated Use the canonical high-voltage cable registry entry. */
+@Deprecated(forRemoval = false)
+public class HighVoltageCableItem extends CableCoilItem {
 	public HighVoltageCableItem(Item.Properties properties) {
-		super(properties.stacksTo(30));
-	}
-
-	@Override
-	public InteractionResult useOn(UseOnContext context) {
-		super.useOn(context);
-		Sheathing_Cab_InstalProcedure.execute(context.getLevel(), context.getClickedPos().getX(), context.getClickedPos().getY(), context.getClickedPos().getZ(), context.getLevel().getBlockState(context.getClickedPos()), context.getPlayer());
-		return InteractionResult.SUCCESS;
+		super(properties, ConstructionItemKind.HIGH_VOLTAGE_CABLE);
 	}
 }

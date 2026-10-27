@@ -48,6 +48,7 @@ import net.ssc14.content.entity.Ssc14EntityBehavior;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.content.item.construction.ConstructionItemInteractionService;
 import net.ssc14.content.block.access.IdConsoleIntegrationService;
 import net.ssc14.content.block.access.Ssc14AccessBlockEntities;
 import net.ssc14.content.block.airlock.ShuttersIntegrationService;
@@ -378,6 +379,8 @@ public class Ssc14Mod {
 		AirlockUpperPlugIntegrationService.install(
 				new LegacyAirlockUpperPlugIntegrationAdapter());
 		AirlockDoorIntegrationService.install(new LegacyAirlockDoorIntegrationAdapter());
+		ConstructionItemInteractionService.install(
+				LegacyConstructionItemInteractionAdapter.INSTANCE);
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
 		Ssc14EntityTypes.REGISTRY.register(modEventBus);
 		Ssc14ModTabs.REGISTRY.register(modEventBus);
