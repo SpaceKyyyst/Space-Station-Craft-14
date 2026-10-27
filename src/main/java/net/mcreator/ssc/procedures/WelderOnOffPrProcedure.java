@@ -1,71 +1,14 @@
 package net.mcreator.ssc.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.resources.Identifier;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelAccessor;
+import net.ssc14.content.item.tool.WelderStateService;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
-
+/** @deprecated Use {@link WelderStateService}. */
+@Deprecated(forRemoval = false)
 public class WelderOnOffPrProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
-		if (entity == null || world.isClientSide())
-			return;
-		double fuel = 0;
-		if (entity.isShiftKeyDown() && (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.WELDING.get()
-				&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel", 0) > 600) {
-			fuel = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel", 0);
-			if (entity instanceof LivingEntity _entity) {
-				ItemStack _setstack7 = new ItemStack(Ssc14ModItems.ACTIVE_WELDER.get()).copy();
-				_setstack7.applyComponents(_entity.getMainHandItem().getComponentsPatch());
-				_setstack7.setCount(_entity.getMainHandItem().getCount());
-				_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack7);
-				if (_entity instanceof Player _player)
-					_player.getInventory().setChanged();
-			}
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:welder_on")), SoundSource.NEUTRAL, 1, 1);
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:welder_on")), SoundSource.NEUTRAL, 1, 1, false);
-				}
-			}
-			{
-				final String _tagName = "fuel";
-				final double _tagValue = (fuel - 350);
-				CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
-			}
-		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.ACTIVE_WELDER.get()) {
-			fuel = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("fuel", 0);
-			if (entity instanceof LivingEntity _entity) {
-				ItemStack _setstack15 = new ItemStack(Ssc14ModItems.WELDING.get()).copy();
-				_setstack15.applyComponents(_entity.getMainHandItem().getComponentsPatch());
-				_setstack15.setCount(_entity.getMainHandItem().getCount());
-				_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack15);
-				if (_entity instanceof Player _player)
-					_player.getInventory().setChanged();
-			}
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:welder_off")), SoundSource.NEUTRAL, 1, 1);
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:welder_off")), SoundSource.NEUTRAL, 1, 1, false);
-				}
-			}
-			{
-				final String _tagName = "fuel";
-				final double _tagValue = fuel;
-				CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
-			}
-		}
-	}
+    public static void execute(LevelAccessor world, double x, double y, double z,
+            Entity entity) {
+        WelderStateService.toggle(world, x, y, z, entity);
+    }
 }

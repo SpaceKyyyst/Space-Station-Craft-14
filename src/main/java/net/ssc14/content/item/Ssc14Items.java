@@ -53,6 +53,8 @@ import net.ssc14.content.item.safety.ExtinguisherState;
 import net.ssc14.content.item.tool.AsteroidPickItem;
 import net.ssc14.content.item.tool.MechanicalHandToolItem;
 import net.ssc14.content.item.tool.MechanicalToolProfile;
+import net.ssc14.content.item.tool.WelderItem;
+import net.ssc14.content.item.tool.WelderState;
 import net.ssc14.content.item.utility.DebugActivatorItem;
 import net.ssc14.content.item.utility.DebugBroadcastItem;
 import net.ssc14.content.item.utility.RcdCartridgeItem;
@@ -150,6 +152,10 @@ public final class Ssc14Items {
             mechanicalTool("spanner", MechanicalToolProfile.SPANNER);
     public static final DeferredItem<Item> PICK =
             REGISTRY.registerItem("pick", AsteroidPickItem::new, Item.Properties::new);
+    public static final DeferredItem<Item> WELDING =
+            welder("welding", WelderState.INACTIVE);
+    public static final DeferredItem<Item> ACTIVE_WELDER =
+            welder("active_welder", WelderState.ACTIVE);
     public static final DeferredItem<Item> FENCE_LINE = fenceBlockItem(
             "fence_line", Ssc14Blocks.FENCE_LINE);
     public static final DeferredItem<Item> FENCE_G = fenceBlockItem(
@@ -581,6 +587,11 @@ public final class Ssc14Items {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new MechanicalHandToolItem(properties, profile),
                 Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> welder(String name, WelderState state) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new WelderItem(properties, state), Item.Properties::new);
     }
 
     private static DeferredItem<Item> fenceBlockItem(

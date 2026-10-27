@@ -588,8 +588,8 @@ public class Ssc14ModItems {
 		TITLE_STEEL = block(Ssc14Blocks.TITLE_STEEL, new Item.Properties().stacksTo(30).fireResistant());
 		STEEL_WALL = block(Ssc14Blocks.STEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
 		WALL_CARCASE = block(Ssc14Blocks.WALL_CARCASE, new Item.Properties().stacksTo(30).fireResistant());
-		WELDING = register("welding", WeldingItem::new);
-		ACTIVE_WELDER = register("active_welder", ActiveWelderItem::new);
+		WELDING = Ssc14Items.WELDING;
+		ACTIVE_WELDER = Ssc14Items.ACTIVE_WELDER;
 		NIPPERS = Ssc14Items.NIPPERS;
 		FIRE_AXE = Ssc14Items.FIRE_AXE;
 		UPER_SHEATHING = block(Ssc14Blocks.UPER_SHEATHING, new Item.Properties().stacksTo(1).fireResistant());
