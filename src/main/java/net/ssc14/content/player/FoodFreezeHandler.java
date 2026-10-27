@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc;
+package net.ssc14.content.player;
 
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;

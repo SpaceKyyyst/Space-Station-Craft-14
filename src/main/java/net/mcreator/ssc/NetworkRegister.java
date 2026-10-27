@@ -1,6 +1,8 @@
 
 package net.mcreator.ssc;
 
+import net.ssc14.integration.neoforge.network.CompatibilityPayloadRegistrar;
+
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;

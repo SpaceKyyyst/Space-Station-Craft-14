@@ -28,6 +28,7 @@ import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
 import net.mcreator.ssc.init.*;
 import net.ssc14.integration.neoforge.server.ServerTaskSubmission;
 import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
+import net.ssc14.integration.neoforge.network.CompatibilityPayloadRegistrar;
 import net.mcreator.ssc.world.inventory.MacFrameGUIMenu;
 import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
 import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;

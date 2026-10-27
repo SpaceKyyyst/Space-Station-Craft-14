@@ -1,6 +1,8 @@
 
 package net.mcreator.ssc;
 
+import net.ssc14.integration.neoforge.network.CompatibilityPayloadRegistrar;
+
 import net.ssc14.integration.neoforge.decal.DecalData;
 import net.ssc14.integration.neoforge.decal.Ssc14DecalAttachments;
 
