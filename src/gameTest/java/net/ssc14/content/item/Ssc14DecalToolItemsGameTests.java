@@ -1,7 +1,7 @@
 package net.ssc14.content.item;
 
 import java.util.List;
-import net.mcreator.ssc.DecalRegistry;
+import net.ssc14.integration.neoforge.decal.Ssc14DecalAttachments;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -97,8 +97,8 @@ public final class Ssc14DecalToolItemsGameTests {
             helper.assertTrue(item.useOn(new UseOnContext(
                             player, InteractionHand.MAIN_HAND, hit)).consumesAction(),
                     expected.id() + " placement no longer consumes the interaction");
-            var decals = helper.getLevel().getChunkAt(absolutePos)
-                    .getData(DecalRegistry.DECAL_ATTACHMENT).decals();
+            var decals = Ssc14DecalAttachments.decals(
+                    helper.getLevel().getChunkAt(absolutePos));
             helper.assertTrue(decals.stream().anyMatch(decal ->
                             decal.pos().equals(absolutePos)
                                     && decal.face() == Direction.UP
