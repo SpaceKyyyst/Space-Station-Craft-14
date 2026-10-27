@@ -7,9 +7,18 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.resources.Identifier;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.SectionPos;
 
 public final class CrawlService {
     private CrawlService() { }
+
+    public static void pressAction(Player player, int eventType, int pressedMilliseconds) {
+        var level = player.level();
+        if (!level.getChunkSource().hasChunk(
+                SectionPos.blockToSectionCoord(player.getX()),
+                SectionPos.blockToSectionCoord(player.getZ()))) return;
+        if (eventType == 0) execute(player);
+    }
     public static final Identifier CRAWL_SPEED_MOD_ID = Identifier.fromNamespaceAndPath("ssc_14", "crawl_slowdown");
     public static final String NBT_KEY = net.ssc14.common.player.PlayerStateKeys.CRAWL_ACTIVE;
 
