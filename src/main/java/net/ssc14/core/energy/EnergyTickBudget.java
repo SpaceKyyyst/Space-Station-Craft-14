@@ -1,4 +1,4 @@
-package net.mcreator.ssc.energy;
+package net.ssc14.core.energy;
 
 /** One device's shared transfer limits for one level tick, based on its initial stored energy. */
 public final class EnergyTickBudget {

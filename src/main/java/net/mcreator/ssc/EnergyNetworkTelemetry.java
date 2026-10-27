@@ -1,5 +1,8 @@
 package net.mcreator.ssc;
 
+import net.ssc14.content.energy.CableType;
+import net.ssc14.content.energy.EnergyNetwork;
+
 import net.ssc14.content.block.energy.SheathingBlockEntity;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.core.BlockPos;

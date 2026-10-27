@@ -1,7 +1,7 @@
 package net.mcreator.ssc.energy;
 
-import net.mcreator.ssc.CableType;
-import net.mcreator.ssc.EnergyNetwork;
+import net.ssc14.content.energy.CableType;
+import net.ssc14.content.energy.EnergyNetwork;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;

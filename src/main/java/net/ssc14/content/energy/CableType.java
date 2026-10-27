@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc;
+package net.ssc14.content.energy;
 
 import net.ssc14.content.block.energy.SheathingBlock;
 import net.minecraft.world.level.block.state.BlockState;
