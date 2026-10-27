@@ -57,6 +57,7 @@ import net.ssc14.content.item.tool.MechanicalHandToolItem;
 import net.ssc14.content.item.tool.MechanicalToolProfile;
 import net.ssc14.content.item.tool.MultitoolItem;
 import net.ssc14.content.item.tool.NetworkConfiguratorItem;
+import net.ssc14.content.item.tool.RsuItem;
 import net.ssc14.content.item.tool.WelderItem;
 import net.ssc14.content.item.tool.WelderState;
 import net.ssc14.content.item.utility.DebugActivatorItem;
@@ -169,6 +170,8 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> NETWORK_CONFIGURATOR =
             REGISTRY.registerItem("network_configurator", NetworkConfiguratorItem::new,
                     Item.Properties::new);
+    public static final DeferredItem<Item> RSU =
+            REGISTRY.registerItem("rsu", RsuItem::new, Item.Properties::new);
     public static final DeferredItem<Item> WELDING =
             welder("welding", WelderState.INACTIVE);
     public static final DeferredItem<Item> ACTIVE_WELDER =

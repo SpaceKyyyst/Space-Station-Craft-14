@@ -829,7 +829,7 @@ public class Ssc14ModItems {
 		EXTINGUISHER = Ssc14Items.EXTINGUISHER;
 		EXTINGUISHER_OPEN = Ssc14Items.EXTINGUISHER_OPEN;
 		PEN = Ssc14Items.PEN;
-		RSU = register("rsu", RSUItem::new);
+		RSU = Ssc14Items.RSU;
 		TITLE_STEEL_PAVEMENT_VERTICAL = block(Ssc14Blocks.TITLE_STEEL_PAVEMENT_VERTICAL, new Item.Properties().stacksTo(30).fireResistant());
 		RC_DCARTRIDGE = Ssc14Items.RC_DCARTRIDGE;
 		MALE_BOXERS = Ssc14Items.MALE_BOXERS;

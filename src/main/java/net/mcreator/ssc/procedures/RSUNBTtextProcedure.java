@@ -1,11 +1,14 @@
 package net.mcreator.ssc.procedures;
 
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.core.component.DataComponents;
+import net.ssc14.content.item.tool.RsuStateService;
 
-public class RSUNBTtextProcedure {
+/** @deprecated Compatibility entry point for generated callers. */
+@Deprecated(forRemoval = false)
+public final class RSUNBTtextProcedure {
+	private RSUNBTtextProcedure() { }
+
 	public static String execute(ItemStack itemstack) {
-		return "\u0417\u0430\u0440\u044F\u0434\u044B: " + itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("Charges", 0);
+		return RsuStateService.tooltip(itemstack);
 	}
 }
