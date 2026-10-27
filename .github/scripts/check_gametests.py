@@ -89,6 +89,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_item_food_prop_contract",
     "ssc_14:compatibility_item_id_card_contract",
     "ssc_14:compatibility_item_headset_contract",
+    "ssc_14:compatibility_item_inert_contract",
 }
 
 

@@ -9,6 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.item.access.IdCardItem;
+import net.ssc14.content.item.combat.AmmunitionItem;
 import net.ssc14.content.item.clothing.ScarfItem;
 import net.ssc14.content.item.clothing.PassiveEquipmentItem;
 import net.ssc14.content.item.clothing.UniformAccessoryItem;
@@ -28,6 +29,7 @@ import net.ssc14.content.item.machinery.MachineComponentItem;
 import net.ssc14.content.item.material.MaterialItem;
 import net.ssc14.content.item.medical.MedicalSupplyItem;
 import net.ssc14.content.item.poster.PosterItem;
+import net.ssc14.content.item.utility.UtilityItem;
 
 /** Canonical owner of SSC14 item registrations. */
 public final class Ssc14Items {
@@ -49,6 +51,14 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> RAW_SILVER = material("raw_silver");
     public static final DeferredItem<Item> RAW_URAN = material("raw_uran");
     public static final DeferredItem<Item> RAW_DIAMOND = material("raw_diamond");
+    public static final DeferredItem<Item> ROOD = material("rood");
+    public static final DeferredItem<Item> WOOD = material("wood");
+    public static final DeferredItem<Item> PEN = utility("pen");
+    public static final DeferredItem<Item> HEALTH_ANALYZER = utility("health_analyzer");
+    public static final DeferredItem<Item> BULLET_35ITEM = ammunition("bullet_35item");
+    public static final DeferredItem<Item> FOAM_DART = ammunition("foam_dart");
+    public static final DeferredItem<Item> BULLET_35_CARTRIDGE =
+            ammunition("bullet_35_cartridge");
     public static final DeferredItem<Item> CAPACITOR =
             machineComponent("capacitor", MachineComponentItem.BULK_STACK_SIZE);
     public static final DeferredItem<Item> MATTER_BIN =
@@ -366,6 +376,14 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> material(String name) {
         return REGISTRY.<Item>registerItem(name, MaterialItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> utility(String name) {
+        return REGISTRY.<Item>registerItem(name, UtilityItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> ammunition(String name) {
+        return REGISTRY.<Item>registerItem(name, AmmunitionItem::new, Item.Properties::new);
     }
 
     private static DeferredItem<Item> machineComponent(String name, int maxStackSize) {

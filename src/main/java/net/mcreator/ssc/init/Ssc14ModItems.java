@@ -577,7 +577,7 @@ public class Ssc14ModItems {
 	public static final DeferredItem<Item> FLY_AMANITA;
 	static {
 		ROD_FLOOR = block(Ssc14Blocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
-		ROOD = register("rood", RoodItem::new);
+		ROOD = Ssc14Items.ROOD;
 		SHEATHING = block(Ssc14ModBlocks.SHEATHING, new Item.Properties().stacksTo(1).fireResistant());
 		STEEL = register("steel", SteelItem::new);
 		PLASTEEL = register("plasteel", PlasteelItem::new);
@@ -828,12 +828,12 @@ public class Ssc14ModItems {
 		EXTINGUISHER_CABINET = block(Ssc14ModBlocks.EXTINGUISHER_CABINET, new Item.Properties().stacksTo(1));
 		EXTINGUISHER = register("extinguisher", ExtinguisherItem::new);
 		EXTINGUISHER_OPEN = register("extinguisher_open", ExtinguisherOpenItem::new);
-		PEN = register("pen", PenItem::new);
+		PEN = Ssc14Items.PEN;
 		RSU = register("rsu", RSUItem::new);
 		TITLE_STEEL_PAVEMENT_VERTICAL = block(Ssc14Blocks.TITLE_STEEL_PAVEMENT_VERTICAL, new Item.Properties().stacksTo(30).fireResistant());
 		RC_DCARTRIDGE = register("rc_dcartridge", RCDcartridgeItem::new);
 		MALE_BOXERS = Ssc14Items.MALE_BOXERS;
-		HEALTH_ANALYZER = register("health_analyzer", HealthAnalyzerItem::new);
+		HEALTH_ANALYZER = Ssc14Items.HEALTH_ANALYZER;
 		GLASS_SECURITY = Ssc14Items.GLASS_SECURITY;
 		GAS_MASK = Ssc14Items.GAS_MASK;
 		COMMUNICATION_SERVERS = block(Ssc14ModBlocks.COMMUNICATION_SERVERS, new Item.Properties().stacksTo(1));
@@ -952,7 +952,7 @@ public class Ssc14ModItems {
 		HEADSET_SERVICE = Ssc14Items.HEADSET_SERVICE;
 		HEADSET_SYNDICATE = Ssc14Items.HEADSET_SYNDICATE;
 		MK_58 = register("mk_58", MK58Item::new);
-		BULLET_35ITEM = register("bullet_35item", Bullet35itemItem::new);
+		BULLET_35ITEM = Ssc14Items.BULLET_35ITEM;
 		MK_58OPEN = register("mk_58open", MK58openItem::new);
 		MAGAZINE_PISTOL_35 = register("magazine_pistol_35", MagazinePistol35Item::new);
 		MK_58NOMAGZ = register("mk_58nomagz", MK58nomagzItem::new);
@@ -1038,12 +1038,12 @@ public class Ssc14ModItems {
 		CLOSET_N_2 = block(Ssc14ModBlocks.CLOSET_N_2, new Item.Properties().stacksTo(1).fireResistant());
 		CLOSET_ORANGE = block(Ssc14ModBlocks.CLOSET_ORANGE, new Item.Properties().stacksTo(1).fireResistant());
 		CLOSET_PINK = block(Ssc14ModBlocks.CLOSET_PINK, new Item.Properties().stacksTo(1).fireResistant());
-		WOOD = register("wood", WoodItem::new);
+		WOOD = Ssc14Items.WOOD;
 		GLASS_TABLE = block(Ssc14ModBlocks.GLASS_TABLE, new Item.Properties().stacksTo(1));
 		GLASS_AIRLOCK_D_1 = block(Ssc14ModBlocks.GLASS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
 		ASTRO_ACE_FOAM_POWER = register("astro_ace_foam_power", AstroAceFoamPowerItem::new);
-		FOAM_DART = register("foam_dart", FoamDartItem::new);
-		BULLET_35_CARTRIDGE = register("bullet_35_cartridge", Bullet35CartridgeItem::new);
+		FOAM_DART = Ssc14Items.FOAM_DART;
+		BULLET_35_CARTRIDGE = Ssc14Items.BULLET_35_CARTRIDGE;
 		BASE_GLASS_AIRLOCK_D_1 = block(Ssc14ModBlocks.BASE_GLASS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
 		POSTER_RANDOM_ANYTHING = Ssc14Items.POSTER_RANDOM_ANYTHING;
 		DECAL_2SPAWNER = register("decal_2spawner", DECAL2spawnerItem::new);
