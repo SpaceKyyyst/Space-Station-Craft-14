@@ -1,21 +1,12 @@
 package net.mcreator.ssc.item;
 
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.InteractionHand;
+import net.ssc14.content.item.utility.DebugBroadcastItem;
 
-import net.mcreator.ssc.procedures.DEBUG_item_PR_Procedure;
-
-public class DEBUGitemItem extends Item {
+/** @deprecated Use {@link DebugBroadcastItem}; retained for source compatibility. */
+@Deprecated(forRemoval = false)
+public class DEBUGitemItem extends DebugBroadcastItem {
 	public DEBUGitemItem(Item.Properties properties) {
-		super(properties.stacksTo(1));
-	}
-
-	@Override
-	public boolean onEntitySwing(ItemStack itemstack, LivingEntity entity, InteractionHand hand) {
-		boolean retval = super.onEntitySwing(itemstack, entity, hand);
-		DEBUG_item_PR_Procedure.execute(entity.level());
-		return retval;
+		super(properties);
 	}
 }

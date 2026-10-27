@@ -17,7 +17,9 @@ class Ssc14StaticUtilityItemsCompatibilityTest {
             item("CONE", "cone", "ConeItem",
                     "net.ssc14.content.item.utility.TrafficConeItem"),
             item("DEBUGACTIVATOR", "debugactivator", "DEBUGACTIVATORItem",
-                    "net.ssc14.content.item.utility.DebugActivatorItem"));
+                    "net.ssc14.content.item.utility.DebugActivatorItem"),
+            item("DEBU_GITEM", "debu_gitem", "DEBUGitemItem",
+                    "net.ssc14.content.item.utility.DebugBroadcastItem"));
 
     @Test
     void canonicalRegistryOwnsStaticUtilityIdsAndLegacyHoldersRemainAliases() throws Exception {

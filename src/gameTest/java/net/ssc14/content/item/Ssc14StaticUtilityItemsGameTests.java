@@ -17,6 +17,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.item.utility.DebugActivatorItem;
+import net.ssc14.content.item.utility.DebugBroadcastItem;
 import net.ssc14.content.item.utility.RcdCartridgeItem;
 import net.ssc14.content.item.utility.TrafficConeItem;
 
@@ -30,7 +31,9 @@ public final class Ssc14StaticUtilityItemsGameTests {
             item(Ssc14Items.CONE, "cone", TrafficConeItem.class,
                     TrafficConeItem.MAX_STACK_SIZE, Rarity.COMMON),
             item(Ssc14Items.DEBUGACTIVATOR, "debugactivator", DebugActivatorItem.class,
-                    DebugActivatorItem.MAX_STACK_SIZE, DebugActivatorItem.RARITY));
+                    DebugActivatorItem.MAX_STACK_SIZE, DebugActivatorItem.RARITY),
+            item(Ssc14Items.DEBU_GITEM, "debu_gitem", DebugBroadcastItem.class,
+                    DebugBroadcastItem.MAX_STACK_SIZE, Rarity.COMMON));
 
     private Ssc14StaticUtilityItemsGameTests() { }
 
