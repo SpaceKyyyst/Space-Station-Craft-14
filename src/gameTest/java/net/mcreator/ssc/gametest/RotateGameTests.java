@@ -5,7 +5,8 @@ import java.lang.reflect.Proxy;
 import java.util.UUID;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.ssc14.content.medical.MedicalPlayerEffects;
-import net.mcreator.ssc.network.RotateMessage;
+import net.ssc14.content.rotation.network.RotatePayloadHandler;
+import net.ssc14.integration.neoforge.rotation.network.RotateMessage;
 import net.mcreator.ssc.procedures.Objects_Rotate_RRRProcedure;
 import net.ssc14.content.rotation.RotateCommand;
 import net.ssc14.content.rotation.RotationPolicy;
@@ -93,7 +94,7 @@ public final class RotateGameTests {
         observedPosition = fixture.target;
         neighborNotifications = 0;
         try {
-            RotateMessage.pressAction(fixture.player, 0, 0);
+            RotatePayloadHandler.pressAction(fixture.player, 0, 0);
         } finally {
             observedPosition = null;
         }
@@ -113,7 +114,7 @@ public final class RotateGameTests {
         var fixture = fixture(helper);
         fixture.player.setGameMode(mode);
         fixture.player.getPersistentData().putDouble(MedicalPlayerEffects.TOTAL_DAMAGE, damage);
-        RotateMessage.pressAction(fixture.player, 0, 0);
+        RotatePayloadHandler.pressAction(fixture.player, 0, 0);
         assertUnchanged(helper, fixture);
         helper.succeed();
     }
@@ -121,7 +122,7 @@ public final class RotateGameTests {
     private static void invalidIntent(GameTestHelper helper) {
         var fixture = fixture(helper);
         for (int type : new int[] {-1, 1, Integer.MIN_VALUE, Integer.MAX_VALUE}) {
-            RotateMessage.pressAction(fixture.player, type, Integer.MIN_VALUE);
+            RotatePayloadHandler.pressAction(fixture.player, type, Integer.MIN_VALUE);
             assertUnchanged(helper, fixture);
         }
         helper.succeed();
@@ -131,7 +132,7 @@ public final class RotateGameTests {
         var fixture = fixture(helper);
         if (distant) fixture.player.setPos(fixture.player.getX(), fixture.player.getY(), fixture.target.getZ() - 8);
         else helper.getLevel().setBlock(fixture.target, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
-        RotateMessage.pressAction(fixture.player, 0, 0);
+        RotatePayloadHandler.pressAction(fixture.player, 0, 0);
         if (distant) assertUnchanged(helper, fixture);
         assertDecoy(helper, fixture);
         helper.succeed();
@@ -163,7 +164,7 @@ public final class RotateGameTests {
             border.setCenter(fixture.player.getX(), fixture.player.getZ());
             border.setSize(1);
             helper.assertTrue(!helper.getLevel().mayInteract(fixture.player, fixture.target), "Target must be denied by real level protection");
-            RotateMessage.pressAction(fixture.player, 0, 0);
+            RotatePayloadHandler.pressAction(fixture.player, 0, 0);
             assertUnchanged(helper, fixture);
         } finally {
             border.setCenter(centerX, centerZ);
@@ -180,7 +181,7 @@ public final class RotateGameTests {
         helper.assertTrue(helper.getLevel().getChunkSource().getChunkNow(chunkX, chunkZ + 1) == null,
                 "The next traversal chunk must start unavailable");
         fixture.player.setPos(chunkX * 16 + 8.5, 80, chunkZ * 16 + 15.5);
-        RotateMessage.pressAction(fixture.player, 0, 0);
+        RotatePayloadHandler.pressAction(fixture.player, 0, 0);
         helper.assertTrue(helper.getLevel().getChunkSource().getChunkNow(chunkX, chunkZ + 1) == null,
                 "A ray starting in a loaded chunk must stop before loading the next chunk");
         assertUnchanged(helper, fixture);
@@ -204,7 +205,7 @@ public final class RotateGameTests {
         player.setXRot(0);
         helper.assertTrue(level.getChunkSource().getChunkNow(chunkX + 1, chunkZ) == null,
                 "The adjacent update chunk must start unavailable while the entire ray chunk is loaded");
-        RotateMessage.pressAction(player, 0, 0);
+        RotatePayloadHandler.pressAction(player, 0, 0);
         helper.assertTrue(level.getChunkSource().getChunkNow(chunkX + 1, chunkZ) == null,
                 "Successful-target validation must not let neighbor notifications load an unavailable chunk");
         helper.assertTrue(level.getBlockState(target) == original.setValue(HorizontalDirectionalBlock.FACING, Direction.EAST),
@@ -221,7 +222,7 @@ public final class RotateGameTests {
             level.setBlock(fixture.target, original, Block.UPDATE_ALL);
             var upper = level.getBlockState(fixture.target.above());
             helper.assertTrue(upper.is(Ssc14ModBlocks.UP_CLOSET_PLUG.get()), "Normal closet placement must install its real upper plug");
-            RotateMessage.pressAction(fixture.player, 0, 0);
+            RotatePayloadHandler.pressAction(fixture.player, 0, 0);
             helper.assertTrue(level.getBlockState(fixture.target) == original, "Multipart base must be rejected before its facing changes");
             helper.assertTrue(level.getBlockState(fixture.target.above()) == upper, "Rejected rotation must not replay placement or change the paired plug");
         }
@@ -249,7 +250,7 @@ public final class RotateGameTests {
             lookup.setAccessible(true);
             var holder = (ChunkHolder) lookup.invoke(level.getChunkSource().chunkMap, ChunkPos.pack(target.getX() >> 4, target.getZ() >> 4));
             holder.broadcastChanges(chunk); // Drain fixture writes through the native broadcaster.
-            RotateMessage.pressAction(player, 0, 0);
+            RotatePayloadHandler.pressAction(player, 0, 0);
             var changes = ChunkHolder.class.getDeclaredField("changedBlocksPerSection");
             changes.setAccessible(true);
             var sections = (it.unimi.dsi.fastutil.shorts.ShortSet[]) changes.get(holder);
@@ -344,9 +345,9 @@ public final class RotateGameTests {
         player.setYRot(0);
         player.setYHeadRot(0);
         player.setXRot(0);
-        RotateMessage.pressAction(player, 0, 0);
+        RotatePayloadHandler.pressAction(player, 0, 0);
         Objects_Rotate_RRRProcedure.execute(helper.getLevel(), player);
-        RotateMessage.pressAction(null, 0, 0);
+        RotatePayloadHandler.pressAction(null, 0, 0);
         Objects_Rotate_RRRProcedure.execute(helper.getLevel(), null);
         assertUnchanged(helper, fixture);
         helper.succeed();
@@ -363,14 +364,14 @@ public final class RotateGameTests {
     private static void transport(GameTestHelper helper) {
         var fixture = fixture(helper);
         var message = new RotateMessage(0, Integer.MAX_VALUE);
-        RotateMessage.handleData(message, context(fixture.player, PacketFlow.CLIENTBOUND));
-        RotateMessage.handleData(message, context(null, PacketFlow.SERVERBOUND));
-        RotateMessage.handleData(message, context(helper.makeMockPlayer(GameType.SURVIVAL), PacketFlow.SERVERBOUND));
+        RotatePayloadHandler.handle(message, context(fixture.player, PacketFlow.CLIENTBOUND));
+        RotatePayloadHandler.handle(message, context(null, PacketFlow.SERVERBOUND));
+        RotatePayloadHandler.handle(message, context(helper.makeMockPlayer(GameType.SURVIVAL), PacketFlow.SERVERBOUND));
         for (int type : new int[] {-1, 1, Integer.MIN_VALUE, Integer.MAX_VALUE}) {
-            RotateMessage.handleData(new RotateMessage(type, Integer.MIN_VALUE), context(fixture.player, PacketFlow.SERVERBOUND));
+            RotatePayloadHandler.handle(new RotateMessage(type, Integer.MIN_VALUE), context(fixture.player, PacketFlow.SERVERBOUND));
         }
         assertUnchanged(helper, fixture);
-        RotateMessage.handleData(message, context(fixture.player, PacketFlow.SERVERBOUND));
+        RotatePayloadHandler.handle(message, context(fixture.player, PacketFlow.SERVERBOUND));
         helper.assertTrue(helper.getLevel().getBlockState(fixture.target).getValue(HorizontalDirectionalBlock.FACING) == Direction.EAST,
                 "One valid packet must cause one authoritative rotation; unused duration cannot change authority");
         assertDecoy(helper, fixture);
@@ -408,7 +409,7 @@ public final class RotateGameTests {
         int chunk = 100_000;
         helper.assertTrue(helper.getLevel().getChunkSource().getChunkNow(chunk, chunk) == null, "Fixture chunk must start unloaded");
         fixture.player.setPos(chunk * 16 + 15.5, 80, chunk * 16 + 15.5);
-        RotateMessage.pressAction(fixture.player, 0, 0);
+        RotatePayloadHandler.pressAction(fixture.player, 0, 0);
         helper.assertTrue(helper.getLevel().getChunkSource().getChunkNow(chunk, chunk) == null, "Rotate must never load the eye chunk");
         helper.assertTrue(helper.getLevel().getChunkSource().getChunkNow(chunk, chunk + 1) == null, "Rotate must never load traversal chunks");
         assertUnchanged(helper, fixture);
@@ -418,7 +419,7 @@ public final class RotateGameTests {
     private static void replacedTarget(GameTestHelper helper) {
         var fixture = fixture(helper);
         helper.getLevel().setBlock(fixture.target, Blocks.STONE.defaultBlockState(), Block.UPDATE_ALL);
-        RotateMessage.pressAction(fixture.player, 0, 0);
+        RotatePayloadHandler.pressAction(fixture.player, 0, 0);
         helper.assertTrue(helper.getLevel().getBlockState(fixture.target).is(Blocks.STONE), "Handling must use the current target state");
         assertDecoy(helper, fixture);
         helper.succeed();
