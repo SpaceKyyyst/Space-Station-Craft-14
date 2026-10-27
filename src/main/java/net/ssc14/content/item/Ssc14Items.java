@@ -205,6 +205,20 @@ public final class Ssc14Items {
             asteroidBlockItem("asteroid_stone_uran", Ssc14Blocks.ASTEROID_STONE_URAN);
     public static final DeferredItem<Item> ASTEROID_STONE_DIAMOND =
             asteroidBlockItem("asteroid_stone_diamond", Ssc14Blocks.ASTEROID_STONE_DIAMOND);
+    public static final DeferredItem<Item> BANNER_NT =
+            bannerBlockItem("banner_nt", Ssc14Blocks.BANNER_NT);
+    public static final DeferredItem<Item> BANNER_MED =
+            bannerBlockItem("banner_med", Ssc14Blocks.BANNER_MED);
+    public static final DeferredItem<Item> BANNER_RN_D =
+            bannerBlockItem("banner_rn_d", Ssc14Blocks.BANNER_RN_D);
+    public static final DeferredItem<Item> BANNER_SEC =
+            bannerBlockItem("banner_sec", Ssc14Blocks.BANNER_SEC);
+    public static final DeferredItem<Item> BANNER_CARGO =
+            bannerBlockItem("banner_cargo", Ssc14Blocks.BANNER_CARGO);
+    public static final DeferredItem<Item> BANNER_ENG =
+            bannerBlockItem("banner_eng", Ssc14Blocks.BANNER_ENG);
+    public static final DeferredItem<Item> BANNER_SYND =
+            bannerBlockItem("banner_synd", Ssc14Blocks.BANNER_SYND);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -654,6 +668,13 @@ public final class Ssc14Items {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new BlockItem(block.get(),
                         properties.stacksTo(1).fireResistant()),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> bannerBlockItem(
+            String name, DeferredBlock<? extends Block> block) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(), properties.stacksTo(1)),
                 Item.Properties::new);
     }
 
