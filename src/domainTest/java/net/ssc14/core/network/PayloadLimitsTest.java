@@ -1,4 +1,4 @@
-package net.mcreator.ssc.network.validation;
+package net.ssc14.core.network;
 
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;

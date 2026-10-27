@@ -1,25 +1,19 @@
-package net.mcreator.ssc.network;
+package net.ssc14.integration.neoforge.atmosphere.network;
 
 import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
-import net.mcreator.ssc.Ssc14Mod;
-import net.mcreator.ssc.network.validation.GasAnalyzerReadings;
-import net.mcreator.ssc.network.validation.PayloadLimits;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.ssc14.common.atmosphere.reading.GasAnalyzerReadings;
+import net.ssc14.common.Ssc14Identity;
+import net.ssc14.core.network.PayloadLimits;
 
-@EventBusSubscriber
 public record GasAnalyzerSnapshotMessage(Identifier dimension, BlockPos position, float pressurePa,
         float temperatureKelvin, float totalMoles, float oxygenMoles, float nitrogenMoles) implements CustomPacketPayload {
     public static final Type<GasAnalyzerSnapshotMessage> TYPE = new Type<>(
-            Identifier.fromNamespaceAndPath(Ssc14Mod.MODID, "gas_analyzer_snapshot"));
+            Identifier.fromNamespaceAndPath(Ssc14Identity.MOD_ID, "gas_analyzer_snapshot"));
     public static final StreamCodec<RegistryFriendlyByteBuf, GasAnalyzerSnapshotMessage> STREAM_CODEC = StreamCodec.of(
             (buffer, message) -> {
                 buffer.writeUtf(message.dimension.toString(), PayloadLimits.MAX_KEY_LENGTH);
@@ -45,14 +39,4 @@ public record GasAnalyzerSnapshotMessage(Identifier dimension, BlockPos position
         return TYPE;
     }
 
-    public static void handleData(GasAnalyzerSnapshotMessage message, IPayloadContext context) {
-        if (context.flow() == PacketFlow.CLIENTBOUND) {
-            context.enqueueWork(() -> GasAnalyzerClientCache.accept(context.player().level(), message));
-        }
-    }
-
-    @SubscribeEvent
-    public static void registerMessage(FMLCommonSetupEvent event) {
-        Ssc14Mod.addClientboundNetworkMessage(TYPE, STREAM_CODEC, GasAnalyzerSnapshotMessage::handleData);
-    }
 }

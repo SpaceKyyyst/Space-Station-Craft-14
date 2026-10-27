@@ -1,6 +1,7 @@
 package net.mcreator.ssc.network.validation;
 
 import java.util.Set;
+import net.ssc14.core.network.PayloadLimits;
 
 /** Client-editable widgets; server-owned labels and network connection IDs are excluded. */
 public final class MenuStateRules {

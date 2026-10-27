@@ -1,4 +1,4 @@
-package net.mcreator.ssc.network.validation;
+package net.ssc14.common.atmosphere.reading;
 
 /** Physical values transported by the gas analyser snapshot, in SI units. */
 public record GasAnalyzerReadings(float pressurePa, float temperatureKelvin, float totalMoles, float oxygenMoles, float nitrogenMoles) {
