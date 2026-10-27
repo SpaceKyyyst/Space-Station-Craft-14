@@ -785,8 +785,8 @@ public class Ssc14ModItems {
 		COMBAT_BOOTS_ITEM = Ssc14Items.COMBAT_BOOTS_ITEM;
 		COMPUTER = block(Ssc14ModBlocks.COMPUTER, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
 		CLOSET_SECURE = block(Ssc14ModBlocks.CLOSET_SECURE, new Item.Properties().stacksTo(1).fireResistant());
-		MAGNETIC_BOOTS_ITEM = register("magnetic_boots_item", MagneticBootsItemItem::new);
-		MAGNETIC_BOOTS_ACTIVE_ITEM = register("magnetic_boots_active_item", MagneticBootsACTIVEItemItem::new);
+		MAGNETIC_BOOTS_ITEM = Ssc14Items.MAGNETIC_BOOTS_ITEM;
+		MAGNETIC_BOOTS_ACTIVE_ITEM = Ssc14Items.MAGNETIC_BOOTS_ACTIVE_ITEM;
 		PASSANGER_JUMPSUIT = Ssc14Items.PASSANGER_JUMPSUIT;
 		ATMOS_JUMPSUIT = Ssc14Items.ATMOS_JUMPSUIT;
 		BOTANIST_JUMPSUIT = Ssc14Items.BOTANIST_JUMPSUIT;
