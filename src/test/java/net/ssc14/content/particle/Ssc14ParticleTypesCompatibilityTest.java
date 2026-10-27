@@ -54,7 +54,7 @@ class Ssc14ParticleTypesCompatibilityTest {
         return Arrays.stream(owner.getFields())
                 .filter(field -> Modifier.isStatic(field.getModifiers()))
                 .filter(field -> DeferredHolder.class.isAssignableFrom(field.getType()))
-                .map(Field::getName)
+                .map(field -> field.getName())
                 .collect(Collectors.toUnmodifiableSet());
     }
 }

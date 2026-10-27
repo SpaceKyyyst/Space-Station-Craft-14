@@ -1,5 +1,7 @@
 package net.mcreator.ssc.medical;
 
+import net.ssc14.integration.neoforge.medical.MedicalBlindnessOwnership;
+
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffectInstance;
