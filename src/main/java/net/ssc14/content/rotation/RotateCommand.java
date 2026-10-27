@@ -1,4 +1,4 @@
-package net.mcreator.ssc.rotation;
+package net.ssc14.content.rotation;
 
 import net.ssc14.content.medical.MedicalActionEvents;
 import net.minecraft.server.level.ServerPlayer;

@@ -1,4 +1,4 @@
-package net.mcreator.ssc.rotation;
+package net.ssc14.content.rotation;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

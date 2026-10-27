@@ -1,7 +1,7 @@
-package net.mcreator.ssc.rotation;
+package net.ssc14.content.rotation;
 
 import java.util.Set;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
 import net.minecraft.world.level.block.Block;
 
 /** Explicit audit boundary for the command's one-state, no-neighbor-callback update contract. */
@@ -15,11 +15,11 @@ final class StateOnlyRotationEligibility {
         // New entries require a state-only safety audit and a live rotation regression.
         // Multipart closets need a dedicated transactional adapter and remain excluded.
         private static final Set<Block> BLOCKS = Set.of(
-                Ssc14ModBlocks.MACHINE_FRAME.get(), Ssc14ModBlocks.COMPUTER.get(),
-                Ssc14ModBlocks.OFICE_BLACK_CHAIR.get(), Ssc14ModBlocks.OFICE_WHITE_CHAIR.get(),
-                Ssc14ModBlocks.WOOD_CHAIR.get(), Ssc14ModBlocks.STEEL_CHAIR.get(),
-                Ssc14ModBlocks.BAR_CHAIR.get(), Ssc14ModBlocks.CONSOLE_OF_ID.get(),
-                Ssc14ModBlocks.PODSTATION.get(), Ssc14ModBlocks.SMES.get(),
-                Ssc14ModBlocks.PORTABLE_SHEATER.get());
+                Ssc14Blocks.MACHINE_FRAME.get(), Ssc14Blocks.COMPUTER.get(),
+                Ssc14Blocks.OFICE_BLACK_CHAIR.get(), Ssc14Blocks.OFICE_WHITE_CHAIR.get(),
+                Ssc14Blocks.WOOD_CHAIR.get(), Ssc14Blocks.STEEL_CHAIR.get(),
+                Ssc14Blocks.BAR_CHAIR.get(), Ssc14Blocks.CONSOLE_OF_ID.get(),
+                Ssc14Blocks.PODSTATION.get(), Ssc14Blocks.SMES.get(),
+                Ssc14Blocks.PORTABLE_SHEATER.get());
     }
 }

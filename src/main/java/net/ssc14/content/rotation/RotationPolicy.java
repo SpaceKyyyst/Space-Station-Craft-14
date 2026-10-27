@@ -1,4 +1,4 @@
-package net.mcreator.ssc.rotation;
+package net.ssc14.content.rotation;
 
 import java.util.Optional;
 import net.minecraft.core.Direction;

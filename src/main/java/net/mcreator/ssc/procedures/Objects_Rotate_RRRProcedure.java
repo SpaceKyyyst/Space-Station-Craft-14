@@ -1,6 +1,6 @@
 package net.mcreator.ssc.procedures;
 
-import net.mcreator.ssc.rotation.RotateCommand;
+import net.ssc14.content.rotation.RotateCommand;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
