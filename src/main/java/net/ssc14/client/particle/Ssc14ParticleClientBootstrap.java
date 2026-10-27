@@ -1,21 +1,14 @@
-package net.mcreator.ssc.init;
+package net.ssc14.client.particle;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
-import net.ssc14.client.particle.Ssc14ParticleProviderBinder;
-import net.ssc14.client.particle.GasCloudParticle;
-import net.ssc14.client.particle.DeconstructionParticle;
-import net.ssc14.client.particle.GravityFieldParticle;
-import net.ssc14.client.particle.UtilityEffectParticle;
-import net.ssc14.client.particle.ExtinguisherSprayParticle;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 
-/** Compatibility bootstrap for transitional particle provider implementations. */
-@Deprecated(forRemoval = false)
+/** Registers every SSC14 particle provider on the client mod bus. */
 @EventBusSubscriber(Dist.CLIENT)
-public final class Ssc14ModParticles {
+public final class Ssc14ParticleClientBootstrap {
     static {
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.GRAV_GEN_ACTIVE_PARTICLE,
                 sprites -> GravityFieldParticle.provider(sprites, 2, 4));
@@ -55,7 +48,7 @@ public final class Ssc14ModParticles {
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.DECONSTRUCT_PZ, DeconstructionParticle::provider);
     }
 
-    private Ssc14ModParticles() { }
+    private Ssc14ParticleClientBootstrap() { }
 
     @SubscribeEvent
     public static void registerParticles(RegisterParticleProvidersEvent event) {

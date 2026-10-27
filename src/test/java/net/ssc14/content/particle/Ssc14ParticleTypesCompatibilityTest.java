@@ -1,17 +1,14 @@
 package net.ssc14.content.particle;
 
-import net.mcreator.ssc.init.Ssc14ModParticleTypes;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 
 class Ssc14ParticleTypesCompatibilityTest {
     private static final Set<String> EXPECTED_HOLDERS = Set.of(
@@ -51,21 +48,6 @@ class Ssc14ParticleTypesCompatibilityTest {
     @Test
     void targetRegistryOwnsExactParticleFields() {
         assertEquals(EXPECTED_HOLDERS, publicHolderNames(Ssc14ParticleTypes.class));
-    }
-
-    @Test
-    void legacyFacadeSharesRegistryAndEveryHolder() throws ReflectiveOperationException {
-        assertSame(Ssc14ParticleTypes.REGISTRY, Ssc14ModParticleTypes.REGISTRY);
-        for (String fieldName : EXPECTED_HOLDERS) {
-            Field targetField = Ssc14ParticleTypes.class.getField(fieldName);
-            Field legacyField = Ssc14ModParticleTypes.class.getField(fieldName);
-            assertSame(targetField.get(null), legacyField.get(null), fieldName);
-        }
-    }
-
-    @Test
-    void legacyFacadeKeepsItsPublicNoArgumentConstructor() throws ReflectiveOperationException {
-        Ssc14ModParticleTypes.class.getConstructor();
     }
 
     private static Set<String> publicHolderNames(Class<?> owner) {
