@@ -2,7 +2,7 @@
 package net.mcreator.ssc.procedures;
 
 import net.mcreator.ssc.DecalRegistry;
-import net.mcreator.ssc.DecalData;
+import net.ssc14.integration.neoforge.decal.DecalData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
