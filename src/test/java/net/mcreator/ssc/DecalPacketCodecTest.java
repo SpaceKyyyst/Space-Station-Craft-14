@@ -2,6 +2,7 @@ package net.mcreator.ssc;
 
 import io.netty.buffer.Unpooled;
 import java.util.List;
+import net.ssc14.integration.neoforge.decal.DecalNetwork;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.level.ChunkPos;

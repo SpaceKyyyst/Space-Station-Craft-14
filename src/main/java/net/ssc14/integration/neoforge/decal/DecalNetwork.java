@@ -1,10 +1,7 @@
 
-package net.mcreator.ssc;
+package net.ssc14.integration.neoforge.decal;
 
 import net.ssc14.integration.neoforge.network.CompatibilityPayloadRegistrar;
-
-import net.ssc14.integration.neoforge.decal.DecalData;
-import net.ssc14.integration.neoforge.decal.Ssc14DecalAttachments;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -84,8 +81,6 @@ public class DecalNetwork {
                 } else {
                     CLIENT_DECAL_STORAGE.put(packet.chunkPos(), packet.decals());
                 }
-                // ИСПРАВЛЕНО: Правильный вызов рендерера из основного пакета net.mcreator.ssc
-                ClientDecalRenderer.ensureRegistered();
             })
         );
     }
