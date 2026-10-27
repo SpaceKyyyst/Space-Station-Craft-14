@@ -1,4 +1,4 @@
-package net.mcreator.ssc.combat;
+package net.ssc14.core.combat;
 
 import java.util.Map;
 import java.util.Objects;

@@ -1,18 +1,21 @@
 
-package net.mcreator.ssc;
+package net.ssc14.integration.neoforge.combat;
 
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
-import net.mcreator.ssc.combat.ResistanceRegistry;
+import net.ssc14.core.combat.ResistanceRegistry;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.Optional;
 
-public class ArmorResistanceHelper {
+public final class ArmorResistanceService {
+    private static final org.slf4j.Logger LOGGER = com.mojang.logging.LogUtils.getLogger();
+
+    private ArmorResistanceService() { }
     
     public static final String KEY_BLUNT = "blunt";
     public static final String KEY_SLASH = "slash";
@@ -50,7 +53,7 @@ public class ArmorResistanceHelper {
 
                 float previousDamage = currentDamage;
                 currentDamage = RESISTANCE_REGISTRY.apply(itemId.toString(), damageType, currentDamage);
-                Ssc14Mod.LOGGER.debug("Armor {} damage type {}: {} -> {}",
+                LOGGER.debug("Armor {} damage type {}: {} -> {}",
                         itemId, damageType, previousDamage, currentDamage);
             }
         }

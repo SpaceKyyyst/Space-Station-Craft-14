@@ -1,5 +1,7 @@
 package net.mcreator.ssc.audit;
 
+import net.ssc14.integration.neoforge.combat.ArmorResistanceService;
+
 import net.ssc14.content.network.NetworkSavedData;
 import net.ssc14.content.network.NetworkManager;
 
@@ -874,7 +876,7 @@ public final class AuditTests {
         });
         TESTS.put("empty_armor",h->{
             var p=h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
-            h.assertTrue(ArmorResistanceHelper.applyArmorResistance(p,"blunt",10)==10,"Empty armor changed damage");h.succeed();
+            h.assertTrue(ArmorResistanceService.applyArmorResistance(p,"blunt",10)==10,"Empty armor changed damage");h.succeed();
         });
         TESTS.put("gravity_charge_discharge",h->{
             var local=new BlockPos(3,2,3);var pos=h.absolutePos(local);h.setBlock(local,Ssc14ModBlocks.GRAVITY_GENERATOR.get());
