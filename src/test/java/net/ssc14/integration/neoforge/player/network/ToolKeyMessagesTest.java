@@ -48,6 +48,16 @@ class ToolKeyMessagesTest {
         } finally { buffer.release(); }
     }
 
+    @Test
+    void interactionPreservesExistingWireFields() {
+        var expected = new InteractionMessage(3, 99);
+        var buffer = buffer();
+        try {
+            InteractionMessage.STREAM_CODEC.encode(buffer, expected);
+            assertEquals(expected, InteractionMessage.STREAM_CODEC.decode(buffer));
+        } finally { buffer.release(); }
+    }
+
     private static RegistryFriendlyByteBuf buffer() {
         return new RegistryFriendlyByteBuf(Unpooled.buffer(), RegistryAccess.EMPTY);
     }
