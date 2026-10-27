@@ -2,8 +2,11 @@ package net.ssc14.content.item;
 
 import java.util.function.Supplier;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
@@ -184,6 +187,24 @@ public final class Ssc14Items {
             "fence_point", Ssc14Blocks.FENCE_POINT);
     public static final DeferredItem<Item> FENCE_P = fenceBlockItem(
             "fence_p", Ssc14Blocks.FENCE_P);
+    public static final DeferredItem<Item> ASTEROID_STONE_BASE =
+            asteroidBlockItem("asteroid_stone_base", Ssc14Blocks.ASTEROID_STONE_BASE);
+    public static final DeferredItem<Item> ASTEROID_STONE_IRON =
+            asteroidBlockItem("asteroid_stone_iron", Ssc14Blocks.ASTEROID_STONE_IRON);
+    public static final DeferredItem<Item> ASTEROID_STONE_QUARTZ =
+            asteroidBlockItem("asteroid_stone_quartz", Ssc14Blocks.ASTEROID_STONE_QUARTZ);
+    public static final DeferredItem<Item> ASTEROID_STONE_COAL =
+            asteroidBlockItem("asteroid_stone_coal", Ssc14Blocks.ASTEROID_STONE_COAL);
+    public static final DeferredItem<Item> ASTEROID_STONE_GOLD =
+            asteroidBlockItem("asteroid_stone_gold", Ssc14Blocks.ASTEROID_STONE_GOLD);
+    public static final DeferredItem<Item> ASTEROID_STONE_PLASMA =
+            asteroidBlockItem("asteroid_stone_plasma", Ssc14Blocks.ASTEROID_STONE_PLASMA);
+    public static final DeferredItem<Item> ASTEROID_STONE_SILVER =
+            asteroidBlockItem("asteroid_stone_silver", Ssc14Blocks.ASTEROID_STONE_SILVER);
+    public static final DeferredItem<Item> ASTEROID_STONE_URAN =
+            asteroidBlockItem("asteroid_stone_uran", Ssc14Blocks.ASTEROID_STONE_URAN);
+    public static final DeferredItem<Item> ASTEROID_STONE_DIAMOND =
+            asteroidBlockItem("asteroid_stone_diamond", Ssc14Blocks.ASTEROID_STONE_DIAMOND);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -625,6 +646,14 @@ public final class Ssc14Items {
                 properties -> new FenceBlockItem(
                         block.get(), properties,
                         "block.ssc_14." + name + ".description_0"),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> asteroidBlockItem(
+            String name, DeferredBlock<? extends Block> block) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(),
+                        properties.stacksTo(1).fireResistant()),
                 Item.Properties::new);
     }
 
