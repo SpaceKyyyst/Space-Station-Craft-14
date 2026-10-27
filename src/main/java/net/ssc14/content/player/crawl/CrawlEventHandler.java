@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc;
+package net.ssc14.content.player.crawl;
 
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Pose;
@@ -10,12 +10,13 @@ import net.minecraft.nbt.CompoundTag;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.entity.EntityEvent;
-import net.mcreator.ssc.procedures.CrawlPrProcedure;
 import net.neoforged.fml.common.EventBusSubscriber;
 
 @EventBusSubscriber(modid = "ssc_14")
-public class CrawlHandler {
-    private static final String NBT_KEY = CrawlPrProcedure.NBT_KEY;
+public final class CrawlEventHandler {
+    private CrawlEventHandler() { }
+
+    private static final String NBT_KEY = CrawlService.NBT_KEY;
 
     @SubscribeEvent
     public static void onEntitySize(EntityEvent.Size event) {
@@ -39,8 +40,8 @@ public class CrawlHandler {
                 if (!player.level().isClientSide()) {
                     nbt.putBoolean(NBT_KEY, false);
                     AttributeInstance speedAttr = player.getAttribute(Attributes.MOVEMENT_SPEED);
-                    if (speedAttr != null && speedAttr.hasModifier(CrawlPrProcedure.CRAWL_SPEED_MOD_ID)) {
-                        speedAttr.removeModifier(CrawlPrProcedure.CRAWL_SPEED_MOD_ID);
+                    if (speedAttr != null && speedAttr.hasModifier(CrawlService.CRAWL_SPEED_MOD_ID)) {
+                        speedAttr.removeModifier(CrawlService.CRAWL_SPEED_MOD_ID);
                     }
                     player.refreshDimensions();
                 }

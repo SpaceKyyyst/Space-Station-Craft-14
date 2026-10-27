@@ -869,9 +869,9 @@ public final class AuditTests {
         TESTS.put("crawl_toggle",h->{
             var p=h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);var pos=h.absolutePos(new BlockPos(3,3,3));p.setPos(pos.getX()+0.5,pos.getY(),pos.getZ()+0.5);
             double before=p.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED);
-            net.mcreator.ssc.procedures.CrawlPrProcedure.execute(p);
+            net.ssc14.content.player.crawl.CrawlService.execute(p);
             h.assertTrue(p.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED)<before,"Crawl did not slow player");
-            net.mcreator.ssc.procedures.CrawlPrProcedure.execute(p);
+            net.ssc14.content.player.crawl.CrawlService.execute(p);
             h.assertTrue(Math.abs(p.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED)-before)<1e-6,"Uncrawl did not restore speed");h.succeed();
         });
         TESTS.put("empty_armor",h->{
