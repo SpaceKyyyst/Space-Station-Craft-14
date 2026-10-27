@@ -1,5 +1,6 @@
 package net.mcreator.ssc;
 
+import net.ssc14.common.atmosphere.model.GasType;
 import java.util.Optional;
 import net.mcreator.ssc.network.GasAnalyzerClientCache;
 import net.mcreator.ssc.network.GasAnalyzerSnapshotMessage;

@@ -3,7 +3,7 @@ package net.mcreator.ssc.atmosphere;
 import java.util.ArrayList;
 import java.util.List;
 import net.mcreator.ssc.GasReaction;
-import net.mcreator.ssc.GasType;
+import net.ssc14.common.atmosphere.model.GasType;
 
 /** Stable reaction IDs and balancing values shared by server simulation and tests. */
 public final class StandardGasReactions {

@@ -1,5 +1,6 @@
 package net.mcreator.ssc;
 
+import net.ssc14.common.atmosphere.model.GasType;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;

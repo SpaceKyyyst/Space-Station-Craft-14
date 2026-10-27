@@ -2,7 +2,7 @@ package net.mcreator.ssc.procedures;
 
 import net.mcreator.ssc.AtmosCell;
 import net.mcreator.ssc.AtmosphereManager;
-import net.mcreator.ssc.GasType;
+import net.ssc14.common.atmosphere.model.GasType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.LevelAccessor;

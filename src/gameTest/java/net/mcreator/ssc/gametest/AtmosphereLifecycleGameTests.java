@@ -1,7 +1,7 @@
 package net.mcreator.ssc.gametest;
 
 import net.mcreator.ssc.AtmosphereManager;
-import net.mcreator.ssc.GasType;
+import net.ssc14.common.atmosphere.model.GasType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;

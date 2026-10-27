@@ -1,6 +1,6 @@
 package net.mcreator.ssc.client.screens;
 
-import net.mcreator.ssc.GasType;
+import net.ssc14.common.atmosphere.model.GasType;
 import net.mcreator.ssc.client.GasAnalyserReadings;
 import net.ssc14.content.item.tool.GasAnalyserOverlayService;
 import net.minecraft.client.Minecraft;

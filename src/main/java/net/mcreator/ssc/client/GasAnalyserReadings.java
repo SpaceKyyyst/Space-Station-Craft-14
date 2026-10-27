@@ -1,6 +1,6 @@
 package net.mcreator.ssc.client;
 
-import net.mcreator.ssc.GasType;
+import net.ssc14.common.atmosphere.model.GasType;
 import net.mcreator.ssc.network.GasAnalyserData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
