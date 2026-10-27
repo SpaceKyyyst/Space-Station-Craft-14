@@ -814,8 +814,8 @@ public class Ssc14ModItems {
 		GAUZE = Ssc14Items.GAUZE;
 		OINTMENT = Ssc14Items.OINTMENT;
 		DEBUG_13 = block(Ssc14ModBlocks.DEBUG_13);
-		DECAL_1SPAWNER = register("decal_1spawner", DECAL1spawnerItem::new);
-		DECAL_1DELETION = register("decal_1deletion", DECAL1deletionItem::new);
+		DECAL_1SPAWNER = Ssc14Items.DECAL_1SPAWNER;
+		DECAL_1DELETION = Ssc14Items.DECAL_1DELETION;
 		CLOAKS_CAP = Ssc14Items.CLOAKS_CAP;
 		MANTLES_CAP = Ssc14Items.MANTLES_CAP;
 		ARMOR_SECURITY = Ssc14Items.ARMOR_SECURITY;
@@ -1046,7 +1046,7 @@ public class Ssc14ModItems {
 		BULLET_35_CARTRIDGE = Ssc14Items.BULLET_35_CARTRIDGE;
 		BASE_GLASS_AIRLOCK_D_1 = block(Ssc14ModBlocks.BASE_GLASS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
 		POSTER_RANDOM_ANYTHING = Ssc14Items.POSTER_RANDOM_ANYTHING;
-		DECAL_2SPAWNER = register("decal_2spawner", DECAL2spawnerItem::new);
+		DECAL_2SPAWNER = Ssc14Items.DECAL_2SPAWNER;
 		POSTER_ANOMALY = Ssc14Items.POSTER_ANOMALY;
 		POSTER_ARMORY = Ssc14Items.POSTER_ARMORY;
 		POSTER_ATMOS = Ssc14Items.POSTER_ATMOS;
@@ -1085,10 +1085,10 @@ public class Ssc14ModItems {
 		HARDSUIT_SALVAGE_HELMET = Ssc14Items.HARDSUIT_SALVAGE_HELMET;
 		BACKPACK_2 = register("backpack_2", Backpack2Item::new);
 		DEBU_GITEM = register("debu_gitem", DEBUGitemItem::new);
-		DECAL_3SPAWNER = register("decal_3spawner", DECAL3spawnerItem::new);
-		DECAL_4SPAWNER = register("decal_4spawner", DECAL4spawnerItem::new);
-		DECAL_5SPAWNER = register("decal_5spawner", DECAL5spawnerItem::new);
-		DECAL_6SPAWNER = register("decal_6spawner", DECAL6spawnerItem::new);
+		DECAL_3SPAWNER = Ssc14Items.DECAL_3SPAWNER;
+		DECAL_4SPAWNER = Ssc14Items.DECAL_4SPAWNER;
+		DECAL_5SPAWNER = Ssc14Items.DECAL_5SPAWNER;
+		DECAL_6SPAWNER = Ssc14Items.DECAL_6SPAWNER;
 		FUEL_TANK = block(Ssc14ModBlocks.FUEL_TANK, new Item.Properties().stacksTo(1));
 		CARP_SPAWN_EGG = Ssc14Items.CARP_SPAWN_EGG;
 		ORDER_CONSOLE = block(Ssc14ModBlocks.ORDER_CONSOLE, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
