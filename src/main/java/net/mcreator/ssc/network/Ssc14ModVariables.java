@@ -7,14 +7,11 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.common.util.ValueIOSerializable;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.TagValueOutput;
 import net.minecraft.world.level.storage.TagValueInput;
 import net.minecraft.world.level.saveddata.SavedDataType;
@@ -36,13 +33,14 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.HolderLookup;
 
 import net.mcreator.ssc.Ssc14Mod;
+import net.ssc14.integration.neoforge.player.Ssc14PlayerVariables;
 
 import java.util.function.Supplier;
 
 @EventBusSubscriber
 public class Ssc14ModVariables {
 	public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, Ssc14Mod.MODID);
-	public static final Supplier<AttachmentType<PlayerVariables>> PLAYER_VARIABLES = ATTACHMENT_TYPES.register("player_variables", () -> AttachmentType.serializable(() -> new PlayerVariables()).build());
+	public static final Supplier<AttachmentType<Ssc14PlayerVariables>> PLAYER_VARIABLES = ATTACHMENT_TYPES.register("player_variables", () -> AttachmentType.serializable(Ssc14PlayerVariables::new).build());
 	public static boolean station_gravity = false;
 
 	@SubscribeEvent
@@ -83,16 +81,16 @@ public class Ssc14ModVariables {
 
 	@SubscribeEvent
 	public static void onPlayerTickUpdateSyncPlayerVariables(PlayerTickEvent.Post event) {
-		if (event.getEntity() instanceof ServerPlayer player && player.getData(PLAYER_VARIABLES)._syncDirty) {
+		if (event.getEntity() instanceof ServerPlayer player && player.getData(PLAYER_VARIABLES).isSyncDirty()) {
 			PacketDistributor.sendToPlayersInDimension(player.level(), new PlayerVariablesSyncMessage(player.getData(PLAYER_VARIABLES), player.getId()));
-			player.getData(PLAYER_VARIABLES)._syncDirty = false;
+			player.getData(PLAYER_VARIABLES).clearSyncDirty();
 		}
 	}
 
 	@SubscribeEvent
 	public static void clonePlayer(PlayerEvent.Clone event) {
-		PlayerVariables original = event.getOriginal().getData(PLAYER_VARIABLES);
-		PlayerVariables clone = new PlayerVariables();
+		Ssc14PlayerVariables original = event.getOriginal().getData(PLAYER_VARIABLES);
+		Ssc14PlayerVariables clone = new Ssc14PlayerVariables();
 		if (!event.isWasDeath()) {
 			clone.sscCustomHealth = original.sscCustomHealth;
 			clone.ssc14_dmg_blunt = original.ssc14_dmg_blunt;
@@ -290,62 +288,7 @@ public class Ssc14ModVariables {
 		}
 	}
 
-	public static class PlayerVariables implements ValueIOSerializable {
-		boolean _syncDirty = false;
-		public double sscCustomHealth = 0.0;
-		public double ssc14_dmg_blunt = 0.0;
-		public double ssc14_dmg_slash = 0.0;
-		public double ssc14_dmg_piercing = 0.0;
-		public double ssc14_dmg_heat = 0.0;
-		public double ssc14_dmg_shock = 0.0;
-		public double ssc14_dmg_cold = 0.0;
-		public double ssc14_dmg_caustic = 0.0;
-		public double ssc14_dmg_poison = 0.0;
-		public double ssc14_dmg_radiation = 0.0;
-		public double ssc14_dmg_asphyx = 0.0;
-		public double ssc14_dmg_bloodloss = 0.0;
-		public double ssc14_dmg_cellular = 0.0;
-
-		@Override
-		public void serialize(ValueOutput output) {
-			output.putDouble("sscCustomHealth", sscCustomHealth);
-			output.putDouble("ssc14_dmg_blunt", ssc14_dmg_blunt);
-			output.putDouble("ssc14_dmg_slash", ssc14_dmg_slash);
-			output.putDouble("ssc14_dmg_piercing", ssc14_dmg_piercing);
-			output.putDouble("ssc14_dmg_heat", ssc14_dmg_heat);
-			output.putDouble("ssc14_dmg_shock", ssc14_dmg_shock);
-			output.putDouble("ssc14_dmg_cold", ssc14_dmg_cold);
-			output.putDouble("ssc14_dmg_caustic", ssc14_dmg_caustic);
-			output.putDouble("ssc14_dmg_poison", ssc14_dmg_poison);
-			output.putDouble("ssc14_dmg_radiation", ssc14_dmg_radiation);
-			output.putDouble("ssc14_dmg_asphyx", ssc14_dmg_asphyx);
-			output.putDouble("ssc14_dmg_bloodloss", ssc14_dmg_bloodloss);
-			output.putDouble("ssc14_dmg_cellular", ssc14_dmg_cellular);
-		}
-
-		@Override
-		public void deserialize(ValueInput input) {
-			sscCustomHealth = input.getDoubleOr("sscCustomHealth", 0);
-			ssc14_dmg_blunt = input.getDoubleOr("ssc14_dmg_blunt", 0);
-			ssc14_dmg_slash = input.getDoubleOr("ssc14_dmg_slash", 0);
-			ssc14_dmg_piercing = input.getDoubleOr("ssc14_dmg_piercing", 0);
-			ssc14_dmg_heat = input.getDoubleOr("ssc14_dmg_heat", 0);
-			ssc14_dmg_shock = input.getDoubleOr("ssc14_dmg_shock", 0);
-			ssc14_dmg_cold = input.getDoubleOr("ssc14_dmg_cold", 0);
-			ssc14_dmg_caustic = input.getDoubleOr("ssc14_dmg_caustic", 0);
-			ssc14_dmg_poison = input.getDoubleOr("ssc14_dmg_poison", 0);
-			ssc14_dmg_radiation = input.getDoubleOr("ssc14_dmg_radiation", 0);
-			ssc14_dmg_asphyx = input.getDoubleOr("ssc14_dmg_asphyx", 0);
-			ssc14_dmg_bloodloss = input.getDoubleOr("ssc14_dmg_bloodloss", 0);
-			ssc14_dmg_cellular = input.getDoubleOr("ssc14_dmg_cellular", 0);
-		}
-
-		public void markSyncDirty() {
-			_syncDirty = true;
-		}
-	}
-
-	public record PlayerVariablesSyncMessage(PlayerVariables data, int player) implements CustomPacketPayload {
+	public record PlayerVariablesSyncMessage(Ssc14PlayerVariables data, int player) implements CustomPacketPayload {
 		public static final Type<PlayerVariablesSyncMessage> TYPE = new Type<>(Identifier.fromNamespaceAndPath(Ssc14Mod.MODID, "player_variables_sync"));
 		public static final StreamCodec<RegistryFriendlyByteBuf, PlayerVariablesSyncMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, PlayerVariablesSyncMessage message) -> {
 			TagValueOutput output = TagValueOutput.createWithContext(ProblemReporter.DISCARDING, buffer.registryAccess());
@@ -353,7 +296,7 @@ public class Ssc14ModVariables {
 			buffer.writeInt(message.player());
 			buffer.writeNbt(output.buildResult());
 		}, (RegistryFriendlyByteBuf buffer) -> {
-			PlayerVariablesSyncMessage message = new PlayerVariablesSyncMessage(new PlayerVariables(), buffer.readInt());
+			PlayerVariablesSyncMessage message = new PlayerVariablesSyncMessage(new Ssc14PlayerVariables(), buffer.readInt());
 			message.data.deserialize(TagValueInput.create(ProblemReporter.DISCARDING, buffer.registryAccess(), buffer.readNbt()));
 			return message;
 		});
