@@ -28,6 +28,26 @@ class ToolKeyMessagesTest {
         } finally { buffer.release(); }
     }
 
+    @Test
+    void dcmOpenPreservesExistingWireFields() {
+        var expected = new DCMopenMessage(0, 11);
+        var buffer = buffer();
+        try {
+            DCMopenMessage.STREAM_CODEC.encode(buffer, expected);
+            assertEquals(expected, DCMopenMessage.STREAM_CODEC.decode(buffer));
+        } finally { buffer.release(); }
+    }
+
+    @Test
+    void pullObjectPreservesExistingWireFields() {
+        var expected = new PulltheObjectMessage(1, 42);
+        var buffer = buffer();
+        try {
+            PulltheObjectMessage.STREAM_CODEC.encode(buffer, expected);
+            assertEquals(expected, PulltheObjectMessage.STREAM_CODEC.decode(buffer));
+        } finally { buffer.release(); }
+    }
+
     private static RegistryFriendlyByteBuf buffer() {
         return new RegistryFriendlyByteBuf(Unpooled.buffer(), RegistryAccess.EMPTY);
     }
