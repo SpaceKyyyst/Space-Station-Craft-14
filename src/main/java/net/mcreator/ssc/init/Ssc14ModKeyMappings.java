@@ -17,6 +17,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 
 import net.mcreator.ssc.network.*;
+import net.ssc14.content.player.crawl.CrawlService;
+import net.ssc14.integration.neoforge.player.network.CrawlMessage;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
@@ -92,7 +94,7 @@ public class Ssc14ModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				ClientPacketDistributor.sendToServer(new CrawlMessage(0, 0));
-				CrawlMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+				CrawlService.pressAction(Minecraft.getInstance().player, 0, 0);
 			}
 			isDownOld = isDown;
 		}
