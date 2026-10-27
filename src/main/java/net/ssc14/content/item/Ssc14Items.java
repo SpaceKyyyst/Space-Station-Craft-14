@@ -48,6 +48,10 @@ import net.ssc14.content.item.utility.DebugActivatorItem;
 import net.ssc14.content.item.utility.RcdCartridgeItem;
 import net.ssc14.content.item.utility.TrafficConeItem;
 import net.ssc14.content.item.utility.UtilityItem;
+import net.ssc14.content.item.weapon.Mk58Item;
+import net.ssc14.content.item.weapon.Mk58State;
+import net.ssc14.content.item.weapon.PistolMagazineItem;
+import net.ssc14.content.item.weapon.PistolMagazineState;
 
 /** Canonical owner of SSC14 item registrations. */
 public final class Ssc14Items {
@@ -111,6 +115,18 @@ public final class Ssc14Items {
             portableMenu("pd_apassanger", PortableMenuItemKind.PASSENGER_PDA);
     public static final DeferredItem<Item> EGG_CARTON =
             portableMenu("egg_carton", PortableMenuItemKind.EGG_CARTON);
+    public static final DeferredItem<Item> MK_58 =
+            mk58("mk_58", Mk58State.CLOSED_WITH_MAGAZINE);
+    public static final DeferredItem<Item> MK_58OPEN =
+            mk58("mk_58open", Mk58State.OPEN_WITH_MAGAZINE);
+    public static final DeferredItem<Item> MK_58NOMAGZ =
+            mk58("mk_58nomagz", Mk58State.CLOSED_NO_MAGAZINE);
+    public static final DeferredItem<Item> MK_58OPEN_NO_MAGZ =
+            mk58("mk_58open_no_magz", Mk58State.OPEN_NO_MAGAZINE);
+    public static final DeferredItem<Item> MAGAZINE_PISTOL_35 =
+            pistolMagazine("magazine_pistol_35", PistolMagazineState.LOADED);
+    public static final DeferredItem<Item> MAGAZINE_PISTOL_35EMPTY =
+            pistolMagazine("magazine_pistol_35empty", PistolMagazineState.EMPTY);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -502,6 +518,18 @@ public final class Ssc14Items {
             String name, PortableMenuItemKind kind) {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new PortableMenuItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> mk58(String name, Mk58State state) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new Mk58Item(properties, state), Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> pistolMagazine(
+            String name, PistolMagazineState state) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new PistolMagazineItem(properties, state),
                 Item.Properties::new);
     }
 
