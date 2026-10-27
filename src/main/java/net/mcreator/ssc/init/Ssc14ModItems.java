@@ -579,11 +579,11 @@ public class Ssc14ModItems {
 		ROD_FLOOR = block(Ssc14Blocks.ROD_FLOOR, new Item.Properties().stacksTo(1).fireResistant());
 		ROOD = Ssc14Items.ROOD;
 		SHEATHING = block(Ssc14ModBlocks.SHEATHING, new Item.Properties().stacksTo(1).fireResistant());
-		STEEL = register("steel", SteelItem::new);
-		PLASTEEL = register("plasteel", PlasteelItem::new);
-		LOW_VOLTAGE_CABLE = register("low_voltage_cable", LowVoltageCableItem::new);
-		MEDIUM_VOLTAGE_CABLE = register("medium_voltage_cable", MediumVoltageCableItem::new);
-		HIGH_VOLTAGE_CABLE = register("high_voltage_cable", HighVoltageCableItem::new);
+		STEEL = Ssc14Items.STEEL;
+		PLASTEEL = Ssc14Items.PLASTEEL;
+		LOW_VOLTAGE_CABLE = Ssc14Items.LOW_VOLTAGE_CABLE;
+		MEDIUM_VOLTAGE_CABLE = Ssc14Items.MEDIUM_VOLTAGE_CABLE;
+		HIGH_VOLTAGE_CABLE = Ssc14Items.HIGH_VOLTAGE_CABLE;
 		CROWBAR = register("crowbar", ScrapItem::new);
 		TITLE_STEEL = block(Ssc14Blocks.TITLE_STEEL, new Item.Properties().stacksTo(30).fireResistant());
 		STEEL_WALL = block(Ssc14Blocks.STEEL_WALL, new Item.Properties().stacksTo(30).fireResistant());
