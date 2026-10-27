@@ -1,7 +1,7 @@
 
 package net.mcreator.ssc;
 
-import net.mcreator.ssc.item.ReagentContainerItem;
+import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.world.entity.player.Player;

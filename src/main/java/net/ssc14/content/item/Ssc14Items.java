@@ -29,6 +29,10 @@ import net.ssc14.content.item.machinery.MachineComponentItem;
 import net.ssc14.content.item.material.MaterialItem;
 import net.ssc14.content.item.medical.MedicalSupplyItem;
 import net.ssc14.content.item.poster.PosterItem;
+import net.ssc14.content.item.reagent.ReagentContainerDefinition;
+import net.ssc14.content.item.reagent.ReagentContainerItem;
+import net.ssc14.content.item.reagent.SealedReagentContainerItem;
+import net.ssc14.content.item.reagent.Ssc14ReagentContainers;
 import net.ssc14.content.item.utility.DebugActivatorItem;
 import net.ssc14.content.item.utility.RcdCartridgeItem;
 import net.ssc14.content.item.utility.TrafficConeItem;
@@ -66,6 +70,27 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> DEBUGACTIVATOR =
             REGISTRY.registerItem("debugactivator", DebugActivatorItem::new,
                     Item.Properties::new);
+    public static final DeferredItem<Item> REAGENT_CONTAINER =
+            reagentContainer("reagent_container", Ssc14ReagentContainers.DEFAULT_CAPACITY);
+    public static final DeferredItem<Item> FLOUR_OPEN =
+            reagentContainer("flour_open", Ssc14ReagentContainers.FLOUR_CAPACITY);
+    public static final DeferredItem<Item> SUGAR_OPEN =
+            reagentContainer("sugar_open", Ssc14ReagentContainers.SUGAR_CAPACITY);
+    public static final DeferredItem<Item> MILK_OPEN =
+            reagentContainer("milk_open", Ssc14ReagentContainers.MILK_CAPACITY);
+    public static final DeferredItem<Item> ALL_PURPOSE_SAUCE_OPEN =
+            reagentContainer("all_purpose_sauce_open",
+                    Ssc14ReagentContainers.ALL_PURPOSE_SAUCE_CAPACITY);
+    public static final DeferredItem<Item> FLOUR =
+            sealedReagentContainer("flour", Ssc14ReagentContainers.FLOUR, FLOUR_OPEN);
+    public static final DeferredItem<Item> SUGAR =
+            sealedReagentContainer("sugar", Ssc14ReagentContainers.SUGAR, SUGAR_OPEN);
+    public static final DeferredItem<Item> MILK =
+            sealedReagentContainer("milk", Ssc14ReagentContainers.MILK, MILK_OPEN);
+    public static final DeferredItem<Item> ALL_PURPOSE_SAUCE =
+            sealedReagentContainer("all_purpose_sauce",
+                    Ssc14ReagentContainers.ALL_PURPOSE_SAUCE,
+                    ALL_PURPOSE_SAUCE_OPEN);
     public static final DeferredItem<Item> BULLET_35ITEM = ammunition("bullet_35item");
     public static final DeferredItem<Item> FOAM_DART = ammunition("foam_dart");
     public static final DeferredItem<Item> BULLET_35_CARTRIDGE =
@@ -395,6 +420,22 @@ public final class Ssc14Items {
 
     private static DeferredItem<Item> ammunition(String name) {
         return REGISTRY.<Item>registerItem(name, AmmunitionItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> reagentContainer(String name, int capacity) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new ReagentContainerItem(properties, capacity),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> sealedReagentContainer(
+            String name,
+            ReagentContainerDefinition definition,
+            Supplier<? extends Item> openItem) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new SealedReagentContainerItem(
+                        properties, definition, openItem),
+                Item.Properties::new);
     }
 
     private static DeferredItem<Item> machineComponent(String name, int maxStackSize) {

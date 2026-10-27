@@ -1,7 +1,7 @@
 
 package net.mcreator.ssc;
 
-import net.mcreator.ssc.item.ReagentContainerItem;
+import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
