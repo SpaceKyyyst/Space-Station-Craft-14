@@ -2,7 +2,7 @@ package net.mcreator.ssc.visual;
 
 import java.util.List;
 import net.mcreator.ssc.AtmosRegion.GasVisualData;
-import net.mcreator.ssc.GasType;
+import net.ssc14.common.atmosphere.model.GasType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;

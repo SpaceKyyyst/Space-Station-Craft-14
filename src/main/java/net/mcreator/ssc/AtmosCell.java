@@ -1,5 +1,6 @@
 package net.mcreator.ssc;
 
+import net.ssc14.common.atmosphere.model.GasType;
 import net.mcreator.ssc.atmosphere.GasMixture;
 import net.minecraft.nbt.CompoundTag;
 

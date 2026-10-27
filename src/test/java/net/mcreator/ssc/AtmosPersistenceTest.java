@@ -1,5 +1,6 @@
 package net.mcreator.ssc;
 
+import net.ssc14.common.atmosphere.model.GasType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;

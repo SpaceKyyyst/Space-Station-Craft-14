@@ -1,5 +1,6 @@
 package net.mcreator.ssc;
 
+import net.ssc14.common.atmosphere.model.GasType;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.LinkedHashSet;

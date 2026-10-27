@@ -1,7 +1,7 @@
 package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.AtmosCell;
-import net.mcreator.ssc.GasType;
+import net.ssc14.common.atmosphere.model.GasType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;

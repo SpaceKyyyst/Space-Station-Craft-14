@@ -3,7 +3,7 @@ package net.mcreator.ssc.atmosphere;
 import java.util.ArrayList;
 import java.util.List;
 import net.mcreator.ssc.GasReaction;
-import net.mcreator.ssc.GasType;
+import net.ssc14.common.atmosphere.model.GasType;
 
 /** Gameplay reaction definitions, independent of world and transport scheduling. */
 public final class AtmosphereReactions {

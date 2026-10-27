@@ -1,6 +1,7 @@
 package net.mcreator.ssc;
 
 import java.util.Objects;
+import net.ssc14.common.atmosphere.model.GasType;
 
 /** Immutable reaction definition. Cell arrays are mutated only after a complete valid calculation. */
 public record GasReaction(

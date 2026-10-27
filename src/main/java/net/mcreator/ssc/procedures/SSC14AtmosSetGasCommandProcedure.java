@@ -34,11 +34,11 @@ public class SSC14AtmosSetGasCommandProcedure {
             }
             
             // 3. Ищем газ по имени
-            net.mcreator.ssc.GasType gasType = net.mcreator.ssc.GasType.byName(gasName);
+            net.ssc14.common.atmosphere.model.GasType gasType = net.ssc14.common.atmosphere.model.GasType.byName(gasName);
             if (gasType == null) {
                 StringBuilder available = new StringBuilder("§7Доступные газы: §r");
-                for (int i = 0; i < net.mcreator.ssc.GasType.COUNT; i++) {
-                    var g = net.mcreator.ssc.GasType.byIndex(i);
+                for (int i = 0; i < net.ssc14.common.atmosphere.model.GasType.COUNT; i++) {
+                    var g = net.ssc14.common.atmosphere.model.GasType.byIndex(i);
                     if (g != null) {
                         if (i > 0) available.append(", ");
                         available.append(g.getName());
