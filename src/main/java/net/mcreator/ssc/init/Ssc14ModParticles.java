@@ -9,6 +9,7 @@ import net.ssc14.client.particle.Ssc14ParticleProviderBinder;
 import net.ssc14.client.particle.GasCloudParticle;
 import net.ssc14.client.particle.DeconstructionParticle;
 import net.ssc14.client.particle.GravityFieldParticle;
+import net.ssc14.client.particle.UtilityEffectParticle;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 
 /** Compatibility bootstrap for transitional particle provider implementations. */
@@ -24,7 +25,7 @@ public final class Ssc14ModParticles {
                 sprites -> GravityFieldParticle.provider(sprites, 2, 7));
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.GRAV_GEN_PARTICLE_4,
                 sprites -> GravityFieldParticle.provider(sprites, 1, 9));
-        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.SPARK, SparkParticle::provider);
+        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.SPARK, UtilityEffectParticle::sparkProvider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.PLASMA_PARTICLES_1, GasCloudParticle::provider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.PLASMA_PARTICLES_2, GasCloudParticle::provider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.WATER_VAPOR_PARTICLES_1, GasCloudParticle::provider);
@@ -46,9 +47,9 @@ public final class Ssc14ModParticles {
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.TRITIUM_PARTICLES_1, GasCloudParticle::provider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.TRITIUM_PARTICLES_2, GasCloudParticle::provider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.EXTINGUISHER_SPRAY, ExtinguisherSprayParticle::provider);
-        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.RCD_INTERFERENCE_P, RCDInterferencePParticle::provider);
-        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.SPECIFY_P, SpecifyPParticle::provider);
-        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.BULLET_FLIGHT_P, BulletFlightPParticle::provider);
+        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.RCD_INTERFERENCE_P, UtilityEffectParticle::rcdInterferenceProvider);
+        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.SPECIFY_P, UtilityEffectParticle::specifyProvider);
+        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.BULLET_FLIGHT_P, UtilityEffectParticle::bulletProvider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.DECONSTRUCT_P, DeconstructionParticle::provider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.DECONSTRUCT_PX, DeconstructionParticle::provider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.DECONSTRUCT_PZ, DeconstructionParticle::provider);
