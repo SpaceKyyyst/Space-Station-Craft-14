@@ -1,6 +1,8 @@
 
 package net.mcreator.ssc;
 
+import net.ssc14.integration.neoforge.decal.DecalData;
+
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.attachment.AttachmentType;

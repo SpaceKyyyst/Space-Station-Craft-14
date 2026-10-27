@@ -1,6 +1,8 @@
 
 package net.mcreator.ssc;
 
+import net.ssc14.integration.neoforge.decal.DecalData;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
