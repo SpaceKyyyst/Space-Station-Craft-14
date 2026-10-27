@@ -90,6 +90,7 @@ EXPECTED_TESTS = {
     "ssc_14:compatibility_item_id_card_contract",
     "ssc_14:compatibility_item_headset_contract",
     "ssc_14:compatibility_item_inert_contract",
+    "ssc_14:compatibility_item_static_utility_contract",
 }
 
 

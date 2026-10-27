@@ -831,7 +831,7 @@ public class Ssc14ModItems {
 		PEN = Ssc14Items.PEN;
 		RSU = register("rsu", RSUItem::new);
 		TITLE_STEEL_PAVEMENT_VERTICAL = block(Ssc14Blocks.TITLE_STEEL_PAVEMENT_VERTICAL, new Item.Properties().stacksTo(30).fireResistant());
-		RC_DCARTRIDGE = register("rc_dcartridge", RCDcartridgeItem::new);
+		RC_DCARTRIDGE = Ssc14Items.RC_DCARTRIDGE;
 		MALE_BOXERS = Ssc14Items.MALE_BOXERS;
 		HEALTH_ANALYZER = Ssc14Items.HEALTH_ANALYZER;
 		GLASS_SECURITY = Ssc14Items.GLASS_SECURITY;
@@ -859,7 +859,7 @@ public class Ssc14ModItems {
 		GLASS_DARK = Ssc14Items.GLASS_DARK;
 		BLACK_GLOVES = Ssc14Items.BLACK_GLOVES;
 		HELMET_COSMONAUT = Ssc14Items.HELMET_COSMONAUT;
-		CONE = register("cone", ConeItem::new);
+		CONE = Ssc14Items.CONE;
 		BELT_SECURITY_WEBBING = Ssc14Items.BELT_SECURITY_WEBBING;
 		BELT_INSTRUMENTAL = Ssc14Items.BELT_INSTRUMENTAL;
 		MASK_GAS_SECURITY = Ssc14Items.MASK_GAS_SECURITY;
@@ -902,7 +902,7 @@ public class Ssc14ModItems {
 		CHEF_JUMPSUIT = Ssc14Items.CHEF_JUMPSUIT;
 		CM_OTURTLE_JUMPSUIT = Ssc14Items.CM_OTURTLE_JUMPSUIT;
 		HO_SPARADE_JUMPSUIT = Ssc14Items.HO_SPARADE_JUMPSUIT;
-		DEBUGACTIVATOR = register("debugactivator", DEBUGACTIVATORItem::new);
+		DEBUGACTIVATOR = Ssc14Items.DEBUGACTIVATOR;
 		SHUTTERS = block(Ssc14ModBlocks.SHUTTERS, new Item.Properties().stacksTo(1));
 		BUTTON = block(Ssc14ModBlocks.BUTTON, new Item.Properties().stacksTo(1));
 		NETWORK_CONFIGURATOR = register("network_configurator", NetworkConfiguratorItem::new);
