@@ -37,7 +37,20 @@ public final class Ssc14PassiveEquipmentItemsGameTests {
             Ssc14Items.BELT_INSTRUMENTAL,
             Ssc14Items.MASK_GAS_SECURITY,
             Ssc14Items.HARDSUIT_SALVAGE,
-            Ssc14Items.HARDSUIT_SALVAGE_HELMET);
+            Ssc14Items.HARDSUIT_SALVAGE_HELMET,
+            Ssc14Items.BLACK_SOLES_ITEM,
+            Ssc14Items.CLOAKS_CAP,
+            Ssc14Items.MANTLES_CAP,
+            Ssc14Items.ARMOR_SECURITY,
+            Ssc14Items.OUTERCLOTHING_EVA,
+            Ssc14Items.MALE_BOXERS,
+            Ssc14Items.GLASS_SECURITY,
+            Ssc14Items.CLOAKS_HO_S,
+            Ssc14Items.MANTLES_HO_S_SHOULDER_CAP,
+            Ssc14Items.MANTLES_HO_S,
+            Ssc14Items.GLASS_DARK,
+            Ssc14Items.WHITE_KNEE,
+            Ssc14Items.BEE_THIGH);
     private static final List<String> IDS = List.of(
             "isolated_gloves",
             "combat_boots_item",
@@ -55,7 +68,20 @@ public final class Ssc14PassiveEquipmentItemsGameTests {
             "belt_instrumental",
             "mask_gas_security",
             "hardsuit_salvage",
-            "hardsuit_salvage_helmet");
+            "hardsuit_salvage_helmet",
+            "black_soles_item",
+            "cloaks_cap",
+            "mantles_cap",
+            "armor_security",
+            "outerclothing_eva",
+            "male_boxers",
+            "glass_security",
+            "cloaks_ho_s",
+            "mantles_ho_s_shoulder_cap",
+            "mantles_ho_s",
+            "glass_dark",
+            "white_knee",
+            "bee_thigh");
 
     private Ssc14PassiveEquipmentItemsGameTests() { }
 

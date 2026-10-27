@@ -1,8 +1,11 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.clothing.PassiveEquipmentItem;
 
-public class GlassDarkItem extends Item {
+/** @deprecated Use {@link PassiveEquipmentItem}; retained for source compatibility. */
+@Deprecated(forRemoval = false)
+public class GlassDarkItem extends PassiveEquipmentItem {
 	public GlassDarkItem(Item.Properties properties) {
 		super(properties.stacksTo(1));
 	}

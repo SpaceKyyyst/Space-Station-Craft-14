@@ -30,7 +30,20 @@ class Ssc14PassiveEquipmentItemsCompatibilityTest {
             Map.entry("BELT_INSTRUMENTAL", "belt_instrumental"),
             Map.entry("MASK_GAS_SECURITY", "mask_gas_security"),
             Map.entry("HARDSUIT_SALVAGE", "hardsuit_salvage"),
-            Map.entry("HARDSUIT_SALVAGE_HELMET", "hardsuit_salvage_helmet"));
+            Map.entry("HARDSUIT_SALVAGE_HELMET", "hardsuit_salvage_helmet"),
+            Map.entry("BLACK_SOLES_ITEM", "black_soles_item"),
+            Map.entry("CLOAKS_CAP", "cloaks_cap"),
+            Map.entry("MANTLES_CAP", "mantles_cap"),
+            Map.entry("ARMOR_SECURITY", "armor_security"),
+            Map.entry("OUTERCLOTHING_EVA", "outerclothing_eva"),
+            Map.entry("MALE_BOXERS", "male_boxers"),
+            Map.entry("GLASS_SECURITY", "glass_security"),
+            Map.entry("CLOAKS_HO_S", "cloaks_ho_s"),
+            Map.entry("MANTLES_HO_S_SHOULDER_CAP", "mantles_ho_s_shoulder_cap"),
+            Map.entry("MANTLES_HO_S", "mantles_ho_s"),
+            Map.entry("GLASS_DARK", "glass_dark"),
+            Map.entry("WHITE_KNEE", "white_knee"),
+            Map.entry("BEE_THIGH", "bee_thigh"));
 
     private static final Class<?>[] LEGACY_TYPES = {
             net.mcreator.ssc.item.IsolatedGlovesItem.class,
@@ -49,7 +62,20 @@ class Ssc14PassiveEquipmentItemsCompatibilityTest {
             net.mcreator.ssc.item.BeltInstrumentalItem.class,
             net.mcreator.ssc.item.MaskGasSecurityItem.class,
             net.mcreator.ssc.item.HardsuitSalvageItem.class,
-            net.mcreator.ssc.item.HardsuitSalvageHelmetItem.class
+            net.mcreator.ssc.item.HardsuitSalvageHelmetItem.class,
+            net.mcreator.ssc.item.BlackSolesItemItem.class,
+            net.mcreator.ssc.item.CloaksCapItem.class,
+            net.mcreator.ssc.item.MantlesCapItem.class,
+            net.mcreator.ssc.item.ArmorSecurityItem.class,
+            net.mcreator.ssc.item.OuterclothingEvaItem.class,
+            net.mcreator.ssc.item.MaleBoxersItem.class,
+            net.mcreator.ssc.item.GlassSecurityItem.class,
+            net.mcreator.ssc.item.CloaksHoSItem.class,
+            net.mcreator.ssc.item.MantlesHoSShoulderCapItem.class,
+            net.mcreator.ssc.item.MantlesHoSItem.class,
+            net.mcreator.ssc.item.GlassDarkItem.class,
+            net.mcreator.ssc.item.WhiteKneeItem.class,
+            net.mcreator.ssc.item.BeeThighItem.class
     };
 
     @Test

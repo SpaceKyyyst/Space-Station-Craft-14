@@ -236,6 +236,20 @@ public final class Ssc14Items {
     public static final DeferredItem<Item> MASK_GAS_SECURITY = passiveEquipment("mask_gas_security");
     public static final DeferredItem<Item> HARDSUIT_SALVAGE = passiveEquipment("hardsuit_salvage");
     public static final DeferredItem<Item> HARDSUIT_SALVAGE_HELMET = passiveEquipment("hardsuit_salvage_helmet");
+    public static final DeferredItem<Item> BLACK_SOLES_ITEM = passiveEquipment("black_soles_item");
+    public static final DeferredItem<Item> CLOAKS_CAP = passiveEquipment("cloaks_cap");
+    public static final DeferredItem<Item> MANTLES_CAP = passiveEquipment("mantles_cap");
+    public static final DeferredItem<Item> ARMOR_SECURITY = passiveEquipment("armor_security");
+    public static final DeferredItem<Item> OUTERCLOTHING_EVA = passiveEquipment("outerclothing_eva");
+    public static final DeferredItem<Item> MALE_BOXERS = passiveEquipment("male_boxers");
+    public static final DeferredItem<Item> GLASS_SECURITY = passiveEquipment("glass_security");
+    public static final DeferredItem<Item> CLOAKS_HO_S = passiveEquipment("cloaks_ho_s");
+    public static final DeferredItem<Item> MANTLES_HO_S_SHOULDER_CAP =
+            passiveEquipment("mantles_ho_s_shoulder_cap");
+    public static final DeferredItem<Item> MANTLES_HO_S = passiveEquipment("mantles_ho_s");
+    public static final DeferredItem<Item> GLASS_DARK = passiveEquipment("glass_dark");
+    public static final DeferredItem<Item> WHITE_KNEE = passiveEquipment("white_knee");
+    public static final DeferredItem<Item> BEE_THIGH = passiveEquipment("bee_thigh");
     public static final DeferredItem<Item> BRUTEPACK = medicalSupply("brutepack");
     public static final DeferredItem<Item> BLOODPACK = medicalSupply("bloodpack");
     public static final DeferredItem<Item> GAUZE = medicalSupply("gauze");
