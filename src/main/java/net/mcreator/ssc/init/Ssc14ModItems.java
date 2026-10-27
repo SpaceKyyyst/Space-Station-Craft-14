@@ -1041,7 +1041,7 @@ public class Ssc14ModItems {
 		WOOD = Ssc14Items.WOOD;
 		GLASS_TABLE = block(Ssc14ModBlocks.GLASS_TABLE, new Item.Properties().stacksTo(1));
 		GLASS_AIRLOCK_D_1 = block(Ssc14ModBlocks.GLASS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
-		ASTRO_ACE_FOAM_POWER = register("astro_ace_foam_power", AstroAceFoamPowerItem::new);
+		ASTRO_ACE_FOAM_POWER = Ssc14Items.ASTRO_ACE_FOAM_POWER;
 		FOAM_DART = Ssc14Items.FOAM_DART;
 		BULLET_35_CARTRIDGE = Ssc14Items.BULLET_35_CARTRIDGE;
 		BASE_GLASS_AIRLOCK_D_1 = block(Ssc14ModBlocks.BASE_GLASS_AIRLOCK_D_1, new Item.Properties().stacksTo(1).fireResistant());
