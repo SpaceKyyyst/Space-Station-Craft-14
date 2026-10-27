@@ -1,17 +1,12 @@
 package net.mcreator.ssc.procedures;
 
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
+import net.ssc14.content.item.tool.GasAnalyserOverlayService;
 
-import net.mcreator.ssc.init.Ssc14ModAttributes;
-
+/** @deprecated Use {@link GasAnalyserOverlayService}. */
+@Deprecated(forRemoval = false)
 public class GasAnalyserGUI_pr_1Procedure {
-	public static boolean execute(Entity entity) {
-		if (entity == null)
-			return false;
-		if ((entity instanceof LivingEntity _livingEntity0 && _livingEntity0.getAttributes().hasAttribute(Ssc14ModAttributes.GAS_AN_GU_IATRIB) ? _livingEntity0.getAttribute(Ssc14ModAttributes.GAS_AN_GU_IATRIB).getValue() : 0) == 1) {
-			return true;
-		}
-		return false;
-	}
+    public static boolean execute(Entity entity) {
+        return GasAnalyserOverlayService.isVisible(entity);
+    }
 }

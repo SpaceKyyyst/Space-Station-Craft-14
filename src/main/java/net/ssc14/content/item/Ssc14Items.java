@@ -51,6 +51,7 @@ import net.ssc14.content.item.reagent.Ssc14ReagentContainers;
 import net.ssc14.content.item.safety.ExtinguisherItem;
 import net.ssc14.content.item.safety.ExtinguisherState;
 import net.ssc14.content.item.tool.AsteroidPickItem;
+import net.ssc14.content.item.tool.GasAnalyserItem;
 import net.ssc14.content.item.tool.MechanicalHandToolItem;
 import net.ssc14.content.item.tool.MechanicalToolProfile;
 import net.ssc14.content.item.tool.WelderItem;
@@ -152,6 +153,9 @@ public final class Ssc14Items {
             mechanicalTool("spanner", MechanicalToolProfile.SPANNER);
     public static final DeferredItem<Item> PICK =
             REGISTRY.registerItem("pick", AsteroidPickItem::new, Item.Properties::new);
+    public static final DeferredItem<Item> GAS_ANALYSER =
+            REGISTRY.registerItem("gas_analyser", GasAnalyserItem::new,
+                    Item.Properties::new);
     public static final DeferredItem<Item> WELDING =
             welder("welding", WelderState.INACTIVE);
     public static final DeferredItem<Item> ACTIVE_WELDER =

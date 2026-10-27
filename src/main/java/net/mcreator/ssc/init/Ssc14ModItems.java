@@ -602,7 +602,7 @@ public class Ssc14ModItems {
 		ID_CARD_PASSANGER = Ssc14Items.ID_CARD_PASSANGER;
 		CONSOLE_OF_ID = block(Ssc14ModBlocks.CONSOLE_OF_ID, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
 		ID_CONSOLE_ENTITY_SPAWN_EGG = Ssc14Items.ID_CONSOLE_ENTITY_SPAWN_EGG;
-		GAS_ANALYSER = register("gas_analyser", GasAnalyserItem::new);
+		GAS_ANALYSER = Ssc14Items.GAS_ANALYSER;
 		BASE_WINDOW = block(Ssc14Blocks.BASE_WINDOW, new Item.Properties().stacksTo(30).fireResistant());
 		GLASS_SHARD = Ssc14Items.GLASS_SHARD;
 		GLASS = Ssc14Items.GLASS;
