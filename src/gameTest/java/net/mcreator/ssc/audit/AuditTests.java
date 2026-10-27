@@ -824,7 +824,7 @@ public final class AuditTests {
     static {
         ReagentContainerConfig.CAPACITIES.forEach((itemId,capacity)->TESTS.put("container_"+itemId.getPath(),h->{
             var item=net.minecraft.core.registries.BuiltInRegistries.ITEM.getValue(itemId);
-            h.assertTrue(item instanceof net.mcreator.ssc.item.ReagentContainerItem,"Configured container is not registered as ReagentContainerItem: "+itemId);
+            h.assertTrue(item instanceof net.ssc14.content.item.reagent.ReagentContainerItem,"Configured container is not registered as ReagentContainerItem: "+itemId);
             var stack=new net.minecraft.world.item.ItemStack(item);
             h.assertTrue(ModReagents.getAvailableSpace(stack)==capacity,"Capacity mismatch for "+itemId);
             h.assertTrue(ModReagents.addReagent(stack,"water",capacity),"Cannot fill empty container");

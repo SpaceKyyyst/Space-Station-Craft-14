@@ -1,7 +1,8 @@
 
 package net.mcreator.ssc;
 
-import net.mcreator.ssc.item.ReagentContainerItem;
+import net.ssc14.content.item.reagent.ReagentContainerItem;
+import net.ssc14.content.item.reagent.ReagentContainerAccess;
 import net.mcreator.ssc.chemistry.ReagentAmounts;
 import net.mcreator.ssc.chemistry.ReagentTransferPlan;
 import net.minecraft.ChatFormatting;
@@ -463,6 +464,7 @@ public class ModReagents {
     }
 
     public static void register(IEventBus bus) {
+        ReagentContainerAccess.install(LegacyReagentContainerRuntime.INSTANCE);
         FLUID_TYPES.register(bus);
         FLUIDS.register(bus);
     }
