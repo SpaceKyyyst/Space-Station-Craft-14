@@ -1,7 +1,8 @@
-package net.mcreator.ssc.medical;
+package net.ssc14.common.medical;
 
 /** Medical authorization is independent of game-mode abilities. */
 public final class MedicalStatePolicy {
+    public static final String TOTAL_DAMAGE_KEY = "sscCustomHealth";
     private static final double CRITICAL_MIN_DAMAGE = 100.0;
     private static final double CRITICAL_MAX_DAMAGE = 200.0;
     public enum MedicalState { UNRESTRICTED, CRITICAL }

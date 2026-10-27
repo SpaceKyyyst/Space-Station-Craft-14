@@ -7,12 +7,10 @@ import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.network.handling.IPayloadHandler;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.capabilities.EntityCapability;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModList;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.bus.api.IEventBus;
 
 import net.minecraft.world.item.ItemStack;
@@ -129,7 +127,6 @@ public class Ssc14Mod {
 	public Ssc14Mod(IEventBus modEventBus) {
 		// Start of user code block mod constructor
 		// End of user code block mod constructor
-		NeoForge.EVENT_BUS.register(this);
 		modEventBus.addListener(this::registerNetworking);
 		if (ModList.get().isLoaded("curios")) {
 			modEventBus.addListener(Ssc14ModCuriosCompat::registerCapabilities);

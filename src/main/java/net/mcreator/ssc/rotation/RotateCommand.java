@@ -1,6 +1,6 @@
 package net.mcreator.ssc.rotation;
 
-import net.mcreator.ssc.medical.MedicalActionEvents;
+import net.ssc14.content.medical.MedicalActionEvents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.block.Block;

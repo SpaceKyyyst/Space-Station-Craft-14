@@ -2,8 +2,8 @@ package net.mcreator.ssc.gametest;
 
 import net.ssc14.content.block.gravity.GravityGeneratorBlockEntity;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.gravity.EntityGravityController;
-import net.mcreator.ssc.gravity.GravityPolicy;
+import net.ssc14.content.gravity.EntityGravityController;
+import net.ssc14.common.gravity.GravityPolicy;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.registries.Registries;
