@@ -1,6 +1,6 @@
 package net.mcreator.ssc.procedures;
 
-import net.mcreator.ssc.medical.MedicalPlayerEffects;
+import net.ssc14.content.medical.MedicalPlayerEffects;
 import net.ssc14.common.medical.MedicalStatePolicy;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

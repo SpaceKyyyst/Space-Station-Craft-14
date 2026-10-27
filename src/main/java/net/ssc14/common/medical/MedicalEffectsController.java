@@ -1,7 +1,9 @@
-package net.mcreator.ssc.medical;
+package net.ssc14.common.medical;
 
 /** Owns only medical effect transitions; the adapter performs world mutations. */
 public final class MedicalEffectsController {
+    public static final float CRITICAL_WIDTH = 0.6f;
+    public static final float CRITICAL_HEIGHT = 0.45f;
     public record Ownership(boolean blindness, boolean pose, boolean poseYielded) {
         public static final Ownership NONE = new Ownership(false, false, false);
     }

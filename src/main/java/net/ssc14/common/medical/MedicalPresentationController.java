@@ -1,4 +1,4 @@
-package net.mcreator.ssc.medical;
+package net.ssc14.common.medical;
 
 /** Client presentation transitions driven solely by received server snapshots. */
 public final class MedicalPresentationController {

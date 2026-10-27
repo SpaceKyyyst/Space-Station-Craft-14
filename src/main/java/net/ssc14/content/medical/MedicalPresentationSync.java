@@ -1,6 +1,6 @@
-package net.mcreator.ssc.medical;
+package net.ssc14.content.medical;
 
-import net.mcreator.ssc.network.MedicalPresentationMessage;
+import net.ssc14.integration.neoforge.medical.network.MedicalPresentationMessage;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;

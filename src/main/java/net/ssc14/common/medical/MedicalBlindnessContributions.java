@@ -1,17 +1,17 @@
-package net.mcreator.ssc.medical;
+package net.ssc14.common.medical;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.world.effect.MobEffectInstance;
 
 /** Tracks external contributions separately from SSC's mergeable blindness. */
-final class MedicalBlindnessContributions {
+public final class MedicalBlindnessContributions {
     private static final String EXTERNAL = "external_blindness";
     private static final String OBSERVED = "observed_blindness";
     private static final String HIDDEN = "hidden_effect";
     private MedicalBlindnessContributions() { }
 
-    static void record(CompoundTag state, MobEffectInstance current, MobEffectInstance incoming) {
+    public static void record(CompoundTag state, MobEffectInstance current, MobEffectInstance incoming) {
         var before = encode(current);
         var merged = decode(before.copy());
         merged.update(incoming);
@@ -28,7 +28,7 @@ final class MedicalBlindnessContributions {
         state.remove("external_clock");
     }
 
-    static MobEffectInstance remaining(CompoundTag state, MobEffectInstance current) {
+    public static MobEffectInstance remaining(CompoundTag state, MobEffectInstance current) {
         var external = state.getCompound(EXTERNAL).map(CompoundTag::copy).orElse(null);
         if (external == null || current == null) return null;
         // Legacy snapshots lack OBSERVED: their external nodes can still be matched
@@ -52,7 +52,7 @@ final class MedicalBlindnessContributions {
         return external == null ? null : decode(external);
     }
 
-    static void clear(CompoundTag state) {
+    public static void clear(CompoundTag state) {
         state.remove(EXTERNAL);
         state.remove(OBSERVED);
         state.remove("clock");

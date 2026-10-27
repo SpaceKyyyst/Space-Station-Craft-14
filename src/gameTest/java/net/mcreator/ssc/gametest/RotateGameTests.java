@@ -4,7 +4,7 @@ import com.mojang.authlib.GameProfile;
 import java.lang.reflect.Proxy;
 import java.util.UUID;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.medical.MedicalPlayerEffects;
+import net.ssc14.content.medical.MedicalPlayerEffects;
 import net.mcreator.ssc.network.RotateMessage;
 import net.mcreator.ssc.procedures.Objects_Rotate_RRRProcedure;
 import net.mcreator.ssc.rotation.RotateCommand;

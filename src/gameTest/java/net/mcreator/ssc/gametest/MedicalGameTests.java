@@ -4,7 +4,7 @@ import com.mojang.authlib.GameProfile;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import net.mcreator.ssc.medical.MedicalPlayerEffects;
+import net.ssc14.content.medical.MedicalPlayerEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
@@ -322,7 +322,7 @@ public final class MedicalGameTests {
         player.getPersistentData().putDouble(MedicalPlayerEffects.TOTAL_DAMAGE, 100);
         MedicalPlayerEffects.reconcile(player, 220);
         helper.assertTrue(ownerMessages.size() == 1, "Critical entry must send presentation to the owning client");
-        var entry = (net.mcreator.ssc.network.MedicalPresentationMessage) ownerMessages.getFirst();
+        var entry = (net.ssc14.integration.neoforge.medical.network.MedicalPresentationMessage) ownerMessages.getFirst();
         helper.assertTrue(entry.active() && entry.matches(player.getId(), player.getUUID(), player.level().dimension().identifier()),
                 "Entry payload must identify the exact critical player and dimension");
         MedicalPlayerEffects.reconcile(player, 220);
@@ -334,7 +334,7 @@ public final class MedicalGameTests {
         helper.assertTrue(trackingMessages.getFirst().equals(entry), "Tracking initialization must match the owner's presentation");
         MedicalPlayerEffects.release(player);
         helper.assertTrue(ownerMessages.size() == 2, "Recovery must release presentation on the owning client");
-        helper.assertTrue(!((net.mcreator.ssc.network.MedicalPresentationMessage) ownerMessages.getLast()).active(),
+        helper.assertTrue(!((net.ssc14.integration.neoforge.medical.network.MedicalPresentationMessage) ownerMessages.getLast()).active(),
                 "Recovery payload must explicitly release the client pose");
         NeoForge.EVENT_BUS.post(new PlayerEvent.PlayerLoggedInEvent(player));
         helper.assertTrue(ownerMessages.size() == 3, "Login must initialize the owning client even without a state transition");

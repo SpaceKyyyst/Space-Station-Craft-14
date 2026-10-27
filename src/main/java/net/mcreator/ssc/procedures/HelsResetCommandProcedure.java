@@ -7,7 +7,7 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.CommandSourceStack;
 
 import net.mcreator.ssc.init.Ssc14ModAttributes;
-import net.mcreator.ssc.medical.MedicalPlayerEffects;
+import net.ssc14.content.medical.MedicalPlayerEffects;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.context.CommandContext;

@@ -10,7 +10,7 @@ import net.minecraft.nbt.CompoundTag;
 
 public class CrawlPrProcedure {
     public static final Identifier CRAWL_SPEED_MOD_ID = Identifier.fromNamespaceAndPath("ssc_14", "crawl_slowdown");
-    public static final String NBT_KEY = "ssc14_crawl_active";
+    public static final String NBT_KEY = net.ssc14.common.player.PlayerStateKeys.CRAWL_ACTIVE;
 
     public static void execute(Entity entity) {
         if (!(entity instanceof Player player)) return;

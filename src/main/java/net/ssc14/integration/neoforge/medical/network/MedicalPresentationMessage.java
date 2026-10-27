@@ -1,14 +1,10 @@
-package net.mcreator.ssc.network;
+package net.ssc14.integration.neoforge.medical.network;
 
 import java.util.UUID;
-import net.mcreator.ssc.medical.MedicalClientPresentation;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Player;
-import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 /** A bounded clientbound snapshot, addressed to one player incarnation in one dimension. */
 public record MedicalPresentationMessage(int entityId, UUID playerId, Identifier dimension, boolean active)
@@ -29,14 +25,4 @@ public record MedicalPresentationMessage(int entityId, UUID playerId, Identifier
         return entityId == id && playerId.equals(uuid) && dimension.equals(level);
     }
 
-    public static void handle(MedicalPresentationMessage message, IPayloadContext context) {
-        // PayloadRegistrar's default MAIN handler owns dispatch; never accept client medical decisions.
-        if (context.flow() != PacketFlow.CLIENTBOUND) return;
-        var receiver = context.player();
-        if (!receiver.level().isClientSide()) return;
-        var entity = receiver.getId() == message.entityId() ? receiver : receiver.level().getEntity(message.entityId());
-        if (entity instanceof Player player && message.matches(player.getId(), player.getUUID(), player.level().dimension().identifier())) {
-            MedicalClientPresentation.receive(player, message.active());
-        }
-    }
 }

@@ -1,7 +1,10 @@
-package net.mcreator.ssc.medical;
+package net.ssc14.content.medical;
 
 import net.ssc14.integration.neoforge.medical.MedicalBlindnessOwnership;
 import net.ssc14.common.medical.MedicalStatePolicy;
+import net.ssc14.common.medical.MedicalBlindnessContributions;
+import net.ssc14.common.medical.MedicalEffectsController;
+import net.ssc14.common.player.PlayerStateKeys;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.Identifier;
@@ -13,7 +16,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.mcreator.ssc.procedures.CrawlPrProcedure;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
@@ -33,8 +35,6 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
     private static final String POSE = "pose";
     private static final String POSE_YIELDED = "pose_yielded";
     private static final String LAST_CLEANUP_ATTEMPT = "last_cleanup_attempt";
-    private static final float CRITICAL_WIDTH = 0.6f;
-    private static final float CRITICAL_HEIGHT = 0.45f;
     private static final Identifier IMMOBILIZE = Identifier.fromNamespaceAndPath("ssc14", "crit_immobilize");
     private static final Identifier NO_JUMP = Identifier.fromNamespaceAndPath("ssc14", "crit_nojump");
     private final Player player;
@@ -154,7 +154,7 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
     }
 
     private boolean hasExternalSwimming() {
-        return player.isInWater() || player.isSwimming() || player.getPersistentData().getBooleanOr(CrawlPrProcedure.NBT_KEY, false);
+        return player.isInWater() || player.isSwimming() || player.getPersistentData().getBooleanOr(PlayerStateKeys.CRAWL_ACTIVE, false);
     }
 
     @Override
@@ -175,8 +175,9 @@ public final class MedicalPlayerEffects implements MedicalEffectsController.Targ
     @SubscribeEvent
     public static void onSize(EntityEvent.Size event) {
         if (event.getPose() == Pose.SWIMMING && event.getEntity() instanceof Player player
-                && (player.level().isClientSide() ? MedicalClientPresentation.ownsPose(player) : ownsPose(player))) {
-            event.setNewSize(EntityDimensions.scalable(CRITICAL_WIDTH, CRITICAL_HEIGHT)
+                && !player.level().isClientSide() && ownsPose(player)) {
+            event.setNewSize(EntityDimensions.scalable(MedicalEffectsController.CRITICAL_WIDTH,
+                    MedicalEffectsController.CRITICAL_HEIGHT)
                     .withEyeHeight(event.getNewSize().eyeHeight()));
         }
     }
