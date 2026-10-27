@@ -8,6 +8,7 @@ import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.ssc14.client.particle.Ssc14ParticleProviderBinder;
 import net.ssc14.client.particle.GasCloudParticle;
 import net.ssc14.client.particle.DeconstructionParticle;
+import net.ssc14.client.particle.GravityFieldParticle;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 
 /** Compatibility bootstrap for transitional particle provider implementations. */
@@ -15,10 +16,14 @@ import net.ssc14.content.particle.Ssc14ParticleTypes;
 @EventBusSubscriber(Dist.CLIENT)
 public final class Ssc14ModParticles {
     static {
-        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.GRAV_GEN_ACTIVE_PARTICLE, GravGenActiveParticleParticle::provider);
-        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.GRAV_GEN_PARTICLE_2, GravGenParticle2Particle::provider);
-        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.GRAV_GEN_PARTICLE_3, GravGenParticle3Particle::provider);
-        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.GRAV_GEN_PARTICLE_4, GravGenParticle4Particle::provider);
+        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.GRAV_GEN_ACTIVE_PARTICLE,
+                sprites -> GravityFieldParticle.provider(sprites, 2, 4));
+        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.GRAV_GEN_PARTICLE_2,
+                sprites -> GravityFieldParticle.provider(sprites, 3, 3));
+        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.GRAV_GEN_PARTICLE_3,
+                sprites -> GravityFieldParticle.provider(sprites, 2, 7));
+        Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.GRAV_GEN_PARTICLE_4,
+                sprites -> GravityFieldParticle.provider(sprites, 1, 9));
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.SPARK, SparkParticle::provider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.PLASMA_PARTICLES_1, GasCloudParticle::provider);
         Ssc14ParticleProviderBinder.bindSpriteSet(Ssc14ParticleTypes.PLASMA_PARTICLES_2, GasCloudParticle::provider);
