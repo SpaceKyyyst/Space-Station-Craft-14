@@ -21,6 +21,8 @@ import net.ssc14.content.item.communication.Ssc14HeadsetDefinitions;
 import net.ssc14.content.item.construction.CableCoilItem;
 import net.ssc14.content.item.construction.ConstructionItemKind;
 import net.ssc14.content.item.construction.ConstructionSheetItem;
+import net.ssc14.content.item.decal.DecalToolItem;
+import net.ssc14.content.item.decal.DecalToolKind;
 import net.ssc14.content.item.food.CookingIngredientItem;
 import net.ssc14.content.item.food.EdibleFoodItem;
 import net.ssc14.content.item.food.FoodPackagingWasteItem;
@@ -71,6 +73,20 @@ public final class Ssc14Items {
             "medium_voltage_cable", ConstructionItemKind.MEDIUM_VOLTAGE_CABLE);
     public static final DeferredItem<Item> HIGH_VOLTAGE_CABLE = cableCoil(
             "high_voltage_cable", ConstructionItemKind.HIGH_VOLTAGE_CABLE);
+    public static final DeferredItem<Item> DECAL_1SPAWNER =
+            decalTool("decal_1spawner", DecalToolKind.SPAWNER_1);
+    public static final DeferredItem<Item> DECAL_1DELETION =
+            decalTool("decal_1deletion", DecalToolKind.DELETION);
+    public static final DeferredItem<Item> DECAL_2SPAWNER =
+            decalTool("decal_2spawner", DecalToolKind.SPAWNER_2);
+    public static final DeferredItem<Item> DECAL_3SPAWNER =
+            decalTool("decal_3spawner", DecalToolKind.SPAWNER_3);
+    public static final DeferredItem<Item> DECAL_4SPAWNER =
+            decalTool("decal_4spawner", DecalToolKind.SPAWNER_4);
+    public static final DeferredItem<Item> DECAL_5SPAWNER =
+            decalTool("decal_5spawner", DecalToolKind.SPAWNER_5);
+    public static final DeferredItem<Item> DECAL_6SPAWNER =
+            decalTool("decal_6spawner", DecalToolKind.SPAWNER_6);
     public static final DeferredItem<Item> ROOD = material("rood");
     public static final DeferredItem<Item> WOOD = material("wood");
     public static final DeferredItem<Item> PEN = utility("pen");
@@ -437,6 +453,12 @@ public final class Ssc14Items {
     private static DeferredItem<Item> cableCoil(String name, ConstructionItemKind kind) {
         return REGISTRY.<Item>registerItem(name,
                 properties -> new CableCoilItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> decalTool(String name, DecalToolKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new DecalToolItem(properties, kind),
                 Item.Properties::new);
     }
 
