@@ -1,4 +1,4 @@
-package net.mcreator.ssc;
+package net.ssc14.content.atmosphere.runtime;
 
 import net.ssc14.common.atmosphere.model.GasType;
 import net.ssc14.common.atmosphere.reaction.GasReaction;

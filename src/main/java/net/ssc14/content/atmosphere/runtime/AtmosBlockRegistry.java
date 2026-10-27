@@ -1,4 +1,4 @@
-package net.mcreator.ssc;
+package net.ssc14.content.atmosphere.runtime;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;

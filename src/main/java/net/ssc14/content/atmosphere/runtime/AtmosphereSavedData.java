@@ -1,4 +1,4 @@
-package net.mcreator.ssc;
+package net.ssc14.content.atmosphere.runtime;
 
 import java.util.HashMap;
 import java.util.Map;
