@@ -132,7 +132,7 @@ public class ShuttersBlock extends Block implements EntityBlock, NetworkAction, 
     @Override protected void neighborChanged(BlockState state, Level level, BlockPos pos,
             Block neighborBlock, Orientation orientation, boolean moving) {
         super.neighborChanged(state, level, pos, neighborBlock, orientation, moving);
-        ShuttersIntegrationService.update(level, pos, state);
+        ShuttersStateService.update(level, pos, state);
     }
 
     @Override public InteractionResult useWithoutItem(BlockState state, Level level,
