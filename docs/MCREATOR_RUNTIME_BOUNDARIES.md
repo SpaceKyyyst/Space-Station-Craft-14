@@ -1,19 +1,19 @@
 # Remaining generated runtime boundaries / Оставшиеся generated boundaries
 
 > **Актуальный снимок / Current snapshot (2026-10-29):** в каталоге
-> `src/main/java/net/mcreator/ssc/procedures` осталось 5 активных процедур:
-> `MicrwGUIbutEProcedure`, `MK58_Breech_Open_Procedure`, `MK58_Fire_Procedure`,
-> `RSU_useOnBlock_Procedure` и `SpannerEntUseProcedure`. `PlaSteelUseProcedure` и
+> `src/main/java/net/mcreator/ssc/procedures` осталось 2 активные процедуры:
+> `MicrwGUIbutEProcedure` и `RSU_useOnBlock_Procedure`. MK58 breech/fire,
+> `SpannerEntUseProcedure`, `PlaSteelUseProcedure` и
 > `SteeluseProcedure` перенесены в `ConstructionAssemblyService`. Все удалённые фасады
 > и procedural wrappers из старых списков
 > ниже больше не являются частью runtime. Версия проекта остаётся `0.1.27` до
 > завершения этих переносов.
 
-> **Current snapshot (2026-10-29):** 5 active procedures remain in
+> **Current snapshot (2026-10-29):** 2 active procedures remain in
 > `src/main/java/net/mcreator/ssc/procedures`:
-> `MicrwGUIbutEProcedure`, `MK58_Breech_Open_Procedure`, `MK58_Fire_Procedure`,
-> `RSU_useOnBlock_Procedure`, and `SpannerEntUseProcedure`. `PlaSteelUseProcedure`
-> and `SteeluseProcedure` now live in `ConstructionAssemblyService`. Deleted facades
+> `MicrwGUIbutEProcedure` and `RSU_useOnBlock_Procedure`. MK58 breech/fire,
+> `SpannerEntUseProcedure`, `PlaSteelUseProcedure`, and `SteeluseProcedure` now live
+> in canonical services. Deleted facades
 > and wrappers listed historically below are
 > no longer runtime sources. The project version remains `0.1.27` until these
 > migrations are complete.
