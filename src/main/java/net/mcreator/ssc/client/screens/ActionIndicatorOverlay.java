@@ -55,7 +55,7 @@ public class ActionIndicatorOverlay {
 			if (ActionProgressService.isAtStep(entity, 5)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_4, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
-			if (ActGUIProcedure6Procedure.execute(entity)) {
+			if (ActionProgressService.isAtStep(entity, 6)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_5, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
 		}
