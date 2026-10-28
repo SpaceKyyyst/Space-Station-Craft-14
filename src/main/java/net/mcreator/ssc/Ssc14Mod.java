@@ -260,7 +260,7 @@ public class Ssc14Mod {
 
 			@Override
 			public void destroyed() {
-				net.mcreator.ssc.procedures.GravityGenerator_DestroyProcedure.execute();
+				net.ssc14.content.gravity.GravityGeneratorDestroyHandler.execute();
 			}
 		});
 		GravityGeneratorUiService.install(new GravityGeneratorUiService.Adapter() {
