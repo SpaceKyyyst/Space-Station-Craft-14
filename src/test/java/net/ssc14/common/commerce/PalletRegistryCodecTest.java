@@ -18,4 +18,11 @@ class PalletRegistryCodecTest {
         assertEquals(true, PalletRegistryCodec.contains("0,0,0;1,2,3;", position));
         assertFalse(PalletRegistryCodec.contains("11,2,3;", position));
     }
+
+    @Test
+    void appendsOnlyMissingCoordinate() {
+        BlockPos position = new BlockPos(1, 2, 3);
+        assertEquals("0,0,0;1,2,3;", PalletRegistryCodec.appendIfAbsent("0,0,0;", position));
+        assertEquals("1,2,3;", PalletRegistryCodec.appendIfAbsent("1,2,3;", position));
+    }
 }

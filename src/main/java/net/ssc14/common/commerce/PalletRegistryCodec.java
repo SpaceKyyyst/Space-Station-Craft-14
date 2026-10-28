@@ -14,4 +14,9 @@ public final class PalletRegistryCodec {
         return encodedRegistry != null
                 && (";" + encodedRegistry).contains(";" + encode(position));
     }
+
+    public static String appendIfAbsent(String encodedRegistry, BlockPos position) {
+        String registry = encodedRegistry == null ? "" : encodedRegistry;
+        return contains(registry, position) ? registry : registry + encode(position);
+    }
 }
