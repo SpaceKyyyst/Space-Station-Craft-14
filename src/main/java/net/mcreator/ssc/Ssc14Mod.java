@@ -76,7 +76,6 @@ import net.ssc14.content.block.gravity.GravityGeneratorUiService;
 import net.ssc14.content.block.gravity.Ssc14GravityBlockEntities;
 import net.ssc14.content.block.debug.StationCodeDebugInteractionService;
 import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
-import net.ssc14.content.block.debug.DebugGravityStateService;
 import net.ssc14.content.block.explosives.C4ChargeInteractionService;
 import net.ssc14.content.block.explosives.Ssc14ExplosiveBlockEntities;
 import net.ssc14.content.block.explosives.NuclearWarheadInteractionService;
@@ -139,7 +138,6 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14MachineBlockEntities::registerCapabilities);
 		Ssc14DebugBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14DebugBlockEntities::registerCapabilities);
-		DebugGravityStateService.install(net.ssc14.content.gravity.StationGravityState::setEnabled);
 		Ssc14GravityBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14GravityBlockEntities::registerCapabilities);
 		Ssc14ExplosiveBlockEntities.REGISTRY.register(modEventBus);

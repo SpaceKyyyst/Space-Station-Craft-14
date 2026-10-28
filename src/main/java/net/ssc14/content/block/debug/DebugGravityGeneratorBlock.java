@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.ssc14.content.gravity.StationGravityState;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -90,7 +91,7 @@ public class DebugGravityGeneratorBlock extends Block implements EntityBlock {
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.tick(state, level, pos, random);
-        DebugGravityStateService.enable();
+        StationGravityState.setEnabled(true);
         level.scheduleTick(pos, this, TICK_INTERVAL);
     }
 
@@ -99,7 +100,7 @@ public class DebugGravityGeneratorBlock extends Block implements EntityBlock {
             ItemStack tool, boolean willHarvest, FluidState fluid) {
         boolean destroyed = super.onDestroyedByPlayer(
                 state, level, pos, player, tool, willHarvest, fluid);
-        DebugGravityStateService.disable();
+        StationGravityState.setEnabled(false);
         return destroyed;
     }
 
