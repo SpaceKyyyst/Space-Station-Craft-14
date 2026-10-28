@@ -884,6 +884,8 @@
   "attribute.ssc_14.race": "Раса",
   "entity.ssc_14.carp": "Карп",
   "item.ssc_14.carp_spawn_egg": "Яйцо призыва карпа",
+  "entity.ssc_14.test_sun_entity": "Тестовое Солнце",
+  "item.ssc_14.test_sun_entity_spawn_egg": "Яйцо призыва тестового солнца",
   "subtitles.mobs_bite": "",
   "subtitles.voice_talk_speak_1": "",
   "subtitles.voice_talk_speak_2": "",

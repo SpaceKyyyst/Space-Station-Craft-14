@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e49c73d7-9bcd-4ae2-a883-18b00e2c34e1" name="Changes" comment="What's Changed&#10;изменил название">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/ssc_14/fx/test_sun.fx.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/ssc_14/fx/test_sun1.fx.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_F:/Git/Space-Station-Craft-14" value="3KhHJjxlWNOYRPg6xoBjAdyVafW" />
+    </persistenceIdMap>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="10338" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Space-Station-Craft-14" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Space-Station-Craft-14" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Space-Station-Craft-14" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Space-Station-Craft-14" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="mod development" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Space-Station-Craft-14" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="mod development/internal" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.018973797444205" />
+      <entry key="MS500" value="1.5406826288306865" />
+      <entry key="S2" value="2.948955070510923" />
+      <entry key="S5" value="4.701405750786908" />
+      <entry key="S10" value="7.339635554136166" />
+      <entry key="S30" value="13.428163065539824" />
+      <entry key="S60" value="17.81797783688596" />
+      <entry key="M2" value="22.020568706577766" />
+      <entry key="M5" value="26.761173180522476" />
+      <entry key="M10" value="29.925397976261532" />
+      <entry key="M15" value="31.479645241215998" />
+      <entry key="M30" value="33.4498166401072" />
+      <entry key="H1" value="34.63975025571472" />
+      <entry key="H2" value="35.29674998339999" />
+      <entry key="H4" value="35.6423462214828" />
+      <entry key="D1" value="35.9395318046625" />
+      <entry key="W1" value="35.99134035209358" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9704642109126528" />
+      <entry key="MS500" value="1.523553365851206" />
+      <entry key="S2" value="2.9389054319765924" />
+      <entry key="S5" value="4.692606946102002" />
+      <entry key="S10" value="7.331321203312828" />
+      <entry key="S30" value="13.421598887317783" />
+      <entry key="S60" value="17.8118703776659" />
+      <entry key="M2" value="22.015748989257247" />
+      <entry key="M5" value="26.75842976749038" />
+      <entry key="M10" value="29.923774030567838" />
+      <entry key="M15" value="31.47848318728123" />
+      <entry key="M30" value="33.44918625652485" />
+      <entry key="H1" value="34.63942035616323" />
+      <entry key="H2" value="35.296580998542055" />
+      <entry key="H4" value="35.64226067095833" />
+      <entry key="D1" value="35.93951739486683" />
+      <entry key="W1" value="35.991338289784984" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="3KhHJjxlWNOYRPg6xoBjAdyVafW" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Space-Station-Craft-14 [:net.neoforged.devlaunch.Main.main()].executor": "Run",
+    "Gradle.Space-Station-Craft-14 [jarJar].executor": "Run",
+    "Gradle.Space-Station-Craft-14 [jar].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "F:/Git/Space-Station-Craft-14/run/ldlib2/assets/ldlib2/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Git\Space-Station-Craft-14\run\ldlib2\assets\ldlib2\resources" />
+      <recent name="F:\Git\Space-Station-Craft-14\run" />
+      <recent name="F:\Git\Space-Station-Craft-14\src\main\resources\assets\ssc_14\ldlib2\resources\global" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Git\Space-Station-Craft-14\run\ldlib2\assets" />
+      <recent name="F:\Git\Space-Station-Craft-14\run\ldlib2\assets\ldlib2" />
+      <recent name="F:\Git\Space-Station-Craft-14\run\ldlib2" />
+      <recent name="F:\Git\Space-Station-Craft-14\src\main\resources\assets\ssc_14\ldlib2\resources\global" />
+      <recent name="F:\Git\Space-Station-Craft-14\src\main\resources\assets\ssc_14\fx" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="net.neoforged.devlaunch.Main" />
+      <module name="Space-Station-Craft-14.main" />
+      <option name="PROGRAM_PARAMETERS" value="@F:\\Git\\Space-Station-Craft-14\\build\\moddev\\clientRunProgramArgs.txt" />
+      <option name="VM_PARAMETERS" value="@F:\\Git\\Space-Station-Craft-14\\build\\moddev\\clientRunVmArgs.txt -Dfml.modFolders=mcreator%%F:\\Git\\Space-Station-Craft-14\\build\\classes\\java\\main;mcreator%%F:\\Git\\Space-Station-Craft-14\\build\\resources\\main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="net.neoforged.devlaunch.Main" />
+      <module name="Space-Station-Craft-14.main" />
+      <option name="PROGRAM_PARAMETERS" value="@F:\\Git\\Space-Station-Craft-14\\build\\moddev\\serverRunProgramArgs.txt" />
+      <option name="VM_PARAMETERS" value="@F:\\Git\\Space-Station-Craft-14\\build\\moddev\\serverRunVmArgs.txt -Dfml.modFolders=mcreator%%F:\\Git\\Space-Station-Craft-14\\build\\classes\\java\\main;mcreator%%F:\\Git\\Space-Station-Craft-14\\build\\resources\\main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Space-Station-Craft-14 [jarJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jarJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Space-Station-Craft-14 [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Space-Station-Craft-14 [jar]" />
+        <item itemvalue="Gradle.Space-Station-Craft-14 [jarJar]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.25134.95" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e49c73d7-9bcd-4ae2-a883-18b00e2c34e1" name="Changes" comment="" />
+      <created>1792002811338</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1792002811338</updated>
+    </task>
+    <task id="LOCAL-00001" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792432834484</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1792432834484</updated>
+    </task>
+    <task id="LOCAL-00002" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792433012418</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1792433012418</updated>
+    </task>
+    <task id="LOCAL-00003" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792433024082</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1792433024082</updated>
+    </task>
+    <task id="LOCAL-00004" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792433217616</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1792433217616</updated>
+    </task>
+    <task id="LOCAL-00005" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792433287193</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1792433287193</updated>
+    </task>
+    <task id="LOCAL-00006" summary="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)">
+      <option name="closed" value="true" />
+      <created>1792433344319</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1792433344319</updated>
+    </task>
+    <task id="LOCAL-00007" summary="What's Changed&#10;изменил название">
+      <option name="closed" value="true" />
+      <created>1792434812403</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1792434812403</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'main' of https://github.com/SpaceKyyyst/Space-Station-Craft-14" />
+    <MESSAGE value="What's Changed&#10;Добавлен прототип сингулярности (Энтити с визуалом)" />
+    <MESSAGE value="What's Changed&#10;изменил название" />
+    <option name="LAST_COMMIT_MESSAGE" value="What's Changed&#10;изменил название" />
+  </component>
+</project>

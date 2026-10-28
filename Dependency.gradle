@@ -4,8 +4,17 @@ repositories {
         url = uri('https://maven.theillusivec4.top/')
         content { includeGroup 'top.theillusivec4.curios' }
     }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
 }
 
 dependencies {
+    // Curios
     implementation 'top.theillusivec4.curios:curios-neoforge:15.0.0-beta.2+26.1.2'
+    //Photon
+    implementation "maven.modrinth:gzevkJbM:4YcLuGpO"
+    //LDLib2
+    implementation "maven.modrinth:B1CBVXHX:lcEdZBU1"
 }
