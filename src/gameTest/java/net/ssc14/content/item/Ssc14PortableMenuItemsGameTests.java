@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.OptionalInt;
 import java.util.UUID;
 import java.util.function.Consumer;
-import net.mcreator.ssc.world.inventory.AccessConfigGUIMenu;
-import net.mcreator.ssc.world.inventory.BackpackGUIMenu;
-import net.mcreator.ssc.world.inventory.EggCartonGUIMenu;
 import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
 import net.mcreator.ssc.procedures.PDAGUIoffPRProcedure;
 import net.minecraft.core.BlockPos;
@@ -28,6 +25,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.ssc14.content.menu.access.AccessConfigItemMenu;
+import net.ssc14.content.menu.food.EggCartonGUIMenu;
+import net.ssc14.content.menu.storage.BackpackGUIMenu;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.common.util.FakePlayer;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
@@ -115,7 +115,7 @@ public final class Ssc14PortableMenuItemsGameTests {
         player.setItemInHand(InteractionHand.MAIN_HAND, configurator);
         Ssc14Items.ACCESS_CONFIG.get().use(
                 helper.getLevel(), player, InteractionHand.MAIN_HAND);
-        helper.assertTrue(player.containerMenu instanceof AccessConfigGUIMenu,
+        helper.assertTrue(player.containerMenu instanceof AccessConfigItemMenu,
                 "access configurator no longer opens its menu");
         player.assertPayload(helper, InteractionHand.MAIN_HAND);
         helper.assertTrue(player.containerMenu.stillValid(player),

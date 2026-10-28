@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.storage.TagValueInput;
 import net.mcreator.ssc.world.inventory.OrderGUIMenu;
-import net.mcreator.ssc.world.inventory.SaleGUIMenu;
+import net.ssc14.content.menu.commerce.SaleGUIMenu;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
