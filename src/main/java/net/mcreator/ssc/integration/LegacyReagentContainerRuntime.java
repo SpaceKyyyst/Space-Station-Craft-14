@@ -1,9 +1,12 @@
 package net.mcreator.ssc.integration;
 
+import java.util.HashMap;
 import java.util.Map;
 import net.mcreator.ssc.ModReagents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
+import net.ssc14.common.chemistry.ReagentColorMixer;
+import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.content.item.reagent.ReagentContainerRuntime;
 
 /** Adapter retained until the chemistry runtime moves into the canonical namespace. */
@@ -35,6 +38,13 @@ public final class LegacyReagentContainerRuntime implements ReagentContainerRunt
 
     @Override
     public int mixedColor(ItemStack stack) {
-        return ReagentColorHelper.getMixedColor(stack);
+        if (!(stack.getItem() instanceof ReagentContainerItem)) {
+            return 0xFFFFFF;
+        }
+        Map<String, Integer> reagents = ModReagents.getReagents(stack);
+        Map<String, Integer> colors = new HashMap<>();
+        reagents.keySet().forEach(id -> ModReagents.getReagent(id)
+                .ifPresent(reagent -> colors.put(id, reagent.getColorRgb())));
+        return ReagentColorMixer.mix(reagents, colors);
     }
 }

@@ -126,9 +126,9 @@ only event subscribers and procedural facades that still own runtime behavior:
 - `LocalChatEventHandler` was moved to `net.mcreator.ssc.integration`; message
   routing, radio prefixes, popup formatting, and server-side audience checks
   remain unchanged pending extraction of a pure chat/radio domain service;
-- `LegacyReagentContainerRuntime` and `ReagentColorHelper` now live in
-  `net.mcreator.ssc.integration`; reagent storage remains a compatibility
-  bridge while color mixing is owned by canonical `ReagentColorMixer`;
+- `LegacyReagentContainerRuntime` now owns the integration bridge in
+  `net.mcreator.ssc.integration`; the redundant `ReagentColorHelper` facade
+  was removed while color mixing remains owned by canonical `ReagentColorMixer`;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
