@@ -255,6 +255,10 @@ verification; until then they remain explicit compatibility inputs.
 Before moving `ModReagents` into the canonical chemistry layer, the migration
 must preserve these observable contracts:
 
+The first extraction step is complete: `ReagentContentsCodec` now owns the
+canonical `ssc_14_reagents` read/write format while `ModReagents` remains the
+runtime compatibility facade.
+
 | Contract | Required characterization |
 | --- | --- |
 | Reagent NBT | Preserve reagent IDs, amounts, and unknown-key round trips. |

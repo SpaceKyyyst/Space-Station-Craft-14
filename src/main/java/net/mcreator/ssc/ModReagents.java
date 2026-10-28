@@ -4,6 +4,7 @@ package net.mcreator.ssc;
 import net.mcreator.ssc.integration.LegacyReagentContainerRuntime;
 
 import net.ssc14.content.item.reagent.ReagentContainerItem;
+import net.ssc14.content.item.reagent.ReagentContentsCodec;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
 import net.ssc14.common.chemistry.ReagentAmounts;
 import net.ssc14.common.chemistry.ReagentTransferPlan;
@@ -538,22 +539,12 @@ public class ModReagents {
         public List<IReactionEffect> getEffects() { return effects; }
     }
 
-    private static final String NBT_KEY_REAGENTS = "ssc_14_reagents";
     private static final int MAX_REACTIONS_PER_ACTION = 1024;
 
     public static Map<String, Integer> getReagents(ItemStack stack) {
         net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
         CompoundTag tag = customData != null ? customData.copyTag() : new CompoundTag();
-        if (!tag.contains(NBT_KEY_REAGENTS)) return Collections.emptyMap();
-        CompoundTag r = tag.getCompound(NBT_KEY_REAGENTS).orElse(new CompoundTag());
-        Map<String, Integer> map = new LinkedHashMap<>();
-        for (String key : r.keySet()) {
-            int amount = r.getInt(key).orElse(0);
-            if (amount > 0 && !key.isBlank()) {
-                map.put(key, amount);
-            }
-        }
-        return Collections.unmodifiableMap(map);
+        return ReagentContentsCodec.read(tag);
     }
 
     public static int getAvailableSpace(ItemStack stack) {
@@ -632,11 +623,10 @@ public class ModReagents {
     }
 
     private static void setReagents(ItemStack stack, Map<String, Integer> amounts) {
-        CompoundTag reagents = new CompoundTag();
-        amounts.forEach(reagents::putInt);
         net.minecraft.world.item.component.CustomData.update(
             net.minecraft.core.component.DataComponents.CUSTOM_DATA, stack,
-            root -> root.put(NBT_KEY_REAGENTS, reagents));
+            root -> root.put(ReagentContentsCodec.NBT_KEY,
+                    ReagentContentsCodec.write(amounts)));
     }
 
     public static class AlcoholSystem {
