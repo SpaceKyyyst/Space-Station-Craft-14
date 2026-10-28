@@ -56,7 +56,7 @@ import net.mcreator.ssc.access.AirlockWireService;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
-import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
+import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
 import net.ssc14.content.menu.construction.RCDGUIMenu;
 import net.ssc14.content.menu.construction.RCDGUIwallfloorMenu;
 import net.ssc14.content.menu.construction.RCDGUIwindowsMenu;

@@ -1,6 +1,4 @@
-package net.mcreator.ssc.client.gui;
-
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+package net.ssc14.client.menu.pda;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -14,19 +12,19 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
-import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.client.menu.MenuButtonClientActions;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
-import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerGUIMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerGUIMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
 	private boolean menuStateUpdateActive = false;
+	private PassengerPdaPresentation presentation;
 	private ImageButton imagebutton_pen_button_active;
 	private ImageButton imagebutton_pda_empty_button_texture;
 	private ImageButton imagebutton_pda_empty_button_texture1;
@@ -52,6 +50,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 		this.y = container.y;
 		this.z = container.z;
 		this.entity = container.entity;
+		this.presentation = PassengerPdaPresentation.read(entity, world);
 	}
 
 	@Override
@@ -62,6 +61,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 
 	@Override
 	public void extractRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+		presentation = PassengerPdaPresentation.read(entity, world);
 		super.extractRenderState(guiGraphics, mouseX, mouseY, partialTicks);
 	}
 
@@ -70,22 +70,22 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 		super.extractBackground(guiGraphics, mouseX, mouseY, partialTicks);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 192, 150, 192, 150);
-		if (PDApenButtonDisplayCondProcedure.execute(entity)) {
+		if (presentation.penPresent()) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, this.leftPos + 152, this.topPos + 11, 0, 0, 11, 11, 11, 11);
 		}
-		if (PDAidButtonDisplayCondProcedure.execute(entity)) {
+		if (presentation.idPresent()) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, this.leftPos + 163, this.topPos + 11, 0, 0, 11, 11, 11, 11);
 		}
-		if (PDAlightButtonDisplayCondProcedure.execute(entity)) {
+		if (presentation.flashlight()) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, this.leftPos + 141, this.topPos + 11, 0, 0, 11, 11, 11, 11);
 		}
-		if (PDA_main_TAB_condProcedure.execute(entity)) {
+		if (presentation.mainTab()) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_4, this.leftPos + 8, this.topPos + 11, 0, 0, 14, 12, 14, 12);
 		}
-		if (PDA2TABcondProcedure.execute(entity)) {
+		if (presentation.secondTab()) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_5, this.leftPos + 21, this.topPos + 11, 0, 0, 15, 12, 15, 12);
 		}
-		if (PDA3TABcondProcedure.execute(entity)) {
+		if (presentation.thirdTab()) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_6, this.leftPos + 35, this.topPos + 11, 0, 0, 15, 12, 15, 12);
 		}
 	}
@@ -102,34 +102,14 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 
 	@Override
 	protected void extractLabels(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY) {
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextidProcedure.execute(), 10, 26, -3026479, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextStationNameProcedure.execute(), 10, 35, -3223858, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextDangerLevelProcedure.execute(), 10, 44, -3223858, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextid2Procedure.execute(entity), 30, 26, -256, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextStationName2Procedure.execute(world), 62, 35, -1, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextDangerLevel2Procedure.execute(world), 100, 44, -1, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextDangerLevel2GProcedure.execute(world), 100, 44, -14585048, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextDangerLevel2YProcedure.execute(world), 100, 44, -5668859, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextDangerLevel2BProcedure.execute(world), 100, 44, -15907190, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextDangerLevel2RProcedure.execute(world), 100, 44, -7272183, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextDangerLevel2PProcedure.execute(world), 100, 44, -6477674, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextDangerLevel2GamProcedure.execute(world), 100, 44, -5157766, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextDangerLevel2DProcedure.execute(world), 100, 44, -10878968, false);
-		if (PDA_main_TAB_condProcedure.execute(entity))
-			guiGraphics.text(this.font, PDAtextDangerLevel2EProcedure.execute(world), 100, 44, -12316287, false);
+		if (presentation.mainTab()) {
+			guiGraphics.text(this.font, "ID:  ", 10, 26, -3026479, false);
+			guiGraphics.text(this.font, Component.translatable("translation.key.pda_text_stationname"), 10, 35, -3223858, false);
+			guiGraphics.text(this.font, Component.translatable("translation.key.pda_text_danger_level"), 10, 44, -3223858, false);
+			guiGraphics.text(this.font, presentation.identity(), 30, 26, -256, false);
+			guiGraphics.text(this.font, presentation.stationName(), 62, 35, -1, false);
+			guiGraphics.text(this.font, presentation.alertText(), 100, 44, presentation.alertColor(), false);
+		}
 	}
 
 	@Override
@@ -140,8 +120,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 					int x = PDApassangerGUIScreen.this.x;
 					int y = PDApassangerGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(0, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(0, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.pdaPassenger(0, x, y, z));
 					}
 				}) {
 			@Override
@@ -155,8 +134,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 					int x = PDApassangerGUIScreen.this.x;
 					int y = PDApassangerGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(1, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(1, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.pdaPassenger(1, x, y, z));
 					}
 				}) {
 			@Override
@@ -170,8 +148,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 					int x = PDApassangerGUIScreen.this.x;
 					int y = PDApassangerGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(2, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(2, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.pdaPassenger(2, x, y, z));
 					}
 				}) {
 			@Override
@@ -184,8 +161,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 			int x = PDApassangerGUIScreen.this.x;
 			int y = PDApassangerGUIScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(3, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(3, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.pdaPassenger(3, x, y, z));
 			}
 		}) {
 			@Override
@@ -198,8 +174,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 			int x = PDApassangerGUIScreen.this.x;
 			int y = PDApassangerGUIScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(4, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(4, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.pdaPassenger(4, x, y, z));
 			}
 		}) {
 			@Override
@@ -212,8 +187,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 			int x = PDApassangerGUIScreen.this.x;
 			int y = PDApassangerGUIScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(5, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(5, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.pdaPassenger(5, x, y, z));
 			}
 		}) {
 			@Override
@@ -229,7 +203,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				int x = PDApassangerGUIScreen.this.x;
 				int y = PDApassangerGUIScreen.this.y;
-				if (PDA2TABcondProcedure.execute(entity))
+				if (presentation.secondTab())
 					guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
@@ -241,7 +215,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				int x = PDApassangerGUIScreen.this.x;
 				int y = PDApassangerGUIScreen.this.y;
-				if (PDA2TABcondProcedure.execute(entity))
+				if (presentation.secondTab())
 					guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
@@ -253,7 +227,7 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 				int x = PDApassangerGUIScreen.this.x;
 				int y = PDApassangerGUIScreen.this.y;
-				if (PDA2TABcondProcedure.execute(entity))
+				if (presentation.secondTab())
 					guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
 		};
