@@ -1,6 +1,6 @@
 package net.ssc14.content.block.airlock;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -35,7 +35,7 @@ public final class AirlockDisassemblyService {
         if (!level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL)) return true;
         var top = pos.above();
         var topState = level.getBlockState(top);
-        if (topState.is(Ssc14ModBlocks.AIRLOCK_UP_PLUG.get()) || topState.is(Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get()))
+        if (topState.is(Ssc14Blocks.AIRLOCK_UP_PLUG.get()) || topState.is(Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.get()))
             level.setBlock(top, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
         Block.popResource(level, pos, drop);
         return true;
