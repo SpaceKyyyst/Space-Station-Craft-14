@@ -184,6 +184,11 @@ bypass, unrestricted-door semantics и bitmask permissions. Старый
 `AirlockAccessPolicy` оставлен compatibility facade для generated open/close
 процедур.
 
+Оставшиеся canonical inputs из `net.mcreator.ssc.init` — registry aliases
+(`Ssc14ModItems`, `Ssc14ModBlocks`, `Ssc14ModAttributes`). Их замена допустима
+только через ID-preserving registry migration: массовая текстовая замена создаёт
+риск несовместимости сохранений и дублирования регистраций.
+
 Синхронизация wire/lamp state вынесена в `AirlockLampStateService`; сохранены
 все persisted cable flags, power restoration и bolt-cut side effects. Старый
 `CPlogLampPrProcedure` оставлен compatibility facade.
@@ -282,6 +287,11 @@ Door access evaluation now lives in `AirlockAccessPolicyService`; emergency
 bypass, unrestricted-door semantics, and bitmask permissions are preserved. The
 old `AirlockAccessPolicy` remains a compatibility facade for generated
 open/close procedures.
+
+The remaining canonical inputs from `net.mcreator.ssc.init` are registry aliases
+(`Ssc14ModItems`, `Ssc14ModBlocks`, `Ssc14ModAttributes`). They must be replaced
+only through an ID-preserving registry migration; broad textual replacement
+risks save incompatibility and duplicate registrations.
 
 Wire/lamp state synchronization now lives in `AirlockLampStateService`; all
 persisted cable flags, power restoration, and bolt-cut side effects are
