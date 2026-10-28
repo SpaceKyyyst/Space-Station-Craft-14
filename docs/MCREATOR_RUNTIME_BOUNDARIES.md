@@ -129,6 +129,9 @@ only event subscribers and procedural facades that still own runtime behavior:
 - `LegacyReagentContainerRuntime` now owns the integration bridge in
   `net.mcreator.ssc.integration`; the redundant `ReagentColorHelper` facade
   was removed while color mixing remains owned by canonical `ReagentColorMixer`;
+- canonical `ReagentContainerStorage` now owns codec-backed container
+  reads/additions/removals; the legacy bridge retains only drinking and
+  catalog/effect integration;
 - `LegacyReactionRuntime` is the compatibility entry point for server-side
   reaction execution; generated procedures and network handlers no longer call
   `ModReagents.processReactions` directly;
