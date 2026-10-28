@@ -62,6 +62,7 @@ import net.ssc14.content.block.airlock.AirlockDoorIntegrationService;
 import net.ssc14.content.block.airlock.Ssc14AirlockBlockEntities;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.OrderPalletRegistryService;
+import net.ssc14.common.commerce.PalletRegistryCodec;
 import net.ssc14.content.block.commerce.CommerceConsoleIntegrationService;
 import net.ssc14.content.block.control.NetworkButtonInteractionService;
 import net.ssc14.content.block.control.Ssc14ControlBlockEntities;
@@ -171,7 +172,7 @@ public class Ssc14Mod {
 		});
 		OrderPalletRegistryService.install((level, pos) -> {
 			var variables = Ssc14ModVariables.WorldVariables.get(level);
-			String key = pos.getX() + "," + pos.getY() + "," + pos.getZ() + ";";
+			String key = PalletRegistryCodec.encode(pos);
 			if (!variables.PalletRegistry.contains(key)) {
 				variables.PalletRegistry += key;
 				variables.setDirty();
