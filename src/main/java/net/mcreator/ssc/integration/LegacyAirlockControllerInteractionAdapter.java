@@ -2,7 +2,6 @@ package net.mcreator.ssc.integration;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.procedures.BaseAirlockD1PutProcedure;
 import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
@@ -81,7 +80,7 @@ public final class LegacyAirlockControllerInteractionAdapter
             return;
         }
         blockEntity.setChanged();
-        BaseAirlockD1PutProcedure.execute(
+        net.ssc14.content.block.airlock.AirlockStateInitializer.execute(
                 level, pos.getX(), pos.getY(), pos.getZ(), state);
         BaseAirlockOpenCloseProcedure.refreshAutoClose(level, pos);
         BlockState after = level.getBlockState(pos);
