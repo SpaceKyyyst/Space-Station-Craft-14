@@ -149,6 +149,9 @@ manual opening, tile installation и deconstruction; legacy adapters остаю�
 Обработка физических redstone-сигналов вынесена в `AirlockSignalHandler`; старый
 `AirlockSignals` оставлен фасадом, сохраняя ключ `HOLD` и legacy callers.
 
+Server-side AI control шлюза реализован в `AirlockAiControlService`; старый
+`AirlockAiControl` сохраняет типы `Authority`/`Action` и делегирует вызов.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -200,6 +203,9 @@ Persistent airlock logging is implemented by `AirlockEventLogService`; the old
 
 Physical redstone signal handling now lives in `AirlockSignalHandler`; the old
 `AirlockSignals` remains a facade preserving the `HOLD` key and legacy callers.
+
+Server-side airlock AI control is implemented by `AirlockAiControlService`; the
+old `AirlockAiControl` preserves the `Authority`/`Action` types and delegates.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
