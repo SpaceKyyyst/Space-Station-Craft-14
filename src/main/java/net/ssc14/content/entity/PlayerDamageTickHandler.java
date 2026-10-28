@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.entity;
 
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -7,10 +7,10 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.CompoundTag;
 
-import net.mcreator.ssc.init.Ssc14ModAttributes;
+import net.ssc14.content.attribute.Ssc14Attributes;
 
 @EventBusSubscriber(modid = "ssc14")
-public class TICBodiesRottingProcedure {
+public final class PlayerDamageTickHandler {
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
@@ -71,7 +71,7 @@ public class TICBodiesRottingProcedure {
     }
 
     private static void updateHealthUI(Player player, double totalDamage) {
-        var attr = player.getAttribute(Ssc14ModAttributes.HEALTH_U_IATTRIBUTE);
+        var attr = player.getAttribute(Ssc14Attributes.HEALTH_U_IATTRIBUTE);
         if (attr != null) {
             int uiState = totalDamage <= 12 ? 0 : totalDamage <= 37 ? 1 : totalDamage <= 62 ? 2 : 
                           totalDamage <= 87 ? 3 : totalDamage <= 100 ? 4 : totalDamage <= 200 ? 5 : 6;
