@@ -136,9 +136,9 @@ Each remaining boundary requires:
 
 Deleting a subscriber solely because `rg` finds no direct calls is a regression risk.
 
-## RU — Construction adapter boundary
+## RU — Construction adapter boundary`LegacyConstructionItemInteractionAdapter` пока остаётся в legacy-границе: он напрямую вызывает steel/plasteel/cable procedures. Перенос возможен только после выделения канонической логики этих процедур.
 
 `LegacyConstructionItemInteractionAdapter` теперь находится в
-`net.ssc14.content.item.construction`. Перенос изменяет только расположение
+`net.ssc14.integration.construction`. Перенос изменяет только расположение
 границы: steel/plasteel/cable procedures и их аргументы сохранены для
 поэтапной миграции без изменения поведения предметов.
