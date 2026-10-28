@@ -5,7 +5,9 @@
 После текущих переносов в `src/main/java/net/mcreator/ssc/procedures` остаются только
 event subscribers и процедурные фасады, которые ещё имеют runtime-владельца:
 
-- `ToolsBlockClickProcedure` — общий right-click маршрутизатор инструментов шлюза;
+- `AirlockToolInteractionHandler` — canonical right-click маршрутизатор
+  инструментов шлюза; legacy access/deconstruction adapters остаются явными
+  compatibility inputs;
 - client GUI key handling перенесён в `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` удалён, а key mapping оставлен compatibility alias;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
@@ -30,7 +32,9 @@ event subscribers и процедурные фасады, которые ещё 
 After the current migrations, `src/main/java/net/mcreator/ssc/procedures` contains
 only event subscribers and procedural facades that still own runtime behavior:
 
-- `ToolsBlockClickProcedure` — shared right-click routing for airlock tools;
+- `AirlockToolInteractionHandler` — canonical right-click routing for airlock
+  tools; legacy access/deconstruction adapters remain explicit compatibility
+  inputs;
 - client GUI key handling was moved to `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` was removed and the key mapping remains a compatibility alias;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes

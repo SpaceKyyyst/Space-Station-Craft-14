@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.block.airlock;
 
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -15,8 +15,13 @@ import net.minecraft.core.BlockPos;
 
 import javax.annotation.Nullable;
 
+import net.mcreator.ssc.procedures.UniversalDeconstructionProcedureProcedure;
+
 @EventBusSubscriber
-public class ToolsBlockClickProcedure {
+public final class AirlockToolInteractionHandler {
+
+	private AirlockToolInteractionHandler() {
+	}
 	@SubscribeEvent
 	public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
 		if (event.getHand() != InteractionHand.MAIN_HAND)

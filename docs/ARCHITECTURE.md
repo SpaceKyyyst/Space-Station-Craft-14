@@ -138,6 +138,11 @@ Client slot interaction работает через `InteractionKeyMappings` и
 humanoid-моделей и race-атрибутов как явные legacy-входы; эти registry остаются
 отдельной границей миграции и не дублируются молча.
 
+Маршрутизация right-click инструментов шлюза вынесена в
+`AirlockToolInteractionHandler`. Он сохраняет порядок проверки access, welding,
+manual opening, tile installation и deconstruction; legacy adapters остаются
+явными входами до отдельной миграции их контрактов.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -178,6 +183,11 @@ Player rendering now registers through canonical `HumanModelRenderHandler` in th
 client layer. The handler preserves the existing render-state, humanoid-model and
 race-attribute registries as explicit legacy inputs; those registries remain a
 separate migration boundary and are not silently duplicated.
+
+Airlock tool right-click routing now lives in `AirlockToolInteractionHandler`.
+It preserves the access, welding, manual-opening, tile-installation, and
+deconstruction check order; legacy adapters remain explicit inputs until their
+contracts are migrated separately.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
