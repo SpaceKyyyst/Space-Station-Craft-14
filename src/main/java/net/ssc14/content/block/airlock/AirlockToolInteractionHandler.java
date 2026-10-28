@@ -7,6 +7,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.bus.api.Event;
 
 import net.minecraft.world.level.LevelAccessor;
+import net.ssc14.content.item.Ssc14Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.InteractionHand;
@@ -61,7 +62,7 @@ public final class AirlockToolInteractionHandler {
 
         // Tool work must not also trigger the door's ordinary right-click opening.
         if (entity instanceof net.minecraft.world.entity.player.Player player
-                && player.getMainHandItem().is(net.mcreator.ssc.init.Ssc14ModItems.SCREWDRIVER.get())
+                && player.getMainHandItem().is(Ssc14Items.SCREWDRIVER.get())
                 && blockstate.getBlock().getStateDefinition().getProperty("arl_variat") != null) {
             if (player.isAlive() && !player.isSpectator() && player.level().mayInteract(player, pos))
                 AirlockDeconstructionService.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate, entity);
