@@ -43,6 +43,8 @@ event subscribers и процедурные фасады, которые ещё 
   construction registry remains an explicit legacy input;
 - client GUI key handling перенесён в `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` удалён, а key mapping оставлен compatibility alias;
+- `ReagentTransferHandler` перенесён в canonical client/chemistry слой; packet
+  `ProcessReactionsMessage` и действие `hotbar_transfer` сохранены;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
@@ -103,6 +105,8 @@ only event subscribers and procedural facades that still own runtime behavior:
   construction registry remains an explicit legacy input;
 - client GUI key handling was moved to `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` was removed and the key mapping remains a compatibility alias;
+- `ReagentTransferHandler` was moved to the canonical client/chemistry layer;
+  `ProcessReactionsMessage` and the `hotbar_transfer` action remain unchanged;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
