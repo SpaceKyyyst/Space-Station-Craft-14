@@ -34,7 +34,8 @@ public final class NetworkConfiguratorService {
 
     public static void use(LevelAccessor level, BlockPos pos,
             Entity entity, ItemStack stack) {
-        if (entity == null || !level.getBlockState(pos).is(BlockTags.create(
+        if (level == null || pos == null || entity == null || stack == null
+                || !level.getBlockState(pos).is(BlockTags.create(
                 Identifier.fromNamespaceAndPath("ssc14", "connectable")))) {
             return;
         }
