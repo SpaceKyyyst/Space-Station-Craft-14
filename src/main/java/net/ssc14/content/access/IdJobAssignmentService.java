@@ -72,8 +72,7 @@ public final class IdJobAssignmentService {
 
     private static boolean hasAllAccess(ItemStack stack) {
         var tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-        return IdJobCatalog.accessKeys().stream()
-                .allMatch(key -> tag.getBooleanOr(key, false));
+        return IdAccessRules.hasAllAccess(tag);
     }
 
     private static ItemStack stack(SlotMenuStateAccess menu, int slotId) {

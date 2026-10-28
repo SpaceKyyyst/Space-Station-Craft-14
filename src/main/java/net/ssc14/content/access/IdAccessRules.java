@@ -12,4 +12,8 @@ public final class IdAccessRules {
                 .filter(key -> cardData.getBoolean(key).orElse(false))
                 .toList();
     }
+
+    public static boolean hasAllAccess(CompoundTag cardData) {
+        return grantedAccessKeys(cardData).size() == IdJobCatalog.accessKeys().size();
+    }
 }
