@@ -12,6 +12,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.ssc14.common.airlock.AirlockAccessPolicy;
 
 import java.util.Random;
 import java.util.Collections;
@@ -68,6 +70,9 @@ public class BaseAirlockD1PutProcedure {
 
 		// Проверяем тип установленного блока через реестр и выдаем нужные доступы
 		Block block = state.getBlock();
+		String policyAccess = AirlockAccessPolicy.accessKeyFor(
+				BuiltInRegistries.BLOCK.getKey(block).getPath());
+		if (policyAccess != null) nbt.putBoolean(policyAccess, true);
 
 		if (block == Ssc14ModBlocks.TECH_AIRLOCK_D_1.get()) {
 			nbt.putBoolean("Technical", true);
