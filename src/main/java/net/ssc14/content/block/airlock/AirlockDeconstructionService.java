@@ -2,7 +2,6 @@
 package net.ssc14.content.block.airlock;
 
 import net.ssc14.content.particle.Ssc14ParticleTypes;
-import net.mcreator.ssc.procedures.SS14ConstructionRegistryProcedure;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
@@ -39,7 +38,7 @@ public final class AirlockDeconstructionService {
         BlockPos pos = BlockPos.containing(x, y, z);
         double posHash = entity.getX() + entity.getY() + entity.getZ();
 
-        SS14ConstructionRegistryProcedure.ConstructionStage stage = SS14ConstructionRegistryProcedure.findStage(blockstate, tool);
+        AirlockConstructionRegistry.ConstructionStage stage = AirlockConstructionRegistry.findStage(blockstate, tool);
         if (stage == null) return;
 
         Direction hitSide = entity.level().clip(new ClipContext(
@@ -101,7 +100,7 @@ public final class AirlockDeconstructionService {
                 }
 
                 if (stage.finalAction() != null) {
-                    stage.finalAction().accept(new SS14ConstructionRegistryProcedure.RunContext(sLevel, pos, resultState, entity));
+                    stage.finalAction().accept(new AirlockConstructionRegistry.RunContext(sLevel, pos, resultState, entity));
                 }
 
                 BlockState finalState = sLevel.getBlockState(pos);
