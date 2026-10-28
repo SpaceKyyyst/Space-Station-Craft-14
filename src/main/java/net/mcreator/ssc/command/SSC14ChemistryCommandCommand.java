@@ -3,7 +3,7 @@ package net.mcreator.ssc.command;
 
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.common.util.FakePlayerFactory;
-import net.mcreator.ssc.procedures.FillReagentPRProcedure;
+import net.mcreator.ssc.integration.LegacyReagentFillCommandAdapter;
 import net.mcreator.ssc.integration.LegacyReagentCatalog;
 
 import net.minecraft.world.level.Level;
@@ -43,8 +43,7 @@ public class SSC14ChemistryCommandCommand {
 											if (entity != null)
 												direction = entity.getDirection();
 
-											FillReagentPRProcedure.execute(arguments);
-											return 0;
+											return LegacyReagentFillCommandAdapter.execute(arguments);
 										})
 								)
 						)
