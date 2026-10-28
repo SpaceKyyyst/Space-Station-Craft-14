@@ -1,6 +1,7 @@
 
-package net.mcreator.ssc;
+package net.mcreator.ssc.integration;
 
+import net.mcreator.ssc.ModReagents;
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.minecraft.world.item.ItemStack;
 import java.util.HashMap;
