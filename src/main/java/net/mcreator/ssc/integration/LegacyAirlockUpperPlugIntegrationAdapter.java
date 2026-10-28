@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.ssc14.content.block.airlock.AirlockUpperPlugIntegrationService;
+import net.ssc14.content.airlock.AirlockUpperPlugDestroyService;
 
 /** Bridges canonical upper airlock plugs to historical procedures. */
 public final class LegacyAirlockUpperPlugIntegrationAdapter
@@ -14,7 +15,7 @@ public final class LegacyAirlockUpperPlugIntegrationAdapter
     }
 
     @Override public void destroy(Level level, BlockPos pos) {
-        net.mcreator.ssc.procedures.BaseAirlock_U_D_autoDESTROYProcedure.execute(
+        AirlockUpperPlugDestroyService.execute(
                 level, pos.getX(), pos.getY(), pos.getZ());
     }
 
