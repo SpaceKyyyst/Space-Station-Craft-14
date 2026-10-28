@@ -34,7 +34,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
 import net.ssc14.client.Ssc14RenderStateModifiers;
-import net.mcreator.ssc.init.Ssc14ModHumanoidModels;
+import net.ssc14.client.Ssc14HumanoidModels;
 import net.ssc14.content.attribute.Ssc14Attributes;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -75,9 +75,9 @@ public final class HumanModelRenderHandler {
 		}
 
 		PlayerModel customModel = switch (raceId) {
-			case 1 -> Ssc14ModHumanoidModels.UNATH_MODEL;
-			case 2 -> Ssc14ModHumanoidModels.FELINID_MODEL;
-			default -> Ssc14ModHumanoidModels.HUMAN_MODEL;
+			case 1 -> Ssc14HumanoidModels.UNATH_MODEL;
+			case 2 -> Ssc14HumanoidModels.FELINID_MODEL;
+			default -> Ssc14HumanoidModels.HUMAN_MODEL;
 		};
 		
 		Identifier texture = switch (raceId) {
@@ -222,9 +222,9 @@ public final class HumanModelRenderHandler {
 		}
 
 		PlayerModel activeCustomModel = switch (raceId) {
-			case 1 -> Ssc14ModHumanoidModels.UNATH_MODEL;
-			case 2 -> Ssc14ModHumanoidModels.FELINID_MODEL;
-			default -> Ssc14ModHumanoidModels.HUMAN_MODEL;
+			case 1 -> Ssc14HumanoidModels.UNATH_MODEL;
+			case 2 -> Ssc14HumanoidModels.FELINID_MODEL;
+			default -> Ssc14HumanoidModels.HUMAN_MODEL;
 		};
 		
 		Identifier texture = switch (raceId) {

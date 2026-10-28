@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-@EventBusSubscriber(Dist.CLIENT)
+@Deprecated(forRemoval = true)
 public class Ssc14ModHumanoidModels {
 	public static PlayerModel HUMAN_MODEL;
 	public static PlayerModel UNATH_MODEL;
