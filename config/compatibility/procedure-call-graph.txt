@@ -1,5 +1,2 @@
 # Direct execute() calls between legacy procedure classes. Keep entries sorted.
-CPlogLampPrProcedure -> BaseAirlockD1PutProcedure
 ID_Code_CHECKProcedure -> IDCode0CellprProcedure
-SS14ConstructionRegistryProcedure -> BaseAirlockD1PutProcedure
-ToolsBlockClickProcedure -> UniversalDeconstructionProcedureProcedure
