@@ -99,10 +99,18 @@ jobs:
           tag="ssc_14-${version}-build.${GITHUB_RUN_NUMBER}-${GITHUB_SHA:0:12}"
           jar=$(find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' | head -n1)
           test -n "$jar"
+          previous_tag=$(git tag --list 'ssc_14-*' --sort=-version:refname | head -n1 || true)
+          if [ -n "$previous_tag" ]; then
+            range="${previous_tag}..${GITHUB_SHA}"
+          else
+            range="HEAD^..${GITHUB_SHA}"
+          fi
+          git log --pretty='- %s' "$range" > release-notes.txt
+          test -s release-notes.txt || printf '%s\n' "- Version ${version}" > release-notes.txt
           git tag "$tag" "$GITHUB_SHA"
           git push origin "$tag"
-          notes=$(git log --pretty='- %s' "$(git describe --tags --match='ssc_14-*' --abbrev=0 2>/dev/null || echo HEAD^)..$GITHUB_SHA" | head -n 50)
-          gh release create "$tag" "$jar" --title "SSC14 $version" --notes "## Changes\n${notes:-- Version $version}"
+          notes=$(head -n 100 release-notes.txt)
+          gh release create "$tag" "$jar" --title "SSC14 $version" --notes "## Changes\n${notes}"
       - name: Notify Discord
         if: steps.version.outputs.changed == 'true' && steps.duplicate.outputs.duplicate != 'true'
         env:
@@ -119,10 +127,13 @@ jobs:
           fi
           jar=$(find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' | head -n1)
           url="https://github.com/${REPOSITORY}/releases/tag/ssc_14-${VERSION}-build.${RUN_NUMBER}-${SHA:0:12}"
-          payload=$(python - "$VERSION" "$RUN_NUMBER" "$url" <<'PY'
+          notes=$(head -n 100 release-notes.txt 2>/dev/null || printf '%s\n' "- Version ${VERSION}")
+          payload=$(python - "$VERSION" "$RUN_NUMBER" "$url" "$notes" <<'PY'
           import json, sys
-          version, build, url = sys.argv[1:]
-          print(json.dumps({"flags": 32768, "username": "SSC14 • Система оповещения", "allowed_mentions": {"parse": []}, "components": [{"type": 10, "content": "||@Ждун обновлений||"}, {"type": 17, "components": [{"type": 10, "content": f"# 🚀 SSC14 | Release {version}\\n**Сборка:** `{build}` • **Статус:** 🟢 RELEASE"}, {"type": 14, "spacing": 2, "divider": True}, {"type": 9, "components": [{"type": 10, "content": "### 📋 Изменения\\n\\nНовая версия опубликована."}], "accessory": {"type": 2, "style": 5, "label": "GitHub", "url": url, "emoji": {"name": "⭐"}}}, {"type": 14, "spacing": 1, "divider": True}, {"type": 10, "content": "-# Space Station Craft 14 • GitHub Release Notifications"}]}]}))
+          version, build, url, notes = sys.argv[1:]
+          normalized = version.lower()
+          status = "🟡 ALPHA" if "alpha" in normalized else "🔵 BETA" if "beta" in normalized else "🟣 RC" if "rc" in normalized else "🟢 RELEASE"
+          print(json.dumps({"flags": 32768, "username": "SSC14 • Система оповещения", "allowed_mentions": {"parse": []}, "components": [{"type": 10, "content": "||@Ждун обновлений||"}, {"type": 17, "components": [{"type": 10, "content": f"# 🚀 SSC14 | Release {version}\\n**Сборка:** `{build}` • **Статус:** {status}"}, {"type": 14, "spacing": 2, "divider": True}, {"type": 9, "components": [{"type": 10, "content": f"### 📋 Изменения\\n\\n{notes}"}], "accessory": {"type": 2, "style": 5, "label": "GitHub", "url": url, "emoji": {"name": "⭐"}}}, {"type": 14, "spacing": 1, "divider": True}, {"type": 10, "content": "-# Space Station Craft 14 • GitHub Release Notifications"}]}]}))
           PY
           )
           curl --fail-with-body -X POST "$DISCORD_RELEASE_WEBHOOK" -F "payload_json=$payload" -F "files[0]=@$jar"
