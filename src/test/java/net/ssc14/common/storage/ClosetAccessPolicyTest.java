@@ -23,4 +23,10 @@ class ClosetAccessPolicyTest {
         assertTrue(ClosetAccessPolicy.hasAccess(player, required));
         assertTrue(ClosetAccessPolicy.hasAccess(new CompoundTag(), new CompoundTag()));
     }
+
+    @Test
+    void treatsMissingSnapshotsAsUnrestricted() {
+        assertTrue(ClosetAccessPolicy.hasAccess(null, null));
+        assertTrue(ClosetAccessPolicy.hasAccess(null, new CompoundTag()));
+    }
 }
