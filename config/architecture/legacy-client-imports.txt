@@ -11,7 +11,6 @@ minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModRenderStateModifier
 minecraft-client src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java
 minecraft-client src/main/java/net/mcreator/ssc/procedures/Interaction_PRProcedure.java
 minecraft-client src/main/java/net/mcreator/ssc/procedures/SkyRenderProcedure.java
-minecraft-client src/main/java/net/ssc14/client/movement/SpaceInputBlockerHandler.java
 neoforge-client src/main/java/net/mcreator/ssc/ReagentTransferHandler.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModEntityRenderers.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModHumanoidModels.java
