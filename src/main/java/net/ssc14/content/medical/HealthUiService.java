@@ -28,7 +28,11 @@ public final class HealthUiService {
         if (entity == null) {
             return 0.0;
         }
-        double loopTimer = (entity.level().getGameTime() * 2.8) % 113.0;
+        return animationFrame(entity.level().getGameTime());
+    }
+
+    public static double animationFrame(long gameTime) {
+        double loopTimer = (gameTime * 2.8) % 113.0;
         return Math.round(loopTimer / 4.0);
     }
 }
