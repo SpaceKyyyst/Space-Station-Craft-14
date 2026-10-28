@@ -37,7 +37,6 @@ import net.mcreator.ssc.integration.LegacyNetworkButtonIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyNetworkConfiguratorMenuAdapter;
 import net.mcreator.ssc.integration.LegacyRsuInteractionAdapter;
 import net.mcreator.ssc.integration.LegacyShuttersIntegrationAdapter;
-import net.mcreator.ssc.integration.LegacyAirlockUpperPlugIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockControllerInteractionAdapter;
 import net.ssc14.content.gravity.ui.GravityGeneratorWindow;
@@ -349,8 +348,8 @@ public class Ssc14Mod {
 		NetworkConfiguratorService.install(new LegacyNetworkConfiguratorMenuAdapter());
 		RsuInteractionService.install(new LegacyRsuInteractionAdapter());
 		ShuttersIntegrationService.install(new LegacyShuttersIntegrationAdapter());
-		AirlockUpperPlugIntegrationService.install(
-				new LegacyAirlockUpperPlugIntegrationAdapter());
+		AirlockUpperPlugIntegrationService.installUseHandler(
+				net.ssc14.content.airlock.AirlockUpperPlugInteractionService::execute);
 		AirlockDoorIntegrationService.install(new LegacyAirlockDoorIntegrationAdapter());
 		AirlockControllerService.install(new LegacyAirlockControllerInteractionAdapter());
 		ConstructionItemInteractionService.install(
