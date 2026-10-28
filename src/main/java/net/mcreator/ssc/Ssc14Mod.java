@@ -33,7 +33,6 @@ import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.mcreator.ssc.integration.LegacyCommerceConsoleIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyIdConsoleIntegrationAdapter;
-import net.mcreator.ssc.integration.LegacyNetworkButtonIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyNetworkConfiguratorMenuAdapter;
 import net.mcreator.ssc.integration.LegacyRsuInteractionAdapter;
 import net.mcreator.ssc.integration.LegacyShuttersIntegrationAdapter;
@@ -340,8 +339,6 @@ public class Ssc14Mod {
 		CommerceConsoleIntegrationService.install(
 					new LegacyCommerceConsoleIntegrationAdapter());
 		IdConsoleIntegrationService.install(new LegacyIdConsoleIntegrationAdapter());
-		NetworkButtonInteractionService.install(
-				new LegacyNetworkButtonIntegrationAdapter());
 		NetworkConfiguratorService.install(new LegacyNetworkConfiguratorMenuAdapter());
 		RsuInteractionService.install(new LegacyRsuInteractionAdapter());
 		ShuttersIntegrationService.install(new LegacyShuttersIntegrationAdapter());
