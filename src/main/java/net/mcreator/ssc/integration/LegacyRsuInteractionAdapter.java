@@ -1,6 +1,5 @@
 package net.mcreator.ssc.integration;
 
-import net.mcreator.ssc.procedures.RSU_useOnBlock_Procedure;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -12,6 +11,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.ssc14.content.item.tool.RsuInteractionService;
 import net.ssc14.content.item.tool.RsuDeconstructionService;
+import net.ssc14.content.item.tool.RsuConstructionService;
 import net.mcreator.ssc.init.Ssc14ModAttributes;
 
 /** Connects the canonical RSU item to the generated runtime during migration. */
@@ -36,8 +36,11 @@ public final class LegacyRsuInteractionAdapter
                 Ssc14ModAttributes.PROGRESS_BAR_ATRB)) {
             return;
         }
-        RSU_useOnBlock_Procedure.execute(context.getLevel(), pos.getX(), pos.getY(),
-                pos.getZ(), context.getPlayer(), stack);
+        if (mode >= 2 && mode <= 10 && context.getPlayer() != null
+                && RsuConstructionService.start(context.getLevel(), pos, context.getClickedFace(),
+                context.getPlayer(), stack, net.mcreator.ssc.init.Ssc14ModItems.RSU.get(), (int) mode)) {
+            return;
+        }
     }
 
     @Override
