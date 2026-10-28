@@ -31,12 +31,7 @@ import net.mcreator.ssc.procedures.RCDGUIwallButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwallfloorModeButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwindowButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwindowsModeButtonProcedure;
-import net.mcreator.ssc.procedures.VendAutGUIButton1Procedure;
-import net.mcreator.ssc.procedures.VendAutGUIButton2Procedure;
-import net.mcreator.ssc.procedures.VendAutGUIButton3Procedure;
-import net.mcreator.ssc.procedures.VendAutGUIButton4Procedure;
-import net.mcreator.ssc.procedures.VendAutGUIButton5Procedure;
-import net.mcreator.ssc.procedures.VendAutGUIButton6Procedure;
+import net.ssc14.content.commerce.VendingMachineRuntimeService;
 import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.menu.food.MicrowaveButtonIds;
 import net.ssc14.content.menu.food.MicrowaveControlService;
@@ -111,15 +106,8 @@ public final class LegacyMenuButtonRegistration {
     private static void handleVending(Player player, MenuButtonPayload message) {
         if (!(player.containerMenu instanceof VendingAut1GUIMenu menu)
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
-        switch (message.buttonId()) {
-            case 0 -> VendAutGUIButton1Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 1 -> VendAutGUIButton2Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 2 -> VendAutGUIButton3Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 3 -> VendAutGUIButton4Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 4 -> VendAutGUIButton5Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 5 -> VendAutGUIButton6Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            default -> { }
-        }
+        VendingMachineRuntimeService.vend(player.level(),
+                new BlockPos(message.x(), message.y(), message.z()), message.buttonId());
     }
 
     private static void handleSale(Player player, MenuButtonPayload message) {
