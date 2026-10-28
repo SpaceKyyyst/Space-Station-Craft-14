@@ -338,8 +338,7 @@ public class Ssc14Mod {
 				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
 		MenuStateTransportPort.install(MenuStateNetworkActions::send);
 		CommerceConsoleIntegrationService.install(
-				new LegacyCommerceConsoleIntegrationAdapter(
-						 net.ssc14.content.sound.ConsoleMenuSoundService::play));
+					new LegacyCommerceConsoleIntegrationAdapter());
 		IdConsoleIntegrationService.install(new LegacyIdConsoleIntegrationAdapter());
 		NetworkButtonInteractionService.install(
 				new LegacyNetworkButtonIntegrationAdapter());
