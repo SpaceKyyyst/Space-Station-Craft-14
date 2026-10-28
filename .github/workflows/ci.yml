@@ -36,6 +36,11 @@ jobs:
           python .github/scripts/check_procedure_graph.py
           python .github/scripts/check_resources.py
           python .github/scripts/check_menu_security.py
+      - name: Validate pull request policy
+        env:
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_WORKSPACE: ${{ github.workspace }}
+        run: python .github/scripts/policy_checks.py --event "$GITHUB_EVENT_PATH" --repository "$GITHUB_WORKSPACE"
       - name: Run governance checks
         run: python -m unittest discover -s .github/scripts -p 'test_*.py'
       - name: Run Gradle quality checks and tests
