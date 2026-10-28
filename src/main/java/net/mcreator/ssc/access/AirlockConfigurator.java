@@ -1,6 +1,6 @@
 package net.mcreator.ssc.access;
 
-import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
+import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.player.Player;

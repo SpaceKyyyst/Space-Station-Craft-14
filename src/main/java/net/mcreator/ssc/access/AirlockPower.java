@@ -4,12 +4,13 @@ import net.mcreator.ssc.procedures.CPlogLampPrProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
+import net.ssc14.content.access.AirlockDoorState;
 
 /** Network supply is distinct from the two internal power wires. */
 public final class AirlockPower {
     private AirlockPower() { }
     public static boolean isDoor(BlockState state) {
-        return state.getBlock().getStateDefinition().getProperty("arl_variat") != null;
+        return AirlockDoorState.isDoor(state);
     }
     public static void supply(ServerLevel level, BlockPos pos, boolean powered) {
         var door = level.getBlockEntity(pos);

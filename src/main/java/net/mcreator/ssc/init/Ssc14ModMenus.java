@@ -16,6 +16,7 @@ import net.mcreator.ssc.world.inventory.*;
 import net.ssc14.content.menu.crafting.DopCraftMenu;
 import net.ssc14.content.menu.headset.HeadsetMenu;
 import net.ssc14.content.menu.access.AccessConfigItemMenu;
+import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 import net.ssc14.content.menu.food.EggCartonGUIMenu;
 import net.ssc14.content.menu.storage.BackpackGUIMenu;
 import net.ssc14.content.menu.commerce.SaleGUIMenu;

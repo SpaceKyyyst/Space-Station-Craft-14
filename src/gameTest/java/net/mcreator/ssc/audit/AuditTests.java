@@ -108,7 +108,7 @@ public final class AuditTests {
             player.getInventory().setItem(8, new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_CAPITAN.get()));
             var buffer = new net.minecraft.network.FriendlyByteBuf(io.netty.buffer.Unpooled.buffer());
             buffer.writeBlockPos(pos);
-            var menu = new net.mcreator.ssc.world.inventory.AccessConfigMENUMenu(1, player.getInventory(), buffer);
+            var menu = new net.ssc14.content.menu.access.AccessConfigMENUMenu(1, player.getInventory(), buffer);
             buffer.release();
             player.containerMenu = menu;
             menu.getMenuState().put("1:Technical", true);

@@ -36,7 +36,7 @@ public final class LegacyAirlockDoorIntegrationAdapter
     }
 
     @Override public AbstractContainerMenu createMenu(int id, Inventory inventory, BlockPos pos) {
-        return new net.mcreator.ssc.world.inventory.AccessConfigMENUMenu(
+        return new net.ssc14.content.menu.access.AccessConfigMENUMenu(
                 id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
     }
 }
