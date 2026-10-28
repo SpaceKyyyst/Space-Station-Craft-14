@@ -55,6 +55,9 @@ Upper closet и secure closet adapters пока сохраняются: legacy-�
 тогда как `ClosetInteractionService` отвечает только за структуру и обмен
 предметами. Перед их удалением нужен отдельный access policy/service contract
 с dedicated GameTest.
+Оба оставшихся closet adapter-а уже имеют server-authority guard: клиентские
+вызовы не доходят до legacy procedure, а серверные access-config и lock
+операции сохраняются.
 Mod ID, registry ID, NBT-ключи и порядок `GasType` являются частью формата
 сохранений; форматы пакетов определяют совместимость клиента и сервера.
 Исполняемый baseline этих контрактов и правила migration описаны в
