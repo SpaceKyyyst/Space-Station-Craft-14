@@ -1,10 +1,11 @@
 package net.ssc14.content.block.airlock;
 
 import net.ssc14.content.block.airlock.AirlockWorkFeedback;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.item.Ssc14Items;
 
 import java.util.Map;
 import java.util.WeakHashMap;
-import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
@@ -31,12 +32,12 @@ public final class AirlockWeldingService {
 
     public static boolean interact(Player player, BlockPos clicked) {
         if (!(player.level() instanceof ServerLevel level) || player.isShiftKeyDown()
-                || !player.getMainHandItem().is(Ssc14ModItems.ACTIVE_WELDER.get())) return false;
+                || !player.getMainHandItem().is(Ssc14Items.ACTIVE_WELDER.get())) return false;
         BlockPos pos = clicked;
         if (!level.hasChunkAt(pos)) return false;
         if (level.getBlockState(pos).getBlock().getStateDefinition().getProperty("arl_variat") == null) {
-            if (!level.getBlockState(pos).is(net.mcreator.ssc.init.Ssc14ModBlocks.AIRLOCK_UP_PLUG.get())
-                    && !level.getBlockState(pos).is(net.mcreator.ssc.init.Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get())) return false;
+            if (!level.getBlockState(pos).is(Ssc14Blocks.AIRLOCK_UP_PLUG.get())
+                    && !level.getBlockState(pos).is(Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.get())) return false;
             pos = pos.below();
         }
         var door = level.getBlockEntity(pos);
@@ -54,7 +55,7 @@ public final class AirlockWeldingService {
                 || !level.hasChunkAt(pos) || level.getBlockEntity(pos) != job.door
                 || !level.mayInteract(player, pos) || player.position().distanceToSqr(job.origin) > 0.01
                 || player.distanceToSqr(pos.getCenter()) > 36 || player.getMainHandItem() != job.tool
-                || !job.tool.is(Ssc14ModItems.ACTIVE_WELDER.get())) return false;
+                || !job.tool.is(Ssc14Items.ACTIVE_WELDER.get())) return false;
         var state = job.door.getBlockState();
         if (!(state.getBlock().getStateDefinition().getProperty("arl_variat") instanceof IntegerProperty frame)) return false;
         int value = state.getValue(frame);

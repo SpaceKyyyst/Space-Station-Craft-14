@@ -1,7 +1,7 @@
 package net.ssc14.content.block.airlock;
 
 import net.ssc14.content.block.Ssc14Blocks;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -19,7 +19,7 @@ public final class AirlockDisassemblyService {
 
     public static boolean interact(Player player, BlockPos pos) {
         if (!(player.level() instanceof ServerLevel level) || !level.hasChunkAt(pos)
-                || !player.isShiftKeyDown() || !player.getMainHandItem().is(Ssc14ModItems.SPANNER.get())) return false;
+                || !player.isShiftKeyDown() || !player.getMainHandItem().is(Ssc14Items.SPANNER.get())) return false;
         var state = level.getBlockState(pos);
         if (!(state.getBlock().getStateDefinition().getProperty("arl_variat") instanceof IntegerProperty frame)) return false;
         var blockEntity = level.getBlockEntity(pos);
