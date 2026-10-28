@@ -10,7 +10,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.explosives.C4ChargeBlock;
 import net.ssc14.content.block.explosives.C4ChargeBlockEntity;
-import net.ssc14.content.block.explosives.C4ChargeInteractionService;
 import net.ssc14.content.block.explosives.Ssc14ExplosiveBlockEntities;
 import org.junit.jupiter.api.Test;
 
@@ -41,36 +40,4 @@ class Ssc14BlocksC4CompatibilityTest {
         assertEquals(1, block.defaultBlockState().getLightEmission());
     }
 
-    @Test
-    void interactionServiceRoutesEachLifecycleActionExactlyOnce() {
-        int[] calls = new int[3];
-        C4ChargeInteractionService.install(new C4ChargeInteractionService.Adapter() {
-            @Override
-            public void plant(net.minecraft.world.level.Level level,
-                    net.minecraft.core.BlockPos pos) {
-                calls[0]++;
-            }
-
-            @Override
-            public void activate(net.minecraft.world.level.Level level,
-                    net.minecraft.core.BlockPos pos,
-                    net.minecraft.world.entity.player.Player player) {
-                calls[1]++;
-            }
-
-            @Override
-            public void detonate(net.minecraft.world.level.Level level,
-                    net.minecraft.core.BlockPos pos) {
-                calls[2]++;
-            }
-        });
-
-        C4ChargeInteractionService.plant(null, net.minecraft.core.BlockPos.ZERO);
-        C4ChargeInteractionService.activate(null, net.minecraft.core.BlockPos.ZERO, null);
-        C4ChargeInteractionService.detonate(null, net.minecraft.core.BlockPos.ZERO);
-
-        assertEquals(1, calls[0]);
-        assertEquals(1, calls[1]);
-        assertEquals(1, calls[2]);
-    }
 }

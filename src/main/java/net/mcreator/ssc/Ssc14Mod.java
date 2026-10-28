@@ -76,7 +76,6 @@ import net.ssc14.content.block.gravity.GravityGeneratorUiService;
 import net.ssc14.content.block.gravity.Ssc14GravityBlockEntities;
 import net.ssc14.content.block.debug.StationCodeDebugInteractionService;
 import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
-import net.ssc14.content.block.explosives.C4ChargeInteractionService;
 import net.ssc14.content.block.explosives.Ssc14ExplosiveBlockEntities;
 import net.ssc14.content.block.explosives.NuclearWarheadInteractionService;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
@@ -175,26 +174,6 @@ public class Ssc14Mod {
 			if (!updatedRegistry.equals(variables.PalletRegistry)) {
 				variables.PalletRegistry = updatedRegistry;
 				variables.setDirty();
-			}
-		});
-		C4ChargeInteractionService.install(new C4ChargeInteractionService.Adapter() {
-			@Override
-			public void plant(net.minecraft.world.level.Level level,
-					net.minecraft.core.BlockPos pos) {
-				net.ssc14.content.explosive.C4PlantService.execute(level, pos);
-			}
-
-			@Override
-			public void activate(net.minecraft.world.level.Level level,
-					net.minecraft.core.BlockPos pos, Player player) {
-				net.ssc14.content.explosive.C4ActivationService.execute(level, pos, player);
-			}
-
-			@Override
-			public void detonate(net.minecraft.world.level.Level level,
-					net.minecraft.core.BlockPos pos) {
-				net.ssc14.content.explosive.C4DetonationService.execute(
-						level, pos.getX(), pos.getY(), pos.getZ());
 			}
 		});
 		NuclearWarheadInteractionService.install((level, pos) ->

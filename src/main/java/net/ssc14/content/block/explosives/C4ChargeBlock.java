@@ -30,6 +30,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.ssc14.content.explosive.C4ActivationService;
+import net.ssc14.content.explosive.C4DetonationService;
+import net.ssc14.content.explosive.C4PlantService;
 
 /** Canonical C4 charge block with constant-time lifecycle delegation. */
 public class C4ChargeBlock extends Block implements EntityBlock {
@@ -89,7 +92,7 @@ public class C4ChargeBlock extends Block implements EntityBlock {
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState,
             boolean movedByPiston) {
         super.onPlace(state, level, pos, oldState, movedByPiston);
-        C4ChargeInteractionService.plant(level, pos);
+        C4PlantService.execute(level, pos);
     }
 
     @Override
@@ -97,21 +100,21 @@ public class C4ChargeBlock extends Block implements EntityBlock {
             ItemStack tool, boolean willHarvest, FluidState fluid) {
         boolean destroyed = super.onDestroyedByPlayer(
                 state, level, pos, player, tool, willHarvest, fluid);
-        C4ChargeInteractionService.detonate(level, pos);
+        C4DetonationService.execute(level, pos.getX(), pos.getY(), pos.getZ());
         return destroyed;
     }
 
     @Override
     public void wasExploded(ServerLevel level, BlockPos pos, Explosion explosion) {
         super.wasExploded(level, pos, explosion);
-        C4ChargeInteractionService.detonate(level, pos);
+        C4DetonationService.execute(level, pos.getX(), pos.getY(), pos.getZ());
     }
 
     @Override
     public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
             Player player, BlockHitResult hit) {
         super.useWithoutItem(state, level, pos, player, hit);
-        C4ChargeInteractionService.activate(level, pos, player);
+        C4ActivationService.execute(level, pos, player);
         return InteractionResult.SUCCESS;
     }
 
