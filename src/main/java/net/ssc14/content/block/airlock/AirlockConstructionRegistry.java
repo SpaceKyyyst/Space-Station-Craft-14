@@ -3,6 +3,7 @@ package net.ssc14.content.block.airlock;
 
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.item.Ssc14Items;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -25,7 +26,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
-import net.mcreator.ssc.init.*;
 import net.ssc14.content.block.energy.SheathingBlock;
 import net.mcreator.ssc.EnergyNetworkManager;
 
@@ -60,7 +60,7 @@ public class AirlockConstructionRegistry {
         int[] normalDelays = {3, 3, 3, 3, 3, 3};
         int[] slowDelays = {10, 10, 10, 10, 10, 10};
 
-        Item crowbar = Ssc14ModItems.CROWBAR.get();
+        Item crowbar = Ssc14Items.CROWBAR.get();
 
         registerTagCheck("ssc14:tiles", crowbar, bs -> true, 
             new ConstructionStage(new int[]{1,1,1,1,1,1}, true, null, 1, 1.0, null, null, -1, false, hit -> hit == Direction.UP, null));
@@ -76,10 +76,10 @@ public class AirlockConstructionRegistry {
         registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), crowbar, bs -> getInt(bs, "blockstate") == 2,
             new ConstructionStage(new int[]{3,3,3,3,3,3}, false, null, 1, 0.0, null, "blockstate", 3, false, null, null));
 
-        Item welder = Ssc14ModItems.ACTIVE_WELDER.get();
+        Item welder = Ssc14Items.ACTIVE_WELDER.get();
 
         registerBlock(Ssc14Blocks.STEEL_WALL.get(), welder, bs -> true,
-            new ConstructionStage(new int[]{20,20,20,20,20,20}, false, Ssc14ModItems.STEEL.get(), 1, 0.5, Ssc14Blocks.WALL_CARCASE.get(), null, -1, true, null, null));
+        new ConstructionStage(new int[]{20,20,20,20,20,20}, false, Ssc14Items.STEEL.get(), 1, 0.5, Ssc14Blocks.WALL_CARCASE.get(), null, -1, true, null, null));
         registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), welder, bs -> getInt(bs, "blockstate") == 2,
             new ConstructionStage(new int[]{13,13,13,13,13,13}, false, null, 1, 0.0, null, "blockstate", 3, true, null, null));
         registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), welder, bs -> getInt(bs, "blockstate") == 5,
@@ -90,37 +90,37 @@ public class AirlockConstructionRegistry {
         registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), welder, bs -> getInt(bs, "blockstate") == 3,
             new ConstructionStage(new int[]{27,27,27,27,27,27}, false, null, 1, 0.0, null, "blockstate", 4, true, null, null));
 
-        Item nippers = Ssc14ModItems.NIPPERS.get();
+        Item nippers = Ssc14Items.NIPPERS.get();
 
-        registerBlock(Ssc14ModBlocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.LV) && bs.getValue(SheathingBlock.LV),
-            cableRemovalStage(fastDelays, SheathingBlock.LV, Ssc14ModItems.LOW_VOLTAGE_CABLE.get()));
-        registerBlock(Ssc14ModBlocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.MV) && bs.getValue(SheathingBlock.MV),
-            cableRemovalStage(fastDelays, SheathingBlock.MV, Ssc14ModItems.MEDIUM_VOLTAGE_CABLE.get()));
-        registerBlock(Ssc14ModBlocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.HV) && bs.getValue(SheathingBlock.HV),
-            cableRemovalStage(fastDelays, SheathingBlock.HV, Ssc14ModItems.HIGH_VOLTAGE_CABLE.get()));
+        registerBlock(Ssc14Blocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.LV) && bs.getValue(SheathingBlock.LV),
+            cableRemovalStage(fastDelays, SheathingBlock.LV, Ssc14Items.LOW_VOLTAGE_CABLE.get()));
+        registerBlock(Ssc14Blocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.MV) && bs.getValue(SheathingBlock.MV),
+            cableRemovalStage(fastDelays, SheathingBlock.MV, Ssc14Items.MEDIUM_VOLTAGE_CABLE.get()));
+        registerBlock(Ssc14Blocks.SHEATHING.get(), nippers, bs -> bs.hasProperty(SheathingBlock.HV) && bs.getValue(SheathingBlock.HV),
+            cableRemovalStage(fastDelays, SheathingBlock.HV, Ssc14Items.HIGH_VOLTAGE_CABLE.get()));
 
         registerBlock(Ssc14Blocks.ROD_FLOOR.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
-            new ConstructionStage(fastDelays, false, Ssc14ModItems.ROOD.get(), 1, 1.0, null, null, -1, false, null, null));
+            new ConstructionStage(fastDelays, false, Ssc14Items.ROOD.get(), 1, 1.0, null, null, -1, false, null, null));
         registerBlock(Ssc14Blocks.ROD_UP_FLOOR.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
-            new ConstructionStage(fastDelays, false, Ssc14ModItems.ROOD.get(), 1, 0.0, null, null, -1, false, null, null));
+            new ConstructionStage(fastDelays, false, Ssc14Items.ROOD.get(), 1, 0.0, null, null, -1, false, null, null));
 
         registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), nippers, bs -> getInt(bs, "blockstate") == 0,
             new ConstructionStage(normalDelays, false, null, 1, 1.0, null, "blockstate", 1, false, null, null));
         registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), nippers, bs -> getInt(bs, "blockstate") == 8,
-            new ConstructionStage(new int[]{3,1,2,1,2,1}, false, Ssc14ModItems.PLASTEEL.get(), 1, 0.0, Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(), null, -1, false, null, null));
+            new ConstructionStage(new int[]{3,1,2,1,2,1}, false, Ssc14Items.PLASTEEL.get(), 1, 0.0, Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(), null, -1, false, null, null));
 
         registerBlock(Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(), nippers, bs -> true,
-            new ConstructionStage(new int[]{3,3,3,1,3,3}, false, Ssc14ModItems.PLASTEEL.get(), 1, 0.0, Ssc14Blocks.WALL_CARCASE.get(), null, -1, false, null, null));
+            new ConstructionStage(new int[]{3,3,3,1,3,3}, false, Ssc14Items.PLASTEEL.get(), 1, 0.0, Ssc14Blocks.WALL_CARCASE.get(), null, -1, false, null, null));
 
         registerBlock(Ssc14Blocks.GRILLE.get(), nippers, bs -> true,
-            new ConstructionStage(new int[]{1,2,1,2,1,2}, false, Ssc14ModItems.ROOD.get(), 1, 0.1, Blocks.AIR, null, -1, false, null, null));
+            new ConstructionStage(new int[]{1,2,1,2,1,2}, false, Ssc14Items.ROOD.get(), 1, 0.1, Blocks.AIR, null, -1, false, null, null));
 
         registerBlock(Ssc14Blocks.BROKEN_GRILLE.get(), nippers, bs -> true,
             new ConstructionStage(fastDelays, false, null, 1, 0.5, Blocks.AIR, null, -1, false, null, null));
 
-        Item fireAxe = Ssc14ModItems.FIRE_AXE.get();
+        Item fireAxe = Ssc14Items.FIRE_AXE.get();
 
-        registerBlock(Ssc14ModBlocks.SHEATHING.get(), fireAxe, bs -> true,
+        registerBlock(Ssc14Blocks.SHEATHING.get(), fireAxe, bs -> true,
             new ConstructionStage(slowDelays, false, null, 1, 1.0, Ssc14Blocks.ROD_FLOOR.get(), null, -1, false, hit -> hit == Direction.UP,
             ctx -> dropBlockEntityWithNBT(ctx, Ssc14Blocks.TITLE_STEEL.get())));
         
@@ -128,7 +128,7 @@ public class AirlockConstructionRegistry {
             new ConstructionStage(slowDelays, false, null, 1, 0.5, Ssc14Blocks.ROD_UP_FLOOR.get(), null, -1, false, hit -> hit == Direction.DOWN,
             ctx -> dropBlockEntityWithNBT(ctx, Ssc14Blocks.TITLE_STEEL.get())));
 
-        Item screwdriver = Ssc14ModItems.SCREWDRIVER.get();
+        Item screwdriver = Ssc14Items.SCREWDRIVER.get();
 
         registerBlock(Ssc14Blocks.BASE_WINDOW.get(), screwdriver, bs -> getInt(bs, "window_disassembly") == 0,
             new ConstructionStage(normalDelays, false, null, 1, 0.0, null, "window_disassembly", 1, false, null, 
@@ -161,7 +161,7 @@ public class AirlockConstructionRegistry {
             })
         );
 
-        registerBlock(Ssc14ModBlocks.MACHINE_FRAME_2.get(), screwdriver, 
+        registerBlock(Ssc14Blocks.MACHINE_FRAME_2.get(), screwdriver,
             bs -> {
                 for (Property<?> p : bs.getProperties()) {
                     if (p.getName().equals("ready") && p instanceof net.minecraft.world.level.block.state.properties.BooleanProperty bp) return bs.getValue(bp);
@@ -170,25 +170,25 @@ public class AirlockConstructionRegistry {
             },
             new ConstructionStage(normalDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> handleMachineFrameFinal(ctx)));
 
-        registerBlock(Ssc14ModBlocks.PODSTATION.get(), screwdriver, bs -> true,
-            new ConstructionStage(normalDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> handleStationFinal(ctx, Ssc14ModBlocks.PODSTATION.get())));
-        registerBlock(Ssc14ModBlocks.SMES.get(), screwdriver, bs -> true,
-            new ConstructionStage(normalDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> handleStationFinal(ctx, Ssc14ModBlocks.SMES.get())));
+        registerBlock(Ssc14Blocks.PODSTATION.get(), screwdriver, bs -> true,
+            new ConstructionStage(normalDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> handleStationFinal(ctx, Ssc14Blocks.PODSTATION.get())));
+        registerBlock(Ssc14Blocks.SMES.get(), screwdriver, bs -> true,
+            new ConstructionStage(normalDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> handleStationFinal(ctx, Ssc14Blocks.SMES.get())));
 
-        Item spanner = Ssc14ModItems.SPANNER.get();
+        Item spanner = Ssc14Items.SPANNER.get();
 
         registerBlock(Ssc14Blocks.WALL_CARCASE.get(), spanner, bs -> true,
             new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14EntityTypes.WALL_CARCASE_ENTIT.get())));
         registerBlock(Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(), spanner, bs -> true,
             new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14EntityTypes.PLASSTEEL_WALL_CARCASE_ENTIT.get())));
-        registerBlock(Ssc14ModBlocks.CONSOLE_OF_ID.get(), spanner, bs -> true,
+        registerBlock(Ssc14Blocks.CONSOLE_OF_ID.get(), spanner, bs -> true,
             new ConstructionStage(fastDelays, false, null, 1, 0.0, null, null, -1, false, null, ctx -> spawnEntityAndBreak(ctx, Ssc14EntityTypes.ID_CONSOLE_ENTITY.get())));
 
         registerBlock(Ssc14Blocks.BASE_WINDOW.get(), spanner, bs -> getInt(bs, "window_disassembly") == 1,
-            new ConstructionStage(slowDelays, false, Ssc14ModItems.GLASS.get(), 2, 0.5, null, null, -1, false, null, ctx -> ctx.world().setBlock(ctx.pos(), Blocks.AIR.defaultBlockState(), 3)));
+            new ConstructionStage(slowDelays, false, Ssc14Items.GLASS.get(), 2, 0.5, null, null, -1, false, null, ctx -> ctx.world().setBlock(ctx.pos(), Blocks.AIR.defaultBlockState(), 3)));
 
         registerBlock(Ssc14Blocks.ARMORED_WINDOW.get(), spanner, bs -> getInt(bs, "blockstate") == 5,
-            new ConstructionStage(slowDelays, false, Ssc14ModItems.ARM_GLASS.get(), 2, 0.5, null, null, -1, false, null, ctx -> ctx.world().setBlock(ctx.pos(), Blocks.AIR.defaultBlockState(), 3)));
+            new ConstructionStage(slowDelays, false, Ssc14Items.ARM_GLASS.get(), 2, 0.5, null, null, -1, false, null, ctx -> ctx.world().setBlock(ctx.pos(), Blocks.AIR.defaultBlockState(), 3)));
 
         registerBlock(Ssc14Blocks.PLASTEEL_WALL.get(), spanner, bs -> getInt(bs, "blockstate") == 4,
             new ConstructionStage(normalDelays, false, null, 1, 0.0, null, "blockstate", 5, false, null, null));
@@ -277,14 +277,14 @@ public class AirlockConstructionRegistry {
         ctx.world().sendBlockUpdated(ctx.pos(), ctx.state(), ctx.state(), 3);
 
         Block replace = null;
-        if (slot0.getItem() == Ssc14ModItems.SUBSTATION_BOARD.get()) replace = Ssc14ModBlocks.PODSTATION.get();
-        else if (slot0.getItem() == Ssc14ModItems.SMES_BOARD.get()) replace = Ssc14ModBlocks.SMES.get();
+        if (slot0.getItem() == Ssc14Items.SUBSTATION_BOARD.get()) replace = Ssc14Blocks.PODSTATION.get();
+        else if (slot0.getItem() == Ssc14Items.SMES_BOARD.get()) replace = Ssc14Blocks.SMES.get();
 
         if (replace != null) ctx.world().setBlock(ctx.pos(), replace.defaultBlockState(), 3);
     }
 
     private static void handleStationFinal(RunContext ctx, Block originalBlock) {
-        BlockState targetBs = Ssc14ModBlocks.MACHINE_FRAME_2.get().defaultBlockState();
+        BlockState targetBs = Ssc14Blocks.MACHINE_FRAME_2.get().defaultBlockState();
         BlockEntity be = ctx.world().getBlockEntity(ctx.pos());
         CompoundTag nbt = (be != null) ? be.saveWithFullMetadata(ctx.world().registryAccess()) : null;
         
@@ -295,17 +295,17 @@ public class AirlockConstructionRegistry {
         net.neoforged.neoforge.items.IItemHandler handler = rawCap == null ? null : net.neoforged.neoforge.items.IItemHandler.of(rawCap);
         
         if (handler instanceof IItemHandlerModifiable mod) {
-            if (originalBlock == Ssc14ModBlocks.PODSTATION.get()) {
-                mod.setStackInSlot(0, new ItemStack(Ssc14ModItems.SUBSTATION_BOARD.get()));
-                mod.setStackInSlot(1, new ItemStack(Ssc14ModItems.MEDIUM_VOLTAGE_CABLE.get(), 5));
-                mod.setStackInSlot(2, new ItemStack(Ssc14ModItems.HIGH_VOLTAGE_CABLE.get(), 5));
-                mod.setStackInSlot(3, new ItemStack(Ssc14ModItems.LOW_BATTERIE.get()));
-                mod.setStackInSlot(4, new ItemStack(Ssc14ModItems.CAPACITOR.get()));
+            if (originalBlock == Ssc14Blocks.PODSTATION.get()) {
+                mod.setStackInSlot(0, new ItemStack(Ssc14Items.SUBSTATION_BOARD.get()));
+                mod.setStackInSlot(1, new ItemStack(Ssc14Items.MEDIUM_VOLTAGE_CABLE.get(), 5));
+                mod.setStackInSlot(2, new ItemStack(Ssc14Items.HIGH_VOLTAGE_CABLE.get(), 5));
+                mod.setStackInSlot(3, new ItemStack(Ssc14Items.LOW_BATTERIE.get()));
+                mod.setStackInSlot(4, new ItemStack(Ssc14Items.CAPACITOR.get()));
             } else {
-                mod.setStackInSlot(0, new ItemStack(Ssc14ModItems.SMES_BOARD.get()));
-                mod.setStackInSlot(1, new ItemStack(Ssc14ModItems.HIGH_VOLTAGE_CABLE.get(), 10));
-                mod.setStackInSlot(2, new ItemStack(Ssc14ModItems.CAPACITOR.get()));
-                mod.setStackInSlot(3, new ItemStack(Ssc14ModItems.LOW_BATTERIE.get(), 4));
+                mod.setStackInSlot(0, new ItemStack(Ssc14Items.SMES_BOARD.get()));
+                mod.setStackInSlot(1, new ItemStack(Ssc14Items.HIGH_VOLTAGE_CABLE.get(), 10));
+                mod.setStackInSlot(2, new ItemStack(Ssc14Items.CAPACITOR.get()));
+                mod.setStackInSlot(3, new ItemStack(Ssc14Items.LOW_BATTERIE.get(), 4));
             }
         }
     }
