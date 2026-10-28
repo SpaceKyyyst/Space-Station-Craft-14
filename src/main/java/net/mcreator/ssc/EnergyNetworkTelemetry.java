@@ -54,7 +54,7 @@ final class EnergyNetworkTelemetry {
                 continue;
             }
             CableType type = switch (mode) { case 2 -> CableType.MV; case 3 -> CableType.HV; default -> CableType.LV; };
-            var network = net.mcreator.ssc.energy.EnergyTopologyService.networkAt(level, type, blockHit.getBlockPos());
+            var network = net.ssc14.content.energy.EnergyNetworkService.networkAt(level, type, blockHit.getBlockPos());
             if (network != null) {
                 PacketDistributor.sendToPlayer(player, new MultitoolDataPacket(mode,
                         network.currentPower, network.batteryPower, network.theoreticalSupply,

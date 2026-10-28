@@ -26,6 +26,10 @@ public final class EnergyNetworkService {
         return EnergyTopologyService.networks(level, type);
     }
 
+    public static EnergyNetwork networkAt(LevelAccessor level, CableType type, BlockPos pos) {
+        return EnergyTopologyService.networkAt(level, type, pos);
+    }
+
     public static void chunkAvailabilityChanged(LevelAccessor level, ChunkPos chunk) {
         EnergyTopologyService.chunkAvailabilityChanged(level, chunk);
     }
