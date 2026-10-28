@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.procedures.HealthAnalyzerUI_Display_ConditionsProcedure;
+import net.ssc14.content.medical.HealthUiService;
 import net.mcreator.ssc.procedures.HealthAnalyzerUIEntityDisplayProcedure;
 
 @EventBusSubscriber(Dist.CLIENT)
@@ -37,7 +37,7 @@ public class HealthAnalyzerUIOverlay {
 			y = entity.getY();
 			z = entity.getZ();
 		}
-		if (HealthAnalyzerUI_Display_ConditionsProcedure.execute(entity)) {
+		if (HealthUiService.hasHealthAnalyzer(entity)) {
 			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, 22, h / 2 + -116, 0, 0, 149, 225, 149, 225);
 
 			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.health_analyzer_ui.label_miekhanichieskiie"), 37, h / 2 + -55, -16777216, false);
