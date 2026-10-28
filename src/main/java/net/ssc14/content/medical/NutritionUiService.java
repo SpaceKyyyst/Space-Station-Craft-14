@@ -23,6 +23,13 @@ public final class NutritionUiService {
                 && living.getAttribute(Ssc14Attributes.NUTRIENTS).getValue() > threshold;
     }
 
+    public static boolean inRange(Entity entity, double minimumInclusive, double maximumExclusive) {
+        if (!(entity instanceof LivingEntity living) || isCreativeOrSpectator(entity)) return false;
+        if (!living.getAttributes().hasAttribute(Ssc14Attributes.NUTRIENTS)) return false;
+        double value = living.getAttribute(Ssc14Attributes.NUTRIENTS).getValue();
+        return value >= minimumInclusive && value < maximumExclusive;
+    }
+
     private static boolean isCreativeOrSpectator(Entity entity) {
         return entity instanceof Player player
                 && (player.gameMode() == GameType.CREATIVE || player.gameMode() == GameType.SPECTATOR);
