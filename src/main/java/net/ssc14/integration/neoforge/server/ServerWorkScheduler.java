@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 @EventBusSubscriber(modid = Ssc14Identity.MOD_ID)
 public final class ServerWorkScheduler {
     private static final int MAX_TASKS_PER_TICK = 512;
-    private static final Logger LOGGER = LogManager.getLogger("net.mcreator.ssc.Ssc14Mod");
+    private static final Logger LOGGER = LogManager.getLogger(ServerWorkScheduler.class);
     private static final Map<MinecraftServer, Session> QUEUES = new IdentityHashMap<>();
     private static final Set<MinecraftServer> STOPPED =
             Collections.newSetFromMap(new WeakHashMap<>());

@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 public enum ServerTaskSubmission {
     ACCEPTED, FULL, UNAVAILABLE, STOPPED, INVALID_OWNER, CLIENT_SIDE;
 
-    private static final Logger LOGGER = LogManager.getLogger("net.mcreator.ssc.Ssc14Mod");
+    private static final Logger LOGGER = LogManager.getLogger(ServerTaskSubmission.class);
 
     public void orThrow() {
         if (this == ACCEPTED) {
