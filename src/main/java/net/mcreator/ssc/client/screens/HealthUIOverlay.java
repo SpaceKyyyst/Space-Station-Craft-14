@@ -42,10 +42,10 @@ public class HealthUIOverlay {
 			z = entity.getZ();
 		}
 		if (HealthUiService.isVisible(entity)) {
-			if (HPCorpseDisplayProcedure.execute(entity)) {
+			if (HealthUiService.isState(entity, 6)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_0, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
-			if (HPCriticalDisplayProcedure.execute(entity)) {
+			if (HealthUiService.isState(entity, 5)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_1, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
 			if (HealthUiService.isState(entity, 4)) {
@@ -60,7 +60,7 @@ public class HealthUIOverlay {
 			if (HealthUiService.isState(entity, 1)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_5, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
-			if (HPExcellentDisplayProcedure.execute(entity)) {
+			if (HealthUiService.isState(entity, 0)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_6, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
 		}
