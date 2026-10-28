@@ -23,4 +23,12 @@ public final class HealthUiService {
         }
         return living.getAttribute(Ssc14Attributes.HEALTH_U_IATTRIBUTE).getValue() == state;
     }
+
+    public static double animationFrame(Entity entity) {
+        if (entity == null) {
+            return 0.0;
+        }
+        double loopTimer = (entity.level().getGameTime() * 2.8) % 113.0;
+        return Math.round(loopTimer / 4.0);
+    }
 }
