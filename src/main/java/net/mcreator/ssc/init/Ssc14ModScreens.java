@@ -10,6 +10,7 @@ import net.ssc14.client.menu.construction.RCDGUIScreen;
 import net.ssc14.client.menu.construction.RCDGUIwallfloorScreen;
 import net.ssc14.client.menu.construction.RCDGUIwindowsScreen;
 import net.ssc14.client.menu.station.GravGenGUIScreen;
+import net.ssc14.client.menu.station.CommunConsoleGUIScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
