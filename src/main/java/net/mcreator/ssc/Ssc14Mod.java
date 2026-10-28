@@ -77,7 +77,6 @@ import net.ssc14.content.block.gravity.Ssc14GravityBlockEntities;
 import net.ssc14.content.block.debug.StationCodeDebugInteractionService;
 import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
 import net.ssc14.content.block.explosives.Ssc14ExplosiveBlockEntities;
-import net.ssc14.content.block.explosives.NuclearWarheadInteractionService;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.block.storage.SecureClosetInteractionService;
 import net.ssc14.content.block.storage.ExtinguisherCabinetInteractionService;
@@ -176,9 +175,6 @@ public class Ssc14Mod {
 				variables.setDirty();
 			}
 		});
-		NuclearWarheadInteractionService.install((level, pos) ->
-				net.ssc14.content.explosive.NuclearWarheadDetonationService.execute(
-						level, pos.getX(), pos.getY(), pos.getZ()));
 		GravityGeneratorPlugLifecycleService.installGeneratorLocator((level, pos) ->
 				level.getBlockState(pos).is(net.mcreator.ssc.init.Ssc14ModBlocks.GRAVITY_GENERATOR.get()));
 		GravityGeneratorPlugLifecycleService.installPlugBlockFactory(() ->

@@ -6,11 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.explosives.NuclearWarheadBlock;
 import net.ssc14.content.block.explosives.NuclearWarheadBlockEntity;
-import net.ssc14.content.block.explosives.NuclearWarheadInteractionService;
 import net.ssc14.content.block.explosives.Ssc14ExplosiveBlockEntities;
 import org.junit.jupiter.api.Test;
 
@@ -44,13 +42,4 @@ class Ssc14BlocksNuclearWarheadCompatibilityTest {
         assertEquals(3_600_000.0F, block.getExplosionResistance());
     }
 
-    @Test
-    void interactionServiceRoutesActivationExactlyOnce() {
-        int[] calls = {0};
-        NuclearWarheadInteractionService.install((level, pos) -> calls[0]++);
-
-        NuclearWarheadInteractionService.activate(null, BlockPos.ZERO);
-
-        assertEquals(1, calls[0]);
-    }
 }
