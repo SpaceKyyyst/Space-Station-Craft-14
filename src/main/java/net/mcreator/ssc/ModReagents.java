@@ -6,7 +6,6 @@ import net.mcreator.ssc.integration.LegacyReagentContainerRuntime;
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.content.item.reagent.ReagentContentsCodec;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
-import net.ssc14.content.item.reagent.ReagentContainerStorage;
 import net.ssc14.common.chemistry.ReagentAmounts;
 import net.ssc14.common.chemistry.ReagentReactionPlanner;
 import net.ssc14.common.chemistry.ReagentTransferPlan;
@@ -28,7 +27,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.sounds.SoundSource;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -37,11 +35,9 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
-import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -659,47 +655,6 @@ public class ModReagents {
         return drinkAmount;
     }
 
-    public static class ReagentFluidHandler {
-        protected final ItemStack container; protected final int capacity;
-        public ReagentFluidHandler(ItemStack container, int capacity) { this.container = container; this.capacity = capacity; }
-        public int getTanks() { return 1; }
-        @NotNull public FluidStack getFluidInTank(int tank) {
-            Map<String, Integer> map = ReagentContainerStorage.contents(container);
-            if (map.isEmpty()) return FluidStack.EMPTY;
-            String id = map.keySet().iterator().next(); return createStack(id, map.get(id));
-        }
-        public int getTankCapacity(int tank) { return capacity; }
-        public boolean isFluidValid(int tank, @NotNull FluidStack stack) { return getReagent(getFluidId(stack)).isPresent(); }
-        public int fill(FluidStack resource, boolean simulate) {
-            if (resource.isEmpty()) return 0;
-            String id = getFluidId(resource);
-            if (getReagent(id).isEmpty()) return 0;
-            int canAdd = Math.min(resource.getAmount(), getAvailableSpace(container));
-            if (canAdd > 0 && !simulate) ReagentContainerStorage.add(container, id, canAdd);
-            return canAdd;
-        }
-        @NotNull public FluidStack drain(int maxDrain, boolean simulate) {
-            Map<String, Integer> map = ReagentContainerStorage.contents(container);
-            if (map.isEmpty()) return FluidStack.EMPTY;
-            String id = map.keySet().iterator().next();
-            int toDrain = Math.min(map.get(id), maxDrain);
-            if (toDrain > 0 && !simulate) ReagentContainerStorage.remove(container, id, toDrain);
-            return createStack(id, toDrain);
-        }
-        private FluidStack createStack(String id, int amount) {
-            if (id.equals("water")) return new FluidStack(Fluids.WATER, amount);
-            var fluidHolder = BuiltInRegistries.FLUID.get(Identifier.fromNamespaceAndPath("ssc_14", id));
-            if (fluidHolder != null && fluidHolder.isPresent()) {
-return new FluidStack(fluidHolder.get().value(), amount);
-}
-return FluidStack.EMPTY;
-}
-private String getFluidId(FluidStack stack) {
-Identifier rl = BuiltInRegistries.FLUID.getKey(stack.getFluid());
-return rl != null ? rl.getPath() : "";
-}
-@NotNull public ItemStack getContainer() { return container; }
-}
 @SubscribeEvent
 public static void onTooltip(ItemTooltipEvent event) {
 Map<String, Integer> map = getReagents(event.getItemStack());

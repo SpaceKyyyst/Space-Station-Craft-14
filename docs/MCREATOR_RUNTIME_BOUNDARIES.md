@@ -132,6 +132,9 @@ only event subscribers and procedural facades that still own runtime behavior:
 - canonical `ReagentContainerStorage` now owns codec-backed container
   reads/additions/removals; the legacy bridge retains only drinking and
   catalog/effect integration;
+- the unused generated `ReagentFluidHandler` nested class was removed after
+  repository-wide reference verification; fluid storage remains covered by
+  the canonical container contract;
 - `LegacyReactionRuntime` is the compatibility entry point for server-side
   reaction execution; generated procedures and network handlers no longer call
   `ModReagents.processReactions` directly;
