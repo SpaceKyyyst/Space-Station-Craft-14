@@ -17,6 +17,7 @@ import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
+import net.ssc14.content.menu.food.MicrowaveControlService;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -53,8 +54,7 @@ public class MicrwGUIbutEProcedure {
         if (!slot2.isEmpty()) microwaveContents.add(slot2);
         if (!slot3.isEmpty()) microwaveContents.add(slot3);
 
-        // В качестве заглушки берем время из NBT печки (или ставим 10 сек по умолчанию)
-        int timer = 10; 
+        int timer = MicrowaveControlService.timerSeconds(level, pos);
 
         checkRecipes(level, pos, modifiableHandler, microwaveContents, timer);
     }

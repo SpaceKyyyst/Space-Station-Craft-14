@@ -10,12 +10,22 @@ import net.ssc14.content.block.machinery.MicrowaveBlock;
 /** Applies server-authoritative microwave timer controls. */
 public final class MicrowaveControlService {
     private static final String TIMER_TAG = "timer";
+    private static final int DEFAULT_TIMER_SECONDS = 10;
 
     private MicrowaveControlService() { }
 
     public static boolean isActive(LevelAccessor world, BlockPos pos) {
         BlockState state = world.getBlockState(pos);
         return state.hasProperty(MicrowaveBlock.ACTIVE) && state.getValue(MicrowaveBlock.ACTIVE);
+    }
+
+    /** Returns the persisted timer while preserving the legacy ten-second default. */
+    public static int timerSeconds(LevelAccessor world, BlockPos pos) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity == null || !blockEntity.getPersistentData().contains(TIMER_TAG)) {
+            return DEFAULT_TIMER_SECONDS;
+        }
+        return blockEntity.getPersistentData().getInt(TIMER_TAG).orElse(DEFAULT_TIMER_SECONDS);
     }
 
     public static boolean setTimer(LevelAccessor world, BlockPos pos, int buttonId) {
