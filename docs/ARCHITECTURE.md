@@ -128,6 +128,10 @@ communication console, commerce console, сетевой topology, station-code d
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
 GUI- и сетевым контрактом и требуют отдельной миграции поведения.
 
+Portable-menu boundary больше не вызывает generated inventory procedure: генерация
+яиц и PDA state выполняются canonical services; bridge оставлен для legacy menu и
+network binding.
+
 На текущем контрольном прогоне dedicated NeoForge GameTest все 217 обязательных
 сценариев прошли успешно; сервер также корректно сохранил все три измерения при
 завершении.
@@ -146,6 +150,10 @@ The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
 only as a compatibility hook for external integrations. Its menu/use methods still
 own the GUI and network contract and cannot be removed until that behavior is migrated.
+
+The portable-menu boundary no longer calls a generated inventory procedure: egg
+generation and PDA state now use canonical services, while the bridge remains for the
+legacy menu and network binding.
 
 The current dedicated NeoForge GameTest run passed all 217 required scenarios, and
 the server saved all three dimensions successfully during shutdown.
