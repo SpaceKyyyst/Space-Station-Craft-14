@@ -353,8 +353,9 @@ public class Ssc14Mod {
 				net.mcreator.ssc.procedures.DEBUG13PriShchielchkiePKMPoBlokuProcedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ(), player));
 		UpperClosetPlugInteractionService.install((level, pos, player) ->
-				net.mcreator.ssc.procedures.UpClosetPLUG_clickProcedure.execute(
-						level, pos.getX(), pos.getY(), pos.getZ(), player));
+				net.mcreator.ssc.procedures.Closet_OpenClose_PrProcedure.execute(
+						level, pos.getX(), pos.getY() - 1, pos.getZ(),
+						level.getBlockState(pos.below()), player));
 		SecureClosetInteractionService.install((level, pos, state, player) ->
 				net.mcreator.ssc.procedures.Closet_OpenClose_PrProcedure.execute(
 						level, pos.getX(), pos.getY(), pos.getZ(), state, player));
