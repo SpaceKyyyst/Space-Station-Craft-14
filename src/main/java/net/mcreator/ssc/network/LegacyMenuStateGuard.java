@@ -1,7 +1,7 @@
 package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
-import net.mcreator.ssc.world.inventory.DECALScolorGUIMenu;
+import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.mcreator.ssc.world.inventory.IDcodeMenu;
 import net.minecraft.world.entity.player.Player;
 import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;

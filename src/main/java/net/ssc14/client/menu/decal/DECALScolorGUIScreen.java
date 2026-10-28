@@ -1,6 +1,4 @@
-package net.mcreator.ssc.client.gui;
-
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+package net.ssc14.client.menu.decal;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -14,15 +12,16 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.DECALScolorGUIMenu;
-import net.mcreator.ssc.procedures.DECALSGUIaccept2Procedure;
-import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.client.menu.MenuButtonClientActions;
+import net.ssc14.client.menu.MenuStateClientActions;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
+import net.ssc14.content.menu.decal.DecalColorMenuService;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
-import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-public class DECALScolorGUIScreen extends AbstractContainerScreen<DECALScolorGUIMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class DECALScolorGUIScreen extends AbstractContainerScreen<DECALScolorGUIMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
@@ -111,29 +110,28 @@ public class DECALScolorGUIScreen extends AbstractContainerScreen<DECALScolorGUI
 		R.setMaxLength(8192);
 		R.setResponder(content -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 0, "R", content, false);
+				MenuStateClientActions.send(menu, entity, 0, "R", content);
 		});
 		this.addWidget(this.R);
 		G = new EditBox(this.font, this.leftPos + 24, this.topPos + 51, 120, 20, Component.translatable("gui.ssc_14.decal_scolor_gui.G"));
 		G.setMaxLength(8192);
 		G.setResponder(content -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 0, "G", content, false);
+				MenuStateClientActions.send(menu, entity, 0, "G", content);
 		});
 		this.addWidget(this.G);
 		B = new EditBox(this.font, this.leftPos + 24, this.topPos + 83, 120, 20, Component.translatable("gui.ssc_14.decal_scolor_gui.B"));
 		B.setMaxLength(8192);
 		B.setResponder(content -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 0, "B", content, false);
+				MenuStateClientActions.send(menu, entity, 0, "B", content);
 		});
 		this.addWidget(this.B);
 		button_priniat = Button.builder(Component.translatable("gui.ssc_14.decal_scolor_gui.button_priniat"), e -> {
 			int x = DECALScolorGUIScreen.this.x;
 			int y = DECALScolorGUIScreen.this.y;
-			if (DECALSGUIaccept2Procedure.execute(entity)) {
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.decalColor(0, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.decalColor(0, x, y, z));
+			if (DecalColorMenuService.isValid(menu)) {
+				MenuButtonClientActions.send(entity, MenuButtonPayload.decalColor(0, x, y, z));
 			}
 		}).bounds(this.leftPos + 51, this.topPos + 142, 60, 20).build();
 		this.addRenderableWidget(button_priniat);
@@ -142,6 +140,6 @@ public class DECALScolorGUIScreen extends AbstractContainerScreen<DECALScolorGUI
 	@Override
 	protected void containerTick() {
 		super.containerTick();
-		this.button_priniat.visible = DECALSGUIaccept2Procedure.execute(entity);
+		this.button_priniat.visible = DecalColorMenuService.isValid(menu);
 	}
 }

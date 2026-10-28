@@ -4,7 +4,7 @@ import io.netty.buffer.Unpooled;
 import net.mcreator.ssc.procedures.DECAL1deletion_USE_Procedure;
 import net.mcreator.ssc.procedures.DECAL1spawner_USE_Procedure;
 import net.mcreator.ssc.procedures.DECAL_setting_Procedure;
-import net.mcreator.ssc.world.inventory.DECALScolorGUIMenu;
+import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
