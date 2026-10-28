@@ -32,7 +32,7 @@ import net.ssc14.content.menu.station.GravGenGUIMenu;
 import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
-import net.mcreator.ssc.integration.LegacyIdConsoleIntegrationAdapter;
+import net.ssc14.content.block.access.LegacyIdConsoleIntegrationAdapter;
 import net.ssc14.content.item.tool.LegacyNetworkConfiguratorMenuAdapter;
 import net.mcreator.ssc.integration.LegacyRsuInteractionAdapter;
 import net.ssc14.content.block.airlock.LegacyShuttersIntegrationAdapter;
