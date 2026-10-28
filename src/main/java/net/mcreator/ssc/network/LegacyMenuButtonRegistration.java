@@ -2,10 +2,10 @@ package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.integration.LegacyCommunicationConsoleAdapter;
+import net.mcreator.ssc.integration.LegacyMicrowaveAdapter;
 import net.minecraft.core.BlockPos;
 import net.ssc14.content.menu.decal.DecalColorMenuService;
 import net.ssc14.content.gravity.GravityGeneratorControlService;
-import net.mcreator.ssc.procedures.MicrwGUIbutEProcedure;
 import net.ssc14.content.menu.pda.PdaTabService;
 import net.ssc14.content.menu.pda.PdaFlashlightService;
 import net.ssc14.content.menu.pda.PdaAccessoryTransferService;
@@ -120,7 +120,7 @@ public final class LegacyMenuButtonRegistration {
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
         BlockPos pos = new BlockPos(message.x(), message.y(), message.z());
         if (message.buttonId() == MicrowaveButtonIds.START) {
-            MicrwGUIbutEProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            LegacyMicrowaveAdapter.start(player.level(), message.x(), message.y(), message.z(), player);
         } else {
             MicrowaveControlService.setTimer(player.level(), pos, message.buttonId());
         }
