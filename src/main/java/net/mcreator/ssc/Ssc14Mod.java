@@ -242,8 +242,7 @@ public class Ssc14Mod {
 			@Override
 			public void tick(ServerLevel level, net.minecraft.core.BlockPos pos,
 					net.minecraft.world.level.block.state.BlockState state) {
-				net.mcreator.ssc.procedures.GravGenTICprocedureProcedure.execute(
-						level, pos.getX(), pos.getY(), pos.getZ(), state);
+				net.ssc14.content.block.gravity.GravityGeneratorService.tick(level, pos);
 			}
 
 			@Override
