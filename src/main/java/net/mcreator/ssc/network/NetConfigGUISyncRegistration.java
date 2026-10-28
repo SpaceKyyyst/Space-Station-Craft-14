@@ -9,6 +9,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.integration.neoforge.network.NetConfigGUISyncMessage;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 /** Transitional menu handler until the network configurator GUI moves to the target namespace. */
 @EventBusSubscriber
@@ -31,7 +32,7 @@ public final class NetConfigGUISyncRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
-        Ssc14Mod.addClientboundNetworkMessage(NetConfigGUISyncMessage.TYPE,
+        Ssc14NetworkPayloads.addClientbound(NetConfigGUISyncMessage.TYPE,
                 NetConfigGUISyncMessage.STREAM_CODEC, NetConfigGUISyncRegistration::handle);
     }
 }

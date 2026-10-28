@@ -1,6 +1,5 @@
 package net.mcreator.ssc.network;
 
-import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.procedures.WorldObjectCheck_Pr_2Procedure;
 import net.mcreator.ssc.procedures.WorldObjectCheck_PrProcedure;
 import net.minecraft.core.SectionPos;
@@ -12,6 +11,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.integration.neoforge.player.network.WorldObjectCheckMessage;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 @EventBusSubscriber
 public final class WorldObjectCheckMessageRegistration {
@@ -32,7 +32,7 @@ public final class WorldObjectCheckMessageRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
-        Ssc14Mod.addServerboundNetworkMessage(WorldObjectCheckMessage.TYPE,
+        Ssc14NetworkPayloads.addServerbound(WorldObjectCheckMessage.TYPE,
                 WorldObjectCheckMessage.STREAM_CODEC, WorldObjectCheckMessageRegistration::handle);
     }
 }

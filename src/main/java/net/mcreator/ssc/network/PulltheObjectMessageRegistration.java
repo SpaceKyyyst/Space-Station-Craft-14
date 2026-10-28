@@ -1,6 +1,5 @@
 package net.mcreator.ssc.network;
 
-import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.procedures.PulltheObject_Pr2Procedure;
 import net.mcreator.ssc.procedures.PulltheObject_PrProcedure;
 import net.minecraft.core.SectionPos;
@@ -12,6 +11,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.integration.neoforge.player.network.PulltheObjectMessage;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 @EventBusSubscriber
 public final class PulltheObjectMessageRegistration {
@@ -32,7 +32,7 @@ public final class PulltheObjectMessageRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
-        Ssc14Mod.addServerboundNetworkMessage(PulltheObjectMessage.TYPE,
+        Ssc14NetworkPayloads.addServerbound(PulltheObjectMessage.TYPE,
                 PulltheObjectMessage.STREAM_CODEC, PulltheObjectMessageRegistration::handle);
     }
 }

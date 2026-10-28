@@ -5,8 +5,6 @@ import org.apache.logging.log4j.LogManager;
 
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.network.handling.IPayloadHandler;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.capabilities.EntityCapability;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.common.Mod;
@@ -16,10 +14,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.Identifier;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.ssc14.integration.neoforge.worldgen.Ssc14StructureFeature;
@@ -28,7 +23,7 @@ import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
 import net.mcreator.ssc.init.*;
 import net.ssc14.integration.neoforge.server.ServerTaskSubmission;
 import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
-import net.ssc14.integration.neoforge.network.CompatibilityPayloadRegistrar;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 import net.mcreator.ssc.world.inventory.MacFrameGUIMenu;
 import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
 import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
@@ -108,9 +103,6 @@ import net.minecraft.world.level.LevelAccessor;
 
 import javax.annotation.Nullable;
 
-import java.util.Map;
-import java.util.HashMap;
-
 import java.lang.invoke.MethodType;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodHandle;
@@ -122,12 +114,11 @@ import io.netty.buffer.Unpooled;
 public class Ssc14Mod {
 	public static final Logger LOGGER = LogManager.getLogger(Ssc14Mod.class);
 	public static final String MODID = Ssc14Identity.MOD_ID;
-	private static final String NETWORK_VERSION = MODID;
 
 	public Ssc14Mod(IEventBus modEventBus) {
 		// Start of user code block mod constructor
 		// End of user code block mod constructor
-		modEventBus.addListener(this::registerNetworking);
+		modEventBus.addListener(Ssc14NetworkPayloads::register);
 		if (ModList.get().isLoaded("curios")) {
 			modEventBus.addListener(Ssc14ModCuriosCompat::registerCapabilities);
 			modEventBus.addListener(Ssc14ModCuriosRenderers::registerRenderers);
@@ -411,58 +402,6 @@ public class Ssc14Mod {
 
 	// Start of user code block mod methods
 	// End of user code block mod methods
-	private static boolean networkingRegistered = false;
-	private static final Map<CustomPacketPayload.Type<?>, NetworkMessage<?>> MESSAGES = new HashMap<>();
-
-	private enum PayloadDirection {
-		TO_SERVER, TO_CLIENT, BIDIRECTIONAL
-	}
-
-	private record NetworkMessage<T extends CustomPacketPayload>(CustomPacketPayload.Type<T> id,
-			StreamCodec<? super RegistryFriendlyByteBuf, T> reader, IPayloadHandler<T> handler, PayloadDirection direction) {
-		void register(CompatibilityPayloadRegistrar registrar) {
-			switch (direction) {
-				case TO_SERVER -> registrar.playToServer(id, reader, handler);
-				case TO_CLIENT -> registrar.playToClient(id, reader, handler);
-				case BIDIRECTIONAL -> registrar.playBidirectional(id, reader, handler, handler);
-			}
-		}
-	}
-
-	public static <T extends CustomPacketPayload> void addServerboundNetworkMessage(CustomPacketPayload.Type<T> id,
-			StreamCodec<? super RegistryFriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
-		addNetworkMessage(id, reader, handler, PayloadDirection.TO_SERVER);
-	}
-
-	public static <T extends CustomPacketPayload> void addClientboundNetworkMessage(CustomPacketPayload.Type<T> id,
-			StreamCodec<? super RegistryFriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
-		addNetworkMessage(id, reader, handler, PayloadDirection.TO_CLIENT);
-	}
-
-	public static <T extends CustomPacketPayload> void addBidirectionalNetworkMessage(CustomPacketPayload.Type<T> id,
-			StreamCodec<? super RegistryFriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
-		addNetworkMessage(id, reader, handler, PayloadDirection.BIDIRECTIONAL);
-	}
-
-	private static <T extends CustomPacketPayload> void addNetworkMessage(CustomPacketPayload.Type<T> id,
-			StreamCodec<? super RegistryFriendlyByteBuf, T> reader, IPayloadHandler<T> handler, PayloadDirection direction) {
-		synchronized (MESSAGES) {
-			if (networkingRegistered)
-				throw new IllegalStateException("Cannot register new network messages after networking has been registered");
-			if (MESSAGES.putIfAbsent(id, new NetworkMessage<>(id, reader, handler, direction)) != null)
-				throw new IllegalStateException("Duplicate network message: " + id);
-		}
-	}
-
-	private void registerNetworking(final RegisterPayloadHandlersEvent event) {
-		final CompatibilityPayloadRegistrar registrar = new CompatibilityPayloadRegistrar(
-				event.registrar(NETWORK_VERSION), NETWORK_VERSION);
-		synchronized (MESSAGES) {
-			MESSAGES.values().forEach(message -> message.register(registrar));
-			networkingRegistered = true;
-		}
-	}
-
     /** Worker-safe admission; only the passed server's tick thread executes the action. */
     public static ServerTaskSubmission queueServerWork(MinecraftServer owner, int delay, Runnable action) {
         return ServerWorkScheduler.submit(owner, delay, action);

@@ -11,6 +11,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.client.menu.MenuStateClientHandler;
 import net.ssc14.core.network.MenuStateRules;
 import net.ssc14.integration.neoforge.menu.network.MenuStateUpdateMessage;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 /** Transitional menu adapter until generated menu accessors move to the target namespace. */
 @EventBusSubscriber
@@ -36,7 +37,7 @@ public final class MenuStateUpdateRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
-        Ssc14Mod.addBidirectionalNetworkMessage(MenuStateUpdateMessage.TYPE,
+        Ssc14NetworkPayloads.addBidirectional(MenuStateUpdateMessage.TYPE,
                 MenuStateUpdateMessage.STREAM_CODEC, MenuStateUpdateRegistration::handle);
     }
 }

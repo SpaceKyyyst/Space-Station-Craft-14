@@ -1,6 +1,5 @@
 package net.mcreator.ssc.network;
 
-import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.procedures.Specify_CLICK_Procedure;
 import net.minecraft.core.SectionPos;
 import net.minecraft.network.chat.Component;
@@ -11,6 +10,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.integration.neoforge.player.network.SpecifyMessage;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 @EventBusSubscriber
 public final class SpecifyMessageRegistration {
@@ -30,7 +30,7 @@ public final class SpecifyMessageRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
-        Ssc14Mod.addServerboundNetworkMessage(SpecifyMessage.TYPE, SpecifyMessage.STREAM_CODEC,
+        Ssc14NetworkPayloads.addServerbound(SpecifyMessage.TYPE, SpecifyMessage.STREAM_CODEC,
                 SpecifyMessageRegistration::handle);
     }
 }

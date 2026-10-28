@@ -26,14 +26,15 @@ import net.minecraft.core.HolderLookup;
 
 import net.mcreator.ssc.Ssc14Mod;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerVariablesSyncPayload;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 @EventBusSubscriber
 public class Ssc14ModVariables {
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
-		Ssc14Mod.addClientboundNetworkMessage(SavedDataSyncMessage.TYPE, SavedDataSyncMessage.STREAM_CODEC, SavedDataSyncMessage::handleData);
-		Ssc14Mod.addClientboundNetworkMessage(Ssc14PlayerVariablesSyncPayload.TYPE, Ssc14PlayerVariablesSyncPayload.STREAM_CODEC, Ssc14PlayerVariablesSyncPayload::handleData);
+		Ssc14NetworkPayloads.addClientbound(SavedDataSyncMessage.TYPE, SavedDataSyncMessage.STREAM_CODEC, SavedDataSyncMessage::handleData);
+		Ssc14NetworkPayloads.addClientbound(Ssc14PlayerVariablesSyncPayload.TYPE, Ssc14PlayerVariablesSyncPayload.STREAM_CODEC, Ssc14PlayerVariablesSyncPayload::handleData);
 	}
 
 	@SubscribeEvent
