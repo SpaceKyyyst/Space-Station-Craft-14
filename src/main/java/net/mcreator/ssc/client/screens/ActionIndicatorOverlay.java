@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.ssc.procedures.*;
+import net.ssc14.content.medical.ActionProgressService;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class ActionIndicatorOverlay {
@@ -39,7 +40,7 @@ public class ActionIndicatorOverlay {
 			z = entity.getZ();
 		}
 		{
-			if (ActGUIProcedureProcedure.execute(entity)) {
+			if (ActionProgressService.execute(entity)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
 			if (ActGUIProcedure2Procedure.execute(entity)) {
