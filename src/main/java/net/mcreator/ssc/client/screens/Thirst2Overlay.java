@@ -13,7 +13,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.procedures.Thirst2PrProcedure;
+import net.ssc14.content.medical.ThirstUiService;
 import net.ssc14.content.medical.ThirstUiService;
 
 @EventBusSubscriber(Dist.CLIENT)
@@ -36,7 +36,7 @@ public class Thirst2Overlay {
 			z = entity.getZ();
 		}
 		{
-			if (Thirst2PrProcedure.execute(entity)) {
+			if (ThirstUiService.isBelow(entity, 50)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_0, w - 37, h / 2 + 16, 0, Mth.clamp((int) ThirstUiService.blinkingFrame(entity) * 32, 0, 32), 32, 32, 32, 64);
 			}
 		}
