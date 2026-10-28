@@ -6,7 +6,8 @@
 event subscribers и процедурные фасады, которые ещё имеют runtime-владельца:
 
 - `ToolsBlockClickProcedure` — общий right-click маршрутизатор инструментов шлюза;
-- `Interaction_PRProcedure` — client GUI key handling и сетевой слот-командный контракт;
+- client GUI key handling перенесён в `InteractionSlotKeyHandler`; generated
+  `Interaction_PRProcedure` удалён, а key mapping оставлен compatibility alias;
 - `HumanModelRenderProcedure` — client render hooks;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
   `TEMPORARYGRAVITYPLUGplayerProcedure` удалены после canonical-переноса;
@@ -28,7 +29,8 @@ After the current migrations, `src/main/java/net/mcreator/ssc/procedures` contai
 only event subscribers and procedural facades that still own runtime behavior:
 
 - `ToolsBlockClickProcedure` — shared right-click routing for airlock tools;
-- `Interaction_PRProcedure` — client GUI key handling and the slot-command network contract;
+- client GUI key handling was moved to `InteractionSlotKeyHandler`; generated
+  `Interaction_PRProcedure` was removed and the key mapping remains a compatibility alias;
 - `HumanModelRenderProcedure` — client render hooks;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
   `TEMPORARYGRAVITYPLUGplayerProcedure` were removed after canonical migration;
