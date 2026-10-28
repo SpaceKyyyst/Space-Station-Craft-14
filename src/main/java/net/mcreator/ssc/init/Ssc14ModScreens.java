@@ -12,6 +12,7 @@ import net.ssc14.client.menu.construction.RCDGUIwindowsScreen;
 import net.ssc14.client.menu.station.GravGenGUIScreen;
 import net.ssc14.client.menu.station.CommunConsoleGUIScreen;
 import net.ssc14.client.menu.commerce.SaleGUIScreen;
+import net.ssc14.client.menu.commerce.VendingAut1GUIScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

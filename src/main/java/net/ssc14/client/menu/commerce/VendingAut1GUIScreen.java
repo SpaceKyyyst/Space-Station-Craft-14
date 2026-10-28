@@ -1,11 +1,9 @@
-package net.mcreator.ssc.client.gui;
-
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+package net.ssc14.client.menu.commerce;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.util.Mth;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -16,14 +14,14 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
-import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.content.menu.commerce.VendingIndicatorState;
+import net.ssc14.client.menu.MenuButtonClientActions;
+import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
-import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUIMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUIMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
@@ -88,14 +86,19 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 	@Override
 	public void extractBackground(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
 		super.extractBackground(guiGraphics, mouseX, mouseY, partialTicks);
+		BlockPos vendingPos = new BlockPos(x, y, z);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 150, 200, 150, 200);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_0, this.leftPos + 23, this.topPos + 39, 0, Mth.clamp((int) VendGUIindicator1Procedure.execute(world, x, y, z) * 5, 0, 95), 5, 5, 5, 100);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_1, this.leftPos + 41, this.topPos + 39, 0, Mth.clamp((int) VendGUIindicator2Procedure.execute(world, x, y, z) * 5, 0, 95), 5, 5, 5, 100);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_2, this.leftPos + 59, this.topPos + 39, 0, Mth.clamp((int) VendGUIindicator3Procedure.execute(world, x, y, z) * 5, 0, 95), 5, 5, 5, 100);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_3, this.leftPos + 77, this.topPos + 39, 0, Mth.clamp((int) VendGUIindicator4Procedure.execute(world, x, y, z) * 5, 0, 95), 5, 5, 5, 100);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_4, this.leftPos + 95, this.topPos + 39, 0, Mth.clamp((int) VendGUIindicator5Procedure.execute(world, x, y, z) * 5, 0, 95), 5, 5, 5, 100);
-		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_5, this.leftPos + 23, this.topPos + 62, 0, Mth.clamp((int) VendGUIindicator6Procedure.execute(world, x, y, z) * 5, 0, 95), 5, 5, 5, 100);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_0, this.leftPos + 23, this.topPos + 39, 0, indicatorOffset(vendingPos, 1), 5, 5, 5, 100);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_1, this.leftPos + 41, this.topPos + 39, 0, indicatorOffset(vendingPos, 2), 5, 5, 5, 100);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_2, this.leftPos + 59, this.topPos + 39, 0, indicatorOffset(vendingPos, 3), 5, 5, 5, 100);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_3, this.leftPos + 77, this.topPos + 39, 0, indicatorOffset(vendingPos, 4), 5, 5, 5, 100);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_4, this.leftPos + 95, this.topPos + 39, 0, indicatorOffset(vendingPos, 5), 5, 5, 5, 100);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, SPRITE_5, this.leftPos + 23, this.topPos + 62, 0, indicatorOffset(vendingPos, 6), 5, 5, 5, 100);
+	}
+
+	private int indicatorOffset(BlockPos vendingPos, int slotNumber) {
+		return VendingIndicatorState.textureOffset(VendingIndicatorState.read(world, vendingPos, slotNumber));
 	}
 
 	@Override
@@ -120,8 +123,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(0, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(0, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.vending(0, x, y, z));
 					}
 				}) {
 			@Override
@@ -135,8 +137,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(1, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(1, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.vending(1, x, y, z));
 					}
 				}) {
 			@Override
@@ -150,8 +151,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(2, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(2, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.vending(2, x, y, z));
 					}
 				}) {
 			@Override
@@ -165,8 +165,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(3, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(3, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.vending(3, x, y, z));
 					}
 				}) {
 			@Override
@@ -180,8 +179,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(4, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(4, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.vending(4, x, y, z));
 					}
 				}) {
 			@Override
@@ -195,8 +193,7 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(5, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(5, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.vending(5, x, y, z));
 					}
 				}) {
 			@Override
