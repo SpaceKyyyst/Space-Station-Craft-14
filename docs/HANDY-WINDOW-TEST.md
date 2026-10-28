@@ -13,6 +13,22 @@
 - LDLib2 26.1.2.39 из Modrinth, версия закреплена в Gradle.
 - Handy и LDLib2 нужны на клиенте и сервере; они не включены в JAR SSC14.
 
+## Сверка с QuickStart Handy
+
+Актуальный QuickStart Handy описывает API `ItemUIProvider`, `ModularUI`,
+`GuiMode.enter`, `WindowProperties`, `RegisterPersistentWindowsEvent` и
+серверные callbacks через `ServerItemRegistry`. Пилот SSC14 использует
+эквивалентную границу `BlockEntityUIProvider`: клиент только открывает окно,
+а команды проходят серверную проверку владельца, позиции, измерения и
+`mayInteract`. Это намеренное отличие предметного примера QuickStart для
+блочного контента.
+
+QuickStart указывает зависимость `handy_wm` начиная с версии `0.1.2`, тогда как
+текущий пилот закреплён на присланном Handy `0.1.0`. Обновление нельзя делать
+автоматически: сначала требуется повторить тесты жизненного цикла окон,
+мыши, GUI-режима и серверных callbacks, после чего удалить compatibility
+adapter только отдельным PR.
+
 ## Проверка
 
 1. Открыть окно ПКМ по генератору пустой рукой.
