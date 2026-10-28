@@ -130,6 +130,9 @@ communication console, commerce console, сетевой topology, station-code d
 Управление движением игрока в zero-gravity работает через
 `ZeroGravityPlayerHandler`; временная generated procedure удалена.
 
+Client slot interaction работает через `InteractionKeyMappings` и
+`InteractionSlotKeyHandler`; старое поле key mapping сохранено только как alias.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -162,6 +165,9 @@ wrappers were removed after the full test suite passed.
 
 Zero-gravity player movement now runs through `ZeroGravityPlayerHandler`; the
 temporary generated procedure was removed.
+
+Client slot interaction now runs through `InteractionKeyMappings` and
+`InteractionSlotKeyHandler`; the old key-mapping field remains only as an alias.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
