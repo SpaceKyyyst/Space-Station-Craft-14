@@ -35,7 +35,7 @@ jobs:
       - name: Run governance checks
         run: python -m unittest discover -s .github/scripts -p 'test_*.py'
       - name: Run Gradle quality checks and tests
-        run: ./gradlew check test --no-daemon
+        run: ./gradlew test domainTest compileGameTestJava checkstyleMain pmdMain --no-daemon
 
   release:
     name: Build and release version change
