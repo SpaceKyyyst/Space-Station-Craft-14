@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.fuel;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -19,9 +19,9 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 
-public class FuelTank_USE_Procedure {
+public final class FuelTankInteractionService {
     
     private static final double MAX_WELDER_FUEL = 10000.0;
 
@@ -42,7 +42,7 @@ public class FuelTank_USE_Procedure {
         double currentWelderFuel = itemTag.getDoubleOr("fuel", 0.0);
 
         // ===== ВАРИАНТ 1: В руке выключенная сварка (Заправка) =====
-        if (handItem.is(Ssc14ModItems.WELDING.get())) {
+        if (handItem.is(Ssc14Items.WELDING.get())) {
             double neededFuel = MAX_WELDER_FUEL - currentWelderFuel;
             if (neededFuel == 0.0 || !(neededFuel > 0.0)) return; // Сварка уже полная
 
@@ -92,7 +92,7 @@ public class FuelTank_USE_Procedure {
             }
         } 
         // ===== ВАРИАНТ 2: В руке зажжённая сварка (БАХ!) =====
-        else if (handItem.is(Ssc14ModItems.ACTIVE_WELDER.get())) {
+        else if (handItem.is(Ssc14Items.ACTIVE_WELDER.get())) {
             if (world instanceof Level level && !level.isClientSide()) {
                 float explosionPower = (float) (currentTankFuel / 10000.0);
                 if (explosionPower == 0.0f || !(explosionPower > 0.0f)) explosionPower = 0.1f; // Минимальный бах, если бак пуст
