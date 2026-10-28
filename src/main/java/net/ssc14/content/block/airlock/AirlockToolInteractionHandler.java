@@ -45,7 +45,7 @@ public final class AirlockToolInteractionHandler {
 		BlockPos pos = BlockPos.containing(x, y, z);
 		if (entity instanceof net.minecraft.world.entity.player.Player player
 				&& (AirlockEventLogService.inspect(player, pos)
-                    || net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos)
+                    || AirlockMaintenanceService.interact(player, pos)
                     || AirlockWeldingService.interact(player, pos)
                     || AirlockManualOpeningService.interact(player, pos)
                     || net.ssc14.content.block.airlock.AirlockFloor.installTile(player, pos)
@@ -57,7 +57,7 @@ public final class AirlockToolInteractionHandler {
 			}
 			return;
 		}
-		pos = net.mcreator.ssc.access.AirlockMaintenance.root(world, pos);
+		pos = AirlockMaintenanceService.root(world, pos);
         BlockState blockstate = world.getBlockState(pos);
 
         // Tool work must not also trigger the door's ordinary right-click opening.

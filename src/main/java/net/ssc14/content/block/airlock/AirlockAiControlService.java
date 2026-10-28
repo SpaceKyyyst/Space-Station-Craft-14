@@ -1,6 +1,5 @@
 package net.ssc14.content.block.airlock;
 
-import net.mcreator.ssc.access.AirlockMaintenance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 
@@ -15,7 +14,7 @@ public final class AirlockAiControlService {
     public static boolean request(ServerLevel level, BlockPos clicked, Authority authority, Action action) {
         if (!level.getServer().isSameThread()) throw new IllegalStateException("Airlock AI control requires the server thread");
         if (authority == null || action == null || !level.hasChunkAt(clicked)) return false;
-        var pos = AirlockMaintenance.root(level, clicked);
+        var pos = AirlockMaintenanceService.root(level, clicked);
         if (!level.hasChunkAt(pos) || !authority.mayControl(level, pos)) return false;
         var door = level.getBlockEntity(pos);
         if (door == null || !AirlockPowerService.isDoor(door.getBlockState())) return false;

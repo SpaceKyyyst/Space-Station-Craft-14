@@ -1,6 +1,5 @@
 package net.ssc14.content.block.airlock;
 
-import net.mcreator.ssc.access.AirlockMaintenance;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.core.BlockPos;
@@ -26,7 +25,7 @@ public final class AirlockDisassemblyService {
         var blockEntity = level.getBlockEntity(pos);
         if (!player.isAlive() || player.isSpectator() || !level.mayInteract(player, pos)
                 || player.distanceToSqr(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5) > MAX_DISTANCE_SQUARED
-                || blockEntity == null || AirlockMaintenance.isArmored(level, pos)) return true;
+                || blockEntity == null || AirlockMaintenanceService.isArmored(level, pos)) return true;
         if (!(state.getBlock().getStateDefinition().getProperty("panel_open") instanceof BooleanProperty panel)
                 || !state.getValue(panel) || state.getValue(frame) >= 11 && state.getValue(frame) <= 15) return true;
         var data = blockEntity.getPersistentData();

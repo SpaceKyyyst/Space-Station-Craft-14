@@ -36,8 +36,8 @@ event subscribers и процедурные фасады, которые ещё 
   state synchronization moved to `AirlockStateInitializer`;
 - `BaseAirlockOpenCloseProcedure` — thin compatibility facade; door lifecycle
   state machine moved to `AirlockLifecycleService`;
-- `AirlockMaintenance` — legacy construction-job owner; retained until its
-  long-running job state and material contracts receive a dedicated migration;
+- `AirlockMaintenance` — thin compatibility facade; construction-job ownership
+  moved to `AirlockMaintenanceService`;
 - `UniversalDeconstructionProcedureProcedure` — legacy deconstruction behavior
   retained behind the canonical tool handler until its block/resource contract
   is migrated;
@@ -96,8 +96,8 @@ only event subscribers and procedural facades that still own runtime behavior:
   state synchronization moved to `AirlockStateInitializer`;
 - `BaseAirlockOpenCloseProcedure` — thin compatibility facade; door lifecycle
   state machine moved to `AirlockLifecycleService`;
-- `AirlockMaintenance` — legacy construction-job owner; retained until its
-  long-running job state and material contracts receive a dedicated migration;
+- `AirlockMaintenance` — thin compatibility facade; construction-job ownership
+  moved to `AirlockMaintenanceService`;
 - `UniversalDeconstructionProcedureProcedure` — legacy deconstruction behavior
   retained behind the canonical tool handler until its block/resource contract
   is migrated;

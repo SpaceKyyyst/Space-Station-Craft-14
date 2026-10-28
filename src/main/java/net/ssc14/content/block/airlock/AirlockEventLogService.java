@@ -1,6 +1,5 @@
 package net.ssc14.content.block.airlock;
 
-import net.mcreator.ssc.access.AirlockMaintenance;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -38,7 +37,7 @@ public final class AirlockEventLogService {
     public static boolean inspect(Player player, BlockPos clicked) {
         if (!(player.level() instanceof ServerLevel level) || !player.isShiftKeyDown()
                 || !player.getMainHandItem().is(Ssc14ModItems.MULTITUL.get()) || !level.hasChunkAt(clicked)) return false;
-        var pos = AirlockMaintenance.root(level, clicked);
+        var pos = AirlockMaintenanceService.root(level, clicked);
         var door = level.getBlockEntity(pos);
         if (door == null || !AirlockPowerService.isDoor(door.getBlockState())) return false;
         if (!player.isAlive() || player.isSpectator() || !level.mayInteract(player, pos)
