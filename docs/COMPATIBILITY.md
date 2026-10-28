@@ -249,3 +249,20 @@ decision; user saves must not be published.
 SavedData, network payloads, or the registry-ID baseline. They may be moved only in
 one client-focused PR after render-state registration and dedicated-client startup
 verification; until then they remain explicit compatibility inputs.
+
+### Chemistry migration invariants
+
+Before moving `ModReagents` into the canonical chemistry layer, the migration
+must preserve these observable contracts:
+
+| Contract | Required characterization |
+| --- | --- |
+| Reagent NBT | Preserve reagent IDs, amounts, and unknown-key round trips. |
+| Capacity | Reject over-capacity additions without mutating existing contents. |
+| Removal | Remove only the requested amount and keep zero/empty entries canonical. |
+| Reactions | Preserve input matching order, effect ordering, and server authority. |
+| Color | Preserve `ReagentColorMixer` output for empty, single, and mixed contents. |
+| Compatibility | Keep `ReagentContainerRuntime` behavior while the bridge is installed. |
+
+The characterization suite must run before and after the move; no generated
+procedure may be deleted until every row has a regression test.
