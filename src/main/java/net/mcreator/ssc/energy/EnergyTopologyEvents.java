@@ -1,6 +1,7 @@
 package net.mcreator.ssc.energy;
 
 import net.ssc14.content.block.energy.CableTopologyService;
+import net.ssc14.content.energy.EnergyNetworkService;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.ChunkEvent;
@@ -14,7 +15,7 @@ public final class EnergyTopologyEvents {
 
     @SubscribeEvent
     public static void unload(ChunkEvent.Unload event) {
-        EnergyTopologyService.chunkAvailabilityChanged(event.getLevel(), event.getChunk().getPos());
+        EnergyNetworkService.chunkAvailabilityChanged(event.getLevel(), event.getChunk().getPos());
     }
 
     @SubscribeEvent
@@ -24,12 +25,12 @@ public final class EnergyTopologyEvents {
             for (var door : java.util.List.copyOf(chunk.getBlockEntities().values()))
                 if (net.mcreator.ssc.access.AirlockPower.isDoor(door.getBlockState()))
                     net.mcreator.ssc.access.AirlockPower.supply(level, door.getBlockPos(), false);
-        EnergyTopologyService.chunkAvailabilityChanged(event.getLevel(), event.getChunk().getPos());
+        EnergyNetworkService.chunkAvailabilityChanged(event.getLevel(), event.getChunk().getPos());
     }
 
     @SubscribeEvent
     public static void unloadWorld(LevelEvent.Unload event) {
-        EnergyTopologyService.unloadWorld(event.getLevel());
+        EnergyNetworkService.unloadWorld(event.getLevel());
     }
 
     @SubscribeEvent

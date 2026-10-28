@@ -3,6 +3,7 @@ package net.ssc14.content.energy;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ChunkPos;
 import net.mcreator.ssc.energy.EnergyTopologyService;
 
 /** Canonical runtime boundary for energy topology and network snapshots. */
@@ -23,5 +24,13 @@ public final class EnergyNetworkService {
 
     public static List<EnergyNetwork> networks(LevelAccessor level, CableType type) {
         return EnergyTopologyService.networks(level, type);
+    }
+
+    public static void chunkAvailabilityChanged(LevelAccessor level, ChunkPos chunk) {
+        EnergyTopologyService.chunkAvailabilityChanged(level, chunk);
+    }
+
+    public static void unloadWorld(LevelAccessor level) {
+        EnergyTopologyService.unloadWorld(level);
     }
 }
