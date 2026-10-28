@@ -1,7 +1,6 @@
 package net.mcreator.ssc.integration;
 
 import com.mojang.brigadier.context.CommandContext;
-import net.mcreator.ssc.procedures.HelsResetCommandProcedure;
 import net.mcreator.ssc.procedures.SSC14AtmosGasTemperatureCommandProcedure;
 import net.mcreator.ssc.procedures.SSC14AtmosSetGasCommandProcedure;
 import net.mcreator.ssc.procedures.TpSSC14mineOveworldprProcedure;
@@ -9,6 +8,7 @@ import net.mcreator.ssc.procedures.TpSSC14planetplantprProcedure;
 import net.mcreator.ssc.procedures.TpSSC14spaceprProcedure;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.world.level.Level;
+import net.ssc14.content.medical.MedicalResetService;
 
 /** Transitional boundary for generated administration commands. */
 public final class LegacyAdministrationCommandAdapter {
@@ -28,7 +28,7 @@ public final class LegacyAdministrationCommandAdapter {
     }
 
     public static void resetHealth(CommandContext<CommandSourceStack> context) {
-        HelsResetCommandProcedure.execute(context);
+        MedicalResetService.execute(context);
     }
 
     public static void setGas(Level level, CommandContext<CommandSourceStack> context) {

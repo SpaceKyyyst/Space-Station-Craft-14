@@ -1,18 +1,17 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.medical;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.CommandSourceStack;
 
-import net.mcreator.ssc.init.Ssc14ModAttributes;
-import net.ssc14.content.medical.MedicalPlayerEffects;
+import net.ssc14.content.attribute.Ssc14Attributes;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.context.CommandContext;
 
-public class HelsResetCommandProcedure {
+public final class MedicalResetService {
 	public static void execute(CommandContext<CommandSourceStack> arguments) {
 		net.minecraft.world.entity.Entity target = commandParameterEntity(arguments, "ent");
 		if (target == null || target.level().isClientSide())
@@ -46,8 +45,8 @@ public class HelsResetCommandProcedure {
 		// Release only effects and pose acquired by medical critical state.
 		MedicalPlayerEffects.release(player);
 		// 🔧 Сбрасываем UI-атрибут здоровья на 0
-		if (player.getAttributes().hasAttribute(net.mcreator.ssc.init.Ssc14ModAttributes.HEALTH_U_IATTRIBUTE)) {
-			var uiAttr = player.getAttribute(net.mcreator.ssc.init.Ssc14ModAttributes.HEALTH_U_IATTRIBUTE);
+		if (player.getAttributes().hasAttribute(Ssc14Attributes.HEALTH_U_IATTRIBUTE)) {
+			var uiAttr = player.getAttribute(Ssc14Attributes.HEALTH_U_IATTRIBUTE);
 			if (uiAttr != null)
 				uiAttr.setBaseValue(0);
 		}
@@ -57,8 +56,8 @@ public class HelsResetCommandProcedure {
 			speedAttr.removeModifier(net.minecraft.resources.Identifier.parse("ssc14:slowdown"));
 		}
 		System.out.println("[SSC14] 🛠 Полный сброс применён к: " + player.getName().getString());
-		if ((commandParameterEntity(arguments, "ent")) instanceof LivingEntity _livingEntity1 && _livingEntity1.getAttributes().hasAttribute(Ssc14ModAttributes.HEALTH_U_IATTRIBUTE))
-			_livingEntity1.getAttribute(Ssc14ModAttributes.HEALTH_U_IATTRIBUTE).setBaseValue(0);
+		if ((commandParameterEntity(arguments, "ent")) instanceof LivingEntity _livingEntity1 && _livingEntity1.getAttributes().hasAttribute(Ssc14Attributes.HEALTH_U_IATTRIBUTE))
+			_livingEntity1.getAttribute(Ssc14Attributes.HEALTH_U_IATTRIBUTE).setBaseValue(0);
 	}
 
 	private static Entity commandParameterEntity(CommandContext<CommandSourceStack> arguments, String parameter) {
