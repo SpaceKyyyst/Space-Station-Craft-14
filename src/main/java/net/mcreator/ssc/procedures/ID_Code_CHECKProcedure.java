@@ -20,9 +20,8 @@ public class ID_Code_CHECKProcedure {
 		if (entity == null)
 			return;
 		if (getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Bufer_LG") == false && getAmountInGUISlot(entity, 0) > 0 && getAmountInGUISlot(entity, 1) > 0) {
-			if (entity instanceof Player player) {
-				IdJobAssignmentService.syncAccessField(player, "gun_room");
-			}
+			if (entity instanceof Player player) IdJobAssignmentService.syncAllAccess(player);
+			/*
 			if (entity instanceof Player player) {
 				IdJobAssignmentService.syncAccessField(player, "HoS");
 			}
@@ -113,16 +112,14 @@ public class ID_Code_CHECKProcedure {
 			if (entity instanceof Player player) {
 				IdJobAssignmentService.syncAccessField(player, "Blue_Sh");
 			}
-			if (entity instanceof Player player) {
-				IdJobAssignmentService.syncAccessField(player, "Uridic");
-			}
+			*/
 			if ((entity instanceof Player _entity323 && _entity323.containerMenu instanceof SlotMenuStateAccess _menu323) && _menu323.getMenuState(1, "Job_Name_Readact", false)) {
 				(entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu325 ? _menu325.getSlots().get(1).getItem() : ItemStack.EMPTY).set(DataComponents.CUSTOM_NAME, Component
 						.literal(("ID \u043A\u0430\u0440\u0442\u0430 (" + ((entity instanceof Player _entity324 && _entity324.containerMenu instanceof SlotMenuStateAccess _menu324) ? _menu324.getMenuState(0, "Job_Name", "") : "") + ")")));
 			}
 		}
 		Ssc14Mod.queueServerWork(serverOwner, 1, () -> {
-			IDCode0CellprProcedure.execute(entity);
+			if (entity instanceof Player player) IdJobAssignmentService.syncAllAccess(player);
 		}).orThrow();
 	}
 

@@ -53,6 +53,19 @@ public final class IdJobAssignmentService {
         menu.getSlots().get(1).set(target);
     }
 
+    /** Synchronizes every access bit from the target ID card into the open menu. */
+    public static void syncAllAccess(Player player) {
+        if (!(player.containerMenu instanceof SlotMenuStateAccess menu)
+                || menu.getSlots().size() < 2) return;
+        ItemStack target = stack(menu, 1);
+        if (target.isEmpty()) return;
+        var data = target.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        for (String accessKey : IdJobCatalog.accessKeys()) {
+            menu.sendMenuStateUpdate(player, 1, accessKey,
+                    data.getBoolean(accessKey).orElse(false), true);
+        }
+    }
+
     public static void assign(Player player, BlockPos consolePos, int buttonId) {
         IdJobCatalog.Definition definition = IdJobCatalog.definition(buttonId);
         if (definition == null || !(player.level() instanceof ServerLevel level)
