@@ -1,4 +1,4 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.crafting;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
@@ -25,14 +25,14 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.menu.Ssc14MenuTypes;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-public class DopCraftMenuMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class DopCraftMenu extends AbstractContainerMenu {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
@@ -52,8 +52,8 @@ public class DopCraftMenuMenu extends AbstractContainerMenu implements Ssc14ModM
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
 
-	public DopCraftMenuMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.DOP_CRAFT_MENU.get(), id);
+	public DopCraftMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+		super(Ssc14MenuTypes.DOP_CRAFT_MENU.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(6);
@@ -95,8 +95,8 @@ public class DopCraftMenuMenu extends AbstractContainerMenu implements Ssc14ModM
 		}
 		this.customSlots.put(1, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 1, 44, 10) {
 			private final int slot = 1;
-			private int x = DopCraftMenuMenu.this.x;
-			private int y = DopCraftMenuMenu.this.y;
+			private int x = DopCraftMenu.this.x;
+			private int y = DopCraftMenu.this.y;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
@@ -105,8 +105,8 @@ public class DopCraftMenuMenu extends AbstractContainerMenu implements Ssc14ModM
 		}));
 		this.customSlots.put(2, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 2, 62, 10) {
 			private final int slot = 2;
-			private int x = DopCraftMenuMenu.this.x;
-			private int y = DopCraftMenuMenu.this.y;
+			private int x = DopCraftMenu.this.x;
+			private int y = DopCraftMenu.this.y;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
@@ -115,8 +115,8 @@ public class DopCraftMenuMenu extends AbstractContainerMenu implements Ssc14ModM
 		}));
 		this.customSlots.put(3, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 3, 80, 10) {
 			private final int slot = 3;
-			private int x = DopCraftMenuMenu.this.x;
-			private int y = DopCraftMenuMenu.this.y;
+			private int x = DopCraftMenu.this.x;
+			private int y = DopCraftMenu.this.y;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
@@ -125,8 +125,8 @@ public class DopCraftMenuMenu extends AbstractContainerMenu implements Ssc14ModM
 		}));
 		this.customSlots.put(4, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 4, 98, 10) {
 			private final int slot = 4;
-			private int x = DopCraftMenuMenu.this.x;
-			private int y = DopCraftMenuMenu.this.y;
+			private int x = DopCraftMenu.this.x;
+			private int y = DopCraftMenu.this.y;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
@@ -135,8 +135,8 @@ public class DopCraftMenuMenu extends AbstractContainerMenu implements Ssc14ModM
 		}));
 		this.customSlots.put(5, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 5, 116, 10) {
 			private final int slot = 5;
-			private int x = DopCraftMenuMenu.this.x;
-			private int y = DopCraftMenuMenu.this.y;
+			private int x = DopCraftMenu.this.x;
+			private int y = DopCraftMenu.this.y;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
@@ -145,8 +145,8 @@ public class DopCraftMenuMenu extends AbstractContainerMenu implements Ssc14ModM
 		}));
 		this.customSlots.put(0, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 0, 80, 56) {
 			private final int slot = 0;
-			private int x = DopCraftMenuMenu.this.x;
-			private int y = DopCraftMenuMenu.this.y;
+			private int x = DopCraftMenu.this.x;
+			private int y = DopCraftMenu.this.y;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
@@ -304,12 +304,10 @@ public class DopCraftMenuMenu extends AbstractContainerMenu implements Ssc14ModM
 		}
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}
 
-	@Override
 	public Map<String, Object> getMenuState() {
 		return menuState;
 	}

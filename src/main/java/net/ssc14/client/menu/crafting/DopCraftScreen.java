@@ -1,4 +1,4 @@
-package net.mcreator.ssc.client.gui;
+package net.ssc14.client.menu.crafting;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -12,12 +12,12 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.DopCraftMenuMenu;
-import net.mcreator.ssc.init.Ssc14ModScreens;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.content.menu.crafting.DopCraftMenu;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-public class DopCraftMenuScreen extends AbstractContainerScreen<DopCraftMenuMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class DopCraftScreen extends AbstractContainerScreen<DopCraftMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
@@ -28,7 +28,7 @@ public class DopCraftMenuScreen extends AbstractContainerScreen<DopCraftMenuMenu
 	private static final Identifier BACKGROUND = Identifier.parse("ssc_14:textures/screens/dop_craft_menu.png");
 	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/dop_craft_menu__copy.png");
 
-	public DopCraftMenuScreen(DopCraftMenuMenu container, Inventory inventory, Component text) {
+	public DopCraftScreen(DopCraftMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text, 176, 166);
 		this.world = container.world;
 		this.x = container.x;
