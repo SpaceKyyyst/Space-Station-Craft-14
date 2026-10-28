@@ -20,6 +20,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.ssc14.integration.neoforge.worldgen.Ssc14StructureFeature;
 import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.ssc14.common.station.StationCodeService;
+import net.ssc14.common.station.StationNameService;
 import net.ssc14.common.station.StationBudgetService;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
 import net.mcreator.ssc.init.*;
@@ -362,6 +363,8 @@ public class Ssc14Mod {
 				Ssc14Items.EXTINGUISHER, Ssc14Items.EXTINGUISHER_OPEN);
 		StationCodeService.install(level ->
 				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
+		StationNameService.install(level ->
+				Ssc14ModVariables.MapVariables.get(level).station_name);
 		StationBudgetService.install(level ->
 				Ssc14ModVariables.WorldVariables.get(level).Station_Budget);
 		MachineFrameAssemblyService.install(Ssc14ModItems.LOW_VOLTAGE_CABLE,

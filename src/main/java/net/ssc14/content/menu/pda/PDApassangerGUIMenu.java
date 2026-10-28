@@ -1,12 +1,9 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.pda;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.Level;
@@ -21,16 +18,16 @@ import net.minecraft.world.Container;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.PDAGUIoffPRProcedure;
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.content.menu.Ssc14MenuTypes;
+import net.ssc14.core.network.MenuStateAccess;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-@EventBusSubscriber
-public class PDApassangerGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class PDApassangerGUIMenu extends AbstractContainerMenu implements MenuStateAccess {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
@@ -51,7 +48,7 @@ public class PDApassangerGUIMenu extends AbstractContainerMenu implements Ssc14M
 	private BlockEntity boundBlockEntity = null;
 
 	public PDApassangerGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.PD_APASSANGER_GUI.get(), id);
+		super(Ssc14MenuTypes.PD_APASSANGER_GUI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(0);
@@ -83,6 +80,9 @@ public class PDApassangerGUIMenu extends AbstractContainerMenu implements Ssc14M
 
 	@Override
 	public boolean stillValid(Player player) {
+		if (!player.getMainHandItem().is(Ssc14Items.PD_APASSANGER.get())) {
+			return false;
+		}
 		if (this.bound) {
 			if (this.boundItemMatcher != null)
 				return this.boundItemMatcher.get();
@@ -99,7 +99,6 @@ public class PDApassangerGUIMenu extends AbstractContainerMenu implements Ssc14M
 		return ItemStack.EMPTY;
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}
@@ -107,17 +106,5 @@ public class PDApassangerGUIMenu extends AbstractContainerMenu implements Ssc14M
 	@Override
 	public Map<String, Object> getMenuState() {
 		return menuState;
-	}
-
-	@SubscribeEvent
-	public static void onPlayerTick(PlayerTickEvent.Post event) {
-		Player entity = event.getEntity();
-		if (entity.containerMenu instanceof PDApassangerGUIMenu menu) {
-			Level world = menu.world;
-			double x = menu.x;
-			double y = menu.y;
-			double z = menu.z;
-			PDAGUIoffPRProcedure.execute(entity);
-		}
 	}
 }

@@ -10,7 +10,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.component.DataComponents;
 
-import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
+import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.ssc14.content.item.container.PortableMenuItemKind;
 

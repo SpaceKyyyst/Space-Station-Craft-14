@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.OptionalInt;
 import java.util.UUID;
 import java.util.function.Consumer;
-import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
-import net.mcreator.ssc.procedures.PDAGUIoffPRProcedure;
+import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -155,9 +154,8 @@ public final class Ssc14PortableMenuItemsGameTests {
                 "passenger PDA no longer opens its menu");
         player.assertPayload(helper, InteractionHand.MAIN_HAND);
         player.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
-        PDAGUIoffPRProcedure.execute(player);
-        helper.assertTrue(!(player.containerMenu instanceof PDApassangerGUIMenu),
-                "passenger PDA menu no longer closes after removing the main-hand PDA");
+		helper.assertTrue(!player.containerMenu.stillValid(player),
+				"passenger PDA menu remains valid after removing the main-hand PDA");
         player.closeContainer();
 
         ItemStack eggCarton = Ssc14Items.EGG_CARTON.get().getDefaultInstance();
