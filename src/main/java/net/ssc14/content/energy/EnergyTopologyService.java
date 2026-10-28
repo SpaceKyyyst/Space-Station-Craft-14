@@ -20,7 +20,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.mcreator.ssc.energy.CableDeviceMapper;
 
 /** Server-thread-only topology state. A batch rebuilds only components touching changed positions. */
 public final class EnergyTopologyService {
