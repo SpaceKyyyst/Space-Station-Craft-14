@@ -2,6 +2,7 @@ package net.mcreator.ssc;
 
 import net.ssc14.content.energy.CableType;
 import net.ssc14.content.energy.EnergyNetwork;
+import net.ssc14.content.energy.EnergyNetworkService;
 
 import net.mcreator.ssc.block.LampBlock;
 import net.ssc14.content.block.energy.ApcBlockEntity;
@@ -41,7 +42,7 @@ public class EnergySimulationServer {
     public static void onServerTick(ServerTickEvent.Post event) {
         try (var timing = net.ssc14.core.diagnostics.TickPhase.start("energy_simulation", 0)) {
         for (ServerLevel level : event.getServer().getAllLevels()) {
-            EnergyNetworkManager.applyPendingUpdates(level);
+            EnergyNetworkService.applyPendingUpdates(level);
             TickContext tick = prepareTick(level);
             simulateNetworkLayer(level, CableType.HV, tick);
             simulateNetworkLayer(level, CableType.MV, tick);
@@ -56,7 +57,7 @@ public class EnergySimulationServer {
     private static TickContext prepareTick(ServerLevel level) {
         TickContext tick = new TickContext(level);
         for (CableType type : CableType.values()) {
-            for (EnergyNetwork network : EnergyNetworkManager.getNetworks(level, type)) {
+            for (EnergyNetwork network : EnergyNetworkService.networks(level, type)) {
                 if (!network.isTopologyReady()) continue;
                 network.getSources().removeIf(pos -> !isSource(level, pos, type));
                 network.getConsumers().removeIf(pos -> type == CableType.LV ? !tick.loads.track(pos) : !isConsumer(level, pos, type));
@@ -69,7 +70,7 @@ public class EnergySimulationServer {
             }
         }
         Map<BlockPos, Set<BlockPos>> apcLoads = new HashMap<>();
-        for (EnergyNetwork network : EnergyNetworkManager.getNetworks(level, CableType.LV)) {
+        for (EnergyNetwork network : EnergyNetworkService.networks(level, CableType.LV)) {
             if (!network.isTopologyReady()) continue;
             for (BlockPos source : network.getSources()) {
                 Set<BlockPos> lamps = apcLoads.computeIfAbsent(source, key -> new HashSet<>());
@@ -134,7 +135,7 @@ public class EnergySimulationServer {
     }
 
     private static void simulateNetworkLayer(ServerLevel level, CableType type, TickContext tick) {
-        for (EnergyNetwork network : EnergyNetworkManager.getNetworks(level, type)) {
+        for (EnergyNetwork network : EnergyNetworkService.networks(level, type)) {
             network.resetTickStats();
             if (!network.isTopologyReady()) {
                 if (type == CableType.LV) for (var lamp : network.getConsumers()) tick.loads.track(lamp);
