@@ -8,7 +8,9 @@ event subscribers и процедурные фасады, которые ещё 
 - `ToolsBlockClickProcedure` — общий right-click маршрутизатор инструментов шлюза;
 - client GUI key handling перенесён в `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` удалён, а key mapping оставлен compatibility alias;
-- `HumanModelRenderProcedure` — client render hooks;
+- `HumanModelRenderHandler` — canonical client render hooks; it still consumes
+  legacy render-state/model registries until those registries receive canonical
+  owners;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
   `TEMPORARYGRAVITYPLUGplayerProcedure` удалены после canonical-переноса;
 - остальные subscribers должны проверяться по event annotation, а не по числу прямых вызовов.
@@ -31,7 +33,9 @@ only event subscribers and procedural facades that still own runtime behavior:
 - `ToolsBlockClickProcedure` — shared right-click routing for airlock tools;
 - client GUI key handling was moved to `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` was removed and the key mapping remains a compatibility alias;
-- `HumanModelRenderProcedure` — client render hooks;
+- `HumanModelRenderHandler` — canonical client render hooks; it still consumes
+  legacy render-state/model registries until those registries receive canonical
+  owners;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
   `TEMPORARYGRAVITYPLUGplayerProcedure` were removed after canonical migration;
 - every remaining subscriber must be audited by event annotation, not by direct-call count.

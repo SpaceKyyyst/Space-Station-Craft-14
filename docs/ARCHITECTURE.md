@@ -133,6 +133,11 @@ communication console, commerce console, сетевой topology, station-code d
 Client slot interaction работает через `InteractionKeyMappings` и
 `InteractionSlotKeyHandler`; старое поле key mapping сохранено только как alias.
 
+Рендер игрока регистрируется через канонический клиентский
+`HumanModelRenderHandler`. Он сохраняет существующие registry render-state,
+humanoid-моделей и race-атрибутов как явные legacy-входы; эти registry остаются
+отдельной границей миграции и не дублируются молча.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -168,6 +173,11 @@ temporary generated procedure was removed.
 
 Client slot interaction now runs through `InteractionKeyMappings` and
 `InteractionSlotKeyHandler`; the old key-mapping field remains only as an alias.
+
+Player rendering now registers through canonical `HumanModelRenderHandler` in the
+client layer. The handler preserves the existing render-state, humanoid-model and
+race-attribute registries as explicit legacy inputs; those registries remain a
+separate migration boundary and are not silently duplicated.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
