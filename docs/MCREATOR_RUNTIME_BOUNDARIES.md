@@ -123,6 +123,9 @@ only event subscribers and procedural facades that still own runtime behavior:
 - firearm interaction adapter was moved to `net.mcreator.ssc.integration`;
   canonical firearm state routing and MK-58/Pistol procedure contracts remain
   unchanged;
+- `LocalChatEventHandler` was moved to `net.mcreator.ssc.integration`; message
+  routing, radio prefixes, popup formatting, and server-side audience checks
+  remain unchanged pending extraction of a pure chat/radio domain service;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
