@@ -165,13 +165,4 @@ class Ssc14BlocksCommerceConsoleCompatibilityTest {
         }
     }
 
-    @Test
-    void legacyAdapterInvokesSoundBoundaryExactlyOnce() {
-        int[] calls = {0};
-        var adapter = new LegacyCommerceConsoleIntegrationAdapter(
-                (level, x, y, z) -> calls[0]++);
-        adapter.use(CommerceConsoleIntegrationService.ConsoleKind.ORDER,
-                null, BlockPos.ZERO, null);
-        assertEquals(1, calls[0]);
-    }
 }

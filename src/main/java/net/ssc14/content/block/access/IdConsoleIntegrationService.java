@@ -8,6 +8,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.ssc14.content.sound.ConsoleMenuSoundService;
 
 /** Boundary for the legacy ID-console menu and sound. */
 public final class IdConsoleIntegrationService {
@@ -32,6 +33,9 @@ public final class IdConsoleIntegrationService {
 
     public static void use(Level level, BlockPos pos, Player player) {
         adapter.use(level, pos, player);
+        if (level != null && pos != null) {
+            ConsoleMenuSoundService.play(level, pos.getX(), pos.getY(), pos.getZ());
+        }
     }
 
     public static AbstractContainerMenu createMenu(

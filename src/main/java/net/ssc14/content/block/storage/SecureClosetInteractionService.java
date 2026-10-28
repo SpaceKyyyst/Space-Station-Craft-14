@@ -22,6 +22,7 @@ public final class SecureClosetInteractionService {
     }
 
     public static void interact(Level level, BlockPos pos, BlockState state, Player player) {
+        if (level != null && level.isClientSide()) return;
         adapter.interact(level, pos, state, player);
     }
 }

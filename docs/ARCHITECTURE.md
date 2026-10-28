@@ -50,6 +50,14 @@ adapter-классов. Их compatibility-тесты теперь провер�
 warhead blocks теперь напрямую вызывают canonical lifecycle services; их
 block-level adapters удалены после прохождения compatibility и GameTest
 проверок.
+Upper closet и secure closet adapters пока сохраняются: legacy-процедура
+одновременно выполняет access-config GUI, shift-операции и проверку доступа,
+тогда как `ClosetInteractionService` отвечает только за структуру и обмен
+предметами. Перед их удалением нужен отдельный access policy/service contract
+с dedicated GameTest.
+Оба оставшихся closet adapter-а уже имеют server-authority guard: клиентские
+вызовы не доходят до legacy procedure, а серверные access-config и lock
+операции сохраняются.
 Mod ID, registry ID, NBT-ключи и порядок `GasType` являются частью формата
 сохранений; форматы пакетов определяют совместимость клиента и сервера.
 Исполняемый baseline этих контрактов и правила migration описаны в
@@ -102,6 +110,71 @@ Mod ID, registry ID, NBT-ключи и порядок `GasType` являются
 отключении; декали удаляются из кеша при выгрузке чанка.
 
 ## Известные ограничения
+
+## Статус миграции MCreator / MCreator migration status
+
+Основные runtime-пути уже работают через канонические NeoForge-сервисы: кислородный
+генератор, гравитация, топливный бак, C4, ядерная боеголовка, реестр паллет и
+проверки доступа шлюза/шкафов. Оставшиеся классы `IntegrationService` являются
+явными переходными границами, а не новой игровой архитектурой. Они нужны там, где
+ещё сохраняются старые GUI, сетевые меню, формат сохранения или legacy energy API:
+communication console, commerce console, сетевой topology, station-code debug,
+шкафы, shutters, portable menus и несколько строительных/оружейных взаимодействий.
+Их удаление допустимо только после переноса соответствующего поведения и
+регрессионной проверки сохранений.
+
+Периодический radio-frequency tick коммуникационных серверов уже выполняется через
+`CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
+как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
+GUI- и сетевым контрактом и требуют отдельной миграции поведения.
+
+Portable-menu boundary больше не вызывает generated inventory procedure: генерация
+яиц и PDA state выполняются canonical services; bridge оставлен для legacy menu и
+network binding.
+
+Целевые пакеты `net.ssc14` не импортируют `net.mcreator.ssc.procedures`; generated
+runtime вызовы изолированы в bootstrap и явных legacy adapters.
+
+На текущем контрольном прогоне dedicated NeoForge GameTest все 217 обязательных
+сценариев прошли успешно; сервер также корректно сохранил все три измерения при
+завершении.
+
+The primary runtime paths now use canonical NeoForge services: oxygen production,
+gravity, fuel tanks, C4, nuclear warhead detonation, pallet registry and airlock/
+closet access checks. Remaining `IntegrationService` classes are explicit migration
+boundaries rather than a new gameplay architecture. They are retained where legacy
+GUIs, menu networking, save formats or the legacy energy API are still involved:
+communication and commerce consoles, cable topology, station-code debug, closets,
+shutters, portable menus, and several construction/firearm interactions. Each bridge
+must be removed only after its behavior and save compatibility are migrated and
+covered by regression tests.
+
+The communication-server periodic radio-frequency tick now runs through
+`CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
+only as a compatibility hook for external integrations. Its menu/use methods still
+own the GUI and network contract and cannot be removed until that behavior is migrated.
+
+The portable-menu boundary no longer calls a generated inventory procedure: egg
+generation and PDA state now use canonical services, while the bridge remains for the
+legacy menu and network binding.
+
+Target `net.ssc14` packages do not import `net.mcreator.ssc.procedures`; generated
+runtime calls are isolated to bootstrap code and explicit legacy adapters.
+
+The current dedicated NeoForge GameTest run passed all 217 required scenarios, and
+the server saved all three dimensions successfully during shutdown.
+
+После удаления отладочной station-code процедуры и мёртвого gravity-plug lifecycle
+адаптера и network-button моста в каноническом дереве остаётся 19 интерфейсных
+migration boundaries.
+Число является текущим инвентарным показателем, а не разрешением удалять мосты
+без переноса их контрактов.
+
+After removing the debug station-code procedure and the dead gravity-plug lifecycle
+adapter and network-button bridge, 19 interface-based migration boundaries remain
+in the canonical tree.
+This is an inventory metric, not permission to remove bridges without migrating
+their contracts.
 
 - Большие сгенерированные процедуры доступа и инвентарей ещё требуют отдельных
   поведенческих тестов. Новые операции ID-карт проходят через

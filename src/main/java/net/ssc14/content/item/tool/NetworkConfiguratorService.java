@@ -34,7 +34,8 @@ public final class NetworkConfiguratorService {
 
     public static void use(LevelAccessor level, BlockPos pos,
             Entity entity, ItemStack stack) {
-        if (entity == null || !level.getBlockState(pos).is(BlockTags.create(
+        if (level == null || pos == null || entity == null || stack == null
+                || !level.getBlockState(pos).is(BlockTags.create(
                 Identifier.fromNamespaceAndPath("ssc14", "connectable")))) {
             return;
         }
@@ -57,11 +58,13 @@ public final class NetworkConfiguratorService {
     }
 
     public static boolean hasFirstTarget(ItemStack stack) {
+        if (stack == null) return false;
         return !stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
                 .copyTag().getStringOr(FIRST_TYPE, "").isEmpty();
     }
 
     public static void reset(ItemStack stack) {
+        if (stack == null) return;
         CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> {
             for (String key : TARGET_KEYS) {
                 tag.remove(key);

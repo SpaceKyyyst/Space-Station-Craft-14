@@ -6,6 +6,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
+import net.ssc14.content.sound.ConsoleMenuSoundService;
 
 /** Boundary for the legacy commerce-console menus and open sound. */
 public final class CommerceConsoleIntegrationService {
@@ -35,6 +36,9 @@ public final class CommerceConsoleIntegrationService {
 
     public static void use(ConsoleKind kind, Level level, BlockPos pos, Player player) {
         adapter.use(kind, level, pos, player);
+        if (level != null && pos != null) {
+            ConsoleMenuSoundService.play(level, pos.getX(), pos.getY(), pos.getZ());
+        }
     }
 
     public static AbstractContainerMenu createMenu(

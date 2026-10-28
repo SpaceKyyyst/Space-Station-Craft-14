@@ -21,6 +21,7 @@ public final class UpperClosetPlugInteractionService {
     }
 
     public static void interact(Level level, BlockPos pos, Player player) {
+        if (level != null && level.isClientSide()) return;
         adapter.interact(level, pos, player);
     }
 }

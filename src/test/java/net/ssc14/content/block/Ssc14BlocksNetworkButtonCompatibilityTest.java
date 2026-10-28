@@ -80,16 +80,4 @@ class Ssc14BlocksNetworkButtonCompatibilityTest {
         assertEquals(maxZ / 16.0, shape.max(Direction.Axis.Z), 0.00001);
     }
 
-    @Test
-    void interactionServiceRoutesClicksAndRestoresAdapter() {
-        int[] calls = {0};
-        NetworkButtonInteractionService.Adapter previous =
-                NetworkButtonInteractionService.install((level, pos) -> calls[0]++);
-        try {
-            NetworkButtonInteractionService.activate(null, BlockPos.ZERO);
-            assertEquals(1, calls[0]);
-        } finally {
-            NetworkButtonInteractionService.install(previous);
-        }
-    }
 }

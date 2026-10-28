@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "objects": [
+    {
+      "type": "particle_emitter",
+      "name": "sun_core",
+      "modules": {
+        "emission": {
+          "rate": 30,
+          "bursts": []
+        },
+        "shape": {
+          "type": "sphere",
+          "radius": 0.3
+        },
+        "lifetime": {
+          "min": 20,
+          "max": 40
+        },
+        "size": {
+          "curve": {
+            "keys": [
+              [0, 0.8],
+              [0.5, 1.2],
+              [1, 0]
+            ]
+          }
+        },
+        "color": {
+          "gradient": "ssc_14:ldlib2/resources/global/gradient"
+        },
+        "velocity": {
+          "speed": 0.05
+        },
+        "forces": {
+          "noise": {
+            "strength": 0.5,
+            "frequency": 0.3,
+            "noise_texture": "ssc_14:photon/noise"
+          }
+        },
+        "renderer": {
+          "material": "ssc_14:ldlib2/resources/global/new_res.material",
+          "shader_graph": "ssc_14:ldlib2/resources/global/blackhole_faze1.shader_graph",
+          "layer": "translucent",
+          "order": 0
+        }
+      }
+    },
+    {
+      "type": "particle_emitter",
+      "name": "sun_glow",
+      "modules": {
+        "emission": {
+          "rate": 5,
+          "bursts": []
+        },
+        "shape": {
+          "type": "sphere",
+          "radius": 1.0
+        },
+        "lifetime": {
+          "min": 60,
+          "max": 100
+        },
+        "size": {
+          "curve": {
+            "keys": [
+              [0, 2.0],
+              [1, 3.0]
+            ]
+          }
+        },
+        "color": {
+          "gradient": "ssc_14:ldlib2/resources/global/gradient"
+        },
+        "velocity": {
+          "speed": 0.01
+        },
+        "renderer": {
+          "material": "ssc_14:ldlib2/resources/global/new_res.material",
+          "shader_graph": "ssc_14:ldlib2/resources/global/blackhole_faze1.shader_graph",
+          "layer": "translucent",
+          "order": -10
+        }
+      }
+    }
+  ]
+}

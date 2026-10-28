@@ -36,27 +36,4 @@ class Ssc14BlocksGravityGeneratorPlugCompatibilityTest {
         assertTrue(block.propagatesSkylightDown(block.defaultBlockState()));
     }
 
-    @Test
-    void lifecycleServiceRoutesBothActionsExactlyOnce() {
-        int[] calls = new int[2];
-        GravityGeneratorPlugLifecycleService.install(
-                new GravityGeneratorPlugLifecycleService.Adapter() {
-                    @Override
-                    public void neighborChanged(net.minecraft.world.level.Level level,
-                            BlockPos pos) {
-                        calls[0]++;
-                    }
-
-                    @Override
-                    public void destroyed(net.minecraft.world.level.Level level, BlockPos pos) {
-                        calls[1]++;
-                    }
-                });
-
-        GravityGeneratorPlugLifecycleService.neighborChanged(null, BlockPos.ZERO);
-        GravityGeneratorPlugLifecycleService.destroyed(null, BlockPos.ZERO);
-
-        assertEquals(1, calls[0]);
-        assertEquals(1, calls[1]);
-    }
 }

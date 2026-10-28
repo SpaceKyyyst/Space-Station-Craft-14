@@ -33,11 +33,9 @@ import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.mcreator.ssc.integration.LegacyCommerceConsoleIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyIdConsoleIntegrationAdapter;
-import net.mcreator.ssc.integration.LegacyNetworkButtonIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyNetworkConfiguratorMenuAdapter;
 import net.mcreator.ssc.integration.LegacyRsuInteractionAdapter;
 import net.mcreator.ssc.integration.LegacyShuttersIntegrationAdapter;
-import net.mcreator.ssc.integration.LegacyAirlockUpperPlugIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockControllerInteractionAdapter;
 import net.ssc14.content.gravity.ui.GravityGeneratorWindow;
@@ -67,6 +65,7 @@ import net.ssc14.content.block.commerce.CommerceConsoleIntegrationService;
 import net.ssc14.content.block.control.NetworkButtonInteractionService;
 import net.ssc14.content.block.control.Ssc14ControlBlockEntities;
 import net.ssc14.content.block.communication.CommunicationServerLifecycleService;
+import net.ssc14.content.block.communication.CommunicationFrequencyStateService;
 import net.ssc14.content.block.communication.CommunicationConsoleIntegrationService;
 import net.ssc14.content.block.communication.Ssc14CommunicationBlockEntities;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
@@ -242,13 +241,6 @@ public class Ssc14Mod {
 		CommunicationServerLifecycleService.install(
 				new CommunicationServerLifecycleService.Adapter() {
 					@Override
-					public void tick(ServerLevel level, net.minecraft.core.BlockPos pos,
-							net.minecraft.world.level.block.state.BlockState state) {
-						net.mcreator.ssc.procedures.CommunicationServers_TIC_PR_Procedure.execute(
-								level, pos.getX(), pos.getY(), pos.getZ(), state);
-					}
-
-					@Override
 					public void use(net.minecraft.world.level.Level level,
 							net.minecraft.core.BlockPos pos,
 							net.minecraft.world.level.block.state.BlockState state,
@@ -257,6 +249,21 @@ public class Ssc14Mod {
 								level, pos.getX(), pos.getY(), pos.getZ(), state, player);
 					}
 				});
+		CommunicationFrequencyStateService.install((level, stateKey, enabled) -> {
+			var state = Ssc14ModVariables.MapVariables.get(level);
+			switch (stateKey) {
+				case "Base_Radio_Frequency" -> state.Base_Radio_Frequency = enabled;
+				case "Command_Radio_Frequency" -> state.Command_Radio_Frequency = enabled;
+				case "Engeneer_Radio_Frequency" -> state.Engeneer_Radio_Frequency = enabled;
+				case "Medical_Radio_Frequency" -> state.Medical_Radio_Frequency = enabled;
+				case "RND_Radio_Frequency" -> state.RND_Radio_Frequency = enabled;
+				case "Sec_Radio_Frequency" -> state.Sec_Radio_Frequency = enabled;
+				case "Serv_Radio_Frequency" -> state.Serv_Radio_Frequency = enabled;
+				case "Cargo_Radio_Frequency" -> state.Cargo_Radio_Frequency = enabled;
+				default -> { return; }
+			}
+			state.markSyncDirty();
+		});
 		CommunicationConsoleIntegrationService.install(
 				new CommunicationConsoleIntegrationService.Adapter() {
 					@Override
@@ -278,8 +285,6 @@ public class Ssc14Mod {
 								}
 							}, pos);
 						}
-						net.ssc14.content.sound.ConsoleMenuSoundService.play(
-								level, pos.getX(), pos.getY(), pos.getZ());
 					}
 
 					@Override
@@ -290,9 +295,6 @@ public class Ssc14Mod {
 								new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
 					}
 				});
-		StationCodeDebugInteractionService.install((level, pos, player) ->
-				net.mcreator.ssc.procedures.DEBUG13PriShchielchkiePKMPoBlokuProcedure.execute(
-						level, pos.getX(), pos.getY(), pos.getZ(), player));
 		UpperClosetPlugInteractionService.install((level, pos, player) ->
 				net.mcreator.ssc.procedures.Closet_OpenClose_PrProcedure.execute(
 						level, pos.getX(), pos.getY() - 1, pos.getZ(),
@@ -304,6 +306,12 @@ public class Ssc14Mod {
 				Ssc14Items.EXTINGUISHER, Ssc14Items.EXTINGUISHER_OPEN);
 		StationCodeService.install(level ->
 				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
+		StationCodeService.installMutator((level, value) -> {
+			Ssc14ModVariables.MapVariables variables =
+					Ssc14ModVariables.MapVariables.get(level);
+			variables.station_code = value;
+			variables.markSyncDirty();
+		});
 		StationNameService.install(level ->
 				Ssc14ModVariables.MapVariables.get(level).station_name);
 		StationBudgetService.install(level ->
@@ -338,16 +346,13 @@ public class Ssc14Mod {
 				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
 		MenuStateTransportPort.install(MenuStateNetworkActions::send);
 		CommerceConsoleIntegrationService.install(
-				new LegacyCommerceConsoleIntegrationAdapter(
-						 net.ssc14.content.sound.ConsoleMenuSoundService::play));
+					new LegacyCommerceConsoleIntegrationAdapter());
 		IdConsoleIntegrationService.install(new LegacyIdConsoleIntegrationAdapter());
-		NetworkButtonInteractionService.install(
-				new LegacyNetworkButtonIntegrationAdapter());
 		NetworkConfiguratorService.install(new LegacyNetworkConfiguratorMenuAdapter());
 		RsuInteractionService.install(new LegacyRsuInteractionAdapter());
 		ShuttersIntegrationService.install(new LegacyShuttersIntegrationAdapter());
-		AirlockUpperPlugIntegrationService.install(
-				new LegacyAirlockUpperPlugIntegrationAdapter());
+		AirlockUpperPlugIntegrationService.installUseHandler(
+				net.ssc14.content.airlock.AirlockUpperPlugInteractionService::execute);
 		AirlockDoorIntegrationService.install(new LegacyAirlockDoorIntegrationAdapter());
 		AirlockControllerService.install(new LegacyAirlockControllerInteractionAdapter());
 		ConstructionItemInteractionService.install(

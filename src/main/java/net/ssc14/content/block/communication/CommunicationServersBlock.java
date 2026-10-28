@@ -101,7 +101,8 @@ public class CommunicationServersBlock extends Block implements EntityBlock {
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.tick(state, level, pos, random);
-        CommunicationServerLifecycleService.tick(level, pos, state);
+        CommunicationServerLifecycleService.activate(level, pos, state,
+                (stateKey, enabled) -> CommunicationFrequencyStateService.set(level, stateKey, enabled));
         level.scheduleTick(pos, this, TICK_INTERVAL);
     }
 

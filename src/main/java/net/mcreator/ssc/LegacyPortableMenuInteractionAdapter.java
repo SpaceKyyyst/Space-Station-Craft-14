@@ -5,7 +5,7 @@ import net.ssc14.content.menu.access.AccessConfigItemMenu;
 import net.ssc14.content.menu.storage.BackpackGUIMenu;
 import net.ssc14.content.menu.food.EggCartonGUIMenu;
 import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
-import net.mcreator.ssc.procedures.EggCarton_EggsGenerateProcedure;
+import net.ssc14.content.item.container.EggGenerationService;
 import net.ssc14.content.menu.pda.PortableMenuCondition;
 import net.ssc14.content.menu.pda.PdaGenerationService;
 import net.minecraft.network.FriendlyByteBuf;
@@ -58,7 +58,7 @@ final class LegacyPortableMenuInteractionAdapter
         switch (kind) {
             case PASSENGER_PDA -> PdaGenerationService.execute(
                     level, entity.getX(), entity.getY(), entity.getZ(), entity, stack);
-            case EGG_CARTON -> EggCarton_EggsGenerateProcedure.execute(stack);
+            case EGG_CARTON -> EggGenerationService.execute(stack);
             default -> { }
         }
     }
