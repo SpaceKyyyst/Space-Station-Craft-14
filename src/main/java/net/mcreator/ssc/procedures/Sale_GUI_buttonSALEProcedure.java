@@ -10,7 +10,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.mcreator.ssc.SaleRegistry;
+import net.ssc14.content.commerce.SalePriceRegistry;
 import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import java.util.List;
@@ -35,7 +35,7 @@ public class Sale_GUI_buttonSALEProcedure {
 
 						for (ItemEntity itemEntity : items) {
 							ItemStack stack = itemEntity.getItem();
-							totalEarned += SaleRegistry.getPrice(stack) * stack.getCount();
+							totalEarned += SalePriceRegistry.price(stack) * stack.getCount();
 
 							if (world instanceof ServerLevel serverLevel) {
 								serverLevel.sendParticles(ParticleTypes.POOF, itemEntity.getX(), itemEntity.getY() + 0.2, itemEntity.getZ(), 8, 0.1, 0.1, 0.1, 0.02);
