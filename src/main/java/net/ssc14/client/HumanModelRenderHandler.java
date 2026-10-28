@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.client;
 
 import org.joml.Vector3f;
 import net.neoforged.neoforge.client.event.RenderPlayerEvent;
@@ -43,7 +43,10 @@ import java.util.Collection;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @EventBusSubscriber(Dist.CLIENT)
-public class HumanModelRenderProcedure {
+public final class HumanModelRenderHandler {
+
+	private HumanModelRenderHandler() {
+	}
 
 	public static Collection<Runnable> capes = new ConcurrentLinkedQueue<>();
 
