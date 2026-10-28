@@ -7,7 +7,7 @@ import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicReference;
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.block.ShutterController;
-import net.mcreator.ssc.procedures.Button_CLICK_Procedure;
+import net.ssc14.content.block.control.ButtonInteractionService;
 import net.mcreator.ssc.procedures.C4explorePRProcedure;
 import net.mcreator.ssc.procedures.CommunicationServers_TIC_PR_Procedure;
 import net.ssc14.content.commerce.VendingMachineRuntimeService;
@@ -123,7 +123,7 @@ class ServerWorkSchedulerTest {
         server(true);
         var client = accessor(true);
         assertDoesNotThrow(() -> {
-            Button_CLICK_Procedure.execute(client, 0, 0, 0);
+            ButtonInteractionService.execute(client, 0, 0, 0);
             C4explorePRProcedure.execute(client, 0, 0, 0);
             CommunicationServers_TIC_PR_Procedure.execute(client, 0, 0, 0, null);
             VendingMachineRuntimeService.vend(client, BlockPos.ZERO, 0);
