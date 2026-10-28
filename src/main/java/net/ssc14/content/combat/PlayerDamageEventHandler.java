@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.combat;
 
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -16,15 +16,14 @@ import net.minecraft.world.level.GameType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 
-import net.mcreator.ssc.init.Ssc14ModAttributes;
-import net.mcreator.ssc.init.Ssc14ModEntities;
+import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.integration.neoforge.combat.ArmorResistanceService;
 import net.ssc14.content.medical.MedicalPlayerEffects;
 
 import javax.annotation.Nullable;
 
 @EventBusSubscriber
-public class OnPlayerTakeDamageSSC14Procedure {
+public final class PlayerDamageEventHandler {
 
     private static final String KEY_TOTAL_DAMAGE = "sscCustomHealth";
     private static final String KEY_BLEEDING = "ssc14_bleeding";
@@ -143,7 +142,7 @@ public class OnPlayerTakeDamageSSC14Procedure {
 
 
     private static void updateHealthUIAttribute(Player player, double totalDamage) {
-        var attr = player.getAttribute(Ssc14ModAttributes.HEALTH_U_IATTRIBUTE);
+        var attr = player.getAttribute(Ssc14Attributes.HEALTH_U_IATTRIBUTE);
         if (attr == null) return;
         int uiState = totalDamage <= 12 ? 0 : totalDamage <= 37 ? 1 : totalDamage <= 62 ? 2 : 
                       totalDamage <= 87 ? 3 : totalDamage <= 100 ? 4 : totalDamage <= 200 ? 5 : 6;
