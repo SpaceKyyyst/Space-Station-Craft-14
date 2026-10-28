@@ -146,6 +146,9 @@ manual opening, tile installation и deconstruction; legacy adapters остаю�
 Персистентный журнал шлюза реализован в `AirlockEventLogService`; прежний
 `AirlockEventLog` сохранён как thin compatibility facade для generated callers.
 
+Обработка физических redstone-сигналов вынесена в `AirlockSignalHandler`; старый
+`AirlockSignals` оставлен фасадом, сохраняя ключ `HOLD` и legacy callers.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -194,6 +197,9 @@ contracts are migrated separately.
 
 Persistent airlock logging is implemented by `AirlockEventLogService`; the old
 `AirlockEventLog` remains as a thin compatibility facade for generated callers.
+
+Physical redstone signal handling now lives in `AirlockSignalHandler`; the old
+`AirlockSignals` remains a facade preserving the `HOLD` key and legacy callers.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
