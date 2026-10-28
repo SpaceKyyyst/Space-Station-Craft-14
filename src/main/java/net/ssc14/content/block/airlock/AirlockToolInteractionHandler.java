@@ -15,7 +15,6 @@ import net.minecraft.core.BlockPos;
 
 import javax.annotation.Nullable;
 
-import net.mcreator.ssc.procedures.UniversalDeconstructionProcedureProcedure;
 
 @EventBusSubscriber
 public final class AirlockToolInteractionHandler {
@@ -65,7 +64,7 @@ public final class AirlockToolInteractionHandler {
                 && player.getMainHandItem().is(net.mcreator.ssc.init.Ssc14ModItems.SCREWDRIVER.get())
                 && blockstate.getBlock().getStateDefinition().getProperty("arl_variat") != null) {
             if (player.isAlive() && !player.isSpectator() && player.level().mayInteract(player, pos))
-                UniversalDeconstructionProcedureProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate, entity);
+                AirlockDeconstructionService.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate, entity);
             if (event instanceof PlayerInteractEvent.RightClickBlock interaction) {
                 interaction.setCanceled(true);
                 interaction.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
@@ -73,6 +72,6 @@ public final class AirlockToolInteractionHandler {
             return;
         }
 
-		UniversalDeconstructionProcedureProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate, entity);
+		AirlockDeconstructionService.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate, entity);
 	}
 }

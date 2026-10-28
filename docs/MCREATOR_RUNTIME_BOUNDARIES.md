@@ -38,9 +38,9 @@ event subscribers и процедурные фасады, которые ещё 
   state machine moved to `AirlockLifecycleService`;
 - `AirlockMaintenance` — thin compatibility facade; construction-job ownership
   moved to `AirlockMaintenanceService`;
-- `UniversalDeconstructionProcedureProcedure` — legacy deconstruction behavior
-  retained behind the canonical tool handler until its block/resource contract
-  is migrated;
+- `UniversalDeconstructionProcedureProcedure` — thin compatibility facade;
+  deconstruction ownership moved to `AirlockDeconstructionService`, while the
+  construction registry remains an explicit legacy input;
 - client GUI key handling перенесён в `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` удалён, а key mapping оставлен compatibility alias;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
@@ -98,9 +98,9 @@ only event subscribers and procedural facades that still own runtime behavior:
   state machine moved to `AirlockLifecycleService`;
 - `AirlockMaintenance` — thin compatibility facade; construction-job ownership
   moved to `AirlockMaintenanceService`;
-- `UniversalDeconstructionProcedureProcedure` — legacy deconstruction behavior
-  retained behind the canonical tool handler until its block/resource contract
-  is migrated;
+- `UniversalDeconstructionProcedureProcedure` — thin compatibility facade;
+  deconstruction ownership moved to `AirlockDeconstructionService`, while the
+  construction registry remains an explicit legacy input;
 - client GUI key handling was moved to `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` was removed and the key mapping remains a compatibility alias;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
