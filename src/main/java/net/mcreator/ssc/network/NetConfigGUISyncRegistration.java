@@ -1,7 +1,7 @@
 package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.Ssc14Mod;
-import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
+import net.ssc14.content.menu.network.NetConfigGUIMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.PacketFlow;
 import net.neoforged.bus.api.SubscribeEvent;
