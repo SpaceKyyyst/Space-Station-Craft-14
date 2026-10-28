@@ -24,6 +24,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.ssc14.content.fuel.FuelTankInitializationService;
+import net.ssc14.content.fuel.FuelTankInteractionService;
 
 /** Directional tank whose fuel behavior is provided through a migration boundary. */
 public class FuelTankBlock extends Block implements EntityBlock {
@@ -78,12 +80,12 @@ public class FuelTankBlock extends Block implements EntityBlock {
     @Override public void onPlace(BlockState state, Level level, BlockPos pos,
             BlockState oldState, boolean movedByPiston) {
         super.onPlace(state, level, pos, oldState, movedByPiston);
-        FuelTankInteractionService.initialize(level, pos);
+        FuelTankInitializationService.execute(level, pos.getX(), pos.getY(), pos.getZ());
     }
     @Override public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
             Player player, BlockHitResult hit) {
         super.useWithoutItem(state, level, pos, player, hit);
-        FuelTankInteractionService.interact(level, pos, player);
+        FuelTankInteractionService.execute(level, pos.getX(), pos.getY(), pos.getZ(), player);
         return InteractionResult.SUCCESS;
     }
     @Override public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
