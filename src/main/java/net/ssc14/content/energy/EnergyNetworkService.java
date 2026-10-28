@@ -4,7 +4,6 @@ import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ChunkPos;
-import net.mcreator.ssc.energy.EnergyTopologyService;
 
 /** Canonical runtime boundary for energy topology and network snapshots. */
 public final class EnergyNetworkService {
