@@ -4,6 +4,7 @@ import net.mcreator.ssc.client.gui.*;
 import net.ssc14.client.menu.crafting.DopCraftScreen;
 import net.ssc14.client.menu.headset.HeadsetScreen;
 import net.ssc14.client.menu.access.AccessConfigItemScreen;
+import net.ssc14.client.menu.access.AccessConfigMENUScreen;
 import net.ssc14.client.menu.food.EggCartonGUIScreen;
 import net.ssc14.client.menu.storage.BackpackGUIScreen;
 import net.ssc14.client.menu.construction.RCDGUIScreen;
@@ -22,12 +23,15 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.client.menu.Ssc14ScreenBinder;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+import net.ssc14.integration.neoforge.menu.network.MenuStateNetworkActions;
 
 /** Compatibility bootstrap for legacy screen implementations. */
 @Deprecated(forRemoval = false)
 @EventBusSubscriber(Dist.CLIENT)
 public final class Ssc14ModScreens {
     static {
+        MenuStateNetworkActions.installClientSender(ClientPacketDistributor::sendToServer);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.DOP_CRAFT_MENU, DopCraftScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.I_DCODE, IDcodeScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.ACCESS_CONFIG_MENU, AccessConfigMENUScreen::new);

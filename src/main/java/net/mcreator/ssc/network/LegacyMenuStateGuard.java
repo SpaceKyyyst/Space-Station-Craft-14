@@ -1,6 +1,6 @@
 package net.mcreator.ssc.network;
 
-import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
+import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.mcreator.ssc.world.inventory.IDcodeMenu;
 import net.minecraft.world.entity.player.Player;

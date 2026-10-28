@@ -1,13 +1,9 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.access;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerContainerEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.Level;
@@ -22,17 +18,18 @@ import net.minecraft.world.Container;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.AcsConfigMenuCHECKProcedure;
-import net.mcreator.ssc.procedures.AccessConfigMENU_Open_PRProcedure;
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.access.AirlockDoorState;
+import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.content.menu.Ssc14MenuTypes;
+import net.ssc14.core.network.MenuStateAccess;
+import net.ssc14.integration.neoforge.menu.network.MenuStateNetworkActions;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-@EventBusSubscriber
-public class AccessConfigMENUMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class AccessConfigMENUMenu extends AbstractContainerMenu implements MenuStateAccess {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
@@ -54,7 +51,7 @@ public class AccessConfigMENUMenu extends AbstractContainerMenu implements Ssc14
     private final ItemStack configurator;
 
 	public AccessConfigMENUMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.ACCESS_CONFIG_MENU.get(), id);
+		super(Ssc14MenuTypes.ACCESS_CONFIG_MENU.get(), id);
 		this.entity = inv.player;
         this.configurator = inv.player.getMainHandItem();
 		this.world = inv.player.level();
@@ -92,18 +89,17 @@ public class AccessConfigMENUMenu extends AbstractContainerMenu implements Ssc14
         var pos = new BlockPos(x, y, z);
         return player.isAlive() && !player.isSpectator() && player.level() == world
                 && player.getMainHandItem() == configurator
-                && configurator.is(net.mcreator.ssc.init.Ssc14ModItems.ACCESS_CONFIG.get())
+                && configurator.is(Ssc14Items.ACCESS_CONFIG.get())
                 && world.hasChunkAt(pos) && world.getBlockEntity(pos) == boundBlockEntity && boundBlockEntity != null
                 && world.mayInteract(player, pos)
                 && player.distanceToSqr(pos.getCenter()) <= 36
-                && net.mcreator.ssc.access.AirlockPower.isDoor(world.getBlockState(pos));
+                && AirlockDoorState.isDoor(world.getBlockState(pos));
     }
 	@Override
 	public ItemStack quickMoveStack(Player playerIn, int index) {
 		return ItemStack.EMPTY;
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}
@@ -113,27 +109,8 @@ public class AccessConfigMENUMenu extends AbstractContainerMenu implements Ssc14
 		return menuState;
 	}
 
-	@SubscribeEvent
-	public static void onPlayerTick(PlayerTickEvent.Post event) {
-		Player entity = event.getEntity();
-		if (entity.containerMenu instanceof AccessConfigMENUMenu menu) {
-			Level world = menu.world;
-			double x = menu.x;
-			double y = menu.y;
-			double z = menu.z;
-			AcsConfigMenuCHECKProcedure.execute(world, entity);
-		}
-	}
-
-	@SubscribeEvent
-	public static void onContainerOpen(PlayerContainerEvent.Open event) {
-		Player entity = event.getEntity();
-		if (event.getContainer() instanceof AccessConfigMENUMenu menu) {
-			Level world = menu.world;
-			double x = menu.x;
-			double y = menu.y;
-			double z = menu.z;
-			AccessConfigMENU_Open_PRProcedure.execute(world, entity);
-		}
+	public void sendMenuStateUpdate(Player player, int elementType, String name,
+			Object elementState, boolean needClientUpdate) {
+		MenuStateNetworkActions.send(this, player, elementType, name, elementState);
 	}
 }

@@ -1,4 +1,4 @@
-package net.mcreator.ssc.client.gui;
+package net.ssc14.client.menu.access;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -11,19 +11,11 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
-import net.mcreator.ssc.init.Ssc14ModScreens;
-
-import java.security.Security;
-
-import java.lang.ref.Cleaner;
-
-import com.mojang.brigadier.Command;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 import com.mojang.blaze3d.platform.InputConstants;
 
-import com.google.common.util.concurrent.Service;
-
-public class AccessConfigMENUScreen extends AbstractContainerScreen<AccessConfigMENUMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class AccessConfigMENUScreen extends AbstractContainerScreen<AccessConfigMENUMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
