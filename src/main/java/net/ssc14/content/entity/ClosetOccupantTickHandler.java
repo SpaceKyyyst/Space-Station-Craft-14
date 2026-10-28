@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.entity;
 
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -16,7 +16,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
 
 @EventBusSubscriber
-public class ClosetEntityTICcheckProcedure {
+public final class ClosetOccupantTickHandler {
 
     private static final String LOCKED_TAG = "ssc14:lockedInCloset";
     // Кэшируем TagKey один раз при загрузке класса (не в тике!)
