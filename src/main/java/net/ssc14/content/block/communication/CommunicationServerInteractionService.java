@@ -1,4 +1,4 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.block.communication;
 
 import net.neoforged.neoforge.transfer.item.ItemUtil;
 import net.neoforged.neoforge.transfer.item.ItemResource;
@@ -23,14 +23,14 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 
-public class CommunicationServers_Click_USEProcedure {
+public final class CommunicationServerInteractionService {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
 		if (entity == null)
 			return;
 		if ((getPropertyByName(blockstate, "type") instanceof IntegerProperty _getip1 ? blockstate.getValue(_getip1) : -1) == 0) {
-			if (Ssc14ModItems.ENCRYPTION_KEY_PASSANGER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+			if (Ssc14Items.ENCRYPTION_KEY_PASSANGER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				if (world instanceof ServerLevel _serverLevel) {
 					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_be instanceof Container _container) {
@@ -47,7 +47,7 @@ public class CommunicationServers_Click_USEProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
-			} else if (Ssc14ModItems.ENCRYPTION_KEY_COMMAND.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+			} else if (Ssc14Items.ENCRYPTION_KEY_COMMAND.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				if (world instanceof ServerLevel _serverLevel) {
 					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_be instanceof Container _container) {
@@ -64,7 +64,7 @@ public class CommunicationServers_Click_USEProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
-			} else if (Ssc14ModItems.ENCRYPTION_KEY_ENGENEER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+			} else if (Ssc14Items.ENCRYPTION_KEY_ENGENEER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				if (world instanceof ServerLevel _serverLevel) {
 					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_be instanceof Container _container) {
@@ -81,7 +81,7 @@ public class CommunicationServers_Click_USEProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
-			} else if (Ssc14ModItems.ENCRYPTION_KEY_MEDICAL.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+			} else if (Ssc14Items.ENCRYPTION_KEY_MEDICAL.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				if (world instanceof ServerLevel _serverLevel) {
 					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_be instanceof Container _container) {
@@ -98,7 +98,7 @@ public class CommunicationServers_Click_USEProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
-			} else if (Ssc14ModItems.ENCRYPTION_KEY_RND.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+			} else if (Ssc14Items.ENCRYPTION_KEY_RND.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				if (world instanceof ServerLevel _serverLevel) {
 					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_be instanceof Container _container) {
@@ -115,7 +115,7 @@ public class CommunicationServers_Click_USEProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
-			} else if (Ssc14ModItems.ENCRYPTION_KEY_SECURITY.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+			} else if (Ssc14Items.ENCRYPTION_KEY_SECURITY.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				if (world instanceof ServerLevel _serverLevel) {
 					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_be instanceof Container _container) {
@@ -132,7 +132,7 @@ public class CommunicationServers_Click_USEProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
-			} else if (Ssc14ModItems.ENCRYPTION_KEY_SERVICE.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+			} else if (Ssc14Items.ENCRYPTION_KEY_SERVICE.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				if (world instanceof ServerLevel _serverLevel) {
 					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_be instanceof Container _container) {
@@ -149,7 +149,7 @@ public class CommunicationServers_Click_USEProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
-			} else if (Ssc14ModItems.ENCRYPTION_KEY_CARGO.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+			} else if (Ssc14Items.ENCRYPTION_KEY_CARGO.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				if (world instanceof ServerLevel _serverLevel) {
 					BlockEntity _be = _serverLevel.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_be instanceof Container _container) {
@@ -168,7 +168,7 @@ public class CommunicationServers_Click_USEProcedure {
 				}
 			}
 		} else if ((getPropertyByName(blockstate, "type") instanceof IntegerProperty _getip59 ? blockstate.getValue(_getip59) : -1) > 0
-				&& Ssc14ModItems.SCREWDRIVER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+				&& Ssc14Items.SCREWDRIVER.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
 					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:screwdriver")), SoundSource.BLOCKS, 1, 1);

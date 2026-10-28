@@ -250,7 +250,7 @@ public class Ssc14Mod {
 							net.minecraft.core.BlockPos pos,
 							net.minecraft.world.level.block.state.BlockState state,
 							Player player) {
-						net.mcreator.ssc.procedures.CommunicationServers_Click_USEProcedure.execute(
+						net.ssc14.content.block.communication.CommunicationServerInteractionService.execute(
 								level, pos.getX(), pos.getY(), pos.getZ(), state, player);
 					}
 				});
