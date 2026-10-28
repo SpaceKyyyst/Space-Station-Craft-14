@@ -30,6 +30,12 @@ public final class NutritionUiService {
         return value >= minimumInclusive && value < maximumExclusive;
     }
 
+    public static boolean below(Entity entity, double threshold) {
+        if (!(entity instanceof LivingEntity living) || isCreativeOrSpectator(entity)) return false;
+        return living.getAttributes().hasAttribute(Ssc14Attributes.NUTRIENTS)
+                && living.getAttribute(Ssc14Attributes.NUTRIENTS).getValue() < threshold;
+    }
+
     private static boolean isCreativeOrSpectator(Entity entity) {
         return entity instanceof Player player
                 && (player.gameMode() == GameType.CREATIVE || player.gameMode() == GameType.SPECTATOR);
