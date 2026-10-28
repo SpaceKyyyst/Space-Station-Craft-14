@@ -15,7 +15,7 @@ import net.ssc14.content.block.airlock.AirlockDoorIntegrationService;
 public final class LegacyAirlockDoorIntegrationAdapter
         implements AirlockDoorIntegrationService.Adapter {
     @Override public void place(Level level, BlockPos pos, BlockState state) {
-        net.mcreator.ssc.procedures.BaseAirlockD1PutProcedure.execute(
+        net.ssc14.content.block.airlock.AirlockStateInitializer.execute(
                 level, pos.getX(), pos.getY(), pos.getZ(), state);
     }
 
