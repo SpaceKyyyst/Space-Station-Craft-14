@@ -950,7 +950,8 @@ public final class AuditTests {
             net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA,item,t->t.putDouble("fuel",1000));
             p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,item);
             var pos=h.absolutePos(new BlockPos(3,2,3));
-            net.mcreator.ssc.procedures.WelderOnOffPrProcedure.execute(h.getLevel(),pos.getX(),pos.getY(),pos.getZ(),p);
+            net.ssc14.content.item.tool.WelderStateService.toggle(
+                    h.getLevel(), pos.getX(), pos.getY(), pos.getZ(), p);
             h.assertTrue(p.getMainHandItem().is(net.mcreator.ssc.init.Ssc14ModItems.ACTIVE_WELDER.get()),"Welder activation fixture failed");
             h.assertTrue(p.getMainHandItem().getHoverName().getString().equals("Audit Welder"),"Activating welder destroys custom name");h.succeed();
         });
@@ -1015,7 +1016,8 @@ public final class AuditTests {
             stack.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME, net.minecraft.network.chat.Component.literal("Empty Welder"));
             net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("fuel", 150));
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, stack);
-            net.mcreator.ssc.procedures.Welding_Fuel_chekProcedure.execute(h.getLevel(), 0, 0, 0, player, stack);
+            net.ssc14.content.item.tool.WelderStateService.tick(
+                    h.getLevel(), player, net.minecraft.world.InteractionHand.MAIN_HAND, stack);
             h.assertTrue(player.getMainHandItem().is(net.mcreator.ssc.init.Ssc14ModItems.WELDING.get()), "Empty welder remained active");
             h.assertTrue(player.getMainHandItem().getHoverName().getString().equals("Empty Welder"), "Automatic shutdown lost custom name");
             h.succeed();
@@ -1028,7 +1030,8 @@ public final class AuditTests {
             net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("fuel", 1000));
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, stack);
             for (int toggle = 0; toggle < 2; toggle++) {
-                net.mcreator.ssc.procedures.WelderOnOffPrProcedure.execute(h.getLevel(), 0, 0, 0, player);
+                net.ssc14.content.item.tool.WelderStateService.toggle(
+                        h.getLevel(), 0, 0, 0, player);
                 var actual = player.getMainHandItem();
                 var buffer = new net.minecraft.network.RegistryFriendlyByteBuf(io.netty.buffer.Unpooled.buffer(), h.getLevel().registryAccess());
                 try {
