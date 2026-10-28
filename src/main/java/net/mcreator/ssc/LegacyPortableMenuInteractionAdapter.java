@@ -6,7 +6,7 @@ import net.ssc14.content.menu.storage.BackpackGUIMenu;
 import net.ssc14.content.menu.food.EggCartonGUIMenu;
 import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
 import net.mcreator.ssc.procedures.EggCarton_EggsGenerateProcedure;
-import net.mcreator.ssc.procedures.PDAGUIOpeningConditionsProcedure;
+import net.ssc14.content.menu.pda.PortableMenuCondition;
 import net.mcreator.ssc.procedures.PDA_generateProcedure;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -44,7 +44,7 @@ final class LegacyPortableMenuInteractionAdapter
     public boolean canOpen(
             PortableMenuItemKind kind, ServerPlayer player, InteractionHand hand) {
         return kind != PortableMenuItemKind.PASSENGER_PDA
-                || PDAGUIOpeningConditionsProcedure.execute(
+                || PortableMenuCondition.execute(
                         player, player.getItemInHand(hand));
     }
 
