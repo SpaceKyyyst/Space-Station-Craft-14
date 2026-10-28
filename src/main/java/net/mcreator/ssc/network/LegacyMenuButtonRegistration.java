@@ -23,7 +23,7 @@ import net.mcreator.ssc.procedures.RCDGUIcatwalkButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIdeconstructButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIdirArmWindowButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIdirwindowButtonProcedure;
-import net.mcreator.ssc.procedures.RCDGUIexitButtonProcedure;
+import net.ssc14.content.menu.MenuCloseService;
 import net.mcreator.ssc.procedures.RCDGUIgrilleButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIsheatingButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUItileButtonProcedure;
@@ -207,7 +207,7 @@ public final class LegacyMenuButtonRegistration {
                     player.level(), message.x(), message.y(), message.z(), player);
             case 3 -> RCDGUIwindowsModeButtonProcedure.execute(
                     player.level(), message.x(), message.y(), message.z(), player);
-            case 6 -> RCDGUIexitButtonProcedure.execute(player);
+            case 6 -> MenuCloseService.execute(player);
             default -> { }
         }
     }

@@ -1,9 +1,9 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.menu;
 
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 
-public class RCDGUIexitButtonProcedure {
+public final class MenuCloseService {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
