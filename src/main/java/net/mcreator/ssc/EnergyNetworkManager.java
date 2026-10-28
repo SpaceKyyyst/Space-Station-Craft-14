@@ -7,7 +7,8 @@ import net.ssc14.content.energy.EnergyNetwork;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
 
-/** Stable facade for generated block and procedure integration points. */
+/** @deprecated Use {@link net.ssc14.content.energy.EnergyNetworkService}. */
+@Deprecated
 public final class EnergyNetworkManager {
     private EnergyNetworkManager() { }
     public static void queueUpdate(LevelAccessor level, BlockPos pos) { EnergyNetworkService.queueUpdate(level, pos); }
