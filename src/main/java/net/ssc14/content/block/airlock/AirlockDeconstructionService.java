@@ -2,6 +2,8 @@
 package net.ssc14.content.block.airlock;
 
 import net.ssc14.content.particle.Ssc14ParticleTypes;
+import net.ssc14.content.attribute.Ssc14Attributes;
+import net.ssc14.content.item.Ssc14Items;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
@@ -22,7 +24,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.util.RandomSource;
-import net.mcreator.ssc.init.*;
 import net.mcreator.ssc.Ssc14Mod;
 
 public final class AirlockDeconstructionService {
@@ -31,7 +32,7 @@ public final class AirlockDeconstructionService {
     public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
         if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
         if (entity == null || !(entity instanceof LivingEntity livingEntity)) return;
-        if (!livingEntity.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB)) return;
+        if (!livingEntity.getAttributes().hasAttribute(Ssc14Attributes.PROGRESS_BAR_ATRB)) return;
 
         ItemStack mainHand = livingEntity.getMainHandItem();
         Item tool = mainHand.getItem();
@@ -55,14 +56,14 @@ public final class AirlockDeconstructionService {
                 if (livingEntity.getMainHandItem().getItem() != tool) { reset(); return; }
                 if (world.getBlockState(pos).getBlock() != blockstate.getBlock()) { reset(); return; }
 
-                if (tool == Ssc14ModItems.ACTIVE_WELDER.get() && world instanceof ServerLevel sl) {
+                if (tool == Ssc14Items.ACTIVE_WELDER.get() && world instanceof ServerLevel sl) {
                     sl.sendParticles(Ssc14ParticleTypes.SPARK.get(), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 20, 0.2, 0.2, 0.2, 0.2);
                     // ИСПРАВЛЕНО: l.random заменено на l.getRandom() под NeoForge 26.1.2
                     float pitch = 0.8F + (world instanceof Level l ? l.getRandom() : RandomSource.create()).nextFloat() * 0.4F;
                     playLevelSound(world, pos, "ssc_14:welding_work", 0.2F, pitch);
                 }
 
-                livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(step);
+                livingEntity.getAttribute(Ssc14Attributes.PROGRESS_BAR_ATRB).setBaseValue(step);
 
                 if (step != 6) {
                     Ssc14Mod.queueServerWork(serverOwner, stage.delays()[step - 1], () -> run(step + 1)).orThrow();
@@ -106,7 +107,7 @@ public final class AirlockDeconstructionService {
                 BlockState finalState = sLevel.getBlockState(pos);
                 sLevel.sendBlockUpdated(pos, oldState, finalState, 3);
 
-                String soundId = (tool == Ssc14ModItems.SCREWDRIVER.get()) ? "ssc_14:screwdriver" : (tool == Ssc14ModItems.SPANNER.get()) ? "ssc_14:spanner_use" : "ssc_14:title_off";
+                String soundId = (tool == Ssc14Items.SCREWDRIVER.get()) ? "ssc_14:screwdriver" : (tool == Ssc14Items.SPANNER.get()) ? "ssc_14:spanner_use" : "ssc_14:title_off";
                 playLevelSound(sLevel, pos, soundId, 1.0F, 1.0F);
                 reset();
             }
@@ -119,7 +120,7 @@ public final class AirlockDeconstructionService {
             }
 
             private void reset() {
-                livingEntity.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(0);
+                livingEntity.getAttribute(Ssc14Attributes.PROGRESS_BAR_ATRB).setBaseValue(0);
             }
         }
         new GlobalProcess().run(1);

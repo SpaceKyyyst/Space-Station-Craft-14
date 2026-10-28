@@ -35,7 +35,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 
 import net.mcreator.ssc.init.Ssc14ModRenderStateModifiers;
 import net.mcreator.ssc.init.Ssc14ModHumanoidModels;
-import net.mcreator.ssc.init.Ssc14ModAttributes;
+import net.ssc14.content.attribute.Ssc14Attributes;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.Collection;
@@ -70,8 +70,8 @@ public final class HumanModelRenderHandler {
 		PlayerModel vanillaModel = (PlayerModel) avatarRenderer.getModel();
 		
 		int raceId = 0;
-		if (mc.player.getAttributes().hasAttribute(Ssc14ModAttributes.RACE)) {
-			raceId = (int) mc.player.getAttribute(Ssc14ModAttributes.RACE).getBaseValue();
+		if (mc.player.getAttributes().hasAttribute(Ssc14Attributes.RACE)) {
+			raceId = (int) mc.player.getAttribute(Ssc14Attributes.RACE).getBaseValue();
 		}
 
 		PlayerModel customModel = switch (raceId) {
@@ -217,8 +217,8 @@ public final class HumanModelRenderHandler {
 		double clothes_scale = 1.0 / (entity instanceof LivingEntity _livingEntity1 && _livingEntity1.getAttributes().hasAttribute(Attributes.SCALE) ? _livingEntity1.getAttribute(Attributes.SCALE).getValue() : 1.0);
 		
 		int raceId = 0;
-		if (entity instanceof LivingEntity _livingEntityRace && _livingEntityRace.getAttributes().hasAttribute(Ssc14ModAttributes.RACE)) {
-			raceId = (int) _livingEntityRace.getAttribute(Ssc14ModAttributes.RACE).getBaseValue();
+		if (entity instanceof LivingEntity _livingEntityRace && _livingEntityRace.getAttributes().hasAttribute(Ssc14Attributes.RACE)) {
+			raceId = (int) _livingEntityRace.getAttribute(Ssc14Attributes.RACE).getBaseValue();
 		}
 
 		PlayerModel activeCustomModel = switch (raceId) {
