@@ -112,20 +112,6 @@ public final class PlayerDamageEventHandler {
                 return;
             }
             
-            // ВРЕМЕННО ЗАКОММЕНТИРОВАНО: Предотвращает ошибку отсутствия класса CorpseEntity при первичной сборке
-            /*
-            net.mcreator.ssc.entity.CorpseEntity corpse = new net.mcreator.ssc.entity.CorpseEntity(
-                net.mcreator.ssc.init.Ssc14ModEntities.CORPSE.get(), 
-                serverLevel
-            );
-            corpse.setPos(player.position());
-            corpse.setPose(net.minecraft.world.entity.Pose.SWIMMING);
-            corpse.refreshDimensions();
-            corpse.setOriginalPlayerData(player.getUUID(), nbt.getDouble("sscCustomHealth"));
-            corpse.getPersistentData().put("SSC14_HealthData", nbt.copy());
-            serverLevel.addFreshEntity(corpse);
-            */
-            
             player.getInventory().clearContent();
             player.getInventory().setChanged();
             
