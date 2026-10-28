@@ -2,7 +2,6 @@ package net.ssc14.content.block.airlock;
 
 import net.mcreator.ssc.procedures.BaseAirlockD1PutProcedure;
 import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
-import net.mcreator.ssc.access.AirlockPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -17,7 +16,7 @@ public final class AirlockSignalHandler {
     public static void changed(ServerLevel level, BlockPos pos) {
         if (!level.hasChunkAt(pos)) return;
         var door = level.getBlockEntity(pos);
-        if (door == null || !AirlockPower.isDoor(door.getBlockState())) return;
+        if (door == null || !AirlockPowerService.isDoor(door.getBlockState())) return;
         var state = door.getBlockState();
         var facing = state.getValue(HorizontalDirectionalBlock.FACING);
         Direction[] sides = {facing.getCounterClockWise(), facing.getClockWise(), facing.getOpposite(), Direction.DOWN, facing};

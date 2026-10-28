@@ -156,6 +156,9 @@ Server-side AI control шлюза реализован в `AirlockAiControlServi
 `AirlockDisassembly` оставлен compatibility facade, а canonical tool handler
 вызывает сервис напрямую.
 
+Проверка двери и подача сетевого питания вынесены в `AirlockPowerService`;
+`AirlockPower` сохранён как фасад для energy topology и legacy callers.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -214,6 +217,9 @@ old `AirlockAiControl` preserves the `Authority`/`Action` types and delegates.
 Isolated welded-door removal is implemented by `AirlockDisassemblyService`;
 `AirlockDisassembly` remains a compatibility facade, while the canonical tool
 handler calls the service directly.
+
+Door identification and network-power supply now live in `AirlockPowerService`;
+`AirlockPower` remains a facade for energy topology and legacy callers.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains

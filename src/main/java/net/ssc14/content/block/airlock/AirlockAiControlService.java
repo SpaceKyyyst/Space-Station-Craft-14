@@ -2,7 +2,6 @@ package net.ssc14.content.block.airlock;
 
 import net.mcreator.ssc.access.AirlockEventLog;
 import net.mcreator.ssc.access.AirlockMaintenance;
-import net.mcreator.ssc.access.AirlockPower;
 import net.mcreator.ssc.procedures.BaseAirlockD1PutProcedure;
 import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 import net.minecraft.core.BlockPos;
@@ -22,7 +21,7 @@ public final class AirlockAiControlService {
         var pos = AirlockMaintenance.root(level, clicked);
         if (!level.hasChunkAt(pos) || !authority.mayControl(level, pos)) return false;
         var door = level.getBlockEntity(pos);
-        if (door == null || !AirlockPower.isDoor(door.getBlockState())) return false;
+        if (door == null || !AirlockPowerService.isDoor(door.getBlockState())) return false;
         var data = door.getPersistentData();
         if (!data.getBooleanOr("powered", false) || !data.getBooleanOr("ai_access", false)) return false;
         switch (action) {

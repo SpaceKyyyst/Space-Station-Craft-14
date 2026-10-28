@@ -1,7 +1,6 @@
 package net.ssc14.content.block.airlock;
 
 import net.mcreator.ssc.access.AirlockMaintenance;
-import net.mcreator.ssc.access.AirlockPower;
 import net.mcreator.ssc.access.AirlockWireService;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.core.BlockPos;
@@ -42,7 +41,7 @@ public final class AirlockEventLogService {
                 || !player.getMainHandItem().is(Ssc14ModItems.MULTITUL.get()) || !level.hasChunkAt(clicked)) return false;
         var pos = AirlockMaintenance.root(level, clicked);
         var door = level.getBlockEntity(pos);
-        if (door == null || !AirlockPower.isDoor(door.getBlockState())) return false;
+        if (door == null || !AirlockPowerService.isDoor(door.getBlockState())) return false;
         if (!player.isAlive() || player.isSpectator() || !level.mayInteract(player, pos)
                 || !AirlockWireService.canUsePanel(player, pos)) return true;
         var data = door.getPersistentData();
