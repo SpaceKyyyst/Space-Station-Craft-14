@@ -5,7 +5,7 @@ import net.mcreator.ssc.procedures.MK58_Breech_Open_Procedure;
 import net.mcreator.ssc.procedures.MK58_DescriptionProcedure;
 import net.mcreator.ssc.procedures.MK58_Fire_Procedure;
 import net.mcreator.ssc.procedures.MK58_GENERATE_Procedure;
-import net.mcreator.ssc.procedures.MagazinePistol35_Description_Procedure;
+import net.ssc14.content.firearm.MagazineDescriptionService;
 import net.mcreator.ssc.procedures.MagazinePistol35_GENERATE_Procedure;
 import net.mcreator.ssc.procedures.MagazinePistol35_USE_Procedure;
 import net.minecraft.server.level.ServerLevel;
@@ -31,7 +31,7 @@ final class LegacyFirearmInteractionAdapter implements FirearmInteractionService
     public String tooltip(FirearmState state, ItemStack stack) {
         return state instanceof Mk58State
                 ? MK58_DescriptionProcedure.execute(stack)
-                : MagazinePistol35_Description_Procedure.execute(stack);
+				: MagazineDescriptionService.execute(stack);
     }
 
     @Override
