@@ -35,7 +35,7 @@ import net.mcreator.ssc.init.Ssc14ModAttributes;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
-import net.mcreator.ssc.world.inventory.RCDGUIMenu;
+import net.ssc14.content.menu.construction.RCDGUIMenu;
 import io.netty.buffer.Unpooled;
 import net.minecraft.nbt.CompoundTag;
 

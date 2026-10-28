@@ -1,19 +1,15 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.menu.construction;
 
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
+import net.ssc14.content.item.Ssc14Items;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
+/** Keeps RCD menus open only while the player is holding the canonical RSU item. */
+public final class RcdMenuAccessService {
+    private RcdMenuAccessService() { }
 
-public class RCDGUI_check_Procedure {
-	public static void execute(Entity entity) {
-		if (entity == null)
-			return;
-		if (!((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Ssc14ModItems.RSU.get())) {
-			if (entity instanceof Player _player)
-				_player.closeContainer();
+	public static void closeIfToolMissing(Player player) {
+		if (!player.getMainHandItem().is(Ssc14Items.RSU.get())) {
+			player.closeContainer();
 		}
 	}
 }

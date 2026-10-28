@@ -1,4 +1,4 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.construction;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
@@ -21,8 +21,7 @@ import net.minecraft.world.Container;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.RCDGUI_check_Procedure;
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.menu.Ssc14MenuTypes;
 
 import java.util.function.Supplier;
 import java.util.Map;
@@ -30,7 +29,7 @@ import java.util.HashMap;
 import java.util.Collections;
 
 @EventBusSubscriber
-public class RCDGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class RCDGUIMenu extends AbstractContainerMenu {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
@@ -51,7 +50,7 @@ public class RCDGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.M
 	private BlockEntity boundBlockEntity = null;
 
 	public RCDGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.RCDGUI.get(), id);
+		super(Ssc14MenuTypes.RCDGUI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(0);
@@ -99,12 +98,10 @@ public class RCDGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.M
 		return ItemStack.EMPTY;
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}
 
-	@Override
 	public Map<String, Object> getMenuState() {
 		return menuState;
 	}
@@ -117,7 +114,7 @@ public class RCDGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.M
 			double x = menu.x;
 			double y = menu.y;
 			double z = menu.z;
-			RCDGUI_check_Procedure.execute(entity);
+			RcdMenuAccessService.closeIfToolMissing(entity);
 		}
 	}
 }
