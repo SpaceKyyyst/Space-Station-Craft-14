@@ -120,7 +120,7 @@ public class MK58_Fire_Procedure {
 						}
 					}
 				} else if (Ssc14ModItems.MK_58OPEN.get() == itemstack.getItem()) {
-					if (0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0)) {
+					if (Mk58FireStateService.hasMagazineRound(itemstack)) {
 						if (world instanceof Level _level) {
 							if (!_level.isClientSide()) {
 								_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
