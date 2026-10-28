@@ -15,7 +15,6 @@ import net.mcreator.ssc.procedures.MicrwGUIbutEProcedure;
 import net.ssc14.content.menu.pda.PdaTabService;
 import net.mcreator.ssc.procedures.PDA3TABbuttonPRProcedure;
 import net.mcreator.ssc.procedures.PDAflashlightPRProcedure;
-import net.mcreator.ssc.procedures.PDAmainButtonPRProcedure;
 import net.mcreator.ssc.procedures.PenRemovePRProcedure;
 import net.mcreator.ssc.procedures.RCDGUIarmWindowButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIbackButtonProcedure;
@@ -178,7 +177,7 @@ public final class LegacyMenuButtonRegistration {
             case 0 -> PenRemovePRProcedure.execute(player.level(), player);
             case 1 -> IDRemovePRProcedure.execute(player.level(), player);
             case 2 -> PDAflashlightPRProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
-            case 3 -> PDAmainButtonPRProcedure.execute(player);
+            case 3 -> PdaTabService.setTab(player, 1);
             case 4 -> PdaTabService.execute(player);
             case 5 -> PDA3TABbuttonPRProcedure.execute(player);
             default -> { }
