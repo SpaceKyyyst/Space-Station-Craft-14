@@ -1,6 +1,4 @@
-package net.mcreator.ssc.client.gui;
-
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+package net.ssc14.client.menu.station;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -15,14 +13,13 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.ssc14.content.menu.station.GravGenGUIMenu;
-import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.client.menu.MenuButtonClientActions;
+import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
-import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
@@ -58,7 +55,8 @@ public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> im
 		super.extractBackground(guiGraphics, mouseX, mouseY, partialTicks);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 200, 90, 200, 90);
-		if (GravGenRoodGUIProcedure.execute(world, x, y, z)) {
+		var displayState = GravityGeneratorDisplayState.capture(world, new net.minecraft.core.BlockPos(x, y, z));
+		if (displayState.showsRod()) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, this.leftPos + 150, this.topPos + 37, 0, 0, 33, 16, 33, 16);
 		}
 	}
@@ -75,19 +73,20 @@ public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> im
 
 	@Override
 	protected void extractLabels(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY) {
+		var displayState = GravityGeneratorDisplayState.capture(world, new net.minecraft.core.BlockPos(x, y, z));
 		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.grav_gen_gui.label_pitaniie"), 5, 10, -1, false);
 		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.grav_gen_gui.label_status"), 5, 35, -1, false);
 		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.grav_gen_gui.label_eta"), 5, 49, -1, false);
 		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.grav_gen_gui.label_zariad"), 5, 63, -1, false);
-		if (GravGenStatusGUITextProcedure.execute(world, x, y, z))
+		if (displayState.status() == GravityGeneratorDisplayState.Status.FULL)
 			guiGraphics.text(this.font, Component.translatable("gui.ssc_14.grav_gen_gui.label_polnostiu_zariazhien"), 60, 35, -13663425, false);
-		guiGraphics.text(this.font, GravGenGUIETAtextProcedure.execute(world, x, y, z), 60, 49, -1, false);
-		guiGraphics.text(this.font, GravGenGUIpercentTextProcedure.execute(world, x, y, z), 60, 63, -1, false);
-		if (GravGenStatusGUIText2Procedure.execute(world, x, y, z))
+		guiGraphics.text(this.font, displayState.etaText(), 60, 49, -1, false);
+		guiGraphics.text(this.font, displayState.percentText(), 60, 63, -1, false);
+		if (displayState.status() == GravityGeneratorDisplayState.Status.ACTIVE)
 			guiGraphics.text(this.font, Component.translatable("gui.ssc_14.grav_gen_gui.label_empty"), 60, 35, -8226258, false);
-		if (GravGenStatusGUIText3Procedure.execute(world, x, y, z))
+		if (displayState.status() == GravityGeneratorDisplayState.Status.INACTIVE)
 			guiGraphics.text(this.font, Component.translatable("gui.ssc_14.grav_gen_gui.label_razriazhaietsia"), 60, 35, -8226514, false);
-		if (GravGenStatusGUIText4Procedure.execute(world, x, y, z))
+		if (displayState.status() == GravityGeneratorDisplayState.Status.OFF)
 			guiGraphics.text(this.font, Component.translatable("gui.ssc_14.grav_gen_gui.label_vykliuchien"), 60, 35, -8245714, false);
 	}
 
@@ -98,8 +97,7 @@ public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> im
 			int x = GravGenGUIScreen.this.x;
 			int y = GravGenGUIScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.gravityGenerator(0, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.gravityGenerator(0, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.gravityGenerator(0, x, y, z));
 			}
 		}) {
 			@Override
@@ -112,8 +110,7 @@ public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> im
 			int x = GravGenGUIScreen.this.x;
 			int y = GravGenGUIScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.gravityGenerator(1, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.gravityGenerator(1, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.gravityGenerator(1, x, y, z));
 			}
 		}) {
 			@Override
