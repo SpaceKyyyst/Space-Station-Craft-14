@@ -1,11 +1,7 @@
 package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.Ssc14Mod;
-import net.mcreator.ssc.procedures.CommConsBLUEcodeProcedure;
-import net.mcreator.ssc.procedures.CommConsGREENcodeProcedure;
-import net.mcreator.ssc.procedures.CommConsPURPLEcodeProcedure;
-import net.mcreator.ssc.procedures.CommConsREDcodeProcedure;
-import net.mcreator.ssc.procedures.CommConsYELLOWcodeProcedure;
+import net.mcreator.ssc.integration.LegacyCommunicationConsoleAdapter;
 import net.minecraft.core.BlockPos;
 import net.ssc14.content.menu.decal.DecalColorMenuService;
 import net.ssc14.content.gravity.GravityGeneratorControlService;
@@ -174,12 +170,7 @@ public final class LegacyMenuButtonRegistration {
         if (!(player.containerMenu instanceof CommunConsoleGUIMenu menu)
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
         switch (message.buttonId()) {
-            case 0 -> CommConsREDcodeProcedure.execute(player.level());
-            case 1 -> CommConsBLUEcodeProcedure.execute(player.level());
-            case 2 -> CommConsPURPLEcodeProcedure.execute(player.level());
-            case 3 -> CommConsYELLOWcodeProcedure.execute(player.level());
-            case 4 -> CommConsGREENcodeProcedure.execute(player.level());
-            default -> { }
+            default -> LegacyCommunicationConsoleAdapter.trigger(player.level(), message.buttonId());
         }
     }
 
