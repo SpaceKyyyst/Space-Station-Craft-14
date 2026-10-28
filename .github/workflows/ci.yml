@@ -1,0 +1,109 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  pr-tests:
+    name: PR tests
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate project metadata
+        run: python .github/scripts/check_project.py
+      - name: Run governance checks
+        run: python -m unittest discover -s .github/scripts -p 'test_*.py'
+      - name: Run Gradle tests
+        run: ./gradlew test --no-daemon
+
+  release:
+    name: Build and release version change
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+      - name: Detect version change
+        id: version
+        shell: bash
+        run: |
+          current=$(sed -nE "s/^version[[:space:]]*=[[:space:]]*['\"]([^'\"]+)['\"]$/\1/p" build.gradle | head -n1)
+          previous=$(git show HEAD^:build.gradle 2>/dev/null | sed -nE "s/^version[[:space:]]*=[[:space:]]*['\"]([^'\"]+)['\"]$/\1/p" | head -n1 || true)
+          test -n "$current"
+          echo "current=$current" >> "$GITHUB_OUTPUT"
+          echo "changed=$([[ "$current" != "$previous" ]] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - name: Stop when version is unchanged
+        if: steps.version.outputs.changed != 'true'
+        run: echo "Version unchanged (${{ steps.version.outputs.current }}); release skipped."
+      - name: Check duplicate release
+        if: steps.version.outputs.changed == 'true'
+        id: duplicate
+        shell: bash
+        run: |
+          version='${{ steps.version.outputs.current }}'
+          if git tag --list "ssc_14-${version}-build.*" | grep -q .; then
+            echo "duplicate=true" >> "$GITHUB_OUTPUT"
+            echo "Release already exists for $version; skipping."
+          else
+            echo "duplicate=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Build artifact
+        if: steps.version.outputs.changed == 'true' && steps.duplicate.outputs.duplicate != 'true'
+        run: ./gradlew build --no-daemon
+      - name: Publish GitHub release
+        if: steps.version.outputs.changed == 'true' && steps.duplicate.outputs.duplicate != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          version='${{ steps.version.outputs.current }}'
+          tag="ssc_14-${version}-build.${GITHUB_RUN_NUMBER}-${GITHUB_SHA:0:12}"
+          jar=$(find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' | head -n1)
+          test -n "$jar"
+          git tag "$tag" "$GITHUB_SHA"
+          git push origin "$tag"
+          notes=$(git log --pretty='- %s' "$(git describe --tags --match='ssc_14-*' --abbrev=0 2>/dev/null || echo HEAD^)..$GITHUB_SHA" | head -n 50)
+          gh release create "$tag" "$jar" --title "SSC14 $version" --notes "## Changes\n${notes:-- Version $version}"
+      - name: Notify Discord
+        if: steps.version.outputs.changed == 'true' && steps.duplicate.outputs.duplicate != 'true'
+        env:
+          DISCORD_RELEASE_WEBHOOK: ${{ secrets.DISCORD_RELEASE_WEBHOOK }}
+          VERSION: ${{ steps.version.outputs.current }}
+          RUN_NUMBER: ${{ github.run_number }}
+          SHA: ${{ github.sha }}
+          REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          if [ -z "$DISCORD_RELEASE_WEBHOOK" ]; then
+            echo "DISCORD_RELEASE_WEBHOOK is not configured; notification skipped."
+            exit 0
+          fi
+          jar=$(find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' | head -n1)
+          url="https://github.com/${REPOSITORY}/releases/tag/ssc_14-${VERSION}-build.${RUN_NUMBER}-${SHA:0:12}"
+          payload=$(python - "$VERSION" "$RUN_NUMBER" "$url" <<'PY'
+          import json, sys
+          version, build, url = sys.argv[1:]
+          print(json.dumps({"flags": 32768, "username": "SSC14 • Система оповещения", "allowed_mentions": {"parse": []}, "components": [{"type": 10, "content": "||@Ждун обновлений||"}, {"type": 17, "components": [{"type": 10, "content": f"# 🚀 SSC14 | Release {version}\\n**Сборка:** `{build}` • **Статус:** 🟢 RELEASE"}, {"type": 14, "spacing": 2, "divider": True}, {"type": 9, "components": [{"type": 10, "content": "### 📋 Изменения\\n\\nНовая версия опубликована."}], "accessory": {"type": 2, "style": 5, "label": "GitHub", "url": url, "emoji": {"name": "⭐"}}}, {"type": 14, "spacing": 1, "divider": True}, {"type": 10, "content": "-# Space Station Craft 14 • GitHub Release Notifications"}]}]}))
+          PY
+          )
+          curl --fail-with-body -X POST "$DISCORD_RELEASE_WEBHOOK" -F "payload_json=$payload" -F "files[0]=@$jar"
