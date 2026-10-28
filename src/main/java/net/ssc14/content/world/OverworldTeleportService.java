@@ -1,4 +1,4 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.world;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.Entity;
@@ -19,8 +19,8 @@ import java.util.Set;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.context.CommandContext;
 
-public class TpSSC14mineOveworldprProcedure {
-	public static void execute(CommandContext<CommandSourceStack> arguments) {
+public final class OverworldTeleportService {
+	public static void teleport(CommandContext<CommandSourceStack> arguments) {
 		if ((commandParameterEntity(arguments, "tp_ent")) instanceof ServerPlayer _player && _player.level() instanceof ServerLevel _serverLevel) {
 			ResourceKey<Level> destinationType = Level.OVERWORLD;
 			if (_player.level().dimension() == destinationType)
