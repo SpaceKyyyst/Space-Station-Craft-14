@@ -5,6 +5,10 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: ssc14-ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -13,6 +17,7 @@ jobs:
     name: PR tests
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -25,15 +30,22 @@ jobs:
           python-version: '3.12'
       - name: Validate project metadata
         run: python .github/scripts/check_project.py
+      - name: Validate architecture and resources
+        run: |
+          python .github/scripts/check_architecture.py
+          python .github/scripts/check_procedure_graph.py
+          python .github/scripts/check_resources.py
+          python .github/scripts/check_menu_security.py
       - name: Run governance checks
         run: python -m unittest discover -s .github/scripts -p 'test_*.py'
-      - name: Run Gradle tests
-        run: ./gradlew test --no-daemon
+      - name: Run Gradle quality checks and tests
+        run: ./gradlew test domainTest compileGameTestJava checkstyleMain pmdMain --no-daemon
 
   release:
     name: Build and release version change
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:

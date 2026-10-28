@@ -10,6 +10,9 @@ import net.ssc14.content.energy.EnergyNetwork;
 /** @deprecated Use {@link net.ssc14.content.energy.EnergyTopologyService}. */
 @Deprecated
 public final class EnergyTopologyService {
+    public static final int MAX_WORK_UNITS_PER_TICK =
+            net.ssc14.content.energy.EnergyTopologyService.MAX_WORK_UNITS_PER_TICK;
+
     private EnergyTopologyService() { }
 
     public static void invalidate(LevelAccessor level, BlockPos pos) {
@@ -34,5 +37,13 @@ public final class EnergyTopologyService {
 
     public static void unloadWorld(LevelAccessor level) {
         net.ssc14.content.energy.EnergyTopologyService.unloadWorld(level);
+    }
+
+    public static int workUnitsThisTick(LevelAccessor level) {
+        return net.ssc14.content.energy.EnergyTopologyService.workUnitsThisTick(level);
+    }
+
+    public static boolean rebuilding(LevelAccessor level) {
+        return net.ssc14.content.energy.EnergyTopologyService.rebuilding(level);
     }
 }
