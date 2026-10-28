@@ -1,4 +1,4 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.construction;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
@@ -21,8 +21,7 @@ import net.minecraft.world.Container;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.RCDGUI_check_Procedure;
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.menu.Ssc14MenuTypes;
 
 import java.util.function.Supplier;
 import java.util.Map;
@@ -30,11 +29,11 @@ import java.util.HashMap;
 import java.util.Collections;
 
 @EventBusSubscriber
-public class RCDGUIwallfloorMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class RCDGUIwindowsMenu extends AbstractContainerMenu {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
-			if (!this.containsKey(key) && this.size() >= 6)
+			if (!this.containsKey(key) && this.size() >= 7)
 				return null;
 			return super.put(key, value);
 		}
@@ -50,8 +49,8 @@ public class RCDGUIwallfloorMenu extends AbstractContainerMenu implements Ssc14M
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
 
-	public RCDGUIwallfloorMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.RCDGU_IWALLFLOOR.get(), id);
+	public RCDGUIwindowsMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+		super(Ssc14MenuTypes.RCDGU_IWINDOWS.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(0);
@@ -99,12 +98,10 @@ public class RCDGUIwallfloorMenu extends AbstractContainerMenu implements Ssc14M
 		return ItemStack.EMPTY;
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}
 
-	@Override
 	public Map<String, Object> getMenuState() {
 		return menuState;
 	}
@@ -112,12 +109,12 @@ public class RCDGUIwallfloorMenu extends AbstractContainerMenu implements Ssc14M
 	@SubscribeEvent
 	public static void onPlayerTick(PlayerTickEvent.Post event) {
 		Player entity = event.getEntity();
-		if (entity.containerMenu instanceof RCDGUIwallfloorMenu menu) {
+		if (entity.containerMenu instanceof RCDGUIwindowsMenu menu) {
 			Level world = menu.world;
 			double x = menu.x;
 			double y = menu.y;
 			double z = menu.z;
-			RCDGUI_check_Procedure.execute(entity);
+			RcdMenuAccessService.closeIfToolMissing(entity);
 		}
 	}
 }

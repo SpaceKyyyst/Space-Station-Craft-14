@@ -11,7 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.world.inventory.RCDGUIwallfloorMenu;
+import net.ssc14.content.menu.construction.RCDGUIwallfloorMenu;
 
 import io.netty.buffer.Unpooled;
 
