@@ -241,13 +241,6 @@ public class Ssc14Mod {
 		CommunicationServerLifecycleService.install(
 				new CommunicationServerLifecycleService.Adapter() {
 					@Override
-					public void tick(ServerLevel level, net.minecraft.core.BlockPos pos,
-							net.minecraft.world.level.block.state.BlockState state) {
-						net.mcreator.ssc.procedures.CommunicationServers_TIC_PR_Procedure.execute(
-								level, pos.getX(), pos.getY(), pos.getZ(), state);
-					}
-
-					@Override
 					public void use(net.minecraft.world.level.Level level,
 							net.minecraft.core.BlockPos pos,
 							net.minecraft.world.level.block.state.BlockState state,

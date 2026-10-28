@@ -16,12 +16,12 @@ public final class CommunicationServerLifecycleService {
         void setEnabled(String stateKey, boolean enabled);
     }
     public interface Adapter {
-        void tick(ServerLevel level, BlockPos pos, BlockState state);
+        /** Legacy hook retained for binary/source compatibility. */
+        default void tick(ServerLevel level, BlockPos pos, BlockState state) { }
         void use(Level level, BlockPos pos, BlockState state, Player player);
     }
 
     private static Adapter adapter = new Adapter() {
-        @Override public void tick(ServerLevel level, BlockPos pos, BlockState state) { }
         @Override public void use(Level level, BlockPos pos, BlockState state, Player player) { }
     };
 
