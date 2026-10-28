@@ -21,6 +21,7 @@ public final class GravityGeneratorPlugLifecycleService {
     public interface PlugBlockFactory {
         BlockState defaultState();
     }
+    public interface PlacementPolicy { boolean canReplace(Level level, BlockPos pos); }
 
     private static Adapter adapter = new Adapter() {
         @Override
@@ -31,6 +32,7 @@ public final class GravityGeneratorPlugLifecycleService {
     };
     private static GeneratorLocator generatorLocator = (level, pos) -> false;
     private static PlugBlockFactory plugBlockFactory = () -> Blocks.AIR.defaultBlockState();
+    private static PlacementPolicy placementPolicy = (level, pos) -> false;
 
     private GravityGeneratorPlugLifecycleService() { }
 
@@ -44,6 +46,12 @@ public final class GravityGeneratorPlugLifecycleService {
 
     public static void installPlugBlockFactory(PlugBlockFactory replacement) {
         plugBlockFactory = Objects.requireNonNull(replacement, "replacement");
+    }
+    public static void installPlacementPolicy(PlacementPolicy replacement) { placementPolicy = Objects.requireNonNull(replacement, "replacement"); }
+    public static boolean canPlace(Level level, BlockPos pos) {
+        BlockPos[] offsets = {new BlockPos(1,0,0),new BlockPos(-1,0,0),new BlockPos(0,0,1),new BlockPos(0,0,-1),new BlockPos(0,1,1),new BlockPos(0,1,-1),new BlockPos(1,1,0),new BlockPos(-1,1,0)};
+        for (BlockPos offset : offsets) if (!placementPolicy.canReplace(level, pos.offset(offset))) return false;
+        return true;
     }
 
     public static void generate(Level level, BlockPos pos, BlockState generatorState) {
