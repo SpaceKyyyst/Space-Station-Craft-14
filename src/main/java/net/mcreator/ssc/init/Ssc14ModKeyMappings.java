@@ -26,6 +26,7 @@ import net.ssc14.content.player.action.PlayerActionPayloadRegistration;
 import net.ssc14.integration.neoforge.player.network.DCMopenMessage;
 import net.ssc14.integration.neoforge.player.network.PulltheObjectMessage;
 import net.ssc14.content.menu.crafting.DopCraftPayloadRegistration;
+import net.ssc14.client.InteractionKeyMappings;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
@@ -106,7 +107,7 @@ public class Ssc14ModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping INTERACTION = new KeyMapping("key.ssc_14.interaction", GLFW.GLFW_KEY_E, KeyMapping.Category.INVENTORY);
+	public static final KeyMapping INTERACTION = InteractionKeyMappings.INTERACTION;
 	public static final KeyMapping SPECIFY = new KeyMapping("key.ssc_14.specify", InputConstants.Type.MOUSE, GLFW.GLFW_MOUSE_BUTTON_MIDDLE, KeyMapping.Category.MULTIPLAYER) {
 		private boolean isDownOld = false;
 
