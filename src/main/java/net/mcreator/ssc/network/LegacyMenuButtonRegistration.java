@@ -2,6 +2,11 @@ package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.procedures.CargoBuyProcedure;
+import net.mcreator.ssc.procedures.CommConsBLUEcodeProcedure;
+import net.mcreator.ssc.procedures.CommConsGREENcodeProcedure;
+import net.mcreator.ssc.procedures.CommConsPURPLEcodeProcedure;
+import net.mcreator.ssc.procedures.CommConsREDcodeProcedure;
+import net.mcreator.ssc.procedures.CommConsYELLOWcodeProcedure;
 import net.mcreator.ssc.procedures.CPcabel1buttonProcedure;
 import net.mcreator.ssc.procedures.CPcabel2buttonProcedure;
 import net.mcreator.ssc.procedures.CPcabel3buttonProcedure;
@@ -29,6 +34,20 @@ import net.mcreator.ssc.procedures.PDA3TABbuttonPRProcedure;
 import net.mcreator.ssc.procedures.PDAflashlightPRProcedure;
 import net.mcreator.ssc.procedures.PDAmainButtonPRProcedure;
 import net.mcreator.ssc.procedures.PenRemovePRProcedure;
+import net.mcreator.ssc.procedures.RCDGUIarmWindowButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIbackButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIcatwalkButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIdeconstructButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIdirArmWindowButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIdirwindowButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIexitButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIgrilleButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIsheatingButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUItileButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIwallButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIwallfloorModeButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIwindowButtonProcedure;
+import net.mcreator.ssc.procedures.RCDGUIwindowsModeButtonProcedure;
 import net.mcreator.ssc.procedures.Sale_GUI_buttonSALEProcedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton1Procedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton2Procedure;
@@ -39,9 +58,13 @@ import net.mcreator.ssc.procedures.VendAutGUIButton6Procedure;
 import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
 import net.mcreator.ssc.world.inventory.OrderGUIMenu;
 import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
+import net.mcreator.ssc.world.inventory.CommunConsoleGUIMenu;
 import net.mcreator.ssc.world.inventory.DECALScolorGUIMenu;
 import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
 import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
+import net.mcreator.ssc.world.inventory.RCDGUIMenu;
+import net.mcreator.ssc.world.inventory.RCDGUIwallfloorMenu;
+import net.mcreator.ssc.world.inventory.RCDGUIwindowsMenu;
 import net.mcreator.ssc.world.inventory.SaleGUIMenu;
 import net.mcreator.ssc.world.inventory.VendingAut1GUIMenu;
 import net.minecraft.network.chat.Component;
@@ -78,6 +101,10 @@ public final class LegacyMenuButtonRegistration {
             case DECAL_COLOR -> handleDecalColor(player, message);
             case GRAVITY_GENERATOR -> handleGravityGenerator(player, message);
             case PDA_PASSENGER -> handlePdaPassenger(player, message);
+            case COMMUNICATION_CONSOLE -> handleCommunicationConsole(player, message);
+            case RCD_MAIN -> handleRcdMain(player, message);
+            case RCD_WALL_FLOOR -> handleRcdWallFloor(player, message);
+            case RCD_WINDOWS -> handleRcdWindows(player, message);
         }
     }
 
@@ -181,6 +208,62 @@ public final class LegacyMenuButtonRegistration {
             case 3 -> PDAmainButtonPRProcedure.execute(player);
             case 4 -> PDA2TABbuttonPRProcedure.execute(player);
             case 5 -> PDA3TABbuttonPRProcedure.execute(player);
+            default -> { }
+        }
+    }
+
+    private static void handleCommunicationConsole(Player player, MenuButtonPayload message) {
+        if (!(player.containerMenu instanceof CommunConsoleGUIMenu menu)
+                || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
+        switch (message.buttonId()) {
+            case 0 -> CommConsREDcodeProcedure.execute(player.level());
+            case 1 -> CommConsBLUEcodeProcedure.execute(player.level());
+            case 2 -> CommConsPURPLEcodeProcedure.execute(player.level());
+            case 3 -> CommConsYELLOWcodeProcedure.execute(player.level());
+            case 4 -> CommConsGREENcodeProcedure.execute(player.level());
+            default -> { }
+        }
+    }
+
+    private static void handleRcdMain(Player player, MenuButtonPayload message) {
+        if (!(player.containerMenu instanceof RCDGUIMenu menu)
+                || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
+        switch (message.buttonId()) {
+            case 0 -> RCDGUIdeconstructButtonProcedure.execute(player);
+            case 2 -> RCDGUIwallfloorModeButtonProcedure.execute(
+                    player.level(), message.x(), message.y(), message.z(), player);
+            case 3 -> RCDGUIwindowsModeButtonProcedure.execute(
+                    player.level(), message.x(), message.y(), message.z(), player);
+            case 6 -> RCDGUIexitButtonProcedure.execute(player);
+            default -> { }
+        }
+    }
+
+    private static void handleRcdWallFloor(Player player, MenuButtonPayload message) {
+        if (!(player.containerMenu instanceof RCDGUIwallfloorMenu menu)
+                || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
+        switch (message.buttonId()) {
+            case 0 -> RCDGUIbackButtonProcedure.execute(
+                    player.level(), message.x(), message.y(), message.z(), player);
+            case 1 -> RCDGUIwallButtonProcedure.execute(player);
+            case 2 -> RCDGUIcatwalkButtonProcedure.execute(player);
+            case 3 -> RCDGUItileButtonProcedure.execute(player);
+            case 4 -> RCDGUIsheatingButtonProcedure.execute(player);
+            default -> { }
+        }
+    }
+
+    private static void handleRcdWindows(Player player, MenuButtonPayload message) {
+        if (!(player.containerMenu instanceof RCDGUIwindowsMenu menu)
+                || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
+        switch (message.buttonId()) {
+            case 0 -> RCDGUIbackButtonProcedure.execute(
+                    player.level(), message.x(), message.y(), message.z(), player);
+            case 1 -> RCDGUIgrilleButtonProcedure.execute(player);
+            case 2 -> RCDGUIarmWindowButtonProcedure.execute(player);
+            case 3 -> RCDGUIwindowButtonProcedure.execute(player);
+            case 4 -> RCDGUIdirArmWindowButtonProcedure.execute(player);
+            case 5 -> RCDGUIdirwindowButtonProcedure.execute(player);
             default -> { }
         }
     }

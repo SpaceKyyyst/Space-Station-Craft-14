@@ -15,7 +15,8 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.RCDGUIMenu;
-import net.mcreator.ssc.network.RCDGUIButtonMessage;
+import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -82,8 +83,8 @@ public class RCDGUIScreen extends AbstractContainerScreen<RCDGUIMenu> implements
 					int x = RCDGUIScreen.this.x;
 					int y = RCDGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIButtonMessage(0, x, y, z));
-						RCDGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdMain(0, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdMain(0, x, y, z));
 					}
 				}) {
 			@Override
@@ -106,8 +107,8 @@ public class RCDGUIScreen extends AbstractContainerScreen<RCDGUIMenu> implements
 					int x = RCDGUIScreen.this.x;
 					int y = RCDGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIButtonMessage(2, x, y, z));
-						RCDGUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdMain(2, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdMain(2, x, y, z));
 					}
 				}) {
 			@Override
@@ -121,8 +122,8 @@ public class RCDGUIScreen extends AbstractContainerScreen<RCDGUIMenu> implements
 					int x = RCDGUIScreen.this.x;
 					int y = RCDGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIButtonMessage(3, x, y, z));
-						RCDGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdMain(3, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdMain(3, x, y, z));
 					}
 				}) {
 			@Override
@@ -154,8 +155,8 @@ public class RCDGUIScreen extends AbstractContainerScreen<RCDGUIMenu> implements
 					int x = RCDGUIScreen.this.x;
 					int y = RCDGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIButtonMessage(6, x, y, z));
-						RCDGUIButtonMessage.handleButtonAction(entity, 6, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdMain(6, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdMain(6, x, y, z));
 					}
 				}) {
 			@Override

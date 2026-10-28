@@ -15,7 +15,8 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.RCDGUIwallfloorMenu;
-import net.mcreator.ssc.network.RCDGUIwallfloorButtonMessage;
+import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -80,8 +81,8 @@ public class RCDGUIwallfloorScreen extends AbstractContainerScreen<RCDGUIwallflo
 					int x = RCDGUIwallfloorScreen.this.x;
 					int y = RCDGUIwallfloorScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIwallfloorButtonMessage(0, x, y, z));
-						RCDGUIwallfloorButtonMessage.handleButtonAction(entity, 0, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdWallFloor(0, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdWallFloor(0, x, y, z));
 					}
 				}) {
 			@Override
@@ -95,8 +96,8 @@ public class RCDGUIwallfloorScreen extends AbstractContainerScreen<RCDGUIwallflo
 					int x = RCDGUIwallfloorScreen.this.x;
 					int y = RCDGUIwallfloorScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIwallfloorButtonMessage(1, x, y, z));
-						RCDGUIwallfloorButtonMessage.handleButtonAction(entity, 1, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdWallFloor(1, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdWallFloor(1, x, y, z));
 					}
 				}) {
 			@Override
@@ -110,8 +111,8 @@ public class RCDGUIwallfloorScreen extends AbstractContainerScreen<RCDGUIwallflo
 					int x = RCDGUIwallfloorScreen.this.x;
 					int y = RCDGUIwallfloorScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIwallfloorButtonMessage(2, x, y, z));
-						RCDGUIwallfloorButtonMessage.handleButtonAction(entity, 2, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdWallFloor(2, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdWallFloor(2, x, y, z));
 					}
 				}) {
 			@Override
@@ -125,8 +126,8 @@ public class RCDGUIwallfloorScreen extends AbstractContainerScreen<RCDGUIwallflo
 					int x = RCDGUIwallfloorScreen.this.x;
 					int y = RCDGUIwallfloorScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIwallfloorButtonMessage(3, x, y, z));
-						RCDGUIwallfloorButtonMessage.handleButtonAction(entity, 3, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdWallFloor(3, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdWallFloor(3, x, y, z));
 					}
 				}) {
 			@Override
@@ -140,8 +141,8 @@ public class RCDGUIwallfloorScreen extends AbstractContainerScreen<RCDGUIwallflo
 					int x = RCDGUIwallfloorScreen.this.x;
 					int y = RCDGUIwallfloorScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIwallfloorButtonMessage(4, x, y, z));
-						RCDGUIwallfloorButtonMessage.handleButtonAction(entity, 4, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdWallFloor(4, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdWallFloor(4, x, y, z));
 					}
 				}) {
 			@Override

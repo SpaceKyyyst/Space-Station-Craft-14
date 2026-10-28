@@ -16,7 +16,8 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.CommunConsoleGUIMenu;
 import net.mcreator.ssc.procedures.CommConsGUITextCurrentCodeProcedure;
-import net.mcreator.ssc.network.CommunConsoleGUIButtonMessage;
+import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -96,8 +97,8 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new CommunConsoleGUIButtonMessage(0, x, y, z));
-						CommunConsoleGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.communicationConsole(0, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.communicationConsole(0, x, y, z));
 					}
 				}) {
 			@Override
@@ -111,8 +112,8 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new CommunConsoleGUIButtonMessage(1, x, y, z));
-						CommunConsoleGUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.communicationConsole(1, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.communicationConsole(1, x, y, z));
 					}
 				}) {
 			@Override
@@ -126,8 +127,8 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new CommunConsoleGUIButtonMessage(2, x, y, z));
-						CommunConsoleGUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.communicationConsole(2, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.communicationConsole(2, x, y, z));
 					}
 				}) {
 			@Override
@@ -141,8 +142,8 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new CommunConsoleGUIButtonMessage(3, x, y, z));
-						CommunConsoleGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.communicationConsole(3, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.communicationConsole(3, x, y, z));
 					}
 				}) {
 			@Override
@@ -156,8 +157,8 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new CommunConsoleGUIButtonMessage(4, x, y, z));
-						CommunConsoleGUIButtonMessage.handleButtonAction(entity, 4, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.communicationConsole(4, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.communicationConsole(4, x, y, z));
 					}
 				}) {
 			@Override

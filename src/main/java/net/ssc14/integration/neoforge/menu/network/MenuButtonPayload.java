@@ -18,7 +18,11 @@ public record MenuButtonPayload(Channel channel, int buttonId, int x, int y, int
         AIRLOCK_PANEL("cabel_pannel_airlock_buttons"),
         DECAL_COLOR("decal_scolor_gui_buttons"),
         GRAVITY_GENERATOR("grav_gen_gui_buttons"),
-        PDA_PASSENGER("pd_apassanger_gui_buttons");
+        PDA_PASSENGER("pd_apassanger_gui_buttons"),
+        COMMUNICATION_CONSOLE("commun_console_gui_buttons"),
+        RCD_MAIN("rcdgui_buttons"),
+        RCD_WALL_FLOOR("rcdgu_iwallfloor_buttons"),
+        RCD_WINDOWS("rcdgu_iwindows_buttons");
 
         private final Type<MenuButtonPayload> type;
 
@@ -76,6 +80,22 @@ public record MenuButtonPayload(Channel channel, int buttonId, int x, int y, int
 
     public static MenuButtonPayload pdaPassenger(int buttonId, int x, int y, int z) {
         return new MenuButtonPayload(Channel.PDA_PASSENGER, buttonId, x, y, z);
+    }
+
+    public static MenuButtonPayload communicationConsole(int buttonId, int x, int y, int z) {
+        return new MenuButtonPayload(Channel.COMMUNICATION_CONSOLE, buttonId, x, y, z);
+    }
+
+    public static MenuButtonPayload rcdMain(int buttonId, int x, int y, int z) {
+        return new MenuButtonPayload(Channel.RCD_MAIN, buttonId, x, y, z);
+    }
+
+    public static MenuButtonPayload rcdWallFloor(int buttonId, int x, int y, int z) {
+        return new MenuButtonPayload(Channel.RCD_WALL_FLOOR, buttonId, x, y, z);
+    }
+
+    public static MenuButtonPayload rcdWindows(int buttonId, int x, int y, int z) {
+        return new MenuButtonPayload(Channel.RCD_WINDOWS, buttonId, x, y, z);
     }
 
     @Override
