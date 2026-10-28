@@ -8,7 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.common.network.SlotMenuStateAccess;
 import net.mcreator.ssc.CargoRegistry;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class OrderGUI_update_TICKProcedure {
 
 		int currentTab = (int) getBlockNBTNumber(world, BlockPos.containing(x, y, z), "TAB");
 
-		if (entity instanceof Player _player && _player.containerMenu instanceof Ssc14ModMenus.MenuAccessor _menu) {
+		if (entity instanceof Player _player && _player.containerMenu instanceof SlotMenuStateAccess _menu) {
 			List<CargoRegistry.CargoItem> tabItems = CargoRegistry.getItemsForTab(currentTab);
 
 			for (int slotId = 0; slotId < 10; slotId++) {

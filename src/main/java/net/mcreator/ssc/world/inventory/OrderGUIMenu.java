@@ -30,6 +30,7 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.OrderGUI_update_TICKProcedure;
 import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.common.network.SlotMenuStateAccess;
 
 import java.util.function.Supplier;
 import java.util.Map;
@@ -37,7 +38,7 @@ import java.util.HashMap;
 import java.util.Collections;
 
 @EventBusSubscriber
-public class OrderGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class OrderGUIMenu extends AbstractContainerMenu implements SlotMenuStateAccess {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {

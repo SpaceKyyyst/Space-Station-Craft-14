@@ -11,7 +11,7 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.chat.Component;
 
 import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.world.inventory.IDcodeMenu;
+import net.ssc14.content.menu.access.IDcodeMenu;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;

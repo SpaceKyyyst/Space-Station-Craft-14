@@ -1,7 +1,7 @@
 package net.mcreator.ssc.integration;
 
 import io.netty.buffer.Unpooled;
-import net.mcreator.ssc.world.inventory.IDcodeMenu;
+import net.ssc14.content.menu.access.IDcodeMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;

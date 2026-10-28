@@ -16,10 +16,11 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.IDcodeMenu;
+import net.ssc14.content.menu.access.IDcodeMenu;
 import net.mcreator.ssc.procedures.*;
 import net.mcreator.ssc.network.IDcodeButtonRegistration;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
+import net.ssc14.integration.neoforge.menu.network.MenuStateNetworkActions;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import java.security.Security;
@@ -462,7 +463,7 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		Job_Name.setMaxLength(8192);
 		Job_Name.setResponder(content -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 0, "Job_Name", content, false);
+				MenuStateNetworkActions.send(menu, entity, 0, "Job_Name", content);
 		});
 		this.addWidget(this.Job_Name);
 		imagebutton_kapitan = new ImageButton(this.leftPos + 13, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/kapitan.png"), Identifier.parse("ssc_14:textures/screens/kapitan.png")), e -> {
@@ -1146,167 +1147,167 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 		this.addRenderableWidget(imagebutton_idcode_all_off);
 		gun_room = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.gun_room"), this.font).pos(this.leftPos + 5, this.topPos + 5).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "gun_room", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "gun_room", value);
 		}).build();
 		this.addRenderableWidget(gun_room);
 		HoS = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.HoS"), this.font).pos(this.leftPos + 5, this.topPos + 26).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "HoS", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "HoS", value);
 		}).build();
 		this.addRenderableWidget(HoS);
 		Brig = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Brig"), this.font).pos(this.leftPos + 5, this.topPos + 47).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Brig", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Brig", value);
 		}).build();
 		this.addRenderableWidget(Brig);
 		Security = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Security"), this.font).pos(this.leftPos + 5, this.topPos + 68).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Security", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Security", value);
 		}).build();
 		this.addRenderableWidget(Security);
 		Detective = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Detective"), this.font).pos(this.leftPos + 5, this.topPos + 89).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Detective", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Detective", value);
 		}).build();
 		this.addRenderableWidget(Detective);
 		Blue_Sh = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Blue_Sh"), this.font).pos(this.leftPos + 335, this.topPos + 47).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Blue_Sh", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Blue_Sh", value);
 		}).build();
 		this.addRenderableWidget(Blue_Sh);
 		CE = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.CE"), this.font).pos(this.leftPos + 83, this.topPos + 5).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "CE", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "CE", value);
 		}).build();
 		this.addRenderableWidget(CE);
 		CMO = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.CMO"), this.font).pos(this.leftPos + 170, this.topPos + 5).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "CMO", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "CMO", value);
 		}).build();
 		this.addRenderableWidget(CMO);
 		RD = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.RD"), this.font).pos(this.leftPos + 170, this.topPos + 68).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "RD", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "RD", value);
 		}).build();
 		this.addRenderableWidget(RD);
 		PNT = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.PNT"), this.font).pos(this.leftPos + 5, this.topPos + 110).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "PNT", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "PNT", value);
 		}).build();
 		this.addRenderableWidget(PNT);
 		HoP = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.HoP"), this.font).pos(this.leftPos + 257, this.topPos + 5).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "HoP", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "HoP", value);
 		}).build();
 		this.addRenderableWidget(HoP);
 		Atmos = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Atmos"), this.font).pos(this.leftPos + 83, this.topPos + 26).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Atmos", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Atmos", value);
 		}).build();
 		this.addRenderableWidget(Atmos);
 		Ingeneer = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Ingeneer"), this.font).pos(this.leftPos + 83, this.topPos + 47).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Ingeneer", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Ingeneer", value);
 		}).build();
 		this.addRenderableWidget(Ingeneer);
 		Qm = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Qm"), this.font).pos(this.leftPos + 83, this.topPos + 89).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Qm", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Qm", value);
 		}).build();
 		this.addRenderableWidget(Qm);
 		Utilizat = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Utilizat"), this.font).pos(this.leftPos + 83, this.topPos + 110).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Utilizat", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Utilizat", value);
 		}).build();
 		this.addRenderableWidget(Utilizat);
 		Supply_Deportament = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Supply_Deportament"), this.font).pos(this.leftPos + 83, this.topPos + 131).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Supply_Deportament", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Supply_Deportament", value);
 		}).build();
 		this.addRenderableWidget(Supply_Deportament);
 		Technical = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Technical"), this.font).pos(this.leftPos + 170, this.topPos + 110).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Technical", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Technical", value);
 		}).build();
 		this.addRenderableWidget(Technical);
 		Chemistry = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Chemistry"), this.font).pos(this.leftPos + 170, this.topPos + 26).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Chemistry", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Chemistry", value);
 		}).build();
 		this.addRenderableWidget(Chemistry);
 		Medical = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Medical"), this.font).pos(this.leftPos + 170, this.topPos + 47).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Medical", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Medical", value);
 		}).build();
 		this.addRenderableWidget(Medical);
 		Scientist = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Scientist"), this.font).pos(this.leftPos + 170, this.topPos + 89).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Scientist", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Scientist", value);
 		}).build();
 		this.addRenderableWidget(Scientist);
 		Out = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Out"), this.font).pos(this.leftPos + 83, this.topPos + 68).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Out", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Out", value);
 		}).build();
 		this.addRenderableWidget(Out);
 		Crio = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Crio"), this.font).pos(this.leftPos + 5, this.topPos + 131).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Crio", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Crio", value);
 		}).build();
 		this.addRenderableWidget(Crio);
 		Capitan = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Capitan"), this.font).pos(this.leftPos + 335, this.topPos + 5).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Capitan", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Capitan", value);
 		}).build();
 		this.addRenderableWidget(Capitan);
 		Service = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Service"), this.font).pos(this.leftPos + 257, this.topPos + 26).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Service", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Service", value);
 		}).build();
 		this.addRenderableWidget(Service);
 		Kitchen = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Kitchen"), this.font).pos(this.leftPos + 257, this.topPos + 47).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Kitchen", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Kitchen", value);
 		}).build();
 		this.addRenderableWidget(Kitchen);
 		Gidroponic = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Gidroponic"), this.font).pos(this.leftPos + 257, this.topPos + 68).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Gidroponic", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Gidroponic", value);
 		}).build();
 		this.addRenderableWidget(Gidroponic);
 		Bar = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Bar"), this.font).pos(this.leftPos + 257, this.topPos + 89).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Bar", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Bar", value);
 		}).build();
 		this.addRenderableWidget(Bar);
 		Teatre = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Teatre"), this.font).pos(this.leftPos + 257, this.topPos + 110).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Teatre", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Teatre", value);
 		}).build();
 		this.addRenderableWidget(Teatre);
 		Cleaner = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Cleaner"), this.font).pos(this.leftPos + 257, this.topPos + 131).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Cleaner", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Cleaner", value);
 		}).build();
 		this.addRenderableWidget(Cleaner);
 		Command = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Command"), this.font).pos(this.leftPos + 335, this.topPos + 26).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Command", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Command", value);
 		}).build();
 		this.addRenderableWidget(Command);
 		Uridic = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Uridic"), this.font).pos(this.leftPos + 335, this.topPos + 68).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Uridic", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Uridic", value);
 		}).build();
 		this.addRenderableWidget(Uridic);
 		Church = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Church"), this.font).pos(this.leftPos + 170, this.topPos + 131).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Church", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Church", value);
 		}).build();
 		this.addRenderableWidget(Church);
 		Job_Name_Readact = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Job_Name_Readact"), this.font).pos(this.leftPos + 226, this.topPos + 180).onValueChange((checkbox, value) -> {
 			if (!menuStateUpdateActive)
-				menu.sendMenuStateUpdate(entity, 1, "Job_Name_Readact", value, false);
+				MenuStateNetworkActions.send(menu, entity, 1, "Job_Name_Readact", value);
 		}).build();
 		this.addRenderableWidget(Job_Name_Readact);
 	}

@@ -17,6 +17,7 @@ import net.ssc14.content.menu.crafting.DopCraftMenu;
 import net.ssc14.content.menu.headset.HeadsetMenu;
 import net.ssc14.content.menu.access.AccessConfigItemMenu;
 import net.ssc14.content.menu.access.AccessConfigMENUMenu;
+import net.ssc14.content.menu.access.IDcodeMenu;
 import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
 import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
 import net.ssc14.content.menu.food.EggCartonGUIMenu;
@@ -36,6 +37,7 @@ import net.ssc14.integration.neoforge.menu.network.MenuStateUpdateMessage;
 import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.content.menu.Ssc14MenuTypes;
 import net.ssc14.core.network.MenuStateAccess;
+import net.ssc14.common.network.SlotMenuStateAccess;
 
 import java.util.Map;
 
@@ -96,7 +98,7 @@ public class Ssc14ModMenus {
 		return (DeferredHolder) holder;
 	}
 
-	public interface MenuAccessor extends MenuStateAccess {
+	public interface MenuAccessor extends SlotMenuStateAccess {
 		Map<String, Object> getMenuState();
 
 		Map<Integer, Slot> getSlots();

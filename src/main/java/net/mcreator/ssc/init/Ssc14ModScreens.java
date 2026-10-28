@@ -28,6 +28,7 @@ import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.client.menu.Ssc14ScreenBinder;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.ssc14.integration.neoforge.menu.network.MenuStateNetworkActions;
+import net.ssc14.integration.neoforge.menu.network.MenuSlotNetworkActions;
 
 /** Compatibility bootstrap for legacy screen implementations. */
 @Deprecated(forRemoval = false)
@@ -35,6 +36,7 @@ import net.ssc14.integration.neoforge.menu.network.MenuStateNetworkActions;
 public final class Ssc14ModScreens {
     static {
         MenuStateNetworkActions.installClientSender(ClientPacketDistributor::sendToServer);
+        MenuSlotNetworkActions.installClientSender(ClientPacketDistributor::sendToServer);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.DOP_CRAFT_MENU, DopCraftScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.I_DCODE, IDcodeScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.ACCESS_CONFIG_MENU, AccessConfigMENUScreen::new);
