@@ -26,6 +26,7 @@ GitHub Actions и автоматические quality gates удалены. П�
 - Conventional Commits в формате `type(scope): Русское описание / English description` и непустые секции `RU:`/`EN:` в теле каждого коммита;
 - непустые и расположенные в порядке `## RU`, затем `## EN` секции PR после удаления HTML-комментариев шаблона;
 - ровно один `type:*` и минимум один `area:*` label;
+- labels должны быть назначены до перевода PR в состояние готовности к ревью;
 - отсутствие private-файлов, локальных инструкций, кэша, build outputs, логов и случайных бинарных артефактов;
 - только явно разрешённые бинарные resources и Gradle wrapper JAR.
 
@@ -59,6 +60,7 @@ Local checks enforce:
 - Conventional Commits in `type(scope): Russian description / English description` format and non-empty `RU:`/`EN:` sections in every commit body;
 - non-empty PR sections ordered as `## RU` followed by `## EN`, after template HTML comments are removed;
 - exactly one `type:*` label and at least one `area:*` label;
+- labels must be assigned before a PR is marked ready for review;
 - no private files, local instructions, caches, build outputs, logs, or accidental binary artifacts;
 - only explicitly allowed binary resources and the Gradle wrapper JAR.
 
