@@ -14,7 +14,6 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
 import net.ssc14.content.firearm.FirearmUiService;
-import net.mcreator.ssc.procedures.GunBulletChamberUIConditionsProcedure;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class GunBulletCountUIOverlay {
@@ -40,7 +39,7 @@ public class GunBulletCountUIOverlay {
 		if (FirearmUiService.isMk58(entity)) {
 			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w / 2 + -117, h - 38, 0, 0, 26, 16, 26, 16);
 
-			if (GunBulletChamberUIConditionsProcedure.execute(entity)) {
+			if (FirearmUiService.chamberLoaded(entity)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, w / 2 + -115, h - 32, 0, 0, 6, 4, 6, 4);
 			}
 

@@ -28,4 +28,12 @@ public final class FirearmUiService {
         return stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
                 .copyTag().getDoubleOr("MagazBullets", 0);
     }
+
+    public static boolean chamberLoaded(Entity entity) {
+        if (!(entity instanceof LivingEntity living)) return false;
+        ItemStack stack = living.getMainHandItem();
+        return stack.is(ItemTags.create(Identifier.parse("ssc14:mk58")))
+                && stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
+                .copyTag().getDoubleOr("BulletChamber", 0) == 1;
+    }
 }
