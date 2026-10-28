@@ -70,7 +70,7 @@ sh ./gradlew runClient
 
 | Раздел | Содержание |
 | --- | --- |
-| [Руководство разработчика](CONTRIBUTING.md) | Окружение, команды, работа с контентом и MCreator |
+| [Руководство разработчика](CONTRIBUTING.md) | Окружение, команды и ручная разработка NeoForge; MCreator больше не используется для runtime-кода |
 | [Архитектура](docs/ARCHITECTURE.md) | Подсистемы, границы ответственности, контракты данных |
 | [Целевая архитектура / Target architecture](docs/TARGET_STRUCTURE.md) | Проверяемые слои, зависимости и рецепт постепенной миграции / Enforceable layers, dependencies, and incremental migration recipe |
 | [Совместимость / Compatibility](docs/COMPATIBILITY.md) | Зафиксированные registry, SavedData/NBT и network-контракты / Frozen registry, SavedData/NBT, and network contracts |
