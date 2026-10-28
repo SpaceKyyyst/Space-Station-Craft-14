@@ -47,7 +47,7 @@ public final class AirlockToolInteractionHandler {
 				&& (net.mcreator.ssc.access.AirlockEventLog.inspect(player, pos)
                     || net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos)
                     || AirlockWeldingService.interact(player, pos)
-                    || net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos)
+                    || AirlockManualOpeningService.interact(player, pos)
                     || net.ssc14.content.block.airlock.AirlockFloor.installTile(player, pos)
 
                     || AirlockDisassemblyService.interact(player, pos))) {

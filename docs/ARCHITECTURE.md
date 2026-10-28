@@ -175,6 +175,10 @@ Welding jobs теперь принадлежат `AirlockWeldingService`; сох
 движении/смене инструмента, fuel charge только при завершении и player-tick
 семантика. Старый `AirlockWelding` оставлен фасадом.
 
+Manual-opening jobs теперь принадлежат `AirlockManualOpeningService`; сохранены
+проверки powered/bolted/welded, дистанции, отмена движения и player-tick
+семантика. Старый `AirlockManualOpening` оставлен compatibility facade.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -252,6 +256,10 @@ chunk loading, and level-tick semantics are preserved, while the old
 Welding jobs now belong to `AirlockWeldingService`; cancellation on movement or
 tool changes, completion-only fuel charging, and player-tick semantics are
 preserved. The old `AirlockWelding` remains a facade.
+
+Manual-opening jobs now belong to `AirlockManualOpeningService`; powered,
+bolted, welded, distance, movement-cancellation, and player-tick semantics are
+preserved. The old `AirlockManualOpening` remains a compatibility facade.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
