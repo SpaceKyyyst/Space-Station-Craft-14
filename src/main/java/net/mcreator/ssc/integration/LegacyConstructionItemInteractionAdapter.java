@@ -1,4 +1,4 @@
-package net.mcreator.ssc;
+package net.mcreator.ssc.integration;
 
 import net.mcreator.ssc.procedures.PlaSteelUseProcedure;
 import net.mcreator.ssc.procedures.Sheathing_Cab_InstalProcedure;

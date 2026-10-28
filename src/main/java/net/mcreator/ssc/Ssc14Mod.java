@@ -35,6 +35,7 @@ import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
 import net.ssc14.content.block.access.LegacyIdConsoleIntegrationAdapter;
 import net.ssc14.content.item.tool.LegacyNetworkConfiguratorMenuAdapter;
 import net.mcreator.ssc.integration.LegacyRsuInteractionAdapter;
+import net.mcreator.ssc.integration.LegacyConstructionItemInteractionAdapter;
 import net.ssc14.content.block.airlock.LegacyShuttersIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockControllerInteractionAdapter;
@@ -435,3 +436,4 @@ public class Ssc14Mod {
 		}
 	}
 }
+
