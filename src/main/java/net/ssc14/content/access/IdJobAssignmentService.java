@@ -36,6 +36,23 @@ public final class IdJobAssignmentService {
         }
     }
 
+    /** Synchronizes one access bit from the source card and menu state to the target card. */
+    public static void syncAccessField(Player player, String accessKey) {
+        if (!(player.containerMenu instanceof SlotMenuStateAccess menu)
+                || menu.getSlots().size() < 2 || accessKey == null) {
+            return;
+        }
+        ItemStack source = stack(menu, 0);
+        ItemStack target = stack(menu, 1);
+        if (source.isEmpty() || target.isEmpty()) return;
+        var sourceData = source.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        if (!sourceData.getBoolean(accessKey).orElse(false)) return;
+        boolean enabled = menu.getMenuState(1, accessKey, false);
+        CustomData.update(DataComponents.CUSTOM_DATA, target,
+                tag -> tag.putBoolean(accessKey, enabled));
+        menu.getSlots().get(1).set(target);
+    }
+
     public static void assign(Player player, BlockPos consolePos, int buttonId) {
         IdJobCatalog.Definition definition = IdJobCatalog.definition(buttonId);
         if (definition == null || !(player.level() instanceof ServerLevel level)
