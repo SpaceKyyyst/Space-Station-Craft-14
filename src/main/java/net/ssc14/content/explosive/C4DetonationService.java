@@ -1,4 +1,4 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.explosive;
 
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
@@ -13,7 +13,7 @@ import net.minecraft.core.BlockPos;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 
-public class C4_detonateProcedure {
+public final class C4DetonationService {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
 		if (world instanceof Level _level && !_level.isClientSide())

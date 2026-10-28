@@ -213,7 +213,7 @@ public class Ssc14Mod {
 			@Override
 			public void detonate(net.minecraft.world.level.Level level,
 					net.minecraft.core.BlockPos pos) {
-				net.mcreator.ssc.procedures.C4_detonateProcedure.execute(
+				net.ssc14.content.explosive.C4DetonationService.execute(
 						level, pos.getX(), pos.getY(), pos.getZ());
 			}
 		});
