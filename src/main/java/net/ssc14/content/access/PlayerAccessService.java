@@ -1,4 +1,4 @@
-package net.mcreator.ssc.access;
+package net.ssc14.content.access;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -106,3 +106,5 @@ public final class PlayerAccessService {
         return mask;
     }
 }
+
+

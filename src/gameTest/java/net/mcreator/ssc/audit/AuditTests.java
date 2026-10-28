@@ -488,7 +488,7 @@ public final class AuditTests {
                     "Edited card permissions must take effect immediately");
             player.getInventory().setItem(9, new net.minecraft.world.item.ItemStack(
                     net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_MEDIC.get()));
-            net.mcreator.ssc.access.PlayerAccessService.tick(player);
+            net.ssc14.content.access.PlayerAccessService.tick(player);
             player.getInventory().setItem(9, net.minecraft.world.item.ItemStack.EMPTY);
             h.assertTrue(!net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
                     "Removing the card must revoke access before the next player tick");
@@ -667,13 +667,13 @@ public final class AuditTests {
             var container = new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.CHEST);
             container.set(net.minecraft.core.component.DataComponents.CONTAINER,
                     net.minecraft.world.item.component.ItemContainerContents.fromItems(java.util.List.of(card)));
-            long before = net.mcreator.ssc.access.PlayerAccessService.permissions(container);
+            long before = net.ssc14.content.access.PlayerAccessService.permissions(container);
             h.assertTrue(before != 0, "Nested ID card was ignored");
             var denied = new net.minecraft.nbt.CompoundTag(); denied.putBoolean("spawned", true);
             card.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(denied));
             container.set(net.minecraft.core.component.DataComponents.CONTAINER,
                     net.minecraft.world.item.component.ItemContainerContents.fromItems(java.util.List.of(card)));
-            h.assertTrue(net.mcreator.ssc.access.PlayerAccessService.permissions(container) == 0,
+            h.assertTrue(net.ssc14.content.access.PlayerAccessService.permissions(container) == 0,
                     "Cached nested permissions survived card reprogramming");
             h.succeed();
         });
@@ -712,11 +712,10 @@ public final class AuditTests {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             player.setItemSlot(net.minecraft.world.entity.EquipmentSlot.MAINHAND,
                     new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_PASSANGER.get()));
-            var event = new net.neoforged.neoforge.event.tick.PlayerTickEvent.Post(player);
-            net.mcreator.ssc.procedures.IDCardAccessProcedure.onPlayerTick(event);
+            net.ssc14.content.access.PlayerAccessService.tick(player);
             h.assertTrue(player.getPersistentData().getBooleanOr("Technical", false), "ID card did not grant access");
             player.setItemSlot(net.minecraft.world.entity.EquipmentSlot.MAINHAND, net.minecraft.world.item.ItemStack.EMPTY);
-            net.mcreator.ssc.procedures.IDCardAccessProcedure.onPlayerTick(event);
+            net.ssc14.content.access.PlayerAccessService.tick(player);
             h.assertTrue(!player.getPersistentData().getBooleanOr("Technical", false), "Removed card retained access");
             h.succeed();
         });
