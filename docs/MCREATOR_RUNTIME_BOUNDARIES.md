@@ -28,6 +28,8 @@ event subscribers и процедурные фасады, которые ещё 
   to `AirlockWeldingService`;
 - `AirlockManualOpening` — thin compatibility facade; manual-opening jobs moved
   to `AirlockManualOpeningService`;
+- `AirlockAccessPolicy` — thin compatibility facade; permission evaluation moved
+  to `AirlockAccessPolicyService`;
 - client GUI key handling перенесён в `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` удалён, а key mapping оставлен compatibility alias;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
@@ -75,6 +77,8 @@ only event subscribers and procedural facades that still own runtime behavior:
   to `AirlockWeldingService`;
 - `AirlockManualOpening` — thin compatibility facade; manual-opening jobs moved
   to `AirlockManualOpeningService`;
+- `AirlockAccessPolicy` — thin compatibility facade; permission evaluation moved
+  to `AirlockAccessPolicyService`;
 - client GUI key handling was moved to `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` was removed and the key mapping remains a compatibility alias;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes

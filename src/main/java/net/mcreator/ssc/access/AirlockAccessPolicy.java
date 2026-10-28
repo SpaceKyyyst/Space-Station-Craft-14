@@ -2,22 +2,14 @@ package net.mcreator.ssc.access;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.ssc14.content.access.IdCardRegistry;
-import net.ssc14.content.access.PlayerAccessService;
+import net.ssc14.content.block.airlock.AirlockAccessPolicyService;
 
-/** Any configured department access grants entry; an unrestricted door admits everyone. */
+/** Compatibility facade for canonical airlock access policy evaluation. */
 public final class AirlockAccessPolicy {
-    private AirlockAccessPolicy() { }
+    private AirlockAccessPolicy() {
+    }
 
     public static boolean permits(CompoundTag doorData, Entity entity, boolean emergency) {
-        if (emergency) return true;
-        long required = 0;
-        for (int index = 0; index < IdCardRegistry.KEYS.size(); index++) {
-            if (doorData.getBooleanOr(IdCardRegistry.KEYS.get(index), false)) required |= 1L << index;
-        }
-        if (required == 0) return true;
-        return entity instanceof Player player
-                && (PlayerAccessService.currentPermissions(player) & required) != 0;
+        return AirlockAccessPolicyService.permits(doorData, entity, emergency);
     }
 }

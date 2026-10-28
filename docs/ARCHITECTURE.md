@@ -179,6 +179,11 @@ Manual-opening jobs теперь принадлежат `AirlockManualOpeningSer
 проверки powered/bolted/welded, дистанции, отмена движения и player-tick
 семантика. Старый `AirlockManualOpening` оставлен compatibility facade.
 
+Оценка доступа двери вынесена в `AirlockAccessPolicyService`; сохранены emergency
+bypass, unrestricted-door semantics и bitmask permissions. Старый
+`AirlockAccessPolicy` оставлен compatibility facade для generated open/close
+процедур.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -260,6 +265,11 @@ preserved. The old `AirlockWelding` remains a facade.
 Manual-opening jobs now belong to `AirlockManualOpeningService`; powered,
 bolted, welded, distance, movement-cancellation, and player-tick semantics are
 preserved. The old `AirlockManualOpening` remains a compatibility facade.
+
+Door access evaluation now lives in `AirlockAccessPolicyService`; emergency
+bypass, unrestricted-door semantics, and bitmask permissions are preserved. The
+old `AirlockAccessPolicy` remains a compatibility facade for generated
+open/close procedures.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
