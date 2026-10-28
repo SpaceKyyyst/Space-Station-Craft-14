@@ -19,6 +19,25 @@ public final class IdJobAssignmentService {
 
     private IdJobAssignmentService() { }
 
+    public static void setAllAllowed(Player player, boolean enabled) {
+        if (!(player.containerMenu instanceof SlotMenuStateAccess menu)
+                || menu.getSlots().size() < 2) {
+            return;
+        }
+        ItemStack source = stack(menu, 0);
+        ItemStack target = stack(menu, 1);
+        if (source.isEmpty() || target.isEmpty()) {
+            return;
+        }
+
+        var sourceData = source.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        for (String accessKey : IdJobCatalog.accessKeys()) {
+            if (sourceData.getBooleanOr(accessKey, false)) {
+                menu.sendMenuStateUpdate(player, 1, accessKey, enabled, true);
+            }
+        }
+    }
+
     public static void assign(Player player, BlockPos consolePos, int buttonId) {
         IdJobCatalog.Definition definition = IdJobCatalog.definition(buttonId);
         if (definition == null || !(player.level() instanceof ServerLevel level)
