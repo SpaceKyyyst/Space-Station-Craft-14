@@ -3,9 +3,7 @@ package net.mcreator.ssc.integration;
 import javax.annotation.Nullable;
 import net.mcreator.ssc.procedures.MK58_Breech_Open_Procedure;
 import net.mcreator.ssc.procedures.MK58_Fire_Procedure;
-import net.mcreator.ssc.procedures.MK58_GENERATE_Procedure;
 import net.ssc14.content.firearm.MagazineDescriptionService;
-import net.mcreator.ssc.procedures.MagazinePistol35_GENERATE_Procedure;
 import net.mcreator.ssc.procedures.MagazinePistol35_USE_Procedure;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -55,9 +53,9 @@ public final class LegacyFirearmInteractionAdapter implements FirearmInteraction
             Entity entity,
             @Nullable EquipmentSlot equipmentSlot) {
         if (state == Mk58State.CLOSED_WITH_MAGAZINE) {
-            MK58_GENERATE_Procedure.execute(stack);
+            FirearmInteractionService.initializeMk58(stack);
         } else if (state == PistolMagazineState.LOADED) {
-            MagazinePistol35_GENERATE_Procedure.execute(stack);
+            FirearmInteractionService.initializePistolMagazine(stack);
         }
     }
 }

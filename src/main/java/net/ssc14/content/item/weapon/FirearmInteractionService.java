@@ -7,6 +7,8 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
@@ -50,6 +52,27 @@ public final class FirearmInteractionService {
     };
 
     private FirearmInteractionService() { }
+
+    public static void initializeMk58(ItemStack stack) {
+        CustomData data = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+        if (!data.copyTag().getBooleanOr("GenEraTE", false)) {
+            CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> {
+                tag.putBoolean("GenEraTE", true);
+                tag.putDouble("MagazBullets", 10);
+                tag.putDouble("BulletChamber", 1);
+            });
+        }
+    }
+
+    public static void initializePistolMagazine(ItemStack stack) {
+        CustomData data = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+        if (!data.copyTag().getBooleanOr("GenEraTE", false)) {
+            CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> {
+                tag.putBoolean("GenEraTE", true);
+                tag.putDouble("Bullets", 10);
+            });
+        }
+    }
 
     public static Adapter install(Adapter replacement) {
         Adapter previous = adapter;
