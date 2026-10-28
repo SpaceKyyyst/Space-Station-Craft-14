@@ -1,7 +1,7 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.gravity;
 
 
-public class GravityGenerator_DestroyProcedure {
+public final class GravityGeneratorDestroyHandler {
 	public static void execute() {
 		net.ssc14.content.gravity.StationGravityState.setEnabled(false);
 	}
