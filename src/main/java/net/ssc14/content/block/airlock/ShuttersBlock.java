@@ -174,11 +174,11 @@ public class ShuttersBlock extends Block implements EntityBlock, NetworkAction, 
         if (level.isClientSide()) return;
         BlockState state = level.getBlockState(pos);
         if (OPEN_ACTION.equals(actionId)) {
-            ShuttersIntegrationService.setOpen(level, pos, state, true);
+            ShuttersAnimationService.setOpen(level, pos, true);
         } else if (CLOSE_ACTION.equals(actionId)) {
-            ShuttersIntegrationService.setOpen(level, pos, state, false);
+            ShuttersAnimationService.setOpen(level, pos, false);
         } else if (TOGGLE_ACTION.equals(actionId)) {
-            ShuttersIntegrationService.setOpen(level, pos, state, !state.getValue(OPEN));
+            ShuttersAnimationService.setOpen(level, pos, !state.getValue(OPEN));
         }
     }
 }
