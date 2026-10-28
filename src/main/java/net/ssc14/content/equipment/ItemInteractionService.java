@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.equipment;
 
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -15,26 +15,26 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
-public class ItemInteractionHandlerProcedure {
+public final class ItemInteractionService {
     private static final HashMap<net.minecraft.world.item.Item, BiConsumer<Player, Slot>> HANDLERS = new HashMap<>();
 
     static {
         // --- Магнитные ботинки ---
         register(
-            net.mcreator.ssc.init.Ssc14ModItems.MAGNETIC_BOOTS_ITEM.get(),
-            net.mcreator.ssc.init.Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get(),
+            net.ssc14.content.item.Ssc14Items.MAGNETIC_BOOTS_ITEM.get(),
+            net.ssc14.content.item.Ssc14Items.MAGNETIC_BOOTS_ACTIVE_ITEM.get(),
             (player, slot) -> {}
         );
         register(
-            net.mcreator.ssc.init.Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get(),
-            net.mcreator.ssc.init.Ssc14ModItems.MAGNETIC_BOOTS_ITEM.get(),
+            net.ssc14.content.item.Ssc14Items.MAGNETIC_BOOTS_ACTIVE_ITEM.get(),
+            net.ssc14.content.item.Ssc14Items.MAGNETIC_BOOTS_ITEM.get(),
             (player, slot) -> {}
         );
 
         // --- Скафандр утилизатора (Переключение шлема) ---
         register(
-            net.mcreator.ssc.init.Ssc14ModItems.HARDSUIT_SALVAGE.get(),
-            net.mcreator.ssc.init.Ssc14ModItems.HARDSUIT_SALVAGE.get(),
+            net.ssc14.content.item.Ssc14Items.HARDSUIT_SALVAGE.get(),
+            net.ssc14.content.item.Ssc14Items.HARDSUIT_SALVAGE.get(),
             (player, slot) -> handleHardsuitToggle(player, slot, true)
         );
     }
@@ -71,6 +71,12 @@ public class ItemInteractionHandlerProcedure {
         return false;
     }
 
+    public static void execute(Player player, int slotIndex) {
+        if (!(player instanceof ServerPlayer serverPlayer)) return;
+        if (slotIndex < 0 || slotIndex >= serverPlayer.containerMenu.slots.size()) return;
+        tryInteract(player, serverPlayer.containerMenu.slots.get(slotIndex));
+    }
+
     /**
      * Логика переключения встроенного шлема через Curios API с проверкой outerwear
      */
@@ -94,7 +100,7 @@ public class ItemInteractionHandlerProcedure {
         curiosInventory.getStacksHandler("headdress").ifPresent(stacksHandler -> {
             var resultStacks = stacksHandler.getStacks();
             ItemStack headItem = resultStacks.getStackInSlot(0);
-            net.minecraft.world.item.Item helmetItem = net.mcreator.ssc.init.Ssc14ModItems.HARDSUIT_SALVAGE_HELMET.get();
+            net.minecraft.world.item.Item helmetItem = net.ssc14.content.item.Ssc14Items.HARDSUIT_SALVAGE_HELMET.get();
             if (headItem.isEmpty()) {
                 ItemStack newHelmet = new ItemStack(helmetItem);
                 resultStacks.setStackInSlot(0, newHelmet);

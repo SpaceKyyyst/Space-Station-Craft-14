@@ -1,7 +1,7 @@
 package net.mcreator.ssc.integration;
 
-import net.mcreator.ssc.procedures.UniversalInteractCommandProcedure;
 import net.minecraft.server.level.ServerPlayer;
+import net.ssc14.content.equipment.ItemInteractionService;
 
 /** Compatibility boundary for the ssc14_interact command procedure. */
 public final class LegacyUniversalInteractCommandAdapter {
@@ -9,6 +9,6 @@ public final class LegacyUniversalInteractCommandAdapter {
     }
 
     public static void execute(ServerPlayer player, int slotIndex) {
-        UniversalInteractCommandProcedure.execute(player, slotIndex);
+        ItemInteractionService.execute(player, slotIndex);
     }
 }
