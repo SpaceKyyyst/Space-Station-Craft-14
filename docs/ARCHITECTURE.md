@@ -123,6 +123,11 @@ communication console, commerce console, сетевой topology, station-code d
 Их удаление допустимо только после переноса соответствующего поведения и
 регрессионной проверки сохранений.
 
+Периодический radio-frequency tick коммуникационных серверов уже выполняется через
+`CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
+как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
+GUI- и сетевым контрактом и требуют отдельной миграции поведения.
+
 The primary runtime paths now use canonical NeoForge services: oxygen production,
 gravity, fuel tanks, C4, nuclear warhead detonation, pallet registry and airlock/
 closet access checks. Remaining `IntegrationService` classes are explicit migration
@@ -132,6 +137,11 @@ communication and commerce consoles, cable topology, station-code debug, closets
 shutters, portable menus, and several construction/firearm interactions. Each bridge
 must be removed only after its behavior and save compatibility are migrated and
 covered by regression tests.
+
+The communication-server periodic radio-frequency tick now runs through
+`CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
+only as a compatibility hook for external integrations. Its menu/use methods still
+own the GUI and network contract and cannot be removed until that behavior is migrated.
 
 После удаления отладочной station-code процедуры и мёртвого gravity-plug lifecycle
 адаптера и network-button моста в каноническом дереве остаётся 19 интерфейсных
