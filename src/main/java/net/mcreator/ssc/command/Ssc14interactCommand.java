@@ -9,7 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.commands.Commands;
 import net.minecraft.server.level.ServerPlayer;
 
-import net.mcreator.ssc.procedures.UniversalInteractCommandProcedure;
+import net.mcreator.ssc.integration.LegacyUniversalInteractCommandAdapter;
 
 @EventBusSubscriber
 public class Ssc14interactCommand {
@@ -25,7 +25,7 @@ public class Ssc14interactCommand {
                         ServerPlayer player = arguments.getSource().getPlayer();
 
                         if (player != null) {
-                            UniversalInteractCommandProcedure.execute(player, slotIndex);
+                            LegacyUniversalInteractCommandAdapter.execute(player, slotIndex);
                         }
                         return 1;
                     })
