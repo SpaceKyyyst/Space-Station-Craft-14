@@ -10,6 +10,7 @@ import net.mcreator.ssc.block.ShutterController;
 import net.ssc14.content.block.control.ButtonInteractionService;
 import net.mcreator.ssc.procedures.CommunicationServers_TIC_PR_Procedure;
 import net.ssc14.content.commerce.VendingMachineRuntimeService;
+import net.ssc14.common.Ssc14Log;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.dedicated.DedicatedServer;
@@ -39,7 +40,7 @@ class ServerWorkSchedulerTest {
     void captureSchedulerDiagnostics() {
         // The FML harness's file-layout %xEx tries to resolve mod classes in the system loader.
         // Capture real log events directly so expected failures also verify the diagnostics contract.
-        logger = (Logger) Ssc14Mod.LOGGER;
+        logger = (Logger) Ssc14Log.LOGGER;
         originalAdditivity = logger.isAdditive();
         appender = new AbstractAppender("SchedulerDiagnostics", null, null, true, Property.EMPTY_ARRAY) {
             @Override public void append(LogEvent event) { logs.add(event.toImmutable()); }

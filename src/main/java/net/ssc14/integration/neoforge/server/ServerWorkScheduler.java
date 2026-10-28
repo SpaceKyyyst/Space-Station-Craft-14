@@ -14,14 +14,14 @@ import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.ssc14.common.Ssc14Identity;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import net.ssc14.common.Ssc14Log;
 
 /** Owns delayed work for each server lifetime and executes it only on its tick thread. */
 @EventBusSubscriber(modid = Ssc14Identity.MOD_ID)
 public final class ServerWorkScheduler {
     private static final int MAX_TASKS_PER_TICK = 512;
-    private static final Logger LOGGER = LogManager.getLogger(ServerWorkScheduler.class);
+    private static final Logger LOGGER = Ssc14Log.LOGGER;
     private static final Map<MinecraftServer, Session> QUEUES = new IdentityHashMap<>();
     private static final Set<MinecraftServer> STOPPED =
             Collections.newSetFromMap(new WeakHashMap<>());
