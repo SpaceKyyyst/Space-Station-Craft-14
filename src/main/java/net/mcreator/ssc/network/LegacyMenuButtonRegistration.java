@@ -8,8 +8,7 @@ import net.mcreator.ssc.procedures.CommConsREDcodeProcedure;
 import net.mcreator.ssc.procedures.CommConsYELLOWcodeProcedure;
 import net.minecraft.core.BlockPos;
 import net.ssc14.content.menu.decal.DecalColorMenuService;
-import net.mcreator.ssc.procedures.GravGenOFFbuttonProcedure;
-import net.mcreator.ssc.procedures.GravGenONbuttonProcedure;
+import net.ssc14.content.gravity.GravityGeneratorControlService;
 import net.mcreator.ssc.procedures.IDRemovePRProcedure;
 import net.mcreator.ssc.procedures.MicrwGUIbutEProcedure;
 import net.ssc14.content.menu.pda.PdaTabService;
@@ -151,8 +150,8 @@ public final class LegacyMenuButtonRegistration {
         if (!(player.containerMenu instanceof GravGenGUIMenu menu)
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
         switch (message.buttonId()) {
-            case 0 -> GravGenOFFbuttonProcedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 1 -> GravGenONbuttonProcedure.execute(player.level(), message.x(), message.y(), message.z());
+            case 0 -> GravityGeneratorControlService.setActive(player.level(), BlockPos.containing(message.x(), message.y(), message.z()), false);
+            case 1 -> GravityGeneratorControlService.setActive(player.level(), BlockPos.containing(message.x(), message.y(), message.z()), true);
             default -> { }
         }
     }
