@@ -4,7 +4,7 @@ import net.ssc14.content.firearm.BulletCollisionParticleService;
 import net.ssc14.content.firearm.BulletFlightParticleService;
 import net.ssc14.content.entity.C4CrutchLifetimeHandler;
 import net.ssc14.content.block.furniture.ChairInteractionService;
-import net.mcreator.ssc.procedures.SpannerEntUseProcedure;
+import net.mcreator.ssc.integration.LegacySpannerInteractionAdapter;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
 import net.ssc14.content.entity.Ssc14EntityBehavior;
@@ -39,6 +39,6 @@ public final class Ssc14LegacyEntityBehavior implements Ssc14EntityBehavior.Hook
     @Override
     public void spannerInteraction(
             LevelAccessor level, double x, double y, double z, Entity entity, Entity sourceEntity) {
-        SpannerEntUseProcedure.execute(level, x, y, z, entity, sourceEntity);
+        LegacySpannerInteractionAdapter.execute(level, x, y, z, entity, sourceEntity);
     }
 }
