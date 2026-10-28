@@ -6,6 +6,7 @@ import net.minecraft.world.level.Level;
 import net.ssc14.content.block.airlock.AirlockUpperPlugIntegrationService;
 import net.ssc14.content.airlock.AirlockUpperPlugDestroyService;
 import net.ssc14.content.airlock.AirlockUpperPlugValidationService;
+import net.ssc14.content.airlock.AirlockUpperPlugInteractionService;
 
 /** Bridges canonical upper airlock plugs to historical procedures. */
 public final class LegacyAirlockUpperPlugIntegrationAdapter
@@ -21,7 +22,6 @@ public final class LegacyAirlockUpperPlugIntegrationAdapter
     }
 
     @Override public void use(Level level, BlockPos pos, Player player) {
-        net.mcreator.ssc.procedures.AirlockUpPlug_ClickProcedure.execute(
-                level, pos.getX(), pos.getY(), pos.getZ(), player);
+        AirlockUpperPlugInteractionService.execute(level, pos, player);
     }
 }
