@@ -119,7 +119,7 @@ Mod ID, registry ID, NBT-ключи и порядок `GasType` являются
 явными переходными границами, а не новой игровой архитектурой. Они нужны там, где
 ещё сохраняются старые GUI, сетевые меню, формат сохранения или legacy energy API:
 communication console, commerce console, сетевой topology, station-code debug,
-шкафы, shutters, portable menus и несколько строительных/оружейных взаимодействий.
+шкафы, portable menus и несколько строительных/оружейных взаимодействий.
 Их удаление допустимо только после переноса соответствующего поведения и
 регрессионной проверки сохранений.
 
@@ -145,7 +145,7 @@ closet access checks. Remaining `IntegrationService` classes are explicit migrat
 boundaries rather than a new gameplay architecture. They are retained where legacy
 GUIs, menu networking, save formats or the legacy energy API are still involved:
 communication and commerce consoles, cable topology, station-code debug, closets,
-shutters, portable menus, and several construction/firearm interactions. Each bridge
+portable menus, and several construction/firearm interactions. Each bridge
 must be removed only after its behavior and save compatibility are migrated and
 covered by regression tests.
 
@@ -167,6 +167,9 @@ the server saved all three dimensions successfully during shutdown.
 После удаления отладочной station-code процедуры и мёртвого gravity-plug lifecycle
 адаптера и network-button моста в каноническом дереве остаётся 19 интерфейсных
 migration boundaries.
+
+Shutters animation, linkage updates, and debug-activator interaction now run through
+canonical services; the old controller remains only as a compatibility wrapper.
 Число является текущим инвентарным показателем, а не разрешением удалять мосты
 без переноса их контрактов.
 
@@ -175,6 +178,9 @@ adapter and network-button bridge, 19 interface-based migration boundaries remai
 in the canonical tree.
 This is an inventory metric, not permission to remove bridges without migrating
 their contracts.
+
+Shutter animation, linkage updates, and debug-activator interaction now run through
+canonical services; the old controller remains only as a compatibility wrapper.
 
 - Большие сгенерированные процедуры доступа и инвентарей ещё требуют отдельных
   поведенческих тестов. Новые операции ID-карт проходят через
