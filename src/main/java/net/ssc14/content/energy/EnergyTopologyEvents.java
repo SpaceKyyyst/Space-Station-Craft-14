@@ -1,4 +1,4 @@
-package net.mcreator.ssc.energy;
+package net.ssc14.content.energy;
 
 import net.ssc14.content.block.energy.CableTopologyService;
 import net.ssc14.content.energy.EnergyNetworkService;
