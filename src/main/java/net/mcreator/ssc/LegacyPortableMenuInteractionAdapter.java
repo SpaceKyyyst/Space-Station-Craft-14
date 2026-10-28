@@ -7,7 +7,7 @@ import net.ssc14.content.menu.food.EggCartonGUIMenu;
 import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
 import net.mcreator.ssc.procedures.EggCarton_EggsGenerateProcedure;
 import net.ssc14.content.menu.pda.PortableMenuCondition;
-import net.mcreator.ssc.procedures.PDA_generateProcedure;
+import net.ssc14.content.menu.pda.PdaGenerationService;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -56,7 +56,7 @@ final class LegacyPortableMenuInteractionAdapter
             Entity entity,
             @Nullable EquipmentSlot equipmentSlot) {
         switch (kind) {
-            case PASSENGER_PDA -> PDA_generateProcedure.execute(
+            case PASSENGER_PDA -> PdaGenerationService.execute(
                     level, entity.getX(), entity.getY(), entity.getZ(), entity, stack);
             case EGG_CARTON -> EggCarton_EggsGenerateProcedure.execute(stack);
             default -> { }
