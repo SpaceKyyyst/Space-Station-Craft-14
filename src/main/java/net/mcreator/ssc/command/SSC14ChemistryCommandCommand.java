@@ -4,7 +4,7 @@ package net.mcreator.ssc.command;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.common.util.FakePlayerFactory;
 import net.mcreator.ssc.procedures.FillReagentPRProcedure;
-import net.mcreator.ssc.ModReagents;
+import net.mcreator.ssc.integration.LegacyReagentCatalog;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.Entity;
@@ -25,7 +25,7 @@ public class SSC14ChemistryCommandCommand {
 				.then(Commands.literal("fill_reagent")
 						.then(Commands.argument("reagent_name", StringArgumentType.word())
 								.suggests((context, builder) -> {
-									for (ModReagents.Reagent reagent : ModReagents.getAllReagents()) {
+									for (var reagent : LegacyReagentCatalog.all()) {
 										builder.suggest(reagent.getId());
 									}
 									return builder.buildFuture();
