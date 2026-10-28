@@ -11,6 +11,7 @@ import net.minecraft.server.Bootstrap;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.CustomData;
+import net.ssc14.content.item.reagent.ReagentContentsCodec;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +24,22 @@ class ModReagentsTest {
     static void bootstrapVanillaItems() {
         SharedConstants.tryDetectVersion();
         Bootstrap.bootStrap();
+    }
+
+    @Test
+    void canonicalCodecNormalizesContentsAndPreservesUnrelatedRootFields() {
+        CompoundTag root = new CompoundTag();
+        CompoundTag contents = new CompoundTag();
+        contents.putInt("water", 4);
+        contents.putInt("empty", 0);
+        contents.putString("invalid", "legacy");
+        root.put(ReagentContentsCodec.NBT_KEY, contents);
+        root.putString("other_mod", "preserved");
+
+        assertEquals(Map.of("water", 4), ReagentContentsCodec.read(root));
+        CompoundTag encoded = ReagentContentsCodec.write(Map.of("water", 4));
+        assertEquals(4, encoded.getInt("water").orElseThrow());
+        assertEquals("preserved", root.getString("other_mod").orElseThrow());
     }
 
     @Test
