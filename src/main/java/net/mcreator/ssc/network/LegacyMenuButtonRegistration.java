@@ -16,10 +16,7 @@ import net.ssc14.content.menu.pda.PdaTabService;
 import net.ssc14.content.menu.pda.PdaFlashlightService;
 import net.mcreator.ssc.procedures.PenRemovePRProcedure;
 import net.ssc14.content.item.tool.RcdModeService;
-import net.mcreator.ssc.procedures.RCDGUIbackButtonProcedure;
 import net.ssc14.content.menu.MenuCloseService;
-import net.mcreator.ssc.procedures.RCDGUIwallfloorModeButtonProcedure;
-import net.mcreator.ssc.procedures.RCDGUIwindowsModeButtonProcedure;
 import net.ssc14.content.commerce.VendingMachineRuntimeService;
 import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.menu.food.MicrowaveButtonIds;
@@ -192,10 +189,8 @@ public final class LegacyMenuButtonRegistration {
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
         switch (message.buttonId()) {
             case 0 -> RcdModeService.deconstruct(player);
-            case 2 -> RCDGUIwallfloorModeButtonProcedure.execute(
-                    player.level(), message.x(), message.y(), message.z(), player);
-            case 3 -> RCDGUIwindowsModeButtonProcedure.execute(
-                    player.level(), message.x(), message.y(), message.z(), player);
+            case 2 -> RcdModeService.openWallfloor(player, BlockPos.containing(message.x(), message.y(), message.z()));
+            case 3 -> RcdModeService.openWindows(player, BlockPos.containing(message.x(), message.y(), message.z()));
             case 6 -> MenuCloseService.execute(player);
             default -> { }
         }
@@ -205,8 +200,7 @@ public final class LegacyMenuButtonRegistration {
         if (!(player.containerMenu instanceof RCDGUIwallfloorMenu menu)
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
         switch (message.buttonId()) {
-            case 0 -> RCDGUIbackButtonProcedure.execute(
-                    player.level(), message.x(), message.y(), message.z(), player);
+            case 0 -> RcdModeService.openMain(player, BlockPos.containing(message.x(), message.y(), message.z()));
             case 1 -> RcdModeService.wall(player);
             case 2 -> RcdModeService.catwalk(player);
             case 3 -> RcdModeService.tile(player);
@@ -219,8 +213,7 @@ public final class LegacyMenuButtonRegistration {
         if (!(player.containerMenu instanceof RCDGUIwindowsMenu menu)
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
         switch (message.buttonId()) {
-            case 0 -> RCDGUIbackButtonProcedure.execute(
-                    player.level(), message.x(), message.y(), message.z(), player);
+            case 0 -> RcdModeService.openMain(player, BlockPos.containing(message.x(), message.y(), message.z()));
             case 1 -> RcdModeService.grille(player);
             case 2 -> RcdModeService.armWindow(player);
             case 3 -> RcdModeService.window(player);
