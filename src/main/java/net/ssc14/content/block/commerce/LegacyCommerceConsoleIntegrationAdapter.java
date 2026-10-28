@@ -1,4 +1,4 @@
-package net.mcreator.ssc.integration;
+package net.ssc14.content.block.commerce;
 
 import io.netty.buffer.Unpooled;
 import net.ssc14.content.menu.commerce.OrderGUIMenu;
@@ -12,9 +12,8 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
-import net.ssc14.content.block.commerce.CommerceConsoleIntegrationService;
 
-/** Connects canonical commerce consoles to the remaining legacy menus and sound procedure. */
+/** Bridges canonical commerce consoles to the current menu implementations. */
 public final class LegacyCommerceConsoleIntegrationAdapter
         implements CommerceConsoleIntegrationService.Adapter {
     @Override
@@ -23,15 +22,11 @@ public final class LegacyCommerceConsoleIntegrationAdapter
         if (player instanceof ServerPlayer serverPlayer) {
             serverPlayer.openMenu(new MenuProvider() {
                 @Override
-                public Component getDisplayName() {
-                    return Component.literal(displayName(kind));
-                }
+                public Component getDisplayName() { return Component.literal(displayName(kind)); }
 
                 @Override
-                public AbstractContainerMenu createMenu(
-                        int id, Inventory inventory, Player menuPlayer) {
-                    return LegacyCommerceConsoleIntegrationAdapter.this.createMenu(
-                            kind, id, inventory, pos);
+                public AbstractContainerMenu createMenu(int id, Inventory inventory, Player menuPlayer) {
+                    return LegacyCommerceConsoleIntegrationAdapter.this.createMenu(kind, id, inventory, pos);
                 }
             }, pos);
         }

@@ -31,7 +31,7 @@ import net.ssc14.content.menu.machinery.MacFrameGUIMenu;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
 import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
-import net.mcreator.ssc.integration.LegacyCommerceConsoleIntegrationAdapter;
+import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyIdConsoleIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyNetworkConfiguratorMenuAdapter;
 import net.mcreator.ssc.integration.LegacyRsuInteractionAdapter;
