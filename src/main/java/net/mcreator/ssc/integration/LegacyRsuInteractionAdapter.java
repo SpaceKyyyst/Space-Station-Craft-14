@@ -2,7 +2,6 @@ package net.mcreator.ssc.integration;
 
 import net.mcreator.ssc.procedures.RCDinterfParticGenerateProcedure;
 import net.mcreator.ssc.procedures.RSU_useOnBlock_Procedure;
-import net.mcreator.ssc.procedures.RSU_use_Procedure;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -18,8 +17,8 @@ public final class LegacyRsuInteractionAdapter
     @Override
     public void use(Level level, Player player, InteractionHand hand,
             ItemStack stack) {
-        RSU_use_Procedure.execute(level, player.getX(), player.getY(), player.getZ(),
-                player, stack);
+        RsuInteractionService.useLegacy(level, player, stack,
+                net.mcreator.ssc.init.Ssc14ModItems.RC_DCARTRIDGE.get());
     }
 
     @Override
