@@ -12,14 +12,6 @@ import net.ssc14.content.menu.decal.DecalColorMenuService;
 import net.mcreator.ssc.procedures.GravGenOFFbuttonProcedure;
 import net.mcreator.ssc.procedures.GravGenONbuttonProcedure;
 import net.mcreator.ssc.procedures.IDRemovePRProcedure;
-import net.mcreator.ssc.procedures.MicrwGUIbut10Procedure;
-import net.mcreator.ssc.procedures.MicrwGUIbut15Procedure;
-import net.mcreator.ssc.procedures.MicrwGUIbut1Procedure;
-import net.mcreator.ssc.procedures.MicrwGUIbut20Procedure;
-import net.mcreator.ssc.procedures.MicrwGUIbut25Procedure;
-import net.mcreator.ssc.procedures.MicrwGUIbut30Procedure;
-import net.mcreator.ssc.procedures.MicrwGUIbut5Procedure;
-import net.mcreator.ssc.procedures.MicrwGUIbutCProcedure;
 import net.mcreator.ssc.procedures.MicrwGUIbutEProcedure;
 import net.mcreator.ssc.procedures.OrderGUISwitchTabProcedure;
 import net.mcreator.ssc.procedures.PDA2TABbuttonPRProcedure;
@@ -48,7 +40,9 @@ import net.mcreator.ssc.procedures.VendAutGUIButton3Procedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton4Procedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton5Procedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton6Procedure;
-import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
+import net.ssc14.content.menu.food.MicrowaweGUIMenu;
+import net.ssc14.content.menu.food.MicrowaveButtonIds;
+import net.ssc14.content.menu.food.MicrowaveControlService;
 import net.mcreator.ssc.world.inventory.OrderGUIMenu;
 import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
 import net.ssc14.content.menu.airlock.AirlockPanelButtonIds;
@@ -150,17 +144,11 @@ public final class LegacyMenuButtonRegistration {
     private static void handleMicrowave(Player player, MenuButtonPayload message) {
         if (!(player.containerMenu instanceof MicrowaweGUIMenu menu)
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
-        switch (message.buttonId()) {
-            case 0 -> MicrwGUIbut1Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 1 -> MicrwGUIbut5Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 2 -> MicrwGUIbut10Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 3 -> MicrwGUIbut15Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 4 -> MicrwGUIbut20Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 5 -> MicrwGUIbut25Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 6 -> MicrwGUIbutCProcedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 7 -> MicrwGUIbut30Procedure.execute(player.level(), message.x(), message.y(), message.z());
-            case 8 -> MicrwGUIbutEProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
-            default -> { }
+        BlockPos pos = new BlockPos(message.x(), message.y(), message.z());
+        if (message.buttonId() == MicrowaveButtonIds.START) {
+            MicrwGUIbutEProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+        } else {
+            MicrowaveControlService.setTimer(player.level(), pos, message.buttonId());
         }
     }
 

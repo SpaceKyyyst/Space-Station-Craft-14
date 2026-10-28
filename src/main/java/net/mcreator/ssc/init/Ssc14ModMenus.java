@@ -20,6 +20,7 @@ import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
 import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
 import net.ssc14.content.menu.food.EggCartonGUIMenu;
+import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.menu.storage.BackpackGUIMenu;
 import net.ssc14.content.menu.commerce.SaleGUIMenu;
 import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;

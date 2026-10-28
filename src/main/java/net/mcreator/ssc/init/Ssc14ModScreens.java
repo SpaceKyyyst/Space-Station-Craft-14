@@ -8,6 +8,7 @@ import net.ssc14.client.menu.access.AccessConfigMENUScreen;
 import net.ssc14.client.menu.airlock.CabelPannelAirlockScreen;
 import net.ssc14.client.menu.pda.PDApassangerGUIScreen;
 import net.ssc14.client.menu.food.EggCartonGUIScreen;
+import net.ssc14.client.menu.food.MicrowaweGUIScreen;
 import net.ssc14.client.menu.storage.BackpackGUIScreen;
 import net.ssc14.client.menu.construction.RCDGUIScreen;
 import net.ssc14.client.menu.construction.RCDGUIwallfloorScreen;
