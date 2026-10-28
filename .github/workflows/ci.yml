@@ -25,10 +25,16 @@ jobs:
           python-version: '3.12'
       - name: Validate project metadata
         run: python .github/scripts/check_project.py
+      - name: Validate architecture and resources
+        run: |
+          python .github/scripts/check_architecture.py
+          python .github/scripts/check_procedure_graph.py
+          python .github/scripts/check_resources.py
+          python .github/scripts/check_menu_security.py
       - name: Run governance checks
         run: python -m unittest discover -s .github/scripts -p 'test_*.py'
-      - name: Run Gradle tests
-        run: ./gradlew test --no-daemon
+      - name: Run Gradle quality checks and tests
+        run: ./gradlew check test --no-daemon
 
   release:
     name: Build and release version change
