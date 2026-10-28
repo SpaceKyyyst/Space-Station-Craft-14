@@ -46,7 +46,10 @@
 `DebugGravityGeneratorBlock` изменяет `StationGravityState` без промежуточных
 adapter-классов. Их compatibility-тесты теперь проверяют canonical runtime
 контракты. Аналогично station-code и network-button interaction boundaries
-отбрасывают клиентские вызовы до legacy-адаптера.
+отбрасывают клиентские вызовы до legacy-адаптера. Fuel tank, C4 и nuclear
+warhead blocks теперь напрямую вызывают canonical lifecycle services; их
+block-level adapters удалены после прохождения compatibility и GameTest
+проверок.
 Mod ID, registry ID, NBT-ключи и порядок `GasType` являются частью формата
 сохранений; форматы пакетов определяют совместимость клиента и сервера.
 Исполняемый baseline этих контрактов и правила migration описаны в
