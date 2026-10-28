@@ -31,7 +31,7 @@ import net.mcreator.ssc.access.AirlockAccessPolicy;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.ssc14.content.menu.access.AccessConfigMENUMenu;
-import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
+import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
 import io.netty.buffer.Unpooled;
 import java.util.Optional;
 

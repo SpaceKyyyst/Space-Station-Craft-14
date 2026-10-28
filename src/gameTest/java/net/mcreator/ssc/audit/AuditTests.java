@@ -441,7 +441,7 @@ public final class AuditTests {
             var buffer = new net.minecraft.network.FriendlyByteBuf(io.netty.buffer.Unpooled.buffer());
             try {
                 buffer.writeBlockPos(pos);
-                player.containerMenu = new net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu(1, player.getInventory(), buffer);
+                player.containerMenu = new net.ssc14.content.menu.airlock.CabelPannelAirlockMenu(1, player.getInventory(), buffer);
             } finally { buffer.release(); }
             var data = h.getLevel().getBlockEntity(pos).getPersistentData();
             for (int wire = 1; wire <= 8; wire++) {
