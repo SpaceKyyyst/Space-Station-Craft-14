@@ -2,6 +2,7 @@
 package net.mcreator.ssc.procedures;
 
 import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.block.floor.FloorTileSupportPolicy;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -141,7 +142,7 @@ public class RSU_useOnBlock_Procedure {
         if (config == null) return;
         
         if (mode == 3) {
-            if (!Title_Placement_ConditionsProcedure.execute(world, placePos.getX(), placePos.getY(), placePos.getZ())) return;
+            if (!FloorTileSupportPolicy.canSupport(world, placePos)) return;
         } else if (mode == 5) {
             if (!net.ssc14.content.block.catwalk.CatwalkSupportPolicy.canSupport(world, placePos)) return;
         }
