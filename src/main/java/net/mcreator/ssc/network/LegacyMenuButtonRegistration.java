@@ -76,6 +76,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonDispatchBridge;
 import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
@@ -272,6 +273,7 @@ public final class LegacyMenuButtonRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
+        MenuButtonDispatchBridge.install(LegacyMenuButtonRegistration::dispatch);
         for (MenuButtonPayload.Channel channel : MenuButtonPayload.Channel.values()) {
             if (channel == MenuButtonPayload.Channel.ID_CODE
                     || channel == MenuButtonPayload.Channel.NETWORK_CONFIG) continue;
