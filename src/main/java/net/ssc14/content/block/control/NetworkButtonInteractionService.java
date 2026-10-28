@@ -17,6 +17,7 @@ public final class NetworkButtonInteractionService {
     }
 
     public static void activate(Level level, BlockPos pos) {
+        if (level != null && level.isClientSide()) return;
         adapter.activate(level, pos);
     }
 
