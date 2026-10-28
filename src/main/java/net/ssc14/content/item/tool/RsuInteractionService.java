@@ -6,6 +6,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.server.level.ServerPlayer;
@@ -25,7 +26,7 @@ public final class RsuInteractionService {
 
     private RsuInteractionService() { }
 
-    public static void useLegacy(Level level, Player player, ItemStack stack, ItemStack cartridge) {
+    public static void useLegacy(Level level, Player player, ItemStack stack, Item cartridge) {
         if (!player.isShiftKeyDown()) {
             return;
         }
