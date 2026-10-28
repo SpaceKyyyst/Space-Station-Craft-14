@@ -13,7 +13,6 @@ import net.mcreator.ssc.procedures.GravGenONbuttonProcedure;
 import net.mcreator.ssc.procedures.IDRemovePRProcedure;
 import net.mcreator.ssc.procedures.MicrwGUIbutEProcedure;
 import net.ssc14.content.menu.pda.PdaTabService;
-import net.mcreator.ssc.procedures.PDA3TABbuttonPRProcedure;
 import net.mcreator.ssc.procedures.PDAflashlightPRProcedure;
 import net.mcreator.ssc.procedures.PenRemovePRProcedure;
 import net.mcreator.ssc.procedures.RCDGUIarmWindowButtonProcedure;
@@ -179,7 +178,7 @@ public final class LegacyMenuButtonRegistration {
             case 2 -> PDAflashlightPRProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
             case 3 -> PdaTabService.setTab(player, 1);
             case 4 -> PdaTabService.execute(player);
-            case 5 -> PDA3TABbuttonPRProcedure.execute(player);
+            case 5 -> PdaTabService.setTab(player, 3);
             default -> { }
         }
     }
