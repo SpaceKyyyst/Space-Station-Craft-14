@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 
 import net.mcreator.ssc.procedures.*;
 import net.ssc14.content.equipment.HardsuitSalvageHelmetEquipabilityService;
+import net.ssc14.content.equipment.MagBootsUnequipService;
 
 public class Ssc14ModCuriosCompat {
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -208,7 +209,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onUnequip(SlotContext slotContext, ItemStack newStack) {
-				MagBootsCAPIBaubleIsUnequippedProcedure.execute(slotContext.entity());
+				MagBootsUnequipService.execute(slotContext.entity());
 			}
 		}, Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
