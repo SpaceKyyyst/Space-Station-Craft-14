@@ -1,7 +1,7 @@
 package net.ssc14.content.block;
 
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.world.inventory.VendingAut1GUIMenu;
+import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
