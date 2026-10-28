@@ -57,7 +57,7 @@ public class HealthUIOverlay {
 			if (HealthUiService.isState(entity, 2)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_4, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
-			if (HPGoodDisplayProcedure.execute(entity)) {
+			if (HealthUiService.isState(entity, 1)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_5, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
 			if (HPExcellentDisplayProcedure.execute(entity)) {
