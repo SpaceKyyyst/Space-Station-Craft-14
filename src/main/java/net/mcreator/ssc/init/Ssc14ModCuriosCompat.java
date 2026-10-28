@@ -12,6 +12,7 @@ import net.mcreator.ssc.procedures.*;
 import net.ssc14.content.equipment.HardsuitSalvageHelmetEquipabilityService;
 import net.ssc14.content.equipment.MagBootsUnequipService;
 import net.ssc14.content.equipment.OuterclothingEvaUnequipService;
+import net.ssc14.content.equipment.EquipmentSoundService;
 
 public class Ssc14ModCuriosCompat {
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -166,7 +167,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				Equip_GlovesSound_PR_Procedure.execute(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
+				EquipmentSoundService.playGloves(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
 		}, Ssc14ModItems.ISOLATED_GLOVES.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
@@ -647,7 +648,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				Equip_GlovesSound_PR_Procedure.execute(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
+				EquipmentSoundService.playGloves(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
 		}, Ssc14ModItems.BLACK_GLOVES.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
