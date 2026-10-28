@@ -49,7 +49,7 @@ public class WorldCheckUIOverlay {
 
 					WorldCheckTargetTextService.execute(world, entity), w / 2 + 5, h / 2 + 38, -16711681, false);
 			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_eto"), w / 2 + 5, h / 2 + 14, -1, false);
-			if (WOCtextPinnedProcedure.execute(entity))
+			if (WorldCheckTargetTextService.hasTarget(entity))
 				event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_zakrieplieno"), w / 2 + 28, h / 2 + 14, -16744704, false);
 		}
 	}
