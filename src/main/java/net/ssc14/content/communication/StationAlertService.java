@@ -17,7 +17,7 @@ public final class StationAlertService {
 
     private StationAlertService() { }
 
-    public static boolean announceRed(ServerLevel level, int currentCode, String stationName) {
+    public static boolean announceRed(ServerLevel level, double currentCode, String stationName) {
         if (currentCode >= MAX_CODE_BEFORE_ALERT || currentCode == RED_CODE) return false;
 
         Component message = Component.literal("Внимание " + stationName + "! Код КРАСНЫЙ!\n"
