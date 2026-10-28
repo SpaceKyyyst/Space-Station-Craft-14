@@ -1,11 +1,11 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.firearm;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.particles.ParticleTypes;
 
-public class Bullet35_BlockCollision_Procedure {
+public final class BulletCollisionParticleService {
 	public static void execute(LevelAccessor world, Entity immediatesourceentity) {
 		if (immediatesourceentity == null)
 			return;

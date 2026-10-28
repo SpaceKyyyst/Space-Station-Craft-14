@@ -1,6 +1,6 @@
 package net.mcreator.ssc.init;
 
-import net.mcreator.ssc.procedures.Bullet35_BlockCollision_Procedure;
+import net.ssc14.content.firearm.BulletCollisionParticleService;
 import net.ssc14.content.firearm.BulletFlightParticleService;
 import net.mcreator.ssc.procedures.C4_Crutch_Ent_TICProcedure;
 import net.mcreator.ssc.procedures.ChairEntity_TICProcedure;
@@ -23,7 +23,7 @@ public final class Ssc14LegacyEntityBehavior implements Ssc14EntityBehavior.Hook
 
     @Override
     public void bulletBlockCollision(LevelAccessor level, Entity projectile) {
-        Bullet35_BlockCollision_Procedure.execute(level, projectile);
+        BulletCollisionParticleService.execute(level, projectile);
     }
 
     @Override
