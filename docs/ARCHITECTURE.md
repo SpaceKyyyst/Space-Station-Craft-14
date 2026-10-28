@@ -123,6 +123,10 @@ communication console, commerce console, сетевой topology, station-code d
 Их удаление допустимо только после переноса соответствующего поведения и
 регрессионной проверки сохранений.
 
+Критический медицинский tick и расход жидкости работают через
+`MedicalCriticalTickHandler` и `LiquidMetabolismTickHandler`; generated wrappers
+для этих путей удалены после полного тестового прогона.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -148,6 +152,10 @@ communication and commerce consoles, cable topology, station-code debug, closets
 portable menus, and several construction/firearm interactions. Each bridge
 must be removed only after its behavior and save compatibility are migrated and
 covered by regression tests.
+
+Critical medical ticking and liquid metabolism now run through
+`MedicalCriticalTickHandler` and `LiquidMetabolismTickHandler`; their generated
+wrappers were removed after the full test suite passed.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
