@@ -27,7 +27,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.mcreator.ssc.access.AirlockAccessPolicy;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.ssc14.content.menu.access.AccessConfigMENUMenu;
@@ -85,7 +84,7 @@ public final class AirlockLifecycleService {
         if (action == OPENING || action == CLOSING) return;
         if (nbt.getBooleanOr("bolted", false) || nbt.getBooleanOr("welded", false)
                 || !nbt.getBooleanOr("powered", true) || current == 1 || current == 9 || current == 10) return;
-        if (!AirlockAccessPolicy.permits(nbt, entity, nbt.getBooleanOr("emergency_acs", false))) {
+        if (!AirlockAccessPolicyService.permits(nbt, entity, nbt.getBooleanOr("emergency_acs", false))) {
             if (action == DENIED) return; // Do not restart denial for repeated unauthorized clicks.
             if (current != 11 && !(current >= 12 && current <= 15)) {
                 nbt.putInt("_ssc14_airlock_denied_state", current);
@@ -119,7 +118,7 @@ public final class AirlockLifecycleService {
             _playSound(level, pos, "ssc_14:airlock_open");
         } else if (action == WAITING) {
             if (state.getValue(prop) != 11) { finish(be); return; }
-            if (nbt.getBooleanOr(net.mcreator.ssc.access.AirlockSignals.HOLD, false)) { finish(be); return; }
+            if (nbt.getBooleanOr(AirlockSignalHandler.HOLD, false)) { finish(be); return; }
             if (canCloseAirlock(level, pos, nbt)) {
                 startClose(level, pos, be);
             } else {
@@ -162,7 +161,7 @@ public final class AirlockLifecycleService {
                     level.scheduleTick(pos, state.getBlock(), next < 2 ? 4 : 2);
                 }
             } else if (next == 4) {
-                nbt.putBoolean(net.mcreator.ssc.access.AirlockSignals.HOLD, false);
+                nbt.putBoolean(AirlockSignalHandler.HOLD, false);
                 boolean crushed = nbt.getBooleanOr("_ssc14_crushed", false);
                 nbt.remove("_ssc14_crushed");
                 finish(be);
@@ -194,7 +193,7 @@ public final class AirlockLifecycleService {
         if (be == null || prop == null || state.getValue(prop) != 11) return;
         CompoundTag nbt = be.getPersistentData();
         if (!nbt.getBooleanOr("powered", true) || nbt.getBooleanOr("bolted", false)
-                || nbt.getBooleanOr("welded", false) || nbt.getBooleanOr(net.mcreator.ssc.access.AirlockSignals.HOLD, false)) {
+                || nbt.getBooleanOr("welded", false) || nbt.getBooleanOr(AirlockSignalHandler.HOLD, false)) {
             if (level.getBlockTicks().hasScheduledTick(pos, state.getBlock()))
                 level.getBlockTicks().clearArea(new BoundingBox(pos));
             finish(be);
@@ -215,7 +214,7 @@ public final class AirlockLifecycleService {
         nbt.remove("_ssc14_denied_anim");
         nbt.remove("prev_arl_variat_on_deny");
         if (action == OPENING || action == CLOSING || action == DENIED)
-            net.mcreator.ssc.access.AirlockEventLog.append(be, action == OPENING ? "OPEN" : action == CLOSING ? "CLOSE" : "ACCESS_DENIED");
+            AirlockEventLogService.append(be, action == OPENING ? "OPEN" : action == CLOSING ? "CLOSE" : "ACCESS_DENIED");
         nbt.putInt(ACTION, action);
         nbt.putInt(STEP, 0);
         nbt.putInt("_ssc14_visual_action", action);

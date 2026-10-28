@@ -44,7 +44,7 @@ public final class AirlockToolInteractionHandler {
 
 		BlockPos pos = BlockPos.containing(x, y, z);
 		if (entity instanceof net.minecraft.world.entity.player.Player player
-				&& (net.mcreator.ssc.access.AirlockEventLog.inspect(player, pos)
+				&& (AirlockEventLogService.inspect(player, pos)
                     || net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos)
                     || AirlockWeldingService.interact(player, pos)
                     || AirlockManualOpeningService.interact(player, pos)
