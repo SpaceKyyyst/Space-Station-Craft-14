@@ -177,7 +177,6 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					LiquidGetCommandProcedure.execute(arguments);
 					return 0;
 				}))))));
 	}
