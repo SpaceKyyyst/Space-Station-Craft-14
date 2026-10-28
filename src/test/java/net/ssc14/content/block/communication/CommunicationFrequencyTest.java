@@ -17,6 +17,19 @@ class CommunicationFrequencyTest {
     }
 
     @Test
+    void preservesEveryLegacySavedKey() {
+        String[] expected = {
+                "Base_Radio_Frequency", "Command_Radio_Frequency", "Engeneer_Radio_Frequency",
+                "Medical_Radio_Frequency", "RND_Radio_Frequency", "Sec_Radio_Frequency",
+                "Serv_Radio_Frequency", "Cargo_Radio_Frequency"
+        };
+
+        for (int type = 1; type <= expected.length; type++) {
+            assertEquals(expected[type - 1], CommunicationFrequency.fromBlockType(type).stateKey());
+        }
+    }
+
+    @Test
     void rejectsDifferentBlockOrType() {
         BlockState state = Blocks.STONE.defaultBlockState();
         assertEquals(false, CommunicationServerLifecycleService.matchesType(state, Blocks.DIRT, 0));
