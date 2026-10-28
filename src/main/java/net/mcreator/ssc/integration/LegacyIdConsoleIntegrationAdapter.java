@@ -29,8 +29,6 @@ public final class LegacyIdConsoleIntegrationAdapter
                 }
             }, pos);
         }
-        net.ssc14.content.sound.ConsoleMenuSoundService.play(
-                level, pos.getX(), pos.getY(), pos.getZ());
     }
 
     @Override public AbstractContainerMenu createMenu(
