@@ -4,8 +4,8 @@ import net.ssc14.content.block.airlock.AirlockWorkFeedback;
 
 import java.util.Map;
 import java.util.WeakHashMap;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.item.Ssc14Items;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -29,9 +29,9 @@ public final class AirlockManualOpeningService {
     public static boolean interact(Player player, BlockPos pos) {
         if (!(player.level() instanceof ServerLevel level) || player.isShiftKeyDown() || !level.hasChunkAt(pos)) return false;
         var tool = player.getMainHandItem();
-        if (!tool.isEmpty() && !tool.is(Ssc14ModItems.CROWBAR.get())) return false;
+        if (!tool.isEmpty() && !tool.is(Ssc14Items.CROWBAR.get())) return false;
         var clicked = level.getBlockState(pos);
-        if (clicked.is(Ssc14ModBlocks.AIRLOCK_UP_PLUG.get()) || clicked.is(Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get())) pos = pos.below();
+        if (clicked.is(Ssc14Blocks.AIRLOCK_UP_PLUG.get()) || clicked.is(Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.get())) pos = pos.below();
         var door = level.getBlockEntity(pos);
         if (door == null || door.getBlockState().getBlock().getStateDefinition().getProperty("arl_variat") == null) return false;
         if (door.getPersistentData().getBooleanOr("powered", true)) return false;
