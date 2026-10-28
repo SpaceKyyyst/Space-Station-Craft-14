@@ -1,7 +1,6 @@
 package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.Ssc14Mod;
-import net.mcreator.ssc.procedures.CargoBuyProcedure;
 import net.mcreator.ssc.procedures.CommConsBLUEcodeProcedure;
 import net.mcreator.ssc.procedures.CommConsGREENcodeProcedure;
 import net.mcreator.ssc.procedures.CommConsPURPLEcodeProcedure;
@@ -44,6 +43,7 @@ import net.ssc14.content.menu.food.MicrowaveButtonIds;
 import net.ssc14.content.menu.food.MicrowaveControlService;
 import net.ssc14.content.commerce.cargo.CargoOrderButtonIds;
 import net.ssc14.content.commerce.cargo.CargoOrderService;
+import net.ssc14.content.commerce.cargo.CargoPurchaseService;
 import net.ssc14.content.menu.commerce.OrderGUIMenu;
 import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
 import net.ssc14.content.menu.airlock.AirlockPanelButtonIds;
@@ -141,7 +141,8 @@ public final class LegacyMenuButtonRegistration {
             CargoOrderService.selectTab(player.level(), new BlockPos(message.x(), message.y(), message.z()), buttonId);
             CargoOrderService.refreshPreview(menu, player);
         } else if (itemIndex >= 0) {
-            CargoBuyProcedure.execute(player.level(), message.x(), message.y(), message.z(), player, itemIndex);
+            CargoPurchaseService.purchase(player.level(),
+                    new BlockPos(message.x(), message.y(), message.z()), player, itemIndex);
         }
     }
 

@@ -369,6 +369,13 @@ public class Ssc14Mod {
 				Ssc14ModVariables.MapVariables.get(level).station_name);
 		StationBudgetService.install(level ->
 				Ssc14ModVariables.WorldVariables.get(level).Station_Budget);
+		StationBudgetService.installSpender((level, amount) -> {
+			var variables = Ssc14ModVariables.WorldVariables.get(level);
+			if (variables.Station_Budget < amount) return false;
+			variables.Station_Budget -= amount;
+			variables.markSyncDirty();
+			return true;
+		});
 		MachineFrameAssemblyService.install(Ssc14ModItems.LOW_VOLTAGE_CABLE,
 				Ssc14Blocks.MACHINE_FRAME_2);
 		MachineFrameMenuService.install((id, inventory, pos) -> new MacFrameGUIMenu(
