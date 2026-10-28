@@ -1,4 +1,4 @@
-package net.mcreator.ssc;
+package net.ssc14.content.item.decal;
 
 import io.netty.buffer.Unpooled;
 import net.ssc14.content.decal.DecalToolPermissionService;
@@ -14,12 +14,10 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.context.UseOnContext;
-import net.ssc14.content.item.decal.DecalToolInteractionService;
-import net.ssc14.content.item.decal.DecalToolKind;
 
-/** Adapter retained until decal menus and procedures move into canonical packages. */
-final class LegacyDecalToolInteractionAdapter implements DecalToolInteractionService.Adapter {
-    static final LegacyDecalToolInteractionAdapter INSTANCE =
+/** Compatibility adapter retained until the decal menu contract is migrated. */
+public final class LegacyDecalToolInteractionAdapter implements DecalToolInteractionService.Adapter {
+    public static final LegacyDecalToolInteractionAdapter INSTANCE =
             new LegacyDecalToolInteractionAdapter();
 
     private LegacyDecalToolInteractionAdapter() { }
@@ -27,9 +25,7 @@ final class LegacyDecalToolInteractionAdapter implements DecalToolInteractionSer
     @Override
     public void use(DecalToolKind kind, Player player, InteractionHand hand) {
         if (!(player instanceof ServerPlayer serverPlayer)
-                || !DecalToolPermissionService.execute(serverPlayer)) {
-            return;
-        }
+                || !DecalToolPermissionService.execute(serverPlayer)) return;
         serverPlayer.openMenu(menuProvider(kind, player, hand), buffer -> {
             buffer.writeBlockPos(player.blockPosition());
             buffer.writeByte(hand == InteractionHand.MAIN_HAND ? 0 : 1);
@@ -46,17 +42,13 @@ final class LegacyDecalToolInteractionAdapter implements DecalToolInteractionSer
                 context.getClickedFace(), context.getItemInHand());
     }
 
-    private static MenuProvider menuProvider(
-            DecalToolKind kind, Player player, InteractionHand hand) {
+    private static MenuProvider menuProvider(DecalToolKind kind, Player player, InteractionHand hand) {
         return new MenuProvider() {
             @Override
-            public Component getDisplayName() {
-                return Component.literal(kind.menuTitle());
-            }
+            public Component getDisplayName() { return Component.literal(kind.menuTitle()); }
 
             @Override
-            public AbstractContainerMenu createMenu(
-                    int id, Inventory inventory, Player menuPlayer) {
+            public AbstractContainerMenu createMenu(int id, Inventory inventory, Player menuPlayer) {
                 FriendlyByteBuf buffer = new FriendlyByteBuf(Unpooled.buffer());
                 buffer.writeBlockPos(player.blockPosition());
                 buffer.writeByte(hand == InteractionHand.MAIN_HAND ? 0 : 1);

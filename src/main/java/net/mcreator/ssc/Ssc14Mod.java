@@ -39,6 +39,7 @@ import net.mcreator.ssc.integration.LegacyShuttersIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockControllerInteractionAdapter;
 import net.ssc14.content.gravity.ui.GravityGeneratorWindow;
+import net.ssc14.content.item.decal.LegacyDecalToolInteractionAdapter;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.content.entity.Ssc14EntityBehavior;
