@@ -1,6 +1,5 @@
 package net.mcreator.ssc.integration;
 
-import net.mcreator.ssc.procedures.RCDinterfParticGenerateProcedure;
 import net.mcreator.ssc.procedures.RSU_useOnBlock_Procedure;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -30,7 +29,7 @@ public final class LegacyRsuInteractionAdapter
 
     @Override
     public void inventoryTick(ServerLevel level, Entity entity, ItemStack stack) {
-        RCDinterfParticGenerateProcedure.execute(level, entity.getX(), entity.getY(),
-                entity.getZ(), entity, stack);
+        net.ssc14.content.item.tool.RsuAimingParticleService.execute(level, entity.getX(), entity.getY(),
+                entity.getZ(), entity, stack, net.mcreator.ssc.init.Ssc14ModItems.RSU.get());
     }
 }

@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.item.tool;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -17,19 +17,22 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.minecraft.world.item.Item;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 
-public class RCDinterfParticGenerateProcedure {
+public final class RsuAimingParticleService {
 
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
+    private RsuAimingParticleService() { }
+
+    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity,
+            ItemStack itemstack, Item rsuItem) {
         if (entity == null || !(entity instanceof LivingEntity livingEntity)) return;
         
         if (itemstack == null || itemstack.isEmpty()) {
             itemstack = livingEntity.getMainHandItem();
         }
         
-        if (!itemstack.is(Ssc14ModItems.RSU.get())) return;
+        if (!itemstack.is(rsuItem)) return;
 
         int mode = (int) itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("Mode", 0);
         if (mode == 0) return;
