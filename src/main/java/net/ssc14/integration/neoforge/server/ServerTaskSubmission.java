@@ -2,7 +2,7 @@ package net.ssc14.integration.neoforge.server;
 
 import java.util.concurrent.RejectedExecutionException;
 import org.apache.logging.log4j.Logger;
-import net.ssc14.common.Ssc14Log;
+import net.ssc14.integration.neoforge.logging.Ssc14Log;
 
 /** Admission outcome for work owned by one Minecraft server lifetime. */
 public enum ServerTaskSubmission {

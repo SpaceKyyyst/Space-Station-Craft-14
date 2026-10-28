@@ -1,4 +1,4 @@
-package net.ssc14.common;
+package net.ssc14.integration.neoforge.logging;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

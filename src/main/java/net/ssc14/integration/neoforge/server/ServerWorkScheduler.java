@@ -15,7 +15,7 @@ import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.ssc14.common.Ssc14Identity;
 import org.apache.logging.log4j.Logger;
-import net.ssc14.common.Ssc14Log;
+import net.ssc14.integration.neoforge.logging.Ssc14Log;
 
 /** Owns delayed work for each server lifetime and executes it only on its tick thread. */
 @EventBusSubscriber(modid = Ssc14Identity.MOD_ID)
