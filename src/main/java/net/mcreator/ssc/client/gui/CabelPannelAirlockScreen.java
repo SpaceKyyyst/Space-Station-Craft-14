@@ -16,7 +16,8 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
 import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.network.CabelPannelAirlockButtonMessage;
+import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -156,8 +157,8 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(0, x, y, z));
-				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(0, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(0, x, y, z));
 			}
 		}) {
 			@Override
@@ -170,8 +171,8 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(1, x, y, z));
-				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 1, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(1, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(1, x, y, z));
 			}
 		}) {
 			@Override
@@ -184,8 +185,8 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(2, x, y, z));
-				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 2, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(2, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(2, x, y, z));
 			}
 		}) {
 			@Override
@@ -198,8 +199,8 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(3, x, y, z));
-				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 3, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(3, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(3, x, y, z));
 			}
 		}) {
 			@Override
@@ -212,8 +213,8 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(4, x, y, z));
-				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 4, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(4, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(4, x, y, z));
 			}
 		}) {
 			@Override
@@ -226,8 +227,8 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(5, x, y, z));
-				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 5, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(5, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(5, x, y, z));
 			}
 		}) {
 			@Override
@@ -240,8 +241,8 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(6, x, y, z));
-				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 6, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(6, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(6, x, y, z));
 			}
 		}) {
 			@Override
@@ -254,8 +255,8 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new CabelPannelAirlockButtonMessage(7, x, y, z));
-				CabelPannelAirlockButtonMessage.handleButtonAction(entity, 7, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(7, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(7, x, y, z));
 			}
 		}) {
 			@Override

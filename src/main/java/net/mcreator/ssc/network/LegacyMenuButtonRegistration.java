@@ -2,6 +2,18 @@ package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.procedures.CargoBuyProcedure;
+import net.mcreator.ssc.procedures.CPcabel1buttonProcedure;
+import net.mcreator.ssc.procedures.CPcabel2buttonProcedure;
+import net.mcreator.ssc.procedures.CPcabel3buttonProcedure;
+import net.mcreator.ssc.procedures.CPcabel4buttonProcedure;
+import net.mcreator.ssc.procedures.CPcabel5buttonProcedure;
+import net.mcreator.ssc.procedures.CPcabel6buttonProcedure;
+import net.mcreator.ssc.procedures.CPcabel7buttonProcedure;
+import net.mcreator.ssc.procedures.CPcabel8buttonProcedure;
+import net.mcreator.ssc.procedures.DECALSGUIacceptProcedure;
+import net.mcreator.ssc.procedures.GravGenOFFbuttonProcedure;
+import net.mcreator.ssc.procedures.GravGenONbuttonProcedure;
+import net.mcreator.ssc.procedures.IDRemovePRProcedure;
 import net.mcreator.ssc.procedures.MicrwGUIbut10Procedure;
 import net.mcreator.ssc.procedures.MicrwGUIbut15Procedure;
 import net.mcreator.ssc.procedures.MicrwGUIbut1Procedure;
@@ -12,6 +24,11 @@ import net.mcreator.ssc.procedures.MicrwGUIbut5Procedure;
 import net.mcreator.ssc.procedures.MicrwGUIbutCProcedure;
 import net.mcreator.ssc.procedures.MicrwGUIbutEProcedure;
 import net.mcreator.ssc.procedures.OrderGUISwitchTabProcedure;
+import net.mcreator.ssc.procedures.PDA2TABbuttonPRProcedure;
+import net.mcreator.ssc.procedures.PDA3TABbuttonPRProcedure;
+import net.mcreator.ssc.procedures.PDAflashlightPRProcedure;
+import net.mcreator.ssc.procedures.PDAmainButtonPRProcedure;
+import net.mcreator.ssc.procedures.PenRemovePRProcedure;
 import net.mcreator.ssc.procedures.Sale_GUI_buttonSALEProcedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton1Procedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton2Procedure;
@@ -21,6 +38,10 @@ import net.mcreator.ssc.procedures.VendAutGUIButton5Procedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton6Procedure;
 import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
 import net.mcreator.ssc.world.inventory.OrderGUIMenu;
+import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
+import net.mcreator.ssc.world.inventory.DECALScolorGUIMenu;
+import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
+import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
 import net.mcreator.ssc.world.inventory.SaleGUIMenu;
 import net.mcreator.ssc.world.inventory.VendingAut1GUIMenu;
 import net.minecraft.network.chat.Component;
@@ -53,6 +74,10 @@ public final class LegacyMenuButtonRegistration {
             case SALE -> handleSale(player, message);
             case ORDER -> handleOrder(player, message);
             case MICROWAVE -> handleMicrowave(player, message);
+            case AIRLOCK_PANEL -> handleAirlockPanel(player, message);
+            case DECAL_COLOR -> handleDecalColor(player, message);
+            case GRAVITY_GENERATOR -> handleGravityGenerator(player, message);
+            case PDA_PASSENGER -> handlePdaPassenger(player, message);
         }
     }
 
@@ -110,6 +135,52 @@ public final class LegacyMenuButtonRegistration {
             case 6 -> MicrwGUIbutCProcedure.execute(player.level(), message.x(), message.y(), message.z());
             case 7 -> MicrwGUIbut30Procedure.execute(player.level(), message.x(), message.y(), message.z());
             case 8 -> MicrwGUIbutEProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            default -> { }
+        }
+    }
+
+    private static void handleAirlockPanel(Player player, MenuButtonPayload message) {
+        if (!(player.containerMenu instanceof CabelPannelAirlockMenu menu)
+                || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
+        switch (message.buttonId()) {
+            case 0 -> CPcabel1buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            case 1 -> CPcabel2buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            case 2 -> CPcabel3buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            case 3 -> CPcabel4buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            case 4 -> CPcabel5buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            case 5 -> CPcabel6buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            case 6 -> CPcabel7buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            case 7 -> CPcabel8buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            default -> { }
+        }
+    }
+
+    private static void handleDecalColor(Player player, MenuButtonPayload message) {
+        if (!(player.containerMenu instanceof DECALScolorGUIMenu menu)
+                || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
+        if (message.buttonId() == 0) DECALSGUIacceptProcedure.execute(player);
+    }
+
+    private static void handleGravityGenerator(Player player, MenuButtonPayload message) {
+        if (!(player.containerMenu instanceof GravGenGUIMenu menu)
+                || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
+        switch (message.buttonId()) {
+            case 0 -> GravGenOFFbuttonProcedure.execute(player.level(), message.x(), message.y(), message.z());
+            case 1 -> GravGenONbuttonProcedure.execute(player.level(), message.x(), message.y(), message.z());
+            default -> { }
+        }
+    }
+
+    private static void handlePdaPassenger(Player player, MenuButtonPayload message) {
+        if (!(player.containerMenu instanceof PDApassangerGUIMenu menu)
+                || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
+        switch (message.buttonId()) {
+            case 0 -> PenRemovePRProcedure.execute(player.level(), player);
+            case 1 -> IDRemovePRProcedure.execute(player.level(), player);
+            case 2 -> PDAflashlightPRProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            case 3 -> PDAmainButtonPRProcedure.execute(player);
+            case 4 -> PDA2TABbuttonPRProcedure.execute(player);
+            case 5 -> PDA3TABbuttonPRProcedure.execute(player);
             default -> { }
         }
     }

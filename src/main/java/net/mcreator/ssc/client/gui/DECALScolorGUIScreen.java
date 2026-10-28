@@ -16,7 +16,8 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.DECALScolorGUIMenu;
 import net.mcreator.ssc.procedures.DECALSGUIaccept2Procedure;
-import net.mcreator.ssc.network.DECALScolorGUIButtonMessage;
+import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -131,8 +132,8 @@ public class DECALScolorGUIScreen extends AbstractContainerScreen<DECALScolorGUI
 			int x = DECALScolorGUIScreen.this.x;
 			int y = DECALScolorGUIScreen.this.y;
 			if (DECALSGUIaccept2Procedure.execute(entity)) {
-				ClientPacketDistributor.sendToServer(new DECALScolorGUIButtonMessage(0, x, y, z));
-				DECALScolorGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.decalColor(0, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.decalColor(0, x, y, z));
 			}
 		}).bounds(this.leftPos + 51, this.topPos + 142, 60, 20).build();
 		this.addRenderableWidget(button_priniat);
