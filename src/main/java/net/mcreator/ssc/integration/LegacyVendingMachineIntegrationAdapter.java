@@ -1,9 +1,7 @@
 package net.mcreator.ssc.integration;
 
 import io.netty.buffer.Unpooled;
-import net.mcreator.ssc.procedures.VendingAut1_CREATIVE_DESTROY_Procedure;
-import net.mcreator.ssc.procedures.VendingAut_GENERATE_Procedure;
-import net.mcreator.ssc.procedures.VendingAut_UPDATE_Procedure;
+import net.ssc14.content.commerce.VendingMachineRuntimeService;
 import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -16,18 +14,17 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.ssc14.content.block.commerce.VendingMachineIntegrationService;
 
-/** Connects the canonical vending machine to remaining legacy procedures and menu. */
+/** Retains only the legacy bootstrap boundary for the canonical vending menu. */
 public final class LegacyVendingMachineIntegrationAdapter
         implements VendingMachineIntegrationService.Adapter {
     @Override public void onPlaced(Level level, BlockPos pos) {
-        VendingAut_GENERATE_Procedure.execute(level, pos.getX(), pos.getY(), pos.getZ());
+        VendingMachineRuntimeService.initialize(level, pos);
     }
     @Override public void onNeighborChanged(Level level, BlockPos pos) {
-        VendingAut_UPDATE_Procedure.execute(level, pos.getX(), pos.getY(), pos.getZ());
+        VendingMachineRuntimeService.validateUpperPlug(level, pos);
     }
     @Override public void onAttack(Level level, BlockPos pos, Player player) {
-        VendingAut1_CREATIVE_DESTROY_Procedure.execute(
-                level, pos.getX(), pos.getY(), pos.getZ(), player);
+        VendingMachineRuntimeService.handleCreativeAttack(level, pos, player);
     }
     @Override public void open(Level level, BlockPos pos, Player player) {
         if (player instanceof ServerPlayer serverPlayer) {

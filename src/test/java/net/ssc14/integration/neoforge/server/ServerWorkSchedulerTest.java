@@ -10,7 +10,7 @@ import net.mcreator.ssc.block.ShutterController;
 import net.mcreator.ssc.procedures.Button_CLICK_Procedure;
 import net.mcreator.ssc.procedures.C4explorePRProcedure;
 import net.mcreator.ssc.procedures.CommunicationServers_TIC_PR_Procedure;
-import net.mcreator.ssc.procedures.VendAutGUIButton1Procedure;
+import net.ssc14.content.commerce.VendingMachineRuntimeService;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.dedicated.DedicatedServer;
@@ -126,7 +126,7 @@ class ServerWorkSchedulerTest {
             Button_CLICK_Procedure.execute(client, 0, 0, 0);
             C4explorePRProcedure.execute(client, 0, 0, 0);
             CommunicationServers_TIC_PR_Procedure.execute(client, 0, 0, 0, null);
-            VendAutGUIButton1Procedure.execute(client, 0, 0, 0);
+            VendingMachineRuntimeService.vend(client, BlockPos.ZERO, 0);
             ShutterController.setOpen(client, BlockPos.ZERO, true);
         });
     }
