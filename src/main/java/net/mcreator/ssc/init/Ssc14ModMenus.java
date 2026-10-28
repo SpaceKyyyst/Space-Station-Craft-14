@@ -22,6 +22,7 @@ import net.ssc14.content.menu.commerce.SaleGUIMenu;
 import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
 import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.ssc14.content.menu.network.NetConfigGUIMenu;
+import net.ssc14.content.menu.machinery.MacFrameGUIMenu;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
 import net.ssc14.content.menu.construction.RCDGUIMenu;

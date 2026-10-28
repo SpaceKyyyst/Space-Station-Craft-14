@@ -1,4 +1,4 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.machinery;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
@@ -8,7 +8,6 @@ import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.access.ItemAccess;
 import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -28,17 +27,15 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.MacFrameGUIBlockUpdateProcedure;
-import net.mcreator.ssc.network.LegacyMenuSlotRegistration;
-import net.ssc14.integration.neoforge.menu.network.MenuSlotPayload;
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.menu.Ssc14MenuTypes;
+import net.ssc14.core.network.MenuStateAccess;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class MacFrameGUIMenu extends AbstractContainerMenu implements MenuStateAccess {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
@@ -59,7 +56,7 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 	private BlockEntity boundBlockEntity = null;
 
 	public MacFrameGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.MAC_FRAME_GUI.get(), id);
+		super(Ssc14MenuTypes.MAC_FRAME_GUI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(9);
@@ -375,7 +372,7 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 	@Override
 	public void removed(Player playerIn) {
 		super.removed(playerIn);
-		MacFrameGUIBlockUpdateProcedure.execute(world, x, y, z);
+		MachineFrameAssemblyStateService.refresh(world, new BlockPos(x, y, z));
 		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
 			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
 				for (int j = 0; j < internal.size(); ++j) {
@@ -424,13 +421,11 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 	}
 
 	private void slotChanged(int slotid, int ctype, int meta) {
-		if (this.world != null && this.world.isClientSide()) {
-			ClientPacketDistributor.sendToServer(MenuSlotPayload.machineFrame(slotid, x, y, z, ctype, meta));
-			LegacyMenuSlotRegistration.dispatch(entity, MenuSlotPayload.machineFrame(slotid, x, y, z, ctype, meta));
+		if (this.world != null && !this.world.isClientSide()) {
+			MachineFrameAssemblyStateService.refresh(world, new BlockPos(x, y, z));
 		}
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}

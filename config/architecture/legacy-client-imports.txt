@@ -24,4 +24,3 @@ neoforge-client src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProced
 neoforge-client src/main/java/net/mcreator/ssc/procedures/Interaction_PRProcedure.java
 neoforge-client src/main/java/net/mcreator/ssc/procedures/SkyRenderProcedure.java
 neoforge-client src/main/java/net/mcreator/ssc/world/inventory/IDcodeMenu.java
-neoforge-client src/main/java/net/mcreator/ssc/world/inventory/MacFrameGUIMenu.java
