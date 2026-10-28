@@ -50,7 +50,7 @@ public class GravityGeneratorPlugBlock extends Block {
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighbor,
             @Nullable Orientation orientation, boolean movedByPiston) {
         super.neighborChanged(state, level, pos, neighbor, orientation, movedByPiston);
-        GravityGeneratorPlugLifecycleService.neighborChanged(level, pos);
+        GravityGeneratorPlugLifecycleService.validate(level, pos);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class GravityGeneratorPlugBlock extends Block {
             ItemStack tool, boolean willHarvest, FluidState fluid) {
         boolean destroyed = super.onDestroyedByPlayer(
                 state, level, pos, player, tool, willHarvest, fluid);
-        GravityGeneratorPlugLifecycleService.destroyed(level, pos);
+        GravityGeneratorPlugLifecycleService.destroyGenerator(level, pos);
         return destroyed;
     }
 }
