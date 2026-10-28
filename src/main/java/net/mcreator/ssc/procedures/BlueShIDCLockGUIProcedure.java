@@ -6,14 +6,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.core.component.DataComponents;
 
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.common.network.SlotMenuStateAccess;
 
 public class BlueShIDCLockGUIProcedure {
 	public static boolean execute(Entity entity) {
 		if (entity == null)
 			return false;
 		if (getAmountInGUISlot(entity, 0) > 0 && getAmountInGUISlot(entity, 1) > 0) {
-			if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Ssc14ModMenus.MenuAccessor _menu2 ? _menu2.getSlots().get(0).getItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
+			if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu2 ? _menu2.getSlots().get(0).getItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
 					.copyTag().getBooleanOr("Blue_Sh", false) == false) {
 				return true;
 			} else {
@@ -24,7 +24,7 @@ public class BlueShIDCLockGUIProcedure {
 	}
 
 	private static int getAmountInGUISlot(Entity entity, int sltid) {
-		if (entity instanceof Player player && player.containerMenu instanceof Ssc14ModMenus.MenuAccessor menuAccessor) {
+		if (entity instanceof Player player && player.containerMenu instanceof SlotMenuStateAccess menuAccessor) {
 			ItemStack stack = menuAccessor.getSlots().get(sltid).getItem();
 			if (stack != null)
 				return stack.getCount();

@@ -4,7 +4,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.common.network.SlotMenuStateAccess;
 
 public class IDcmdecor2Procedure {
 	public static boolean execute(Entity entity) {
@@ -17,7 +17,7 @@ public class IDcmdecor2Procedure {
 	}
 
 	private static int getAmountInGUISlot(Entity entity, int sltid) {
-		if (entity instanceof Player player && player.containerMenu instanceof Ssc14ModMenus.MenuAccessor menuAccessor) {
+		if (entity instanceof Player player && player.containerMenu instanceof SlotMenuStateAccess menuAccessor) {
 			ItemStack stack = menuAccessor.getSlots().get(sltid).getItem();
 			if (stack != null)
 				return stack.getCount();

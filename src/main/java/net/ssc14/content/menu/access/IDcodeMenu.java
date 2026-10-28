@@ -1,4 +1,4 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.access;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
@@ -8,12 +8,7 @@ import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.access.ItemAccess;
 import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerContainerEvent;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
@@ -32,19 +27,17 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.IDconsole_OPENMENUProcedure;
-import net.mcreator.ssc.procedures.ID_Code_CHECKProcedure;
-import net.mcreator.ssc.network.LegacyMenuSlotRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuSlotNetworkActions;
 import net.ssc14.integration.neoforge.menu.network.MenuSlotPayload;
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.menu.Ssc14MenuTypes;
+import net.ssc14.common.network.SlotMenuStateAccess;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-@EventBusSubscriber
-public class IDcodeMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class IDcodeMenu extends AbstractContainerMenu implements SlotMenuStateAccess {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
@@ -65,7 +58,7 @@ public class IDcodeMenu extends AbstractContainerMenu implements Ssc14ModMenus.M
 	private BlockEntity boundBlockEntity = null;
 
 	public IDcodeMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.I_DCODE.get(), id);
+		super(Ssc14MenuTypes.I_DCODE.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(2);
@@ -294,12 +287,10 @@ public class IDcodeMenu extends AbstractContainerMenu implements Ssc14ModMenus.M
 
 	private void slotChanged(int slotid, int ctype, int meta) {
 		if (this.world != null && this.world.isClientSide()) {
-			ClientPacketDistributor.sendToServer(MenuSlotPayload.idCode(slotid, x, y, z, ctype, meta));
-			LegacyMenuSlotRegistration.dispatch(entity, MenuSlotPayload.idCode(slotid, x, y, z, ctype, meta));
+			MenuSlotNetworkActions.send(entity, MenuSlotPayload.idCode(slotid, x, y, z, ctype, meta));
 		}
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}
@@ -307,29 +298,5 @@ public class IDcodeMenu extends AbstractContainerMenu implements Ssc14ModMenus.M
 	@Override
 	public Map<String, Object> getMenuState() {
 		return menuState;
-	}
-
-	@SubscribeEvent
-	public static void onPlayerTick(PlayerTickEvent.Post event) {
-		Player entity = event.getEntity();
-		if (entity.containerMenu instanceof IDcodeMenu menu) {
-			Level world = menu.world;
-			double x = menu.x;
-			double y = menu.y;
-			double z = menu.z;
-			ID_Code_CHECKProcedure.execute(world, x, y, z, entity);
-		}
-	}
-
-	@SubscribeEvent
-	public static void onContainerOpen(PlayerContainerEvent.Open event) {
-		Player entity = event.getEntity();
-		if (event.getContainer() instanceof IDcodeMenu menu) {
-			Level world = menu.world;
-			double x = menu.x;
-			double y = menu.y;
-			double z = menu.z;
-			IDconsole_OPENMENUProcedure.execute(world, x, y, z);
-		}
 	}
 }

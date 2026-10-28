@@ -17,7 +17,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.world.inventory.IDcodeMenu;
+import net.ssc14.content.menu.access.IDcodeMenu;
 
 import io.netty.buffer.Unpooled;
 

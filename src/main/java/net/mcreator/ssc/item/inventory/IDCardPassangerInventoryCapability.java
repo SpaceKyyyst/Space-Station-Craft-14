@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.component.DataComponents;
 
-import net.mcreator.ssc.world.inventory.IDcodeMenu;
+import net.ssc14.content.menu.access.IDcodeMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 import javax.annotation.Nonnull;

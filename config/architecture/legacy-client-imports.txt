@@ -23,4 +23,3 @@ neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModScreens.java
 neoforge-client src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java
 neoforge-client src/main/java/net/mcreator/ssc/procedures/Interaction_PRProcedure.java
 neoforge-client src/main/java/net/mcreator/ssc/procedures/SkyRenderProcedure.java
-neoforge-client src/main/java/net/mcreator/ssc/world/inventory/IDcodeMenu.java

@@ -2,7 +2,7 @@ package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.procedures.IDCode0CellprProcedure;
-import net.mcreator.ssc.world.inventory.IDcodeMenu;
+import net.ssc14.content.menu.access.IDcodeMenu;
 import net.ssc14.content.menu.machinery.MacFrameGUIMenu;
 import net.ssc14.content.menu.machinery.MachineFrameAssemblyStateService;
 import net.minecraft.core.BlockPos;
@@ -14,6 +14,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.integration.neoforge.menu.network.MenuSlotPayload;
+import net.ssc14.integration.neoforge.menu.network.MenuSlotDispatchBridge;
 import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
@@ -59,6 +60,7 @@ public final class LegacyMenuSlotRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
+        MenuSlotDispatchBridge.install(LegacyMenuSlotRegistration::dispatch);
         for (MenuSlotPayload.Channel channel : MenuSlotPayload.Channel.values()) {
             Ssc14NetworkPayloads.addServerbound(channel.type(), MenuSlotPayload.codec(channel),
                     LegacyMenuSlotRegistration::handle);

@@ -94,6 +94,8 @@ import net.ssc14.content.block.lighting.Ssc14LightingBlockEntities;
 import net.ssc14.content.block.machinery.MachineFrameAssemblyService;
 import net.ssc14.content.block.machinery.MachineFrameMenuService;
 import net.ssc14.content.block.machinery.MicrowaveMenuService;
+import net.ssc14.common.network.MenuStateTransportPort;
+import net.ssc14.integration.neoforge.menu.network.MenuStateNetworkActions;
 import net.ssc14.content.block.machinery.Ssc14MachineBlockEntities;
 import net.ssc14.content.block.energy.CableTopologyService;
 import net.ssc14.content.block.energy.Ssc14CableBlockEntities;
@@ -373,6 +375,7 @@ public class Ssc14Mod {
 				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
 		MicrowaveMenuService.install((id, inventory, pos) -> new MicrowaweGUIMenu(
 				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
+		MenuStateTransportPort.install(MenuStateNetworkActions::send);
 		CommerceConsoleIntegrationService.install(
 				new LegacyCommerceConsoleIntegrationAdapter(
 						net.mcreator.ssc.procedures.ConsolesOpenMenuSoundProcedure::execute));
