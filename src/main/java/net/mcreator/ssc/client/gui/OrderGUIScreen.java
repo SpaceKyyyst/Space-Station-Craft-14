@@ -18,7 +18,7 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.OrderGUIMenu;
 import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.network.OrderGUIButtonMessage;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -140,77 +140,77 @@ public class OrderGUIScreen extends AbstractContainerScreen<OrderGUIMenu> implem
 		WidgetSprites ws = new WidgetSprites(Identifier.parse("ssc_14:textures/screens/sale_cons_gui_button_1.png"), Identifier.parse("ssc_14:textures/screens/sale_cons_gui_button_1.png"));
 		
 		imagebutton_sale_cons_gui_button_1 = new ImageButton(this.leftPos + -199, this.topPos + -43, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(0, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(0, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_1);
 
 		imagebutton_sale_cons_gui_button_11 = new ImageButton(this.leftPos + -199, this.topPos + -33, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(1, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(1, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_11);
 
 		imagebutton_sale_cons_gui_button_12 = new ImageButton(this.leftPos + -199, this.topPos + -23, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(2, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(2, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_12);
 
 		imagebutton_sale_cons_gui_button_13 = new ImageButton(this.leftPos + -199, this.topPos + -13, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(3, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(3, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_13);
 
 		imagebutton_sale_cons_gui_button_14 = new ImageButton(this.leftPos + -199, this.topPos + -3, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(4, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(4, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_14);
 
 		imagebutton_sale_cons_gui_button_15 = new ImageButton(this.leftPos + -199, this.topPos + 7, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(5, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(5, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_15);
 
 		imagebutton_sale_cons_gui_button_16 = new ImageButton(this.leftPos + -199, this.topPos + 17, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(6, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(6, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_16);
 
 		imagebutton_sale_cons_gui_button_17 = new ImageButton(this.leftPos + -199, this.topPos + 27, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(7, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(7, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_17);
 
 		imagebutton_sale_cons_gui_button_18 = new ImageButton(this.leftPos + -199, this.topPos + 37, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(8, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(8, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_18);
 
 		imagebutton_sale_cons_gui_button_19 = new ImageButton(this.leftPos + -199, this.topPos + 47, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(9, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(9, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_19);
 
 		imagebutton_sale_cons_gui_button_110 = new ImageButton(this.leftPos + -199, this.topPos + 57, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(10, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(10, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_110);
 
 		imagebutton_sale_cons_gui_button_111 = new ImageButton(this.leftPos + -199, this.topPos + 67, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(11, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(11, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_111);
 
 		imagebutton_sale_cons_gui_button_112 = new ImageButton(this.leftPos + -199, this.topPos + 77, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(12, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(12, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_112);
 
 		imagebutton_sale_cons_gui_button_113 = new ImageButton(this.leftPos + -199, this.topPos + 87, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(13, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(13, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_113);
 
 		imagebutton_sale_cons_gui_button_114 = new ImageButton(this.leftPos + -199, this.topPos + 97, 104, 10, ws, e -> {
-			ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(14, x, y, z));
+			ClientPacketDistributor.sendToServer(MenuButtonPayload.order(14, x, y, z));
 		}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) { g.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height); } };
 		this.addRenderableWidget(imagebutton_sale_cons_gui_button_114);
 
@@ -219,7 +219,7 @@ public class OrderGUIScreen extends AbstractContainerScreen<OrderGUIMenu> implem
 		for (int b = 0; b != 10; b++) {
 			final int currentBtnId = 100 + b;
 			ImageButton invBtn = new ImageButton(this.leftPos + -75, this.topPos + btnY, 270, 16, invisibleSprites, btn -> {
-				ClientPacketDistributor.sendToServer(new OrderGUIButtonMessage(currentBtnId, x, y, z));
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.order(currentBtnId, x, y, z));
 			}) { @Override public void extractContents(GuiGraphicsExtractor g, int mx, int my, float pt) {} };
 			this.addRenderableWidget(invBtn);
 			btnY += 18;

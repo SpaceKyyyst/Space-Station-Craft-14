@@ -17,7 +17,8 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.VendingAut1GUIMenu;
 import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.network.VendingAut1GUIButtonMessage;
+import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -119,8 +120,8 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(0, x, y, z));
-						VendingAut1GUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(0, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(0, x, y, z));
 					}
 				}) {
 			@Override
@@ -134,8 +135,8 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(1, x, y, z));
-						VendingAut1GUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(1, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(1, x, y, z));
 					}
 				}) {
 			@Override
@@ -149,8 +150,8 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(2, x, y, z));
-						VendingAut1GUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(2, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(2, x, y, z));
 					}
 				}) {
 			@Override
@@ -164,8 +165,8 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(3, x, y, z));
-						VendingAut1GUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(3, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(3, x, y, z));
 					}
 				}) {
 			@Override
@@ -179,8 +180,8 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(4, x, y, z));
-						VendingAut1GUIButtonMessage.handleButtonAction(entity, 4, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(4, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(4, x, y, z));
 					}
 				}) {
 			@Override
@@ -194,8 +195,8 @@ public class VendingAut1GUIScreen extends AbstractContainerScreen<VendingAut1GUI
 					int x = VendingAut1GUIScreen.this.x;
 					int y = VendingAut1GUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new VendingAut1GUIButtonMessage(5, x, y, z));
-						VendingAut1GUIButtonMessage.handleButtonAction(entity, 5, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.vending(5, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.vending(5, x, y, z));
 					}
 				}) {
 			@Override
