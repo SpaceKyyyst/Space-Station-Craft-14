@@ -7,14 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.lang.reflect.Proxy;
 import java.util.List;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.procedures.Title_Placement_ConditionsProcedure;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.ssc14.content.block.floor.AbstractFloorTileBlock;
 import net.ssc14.content.block.floor.RandomizedFloorTileBlock;
+import net.ssc14.content.block.floor.FloorTileSupportPolicy;
 import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksFloorTileCompatibilityTest {
@@ -128,10 +127,10 @@ class Ssc14BlocksFloorTileCompatibilityTest {
     }
 
     @Test
-    void legacyPlacementProcedureKeepsExactAbi() throws Exception {
-        var execute = Title_Placement_ConditionsProcedure.class.getMethod("execute",
-                LevelAccessor.class, double.class, double.class, double.class);
-        assertSame(boolean.class, execute.getReturnType());
+    void canonicalPlacementPolicyRemainsAvailable() throws Exception {
+        var canSupport = FloorTileSupportPolicy.class.getMethod("canSupport",
+                net.minecraft.world.level.BlockGetter.class, BlockPos.class);
+        assertSame(boolean.class, canSupport.getReturnType());
     }
 
     @Test
