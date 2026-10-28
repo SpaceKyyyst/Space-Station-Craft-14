@@ -51,10 +51,16 @@ public final class CommunicationServerLifecycleService {
         frequencyState.setEnabled(frequency.stateKey(), true);
         ServerWorkScheduler.schedule(level, RESET_DELAY_TICKS, () -> {
             BlockState current = level.getBlockState(pos);
-            boolean sameType = current.getBlock() == state.getBlock()
-                    && current.getBlock().getStateDefinition().getProperty("type") instanceof net.minecraft.world.level.block.state.properties.IntegerProperty currentType
-                    && current.getValue(currentType) == blockType;
-            if (!sameType) frequencyState.setEnabled(frequency.stateKey(), false);
+            if (!matchesType(current, state.getBlock(), blockType)) {
+                frequencyState.setEnabled(frequency.stateKey(), false);
+            }
         });
+    }
+
+    static boolean matchesType(BlockState current, net.minecraft.world.level.block.Block expectedBlock, int expectedType) {
+        if (current == null || current.getBlock() != expectedBlock) return false;
+        var property = current.getBlock().getStateDefinition().getProperty("type");
+        return property instanceof net.minecraft.world.level.block.state.properties.IntegerProperty type
+                && current.getValue(type) == expectedType;
     }
 }
