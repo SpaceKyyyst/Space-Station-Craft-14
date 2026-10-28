@@ -4,7 +4,7 @@ import io.netty.buffer.Unpooled;
 import net.mcreator.ssc.procedures.VendingAut1_CREATIVE_DESTROY_Procedure;
 import net.mcreator.ssc.procedures.VendingAut_GENERATE_Procedure;
 import net.mcreator.ssc.procedures.VendingAut_UPDATE_Procedure;
-import net.mcreator.ssc.world.inventory.VendingAut1GUIMenu;
+import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;

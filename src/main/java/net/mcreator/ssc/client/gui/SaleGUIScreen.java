@@ -15,7 +15,7 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.SaleGUIMenu;
+import net.ssc14.content.menu.commerce.SaleGUIMenu;
 import net.mcreator.ssc.procedures.SaleGUITotalRevenueProcedure;
 import net.mcreator.ssc.procedures.OrderGUIbudgetTEXTProcedure;
 import net.mcreator.ssc.network.LegacyMenuButtonRegistration;

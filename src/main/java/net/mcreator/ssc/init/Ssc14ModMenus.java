@@ -18,6 +18,8 @@ import net.ssc14.content.menu.headset.HeadsetMenu;
 import net.ssc14.content.menu.access.AccessConfigItemMenu;
 import net.ssc14.content.menu.food.EggCartonGUIMenu;
 import net.ssc14.content.menu.storage.BackpackGUIMenu;
+import net.ssc14.content.menu.commerce.SaleGUIMenu;
+import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
 import net.ssc14.content.menu.construction.RCDGUIMenu;
 import net.ssc14.content.menu.construction.RCDGUIwallfloorMenu;
 import net.ssc14.content.menu.construction.RCDGUIwindowsMenu;
