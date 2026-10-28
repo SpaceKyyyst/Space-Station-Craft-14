@@ -14,6 +14,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.ssc14.content.entity.ChairEntityEntity;
@@ -27,6 +29,29 @@ public final class ChairInteractionService {
     private static final float ROTATION_EPSILON = 0.1f;
 
     private ChairInteractionService() {
+    }
+
+    /** Keeps a spawned chair entity aligned with the directional chair block below it. */
+    public static void tickChairEntity(LevelAccessor world, Entity entity) {
+        if (entity == null) return;
+        BlockPos pos = BlockPos.containing(entity.getX(), entity.getY(), entity.getZ());
+        if (!world.getBlockState(pos).is(BlockTags.create(Identifier.parse("ssc14:chairs")))
+                || !entity.isVehicle()) {
+            if (!entity.level().isClientSide()) entity.discard();
+            return;
+        }
+        Direction direction = blockDirection(world, pos);
+        int yaw = yawFor(direction);
+        entity.setYRot(yaw);
+        entity.setXRot(0.0f);
+        entity.setYBodyRot(yaw);
+        entity.setYHeadRot(yaw);
+        entity.yRotO = yaw;
+        entity.xRotO = 0.0f;
+        if (entity instanceof LivingEntity living) {
+            living.yBodyRotO = yaw;
+            living.yHeadRotO = yaw;
+        }
     }
 
     public static void seat(LevelAccessor world, BlockPos pos, Entity entity) {
@@ -147,6 +172,23 @@ public final class ChairInteractionService {
                 world.setBlock(pos, state.setValue(axis, direction.getAxis()), 3);
             }
         }
+    }
+
+    private static Direction blockDirection(LevelAccessor world, BlockPos pos) {
+        BlockState state = world.getBlockState(pos);
+        Property<?> property = state.getBlock().getStateDefinition().getProperty("facing");
+        if (property != null && state.getValue(property) instanceof Direction direction) return direction;
+        if (state.hasProperty(net.minecraft.world.level.block.state.properties.BlockStateProperties.AXIS)) {
+            return Direction.fromAxisAndDirection(
+                    state.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.AXIS),
+                    Direction.AxisDirection.POSITIVE);
+        }
+        if (state.hasProperty(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_AXIS)) {
+            return Direction.fromAxisAndDirection(
+                    state.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_AXIS),
+                    Direction.AxisDirection.POSITIVE);
+        }
+        return Direction.NORTH;
     }
 
     private static <T extends Entity> java.util.Optional<T> findNearest(

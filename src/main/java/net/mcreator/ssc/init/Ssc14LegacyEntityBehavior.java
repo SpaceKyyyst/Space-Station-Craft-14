@@ -3,7 +3,7 @@ package net.mcreator.ssc.init;
 import net.ssc14.content.firearm.BulletCollisionParticleService;
 import net.ssc14.content.firearm.BulletFlightParticleService;
 import net.ssc14.content.entity.C4CrutchLifetimeHandler;
-import net.mcreator.ssc.procedures.ChairEntity_TICProcedure;
+import net.ssc14.content.block.furniture.ChairInteractionService;
 import net.mcreator.ssc.procedures.SpannerEntUseProcedure;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
@@ -33,7 +33,7 @@ public final class Ssc14LegacyEntityBehavior implements Ssc14EntityBehavior.Hook
 
     @Override
     public void chairTick(LevelAccessor level, Entity entity) {
-        ChairEntity_TICProcedure.execute(level, entity);
+        ChairInteractionService.tickChairEntity(level, entity);
     }
 
     @Override
