@@ -5,7 +5,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.ssc14.content.block.airlock.ShuttersIntegrationService;
-import net.mcreator.ssc.block.ShutterController;
+import net.ssc14.content.block.airlock.ShuttersAnimationService;
 
 /** Bridges canonical shutters to their historical procedures. */
 public final class LegacyShuttersIntegrationAdapter
@@ -22,9 +22,9 @@ public final class LegacyShuttersIntegrationAdapter
 
     @Override public void setOpen(Level level, BlockPos pos, BlockState state, boolean open) {
         if (open) {
-            ShutterController.setOpen(level, pos, true);
+            ShuttersAnimationService.setOpen(level, pos, true);
         } else {
-            ShutterController.setOpen(level, pos, false);
+            ShuttersAnimationService.setOpen(level, pos, false);
         }
     }
 }
