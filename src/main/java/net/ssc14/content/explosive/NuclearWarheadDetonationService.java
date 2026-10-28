@@ -1,4 +1,4 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.explosive;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -10,9 +10,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.core.BlockPos;
 import net.minecraft.ChatFormatting;
 
-import net.mcreator.ssc.Ssc14Mod;
+import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
 
-public class NuclearWarhead_ExpProcedure {
+public final class NuclearWarheadDetonationService {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
         if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (false == getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Ded13")) {
@@ -47,15 +47,15 @@ public class NuclearWarhead_ExpProcedure {
 			if (world instanceof ServerLevel _level) {
 				_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("3...").withColor(0xff7f7f).withStyle(ChatFormatting.ITALIC), false);
 			}
-			Ssc14Mod.queueServerWork(serverOwner, 20, () -> {
+			ServerWorkScheduler.schedule(serverOwner, 20, () -> {
 				if (world instanceof ServerLevel _level) {
 					_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("2...").withColor(0xff3f3f).withStyle(ChatFormatting.ITALIC), false);
 				}
-				Ssc14Mod.queueServerWork(serverOwner, 20, () -> {
+				ServerWorkScheduler.schedule(serverOwner, 20, () -> {
 					if (world instanceof ServerLevel _level) {
 						_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("1...").withColor(0xff0000).withStyle(ChatFormatting.ITALIC), false);
 					}
-					Ssc14Mod.queueServerWork(serverOwner, 20, () -> {
+					ServerWorkScheduler.schedule(serverOwner, 20, () -> {
 						if (world instanceof ServerLevel _level) {
 							_level.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u0411\u0410-\u0410-\u0410\u0425!").withColor(0xff0000).withStyle(ChatFormatting.BOLD), false);
 						}
@@ -95,9 +95,9 @@ public class NuclearWarhead_ExpProcedure {
 								serverLevel.explode(null, ex, ey, ez, power, false, net.minecraft.world.level.Level.ExplosionInteraction.BLOCK);
 							}
 						}
-					}).orThrow();
-				}).orThrow();
-			}).orThrow();
+					});
+				});
+			});
 		}
 	}
 
