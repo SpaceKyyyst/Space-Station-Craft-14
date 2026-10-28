@@ -45,6 +45,8 @@ event subscribers и процедурные фасады, которые ещё 
   `Interaction_PRProcedure` удалён, а key mapping оставлен compatibility alias;
 - `ReagentTransferHandler` перенесён в canonical client/chemistry слой; packet
   `ProcessReactionsMessage` и действие `hotbar_transfer` сохранены;
+- decal и portable-menu interaction adapters перенесены в canonical
+  `content/item` слои; их menu contracts и server-authority checks сохранены;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
@@ -107,6 +109,8 @@ only event subscribers and procedural facades that still own runtime behavior:
   `Interaction_PRProcedure` was removed and the key mapping remains a compatibility alias;
 - `ReagentTransferHandler` was moved to the canonical client/chemistry layer;
   `ProcessReactionsMessage` and the `hotbar_transfer` action remain unchanged;
+- decal and portable-menu interaction adapters were moved to canonical
+  `content/item` layers; their menu contracts and server-authority checks remain intact;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
