@@ -15,7 +15,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.phys.AABB;
-import net.mcreator.ssc.procedures.FoodEatingPrProcedure;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
@@ -24,6 +23,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.item.food.EdibleFoodItem;
 import net.ssc14.content.item.food.FoodDefinition;
+import net.ssc14.content.item.food.FoodConsumptionService;
 
 @EventBusSubscriber(modid = Ssc14Identity.MOD_ID)
 public final class Ssc14PackagedFoodItemsGameTests {
@@ -62,7 +62,7 @@ public final class Ssc14PackagedFoodItemsGameTests {
 
     private static void verifyContract(GameTestHelper helper) {
         verifyDescriptors(helper);
-        verifyLegacyFacadeAndTrash(helper);
+        verifyCanonicalConsumptionAndTrash(helper);
     }
 
     private static void verifyDescriptors(GameTestHelper helper) {
@@ -90,19 +90,19 @@ public final class Ssc14PackagedFoodItemsGameTests {
         }
     }
 
-    private static void verifyLegacyFacadeAndTrash(GameTestHelper helper) {
+    private static void verifyCanonicalConsumptionAndTrash(GameTestHelper helper) {
         var player = helper.makeMockPlayer(GameType.SURVIVAL);
         ItemStack chips = new ItemStack(Ssc14Items.CHIPS.get());
         player.setItemInHand(InteractionHand.MAIN_HAND, chips);
         BlockPos dropPos = helper.absolutePos(new BlockPos(2, 2, 2));
         player.setPos(dropPos.getX() + 5.0, dropPos.getY(), dropPos.getZ());
 
-        FoodEatingPrProcedure.execute(helper.getLevel(), dropPos.getX(), dropPos.getY(),
-                dropPos.getZ(), player, chips);
+        FoodConsumptionService.consume(helper.getLevel(), dropPos.getX(), dropPos.getY(),
+                dropPos.getZ(), player, chips, ((EdibleFoodItem) chips.getItem()).definition());
 
         helper.succeedWhen(() -> {
             helper.assertTrue(chips.isEmpty(),
-                    "Legacy food procedure did not delegate to the canonical descriptor");
+                    "Canonical food service did not consume the descriptor");
             boolean hasTrash = helper.getLevel()
                     .getEntitiesOfClass(ItemEntity.class, new AABB(dropPos).inflate(1.0))
                     .stream().anyMatch(entity -> entity.getItem().is(Ssc14Items.CHIPS_TRASH.get()));
