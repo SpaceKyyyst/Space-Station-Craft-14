@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.item;
 
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -20,10 +20,10 @@ import net.minecraft.nbt.CompoundTag;
 
 import javax.annotation.Nullable;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 
 @EventBusSubscriber
-public class PDApassanger_Drop_PR_Procedure {
+public final class PDApassangerDropHandler {
     
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Pre event) {
@@ -40,7 +40,7 @@ public class PDApassanger_Drop_PR_Procedure {
         ItemStack stack = itemEntity.getItem();
         
         // === 1. Проверяем, что это наш КПК ===
-        if (stack.getItem() != Ssc14ModItems.PD_APASSANGER.get()) {
+        if (stack.getItem() != Ssc14Items.PD_APASSANGER.get()) {
             return;
         }
         
