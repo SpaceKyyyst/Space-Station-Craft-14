@@ -1,4 +1,4 @@
-package net.mcreator.ssc;
+package net.mcreator.ssc.integration;
 
 import javax.annotation.Nullable;
 import net.mcreator.ssc.procedures.MK58_Breech_Open_Procedure;
@@ -20,8 +20,8 @@ import net.ssc14.content.item.weapon.Mk58State;
 import net.ssc14.content.item.weapon.PistolMagazineState;
 
 /** Adapter retained until the MK-58 procedures move into canonical packages. */
-final class LegacyFirearmInteractionAdapter implements FirearmInteractionService.Adapter {
-    static final LegacyFirearmInteractionAdapter INSTANCE =
+public final class LegacyFirearmInteractionAdapter implements FirearmInteractionService.Adapter {
+    public static final LegacyFirearmInteractionAdapter INSTANCE =
             new LegacyFirearmInteractionAdapter();
 
     private LegacyFirearmInteractionAdapter() { }
