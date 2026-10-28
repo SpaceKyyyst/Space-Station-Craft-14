@@ -1,6 +1,7 @@
 package net.mcreator.ssc.init;
 
 import net.mcreator.ssc.client.gui.*;
+import net.ssc14.client.menu.crafting.DopCraftScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -13,7 +14,7 @@ import net.ssc14.client.menu.Ssc14ScreenBinder;
 @EventBusSubscriber(Dist.CLIENT)
 public final class Ssc14ModScreens {
     static {
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.DOP_CRAFT_MENU, DopCraftMenuScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.DOP_CRAFT_MENU, DopCraftScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.I_DCODE, IDcodeScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.ACCESS_CONFIG_MENU, AccessConfigMENUScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.ACCESS_CONFIG_GUI, AccessConfigGUIScreen::new);

@@ -25,7 +25,7 @@ import net.ssc14.integration.neoforge.player.network.WorldObjectCheckMessage;
 import net.ssc14.content.player.action.PlayerActionPayloadRegistration;
 import net.ssc14.integration.neoforge.player.network.DCMopenMessage;
 import net.ssc14.integration.neoforge.player.network.PulltheObjectMessage;
-import net.mcreator.ssc.network.DCMopenMessageRegistration;
+import net.ssc14.content.menu.crafting.DopCraftPayloadRegistration;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
@@ -40,7 +40,7 @@ public class Ssc14ModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				ClientPacketDistributor.sendToServer(new DCMopenMessage(0, 0));
-				DCMopenMessageRegistration.pressAction(Minecraft.getInstance().player, 0, 0);
+				DopCraftPayloadRegistration.dispatch(Minecraft.getInstance().player, 0);
 			}
 			isDownOld = isDown;
 		}

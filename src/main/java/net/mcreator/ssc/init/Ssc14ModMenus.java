@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.ssc.world.inventory.*;
+import net.ssc14.content.menu.crafting.DopCraftMenu;
 import net.ssc14.integration.neoforge.menu.network.MenuStateUpdateMessage;
 import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.content.menu.Ssc14MenuTypes;
@@ -22,7 +23,7 @@ import java.util.Map;
 @Deprecated(forRemoval = false)
 public class Ssc14ModMenus {
 	public static final DeferredRegister<MenuType<?>> REGISTRY = Ssc14MenuTypes.REGISTRY;
-	public static final DeferredHolder<MenuType<?>, MenuType<DopCraftMenuMenu>> DOP_CRAFT_MENU = alias(Ssc14MenuTypes.DOP_CRAFT_MENU);
+	public static final DeferredHolder<MenuType<?>, MenuType<DopCraftMenu>> DOP_CRAFT_MENU = alias(Ssc14MenuTypes.DOP_CRAFT_MENU);
 	public static final DeferredHolder<MenuType<?>, MenuType<IDcodeMenu>> I_DCODE = alias(Ssc14MenuTypes.I_DCODE);
 	public static final DeferredHolder<MenuType<?>, MenuType<AccessConfigMENUMenu>> ACCESS_CONFIG_MENU = alias(Ssc14MenuTypes.ACCESS_CONFIG_MENU);
 	public static final DeferredHolder<MenuType<?>, MenuType<AccessConfigGUIMenu>> ACCESS_CONFIG_GUI = alias(Ssc14MenuTypes.ACCESS_CONFIG_GUI);
@@ -45,7 +46,7 @@ public class Ssc14ModMenus {
 	public static final DeferredHolder<MenuType<?>, MenuType<SaleGUIMenu>> SALE_GUI = alias(Ssc14MenuTypes.SALE_GUI);
 
 	static {
-		Ssc14MenuTypes.bindFactory("dop_craft_menu", DopCraftMenuMenu::new);
+		Ssc14MenuTypes.bindFactory("dop_craft_menu", DopCraftMenu::new);
 		Ssc14MenuTypes.bindFactory("i_dcode", IDcodeMenu::new);
 		Ssc14MenuTypes.bindFactory("access_config_menu", AccessConfigMENUMenu::new);
 		Ssc14MenuTypes.bindFactory("access_config_gui", AccessConfigGUIMenu::new);
