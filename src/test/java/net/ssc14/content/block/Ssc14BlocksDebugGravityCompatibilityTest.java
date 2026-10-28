@@ -4,14 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.debug.DebugGravityGeneratorBlock;
 import net.ssc14.content.block.debug.DebugGravityGeneratorBlockEntity;
-import net.ssc14.content.block.debug.DebugGravityStateService;
 import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
 import org.junit.jupiter.api.Test;
 
@@ -45,11 +43,9 @@ class Ssc14BlocksDebugGravityCompatibilityTest {
         assertEquals(-1.0F, block.defaultDestroyTime());
         assertEquals(3_600_000.0F, block.getExplosionResistance());
 
-        AtomicBoolean gravity = new AtomicBoolean();
-        DebugGravityStateService.install(gravity::set);
-        DebugGravityStateService.enable();
-        assertTrue(gravity.get());
-        DebugGravityStateService.disable();
-        assertTrue(!gravity.get());
+        net.ssc14.content.gravity.StationGravityState.setEnabled(true);
+        assertTrue(net.ssc14.content.gravity.StationGravityState.isEnabled());
+        net.ssc14.content.gravity.StationGravityState.setEnabled(false);
+        assertTrue(!net.ssc14.content.gravity.StationGravityState.isEnabled());
     }
 }
