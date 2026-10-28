@@ -17,6 +17,7 @@ import net.ssc14.content.block.planetary.PlanetGrassPlantBlock;
 import net.ssc14.content.block.planetary.PlanetGrassSoilBlock;
 import net.ssc14.content.block.planetary.PlanetaryTreeFoliageBlock;
 import net.ssc14.content.block.planetary.PlanetaryTreeLogBlock;
+import net.ssc14.content.block.planetary.PlanetaryBlockStateService;
 import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksPlanetaryCompatibilityTest {
@@ -66,20 +67,11 @@ class Ssc14BlocksPlanetaryCompatibilityTest {
     }
 
     @Test
-    void legacyPlanetaryProceduresRetainGeneratedSignatures() throws ReflectiveOperationException {
-        assertProcedureSignature(net.mcreator.ssc.procedures.Dirt_GenerationProcedure.class, void.class);
-        assertProcedureSignature(
-                net.mcreator.ssc.procedures.GrassLightBlock_GenerationProcedure.class, void.class);
-        assertProcedureSignature(
-                net.mcreator.ssc.procedures.LowPlanetGrass_InstallationProcedure.class, boolean.class);
-    }
-
-    private static void assertProcedureSignature(Class<?> type, Class<?> returnType)
-            throws ReflectiveOperationException {
-        Method execute = type.getMethod(
-                "execute", LevelAccessor.class, double.class, double.class, double.class);
-        assertTrue(Modifier.isPublic(execute.getModifiers()), type.getName());
-        assertTrue(Modifier.isStatic(execute.getModifiers()), type.getName());
-        assertEquals(returnType, execute.getReturnType(), type.getName());
+    void canonicalPlanetaryStateServiceRetainsMutationContract() throws ReflectiveOperationException {
+        Method execute = PlanetaryBlockStateService.class.getMethod(
+                "randomizeOrientation", LevelAccessor.class, net.minecraft.core.BlockPos.class);
+        assertTrue(Modifier.isPublic(execute.getModifiers()));
+        assertTrue(Modifier.isStatic(execute.getModifiers()));
+        assertEquals(void.class, execute.getReturnType());
     }
 }
