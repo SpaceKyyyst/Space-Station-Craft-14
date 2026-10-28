@@ -14,9 +14,9 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 
-import net.mcreator.ssc.CargoRegistry;
+import net.ssc14.content.commerce.cargo.CargoCatalog;
 import net.mcreator.ssc.network.Ssc14ModVariables;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
 
 public class CargoBuyProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Player player, int slotId) {
@@ -26,7 +26,7 @@ public class CargoBuyProcedure {
 		BlockEntity be = world.getBlockEntity(consolePos);
 		int currentTab = be != null ? (int) be.getPersistentData().getDoubleOr("TAB", 0) : 0;
 
-		CargoRegistry.CargoItem cargoItem = CargoRegistry.getItemAt(currentTab, slotId);
+		CargoCatalog.CargoItem cargoItem = CargoCatalog.getItemAt(currentTab, slotId);
 		if (cargoItem == null) return;
 
 		// 1. Поиск ближайшего физического поддона в радиусе 32 блоков
@@ -38,7 +38,7 @@ public class CargoBuyProcedure {
 			for (int dy = -r; dy <= r; dy++) {
 				for (int dz = -r; dz <= r; dz++) {
 					BlockPos checkPos = consolePos.offset(dx, dy, dz);
-					if (world.getBlockState(checkPos).is(Ssc14ModBlocks.ORDER_PALLET.get())) {
+					if (world.getBlockState(checkPos).is(Ssc14Blocks.ORDER_PALLET.get())) {
 						double dist = checkPos.distSqr(consolePos);
 						if (dist < shortestDistance) {
 							shortestDistance = dist;

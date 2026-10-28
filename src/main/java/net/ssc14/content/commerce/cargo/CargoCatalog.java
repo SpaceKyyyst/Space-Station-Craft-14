@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc;
+package net.ssc14.content.commerce.cargo;
 
 import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
@@ -7,10 +7,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.item.Ssc14Items;
 
-public class CargoRegistry {
+public final class CargoCatalog {
+	private CargoCatalog() {
+	}
+
     public static class CargoItem {
         private final ItemStack stack;
         private final int count;
@@ -42,15 +45,15 @@ public class CargoRegistry {
 
         // ВКЛАДКА 10: МАТЕРИАЛЫ
         // Третий аргумент — это количество СТАКОВ (пачек), которое спавнится в мире
-        register(10, new ItemStack(Ssc14ModItems.SILVER.get()), 1, 2580);     // 1 пачка серебра
-        register(10, new ItemStack(Ssc14ModItems.GLASS.get()), 3, 150);       // 3 пачки стекла
-        register(10, new ItemStack(Ssc14ModItems.PLASTIC.get()), 3, 200);     // 3 пачки пластика
-        register(10, new ItemStack(Ssc14ModItems.STEEL.get()), 3, 300);       // 3 пачки стали
-        register(10, new ItemStack(Ssc14ModBlocks.FUEL_TANK.get()), 1, 1200);  // 1 канистра топлива
-        register(10, new ItemStack(Ssc14ModItems.SSC_14_GOLD.get()), 1, 5000);  // 1 пачка золота
+        register(10, new ItemStack(Ssc14Items.SILVER.get()), 1, 2580);     // 1 пачка серебра
+        register(10, new ItemStack(Ssc14Items.GLASS.get()), 3, 150);       // 3 пачки стекла
+        register(10, new ItemStack(Ssc14Items.PLASTIC.get()), 3, 200);     // 3 пачки пластика
+        register(10, new ItemStack(Ssc14Items.STEEL.get()), 3, 300);       // 3 пачки стали
+        register(10, new ItemStack(Ssc14Blocks.FUEL_TANK.get()), 1, 1200);  // 1 канистра топлива
+        register(10, new ItemStack(Ssc14Items.SSC_14_GOLD.get()), 1, 5000);  // 1 пачка золота
 
         // ВКЛАДКА 11: МЕДИЦИНА
-        register(11, new ItemStack(Ssc14ModItems.BRUTEPACK.get()), 1, 400);     // 1 пачка брутпаков
+        register(11, new ItemStack(Ssc14Items.BRUTEPACK.get()), 1, 400);     // 1 пачка брутпаков
     }
 
     private static void register(int tab, ItemStack stack, int count, int price) {
