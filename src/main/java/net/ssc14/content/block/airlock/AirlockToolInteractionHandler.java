@@ -50,7 +50,7 @@ public final class AirlockToolInteractionHandler {
                     || net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos)
                     || net.ssc14.content.block.airlock.AirlockFloor.installTile(player, pos)
 
-					|| net.mcreator.ssc.access.AirlockDisassembly.interact(player, pos))) {
+                    || AirlockDisassemblyService.interact(player, pos))) {
 			if (event instanceof PlayerInteractEvent.RightClickBlock interaction) {
 				interaction.setCanceled(true);
 				interaction.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);

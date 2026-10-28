@@ -152,6 +152,10 @@ manual opening, tile installation и deconstruction; legacy adapters остаю�
 Server-side AI control шлюза реализован в `AirlockAiControlService`; старый
 `AirlockAiControl` сохраняет типы `Authority`/`Action` и делегирует вызов.
 
+Удаление изолированной сваренной двери реализовано в `AirlockDisassemblyService`;
+`AirlockDisassembly` оставлен compatibility facade, а canonical tool handler
+вызывает сервис напрямую.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -206,6 +210,10 @@ Physical redstone signal handling now lives in `AirlockSignalHandler`; the old
 
 Server-side airlock AI control is implemented by `AirlockAiControlService`; the
 old `AirlockAiControl` preserves the `Authority`/`Action` types and delegates.
+
+Isolated welded-door removal is implemented by `AirlockDisassemblyService`;
+`AirlockDisassembly` remains a compatibility facade, while the canonical tool
+handler calls the service directly.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
