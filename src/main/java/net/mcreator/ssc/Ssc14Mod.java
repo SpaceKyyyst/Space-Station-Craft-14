@@ -282,9 +282,7 @@ public class Ssc14Mod {
 								.writeBlockPos(generator.getBlockPos()));
 			}
 		});
-		GasProducerO2TickService.install((level, pos) ->
-				net.mcreator.ssc.procedures.GasProducerO2_tick_PR_Procedure.execute(
-						level, pos.getX(), pos.getY(), pos.getZ()));
+		GasProducerO2TickService.install(net.ssc14.content.atmosphere.runtime.OxygenProducerService::tick);
 		CommunicationServerLifecycleService.install(
 				new CommunicationServerLifecycleService.Adapter() {
 					@Override
