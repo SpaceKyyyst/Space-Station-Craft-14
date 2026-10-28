@@ -47,7 +47,14 @@ def main() -> int:
     version = current_version(args.root)
     duplicate = version in existing_versions()
     print(f"version={version}")
-    print(f"release_kind={'prerelease' if any(x in version.lower() for x in ('alpha', 'beta', 'rc')) else 'stable'}")
+    normalized = version.lower()
+    if any(x in normalized for x in ('alpha', 'beta', 'rc')):
+        release_kind = 'prerelease'
+    elif any(x in normalized for x in ('fix', 'patch', 'hotfix')):
+        release_kind = 'fix'
+    else:
+        release_kind = 'stable'
+    print(f"release_kind={release_kind}")
     print(f"duplicate_version={'yes' if duplicate else 'no'}")
     print("description:")
     for line in summary(args.root, version):
