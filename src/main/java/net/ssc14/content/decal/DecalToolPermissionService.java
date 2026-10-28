@@ -1,8 +1,8 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.decal;
 
 import net.minecraft.world.entity.Entity;
 
-public class DECAL_setting_Procedure {
+public final class DecalToolPermissionService {
 	public static boolean execute(Entity entity) {
 		if (entity == null)
 			return false;

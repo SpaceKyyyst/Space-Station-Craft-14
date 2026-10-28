@@ -3,7 +3,7 @@ package net.mcreator.ssc;
 import io.netty.buffer.Unpooled;
 import net.mcreator.ssc.procedures.DECAL1deletion_USE_Procedure;
 import net.mcreator.ssc.procedures.DECAL1spawner_USE_Procedure;
-import net.mcreator.ssc.procedures.DECAL_setting_Procedure;
+import net.ssc14.content.decal.DecalToolPermissionService;
 import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -27,7 +27,7 @@ final class LegacyDecalToolInteractionAdapter implements DecalToolInteractionSer
     @Override
     public void use(DecalToolKind kind, Player player, InteractionHand hand) {
         if (!(player instanceof ServerPlayer serverPlayer)
-                || !DECAL_setting_Procedure.execute(serverPlayer)) {
+                || !DecalToolPermissionService.execute(serverPlayer)) {
             return;
         }
         serverPlayer.openMenu(menuProvider(kind, player, hand), buffer -> {
