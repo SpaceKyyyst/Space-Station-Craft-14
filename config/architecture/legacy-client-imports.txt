@@ -8,7 +8,6 @@ minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModHumanoidModels.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModMenus.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModRenderStateModifiers.java
-minecraft-client src/main/java/net/mcreator/ssc/network/MenuStateUpdateMessage.java
 minecraft-client src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java
 minecraft-client src/main/java/net/mcreator/ssc/procedures/Interaction_PRProcedure.java
 minecraft-client src/main/java/net/mcreator/ssc/procedures/SkyRenderProcedure.java
