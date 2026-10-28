@@ -31,7 +31,6 @@ import net.mcreator.ssc.procedures.RCDGUIwallButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwallfloorModeButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwindowButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwindowsModeButtonProcedure;
-import net.mcreator.ssc.procedures.Sale_GUI_buttonSALEProcedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton1Procedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton2Procedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton3Procedure;
@@ -56,6 +55,7 @@ import net.ssc14.content.menu.construction.RCDGUIMenu;
 import net.ssc14.content.menu.construction.RCDGUIwallfloorMenu;
 import net.ssc14.content.menu.construction.RCDGUIwindowsMenu;
 import net.ssc14.content.menu.commerce.SaleGUIMenu;
+import net.ssc14.content.commerce.SaleTransactionService;
 import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.PacketFlow;
@@ -126,7 +126,8 @@ public final class LegacyMenuButtonRegistration {
         if (!(player.containerMenu instanceof SaleGUIMenu menu)
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
         if (!player.level().isClientSide() && message.buttonId() == 0) {
-            Sale_GUI_buttonSALEProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
+            SaleTransactionService.sellNearby(player.level(),
+                    new BlockPos(message.x(), message.y(), message.z()), player);
         }
     }
 

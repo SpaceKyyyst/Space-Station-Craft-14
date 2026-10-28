@@ -49,7 +49,6 @@ import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.content.item.construction.ConstructionItemInteractionService;
-import net.ssc14.content.item.currency.CurrencyInteractionService;
 import net.ssc14.content.item.decal.DecalToolInteractionService;
 import net.ssc14.content.item.container.PortableMenuInteractionService;
 import net.ssc14.content.item.weapon.FirearmInteractionService;
@@ -376,6 +375,21 @@ public class Ssc14Mod {
 			variables.markSyncDirty();
 			return true;
 		});
+		StationBudgetService.installEditor(new StationBudgetService.Editor() {
+			@Override
+			public void credit(LevelAccessor level, double amount) {
+				var variables = Ssc14ModVariables.WorldVariables.get(level);
+				variables.Station_Budget += amount;
+				variables.markSyncDirty();
+			}
+
+			@Override
+			public void reset(LevelAccessor level) {
+				var variables = Ssc14ModVariables.WorldVariables.get(level);
+				variables.Station_Budget = 0;
+				variables.markSyncDirty();
+			}
+		});
 		MachineFrameAssemblyService.install(Ssc14ModItems.LOW_VOLTAGE_CABLE,
 				Ssc14Blocks.MACHINE_FRAME_2);
 		MachineFrameMenuService.install((id, inventory, pos) -> new MacFrameGUIMenu(
@@ -401,7 +415,6 @@ public class Ssc14Mod {
 		ConstructionItemInteractionService.install(
 				LegacyConstructionItemInteractionAdapter.INSTANCE);
 		DecalToolInteractionService.install(LegacyDecalToolInteractionAdapter.INSTANCE);
-		CurrencyInteractionService.install(LegacyCurrencyInteractionAdapter.INSTANCE);
 		PortableMenuInteractionService.install(LegacyPortableMenuInteractionAdapter.INSTANCE);
 		FirearmInteractionService.install(LegacyFirearmInteractionAdapter.INSTANCE);
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
