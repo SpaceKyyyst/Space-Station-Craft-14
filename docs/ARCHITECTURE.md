@@ -132,6 +132,9 @@ Portable-menu boundary больше не вызывает generated inventory pr
 яиц и PDA state выполняются canonical services; bridge оставлен для legacy menu и
 network binding.
 
+Целевые пакеты `net.ssc14` не импортируют `net.mcreator.ssc.procedures`; generated
+runtime вызовы изолированы в bootstrap и явных legacy adapters.
+
 На текущем контрольном прогоне dedicated NeoForge GameTest все 217 обязательных
 сценариев прошли успешно; сервер также корректно сохранил все три измерения при
 завершении.
@@ -154,6 +157,9 @@ own the GUI and network contract and cannot be removed until that behavior is mi
 The portable-menu boundary no longer calls a generated inventory procedure: egg
 generation and PDA state now use canonical services, while the bridge remains for the
 legacy menu and network binding.
+
+Target `net.ssc14` packages do not import `net.mcreator.ssc.procedures`; generated
+runtime calls are isolated to bootstrap code and explicit legacy adapters.
 
 The current dedicated NeoForge GameTest run passed all 217 required scenarios, and
 the server saved all three dimensions successfully during shutdown.
