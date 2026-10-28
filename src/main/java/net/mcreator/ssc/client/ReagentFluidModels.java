@@ -1,6 +1,6 @@
 package net.mcreator.ssc.client;
 
-import net.mcreator.ssc.ModReagents;
+import net.mcreator.ssc.integration.LegacyReagentCatalog;
 import net.mcreator.ssc.Ssc14Mod;
 import net.minecraft.client.renderer.block.FluidModel;
 import net.minecraft.client.resources.model.sprite.Material;
@@ -21,7 +21,7 @@ public final class ReagentFluidModels {
     public static void register(RegisterFluidModelsEvent event) {
         var still = new Material(Identifier.withDefaultNamespace("block/water_still"));
         var flowing = new Material(Identifier.withDefaultNamespace("block/water_flow"));
-        for (var reagent : ModReagents.CONFIG_REAGENTS) {
+        for (var reagent : LegacyReagentCatalog.all()) {
             if (reagent.getId().equals("water")) continue;
             var model = new FluidModel.Unbaked(still, flowing, null,
                     FluidTintSources.constant(0xFF000000 | reagent.getColorRgb()));
