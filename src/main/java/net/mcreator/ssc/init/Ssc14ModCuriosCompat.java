@@ -8,10 +8,7 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
 import net.minecraft.world.item.ItemStack;
 
-import net.mcreator.ssc.procedures.MagBootsCAPIBaubleIsEquippedProcedure;
-import net.mcreator.ssc.procedures.OuterclothingEvaCAPIBaubleIsEquippedProcedure;
-import net.mcreator.ssc.procedures.OuterclothingSalvageCAPIBaubleIsEquippedProcedure;
-import net.mcreator.ssc.procedures.OuterclothingSalvageCAPIBaubleIsUnequippedProcedure;
+import net.mcreator.ssc.integration.LegacyCuriosProcedureAdapter;
 import net.ssc14.content.equipment.HardsuitSalvageHelmetEquipabilityService;
 import net.ssc14.content.equipment.MagBootsUnequipService;
 import net.ssc14.content.equipment.OuterclothingEvaUnequipService;
@@ -209,7 +206,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				MagBootsCAPIBaubleIsEquippedProcedure.execute(slotContext.entity());
+				LegacyCuriosProcedureAdapter.onMagBootsEquip(slotContext.entity());
 			}
 
 			@Override
@@ -485,7 +482,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				OuterclothingEvaCAPIBaubleIsEquippedProcedure.execute(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ(), slotContext.entity());
+				LegacyCuriosProcedureAdapter.onEvaEquip(slotContext.entity());
 			}
 
 			@Override
@@ -1032,12 +1029,12 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				OuterclothingSalvageCAPIBaubleIsEquippedProcedure.execute(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ(), slotContext.entity());
+				LegacyCuriosProcedureAdapter.onSalvageEquip(slotContext.entity());
 			}
 
 			@Override
 			public void onUnequip(SlotContext slotContext, ItemStack newStack) {
-				OuterclothingSalvageCAPIBaubleIsUnequippedProcedure.execute(slotContext.entity());
+				LegacyCuriosProcedureAdapter.onSalvageUnequip(slotContext.entity());
 			}
 		}, Ssc14ModItems.HARDSUIT_SALVAGE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
