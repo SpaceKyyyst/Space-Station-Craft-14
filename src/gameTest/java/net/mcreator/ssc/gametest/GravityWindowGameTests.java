@@ -52,7 +52,8 @@ public final class GravityWindowGameTests {
         var entity = helper.spawn(net.minecraft.world.entity.EntityType.COW, new BlockPos(3, 3, 3));
         entity.setNoAi(true);
         entity.setNoGravity(true);
-        net.mcreator.ssc.procedures.EntityGravitySistemProcedure.execute(helper.getLevel(), entity.getX(), entity.getY(), entity.getZ(), entity);
+        net.ssc14.content.gravity.EntityGravityTickHandler.apply(
+                helper.getLevel(), entity.getX(), entity.getY(), entity.getZ(), entity);
         helper.assertTrue(entity.isNoGravity(), "SSC must preserve an external true baseline outside spaced");
         helper.runAfterDelay(2, () -> {
             helper.assertTrue(entity.isNoGravity(), "Normal server ticks must preserve the external flag");
@@ -106,7 +107,7 @@ public final class GravityWindowGameTests {
         player.setNoGravity(true);
         var velocity = new net.minecraft.world.phys.Vec3(0.5, 0.1, 0.5);
         player.setDeltaMovement(velocity);
-        net.mcreator.ssc.procedures.EntityGravitySistemProcedure.execute(
+        net.ssc14.content.gravity.EntityGravityTickHandler.apply(
             helper.getLevel(), player.getX(), player.getY(), player.getZ(), player);
         helper.assertTrue(player.isNoGravity(), "External player gravity must be preserved outside spaced");
         helper.assertTrue(player.getDeltaMovement().equals(velocity), "SSC must preserve external player velocity outside spaced");
