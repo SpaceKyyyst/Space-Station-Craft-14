@@ -184,7 +184,7 @@ public class Ssc14Mod {
 			@Override
 			public void initialize(net.minecraft.world.level.Level level,
 					net.minecraft.core.BlockPos pos) {
-				net.mcreator.ssc.procedures.FuelTank_GENERATE_Procedure.execute(
+				net.ssc14.content.fuel.FuelTankInitializationService.execute(
 						level, pos.getX(), pos.getY(), pos.getZ());
 			}
 
