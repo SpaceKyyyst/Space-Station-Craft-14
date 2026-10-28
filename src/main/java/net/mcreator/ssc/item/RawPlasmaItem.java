@@ -1,9 +1,12 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.material.MaterialItem;
 
-public class RawPlasmaItem extends Item {
+/** @deprecated Use {@link MaterialItem}. */
+@Deprecated(forRemoval = false)
+public class RawPlasmaItem extends MaterialItem {
 	public RawPlasmaItem(Item.Properties properties) {
-		super(properties.stacksTo(30).fireResistant());
+		super(properties);
 	}
 }

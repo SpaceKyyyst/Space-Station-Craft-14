@@ -1,0 +1,238 @@
+
+package net.ssc14.content.combat;
+
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.resources.Identifier;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.GameType;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
+
+import net.ssc14.content.attribute.Ssc14Attributes;
+import net.ssc14.integration.neoforge.combat.ArmorResistanceService;
+import net.ssc14.content.medical.MedicalPlayerEffects;
+
+import javax.annotation.Nullable;
+
+@EventBusSubscriber
+public final class PlayerDamageEventHandler {
+
+    private static final String KEY_TOTAL_DAMAGE = "sscCustomHealth";
+    private static final String KEY_BLEEDING = "ssc14_bleeding";
+    private static final String KEY_GIBBED = "ssc14_gibbed";
+    private static final String KEY_ASH = "ssc14_ash";
+    private static final String PREFIX_TYPE = "ssc14_dmg_";
+    
+    // ИСПРАВЛЕНО: Теперь используем фабричный метод вместо приватного конструктора new Identifier()
+    private static final Identifier SSC14_SLOWDOWN_ID = Identifier.fromNamespaceAndPath("ssc14", "slowdown");
+
+    private static final double SLOW_60 = 60.0;
+    private static final double SLOW_80 = 80.0;
+    private static final double BLEED_THRESHOLD = 10.0;
+    private static final double GIB_BLUNT = 400.0;
+    private static final double GIB_CELLULAR = 200.0;
+    private static final double GIB_HEAT = 1500.0;
+    private static final double DEATH_DAMAGE_THRESHOLD = 200.0;
+
+    @SubscribeEvent
+    public static void onEntityAttacked(LivingDamageEvent.Pre event) {
+        execute(event, event.getEntity().level(), event.getEntity());
+    }
+
+    public static void execute(LevelAccessor world, Entity entity) {
+        execute(null, world, entity);
+    }
+
+    private static void execute(@Nullable net.neoforged.bus.api.Event event, LevelAccessor world, Entity entity) {
+        if (!(event instanceof LivingDamageEvent.Pre damageEvent)) return;
+        if (!(entity instanceof Player player)) return;
+        if (world.isClientSide()) return;
+
+        CompoundTag nbt = player.getPersistentData();
+        float incoming = damageEvent.getOriginalDamage();
+        DamageSource source = damageEvent.getSource();
+
+        String damageType = mapDamageType(source, player);
+        
+        float finalDamage = ArmorResistanceService.applyArmorResistance(player, damageType, incoming);
+        
+        if (finalDamage <= 0.001f) {
+            damageEvent.setNewDamage(0);
+            System.out.println("[SSC14-ARMOR] Урон " + damageType + " полностью поглощён бронёй");
+            return;
+        }
+        
+        String typeKey = PREFIX_TYPE + damageType;
+        // ИСПРАВЛЕНО: Прямое чтение примитивов из CompoundTag (исключает проблему с Optional)
+        double typeDamage = nbt.getDouble(typeKey).orElse(0.0) + finalDamage;
+        nbt.putDouble(typeKey, typeDamage);
+        
+        double totalDamage = nbt.getDouble(KEY_TOTAL_DAMAGE).orElse(0.0) + finalDamage;
+        nbt.putDouble(KEY_TOTAL_DAMAGE, totalDamage);
+        
+        damageEvent.setNewDamage(0);
+        
+        System.out.println("[SSC14] +" + finalDamage + " " + damageType + 
+                          " (исходный: " + incoming + ")" +
+                          " | Всего: " + totalDamage);
+
+        updateHealthUIAttribute(player, totalDamage);
+        MedicalPlayerEffects.reconcile(player, Integer.MAX_VALUE);
+        applySlowdownAttribute(player, totalDamage);
+        
+        if (totalDamage >= DEATH_DAMAGE_THRESHOLD && !nbt.getBoolean("ssc14_dead").orElse(false)) {
+            nbt.putBoolean("ssc14_dead", true);
+            handleDeath(player, nbt);
+            return;
+        }
+        
+        checkGibbing(player, nbt);
+        
+        if (damageType.equals("slash") && typeDamage > BLEED_THRESHOLD) {
+            if (!nbt.getBoolean(KEY_BLEEDING).orElse(false)) {
+                nbt.putBoolean(KEY_BLEEDING, true);
+                System.out.println("[SSC14] Кровотечение начато");
+            }
+        }
+    }
+    private static void handleDeath(Player player, CompoundTag nbt) {
+        if (player.level().isClientSide()) return;
+        
+        try {
+            if (!(player.level() instanceof net.minecraft.server.level.ServerLevel serverLevel)) {
+                System.err.println("[SSC14-ERROR] handleDeath: level is not ServerLevel!");
+                return;
+            }
+            
+            // ВРЕМЕННО ЗАКОММЕНТИРОВАНО: Предотвращает ошибку отсутствия класса CorpseEntity при первичной сборке
+            /*
+            net.mcreator.ssc.entity.CorpseEntity corpse = new net.mcreator.ssc.entity.CorpseEntity(
+                net.mcreator.ssc.init.Ssc14ModEntities.CORPSE.get(), 
+                serverLevel
+            );
+            corpse.setPos(player.position());
+            corpse.setPose(net.minecraft.world.entity.Pose.SWIMMING);
+            corpse.refreshDimensions();
+            corpse.setOriginalPlayerData(player.getUUID(), nbt.getDouble("sscCustomHealth"));
+            corpse.getPersistentData().put("SSC14_HealthData", nbt.copy());
+            serverLevel.addFreshEntity(corpse);
+            */
+            
+            player.getInventory().clearContent();
+            player.getInventory().setChanged();
+            
+            if (player instanceof net.minecraft.server.level.ServerPlayer sp) {
+                sp.setGameMode(net.minecraft.world.level.GameType.SPECTATOR);
+                System.out.println("[SSC14] СМЕРТЬ: " + sp.getName().getString() + " -> SPECTATOR");
+            }
+            
+        } catch (Exception e) {
+            System.err.println("[SSC14-ERROR] handleDeath exception: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+    private static void updateHealthUIAttribute(Player player, double totalDamage) {
+        var attr = player.getAttribute(Ssc14Attributes.HEALTH_U_IATTRIBUTE);
+        if (attr == null) return;
+        int uiState = totalDamage <= 12 ? 0 : totalDamage <= 37 ? 1 : totalDamage <= 62 ? 2 : 
+                      totalDamage <= 87 ? 3 : totalDamage <= 100 ? 4 : totalDamage <= 200 ? 5 : 6;
+        attr.setBaseValue(uiState);
+    }
+    private static String mapDamageType(DamageSource source, Player player) {
+        String msgId = source.type().msgId();
+        
+        if (msgId.startsWith("ssc_14dmg")) {
+            return switch (msgId) {
+                case "ssc_14dmgblunt" -> "blunt";
+                case "ssc_14dmgslash" -> "slash";
+                case "ssc_14dmgpiercing" -> "piercing";
+                case "ssc_14dmgheat" -> "heat";
+                case "ssc_14dmgshock" -> "shock";
+                case "ssc_14dmgcold" -> "cold";
+                case "ssc_14dmgcaustic" -> "caustic";
+                case "ssc_14dmgpoison" -> "poison";
+                case "ssc_14dmgradiation" -> "radiation";
+                case "ssc_14dmgasphyx" -> "asphyx";
+                case "ssc_14dmgbloodloss" -> "bloodloss";
+                case "ssc14dmgcellular" -> "cellular";
+                default -> "blunt";
+            };
+        }
+        
+        if (msgId.contains("player_attack") || msgId.contains("mob_attack")) {
+            var item = player.getMainHandItem();
+            if (!item.isEmpty()) {
+                // ИСПРАВЛЕНО: Безопасный для 26.1.2 поиск по тэгам предметов через реестры (без знака "меньше")
+                boolean isSlash = item.is(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "swords"))) || item.is(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "axes")));
+                if (isSlash) return "slash";
+                
+                boolean isPiercing = item.is(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "tridents")));
+                if (isPiercing) return "piercing";
+            }
+            return "blunt";
+        }
+        
+        return switch (msgId) {
+            case "fall", "cactus", "anvil", "falling_block", "fly_into_wall" -> "blunt";
+            case "in_fire", "on_fire", "lava", "hot_floor", "fireworks" -> "heat";
+            case "lightning_bolt" -> "shock";
+            case "arrow", "trident", "thorns", "magic", "indirect_magic" -> "piercing";
+            case "poison", "wither", "dragon_breath" -> "poison";
+            case "freeze" -> "cold";
+            default -> "blunt";
+        };
+    }
+
+    private static void applySlowdownAttribute(Player player, double totalDamage) {
+        if (player.isSpectator() || player.isCreative()) {
+            removeSlowdownModifier(player);
+            return;
+        }
+        var attr = player.getAttribute(Attributes.MOVEMENT_SPEED);
+        if (attr == null) return;
+        removeSlowdownModifier(player);
+        if (totalDamage >= SLOW_80) {
+            attr.addTransientModifier(new AttributeModifier(SSC14_SLOWDOWN_ID, -0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        } else if (totalDamage >= SLOW_60) {
+            attr.addTransientModifier(new AttributeModifier(SSC14_SLOWDOWN_ID, -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        }
+    }
+
+    private static void removeSlowdownModifier(Player player) {
+        var attr = player.getAttribute(Attributes.MOVEMENT_SPEED);
+        if (attr != null && attr.hasModifier(SSC14_SLOWDOWN_ID)) {
+            attr.removeModifier(SSC14_SLOWDOWN_ID);
+        }
+    }
+
+    private static void checkGibbing(Player player, CompoundTag nbt) {
+        double blunt = nbt.getDouble(PREFIX_TYPE + "blunt").orElse(0.0);
+        double cellular = nbt.getDouble(PREFIX_TYPE + "cellular").orElse(0.0);
+        double heat = nbt.getDouble(PREFIX_TYPE + "heat").orElse(0.0);
+        
+        if (blunt > GIB_BLUNT || cellular > GIB_CELLULAR) {
+            if (!nbt.getBoolean(KEY_GIBBED).orElse(false)) {
+                nbt.putBoolean(KEY_GIBBED, true);
+                player.hurt(player.damageSources().generic(), Float.MAX_VALUE);
+                System.out.println("[SSC14] ГИББИНГ: " + player.getName().getString());
+            }
+        }
+        if (heat > GIB_HEAT) {
+            if (!nbt.getBoolean(KEY_ASH).orElse(false)) {
+                nbt.putBoolean(KEY_ASH, true);
+                player.hurt(player.damageSources().generic(), Float.MAX_VALUE);
+                System.out.println("[SSC14] ПЕПЕЛ: " + player.getName().getString());
+            }
+        }
+    }
+}

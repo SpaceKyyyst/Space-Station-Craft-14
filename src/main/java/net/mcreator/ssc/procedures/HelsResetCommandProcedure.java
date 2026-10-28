@@ -7,6 +7,7 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.CommandSourceStack;
 
 import net.mcreator.ssc.init.Ssc14ModAttributes;
+import net.ssc14.content.medical.MedicalPlayerEffects;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.context.CommandContext;
@@ -42,27 +43,19 @@ public class HelsResetCommandProcedure {
 		for (String t : types) {
 			nbt.remove("ssc14_dmg_" + t);
 		}
-		// Убираем эффекты и визуальные состояния
-		player.removeAllEffects();
-		player.setInvisible(false);
+		// Release only effects and pose acquired by medical critical state.
+		MedicalPlayerEffects.release(player);
 		// 🔧 Сбрасываем UI-атрибут здоровья на 0
 		if (player.getAttributes().hasAttribute(net.mcreator.ssc.init.Ssc14ModAttributes.HEALTH_U_IATTRIBUTE)) {
 			var uiAttr = player.getAttribute(net.mcreator.ssc.init.Ssc14ModAttributes.HEALTH_U_IATTRIBUTE);
 			if (uiAttr != null)
 				uiAttr.setBaseValue(0);
 		}
-		// Возвращаем режим выживания
-		if (player instanceof net.minecraft.server.level.ServerPlayer sp) {
-			sp.setGameMode(net.minecraft.world.level.GameType.SURVIVAL);
-		}
 		// Сбрасываем модификатор скорости
 		var speedAttr = player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED);
 		if (speedAttr != null && speedAttr.hasModifier(net.minecraft.resources.Identifier.parse("ssc14:slowdown"))) {
 			speedAttr.removeModifier(net.minecraft.resources.Identifier.parse("ssc14:slowdown"));
 		}
-		// 🔧 Сбрасываем mayBuild (на случай, если был в крите)
-		player.getAbilities().mayBuild = true;
-		player.onUpdateAbilities();
 		System.out.println("[SSC14] 🛠 Полный сброс применён к: " + player.getName().getString());
 		if ((commandParameterEntity(arguments, "ent")) instanceof LivingEntity _livingEntity1 && _livingEntity1.getAttributes().hasAttribute(Ssc14ModAttributes.HEALTH_U_IATTRIBUTE))
 			_livingEntity1.getAttribute(Ssc14ModAttributes.HEALTH_U_IATTRIBUTE).setBaseValue(0);

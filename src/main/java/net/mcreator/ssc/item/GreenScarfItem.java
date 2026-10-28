@@ -1,8 +1,11 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.clothing.ScarfItem;
 
-public class GreenScarfItem extends Item {
+/** @deprecated Use {@link ScarfItem}. */
+@Deprecated(forRemoval = false)
+public class GreenScarfItem extends ScarfItem {
 	public GreenScarfItem(Item.Properties properties) {
 		super(properties.stacksTo(1));
 	}

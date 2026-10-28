@@ -1,0 +1,1264 @@
+package net.ssc14.client.menu.access;
+
+import net.minecraft.world.level.Level;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.resources.Identifier;
+import net.minecraft.network.chat.Component;
+import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.components.WidgetSprites;
+import net.minecraft.client.gui.components.ImageButton;
+import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.components.Checkbox;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+
+import net.ssc14.content.menu.access.IDcodeMenu;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
+import net.ssc14.integration.neoforge.menu.network.MenuStateNetworkActions;
+import net.ssc14.client.menu.MenuButtonClientActions;
+import net.ssc14.client.menu.MenuStateReceiver;
+
+import java.security.Security;
+
+import java.lang.ref.Cleaner;
+
+import com.mojang.brigadier.Command;
+import com.mojang.blaze3d.platform.InputConstants;
+
+import com.google.common.util.concurrent.Service;
+
+public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements MenuStateReceiver {
+	private final Level world;
+	private final int x, y, z;
+	private final Player entity;
+	private boolean menuStateUpdateActive = false;
+	private EditBox Job_Name;
+	private Checkbox gun_room;
+	private Checkbox HoS;
+	private Checkbox Brig;
+	private Checkbox Security;
+	private Checkbox Detective;
+	private Checkbox Blue_Sh;
+	private Checkbox CE;
+	private Checkbox CMO;
+	private Checkbox RD;
+	private Checkbox PNT;
+	private Checkbox HoP;
+	private Checkbox Atmos;
+	private Checkbox Ingeneer;
+	private Checkbox Qm;
+	private Checkbox Utilizat;
+	private Checkbox Supply_Deportament;
+	private Checkbox Technical;
+	private Checkbox Chemistry;
+	private Checkbox Medical;
+	private Checkbox Scientist;
+	private Checkbox Out;
+	private Checkbox Crio;
+	private Checkbox Capitan;
+	private Checkbox Service;
+	private Checkbox Kitchen;
+	private Checkbox Gidroponic;
+	private Checkbox Bar;
+	private Checkbox Teatre;
+	private Checkbox Cleaner;
+	private Checkbox Command;
+	private Checkbox Uridic;
+	private Checkbox Church;
+	private Checkbox Job_Name_Readact;
+	private ImageButton imagebutton_kapitan;
+	private ImageButton imagebutton_nt;
+	private ImageButton imagebutton_gp;
+	private ImageButton imagebutton_gsb;
+	private ImageButton imagebutton_gv;
+	private ImageButton imagebutton_km;
+	private ImageButton imagebutton_gruzchik;
+	private ImageButton imagebutton_utilizator;
+	private ImageButton imagebutton_passazhir;
+	private ImageButton imagebutton_nr;
+	private ImageButton imagebutton_viedushchii_uchionyi;
+	private ImageButton imagebutton_uchionyi;
+	private ImageButton imagebutton_nauchnyi_assistient;
+	private ImageButton imagebutton_si;
+	private ImageButton imagebutton_atmos;
+	private ImageButton imagebutton_viedushchii_inzhienier;
+	private ImageButton imagebutton_tiekhnichieskii_assistient;
+	private ImageButton imagebutton_inzhienier;
+	private ImageButton imagebutton_paramiedik;
+	private ImageButton imagebutton_khimik;
+	private ImageButton imagebutton_vrach;
+	private ImageButton imagebutton_viedushchii_vrach;
+	private ImageButton imagebutton_intiern;
+	private ImageButton imagebutton_kadiet;
+	private ImageButton imagebutton_instruktor_sb;
+	private ImageButton imagebutton_ofitsier;
+	private ImageButton imagebutton_dietiektiv;
+	private ImageButton imagebutton_psikhologh;
+	private ImageButton imagebutton_brighmied;
+	private ImageButton imagebutton_mim;
+	private ImageButton imagebutton_smotritiel;
+	private ImageButton imagebutton_osh;
+	private ImageButton imagebutton_adutant;
+	private ImageButton imagebutton_kloun;
+	private ImageButton imagebutton_muzykant;
+	private ImageButton imagebutton_zootiekhnik;
+	private ImageButton imagebutton_bibliotiekar;
+	private ImageButton imagebutton_siervisnyi_rabotnik;
+	private ImageButton imagebutton_uborshchik;
+	private ImageButton imagebutton_povar;
+	private ImageButton imagebutton_botanik;
+	private ImageButton imagebutton_barmien;
+	private ImageButton imagebutton_boksior;
+	private ImageButton imagebutton_sviashchiennik;
+	private ImageButton imagebutton_rieportior;
+	private ImageButton imagebutton_avd;
+	private ImageButton imagebutton_idcode_all_on;
+	private ImageButton imagebutton_idcode_all_off;
+	private static final Identifier BACKGROUND = Identifier.parse("ssc_14:textures/screens/i_dcode.png");
+	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/i_dcode___copy.png");
+	private static final Identifier IMAGE_1 = Identifier.parse("ssc_14:textures/screens/id_code_menu_decor1.png");
+	private static final Identifier IMAGE_2 = Identifier.parse("ssc_14:textures/screens/id_code_menu_decor2.png");
+	private static final Identifier IMAGE_3 = Identifier.parse("ssc_14:textures/screens/id_code_menu_decor3.png");
+	private static final Identifier IMAGE_4 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_5 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_6 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_7 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_8 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_9 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_10 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_11 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_12 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_13 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_14 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_15 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_16 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_17 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_18 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_19 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_20 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_21 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_22 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_23 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_24 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_25 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_26 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_27 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_28 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_29 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_30 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_31 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_32 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_33 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_34 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+	private static final Identifier IMAGE_35 = Identifier.parse("ssc_14:textures/screens/lock_gui.png");
+
+	public IDcodeScreen(IDcodeMenu container, Inventory inventory, Component text) {
+		super(container, inventory, text, 416, 235);
+		this.world = container.world;
+		this.x = container.x;
+		this.y = container.y;
+		this.z = container.z;
+		this.entity = container.entity;
+	}
+
+	@Override
+	public void updateMenuState(int elementType, String name, Object elementState) {
+		menuStateUpdateActive = true;
+		if (elementType == 0 && elementState instanceof String stringState) {
+			if (name.equals("Job_Name"))
+				Job_Name.setValue(stringState);
+		}
+		if (elementType == 1 && elementState instanceof Boolean logicState) {
+			if (name.equals("gun_room")) {
+				if (gun_room.selected() != logicState)
+					gun_room.onPress(null);
+			} else if (name.equals("HoS")) {
+				if (HoS.selected() != logicState)
+					HoS.onPress(null);
+			} else if (name.equals("Brig")) {
+				if (Brig.selected() != logicState)
+					Brig.onPress(null);
+			} else if (name.equals("Security")) {
+				if (Security.selected() != logicState)
+					Security.onPress(null);
+			} else if (name.equals("Detective")) {
+				if (Detective.selected() != logicState)
+					Detective.onPress(null);
+			} else if (name.equals("Blue_Sh")) {
+				if (Blue_Sh.selected() != logicState)
+					Blue_Sh.onPress(null);
+			} else if (name.equals("CE")) {
+				if (CE.selected() != logicState)
+					CE.onPress(null);
+			} else if (name.equals("CMO")) {
+				if (CMO.selected() != logicState)
+					CMO.onPress(null);
+			} else if (name.equals("RD")) {
+				if (RD.selected() != logicState)
+					RD.onPress(null);
+			} else if (name.equals("PNT")) {
+				if (PNT.selected() != logicState)
+					PNT.onPress(null);
+			} else if (name.equals("HoP")) {
+				if (HoP.selected() != logicState)
+					HoP.onPress(null);
+			} else if (name.equals("Atmos")) {
+				if (Atmos.selected() != logicState)
+					Atmos.onPress(null);
+			} else if (name.equals("Ingeneer")) {
+				if (Ingeneer.selected() != logicState)
+					Ingeneer.onPress(null);
+			} else if (name.equals("Qm")) {
+				if (Qm.selected() != logicState)
+					Qm.onPress(null);
+			} else if (name.equals("Utilizat")) {
+				if (Utilizat.selected() != logicState)
+					Utilizat.onPress(null);
+			} else if (name.equals("Supply_Deportament")) {
+				if (Supply_Deportament.selected() != logicState)
+					Supply_Deportament.onPress(null);
+			} else if (name.equals("Technical")) {
+				if (Technical.selected() != logicState)
+					Technical.onPress(null);
+			} else if (name.equals("Chemistry")) {
+				if (Chemistry.selected() != logicState)
+					Chemistry.onPress(null);
+			} else if (name.equals("Medical")) {
+				if (Medical.selected() != logicState)
+					Medical.onPress(null);
+			} else if (name.equals("Scientist")) {
+				if (Scientist.selected() != logicState)
+					Scientist.onPress(null);
+			} else if (name.equals("Out")) {
+				if (Out.selected() != logicState)
+					Out.onPress(null);
+			} else if (name.equals("Crio")) {
+				if (Crio.selected() != logicState)
+					Crio.onPress(null);
+			} else if (name.equals("Capitan")) {
+				if (Capitan.selected() != logicState)
+					Capitan.onPress(null);
+			} else if (name.equals("Service")) {
+				if (Service.selected() != logicState)
+					Service.onPress(null);
+			} else if (name.equals("Kitchen")) {
+				if (Kitchen.selected() != logicState)
+					Kitchen.onPress(null);
+			} else if (name.equals("Gidroponic")) {
+				if (Gidroponic.selected() != logicState)
+					Gidroponic.onPress(null);
+			} else if (name.equals("Bar")) {
+				if (Bar.selected() != logicState)
+					Bar.onPress(null);
+			} else if (name.equals("Teatre")) {
+				if (Teatre.selected() != logicState)
+					Teatre.onPress(null);
+			} else if (name.equals("Cleaner")) {
+				if (Cleaner.selected() != logicState)
+					Cleaner.onPress(null);
+			} else if (name.equals("Command")) {
+				if (Command.selected() != logicState)
+					Command.onPress(null);
+			} else if (name.equals("Uridic")) {
+				if (Uridic.selected() != logicState)
+					Uridic.onPress(null);
+			} else if (name.equals("Church")) {
+				if (Church.selected() != logicState)
+					Church.onPress(null);
+			} else if (name.equals("Job_Name_Readact")) {
+				if (Job_Name_Readact.selected() != logicState)
+					Job_Name_Readact.onPress(null);
+			}
+		}
+		menuStateUpdateActive = false;
+	}
+
+	@Override
+	public void extractRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+		if (mouseX > leftPos + 224 && mouseX < leftPos + 248 && mouseY > topPos + 177 && mouseY < topPos + 201) {
+			guiGraphics.setTooltipForNextFrame(font, Component.translatable("gui.ssc_14.i_dcode.tooltip_riedaktirovat_imia_dolzhnosti"), mouseX, mouseY);
+		}
+		super.extractRenderState(guiGraphics, mouseX, mouseY, partialTicks);
+		Job_Name.extractWidgetRenderState(guiGraphics, mouseX, mouseY, partialTicks);
+	}
+
+	@Override
+	public void extractBackground(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+		super.extractBackground(guiGraphics, mouseX, mouseY, partialTicks);
+		IdCodeAccessDisplayState display = IdCodeAccessDisplayState.capture(menu);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 416, 235, 416, 235);
+		if (display.showFirstCardDecoration()) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, this.leftPos + 87, this.topPos + 180, 0, 0, 17, 3, 17, 3);
+		}
+		if (display.showSingleCardDecoration()) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, this.leftPos + 90, this.topPos + 184, 0, 0, 9, 10, 9, 10);
+		}
+		if (display.showTwoCardDecoration()) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, this.leftPos + 90, this.topPos + 184, 0, 0, 9, 10, 9, 10);
+		}
+		if (display.locked("gun_room")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_4, this.leftPos + 4, this.topPos + 4, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("HoS")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_5, this.leftPos + 4, this.topPos + 25, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Brig")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_6, this.leftPos + 4, this.topPos + 46, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Security")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_7, this.leftPos + 4, this.topPos + 67, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Detective")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_8, this.leftPos + 4, this.topPos + 88, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("PNT")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_9, this.leftPos + 4, this.topPos + 109, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Crio")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_10, this.leftPos + 4, this.topPos + 130, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("CE")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_11, this.leftPos + 82, this.topPos + 4, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Atmos")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_12, this.leftPos + 82, this.topPos + 25, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Ingeneer")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_13, this.leftPos + 82, this.topPos + 46, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Out")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_14, this.leftPos + 82, this.topPos + 67, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Qm")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_15, this.leftPos + 82, this.topPos + 88, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Utilizat")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_16, this.leftPos + 82, this.topPos + 109, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Supply_Deportament")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_17, this.leftPos + 82, this.topPos + 130, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("CMO")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_18, this.leftPos + 169, this.topPos + 4, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Chemistry")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_19, this.leftPos + 169, this.topPos + 25, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Medical")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_20, this.leftPos + 169, this.topPos + 46, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("RD")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_21, this.leftPos + 169, this.topPos + 67, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Scientist")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_22, this.leftPos + 169, this.topPos + 88, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Technical")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_23, this.leftPos + 169, this.topPos + 109, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Church")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_24, this.leftPos + 169, this.topPos + 130, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("HoP")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_25, this.leftPos + 256, this.topPos + 4, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Service")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_26, this.leftPos + 256, this.topPos + 25, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Kitchen")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_27, this.leftPos + 256, this.topPos + 46, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Gidroponic")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_28, this.leftPos + 256, this.topPos + 67, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Bar")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_29, this.leftPos + 256, this.topPos + 88, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Teatre")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_30, this.leftPos + 256, this.topPos + 109, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Cleaner")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_31, this.leftPos + 256, this.topPos + 130, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Capitan")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_32, this.leftPos + 334, this.topPos + 4, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Command")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_33, this.leftPos + 334, this.topPos + 25, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Blue_Sh")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_34, this.leftPos + 334, this.topPos + 46, 0, 0, 19, 19, 19, 19);
+		}
+		if (display.locked("Uridic")) {
+			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_35, this.leftPos + 334, this.topPos + 67, 0, 0, 19, 19, 19, 19);
+		}
+	}
+
+	@Override
+	public boolean keyPressed(KeyEvent event) {
+		int key = InputConstants.getKey(event).getValue();
+		if (key == 256) {
+			this.minecraft.player.closeContainer();
+			return true;
+		}
+		if (Job_Name.isFocused())
+			return Job_Name.keyPressed(event);
+		return super.keyPressed(event);
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		String Job_NameValue = Job_Name.getValue();
+		super.resize(width, height);
+		Job_Name.setValue(Job_NameValue);
+	}
+
+	@Override
+	protected void extractLabels(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY) {
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_schityvaiemaia_karta"), 106, 167, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_riedaktiruiemaia_karta"), 106, 203, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_oruzhieinaia"), 24, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gsb"), 24, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_brigh"), 24, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_sb"), 24, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_dietiektiv"), 24, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_pnt"), 24, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_krioson"), 24, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_si"), 102, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_atmosfiernyi"), 102, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_inzhieniernyi"), 102, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_vnieshnii"), 102, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_km"), 102, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_utilizator"), 102, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_snabzhieniie"), 102, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gv"), 189, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_khimiia"), 189, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_mieditsinskii"), 189, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_nr"), 189, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_nauchnyi"), 189, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tiekhnichieskii"), 189, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tsierkov"), 189, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gp"), 276, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_siervisnyi"), 276, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_kukhnia"), 276, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_gidropon"), 276, 73, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_bar"), 276, 94, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_tieatr"), 276, 115, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_uborshchik"), 276, 136, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_kapitan"), 354, 10, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_komand"), 354, 31, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_sinii_shchit"), 354, 52, -1, false);
+		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.i_dcode.label_iuridich"), 354, 73, -1, false);
+	}
+
+	@Override
+	public void init() {
+		super.init();
+		Job_Name = new EditBox(this.font, this.leftPos + 105, this.topPos + 179, 120, 20, Component.translatable("gui.ssc_14.i_dcode.Job_Name"));
+		Job_Name.setMaxLength(8192);
+		Job_Name.setResponder(content -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 0, "Job_Name", content);
+		});
+		this.addWidget(this.Job_Name);
+		imagebutton_kapitan = new ImageButton(this.leftPos + 13, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/kapitan.png"), Identifier.parse("ssc_14:textures/screens/kapitan.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(0, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_kapitan);
+		imagebutton_nt = new ImageButton(this.leftPos + 22, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/nt.png"), Identifier.parse("ssc_14:textures/screens/nt.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(1, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_nt);
+		imagebutton_gp = new ImageButton(this.leftPos + 13, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gp.png"), Identifier.parse("ssc_14:textures/screens/gp.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(2, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_gp);
+		imagebutton_gsb = new ImageButton(this.leftPos + 13, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gsb.png"), Identifier.parse("ssc_14:textures/screens/gsb.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(3, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_gsb);
+		imagebutton_gv = new ImageButton(this.leftPos + 13, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gv.png"), Identifier.parse("ssc_14:textures/screens/gv.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(4, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_gv);
+		imagebutton_km = new ImageButton(this.leftPos + 13, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/km.png"), Identifier.parse("ssc_14:textures/screens/km.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(5, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_km);
+		imagebutton_gruzchik = new ImageButton(this.leftPos + 31, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/gruzchik.png"), Identifier.parse("ssc_14:textures/screens/gruzchik.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(6, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_gruzchik);
+		imagebutton_utilizator = new ImageButton(this.leftPos + 22, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/utilizator.png"), Identifier.parse("ssc_14:textures/screens/utilizator.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(7, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_utilizator);
+		imagebutton_passazhir = new ImageButton(this.leftPos + 58, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/passazhir.png"), Identifier.parse("ssc_14:textures/screens/passazhir.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(8, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_passazhir);
+		imagebutton_nr = new ImageButton(this.leftPos + 13, this.topPos + 217, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/nr.png"), Identifier.parse("ssc_14:textures/screens/nr.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(9, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_nr);
+		imagebutton_viedushchii_uchionyi = new ImageButton(this.leftPos + 22, this.topPos + 217, 8, 8,
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/viedushchii_uchionyi.png"), Identifier.parse("ssc_14:textures/screens/viedushchii_uchionyi.png")), e -> {
+					int x = IDcodeScreen.this.x;
+					int y = IDcodeScreen.this.y;
+					{
+						MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(10, x, y, z));
+					}
+				}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_viedushchii_uchionyi);
+		imagebutton_uchionyi = new ImageButton(this.leftPos + 31, this.topPos + 217, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/uchionyi.png"), Identifier.parse("ssc_14:textures/screens/uchionyi.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(11, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_uchionyi);
+		imagebutton_nauchnyi_assistient = new ImageButton(this.leftPos + 40, this.topPos + 217, 8, 8,
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/nauchnyi_assistient.png"), Identifier.parse("ssc_14:textures/screens/nauchnyi_assistient.png")), e -> {
+					int x = IDcodeScreen.this.x;
+					int y = IDcodeScreen.this.y;
+					{
+						MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(12, x, y, z));
+					}
+				}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_nauchnyi_assistient);
+		imagebutton_si = new ImageButton(this.leftPos + 13, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/si.png"), Identifier.parse("ssc_14:textures/screens/si.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(13, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_si);
+		imagebutton_atmos = new ImageButton(this.leftPos + 31, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/atmos.png"), Identifier.parse("ssc_14:textures/screens/atmos.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(14, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_atmos);
+		imagebutton_viedushchii_inzhienier = new ImageButton(this.leftPos + 22, this.topPos + 190, 8, 8,
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/viedushchii_inzhienier.png"), Identifier.parse("ssc_14:textures/screens/viedushchii_inzhienier.png")), e -> {
+					int x = IDcodeScreen.this.x;
+					int y = IDcodeScreen.this.y;
+					{
+						MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(15, x, y, z));
+					}
+				}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_viedushchii_inzhienier);
+		imagebutton_tiekhnichieskii_assistient = new ImageButton(this.leftPos + 49, this.topPos + 190, 8, 8,
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/tiekhnichieskii_assistient.png"), Identifier.parse("ssc_14:textures/screens/tiekhnichieskii_assistient.png")), e -> {
+					int x = IDcodeScreen.this.x;
+					int y = IDcodeScreen.this.y;
+					{
+						MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(16, x, y, z));
+					}
+				}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_tiekhnichieskii_assistient);
+		imagebutton_inzhienier = new ImageButton(this.leftPos + 40, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/inzhienier.png"), Identifier.parse("ssc_14:textures/screens/inzhienier.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(17, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_inzhienier);
+		imagebutton_paramiedik = new ImageButton(this.leftPos + 40, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/paramiedik.png"), Identifier.parse("ssc_14:textures/screens/paramiedik.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(18, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_paramiedik);
+		imagebutton_khimik = new ImageButton(this.leftPos + 31, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/khimik.png"), Identifier.parse("ssc_14:textures/screens/khimik.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(19, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_khimik);
+		imagebutton_vrach = new ImageButton(this.leftPos + 49, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/vrach.png"), Identifier.parse("ssc_14:textures/screens/vrach.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(20, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_vrach);
+		imagebutton_viedushchii_vrach = new ImageButton(this.leftPos + 22, this.topPos + 208, 8, 8,
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/viedushchii_vrach.png"), Identifier.parse("ssc_14:textures/screens/viedushchii_vrach.png")), e -> {
+					int x = IDcodeScreen.this.x;
+					int y = IDcodeScreen.this.y;
+					{
+						MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(21, x, y, z));
+					}
+				}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_viedushchii_vrach);
+		imagebutton_intiern = new ImageButton(this.leftPos + 67, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/intiern.png"), Identifier.parse("ssc_14:textures/screens/intiern.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(22, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_intiern);
+		imagebutton_kadiet = new ImageButton(this.leftPos + 67, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/kadiet.png"), Identifier.parse("ssc_14:textures/screens/kadiet.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(23, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_kadiet);
+		imagebutton_instruktor_sb = new ImageButton(this.leftPos + 22, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/instruktor_sb.png"), Identifier.parse("ssc_14:textures/screens/instruktor_sb.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(24, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_instruktor_sb);
+		imagebutton_ofitsier = new ImageButton(this.leftPos + 58, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/ofitsier.png"), Identifier.parse("ssc_14:textures/screens/ofitsier.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(25, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_ofitsier);
+		imagebutton_dietiektiv = new ImageButton(this.leftPos + 40, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/dietiektiv.png"), Identifier.parse("ssc_14:textures/screens/dietiektiv.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(26, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_dietiektiv);
+		imagebutton_psikhologh = new ImageButton(this.leftPos + 58, this.topPos + 208, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/psikhologh.png"), Identifier.parse("ssc_14:textures/screens/psikhologh.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(27, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_psikhologh);
+		imagebutton_brighmied = new ImageButton(this.leftPos + 49, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/brighmied.png"), Identifier.parse("ssc_14:textures/screens/brighmied.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(28, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_brighmied);
+		imagebutton_mim = new ImageButton(this.leftPos + 58, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/mim.png"), Identifier.parse("ssc_14:textures/screens/mim.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(29, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_mim);
+		imagebutton_smotritiel = new ImageButton(this.leftPos + 31, this.topPos + 199, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/smotritiel.png"), Identifier.parse("ssc_14:textures/screens/smotritiel.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(30, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_smotritiel);
+		imagebutton_osh = new ImageButton(this.leftPos + 49, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/osh.png"), Identifier.parse("ssc_14:textures/screens/osh.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(31, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_osh);
+		imagebutton_adutant = new ImageButton(this.leftPos + 31, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/adutant.png"), Identifier.parse("ssc_14:textures/screens/adutant.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(32, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_adutant);
+		imagebutton_kloun = new ImageButton(this.leftPos + 67, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/kloun.png"), Identifier.parse("ssc_14:textures/screens/kloun.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(33, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_kloun);
+		imagebutton_muzykant = new ImageButton(this.leftPos + 67, this.topPos + 190, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/muzykant.png"), Identifier.parse("ssc_14:textures/screens/muzykant.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(34, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_muzykant);
+		imagebutton_zootiekhnik = new ImageButton(this.leftPos + 67, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/zootiekhnik.png"), Identifier.parse("ssc_14:textures/screens/zootiekhnik.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(35, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_zootiekhnik);
+		imagebutton_bibliotiekar = new ImageButton(this.leftPos + 58, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/bibliotiekar.png"), Identifier.parse("ssc_14:textures/screens/bibliotiekar.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(36, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_bibliotiekar);
+		imagebutton_siervisnyi_rabotnik = new ImageButton(this.leftPos + 22, this.topPos + 172, 8, 8,
+				new WidgetSprites(Identifier.parse("ssc_14:textures/screens/siervisnyi_rabotnik.png"), Identifier.parse("ssc_14:textures/screens/siervisnyi_rabotnik.png")), e -> {
+					int x = IDcodeScreen.this.x;
+					int y = IDcodeScreen.this.y;
+					{
+						MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(37, x, y, z));
+					}
+				}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_siervisnyi_rabotnik);
+		imagebutton_uborshchik = new ImageButton(this.leftPos + 31, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/uborshchik.png"), Identifier.parse("ssc_14:textures/screens/uborshchik.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(38, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_uborshchik);
+		imagebutton_povar = new ImageButton(this.leftPos + 40, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/povar.png"), Identifier.parse("ssc_14:textures/screens/povar.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(39, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_povar);
+		imagebutton_botanik = new ImageButton(this.leftPos + 49, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/botanik.png"), Identifier.parse("ssc_14:textures/screens/botanik.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(40, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_botanik);
+		imagebutton_barmien = new ImageButton(this.leftPos + 58, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/barmien.png"), Identifier.parse("ssc_14:textures/screens/barmien.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(41, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_barmien);
+		imagebutton_boksior = new ImageButton(this.leftPos + 49, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/boksior.png"), Identifier.parse("ssc_14:textures/screens/boksior.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(42, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_boksior);
+		imagebutton_sviashchiennik = new ImageButton(this.leftPos + 67, this.topPos + 172, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/sviashchiennik.png"), Identifier.parse("ssc_14:textures/screens/sviashchiennik.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(43, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_sviashchiennik);
+		imagebutton_rieportior = new ImageButton(this.leftPos + 40, this.topPos + 181, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/rieportior.png"), Identifier.parse("ssc_14:textures/screens/rieportior.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(44, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_rieportior);
+		imagebutton_avd = new ImageButton(this.leftPos + 40, this.topPos + 163, 8, 8, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/avd.png"), Identifier.parse("ssc_14:textures/screens/avd.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(45, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_avd);
+		imagebutton_idcode_all_on = new ImageButton(this.leftPos + 86, this.topPos + 220, 24, 9, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/idcode_all_on.png"), Identifier.parse("ssc_14:textures/screens/idcode_all_on_2.png")), e -> {
+			int x = IDcodeScreen.this.x;
+			int y = IDcodeScreen.this.y;
+			{
+				MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(46, x, y, z));
+			}
+		}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_idcode_all_on);
+		imagebutton_idcode_all_off = new ImageButton(this.leftPos + 113, this.topPos + 220, 25, 9, new WidgetSprites(Identifier.parse("ssc_14:textures/screens/idcode_all_off.png"), Identifier.parse("ssc_14:textures/screens/idcode_all_off_2.png")),
+				e -> {
+					int x = IDcodeScreen.this.x;
+					int y = IDcodeScreen.this.y;
+					{
+						MenuButtonClientActions.send(entity, MenuButtonPayload.idCode(47, x, y, z));
+					}
+				}) {
+			@Override
+			public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
+			}
+		};
+		this.addRenderableWidget(imagebutton_idcode_all_off);
+		gun_room = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.gun_room"), this.font).pos(this.leftPos + 5, this.topPos + 5).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "gun_room", value);
+		}).build();
+		this.addRenderableWidget(gun_room);
+		HoS = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.HoS"), this.font).pos(this.leftPos + 5, this.topPos + 26).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "HoS", value);
+		}).build();
+		this.addRenderableWidget(HoS);
+		Brig = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Brig"), this.font).pos(this.leftPos + 5, this.topPos + 47).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Brig", value);
+		}).build();
+		this.addRenderableWidget(Brig);
+		Security = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Security"), this.font).pos(this.leftPos + 5, this.topPos + 68).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Security", value);
+		}).build();
+		this.addRenderableWidget(Security);
+		Detective = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Detective"), this.font).pos(this.leftPos + 5, this.topPos + 89).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Detective", value);
+		}).build();
+		this.addRenderableWidget(Detective);
+		Blue_Sh = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Blue_Sh"), this.font).pos(this.leftPos + 335, this.topPos + 47).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Blue_Sh", value);
+		}).build();
+		this.addRenderableWidget(Blue_Sh);
+		CE = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.CE"), this.font).pos(this.leftPos + 83, this.topPos + 5).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "CE", value);
+		}).build();
+		this.addRenderableWidget(CE);
+		CMO = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.CMO"), this.font).pos(this.leftPos + 170, this.topPos + 5).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "CMO", value);
+		}).build();
+		this.addRenderableWidget(CMO);
+		RD = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.RD"), this.font).pos(this.leftPos + 170, this.topPos + 68).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "RD", value);
+		}).build();
+		this.addRenderableWidget(RD);
+		PNT = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.PNT"), this.font).pos(this.leftPos + 5, this.topPos + 110).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "PNT", value);
+		}).build();
+		this.addRenderableWidget(PNT);
+		HoP = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.HoP"), this.font).pos(this.leftPos + 257, this.topPos + 5).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "HoP", value);
+		}).build();
+		this.addRenderableWidget(HoP);
+		Atmos = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Atmos"), this.font).pos(this.leftPos + 83, this.topPos + 26).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Atmos", value);
+		}).build();
+		this.addRenderableWidget(Atmos);
+		Ingeneer = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Ingeneer"), this.font).pos(this.leftPos + 83, this.topPos + 47).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Ingeneer", value);
+		}).build();
+		this.addRenderableWidget(Ingeneer);
+		Qm = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Qm"), this.font).pos(this.leftPos + 83, this.topPos + 89).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Qm", value);
+		}).build();
+		this.addRenderableWidget(Qm);
+		Utilizat = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Utilizat"), this.font).pos(this.leftPos + 83, this.topPos + 110).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Utilizat", value);
+		}).build();
+		this.addRenderableWidget(Utilizat);
+		Supply_Deportament = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Supply_Deportament"), this.font).pos(this.leftPos + 83, this.topPos + 131).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Supply_Deportament", value);
+		}).build();
+		this.addRenderableWidget(Supply_Deportament);
+		Technical = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Technical"), this.font).pos(this.leftPos + 170, this.topPos + 110).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Technical", value);
+		}).build();
+		this.addRenderableWidget(Technical);
+		Chemistry = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Chemistry"), this.font).pos(this.leftPos + 170, this.topPos + 26).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Chemistry", value);
+		}).build();
+		this.addRenderableWidget(Chemistry);
+		Medical = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Medical"), this.font).pos(this.leftPos + 170, this.topPos + 47).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Medical", value);
+		}).build();
+		this.addRenderableWidget(Medical);
+		Scientist = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Scientist"), this.font).pos(this.leftPos + 170, this.topPos + 89).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Scientist", value);
+		}).build();
+		this.addRenderableWidget(Scientist);
+		Out = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Out"), this.font).pos(this.leftPos + 83, this.topPos + 68).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Out", value);
+		}).build();
+		this.addRenderableWidget(Out);
+		Crio = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Crio"), this.font).pos(this.leftPos + 5, this.topPos + 131).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Crio", value);
+		}).build();
+		this.addRenderableWidget(Crio);
+		Capitan = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Capitan"), this.font).pos(this.leftPos + 335, this.topPos + 5).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Capitan", value);
+		}).build();
+		this.addRenderableWidget(Capitan);
+		Service = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Service"), this.font).pos(this.leftPos + 257, this.topPos + 26).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Service", value);
+		}).build();
+		this.addRenderableWidget(Service);
+		Kitchen = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Kitchen"), this.font).pos(this.leftPos + 257, this.topPos + 47).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Kitchen", value);
+		}).build();
+		this.addRenderableWidget(Kitchen);
+		Gidroponic = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Gidroponic"), this.font).pos(this.leftPos + 257, this.topPos + 68).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Gidroponic", value);
+		}).build();
+		this.addRenderableWidget(Gidroponic);
+		Bar = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Bar"), this.font).pos(this.leftPos + 257, this.topPos + 89).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Bar", value);
+		}).build();
+		this.addRenderableWidget(Bar);
+		Teatre = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Teatre"), this.font).pos(this.leftPos + 257, this.topPos + 110).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Teatre", value);
+		}).build();
+		this.addRenderableWidget(Teatre);
+		Cleaner = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Cleaner"), this.font).pos(this.leftPos + 257, this.topPos + 131).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Cleaner", value);
+		}).build();
+		this.addRenderableWidget(Cleaner);
+		Command = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Command"), this.font).pos(this.leftPos + 335, this.topPos + 26).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Command", value);
+		}).build();
+		this.addRenderableWidget(Command);
+		Uridic = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Uridic"), this.font).pos(this.leftPos + 335, this.topPos + 68).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Uridic", value);
+		}).build();
+		this.addRenderableWidget(Uridic);
+		Church = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Church"), this.font).pos(this.leftPos + 170, this.topPos + 131).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Church", value);
+		}).build();
+		this.addRenderableWidget(Church);
+		Job_Name_Readact = Checkbox.builder(Component.translatable("gui.ssc_14.i_dcode.Job_Name_Readact"), this.font).pos(this.leftPos + 226, this.topPos + 180).onValueChange((checkbox, value) -> {
+			if (!menuStateUpdateActive)
+				MenuStateNetworkActions.send(menu, entity, 1, "Job_Name_Readact", value);
+		}).build();
+		this.addRenderableWidget(Job_Name_Readact);
+	}
+}

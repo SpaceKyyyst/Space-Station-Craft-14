@@ -21,7 +21,7 @@ import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.entity.CarpEntity;
+import net.ssc14.content.entity.CarpEntity;
 import net.mcreator.ssc.client.model.animations.carpAnimation;
 import net.mcreator.ssc.client.model.Modelcarp;
 

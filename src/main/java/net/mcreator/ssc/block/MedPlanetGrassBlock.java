@@ -1,63 +1,12 @@
 package net.mcreator.ssc.block;
 
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
-
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.util.RandomSource;
-import net.minecraft.core.Direction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.client.color.block.BlockTintSources;
+import net.ssc14.content.block.planetary.PlanetGrassPlantBlock;
 
-import net.mcreator.ssc.procedures.LowPlanetGrass_InstallationProcedure;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
-
-import java.util.List;
-
-public class MedPlanetGrassBlock extends Block {
-	private static final VoxelShape SHAPE = box(4, 0, 4, 12, 12, 12);
-
-	public MedPlanetGrassBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.GRASS).strength(0.1f, 1f).noCollision().isRedstoneConductor((bs, br, bp) -> false).replaceable().offsetType(Block.OffsetType.XZ));
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return SHAPE.move(state.getOffset(pos));
-	}
-
-	@Override
-	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return Shapes.empty();
-	}
-
-	@Override
-	public boolean canSurvive(BlockState blockstate, LevelReader worldIn, BlockPos pos) {
-		if (worldIn instanceof LevelAccessor world) {
-			int x = pos.getX();
-			int y = pos.getY();
-			int z = pos.getZ();
-			return LowPlanetGrass_InstallationProcedure.execute(world, x, y, z);
-		}
-		return super.canSurvive(blockstate, worldIn, pos);
-	}
-
-	@Override
-	public BlockState updateShape(BlockState state, LevelReader world, ScheduledTickAccess scheduledTickAccess, BlockPos currentPos, Direction facing, BlockPos facingPos, BlockState facingState, RandomSource random) {
-		return !state.canSurvive(world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, world, scheduledTickAccess, currentPos, facing, facingPos, facingState, random);
-	}
-
-	public static void blockColorLoad(RegisterColorHandlersEvent.BlockTintSources event) {
-		event.getBlockColors().register(List.of(BlockTintSources.grass()), Ssc14ModBlocks.MED_PLANET_GRASS.get());
-	}
+/** @deprecated Use {@link PlanetGrassPlantBlock}. */
+@Deprecated(forRemoval = false)
+public class MedPlanetGrassBlock extends PlanetGrassPlantBlock {
+    public MedPlanetGrassBlock(BlockBehaviour.Properties properties) {
+        super(properties);
+    }
 }

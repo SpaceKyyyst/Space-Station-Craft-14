@@ -21,8 +21,9 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.init.Ssc14ModEntities;
-import net.mcreator.ssc.entity.Bullet35Entity;
+import net.ssc14.content.entity.Ssc14EntityTypes;
+import net.ssc14.content.entity.Bullet35Entity;
+import net.ssc14.content.item.weapon.Mk58FireStateService;
 
 public class MK58_Fire_Procedure {
 	public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
@@ -30,18 +31,18 @@ public class MK58_Fire_Procedure {
 			return;
 		double BulletChamber = 0;
 		double MagazBullets = 0;
-		if (!(entity instanceof Player _plrCldCheck1 && _plrCldCheck1.getCooldowns().isOnCooldown(itemstack))) {
+		if (!(entity instanceof Player _plrCldCheck1 && Mk58FireStateService.isCoolingDown(_plrCldCheck1, itemstack))) {
 			if (entity instanceof Player _player)
-				_player.getCooldowns().addCooldown(itemstack, 10);
+				Mk58FireStateService.startCooldown(_player, itemstack, 10);
 			if (itemstack.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-				BulletChamber = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("BulletChamber", 0);
-				MagazBullets = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0);
-				if ((Ssc14ModItems.MK_58.get() == itemstack.getItem() || Ssc14ModItems.MK_58NOMAGZ.get() == itemstack.getItem()) && 0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("BulletChamber", 0)) {
+				BulletChamber = Mk58FireStateService.chamber(itemstack);
+				MagazBullets = Mk58FireStateService.magazine(itemstack);
+				if ((Ssc14ModItems.MK_58.get() == itemstack.getItem() || Ssc14ModItems.MK_58NOMAGZ.get() == itemstack.getItem()) && Mk58FireStateService.hasChamberedRound(itemstack)) {
 					{
 						Entity _shootFrom = entity;
 						Level projectileLevel = _shootFrom.level();
 						if (!projectileLevel.isClientSide()) {
-							Projectile _entityToSpawn = initArrowProjectile(new Bullet35Entity(Ssc14ModEntities.BULLET_35.get(), projectileLevel), entity, 16, true, false, false, AbstractArrow.Pickup.DISALLOWED);
+							Projectile _entityToSpawn = initArrowProjectile(new Bullet35Entity(Ssc14EntityTypes.BULLET_35.get(), projectileLevel), entity, 16, true, false, false, AbstractArrow.Pickup.DISALLOWED);
 							_entityToSpawn.setPos(_shootFrom.getX(), _shootFrom.getEyeY() - 0.1, _shootFrom.getZ());
 							_entityToSpawn.shoot(_shootFrom.getLookAngle().x, _shootFrom.getLookAngle().y, _shootFrom.getLookAngle().z, 4, (float) 0.1);
 							projectileLevel.addFreshEntity(_entityToSpawn);
@@ -62,11 +63,11 @@ public class MK58_Fire_Procedure {
 						entityToSpawn.setUnlimitedLifetime();
 						_level.addFreshEntity(entityToSpawn);
 					}
-					if (0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0)) {
+					if (Mk58FireStateService.hasMagazineRound(itemstack)) {
 						{
 							final String _tagName = "MagazBullets";
 							final double _tagValue = (itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0) - 1);
-							CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble(_tagName, _tagValue));
+							Mk58FireStateService.consumeMagazineRound(itemstack);
 						}
 					} else {
 						if (world instanceof Level _level) {
@@ -95,7 +96,7 @@ public class MK58_Fire_Procedure {
 							{
 								final String _tagName = "BulletChamber";
 								final double _tagValue = 0;
-								CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble(_tagName, _tagValue));
+							Mk58FireStateService.setChamber(itemstack, _tagValue);
 							}
 						} else if (Ssc14ModItems.MK_58NOMAGZ.get() == itemstack.getItem()) {
 							itemstack.shrink(1);
@@ -114,12 +115,12 @@ public class MK58_Fire_Procedure {
 							{
 								final String _tagName = "BulletChamber";
 								final double _tagValue = 0;
-								CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble(_tagName, _tagValue));
+							Mk58FireStateService.setChamber(itemstack, _tagValue);
 							}
 						}
 					}
 				} else if (Ssc14ModItems.MK_58OPEN.get() == itemstack.getItem()) {
-					if (0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0)) {
+					if (Mk58FireStateService.hasMagazineRound(itemstack)) {
 						if (world instanceof Level _level) {
 							if (!_level.isClientSide()) {
 								_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:guns_bolt_closed")), SoundSource.MASTER, (float) 1.5,
@@ -142,11 +143,7 @@ public class MK58_Fire_Procedure {
 							final boolean _tagValue = true;
 							CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putBoolean(_tagName, _tagValue));
 						}
-						{
-							final String _tagName = "MagazBullets";
-							final double _tagValue = (MagazBullets - 1);
-							CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
-						}
+						Mk58FireStateService.consumeMagazineRound(entity instanceof LivingEntity living ? living.getMainHandItem() : ItemStack.EMPTY);
 						{
 							final String _tagName = "BulletChamber";
 							final double _tagValue = 1;

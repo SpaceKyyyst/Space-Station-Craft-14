@@ -22,7 +22,7 @@ import net.mcreator.ssc.network.Ssc14ModVariables;
 import java.util.List;
 import java.util.function.Supplier;
 
-import net.mcreator.ssc.PopupTextServerManager;
+import net.ssc14.content.presentation.PopupTextServerManager;
 
 @EventBusSubscriber(modid = "ssc_14")
 public class LocalChatEventHandler {
@@ -223,7 +223,7 @@ public class LocalChatEventHandler {
         }
 
         if (shouldShowPopup && !sender.level().isClientSide()) {
-            net.mcreator.ssc.PopupTextServerManager.addPopup(sender, popupText, popupColor, isItalic);
+            PopupTextServerManager.addPopup(sender, popupText, popupColor, isItalic);
         }
     }
 

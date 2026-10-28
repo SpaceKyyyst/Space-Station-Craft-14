@@ -2,9 +2,10 @@ name: Build and release
 
 on:
   push:
-    branches: [main, 'ShinozakiAichi/**']
+    branches: [main]
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened, edited, labeled, unlabeled, ready_for_review]
   workflow_dispatch:
 
 permissions:
@@ -12,10 +13,30 @@ permissions:
 
 concurrency:
   group: build-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
+  policy:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Test pull request policy validator
+        run: python .github/scripts/test_policy_checks.py
+      - name: Validate pull request policy
+        run: >-
+          python .github/scripts/policy_checks.py
+          --event "$GITHUB_EVENT_PATH"
+          --repository "$GITHUB_WORKSPACE"
+
   build:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:
@@ -31,14 +52,40 @@ jobs:
       - name: Check project metadata
         run: |
           python .github/scripts/test_checks.py
+          python .github/scripts/test_architecture.py
+          python .github/scripts/test_procedure_graph.py
+          python .github/scripts/test_menu_security.py
+          python .github/scripts/test_java_resource_literals.py
+          python .github/scripts/test_dedicated_server_startup.py
+          python .github/scripts/test_gametests.py
+          python .github/scripts/check_architecture.py
+          python .github/scripts/check_procedure_graph.py
+          python .github/scripts/check_menu_security.py
+          python .github/scripts/check_java_resource_literals.py
           python .github/scripts/check_project.py
+          python .github/scripts/check_resources.py
       - name: Test release script without publishing
         run: bash .github/scripts/test-release.sh
-      - name: Build and test
+      - name: Build, test, and verify domain coverage
         shell: bash
         run: |
           set -o pipefail
           sh ./gradlew --no-daemon --console=plain build 2>&1 | tee build-output.log
+      - name: Test mod systems on a real server
+        id: gametests
+        timeout-minutes: 10
+        shell: bash
+        run: |
+          set -o pipefail
+          sh ./gradlew --no-daemon --console=plain runGameTestServer 2>&1 | tee gametest-output.log
+      - name: Verify dedicated server startup
+        if: always() && steps.gametests.outcome != 'skipped'
+        run: >-
+          python .github/scripts/check_dedicated_server_startup.py
+          build/gameTest/run/logs/latest.log
+      - name: Verify GameTest results
+        if: always() && steps.gametests.outcome != 'skipped'
+        run: python .github/scripts/check_gametests.py build/test-results/gameTest/TEST-atmosphere.xml
       - name: Annotate code and test errors
         if: always()
         run: python .github/scripts/report_checks.py
@@ -56,9 +103,43 @@ jobs:
           path: |
             build/reports/tests/
             build/reports/checkstyle/
+            build/reports/pmd/
+            build/reports/jacoco/
             build/test-results/
             build-output.log
+            gametest-output.log
+            build/gameTest/run/logs/
+            build/gameTest/run/crash-reports/
           if-no-files-found: ignore
+
+  windows-unicode-tests:
+    name: Windows native-encoding path checks
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    runs-on: windows-2025
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-java@v6.1.0
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: gradle/actions/setup-gradle@v6.4.0
+      # Java launchers and Gradle argfiles use native.encoding (hosted Windows: Cp1252).
+      # Cyrillic proves bootstrap/configuration only; real workers use a representable non-ASCII path.
+      - name: Check Cyrillic bootstrap and configuration only
+        shell: pwsh
+        run: |
+          $unicodeCheckout = Join-Path $env:RUNNER_TEMP 'Тест плагина'
+          Copy-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $unicodeCheckout -Recurse
+          Set-Location -LiteralPath $unicodeCheckout
+          & (Join-Path $env:GITHUB_WORKSPACE 'gradlew.bat') --project-dir . help --no-daemon --no-build-cache
+      - name: Test real workers from a native-encoding non-ASCII path
+        shell: pwsh
+        run: |
+          $nativeCheckout = Join-Path $env:RUNNER_TEMP 'Tést plugin'
+          Copy-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $nativeCheckout -Recurse
+          Set-Location -LiteralPath $nativeCheckout
+          .\gradlew.bat --project-dir . domainTest test --no-daemon --no-build-cache
 
   release:
     needs: build

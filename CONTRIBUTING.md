@@ -1,62 +1,115 @@
-# Руководство разработчика
+# Руководство разработчика / Developer guide
 
-## Окружение
+## RU
 
-Для сборки нужны JDK 25 и интернет при первой загрузке зависимостей. Gradle Wrapper использует версию из `gradle/wrapper/gradle-wrapper.properties`. Проект настроен на Minecraft 26.1.2 и NeoForge 26.1.2.71.
+### Окружение
 
-Проверьте Java и JVM, используемую Gradle:
+Для сборки нужны JDK 25 и интернет при первой загрузке зависимостей. Gradle Wrapper использует версию из `gradle/wrapper/gradle-wrapper.properties`. Проект настроен на Minecraft 26.1.2 и NeoForge 26.1.2.109.
+
+Проверьте Java и JVM, которую использует Gradle:
 
 ```powershell
 java -version
 .\gradlew.bat --version
 ```
 
-Если версии отличаются, настройте `JAVA_HOME` на каталог JDK 25. Resolver в `settings.gradle` может загрузить toolchain автоматически, но для воспроизводимой среды разработки предпочтительна явно установленная JDK.
+Если версии различаются, настройте `JAVA_HOME` на JDK 25. Resolver в `settings.gradle` может загрузить toolchain автоматически, но явно установленная JDK даёт более предсказуемую локальную среду.
 
-## Команды
+### Команды
 
-Все команды выполняются из корня проекта. В Linux/macOS замените `.\gradlew.bat` на `sh ./gradlew`.
+Выполняйте команды из корня проекта. В Linux/macOS замените `.\gradlew.bat` на `sh ./gradlew`.
 
 | Команда | Назначение |
-| --- | --- |
+|---|---|
 | `.\gradlew.bat build` | Полная сборка, проверки и JAR в `build/libs/` |
 | `.\gradlew.bat runClient` | Клиент Minecraft для разработки |
-| `.\gradlew.bat runServer` | Выделенный сервер для разработки |
-| `.\gradlew.bat domainTest` | Тесты чистых игровых правил без запуска Minecraft |
-| `.\gradlew.bat checkstyleMain` | Статические проверки выделенного доменного кода |
+| `.\gradlew.bat runServer` | Dedicated server для разработки |
+| `.\gradlew.bat domainTest` | Тесты чистых игровых правил |
+| `.\gradlew.bat checkstyleMain` | Checkstyle для выделенного `domain` source set |
+| `.\gradlew.bat pmdMain methodMetrics` | PMD и отчёт сложности методов |
+| `.\gradlew.bat runGameTestServer` | Серверные сценарии из `src/gameTest/` |
 | `.\gradlew.bat clean` | Удаление результатов предыдущей сборки |
 
-Сервер Minecraft при первом запуске выводит условия использования и требования к настройке своего рабочего каталога. Клиент и сервер используют конфигурации из блока `neoForge.runs` в `build.gradle`.
-
-## Карта репозитория
+### Карта репозитория
 
 | Путь | Назначение |
-| --- | --- |
+|---|---|
 | `src/main/java/net/mcreator/ssc/` | Код мода, адаптеры и игровые подсистемы |
-| `src/main/resources/` | Ресурсы, данные и метаданные мода |
+| `src/main/resources/` | Ресурсы, data и метаданные мода |
 | `src/domainTest/java/` | Тесты правил без Minecraft runtime |
-| `elements/`, `models/`, `ssc_14.mcreator` | Исходные данные проекта MCreator |
+| `src/gameTest/java/` | Серверные NeoForge/Minecraft GameTests |
+| `elements/`, `models/`, `ssc_14.mcreator` | Исходные данные MCreator на переходный период |
 | `config/checkstyle/` | Правила статического анализа |
-| `.github/` | CI, проверки метаданных, публикация релизов |
-| `docs/` | Техническая документация проекта |
+| `.github/` | CI, metadata checks и release automation |
+| `docs/` | Публичная техническая документация |
 
-Связи между подсистемами: [ARCHITECTURE.md](docs/ARCHITECTURE.md).
+### Изменение контента и исторические MCreator-исходники
 
-## Изменение контента
+Блоки, предметы и сущности зарегистрированы через `init/*`. Их идентификаторы связаны с resources и сохранениями мира. Переименование registry ID, NBT-ключей, SavedData ID или изменение порядка `GasType` требует согласованной миграции. Изменение network payload требует согласованного обновления клиента и сервера.
 
-Блоки, предметы и сущности зарегистрированы через классы `init/*`. Их идентификаторы связаны с ресурсами и сохранениями мира. Переименование registry ID, NBT-ключей или изменение порядка `GasType` требует миграции существующих данных. Изменение сетевого пакета требует согласованного обновления клиента и сервера.
+Зависимости мода объявлены в `build.gradle`, `Dependency.gradle` и `neoforge.mods.toml`. При их изменении проверяйте development runtime и готовый JAR в обычном профиле игры.
 
-После изменения версии мода обновите `version` в `build.gradle` и в `src/main/resources/META-INF/neoforge.mods.toml`. CI проверяет их совпадение.
+MCreator больше не используется для генерации runtime-кода. `elements/`, `models/` и `ssc_14.mcreator`
+сохраняются только как исторический источник ресурсов и compatibility baseline; изменения Java
+вносятся вручную в NeoForge target-layer и проходят архитектурные проверки.
 
-Зависимости Minecraft-мода объявлены в `build.gradle` и `Dependency.gradle`; требования загрузчика находятся в `neoforge.mods.toml`. При добавлении зависимости проверьте и окружение разработки, и запуск готового JAR в обычном профиле игры.
+### Процесс вклада
 
-## Работа с MCreator
+Следуйте [публичной политике разработки](docs/DEVELOPMENT_POLICY.md) и [стандарту публичных текстов](docs/WRITING_STANDARD.md). Команды проверки и описание CI находятся в [руководстве по проверкам](docs/VERIFICATION.md). При ошибке сборки см. [руководство по устранению проблем](docs/TROUBLESHOOTING.md).
 
-Регенерация может заменить вручную отредактированные Java-файлы. Перед генерацией сохраните рабочие изменения и проверьте состояние блокировки редактируемых элементов в MCreator. После генерации просмотрите diff и выполните сборку.
+## EN
 
-Чистые игровые вычисления находятся отдельно от процедур и адаптеров. Например, `combat.ResistanceRegistry` не зависит от Curios, а `ArmorResistanceHelper` отвечает за получение экипировки из игрового инвентаря.
+### Environment
 
-## Проверка изменений
+The build requires JDK 25 and an internet connection for the first dependency download. The Gradle Wrapper version is defined in `gradle/wrapper/gradle-wrapper.properties`. The project targets Minecraft 26.1.2 and NeoForge 26.1.2.109.
 
-Инструкции, покрытие тестами и игровые сценарии: [VERIFICATION.md](docs/VERIFICATION.md).
-Ошибки окружения и формат сообщения о проблеме: [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
+Check Java and the JVM used by Gradle:
+
+```powershell
+java -version
+.\gradlew.bat --version
+```
+
+If the versions differ, point `JAVA_HOME` to JDK 25. The resolver in `settings.gradle` can provision the toolchain automatically, but an explicitly installed JDK makes the local environment more predictable.
+
+### Commands
+
+Run commands from the project root. On Linux or macOS, replace `.\gradlew.bat` with `sh ./gradlew`.
+
+| Command | Purpose |
+|---|---|
+| `.\gradlew.bat build` | Full build, checks, and JAR under `build/libs/` |
+| `.\gradlew.bat runClient` | Minecraft development client |
+| `.\gradlew.bat runServer` | Development dedicated server |
+| `.\gradlew.bat domainTest` | Pure game-rule tests without the Minecraft runtime |
+| `.\gradlew.bat checkstyleMain` | Checkstyle for the dedicated `domain` source set |
+| `.\gradlew.bat pmdMain methodMetrics` | PMD and method-complexity report |
+| `.\gradlew.bat runGameTestServer` | Server scenarios from `src/gameTest/` |
+| `.\gradlew.bat clean` | Remove previous build outputs |
+
+### Repository map
+
+| Path | Purpose |
+|---|---|
+| `src/main/java/net/mcreator/ssc/` | Mod code, adapters, and game subsystems |
+| `src/main/resources/` | Mod assets, data, and metadata |
+| `src/domainTest/java/` | Rule tests without the Minecraft runtime |
+| `src/gameTest/java/` | Server-side NeoForge/Minecraft GameTests |
+| `elements/`, `models/`, `ssc_14.mcreator` | MCreator source data during the transition |
+| `config/checkstyle/` | Static-analysis rules |
+| `.github/` | CI, metadata checks, and release automation |
+| `docs/` | Public technical documentation |
+
+### Content changes and historical MCreator sources
+
+Blocks, items, and entities are registered through `init/*`. Their identifiers are tied to assets and world saves. Renaming a registry ID, NBT key, or SavedData ID, or changing the `GasType` order requires an agreed migration. Changing a network payload requires a coordinated client and server update.
+
+Mod dependencies are declared in `build.gradle`, `Dependency.gradle`, and `neoforge.mods.toml`. When changing them, verify both the development runtime and the built JAR in a regular game profile.
+
+MCreator is no longer used to generate runtime code. `elements/`, `models/`, and `ssc_14.mcreator`
+remain only as historical resource and compatibility sources; Java changes are maintained manually
+in the NeoForge target layer and must pass architecture checks.
+
+### Contribution workflow
+
+Follow the [public development policy](docs/DEVELOPMENT_POLICY.md) and the [public writing standard](docs/WRITING_STANDARD.md). Verification commands and CI behavior are documented in the [verification guide](docs/VERIFICATION.md). For build failures, see the [troubleshooting guide](docs/TROUBLESHOOTING.md).

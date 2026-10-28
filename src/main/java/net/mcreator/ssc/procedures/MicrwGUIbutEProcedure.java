@@ -16,6 +16,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.reagent.ReagentContainerAccess;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -78,7 +79,7 @@ public class MicrwGUIbutEProcedure {
             int totalSaltAvailable = 0;
             for (ItemStack stack : microwaveContents) {
                 if (stack.getItem() instanceof net.mcreator.ssc.item.ReagentContainerItem) {
-                    totalSaltAvailable += net.mcreator.ssc.ModReagents.getReagents(stack).getOrDefault("table_salt", 0);
+                    totalSaltAvailable += ReagentContainerAccess.contents(stack).getOrDefault("table_salt", 0);
                 }
             }
             
@@ -102,10 +103,10 @@ public class MicrwGUIbutEProcedure {
                 int saltToRemove = canCraft * 5;
                 for (ItemStack stack : microwaveContents) {
                     if (stack.getItem() instanceof net.mcreator.ssc.item.ReagentContainerItem) {
-                        int saltInContainer = net.mcreator.ssc.ModReagents.getReagents(stack).getOrDefault("table_salt", 0);
+                        int saltInContainer = ReagentContainerAccess.contents(stack).getOrDefault("table_salt", 0);
                         if (saltInContainer > 0) {
                             int toTake = Math.min(saltToRemove, saltInContainer);
-                            net.mcreator.ssc.ModReagents.removeReagent(stack, "table_salt", toTake);
+                            ReagentContainerAccess.remove(stack, "table_salt", toTake);
                             saltToRemove -= toTake;
                             if (saltToRemove == 0) break;
                         }

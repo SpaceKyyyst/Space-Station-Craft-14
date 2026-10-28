@@ -12,7 +12,7 @@
     "customModelName": "console:id",
     "rotationMode": 1,
     "enablePitch": false,
-    "emissiveRendering": true,
+    "emissiveRendering": false,
     "displayFluidOverlay": false,
     "states": [],
     "animations": [],
@@ -167,7 +167,7 @@
     "placeSound": "",
     "stepSound": "",
     "luminance": {
-      "fixedValue": 3.0
+      "fixedValue": 0.0
     },
     "unbreakable": false,
     "vanillaToolTier": "NONE",

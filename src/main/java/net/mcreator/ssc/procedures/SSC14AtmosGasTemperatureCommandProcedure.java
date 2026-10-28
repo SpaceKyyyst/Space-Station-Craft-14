@@ -21,7 +21,7 @@ public class SSC14AtmosGasTemperatureCommandProcedure {
             double gasTemperature = DoubleArgumentType.getDouble(arguments, "gas_temperature");
             
             // 2. Валидация диапазона [1; 1000000] K
-            if (gasTemperature < 1.0) {
+            if (!Double.isFinite(gasTemperature) || gasTemperature < 1.0) {
                 sendError(arguments.getSource(), "Температура не может быть ниже 1 Кельвина (абсолютный ноль недопустим)!");
                 return;
             }
@@ -41,7 +41,7 @@ public class SSC14AtmosGasTemperatureCommandProcedure {
             var pos = player.blockPosition();
             
             // 4. Получаем ячейку атмосферы
-            var cell = net.mcreator.ssc.AtmosphereManager.get(serverLevel).getCellAt(pos);
+            var cell = net.ssc14.content.atmosphere.runtime.AtmosphereCommandService.cellAt(serverLevel, pos);
             if (cell == null) {
                 sendError(source, "Не удалось получить данные об атмосфере в этом блоке.\n§7Попробуй поставить/сломать блок рядом, чтобы активировать регион.");
                 return;
@@ -49,8 +49,8 @@ public class SSC14AtmosGasTemperatureCommandProcedure {
             
             // 5. Устанавливаем температуру и активируем обновление региона
             float oldTemp = cell.getTemperature();
-            cell.setTemperature((float) gasTemperature);
-            net.mcreator.ssc.AtmosphereManager.get(serverLevel).onBlockChanged(pos);
+            net.ssc14.content.atmosphere.runtime.AtmosphereCommandService.setTemperature(cell, gasTemperature);
+
             
             // 6. Отправляем подтверждение
             float pressure = cell.getPressure();
@@ -66,7 +66,7 @@ public class SSC14AtmosGasTemperatureCommandProcedure {
             
         } catch (Exception e) {
             arguments.getSource().sendFailure(Component.literal("§c[SSC14] Ошибка выполнения: " + e.getMessage()));
-            e.printStackTrace();
+            net.mcreator.ssc.Ssc14Mod.LOGGER.error("Atmosphere command failed", e);
         }
     }
     

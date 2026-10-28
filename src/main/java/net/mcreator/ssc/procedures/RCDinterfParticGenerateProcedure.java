@@ -18,7 +18,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.init.Ssc14ModParticleTypes;
+import net.ssc14.content.particle.Ssc14ParticleTypes;
 
 public class RCDinterfParticGenerateProcedure {
 
@@ -84,7 +84,7 @@ public class RCDinterfParticGenerateProcedure {
     // СПАВН ПАРТИКЛОВ НАВОДКИ (Полный куб)
     // =========================================================================
     private static void spawnAimingParticles(ServerLevel serverLevel, BlockPos pos) {
-        SimpleParticleType interferenceParticle = Ssc14ModParticleTypes.RCD_INTERFERENCE_P.get();
+        SimpleParticleType interferenceParticle = Ssc14ParticleTypes.RCD_INTERFERENCE_P.get();
         double offset = 0.01; 
         int steps = 4;
         double stepSize = 1.0 / steps;
@@ -118,7 +118,7 @@ public class RCDinterfParticGenerateProcedure {
     // СПАВН ПАРТИКЛОВ ДЛЯ НАПРАВЛЕННЫХ ОКОН (Пластинка 3 пикселя)
     // =========================================================================
     private static void spawnDirectedWindowParticles(ServerLevel serverLevel, BlockPos pos, Direction facing) {
-        SimpleParticleType particle = Ssc14ModParticleTypes.RCD_INTERFERENCE_P.get();
+        SimpleParticleType particle = Ssc14ParticleTypes.RCD_INTERFERENCE_P.get();
         double thickness = 3.0 / 16.0;
         double halfThickness = thickness / 2.0;
         

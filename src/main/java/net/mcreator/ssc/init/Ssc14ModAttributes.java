@@ -9,45 +9,42 @@ import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 
-import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.minecraft.world.entity.ai.attributes.DefaultAttributes;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-import net.mcreator.ssc.Ssc14Mod;
+import net.ssc14.content.attribute.Ssc14Attributes;
+import net.ssc14.content.entity.Ssc14EntityTypes;
 
 import java.util.stream.Collectors;
 import java.util.List;
 
 @EventBusSubscriber
+@Deprecated(forRemoval = false)
 public class Ssc14ModAttributes {
-	public static final DeferredRegister<Attribute> REGISTRY = DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, Ssc14Mod.MODID);
-	public static final DeferredHolder<Attribute, Attribute> PROGRESS_BAR_ATRB = REGISTRY.register("progress_bar_atrb",
-			() -> new RangedAttribute("attribute.ssc_14.progress_bar_atrb", 0d, 0d, 7d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> XY_ZPLAYER = REGISTRY.register("xy_zplayer",
-			() -> new RangedAttribute("attribute.ssc_14.xy_zplayer", 0d, -30000000d, 30000000d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> ENT_PULL = REGISTRY.register("ent_pull", () -> new RangedAttribute("attribute.ssc_14.ent_pull", 0d, 0d, 1d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> GAS_AN_GU_IATRIB = REGISTRY.register("gas_an_gu_iatrib",
-			() -> new RangedAttribute("attribute.ssc_14.gas_an_gu_iatrib", 0d, 0d, 1d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> OPEN_WORLD_CHECK_MENU = REGISTRY.register("open_world_check_menu",
-			() -> new RangedAttribute("attribute.ssc_14.open_world_check_menu", 0d, 0d, 1d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> NUTRIENTS = REGISTRY.register("nutrients", () -> new RangedAttribute("attribute.ssc_14.nutrients", 125d, 0d, 200d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> DIGESTIVE_PROCESSES = REGISTRY.register("digestive_processes",
-			() -> new RangedAttribute("attribute.ssc_14.digestive_processes", 0d, 0d, 10d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> HEALTH_U_IATTRIBUTE = REGISTRY.register("health_u_iattribute",
-			() -> new RangedAttribute("attribute.ssc_14.health_u_iattribute", 0d, 0d, 6d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> LIQUID = REGISTRY.register("liquid", () -> new RangedAttribute("attribute.ssc_14.liquid", 125d, 0d, 200d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> FLUID_ABSORPTION = REGISTRY.register("fluid_absorption",
-			() -> new RangedAttribute("attribute.ssc_14.fluid_absorption", 0d, 0d, 10d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
-	public static final DeferredHolder<Attribute, Attribute> RACE = REGISTRY.register("race", () -> new RangedAttribute("attribute.ssc_14.race", 0d, 0d, 2d).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL));
+	public static final DeferredRegister<Attribute> REGISTRY = Ssc14Attributes.REGISTRY;
+	public static final DeferredHolder<Attribute, Attribute> PROGRESS_BAR_ATRB = Ssc14Attributes.PROGRESS_BAR_ATRB;
+	public static final DeferredHolder<Attribute, Attribute> XY_ZPLAYER = Ssc14Attributes.XY_ZPLAYER;
+	public static final DeferredHolder<Attribute, Attribute> ENT_PULL = Ssc14Attributes.ENT_PULL;
+	public static final DeferredHolder<Attribute, Attribute> GAS_AN_GU_IATRIB = Ssc14Attributes.GAS_AN_GU_IATRIB;
+	public static final DeferredHolder<Attribute, Attribute> OPEN_WORLD_CHECK_MENU = Ssc14Attributes.OPEN_WORLD_CHECK_MENU;
+	public static final DeferredHolder<Attribute, Attribute> NUTRIENTS = Ssc14Attributes.NUTRIENTS;
+	public static final DeferredHolder<Attribute, Attribute> DIGESTIVE_PROCESSES = Ssc14Attributes.DIGESTIVE_PROCESSES;
+	public static final DeferredHolder<Attribute, Attribute> HEALTH_U_IATTRIBUTE = Ssc14Attributes.HEALTH_U_IATTRIBUTE;
+	public static final DeferredHolder<Attribute, Attribute> LIQUID = Ssc14Attributes.LIQUID;
+	public static final DeferredHolder<Attribute, Attribute> FLUID_ABSORPTION = Ssc14Attributes.FLUID_ABSORPTION;
+	public static final DeferredHolder<Attribute, Attribute> RACE = Ssc14Attributes.RACE;
+
+	/** Retained for source and binary compatibility with the generated legacy API. */
+	@Deprecated(forRemoval = false)
+	public Ssc14ModAttributes() {
+	}
 
 	@SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {
 		event.add(EntityType.PLAYER, PROGRESS_BAR_ATRB);
 		event.add(EntityType.PLAYER, XY_ZPLAYER);
-		List.of(Ssc14ModEntities.WALL_CARCASE_ENTIT.get(), Ssc14ModEntities.ID_CONSOLE_ENTITY.get()).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList())
+		List.of(Ssc14EntityTypes.WALL_CARCASE_ENTIT.get(), Ssc14EntityTypes.ID_CONSOLE_ENTITY.get()).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList())
 				.forEach(entity -> event.add(entity, ENT_PULL));
 		event.add(EntityType.PLAYER, ENT_PULL);
 		event.add(EntityType.PLAYER, GAS_AN_GU_IATRIB);

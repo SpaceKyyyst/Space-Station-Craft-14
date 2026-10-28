@@ -1,20 +1,13 @@
 package net.mcreator.ssc.item;
 
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.InteractionResult;
+import net.ssc14.content.item.currency.CurrencyItem;
+import net.ssc14.content.item.currency.CurrencyKind;
 
-import net.mcreator.ssc.procedures.Credits_USEProcedure;
-
-public class Credits50Item extends Item {
-	public Credits50Item(Item.Properties properties) {
-		super(properties.stacksTo(50));
-	}
-
-	@Override
-	public InteractionResult useOn(UseOnContext context) {
-		super.useOn(context);
-		Credits_USEProcedure.execute(context.getLevel(), context.getClickedPos().getX(), context.getClickedPos().getY(), context.getClickedPos().getZ(), context.getPlayer(), context.getItemInHand());
-		return InteractionResult.SUCCESS;
-	}
+/** @deprecated Use the canonical fifty-credit registry entry. */
+@Deprecated(forRemoval = false)
+public class Credits50Item extends CurrencyItem {
+    public Credits50Item(Item.Properties properties) {
+        super(properties, CurrencyKind.CREDIT_50);
+    }
 }

@@ -1,0 +1,1283 @@
+package net.ssc14.content.item;
+
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.entity.Ssc14EntityTypes;
+import net.ssc14.content.item.access.IdCardItem;
+import net.ssc14.content.item.block.FenceBlockItem;
+import net.ssc14.content.item.combat.AmmunitionItem;
+import net.ssc14.content.item.combat.GlassShardItem;
+import net.ssc14.content.item.combat.GlassShardKind;
+import net.ssc14.content.item.clothing.ScarfItem;
+import net.ssc14.content.item.clothing.PassiveEquipmentItem;
+import net.ssc14.content.item.clothing.UniformAccessoryItem;
+import net.ssc14.content.item.clothing.UniformJumpsuitItem;
+import net.ssc14.content.item.communication.HeadsetDefinition;
+import net.ssc14.content.item.communication.HeadsetItem;
+import net.ssc14.content.item.communication.RadioEncryptionKeyItem;
+import net.ssc14.content.item.communication.Ssc14HeadsetDefinitions;
+import net.ssc14.content.item.container.PortableMenuItem;
+import net.ssc14.content.item.container.PortableMenuItemKind;
+import net.ssc14.content.item.construction.CableCoilItem;
+import net.ssc14.content.item.construction.ConstructionItemKind;
+import net.ssc14.content.item.construction.ConstructionSheetItem;
+import net.ssc14.content.item.currency.CurrencyItem;
+import net.ssc14.content.item.currency.CurrencyKind;
+import net.ssc14.content.item.decal.DecalToolItem;
+import net.ssc14.content.item.decal.DecalToolKind;
+import net.ssc14.content.item.equipment.MagneticBootsItem;
+import net.ssc14.content.item.equipment.MagneticBootsState;
+import net.ssc14.content.item.food.CookingIngredientItem;
+import net.ssc14.content.item.food.EdibleFoodItem;
+import net.ssc14.content.item.food.FoodPackagingWasteItem;
+import net.ssc14.content.item.food.FoodDefinition;
+import net.ssc14.content.item.food.FoodPropItem;
+import net.ssc14.content.item.food.PackagedEnergyBarItem;
+import net.ssc14.content.item.food.Ssc14FoodDefinitions;
+import net.ssc14.content.item.lighting.LightingComponentItem;
+import net.ssc14.content.item.machinery.MachineComponentItem;
+import net.ssc14.content.item.material.MaterialItem;
+import net.ssc14.content.item.medical.MedicalSupplyItem;
+import net.ssc14.content.item.poster.PosterItem;
+import net.ssc14.content.item.reagent.ReagentContainerDefinition;
+import net.ssc14.content.item.reagent.ReagentContainerItem;
+import net.ssc14.content.item.reagent.SealedReagentContainerItem;
+import net.ssc14.content.item.reagent.Ssc14ReagentContainers;
+import net.ssc14.content.item.safety.ExtinguisherItem;
+import net.ssc14.content.item.safety.ExtinguisherState;
+import net.ssc14.content.item.tool.AirlockControllerItem;
+import net.ssc14.content.item.tool.AsteroidPickItem;
+import net.ssc14.content.item.tool.GasAnalyserItem;
+import net.ssc14.content.item.tool.MechanicalHandToolItem;
+import net.ssc14.content.item.tool.MechanicalToolProfile;
+import net.ssc14.content.item.tool.MultitoolItem;
+import net.ssc14.content.item.tool.NetworkConfiguratorItem;
+import net.ssc14.content.item.tool.RsuItem;
+import net.ssc14.content.item.tool.WelderItem;
+import net.ssc14.content.item.tool.WelderState;
+import net.ssc14.content.item.utility.DebugActivatorItem;
+import net.ssc14.content.item.utility.DebugBroadcastItem;
+import net.ssc14.content.item.utility.RcdCartridgeItem;
+import net.ssc14.content.item.utility.TrafficConeItem;
+import net.ssc14.content.item.utility.UtilityItem;
+import net.ssc14.content.item.weapon.FoamDartLauncherItem;
+import net.ssc14.content.item.weapon.Mk58Item;
+import net.ssc14.content.item.weapon.Mk58State;
+import net.ssc14.content.item.weapon.PistolMagazineItem;
+import net.ssc14.content.item.weapon.PistolMagazineState;
+import net.ssc14.content.block.Ssc14Blocks;
+
+/** Canonical owner of SSC14 item registrations. */
+public final class Ssc14Items {
+    public static final DeferredRegister.Items REGISTRY =
+            DeferredRegister.createItems(Ssc14Identity.MOD_ID);
+
+    public static final DeferredItem<Item> SILVER = material("silver");
+    public static final DeferredItem<Item> SSC_14_GOLD = material("ssc_14_gold");
+    public static final DeferredItem<Item> URAN = material("uran");
+    public static final DeferredItem<Item> PLASMA = material("plasma");
+    public static final DeferredItem<Item> PLASTIC = material("plastic");
+    public static final DeferredItem<Item> GLASS = material("glass");
+    public static final DeferredItem<Item> ARM_GLASS = material("arm_glass");
+    public static final DeferredItem<Item> RAW_IRON = material("raw_iron");
+    public static final DeferredItem<Item> RAW_QUARTZ = material("raw_quartz");
+    public static final DeferredItem<Item> RAW_COAL = material("raw_coal");
+    public static final DeferredItem<Item> RAW_GOLD = material("raw_gold");
+    public static final DeferredItem<Item> RAW_PLASMA = material("raw_plasma");
+    public static final DeferredItem<Item> RAW_SILVER = material("raw_silver");
+    public static final DeferredItem<Item> RAW_URAN = material("raw_uran");
+    public static final DeferredItem<Item> RAW_DIAMOND = material("raw_diamond");
+    public static final DeferredItem<Item> STEEL = constructionSheet(
+            "steel", ConstructionItemKind.STEEL_SHEET);
+    public static final DeferredItem<Item> PLASTEEL = constructionSheet(
+            "plasteel", ConstructionItemKind.PLASTEEL_SHEET);
+    public static final DeferredItem<Item> LOW_VOLTAGE_CABLE = cableCoil(
+            "low_voltage_cable", ConstructionItemKind.LOW_VOLTAGE_CABLE);
+    public static final DeferredItem<Item> MEDIUM_VOLTAGE_CABLE = cableCoil(
+            "medium_voltage_cable", ConstructionItemKind.MEDIUM_VOLTAGE_CABLE);
+    public static final DeferredItem<Item> HIGH_VOLTAGE_CABLE = cableCoil(
+            "high_voltage_cable", ConstructionItemKind.HIGH_VOLTAGE_CABLE);
+    public static final DeferredItem<Item> DECAL_1SPAWNER =
+            decalTool("decal_1spawner", DecalToolKind.SPAWNER_1);
+    public static final DeferredItem<Item> DECAL_1DELETION =
+            decalTool("decal_1deletion", DecalToolKind.DELETION);
+    public static final DeferredItem<Item> DECAL_2SPAWNER =
+            decalTool("decal_2spawner", DecalToolKind.SPAWNER_2);
+    public static final DeferredItem<Item> DECAL_3SPAWNER =
+            decalTool("decal_3spawner", DecalToolKind.SPAWNER_3);
+    public static final DeferredItem<Item> DECAL_4SPAWNER =
+            decalTool("decal_4spawner", DecalToolKind.SPAWNER_4);
+    public static final DeferredItem<Item> DECAL_5SPAWNER =
+            decalTool("decal_5spawner", DecalToolKind.SPAWNER_5);
+    public static final DeferredItem<Item> DECAL_6SPAWNER =
+            decalTool("decal_6spawner", DecalToolKind.SPAWNER_6);
+    public static final DeferredItem<Item> CREDITS =
+            currency("credits", CurrencyKind.CREDIT);
+    public static final DeferredItem<Item> CREDITS_50 =
+            currency("credits_50", CurrencyKind.CREDIT_50);
+    public static final DeferredItem<Item> DEBU_GCREDITS_DELETER =
+            currency("debu_gcredits_deleter", CurrencyKind.DEBUG_DELETER);
+    public static final DeferredItem<Item> GLASS_SHARD =
+            glassShard("glass_shard", GlassShardKind.STANDARD);
+    public static final DeferredItem<Item> ARM_GLASS_SHARD =
+            glassShard("arm_glass_shard", GlassShardKind.ARMORED);
+    public static final DeferredItem<Item> ACCESS_CONFIG =
+            portableMenu("access_config", PortableMenuItemKind.ACCESS_CONFIG);
+    public static final DeferredItem<Item> BACKPACK_2 =
+            portableMenu("backpack_2", PortableMenuItemKind.BACKPACK);
+    public static final DeferredItem<Item> PD_APASSANGER =
+            portableMenu("pd_apassanger", PortableMenuItemKind.PASSENGER_PDA);
+    public static final DeferredItem<Item> EGG_CARTON =
+            portableMenu("egg_carton", PortableMenuItemKind.EGG_CARTON);
+    public static final DeferredItem<Item> MK_58 =
+            mk58("mk_58", Mk58State.CLOSED_WITH_MAGAZINE);
+    public static final DeferredItem<Item> MK_58OPEN =
+            mk58("mk_58open", Mk58State.OPEN_WITH_MAGAZINE);
+    public static final DeferredItem<Item> MK_58NOMAGZ =
+            mk58("mk_58nomagz", Mk58State.CLOSED_NO_MAGAZINE);
+    public static final DeferredItem<Item> MK_58OPEN_NO_MAGZ =
+            mk58("mk_58open_no_magz", Mk58State.OPEN_NO_MAGAZINE);
+    public static final DeferredItem<Item> MAGAZINE_PISTOL_35 =
+            pistolMagazine("magazine_pistol_35", PistolMagazineState.LOADED);
+    public static final DeferredItem<Item> MAGAZINE_PISTOL_35EMPTY =
+            pistolMagazine("magazine_pistol_35empty", PistolMagazineState.EMPTY);
+    public static final DeferredItem<Item> CROWBAR =
+            mechanicalTool("crowbar", MechanicalToolProfile.CROWBAR);
+    public static final DeferredItem<Item> NIPPERS =
+            mechanicalTool("nippers", MechanicalToolProfile.NIPPERS);
+    public static final DeferredItem<Item> FIRE_AXE =
+            mechanicalTool("fire_axe", MechanicalToolProfile.FIRE_AXE);
+    public static final DeferredItem<Item> SCREWDRIVER =
+            mechanicalTool("screwdriver", MechanicalToolProfile.SCREWDRIVER);
+    public static final DeferredItem<Item> SPANNER =
+            mechanicalTool("spanner", MechanicalToolProfile.SPANNER);
+    public static final DeferredItem<Item> PICK =
+            REGISTRY.registerItem("pick", AsteroidPickItem::new, Item.Properties::new);
+    public static final DeferredItem<Item> AIRLOCK_CONTROLLER =
+            REGISTRY.registerItem("airlock_controller", AirlockControllerItem::new,
+                    Item.Properties::new);
+    public static final DeferredItem<Item> GAS_ANALYSER =
+            REGISTRY.registerItem("gas_analyser", GasAnalyserItem::new,
+                    Item.Properties::new);
+    public static final DeferredItem<Item> MULTITOOL =
+            REGISTRY.registerItem("multitul", MultitoolItem::new,
+                    Item.Properties::new);
+    public static final DeferredItem<Item> NETWORK_CONFIGURATOR =
+            REGISTRY.registerItem("network_configurator", NetworkConfiguratorItem::new,
+                    Item.Properties::new);
+    public static final DeferredItem<Item> RSU =
+            REGISTRY.registerItem("rsu", RsuItem::new, Item.Properties::new);
+    public static final DeferredItem<Item> WELDING =
+            welder("welding", WelderState.INACTIVE);
+    public static final DeferredItem<Item> ACTIVE_WELDER =
+            welder("active_welder", WelderState.ACTIVE);
+    public static final DeferredItem<Item> FENCE_LINE = fenceBlockItem(
+            "fence_line", Ssc14Blocks.FENCE_LINE);
+    public static final DeferredItem<Item> FENCE_G = fenceBlockItem(
+            "fence_g", Ssc14Blocks.FENCE_G);
+    public static final DeferredItem<Item> FENCE_POINT = fenceBlockItem(
+            "fence_point", Ssc14Blocks.FENCE_POINT);
+    public static final DeferredItem<Item> FENCE_P = fenceBlockItem(
+            "fence_p", Ssc14Blocks.FENCE_P);
+    public static final DeferredItem<Item> ASTEROID_STONE_BASE =
+            asteroidBlockItem("asteroid_stone_base", Ssc14Blocks.ASTEROID_STONE_BASE);
+    public static final DeferredItem<Item> ASTEROID_STONE_IRON =
+            asteroidBlockItem("asteroid_stone_iron", Ssc14Blocks.ASTEROID_STONE_IRON);
+    public static final DeferredItem<Item> ASTEROID_STONE_QUARTZ =
+            asteroidBlockItem("asteroid_stone_quartz", Ssc14Blocks.ASTEROID_STONE_QUARTZ);
+    public static final DeferredItem<Item> ASTEROID_STONE_COAL =
+            asteroidBlockItem("asteroid_stone_coal", Ssc14Blocks.ASTEROID_STONE_COAL);
+    public static final DeferredItem<Item> ASTEROID_STONE_GOLD =
+            asteroidBlockItem("asteroid_stone_gold", Ssc14Blocks.ASTEROID_STONE_GOLD);
+    public static final DeferredItem<Item> ASTEROID_STONE_PLASMA =
+            asteroidBlockItem("asteroid_stone_plasma", Ssc14Blocks.ASTEROID_STONE_PLASMA);
+    public static final DeferredItem<Item> ASTEROID_STONE_SILVER =
+            asteroidBlockItem("asteroid_stone_silver", Ssc14Blocks.ASTEROID_STONE_SILVER);
+    public static final DeferredItem<Item> ASTEROID_STONE_URAN =
+            asteroidBlockItem("asteroid_stone_uran", Ssc14Blocks.ASTEROID_STONE_URAN);
+    public static final DeferredItem<Item> ASTEROID_STONE_DIAMOND =
+            asteroidBlockItem("asteroid_stone_diamond", Ssc14Blocks.ASTEROID_STONE_DIAMOND);
+    public static final DeferredItem<Item> BANNER_NT =
+            bannerBlockItem("banner_nt", Ssc14Blocks.BANNER_NT);
+    public static final DeferredItem<Item> BANNER_MED =
+            bannerBlockItem("banner_med", Ssc14Blocks.BANNER_MED);
+    public static final DeferredItem<Item> BANNER_RN_D =
+            bannerBlockItem("banner_rn_d", Ssc14Blocks.BANNER_RN_D);
+    public static final DeferredItem<Item> BANNER_SEC =
+            bannerBlockItem("banner_sec", Ssc14Blocks.BANNER_SEC);
+    public static final DeferredItem<Item> BANNER_CARGO =
+            bannerBlockItem("banner_cargo", Ssc14Blocks.BANNER_CARGO);
+    public static final DeferredItem<Item> BANNER_ENG =
+            bannerBlockItem("banner_eng", Ssc14Blocks.BANNER_ENG);
+    public static final DeferredItem<Item> BANNER_SYND =
+            bannerBlockItem("banner_synd", Ssc14Blocks.BANNER_SYND);
+    public static final DeferredItem<Item> TITLE_STEEL =
+            tileBlockItem("title_steel", Ssc14Blocks.TITLE_STEEL);
+    public static final DeferredItem<Item> TITLE_DARK =
+            tileBlockItem("title_dark", Ssc14Blocks.TITLE_DARK);
+    public static final DeferredItem<Item> TITLE_STEEL_DIAGONAL_MINI =
+            tileBlockItem("title_steel_diagonal_mini", Ssc14Blocks.TITLE_STEEL_DIAGONAL_MINI);
+    public static final DeferredItem<Item> TITLE_STEEL_DIAGONAL =
+            tileBlockItem("title_steel_diagonal", Ssc14Blocks.TITLE_STEEL_DIAGONAL);
+    public static final DeferredItem<Item> TITLE_STEEL_MINI =
+            tileBlockItem("title_steel_mini", Ssc14Blocks.TITLE_STEEL_MINI);
+    public static final DeferredItem<Item> TITLE_STEEL_MONO =
+            tileBlockItem("title_steel_mono", Ssc14Blocks.TITLE_STEEL_MONO);
+    public static final DeferredItem<Item> TITLE_STEEL_OFFSET =
+            tileBlockItem("title_steel_offset", Ssc14Blocks.TITLE_STEEL_OFFSET);
+    public static final DeferredItem<Item> TITLE_STEEL_PAVEMENT =
+            tileBlockItem("title_steel_pavement", Ssc14Blocks.TITLE_STEEL_PAVEMENT);
+    public static final DeferredItem<Item> TITLE_STEEL_HERRINGBONE =
+            tileBlockItem("title_steel_herringbone", Ssc14Blocks.TITLE_STEEL_HERRINGBONE);
+    public static final DeferredItem<Item> TITLE_PLASTIC =
+            tileBlockItem("title_plastic", Ssc14Blocks.TITLE_PLASTIC);
+    public static final DeferredItem<Item> TITLE_DARK_DIAGONAL_MINI =
+            tileBlockItem("title_dark_diagonal_mini", Ssc14Blocks.TITLE_DARK_DIAGONAL_MINI);
+    public static final DeferredItem<Item> TITLE_DARK_DIAGONAL =
+            tileBlockItem("title_dark_diagonal", Ssc14Blocks.TITLE_DARK_DIAGONAL);
+    public static final DeferredItem<Item> TITLE_DARK_MINI =
+            tileBlockItem("title_dark_mini", Ssc14Blocks.TITLE_DARK_MINI);
+    public static final DeferredItem<Item> TITLE_DARK_MONO =
+            tileBlockItem("title_dark_mono", Ssc14Blocks.TITLE_DARK_MONO);
+    public static final DeferredItem<Item> TITLE_DARK_OFFSET =
+            tileBlockItem("title_dark_offset", Ssc14Blocks.TITLE_DARK_OFFSET);
+    public static final DeferredItem<Item> TITLE_DARK_PAVEMENT =
+            tileBlockItem("title_dark_pavement", Ssc14Blocks.TITLE_DARK_PAVEMENT);
+    public static final DeferredItem<Item> TITLE_DARK_PAVEMENT_VERTICAL =
+            tileBlockItem("title_dark_pavement_vertical", Ssc14Blocks.TITLE_DARK_PAVEMENT_VERTICAL);
+    public static final DeferredItem<Item> TITLE_DARK_HERRINGBONE =
+            tileBlockItem("title_dark_herringbone", Ssc14Blocks.TITLE_DARK_HERRINGBONE);
+    public static final DeferredItem<Item> TITLE_DARK_PLASTIC =
+            tileBlockItem("title_dark_plastic", Ssc14Blocks.TITLE_DARK_PLASTIC);
+    public static final DeferredItem<Item> TITLE_WHITE =
+            tileBlockItem("title_white", Ssc14Blocks.TITLE_WHITE);
+    public static final DeferredItem<Item> TITLE_WHITE_DIAGONAL_MINI =
+            tileBlockItem("title_white_diagonal_mini", Ssc14Blocks.TITLE_WHITE_DIAGONAL_MINI);
+    public static final DeferredItem<Item> TITLE_WHITE_DIAGONAL =
+            tileBlockItem("title_white_diagonal", Ssc14Blocks.TITLE_WHITE_DIAGONAL);
+    public static final DeferredItem<Item> TITLE_WHITE_HERRINGBONE =
+            tileBlockItem("title_white_herringbone", Ssc14Blocks.TITLE_WHITE_HERRINGBONE);
+    public static final DeferredItem<Item> TITLE_WHITE_MINI =
+            tileBlockItem("title_white_mini", Ssc14Blocks.TITLE_WHITE_MINI);
+    public static final DeferredItem<Item> TITLE_WHITE_MONO =
+            tileBlockItem("title_white_mono", Ssc14Blocks.TITLE_WHITE_MONO);
+    public static final DeferredItem<Item> TITLE_WHITE_OFFSET =
+            tileBlockItem("title_white_offset", Ssc14Blocks.TITLE_WHITE_OFFSET);
+    public static final DeferredItem<Item> TITLE_WHITE_PAVEMENT =
+            tileBlockItem("title_white_pavement", Ssc14Blocks.TITLE_WHITE_PAVEMENT);
+    public static final DeferredItem<Item> TITLE_WHITE_PAVEMENT_VERTICAL =
+            tileBlockItem("title_white_pavement_vertical", Ssc14Blocks.TITLE_WHITE_PAVEMENT_VERTICAL);
+    public static final DeferredItem<Item> TITLE_WHITE_PLASTIC =
+            tileBlockItem("title_white_plastic", Ssc14Blocks.TITLE_WHITE_PLASTIC);
+    public static final DeferredItem<Item> TITLE_STEEL_PAVEMENT_VERTICAL =
+            tileBlockItem("title_steel_pavement_vertical", Ssc14Blocks.TITLE_STEEL_PAVEMENT_VERTICAL);
+    public static final DeferredItem<Item> TITLE_ARCADEBLUE =
+            tileBlockItem("title_arcadeblue", Ssc14Blocks.TITLE_ARCADEBLUE);
+    public static final DeferredItem<Item> TITLE_ARCADERED =
+            tileBlockItem("title_arcadered", Ssc14Blocks.TITLE_ARCADERED);
+    public static final DeferredItem<Item> TITLE_BAR =
+            tileBlockItem("title_bar", Ssc14Blocks.TITLE_BAR);
+    public static final DeferredItem<Item> TITLE_BLUE_CIRCUIT =
+            tileBlockItem("title_blue_circuit", Ssc14Blocks.TITLE_BLUE_CIRCUIT);
+    public static final DeferredItem<Item> TITLE_BLUE =
+            tileBlockItem("title_blue", Ssc14Blocks.TITLE_BLUE);
+    public static final DeferredItem<Item> TITLE_BOXING =
+            tileBlockItem("title_boxing", Ssc14Blocks.TITLE_BOXING);
+    public static final DeferredItem<Item> TITLE_CAFETERIA =
+            tileBlockItem("title_cafeteria", Ssc14Blocks.TITLE_CAFETERIA);
+    public static final DeferredItem<Item> TITLE_CARPETCLOWN =
+            tileBlockItem("title_carpetclown", Ssc14Blocks.TITLE_CARPETCLOWN);
+    public static final DeferredItem<Item> TITLE_CARPETOFFICE =
+            tileBlockItem("title_carpetoffice", Ssc14Blocks.TITLE_CARPETOFFICE);
+    public static final DeferredItem<Item> TITLE_CHECKERDARK =
+            tileBlockItem("title_checkerdark", Ssc14Blocks.TITLE_CHECKERDARK);
+    public static final DeferredItem<Item> TITLE_CLOWN =
+            tileBlockItem("title_clown", Ssc14Blocks.TITLE_CLOWN);
+    public static final DeferredItem<Item> TITLE_DARKTEST =
+            tileBlockItem("title_darktest", Ssc14Blocks.TITLE_DARKTEST);
+    public static final DeferredItem<Item> TITLE_ELEVATORSHAFT =
+            tileBlockItem("title_elevatorshaft", Ssc14Blocks.TITLE_ELEVATORSHAFT);
+    public static final DeferredItem<Item> TITLE_EXOBORG =
+            tileBlockItem("title_exoborg", Ssc14Blocks.TITLE_EXOBORG);
+    public static final DeferredItem<Item> TITLE_FREEZER =
+            tileBlockItem("title_freezer", Ssc14Blocks.TITLE_FREEZER);
+    public static final DeferredItem<Item> TITLE_GOLD =
+            tileBlockItem("title_gold", Ssc14Blocks.TITLE_GOLD);
+    public static final DeferredItem<Item> TITLE_GRATINGMAINT =
+            tileBlockItem("title_gratingmaint", Ssc14Blocks.TITLE_GRATINGMAINT);
+    public static final DeferredItem<Item> TITLE_GREENCIRCUIT =
+            tileBlockItem("title_greencircuit", Ssc14Blocks.TITLE_GREENCIRCUIT);
+    public static final DeferredItem<Item> TITLE_GYM =
+            tileBlockItem("title_gym", Ssc14Blocks.TITLE_GYM);
+    public static final DeferredItem<Item> TITLE_HULLREINFORCED =
+            tileBlockItem("title_hullreinforced", Ssc14Blocks.TITLE_HULLREINFORCED);
+    public static final DeferredItem<Item> TITLE_HULL =
+            tileBlockItem("title_hull", Ssc14Blocks.TITLE_HULL);
+    public static final DeferredItem<Item> TITLE_HYDRO =
+            tileBlockItem("title_hydro", Ssc14Blocks.TITLE_HYDRO);
+    public static final DeferredItem<Item> TITLE_KITCHEN =
+            tileBlockItem("title_kitchen", Ssc14Blocks.TITLE_KITCHEN);
+    public static final DeferredItem<Item> TITLE_LAUNDRY =
+            tileBlockItem("title_laundry", Ssc14Blocks.TITLE_LAUNDRY);
+    public static final DeferredItem<Item> TITLE_LIME =
+            tileBlockItem("title_lime", Ssc14Blocks.TITLE_LIME);
+    public static final DeferredItem<Item> TITLE_LINO =
+            tileBlockItem("title_lino", Ssc14Blocks.TITLE_LINO);
+    public static final DeferredItem<Item> TITLE_MEAT =
+            tileBlockItem("title_meat", Ssc14Blocks.TITLE_MEAT);
+    public static final DeferredItem<Item> TITLE_METALDIAMOND =
+            tileBlockItem("title_metaldiamond", Ssc14Blocks.TITLE_METALDIAMOND);
+    public static final DeferredItem<Item> TITLE_MIME =
+            tileBlockItem("title_mime", Ssc14Blocks.TITLE_MIME);
+    public static final DeferredItem<Item> TITLE_MININGFLOORDARK =
+            tileBlockItem("title_miningfloordark", Ssc14Blocks.TITLE_MININGFLOORDARK);
+    public static final DeferredItem<Item> TITLE_MININGFLOORLIGHT =
+            tileBlockItem("title_miningfloorlight", Ssc14Blocks.TITLE_MININGFLOORLIGHT);
+    public static final DeferredItem<Item> TITLE_MININGFLOOR =
+            tileBlockItem("title_miningfloor", Ssc14Blocks.TITLE_MININGFLOOR);
+    public static final DeferredItem<Item> TITLE_MONO =
+            tileBlockItem("title_mono", Ssc14Blocks.TITLE_MONO);
+    public static final DeferredItem<Item> TITLE_REDCIRCUIT =
+            tileBlockItem("title_redcircuit", Ssc14Blocks.TITLE_REDCIRCUIT);
+    public static final DeferredItem<Item> TITLE_REINFORCED =
+            tileBlockItem("title_reinforced", Ssc14Blocks.TITLE_REINFORCED);
+    public static final DeferredItem<Item> TITLE_ROCKVAULT =
+            tileBlockItem("title_rockvault", Ssc14Blocks.TITLE_ROCKVAULT);
+    public static final DeferredItem<Item> TITLE_SHOWROOM =
+            tileBlockItem("title_showroom", Ssc14Blocks.TITLE_SHOWROOM);
+    public static final DeferredItem<Item> TITLE_SHUTTLEBLACK =
+            tileBlockItem("title_shuttleblack", Ssc14Blocks.TITLE_SHUTTLEBLACK);
+    public static final DeferredItem<Item> TITLE_SHUTTLEBLUE =
+            tileBlockItem("title_shuttleblue", Ssc14Blocks.TITLE_SHUTTLEBLUE);
+    public static final DeferredItem<Item> TITLE_SHUTTLEGREY =
+            tileBlockItem("title_shuttlegrey", Ssc14Blocks.TITLE_SHUTTLEGREY);
+    public static final DeferredItem<Item> TITLE_SHUTTLEORANGE =
+            tileBlockItem("title_shuttleorange", Ssc14Blocks.TITLE_SHUTTLEORANGE);
+    public static final DeferredItem<Item> TITLE_SHUTTLEPURPLE =
+            tileBlockItem("title_shuttlepurple", Ssc14Blocks.TITLE_SHUTTLEPURPLE);
+    public static final DeferredItem<Item> TITLE_SHUTTLERED =
+            tileBlockItem("title_shuttlered", Ssc14Blocks.TITLE_SHUTTLERED);
+    public static final DeferredItem<Item> TITLE_SHUTTLEWHITE =
+            tileBlockItem("title_shuttlewhite", Ssc14Blocks.TITLE_SHUTTLEWHITE);
+    public static final DeferredItem<Item> TITLE_SILVER =
+            tileBlockItem("title_silver", Ssc14Blocks.TITLE_SILVER);
+    public static final DeferredItem<Item> TITLE_STEELDAMAGED =
+            tileBlockItem("title_steeldamaged", Ssc14Blocks.TITLE_STEELDAMAGED);
+    public static final DeferredItem<Item> TITLE_STEELDIRTY =
+            tileBlockItem("title_steeldirty", Ssc14Blocks.TITLE_STEELDIRTY);
+    public static final DeferredItem<Item> TITLE_STEELMAINT =
+            tileBlockItem("title_steelmaint", Ssc14Blocks.TITLE_STEELMAINT);
+    public static final DeferredItem<Item> TITLE_SUPERREINFORCED =
+            tileBlockItem("title_superreinforced", Ssc14Blocks.TITLE_SUPERREINFORCED);
+    public static final DeferredItem<Item> TITLE_TECHMAINTDARK =
+            tileBlockItem("title_techmaintdark", Ssc14Blocks.TITLE_TECHMAINTDARK);
+    public static final DeferredItem<Item> TITLE_TECHMAINT =
+            tileBlockItem("title_techmaint", Ssc14Blocks.TITLE_TECHMAINT);
+    public static final DeferredItem<Item> TITLE_WOODBROKEN =
+            tileBlockItem("title_woodbroken", Ssc14Blocks.TITLE_WOODBROKEN);
+    public static final DeferredItem<Item> TITLE_WOODLARGE =
+            tileBlockItem("title_woodlarge", Ssc14Blocks.TITLE_WOODLARGE);
+    public static final DeferredItem<Item> TITLE_WOOD =
+            tileBlockItem("title_wood", Ssc14Blocks.TITLE_WOOD);
+    public static final DeferredItem<Item> TITLE_WOODTILE =
+            tileBlockItem("title_woodtile", Ssc14Blocks.TITLE_WOODTILE);
+    public static final DeferredItem<Item> ROD_FLOOR =
+            fireResistantBlockItem("rod_floor", Ssc14Blocks.ROD_FLOOR, 1);
+    public static final DeferredItem<Item> STEEL_WALL =
+            fireResistantBlockItem("steel_wall", Ssc14Blocks.STEEL_WALL, 30);
+    public static final DeferredItem<Item> WALL_CARCASE =
+            fireResistantBlockItem("wall_carcase", Ssc14Blocks.WALL_CARCASE, 30);
+    public static final DeferredItem<Item> UPER_SHEATHING =
+            fireResistantBlockItem("uper_sheathing", Ssc14Blocks.UPER_SHEATHING, 1);
+    public static final DeferredItem<Item> ROD_UP_FLOOR =
+            fireResistantBlockItem("rod_up_floor", Ssc14Blocks.ROD_UP_FLOOR, 1);
+    public static final DeferredItem<Item> UP_TITLE =
+            fireResistantBlockItem("up_title", Ssc14Blocks.UP_TITLE, 30);
+    public static final DeferredItem<Item> BASE_WINDOW =
+            fireResistantBlockItem("base_window", Ssc14Blocks.BASE_WINDOW, 30);
+    public static final DeferredItem<Item> PLASTEEL_WALL =
+            fireResistantBlockItem("plasteel_wall", Ssc14Blocks.PLASTEEL_WALL, 30);
+    public static final DeferredItem<Item> PLASTEEL_WALL_CARCASE =
+            fireResistantBlockItem("plasteel_wall_carcase", Ssc14Blocks.PLASTEEL_WALL_CARCASE, 30);
+    public static final DeferredItem<Item> UP_TITLE_STEEL =
+            fireResistantBlockItem("up_title_steel", Ssc14Blocks.UP_TITLE_STEEL, 30);
+    public static final DeferredItem<Item> UP_TITLE_DARK =
+            fireResistantBlockItem("up_title_dark", Ssc14Blocks.UP_TITLE_DARK, 30);
+    public static final DeferredItem<Item> ARMORED_WINDOW =
+            fireResistantBlockItem("armored_window", Ssc14Blocks.ARMORED_WINDOW, 30);
+    public static final DeferredItem<Item> GRILLE =
+            fireResistantBlockItem("grille", Ssc14Blocks.GRILLE, 1);
+    public static final DeferredItem<Item> BROKEN_GRILLE =
+            fireResistantBlockItem("broken_grille", Ssc14Blocks.BROKEN_GRILLE, 1);
+    public static final DeferredItem<Item> CAVE_FLOOR_1 =
+            fireResistantBlockItem("cave_floor_1", Ssc14Blocks.CAVE_FLOOR_1, 1);
+    public static final DeferredItem<Item> CATWALK_FLOOR =
+            fireResistantBlockItem("catwalk_floor", Ssc14Blocks.CATWALK_FLOOR, 1);
+    public static final DeferredItem<Item> STEEL_STAIRCASE =
+            blockItem("steel_staircase", Ssc14Blocks.STEEL_STAIRCASE, 1);
+    public static final DeferredItem<Item> WHITE_STAIRCASE =
+            blockItem("white_staircase", Ssc14Blocks.WHITE_STAIRCASE, 1);
+    public static final DeferredItem<Item> DARK_STAIRCASE =
+            blockItem("dark_staircase", Ssc14Blocks.DARK_STAIRCASE, 1);
+    public static final DeferredItem<Item> DIRT =
+            blockItem("dirt", Ssc14Blocks.DIRT, 1);
+    public static final DeferredItem<Item> GRASS_LIGHT_BLOCK =
+            blockItem("grass_light_block", Ssc14Blocks.GRASS_LIGHT_BLOCK, 1);
+    public static final DeferredItem<Item> LOW_PLANET_GRASS =
+            blockItem("low_planet_grass", Ssc14Blocks.LOW_PLANET_GRASS, 1);
+    public static final DeferredItem<Item> MED_PLANET_GRASS =
+            blockItem("med_planet_grass", Ssc14Blocks.MED_PLANET_GRASS, 1);
+    public static final DeferredItem<Item> PLANETARY_TREE_LOG =
+            blockItem("planetary_tree_log", Ssc14Blocks.PLANETARY_TREE_LOG, 1);
+    public static final DeferredItem<Item> PLANETARY_TREE_FOLIAGE =
+            blockItem("planetary_tree_foliage", Ssc14Blocks.PLANETARY_TREE_FOLIAGE, 1);
+    public static final DeferredItem<Item> UP_STEEL_STAIRCASE =
+            blockItem("up_steel_staircase", Ssc14Blocks.UP_STEEL_STAIRCASE, 1);
+    public static final DeferredItem<Item> UP_WHITE_STAIRCASE =
+            blockItem("up_white_staircase", Ssc14Blocks.UP_WHITE_STAIRCASE, 1);
+    public static final DeferredItem<Item> UP_DARK_STAIRCASE =
+            blockItem("up_dark_staircase", Ssc14Blocks.UP_DARK_STAIRCASE, 1);
+    public static final DeferredItem<Item> SHUTTLE_WALL =
+            fireResistantBlockItem("shuttle_wall", Ssc14Blocks.SHUTTLE_WALL, 1);
+    public static final DeferredItem<Item> ARMORED_SHUTTLE_WALL =
+            fireResistantBlockItem("armored_shuttle_wall", Ssc14Blocks.ARMORED_SHUTTLE_WALL, 1);
+    public static final DeferredItem<Item> DIRECTED_BASE_WINDOW =
+            fireResistantBlockItem("directed_base_window", Ssc14Blocks.DIRECTED_BASE_WINDOW, 1);
+    public static final DeferredItem<Item> DIRECTED_ARMORED_WINDOW =
+            fireResistantBlockItem("directed_armored_window", Ssc14Blocks.DIRECTED_ARMORED_WINDOW, 1);
+    public static final DeferredItem<Item> TITLEARCADEBLUE_2 =
+            fireResistantBlockItem("titlearcadeblue_2", Ssc14Blocks.TITLEARCADEBLUE_2, 30);
+    public static final DeferredItem<Item> TITLEEIGHTIES =
+            fireResistantBlockItem("titleeighties", Ssc14Blocks.TITLEEIGHTIES, 30);
+    public static final DeferredItem<Item> SHEATHING =
+            configuredBlockItem("sheathing", Ssc14Blocks.SHEATHING,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> BASE_AIRLOCK_D_1 =
+            configuredBlockItem("base_airlock_d_1", Ssc14Blocks.BASE_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CONSOLE_OF_ID =
+            configuredBlockItem("console_of_id", Ssc14Blocks.CONSOLE_OF_ID,
+                    properties -> properties.stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+    public static final DeferredItem<Item> PORTABLE_SHEATER =
+            configuredBlockItem("portable_sheater", Ssc14Blocks.PORTABLE_SHEATER,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> APC =
+            configuredBlockItem("apc", Ssc14Blocks.APC,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> PODSTATION =
+            configuredBlockItem("podstation", Ssc14Blocks.PODSTATION,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> DEBU_GGENERATOR =
+            configuredBlockItem("debu_ggenerator", Ssc14Blocks.DEBU_GGENERATOR,
+                    properties -> properties.stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+    public static final DeferredItem<Item> LAMP =
+            configuredBlockItem("lamp", Ssc14Blocks.LAMP,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> SMES =
+            configuredBlockItem("smes", Ssc14Blocks.SMES,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> TECH_LAMP =
+            configuredBlockItem("tech_lamp", Ssc14Blocks.TECH_LAMP,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> DEBUG_LAMP =
+            configuredBlockItem("debug_lamp", Ssc14Blocks.DEBUG_LAMP,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> DEBUG_TECH_LAMP =
+            configuredBlockItem("debug_tech_lamp", Ssc14Blocks.DEBUG_TECH_LAMP,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> GRAVITY_GENERATOR =
+            configuredBlockItem("gravity_generator", Ssc14Blocks.GRAVITY_GENERATOR,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> C_4 =
+            configuredBlockItem("c_4", Ssc14Blocks.C_4,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> MACHINE_FRAME =
+            configuredBlockItem("machine_frame", Ssc14Blocks.MACHINE_FRAME,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> MACHINE_FRAME_2 =
+            configuredBlockItem("machine_frame_2", Ssc14Blocks.MACHINE_FRAME_2,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> STEEL_TABLE =
+            configuredBlockItem("steel_table", Ssc14Blocks.STEEL_TABLE,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> STEEL_CHAIR =
+            configuredBlockItem("steel_chair", Ssc14Blocks.STEEL_CHAIR,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> WOOD_CHAIR =
+            configuredBlockItem("wood_chair", Ssc14Blocks.WOOD_CHAIR,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> OFICE_BLACK_CHAIR =
+            configuredBlockItem("ofice_black_chair", Ssc14Blocks.OFICE_BLACK_CHAIR,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> OFICE_WHITE_CHAIR =
+            configuredBlockItem("ofice_white_chair", Ssc14Blocks.OFICE_WHITE_CHAIR,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> BAR_CHAIR =
+            configuredBlockItem("bar_chair", Ssc14Blocks.BAR_CHAIR,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> KOSTILNIBLOK =
+            configuredBlockItem("kostilniblok", Ssc14Blocks.KOSTILNIBLOK,
+                    properties -> properties.stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+    public static final DeferredItem<Item> DEBUG_GRAV_GEN =
+            configuredBlockItem("debug_grav_gen", Ssc14Blocks.DEBUG_GRAV_GEN,
+                    properties -> properties.stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+    public static final DeferredItem<Item> NUCLEAR_WARHEAD =
+            configuredBlockItem("nuclear_warhead", Ssc14Blocks.NUCLEAR_WARHEAD,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> COMPUTER =
+            configuredBlockItem("computer", Ssc14Blocks.COMPUTER,
+                    properties -> properties.stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+    public static final DeferredItem<Item> CLOSET_SECURE =
+            configuredBlockItem("closet_secure", Ssc14Blocks.CLOSET_SECURE,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET =
+            configuredBlockItem("closet", Ssc14Blocks.CLOSET,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> DEBUG_13 =
+            configuredBlockItem("debug_13", Ssc14Blocks.DEBUG_13,
+                    properties -> properties);
+    public static final DeferredItem<Item> EXTINGUISHER_CABINET =
+            configuredBlockItem("extinguisher_cabinet", Ssc14Blocks.EXTINGUISHER_CABINET,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> COMMUNICATION_SERVERS =
+            configuredBlockItem("communication_servers", Ssc14Blocks.COMMUNICATION_SERVERS,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> WOOD_TABLE =
+            configuredBlockItem("wood_table", Ssc14Blocks.WOOD_TABLE,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> COMMUNICATION_CONSOLE =
+            configuredBlockItem("communication_console", Ssc14Blocks.COMMUNICATION_CONSOLE,
+                    properties -> properties.stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+    public static final DeferredItem<Item> TECH_AIRLOCK_D_1 =
+            configuredBlockItem("tech_airlock_d_1", Ssc14Blocks.TECH_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> GAS_PRODUCER_O_2 =
+            configuredBlockItem("gas_producer_o_2", Ssc14Blocks.GAS_PRODUCER_O_2,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> VENDING_AUT_1 =
+            configuredBlockItem("vending_aut_1", Ssc14Blocks.VENDING_AUT_1,
+                    properties -> properties.fireResistant());
+    public static final DeferredItem<Item> SHUTTERS =
+            configuredBlockItem("shutters", Ssc14Blocks.SHUTTERS,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> BUTTON =
+            configuredBlockItem("button", Ssc14Blocks.BUTTON,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> MICROWAWE =
+            configuredBlockItem("microwawe", Ssc14Blocks.MICROWAWE,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> ATMOSPHERICS_AIRLOCK_D_1 =
+            configuredBlockItem("atmospherics_airlock_d_1", Ssc14Blocks.ATMOSPHERICS_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CARGO_AIRLOCK_D_1 =
+            configuredBlockItem("cargo_airlock_d_1", Ssc14Blocks.CARGO_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CENT_COM_AIRLOCK_D_1 =
+            configuredBlockItem("cent_com_airlock_d_1", Ssc14Blocks.CENT_COM_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CHEMISTRY_AIRLOCK_D_1 =
+            configuredBlockItem("chemistry_airlock_d_1", Ssc14Blocks.CHEMISTRY_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> COMMAND_AIRLOCK_D_1 =
+            configuredBlockItem("command_airlock_d_1", Ssc14Blocks.COMMAND_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> ENGINEERING_AIRLOCK_D_1 =
+            configuredBlockItem("engineering_airlock_d_1", Ssc14Blocks.ENGINEERING_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> HYDROPONICS_AIRLOCK_D_1 =
+            configuredBlockItem("hydroponics_airlock_d_1", Ssc14Blocks.HYDROPONICS_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> MEDICAL_AIRLOCK_D_1 =
+            configuredBlockItem("medical_airlock_d_1", Ssc14Blocks.MEDICAL_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> SALVAGE_AIRLOCK_D_1 =
+            configuredBlockItem("salvage_airlock_d_1", Ssc14Blocks.SALVAGE_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> SCIENCE_AIRLOCK_D_1 =
+            configuredBlockItem("science_airlock_d_1", Ssc14Blocks.SCIENCE_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> SECURITY_AIRLOCK_D_1 =
+            configuredBlockItem("security_airlock_d_1", Ssc14Blocks.SECURITY_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> SYNDICATE_AIRLOCK_D_1 =
+            configuredBlockItem("syndicate_airlock_d_1", Ssc14Blocks.SYNDICATE_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> VIROLOGY_AIRLOCK_D_1 =
+            configuredBlockItem("virology_airlock_d_1", Ssc14Blocks.VIROLOGY_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_EMERG =
+            configuredBlockItem("closet_emerg", Ssc14Blocks.CLOSET_EMERG,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_FIRE =
+            configuredBlockItem("closet_fire", Ssc14Blocks.CLOSET_FIRE,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_BLACK =
+            configuredBlockItem("closet_black", Ssc14Blocks.CLOSET_BLACK,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_BLUE =
+            configuredBlockItem("closet_blue", Ssc14Blocks.CLOSET_BLUE,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_GRAY =
+            configuredBlockItem("closet_gray", Ssc14Blocks.CLOSET_GRAY,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_GREEN =
+            configuredBlockItem("closet_green", Ssc14Blocks.CLOSET_GREEN,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_MIXED =
+            configuredBlockItem("closet_mixed", Ssc14Blocks.CLOSET_MIXED,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_N_2 =
+            configuredBlockItem("closet_n_2", Ssc14Blocks.CLOSET_N_2,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_ORANGE =
+            configuredBlockItem("closet_orange", Ssc14Blocks.CLOSET_ORANGE,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> CLOSET_PINK =
+            configuredBlockItem("closet_pink", Ssc14Blocks.CLOSET_PINK,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> GLASS_TABLE =
+            configuredBlockItem("glass_table", Ssc14Blocks.GLASS_TABLE,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> GLASS_AIRLOCK_D_1 =
+            configuredBlockItem("glass_airlock_d_1", Ssc14Blocks.GLASS_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> BASE_GLASS_AIRLOCK_D_1 =
+            configuredBlockItem("base_glass_airlock_d_1", Ssc14Blocks.BASE_GLASS_AIRLOCK_D_1,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> FUEL_TANK =
+            configuredBlockItem("fuel_tank", Ssc14Blocks.FUEL_TANK,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> ORDER_CONSOLE =
+            configuredBlockItem("order_console", Ssc14Blocks.ORDER_CONSOLE,
+                    properties -> properties.stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+    public static final DeferredItem<Item> ORDER_PALLET =
+            configuredBlockItem("order_pallet", Ssc14Blocks.ORDER_PALLET,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> SALE_PALLET =
+            configuredBlockItem("sale_pallet", Ssc14Blocks.SALE_PALLET,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> SALE_CONSOLE =
+            configuredBlockItem("sale_console", Ssc14Blocks.SALE_CONSOLE,
+                    properties -> properties.stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant());
+    public static final DeferredItem<Item> ARM_CHAIR_BASE =
+            configuredBlockItem("arm_chair_base", Ssc14Blocks.ARM_CHAIR_BASE,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> ARM_CHAIR_BROWN =
+            configuredBlockItem("arm_chair_brown", Ssc14Blocks.ARM_CHAIR_BROWN,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> ARM_CHAIR_CARP =
+            configuredBlockItem("arm_chair_carp", Ssc14Blocks.ARM_CHAIR_CARP,
+                    properties -> properties.stacksTo(1));
+    public static final DeferredItem<Item> EMERGENCY_LIGHT =
+            configuredBlockItem("emergency_light", Ssc14Blocks.EMERGENCY_LIGHT,
+                    properties -> properties.stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> ROOD = material("rood");
+    public static final DeferredItem<Item> WOOD = material("wood");
+    public static final DeferredItem<Item> PEN = utility("pen");
+    public static final DeferredItem<Item> HEALTH_ANALYZER = utility("health_analyzer");
+    public static final DeferredItem<Item> RC_DCARTRIDGE =
+            REGISTRY.registerItem("rc_dcartridge", RcdCartridgeItem::new,
+                    Item.Properties::new);
+    public static final DeferredItem<Item> CONE =
+            REGISTRY.registerItem("cone", TrafficConeItem::new, Item.Properties::new);
+    public static final DeferredItem<Item> DEBUGACTIVATOR =
+            REGISTRY.registerItem("debugactivator", DebugActivatorItem::new,
+                    Item.Properties::new);
+    public static final DeferredItem<Item> DEBU_GITEM =
+            REGISTRY.registerItem("debu_gitem", DebugBroadcastItem::new,
+                    Item.Properties::new);
+    public static final DeferredItem<Item> MAGNETIC_BOOTS_ITEM =
+            magneticBoots("magnetic_boots_item", MagneticBootsState.INACTIVE);
+    public static final DeferredItem<Item> MAGNETIC_BOOTS_ACTIVE_ITEM =
+            magneticBoots("magnetic_boots_active_item", MagneticBootsState.ACTIVE);
+    public static final DeferredItem<Item> EXTINGUISHER =
+            extinguisher("extinguisher", ExtinguisherState.CLOSED);
+    public static final DeferredItem<Item> EXTINGUISHER_OPEN =
+            extinguisher("extinguisher_open", ExtinguisherState.OPEN);
+    public static final DeferredItem<Item> REAGENT_CONTAINER =
+            reagentContainer("reagent_container", Ssc14ReagentContainers.DEFAULT_CAPACITY);
+    public static final DeferredItem<Item> FLOUR_OPEN =
+            reagentContainer("flour_open", Ssc14ReagentContainers.FLOUR_CAPACITY);
+    public static final DeferredItem<Item> SUGAR_OPEN =
+            reagentContainer("sugar_open", Ssc14ReagentContainers.SUGAR_CAPACITY);
+    public static final DeferredItem<Item> MILK_OPEN =
+            reagentContainer("milk_open", Ssc14ReagentContainers.MILK_CAPACITY);
+    public static final DeferredItem<Item> ALL_PURPOSE_SAUCE_OPEN =
+            reagentContainer("all_purpose_sauce_open",
+                    Ssc14ReagentContainers.ALL_PURPOSE_SAUCE_CAPACITY);
+    public static final DeferredItem<Item> FLOUR =
+            sealedReagentContainer("flour", Ssc14ReagentContainers.FLOUR, FLOUR_OPEN);
+    public static final DeferredItem<Item> SUGAR =
+            sealedReagentContainer("sugar", Ssc14ReagentContainers.SUGAR, SUGAR_OPEN);
+    public static final DeferredItem<Item> MILK =
+            sealedReagentContainer("milk", Ssc14ReagentContainers.MILK, MILK_OPEN);
+    public static final DeferredItem<Item> ALL_PURPOSE_SAUCE =
+            sealedReagentContainer("all_purpose_sauce",
+                    Ssc14ReagentContainers.ALL_PURPOSE_SAUCE,
+                    ALL_PURPOSE_SAUCE_OPEN);
+    public static final DeferredItem<Item> BULLET_35ITEM = ammunition("bullet_35item");
+    public static final DeferredItem<Item> FOAM_DART = ammunition("foam_dart");
+    public static final DeferredItem<Item> ASTRO_ACE_FOAM_POWER =
+            REGISTRY.registerItem("astro_ace_foam_power", FoamDartLauncherItem::new,
+                    Item.Properties::new);
+    public static final DeferredItem<Item> BULLET_35_CARTRIDGE =
+            ammunition("bullet_35_cartridge");
+    public static final DeferredItem<Item> CAPACITOR =
+            machineComponent("capacitor", MachineComponentItem.BULK_STACK_SIZE);
+    public static final DeferredItem<Item> MATTER_BIN =
+            machineComponent("matter_bin", MachineComponentItem.BULK_STACK_SIZE);
+    public static final DeferredItem<Item> MICRO_MANIPULATOR =
+            machineComponent("micro_manipulator", MachineComponentItem.BULK_STACK_SIZE);
+    public static final DeferredItem<Item> SUBSTATION_BOARD =
+            machineComponent("substation_board", MachineComponentItem.SINGLE_STACK_SIZE);
+    public static final DeferredItem<Item> SMES_BOARD =
+            machineComponent("smes_board", MachineComponentItem.SINGLE_STACK_SIZE);
+    public static final DeferredItem<Item> APC_BOARD =
+            machineComponent("apc_board", MachineComponentItem.SINGLE_STACK_SIZE);
+    public static final DeferredItem<Item> LOW_BATTERIE =
+            machineComponent("low_batterie", MachineComponentItem.SINGLE_STACK_SIZE);
+    public static final DeferredItem<Item> LED_LIGHT_TUBE = lightingComponent("led_light_tube");
+    public static final DeferredItem<Item> LIGHT_BULB = lightingComponent("light_bulb");
+    public static final DeferredItem<Item> LED_LIGHT_TUBE_BROKEN =
+            lightingComponent("led_light_tube_broken");
+    public static final DeferredItem<Item> LIGHT_BULB_BROKEN =
+            lightingComponent("light_bulb_broken");
+    public static final DeferredItem<Item> ID_CARD_PASSANGER = idCard("id_card_passanger");
+    public static final DeferredItem<Item> ID_CARD_CAPITAN = idCard("id_card_capitan");
+    public static final DeferredItem<Item> ID_CARD_PNT = idCard("id_card_pnt");
+    public static final DeferredItem<Item> ID_CARD_ADUTANT = idCard("id_card_adutant");
+    public static final DeferredItem<Item> ID_CARD_AVD = idCard("id_card_avd");
+    public static final DeferredItem<Item> ID_CARD_OSH = idCard("id_card_osh");
+    public static final DeferredItem<Item> ID_CARD_MIME = idCard("id_card_mime");
+    public static final DeferredItem<Item> ID_CARD_CLOWN = idCard("id_card_clown");
+    public static final DeferredItem<Item> ID_CARD_HO_P = idCard("id_card_ho_p");
+    public static final DeferredItem<Item> ID_CARD_SERVICE_W = idCard("id_card_service_w");
+    public static final DeferredItem<Item> ID_CARD_CLEANER = idCard("id_card_cleaner");
+    public static final DeferredItem<Item> ID_CARD_CHEF = idCard("id_card_chef");
+    public static final DeferredItem<Item> ID_CARD_BOTANIK = idCard("id_card_botanik");
+    public static final DeferredItem<Item> ID_CARD_BARMEN = idCard("id_card_barmen");
+    public static final DeferredItem<Item> ID_CARD_PRIEST = idCard("id_card_priest");
+    public static final DeferredItem<Item> ID_CARD_QM = idCard("id_card_qm");
+    public static final DeferredItem<Item> ID_CARD_UTILIZATOR = idCard("id_card_utilizator");
+    public static final DeferredItem<Item> ID_CARD_LOADER = idCard("id_card_loader");
+    public static final DeferredItem<Item> ID_CARD_REPORTER = idCard("id_card_reporter");
+    public static final DeferredItem<Item> ID_CARD_BOXER = idCard("id_card_boxer");
+    public static final DeferredItem<Item> ID_CARD_BIBLIOTEKAR = idCard("id_card_bibliotekar");
+    public static final DeferredItem<Item> ID_CARD_ZOOTECHNIK = idCard("id_card_zootechnik");
+    public static final DeferredItem<Item> ID_CARD_CE = idCard("id_card_ce");
+    public static final DeferredItem<Item> ID_CARD_VE = idCard("id_card_ve");
+    public static final DeferredItem<Item> ID_CARD_ATMOS = idCard("id_card_atmos");
+    public static final DeferredItem<Item> ID_CARD_ENGENEER = idCard("id_card_engeneer");
+    public static final DeferredItem<Item> ID_CARD_TECH_ASSISTENT = idCard("id_card_tech_assistent");
+    public static final DeferredItem<Item> ID_CARD_MUSICANT = idCard("id_card_musicant");
+    public static final DeferredItem<Item> ID_CARD_HO_S = idCard("id_card_ho_s");
+    public static final DeferredItem<Item> ID_CARD_INSTRUCTOR_S = idCard("id_card_instructor_s");
+    public static final DeferredItem<Item> ID_CARD_WARD = idCard("id_card_ward");
+    public static final DeferredItem<Item> ID_CARD_DETECTIVE = idCard("id_card_detective");
+    public static final DeferredItem<Item> ID_CARD_BRIG_MED = idCard("id_card_brig_med");
+    public static final DeferredItem<Item> ID_CARD_OFICER_S = idCard("id_card_oficer_s");
+    public static final DeferredItem<Item> ID_CARD_KADET_S = idCard("id_card_kadet_s");
+    public static final DeferredItem<Item> ID_CARD_CMO = idCard("id_card_cmo");
+    public static final DeferredItem<Item> ID_CARD_VM = idCard("id_card_vm");
+    public static final DeferredItem<Item> ID_CARD_CHIMIC = idCard("id_card_chimic");
+    public static final DeferredItem<Item> ID_CARD_PARAMED = idCard("id_card_paramed");
+    public static final DeferredItem<Item> ID_CARD_MEDIC = idCard("id_card_medic");
+    public static final DeferredItem<Item> ID_CARD_PSIHOLOG = idCard("id_card_psiholog");
+    public static final DeferredItem<Item> ID_CARD_INTERN = idCard("id_card_intern");
+    public static final DeferredItem<Item> ID_CARD_RD = idCard("id_card_rd");
+    public static final DeferredItem<Item> ID_CARD_VS = idCard("id_card_vs");
+    public static final DeferredItem<Item> ID_CARD_SCIENTIST = idCard("id_card_scientist");
+    public static final DeferredItem<Item> ID_CARD_SCI_ASSISTENT = idCard("id_card_sci_assistent");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_PASSANGER =
+            encryptionKey("encryption_key_passanger");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_COMMAND =
+            encryptionKey("encryption_key_command");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_ENGENEER =
+            encryptionKey("encryption_key_engeneer");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_MEDICAL =
+            encryptionKey("encryption_key_medical");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_RND =
+            encryptionKey("encryption_key_rnd");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_SECURITY =
+            encryptionKey("encryption_key_security");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_SERVICE =
+            encryptionKey("encryption_key_service");
+    public static final DeferredItem<Item> ENCRYPTION_KEY_CARGO =
+            encryptionKey("encryption_key_cargo");
+    public static final DeferredItem<Item> HEADSET_BASE =
+            headset("headset_base", Ssc14HeadsetDefinitions.BASE);
+    public static final DeferredItem<Item> HEADSET_BRIGMEDIC =
+            headset("headset_brigmedic", Ssc14HeadsetDefinitions.BRIGMEDIC);
+    public static final DeferredItem<Item> HEADSET_CARGO =
+            headset("headset_cargo", Ssc14HeadsetDefinitions.CARGO);
+    public static final DeferredItem<Item> HEADSET_CENTCOM =
+            headset("headset_centcom", Ssc14HeadsetDefinitions.CENTCOM);
+    public static final DeferredItem<Item> HEADSET_COMMAND =
+            headset("headset_command", Ssc14HeadsetDefinitions.COMMAND);
+    public static final DeferredItem<Item> HEADSET_ENGINEERING =
+            headset("headset_engineering", Ssc14HeadsetDefinitions.ENGINEERING);
+    public static final DeferredItem<Item> HEADSET_MEDICAL =
+            headset("headset_medical", Ssc14HeadsetDefinitions.MEDICAL);
+    public static final DeferredItem<Item> HEADSET_MEDICAL_SCIENCE =
+            headset("headset_medical_science", Ssc14HeadsetDefinitions.MEDICAL_SCIENCE);
+    public static final DeferredItem<Item> HEADSET_MINING =
+            headset("headset_mining", Ssc14HeadsetDefinitions.MINING);
+    public static final DeferredItem<Item> HEADSET_ROBOTICS =
+            headset("headset_robotics", Ssc14HeadsetDefinitions.ROBOTICS);
+    public static final DeferredItem<Item> HEADSET_SCIENCE =
+            headset("headset_science", Ssc14HeadsetDefinitions.SCIENCE);
+    public static final DeferredItem<Item> HEADSET_SECURITY =
+            headset("headset_security", Ssc14HeadsetDefinitions.SECURITY);
+    public static final DeferredItem<Item> HEADSET_SERVICE =
+            headset("headset_service", Ssc14HeadsetDefinitions.SERVICE);
+    public static final DeferredItem<Item> HEADSET_SYNDICATE =
+            headset("headset_syndicate", Ssc14HeadsetDefinitions.SYNDICATE);
+    public static final DeferredItem<Item> RED_SCARF = scarf("red_scarf");
+    public static final DeferredItem<Item> BLACK_SCARF = scarf("black_scarf");
+    public static final DeferredItem<Item> BLACK_GREEN_SCARF = scarf("black_green_scarf");
+    public static final DeferredItem<Item> BLUE_SCARF = scarf("blue_scarf");
+    public static final DeferredItem<Item> BROWN_SCARF = scarf("brown_scarf");
+    public static final DeferredItem<Item> GREEN_SCARF = scarf("green_scarf");
+    public static final DeferredItem<Item> LIGHT_BLUE_SCARF = scarf("light_blue_scarf");
+    public static final DeferredItem<Item> LIGHT_BLUE_WHITE_SCARF = scarf("light_blue_white_scarf");
+    public static final DeferredItem<Item> ORANGE_SCARF = scarf("orange_scarf");
+    public static final DeferredItem<Item> PURPLE_SCARF = scarf("purple_scarf");
+    public static final DeferredItem<Item> SINDY_SCARF = scarf("sindy_scarf");
+    public static final DeferredItem<Item> TRNS_SCARF = scarf("trns_scarf");
+    public static final DeferredItem<Item> YELLOW_SCARF = scarf("yellow_scarf");
+    public static final DeferredItem<Item> ENERGY_BAR_TRASH = foodPackagingWaste("energy_bar_trash");
+    public static final DeferredItem<Item> ENERGY_BAR = packagedEnergyBar("energy_bar");
+    public static final DeferredItem<Item> CHEESE_HONKERS_TRASH =
+            foodPackagingWaste("cheese_honkers_trash");
+    public static final DeferredItem<Item> CHIPS_TRASH = foodPackagingWaste("chips_trash");
+    public static final DeferredItem<Item> BORITOS_TRASH = foodPackagingWaste("boritos_trash");
+    public static final DeferredItem<Item> POPCORN_TRASH = foodPackagingWaste("popcorn_trash");
+    public static final DeferredItem<Item> TIE_BLACK = uniformAccessory("tie_black");
+    public static final DeferredItem<Item> TIE_RED = uniformAccessory("tie_red");
+    public static final DeferredItem<Item> TIE_SCIENCE = uniformAccessory("tie_science");
+    public static final DeferredItem<Item> STOCKINGS_BLUE = uniformAccessory("stockings_blue");
+    public static final DeferredItem<Item> STOCKINGS_CYAN = uniformAccessory("stockings_cyan");
+    public static final DeferredItem<Item> STOCKINGS_D_PINK = uniformAccessory("stockings_d_pink");
+    public static final DeferredItem<Item> STOCKINGS_GREEN = uniformAccessory("stockings_green");
+    public static final DeferredItem<Item> STOCKINGS_L_PINK = uniformAccessory("stockings_l_pink");
+    public static final DeferredItem<Item> STOCKINGS_ORANGE = uniformAccessory("stockings_orange");
+    public static final DeferredItem<Item> STOCKINGS_PURPLE = uniformAccessory("stockings_purple");
+    public static final DeferredItem<Item> STOCKINGS_YELLOW = uniformAccessory("stockings_yellow");
+    public static final DeferredItem<Item> SECURITY_JUMPSUIT = uniformJumpsuit("security_jumpsuit");
+    public static final DeferredItem<Item> PASSANGER_JUMPSUIT = uniformJumpsuit("passanger_jumpsuit");
+    public static final DeferredItem<Item> ATMOS_JUMPSUIT = uniformJumpsuit("atmos_jumpsuit");
+    public static final DeferredItem<Item> BOTANIST_JUMPSUIT = uniformJumpsuit("botanist_jumpsuit");
+    public static final DeferredItem<Item> CAPTAIN_JUMPSUIT = uniformJumpsuit("captain_jumpsuit");
+    public static final DeferredItem<Item> CARGO_JUMPSUIT = uniformJumpsuit("cargo_jumpsuit");
+    public static final DeferredItem<Item> CE_JUMPSUIT = uniformJumpsuit("ce_jumpsuit");
+    public static final DeferredItem<Item> CHEMIST_JUMPSUIT = uniformJumpsuit("chemist_jumpsuit");
+    public static final DeferredItem<Item> CMO_JUMPSUIT = uniformJumpsuit("cmo_jumpsuit");
+    public static final DeferredItem<Item> ENGENEER_JUMPSUIT = uniformJumpsuit("engeneer_jumpsuit");
+    public static final DeferredItem<Item> HO_P_JUMPSUIT = uniformJumpsuit("ho_p_jumpsuit");
+    public static final DeferredItem<Item> HO_S_JUMPSUIT = uniformJumpsuit("ho_s_jumpsuit");
+    public static final DeferredItem<Item> MEDICAL_JUMPSUIT = uniformJumpsuit("medical_jumpsuit");
+    public static final DeferredItem<Item> QM_JUMPSUIT = uniformJumpsuit("qm_jumpsuit");
+    public static final DeferredItem<Item> RD_JUMPSUIT = uniformJumpsuit("rd_jumpsuit");
+    public static final DeferredItem<Item> RND_JUMPSUIT = uniformJumpsuit("rnd_jumpsuit");
+    public static final DeferredItem<Item> WARDEN_JUMPSUIT = uniformJumpsuit("warden_jumpsuit");
+    public static final DeferredItem<Item> BARTENDER_JUMPSUIT = uniformJumpsuit("bartender_jumpsuit");
+    public static final DeferredItem<Item> BRIGMEDIC_JUMPSUIT = uniformJumpsuit("brigmedic_jumpsuit");
+    public static final DeferredItem<Item> CAPFORMAL_JUMPSUIT = uniformJumpsuit("capformal_jumpsuit");
+    public static final DeferredItem<Item> CASUAL_JUMPSUIT = uniformJumpsuit("casual_jumpsuit");
+    public static final DeferredItem<Item> C_ETURTLE_JUMPSUIT = uniformJumpsuit("c_eturtle_jumpsuit");
+    public static final DeferredItem<Item> CENTCOM_AGENT_JUMPSUIT = uniformJumpsuit("centcom_agent_jumpsuit");
+    public static final DeferredItem<Item> CENTCOM_OFFICER_JUMPSUIT = uniformJumpsuit("centcom_officer_jumpsuit");
+    public static final DeferredItem<Item> CENTCOM_OFFICIAL_JUMPSUIT = uniformJumpsuit("centcom_official_jumpsuit");
+    public static final DeferredItem<Item> CHAPLAIN_JUMPSUIT = uniformJumpsuit("chaplain_jumpsuit");
+    public static final DeferredItem<Item> CHEF_JUMPSUIT = uniformJumpsuit("chef_jumpsuit");
+    public static final DeferredItem<Item> CM_OTURTLE_JUMPSUIT = uniformJumpsuit("cm_oturtle_jumpsuit");
+    public static final DeferredItem<Item> HO_SPARADE_JUMPSUIT = uniformJumpsuit("ho_sparade_jumpsuit");
+    public static final DeferredItem<Item> MAID_JUMPSUIT = uniformJumpsuit("maid_jumpsuit");
+    public static final DeferredItem<Item> ISOLATED_GLOVES = passiveEquipment("isolated_gloves");
+    public static final DeferredItem<Item> COMBAT_BOOTS_ITEM = passiveEquipment("combat_boots_item");
+    public static final DeferredItem<Item> HELMET_SECURITY = passiveEquipment("helmet_security");
+    public static final DeferredItem<Item> BELT_SECURITY = passiveEquipment("belt_security");
+    public static final DeferredItem<Item> HELMETS_EVA = passiveEquipment("helmets_eva");
+    public static final DeferredItem<Item> GAS_MASK = passiveEquipment("gas_mask");
+    public static final DeferredItem<Item> WORK_BOOTS = passiveEquipment("work_boots");
+    public static final DeferredItem<Item> COAT_ATMOS = passiveEquipment("coat_atmos");
+    public static final DeferredItem<Item> COAT_SECURITY = passiveEquipment("coat_security");
+    public static final DeferredItem<Item> GLASS_GLASSES = passiveEquipment("glass_glasses");
+    public static final DeferredItem<Item> BLACK_GLOVES = passiveEquipment("black_gloves");
+    public static final DeferredItem<Item> HELMET_COSMONAUT = passiveEquipment("helmet_cosmonaut");
+    public static final DeferredItem<Item> BELT_SECURITY_WEBBING = passiveEquipment("belt_security_webbing");
+    public static final DeferredItem<Item> BELT_INSTRUMENTAL = passiveEquipment("belt_instrumental");
+    public static final DeferredItem<Item> MASK_GAS_SECURITY = passiveEquipment("mask_gas_security");
+    public static final DeferredItem<Item> HARDSUIT_SALVAGE = passiveEquipment("hardsuit_salvage");
+    public static final DeferredItem<Item> HARDSUIT_SALVAGE_HELMET = passiveEquipment("hardsuit_salvage_helmet");
+    public static final DeferredItem<Item> BLACK_SOLES_ITEM = passiveEquipment("black_soles_item");
+    public static final DeferredItem<Item> CLOAKS_CAP = passiveEquipment("cloaks_cap");
+    public static final DeferredItem<Item> MANTLES_CAP = passiveEquipment("mantles_cap");
+    public static final DeferredItem<Item> ARMOR_SECURITY = passiveEquipment("armor_security");
+    public static final DeferredItem<Item> OUTERCLOTHING_EVA = passiveEquipment("outerclothing_eva");
+    public static final DeferredItem<Item> MALE_BOXERS = passiveEquipment("male_boxers");
+    public static final DeferredItem<Item> GLASS_SECURITY = passiveEquipment("glass_security");
+    public static final DeferredItem<Item> CLOAKS_HO_S = passiveEquipment("cloaks_ho_s");
+    public static final DeferredItem<Item> MANTLES_HO_S_SHOULDER_CAP =
+            passiveEquipment("mantles_ho_s_shoulder_cap");
+    public static final DeferredItem<Item> MANTLES_HO_S = passiveEquipment("mantles_ho_s");
+    public static final DeferredItem<Item> GLASS_DARK = passiveEquipment("glass_dark");
+    public static final DeferredItem<Item> WHITE_KNEE = passiveEquipment("white_knee");
+    public static final DeferredItem<Item> BEE_THIGH = passiveEquipment("bee_thigh");
+    public static final DeferredItem<Item> BRUTEPACK = medicalSupply("brutepack");
+    public static final DeferredItem<Item> BLOODPACK = medicalSupply("bloodpack");
+    public static final DeferredItem<Item> GAUZE = medicalSupply("gauze");
+    public static final DeferredItem<Item> OINTMENT = medicalSupply("ointment");
+    public static final DeferredItem<Item> POSTER_RANDOM_ANYTHING = poster("poster_random_anything");
+    public static final DeferredItem<Item> POSTER_ANOMALY = poster("poster_anomaly");
+    public static final DeferredItem<Item> POSTER_ARMORY = poster("poster_armory");
+    public static final DeferredItem<Item> POSTER_ATMOS = poster("poster_atmos");
+    public static final DeferredItem<Item> POSTER_BAR = poster("poster_bar");
+    public static final DeferredItem<Item> POSTER_BRIDGE = poster("poster_bridge");
+    public static final DeferredItem<Item> POSTER_CARGO = poster("poster_cargo");
+    public static final DeferredItem<Item> POSTER_CHAPEL = poster("poster_chapel");
+    public static final DeferredItem<Item> POSTER_CHEM = poster("poster_chem");
+    public static final DeferredItem<Item> POSTER_COMMANDER = poster("poster_commander");
+    public static final DeferredItem<Item> POSTER_DEATHSPOSAL = poster("poster_deathsposal");
+    public static final DeferredItem<Item> POSTER_DETECTIVE = poster("poster_detective");
+    public static final DeferredItem<Item> POSTER_DRAMA = poster("poster_drama");
+    public static final DeferredItem<Item> POSTER_ENG = poster("poster_eng");
+    public static final DeferredItem<Item> POSTER_EVA = poster("poster_eva");
+    public static final DeferredItem<Item> POSTER_GRAVI = poster("poster_gravi");
+    public static final DeferredItem<Item> POSTER_HYDRO = poster("poster_hydro");
+    public static final DeferredItem<Item> POSTER_JANITOR = poster("poster_janitor");
+    public static final DeferredItem<Item> POSTER_KITCHEN = poster("poster_kitchen");
+    public static final DeferredItem<Item> POSTER_LAW = poster("poster_law");
+    public static final DeferredItem<Item> POSTER_MAIL = poster("poster_mail");
+    public static final DeferredItem<Item> POSTER_MEDBAY = poster("poster_medbay");
+    public static final DeferredItem<Item> POSTER_MEDIUM_SECURE = poster("poster_medium_secure");
+    public static final DeferredItem<Item> POSTER_PODS = poster("poster_pods");
+    public static final DeferredItem<Item> POSTER_PRISON = poster("poster_prison");
+    public static final DeferredItem<Item> POSTER_RND = poster("poster_rnd");
+    public static final DeferredItem<Item> POSTER_SALVAGE = poster("poster_salvage");
+    public static final DeferredItem<Item> POSTER_SCI = poster("poster_sci");
+    public static final DeferredItem<Item> POSTER_SECURITY = poster("poster_security");
+    public static final DeferredItem<Item> POSTER_SPACE = poster("poster_space");
+    public static final DeferredItem<Item> POSTER_SURGERY = poster("poster_surgery");
+    public static final DeferredItem<Item> POSTER_TELECOMS = poster("poster_telecoms");
+    public static final DeferredItem<Item> POSTER_VAULT = poster("poster_vault");
+    public static final DeferredItem<Item> POSTER_VIROLOGY = poster("poster_virology");
+    public static final DeferredItem<Item> POSTER_XENOARCH = poster("poster_xenoarch");
+    public static final DeferredItem<Item> WALL_CARCASE_ENTIT_SPAWN_EGG =
+            spawnEgg("wall_carcase_entit_spawn_egg", Ssc14EntityTypes.WALL_CARCASE_ENTIT);
+    public static final DeferredItem<Item> ID_CONSOLE_ENTITY_SPAWN_EGG =
+            spawnEgg("id_console_entity_spawn_egg", Ssc14EntityTypes.ID_CONSOLE_ENTITY);
+    public static final DeferredItem<Item> PLASSTEEL_WALL_CARCASE_ENTIT_SPAWN_EGG =
+            spawnEgg("plassteel_wall_carcase_entit_spawn_egg", Ssc14EntityTypes.PLASSTEEL_WALL_CARCASE_ENTIT);
+    public static final DeferredItem<Item> MOUSE_BROWN_SPAWN_EGG =
+            spawnEgg("mouse_brown_spawn_egg", Ssc14EntityTypes.MOUSE_BROWN);
+    public static final DeferredItem<Item> MOUSE_GRAY_SPAWN_EGG =
+            spawnEgg("mouse_gray_spawn_egg", Ssc14EntityTypes.MOUSE_GRAY);
+    public static final DeferredItem<Item> MOUSE_WHITE_SPAWN_EGG =
+            spawnEgg("mouse_white_spawn_egg", Ssc14EntityTypes.MOUSE_WHITE);
+    public static final DeferredItem<Item> CARP_SPAWN_EGG =
+            spawnEgg("carp_spawn_egg", Ssc14EntityTypes.CARP);
+    public static final DeferredItem<Item> DOUGH = cookingIngredient("dough");
+    public static final DeferredItem<Item> DOUGH_PIECE = cookingIngredient("dough_piece");
+    public static final DeferredItem<Item> EGG = cookingIngredient("egg");
+    public static final DeferredItem<Item> EGGSHELL = cookingIngredient("eggshell");
+    public static final DeferredItem<Item> BREAD = edibleFood("bread", Ssc14FoodDefinitions.BREAD);
+    public static final DeferredItem<Item> BREAD_SLICE =
+            edibleFood("bread_slice", Ssc14FoodDefinitions.BREAD_SLICE);
+    public static final DeferredItem<Item> BUN = edibleFood("bun", Ssc14FoodDefinitions.BUN);
+    public static final DeferredItem<Item> TOFU = edibleFood("tofu", Ssc14FoodDefinitions.TOFU);
+    public static final DeferredItem<Item> TOFU_BURGER =
+            edibleFood("tofu_burger", Ssc14FoodDefinitions.TOFU_BURGER);
+    public static final DeferredItem<Item> TOFU_SLICE =
+            edibleFood("tofu_slice", Ssc14FoodDefinitions.TOFU_SLICE);
+    public static final DeferredItem<Item> CHEESE =
+            edibleFood("cheese", Ssc14FoodDefinitions.CHEESE);
+    public static final DeferredItem<Item> CUTLET =
+            edibleFood("cutlet", Ssc14FoodDefinitions.CUTLET);
+    public static final DeferredItem<Item> FRIED_CUTLET =
+            edibleFood("fried_cutlet", Ssc14FoodDefinitions.FRIED_CUTLET);
+    public static final DeferredItem<Item> MEAT = edibleFood("meat", Ssc14FoodDefinitions.MEAT);
+    public static final DeferredItem<Item> FRIED_MEAT =
+            edibleFood("fried_meat", Ssc14FoodDefinitions.FRIED_MEAT);
+    public static final DeferredItem<Item> ROTTEN_MEAT =
+            edibleFood("rotten_meat", Ssc14FoodDefinitions.ROTTEN_MEAT);
+    public static final DeferredItem<Item> ENERGY_BAR_2 =
+            edibleFood("energy_bar_2", Ssc14FoodDefinitions.ENERGY_BAR_2);
+    public static final DeferredItem<Item> CATBURGER =
+            edibleFood("catburger", Ssc14FoodDefinitions.CATBURGER);
+    public static final DeferredItem<Item> CHEESEBURGER =
+            edibleFood("cheeseburger", Ssc14FoodDefinitions.CHEESEBURGER);
+    public static final DeferredItem<Item> CHEESE_HONKERS =
+            edibleFood("cheese_honkers",
+                    Ssc14FoodDefinitions.cheeseHonkers(CHEESE_HONKERS_TRASH));
+    public static final DeferredItem<Item> CHIPS =
+            edibleFood("chips", Ssc14FoodDefinitions.chips(CHIPS_TRASH));
+    public static final DeferredItem<Item> BORITOS =
+            edibleFood("boritos", Ssc14FoodDefinitions.boritos(BORITOS_TRASH));
+    public static final DeferredItem<Item> POPCORN =
+            edibleFood("popcorn", Ssc14FoodDefinitions.popcorn(POPCORN_TRASH));
+    public static final DeferredItem<Item> BAGEL = foodProp("bagel");
+    public static final DeferredItem<Item> BAGUETTE = foodProp("baguette");
+    public static final DeferredItem<Item> BANANA_NUT_BREAD = foodProp("banana_nut_bread");
+    public static final DeferredItem<Item> CHEESE_WHEEL = foodProp("cheese_wheel");
+    public static final DeferredItem<Item> CREAM_CHEESE_BREAD =
+            foodProp("cream_cheese_bread");
+    public static final DeferredItem<Item> FLY_AMANITA = foodProp("fly_amanita");
+    public static final DeferredItem<Item> MEATLOAF = foodProp("meatloaf");
+    public static final DeferredItem<Item> MOLDY_BREAD_PIECE =
+            foodProp("moldy_bread_piece");
+    public static final DeferredItem<Item> POPPY_SEED_BAGEL =
+            foodProp("poppy_seed_bagel");
+    public static final DeferredItem<Item> POTATO = foodProp("potato");
+    public static final DeferredItem<Item> SAUSAGE_BREAD = foodProp("sausage_bread");
+    public static final DeferredItem<Item> SPACE_FRIES = foodProp("space_fries");
+    public static final DeferredItem<Item> TACO_FLATBREAD = foodProp("taco_flatbread");
+    public static final DeferredItem<Item> TOAST_WITH_BUTTER =
+            foodProp("toast_with_butter");
+    public static final DeferredItem<Item> TOFU_BREAD = foodProp("tofu_bread");
+
+    private Ssc14Items() { }
+
+    private static DeferredItem<Item> material(String name) {
+        return REGISTRY.<Item>registerItem(name, MaterialItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> constructionSheet(
+            String name, ConstructionItemKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new ConstructionSheetItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> cableCoil(String name, ConstructionItemKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new CableCoilItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> decalTool(String name, DecalToolKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new DecalToolItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> currency(String name, CurrencyKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new CurrencyItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> glassShard(String name, GlassShardKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new GlassShardItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> portableMenu(
+            String name, PortableMenuItemKind kind) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new PortableMenuItem(properties, kind),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> mk58(String name, Mk58State state) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new Mk58Item(properties, state), Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> pistolMagazine(
+            String name, PistolMagazineState state) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new PistolMagazineItem(properties, state),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> mechanicalTool(
+            String name, MechanicalToolProfile profile) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new MechanicalHandToolItem(properties, profile),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> welder(String name, WelderState state) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new WelderItem(properties, state), Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> fenceBlockItem(
+            String name,
+            net.neoforged.neoforge.registries.DeferredBlock<
+                    ? extends net.minecraft.world.level.block.Block> block) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new FenceBlockItem(
+                        block.get(), properties,
+                        "block.ssc_14." + name + ".description_0"),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> asteroidBlockItem(
+            String name, DeferredBlock<? extends Block> block) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(),
+                        properties.stacksTo(1).fireResistant()),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> bannerBlockItem(
+            String name, DeferredBlock<? extends Block> block) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(), properties.stacksTo(1)),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> tileBlockItem(
+            String name, DeferredBlock<? extends Block> block) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(),
+                        properties.stacksTo(30).fireResistant()),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> blockItem(String name,
+            DeferredBlock<? extends Block> block, int stackSize) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(), properties.stacksTo(stackSize)),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> fireResistantBlockItem(String name,
+            DeferredBlock<? extends Block> block, int stackSize) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(),
+                        properties.stacksTo(stackSize).fireResistant()),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> configuredBlockItem(String name,
+            DeferredBlock<? extends Block> block,
+            UnaryOperator<Item.Properties> configuration) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new BlockItem(block.get(), configuration.apply(properties)),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> utility(String name) {
+        return REGISTRY.<Item>registerItem(name, UtilityItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> ammunition(String name) {
+        return REGISTRY.<Item>registerItem(name, AmmunitionItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> reagentContainer(String name, int capacity) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new ReagentContainerItem(properties, capacity),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> sealedReagentContainer(
+            String name,
+            ReagentContainerDefinition definition,
+            Supplier<? extends Item> openItem) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new SealedReagentContainerItem(
+                        properties, definition, openItem),
+                Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> machineComponent(String name, int maxStackSize) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new MachineComponentItem(properties, maxStackSize), Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> lightingComponent(String name) {
+        return REGISTRY.<Item>registerItem(name, LightingComponentItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> idCard(String name) {
+        return REGISTRY.<Item>registerItem(name, IdCardItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> encryptionKey(String name) {
+        return REGISTRY.<Item>registerItem(name, RadioEncryptionKeyItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> headset(
+            String name, HeadsetDefinition definition) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new HeadsetItem(properties, definition), Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> scarf(String name) {
+        return REGISTRY.<Item>registerItem(name, ScarfItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> magneticBoots(
+            String name, MagneticBootsState state) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new MagneticBootsItem(properties, state), Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> extinguisher(
+            String name, ExtinguisherState state) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new ExtinguisherItem(properties, state), Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> foodPackagingWaste(String name) {
+        return REGISTRY.<Item>registerItem(name, FoodPackagingWasteItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> packagedEnergyBar(String name) {
+        return REGISTRY.<Item>registerItem(name, PackagedEnergyBarItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> cookingIngredient(String name) {
+        return REGISTRY.<Item>registerItem(name, CookingIngredientItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> edibleFood(String name, FoodDefinition definition) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new EdibleFoodItem(properties, definition), Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> foodProp(String name) {
+        return REGISTRY.<Item>registerItem(name, FoodPropItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> uniformAccessory(String name) {
+        return REGISTRY.<Item>registerItem(name, UniformAccessoryItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> uniformJumpsuit(String name) {
+        return REGISTRY.<Item>registerItem(name, UniformJumpsuitItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> passiveEquipment(String name) {
+        return REGISTRY.<Item>registerItem(name, PassiveEquipmentItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> medicalSupply(String name) {
+        return REGISTRY.<Item>registerItem(name, MedicalSupplyItem::new, Item.Properties::new);
+    }
+
+    private static DeferredItem<Item> poster(String name) {
+        return REGISTRY.<Item>registerItem(name, properties -> new PosterItem(properties, name));
+    }
+
+    private static DeferredItem<Item> spawnEgg(
+            String name, Supplier<? extends EntityType<?>> entityType) {
+        return REGISTRY.<Item>registerItem(name,
+                properties -> new SpawnEggItem(properties.spawnEgg(entityType.get())));
+    }
+}

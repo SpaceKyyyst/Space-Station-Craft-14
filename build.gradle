@@ -1,7 +1,9 @@
 plugins {
     id 'eclipse'
     id 'checkstyle'
-    id 'net.neoforged.moddev' version '2.0.141'
+    id 'pmd'
+    id 'jacoco'
+    id 'net.neoforged.moddev' version '2.0.148'
 }
 
 version = '0.1.27'
@@ -13,6 +15,7 @@ repositories {
 }
 
 dependencies {
+    implementation "maven.modrinth:ldlib:mc26.1.x-26.1.2.39-neoforge"
     implementation "maven.modrinth:ItemPhysic:1.8.15"
     implementation "maven.modrinth:creativecore:2.14.16-neoforge"
     implementation "maven.modrinth:fusion-connected-textures:1.3.15-neoforge-mc26.1"
@@ -21,10 +24,48 @@ dependencies {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
+// Keep server fixtures and test subscribers out of the published mod jar.
+sourceSets {
+    gameTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+configurations {
+    gameTestImplementation.extendsFrom implementation
+    gameTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+def gameTestReport = layout.buildDirectory.file('test-results/gameTest/TEST-atmosphere.xml')
+
 neoForge {
-    version = "26.1.2.71"
+    version = "26.1.2.109"
+    addModdingDependenciesTo sourceSets.gameTest
+
+    mods {
+        mcreator {
+            sourceSet sourceSets.main
+        }
+        mcreatorGameTest {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.gameTest
+        }
+    }
+
+    unitTest {
+        enable()
+        testedMod = mods.mcreator
+        loadedMods = [mods.mcreator]
+    }
 
     runs {
+        configureEach {
+            loadedMods = [mods.mcreator]
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+
         client {
             client()
 
@@ -38,17 +79,25 @@ neoForge {
         server {
             server()
         }
-
-        configureEach {
-            systemProperty 'forge.logging.markers', 'REGISTRIES'
-            logLevel = org.slf4j.event.Level.DEBUG
+        gameTestServer {
+            type = 'gameTestServer'
+            sourceSet = sourceSets.gameTest
+            loadedMods = [mods.mcreatorGameTest]
+            gameDirectory = layout.buildDirectory.dir('gameTest/run').get().asFile
+            programArguments = [
+                '--tests', 'ssc_14:*',
+                '--report', gameTestReport.get().asFile.absolutePath
+            ]
         }
     }
+}
 
-    mods {
-        mcreator {
-            sourceSet sourceSets.main
-        }
+tasks.named('runGameTestServer') {
+    doFirst {
+        def report = gameTestReport.get().asFile
+        report.parentFile.mkdirs()
+        // A failed startup must never leave a previous successful report behind.
+        java.nio.file.Files.deleteIfExists(report.toPath())
     }
 }
 
@@ -63,9 +112,16 @@ sourceSets {
     domain {
         java {
             srcDir 'src/main/java'
-            include 'net/mcreator/ssc/GasType.java'
-            include 'net/mcreator/ssc/GasReaction.java'
-            include 'net/mcreator/ssc/combat/**'
+            include 'net/ssc14/common/atmosphere/**'
+            include 'net/ssc14/common/airlock/AirlockMotion.java'
+            include 'net/ssc14/common/chemistry/MixturePortion.java'
+            include 'net/ssc14/common/chemistry/ReagentAmounts.java'
+            include 'net/ssc14/common/chemistry/ReagentTransferPlan.java'
+            include 'net/ssc14/common/medical/MedicalEffectsController.java'
+            include 'net/ssc14/common/medical/MedicalPresentationController.java'
+            include 'net/ssc14/common/medical/MedicalStatePolicy.java'
+            include 'net/ssc14/core/**'
+            include 'net/ssc14/integration/neoforge/server/TickTaskQueue.java'
         }
     }
     domainTest {
@@ -75,9 +131,16 @@ sourceSets {
 }
 
 dependencies {
-    domainTestImplementation platform('org.junit:junit-bom:5.11.4')
+    domainTestImplementation platform('org.junit:junit-bom:6.1.3')
     domainTestImplementation 'org.junit.jupiter:junit-jupiter'
     domainTestRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation platform('org.junit:junit-bom:6.1.3')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }
 
 tasks.register('domainTest', Test) {
@@ -88,13 +151,96 @@ tasks.register('domainTest', Test) {
     useJUnitPlatform()
 }
 
+jacoco {
+    // Java 25 support starts with JaCoCo 0.8.14.
+    toolVersion = '0.8.14'
+}
+
+tasks.register('jacocoDomainTestReport', JacocoReport) {
+    description = 'Reports coverage of domain rules exercised by domainTest.'
+    group = 'verification'
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+tasks.register('jacocoDomainTestCoverageVerification', JacocoCoverageVerification) {
+    description = 'Enforces the measured instruction coverage baseline for domain rules.'
+    group = 'verification'
+    dependsOn tasks.named('jacocoDomainTestReport')
+    violationRules {
+        rule {
+            limit {
+                counter = 'INSTRUCTION'
+                value = 'COVEREDRATIO'
+                // Baseline: 3506 / 4339 = 80.8020281170777%, rounded down.
+                minimum = 0.80
+            }
+        }
+    }
+}
+
+tasks.withType(org.gradle.testing.jacoco.tasks.JacocoReportBase).configureEach {
+    if (name in ['jacocoDomainTestReport', 'jacocoDomainTestCoverageVerification']) {
+        dependsOn tasks.named('domainTest')
+        executionData tasks.named('domainTest').get()
+        classDirectories.setFrom(sourceSets.domain.output.classesDirs)
+        sourceDirectories.setFrom(sourceSets.domain.allJava.srcDirs)
+        // JaCoCo normally skips tasks when execution data is absent.
+        setOnlyIf { true }
+        doFirst { task ->
+            def executionFiles = task.executionData.files
+            if (executionFiles.empty || executionFiles.any { !it.isFile() || it.length() == 0 }) {
+                throw new GradleException('Domain test coverage requires non-empty domainTest execution data.')
+            }
+        }
+    }
+}
+
 tasks.named('check') {
     dependsOn tasks.named('domainTest')
+    dependsOn tasks.named('jacocoDomainTestCoverageVerification')
 }
 
 checkstyle {
-    toolVersion = '10.21.4'
+    toolVersion = '14.3.0'
     configFile = file('config/checkstyle/checkstyle.xml')
+}
+
+pmd {
+    toolVersion = '7.28.0'
+    ruleSets = []
+    ruleSetFiles = files('config/pmd/correctness.xml')
+    consoleOutput = true
+}
+
+// Analyze every production source, including generated adapters, once.
+tasks.withType(Pmd).configureEach {
+    enabled = name in ['pmdMain', 'methodMetrics']
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+tasks.register('methodMetrics', Pmd) {
+    description = 'Reports cyclomatic complexity of every method; this is not a manual review.'
+    group = 'verification'
+    source = sourceSets.main.allJava
+    classpath = files()
+    ruleSets = []
+    ruleSetFiles = files('config/pmd/metrics.xml')
+    ignoreFailures = true
+    consoleOutput = false
+    reports {
+        xml.outputLocation = layout.buildDirectory.file('reports/pmd/method-metrics.xml')
+        html.outputLocation = layout.buildDirectory.file('reports/pmd/method-metrics.html')
+    }
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('methodMetrics')
 }
 
 // Start with the extracted domain, rather than a blanket generated-code suppression.
@@ -107,4 +253,3 @@ tasks.withType(Checkstyle).configureEach {
         html.required = true
     }
 }
-

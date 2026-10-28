@@ -1,4 +1,6 @@
 {
+  "message.ssc_14.airlock_work": "Airlock work: %s s remaining",
+  "message.ssc_14.airlock_log": "Airlock log (last 16 events):",
   "biome.ssc_14.spaceb": "Space",
   "subtitles.ssc14_sounds": "",
   "item.ssc_14.rod_floor": "Rod Floor",
@@ -1033,5 +1035,17 @@
   "item.ssc_14.taco_flatbread": "Taco Flatbread",
   "item.ssc_14.toast_with_butter": "Toast With Butter",
   "item.ssc_14.tofu_bread": "Tofu Bread",
-  "item.ssc_14.fly_amanita": "Fly Amanita"
+  "item.ssc_14.fly_amanita": "Fly Amanita",
+  "gui.ssc_14.handy.gravity.charge": "Charge: %s",
+  "gui.ssc_14.handy.gravity.charged": "Fully charged",
+  "gui.ssc_14.handy.gravity.charging": "Charging",
+  "gui.ssc_14.handy.gravity.close": "Close",
+  "gui.ssc_14.handy.gravity.disable": "Disable",
+  "gui.ssc_14.handy.gravity.discharging": "Discharging",
+  "gui.ssc_14.handy.gravity.enable": "Enable",
+  "gui.ssc_14.handy.gravity.eta": "ETA: %s",
+  "gui.ssc_14.handy.gravity.off": "Off",
+  "gui.ssc_14.handy.gravity.on": "On",
+  "gui.ssc_14.handy.gravity.power": "Power: %s",
+  "gui.ssc_14.handy.gravity.status": "Status: %s"
 }

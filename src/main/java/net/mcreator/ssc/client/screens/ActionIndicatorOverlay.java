@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.ssc.procedures.*;
+import net.ssc14.content.medical.ActionProgressService;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class ActionIndicatorOverlay {
@@ -38,23 +39,23 @@ public class ActionIndicatorOverlay {
 			y = entity.getY();
 			z = entity.getZ();
 		}
-		if (true) {
-			if (ActGUIProcedureProcedure.execute(entity)) {
+		{
+			if (ActionProgressService.execute(entity)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
-			if (ActGUIProcedure2Procedure.execute(entity)) {
+			if (ActionProgressService.isAtStep(entity, 2)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
-			if (ActGUIProcedure3Procedure.execute(entity)) {
+			if (ActionProgressService.isAtStep(entity, 3)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
-			if (ActGUIProcedure4Procedure.execute(entity)) {
+			if (ActionProgressService.isAtStep(entity, 4)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
-			if (ActGUIProcedure5Procedure.execute(entity)) {
+			if (ActionProgressService.isAtStep(entity, 5)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_4, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
-			if (ActGUIProcedure6Procedure.execute(entity)) {
+			if (ActionProgressService.isAtStep(entity, 6)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_5, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
 		}

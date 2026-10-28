@@ -10,8 +10,9 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.component.DataComponents;
 
-import net.mcreator.ssc.world.inventory.AccessConfigGUIMenu;
+import net.ssc14.content.menu.access.AccessConfigItemMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.container.PortableMenuItemKind;
 
 @EventBusSubscriber
 public class AccessConfigInventoryCapability extends ItemAccessItemHandler {
@@ -19,13 +20,14 @@ public class AccessConfigInventoryCapability extends ItemAccessItemHandler {
 	public static void onItemDropped(ItemTossEvent event) {
 		if (event.getEntity().getItem().getItem() == Ssc14ModItems.ACCESS_CONFIG.get()) {
 			Player player = event.getPlayer();
-			if (player.containerMenu instanceof AccessConfigGUIMenu)
+			if (player.containerMenu instanceof AccessConfigItemMenu)
 				player.closeContainer();
 		}
 	}
 
 	public AccessConfigInventoryCapability(ItemAccess access) {
-		super(access, DataComponents.CONTAINER, 1);
+		super(access, DataComponents.CONTAINER,
+				PortableMenuItemKind.ACCESS_CONFIG.inventorySlots());
 	}
 
 	@Override

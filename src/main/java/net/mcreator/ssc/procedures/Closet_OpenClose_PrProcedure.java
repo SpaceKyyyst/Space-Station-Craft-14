@@ -35,7 +35,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.TagKey;
 
-import net.mcreator.ssc.world.inventory.AccessConfigMENUMenu;
+import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 import io.netty.buffer.Unpooled;

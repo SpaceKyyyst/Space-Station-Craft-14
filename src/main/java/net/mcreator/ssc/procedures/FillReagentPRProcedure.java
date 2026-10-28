@@ -2,7 +2,8 @@
 package net.mcreator.ssc.procedures;
 
 import net.mcreator.ssc.ModReagents;
-import net.mcreator.ssc.item.ReagentContainerItem;
+import net.ssc14.content.item.reagent.ReagentContainerAccess;
+import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -48,7 +49,7 @@ public class FillReagentPRProcedure {
             return;
         }
 
-        boolean success = ModReagents.addReagent(mainHand, reagentName, amount);
+        boolean success = ReagentContainerAccess.add(mainHand, reagentName, amount);
 
         if (success) {
             ModReagents.processReactions(mainHand, player);

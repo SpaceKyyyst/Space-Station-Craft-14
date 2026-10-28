@@ -1,0 +1,6 @@
+// Compatibility task for the combined isolated game-test source set.
+gradle.projectsEvaluated {
+    rootProject.tasks.register('runGameplayTest') {
+        dependsOn rootProject.tasks.named('runGameTestServer')
+    }
+}

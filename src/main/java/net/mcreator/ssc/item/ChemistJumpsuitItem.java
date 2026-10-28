@@ -1,8 +1,11 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.clothing.UniformJumpsuitItem;
 
-public class ChemistJumpsuitItem extends Item {
+/** @deprecated Use {@link UniformJumpsuitItem}. */
+@Deprecated(forRemoval = false)
+public class ChemistJumpsuitItem extends UniformJumpsuitItem {
 	public ChemistJumpsuitItem(Item.Properties properties) {
 		super(properties.stacksTo(1));
 	}

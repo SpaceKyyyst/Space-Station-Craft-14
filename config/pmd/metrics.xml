@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ruleset name="Method complexity inventory"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.github.io/schema/ruleset_2_0_0.xsd">
+    <description>Inventory executable methods and constructors, not a pass/fail quality threshold.</description>
+    <rule ref="category/java/design.xml/CyclomaticComplexity">
+        <properties>
+            <property name="methodReportLevel" value="1"/>
+            <property name="classReportLevel" value="1000000"/>
+        </properties>
+    </rule>
+</ruleset>

@@ -1,7 +1,10 @@
 
 package net.mcreator.ssc;
 
-import net.mcreator.ssc.item.ReagentContainerItem;
+import net.ssc14.content.item.reagent.ReagentContainerItem;
+import net.ssc14.content.item.reagent.ReagentContainerAccess;
+import net.ssc14.common.chemistry.ReagentAmounts;
+import net.ssc14.common.chemistry.ReagentTransferPlan;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -27,8 +30,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
-import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -38,8 +39,6 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.lang.reflect.Method;
 
 @EventBusSubscriber(modid = "ssc_14")
 public class ModReagents {
@@ -80,7 +79,7 @@ public class ModReagents {
 	    new Reagent("space_up", "reagent.ssc_14.space_up", 0x00FF00),
 	    new Reagent("starkist", "reagent.ssc_14.starkist", 0x9F3400),
 	    new Reagent("fourteen_loko", "reagent.ssc_14.fourteen_loko", 0xDEB928),
-	    
+
 	    // Соки (Juices)
 	    new Reagent("apple_juice", "reagent.ssc_14.apple_juice", 0xFDAD01),
 	    new Reagent("banana_juice", "reagent.ssc_14.banana_juice", 0xFFE777),
@@ -95,7 +94,7 @@ public class ModReagents {
 	    new Reagent("potato_juice", "reagent.ssc_14.potato_juice", 0x302000),
 	    new Reagent("tomato_juice", "reagent.ssc_14.tomato_juice", 0x731008),
 	    new Reagent("watermelon_juice", "reagent.ssc_14.watermelon_juice", 0xEF3520),
-	    
+
 	    // Алкоголь (Alcohol)
 	    new Reagent("absinthe", "reagent.ssc_14.absinthe", 0x33EE00),
 	    new Reagent("ale", "reagent.ssc_14.ale", 0x663100),
@@ -116,7 +115,7 @@ public class ModReagents {
 	    new Reagent("vodka", "reagent.ssc_14.vodka", 0xD1D1D1),
 	    new Reagent("whiskey", "reagent.ssc_14.whiskey", 0x664300),
 	    new Reagent("wine", "reagent.ssc_14.wine", 0x7E4043),
-	    
+
 	    // Коктейли (Cocktails)
 	    new Reagent("acidspit", "reagent.ssc_14.acidspit", 0x365000),
 	    new Reagent("allies_cocktail", "reagent.ssc_14.allies_cocktail", 0x00664D),
@@ -180,7 +179,7 @@ public class ModReagents {
 	    new Reagent("toxins_special", "reagent.ssc_14.toxins_special", 0x665C00),
 	    new Reagent("vodka_martini", "reagent.ssc_14.vodka_martini", 0x004666),
 	    new Reagent("vodka_tonic", "reagent.ssc_14.vodka_tonic", 0x0064C8),
-	    
+
 	    // Химикаты (Chemicals)
 	    new Reagent("potassium", "reagent.ssc_14.potassium", 0xC6C8CC),
 	    new Reagent("sodium", "reagent.ssc_14.sodium", 0xC6C8CC),
@@ -203,7 +202,7 @@ public class ModReagents {
 	    new Reagent("uranium", "reagent.ssc_14.uranium", 0x8FA191),
 	    new Reagent("radium", "reagent.ssc_14.radium", 0x00FF04),
 	    new Reagent("iodine", "reagent.ssc_14.iodine", 0xBC8A00),
-	    
+
 	    // Медицина (Medicine)
 	    new Reagent("bicaridine", "reagent.ssc_14.bicaridine", 0xFFAA00),
 	    new Reagent("kelotane", "reagent.ssc_14.kelotane", 0xBF3D19),
@@ -243,7 +242,7 @@ public class ModReagents {
 	    new Reagent("impedrezene", "reagent.ssc_14.impedrezene", 0x215263),
 	    new Reagent("ephedrine", "reagent.ssc_14.ephedrine", 0xD2FFFA),
 	    new Reagent("desoxyephedrine", "reagent.ssc_14.desoxyephedrine", 0xFAFAFA),
-	    
+
 	    // Токсины (Toxins)
 	    new Reagent("toxin", "reagent.ssc_14.toxin", 0xCF3600),
 	    new Reagent("plasma", "reagent.ssc_14.plasma", 0x7E009E),
@@ -257,7 +256,7 @@ public class ModReagents {
 	    new Reagent("fluorosulfuric_acid", "reagent.ssc_14.fluorosulfuric_acid", 0x5050FF),
 	    new Reagent("sulfuric_acid", "reagent.ssc_14.sulfuric_acid", 0xBF8C00),
 	    new Reagent("space_drugs", "reagent.ssc_14.space_drugs", 0x63806E),
-	    
+
 	    // Промышленные (Industrial)
 	    new Reagent("welding_fuel", "reagent.ssc_14.welding_fuel", 0xA76B1C),
 	    new Reagent("thermite", "reagent.ssc_14.thermite", 0x757245),
@@ -273,7 +272,7 @@ public class ModReagents {
 	    new Reagent("phenol", "reagent.ssc_14.phenol", 0xE7EA91),
 	    new Reagent("ammonia", "reagent.ssc_14.ammonia", 0x77B58E),
 	    new Reagent("diethylamine", "reagent.ssc_14.diethylamine", 0xA1000B),
-	    
+
 	    // Ботаника (Botany)
 	    new Reagent("ez_nutrient", "reagent.ssc_14.ez_nutrient", 0x664330),
 	    new Reagent("left4_zed", "reagent.ssc_14.left4_zed", 0x5B406C),
@@ -281,7 +280,7 @@ public class ModReagents {
 	    new Reagent("plant_bgone", "reagent.ssc_14.plant_bgone", 0x49002E),
 	    new Reagent("robust_harvest", "reagent.ssc_14.robust_harvest", 0x3E901C),
 	    new Reagent("weed_killer", "reagent.ssc_14.weed_killer", 0x968395),
-	    
+
 	    // Еда (Food)
 	    new Reagent("flour", "reagent.ssc_14.flour", 0xFFFFFF),
 	    new Reagent("sugar", "reagent.ssc_14.sugar", 0xFFFFFF),
@@ -295,7 +294,7 @@ public class ModReagents {
 	    new Reagent("oil", "reagent.ssc_14.oil", 0xB67823),
 	    new Reagent("theobromine", "reagent.ssc_14.theobromine", 0xF5F5F5),
 	    new Reagent("table_salt", "reagent.ssc_14.table_salt", 0xFFFFFF),
-	    
+
 	    // Прочее (Misc)
 	    new Reagent("carpetium", "reagent.ssc_14.carpetium", 0x800000),
 	    new Reagent("fiber", "reagent.ssc_14.fiber", 0x808080),
@@ -311,7 +310,7 @@ public class ModReagents {
 	public static final List<Reaction> CONFIG_REACTIONS = List.of(
 	    // ===== ВЗРЫВЧАТКА И ОПАСНЫЕ РЕАКЦИИ =====
 	    new Reaction(Map.of("potassium", 1, "water", 1), List.of(new ExplosionEffect(3.0f))),
-	    
+
 	    // ===== НАПИТКИ (Drinks) =====
 	    new Reaction(Map.of("tea", 2, "ice", 1), List.of(new ReagentGive("ice_tea", 3))),
 	    new Reaction(Map.of("lemonade", 1, "beer", 1), List.of(new ReagentGive("radler", 2))),
@@ -345,7 +344,7 @@ public class ModReagents {
 	    new Reaction(Map.of("iced_tea", 1, "sugar", 1), List.of(new ReagentGive("tortuga", 2))),
 	    new Reaction(Map.of("ice", 1, "green_tea", 2), List.of(new ReagentGive("iced_green_tea", 3))),
 	    new Reaction(Map.of("mead", 1, "blood", 1), List.of(new ReagentGive("red_mead", 2))),
-	    
+
 	    // ===== МЕДИЦИНА (Medicine) =====
 	    new Reaction(Map.of("carbon", 1, "inaprovaline", 1), List.of(new ReagentGive("bicaridine", 2))),
 	    new Reaction(Map.of("oxygen", 1, "sugar", 1, "carbon", 1), List.of(new ReagentGive("inaprovaline", 3))),
@@ -429,7 +428,7 @@ public class ModReagents {
 	    new Reaction(Map.of("silver", 10, "frost_oil", 5), List.of(new ReagentGive("silver_ingot", 1))),
 	    new Reaction(Map.of("gold", 10, "frost_oil", 5), List.of(new ReagentGive("gold_ingot", 1))),
 	    new Reaction(Map.of("potassium", 6, "sulfur", 2, "coal", 2), List.of(new ReagentGive("black_powder", 10))),
-	    
+
 	    // ===== БОТАНИКА (Botany) =====
 	    new Reaction(Map.of("potassium", 1, "phosphorus", 1, "nitrogen", 1), List.of(new ReagentGive("ez_nutrient", 3))),
 	    new Reaction(Map.of("ez_nutrient", 1, "sulfuric_acid", 1), List.of(new ReagentGive("robust_harvest", 1))),
@@ -438,11 +437,11 @@ public class ModReagents {
 
 	    // ===== ЕДА И КУЛИНАРИЯ (Food & Cooking) =====
     	new Reaction(Map.of("flour", 45, "water", 15), List.of(new SpawnItemEffect("ssc_14:dough", 1)))  // ДОБАВИТЬ ТУТ ЗАПЯТУЮ ПОСЛЕ ВОЗВРАЩЕНИЯ МЕХАНИКИ С БИБЛИЕЙ
-	    
+
 	    // ===== ПРОЧЕЕ =====  НА ДАННЫЙ МОМЕНТ ЗАКОММЕНТИРОВАНО, Т.К. ДАННОЙ МЕХАНИКИ НЕТ
 	    //new Reaction(Map.of("water", 1), List.of(new ReagentGive("holy_water", 1))),  Освящение воды
-	    //new Reaction(Map.of("blood", 1), List.of(new ReagentGive("wine", 1)))  Освящение крови -> вино  
-	); 
+	    //new Reaction(Map.of("blood", 1), List.of(new ReagentGive("wine", 1)))  Освящение крови -> вино
+	);
 
     private static final Map<String, Reagent> REAGENTS = new LinkedHashMap<>();
     private static final List<Reaction> REACTIONS = new ArrayList<>();
@@ -451,19 +450,21 @@ public class ModReagents {
         for (Reagent r : CONFIG_REAGENTS) {
             registerReagent(r);
             if (!r.getId().equals("water")) {
-                FLUID_TYPES.register(r.getId(), () -> new FluidType(FluidType.Properties.create()));
-                
-                FLUIDS.register(r.getId(), () -> new BaseFlowingFluid.Source(
-                    new BaseFlowingFluid.Properties(() -> FLUID_TYPES.getEntries().stream()
-                        .filter(reg -> reg.getId().getPath().equals(r.getId()))
-                        .findFirst().orElseThrow().get(), null, null)
-                ));
+                var type = FLUID_TYPES.register(r.getId(), () -> new FluidType(FluidType.Properties.create()));
+                var sourceId = Identifier.fromNamespaceAndPath("ssc_14", r.getId());
+                var flowingId = Identifier.fromNamespaceAndPath("ssc_14", r.getId() + "_flowing");
+                var properties = new BaseFlowingFluid.Properties(type,
+                        () -> BuiltInRegistries.FLUID.getValue(sourceId),
+                        () -> BuiltInRegistries.FLUID.getValue(flowingId));
+                FLUIDS.register(r.getId(), () -> new BaseFlowingFluid.Source(properties));
+                FLUIDS.register(r.getId() + "_flowing", () -> new BaseFlowingFluid.Flowing(properties));
             }
         }
         for (Reaction r : CONFIG_REACTIONS) registerReaction(r);
     }
 
     public static void register(IEventBus bus) {
+        ReagentContainerAccess.install(LegacyReagentContainerRuntime.INSTANCE);
         FLUID_TYPES.register(bus);
         FLUIDS.register(bus);
     }
@@ -536,6 +537,7 @@ public class ModReagents {
     }
 
     private static final String NBT_KEY_REAGENTS = "ssc_14_reagents";
+    private static final int MAX_REACTIONS_PER_ACTION = 1024;
 
     public static Map<String, Integer> getReagents(ItemStack stack) {
         net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
@@ -543,58 +545,64 @@ public class ModReagents {
         if (!tag.contains(NBT_KEY_REAGENTS)) return Collections.emptyMap();
         CompoundTag r = tag.getCompound(NBT_KEY_REAGENTS).orElse(new CompoundTag());
         Map<String, Integer> map = new LinkedHashMap<>();
-        for (String key : r.keySet()) { map.put(key, r.getInt(key).orElse(0)); }
+        for (String key : r.keySet()) {
+            int amount = r.getInt(key).orElse(0);
+            if (amount > 0 && !key.isBlank()) {
+                map.put(key, amount);
+            }
+        }
         return Collections.unmodifiableMap(map);
     }
 
     public static int getAvailableSpace(ItemStack stack) {
-        if (stack.getItem() instanceof ReagentContainerItem container) {
-            int currentVol = getReagents(stack).values().stream().mapToInt(Integer::intValue).sum();
-            return container.getMaxCapacity() - currentVol;
-        }
-        return Integer.MAX_VALUE;
+        return ReagentAmounts.availableSpace(getReagents(stack), getCapacity(stack));
+    }
+
+    private static int getCapacity(ItemStack stack) {
+        return stack.getItem() instanceof ReagentContainerItem container
+            ? container.getMaxCapacity() : Integer.MAX_VALUE;
     }
 
     public static boolean addReagent(ItemStack stack, String id, int amount) {
-        if (amount <= 0 || getAvailableSpace(stack) < amount) return false;
-        net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
-        CompoundTag root = customData != null ? customData.copyTag() : new CompoundTag();
-        CompoundTag r = root.getCompound(NBT_KEY_REAGENTS).orElse(new CompoundTag());
-        r.putInt(id, r.getInt(id).orElse(0) + amount);
-        root.put(NBT_KEY_REAGENTS, r);
-        stack.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(root));
+        Map<String, Integer> reagents = new LinkedHashMap<>(getReagents(stack));
+        if (stack.isEmpty() || !ReagentAmounts.canAdd(reagents, getCapacity(stack), id, amount)) return false;
+        reagents.put(id, reagents.getOrDefault(id, 0) + amount);
+        setReagents(stack, reagents);
         return true;
     }
 
     public static boolean removeReagent(ItemStack stack, String id, int amount) {
-        net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
-        CompoundTag root = customData != null ? customData.copyTag() : new CompoundTag();
-        if (!root.contains(NBT_KEY_REAGENTS)) return false;
-        CompoundTag r = root.getCompound(NBT_KEY_REAGENTS).orElse(new CompoundTag());
-        int prev = r.getInt(id).orElse(0);
+        if (stack.isEmpty() || id == null || amount <= 0) return false;
+        Map<String, Integer> reagents = new LinkedHashMap<>(getReagents(stack));
+        int prev = reagents.getOrDefault(id, 0);
         if (prev < amount) return false;
-        if (prev == amount) r.remove(id); else r.putInt(id, prev - amount);
-        root.put(NBT_KEY_REAGENTS, r);
-        stack.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(root));
+        if (prev == amount) reagents.remove(id); else reagents.put(id, prev - amount);
+        setReagents(stack, reagents);
         return true;
     }
 
     public static void processReactions(ItemStack stack, ServerPlayer player) {
+        if (stack.isEmpty() || player == null || player.level().isClientSide()) return;
         int iter = 0; boolean changed; boolean reactionHappened = false;
         do {
             changed = false;
             for (Reaction r : REACTIONS) {
-                while (canApplyReaction(stack, r)) {
-                    for (Map.Entry<String, Integer> need : r.getInputs().entrySet()) { removeReagent(stack, need.getKey(), need.getValue()); }
-                    for (IReactionEffect effect : r.getEffects()) { effect.apply(stack, player); }
+                while (iter < MAX_REACTIONS_PER_ACTION) {
+                    Optional<Map<String, Integer>> result = planReaction(stack, r);
+                    if (result.isEmpty()) break;
+                    setReagents(stack, result.get());
+                    for (IReactionEffect effect : r.getEffects()) {
+                        // Reagent outputs were committed together with the consumed inputs.
+                        if (!(effect instanceof ReagentGive)) effect.apply(stack, player);
+                    }
                     changed = true; reactionHappened = true;
-                    if (++iter > 1024) break;
+                    iter++;
                 }
-                if (iter > 1024) break;
+                if (iter >= MAX_REACTIONS_PER_ACTION) break;
             }
-        } while (changed && iter <= 1024);
+        } while (changed && iter < MAX_REACTIONS_PER_ACTION);
 
-        if (reactionHappened && player != null && !player.level().isClientSide()) {
+        if (reactionHappened) {
             Level _level = player.level();
             net.minecraft.core.BlockPos _pos = player.blockPosition();
             var soundHolder = BuiltInRegistries.SOUND_EVENT.get(Identifier.fromNamespaceAndPath("ssc_14", "chemistry_bubbles"));
@@ -605,11 +613,28 @@ public class ModReagents {
     }
 
     public static boolean canApplyReaction(ItemStack stack, Reaction reaction) {
-        Map<String, Integer> have = getReagents(stack);
-        for (Map.Entry<String, Integer> need : reaction.getInputs().entrySet()) {
-            if (have.getOrDefault(need.getKey(), 0) < need.getValue()) return false;
+        return planReaction(stack, reaction).isPresent();
+    }
+
+    private static Optional<Map<String, Integer>> planReaction(ItemStack stack, Reaction reaction) {
+        Map<String, Integer> outputs = new LinkedHashMap<>();
+        for (IReactionEffect effect : reaction.getEffects()) {
+            if (effect instanceof ReagentGive reagent) {
+                if (reagent.reagentId == null || reagent.reagentId.isBlank()) return Optional.empty();
+                long next = (long) outputs.getOrDefault(reagent.reagentId, 0) + reagent.amount;
+                if (reagent.amount <= 0 || next > Integer.MAX_VALUE) return Optional.empty();
+                outputs.put(reagent.reagentId, (int) next);
+            }
         }
-        return true;
+        return ReagentAmounts.react(getReagents(stack), getCapacity(stack), reaction.getInputs(), outputs);
+    }
+
+    private static void setReagents(ItemStack stack, Map<String, Integer> amounts) {
+        CompoundTag reagents = new CompoundTag();
+        amounts.forEach(reagents::putInt);
+        net.minecraft.world.item.component.CustomData.update(
+            net.minecraft.core.component.DataComponents.CUSTOM_DATA, stack,
+            root -> root.put(NBT_KEY_REAGENTS, reagents));
     }
 
     public static class AlcoholSystem {
@@ -624,18 +649,21 @@ public class ModReagents {
     }
 
     public static int drinkReagents(ItemStack stack, int maxAmount, ServerPlayer player) {
-        Map<String, Integer> reagents = getReagents(stack);
-        if (reagents.isEmpty()) return 0;
-        int totalVolume = reagents.values().stream().mapToInt(Integer::intValue).sum();
-        int drinkAmount = Math.min(maxAmount, totalVolume); int alcohol = 0;
-        for (Map.Entry<String, Integer> entry : reagents.entrySet()) {
-            int amount = (int) Math.ceil((float) entry.getValue() * drinkAmount / totalVolume);
-            if (amount > 0) {
-                alcohol += AlcoholSystem.getAlcoholValue(entry.getKey()) * amount;
-                removeReagent(stack, entry.getKey(), amount);
-            }
+        if (maxAmount <= 0 || stack.isEmpty() || player == null) return 0;
+        Map<String, Integer> reagents = new LinkedHashMap<>(getReagents(stack));
+        Map<String, Integer> portions = ReagentTransferPlan.allocate(reagents, maxAmount);
+        if (portions.isEmpty()) return 0;
+        int drinkAmount = 0;
+        long alcohol = 0;
+        for (Map.Entry<String, Integer> entry : portions.entrySet()) {
+            int remaining = reagents.get(entry.getKey()) - entry.getValue();
+            if (remaining == 0) reagents.remove(entry.getKey());
+            else reagents.put(entry.getKey(), remaining);
+            drinkAmount += entry.getValue();
+            alcohol += (long) AlcoholSystem.getAlcoholValue(entry.getKey()) * entry.getValue();
         }
-        if (alcohol > 0) AlcoholSystem.giveAlcohol(player, alcohol);
+        setReagents(stack, reagents);
+        if (alcohol > 0) AlcoholSystem.giveAlcohol(player, (int) Math.min(Integer.MAX_VALUE, alcohol));
         return drinkAmount;
     }
 
@@ -700,43 +728,4 @@ return null;
 }, itemsArray);
 }
 }
-    @SubscribeEvent
-    public static void registerClientExtensions(RegisterClientExtensionsEvent event) {
-        // РЕФЛЕКСИВНЫЙ ОБХОД КОМПИЛЯТОРА: Плевать на сигнатуры аргументов — инжектим напрямую!
-        for (Reagent r : CONFIG_REAGENTS) {
-            if (r.getId().equals("water")) continue;
-            
-            FLUID_TYPES.getEntries().stream()
-                .filter(reg -> reg.getId().getPath().equals(r.getId()))
-                .findFirst()
-                .ifPresent(fluidTypeHolder -> {
-                    try {
-                        FluidType type = fluidTypeHolder.get();
-                        
-                        // Создаем анонимный объект БЕЗ переопределений, чтобы компилятор пропустил
-                        IClientFluidTypeExtensions customExtensions = new IClientFluidTypeExtensions() {
-                            private final Identifier still = Identifier.fromNamespaceAndPath("ssc_14", "item/container/" + r.getId() + "_still");
-                            private final Identifier flow = Identifier.fromNamespaceAndPath("ssc_14", "item/container/" + r.getId() + "_flow");
-
-                            // Пишем методы БЕЗ @Override аннотаций, Java считает их просто кастомными методами объекта
-                            public Identifier getStillTexture() { return still; }
-                            public Identifier getFlowingTexture() { return flow; }
-                            public int getTintColor() { return 0xFF000000 | r.getColorRgb(); }
-                            
-                            // Запасные варианты для внутренних систем рендеринга NeoForge
-                            public Identifier getStillTexture(Object... args) { return still; }
-                            public Identifier getFlowingTexture(Object... args) { return flow; }
-                            public int getTintColor(Object... args) { return 0xFF000000 | r.getColorRgb(); }
-                        };
-
-                        // Регистрируем наш кастомный костыль напрямую в ивент-шину рендерера
-                        event.registerFluidType(customExtensions, type);
-
-                    } catch (Exception e) {
-                        // Если рефлексия где-то споткнется, мод не вылетит, а просто запишет ошибку в лог
-                        System.err.println("[SSC14-CRITICAL-REFLECT-ERROR] Ошибка инжекции графики для реагента: " + r.getId());
-                    }
-                });
-        }
-    }
 }

@@ -1,9 +1,12 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.machinery.MachineComponentItem;
 
-public class MatterBinItem extends Item {
+/** @deprecated Use {@link MachineComponentItem}. */
+@Deprecated(forRemoval = false)
+public class MatterBinItem extends MachineComponentItem {
 	public MatterBinItem(Item.Properties properties) {
-		super(properties.stacksTo(30));
+		super(properties, BULK_STACK_SIZE);
 	}
 }

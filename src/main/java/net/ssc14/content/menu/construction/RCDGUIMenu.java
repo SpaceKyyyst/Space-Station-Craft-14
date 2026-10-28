@@ -1,0 +1,120 @@
+package net.ssc14.content.menu.construction;
+
+import net.neoforged.neoforge.transfer.transaction.Transaction;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.Container;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.BlockPos;
+
+import net.ssc14.content.menu.Ssc14MenuTypes;
+
+import java.util.function.Supplier;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Collections;
+
+@EventBusSubscriber
+public class RCDGUIMenu extends AbstractContainerMenu {
+	public final Map<String, Object> menuState = new HashMap<>() {
+		@Override
+		public Object put(String key, Object value) {
+			if (!this.containsKey(key) && this.size() >= 8)
+				return null;
+			return super.put(key, value);
+		}
+	};
+	public final Level world;
+	public final Player entity;
+	public int x, y, z;
+	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
+	private ResourceHandler<ItemResource> internal;
+	private final Map<Integer, Slot> customSlots = new HashMap<>();
+	private boolean bound = false;
+	private Supplier<Boolean> boundItemMatcher = null;
+	private Entity boundEntity = null;
+	private BlockEntity boundBlockEntity = null;
+
+	public RCDGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+		super(Ssc14MenuTypes.RCDGUI.get(), id);
+		this.entity = inv.player;
+		this.world = inv.player.level();
+		this.internal = new ItemStacksResourceHandler(0);
+		BlockPos pos = null;
+		if (extraData != null) {
+			pos = extraData.readBlockPos();
+			this.x = pos.getX();
+			this.y = pos.getY();
+			this.z = pos.getZ();
+			access = ContainerLevelAccess.create(world, pos);
+		}
+	}
+
+	private void setItemInSlot(int index, ItemResource resource, int amount) {
+		if (internal instanceof ItemStacksResourceHandler handler) {
+			handler.set(index, resource, amount);
+		} else if (boundBlockEntity instanceof Container container) {
+			container.setItem(index, resource.toStack(Math.max(0, amount)));
+		} else {
+			try (var tx = Transaction.openRoot()) {
+				if (!internal.getResource(index).isEmpty())
+					internal.extract(index, internal.getResource(index), internal.getAmountAsInt(index), tx);
+				if (!resource.isEmpty() && amount > 0)
+					internal.insert(index, resource, amount, tx);
+				tx.commit();
+			}
+		}
+	}
+
+	@Override
+	public boolean stillValid(Player player) {
+		if (this.bound) {
+			if (this.boundItemMatcher != null)
+				return this.boundItemMatcher.get();
+			else if (this.boundBlockEntity != null)
+				return AbstractContainerMenu.stillValid(this.access, player, this.boundBlockEntity.getBlockState().getBlock());
+			else if (this.boundEntity != null)
+				return this.boundEntity.isAlive();
+		}
+		return true;
+	}
+
+	@Override
+	public ItemStack quickMoveStack(Player playerIn, int index) {
+		return ItemStack.EMPTY;
+	}
+
+	public Map<Integer, Slot> getSlots() {
+		return Collections.unmodifiableMap(customSlots);
+	}
+
+	public Map<String, Object> getMenuState() {
+		return menuState;
+	}
+
+	@SubscribeEvent
+	public static void onPlayerTick(PlayerTickEvent.Post event) {
+		Player entity = event.getEntity();
+		if (entity.containerMenu instanceof RCDGUIMenu menu) {
+			Level world = menu.world;
+			double x = menu.x;
+			double y = menu.y;
+			double z = menu.z;
+			RcdMenuAccessService.closeIfToolMissing(entity);
+		}
+	}
+}

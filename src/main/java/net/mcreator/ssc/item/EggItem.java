@@ -1,9 +1,12 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.food.CookingIngredientItem;
 
-public class EggItem extends Item {
+/** @deprecated Use {@link CookingIngredientItem}. */
+@Deprecated(forRemoval = false)
+public class EggItem extends CookingIngredientItem {
 	public EggItem(Item.Properties properties) {
-		super(properties.stacksTo(1));
+		super(properties);
 	}
 }

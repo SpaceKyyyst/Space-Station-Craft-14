@@ -1,22 +1,13 @@
-
 package net.mcreator.ssc.item;
 
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.InteractionResult;
+import net.ssc14.content.item.decal.DecalToolItem;
+import net.ssc14.content.item.decal.DecalToolKind;
 
-import net.mcreator.ssc.procedures.DECAL1deletion_USE_Procedure;
-
-public class DECAL1deletionItem extends Item {
-	public DECAL1deletionItem(Item.Properties properties) {
-		super(properties.stacksTo(1));
-	}
-
-	@Override
-	public InteractionResult useOn(UseOnContext context) {
-		super.useOn(context);
-		// Передаем честные аргументы уровня и игрока в процедуру удаления
-		DECAL1deletion_USE_Procedure.execute(context.getLevel(), context.getPlayer());
-		return InteractionResult.SUCCESS;
-	}
+/** @deprecated Use the canonical decal deletion registry entry. */
+@Deprecated(forRemoval = false)
+public class DECAL1deletionItem extends DecalToolItem {
+    public DECAL1deletionItem(Item.Properties properties) {
+        super(properties, DecalToolKind.DELETION);
+    }
 }

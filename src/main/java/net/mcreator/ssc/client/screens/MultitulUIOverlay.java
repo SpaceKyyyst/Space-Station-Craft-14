@@ -1,9 +1,9 @@
 
 package net.mcreator.ssc.client.screens;
 
-import net.mcreator.ssc.block.SheathingBlock;
+import net.ssc14.content.block.energy.SheathingBlock;
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.MultitoolClientCache;
+import net.ssc14.client.energy.MultitoolClientCache;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;

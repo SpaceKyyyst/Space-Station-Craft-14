@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
-import net.mcreator.ssc.entity.WallCarcaseEntitEntity;
+import net.ssc14.content.entity.WallCarcaseEntitEntity;
 import net.mcreator.ssc.client.model.Modelframe_of_wall_JAVA;
 
 public class WallCarcaseEntitRenderer extends MobRenderer<WallCarcaseEntitEntity, LivingEntityRenderState, Modelframe_of_wall_JAVA> {

@@ -1,9 +1,12 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.lighting.LightingComponentItem;
 
-public class LedLightTubeItem extends Item {
+/** @deprecated Use {@link LightingComponentItem}. */
+@Deprecated(forRemoval = false)
+public class LedLightTubeItem extends LightingComponentItem {
 	public LedLightTubeItem(Item.Properties properties) {
-		super(properties.stacksTo(1));
+		super(properties);
 	}
 }

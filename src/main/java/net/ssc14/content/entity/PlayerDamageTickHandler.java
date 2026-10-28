@@ -1,0 +1,81 @@
+
+package net.ssc14.content.entity;
+
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.nbt.CompoundTag;
+
+import net.ssc14.content.attribute.Ssc14Attributes;
+
+@EventBusSubscriber(modid = "ssc14")
+public final class PlayerDamageTickHandler {
+
+    @SubscribeEvent
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        if (player.level().isClientSide()) return;
+        
+        CompoundTag nbt = player.getPersistentData();
+        // ИСПРАВЛЕНО: Добавлен .orElse(false) для распаковки Optional
+        if (nbt.getBoolean("ssc14_dead").orElse(false)) return;
+
+        // ИСПРАВЛЕНО: Добавлен .orElse(0.0)
+        double total = nbt.getDouble("sscCustomHealth").orElse(0.0);
+
+        if (total > 0 && total * 1.0 < 20.0) {
+            // ИСПРАВЛЕНО: Добавлен .orElse(0) для целочисленного таймера
+            int timer = nbt.getInt("ssc14_regenTimer").orElse(0);
+            if (timer >= 20) {
+                // ИСПРАВЛЕНО: Добавлен .orElse(0.0) для blunt и heat
+                double blunt = nbt.getDouble("ssc14_dmg_blunt").orElse(0.0);
+                double heat = nbt.getDouble("ssc14_dmg_heat").orElse(0.0);
+                
+                double healBlunt = Math.min(blunt, 0.02);
+                double healHeat = Math.min(heat, 0.07);
+                
+                if (healBlunt > 0 || healHeat > 0) {
+                    nbt.putDouble("ssc14_dmg_blunt", blunt - healBlunt);
+                    nbt.putDouble("ssc14_dmg_heat", heat - healHeat);
+                    double newTotal = Math.max(0, total - (healBlunt + healHeat));
+                    nbt.putDouble("sscCustomHealth", newTotal);
+                    updateHealthUI(player, newTotal);
+                }
+                nbt.putInt("ssc14_regenTimer", 0);
+            } else {
+                nbt.putInt("ssc14_regenTimer", timer + 1);
+            }
+        } else {
+            nbt.putInt("ssc14_regenTimer", 0);
+        }
+
+        // ИСПРАВЛЕНО: Добавлен .orElse(false) для проверки кровотечения
+        if (nbt.getBoolean("ssc14_bleeding").orElse(false)) {
+            // ИСПРАВЛЕНО: Добавлен .orElse(0) для bleedTimer
+            int bleedTimer = nbt.getInt("ssc14_bleedTick").orElse(0);
+            if (bleedTimer >= 40) {
+                // ИСПРАВЛЕНО: Добавлен .orElse(0.0) для bloodloss
+                double bloodloss = nbt.getDouble("ssc14_dmg_bloodloss").orElse(0.0);
+                nbt.putDouble("ssc14_dmg_bloodloss", bloodloss + 1.0);
+                
+                // ИСПРАВЛЕНО: Добавлен .orElse(0.0) при расчете нового здоровья
+                double newTotal = nbt.getDouble("sscCustomHealth").orElse(0.0) + 1.0;
+                nbt.putDouble("sscCustomHealth", newTotal);
+                updateHealthUI(player, newTotal);
+                nbt.putInt("ssc14_bleedTick", 0);
+            } else {
+                nbt.putInt("ssc14_bleedTick", bleedTimer + 1);
+            }
+        }
+    }
+
+    private static void updateHealthUI(Player player, double totalDamage) {
+        var attr = player.getAttribute(Ssc14Attributes.HEALTH_U_IATTRIBUTE);
+        if (attr != null) {
+            int uiState = totalDamage <= 12 ? 0 : totalDamage <= 37 ? 1 : totalDamage <= 62 ? 2 : 
+                          totalDamage <= 87 ? 3 : totalDamage <= 100 ? 4 : totalDamage <= 200 ? 5 : 6;
+            attr.setBaseValue(uiState);
+        }
+    }
+}

@@ -1,9 +1,12 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.access.IdCardItem;
 
-public class IDCardCleanerItem extends Item {
+/** @deprecated Use {@link IdCardItem}; retained for source compatibility. */
+@Deprecated(forRemoval = false)
+public class IDCardCleanerItem extends IdCardItem {
 	public IDCardCleanerItem(Item.Properties properties) {
-		super(properties.stacksTo(1));
+		super(properties);
 	}
 }

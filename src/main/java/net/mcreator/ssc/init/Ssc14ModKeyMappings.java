@@ -17,13 +17,22 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 
 import net.mcreator.ssc.network.*;
+import net.ssc14.content.player.crawl.CrawlService;
+import net.ssc14.integration.neoforge.player.network.CrawlMessage;
+import net.ssc14.integration.neoforge.rotation.network.RotateMessage;
+import net.ssc14.integration.neoforge.player.network.SpecifyMessage;
+import net.ssc14.integration.neoforge.player.network.WorldObjectCheckMessage;
+import net.ssc14.content.player.action.PlayerActionPayloadRegistration;
+import net.ssc14.integration.neoforge.player.network.DCMopenMessage;
+import net.ssc14.integration.neoforge.player.network.PulltheObjectMessage;
+import net.ssc14.content.menu.crafting.DopCraftPayloadRegistration;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Ssc14ModKeyMappings {
 	public static final KeyMapping.Category CATEGORY_SSC14 = new KeyMapping.Category(Identifier.parse("ssc_14:ssc14"));
-	public static final KeyMapping DC_MOPEN = new KeyMapping("key.ssc_14.dc_mopen", GLFW.GLFW_KEY_T, CATEGORY_SSC14) {
+	public static final KeyMapping DC_MOPEN = new KeyMapping("key.ssc_14.dc_mopen", GLFW.GLFW_KEY_K, CATEGORY_SSC14) {
 		private boolean isDownOld = false;
 
 		@Override
@@ -31,7 +40,7 @@ public class Ssc14ModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				ClientPacketDistributor.sendToServer(new DCMopenMessage(0, 0));
-				DCMopenMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+				DopCraftPayloadRegistration.dispatch(Minecraft.getInstance().player, 0);
 			}
 			isDownOld = isDown;
 		}
@@ -44,7 +53,6 @@ public class Ssc14ModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				ClientPacketDistributor.sendToServer(new RotateMessage(0, 0));
-				RotateMessage.pressAction(Minecraft.getInstance().player, 0, 0);
 			}
 			isDownOld = isDown;
 		}
@@ -57,12 +65,12 @@ public class Ssc14ModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				ClientPacketDistributor.sendToServer(new PulltheObjectMessage(0, 0));
-				PulltheObjectMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+				PlayerActionPayloadRegistration.dispatchPull(Minecraft.getInstance().player, 0);
 				PULLTHE_OBJECT_LASTPRESS = System.currentTimeMillis();
 			} else if (isDownOld != isDown && !isDown) {
 				int dt = (int) (System.currentTimeMillis() - PULLTHE_OBJECT_LASTPRESS);
 				ClientPacketDistributor.sendToServer(new PulltheObjectMessage(1, dt));
-				PulltheObjectMessage.pressAction(Minecraft.getInstance().player, 1, dt);
+				PlayerActionPayloadRegistration.dispatchPull(Minecraft.getInstance().player, 1);
 			}
 			isDownOld = isDown;
 		}
@@ -75,12 +83,12 @@ public class Ssc14ModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				ClientPacketDistributor.sendToServer(new WorldObjectCheckMessage(0, 0));
-				WorldObjectCheckMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+				PlayerActionPayloadRegistration.dispatchWorldCheck(Minecraft.getInstance().player, 0);
 				WORLD_OBJECT_CHECK_LASTPRESS = System.currentTimeMillis();
 			} else if (isDownOld != isDown && !isDown) {
 				int dt = (int) (System.currentTimeMillis() - WORLD_OBJECT_CHECK_LASTPRESS);
 				ClientPacketDistributor.sendToServer(new WorldObjectCheckMessage(1, dt));
-				WorldObjectCheckMessage.pressAction(Minecraft.getInstance().player, 1, dt);
+				PlayerActionPayloadRegistration.dispatchWorldCheck(Minecraft.getInstance().player, 1);
 			}
 			isDownOld = isDown;
 		}
@@ -93,7 +101,7 @@ public class Ssc14ModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				ClientPacketDistributor.sendToServer(new CrawlMessage(0, 0));
-				CrawlMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+				CrawlService.pressAction(Minecraft.getInstance().player, 0, 0);
 			}
 			isDownOld = isDown;
 		}
@@ -107,7 +115,7 @@ public class Ssc14ModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				ClientPacketDistributor.sendToServer(new SpecifyMessage(0, 0));
-				SpecifyMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+				PlayerActionPayloadRegistration.dispatchSpecify(Minecraft.getInstance().player, 0);
 			}
 			isDownOld = isDown;
 		}

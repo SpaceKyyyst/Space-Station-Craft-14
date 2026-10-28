@@ -15,7 +15,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.world.inventory.RCDGUIMenu;
+import net.ssc14.content.menu.construction.RCDGUIMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 import io.netty.buffer.Unpooled;

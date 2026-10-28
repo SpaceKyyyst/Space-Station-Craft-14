@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.ssc.procedures.*;
+import net.ssc14.content.medical.HealthUiService;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class HealthUIOverlay {
@@ -40,27 +41,27 @@ public class HealthUIOverlay {
 			y = entity.getY();
 			z = entity.getZ();
 		}
-		if (HealthUIdisplayProcedure.execute(entity)) {
-			if (HPCorpseDisplayProcedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_0, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
+		if (HealthUiService.isVisible(entity)) {
+			if (HealthUiService.isState(entity, 6)) {
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_0, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
-			if (HPCriticalDisplayProcedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_1, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
+			if (HealthUiService.isState(entity, 5)) {
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_1, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
-			if (HPTerribleDisplayProcedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_2, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
+			if (HealthUiService.isState(entity, 4)) {
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_2, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
-			if (HPBadDisplayProcedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_3, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
+			if (HealthUiService.isState(entity, 3)) {
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_3, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
-			if (HPNotSoGoodDisplayProcedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_4, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
+			if (HealthUiService.isState(entity, 2)) {
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_4, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
-			if (HPGoodDisplayProcedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_5, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
+			if (HealthUiService.isState(entity, 1)) {
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_5, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
-			if (HPExcellentDisplayProcedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_6, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUIanimateProcedure.execute(entity) * 32, 0, 864), 32, 32, 32, 896);
+			if (HealthUiService.isState(entity, 0)) {
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_6, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
 			}
 		}
 	}

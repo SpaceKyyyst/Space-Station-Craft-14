@@ -1,8 +1,11 @@
 package net.mcreator.ssc.item;
 
 import net.minecraft.world.item.Item;
+import net.ssc14.content.item.clothing.PassiveEquipmentItem;
 
-public class IsolatedGlovesItem extends Item {
+/** @deprecated Use {@link PassiveEquipmentItem}. */
+@Deprecated(forRemoval = false)
+public class IsolatedGlovesItem extends PassiveEquipmentItem {
 	public IsolatedGlovesItem(Item.Properties properties) {
 		super(properties.stacksTo(1));
 	}

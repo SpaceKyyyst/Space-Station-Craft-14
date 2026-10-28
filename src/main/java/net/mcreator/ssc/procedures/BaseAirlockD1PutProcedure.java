@@ -12,6 +12,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.ssc14.common.airlock.AirlockAccessPolicy;
 
 import java.util.Random;
 import java.util.Collections;
@@ -30,6 +32,7 @@ public class BaseAirlockD1PutProcedure {
         if (action != 1 && action != 2) ensureTopBlockExists(world, topPos, blockstate);
 		initializeClosedAirlockState(world, pos, blockstate);
 		generateRandomCableValues(world, pos);
+        net.ssc14.content.block.airlock.AirlockFloor.ensureLowerPart(world, pos);
 		BlockEntity be = world.getBlockEntity(pos);
 		if (be != null) be.setChanged();
 	}
@@ -49,49 +52,25 @@ public class BaseAirlockD1PutProcedure {
 		nbt.putBoolean("diods", true);
 		nbt.putBoolean("ai_access", true);
 		nbt.putBoolean("logs", true);
-		nbt.putBoolean("powered", true);
-        nbt.putBoolean("_ssc14_supply_powered", true);
+		nbt.putBoolean("powered", false);
+        nbt.putBoolean("_ssc14_supply_powered", false);
         nbt.putBoolean("energy_cabel_1", true);
         nbt.putBoolean("energy_cabel_2", true);
 
 		// Сначала отключаем ВСЕ доступы по умолчанию (выставляем в false)
-		String[] allAccesses = {
-			"Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio", 
-			"Security", "Ingeneer", "Command", "Detective", "PNT", "Scientist", "Supply_Deportament", 
-			"Atmos", "Kitchen", "Uridic", "Gidroponic", "Teatre", "Bar", "Cleaner", 
-			"Utilizat", "Chemistry", "Church", "CE", "Qm", "CMO", "RD", "HoP", "Capitan", "Blue_Sh"
-		};
-		for (String access : allAccesses) {
+		for (String access : AirlockAccessPolicy.accessKeys()) {
 			nbt.putBoolean(access, false);
 		}
 
 		// Проверяем тип установленного блока через реестр и выдаем нужные доступы
 		Block block = state.getBlock();
+		String policyAccess = AirlockAccessPolicy.accessKeyFor(
+				BuiltInRegistries.BLOCK.getKey(block).getPath());
+		if (policyAccess != null) nbt.putBoolean(policyAccess, true);
 
-		if (block == Ssc14ModBlocks.TECH_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Technical", true);
-		} else if (block == Ssc14ModBlocks.ATMOSPHERICS_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Atmos", true);
-		} else if (block == Ssc14ModBlocks.CARGO_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Supply_Deportament", true);
-		} else if (block == Ssc14ModBlocks.CENT_COM_AIRLOCK_D_1.get()) {
+		if (block == Ssc14ModBlocks.CENT_COM_AIRLOCK_D_1.get()) {
 			// Пока нету доступов
-		} else if (block == Ssc14ModBlocks.CHEMISTRY_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Chemistry", true);
-		} else if (block == Ssc14ModBlocks.COMMAND_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Command", true);
-		} else if (block == Ssc14ModBlocks.ENGINEERING_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Ingeneer", true);
-		} else if (block == Ssc14ModBlocks.HYDROPONICS_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Gidroponic", true);
-		} else if (block == Ssc14ModBlocks.MEDICAL_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Medical", true);
-		} else if (block == Ssc14ModBlocks.SALVAGE_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Utilizat", true);
-		} else if (block == Ssc14ModBlocks.SCIENCE_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Scientist", true);
 		} else if (block == Ssc14ModBlocks.SECURITY_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Security", true);
 			nbt.putBoolean("Brig", true);
 		} else if (block == Ssc14ModBlocks.SYNDICATE_AIRLOCK_D_1.get()) {
 			// Нету доступов
@@ -115,6 +94,8 @@ public class BaseAirlockD1PutProcedure {
 			
 		BlockState currentTop = world.getBlockState(topPos);
 		if (currentTop.getBlock() == targetPlug) return;
+        if (!currentTop.canBeReplaced() && currentTop.getBlock() != Ssc14ModBlocks.AIRLOCK_UP_PLUG.get()
+                && currentTop.getBlock() != Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get()) return;
 		
 		BlockState plugState = targetPlug.defaultBlockState();
 		Property<?> sourceFacing = currentMain.getBlock().getStateDefinition().getProperty("facing");

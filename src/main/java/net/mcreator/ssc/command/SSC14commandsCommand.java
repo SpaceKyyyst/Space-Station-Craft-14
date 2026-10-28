@@ -14,6 +14,9 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.Commands;
 
 import net.mcreator.ssc.procedures.*;
+import net.ssc14.content.medical.ThirstCommandService;
+import net.ssc14.content.medical.NutritionUiService;
+import net.ssc14.content.medical.DigestiveProcessesService;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
@@ -76,7 +79,7 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					HungerSetCommandProcedure.execute(arguments);
+					NutritionUiService.set(EntityArgument.getEntity(arguments, "ent"), DoubleArgumentType.getDouble(arguments, "Nutrients"));
 					return 0;
 				})))).then(Commands.literal("digestive").then(Commands.literal("clear").then(Commands.argument("ent", EntityArgument.entity()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
@@ -90,7 +93,7 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					DigestiveProcessesClearCommandProcedure.execute(arguments);
+					DigestiveProcessesService.clear(EntityArgument.getEntity(arguments, "ent"));
 					return 0;
 				}))))).then(Commands.literal("thirsty").then(Commands.literal("set").then(Commands.argument("ent", EntityArgument.entity()).then(Commands.argument("Liquid", DoubleArgumentType.doubleArg(0, 200)).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
@@ -104,7 +107,7 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					ThirstySetCommandProcedure.execute(arguments);
+					ThirstCommandService.execute(arguments);
 					return 0;
 				})))).then(Commands.literal("digestive").then(Commands.literal("clear").then(Commands.argument("ent", EntityArgument.entity()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
@@ -118,7 +121,7 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					DigestiveProcessesClearCommandProcedure.execute(arguments);
+					DigestiveProcessesService.clear(EntityArgument.getEntity(arguments, "ent"));
 					return 0;
 				}))))).then(Commands.literal("hels").then(Commands.argument("ent", EntityArgument.entity()).then(Commands.literal("reset").executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
@@ -174,7 +177,6 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					LiquidGetCommandProcedure.execute(arguments);
 					return 0;
 				}))))));
 	}
