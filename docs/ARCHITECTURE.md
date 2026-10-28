@@ -133,6 +133,16 @@ shutters, portable menus, and several construction/firearm interactions. Each br
 must be removed only after its behavior and save compatibility are migrated and
 covered by regression tests.
 
+После удаления отладочной station-code процедуры и мёртвого gravity-plug lifecycle
+адаптера в каноническом дереве остаётся 20 интерфейсных migration boundaries.
+Число является текущим инвентарным показателем, а не разрешением удалять мосты
+без переноса их контрактов.
+
+After removing the debug station-code procedure and the dead gravity-plug lifecycle
+adapter, 20 interface-based migration boundaries remain in the canonical tree.
+This is an inventory metric, not permission to remove bridges without migrating
+their contracts.
+
 - Большие сгенерированные процедуры доступа и инвентарей ещё требуют отдельных
   поведенческих тестов. Новые операции ID-карт проходят через
   `IdJobAssignmentService`, а legacy `ID_Code_CHECKProcedure` остаётся переходным
