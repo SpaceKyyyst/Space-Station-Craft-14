@@ -1,9 +1,9 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.menu.worldcheck;
 
 import net.minecraft.network.chat.Component;
 
-public class WOCtextForDisassemblyUseProcedure {
-	public static String execute() {
+public final class WorldCheckTextService {
+	public static String disassemblyHint() {
 		return Component.translatable("translation.key.for_disassembly_use").getString();
 	}
 }
