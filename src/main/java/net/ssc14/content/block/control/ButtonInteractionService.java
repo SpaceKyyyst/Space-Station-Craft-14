@@ -1,4 +1,4 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.block.control;
 
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -10,10 +10,10 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.Ssc14Mod;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
 
-public class Button_CLICK_Procedure {
+public final class ButtonInteractionService {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
         if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (false == (getPropertyByName((world.getBlockState(BlockPos.containing(x, y, z))), "active") instanceof BooleanProperty _getbp1 && (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getbp1))) {
@@ -30,8 +30,8 @@ public class Button_CLICK_Procedure {
 				if (_bs.getBlock().getStateDefinition().getProperty("active") instanceof BooleanProperty _booleanProp)
 					world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
 			}
-			Ssc14Mod.queueServerWork(serverOwner, 20, () -> {
-				if (Ssc14ModBlocks.BUTTON.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()
+			ServerWorkScheduler.schedule(serverOwner, 20, () -> {
+				if (Ssc14Blocks.BUTTON.get() == (world.getBlockState(BlockPos.containing(x, y, z))).getBlock()
 						&& true == (getPropertyByName((world.getBlockState(BlockPos.containing(x, y, z))), "active") instanceof BooleanProperty _getbp7 && (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getbp7))) {
 					{
 						BlockPos _pos = BlockPos.containing(x, y, z);
@@ -40,7 +40,7 @@ public class Button_CLICK_Procedure {
 							world.setBlock(_pos, _bs.setValue(_booleanProp, false), 3);
 					}
 				}
-			}).orThrow();
+			});
 			// ОТПРАВКА ТРИГГЕРА В СЕТЬ (только на сервере!)
 			if (world instanceof Level _level && !_level.isClientSide()) {
 				net.ssc14.content.network.NetworkManager.trigger(_level, BlockPos.containing(x, y, z), "activate");
