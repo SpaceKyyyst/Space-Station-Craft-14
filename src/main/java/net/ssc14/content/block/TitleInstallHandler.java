@@ -1,4 +1,4 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.block;
 
 import net.ssc14.content.block.Ssc14Blocks;
 
@@ -24,12 +24,12 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
 
 import javax.annotation.Nullable;
 
 @EventBusSubscriber
-public class TitleInstallPrProcedure {
+public final class TitleInstallHandler {
 	@SubscribeEvent
 	public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
 		if (event.getHand() != InteractionHand.MAIN_HAND)
@@ -50,7 +50,7 @@ public class TitleInstallPrProcedure {
 			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Ssc14Blocks.ROD_FLOOR.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockState _bs = Ssc14ModBlocks.SHEATHING.get().defaultBlockState();
+					BlockState _bs = Ssc14Blocks.SHEATHING.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Property<?> _propertyOld : _bso.getProperties()) {
 						Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
