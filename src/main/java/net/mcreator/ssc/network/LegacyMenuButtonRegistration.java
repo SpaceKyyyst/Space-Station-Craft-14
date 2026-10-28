@@ -25,7 +25,6 @@ import net.ssc14.content.menu.MenuCloseService;
 import net.mcreator.ssc.procedures.RCDGUIgrilleButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIsheatingButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUItileButtonProcedure;
-import net.mcreator.ssc.procedures.RCDGUIwallButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwallfloorModeButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwindowButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwindowsModeButtonProcedure;
@@ -216,7 +215,7 @@ public final class LegacyMenuButtonRegistration {
         switch (message.buttonId()) {
             case 0 -> RCDGUIbackButtonProcedure.execute(
                     player.level(), message.x(), message.y(), message.z(), player);
-            case 1 -> RCDGUIwallButtonProcedure.execute(player);
+            case 1 -> RcdModeService.wall(player);
             case 2 -> RCDGUIcatwalkButtonProcedure.execute(player);
             case 3 -> RCDGUItileButtonProcedure.execute(player);
             case 4 -> RCDGUIsheatingButtonProcedure.execute(player);
