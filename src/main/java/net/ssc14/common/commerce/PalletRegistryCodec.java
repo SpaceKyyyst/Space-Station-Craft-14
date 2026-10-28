@@ -9,4 +9,8 @@ public final class PalletRegistryCodec {
     public static String encode(BlockPos position) {
         return position.getX() + "," + position.getY() + "," + position.getZ() + ";";
     }
+
+    public static boolean contains(String encodedRegistry, BlockPos position) {
+        return encodedRegistry != null && encodedRegistry.contains(encode(position));
+    }
 }
