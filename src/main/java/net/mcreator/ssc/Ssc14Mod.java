@@ -160,7 +160,6 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14CommunicationBlockEntities::registerCapabilities);
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14Items.REGISTRY.register(modEventBus);
-		Ssc14ModItems.REGISTRY.register(modEventBus);
 		LightingEnergyService.install(CableTopologyService::queueUpdate);
 		CableTopologyService.install(new CableTopologyService.Adapter() {
 			@Override
