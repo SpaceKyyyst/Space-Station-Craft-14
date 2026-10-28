@@ -143,11 +143,7 @@ public class MK58_Fire_Procedure {
 							final boolean _tagValue = true;
 							CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putBoolean(_tagName, _tagValue));
 						}
-						{
-							final String _tagName = "MagazBullets";
-							final double _tagValue = (MagazBullets - 1);
-							CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY), tag -> tag.putDouble(_tagName, _tagValue));
-						}
+						Mk58FireStateService.consumeMagazineRound(entity instanceof LivingEntity living ? living.getMainHandItem() : ItemStack.EMPTY);
 						{
 							final String _tagName = "BulletChamber";
 							final double _tagValue = 1;
