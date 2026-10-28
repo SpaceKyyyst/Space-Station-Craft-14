@@ -32,7 +32,9 @@ public final class C4ActivationService {
         if (!level.isClientSide()) {
             data.putBoolean("activate", true);
             level.sendBlockUpdated(pos, level.getBlockState(pos), level.getBlockState(pos), 3);
-            net.mcreator.ssc.procedures.C4explorePRProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ());
+            if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+                C4TimerService.start(serverLevel, pos);
+            }
         }
     }
 }
