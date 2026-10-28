@@ -16,7 +16,8 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
 import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.network.PDApassangerGUIButtonMessage;
+import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -139,8 +140,8 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 					int x = PDApassangerGUIScreen.this.x;
 					int y = PDApassangerGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(0, x, y, z));
-						PDApassangerGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(0, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(0, x, y, z));
 					}
 				}) {
 			@Override
@@ -154,8 +155,8 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 					int x = PDApassangerGUIScreen.this.x;
 					int y = PDApassangerGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(1, x, y, z));
-						PDApassangerGUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(1, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(1, x, y, z));
 					}
 				}) {
 			@Override
@@ -169,8 +170,8 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 					int x = PDApassangerGUIScreen.this.x;
 					int y = PDApassangerGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(2, x, y, z));
-						PDApassangerGUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(2, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(2, x, y, z));
 					}
 				}) {
 			@Override
@@ -183,8 +184,8 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 			int x = PDApassangerGUIScreen.this.x;
 			int y = PDApassangerGUIScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(3, x, y, z));
-				PDApassangerGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(3, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(3, x, y, z));
 			}
 		}) {
 			@Override
@@ -197,8 +198,8 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 			int x = PDApassangerGUIScreen.this.x;
 			int y = PDApassangerGUIScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(4, x, y, z));
-				PDApassangerGUIButtonMessage.handleButtonAction(entity, 4, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(4, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(4, x, y, z));
 			}
 		}) {
 			@Override
@@ -211,8 +212,8 @@ public class PDApassangerGUIScreen extends AbstractContainerScreen<PDApassangerG
 			int x = PDApassangerGUIScreen.this.x;
 			int y = PDApassangerGUIScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new PDApassangerGUIButtonMessage(5, x, y, z));
-				PDApassangerGUIButtonMessage.handleButtonAction(entity, 5, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.pdaPassenger(5, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.pdaPassenger(5, x, y, z));
 			}
 		}) {
 			@Override

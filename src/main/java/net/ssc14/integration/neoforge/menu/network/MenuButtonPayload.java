@@ -14,7 +14,11 @@ public record MenuButtonPayload(Channel channel, int buttonId, int x, int y, int
         VENDING("vending_aut_1_gui_buttons"),
         SALE("sale_gui_buttons"),
         ORDER("order_gui_buttons"),
-        MICROWAVE("microwawe_gui_buttons");
+        MICROWAVE("microwawe_gui_buttons"),
+        AIRLOCK_PANEL("cabel_pannel_airlock_buttons"),
+        DECAL_COLOR("decal_scolor_gui_buttons"),
+        GRAVITY_GENERATOR("grav_gen_gui_buttons"),
+        PDA_PASSENGER("pd_apassanger_gui_buttons");
 
         private final Type<MenuButtonPayload> type;
 
@@ -56,6 +60,22 @@ public record MenuButtonPayload(Channel channel, int buttonId, int x, int y, int
 
     public static MenuButtonPayload microwave(int buttonId, int x, int y, int z) {
         return new MenuButtonPayload(Channel.MICROWAVE, buttonId, x, y, z);
+    }
+
+    public static MenuButtonPayload airlockPanel(int buttonId, int x, int y, int z) {
+        return new MenuButtonPayload(Channel.AIRLOCK_PANEL, buttonId, x, y, z);
+    }
+
+    public static MenuButtonPayload decalColor(int buttonId, int x, int y, int z) {
+        return new MenuButtonPayload(Channel.DECAL_COLOR, buttonId, x, y, z);
+    }
+
+    public static MenuButtonPayload gravityGenerator(int buttonId, int x, int y, int z) {
+        return new MenuButtonPayload(Channel.GRAVITY_GENERATOR, buttonId, x, y, z);
+    }
+
+    public static MenuButtonPayload pdaPassenger(int buttonId, int x, int y, int z) {
+        return new MenuButtonPayload(Channel.PDA_PASSENGER, buttonId, x, y, z);
     }
 
     @Override

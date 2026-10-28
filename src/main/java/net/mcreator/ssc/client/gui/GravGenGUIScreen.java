@@ -16,7 +16,8 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.GravGenGUIMenu;
 import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.network.GravGenGUIButtonMessage;
+import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -97,8 +98,8 @@ public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> im
 			int x = GravGenGUIScreen.this.x;
 			int y = GravGenGUIScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new GravGenGUIButtonMessage(0, x, y, z));
-				GravGenGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.gravityGenerator(0, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.gravityGenerator(0, x, y, z));
 			}
 		}) {
 			@Override
@@ -111,8 +112,8 @@ public class GravGenGUIScreen extends AbstractContainerScreen<GravGenGUIMenu> im
 			int x = GravGenGUIScreen.this.x;
 			int y = GravGenGUIScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new GravGenGUIButtonMessage(1, x, y, z));
-				GravGenGUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.gravityGenerator(1, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.gravityGenerator(1, x, y, z));
 			}
 		}) {
 			@Override
