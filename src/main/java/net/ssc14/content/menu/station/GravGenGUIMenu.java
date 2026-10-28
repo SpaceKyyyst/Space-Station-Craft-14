@@ -1,4 +1,4 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.station;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
@@ -18,14 +18,14 @@ import net.minecraft.world.Container;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.menu.Ssc14MenuTypes;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-public class GravGenGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class GravGenGUIMenu extends AbstractContainerMenu {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
@@ -46,7 +46,7 @@ public class GravGenGUIMenu extends AbstractContainerMenu implements Ssc14ModMen
 	private BlockEntity boundBlockEntity = null;
 
 	public GravGenGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.GRAV_GEN_GUI.get(), id);
+		super(Ssc14MenuTypes.GRAV_GEN_GUI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(0);
@@ -94,12 +94,10 @@ public class GravGenGUIMenu extends AbstractContainerMenu implements Ssc14ModMen
 		return ItemStack.EMPTY;
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}
 
-	@Override
 	public Map<String, Object> getMenuState() {
 		return menuState;
 	}
