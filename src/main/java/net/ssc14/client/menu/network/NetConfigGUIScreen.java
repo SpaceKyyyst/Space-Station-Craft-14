@@ -1,7 +1,5 @@
 
-package net.mcreator.ssc.client.gui;
-
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+package net.ssc14.client.menu.network;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -16,13 +14,13 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.input.KeyEvent; // Ванильный record-класс ввода
 import com.mojang.blaze3d.platform.InputConstants;
 
-import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
-import net.mcreator.ssc.network.NetConfigGUIButtonRegistration;
+import net.ssc14.client.menu.MenuButtonClientActions;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.content.menu.network.NetConfigGUIMenu;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
-import net.mcreator.ssc.init.Ssc14ModScreens;
 import java.util.Map;
 
-public class NetConfigGUIScreen extends AbstractContainerScreen<NetConfigGUIMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class NetConfigGUIScreen extends AbstractContainerScreen<NetConfigGUIMenu> implements MenuStateReceiver {
     private final Level world;
     private final int x, y, z;
     private final Player entity;
@@ -164,7 +162,8 @@ public class NetConfigGUIScreen extends AbstractContainerScreen<NetConfigGUIMenu
         WidgetSprites sprites = new WidgetSprites(BUTTON_TEX, BUTTON_TEX);
         ImageButton btn = new ImageButton(this.leftPos + posX, this.topPos + posY, 78, 11, sprites, e -> {
             if (isButtonActive(this.menu.getMenuState(), stateKey)) {
-                ClientPacketDistributor.sendToServer(MenuButtonPayload.networkConfig(buttonID, x, y, z));
+                MenuButtonClientActions.send(entity,
+                        MenuButtonPayload.networkConfig(buttonID, x, y, z));
             }
         }) {
             @Override

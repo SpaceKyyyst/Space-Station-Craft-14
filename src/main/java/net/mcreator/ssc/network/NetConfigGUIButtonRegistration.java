@@ -12,7 +12,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.chat.Component;
 import net.ssc14.integration.neoforge.network.NetConfigGUISyncMessage;
-import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
+import net.ssc14.content.menu.network.NetConfigGUIMenu;
+import net.ssc14.content.network.NetworkConfigButtonIds;
 import net.ssc14.content.network.NetworkSavedData;
 import net.ssc14.common.network.NetworkAction;
 import net.ssc14.common.network.NetworkTrigger;
@@ -41,7 +42,8 @@ public final class NetConfigGUIButtonRegistration {
         if (!(entity.containerMenu instanceof NetConfigGUIMenu menu) || !MenuAccessGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
             return;
 
-        if (world.isClientSide() || buttonID < 0 || buttonID > 15 || menu.sourcePos == null || menu.targetPos == null
+        if (world.isClientSide() || !NetworkConfigButtonIds.isValid(buttonID)
+                || menu.sourcePos == null || menu.targetPos == null
                 || !entity.getMainHandItem().is(Ssc14Items.NETWORK_CONFIGURATOR.get())
                 || !world.hasChunkAt(menu.sourcePos) || !world.mayInteract(entity, menu.sourcePos)
                 || !(world.getBlockState(menu.sourcePos).getBlock() instanceof NetworkTrigger trigger)
@@ -50,18 +52,19 @@ public final class NetConfigGUIButtonRegistration {
         Map<String, Object> state = menu.getMenuState();
         NetworkSavedData data = NetworkSavedData.get(world);
 
-        if (buttonID >= 0 && buttonID <= 7) {
-            String triggerId = (String) state.get("L" + (buttonID + 1) + "_id");
-            Boolean isActive = (Boolean) state.get("L" + (buttonID + 1) + "_active");
+        if (NetworkConfigButtonIds.isTrigger(buttonID)) {
+            int triggerIndex = NetworkConfigButtonIds.triggerIndex(buttonID);
+            String triggerId = (String) state.get("L" + (triggerIndex + 1) + "_id");
+            Boolean isActive = (Boolean) state.get("L" + (triggerIndex + 1) + "_active");
 
             if (triggerId != null && Boolean.TRUE.equals(isActive) && trigger.getAvailableTriggers().contains(triggerId)) {
-                state.put("selected_trigger_idx", buttonID);
+                state.put("selected_trigger_idx", triggerIndex);
                 state.put("selected_trigger_id", triggerId);
             }
-        } else if (buttonID >= 8 && buttonID <= 15) {
-            int rightIndex = buttonID - 7;
-            String actionId = (String) state.get("R" + rightIndex + "_id");
-            Boolean isActive = (Boolean) state.get("R" + rightIndex + "_active");
+        } else {
+            int actionIndex = NetworkConfigButtonIds.actionIndex(buttonID);
+            String actionId = (String) state.get("R" + (actionIndex + 1) + "_id");
+            Boolean isActive = (Boolean) state.get("R" + (actionIndex + 1) + "_active");
 
             if (actionId != null && Boolean.TRUE.equals(isActive) && action.getAvailableActions().contains(actionId)) {
                 Integer selectedTriggerIdx = (Integer) state.get("selected_trigger_idx");

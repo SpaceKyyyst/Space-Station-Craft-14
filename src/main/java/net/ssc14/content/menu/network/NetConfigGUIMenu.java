@@ -1,8 +1,6 @@
 
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.network;
 
-import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.items.IItemHandler; // ИСПРАВЛЕНО НА NEOFORGED
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -23,12 +21,12 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.level.block.state.BlockState;
-import net.mcreator.ssc.procedures.NetConfigGUI_TIC_Procedure;
-import net.mcreator.ssc.procedures.NetConfigGUI_CLOSE_Procedure;
-import net.mcreator.ssc.init.Ssc14ModMenus;
 import net.ssc14.common.network.NetworkTrigger;
 import net.ssc14.common.network.NetworkAction;
+import net.ssc14.content.item.tool.NetworkConfiguratorService;
+import net.ssc14.content.menu.Ssc14MenuTypes;
 import net.ssc14.content.network.NetworkSavedData;
+import net.ssc14.core.network.MenuStateAccess;
 import net.ssc14.integration.neoforge.network.NetConfigGUISyncMessage;
 import net.ssc14.content.item.Ssc14Items;
 
@@ -39,7 +37,7 @@ import java.util.Collections;
 import java.util.List;
 
 @EventBusSubscriber
-public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class NetConfigGUIMenu extends AbstractContainerMenu implements MenuStateAccess {
     public final Map<String, Object> menuState = new HashMap<>() {
         @Override
         public Object put(String key, Object value) {
@@ -54,7 +52,6 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
     public BlockPos sourcePos;
     public BlockPos targetPos;
     private ContainerLevelAccess access = ContainerLevelAccess.NULL;
-    private ItemStackHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
     private boolean bound = false;
     private Supplier<Boolean> boundItemMatcher = null;
@@ -63,11 +60,9 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
     private boolean syncSent = false;
 
     public NetConfigGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        super(Ssc14ModMenus.NET_CONFIG_GUI.get(), id);
+        super(Ssc14MenuTypes.NET_CONFIG_GUI.get(), id);
         this.entity = inv.player;
         this.world = inv.player.level();
-        this.internal = new ItemStackHandler(0);
-
         if (extraData != null) {
             this.targetPos = extraData.readBlockPos();
             this.x = targetPos.getX();
@@ -153,10 +148,9 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
     @Override
     public void removed(Player playerIn) {
         super.removed(playerIn);
-        NetConfigGUI_CLOSE_Procedure.execute(entity);
+        NetworkConfiguratorService.resetHeld(entity);
     }
 
-    @Override
     public Map<Integer, Slot> getSlots() {
         return Collections.unmodifiableMap(customSlots);
     }
@@ -174,7 +168,7 @@ public class NetConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModM
                 PacketDistributor.sendToPlayer(serverPlayer, new NetConfigGUISyncMessage(menu.menuState));
                 menu.syncSent = true;
             }
-            NetConfigGUI_TIC_Procedure.execute(menu.world, entity);
+            NetworkConfiguratorService.closeWhenNotHeld(entity);
         }
     }
 }
