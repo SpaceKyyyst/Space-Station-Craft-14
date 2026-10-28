@@ -15,7 +15,7 @@ import net.mcreator.ssc.procedures.MicrwGUIbutEProcedure;
 import net.ssc14.content.menu.pda.PdaTabService;
 import net.ssc14.content.menu.pda.PdaFlashlightService;
 import net.mcreator.ssc.procedures.PenRemovePRProcedure;
-import net.mcreator.ssc.procedures.RCDGUIarmWindowButtonProcedure;
+import net.ssc14.content.item.tool.RcdModeService;
 import net.mcreator.ssc.procedures.RCDGUIbackButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIcatwalkButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIdeconstructButtonProcedure;
@@ -231,7 +231,7 @@ public final class LegacyMenuButtonRegistration {
             case 0 -> RCDGUIbackButtonProcedure.execute(
                     player.level(), message.x(), message.y(), message.z(), player);
             case 1 -> RCDGUIgrilleButtonProcedure.execute(player);
-            case 2 -> RCDGUIarmWindowButtonProcedure.execute(player);
+            case 2 -> RcdModeService.armWindow(player);
             case 3 -> RCDGUIwindowButtonProcedure.execute(player);
             case 4 -> RCDGUIdirArmWindowButtonProcedure.execute(player);
             case 5 -> RCDGUIdirwindowButtonProcedure.execute(player);

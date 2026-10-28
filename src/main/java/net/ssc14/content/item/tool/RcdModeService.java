@@ -1,0 +1,19 @@
+package net.ssc14.content.item.tool;
+
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
+
+/** Applies RCD mode selections from the GUI. */
+public final class RcdModeService {
+    private RcdModeService() { }
+
+    public static void armWindow(Entity entity) {
+        if (entity == null) return;
+        ItemStack stack = entity instanceof Player player ? player.getMainHandItem() : ItemStack.EMPTY;
+        CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("Mode", 10));
+        if (entity instanceof Player player) player.closeContainer();
+    }
+}
