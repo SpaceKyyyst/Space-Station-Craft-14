@@ -10,7 +10,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.component.DataComponents;
 
-import net.mcreator.ssc.world.inventory.HeadsetGUIkostilMenu;
+import net.ssc14.content.menu.headset.HeadsetMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 @EventBusSubscriber
@@ -19,7 +19,7 @@ public class HeadsetMiningInventoryCapability extends ItemAccessItemHandler {
 	public static void onItemDropped(ItemTossEvent event) {
 		if (event.getEntity().getItem().getItem() == Ssc14ModItems.HEADSET_MINING.get()) {
 			Player player = event.getPlayer();
-			if (player.containerMenu instanceof HeadsetGUIkostilMenu)
+			if (player.containerMenu instanceof HeadsetMenu)
 				player.closeContainer();
 		}
 	}

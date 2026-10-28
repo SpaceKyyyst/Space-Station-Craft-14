@@ -1,4 +1,4 @@
-package net.mcreator.ssc.client.gui;
+package net.ssc14.client.menu.headset;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -10,19 +10,19 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.HeadsetGUIkostilMenu;
-import net.mcreator.ssc.init.Ssc14ModScreens;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.content.menu.headset.HeadsetMenu;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-public class HeadsetGUIkostilScreen extends AbstractContainerScreen<HeadsetGUIkostilMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class HeadsetScreen extends AbstractContainerScreen<HeadsetMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
 	private boolean menuStateUpdateActive = false;
 	private static final Identifier BACKGROUND = Identifier.parse("ssc_14:textures/screens/headset_gu_ikostil.png");
 
-	public HeadsetGUIkostilScreen(HeadsetGUIkostilMenu container, Inventory inventory, Component text) {
+	public HeadsetScreen(HeadsetMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text, 0, 0);
 		this.world = container.world;
 		this.x = container.x;

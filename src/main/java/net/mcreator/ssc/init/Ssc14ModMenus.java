@@ -14,6 +14,7 @@ import net.minecraft.client.Minecraft;
 
 import net.mcreator.ssc.world.inventory.*;
 import net.ssc14.content.menu.crafting.DopCraftMenu;
+import net.ssc14.content.menu.headset.HeadsetMenu;
 import net.ssc14.integration.neoforge.menu.network.MenuStateUpdateMessage;
 import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.content.menu.Ssc14MenuTypes;
@@ -33,7 +34,7 @@ public class Ssc14ModMenus {
 	public static final DeferredHolder<MenuType<?>, MenuType<PDApassangerGUIMenu>> PD_APASSANGER_GUI = alias(Ssc14MenuTypes.PD_APASSANGER_GUI);
 	public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIMenu>> RCDGUI = alias(Ssc14MenuTypes.RCDGUI);
 	public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIwallfloorMenu>> RCDGU_IWALLFLOOR = alias(Ssc14MenuTypes.RCDGU_IWALLFLOOR);
-	public static final DeferredHolder<MenuType<?>, MenuType<HeadsetGUIkostilMenu>> HEADSET_GU_IKOSTIL = alias(Ssc14MenuTypes.HEADSET_GU_IKOSTIL);
+	public static final DeferredHolder<MenuType<?>, MenuType<HeadsetMenu>> HEADSET_GU_IKOSTIL = alias(Ssc14MenuTypes.HEADSET_GU_IKOSTIL);
 	public static final DeferredHolder<MenuType<?>, MenuType<CommunConsoleGUIMenu>> COMMUN_CONSOLE_GUI = alias(Ssc14MenuTypes.COMMUN_CONSOLE_GUI);
 	public static final DeferredHolder<MenuType<?>, MenuType<VendingAut1GUIMenu>> VENDING_AUT_1_GUI = alias(Ssc14MenuTypes.VENDING_AUT_1_GUI);
 	public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIwindowsMenu>> RCDGU_IWINDOWS = alias(Ssc14MenuTypes.RCDGU_IWINDOWS);
@@ -56,7 +57,7 @@ public class Ssc14ModMenus {
 		Ssc14MenuTypes.bindFactory("pd_apassanger_gui", PDApassangerGUIMenu::new);
 		Ssc14MenuTypes.bindFactory("rcdgui", RCDGUIMenu::new);
 		Ssc14MenuTypes.bindFactory("rcdgu_iwallfloor", RCDGUIwallfloorMenu::new);
-		Ssc14MenuTypes.bindFactory("headset_gu_ikostil", HeadsetGUIkostilMenu::new);
+		Ssc14MenuTypes.bindFactory("headset_gu_ikostil", HeadsetMenu::new);
 		Ssc14MenuTypes.bindFactory("commun_console_gui", CommunConsoleGUIMenu::new);
 		Ssc14MenuTypes.bindFactory("vending_aut_1_gui", VendingAut1GUIMenu::new);
 		Ssc14MenuTypes.bindFactory("rcdgu_iwindows", RCDGUIwindowsMenu::new);
