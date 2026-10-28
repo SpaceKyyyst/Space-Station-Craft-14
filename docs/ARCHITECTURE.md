@@ -184,6 +184,10 @@ bypass, unrestricted-door semantics и bitmask permissions. Старый
 `AirlockAccessPolicy` оставлен compatibility facade для generated open/close
 процедур.
 
+Синхронизация wire/lamp state вынесена в `AirlockLampStateService`; сохранены
+все persisted cable flags, power restoration и bolt-cut side effects. Старый
+`CPlogLampPrProcedure` оставлен compatibility facade.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -270,6 +274,10 @@ Door access evaluation now lives in `AirlockAccessPolicyService`; emergency
 bypass, unrestricted-door semantics, and bitmask permissions are preserved. The
 old `AirlockAccessPolicy` remains a compatibility facade for generated
 open/close procedures.
+
+Wire/lamp state synchronization now lives in `AirlockLampStateService`; all
+persisted cable flags, power restoration, and bolt-cut side effects are
+preserved. The old `CPlogLampPrProcedure` remains a compatibility facade.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains

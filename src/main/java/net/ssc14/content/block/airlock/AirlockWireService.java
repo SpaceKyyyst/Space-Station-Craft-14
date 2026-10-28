@@ -3,7 +3,6 @@ package net.ssc14.content.block.airlock;
 import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.content.access.AirlockPanelAccess;
 import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
-import net.mcreator.ssc.procedures.CPlogLampPrProcedure;
 import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -39,7 +38,7 @@ public final class AirlockWireService {
                 || player.getOffhandItem().is(Ssc14Items.NIPPERS.get()))) return;
         data.putBoolean(key, !data.getBooleanOr(key, false));
         blockEntity.setChanged();
-        CPlogLampPrProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), level.getBlockState(pos));
+        AirlockLampStateService.execute(level, pos.getX(), pos.getY(), pos.getZ(), level.getBlockState(pos));
         var state = level.getBlockState(pos);
         level.sendBlockUpdated(pos, state, state, 3);
         BuiltInRegistries.SOUND_EVENT.getOptional(Identifier.parse("ssc_14:nippers_use"))

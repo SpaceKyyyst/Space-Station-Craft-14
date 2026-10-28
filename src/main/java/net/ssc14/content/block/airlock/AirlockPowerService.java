@@ -1,6 +1,5 @@
 package net.ssc14.content.block.airlock;
 
-import net.mcreator.ssc.procedures.CPlogLampPrProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,6 +18,6 @@ public final class AirlockPowerService {
         if (data.contains("_ssc14_supply_powered") && data.getBooleanOr("_ssc14_supply_powered", false) == powered) return;
         data.putBoolean("_ssc14_supply_powered", powered);
         door.setChanged();
-        CPlogLampPrProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), door.getBlockState());
+        AirlockLampStateService.execute(level, pos.getX(), pos.getY(), pos.getZ(), door.getBlockState());
     }
 }

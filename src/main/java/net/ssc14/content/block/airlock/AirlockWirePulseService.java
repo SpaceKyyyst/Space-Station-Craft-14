@@ -3,7 +3,6 @@ package net.ssc14.content.block.airlock;
 import java.util.Collections;
 import java.util.Set;
 import java.util.WeakHashMap;
-import net.mcreator.ssc.procedures.CPlogLampPrProcedure;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -43,7 +42,7 @@ public final class AirlockWirePulseService {
         var pos = door.getBlockPos();
         var level = (ServerLevel) door.getLevel();
         door.setChanged();
-        CPlogLampPrProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), door.getBlockState());
+        AirlockLampStateService.execute(level, pos.getX(), pos.getY(), pos.getZ(), door.getBlockState());
         net.mcreator.ssc.procedures.BaseAirlockD1PutProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), door.getBlockState());
         net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure.refreshAutoClose(level, pos);
         level.sendBlockUpdated(pos, door.getBlockState(), door.getBlockState(), 3);
