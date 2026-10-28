@@ -6,9 +6,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-MENU_DIR = Path("src/main/java/net/mcreator/ssc/world/inventory")
+JAVA_SOURCE_DIR = Path("src/main/java")
 MATRIX = Path("config/compatibility/menu-security-matrix.txt")
 SLOT_PATTERN = re.compile(r"\baddSlot\s*\(")
+CONTAINER_MENU_PATTERN = re.compile(r"\bextends\s+AbstractContainerMenu\b")
 
 
 def classify(source: str) -> tuple[str, str]:
@@ -23,12 +24,14 @@ def classify(source: str) -> tuple[str, str]:
 
 def discover(root: Path) -> tuple[str, ...]:
     entries: list[str] = []
-    for path in sorted((root / MENU_DIR).glob("*Menu.java")):
+    for path in (root / JAVA_SOURCE_DIR).rglob("*Menu.java"):
         source = path.read_text(encoding="utf-8-sig")
+        if not CONTAINER_MENU_PATTERN.search(source):
+            continue
         policy, fallback = classify(source)
         slots = len(SLOT_PATTERN.findall(source))
         entries.append(f"{path.stem} | {policy} | {fallback} | slots={slots}")
-    return tuple(entries)
+    return tuple(sorted(entries))
 
 
 def expected(root: Path) -> tuple[str, ...]:
