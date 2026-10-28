@@ -16,6 +16,7 @@ import net.mcreator.ssc.world.inventory.*;
 import net.ssc14.content.menu.crafting.DopCraftMenu;
 import net.ssc14.content.menu.headset.HeadsetMenu;
 import net.ssc14.content.menu.access.AccessConfigItemMenu;
+import net.ssc14.content.menu.food.EggCartonGUIMenu;
 import net.ssc14.integration.neoforge.menu.network.MenuStateUpdateMessage;
 import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.content.menu.Ssc14MenuTypes;

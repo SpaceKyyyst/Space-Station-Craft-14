@@ -3,7 +3,7 @@ package net.mcreator.ssc;
 import io.netty.buffer.Unpooled;
 import net.ssc14.content.menu.access.AccessConfigItemMenu;
 import net.mcreator.ssc.world.inventory.BackpackGUIMenu;
-import net.mcreator.ssc.world.inventory.EggCartonGUIMenu;
+import net.ssc14.content.menu.food.EggCartonGUIMenu;
 import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
 import net.mcreator.ssc.procedures.EggCarton_EggsGenerateProcedure;
 import net.mcreator.ssc.procedures.PDAGUIOpeningConditionsProcedure;

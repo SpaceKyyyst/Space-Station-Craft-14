@@ -4,6 +4,7 @@ import net.mcreator.ssc.client.gui.*;
 import net.ssc14.client.menu.crafting.DopCraftScreen;
 import net.ssc14.client.menu.headset.HeadsetScreen;
 import net.ssc14.client.menu.access.AccessConfigItemScreen;
+import net.ssc14.client.menu.food.EggCartonGUIScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
