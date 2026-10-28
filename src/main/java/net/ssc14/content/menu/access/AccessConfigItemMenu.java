@@ -1,4 +1,4 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.access;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
@@ -27,14 +27,14 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.menu.Ssc14MenuTypes;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-public class AccessConfigGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class AccessConfigItemMenu extends AbstractContainerMenu {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
@@ -54,8 +54,8 @@ public class AccessConfigGUIMenu extends AbstractContainerMenu implements Ssc14M
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
 
-	public AccessConfigGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.ACCESS_CONFIG_GUI.get(), id);
+	public AccessConfigItemMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+		super(Ssc14MenuTypes.ACCESS_CONFIG_GUI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(1);
@@ -97,8 +97,8 @@ public class AccessConfigGUIMenu extends AbstractContainerMenu implements Ssc14M
 		}
 		this.customSlots.put(0, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 0, 80, 17) {
 			private final int slot = 0;
-			private int x = AccessConfigGUIMenu.this.x;
-			private int y = AccessConfigGUIMenu.this.y;
+			private int x = AccessConfigItemMenu.this.x;
+			private int y = AccessConfigItemMenu.this.y;
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
@@ -252,12 +252,10 @@ public class AccessConfigGUIMenu extends AbstractContainerMenu implements Ssc14M
 		}
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}
 
-	@Override
 	public Map<String, Object> getMenuState() {
 		return menuState;
 	}

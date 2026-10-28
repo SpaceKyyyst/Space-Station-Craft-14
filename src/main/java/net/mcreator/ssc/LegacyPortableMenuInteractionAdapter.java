@@ -1,7 +1,7 @@
 package net.mcreator.ssc;
 
 import io.netty.buffer.Unpooled;
-import net.mcreator.ssc.world.inventory.AccessConfigGUIMenu;
+import net.ssc14.content.menu.access.AccessConfigItemMenu;
 import net.mcreator.ssc.world.inventory.BackpackGUIMenu;
 import net.mcreator.ssc.world.inventory.EggCartonGUIMenu;
 import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
@@ -77,7 +77,7 @@ final class LegacyPortableMenuInteractionAdapter
                 FriendlyByteBuf buffer = new FriendlyByteBuf(Unpooled.buffer());
                 writeBinding(buffer, player, hand);
                 return switch (kind) {
-                    case ACCESS_CONFIG -> new AccessConfigGUIMenu(id, inventory, buffer);
+                    case ACCESS_CONFIG -> new AccessConfigItemMenu(id, inventory, buffer);
                     case BACKPACK -> new BackpackGUIMenu(id, inventory, buffer);
                     case PASSENGER_PDA -> new PDApassangerGUIMenu(id, inventory, buffer);
                     case EGG_CARTON -> new EggCartonGUIMenu(id, inventory, buffer);

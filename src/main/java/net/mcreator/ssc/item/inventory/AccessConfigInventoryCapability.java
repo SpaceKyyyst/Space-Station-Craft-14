@@ -10,7 +10,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.component.DataComponents;
 
-import net.mcreator.ssc.world.inventory.AccessConfigGUIMenu;
+import net.ssc14.content.menu.access.AccessConfigItemMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.ssc14.content.item.container.PortableMenuItemKind;
 
@@ -20,7 +20,7 @@ public class AccessConfigInventoryCapability extends ItemAccessItemHandler {
 	public static void onItemDropped(ItemTossEvent event) {
 		if (event.getEntity().getItem().getItem() == Ssc14ModItems.ACCESS_CONFIG.get()) {
 			Player player = event.getPlayer();
-			if (player.containerMenu instanceof AccessConfigGUIMenu)
+			if (player.containerMenu instanceof AccessConfigItemMenu)
 				player.closeContainer();
 		}
 	}

@@ -3,6 +3,7 @@ package net.mcreator.ssc.init;
 import net.mcreator.ssc.client.gui.*;
 import net.ssc14.client.menu.crafting.DopCraftScreen;
 import net.ssc14.client.menu.headset.HeadsetScreen;
+import net.ssc14.client.menu.access.AccessConfigItemScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -18,7 +19,7 @@ public final class Ssc14ModScreens {
         Ssc14ScreenBinder.bind(Ssc14ModMenus.DOP_CRAFT_MENU, DopCraftScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.I_DCODE, IDcodeScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.ACCESS_CONFIG_MENU, AccessConfigMENUScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.ACCESS_CONFIG_GUI, AccessConfigGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.ACCESS_CONFIG_GUI, AccessConfigItemScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.CABEL_PANNEL_AIRLOCK, CabelPannelAirlockScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.GRAV_GEN_GUI, GravGenGUIScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.MAC_FRAME_GUI, MacFrameGUIScreen::new);
