@@ -1,6 +1,5 @@
 package net.mcreator.ssc.network;
 
-import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.procedures.DCM_OpenProcedure;
 import net.minecraft.core.SectionPos;
 import net.minecraft.network.chat.Component;
@@ -11,6 +10,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.integration.neoforge.player.network.DCMopenMessage;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 @EventBusSubscriber
 public final class DCMopenMessageRegistration {
@@ -31,7 +31,7 @@ public final class DCMopenMessageRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
-        Ssc14Mod.addServerboundNetworkMessage(DCMopenMessage.TYPE, DCMopenMessage.STREAM_CODEC,
+        Ssc14NetworkPayloads.addServerbound(DCMopenMessage.TYPE, DCMopenMessage.STREAM_CODEC,
                 DCMopenMessageRegistration::handle);
     }
 }

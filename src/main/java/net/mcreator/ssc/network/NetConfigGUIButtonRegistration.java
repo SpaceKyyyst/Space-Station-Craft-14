@@ -11,7 +11,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.chat.Component;
-import net.mcreator.ssc.Ssc14Mod;
 import net.ssc14.integration.neoforge.network.NetConfigGUISyncMessage;
 import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
 import net.ssc14.content.network.NetworkSavedData;
@@ -19,6 +18,7 @@ import net.ssc14.common.network.NetworkAction;
 import net.ssc14.common.network.NetworkTrigger;
 import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 import java.util.Map;
 
@@ -109,6 +109,6 @@ public final class NetConfigGUIButtonRegistration {
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
         var channel = MenuButtonPayload.Channel.NETWORK_CONFIG;
-        Ssc14Mod.addServerboundNetworkMessage(channel.type(), MenuButtonPayload.codec(channel), NetConfigGUIButtonRegistration::handleData);
+        Ssc14NetworkPayloads.addServerbound(channel.type(), MenuButtonPayload.codec(channel), NetConfigGUIButtonRegistration::handleData);
     }
 }

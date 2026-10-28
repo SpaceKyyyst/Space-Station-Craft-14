@@ -76,6 +76,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 /** Transitional dispatcher for generated menus and procedures. */
 @EventBusSubscriber
@@ -273,7 +274,7 @@ public final class LegacyMenuButtonRegistration {
         for (MenuButtonPayload.Channel channel : MenuButtonPayload.Channel.values()) {
             if (channel == MenuButtonPayload.Channel.ID_CODE
                     || channel == MenuButtonPayload.Channel.NETWORK_CONFIG) continue;
-            Ssc14Mod.addServerboundNetworkMessage(channel.type(), MenuButtonPayload.codec(channel),
+            Ssc14NetworkPayloads.addServerbound(channel.type(), MenuButtonPayload.codec(channel),
                     LegacyMenuButtonRegistration::handle);
         }
     }

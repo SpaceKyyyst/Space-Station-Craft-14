@@ -1,6 +1,5 @@
 package net.mcreator.ssc.network;
 
-import net.mcreator.ssc.Ssc14Mod;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.PacketFlow;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -9,6 +8,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.content.player.crawl.CrawlService;
 import net.ssc14.integration.neoforge.player.network.CrawlMessage;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 /** Transitional bootstrap until all legacy payload registrations are retired. */
 @EventBusSubscriber
@@ -27,7 +27,7 @@ public final class CrawlMessageRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
-        Ssc14Mod.addServerboundNetworkMessage(CrawlMessage.TYPE,
+        Ssc14NetworkPayloads.addServerbound(CrawlMessage.TYPE,
                 CrawlMessage.STREAM_CODEC, CrawlMessageRegistration::handle);
     }
 }

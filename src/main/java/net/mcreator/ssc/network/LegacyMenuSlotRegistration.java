@@ -13,6 +13,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.integration.neoforge.menu.network.MenuSlotPayload;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 /** Transitional dispatcher for generated slot callbacks. */
 @EventBusSubscriber
@@ -56,7 +57,7 @@ public final class LegacyMenuSlotRegistration {
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
         for (MenuSlotPayload.Channel channel : MenuSlotPayload.Channel.values()) {
-            Ssc14Mod.addServerboundNetworkMessage(channel.type(), MenuSlotPayload.codec(channel),
+            Ssc14NetworkPayloads.addServerbound(channel.type(), MenuSlotPayload.codec(channel),
                     LegacyMenuSlotRegistration::handle);
         }
     }

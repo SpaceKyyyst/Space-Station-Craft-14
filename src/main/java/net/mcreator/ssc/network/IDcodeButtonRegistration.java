@@ -11,9 +11,9 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.chat.Component;
 
 import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.world.inventory.IDcodeMenu;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 @EventBusSubscriber
 public final class IDcodeButtonRegistration {
@@ -230,6 +230,6 @@ public final class IDcodeButtonRegistration {
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
 		var channel = MenuButtonPayload.Channel.ID_CODE;
-		Ssc14Mod.addServerboundNetworkMessage(channel.type(), MenuButtonPayload.codec(channel), IDcodeButtonRegistration::handleData);
+		Ssc14NetworkPayloads.addServerbound(channel.type(), MenuButtonPayload.codec(channel), IDcodeButtonRegistration::handleData);
 	}
 }

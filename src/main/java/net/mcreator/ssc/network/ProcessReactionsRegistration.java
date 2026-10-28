@@ -14,6 +14,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.common.chemistry.ReagentTransferPlan;
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.integration.neoforge.chemistry.network.ProcessReactionsMessage;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 /** Transitional handler until the reagent container runtime moves to the target namespace. */
 @EventBusSubscriber
@@ -61,7 +62,7 @@ public final class ProcessReactionsRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
-        Ssc14Mod.addServerboundNetworkMessage(ProcessReactionsMessage.TYPE,
+        Ssc14NetworkPayloads.addServerbound(ProcessReactionsMessage.TYPE,
                 ProcessReactionsMessage.STREAM_CODEC, ProcessReactionsRegistration::handle);
     }
 }

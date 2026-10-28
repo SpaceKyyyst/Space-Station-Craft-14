@@ -1,13 +1,13 @@
 package net.mcreator.ssc.network;
 
 import net.minecraft.network.protocol.PacketFlow;
-import net.mcreator.ssc.Ssc14Mod;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.client.atmosphere.GasAnalyzerClientCache;
 import net.ssc14.integration.neoforge.atmosphere.network.GasAnalyzerSnapshotMessage;
+import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 /** Transitional registration adapter until the shared legacy network bootstrap is migrated. */
 @EventBusSubscriber
@@ -23,7 +23,7 @@ public final class GasAnalyzerSnapshotRegistration {
 
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        Ssc14Mod.addClientboundNetworkMessage(
+        Ssc14NetworkPayloads.addClientbound(
                 GasAnalyzerSnapshotMessage.TYPE,
                 GasAnalyzerSnapshotMessage.STREAM_CODEC,
                 GasAnalyzerSnapshotRegistration::handleData);
