@@ -67,7 +67,7 @@ public class MK58_Fire_Procedure {
 						{
 							final String _tagName = "MagazBullets";
 							final double _tagValue = (itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0) - 1);
-							CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble(_tagName, _tagValue));
+							Mk58FireStateService.consumeMagazineRound(itemstack);
 						}
 					} else {
 						if (world instanceof Level _level) {
@@ -96,7 +96,7 @@ public class MK58_Fire_Procedure {
 							{
 								final String _tagName = "BulletChamber";
 								final double _tagValue = 0;
-								CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble(_tagName, _tagValue));
+							Mk58FireStateService.setChamber(itemstack, _tagValue);
 							}
 						} else if (Ssc14ModItems.MK_58NOMAGZ.get() == itemstack.getItem()) {
 							itemstack.shrink(1);
@@ -115,7 +115,7 @@ public class MK58_Fire_Procedure {
 							{
 								final String _tagName = "BulletChamber";
 								final double _tagValue = 0;
-								CustomData.update(DataComponents.CUSTOM_DATA, itemstack, tag -> tag.putDouble(_tagName, _tagValue));
+							Mk58FireStateService.setChamber(itemstack, _tagValue);
 							}
 						}
 					}
