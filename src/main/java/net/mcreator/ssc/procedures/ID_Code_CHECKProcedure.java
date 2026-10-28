@@ -47,23 +47,8 @@ public class ID_Code_CHECKProcedure {
 			if (entity instanceof Player player) {
 				IdJobAssignmentService.syncAccessField(player, "Atmos");
 			}
-			if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu93 ? _menu93.getSlots().get(0).getItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
-					.copyTag().getBooleanOr("Ingeneer", false) == true && (entity instanceof Player _entity95 && _entity95.containerMenu instanceof SlotMenuStateAccess _menu95) && _menu95.getMenuState(1, "Ingeneer", false)) {
-				{
-					final String _tagName = "Ingeneer";
-					final boolean _tagValue = true;
-					CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu96 ? _menu96.getSlots().get(1).getItem() : ItemStack.EMPTY),
-							tag -> tag.putBoolean(_tagName, _tagValue));
-				}
-			} else if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu98 ? _menu98.getSlots().get(0).getItem() : ItemStack.EMPTY)
-					.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getBooleanOr("Ingeneer", false) == true
-					&& !((entity instanceof Player _entity100 && _entity100.containerMenu instanceof SlotMenuStateAccess _menu100) && _menu100.getMenuState(1, "Ingeneer", false))) {
-				{
-					final String _tagName = "Ingeneer";
-					final boolean _tagValue = false;
-					CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu101 ? _menu101.getSlots().get(1).getItem() : ItemStack.EMPTY),
-							tag -> tag.putBoolean(_tagName, _tagValue));
-				}
+			if (entity instanceof Player player) {
+				IdJobAssignmentService.syncAccessField(player, "Ingeneer");
 			}
 			if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu103 ? _menu103.getSlots().get(0).getItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
 					.copyTag().getBooleanOr("Out", false) == true && (entity instanceof Player _entity105 && _entity105.containerMenu instanceof SlotMenuStateAccess _menu105) && _menu105.getMenuState(1, "Out", false)) {
