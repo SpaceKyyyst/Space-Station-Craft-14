@@ -138,7 +138,7 @@ public class ShuttersBlock extends Block implements EntityBlock, NetworkAction, 
     @Override public InteractionResult useWithoutItem(BlockState state, Level level,
             BlockPos pos, Player player, BlockHitResult hit) {
         super.useWithoutItem(state, level, pos, player, hit);
-        ShuttersIntegrationService.use(level, pos, state, player);
+        ShuttersInteractionService.use(level, pos, state, player);
         return InteractionResult.SUCCESS;
     }
 
