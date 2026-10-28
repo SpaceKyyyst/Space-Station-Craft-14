@@ -2,6 +2,7 @@
 package net.mcreator.ssc.procedures;
 
 import net.mcreator.ssc.ModReagents;
+import net.mcreator.ssc.integration.LegacyReactionRuntime;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.minecraft.commands.CommandSourceStack;
@@ -52,7 +53,7 @@ public class FillReagentPRProcedure {
         boolean success = ReagentContainerAccess.add(mainHand, reagentName, amount);
 
         if (success) {
-            ModReagents.processReactions(mainHand, player);
+            LegacyReactionRuntime.process(mainHand, player);
             String displayName = ModReagents.getReagent(reagentName).get().getDisplayName().getString();
             player.sendSystemMessage(Component.literal("§aДобавлено " + amount + " мл " + displayName));
         } else {
