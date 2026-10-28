@@ -16,7 +16,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.VendingMachineBlock;
 import net.ssc14.content.block.commerce.VendingMachineBlockEntity;
-import net.ssc14.content.block.commerce.VendingMachineIntegrationService;
 import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksVendingMachineCompatibilityTest {
@@ -74,40 +73,4 @@ class Ssc14BlocksVendingMachineCompatibilityTest {
         assertEquals(maxZ / 16.0, shape.max(Direction.Axis.Z), 0.00001);
     }
 
-    @Test
-    void integrationServiceRoutesEachLifecycleBoundaryAndRestoresAdapter() {
-        int[] calls = {0, 0, 0, 0, 0};
-        VendingMachineIntegrationService.Adapter previous =
-                VendingMachineIntegrationService.install(
-                        new VendingMachineIntegrationService.Adapter() {
-                    @Override public void onPlaced(
-                            net.minecraft.world.level.Level level, BlockPos pos) { calls[0]++; }
-                    @Override public void onNeighborChanged(
-                            net.minecraft.world.level.Level level, BlockPos pos) { calls[1]++; }
-                    @Override public void onAttack(net.minecraft.world.level.Level level,
-                            BlockPos pos, net.minecraft.world.entity.player.Player player) {
-                        calls[2]++;
-                    }
-                    @Override public void open(net.minecraft.world.level.Level level,
-                            BlockPos pos, net.minecraft.world.entity.player.Player player) {
-                        calls[3]++;
-                    }
-                    @Override public net.minecraft.world.inventory.AbstractContainerMenu createMenu(
-                            int id, net.minecraft.world.entity.player.Inventory inventory,
-                            BlockPos pos) {
-                        calls[4]++;
-                        return null;
-                    }
-                });
-        try {
-            VendingMachineIntegrationService.onPlaced(null, BlockPos.ZERO);
-            VendingMachineIntegrationService.onNeighborChanged(null, BlockPos.ZERO);
-            VendingMachineIntegrationService.onAttack(null, BlockPos.ZERO, null);
-            VendingMachineIntegrationService.open(null, BlockPos.ZERO, null);
-            VendingMachineIntegrationService.createMenu(0, null, BlockPos.ZERO);
-            for (int call : calls) assertEquals(1, call);
-        } finally {
-            VendingMachineIntegrationService.install(previous);
-        }
-    }
 }

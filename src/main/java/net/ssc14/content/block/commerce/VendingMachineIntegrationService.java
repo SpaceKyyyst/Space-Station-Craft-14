@@ -1,51 +1,43 @@
 package net.ssc14.content.block.commerce;
 
-import java.util.Objects;
+import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
+import net.ssc14.content.commerce.VendingMachineRuntimeService;
+import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
 
-/** Boundary for the legacy vending procedures and menu. */
+/** Canonical vending lifecycle and menu integration. */
 public final class VendingMachineIntegrationService {
-    public interface Adapter {
-        void onPlaced(Level level, BlockPos pos);
-        void onNeighborChanged(Level level, BlockPos pos);
-        void onAttack(Level level, BlockPos pos, Player player);
-        void open(Level level, BlockPos pos, Player player);
-        AbstractContainerMenu createMenu(int id, Inventory inventory, BlockPos pos);
-    }
-
-    private static Adapter adapter = new Adapter() {
-        @Override public void onPlaced(Level level, BlockPos pos) { }
-        @Override public void onNeighborChanged(Level level, BlockPos pos) { }
-        @Override public void onAttack(Level level, BlockPos pos, Player player) { }
-        @Override public void open(Level level, BlockPos pos, Player player) { }
-        @Override public AbstractContainerMenu createMenu(
-                int id, Inventory inventory, BlockPos pos) { return null; }
-    };
-
     private VendingMachineIntegrationService() { }
 
-    public static Adapter install(Adapter replacement) {
-        Adapter previous = adapter;
-        adapter = Objects.requireNonNull(replacement, "replacement");
-        return previous;
+    public static void onPlaced(Level level, BlockPos pos) {
+        VendingMachineRuntimeService.initialize(level, pos);
     }
 
-    public static void onPlaced(Level level, BlockPos pos) { adapter.onPlaced(level, pos); }
     public static void onNeighborChanged(Level level, BlockPos pos) {
-        adapter.onNeighborChanged(level, pos);
+        VendingMachineRuntimeService.validateUpperPlug(level, pos);
     }
+
     public static void onAttack(Level level, BlockPos pos, Player player) {
-        adapter.onAttack(level, pos, player);
+        VendingMachineRuntimeService.handleCreativeAttack(level, pos, player);
     }
+
     public static void open(Level level, BlockPos pos, Player player) {
-        adapter.open(level, pos, player);
+        if (player instanceof ServerPlayer serverPlayer
+                && level.getBlockEntity(pos) instanceof MenuProvider provider) {
+            serverPlayer.openMenu(provider, pos);
+        }
     }
+
     public static AbstractContainerMenu createMenu(
             int id, Inventory inventory, BlockPos pos) {
-        return adapter.createMenu(id, inventory, pos);
+        return new VendingAut1GUIMenu(id, inventory,
+                new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
     }
 }
