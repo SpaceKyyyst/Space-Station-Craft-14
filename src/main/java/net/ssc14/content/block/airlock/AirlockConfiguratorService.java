@@ -1,6 +1,5 @@
 package net.ssc14.content.block.airlock;
 
-import net.mcreator.ssc.access.AirlockEventLog;
 import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 import net.ssc14.content.access.IdCardRegistry;
 import net.ssc14.content.access.PlayerAccessService;

@@ -1,7 +1,6 @@
 package net.ssc14.content.block.airlock;
 
 import net.mcreator.ssc.procedures.CPlogLampPrProcedure;
-import net.mcreator.ssc.procedures.CPlogLampPrProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
