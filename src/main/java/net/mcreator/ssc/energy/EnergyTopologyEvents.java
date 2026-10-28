@@ -1,6 +1,6 @@
 package net.mcreator.ssc.energy;
 
-import net.mcreator.ssc.EnergyNetworkManager;
+import net.ssc14.content.block.energy.CableTopologyService;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.ChunkEvent;
@@ -50,7 +50,7 @@ public final class EnergyTopologyEvents {
                 || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.DEBU_GGENERATOR.get())
                 || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.LAMP.get())
                 || net.mcreator.ssc.access.AirlockPower.isDoor(state)) {
-            EnergyNetworkManager.invalidate(level, position);
+            CableTopologyService.invalidate(level, position);
         }
     }
 }
