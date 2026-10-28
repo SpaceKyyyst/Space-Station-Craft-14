@@ -1,4 +1,4 @@
-package net.mcreator.ssc.client.gui;
+package net.ssc14.client.menu.access;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -10,19 +10,19 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.AccessConfigGUIMenu;
-import net.mcreator.ssc.init.Ssc14ModScreens;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.content.menu.access.AccessConfigItemMenu;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-public class AccessConfigGUIScreen extends AbstractContainerScreen<AccessConfigGUIMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class AccessConfigItemScreen extends AbstractContainerScreen<AccessConfigItemMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
 	private boolean menuStateUpdateActive = false;
 	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/access_config_gui__copy.png");
 
-	public AccessConfigGUIScreen(AccessConfigGUIMenu container, Inventory inventory, Component text) {
+	public AccessConfigItemScreen(AccessConfigItemMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text, 176, 131);
 		this.world = container.world;
 		this.x = container.x;

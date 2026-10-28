@@ -15,6 +15,7 @@ import net.minecraft.client.Minecraft;
 import net.mcreator.ssc.world.inventory.*;
 import net.ssc14.content.menu.crafting.DopCraftMenu;
 import net.ssc14.content.menu.headset.HeadsetMenu;
+import net.ssc14.content.menu.access.AccessConfigItemMenu;
 import net.ssc14.integration.neoforge.menu.network.MenuStateUpdateMessage;
 import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.content.menu.Ssc14MenuTypes;
@@ -27,7 +28,7 @@ public class Ssc14ModMenus {
 	public static final DeferredHolder<MenuType<?>, MenuType<DopCraftMenu>> DOP_CRAFT_MENU = alias(Ssc14MenuTypes.DOP_CRAFT_MENU);
 	public static final DeferredHolder<MenuType<?>, MenuType<IDcodeMenu>> I_DCODE = alias(Ssc14MenuTypes.I_DCODE);
 	public static final DeferredHolder<MenuType<?>, MenuType<AccessConfigMENUMenu>> ACCESS_CONFIG_MENU = alias(Ssc14MenuTypes.ACCESS_CONFIG_MENU);
-	public static final DeferredHolder<MenuType<?>, MenuType<AccessConfigGUIMenu>> ACCESS_CONFIG_GUI = alias(Ssc14MenuTypes.ACCESS_CONFIG_GUI);
+	public static final DeferredHolder<MenuType<?>, MenuType<AccessConfigItemMenu>> ACCESS_CONFIG_GUI = alias(Ssc14MenuTypes.ACCESS_CONFIG_GUI);
 	public static final DeferredHolder<MenuType<?>, MenuType<CabelPannelAirlockMenu>> CABEL_PANNEL_AIRLOCK = alias(Ssc14MenuTypes.CABEL_PANNEL_AIRLOCK);
 	public static final DeferredHolder<MenuType<?>, MenuType<GravGenGUIMenu>> GRAV_GEN_GUI = alias(Ssc14MenuTypes.GRAV_GEN_GUI);
 	public static final DeferredHolder<MenuType<?>, MenuType<MacFrameGUIMenu>> MAC_FRAME_GUI = alias(Ssc14MenuTypes.MAC_FRAME_GUI);
@@ -50,7 +51,7 @@ public class Ssc14ModMenus {
 		Ssc14MenuTypes.bindFactory("dop_craft_menu", DopCraftMenu::new);
 		Ssc14MenuTypes.bindFactory("i_dcode", IDcodeMenu::new);
 		Ssc14MenuTypes.bindFactory("access_config_menu", AccessConfigMENUMenu::new);
-		Ssc14MenuTypes.bindFactory("access_config_gui", AccessConfigGUIMenu::new);
+		Ssc14MenuTypes.bindFactory("access_config_gui", AccessConfigItemMenu::new);
 		Ssc14MenuTypes.bindFactory("cabel_pannel_airlock", CabelPannelAirlockMenu::new);
 		Ssc14MenuTypes.bindFactory("grav_gen_gui", GravGenGUIMenu::new);
 		Ssc14MenuTypes.bindFactory("mac_frame_gui", MacFrameGUIMenu::new);
