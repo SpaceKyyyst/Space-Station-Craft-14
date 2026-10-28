@@ -2,7 +2,7 @@
 package net.mcreator.ssc.client.screens;
 
 import net.ssc14.content.block.energy.SheathingBlock;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.client.energy.MultitoolClientCache;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -32,7 +32,7 @@ public class MultitulUIOverlay {
 		if (player == null || world == null) return;
 
 		ItemStack mainHand = player.getMainHandItem();
-		if (mainHand.isEmpty() || mainHand.getItem() != Ssc14ModItems.MULTITUL.get()) return;
+		if (mainHand.isEmpty() || mainHand.getItem() != Ssc14Items.MULTITUL.get()) return;
 		CustomData customData = mainHand.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
 		int toolMode = 1;
 
