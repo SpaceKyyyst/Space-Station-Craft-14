@@ -157,7 +157,7 @@ public class MicrwGUIbutEProcedure {
             }
             int canCraft = Math.min(bunCount, tofuCount);
             if (canCraft > 0) {
-                decreaseItemCountInList(microwaveContents, Ssc14ModItems.BUN.get(), canCraft);
+                decreaseItemCountInList(microwaveContents, Ssc14ModItems.DOUGH.get(), canCraft);
                 decreaseItemCountInList(microwaveContents, Ssc14ModItems.TOFU_SLICE.get(), canCraft);
                 spawnItems.merge(Ssc14ModItems.TOFU_BREAD.get(), canCraft, Integer::sum);
             }
@@ -172,8 +172,8 @@ public class MicrwGUIbutEProcedure {
             }
             int canCraft = Math.min(bunCount, tofuCount);
             if (canCraft > 0) {
-                decreaseItemCountInList(microwaveContents, Ssc14ModItems.BUN.get(), canCraft);
-                decreaseItemCountInList(microwaveContents, Ssc14ModItems.TOFU_SLICE.get(), canCraft);
+                decreaseItemCountInList(microwaveContents, Ssc14ModItems.MEAT.get(), canCraft);
+                decreaseItemCountInList(microwaveContents, Ssc14ModItems.DOUGH.get(), canCraft);
                 spawnItems.merge(Ssc14ModItems.MEATLOAF.get(), canCraft, Integer::sum);
             }
         }
@@ -187,8 +187,8 @@ public class MicrwGUIbutEProcedure {
             }
             int canCraft = Math.min(bunCount, tofuCount);
             if (canCraft > 0) {
-                decreaseItemCountInList(microwaveContents, Ssc14ModItems.BUN.get(), canCraft);
-                decreaseItemCountInList(microwaveContents, Ssc14ModItems.TOFU_SLICE.get(), canCraft);
+                decreaseItemCountInList(microwaveContents, Ssc14ModItems.BREAD_SLICE.get(), canCraft);
+                decreaseItemCountInList(microwaveContents, Ssc14ModItems.FLY_AMANITA.get(), canCraft);
                 spawnItems.merge(Ssc14ModItems.MOLDY_BREAD_PIECE.get(), canCraft, Integer::sum);
             }
         }
