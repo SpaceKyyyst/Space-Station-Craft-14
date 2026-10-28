@@ -1,4 +1,4 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.airlock;
 
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
@@ -6,7 +6,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
 
-public class BaseAirlockU1_ChekProcedure {
+public final class AirlockUpperPlugValidationService {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		if (!(world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(Identifier.parse("ssc14:airlocks")))) {
 			world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
