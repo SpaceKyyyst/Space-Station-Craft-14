@@ -9,6 +9,7 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.minecraft.world.item.ItemStack;
 
 import net.mcreator.ssc.procedures.*;
+import net.ssc14.content.equipment.HardsuitSalvageHelmetEquipabilityService;
 
 public class Ssc14ModCuriosCompat {
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -1041,7 +1042,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public boolean canUnequip(SlotContext slotContext) {
-				return HardsuitSalvageHelmetCAPI_unequipebleProcedure.execute();
+				return HardsuitSalvageHelmetEquipabilityService.execute();
 			}
 		}, Ssc14ModItems.HARDSUIT_SALVAGE_HELMET.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
