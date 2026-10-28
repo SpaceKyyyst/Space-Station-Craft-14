@@ -35,7 +35,7 @@ import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyIdConsoleIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyNetworkConfiguratorMenuAdapter;
 import net.mcreator.ssc.integration.LegacyRsuInteractionAdapter;
-import net.mcreator.ssc.integration.LegacyShuttersIntegrationAdapter;
+import net.ssc14.content.block.airlock.LegacyShuttersIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockControllerInteractionAdapter;
 import net.ssc14.content.gravity.ui.GravityGeneratorWindow;
