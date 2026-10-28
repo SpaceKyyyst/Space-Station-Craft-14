@@ -111,6 +111,28 @@ Mod ID, registry ID, NBT-ключи и порядок `GasType` являются
 
 ## Известные ограничения
 
+## Статус миграции MCreator / MCreator migration status
+
+Основные runtime-пути уже работают через канонические NeoForge-сервисы: кислородный
+генератор, гравитация, топливный бак, C4, ядерная боеголовка, реестр паллет и
+проверки доступа шлюза/шкафов. Оставшиеся классы `IntegrationService` являются
+явными переходными границами, а не новой игровой архитектурой. Они нужны там, где
+ещё сохраняются старые GUI, сетевые меню, формат сохранения или legacy energy API:
+communication console, commerce console, сетевой topology, station-code debug,
+шкафы, shutters, portable menus и несколько строительных/оружейных взаимодействий.
+Их удаление допустимо только после переноса соответствующего поведения и
+регрессионной проверки сохранений.
+
+The primary runtime paths now use canonical NeoForge services: oxygen production,
+gravity, fuel tanks, C4, nuclear warhead detonation, pallet registry and airlock/
+closet access checks. Remaining `IntegrationService` classes are explicit migration
+boundaries rather than a new gameplay architecture. They are retained where legacy
+GUIs, menu networking, save formats or the legacy energy API are still involved:
+communication and commerce consoles, cable topology, station-code debug, closets,
+shutters, portable menus, and several construction/firearm interactions. Each bridge
+must be removed only after its behavior and save compatibility are migrated and
+covered by regression tests.
+
 - Большие сгенерированные процедуры доступа и инвентарей ещё требуют отдельных
   поведенческих тестов. Новые операции ID-карт проходят через
   `IdJobAssignmentService`, а legacy `ID_Code_CHECKProcedure` остаётся переходным
