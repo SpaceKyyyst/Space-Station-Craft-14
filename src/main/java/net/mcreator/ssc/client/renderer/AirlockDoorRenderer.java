@@ -51,7 +51,7 @@ public final class AirlockDoorRenderer<T extends BlockEntity> implements BlockEn
                 : data.getBooleanOr("diods", true) && data.getBooleanOr("bolted", false) ? 2
                 : data.getBooleanOr("diods", true) && data.getBooleanOr("emergency_acs", false) ? 3 : 1;
         state.welded = data.getBooleanOr("welded", false);
-        state.protection = data.getIntOr(net.mcreator.ssc.access.AirlockMaintenance.ARMOR, 0);
+        state.protection = data.getIntOr(net.ssc14.content.block.airlock.AirlockMaintenanceService.ARMOR, 0);
         var panel = block.getBlock().getStateDefinition().getProperty("panel_open");
         state.panelOpen = panel instanceof net.minecraft.world.level.block.state.properties.BooleanProperty value && block.getValue(value);
         var property = block.getBlock().getStateDefinition().getProperty("arl_variat");
