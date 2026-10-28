@@ -17,6 +17,7 @@ import net.ssc14.content.block.window.ArmoredWindowBlock;
 import net.ssc14.content.block.window.BaseWindowBlock;
 import net.ssc14.content.block.window.DirectedArmoredWindowBlock;
 import net.ssc14.content.block.window.DirectedBaseWindowBlock;
+import net.ssc14.content.block.window.WindowKnockService;
 import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksWindowCompatibilityTest {
@@ -63,9 +64,9 @@ class Ssc14BlocksWindowCompatibilityTest {
     }
 
     @Test
-    void legacyKnockProcedureKeepsExactAbi() throws ReflectiveOperationException {
-        Method execute = net.mcreator.ssc.procedures.Windows_KnockKnock_Procedure.class.getMethod(
-                "execute", LevelAccessor.class, double.class, double.class, double.class, Entity.class);
+    void canonicalKnockServiceKeepsExactAbi() throws ReflectiveOperationException {
+        Method execute = WindowKnockService.class.getMethod(
+                "knock", LevelAccessor.class, double.class, double.class, double.class, Entity.class);
         assertSame(InteractionResult.class, execute.getReturnType());
     }
 

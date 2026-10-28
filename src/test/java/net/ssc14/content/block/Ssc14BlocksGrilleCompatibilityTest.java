@@ -7,13 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.lang.reflect.Field;
 import java.util.Map;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.procedures.BrokeGrilleProcedure;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.ssc14.content.block.grille.BrokenGrilleBlock;
 import net.ssc14.content.block.grille.GrilleBlock;
+import net.ssc14.content.block.grille.GrilleBreakService;
 import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksGrilleCompatibilityTest {
@@ -40,9 +41,9 @@ class Ssc14BlocksGrilleCompatibilityTest {
     }
 
     @Test
-    void legacyProcedureKeepsExactExecuteAbi() throws Exception {
-        var execute = BrokeGrilleProcedure.class.getMethod("execute", LevelAccessor.class,
-                double.class, double.class, double.class, Entity.class);
+    void canonicalBreakServiceKeepsExactExecuteAbi() throws Exception {
+        var execute = GrilleBreakService.class.getMethod(
+                "replaceWithBroken", LevelAccessor.class, BlockPos.class, Entity.class);
 
         assertSame(void.class, execute.getReturnType());
     }

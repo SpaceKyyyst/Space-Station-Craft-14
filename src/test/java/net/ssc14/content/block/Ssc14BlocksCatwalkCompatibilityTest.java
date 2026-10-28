@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Proxy;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.procedures.CatwalkPlacementConditionsProcedure;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.ssc14.content.block.catwalk.CatwalkFloorBlock;
+import net.ssc14.content.block.catwalk.CatwalkSupportPolicy;
 import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksCatwalkCompatibilityTest {
@@ -26,13 +26,13 @@ class Ssc14BlocksCatwalkCompatibilityTest {
     }
 
     @Test
-    void legacyBlockAndProcedureKeepTheirAbi() throws Exception {
+    void legacyBlockAndCanonicalPolicyKeepTheirAbi() throws Exception {
         assertTrue(CatwalkFloorBlock.class.isAssignableFrom(
                 net.mcreator.ssc.block.CatwalkFloorBlock.class));
         net.mcreator.ssc.block.CatwalkFloorBlock.class
                 .getConstructor(BlockBehaviour.Properties.class);
-        var execute = CatwalkPlacementConditionsProcedure.class.getMethod("execute",
-                LevelAccessor.class, double.class, double.class, double.class);
+        var execute = CatwalkSupportPolicy.class.getMethod(
+                "canSupport", BlockGetter.class, BlockPos.class);
         assertSame(boolean.class, execute.getReturnType());
     }
 
