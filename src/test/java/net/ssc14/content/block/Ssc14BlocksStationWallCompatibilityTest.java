@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -14,6 +15,7 @@ import net.ssc14.content.block.wall.ArmoredShuttleWallBlock;
 import net.ssc14.content.block.wall.PlasteelWallBlock;
 import net.ssc14.content.block.wall.ShuttleWallBlock;
 import net.ssc14.content.block.wall.SteelWallBlock;
+import net.ssc14.content.block.wall.WallDamageService;
 import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksStationWallCompatibilityTest {
@@ -38,30 +40,21 @@ class Ssc14BlocksStationWallCompatibilityTest {
     }
 
     @Test
-    void legacyTypesAndProceduresKeepTheirAbi() throws Exception {
+    void legacyTypesAndCanonicalDamageServiceKeepTheirAbi() throws Exception {
         for (Expected expected : EXPECTED) {
             Class<?> legacy = Class.forName("net.mcreator.ssc.block." + expected.legacyClass());
             assertTrue(expected.canonicalClass().isAssignableFrom(legacy));
             legacy.getConstructor(BlockBehaviour.Properties.class);
         }
-        assertProcedure("SteelWall_DestroyProcedure", Entity.class);
-        assertProcedure("Wall_Explosion_BreakdownProcedure");
-        assertProcedure("PlstWallExplosionBreakdownProcedure");
+        assertSame(void.class, WallDamageService.class.getMethod("breakByPlayer",
+                LevelAccessor.class, double.class, double.class, double.class, Entity.class)
+                .getReturnType());
+        assertSame(void.class, WallDamageService.class.getMethod("scheduleSteelExplosion",
+                ServerLevel.class, double.class, double.class, double.class).getReturnType());
+        assertSame(void.class, WallDamageService.class.getMethod("schedulePlasteelExplosion",
+                ServerLevel.class, double.class, double.class, double.class).getReturnType());
         assertSame(PlasteelWallBlock.BLOCKSTATE,
                 net.mcreator.ssc.block.PlasteelWallBlock.BLOCKSTATE);
-    }
-
-    private static void assertProcedure(String simpleName, Class<?>... trailingTypes)
-            throws Exception {
-        Class<?>[] parameters = new Class<?>[4 + trailingTypes.length];
-        parameters[0] = LevelAccessor.class;
-        parameters[1] = double.class;
-        parameters[2] = double.class;
-        parameters[3] = double.class;
-        System.arraycopy(trailingTypes, 0, parameters, 4, trailingTypes.length);
-        Class<?> procedure = Class.forName("net.mcreator.ssc.procedures." + simpleName);
-        procedure.getConstructor();
-        assertSame(void.class, procedure.getMethod("execute", parameters).getReturnType());
     }
 
     private record Expected(String field, String path, String legacyClass,
