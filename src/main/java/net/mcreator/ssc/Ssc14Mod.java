@@ -218,7 +218,7 @@ public class Ssc14Mod {
 			}
 		});
 		NuclearWarheadInteractionService.install((level, pos) ->
-				net.mcreator.ssc.procedures.NuclearWarhead_ExpProcedure.execute(
+				net.ssc14.content.explosive.NuclearWarheadDetonationService.execute(
 						level, pos.getX(), pos.getY(), pos.getZ()));
 		GravityGeneratorPlugLifecycleService.install(
 				new GravityGeneratorPlugLifecycleService.Adapter() {
