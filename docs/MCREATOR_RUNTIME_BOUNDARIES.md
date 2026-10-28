@@ -47,6 +47,9 @@ event subscribers и процедурные фасады, которые ещё 
   `ProcessReactionsMessage` и действие `hotbar_transfer` сохранены;
 - decal и portable-menu interaction adapters перенесены в canonical
   `content/item` слои; их menu contracts и server-authority checks сохранены;
+- network configurator, shutters, commerce-console и ID-console adapters
+  перенесены в соответствующие canonical `content` слои без изменения menu,
+  position-buffer и server-authority контрактов;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
@@ -111,6 +114,9 @@ only event subscribers and procedural facades that still own runtime behavior:
   `ProcessReactionsMessage` and the `hotbar_transfer` action remain unchanged;
 - decal and portable-menu interaction adapters were moved to canonical
   `content/item` layers; their menu contracts and server-authority checks remain intact;
+- network configurator, shutters, commerce-console, and ID-console adapters
+  were moved to their canonical `content` layers without changing menu,
+  position-buffer, or server-authority contracts;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
