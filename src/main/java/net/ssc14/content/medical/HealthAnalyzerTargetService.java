@@ -1,11 +1,11 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.medical;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
-public class HealthAnalyzerUIEntityDisplayProcedure {
+public final class HealthAnalyzerTargetService {
 
 	public static Entity execute(Entity entity) {
 		if (entity == null) return null;
