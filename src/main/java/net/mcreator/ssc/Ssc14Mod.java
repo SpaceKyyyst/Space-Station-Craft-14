@@ -154,7 +154,7 @@ public class Ssc14Mod {
 		Ssc14ModBlockEntities.REGISTRY.register(modEventBus);
 		Ssc14Items.REGISTRY.register(modEventBus);
 		Ssc14ModItems.REGISTRY.register(modEventBus);
-		LightingEnergyService.install(EnergyNetworkManager::queueUpdate);
+		LightingEnergyService.install(CableTopologyService::queueUpdate);
 		CableTopologyService.install(new CableTopologyService.Adapter() {
 			@Override
 			public void queueUpdate(LevelAccessor level, net.minecraft.core.BlockPos pos) {
