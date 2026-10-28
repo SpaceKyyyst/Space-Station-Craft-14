@@ -15,7 +15,8 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.RCDGUIwindowsMenu;
-import net.mcreator.ssc.network.RCDGUIwindowsButtonMessage;
+import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -81,8 +82,8 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 					int x = RCDGUIwindowsScreen.this.x;
 					int y = RCDGUIwindowsScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(0, x, y, z));
-						RCDGUIwindowsButtonMessage.handleButtonAction(entity, 0, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdWindows(0, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdWindows(0, x, y, z));
 					}
 				}) {
 			@Override
@@ -95,8 +96,8 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 			int x = RCDGUIwindowsScreen.this.x;
 			int y = RCDGUIwindowsScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(1, x, y, z));
-				RCDGUIwindowsButtonMessage.handleButtonAction(entity, 1, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdWindows(1, x, y, z));
+				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdWindows(1, x, y, z));
 			}
 		}) {
 			@Override
@@ -110,8 +111,8 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 					int x = RCDGUIwindowsScreen.this.x;
 					int y = RCDGUIwindowsScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(2, x, y, z));
-						RCDGUIwindowsButtonMessage.handleButtonAction(entity, 2, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdWindows(2, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdWindows(2, x, y, z));
 					}
 				}) {
 			@Override
@@ -125,8 +126,8 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 					int x = RCDGUIwindowsScreen.this.x;
 					int y = RCDGUIwindowsScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(3, x, y, z));
-						RCDGUIwindowsButtonMessage.handleButtonAction(entity, 3, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdWindows(3, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdWindows(3, x, y, z));
 					}
 				}) {
 			@Override
@@ -140,8 +141,8 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 					int x = RCDGUIwindowsScreen.this.x;
 					int y = RCDGUIwindowsScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(4, x, y, z));
-						RCDGUIwindowsButtonMessage.handleButtonAction(entity, 4, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdWindows(4, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdWindows(4, x, y, z));
 					}
 				}) {
 			@Override
@@ -155,8 +156,8 @@ public class RCDGUIwindowsScreen extends AbstractContainerScreen<RCDGUIwindowsMe
 					int x = RCDGUIwindowsScreen.this.x;
 					int y = RCDGUIwindowsScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new RCDGUIwindowsButtonMessage(5, x, y, z));
-						RCDGUIwindowsButtonMessage.handleButtonAction(entity, 5, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.rcdWindows(5, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.rcdWindows(5, x, y, z));
 					}
 				}) {
 			@Override

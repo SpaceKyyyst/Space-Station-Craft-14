@@ -1,6 +1,7 @@
 package net.mcreator.ssc.medical;
 
 import org.junit.jupiter.api.Test;
+import net.ssc14.common.medical.MedicalPresentationController;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MedicalPresentationControllerTest {

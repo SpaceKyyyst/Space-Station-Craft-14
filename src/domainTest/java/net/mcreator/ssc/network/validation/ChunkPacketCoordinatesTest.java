@@ -1,6 +1,7 @@
 package net.mcreator.ssc.network.validation;
 
 import org.junit.jupiter.api.Test;
+import net.ssc14.core.network.ChunkPacketCoordinates;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ChunkPacketCoordinatesTest {

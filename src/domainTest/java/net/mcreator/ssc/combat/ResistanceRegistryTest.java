@@ -1,6 +1,7 @@
 package net.mcreator.ssc.combat;
 
 import org.junit.jupiter.api.Test;
+import net.ssc14.core.combat.ResistanceRegistry;
 
 import static org.junit.jupiter.api.Assertions.*;
 

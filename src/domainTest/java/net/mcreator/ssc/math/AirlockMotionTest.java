@@ -1,6 +1,7 @@
 package net.mcreator.ssc.math;
 
 import org.junit.jupiter.api.Test;
+import net.ssc14.common.airlock.AirlockMotion;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AirlockMotionTest {

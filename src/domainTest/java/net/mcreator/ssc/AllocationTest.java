@@ -3,7 +3,7 @@ package net.mcreator.ssc;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import net.mcreator.ssc.chemistry.MixturePortion;
+import net.ssc14.common.chemistry.MixturePortion;
 import net.ssc14.core.math.ProportionalAllocation;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -56,16 +56,16 @@ class AllocationTest {
 
     @Test void legacyFacadePreservesResultsAndExceptionTypes() {
         assertArrayEquals(new long[]{0, 1, 1},
-                net.mcreator.ssc.math.ProportionalAllocation.allocate(
+                ProportionalAllocation.allocate(
                         2, new long[]{1, 1, 1}));
         assertArrayEquals(new long[]{1, 2, 3},
-                net.mcreator.ssc.math.ProportionalAllocation.allocate(
+                ProportionalAllocation.allocate(
                         100, new long[]{1, 2, 3}));
         assertThrows(IllegalArgumentException.class,
-                () -> net.mcreator.ssc.math.ProportionalAllocation.allocate(
+                () -> ProportionalAllocation.allocate(
                         -1, new long[]{1}));
         assertThrows(IllegalArgumentException.class,
-                () -> net.mcreator.ssc.math.ProportionalAllocation.allocate(
+                () -> ProportionalAllocation.allocate(
                         1, new long[]{-1}));
     }
 

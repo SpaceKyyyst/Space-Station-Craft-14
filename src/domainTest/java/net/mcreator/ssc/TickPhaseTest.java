@@ -3,7 +3,7 @@ package net.mcreator.ssc;
 import java.nio.file.Path;
 import jdk.jfr.Recording;
 import jdk.jfr.consumer.RecordingFile;
-import net.mcreator.ssc.diagnostics.TickPhase;
+import net.ssc14.core.diagnostics.TickPhase;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import static org.junit.jupiter.api.Assertions.*;
