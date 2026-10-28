@@ -1,4 +1,4 @@
-package net.mcreator.ssc.integration;
+package net.ssc14.content.item.tool;
 
 import io.netty.buffer.Unpooled;
 import net.ssc14.content.menu.network.NetConfigGUIMenu;
@@ -10,27 +10,21 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.ssc14.content.item.tool.NetworkConfiguratorService;
 
-/** Legacy NetConfig GUI factory behind the canonical item service. */
+/** Compatibility NetConfig menu factory behind the canonical item service. */
 public final class LegacyNetworkConfiguratorMenuAdapter
         implements NetworkConfiguratorService.Adapter {
     @Override
     public void openMenu(ServerPlayer player, BlockPos pos) {
         player.openMenu(new MenuProvider() {
             @Override
-            public Component getDisplayName() {
-                return Component.literal("NetConfigGUI");
-            }
+            public Component getDisplayName() { return Component.literal("NetConfigGUI"); }
 
             @Override
-            public boolean shouldTriggerClientSideContainerClosingOnOpen() {
-                return false;
-            }
+            public boolean shouldTriggerClientSideContainerClosingOnOpen() { return false; }
 
             @Override
-            public AbstractContainerMenu createMenu(
-                    int id, Inventory inventory, Player menuPlayer) {
+            public AbstractContainerMenu createMenu(int id, Inventory inventory, Player menuPlayer) {
                 return new NetConfigGUIMenu(id, inventory,
                         new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
             }
