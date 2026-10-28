@@ -3,6 +3,7 @@ package net.ssc14.content.item.weapon;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.entity.player.Player;
 
 /** Canonical access to persisted MK-58 firing state. */
 public final class Mk58FireStateService {
@@ -37,5 +38,13 @@ public final class Mk58FireStateService {
     public static void consumeMagazineRound(ItemStack stack) {
         CustomData.update(DataComponents.CUSTOM_DATA, stack,
                 tag -> tag.putDouble(MAGAZINE_BULLETS, Math.max(0, magazine(stack) - 1)));
+    }
+
+    public static boolean isCoolingDown(Player player, ItemStack stack) {
+        return player.getCooldowns().isOnCooldown(stack);
+    }
+
+    public static void startCooldown(Player player, ItemStack stack, int ticks) {
+        player.getCooldowns().addCooldown(stack, ticks);
     }
 }
