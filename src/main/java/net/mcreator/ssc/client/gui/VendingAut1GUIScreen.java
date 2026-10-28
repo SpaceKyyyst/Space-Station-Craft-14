@@ -15,7 +15,7 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.VendingAut1GUIMenu;
+import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
 import net.mcreator.ssc.procedures.*;
 import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
