@@ -36,20 +36,13 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.TagKey;
 
 import net.ssc14.content.menu.access.AccessConfigMENUMenu;
+import net.ssc14.common.storage.ClosetAccessPolicy;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 import io.netty.buffer.Unpooled;
 
 public class Closet_OpenClose_PrProcedure {
 	
-	private static final String[] ACCESS_ROLES = {
-		"Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio", 
-		"Security", "Engineer", "Command", "Detective", "PNT", "Scientist", 
-		"Supply_Department", "Atmos", "Kitchen", "Uridic", "Gidroponic", "Teatre", 
-		"Bar", "Cleaner", "Utilizat", "Chemistry", "Church", "CE", "Qm", "CMO", 
-		"RD", "HoP", "Captain", "Blue_Sh"
-	};
-
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
 		if (entity == null) return;
 		if (world.isClientSide()) return;
@@ -88,17 +81,7 @@ public class Closet_OpenClose_PrProcedure {
 			CompoundTag entityData = entity.getPersistentData();
 			CompoundTag blockData = (be != null) ? be.getPersistentData() : null;
 			
-			boolean hasAccess = true;
-			if (blockData != null) {
-				for (String role : ACCESS_ROLES) {
-					boolean entityHasRole = entityData.getBoolean(role).orElse(false);
-					boolean blockRequiresRole = blockData.getBoolean(role).orElse(false);
-					if (blockRequiresRole && !entityHasRole) {
-						hasAccess = false;
-						break;
-					}
-				}
-			}
+			boolean hasAccess = ClosetAccessPolicy.hasAccess(entityData, blockData);
 			
 			if (!hasAccess) {
 				showLockedMessage(entity);
