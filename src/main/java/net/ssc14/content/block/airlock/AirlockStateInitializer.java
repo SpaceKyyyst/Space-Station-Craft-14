@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.ssc14.common.airlock.AirlockAccessPolicy;
 
@@ -70,13 +70,13 @@ public final class AirlockStateInitializer {
 				BuiltInRegistries.BLOCK.getKey(block).getPath());
 		if (policyAccess != null) nbt.putBoolean(policyAccess, true);
 
-		if (block == Ssc14ModBlocks.CENT_COM_AIRLOCK_D_1.get()) {
+		if (block == Ssc14Blocks.CENT_COM_AIRLOCK_D_1.get()) {
 			// Пока нету доступов
-		} else if (block == Ssc14ModBlocks.SECURITY_AIRLOCK_D_1.get()) {
+		} else if (block == Ssc14Blocks.SECURITY_AIRLOCK_D_1.get()) {
 			nbt.putBoolean("Brig", true);
-		} else if (block == Ssc14ModBlocks.SYNDICATE_AIRLOCK_D_1.get()) {
+		} else if (block == Ssc14Blocks.SYNDICATE_AIRLOCK_D_1.get()) {
 			// Нету доступов
-		} else if (block == Ssc14ModBlocks.VIROLOGY_AIRLOCK_D_1.get()) {
+		} else if (block == Ssc14Blocks.VIROLOGY_AIRLOCK_D_1.get()) {
 			nbt.putBoolean("Medical", true);
 		}
 	}
@@ -91,13 +91,13 @@ public final class AirlockStateInitializer {
 		
 		boolean shouldBeOpen = (currentState >= 11 && currentState <= 15);
 		Block targetPlug = shouldBeOpen 
-			? Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get() 
-			: Ssc14ModBlocks.AIRLOCK_UP_PLUG.get();
+			? Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.get() 
+			: Ssc14Blocks.AIRLOCK_UP_PLUG.get();
 			
 		BlockState currentTop = world.getBlockState(topPos);
 		if (currentTop.getBlock() == targetPlug) return;
-        if (!currentTop.canBeReplaced() && currentTop.getBlock() != Ssc14ModBlocks.AIRLOCK_UP_PLUG.get()
-                && currentTop.getBlock() != Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get()) return;
+        if (!currentTop.canBeReplaced() && currentTop.getBlock() != Ssc14Blocks.AIRLOCK_UP_PLUG.get()
+                && currentTop.getBlock() != Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.get()) return;
 		
 		BlockState plugState = targetPlug.defaultBlockState();
 		Property<?> sourceFacing = currentMain.getBlock().getStateDefinition().getProperty("facing");
