@@ -10,7 +10,7 @@ import net.mcreator.ssc.block.ShutterController;
 import net.ssc14.content.block.control.ButtonInteractionService;
 import net.mcreator.ssc.procedures.CommunicationServers_TIC_PR_Procedure;
 import net.ssc14.content.commerce.VendingMachineRuntimeService;
-import net.ssc14.common.Ssc14Log;
+import net.ssc14.integration.neoforge.logging.Ssc14Log;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.dedicated.DedicatedServer;
