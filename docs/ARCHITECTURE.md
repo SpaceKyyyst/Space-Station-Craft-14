@@ -167,6 +167,10 @@ facade для network/menu callers.
 `AirlockConfiguratorService`; старый `AirlockConfigurator` сохраняет API для
 menu/integration callers и прежний формат access keys.
 
+Планирование wire-pulse теперь принадлежит `AirlockWirePulseService`: deadline-
+ключи, загрузка chunk и level-tick semantics сохранены; старый
+`AirlockWirePulses` оставлен compatibility facade.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -236,6 +240,10 @@ facade for network/menu callers.
 Access-configurator permission synchronization now lives in
 `AirlockConfiguratorService`; the old `AirlockConfigurator` preserves the API
 for menu/integration callers and the existing access-key format.
+
+Wire-pulse scheduling now belongs to `AirlockWirePulseService`; deadline keys,
+chunk loading, and level-tick semantics are preserved, while the old
+`AirlockWirePulses` remains a compatibility facade.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains

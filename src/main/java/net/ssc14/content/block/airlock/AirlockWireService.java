@@ -1,6 +1,5 @@
 package net.ssc14.content.block.airlock;
 
-import net.mcreator.ssc.access.AirlockWirePulses;
 import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.content.access.AirlockPanelAccess;
 import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
@@ -33,7 +32,7 @@ public final class AirlockWireService {
         String key = "cabel_" + wire;
         if (player.getMainHandItem().is(Ssc14Items.MULTITOOL.get())
                 || player.getOffhandItem().is(Ssc14Items.MULTITOOL.get())) {
-            if (!data.getBooleanOr(key, false)) AirlockWirePulses.start(blockEntity, data.getIntOr("log_cab_" + wire, -1));
+            if (!data.getBooleanOr(key, false)) AirlockWirePulseService.start(blockEntity, data.getIntOr("log_cab_" + wire, -1));
             return;
         }
         if (!(player.getMainHandItem().is(Ssc14Items.NIPPERS.get())
