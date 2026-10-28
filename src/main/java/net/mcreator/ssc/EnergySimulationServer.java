@@ -271,7 +271,7 @@ public class EnergySimulationServer {
     private static final class TickContext {
         private final Map<BlockPos, EnergyTickBudget> budgets = new HashMap<>();
         private final Map<BlockPos, EnergyStorage> storage = new HashMap<>();
-        private final net.mcreator.ssc.energy.LowVoltageTickBatch loads;
-        TickContext(ServerLevel level) { loads = new net.mcreator.ssc.energy.LowVoltageTickBatch(level); }
+        private final net.ssc14.content.energy.LowVoltageTickBatch loads;
+        TickContext(ServerLevel level) { loads = new net.ssc14.content.energy.LowVoltageTickBatch(level); }
     }
 }
