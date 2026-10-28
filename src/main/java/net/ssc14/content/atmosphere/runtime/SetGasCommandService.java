@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.atmosphere.runtime;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.server.level.ServerLevel;
@@ -11,7 +11,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
-public class SSC14AtmosSetGasCommandProcedure {
+public final class SetGasCommandService {
     
     public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments) {
         if (!(world instanceof ServerLevel serverLevel)) {
@@ -76,7 +76,7 @@ public class SSC14AtmosSetGasCommandProcedure {
             
         } catch (Exception e) {
             arguments.getSource().sendFailure(Component.literal("§c[SSC14] Ошибка выполнения: " + e.getMessage()));
-            net.mcreator.ssc.Ssc14Mod.LOGGER.error("Atmosphere command failed", e);
+            net.ssc14.integration.neoforge.logging.Ssc14Log.LOGGER.error("Atmosphere command failed", e);
         }
     }
     
@@ -85,7 +85,7 @@ public class SSC14AtmosSetGasCommandProcedure {
         try {
             return MessageArgument.getMessage(arguments, parameter).getString();
         } catch (CommandSyntaxException e) {
-            net.mcreator.ssc.Ssc14Mod.LOGGER.error("Atmosphere command failed", e);
+            net.ssc14.integration.neoforge.logging.Ssc14Log.LOGGER.error("Atmosphere command failed", e);
             return "";
         }
     }

@@ -1,14 +1,14 @@
 package net.mcreator.ssc.integration;
 
 import com.mojang.brigadier.context.CommandContext;
-import net.mcreator.ssc.procedures.SSC14AtmosGasTemperatureCommandProcedure;
-import net.mcreator.ssc.procedures.SSC14AtmosSetGasCommandProcedure;
 import net.mcreator.ssc.procedures.TpSSC14mineOveworldprProcedure;
 import net.mcreator.ssc.procedures.TpSSC14planetplantprProcedure;
 import net.mcreator.ssc.procedures.TpSSC14spaceprProcedure;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.world.level.Level;
 import net.ssc14.content.medical.MedicalResetService;
+import net.ssc14.content.atmosphere.runtime.SetGasCommandService;
+import net.ssc14.content.atmosphere.runtime.SetGasTemperatureCommandService;
 
 /** Transitional boundary for generated administration commands. */
 public final class LegacyAdministrationCommandAdapter {
@@ -32,10 +32,10 @@ public final class LegacyAdministrationCommandAdapter {
     }
 
     public static void setGas(Level level, CommandContext<CommandSourceStack> context) {
-        SSC14AtmosSetGasCommandProcedure.execute(level, context);
+        SetGasCommandService.execute(level, context);
     }
 
     public static void setTemperature(Level level, CommandContext<CommandSourceStack> context) {
-        SSC14AtmosGasTemperatureCommandProcedure.execute(level, context);
+        SetGasTemperatureCommandService.execute(level, context);
     }
 }
