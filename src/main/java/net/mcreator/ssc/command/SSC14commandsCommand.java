@@ -14,6 +14,7 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.Commands;
 
 import net.mcreator.ssc.procedures.*;
+import net.ssc14.content.medical.ThirstCommandService;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
@@ -104,7 +105,7 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					ThirstySetCommandProcedure.execute(arguments);
+					ThirstCommandService.execute(arguments);
 					return 0;
 				})))).then(Commands.literal("digestive").then(Commands.literal("clear").then(Commands.argument("ent", EntityArgument.entity()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
