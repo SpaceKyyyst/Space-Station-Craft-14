@@ -23,6 +23,11 @@ final class LegacyReagentContainerRuntime implements ReagentContainerRuntime {
     }
 
     @Override
+    public boolean remove(ItemStack stack, String reagentId, int amount) {
+        return ModReagents.removeReagent(stack, reagentId, amount);
+    }
+
+    @Override
     public int drink(ItemStack stack, int amount, ServerPlayer player) {
         return ModReagents.drinkReagents(stack, amount, player);
     }
