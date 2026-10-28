@@ -1,4 +1,4 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.commerce;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
@@ -8,10 +8,7 @@ import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.access.ItemAccess;
 import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.event.entity.player.PlayerContainerEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
@@ -28,16 +25,14 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.OrderGUI_update_TICKProcedure;
-import net.mcreator.ssc.init.Ssc14ModMenus;
 import net.ssc14.common.network.SlotMenuStateAccess;
+import net.ssc14.content.menu.Ssc14MenuTypes;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-@EventBusSubscriber
 public class OrderGUIMenu extends AbstractContainerMenu implements SlotMenuStateAccess {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
@@ -59,7 +54,7 @@ public class OrderGUIMenu extends AbstractContainerMenu implements SlotMenuState
 	private BlockEntity boundBlockEntity = null;
 
 	public OrderGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.ORDER_GUI.get(), id);
+		super(Ssc14MenuTypes.ORDER_GUI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(10);
@@ -446,15 +441,4 @@ public class OrderGUIMenu extends AbstractContainerMenu implements SlotMenuState
 		return menuState;
 	}
 
-	@SubscribeEvent
-	public static void onContainerOpen(PlayerContainerEvent.Open event) {
-		Player entity = event.getEntity();
-		if (event.getContainer() instanceof OrderGUIMenu menu) {
-			Level world = menu.world;
-			double x = menu.x;
-			double y = menu.y;
-			double z = menu.z;
-			OrderGUI_update_TICKProcedure.execute(world, x, y, z, entity);
-		}
-	}
 }

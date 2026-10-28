@@ -13,7 +13,6 @@ import net.mcreator.ssc.procedures.GravGenOFFbuttonProcedure;
 import net.mcreator.ssc.procedures.GravGenONbuttonProcedure;
 import net.mcreator.ssc.procedures.IDRemovePRProcedure;
 import net.mcreator.ssc.procedures.MicrwGUIbutEProcedure;
-import net.mcreator.ssc.procedures.OrderGUISwitchTabProcedure;
 import net.mcreator.ssc.procedures.PDA2TABbuttonPRProcedure;
 import net.mcreator.ssc.procedures.PDA3TABbuttonPRProcedure;
 import net.mcreator.ssc.procedures.PDAflashlightPRProcedure;
@@ -43,7 +42,9 @@ import net.mcreator.ssc.procedures.VendAutGUIButton6Procedure;
 import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.menu.food.MicrowaveButtonIds;
 import net.ssc14.content.menu.food.MicrowaveControlService;
-import net.mcreator.ssc.world.inventory.OrderGUIMenu;
+import net.ssc14.content.commerce.cargo.CargoOrderButtonIds;
+import net.ssc14.content.commerce.cargo.CargoOrderService;
+import net.ssc14.content.menu.commerce.OrderGUIMenu;
 import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
 import net.ssc14.content.menu.airlock.AirlockPanelButtonIds;
 import net.mcreator.ssc.access.AirlockWireService;
@@ -134,10 +135,13 @@ public final class LegacyMenuButtonRegistration {
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)
                 || player.level().isClientSide()) return;
         int buttonId = message.buttonId();
-        if (buttonId >= 0 && buttonId <= 14) {
-            OrderGUISwitchTabProcedure.execute(player.level(), message.x(), message.y(), message.z(), buttonId);
-        } else if (buttonId >= 100 && buttonId <= 109) {
-            CargoBuyProcedure.execute(player.level(), message.x(), message.y(), message.z(), player, buttonId - 100);
+        int tab = CargoOrderButtonIds.tabForButton(buttonId);
+        int itemIndex = CargoOrderButtonIds.itemIndexForButton(buttonId);
+        if (tab > 0) {
+            CargoOrderService.selectTab(player.level(), new BlockPos(message.x(), message.y(), message.z()), buttonId);
+            CargoOrderService.refreshPreview(menu, player);
+        } else if (itemIndex >= 0) {
+            CargoBuyProcedure.execute(player.level(), message.x(), message.y(), message.z(), player, itemIndex);
         }
     }
 

@@ -2,7 +2,7 @@ package net.mcreator.ssc.integration;
 
 import io.netty.buffer.Unpooled;
 import java.util.Objects;
-import net.mcreator.ssc.world.inventory.OrderGUIMenu;
+import net.ssc14.content.menu.commerce.OrderGUIMenu;
 import net.ssc14.content.menu.commerce.SaleGUIMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
