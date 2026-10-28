@@ -35,4 +35,14 @@ class CommunicationFrequencyTest {
         assertEquals(false, CommunicationServerLifecycleService.matchesType(state, Blocks.DIRT, 0));
         assertEquals(false, CommunicationServerLifecycleService.matchesType(state, Blocks.STONE, 0));
     }
+
+    @Test
+    void persistencePortIgnoresNullLevel() {
+        int[] calls = {0};
+        CommunicationFrequencyStateService.install((level, key, enabled) -> calls[0]++);
+
+        CommunicationFrequencyStateService.set(null, "Base_Radio_Frequency", true);
+
+        assertEquals(0, calls[0]);
+    }
 }
