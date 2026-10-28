@@ -173,7 +173,7 @@ public class Ssc14Mod {
 		OrderPalletRegistryService.install((level, pos) -> {
 			var variables = Ssc14ModVariables.WorldVariables.get(level);
 			String key = PalletRegistryCodec.encode(pos);
-			if (!variables.PalletRegistry.contains(key)) {
+			if (!PalletRegistryCodec.contains(variables.PalletRegistry, pos)) {
 				variables.PalletRegistry += key;
 				variables.setDirty();
 			}
