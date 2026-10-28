@@ -3,12 +3,12 @@ package net.mcreator.ssc.integration;
 import com.mojang.brigadier.context.CommandContext;
 import net.mcreator.ssc.procedures.TpSSC14mineOveworldprProcedure;
 import net.mcreator.ssc.procedures.TpSSC14planetplantprProcedure;
-import net.mcreator.ssc.procedures.TpSSC14spaceprProcedure;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.world.level.Level;
 import net.ssc14.content.medical.MedicalResetService;
 import net.ssc14.content.atmosphere.runtime.SetGasCommandService;
 import net.ssc14.content.atmosphere.runtime.SetGasTemperatureCommandService;
+import net.ssc14.content.world.DimensionTeleportService;
 
 /** Transitional boundary for generated administration commands. */
 public final class LegacyAdministrationCommandAdapter {
@@ -16,7 +16,7 @@ public final class LegacyAdministrationCommandAdapter {
     }
 
     public static void teleportSpace(CommandContext<CommandSourceStack> context) {
-        TpSSC14spaceprProcedure.execute(context);
+        DimensionTeleportService.teleportToSpace(context);
     }
 
     public static void teleportPlanet(CommandContext<CommandSourceStack> context) {
