@@ -117,9 +117,12 @@ only event subscribers and procedural facades that still own runtime behavior:
 - network configurator, shutters, commerce-console, and ID-console adapters
   were moved to their canonical `content` layers without changing menu,
   position-buffer, or server-authority contracts;
-- construction-item interaction adapter was moved to the canonical
-  `content/item/construction` layer; steel, plasteel, and cable procedure
-  contracts remain unchanged as explicit legacy inputs;
+- construction-item interaction adapter remains in the legacy integration
+  boundary because steel, plasteel, and cable procedures are still direct
+  generated-runtime inputs;
+- firearm interaction adapter was moved to `net.mcreator.ssc.integration`;
+  canonical firearm state routing and MK-58/Pistol procedure contracts remain
+  unchanged;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
