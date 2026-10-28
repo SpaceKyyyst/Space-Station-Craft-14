@@ -1,8 +1,5 @@
 # Direct execute() calls between legacy procedure classes. Keep entries sorted.
-AirlockUpPlug_ClickProcedure -> BaseAirlockOpenCloseProcedure
-C4_activate_PRProcedure -> C4explorePRProcedure
 CPlogLampPrProcedure -> BaseAirlockD1PutProcedure
 ID_Code_CHECKProcedure -> IDCode0CellprProcedure
 SS14ConstructionRegistryProcedure -> BaseAirlockD1PutProcedure
 ToolsBlockClickProcedure -> UniversalDeconstructionProcedureProcedure
-UpClosetPLUG_clickProcedure -> Closet_OpenClose_PrProcedure
