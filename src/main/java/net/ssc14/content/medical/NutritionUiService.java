@@ -36,6 +36,14 @@ public final class NutritionUiService {
                 && living.getAttribute(Ssc14Attributes.NUTRIENTS).getValue() < threshold;
     }
 
+	public static boolean set(Entity entity, double value) {
+		if (!(entity instanceof LivingEntity living) || !living.getAttributes().hasAttribute(Ssc14Attributes.NUTRIENTS)) {
+			return false;
+		}
+		living.getAttribute(Ssc14Attributes.NUTRIENTS).setBaseValue(value);
+		return true;
+	}
+
     private static boolean isCreativeOrSpectator(Entity entity) {
         return entity instanceof Player player
                 && (player.gameMode() == GameType.CREATIVE || player.gameMode() == GameType.SPECTATOR);
