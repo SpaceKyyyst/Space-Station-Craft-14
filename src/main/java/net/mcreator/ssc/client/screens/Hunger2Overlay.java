@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.ssc.procedures.Hunger2PrProcedure;
-import net.mcreator.ssc.procedures.Hunger2BlinkingPrProcedure;
+import net.ssc14.content.medical.NutritionUiService;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class Hunger2Overlay {
@@ -37,7 +37,7 @@ public class Hunger2Overlay {
 		}
 		{
 			if (Hunger2PrProcedure.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_0, w - 37, h / 2 + -16, 0, Mth.clamp((int) Hunger2BlinkingPrProcedure.execute(entity) * 32, 0, 32), 32, 32, 32, 64);
+				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_0, w - 37, h / 2 + -16, 0, Mth.clamp((int) NutritionUiService.blinkingFrame(entity) * 32, 0, 32), 32, 32, 32, 64);
 			}
 		}
 	}
