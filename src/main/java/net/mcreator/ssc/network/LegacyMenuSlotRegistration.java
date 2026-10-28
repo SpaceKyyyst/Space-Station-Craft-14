@@ -2,9 +2,10 @@ package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.procedures.IDCode0CellprProcedure;
-import net.mcreator.ssc.procedures.MacFrameGUIBlockUpdateProcedure;
 import net.mcreator.ssc.world.inventory.IDcodeMenu;
-import net.mcreator.ssc.world.inventory.MacFrameGUIMenu;
+import net.ssc14.content.menu.machinery.MacFrameGUIMenu;
+import net.ssc14.content.menu.machinery.MachineFrameAssemblyStateService;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.world.entity.player.Player;
@@ -51,7 +52,8 @@ public final class LegacyMenuSlotRegistration {
                 || !MenuAccessGuard.matches(player, menu, message.x(), message.y(), message.z(),
                         menu.x, menu.y, menu.z)) return;
         if (message.slotId() >= 0 && message.slotId() <= 8 && message.changeType() == 0) {
-            MacFrameGUIBlockUpdateProcedure.execute(player.level(), message.x(), message.y(), message.z());
+            MachineFrameAssemblyStateService.refresh(
+                    player.level(), new BlockPos(message.x(), message.y(), message.z()));
         }
     }
 

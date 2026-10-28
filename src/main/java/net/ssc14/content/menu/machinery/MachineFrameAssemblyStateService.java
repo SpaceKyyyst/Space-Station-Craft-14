@@ -1,8 +1,10 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.menu.machinery;
 
-import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.item.ItemUtil;
 
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.BlockState;
@@ -12,29 +14,31 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 
 import java.util.Map;
 import java.util.HashMap;
 
-public class MacFrameGUIBlockUpdateProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z) {
+public final class MachineFrameAssemblyStateService {
+	private MachineFrameAssemblyStateService() {
+	}
+
+	public static void refresh(LevelAccessor world, BlockPos pos) {
 		{
-			BlockPos _pos = BlockPos.containing(x, y, z);
+			BlockPos _pos = pos;
 			BlockState _bs = world.getBlockState(_pos);
 			if (_bs.getBlock().getStateDefinition().getProperty("ready") instanceof BooleanProperty _booleanProp)
 				world.setBlock(_pos, _bs.setValue(_booleanProp, false), 3);
 		}
-		BlockPos pos = BlockPos.containing(x, y, z);
 		BlockState currentState = world.getBlockState(pos);
 		
-		IItemHandler handler = getItemHandler(world, pos);
+		ResourceHandler<ItemResource> handler = getItemHandler(world, pos);
 		if (handler == null) {
 			setReadyState(world, pos, currentState, false);
 			return;
 		}
 		
-		ItemStack boardStack = handler.getStackInSlot(0);
+		ItemStack boardStack = ItemUtil.getStack(handler, 0);
 		if (boardStack.isEmpty()) {
 			setReadyState(world, pos, currentState, false);
 			return;
@@ -50,7 +54,7 @@ public class MacFrameGUIBlockUpdateProcedure {
 		Map<Item, Integer> foundItems = new HashMap<>();
 		int totalItemsInSlots = 0;
 		for (int slot = 1; slot <= 8; slot++) {
-			ItemStack stack = handler.getStackInSlot(slot);
+			ItemStack stack = ItemUtil.getStack(handler, slot);
 			if (!stack.isEmpty()) {
 				int count = stack.getCount();
 				totalItemsInSlots += count;
@@ -81,15 +85,15 @@ public class MacFrameGUIBlockUpdateProcedure {
 
 	private static Map<Item, Integer> getRecipeRequirements(Item board) {
 		Map<Item, Integer> recipe = new HashMap<>();
-		if (board == Ssc14ModItems.SUBSTATION_BOARD.get()) {
-			recipe.put(Ssc14ModItems.MEDIUM_VOLTAGE_CABLE.get(), 5);
-			recipe.put(Ssc14ModItems.HIGH_VOLTAGE_CABLE.get(), 5);
-			recipe.put(Ssc14ModItems.LOW_BATTERIE.get(), 1);
-			recipe.put(Ssc14ModItems.CAPACITOR.get(), 1);
-		} else if (board == Ssc14ModItems.SMES_BOARD.get()) {
-			recipe.put(Ssc14ModItems.CAPACITOR.get(), 1);
-			recipe.put(Ssc14ModItems.HIGH_VOLTAGE_CABLE.get(), 10);
-			recipe.put(Ssc14ModItems.LOW_BATTERIE.get(), 4);
+		if (board == Ssc14Items.SUBSTATION_BOARD.get()) {
+			recipe.put(Ssc14Items.MEDIUM_VOLTAGE_CABLE.get(), 5);
+			recipe.put(Ssc14Items.HIGH_VOLTAGE_CABLE.get(), 5);
+			recipe.put(Ssc14Items.LOW_BATTERIE.get(), 1);
+			recipe.put(Ssc14Items.CAPACITOR.get(), 1);
+		} else if (board == Ssc14Items.SMES_BOARD.get()) {
+			recipe.put(Ssc14Items.CAPACITOR.get(), 1);
+			recipe.put(Ssc14Items.HIGH_VOLTAGE_CABLE.get(), 10);
+			recipe.put(Ssc14Items.LOW_BATTERIE.get(), 4);
 		} else {
 			return null;
 		}
@@ -104,11 +108,9 @@ public class MacFrameGUIBlockUpdateProcedure {
 		}
 	}
 
-	// ИСПРАВЛЕНО: Безопасное получение IItemHandler под маппинги NeoForge 26.1.2 без дженериков
-	private static IItemHandler getItemHandler(LevelAccessor world, BlockPos pos) {
+	private static ResourceHandler<ItemResource> getItemHandler(LevelAccessor world, BlockPos pos) {
 		if (world instanceof Level level) {
-			var newHandler = level.getCapability(Capabilities.Item.BLOCK, pos, null);
-			return newHandler == null ? null : IItemHandler.of(newHandler);
+			return level.getCapability(Capabilities.Item.BLOCK, pos, null);
 		}
 		return null;
 	}

@@ -1,4 +1,4 @@
-package net.mcreator.ssc.client.gui;
+package net.ssc14.client.menu.machinery;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -10,17 +10,20 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.MacFrameGUIMenu;
-import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.init.Ssc14ModScreens;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.content.menu.machinery.MacFrameGUIMenu;
+import net.ssc14.content.menu.machinery.MachineFrameDisplayState;
+import net.minecraft.core.BlockPos;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-public class MacFrameGUIScreen extends AbstractContainerScreen<MacFrameGUIMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class MacFrameGUIScreen extends AbstractContainerScreen<MacFrameGUIMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
 	private boolean menuStateUpdateActive = false;
+	private MachineFrameDisplayState displayState = MachineFrameDisplayState.forBoard(
+			MachineFrameDisplayState.BoardType.NONE, false);
 	private static final Identifier BACKGROUND = Identifier.parse("ssc_14:textures/screens/mac_frame_gui.png");
 	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/mac_rrame_gui_2.png");
 	private static final Identifier IMAGE_1 = Identifier.parse("ssc_14:textures/screens/mac_fr_gui_r3.png");
@@ -44,6 +47,7 @@ public class MacFrameGUIScreen extends AbstractContainerScreen<MacFrameGUIMenu> 
 
 	@Override
 	public void extractRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+		displayState = MachineFrameDisplayState.read(world, new BlockPos(x, y, z));
 		super.extractRenderState(guiGraphics, mouseX, mouseY, partialTicks);
 	}
 
@@ -53,10 +57,10 @@ public class MacFrameGUIScreen extends AbstractContainerScreen<MacFrameGUIMenu> 
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, this.leftPos + 0, this.topPos + 0, 0, 0, 300, 172, 300, 172);
 		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, this.leftPos + 136, this.topPos + 33, 0, 0, 28, 28, 28, 28);
-		if (MacFrameGUIYellowProcedure.execute(world, x, y, z)) {
+		if (displayState.hasBoard()) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, this.leftPos + 136, this.topPos + 33, 0, 0, 28, 28, 28, 28);
 		}
-		if (MacFrameGUIGreenProcedure.execute(world, x, y, z)) {
+		if (displayState.ready()) {
 			guiGraphics.blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, this.leftPos + 136, this.topPos + 33, 0, 0, 28, 28, 28, 28);
 		}
 	}
@@ -73,11 +77,11 @@ public class MacFrameGUIScreen extends AbstractContainerScreen<MacFrameGUIMenu> 
 
 	@Override
 	protected void extractLabels(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY) {
-		guiGraphics.text(this.font, MacFrameGUItext1Procedure.execute(world, x, y, z), 7, 8, -1, false);
-		guiGraphics.text(this.font, MacFrameGUItext2Procedure.execute(world, x, y, z), 7, 36, -1, false);
-		guiGraphics.text(this.font, MacFrameGUItext3Procedure.execute(world, x, y, z), 7, 50, -1, false);
-		guiGraphics.text(this.font, MacFrameGUItext4Procedure.execute(world, x, y, z), 7, 64, -1, false);
-		guiGraphics.text(this.font, MacFrameGUItext5Procedure.execute(world, x, y, z), 7, 78, -1, false);
+		guiGraphics.text(this.font, displayState.title(), 7, 8, -1, false);
+		guiGraphics.text(this.font, displayState.requirement1(), 7, 36, -1, false);
+		guiGraphics.text(this.font, displayState.requirement2(), 7, 50, -1, false);
+		guiGraphics.text(this.font, displayState.requirement3(), 7, 64, -1, false);
+		guiGraphics.text(this.font, displayState.requirement4(), 7, 78, -1, false);
 	}
 
 	@Override
