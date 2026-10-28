@@ -1,58 +1,52 @@
+package net.mcreator.ssc.integration;
 
-package net.mcreator.ssc.procedures;
-
-import net.mcreator.ssc.integration.LegacyReagentCatalog;
-import net.mcreator.ssc.integration.LegacyReactionRuntime;
-import net.ssc14.content.item.reagent.ReagentContainerAccess;
-import net.ssc14.content.item.reagent.ReagentContainerItem;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
+import net.ssc14.content.item.reagent.ReagentContainerAccess;
+import net.ssc14.content.item.reagent.ReagentContainerItem;
 
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
+/** Server-side command service for filling reagent containers. */
+public final class ReagentFillCommandService {
+    private ReagentFillCommandService() {
+    }
 
-public class FillReagentPRProcedure {
-    public static void execute(CommandContext<CommandSourceStack> arguments) {
-        ServerPlayer player;
+    public static void execute(CommandContext<CommandSourceStack> context) {
+        final ServerPlayer player;
         try {
-            player = arguments.getSource().getPlayerOrException();
-        } catch (CommandSyntaxException e) {
-            arguments.getSource().sendFailure(Component.literal("§cКоманда должна быть выполнена игроком!"));
+            player = context.getSource().getPlayerOrException();
+        } catch (CommandSyntaxException exception) {
+            context.getSource().sendFailure(Component.literal("§cКоманда должна быть выполнена игроком!"));
             return;
         }
 
-        String reagentName = StringArgumentType.getString(arguments, "reagent_name");
-        int amount = (int) DoubleArgumentType.getDouble(arguments, "amount");
-
+        String reagentName = StringArgumentType.getString(context, "reagent_name");
+        int amount = (int) DoubleArgumentType.getDouble(context, "amount");
         if (reagentName.isEmpty()) {
             player.sendSystemMessage(Component.literal("§cУкажите название реагента!"));
             return;
         }
-
         if (amount <= 0) {
             player.sendSystemMessage(Component.literal("§cКоличество должно быть больше 0!"));
             return;
         }
 
         ItemStack mainHand = player.getMainHandItem();
-
         if (!(mainHand.getItem() instanceof ReagentContainerItem)) {
             player.sendSystemMessage(Component.literal("§cВ главной руке должен быть контейнер для реагентов!"));
             return;
         }
-
         if (LegacyReagentCatalog.find(reagentName).isEmpty()) {
             player.sendSystemMessage(Component.literal("§cНеизвестный реагент: " + reagentName));
             return;
         }
 
-        boolean success = ReagentContainerAccess.add(mainHand, reagentName, amount);
-
-        if (success) {
+        if (ReagentContainerAccess.add(mainHand, reagentName, amount)) {
             LegacyReactionRuntime.process(mainHand, player);
             String displayName = LegacyReagentCatalog.find(reagentName).orElseThrow().getDisplayName().getString();
             player.sendSystemMessage(Component.literal("§aДобавлено " + amount + " мл " + displayName));
