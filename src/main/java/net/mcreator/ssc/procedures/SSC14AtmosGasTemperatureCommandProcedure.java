@@ -41,7 +41,7 @@ public class SSC14AtmosGasTemperatureCommandProcedure {
             var pos = player.blockPosition();
             
             // 4. Получаем ячейку атмосферы
-            var cell = net.ssc14.content.atmosphere.runtime.AtmosphereManager.get(serverLevel).getCellAt(pos);
+            var cell = net.ssc14.content.atmosphere.runtime.AtmosphereCommandService.cellAt(serverLevel, pos);
             if (cell == null) {
                 sendError(source, "Не удалось получить данные об атмосфере в этом блоке.\n§7Попробуй поставить/сломать блок рядом, чтобы активировать регион.");
                 return;
@@ -49,7 +49,7 @@ public class SSC14AtmosGasTemperatureCommandProcedure {
             
             // 5. Устанавливаем температуру и активируем обновление региона
             float oldTemp = cell.getTemperature();
-            cell.setTemperature((float) gasTemperature);
+            net.ssc14.content.atmosphere.runtime.AtmosphereCommandService.setTemperature(cell, gasTemperature);
 
             
             // 6. Отправляем подтверждение
