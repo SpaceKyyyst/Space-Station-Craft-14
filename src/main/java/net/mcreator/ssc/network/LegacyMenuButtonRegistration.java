@@ -5,11 +5,10 @@ import net.mcreator.ssc.integration.LegacyCommunicationConsoleAdapter;
 import net.minecraft.core.BlockPos;
 import net.ssc14.content.menu.decal.DecalColorMenuService;
 import net.ssc14.content.gravity.GravityGeneratorControlService;
-import net.mcreator.ssc.procedures.IDRemovePRProcedure;
 import net.mcreator.ssc.procedures.MicrwGUIbutEProcedure;
 import net.ssc14.content.menu.pda.PdaTabService;
 import net.ssc14.content.menu.pda.PdaFlashlightService;
-import net.mcreator.ssc.procedures.PenRemovePRProcedure;
+import net.ssc14.content.menu.pda.PdaAccessoryTransferService;
 import net.ssc14.content.item.tool.RcdModeService;
 import net.ssc14.content.menu.MenuCloseService;
 import net.ssc14.content.commerce.VendingMachineRuntimeService;
@@ -156,8 +155,8 @@ public final class LegacyMenuButtonRegistration {
         if (!(player.containerMenu instanceof PDApassangerGUIMenu menu)
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
         switch (message.buttonId()) {
-            case 0 -> PenRemovePRProcedure.execute(player.level(), player);
-            case 1 -> IDRemovePRProcedure.execute(player.level(), player);
+            case 0 -> PdaAccessoryTransferService.transfer(player, 1, "ssc14:pens");
+            case 1 -> PdaAccessoryTransferService.transfer(player, 0, "ssc14:id");
             case 2 -> PdaFlashlightService.execute(player.level(), message.x(), message.y(), message.z(), player);
             case 3 -> PdaTabService.setTab(player, 1);
             case 4 -> PdaTabService.execute(player);
