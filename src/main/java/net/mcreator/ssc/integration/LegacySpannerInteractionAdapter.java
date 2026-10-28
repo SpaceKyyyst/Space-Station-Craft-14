@@ -42,6 +42,8 @@ public final class LegacySpannerInteractionAdapter {
             SpannerInteractionService.repair(level, target, source, tool,
                     Ssc14ModItems.SPANNER.get(), Ssc14ModBlocks.CONSOLE_OF_ID.get(),
                     Ssc14ModAttributes.PROGRESS_BAR_ATRB);
+        } else {
+            SpannerInteractionService.pull(target, source, Ssc14ModAttributes.ENT_PULL);
         }
     }
 }

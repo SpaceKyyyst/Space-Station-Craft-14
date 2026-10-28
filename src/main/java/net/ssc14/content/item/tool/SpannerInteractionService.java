@@ -43,6 +43,17 @@ public final class SpannerInteractionService {
                 drop, progressAttribute);
     }
 
+    /** Applies the legacy three-block pull only when the actor has pull enabled. */
+    public static void pull(Entity target, Entity actor, Holder<Attribute> pullAttribute) {
+        if (!(actor instanceof LivingEntity living)
+                || !living.getAttributes().hasAttribute(pullAttribute)
+                || living.getAttribute(pullAttribute).getValue() != 1
+                || target.position().distanceTo(actor.position()) > 3) return;
+        target.push(((actor.getX() + actor.getLookAngle().x * 2) - target.getX()) / 10,
+                ((actor.getY() + 1 + actor.getLookAngle().y * 2) - target.getY()) / 10,
+                ((actor.getZ() + actor.getLookAngle().z * 2) - target.getZ()) / 10);
+    }
+
     private static void run(ServerLevel server, Entity target, Entity actor, ItemStack tool,
             Item requiredTool, BlockPos pos, BlockState replacement, Item drop,
             Holder<Attribute> progressAttribute) {
