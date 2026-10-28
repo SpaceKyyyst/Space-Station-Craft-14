@@ -27,8 +27,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
 import io.netty.buffer.Unpooled;
@@ -62,7 +62,7 @@ public final class AirlockLifecycleService {
         CompoundTag nbt = be.getPersistentData();
         ItemStack hand = entity instanceof LivingEntity le ? le.getMainHandItem() : ItemStack.EMPTY;
         if (entity instanceof ServerPlayer player && !entity.isShiftKeyDown()) {
-            if (hand.getItem() == Ssc14ModItems.ACCESS_CONFIG.get()) {
+            if (hand.getItem() == Ssc14Items.ACCESS_CONFIG.get()) {
                 openGui(player, "AccessConfigMENU", pos);
                 return;
             }
@@ -307,8 +307,8 @@ public final class AirlockLifecycleService {
         BlockPos top = pos.above();
         if (!level.hasChunkAt(top)) return;
         BlockState current = level.getBlockState(top);
-        Block closedBlock = Ssc14ModBlocks.AIRLOCK_UP_PLUG.get();
-        Block openBlock = Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get();
+        Block closedBlock = Ssc14Blocks.AIRLOCK_UP_PLUG.get();
+        Block openBlock = Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.get();
         if (current.getBlock() != closedBlock && current.getBlock() != openBlock) return;
         Block target = open ? openBlock : closedBlock;
         if (current.getBlock() == target) return;
