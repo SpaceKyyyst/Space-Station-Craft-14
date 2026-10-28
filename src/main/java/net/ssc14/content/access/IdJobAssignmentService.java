@@ -31,10 +31,8 @@ public final class IdJobAssignmentService {
         }
 
         var sourceData = source.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-        for (String accessKey : IdJobCatalog.accessKeys()) {
-            if (sourceData.getBooleanOr(accessKey, false)) {
-                menu.sendMenuStateUpdate(player, 1, accessKey, enabled, true);
-            }
+        for (String accessKey : IdAccessRules.grantedAccessKeys(sourceData)) {
+            menu.sendMenuStateUpdate(player, 1, accessKey, enabled, true);
         }
     }
 
