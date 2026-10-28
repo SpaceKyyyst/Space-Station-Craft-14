@@ -65,6 +65,7 @@ import net.ssc14.content.block.commerce.CommerceConsoleIntegrationService;
 import net.ssc14.content.block.control.NetworkButtonInteractionService;
 import net.ssc14.content.block.control.Ssc14ControlBlockEntities;
 import net.ssc14.content.block.communication.CommunicationServerLifecycleService;
+import net.ssc14.content.block.communication.CommunicationFrequencyStateService;
 import net.ssc14.content.block.communication.CommunicationConsoleIntegrationService;
 import net.ssc14.content.block.communication.Ssc14CommunicationBlockEntities;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
@@ -255,6 +256,21 @@ public class Ssc14Mod {
 								level, pos.getX(), pos.getY(), pos.getZ(), state, player);
 					}
 				});
+		CommunicationFrequencyStateService.install((level, stateKey, enabled) -> {
+			var state = Ssc14ModVariables.MapVariables.get(level);
+			switch (stateKey) {
+				case "Base_Radio_Frequency" -> state.Base_Radio_Frequency = enabled;
+				case "Command_Radio_Frequency" -> state.Command_Radio_Frequency = enabled;
+				case "Engeneer_Radio_Frequency" -> state.Engeneer_Radio_Frequency = enabled;
+				case "Medical_Radio_Frequency" -> state.Medical_Radio_Frequency = enabled;
+				case "RND_Radio_Frequency" -> state.RND_Radio_Frequency = enabled;
+				case "Sec_Radio_Frequency" -> state.Sec_Radio_Frequency = enabled;
+				case "Serv_Radio_Frequency" -> state.Serv_Radio_Frequency = enabled;
+				case "Cargo_Radio_Frequency" -> state.Cargo_Radio_Frequency = enabled;
+				default -> { return; }
+			}
+			state.markSyncDirty();
+		});
 		CommunicationConsoleIntegrationService.install(
 				new CommunicationConsoleIntegrationService.Adapter() {
 					@Override
