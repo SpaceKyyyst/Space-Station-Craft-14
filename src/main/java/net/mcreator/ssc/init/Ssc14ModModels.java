@@ -10,7 +10,7 @@ import net.neoforged.api.distmarker.Dist;
 
 import net.mcreator.ssc.client.model.*;
 
-@EventBusSubscriber(Dist.CLIENT)
+@Deprecated(forRemoval = true)
 public class Ssc14ModModels {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
