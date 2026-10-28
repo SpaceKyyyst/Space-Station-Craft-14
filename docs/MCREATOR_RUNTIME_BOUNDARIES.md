@@ -129,6 +129,9 @@ only event subscribers and procedural facades that still own runtime behavior:
 - `Ssc14Items.REGISTRY` is the sole active item registry; `Ssc14ModItems`
   remains a field-compatible alias only and its empty legacy registry is not
   registered;
+- client screen overlays now route health-analyzer and world-check visibility
+  through integration adapters; `net.mcreator.ssc.client.screens` has no direct
+  generated-procedure imports;
 - `LocalChatEventHandler` was moved to `net.mcreator.ssc.integration`; message
   routing, radio prefixes, popup formatting, and server-side audience checks
   remain unchanged pending extraction of a pure chat/radio domain service;
