@@ -649,13 +649,11 @@ public class ModReagents {
         int drinkAmount = 0;
         long alcohol = 0;
         for (Map.Entry<String, Integer> entry : portions.entrySet()) {
-            int remaining = reagents.get(entry.getKey()) - entry.getValue();
-            if (remaining == 0) reagents.remove(entry.getKey());
-            else reagents.put(entry.getKey(), remaining);
             drinkAmount += entry.getValue();
             alcohol += (long) AlcoholSystem.getAlcoholValue(entry.getKey()) * entry.getValue();
         }
-        setReagents(stack, reagents);
+        Map<String, Integer> remaining = ReagentTransferPlan.consume(reagents, portions).orElseThrow();
+        setReagents(stack, remaining);
         if (alcohol > 0) AlcoholSystem.giveAlcohol(player, (int) Math.min(Integer.MAX_VALUE, alcohol));
         return drinkAmount;
     }

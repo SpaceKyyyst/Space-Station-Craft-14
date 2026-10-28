@@ -24,4 +24,13 @@ class ReagentAmountsTest {
         assertFalse(ReagentAmounts.canAdd(contents, 20, "salt", 1));
         assertTrue(ReagentAmounts.react(contents, 20, Map.of("water", 1), Map.of("salt", 2)).isEmpty());
     }
+
+    @Test
+    void consumeRejectsOverdrawAndReturnsRemainingContents() {
+        Map<String, Integer> source = Map.of("water", 3, "salt", 2);
+
+        assertEquals(Map.of("water", 1, "salt", 2),
+                ReagentTransferPlan.consume(source, Map.of("water", 2)).orElseThrow());
+        assertTrue(ReagentTransferPlan.consume(source, Map.of("water", 4)).isEmpty());
+    }
 }

@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /** Exact largest-remainder allocation; O(n log n) time and O(n) memory. */
 public final class ReagentTransferPlan {
@@ -47,6 +48,28 @@ public final class ReagentTransferPlan {
         }
         result.values().removeIf(value -> value == 0);
         return Collections.unmodifiableMap(result);
+    }
+
+    /** Returns the remaining contents after an allocated portion is consumed. */
+    public static Optional<Map<String, Integer>> consume(Map<String, Integer> source,
+            Map<String, Integer> portion) {
+        if (source == null || portion == null || portion.isEmpty()) {
+            return Optional.empty();
+        }
+        Map<String, Integer> result = new LinkedHashMap<>(source);
+        for (Map.Entry<String, Integer> entry : portion.entrySet()) {
+            int amount = entry.getValue() == null ? 0 : entry.getValue();
+            int stored = result.getOrDefault(entry.getKey(), 0);
+            if (entry.getKey() == null || entry.getKey().isBlank() || amount <= 0 || stored < amount) {
+                return Optional.empty();
+            }
+            if (stored == amount) {
+                result.remove(entry.getKey());
+            } else {
+                result.put(entry.getKey(), stored - amount);
+            }
+        }
+        return Optional.of(Collections.unmodifiableMap(result));
     }
 
     private static long volume(Map<String, Integer> reagents) {
