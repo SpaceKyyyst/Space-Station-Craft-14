@@ -1,7 +1,6 @@
 package net.ssc14.content.block.airlock;
 
 import net.mcreator.ssc.access.AirlockMaintenance;
-import net.mcreator.ssc.access.AirlockWireService;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
