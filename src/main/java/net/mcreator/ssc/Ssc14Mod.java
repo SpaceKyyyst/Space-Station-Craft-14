@@ -199,8 +199,7 @@ public class Ssc14Mod {
 			@Override
 			public void plant(net.minecraft.world.level.Level level,
 					net.minecraft.core.BlockPos pos) {
-				net.mcreator.ssc.procedures.C4_PlantProcedure.execute(
-						level, pos.getX(), pos.getY(), pos.getZ());
+				net.ssc14.content.explosive.C4PlantService.execute(level, pos);
 			}
 
 			@Override
