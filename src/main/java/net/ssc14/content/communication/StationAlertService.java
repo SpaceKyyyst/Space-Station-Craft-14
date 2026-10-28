@@ -14,8 +14,30 @@ public final class StationAlertService {
     private static final int RED_CODE = 4;
     private static final int MAX_CODE_BEFORE_ALERT = 6;
     private static final Identifier RED_ALERT_SOUND = Identifier.parse("ssc_14:red_code");
+    private static final Identifier BLUE_ALERT_SOUND = Identifier.parse("ssc_14:blue_code");
 
     private StationAlertService() { }
+
+    /** Triggers one of the five station codes from a console button. */
+    public static boolean announceCode(ServerLevel level, double currentCode, String stationName, int targetCode) {
+        return switch (targetCode) {
+            case 1 -> announce(level, currentCode, stationName, 1, 0x21a528, BLUE_ALERT_SOUND,
+                    "Код ЗЕЛЁНЫЙ!\nОтсутствие угроз безопасности. Станция работает в штатном режиме.");
+            case 2 -> announce(level, currentCode, stationName, 2, 0xe6b917, BLUE_ALERT_SOUND,
+                    "Код ЖЁЛТЫЙ!\nНа станции выявлена структурная или атмосферная угроза. "
+                            + "Инженерный отдел уполномочен координировать ликвидацию последствий. "
+                            + "Дополнительные инструкции указаны в КПК.");
+            case 3 -> announce(level, currentCode, stationName, 3, 0x1755e6, BLUE_ALERT_SOUND,
+                    "Код СИНИЙ!\nНа станции выявлена угроза безопасности I уровня. "
+                            + "Служба безопасности усиливает патрулирование. Дополнительные инструкции указаны в КПК.");
+            case 4 -> announceRed(level, currentCode, stationName);
+            case 5 -> announce(level, currentCode, stationName, 5, 0x9d2896, BLUE_ALERT_SOUND,
+                    "Код ФИОЛЕТОВЫЙ!\nНа станции зафиксирована биологическая угроза. "
+                            + "Активирован протокол изоляции. Медицинскому персоналу предписано изолировать "
+                            + "членов экипажа с любыми симптомами.");
+            default -> false;
+        };
+    }
 
     public static boolean announceRed(ServerLevel level, double currentCode, String stationName) {
         if (currentCode >= MAX_CODE_BEFORE_ALERT || currentCode == RED_CODE) return false;

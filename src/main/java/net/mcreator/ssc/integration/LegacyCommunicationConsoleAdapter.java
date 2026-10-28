@@ -1,11 +1,9 @@
 package net.mcreator.ssc.integration;
 
-import net.mcreator.ssc.procedures.CommConsBLUEcodeProcedure;
-import net.mcreator.ssc.procedures.CommConsGREENcodeProcedure;
-import net.mcreator.ssc.procedures.CommConsPURPLEcodeProcedure;
-import net.mcreator.ssc.procedures.CommConsREDcodeProcedure;
-import net.mcreator.ssc.procedures.CommConsYELLOWcodeProcedure;
 import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
+import net.mcreator.ssc.network.Ssc14ModVariables;
+import net.ssc14.content.communication.StationAlertService;
 
 /** Compatibility boundary for communication-console alert procedures. */
 public final class LegacyCommunicationConsoleAdapter {
@@ -13,13 +11,24 @@ public final class LegacyCommunicationConsoleAdapter {
     }
 
     public static void trigger(Level level, int buttonId) {
-        switch (buttonId) {
-            case 0 -> CommConsREDcodeProcedure.execute(level);
-            case 1 -> CommConsBLUEcodeProcedure.execute(level);
-            case 2 -> CommConsPURPLEcodeProcedure.execute(level);
-            case 3 -> CommConsYELLOWcodeProcedure.execute(level);
-            case 4 -> CommConsGREENcodeProcedure.execute(level);
-            default -> { }
+        if (!(level instanceof ServerLevel serverLevel)) {
+            return;
+        }
+        int targetCode = switch (buttonId) {
+            case 0 -> 4;
+            case 1 -> 3;
+            case 2 -> 5;
+            case 3 -> 2;
+            case 4 -> 1;
+            default -> -1;
+        };
+        if (targetCode < 0) {
+            return;
+        }
+        var state = Ssc14ModVariables.MapVariables.get(serverLevel);
+        if (StationAlertService.announceCode(serverLevel, state.station_code, state.station_name, targetCode)) {
+            state.station_code = targetCode;
+            state.markSyncDirty();
         }
     }
 }
