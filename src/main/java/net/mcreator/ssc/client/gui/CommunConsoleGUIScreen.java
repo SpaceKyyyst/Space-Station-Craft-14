@@ -14,7 +14,7 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.CommunConsoleGUIMenu;
+import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.mcreator.ssc.procedures.CommConsGUITextCurrentCodeProcedure;
 import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
