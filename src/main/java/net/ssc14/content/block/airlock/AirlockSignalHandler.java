@@ -1,6 +1,5 @@
 package net.ssc14.content.block.airlock;
 
-import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -33,7 +32,7 @@ public final class AirlockSignalHandler {
         int rising = inputs & ~old;
         if ((rising & 8) != 0) {
             data.putBoolean(HOLD, true);
-            BaseAirlockOpenCloseProcedure.refreshAutoClose(level, pos);
+            AirlockLifecycleService.refreshAutoClose(level, pos);
         }
         if (((old ^ inputs) & 16) != 0 && data.getBooleanOr("powered", false)) {
             boolean bolted = (inputs & 16) != 0;
@@ -41,12 +40,12 @@ public final class AirlockSignalHandler {
                 data.putBoolean("bolted", bolted);
                 AirlockEventLogService.append(door, bolted ? "SIGNAL_BOLTS_DOWN" : "SIGNAL_BOLTS_UP");
                 AirlockStateInitializer.execute(level, pos.getX(), pos.getY(), pos.getZ(), state);
-                BaseAirlockOpenCloseProcedure.refreshAutoClose(level, pos);
+                AirlockLifecycleService.refreshAutoClose(level, pos);
             }
         }
         // Conflicting edges resolve deterministically: close takes priority over open/toggle.
-        if ((rising & 2) != 0) BaseAirlockOpenCloseProcedure.requestSignal(level, pos, false, false);
-        else if ((rising & 1) != 0) BaseAirlockOpenCloseProcedure.requestSignal(level, pos, true, false);
-        else if ((rising & 4) != 0) BaseAirlockOpenCloseProcedure.requestSignal(level, pos, false, true);
+        if ((rising & 2) != 0) AirlockLifecycleService.requestSignal(level, pos, false, false);
+        else if ((rising & 1) != 0) AirlockLifecycleService.requestSignal(level, pos, true, false);
+        else if ((rising & 4) != 0) AirlockLifecycleService.requestSignal(level, pos, false, true);
     }
 }

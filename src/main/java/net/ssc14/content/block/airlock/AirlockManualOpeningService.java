@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.WeakHashMap;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -72,6 +71,6 @@ public final class AirlockManualOpeningService {
         AirlockWorkFeedback.progress(player, job.door.getBlockPos(), job.finish - level.getGameTime(), false);
         if (level.getGameTime() < job.finish) return;
         JOBS.remove(player);
-        BaseAirlockOpenCloseProcedure.openManually(level, job.door.getBlockPos());
+        AirlockLifecycleService.openManually(level, job.door.getBlockPos());
     }
 }

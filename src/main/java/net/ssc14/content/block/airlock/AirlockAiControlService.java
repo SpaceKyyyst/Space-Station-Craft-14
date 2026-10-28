@@ -1,7 +1,6 @@
 package net.ssc14.content.block.airlock;
 
 import net.mcreator.ssc.access.AirlockMaintenance;
-import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 
@@ -25,7 +24,7 @@ public final class AirlockAiControlService {
         switch (action) {
             case OPEN, CLOSE -> {
                 if (data.getBooleanOr("bolted", false) || data.getBooleanOr("welded", false)) return false;
-                BaseAirlockOpenCloseProcedure.requestSignal(level, pos, action == Action.OPEN, false);
+                AirlockLifecycleService.requestSignal(level, pos, action == Action.OPEN, false);
             }
             case BOLTS_DOWN -> data.putBoolean("bolted", true);
             case BOLTS_UP -> {
@@ -37,7 +36,7 @@ public final class AirlockAiControlService {
         AirlockEventLogService.append(door, "AI_" + action.name());
         door.setChanged();
         AirlockStateInitializer.execute(level, pos.getX(), pos.getY(), pos.getZ(), door.getBlockState());
-        BaseAirlockOpenCloseProcedure.refreshAutoClose(level, pos);
+        AirlockLifecycleService.refreshAutoClose(level, pos);
         level.sendBlockUpdated(pos, door.getBlockState(), door.getBlockState(), 3);
         return true;
     }
