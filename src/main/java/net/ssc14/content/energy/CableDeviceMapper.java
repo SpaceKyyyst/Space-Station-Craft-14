@@ -2,7 +2,8 @@ package net.ssc14.content.energy;
 
 import net.ssc14.content.energy.CableType;
 import net.ssc14.content.energy.EnergyNetwork;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.block.airlock.AirlockPowerService;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -21,7 +22,7 @@ public final class CableDeviceMapper {
             for (int y = 1; y <= 5; y++) {
                 BlockPos checkPos = cablePos.above(y);
                 if (!isLoaded(level, checkPos)) continue;
-                if (level.getBlockState(checkPos).is(Ssc14ModBlocks.APC.get())) {
+                if (level.getBlockState(checkPos).is(Ssc14Blocks.APC.get())) {
                     network.getSources().add(checkPos.immutable());
                     break;
                 }
@@ -33,7 +34,7 @@ public final class CableDeviceMapper {
                         BlockPos checkPos = cablePos.offset(xOffset, yOffset, zOffset);
                         if (!isLoaded(level, checkPos)) continue;
                         BlockState state = level.getBlockState(checkPos);
-                        if (state.is(Ssc14ModBlocks.LAMP.get()) || net.mcreator.ssc.access.AirlockPower.isDoor(state)) {
+                        if (state.is(Ssc14Blocks.LAMP.get()) || AirlockPowerService.isDoor(state)) {
                             network.getConsumers().add(checkPos.immutable());
                         }
                     }
@@ -45,9 +46,9 @@ public final class CableDeviceMapper {
                 BlockPos checkPos = cablePos.above(y);
                 if (!isLoaded(level, checkPos)) continue;
                 BlockState state = level.getBlockState(checkPos);
-                if (state.is(Ssc14ModBlocks.DEBU_GGENERATOR.get())) {
+                if (state.is(Ssc14Blocks.DEBU_GGENERATOR.get())) {
                     network.getSources().add(checkPos.immutable());
-                } else if (state.is(Ssc14ModBlocks.PODSTATION.get())) {
+                } else if (state.is(Ssc14Blocks.PODSTATION.get())) {
                     network.getConsumers().add(checkPos.immutable());
                 }
             }
@@ -56,14 +57,14 @@ public final class CableDeviceMapper {
             for (int y = 1; y <= 2; y++) {
                 BlockPos checkPos = cablePos.above(y);
                 if (!isLoaded(level, checkPos)) continue;
-                if (level.getBlockState(checkPos).is(Ssc14ModBlocks.PODSTATION.get())) {
+                if (level.getBlockState(checkPos).is(Ssc14Blocks.PODSTATION.get())) {
                     network.getSources().add(checkPos.immutable());
                 }
             }
             for (int y = 1; y <= 5; y++) {
                 BlockPos checkPos = cablePos.above(y);
                 if (!isLoaded(level, checkPos)) continue;
-                if (level.getBlockState(checkPos).is(Ssc14ModBlocks.APC.get())) {
+                if (level.getBlockState(checkPos).is(Ssc14Blocks.APC.get())) {
                     network.getConsumers().add(checkPos.immutable());
                 }
             }

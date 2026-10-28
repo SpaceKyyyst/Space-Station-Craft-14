@@ -2,6 +2,8 @@ package net.ssc14.content.energy;
 
 import net.ssc14.content.block.energy.CableTopologyService;
 import net.ssc14.content.energy.EnergyNetworkService;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.block.airlock.AirlockPowerService;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.ChunkEvent;
@@ -23,8 +25,8 @@ public final class EnergyTopologyEvents {
         if (event.getLevel() instanceof net.minecraft.server.level.ServerLevel level
                 && event.getChunk() instanceof net.minecraft.world.level.chunk.LevelChunk chunk)
             for (var door : java.util.List.copyOf(chunk.getBlockEntities().values()))
-                if (net.mcreator.ssc.access.AirlockPower.isDoor(door.getBlockState()))
-                    net.mcreator.ssc.access.AirlockPower.supply(level, door.getBlockPos(), false);
+                if (AirlockPowerService.isDoor(door.getBlockState()))
+                    AirlockPowerService.supply(level, door.getBlockPos(), false);
         EnergyNetworkService.chunkAvailabilityChanged(event.getLevel(), event.getChunk().getPos());
     }
 
@@ -46,11 +48,11 @@ public final class EnergyTopologyEvents {
     private static void invalidateDevice(net.minecraft.world.level.LevelAccessor level, net.minecraft.core.BlockPos position) {
         var state = level.getBlockState(position);
         if (state.getBlock() instanceof net.ssc14.content.block.energy.SheathingBlock
-                || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.APC.get())
-                || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.PODSTATION.get())
-                || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.DEBU_GGENERATOR.get())
-                || state.is(net.mcreator.ssc.init.Ssc14ModBlocks.LAMP.get())
-                || net.mcreator.ssc.access.AirlockPower.isDoor(state)) {
+                || state.is(Ssc14Blocks.APC.get())
+                || state.is(Ssc14Blocks.PODSTATION.get())
+                || state.is(Ssc14Blocks.DEBU_GGENERATOR.get())
+                || state.is(Ssc14Blocks.LAMP.get())
+                || AirlockPowerService.isDoor(state)) {
             CableTopologyService.invalidate(level, position);
         }
     }

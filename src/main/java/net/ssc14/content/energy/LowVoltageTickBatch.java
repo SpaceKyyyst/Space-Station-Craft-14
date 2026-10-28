@@ -2,7 +2,7 @@ package net.ssc14.content.energy;
 
 import java.util.HashMap;
 import java.util.Map;
-import net.mcreator.ssc.access.AirlockPower;
+import net.ssc14.content.block.airlock.AirlockPowerService;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 
@@ -14,7 +14,7 @@ public final class LowVoltageTickBatch {
     public LowVoltageTickBatch(ServerLevel level) { this.level = level; lamps = new LampTickBatch(level); }
     public boolean track(BlockPos pos) {
         if (doors.containsKey(pos)) return true;
-        if (level.isLoaded(pos) && AirlockPower.isDoor(level.getBlockState(pos))) {
+        if (level.isLoaded(pos) && AirlockPowerService.isDoor(level.getBlockState(pos))) {
             doors.put(pos, false);
             return true;
         }
@@ -30,6 +30,6 @@ public final class LowVoltageTickBatch {
     }
     public void apply() {
         lamps.apply();
-        doors.forEach((pos, powered) -> { if (level.isLoaded(pos)) AirlockPower.supply(level, pos, powered); });
+        doors.forEach((pos, powered) -> { if (level.isLoaded(pos)) AirlockPowerService.supply(level, pos, powered); });
     }
 }

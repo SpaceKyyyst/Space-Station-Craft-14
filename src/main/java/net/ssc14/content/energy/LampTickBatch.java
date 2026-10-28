@@ -2,8 +2,8 @@ package net.ssc14.content.energy;
 
 import java.util.HashMap;
 import java.util.Map;
-import net.mcreator.ssc.block.LampBlock;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.block.lighting.ServiceableLightBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,7 +15,7 @@ public final class LampTickBatch {
         boolean powered;
         Lamp(BlockState state) { this.state = state; }
         boolean eligible() {
-            return state != null && state.getValue(LampBlock.HAVE_LAMP) && !state.getValue(LampBlock.BROKEN);
+            return state != null && state.getValue(ServiceableLightBlock.HAVE_LAMP) && !state.getValue(ServiceableLightBlock.BROKEN);
         }
     }
     private final ServerLevel level;
@@ -26,7 +26,7 @@ public final class LampTickBatch {
     private Lamp lamp(BlockPos pos) {
         return lamps.computeIfAbsent(pos, key -> {
             var state = level.isLoaded(key) ? level.getBlockState(key) : null;
-            return new Lamp(state != null && state.is(Ssc14ModBlocks.LAMP.get()) ? state : null);
+            return new Lamp(state != null && state.is(Ssc14Blocks.LAMP.get()) ? state : null);
         });
     }
 
@@ -42,14 +42,14 @@ public final class LampTickBatch {
     public void apply() {
         for (var entry : lamps.entrySet()) {
             var lamp = entry.getValue();
-            if (lamp.state == null || lamp.state.getValue(LampBlock.ACTIVE) == lamp.powered) continue;
+            if (lamp.state == null || lamp.state.getValue(ServiceableLightBlock.ACTIVE) == lamp.powered) continue;
             // Earlier neighbor notifications may have changed another lamp in this batch.
             if (!level.isLoaded(entry.getKey())) continue;
             var current = level.getBlockState(entry.getKey());
-            if (!current.is(Ssc14ModBlocks.LAMP.get())) continue;
-            boolean powered = lamp.powered && current.getValue(LampBlock.HAVE_LAMP) && !current.getValue(LampBlock.BROKEN);
-            if (current.getValue(LampBlock.ACTIVE) != powered) {
-                level.setBlock(entry.getKey(), current.setValue(LampBlock.ACTIVE, powered), 3);
+            if (!current.is(Ssc14Blocks.LAMP.get())) continue;
+            boolean powered = lamp.powered && current.getValue(ServiceableLightBlock.HAVE_LAMP) && !current.getValue(ServiceableLightBlock.BROKEN);
+            if (current.getValue(ServiceableLightBlock.ACTIVE) != powered) {
+                level.setBlock(entry.getKey(), current.setValue(ServiceableLightBlock.ACTIVE, powered), 3);
             }
         }
     }
