@@ -69,7 +69,6 @@ import net.ssc14.content.block.control.Ssc14ControlBlockEntities;
 import net.ssc14.content.block.communication.CommunicationServerLifecycleService;
 import net.ssc14.content.block.communication.CommunicationConsoleIntegrationService;
 import net.ssc14.content.block.communication.Ssc14CommunicationBlockEntities;
-import net.ssc14.content.block.fuel.FuelTankInteractionService;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
 import net.ssc14.content.block.gravity.GravityGeneratorPlugLifecycleService;
 import net.ssc14.content.block.gravity.GravityGeneratorLifecycleService;
@@ -176,21 +175,6 @@ public class Ssc14Mod {
 			if (!updatedRegistry.equals(variables.PalletRegistry)) {
 				variables.PalletRegistry = updatedRegistry;
 				variables.setDirty();
-			}
-		});
-		FuelTankInteractionService.install(new FuelTankInteractionService.Adapter() {
-			@Override
-			public void initialize(net.minecraft.world.level.Level level,
-					net.minecraft.core.BlockPos pos) {
-				net.ssc14.content.fuel.FuelTankInitializationService.execute(
-						level, pos.getX(), pos.getY(), pos.getZ());
-			}
-
-			@Override
-			public void interact(net.minecraft.world.level.Level level,
-					net.minecraft.core.BlockPos pos, Player player) {
-				net.ssc14.content.fuel.FuelTankInteractionService.execute(
-						level, pos.getX(), pos.getY(), pos.getZ(), player);
 			}
 		});
 		C4ChargeInteractionService.install(new C4ChargeInteractionService.Adapter() {
