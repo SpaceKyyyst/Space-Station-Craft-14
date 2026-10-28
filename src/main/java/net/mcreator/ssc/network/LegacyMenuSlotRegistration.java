@@ -13,6 +13,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.integration.neoforge.menu.network.MenuSlotPayload;
+import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 /** Transitional dispatcher for generated slot callbacks. */
@@ -38,7 +39,7 @@ public final class LegacyMenuSlotRegistration {
 
     private static void handleIdCode(Player player, MenuSlotPayload message) {
         if (!(player.containerMenu instanceof IDcodeMenu menu)
-                || !MenuPacketGuard.matches(player, menu, message.x(), message.y(), message.z(),
+                || !MenuAccessGuard.matches(player, menu, message.x(), message.y(), message.z(),
                         menu.x, menu.y, menu.z)) return;
         if ((message.slotId() == 0 || message.slotId() == 1) && message.changeType() == 0) {
             IDCode0CellprProcedure.execute(player);
@@ -47,7 +48,7 @@ public final class LegacyMenuSlotRegistration {
 
     private static void handleMachineFrame(Player player, MenuSlotPayload message) {
         if (!(player.containerMenu instanceof MacFrameGUIMenu menu)
-                || !MenuPacketGuard.matches(player, menu, message.x(), message.y(), message.z(),
+                || !MenuAccessGuard.matches(player, menu, message.x(), message.y(), message.z(),
                         menu.x, menu.y, menu.z)) return;
         if (message.slotId() >= 0 && message.slotId() <= 8 && message.changeType() == 0) {
             MacFrameGUIBlockUpdateProcedure.execute(player.level(), message.x(), message.y(), message.z());

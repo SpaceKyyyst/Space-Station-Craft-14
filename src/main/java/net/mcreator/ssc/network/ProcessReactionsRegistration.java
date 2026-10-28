@@ -14,6 +14,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.common.chemistry.ReagentTransferPlan;
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.integration.neoforge.chemistry.network.ProcessReactionsMessage;
+import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 /** Transitional handler until the reagent container runtime moves to the target namespace. */
@@ -32,7 +33,7 @@ public final class ProcessReactionsRegistration {
     }
 
     private static void execute(ServerPlayer player, int slotIndex) {
-        if (!MenuPacketGuard.canUseMenu(player)
+        if (!MenuAccessGuard.canUseMenu(player)
                 || slotIndex < 0 || slotIndex >= player.containerMenu.slots.size()) return;
         Slot targetSlot = player.containerMenu.slots.get(slotIndex);
         if (!targetSlot.isActive() || !targetSlot.mayPickup(player)) return;

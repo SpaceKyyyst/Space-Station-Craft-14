@@ -18,6 +18,7 @@ import net.ssc14.common.network.NetworkAction;
 import net.ssc14.common.network.NetworkTrigger;
 import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
+import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 import java.util.Map;
@@ -37,7 +38,7 @@ public final class NetConfigGUIButtonRegistration {
 
     public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
         Level world = entity.level();
-        if (!(entity.containerMenu instanceof NetConfigGUIMenu menu) || !MenuPacketGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
+        if (!(entity.containerMenu instanceof NetConfigGUIMenu menu) || !MenuAccessGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
             return;
 
         if (world.isClientSide() || buttonID < 0 || buttonID > 15 || menu.sourcePos == null || menu.targetPos == null
