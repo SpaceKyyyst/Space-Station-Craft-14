@@ -881,11 +881,11 @@ public final class AuditTests {
             var local=new BlockPos(3,2,3);var pos=h.absolutePos(local);h.setBlock(local,Ssc14ModBlocks.GRAVITY_GENERATOR.get());
             net.mcreator.ssc.access.AirlockPower.supply(h.getLevel(), pos, true);
         var be=h.getLevel().getBlockEntity(pos);be.getPersistentData().putBoolean("active",true);
-            for(int i=0;i<402;i++)net.mcreator.ssc.procedures.GravGenTICprocedureProcedure.execute(h.getLevel(),pos.getX(),pos.getY(),pos.getZ(),h.getBlockState(local));
+            for(int i=0;i<402;i++)net.ssc14.content.block.gravity.GravityGeneratorService.tick(h.getLevel(),pos);
             var prop=(net.minecraft.world.level.block.state.properties.BooleanProperty)h.getBlockState(local).getBlock().getStateDefinition().getProperty("gravity");
             h.assertTrue(h.getBlockState(local).getValue(prop),"Charged generator did not enable gravity");
             be.getPersistentData().putBoolean("active",false);
-            for(int i=0;i<402;i++)net.mcreator.ssc.procedures.GravGenTICprocedureProcedure.execute(h.getLevel(),pos.getX(),pos.getY(),pos.getZ(),h.getBlockState(local));
+            for(int i=0;i<402;i++)net.ssc14.content.block.gravity.GravityGeneratorService.tick(h.getLevel(),pos);
             h.assertTrue(!h.getBlockState(local).getValue(prop),"Discharged generator retained gravity");h.succeed();
         });
     }
@@ -935,10 +935,10 @@ public final class AuditTests {
         TESTS.put("shutter_direct_control",h->{
             var local=new BlockPos(3,2,3);var pos=h.absolutePos(local);h.setBlock(local,Ssc14ModBlocks.SHUTTERS.get());
             var player=h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
-            net.mcreator.ssc.procedures.ShuttersOpeningPRProcedure.execute(h.getLevel(),pos.getX(),pos.getY(),pos.getZ(),h.getBlockState(local),player);
+            net.ssc14.content.block.airlock.ShuttersIntegrationService.setOpen(h.getLevel(),pos,h.getBlockState(local),true);
             h.runAfterDelay(12,()->{
                 h.assertTrue(h.getBlockState(local).getValue(ShuttersBlock.OPEN),"Direct shutter open failed");
-                net.mcreator.ssc.procedures.ShuttersClosingPRProcedure.execute(h.getLevel(),pos.getX(),pos.getY(),pos.getZ(),h.getBlockState(local),player);
+                net.ssc14.content.block.airlock.ShuttersIntegrationService.setOpen(h.getLevel(),pos,h.getBlockState(local),false);
                 h.runAfterDelay(12,()->{h.assertTrue(!h.getBlockState(local).getValue(ShuttersBlock.OPEN),"Direct shutter close failed");h.succeed();});
             });
         });
