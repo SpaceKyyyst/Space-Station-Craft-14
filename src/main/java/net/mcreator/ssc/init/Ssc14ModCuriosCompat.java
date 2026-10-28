@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.mcreator.ssc.procedures.*;
 import net.ssc14.content.equipment.HardsuitSalvageHelmetEquipabilityService;
 import net.ssc14.content.equipment.MagBootsUnequipService;
+import net.ssc14.content.equipment.OuterclothingEvaUnequipService;
 
 public class Ssc14ModCuriosCompat {
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -485,7 +486,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onUnequip(SlotContext slotContext, ItemStack newStack) {
-				OuterclothingEvaCAPIBaubleIsUnequippedProcedure.execute(slotContext.entity());
+				OuterclothingEvaUnequipService.execute(slotContext.entity());
 			}
 		}, Ssc14ModItems.OUTERCLOTHING_EVA.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {

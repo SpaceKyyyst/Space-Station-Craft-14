@@ -1,11 +1,11 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.equipment;
 
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.resources.Identifier;
 
-public class OuterclothingEvaCAPIBaubleIsUnequippedProcedure {
+public final class OuterclothingEvaUnequipService {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
