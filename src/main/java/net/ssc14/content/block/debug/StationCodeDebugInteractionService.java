@@ -21,6 +21,7 @@ public final class StationCodeDebugInteractionService {
     }
 
     public static void interact(Level level, BlockPos pos, Player player) {
+        if (level.isClientSide()) return;
         adapter.interact(level, pos, player);
     }
 }
