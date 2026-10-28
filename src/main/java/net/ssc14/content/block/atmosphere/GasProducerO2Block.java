@@ -13,6 +13,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.ssc14.content.atmosphere.AtmosphericBlock;
+import net.ssc14.content.atmosphere.runtime.OxygenProducerService;
 
 /** Canonical always-permeable oxygen producer with constant-time scheduled work. */
 public class GasProducerO2Block extends Block implements AtmosphericBlock {
@@ -54,7 +55,7 @@ public class GasProducerO2Block extends Block implements AtmosphericBlock {
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.tick(state, level, pos, random);
-        GasProducerO2TickService.tick(level, pos);
+        OxygenProducerService.tick(level, pos);
         level.scheduleTick(pos, this, TICK_INTERVAL);
     }
 }

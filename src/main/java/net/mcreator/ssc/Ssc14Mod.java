@@ -74,7 +74,6 @@ import net.ssc14.content.block.gravity.GravityGeneratorPlugLifecycleService;
 import net.ssc14.content.block.gravity.GravityGeneratorLifecycleService;
 import net.ssc14.content.block.gravity.GravityGeneratorUiService;
 import net.ssc14.content.block.gravity.Ssc14GravityBlockEntities;
-import net.ssc14.content.block.atmosphere.GasProducerO2TickService;
 import net.ssc14.content.block.debug.StationCodeDebugInteractionService;
 import net.ssc14.content.block.debug.Ssc14DebugBlockEntities;
 import net.ssc14.content.block.debug.DebugGravityStateService;
@@ -282,7 +281,6 @@ public class Ssc14Mod {
 								.writeBlockPos(generator.getBlockPos()));
 			}
 		});
-		GasProducerO2TickService.install(net.ssc14.content.atmosphere.runtime.OxygenProducerService::tick);
 		CommunicationServerLifecycleService.install(
 				new CommunicationServerLifecycleService.Adapter() {
 					@Override
