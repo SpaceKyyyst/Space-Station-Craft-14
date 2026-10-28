@@ -2,6 +2,7 @@
 package net.mcreator.ssc;
 
 import net.ssc14.content.item.reagent.ReagentContainerItem;
+import net.ssc14.content.item.reagent.ReagentContainerAccess;
 import net.ssc14.integration.neoforge.chemistry.network.ProcessReactionsMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -47,7 +48,7 @@ public class ReagentTransferHandler {
         }
 
         // Если в источнике (в хотбаре) нет реагентов, переливать нечего
-        if (ModReagents.getReagents(mainHandStack).isEmpty()) {
+        if (ReagentContainerAccess.contents(mainHandStack).isEmpty()) {
             return; 
         }
 
