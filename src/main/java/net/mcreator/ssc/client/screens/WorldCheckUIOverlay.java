@@ -15,6 +15,7 @@ import net.minecraft.client.Minecraft;
 
 import net.mcreator.ssc.procedures.*;
 import net.ssc14.content.menu.worldcheck.WorldCheckTextService;
+import net.ssc14.content.menu.worldcheck.WorldCheckTargetTextService;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class WorldCheckUIOverlay {
@@ -46,7 +47,7 @@ public class WorldCheckUIOverlay {
 					WorldCheckTextService.disassemblyHint(), w / 2 + 5, h / 2 + 26, -1, false);
 			event.getGuiGraphics().text(Minecraft.getInstance().font,
 
-					WOCtextP2Procedure.execute(world, entity), w / 2 + 5, h / 2 + 38, -16711681, false);
+					WorldCheckTargetTextService.execute(world, entity), w / 2 + 5, h / 2 + 38, -16711681, false);
 			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_eto"), w / 2 + 5, h / 2 + 14, -1, false);
 			if (WOCtextPinnedProcedure.execute(entity))
 				event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.world_check_ui.label_zakrieplieno"), w / 2 + 28, h / 2 + 14, -16744704, false);
