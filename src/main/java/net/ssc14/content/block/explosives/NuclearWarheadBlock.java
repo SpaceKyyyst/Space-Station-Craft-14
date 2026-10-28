@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.ssc14.content.explosive.NuclearWarheadDetonationService;
 
 /** Canonical nuclear warhead block with legacy detonation behind an adapter. */
 public class NuclearWarheadBlock extends Block implements EntityBlock {
@@ -27,7 +28,7 @@ public class NuclearWarheadBlock extends Block implements EntityBlock {
     public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
             Player player, BlockHitResult hit) {
         super.useWithoutItem(state, level, pos, player, hit);
-        NuclearWarheadInteractionService.activate(level, pos);
+        NuclearWarheadDetonationService.execute(level, pos.getX(), pos.getY(), pos.getZ());
         return InteractionResult.SUCCESS;
     }
 
