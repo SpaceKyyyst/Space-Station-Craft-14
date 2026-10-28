@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.equipment;
 
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @EventBusSubscriber(modid = "ssc_14")
-public class EquipmentAutoEquipmentProcedure {
+public final class EquipmentAutoEquipmentHandler {
 
     @SubscribeEvent
     public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
