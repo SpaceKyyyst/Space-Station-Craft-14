@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 
 import net.ssc14.content.entity.Bullet35Entity;
-import net.mcreator.ssc.client.model.Modelbullet;
+import net.ssc14.client.model.Modelbullet;
 
 import com.mojang.math.Axis;
 import com.mojang.blaze3d.vertex.PoseStack;

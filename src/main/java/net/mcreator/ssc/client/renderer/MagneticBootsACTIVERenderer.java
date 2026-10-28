@@ -17,7 +17,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelboots_magboots_equipped;
+import net.ssc14.client.model.Modelboots_magboots_equipped;
 
 import java.util.Map;
 import java.util.Collections;

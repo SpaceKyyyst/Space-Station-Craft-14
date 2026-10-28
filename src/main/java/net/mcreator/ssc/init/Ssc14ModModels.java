@@ -8,7 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.Dist;
 
-import net.mcreator.ssc.client.model.*;
+import net.ssc14.client.model.*;
 
 @Deprecated(forRemoval = true)
 public class Ssc14ModModels {

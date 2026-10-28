@@ -9,9 +9,9 @@ import net.minecraft.client.model.player.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelunath_m;
-import net.mcreator.ssc.client.model.Modelhuman_m;
-import net.mcreator.ssc.client.model.Modelfelinid_m;
+import net.ssc14.client.model.Modelunath_m;
+import net.ssc14.client.model.Modelhuman_m;
+import net.ssc14.client.model.Modelfelinid_m;
 
 import java.util.Map;
 import java.util.HashMap;

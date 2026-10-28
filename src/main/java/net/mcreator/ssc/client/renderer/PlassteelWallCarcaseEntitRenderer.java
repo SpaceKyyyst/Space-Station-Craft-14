@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 import net.ssc14.content.entity.PlassteelWallCarcaseEntitEntity;
-import net.mcreator.ssc.client.model.Modelframe_of_plasstal_wall_JAVA;
+import net.ssc14.client.model.Modelframe_of_plasstal_wall_JAVA;
 
 public class PlassteelWallCarcaseEntitRenderer extends MobRenderer<PlassteelWallCarcaseEntitEntity, LivingEntityRenderState, Modelframe_of_plasstal_wall_JAVA> {
 	private final Identifier entityTexture = Identifier.parse("ssc_14:textures/entities/frame_of_plasstal_wall_java_texture.png");

@@ -1,7 +1,7 @@
 package net.ssc14.client;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.mcreator.ssc.client.model.*;
+import net.ssc14.client.model.*;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
