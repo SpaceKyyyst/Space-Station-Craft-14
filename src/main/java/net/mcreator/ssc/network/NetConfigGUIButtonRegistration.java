@@ -9,12 +9,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.resources.Identifier; // ИСПРАВЛЕНО
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.mcreator.ssc.Ssc14Mod;
 import net.ssc14.integration.neoforge.network.NetConfigGUISyncMessage;
 import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
@@ -22,31 +18,17 @@ import net.ssc14.content.network.NetworkSavedData;
 import net.ssc14.common.network.NetworkAction;
 import net.ssc14.common.network.NetworkTrigger;
 import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 
 import java.util.Map;
 
 @EventBusSubscriber
-public record NetConfigGUIButtonMessage(int buttonID, int x, int y, int z) implements CustomPacketPayload {
-    public static final Type<NetConfigGUIButtonMessage> TYPE = new Type<>(Identifier.fromNamespaceAndPath(Ssc14Mod.MODID, "net_config_gui_buttons"));
+public final class NetConfigGUIButtonRegistration {
+    private NetConfigGUIButtonRegistration() { }
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, NetConfigGUIButtonMessage> STREAM_CODEC = StreamCodec.of(
-            (RegistryFriendlyByteBuf buffer, NetConfigGUIButtonMessage message) -> {
-                buffer.writeInt(message.buttonID);
-                buffer.writeInt(message.x);
-                buffer.writeInt(message.y);
-                buffer.writeInt(message.z);
-            },
-            (RegistryFriendlyByteBuf buffer) -> new NetConfigGUIButtonMessage(buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt())
-    );
-
-    @Override
-    public Type<NetConfigGUIButtonMessage> type() {
-        return TYPE;
-    }
-
-    public static void handleData(final NetConfigGUIButtonMessage message, final IPayloadContext context) {
+    public static void handleData(final MenuButtonPayload message, final IPayloadContext context) {
         if (context.flow() == PacketFlow.SERVERBOUND) {
-            context.enqueueWork(() -> handleButtonAction(context.player(), message.buttonID, message.x, message.y, message.z)).exceptionally(e -> {
+            context.enqueueWork(() -> handleButtonAction(context.player(), message.buttonId(), message.x(), message.y(), message.z())).exceptionally(e -> {
                 context.connection().disconnect(Component.literal(e.getMessage()));
                 return null;
             });
@@ -126,6 +108,7 @@ public record NetConfigGUIButtonMessage(int buttonID, int x, int y, int z) imple
 
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        Ssc14Mod.addServerboundNetworkMessage(NetConfigGUIButtonMessage.TYPE, NetConfigGUIButtonMessage.STREAM_CODEC, NetConfigGUIButtonMessage::handleData);
+        var channel = MenuButtonPayload.Channel.NETWORK_CONFIG;
+        Ssc14Mod.addServerboundNetworkMessage(channel.type(), MenuButtonPayload.codec(channel), NetConfigGUIButtonRegistration::handleData);
     }
 }

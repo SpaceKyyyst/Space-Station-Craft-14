@@ -22,7 +22,9 @@ public record MenuButtonPayload(Channel channel, int buttonId, int x, int y, int
         COMMUNICATION_CONSOLE("commun_console_gui_buttons"),
         RCD_MAIN("rcdgui_buttons"),
         RCD_WALL_FLOOR("rcdgu_iwallfloor_buttons"),
-        RCD_WINDOWS("rcdgu_iwindows_buttons");
+        RCD_WINDOWS("rcdgu_iwindows_buttons"),
+        ID_CODE("i_dcode_buttons"),
+        NETWORK_CONFIG("net_config_gui_buttons");
 
         private final Type<MenuButtonPayload> type;
 
@@ -96,6 +98,14 @@ public record MenuButtonPayload(Channel channel, int buttonId, int x, int y, int
 
     public static MenuButtonPayload rcdWindows(int buttonId, int x, int y, int z) {
         return new MenuButtonPayload(Channel.RCD_WINDOWS, buttonId, x, y, z);
+    }
+
+    public static MenuButtonPayload idCode(int buttonId, int x, int y, int z) {
+        return new MenuButtonPayload(Channel.ID_CODE, buttonId, x, y, z);
+    }
+
+    public static MenuButtonPayload networkConfig(int buttonId, int x, int y, int z) {
+        return new MenuButtonPayload(Channel.NETWORK_CONFIG, buttonId, x, y, z);
     }
 
     @Override

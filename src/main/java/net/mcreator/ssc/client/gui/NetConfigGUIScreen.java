@@ -17,7 +17,8 @@ import net.minecraft.client.input.KeyEvent; // Ванильный record-кла�
 import com.mojang.blaze3d.platform.InputConstants;
 
 import net.mcreator.ssc.world.inventory.NetConfigGUIMenu;
-import net.mcreator.ssc.network.NetConfigGUIButtonMessage;
+import net.mcreator.ssc.network.NetConfigGUIButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 import java.util.Map;
 
@@ -163,7 +164,7 @@ public class NetConfigGUIScreen extends AbstractContainerScreen<NetConfigGUIMenu
         WidgetSprites sprites = new WidgetSprites(BUTTON_TEX, BUTTON_TEX);
         ImageButton btn = new ImageButton(this.leftPos + posX, this.topPos + posY, 78, 11, sprites, e -> {
             if (isButtonActive(this.menu.getMenuState(), stateKey)) {
-                ClientPacketDistributor.sendToServer(new NetConfigGUIButtonMessage(buttonID, x, y, z));
+                ClientPacketDistributor.sendToServer(MenuButtonPayload.networkConfig(buttonID, x, y, z));
             }
         }) {
             @Override
