@@ -18,7 +18,8 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.mcreator.ssc.world.inventory.SaleGUIMenu;
 import net.mcreator.ssc.procedures.SaleGUITotalRevenueProcedure;
 import net.mcreator.ssc.procedures.OrderGUIbudgetTEXTProcedure;
-import net.mcreator.ssc.network.SaleGUIButtonMessage;
+import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -87,8 +88,8 @@ public class SaleGUIScreen extends AbstractContainerScreen<SaleGUIMenu> implemen
 					int x = SaleGUIScreen.this.x;
 					int y = SaleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new SaleGUIButtonMessage(0, x, y, z));
-						SaleGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.sale(0, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.sale(0, x, y, z));
 					}
 				}) {
 			@Override

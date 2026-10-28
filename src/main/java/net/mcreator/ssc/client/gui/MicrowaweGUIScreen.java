@@ -16,7 +16,8 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
 import net.mcreator.ssc.procedures.MicrowaweGUITextTimeProcedure;
-import net.mcreator.ssc.network.MicrowaweGUIButtonMessage;
+import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -88,8 +89,8 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(0, x, y, z));
-						MicrowaweGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.microwave(0, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.microwave(0, x, y, z));
 					}
 				}) {
 			@Override
@@ -103,8 +104,8 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(1, x, y, z));
-						MicrowaweGUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.microwave(1, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.microwave(1, x, y, z));
 					}
 				}) {
 			@Override
@@ -118,8 +119,8 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(2, x, y, z));
-						MicrowaweGUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.microwave(2, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.microwave(2, x, y, z));
 					}
 				}) {
 			@Override
@@ -133,8 +134,8 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(3, x, y, z));
-						MicrowaweGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.microwave(3, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.microwave(3, x, y, z));
 					}
 				}) {
 			@Override
@@ -148,8 +149,8 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(4, x, y, z));
-						MicrowaweGUIButtonMessage.handleButtonAction(entity, 4, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.microwave(4, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.microwave(4, x, y, z));
 					}
 				}) {
 			@Override
@@ -163,8 +164,8 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(5, x, y, z));
-						MicrowaweGUIButtonMessage.handleButtonAction(entity, 5, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.microwave(5, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.microwave(5, x, y, z));
 					}
 				}) {
 			@Override
@@ -178,8 +179,8 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(6, x, y, z));
-						MicrowaweGUIButtonMessage.handleButtonAction(entity, 6, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.microwave(6, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.microwave(6, x, y, z));
 					}
 				}) {
 			@Override
@@ -193,8 +194,8 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(7, x, y, z));
-						MicrowaweGUIButtonMessage.handleButtonAction(entity, 7, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.microwave(7, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.microwave(7, x, y, z));
 					}
 				}) {
 			@Override
@@ -208,8 +209,8 @@ public class MicrowaweGUIScreen extends AbstractContainerScreen<MicrowaweGUIMenu
 					int x = MicrowaweGUIScreen.this.x;
 					int y = MicrowaweGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new MicrowaweGUIButtonMessage(8, x, y, z));
-						MicrowaweGUIButtonMessage.handleButtonAction(entity, 8, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.microwave(8, x, y, z));
+						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.microwave(8, x, y, z));
 					}
 				}) {
 			@Override
