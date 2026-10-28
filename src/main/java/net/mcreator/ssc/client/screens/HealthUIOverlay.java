@@ -13,7 +13,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.procedures.*;
 import net.ssc14.content.medical.HealthUiService;
 
 @EventBusSubscriber(Dist.CLIENT)
