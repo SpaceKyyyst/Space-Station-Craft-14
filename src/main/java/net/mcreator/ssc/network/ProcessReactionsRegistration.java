@@ -13,6 +13,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.common.chemistry.ReagentTransferPlan;
 import net.ssc14.content.item.reagent.ReagentContainerItem;
+import net.ssc14.content.item.reagent.ReagentContainerAccess;
 import net.ssc14.integration.neoforge.chemistry.network.ProcessReactionsMessage;
 import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
@@ -43,14 +44,14 @@ public final class ProcessReactionsRegistration {
                 || !(targetStack.getItem() instanceof ReagentContainerItem targetItem)
                 || !(sourceStack.getItem() instanceof ReagentContainerItem sourceItem)) return;
 
-        Map<String, Integer> sourceReagents = ModReagents.getReagents(sourceStack);
+        Map<String, Integer> sourceReagents = ReagentContainerAccess.contents(sourceStack);
         if (sourceReagents.isEmpty()) return;
         Map<String, Integer> transfer = ReagentTransferPlan.calculate(sourceReagents,
-                ModReagents.getReagents(targetStack), sourceItem.getMaxCapacity(), targetItem.getMaxCapacity());
+                ReagentContainerAccess.contents(targetStack), sourceItem.getMaxCapacity(), targetItem.getMaxCapacity());
         for (var entry : transfer.entrySet()) {
             if (entry.getValue() > 0) {
-                ModReagents.removeReagent(sourceStack, entry.getKey(), entry.getValue());
-                ModReagents.addReagent(targetStack, entry.getKey(), entry.getValue());
+                ReagentContainerAccess.remove(sourceStack, entry.getKey(), entry.getValue());
+                ReagentContainerAccess.add(targetStack, entry.getKey(), entry.getValue());
             }
         }
         if (transfer.isEmpty()) return;
