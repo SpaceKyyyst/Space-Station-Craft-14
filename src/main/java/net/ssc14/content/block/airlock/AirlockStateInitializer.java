@@ -91,7 +91,7 @@ public final class AirlockStateInitializer {
 		
 		boolean shouldBeOpen = (currentState >= 11 && currentState <= 15);
 		Block targetPlug = shouldBeOpen 
-			? Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.get() 
+			? Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.get()
 			: Ssc14Blocks.AIRLOCK_UP_PLUG.get();
 			
 		BlockState currentTop = world.getBlockState(topPos);
