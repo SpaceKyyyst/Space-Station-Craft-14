@@ -41,6 +41,12 @@
 выбор ключа, серверную запись инвентаря, изменение `type` block state и снятие
 ключа, поэтому перенос должен быть выделен в отдельный сервис с тестом
 серверного авторитета.
+Уже завершены прямые runtime-переходы для oxygen producer и debug gravity:
+`GasProducerO2Block` вызывает `OxygenProducerService`, а
+`DebugGravityGeneratorBlock` изменяет `StationGravityState` без промежуточных
+adapter-классов. Их compatibility-тесты теперь проверяют canonical runtime
+контракты. Аналогично station-code и network-button interaction boundaries
+отбрасывают клиентские вызовы до legacy-адаптера.
 Mod ID, registry ID, NBT-ключи и порядок `GasType` являются частью формата
 сохранений; форматы пакетов определяют совместимость клиента и сервера.
 Исполняемый baseline этих контрактов и правила migration описаны в
