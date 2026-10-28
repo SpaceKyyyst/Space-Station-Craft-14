@@ -17,7 +17,6 @@ import net.ssc14.content.menu.pda.PdaFlashlightService;
 import net.mcreator.ssc.procedures.PenRemovePRProcedure;
 import net.ssc14.content.item.tool.RcdModeService;
 import net.mcreator.ssc.procedures.RCDGUIbackButtonProcedure;
-import net.mcreator.ssc.procedures.RCDGUIcatwalkButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIdirwindowButtonProcedure;
 import net.ssc14.content.menu.MenuCloseService;
 import net.mcreator.ssc.procedures.RCDGUIgrilleButtonProcedure;
@@ -214,7 +213,7 @@ public final class LegacyMenuButtonRegistration {
             case 0 -> RCDGUIbackButtonProcedure.execute(
                     player.level(), message.x(), message.y(), message.z(), player);
             case 1 -> RcdModeService.wall(player);
-            case 2 -> RCDGUIcatwalkButtonProcedure.execute(player);
+            case 2 -> RcdModeService.catwalk(player);
             case 3 -> RCDGUItileButtonProcedure.execute(player);
             case 4 -> RCDGUIsheatingButtonProcedure.execute(player);
             default -> { }
