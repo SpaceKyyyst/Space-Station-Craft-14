@@ -4,7 +4,5 @@ C4_activate_PRProcedure -> C4explorePRProcedure
 CPlogLampPrProcedure -> BaseAirlockD1PutProcedure
 ID_Code_CHECKProcedure -> IDCode0CellprProcedure
 SS14ConstructionRegistryProcedure -> BaseAirlockD1PutProcedure
-Shutters_DEBUD_AKTIVATOR_PR_Procedure -> ShuttersClosingPRProcedure
-Shutters_DEBUD_AKTIVATOR_PR_Procedure -> ShuttersOpeningPRProcedure
 ToolsBlockClickProcedure -> UniversalDeconstructionProcedureProcedure
 UpClosetPLUG_clickProcedure -> Closet_OpenClose_PrProcedure

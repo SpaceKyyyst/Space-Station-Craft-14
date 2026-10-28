@@ -10,6 +10,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModItems;
+import net.mcreator.ssc.block.ShutterController;
 
 public class Shutters_DEBUD_AKTIVATOR_PR_Procedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
@@ -17,9 +18,9 @@ public class Shutters_DEBUD_AKTIVATOR_PR_Procedure {
 			return;
 		if (Ssc14ModItems.DEBUGACTIVATOR.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 			if (false == (getPropertyByName((world.getBlockState(BlockPos.containing(x, y, z))), "open") instanceof BooleanProperty _getbp3 && (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getbp3))) {
-				ShuttersOpeningPRProcedure.execute(world, x, y, z, blockstate, entity);
+				ShutterController.setOpen(world, BlockPos.containing(x, y, z), true);
 			} else if (true == (getPropertyByName((world.getBlockState(BlockPos.containing(x, y, z))), "open") instanceof BooleanProperty _getbp5 && (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getbp5))) {
-				ShuttersClosingPRProcedure.execute(world, x, y, z, blockstate, entity);
+				ShutterController.setOpen(world, BlockPos.containing(x, y, z), false);
 			}
 		}
 	}
