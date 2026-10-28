@@ -290,9 +290,6 @@ public class Ssc14Mod {
 								new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
 					}
 				});
-		StationCodeDebugInteractionService.install((level, pos, player) ->
-				net.mcreator.ssc.procedures.DEBUG13PriShchielchkiePKMPoBlokuProcedure.execute(
-						level, pos.getX(), pos.getY(), pos.getZ(), player));
 		UpperClosetPlugInteractionService.install((level, pos, player) ->
 				net.mcreator.ssc.procedures.Closet_OpenClose_PrProcedure.execute(
 						level, pos.getX(), pos.getY() - 1, pos.getZ(),
@@ -304,6 +301,12 @@ public class Ssc14Mod {
 				Ssc14Items.EXTINGUISHER, Ssc14Items.EXTINGUISHER_OPEN);
 		StationCodeService.install(level ->
 				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
+		StationCodeService.installMutator((level, value) -> {
+			Ssc14ModVariables.MapVariables variables =
+					Ssc14ModVariables.MapVariables.get(level);
+			variables.station_code = value;
+			variables.markSyncDirty();
+		});
 		StationNameService.install(level ->
 				Ssc14ModVariables.MapVariables.get(level).station_name);
 		StationBudgetService.install(level ->
