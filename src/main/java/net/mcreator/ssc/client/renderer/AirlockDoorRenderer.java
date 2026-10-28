@@ -2,7 +2,7 @@ package net.mcreator.ssc.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.mcreator.ssc.client.model.AirlockDoorModel;
+import net.ssc14.client.model.AirlockDoorModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;

@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 import net.ssc14.content.entity.IDConsoleENTITYEntity;
-import net.mcreator.ssc.client.model.ModelConsole_of_ID_DisConnected_ENTITY;
+import net.ssc14.client.model.ModelConsole_of_ID_DisConnected_ENTITY;
 
 public class IDConsoleENTITYRenderer extends MobRenderer<IDConsoleENTITYEntity, LivingEntityRenderState, ModelConsole_of_ID_DisConnected_ENTITY> {
 	private final Identifier entityTexture = Identifier.parse("ssc_14:textures/entities/id_console_texture_desconnected_entity.png");

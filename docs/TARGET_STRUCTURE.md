@@ -76,11 +76,13 @@ flowchart LR
 
 ### Текущее дерево и назначения миграции
 
-Текущие `atmosphere/*`, `energy/*` и `chemistry/*` содержат смесь домена,
+Текущие `atmosphere/*` и `chemistry/*` содержат смесь домена,
 Minecraft-адаптеров и orchestration. При переносе чистые значения и алгоритмы
 идут в Core, серверные операции — в Common, SavedData/payload/event glue — в
 Integration, блоки/предметы/меню — в Content, экраны/render/input — в Client.
-Это карта назначения, а не обещание перенести все пакеты одним изменением.
+Энергетический runtime уже находится в `net.ssc14.content.energy`; старые
+`net.mcreator.ssc.energy` классы оставлены только compatibility-фасадами.
+Это карта назначения, а не обещание перенести все остальные пакеты одним изменением.
 
 Первый реальный пример — перенос `ProportionalAllocation` в
 `net.ssc14.core.math` с делегирующим legacy-фасадом. Composition root должен
@@ -244,11 +246,13 @@ Dependencies within one layer are allowed.
 
 ### Current tree and migration destinations
 
-Current `atmosphere/*`, `energy/*`, and `chemistry/*` packages mix domain rules,
+Current `atmosphere/*` and `chemistry/*` packages mix domain rules,
 Minecraft adapters, and orchestration. During migration, pure values and algorithms
 go to Core, server workflows to Common, SavedData/payload/event glue to Integration,
 blocks/items/menus to Content, and screens/render/input to Client. This is a
-destination map, not a promise to move every package in one change.
+destination map, not a promise to move every remaining package in one change.
+The energy runtime is already owned by `net.ssc14.content.energy`; the old
+`net.mcreator.ssc.energy` classes remain compatibility facades only.
 
 The first real example moves `ProportionalAllocation` to `net.ssc14.core.math` with
 a delegating legacy facade. The composition root belongs under

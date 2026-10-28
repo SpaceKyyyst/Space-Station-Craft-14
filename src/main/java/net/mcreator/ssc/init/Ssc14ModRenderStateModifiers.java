@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 
 import com.google.common.reflect.TypeToken;
 
-@EventBusSubscriber(Dist.CLIENT)
+@Deprecated(forRemoval = true)
 public class Ssc14ModRenderStateModifiers {
 	public static final ContextKey<LivingEntity> LIVING_ENTITY = new ContextKey<>(Identifier.parse("c:living_entity_attachment"));
 

@@ -26,10 +26,10 @@ public final class SalePriceRegistry {
         SALE_PRICES.put(Ssc14Items.SCREWDRIVER.get(), 30);
         SALE_PRICES.put(Ssc14Items.SPANNER.get(), 22);
         SALE_PRICES.put(Ssc14Items.GAS_ANALYSER.get(), 80);
-        //SALE_PRICES.put(Ssc14ModItems.ИМЯ_ПРЕДМЕТА.get(), цена_за_штуку);
+        // SALE_PRICES.put(Ssc14Items.ITEM_NAME.get(), price_per_item);
         
         // Сюда ты сможешь дописать вообще любую вещь из мода:
-        // SALE_PRICES.put(Ssc14ModItems.ИМЯ_ПРЕДМЕТА.get(), цена_за_штуку);
+        // SALE_PRICES.put(Ssc14Items.ITEM_NAME.get(), price_per_item);
     }
 
     // Метод получения цены за 1 единицу предмета

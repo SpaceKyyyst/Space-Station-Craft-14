@@ -22,8 +22,8 @@ import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.Minecraft;
 
 import net.ssc14.content.entity.CarpEntity;
-import net.mcreator.ssc.client.model.animations.carpAnimation;
-import net.mcreator.ssc.client.model.Modelcarp;
+import net.ssc14.client.model.animations.carpAnimation;
+import net.ssc14.client.model.Modelcarp;
 
 import java.util.Map;
 

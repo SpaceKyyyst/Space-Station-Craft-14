@@ -14,7 +14,7 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.ssc14.content.block.energy.SheathingBlock;
-import net.mcreator.ssc.EnergyNetworkManager;
+import net.ssc14.content.block.energy.CableTopologyService;
 
 public class Sheathing_Cab_InstalProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState oldBlockstate, Entity entity) {
@@ -73,7 +73,7 @@ public class Sheathing_Cab_InstalProcedure {
 
 				// ЖЕЛЕЗНЫЙ ТРИГГЕР: Принудительно заставляем систему проснуться и пересобрать энергосеть в этой точке!
 				if (!world.isClientSide()) {
-					EnergyNetworkManager.invalidate(world, pos);
+					CableTopologyService.invalidate(world, pos);
 				}
 			}
 		}

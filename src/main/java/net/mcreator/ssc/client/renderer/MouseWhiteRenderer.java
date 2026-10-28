@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 import net.ssc14.content.entity.MouseWhiteEntity;
-import net.mcreator.ssc.client.model.Modelmouses;
+import net.ssc14.client.model.Modelmouses;
 
 public class MouseWhiteRenderer extends MobRenderer<MouseWhiteEntity, LivingEntityRenderState, Modelmouses> {
 	private final Identifier entityTexture = Identifier.parse("ssc_14:textures/entities/mouse_white_texture.png");

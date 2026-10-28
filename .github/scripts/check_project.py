@@ -45,7 +45,10 @@ def check_project(root: Path) -> list[tuple[str, str]]:
         build = (root / "build.gradle").read_text(encoding="utf-8")
         version = re.search(r"(?m)^version\s*=\s*['\"]([^'\"]+)['\"]", build)
         mods = metadata.get("mods", [])
-        if not version or len(mods) != 1 or mods[0].get("version") != version.group(1):
+        mod_version = mods[0].get("version") if len(mods) == 1 else None
+        version_is_linked = mod_version == "${file.jarVersion}"
+        version_is_literal = version and mod_version == version.group(1)
+        if not version or not (version_is_linked or version_is_literal):
             errors.append((metadata_path, "Mod version must match build.gradle"))
         if len(mods) != 1 or mods[0].get("modId") != "ssc_14":
             errors.append((metadata_path, "Expected stable mod ID ssc_14"))

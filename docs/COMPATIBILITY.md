@@ -120,6 +120,14 @@ old-world load/save/reopen остаётся обязательным перед 
 требует fixture и решения сопровождающего проекта; пользовательские сохранения
 публиковать нельзя.
 
+### Оставшаяся клиентская граница
+
+`HumanModelRenderHandler` временно читает `Ssc14ModRenderStateModifiers` и
+`Ssc14ModHumanoidModels`. Эти registry не участвуют в server-side logic,
+SavedData, network payloads или registry ID baseline. Их перенос допускается только
+одним клиентским PR после проверки render-state registration и dedicated-client
+запуска; до этого они считаются явными compatibility inputs.
+
 ## EN
 
 ### Purpose
@@ -233,3 +241,11 @@ world-version range. The baseline therefore uses synthetic legacy-shaped NBT
 fixtures and dedicated-server GameTests. Full old-world load/save/reopen remains
 mandatory before MCreator removal and requires both a fixture and a maintainer
 decision; user saves must not be published.
+
+### Remaining client boundary
+
+`HumanModelRenderHandler` temporarily reads `Ssc14ModRenderStateModifiers` and
+`Ssc14ModHumanoidModels`. These registries do not participate in server-side logic,
+SavedData, network payloads, or the registry-ID baseline. They may be moved only in
+one client-focused PR after render-state registration and dedicated-client startup
+verification; until then they remain explicit compatibility inputs.

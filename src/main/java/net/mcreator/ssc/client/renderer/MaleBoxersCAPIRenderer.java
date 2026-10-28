@@ -17,7 +17,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.model.Modelmale_boxers;
+import net.ssc14.client.model.Modelmale_boxers;
 
 import java.util.Map;
 import java.util.Collections;

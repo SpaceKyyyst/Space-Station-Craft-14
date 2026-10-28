@@ -1,3 +1,5 @@
+# Java resource literal baseline.
+# Entries are sorted and must match discovered missing assets.
 src/main/java/net/mcreator/ssc/client/renderer/ArmorSecurityCAPIRenderer.java:28: missing Java resource literal ssc_14:textures/entities/armor_security_equipped_texture.png
 src/main/java/net/mcreator/ssc/client/renderer/AtmosRenderer.java:28: missing Java resource literal ssc_14:textures/entities/jumpsuit_atmos_equipped_texture.png
 src/main/java/net/mcreator/ssc/client/renderer/BackpackCAPIRenderer.java:28: missing Java resource literal ssc_14:textures/entities/backpack_equipped_texture.png
@@ -108,14 +110,14 @@ src/main/java/net/mcreator/ssc/client/renderer/WardenRenderer.java:28: missing J
 src/main/java/net/mcreator/ssc/client/renderer/WhiteKneeCAPIRenderer.java:28: missing Java resource literal ssc_14:textures/entities/white_knee_equipped_texture.png
 src/main/java/net/mcreator/ssc/client/renderer/WorkBootsCAPIRenderer.java:28: missing Java resource literal ssc_14:textures/entities/boots_workboots_equipped_texture.png
 src/main/java/net/mcreator/ssc/client/renderer/YellowScarfCAPIRenderer.java:28: missing Java resource literal ssc_14:textures/entities/scarf_toxicyellow_equipped_texture.png
-src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java:228: missing Java resource literal ssc_14:textures/entities/unath_m_texture.png
-src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java:229: missing Java resource literal ssc_14:textures/entities/felinid_m_texture.png
-src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java:230: missing Java resource literal ssc_14:textures/entities/slimeman_m_texture.png
-src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java:231: missing Java resource literal ssc_14:textures/entities/human_m_texture.png
-src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java:81: missing Java resource literal ssc_14:textures/entities/unath_m_texture.png
-src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java:82: missing Java resource literal ssc_14:textures/entities/felinid_m_texture.png
-src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java:83: missing Java resource literal ssc_14:textures/entities/slimeman_m_texture.png
-src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java:84: missing Java resource literal ssc_14:textures/entities/human_m_texture.png
+src/main/java/net/ssc14/client/HumanModelRenderHandler.java:231: missing Java resource literal ssc_14:textures/entities/unath_m_texture.png
+src/main/java/net/ssc14/client/HumanModelRenderHandler.java:232: missing Java resource literal ssc_14:textures/entities/felinid_m_texture.png
+src/main/java/net/ssc14/client/HumanModelRenderHandler.java:233: missing Java resource literal ssc_14:textures/entities/slimeman_m_texture.png
+src/main/java/net/ssc14/client/HumanModelRenderHandler.java:234: missing Java resource literal ssc_14:textures/entities/human_m_texture.png
+src/main/java/net/ssc14/client/HumanModelRenderHandler.java:84: missing Java resource literal ssc_14:textures/entities/unath_m_texture.png
+src/main/java/net/ssc14/client/HumanModelRenderHandler.java:85: missing Java resource literal ssc_14:textures/entities/felinid_m_texture.png
+src/main/java/net/ssc14/client/HumanModelRenderHandler.java:86: missing Java resource literal ssc_14:textures/entities/slimeman_m_texture.png
+src/main/java/net/ssc14/client/HumanModelRenderHandler.java:87: missing Java resource literal ssc_14:textures/entities/human_m_texture.png
 src/main/java/net/ssc14/client/menu/commerce/OrderGUIScreen.java:138: missing Java resource literal ssc_14:textures/screens/sale_cons_gui_button_1.png
 src/main/java/net/ssc14/client/menu/commerce/OrderGUIScreen.java:215: missing Java resource literal ssc_14:textures/screens/sale_cons_gui_button_1.png
 src/main/java/net/ssc14/client/menu/commerce/OrderGUIScreen.java:48: missing Java resource literal ssc_14:textures/screens/order_gui.png

@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 
 import net.ssc14.content.entity.FoamDartProjectileEntity;
-import net.mcreator.ssc.client.model.Modelfoam_dart;
+import net.ssc14.client.model.Modelfoam_dart;
 
 import com.mojang.math.Axis;
 import com.mojang.blaze3d.vertex.PoseStack;

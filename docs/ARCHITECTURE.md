@@ -117,11 +117,89 @@ Mod ID, registry ID, NBT-ключи и порядок `GasType` являются
 генератор, гравитация, топливный бак, C4, ядерная боеголовка, реестр паллет и
 проверки доступа шлюза/шкафов. Оставшиеся классы `IntegrationService` являются
 явными переходными границами, а не новой игровой архитектурой. Они нужны там, где
-ещё сохраняются старые GUI, сетевые меню, формат сохранения или legacy energy API:
-communication console, commerce console, сетевой topology, station-code debug,
-шкафы, shutters, portable menus и несколько строительных/оружейных взаимодействий.
+ещё сохраняются старые GUI, сетевые меню, формат сохранения или отдельные legacy API:
+communication console, commerce console, station-code debug,
+шкафы, portable menus и несколько строительных/оружейных взаимодействий.
 Их удаление допустимо только после переноса соответствующего поведения и
 регрессионной проверки сохранений.
+
+Критический медицинский tick и расход жидкости работают через
+`MedicalCriticalTickHandler` и `LiquidMetabolismTickHandler`; generated wrappers
+для этих путей удалены после полного тестового прогона.
+
+Управление движением игрока в zero-gravity работает через
+`ZeroGravityPlayerHandler`; временная generated procedure удалена.
+
+Client slot interaction работает через `InteractionKeyMappings` и
+`InteractionSlotKeyHandler`; старое поле key mapping сохранено только как alias.
+
+Рендер игрока регистрируется через канонический клиентский
+`HumanModelRenderHandler`. Он сохраняет существующие registry render-state,
+humanoid-моделей и race-атрибутов как явные legacy-входы; эти registry остаются
+отдельной границей миграции и не дублируются молча.
+
+Маршрутизация right-click инструментов шлюза вынесена в
+`AirlockToolInteractionHandler`. Он сохраняет порядок проверки access, welding,
+manual opening, tile installation и deconstruction; legacy adapters остаются
+явными входами до отдельной миграции их контрактов.
+
+Персистентный журнал шлюза реализован в `AirlockEventLogService`; прежний
+`AirlockEventLog` сохранён как thin compatibility facade для generated callers.
+
+Обработка физических redstone-сигналов вынесена в `AirlockSignalHandler`; старый
+`AirlockSignals` оставлен фасадом, сохраняя ключ `HOLD` и legacy callers.
+
+Server-side AI control шлюза реализован в `AirlockAiControlService`; старый
+`AirlockAiControl` сохраняет типы `Authority`/`Action` и делегирует вызов.
+
+Удаление изолированной сваренной двери реализовано в `AirlockDisassemblyService`;
+`AirlockDisassembly` оставлен compatibility facade, а canonical tool handler
+вызывает сервис напрямую.
+
+Проверка двери и подача сетевого питания вынесены в `AirlockPowerService`;
+`AirlockPower` сохранён как фасад для energy topology и legacy callers.
+
+Server-authoritative wire edits теперь принадлежат canonical
+`net.ssc14.content.block.airlock.AirlockWireService`; старый класс сохранён как
+facade для network/menu callers.
+
+Синхронизация permissions конфигуратора доступа вынесена в
+`AirlockConfiguratorService`; старый `AirlockConfigurator` сохраняет API для
+menu/integration callers и прежний формат access keys.
+
+Планирование wire-pulse теперь принадлежит `AirlockWirePulseService`: deadline-
+ключи, загрузка chunk и level-tick semantics сохранены; старый
+`AirlockWirePulses` оставлен compatibility facade.
+
+Welding jobs теперь принадлежат `AirlockWeldingService`; сохранены отмена при
+движении/смене инструмента, fuel charge только при завершении и player-tick
+семантика. Старый `AirlockWelding` оставлен фасадом.
+
+Manual-opening jobs теперь принадлежат `AirlockManualOpeningService`; сохранены
+проверки powered/bolted/welded, дистанции, отмена движения и player-tick
+семантика. Старый `AirlockManualOpening` оставлен compatibility facade.
+
+Оценка доступа двери вынесена в `AirlockAccessPolicyService`; сохранены emergency
+bypass, unrestricted-door semantics и bitmask permissions. Старый
+`AirlockAccessPolicy` оставлен compatibility facade для generated open/close
+процедур.
+
+Оставшиеся canonical inputs из `net.mcreator.ssc.init` — registry aliases
+(`Ssc14ModItems`, `Ssc14ModBlocks`, `Ssc14ModAttributes`). Их замена допустима
+только через ID-preserving registry migration: массовая текстовая замена создаёт
+риск несовместимости сохранений и дублирования регистраций.
+
+Синхронизация wire/lamp state вынесена в `AirlockLampStateService`; сохранены
+все persisted cable flags, power restoration и bolt-cut side effects. Старый
+`CPlogLampPrProcedure` оставлен compatibility facade.
+
+Инициализация состояния двери, верхней plug-части и случайной cable-схемы
+вынесена в `AirlockStateInitializer`; старый `BaseAirlockD1PutProcedure` оставлен
+facade для legacy callers.
+
+Door lifecycle state machine (open/close, auto-close, signal requests and manual
+open) теперь принадлежит `AirlockLifecycleService`; старый
+`BaseAirlockOpenCloseProcedure` оставлен facade для generated callers.
 
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
@@ -143,11 +221,94 @@ The primary runtime paths now use canonical NeoForge services: oxygen production
 gravity, fuel tanks, C4, nuclear warhead detonation, pallet registry and airlock/
 closet access checks. Remaining `IntegrationService` classes are explicit migration
 boundaries rather than a new gameplay architecture. They are retained where legacy
-GUIs, menu networking, save formats or the legacy energy API are still involved:
-communication and commerce consoles, cable topology, station-code debug, closets,
-shutters, portable menus, and several construction/firearm interactions. Each bridge
+GUIs, menu networking, save formats or isolated legacy APIs are still involved:
+communication and commerce consoles, station-code debug, closets,
+portable menus, and several construction/firearm interactions. Each bridge
 must be removed only after its behavior and save compatibility are migrated and
 covered by regression tests.
+
+Energy topology, device mapping, telemetry and LV batching now live under the
+canonical `net.ssc14.content.energy` package. The former
+`net.mcreator.ssc.energy.*` classes remain only as deprecated compatibility
+facades and are not part of the canonical runtime.
+
+Critical medical ticking and liquid metabolism now run through
+`MedicalCriticalTickHandler` and `LiquidMetabolismTickHandler`; their generated
+wrappers were removed after the full test suite passed.
+
+Zero-gravity player movement now runs through `ZeroGravityPlayerHandler`; the
+temporary generated procedure was removed.
+
+Client slot interaction now runs through `InteractionKeyMappings` and
+`InteractionSlotKeyHandler`; the old key-mapping field remains only as an alias.
+
+Player rendering now registers through canonical `HumanModelRenderHandler` in the
+client layer. The handler preserves the existing render-state, humanoid-model and
+race-attribute registries as explicit legacy inputs; those registries remain a
+separate migration boundary and are not silently duplicated.
+
+Airlock tool right-click routing now lives in `AirlockToolInteractionHandler`.
+It preserves the access, welding, manual-opening, tile-installation, and
+deconstruction check order; legacy adapters remain explicit inputs until their
+contracts are migrated separately.
+
+Persistent airlock logging is implemented by `AirlockEventLogService`; the old
+`AirlockEventLog` remains as a thin compatibility facade for generated callers.
+
+Physical redstone signal handling now lives in `AirlockSignalHandler`; the old
+`AirlockSignals` remains a facade preserving the `HOLD` key and legacy callers.
+
+Server-side airlock AI control is implemented by `AirlockAiControlService`; the
+old `AirlockAiControl` preserves the `Authority`/`Action` types and delegates.
+
+Isolated welded-door removal is implemented by `AirlockDisassemblyService`;
+`AirlockDisassembly` remains a compatibility facade, while the canonical tool
+handler calls the service directly.
+
+Door identification and network-power supply now live in `AirlockPowerService`;
+`AirlockPower` remains a facade for energy topology and legacy callers.
+
+Server-authoritative wire edits now belong to canonical
+`net.ssc14.content.block.airlock.AirlockWireService`; the old class remains a
+facade for network/menu callers.
+
+Access-configurator permission synchronization now lives in
+`AirlockConfiguratorService`; the old `AirlockConfigurator` preserves the API
+for menu/integration callers and the existing access-key format.
+
+Wire-pulse scheduling now belongs to `AirlockWirePulseService`; deadline keys,
+chunk loading, and level-tick semantics are preserved, while the old
+`AirlockWirePulses` remains a compatibility facade.
+
+Welding jobs now belong to `AirlockWeldingService`; cancellation on movement or
+tool changes, completion-only fuel charging, and player-tick semantics are
+preserved. The old `AirlockWelding` remains a facade.
+
+Manual-opening jobs now belong to `AirlockManualOpeningService`; powered,
+bolted, welded, distance, movement-cancellation, and player-tick semantics are
+preserved. The old `AirlockManualOpening` remains a compatibility facade.
+
+Door access evaluation now lives in `AirlockAccessPolicyService`; emergency
+bypass, unrestricted-door semantics, and bitmask permissions are preserved. The
+old `AirlockAccessPolicy` remains a compatibility facade for generated
+open/close procedures.
+
+The remaining canonical inputs from `net.mcreator.ssc.init` are registry aliases
+(`Ssc14ModItems`, `Ssc14ModBlocks`, `Ssc14ModAttributes`). They must be replaced
+only through an ID-preserving registry migration; broad textual replacement
+risks save incompatibility and duplicate registrations.
+
+Wire/lamp state synchronization now lives in `AirlockLampStateService`; all
+persisted cable flags, power restoration, and bolt-cut side effects are
+preserved. The old `CPlogLampPrProcedure` remains a compatibility facade.
+
+Door-state initialization, upper-plug handling, and randomized cable assignment
+now live in `AirlockStateInitializer`; the old `BaseAirlockD1PutProcedure`
+remains a facade for legacy callers.
+
+The door lifecycle state machine (open/close, auto-close, signal requests, and
+manual open) now belongs to `AirlockLifecycleService`; the old
+`BaseAirlockOpenCloseProcedure` remains a facade for generated callers.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
@@ -167,6 +328,9 @@ the server saved all three dimensions successfully during shutdown.
 После удаления отладочной station-code процедуры и мёртвого gravity-plug lifecycle
 адаптера и network-button моста в каноническом дереве остаётся 19 интерфейсных
 migration boundaries.
+
+Shutters animation, linkage updates, and debug-activator interaction now run through
+canonical services; the old controller remains only as a compatibility wrapper.
 Число является текущим инвентарным показателем, а не разрешением удалять мосты
 без переноса их контрактов.
 
@@ -175,6 +339,9 @@ adapter and network-button bridge, 19 interface-based migration boundaries remai
 in the canonical tree.
 This is an inventory metric, not permission to remove bridges without migrating
 their contracts.
+
+Shutter animation, linkage updates, and debug-activator interaction now run through
+canonical services; the old controller remains only as a compatibility wrapper.
 
 - Большие сгенерированные процедуры доступа и инвентарей ещё требуют отдельных
   поведенческих тестов. Новые операции ID-карт проходят через
@@ -225,13 +392,16 @@ their contracts.
 
 ## Совмещение бюджетов и жизненного цикла
 
-Топология энергии использует EnergyTopologyService с пошаговым обходом и общим
+Топология энергии использует canonical `net.ssc14.content.energy.EnergyTopologyService`
+с пошаговым обходом и общим
 бюджетом одного мира. queueUpdate и applyPendingUpdates сохраняют совместимость
 с жизненным циклом блоков основной ветки. updatePosition теперь может завершить
 обход через несколько тиков. Неготовые компоненты не поставляют энергию; лампы
 выключаются на первом энергетическом тике. EnergyTickBudget ограничивает вход
 и выход одного устройства суммарно по всем сетям. LampTickBatch исключает
 двойную оплату общих ламп и повторное чтение их состояния внутри тика.
+Старые классы `net.mcreator.ssc.energy.*` оставлены только как deprecated
+compatibility-фасады и не участвуют в canonical runtime.
 
 Атмосфера сохраняет уведомления владельца смеси, очередь загрузки чанков,
 отложенную обработку блоков и сохранение секций из основной ветки. На шаг

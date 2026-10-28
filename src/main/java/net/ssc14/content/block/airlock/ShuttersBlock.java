@@ -132,13 +132,13 @@ public class ShuttersBlock extends Block implements EntityBlock, NetworkAction, 
     @Override protected void neighborChanged(BlockState state, Level level, BlockPos pos,
             Block neighborBlock, Orientation orientation, boolean moving) {
         super.neighborChanged(state, level, pos, neighborBlock, orientation, moving);
-        ShuttersIntegrationService.update(level, pos, state);
+        ShuttersStateService.update(level, pos, state);
     }
 
     @Override public InteractionResult useWithoutItem(BlockState state, Level level,
             BlockPos pos, Player player, BlockHitResult hit) {
         super.useWithoutItem(state, level, pos, player, hit);
-        ShuttersIntegrationService.use(level, pos, state, player);
+        ShuttersInteractionService.use(level, pos, state, player);
         return InteractionResult.SUCCESS;
     }
 
@@ -174,11 +174,11 @@ public class ShuttersBlock extends Block implements EntityBlock, NetworkAction, 
         if (level.isClientSide()) return;
         BlockState state = level.getBlockState(pos);
         if (OPEN_ACTION.equals(actionId)) {
-            ShuttersIntegrationService.setOpen(level, pos, state, true);
+            ShuttersAnimationService.setOpen(level, pos, true);
         } else if (CLOSE_ACTION.equals(actionId)) {
-            ShuttersIntegrationService.setOpen(level, pos, state, false);
+            ShuttersAnimationService.setOpen(level, pos, false);
         } else if (TOGGLE_ACTION.equals(actionId)) {
-            ShuttersIntegrationService.setOpen(level, pos, state, !state.getValue(OPEN));
+            ShuttersAnimationService.setOpen(level, pos, !state.getValue(OPEN));
         }
     }
 }
