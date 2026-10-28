@@ -13,7 +13,7 @@ CONTAINER_MENU_PATTERN = re.compile(r"\bextends\s+AbstractContainerMenu\b")
 
 
 def classify(source: str) -> tuple[str, str]:
-    if "AirlockWireService.canUsePanel" in source:
+    if "AirlockWireService.canUsePanel" in source or "AirlockPanelAccess.canUse" in source:
         return "airlock-wire-service", "server-strict"
     if "world.mayInteract(player, pos)" in source and "getMainHandItem()" in source:
         return "access-configurator", "server-strict"

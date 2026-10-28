@@ -7,14 +7,7 @@ import net.mcreator.ssc.procedures.CommConsGREENcodeProcedure;
 import net.mcreator.ssc.procedures.CommConsPURPLEcodeProcedure;
 import net.mcreator.ssc.procedures.CommConsREDcodeProcedure;
 import net.mcreator.ssc.procedures.CommConsYELLOWcodeProcedure;
-import net.mcreator.ssc.procedures.CPcabel1buttonProcedure;
-import net.mcreator.ssc.procedures.CPcabel2buttonProcedure;
-import net.mcreator.ssc.procedures.CPcabel3buttonProcedure;
-import net.mcreator.ssc.procedures.CPcabel4buttonProcedure;
-import net.mcreator.ssc.procedures.CPcabel5buttonProcedure;
-import net.mcreator.ssc.procedures.CPcabel6buttonProcedure;
-import net.mcreator.ssc.procedures.CPcabel7buttonProcedure;
-import net.mcreator.ssc.procedures.CPcabel8buttonProcedure;
+import net.minecraft.core.BlockPos;
 import net.ssc14.content.menu.decal.DecalColorMenuService;
 import net.mcreator.ssc.procedures.GravGenOFFbuttonProcedure;
 import net.mcreator.ssc.procedures.GravGenONbuttonProcedure;
@@ -57,7 +50,9 @@ import net.mcreator.ssc.procedures.VendAutGUIButton5Procedure;
 import net.mcreator.ssc.procedures.VendAutGUIButton6Procedure;
 import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
 import net.mcreator.ssc.world.inventory.OrderGUIMenu;
-import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
+import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
+import net.ssc14.content.menu.airlock.AirlockPanelButtonIds;
+import net.mcreator.ssc.access.AirlockWireService;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
@@ -172,17 +167,10 @@ public final class LegacyMenuButtonRegistration {
     private static void handleAirlockPanel(Player player, MenuButtonPayload message) {
         if (!(player.containerMenu instanceof CabelPannelAirlockMenu menu)
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
-        switch (message.buttonId()) {
-            case 0 -> CPcabel1buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
-            case 1 -> CPcabel2buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
-            case 2 -> CPcabel3buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
-            case 3 -> CPcabel4buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
-            case 4 -> CPcabel5buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
-            case 5 -> CPcabel6buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
-            case 6 -> CPcabel7buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
-            case 7 -> CPcabel8buttonProcedure.execute(player.level(), message.x(), message.y(), message.z(), player);
-            default -> { }
-        }
+		int wire = AirlockPanelButtonIds.wireForButton(message.buttonId());
+		if (wire > 0) {
+			AirlockWireService.toggle(player, new BlockPos(message.x(), message.y(), message.z()), wire);
+		}
     }
 
     private static void handleDecalColor(Player player, MenuButtonPayload message) {

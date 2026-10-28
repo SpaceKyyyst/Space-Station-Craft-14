@@ -1,6 +1,4 @@
-package net.mcreator.ssc.client.gui;
-
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+package net.ssc14.client.menu.airlock;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -14,19 +12,20 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
-import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.client.menu.MenuButtonClientActions;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
-import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import net.minecraft.core.BlockPos;
 
-public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPannelAirlockMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPannelAirlockMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
 	private boolean menuStateUpdateActive = false;
+	private AirlockPanelDisplayState displayState = AirlockPanelDisplayState.empty();
 	private ImageButton imagebutton_cable_button6;
 	private ImageButton imagebutton_cable_button5;
 	private ImageButton imagebutton_cable_button4;
@@ -70,6 +69,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 
 	@Override
 	public void extractRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTicks) {
+		displayState = AirlockPanelDisplayState.read(world, new BlockPos(x, y, z));
 		super.extractRenderState(guiGraphics, mouseX, mouseY, partialTicks);
 	}
 
@@ -120,13 +120,10 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 	}
 
     private boolean indicatorLit(String function) {
-        var blockEntity = world.getBlockEntity(new net.minecraft.core.BlockPos(x, y, z));
-        return blockEntity != null && net.ssc14.client.airlock.AirlockPanelIndicators.lit(
-                blockEntity.getPersistentData(), function, world.getGameTime());
+		return displayState.indicatorLit(function);
     }
     private boolean panelFlag(String key) {
-        var blockEntity = world.getBlockEntity(new net.minecraft.core.BlockPos(x, y, z));
-        return blockEntity != null && blockEntity.getPersistentData().getBooleanOr(key, false);
+		return displayState.panelFlag(key);
     }
 
 	@Override
@@ -157,8 +154,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(0, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(0, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.airlockPanel(0, x, y, z));
 			}
 		}) {
 			@Override
@@ -171,8 +167,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(1, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(1, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.airlockPanel(1, x, y, z));
 			}
 		}) {
 			@Override
@@ -185,8 +180,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(2, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(2, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.airlockPanel(2, x, y, z));
 			}
 		}) {
 			@Override
@@ -199,8 +193,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(3, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(3, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.airlockPanel(3, x, y, z));
 			}
 		}) {
 			@Override
@@ -213,8 +206,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(4, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(4, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.airlockPanel(4, x, y, z));
 			}
 		}) {
 			@Override
@@ -227,8 +219,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(5, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(5, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.airlockPanel(5, x, y, z));
 			}
 		}) {
 			@Override
@@ -241,8 +232,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(6, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(6, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.airlockPanel(6, x, y, z));
 			}
 		}) {
 			@Override
@@ -255,8 +245,7 @@ public class CabelPannelAirlockScreen extends AbstractContainerScreen<CabelPanne
 			int x = CabelPannelAirlockScreen.this.x;
 			int y = CabelPannelAirlockScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(MenuButtonPayload.airlockPanel(7, x, y, z));
-				LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.airlockPanel(7, x, y, z));
+				MenuButtonClientActions.send(entity, MenuButtonPayload.airlockPanel(7, x, y, z));
 			}
 		}) {
 			@Override
