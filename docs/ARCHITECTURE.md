@@ -11,7 +11,7 @@
 | Регистрация | `Ssc14Mod`, `init/*` | Идентификаторы, события, типы блоков и предметов |
 | Атмосфера | `atmosphere/*`, `AtmosCell`, `AtmosRegion`, `AtmosphereManager`, `AtmosphereSavedData` | Газовые расчёты, очередь регионов, мир и сохранения |
 | Энергетика | `energy/*`, `EnergyNetworkManager`, `EnergySimulationServer` | Компоненты графа, бюджеты устройств, топология и распределение энергии |
-| Химия | `chemistry/*`, `ModReagents`, `ProcessReactionsMessage` | Количества, атомарные реакции, NBT и серверный перенос |
+| Химия | `common/chemistry/*`, `content/item/reagent/*`, `ProcessReactionsMessage`, legacy `ModReagents` adapter | Расчёт количеств, атомарные реакции, контейнерный runtime и серверный перенос |
 | Сигнальные соединения | `NetworkManager`, `NetworkSavedData`, `INetworkAction` | Сохранение связей и выполнение действий |
 | Броня | `combat/ResistanceRegistry`, `ArmorResistanceHelper`, `procedures/ModArmorSetupProcedure` | Чистые правила, Curios-адаптер и настройка |
 | Интерфейс | `client/*`, `world/inventory/*`, `network/validation/*`, сетевые сообщения | Отрисовка, меню, ограничения пакетов и серверная синхронизация |
@@ -31,6 +31,9 @@
 
 Сейчас в коде сочетаются генерируемые процедуры, игровые адаптеры и выделенные
 доменные правила. Разделение ещё не охватывает все подсистемы.
+Операции чтения, добавления и удаления реагентов проходят через
+`ReagentContainerAccess`; `ModReagents` остаётся переходным runtime-адаптером
+для legacy NBT и реакций до завершения миграции chemistry runtime.
 Mod ID, registry ID, NBT-ключи и порядок `GasType` являются частью формата
 сохранений; форматы пакетов определяют совместимость клиента и сервера.
 Исполняемый baseline этих контрактов и правила migration описаны в
