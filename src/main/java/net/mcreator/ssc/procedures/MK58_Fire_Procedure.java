@@ -31,9 +31,9 @@ public class MK58_Fire_Procedure {
 			return;
 		double BulletChamber = 0;
 		double MagazBullets = 0;
-		if (!(entity instanceof Player _plrCldCheck1 && _plrCldCheck1.getCooldowns().isOnCooldown(itemstack))) {
+		if (!(entity instanceof Player _plrCldCheck1 && Mk58FireStateService.isCoolingDown(_plrCldCheck1, itemstack))) {
 			if (entity instanceof Player _player)
-				_player.getCooldowns().addCooldown(itemstack, 10);
+				Mk58FireStateService.startCooldown(_player, itemstack, 10);
 			if (itemstack.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 				BulletChamber = Mk58FireStateService.chamber(itemstack);
 				MagazBullets = Mk58FireStateService.magazine(itemstack);
