@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.medical;
 
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -12,12 +12,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 
-import net.mcreator.ssc.init.Ssc14ModAttributes;
+import net.ssc14.content.attribute.Ssc14Attributes;
 
 import javax.annotation.Nullable;
 
 @EventBusSubscriber
-public class MetabolismTICProcedure {
+public final class MetabolismTickService {
     
     private static final double BASE_METABOLISM_RATE = 0.00084;
     private static final double NUTRIENTS_MIN = 0;
@@ -47,7 +47,7 @@ public class MetabolismTICProcedure {
     
     private static boolean isMetabolismActive(LivingEntity entity) {
         if (entity == null) return false;
-        if (!entity.getAttributes().hasAttribute(Ssc14ModAttributes.NUTRIENTS)) return false;
+        if (!entity.getAttributes().hasAttribute(Ssc14Attributes.NUTRIENTS)) return false;
         if (entity instanceof Player player) {
             GameType mode = player.gameMode();
             if (mode == GameType.CREATIVE || mode == GameType.SPECTATOR) return false;
@@ -56,12 +56,12 @@ public class MetabolismTICProcedure {
     }
 
     private static Double getNutrientsValue(LivingEntity entity) {
-        AttributeInstance attr = entity.getAttribute(Ssc14ModAttributes.NUTRIENTS);
+        AttributeInstance attr = entity.getAttribute(Ssc14Attributes.NUTRIENTS);
         return attr != null ? attr.getValue() : null;
     }
 
     private static void setNutrientsValue(LivingEntity entity, double newValue) {
-        AttributeInstance attr = entity.getAttribute(Ssc14ModAttributes.NUTRIENTS);
+        AttributeInstance attr = entity.getAttribute(Ssc14Attributes.NUTRIENTS);
         if (attr != null) {
             double clamped = Math.max(NUTRIENTS_MIN, Math.min(NUTRIENTS_MAX, newValue));
             attr.setBaseValue(Math.round(clamped * 100000d) / 100000d);
