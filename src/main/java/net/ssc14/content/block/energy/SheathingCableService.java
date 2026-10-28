@@ -18,7 +18,7 @@ public final class SheathingCableService {
         if (level == null || entity == null || !(entity instanceof LivingEntity living)) return;
         if (living.level().clip(new ClipContext(living.getEyePosition(1.0F),
                 living.getEyePosition(1.0F).add(living.getViewVector(1.0F).scale(6.0D)),
-                ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, living).getDirection() != Direction.UP) return;
+                ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, living)).getDirection() != Direction.UP) return;
         var current = level.getBlockState(pos);
         if (!(current.getBlock() instanceof SheathingBlock)) return;
         ItemStack held = living.getMainHandItem();
