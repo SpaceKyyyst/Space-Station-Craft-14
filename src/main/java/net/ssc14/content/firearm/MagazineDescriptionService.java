@@ -5,6 +5,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.component.DataComponents;
 
 public final class MagazineDescriptionService {
+	public static String mk58(ItemStack itemstack) {
+		return "" + "Патроны:  " + Math.round(itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0)) + "/10";
+	}
 	public static String execute(ItemStack itemstack) {
 		return "" + "\u041F\u0430\u0442\u0440\u043E\u043D\u044B:  " + Math.round(itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("Bullets", 0)) + "/10";
 	}

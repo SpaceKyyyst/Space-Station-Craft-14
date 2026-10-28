@@ -2,7 +2,6 @@ package net.mcreator.ssc;
 
 import javax.annotation.Nullable;
 import net.mcreator.ssc.procedures.MK58_Breech_Open_Procedure;
-import net.mcreator.ssc.procedures.MK58_DescriptionProcedure;
 import net.mcreator.ssc.procedures.MK58_Fire_Procedure;
 import net.mcreator.ssc.procedures.MK58_GENERATE_Procedure;
 import net.ssc14.content.firearm.MagazineDescriptionService;
@@ -30,7 +29,7 @@ final class LegacyFirearmInteractionAdapter implements FirearmInteractionService
     @Override
     public String tooltip(FirearmState state, ItemStack stack) {
         return state instanceof Mk58State
-                ? MK58_DescriptionProcedure.execute(stack)
+                ? MagazineDescriptionService.mk58(stack)
 				: MagazineDescriptionService.execute(stack);
     }
 
