@@ -1,7 +1,5 @@
 
-package net.mcreator.ssc.client.gui;
-
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+package net.ssc14.client.menu.commerce;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -16,15 +14,15 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.ssc14.content.menu.commerce.SaleGUIMenu;
-import net.mcreator.ssc.procedures.SaleGUITotalRevenueProcedure;
-import net.mcreator.ssc.procedures.OrderGUIbudgetTEXTProcedure;
-import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.client.menu.MenuButtonClientActions;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.common.station.StationBudgetService;
+import net.ssc14.content.menu.commerce.SaleRevenueService;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
-import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-public class SaleGUIScreen extends AbstractContainerScreen<SaleGUIMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class SaleGUIScreen extends AbstractContainerScreen<SaleGUIMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
@@ -73,11 +71,11 @@ public class SaleGUIScreen extends AbstractContainerScreen<SaleGUIMenu> implemen
 	@Override
 	protected void extractLabels(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.sale_gui.label_balans"), -190, -82, -1, false);
-		guiGraphics.text(this.font, OrderGUIbudgetTEXTProcedure.execute(world), -190, -68, -13369549, false);
+		guiGraphics.text(this.font, CommerceDisplayText.currency(StationBudgetService.current(world)), -190, -68, -13369549, false);
 		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.sale_gui.label_prodazha"), -69, -70, -1, false);
 		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.sale_gui.label_summarnaia_vyruchka"), -45, -51, -1, false);
 		
-		guiGraphics.text(this.font, SaleGUITotalRevenueProcedure.execute(world, x, y, z), -55, -15, -13369549, false);
+		guiGraphics.text(this.font, CommerceDisplayText.currency(SaleRevenueService.total(world, new net.minecraft.core.BlockPos(x, y, z))), -55, -15, -13369549, false);
 	}
 
 	@Override
@@ -88,8 +86,7 @@ public class SaleGUIScreen extends AbstractContainerScreen<SaleGUIMenu> implemen
 					int x = SaleGUIScreen.this.x;
 					int y = SaleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.sale(0, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.sale(0, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.sale(0, x, y, z));
 					}
 				}) {
 			@Override
