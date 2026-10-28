@@ -23,6 +23,7 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.ssc.init.Ssc14ModItems;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.entity.Bullet35Entity;
+import net.ssc14.content.item.weapon.Mk58FireStateService;
 
 public class MK58_Fire_Procedure {
 	public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
@@ -34,9 +35,9 @@ public class MK58_Fire_Procedure {
 			if (entity instanceof Player _player)
 				_player.getCooldowns().addCooldown(itemstack, 10);
 			if (itemstack.getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-				BulletChamber = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("BulletChamber", 0);
-				MagazBullets = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0);
-				if ((Ssc14ModItems.MK_58.get() == itemstack.getItem() || Ssc14ModItems.MK_58NOMAGZ.get() == itemstack.getItem()) && 0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("BulletChamber", 0)) {
+				BulletChamber = Mk58FireStateService.chamber(itemstack);
+				MagazBullets = Mk58FireStateService.magazine(itemstack);
+				if ((Ssc14ModItems.MK_58.get() == itemstack.getItem() || Ssc14ModItems.MK_58NOMAGZ.get() == itemstack.getItem()) && Mk58FireStateService.hasChamberedRound(itemstack)) {
 					{
 						Entity _shootFrom = entity;
 						Level projectileLevel = _shootFrom.level();
@@ -62,7 +63,7 @@ public class MK58_Fire_Procedure {
 						entityToSpawn.setUnlimitedLifetime();
 						_level.addFreshEntity(entityToSpawn);
 					}
-					if (0 < itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0)) {
+					if (Mk58FireStateService.hasMagazineRound(itemstack)) {
 						{
 							final String _tagName = "MagazBullets";
 							final double _tagValue = (itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("MagazBullets", 0) - 1);
