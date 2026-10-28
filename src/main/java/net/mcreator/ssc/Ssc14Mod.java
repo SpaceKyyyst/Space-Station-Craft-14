@@ -337,7 +337,7 @@ public class Ssc14Mod {
 								}
 							}, pos);
 						}
-						net.mcreator.ssc.procedures.ConsolesOpenMenuSoundProcedure.execute(
+						net.ssc14.content.sound.ConsoleMenuSoundService.play(
 								level, pos.getX(), pos.getY(), pos.getZ());
 					}
 
@@ -397,7 +397,7 @@ public class Ssc14Mod {
 		MenuStateTransportPort.install(MenuStateNetworkActions::send);
 		CommerceConsoleIntegrationService.install(
 				new LegacyCommerceConsoleIntegrationAdapter(
-						net.mcreator.ssc.procedures.ConsolesOpenMenuSoundProcedure::execute));
+						 net.ssc14.content.sound.ConsoleMenuSoundService::play));
 		IdConsoleIntegrationService.install(new LegacyIdConsoleIntegrationAdapter());
 		NetworkButtonInteractionService.install(
 				new LegacyNetworkButtonIntegrationAdapter());
