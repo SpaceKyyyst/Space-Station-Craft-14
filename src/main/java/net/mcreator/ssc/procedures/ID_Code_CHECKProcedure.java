@@ -11,6 +11,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
 import net.ssc14.common.network.SlotMenuStateAccess;
+import net.ssc14.content.access.IdJobAssignmentService;
 import net.mcreator.ssc.Ssc14Mod;
 
 public class ID_Code_CHECKProcedure {
@@ -19,23 +20,8 @@ public class ID_Code_CHECKProcedure {
 		if (entity == null)
 			return;
 		if (getBlockNBTLogic(world, BlockPos.containing(x, y, z), "Bufer_LG") == false && getAmountInGUISlot(entity, 0) > 0 && getAmountInGUISlot(entity, 1) > 0) {
-			if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu3 ? _menu3.getSlots().get(0).getItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
-					.copyTag().getBooleanOr("gun_room", false) == true && (entity instanceof Player _entity5 && _entity5.containerMenu instanceof SlotMenuStateAccess _menu5) && _menu5.getMenuState(1, "gun_room", false)) {
-				{
-					final String _tagName = "gun_room";
-					final boolean _tagValue = true;
-					CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu6 ? _menu6.getSlots().get(1).getItem() : ItemStack.EMPTY),
-							tag -> tag.putBoolean(_tagName, _tagValue));
-				}
-			} else if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu8 ? _menu8.getSlots().get(0).getItem() : ItemStack.EMPTY)
-					.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getBooleanOr("gun_room", false) == true
-					&& !((entity instanceof Player _entity10 && _entity10.containerMenu instanceof SlotMenuStateAccess _menu10) && _menu10.getMenuState(1, "gun_room", false))) {
-				{
-					final String _tagName = "gun_room";
-					final boolean _tagValue = false;
-					CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu11 ? _menu11.getSlots().get(1).getItem() : ItemStack.EMPTY),
-							tag -> tag.putBoolean(_tagName, _tagValue));
-				}
+			if (entity instanceof Player player) {
+				IdJobAssignmentService.syncAccessField(player, "gun_room");
 			}
 			if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu13 ? _menu13.getSlots().get(0).getItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
 					.copyTag().getBooleanOr("HoS", false) == true && (entity instanceof Player _entity15 && _entity15.containerMenu instanceof SlotMenuStateAccess _menu15) && _menu15.getMenuState(1, "HoS", false)) {

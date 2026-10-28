@@ -49,12 +49,15 @@ public final class IdMenuAccessGameTests {
         CustomData.update(DataComponents.CUSTOM_DATA, source, tag -> {
             tag.putBoolean("Security", true);
             tag.putBoolean("Atmos", true);
+            tag.putBoolean("gun_room", true);
         });
         ItemStack target = new ItemStack(Ssc14Items.ID_CARD_PASSANGER.get());
         menu.getSlots().get(0).set(source);
         menu.getSlots().get(1).set(target);
 
         IdJobAssignmentService.setAllAllowed(player, true);
+        menu.getMenuState().put("1:gun_room", true);
+        IdJobAssignmentService.syncAccessField(player, "gun_room");
 
         helper.assertTrue(menu.getMenuState(1, "Security", false),
                 "Security access state was not transported");
@@ -62,6 +65,10 @@ public final class IdMenuAccessGameTests {
                 "Atmos access state was not transported");
         helper.assertTrue(!menu.getMenuState(1, "Medical", false),
                 "Unlisted access state was transported");
+        helper.assertTrue(menu.getSlots().get(1).getItem()
+                        .getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
+                        .copyTag().getBoolean("gun_room").orElse(false),
+                "gun_room access was not synchronized to the target card");
         helper.succeed();
     }
 
