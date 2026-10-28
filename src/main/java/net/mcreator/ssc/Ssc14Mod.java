@@ -220,6 +220,8 @@ public class Ssc14Mod {
 						level, pos.getX(), pos.getY(), pos.getZ()));
 		GravityGeneratorPlugLifecycleService.installGeneratorLocator((level, pos) ->
 				level.getBlockState(pos).is(net.mcreator.ssc.init.Ssc14ModBlocks.GRAVITY_GENERATOR.get()));
+		GravityGeneratorPlugLifecycleService.installPlugBlockFactory(() ->
+				net.mcreator.ssc.init.Ssc14ModBlocks.GRAV_GEN_PLUG_BLOCK.get().defaultBlockState());
 		GravityGeneratorLifecycleService.install(new GravityGeneratorLifecycleService.Adapter() {
 			@Override
 			public boolean canSurvive(LevelAccessor level, net.minecraft.core.BlockPos pos) {
@@ -231,8 +233,7 @@ public class Ssc14Mod {
 			public void placed(net.minecraft.world.level.Level level,
 					net.minecraft.core.BlockPos pos,
 					net.minecraft.world.level.block.state.BlockState state) {
-				net.mcreator.ssc.procedures.GravityGenerator_PlugBlock_Generate_Procedure.execute(
-						level, pos.getX(), pos.getY(), pos.getZ(), state);
+				net.ssc14.content.block.gravity.GravityGeneratorPlugLifecycleService.generate(level, pos, state);
 			}
 
 			@Override
