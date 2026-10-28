@@ -3,11 +3,11 @@ package net.ssc14.content.block.airlock;
 import net.ssc14.common.airlock.AirlockProtection;
 import net.ssc14.common.airlock.AirlockProtection;
 import net.ssc14.content.block.airlock.AirlockWorkFeedback;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.item.Ssc14Items;
 
 import java.util.Map;
 import java.util.WeakHashMap;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
@@ -56,7 +56,7 @@ public final class AirlockMaintenanceService {
 
     public static BlockPos root(net.minecraft.world.level.BlockGetter level, BlockPos pos) {
         var state = level.getBlockState(pos);
-        return state.is(Ssc14ModBlocks.AIRLOCK_UP_PLUG.get()) || state.is(Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get())
+        return state.is(Ssc14Blocks.AIRLOCK_UP_PLUG.get()) || state.is(Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.get())
                 ? pos.below() : pos;
     }
 
@@ -132,7 +132,7 @@ public final class AirlockMaintenanceService {
     private static boolean insulated(Player player) {
         return CuriosApi.getCuriosInventory(player).map(inventory -> inventory.getCurios().values().stream().anyMatch(handler -> {
             var slots = handler.getStacks();
-            for (int i = 0; i < slots.getSlots(); i++) if (slots.getStackInSlot(i).is(Ssc14ModItems.ISOLATED_GLOVES.get())) return true;
+            for (int i = 0; i < slots.getSlots(); i++) if (slots.getStackInSlot(i).is(Ssc14Items.ISOLATED_GLOVES.get())) return true;
             return false;
         })).orElse(false);
     }
@@ -143,20 +143,20 @@ public final class AirlockMaintenanceService {
 
     private static Item material(AirlockProtection.Tool tool) {
         return switch (tool) {
-            case STEEL -> Ssc14ModItems.STEEL.get();
-            case PLASTEEL -> Ssc14ModItems.PLASTEEL.get();
-            case RODS -> Ssc14ModItems.ROOD.get();
+            case STEEL -> Ssc14Items.STEEL.get();
+            case PLASTEEL -> Ssc14Items.PLASTEEL.get();
+            case RODS -> Ssc14Items.ROOD.get();
             default -> throw new IllegalArgumentException("Not a construction material: " + tool);
         };
     }
 
     private static AirlockProtection.Tool tool(ItemStack stack) {
-        if (stack.is(Ssc14ModItems.STEEL.get())) return AirlockProtection.Tool.STEEL;
-        if (stack.is(Ssc14ModItems.PLASTEEL.get())) return AirlockProtection.Tool.PLASTEEL;
-        if (stack.is(Ssc14ModItems.ROOD.get())) return AirlockProtection.Tool.RODS;
-        if (stack.is(Ssc14ModItems.ACTIVE_WELDER.get())) return AirlockProtection.Tool.WELDER;
-        if (stack.is(Ssc14ModItems.CROWBAR.get())) return AirlockProtection.Tool.CROWBAR;
-        if (stack.is(Ssc14ModItems.NIPPERS.get())) return AirlockProtection.Tool.CUTTERS;
+        if (stack.is(Ssc14Items.STEEL.get())) return AirlockProtection.Tool.STEEL;
+        if (stack.is(Ssc14Items.PLASTEEL.get())) return AirlockProtection.Tool.PLASTEEL;
+        if (stack.is(Ssc14Items.ROOD.get())) return AirlockProtection.Tool.RODS;
+        if (stack.is(Ssc14Items.ACTIVE_WELDER.get())) return AirlockProtection.Tool.WELDER;
+        if (stack.is(Ssc14Items.CROWBAR.get())) return AirlockProtection.Tool.CROWBAR;
+        if (stack.is(Ssc14Items.NIPPERS.get())) return AirlockProtection.Tool.CUTTERS;
         return null;
     }
 }
