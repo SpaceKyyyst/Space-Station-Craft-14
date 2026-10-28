@@ -90,6 +90,7 @@ import net.ssc14.common.network.MenuStateTransportPort;
 import net.ssc14.integration.neoforge.menu.network.MenuStateNetworkActions;
 import net.ssc14.content.block.machinery.Ssc14MachineBlockEntities;
 import net.ssc14.content.block.energy.CableTopologyService;
+import net.ssc14.content.energy.EnergyNetworkService;
 import net.ssc14.content.block.energy.Ssc14CableBlockEntities;
 import net.ssc14.content.block.energy.Ssc14EnergyMachineBlockEntities;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
@@ -158,12 +159,12 @@ public class Ssc14Mod {
 		CableTopologyService.install(new CableTopologyService.Adapter() {
 			@Override
 			public void queueUpdate(LevelAccessor level, net.minecraft.core.BlockPos pos) {
-				EnergyNetworkManager.queueUpdate(level, pos);
+				EnergyNetworkService.queueUpdate(level, pos);
 			}
 
 			@Override
 			public void invalidate(LevelAccessor level, net.minecraft.core.BlockPos pos) {
-				EnergyNetworkManager.invalidate(level, pos);
+				EnergyNetworkService.invalidate(level, pos);
 			}
 		});
 		OrderPalletRegistryService.install((level, pos) -> {
