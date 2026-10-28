@@ -1,6 +1,8 @@
 package net.mcreator.ssc.access;
 
 import net.ssc14.content.menu.access.AccessConfigMENUMenu;
+import net.ssc14.content.access.IdCardRegistry;
+import net.ssc14.content.access.PlayerAccessService;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.player.Player;

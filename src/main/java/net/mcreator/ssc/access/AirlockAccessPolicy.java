@@ -3,6 +3,8 @@ package net.mcreator.ssc.access;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.ssc14.content.access.IdCardRegistry;
+import net.ssc14.content.access.PlayerAccessService;
 
 /** Any configured department access grants entry; an unrestricted door admits everyone. */
 public final class AirlockAccessPolicy {

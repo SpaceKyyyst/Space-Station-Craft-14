@@ -1,7 +1,7 @@
 package net.ssc14.content.item;
 
 import java.util.List;
-import net.mcreator.ssc.access.IdCardRegistry;
+import net.ssc14.content.access.IdCardRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
