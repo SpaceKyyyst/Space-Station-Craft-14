@@ -29,7 +29,7 @@ public final class LegacyIdConsoleIntegrationAdapter
                 }
             }, pos);
         }
-        net.mcreator.ssc.procedures.ConsolesOpenMenuSoundProcedure.execute(
+        net.ssc14.content.sound.ConsoleMenuSoundService.play(
                 level, pos.getX(), pos.getY(), pos.getZ());
     }
 
