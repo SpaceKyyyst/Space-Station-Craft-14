@@ -44,4 +44,11 @@ public final class RcdModeService {
         CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("Mode", 5));
         if (entity instanceof Player player) player.closeContainer();
     }
+
+    public static void window(Entity entity) {
+        if (entity == null) return;
+        ItemStack stack = entity instanceof Player player ? player.getMainHandItem() : ItemStack.EMPTY;
+        CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("Mode", 7));
+        if (entity instanceof Player player) player.closeContainer();
+    }
 }

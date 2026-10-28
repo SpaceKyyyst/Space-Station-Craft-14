@@ -23,7 +23,6 @@ import net.mcreator.ssc.procedures.RCDGUIgrilleButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIsheatingButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUItileButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwallfloorModeButtonProcedure;
-import net.mcreator.ssc.procedures.RCDGUIwindowButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwindowsModeButtonProcedure;
 import net.ssc14.content.commerce.VendingMachineRuntimeService;
 import net.ssc14.content.menu.food.MicrowaweGUIMenu;
@@ -228,7 +227,7 @@ public final class LegacyMenuButtonRegistration {
                     player.level(), message.x(), message.y(), message.z(), player);
             case 1 -> RCDGUIgrilleButtonProcedure.execute(player);
             case 2 -> RcdModeService.armWindow(player);
-            case 3 -> RCDGUIwindowButtonProcedure.execute(player);
+            case 3 -> RcdModeService.window(player);
             case 4 -> RcdModeService.directionalArmWindow(player);
             case 5 -> RCDGUIdirwindowButtonProcedure.execute(player);
             default -> { }
