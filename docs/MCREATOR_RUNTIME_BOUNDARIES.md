@@ -126,6 +126,9 @@ only event subscribers and procedural facades that still own runtime behavior:
 - `LegacyLampInteractionAdapter` now owns the remaining lamp replacement
   procedure call for both lamp block variants; no block package class imports
   generated procedures directly;
+- `Ssc14Items.REGISTRY` is the sole active item registry; `Ssc14ModItems`
+  remains a field-compatible alias only and its empty legacy registry is not
+  registered;
 - `LocalChatEventHandler` was moved to `net.mcreator.ssc.integration`; message
   routing, radio prefixes, popup formatting, and server-side audience checks
   remain unchanged pending extraction of a pure chat/radio domain service;
