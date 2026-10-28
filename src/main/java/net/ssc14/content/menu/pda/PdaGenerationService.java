@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.menu.pda;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.ItemResource;
@@ -18,9 +18,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 
-public class PDA_generateProcedure {
+public final class PdaGenerationService {
 	
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
 		if (itemstack == null || itemstack.isEmpty()) return;
@@ -40,17 +40,17 @@ public class PDA_generateProcedure {
             }
             
             // Твой рабочий проверенный код инжекта предметов через Transfer API
-            if (Ssc14ModItems.PD_APASSANGER.get() == itemstack.getItem()) {
+            if (Ssc14Items.PD_APASSANGER.get() == itemstack.getItem()) {
                 try {
                     if (itemstack.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(itemstack)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
-                        setStackInSlot(_resourceHandler, 0, ItemResource.of(new ItemStack(Ssc14ModItems.ID_CARD_PASSANGER.get())), 1);
+                        setStackInSlot(_resourceHandler, 0, ItemResource.of(new ItemStack(Ssc14Items.ID_CARD_PASSANGER.get())), 1);
                     }
                 } catch (Exception ignored) {}
             }
 
             try {
                 if (itemstack.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(itemstack)) instanceof ResourceHandler<ItemResource> _resourceHandler) {
-                    setStackInSlot(_resourceHandler, 1, ItemResource.of(new ItemStack(Ssc14ModItems.PEN.get())), 1);
+                    setStackInSlot(_resourceHandler, 1, ItemResource.of(new ItemStack(Ssc14Items.PEN.get())), 1);
                 }
             } catch (Exception ignored) {}
         }
