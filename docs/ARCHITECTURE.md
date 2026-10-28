@@ -143,6 +143,9 @@ humanoid-моделей и race-атрибутов как явные legacy-вх
 manual opening, tile installation и deconstruction; legacy adapters остаются
 явными входами до отдельной миграции их контрактов.
 
+Персистентный журнал шлюза реализован в `AirlockEventLogService`; прежний
+`AirlockEventLog` сохранён как thin compatibility facade для generated callers.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -188,6 +191,9 @@ Airlock tool right-click routing now lives in `AirlockToolInteractionHandler`.
 It preserves the access, welding, manual-opening, tile-installation, and
 deconstruction check order; legacy adapters remain explicit inputs until their
 contracts are migrated separately.
+
+Persistent airlock logging is implemented by `AirlockEventLogService`; the old
+`AirlockEventLog` remains as a thin compatibility facade for generated callers.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
