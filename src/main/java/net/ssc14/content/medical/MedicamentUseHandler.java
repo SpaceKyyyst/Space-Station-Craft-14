@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.medical;
 
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
@@ -21,8 +21,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 
-import net.mcreator.ssc.init.Ssc14ModAttributes;
-import net.mcreator.ssc.Ssc14Mod;
+import net.ssc14.content.attribute.Ssc14Attributes;
+import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @EventBusSubscriber
-public class Medicoments_USEProcedure {
+public final class MedicamentUseHandler {
 
     private static final Map<String, Map<String, Double>> MEDICAMENT_EFFECTS = new HashMap<>() {{
         put("ssc_14:brutepack", Map.of("slash", 5.0, "blunt", 5.0, "piercing", 5.0));
@@ -160,9 +160,9 @@ public class Medicoments_USEProcedure {
             if (wasHealed && itemStack.getCount() > 0 && 
                 player.getMainHandItem().is(itemStack.getItem()) &&
                 hasHealableDamage(target, effects)) {
-                Ssc14Mod.queueServerWork(serverOwner, 2, () ->
+                ServerWorkScheduler.schedule(serverOwner, 2, () ->
                     startHealingProcess(serverOwner, player, target, itemStack, effects)
-                ).orThrow();
+                );
             }
             return;
         }
@@ -172,9 +172,9 @@ public class Medicoments_USEProcedure {
             return;
         }
         
-        Ssc14Mod.queueServerWork(serverOwner, STEP_DELAY_TICKS, () ->
+        ServerWorkScheduler.schedule(serverOwner, STEP_DELAY_TICKS, () ->
             runHealingTimer(serverOwner, player, target, itemStack, effects, currentStep + 1, startPos)
-        ).orThrow();
+        );
     }
     
     private static boolean canContinueHealing(Player player, LivingEntity target, ItemStack itemStack, double startPos) {
@@ -240,8 +240,8 @@ public class Medicoments_USEProcedure {
     }
     
     private static void updateHealthUIAttribute(LivingEntity target, double totalDamage) {
-        if (target.getAttributes().hasAttribute(Ssc14ModAttributes.HEALTH_U_IATTRIBUTE)) {
-            var attr = target.getAttribute(Ssc14ModAttributes.HEALTH_U_IATTRIBUTE);
+        if (target.getAttributes().hasAttribute(Ssc14Attributes.HEALTH_U_IATTRIBUTE)) {
+            var attr = target.getAttribute(Ssc14Attributes.HEALTH_U_IATTRIBUTE);
             if (attr != null) {
                 int uiState = totalDamage <= 12 ? 0 : totalDamage <= 37 ? 1 : totalDamage <= 62 ? 2 : 
                               totalDamage <= 87 ? 3 : totalDamage <= 100 ? 4 : totalDamage <= 200 ? 5 : 6;
@@ -251,8 +251,8 @@ public class Medicoments_USEProcedure {
     }
     
     private static void updateProgressBar(LivingEntity target, int step) {
-        if (target.getAttributes().hasAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB)) {
-            target.getAttribute(Ssc14ModAttributes.PROGRESS_BAR_ATRB).setBaseValue(step);
+        if (target.getAttributes().hasAttribute(Ssc14Attributes.PROGRESS_BAR_ATRB)) {
+            target.getAttribute(Ssc14Attributes.PROGRESS_BAR_ATRB).setBaseValue(step);
         }
     }
 }
