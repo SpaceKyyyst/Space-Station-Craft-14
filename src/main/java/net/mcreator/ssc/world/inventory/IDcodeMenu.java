@@ -34,7 +34,8 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.IDconsole_OPENMENUProcedure;
 import net.mcreator.ssc.procedures.ID_Code_CHECKProcedure;
-import net.mcreator.ssc.network.IDcodeSlotMessage;
+import net.mcreator.ssc.network.LegacyMenuSlotRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuSlotPayload;
 import net.mcreator.ssc.init.Ssc14ModMenus;
 
 import java.util.function.Supplier;
@@ -293,8 +294,8 @@ public class IDcodeMenu extends AbstractContainerMenu implements Ssc14ModMenus.M
 
 	private void slotChanged(int slotid, int ctype, int meta) {
 		if (this.world != null && this.world.isClientSide()) {
-			ClientPacketDistributor.sendToServer(new IDcodeSlotMessage(slotid, x, y, z, ctype, meta));
-			IDcodeSlotMessage.handleSlotAction(entity, slotid, ctype, meta, x, y, z);
+			ClientPacketDistributor.sendToServer(MenuSlotPayload.idCode(slotid, x, y, z, ctype, meta));
+			LegacyMenuSlotRegistration.dispatch(entity, MenuSlotPayload.idCode(slotid, x, y, z, ctype, meta));
 		}
 	}
 

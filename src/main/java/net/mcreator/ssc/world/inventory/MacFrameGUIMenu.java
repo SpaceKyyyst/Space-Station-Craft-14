@@ -29,7 +29,8 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.procedures.MacFrameGUIBlockUpdateProcedure;
-import net.mcreator.ssc.network.MacFrameGUISlotMessage;
+import net.mcreator.ssc.network.LegacyMenuSlotRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuSlotPayload;
 import net.mcreator.ssc.init.Ssc14ModMenus;
 
 import java.util.function.Supplier;
@@ -424,8 +425,8 @@ public class MacFrameGUIMenu extends AbstractContainerMenu implements Ssc14ModMe
 
 	private void slotChanged(int slotid, int ctype, int meta) {
 		if (this.world != null && this.world.isClientSide()) {
-			ClientPacketDistributor.sendToServer(new MacFrameGUISlotMessage(slotid, x, y, z, ctype, meta));
-			MacFrameGUISlotMessage.handleSlotAction(entity, slotid, ctype, meta, x, y, z);
+			ClientPacketDistributor.sendToServer(MenuSlotPayload.machineFrame(slotid, x, y, z, ctype, meta));
+			LegacyMenuSlotRegistration.dispatch(entity, MenuSlotPayload.machineFrame(slotid, x, y, z, ctype, meta));
 		}
 	}
 
