@@ -1,6 +1,6 @@
 package net.mcreator.ssc.block;
 
-import net.mcreator.ssc.procedures.InsertingLampProcedure;
+import net.mcreator.ssc.integration.LegacyLampInteractionAdapter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -17,6 +17,6 @@ public class TechLampBlock extends net.ssc14.content.block.lighting.ServiceableL
 
     @Override
     protected void interact(Level level, BlockPos pos, BlockState state, Player player) {
-        InsertingLampProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), state, player);
+        LegacyLampInteractionAdapter.interact(level, pos, state, player);
     }
 }
