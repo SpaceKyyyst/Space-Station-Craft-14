@@ -33,7 +33,7 @@ import net.minecraft.world.item.ItemStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
-import net.mcreator.ssc.init.Ssc14ModRenderStateModifiers;
+import net.ssc14.client.Ssc14RenderStateModifiers;
 import net.mcreator.ssc.init.Ssc14ModHumanoidModels;
 import net.ssc14.content.attribute.Ssc14Attributes;
 
@@ -52,7 +52,7 @@ public final class HumanModelRenderHandler {
 
 	@SubscribeEvent
 	public static void onPlayerRendered(RenderPlayerEvent.Pre event) {
-		Entity entity = (Entity) event.getRenderState().getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
+		Entity entity = (Entity) event.getRenderState().getRenderData(Ssc14RenderStateModifiers.LIVING_ENTITY);
 		execute(event, entity, (EntityModel) event.getRenderer().getModel(), event.getPoseStack());
 	}
 
@@ -133,11 +133,11 @@ public final class HumanModelRenderHandler {
 	}
 	
 	public static void renderHumanoid(RenderPlayerEvent playerRenderEvent, PlayerModel model, RenderType renderType, AvatarRenderState state) {
-		LivingEntity eventEntity_ = (LivingEntity) playerRenderEvent.getRenderState().getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY);
+		LivingEntity eventEntity_ = (LivingEntity) playerRenderEvent.getRenderState().getRenderData(Ssc14RenderStateModifiers.LIVING_ENTITY);
 		PoseStack poseStack = playerRenderEvent.getPoseStack();
 		poseStack.pushPose();
 		
-		CompoundTag playerData = state.getRenderData(Ssc14ModRenderStateModifiers.LIVING_ENTITY).getPersistentData();
+		CompoundTag playerData = state.getRenderData(Ssc14RenderStateModifiers.LIVING_ENTITY).getPersistentData();
 		float oldAnimationProgress = 0;
 		float oldAgeInTicks = 0;
 		if (playerData.contains("PlayerAnimationProgress")) {
