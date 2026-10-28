@@ -1,6 +1,8 @@
 
 package net.mcreator.ssc;
 
+import net.mcreator.ssc.integration.LegacyReagentContainerRuntime;
+
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
 import net.ssc14.common.chemistry.ReagentAmounts;

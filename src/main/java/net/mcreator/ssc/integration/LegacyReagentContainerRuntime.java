@@ -1,13 +1,15 @@
-package net.mcreator.ssc;
+package net.mcreator.ssc.integration;
 
 import java.util.Map;
+import net.mcreator.ssc.ModReagents;
+import net.mcreator.ssc.ReagentColorHelper;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.ssc14.content.item.reagent.ReagentContainerRuntime;
 
 /** Adapter retained until the chemistry runtime moves into the canonical namespace. */
-final class LegacyReagentContainerRuntime implements ReagentContainerRuntime {
-    static final LegacyReagentContainerRuntime INSTANCE =
+public final class LegacyReagentContainerRuntime implements ReagentContainerRuntime {
+    public static final LegacyReagentContainerRuntime INSTANCE =
             new LegacyReagentContainerRuntime();
 
     private LegacyReagentContainerRuntime() { }
