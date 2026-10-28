@@ -18,7 +18,6 @@ import net.mcreator.ssc.procedures.PenRemovePRProcedure;
 import net.ssc14.content.item.tool.RcdModeService;
 import net.mcreator.ssc.procedures.RCDGUIbackButtonProcedure;
 import net.ssc14.content.menu.MenuCloseService;
-import net.mcreator.ssc.procedures.RCDGUIgrilleButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIsheatingButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUItileButtonProcedure;
 import net.mcreator.ssc.procedures.RCDGUIwallfloorModeButtonProcedure;
@@ -224,7 +223,7 @@ public final class LegacyMenuButtonRegistration {
         switch (message.buttonId()) {
             case 0 -> RCDGUIbackButtonProcedure.execute(
                     player.level(), message.x(), message.y(), message.z(), player);
-            case 1 -> RCDGUIgrilleButtonProcedure.execute(player);
+            case 1 -> RcdModeService.grille(player);
             case 2 -> RcdModeService.armWindow(player);
             case 3 -> RcdModeService.window(player);
             case 4 -> RcdModeService.directionalArmWindow(player);
