@@ -74,30 +74,9 @@ public class BaseAirlockD1PutProcedure {
 				BuiltInRegistries.BLOCK.getKey(block).getPath());
 		if (policyAccess != null) nbt.putBoolean(policyAccess, true);
 
-		if (block == Ssc14ModBlocks.TECH_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Technical", true);
-		} else if (block == Ssc14ModBlocks.ATMOSPHERICS_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Atmos", true);
-		} else if (block == Ssc14ModBlocks.CARGO_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Supply_Deportament", true);
-		} else if (block == Ssc14ModBlocks.CENT_COM_AIRLOCK_D_1.get()) {
+		if (block == Ssc14ModBlocks.CENT_COM_AIRLOCK_D_1.get()) {
 			// Пока нету доступов
-		} else if (block == Ssc14ModBlocks.CHEMISTRY_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Chemistry", true);
-		} else if (block == Ssc14ModBlocks.COMMAND_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Command", true);
-		} else if (block == Ssc14ModBlocks.ENGINEERING_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Ingeneer", true);
-		} else if (block == Ssc14ModBlocks.HYDROPONICS_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Gidroponic", true);
-		} else if (block == Ssc14ModBlocks.MEDICAL_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Medical", true);
-		} else if (block == Ssc14ModBlocks.SALVAGE_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Utilizat", true);
-		} else if (block == Ssc14ModBlocks.SCIENCE_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Scientist", true);
 		} else if (block == Ssc14ModBlocks.SECURITY_AIRLOCK_D_1.get()) {
-			nbt.putBoolean("Security", true);
 			nbt.putBoolean("Brig", true);
 		} else if (block == Ssc14ModBlocks.SYNDICATE_AIRLOCK_D_1.get()) {
 			// Нету доступов
