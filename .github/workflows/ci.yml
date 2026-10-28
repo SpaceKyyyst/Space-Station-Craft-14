@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   pr-tests:
@@ -32,6 +32,8 @@ jobs:
           python-version: '3.12'
       - name: Validate project metadata
         run: python .github/scripts/check_project.py
+      - name: Dry-run release planner
+        run: python .github/scripts/release_dry_run.py
       - name: Validate architecture and resources
         run: |
           python .github/scripts/check_architecture.py
@@ -53,6 +55,8 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
