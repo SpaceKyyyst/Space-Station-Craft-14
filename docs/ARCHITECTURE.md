@@ -171,6 +171,10 @@ menu/integration callers и прежний формат access keys.
 ключи, загрузка chunk и level-tick semantics сохранены; старый
 `AirlockWirePulses` оставлен compatibility facade.
 
+Welding jobs теперь принадлежат `AirlockWeldingService`; сохранены отмена при
+движении/смене инструмента, fuel charge только при завершении и player-tick
+семантика. Старый `AirlockWelding` оставлен фасадом.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -244,6 +248,10 @@ for menu/integration callers and the existing access-key format.
 Wire-pulse scheduling now belongs to `AirlockWirePulseService`; deadline keys,
 chunk loading, and level-tick semantics are preserved, while the old
 `AirlockWirePulses` remains a compatibility facade.
+
+Welding jobs now belong to `AirlockWeldingService`; cancellation on movement or
+tool changes, completion-only fuel charging, and player-tick semantics are
+preserved. The old `AirlockWelding` remains a facade.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains

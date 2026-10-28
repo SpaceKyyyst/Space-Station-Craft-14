@@ -46,7 +46,7 @@ public final class AirlockToolInteractionHandler {
 		if (entity instanceof net.minecraft.world.entity.player.Player player
 				&& (net.mcreator.ssc.access.AirlockEventLog.inspect(player, pos)
                     || net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos)
-                    || net.mcreator.ssc.access.AirlockWelding.interact(player, pos)
+                    || AirlockWeldingService.interact(player, pos)
                     || net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos)
                     || net.ssc14.content.block.airlock.AirlockFloor.installTile(player, pos)
 
