@@ -1,9 +1,9 @@
 package net.mcreator.ssc;
 
 import io.netty.buffer.Unpooled;
-import net.mcreator.ssc.procedures.DECAL1deletion_USE_Procedure;
 import net.mcreator.ssc.procedures.DECAL1spawner_USE_Procedure;
 import net.ssc14.content.decal.DecalToolPermissionService;
+import net.ssc14.content.decal.DecalRemovalService;
 import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -39,7 +39,7 @@ final class LegacyDecalToolInteractionAdapter implements DecalToolInteractionSer
     @Override
     public void useOn(DecalToolKind kind, UseOnContext context) {
         if (kind == DecalToolKind.DELETION) {
-            DECAL1deletion_USE_Procedure.execute(context.getLevel(), context.getPlayer());
+            DecalRemovalService.execute(context.getPlayer());
             return;
         }
         DECAL1spawner_USE_Procedure.execute(
