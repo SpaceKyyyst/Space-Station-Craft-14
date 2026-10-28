@@ -2,7 +2,6 @@ package net.mcreator.ssc.integration;
 
 import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.commands.CommandSourceStack;
-import net.mcreator.ssc.integration.ReagentFillCommandService;
 
 /** Compatibility boundary for the legacy reagent-fill command procedure. */
 public final class LegacyReagentFillCommandAdapter {
