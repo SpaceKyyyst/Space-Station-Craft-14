@@ -1,16 +1,15 @@
-package net.mcreator.ssc;
+package net.ssc14.content.energy;
 
 import net.ssc14.content.energy.CableType;
 import net.ssc14.content.energy.EnergyNetwork;
 import net.ssc14.content.energy.EnergyNetworkService;
 
-import net.mcreator.ssc.block.LampBlock;
+import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.block.energy.ApcBlockEntity;
 import net.ssc14.content.block.energy.EnergyStorage;
 import net.ssc14.content.block.energy.PodstationBlockEntity;
 import net.ssc14.core.energy.EnergyAllocation;
 import net.ssc14.core.energy.EnergyTickBudget;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -101,7 +100,7 @@ public class EnergySimulationServer {
             return false;
         }
         return switch (type) {
-            case HV -> level.getBlockState(pos).is(Ssc14ModBlocks.DEBU_GGENERATOR.get());
+            case HV -> level.getBlockState(pos).is(Ssc14Blocks.DEBU_GGENERATOR.get());
             case MV -> level.getBlockEntity(pos) instanceof PodstationBlockEntity;
             case LV -> level.getBlockEntity(pos) instanceof ApcBlockEntity;
         };
@@ -114,7 +113,7 @@ public class EnergySimulationServer {
         return switch (type) {
             case HV -> level.getBlockEntity(pos) instanceof PodstationBlockEntity;
             case MV -> level.getBlockEntity(pos) instanceof ApcBlockEntity;
-            case LV -> level.getBlockState(pos).is(Ssc14ModBlocks.LAMP.get());
+            case LV -> level.getBlockState(pos).is(Ssc14Blocks.LAMP.get());
         };
     }
 
@@ -128,7 +127,7 @@ public class EnergySimulationServer {
             tick.storage.put(pos, storage);
             tick.budgets.put(pos, new EnergyTickBudget(storage.getStoredEnergy(), storage.getMaxEnergy(),
                     output / TICKS_PER_SECOND, MAX_DEVICE_INPUT_JOULES));
-        } else if (level.getBlockState(pos).is(Ssc14ModBlocks.DEBU_GGENERATOR.get())) {
+        } else if (level.getBlockState(pos).is(Ssc14Blocks.DEBU_GGENERATOR.get())) {
             long output = GENERATOR_WATT / TICKS_PER_SECOND;
             tick.budgets.put(pos, new EnergyTickBudget(output, output, output, 0));
         }

@@ -1,12 +1,9 @@
-package net.mcreator.ssc;
+package net.ssc14.content.energy;
 
 import net.ssc14.integration.neoforge.energy.network.MultitoolDataPacket;
 
-import net.ssc14.content.energy.CableType;
-import net.ssc14.content.energy.EnergyNetwork;
-
 import net.ssc14.content.block.energy.SheathingBlockEntity;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
@@ -41,7 +38,7 @@ final class EnergyNetworkTelemetry {
         if (level.getGameTime() % UPDATE_INTERVAL_TICKS != 0) return;
         for (ServerPlayer player : level.players()) {
             ItemStack item = player.getMainHandItem();
-            if (!item.is(Ssc14ModItems.MULTITUL.get())) {
+            if (!item.is(Ssc14Items.MULTITOOL.get())) {
                 continue;
             }
             int mode = (int) item.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
