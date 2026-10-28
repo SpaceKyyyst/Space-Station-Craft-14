@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.combat;
 
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -7,7 +7,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.ssc14.integration.neoforge.combat.ArmorResistanceService;
 
 @EventBusSubscriber(modid = "ssc_14")
-public class ModArmorSetupProcedure {
+public final class ArmorResistanceRegistration {
     
     @SubscribeEvent
     public static void onModSetup(FMLCommonSetupEvent event) {
