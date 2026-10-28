@@ -6,6 +6,7 @@ import net.mcreator.ssc.integration.LegacyReagentContainerRuntime;
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.content.item.reagent.ReagentContentsCodec;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
+import net.ssc14.content.item.reagent.ReagentContainerStorage;
 import net.ssc14.common.chemistry.ReagentAmounts;
 import net.ssc14.common.chemistry.ReagentReactionPlanner;
 import net.ssc14.common.chemistry.ReagentTransferPlan;
@@ -663,7 +664,7 @@ public class ModReagents {
         public ReagentFluidHandler(ItemStack container, int capacity) { this.container = container; this.capacity = capacity; }
         public int getTanks() { return 1; }
         @NotNull public FluidStack getFluidInTank(int tank) {
-            Map<String, Integer> map = getReagents(container);
+            Map<String, Integer> map = ReagentContainerStorage.contents(container);
             if (map.isEmpty()) return FluidStack.EMPTY;
             String id = map.keySet().iterator().next(); return createStack(id, map.get(id));
         }
@@ -674,15 +675,15 @@ public class ModReagents {
             String id = getFluidId(resource);
             if (getReagent(id).isEmpty()) return 0;
             int canAdd = Math.min(resource.getAmount(), getAvailableSpace(container));
-            if (canAdd > 0 && !simulate) addReagent(container, id, canAdd);
+            if (canAdd > 0 && !simulate) ReagentContainerStorage.add(container, id, canAdd);
             return canAdd;
         }
         @NotNull public FluidStack drain(int maxDrain, boolean simulate) {
-            Map<String, Integer> map = getReagents(container);
+            Map<String, Integer> map = ReagentContainerStorage.contents(container);
             if (map.isEmpty()) return FluidStack.EMPTY;
             String id = map.keySet().iterator().next();
             int toDrain = Math.min(map.get(id), maxDrain);
-            if (toDrain > 0 && !simulate) removeReagent(container, id, toDrain);
+            if (toDrain > 0 && !simulate) ReagentContainerStorage.remove(container, id, toDrain);
             return createStack(id, toDrain);
         }
         private FluidStack createStack(String id, int amount) {
