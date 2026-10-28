@@ -32,4 +32,17 @@ public final class StationAlertService {
         }
         return true;
     }
+
+    public static boolean announce(ServerLevel level, double currentCode, String stationName,
+            int targetCode, int color, Identifier soundId, String text) {
+        if (currentCode >= MAX_CODE_BEFORE_ALERT || currentCode == targetCode) return false;
+        Component message = Component.literal("Внимание " + stationName + "! " + text)
+                .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(color)).withBold(false));
+        for (Player player : level.players()) player.sendSystemMessage(message);
+        var sound = BuiltInRegistries.SOUND_EVENT.get(soundId);
+        if (sound.isPresent()) {
+            level.playSound(null, 0.0, 64.0, 0.0, sound.get().value(), SoundSource.MASTER, 10000.0F, 1.0F);
+        }
+        return true;
+    }
 }
