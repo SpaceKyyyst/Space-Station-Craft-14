@@ -22,12 +22,10 @@ import net.ssc14.integration.neoforge.player.network.CrawlMessage;
 import net.ssc14.integration.neoforge.rotation.network.RotateMessage;
 import net.ssc14.integration.neoforge.player.network.SpecifyMessage;
 import net.ssc14.integration.neoforge.player.network.WorldObjectCheckMessage;
-import net.mcreator.ssc.network.SpecifyMessageRegistration;
-import net.mcreator.ssc.network.WorldObjectCheckMessageRegistration;
+import net.ssc14.content.player.action.PlayerActionPayloadRegistration;
 import net.ssc14.integration.neoforge.player.network.DCMopenMessage;
 import net.ssc14.integration.neoforge.player.network.PulltheObjectMessage;
 import net.mcreator.ssc.network.DCMopenMessageRegistration;
-import net.mcreator.ssc.network.PulltheObjectMessageRegistration;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
@@ -67,12 +65,12 @@ public class Ssc14ModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				ClientPacketDistributor.sendToServer(new PulltheObjectMessage(0, 0));
-				PulltheObjectMessageRegistration.pressAction(Minecraft.getInstance().player, 0, 0);
+				PlayerActionPayloadRegistration.dispatchPull(Minecraft.getInstance().player, 0);
 				PULLTHE_OBJECT_LASTPRESS = System.currentTimeMillis();
 			} else if (isDownOld != isDown && !isDown) {
 				int dt = (int) (System.currentTimeMillis() - PULLTHE_OBJECT_LASTPRESS);
 				ClientPacketDistributor.sendToServer(new PulltheObjectMessage(1, dt));
-				PulltheObjectMessageRegistration.pressAction(Minecraft.getInstance().player, 1, dt);
+				PlayerActionPayloadRegistration.dispatchPull(Minecraft.getInstance().player, 1);
 			}
 			isDownOld = isDown;
 		}
@@ -85,12 +83,12 @@ public class Ssc14ModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				ClientPacketDistributor.sendToServer(new WorldObjectCheckMessage(0, 0));
-				WorldObjectCheckMessageRegistration.pressAction(Minecraft.getInstance().player, 0, 0);
+				PlayerActionPayloadRegistration.dispatchWorldCheck(Minecraft.getInstance().player, 0);
 				WORLD_OBJECT_CHECK_LASTPRESS = System.currentTimeMillis();
 			} else if (isDownOld != isDown && !isDown) {
 				int dt = (int) (System.currentTimeMillis() - WORLD_OBJECT_CHECK_LASTPRESS);
 				ClientPacketDistributor.sendToServer(new WorldObjectCheckMessage(1, dt));
-				WorldObjectCheckMessageRegistration.pressAction(Minecraft.getInstance().player, 1, dt);
+				PlayerActionPayloadRegistration.dispatchWorldCheck(Minecraft.getInstance().player, 1);
 			}
 			isDownOld = isDown;
 		}
@@ -117,7 +115,7 @@ public class Ssc14ModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				ClientPacketDistributor.sendToServer(new SpecifyMessage(0, 0));
-				SpecifyMessageRegistration.pressAction(Minecraft.getInstance().player, 0, 0);
+				PlayerActionPayloadRegistration.dispatchSpecify(Minecraft.getInstance().player, 0);
 			}
 			isDownOld = isDown;
 		}
