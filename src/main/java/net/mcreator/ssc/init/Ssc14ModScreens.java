@@ -2,6 +2,7 @@ package net.mcreator.ssc.init;
 
 import net.mcreator.ssc.client.gui.*;
 import net.ssc14.client.menu.crafting.DopCraftScreen;
+import net.ssc14.client.menu.headset.HeadsetScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -24,7 +25,7 @@ public final class Ssc14ModScreens {
         Ssc14ScreenBinder.bind(Ssc14ModMenus.PD_APASSANGER_GUI, PDApassangerGUIScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.RCDGUI, RCDGUIScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.RCDGU_IWALLFLOOR, RCDGUIwallfloorScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.HEADSET_GU_IKOSTIL, HeadsetGUIkostilScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14ModMenus.HEADSET_GU_IKOSTIL, HeadsetScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.COMMUN_CONSOLE_GUI, CommunConsoleGUIScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.VENDING_AUT_1_GUI, VendingAut1GUIScreen::new);
         Ssc14ScreenBinder.bind(Ssc14ModMenus.RCDGU_IWINDOWS, RCDGUIwindowsScreen::new);

@@ -1,4 +1,4 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.headset;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
@@ -18,14 +18,14 @@ import net.minecraft.world.Container;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.menu.Ssc14MenuTypes;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-public class HeadsetGUIkostilMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class HeadsetMenu extends AbstractContainerMenu {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
@@ -45,8 +45,8 @@ public class HeadsetGUIkostilMenu extends AbstractContainerMenu implements Ssc14
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
 
-	public HeadsetGUIkostilMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.HEADSET_GU_IKOSTIL.get(), id);
+	public HeadsetMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+		super(Ssc14MenuTypes.HEADSET_GU_IKOSTIL.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(0);
@@ -94,12 +94,10 @@ public class HeadsetGUIkostilMenu extends AbstractContainerMenu implements Ssc14
 		return ItemStack.EMPTY;
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}
 
-	@Override
 	public Map<String, Object> getMenuState() {
 		return menuState;
 	}
