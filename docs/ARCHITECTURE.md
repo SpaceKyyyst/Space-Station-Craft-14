@@ -127,6 +127,9 @@ communication console, commerce console, сетевой topology, station-code d
 `MedicalCriticalTickHandler` и `LiquidMetabolismTickHandler`; generated wrappers
 для этих путей удалены после полного тестового прогона.
 
+Управление движением игрока в zero-gravity работает через
+`ZeroGravityPlayerHandler`; временная generated procedure удалена.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -156,6 +159,9 @@ covered by regression tests.
 Critical medical ticking and liquid metabolism now run through
 `MedicalCriticalTickHandler` and `LiquidMetabolismTickHandler`; their generated
 wrappers were removed after the full test suite passed.
+
+Zero-gravity player movement now runs through `ZeroGravityPlayerHandler`; the
+temporary generated procedure was removed.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
