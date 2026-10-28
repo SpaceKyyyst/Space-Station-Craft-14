@@ -1,4 +1,4 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.client.render;
 
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -12,12 +12,11 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.client.RenderUtils;
 
 import javax.annotation.Nullable;
 
 @EventBusSubscriber(Dist.CLIENT)
-public class SkyRenderProcedure {
+public final class SkyRenderHandler {
 	@SubscribeEvent
 	public static void onSkyRendered(RenderLevelStageEvent.AfterSky event) {
 		Minecraft mc = Minecraft.getInstance();
