@@ -4,6 +4,7 @@ package net.ssc14.content.block.airlock;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.content.block.energy.CableTopologyService;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -27,7 +28,6 @@ import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
 import net.ssc14.content.block.energy.SheathingBlock;
-import net.mcreator.ssc.EnergyNetworkManager;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -200,7 +200,7 @@ public class AirlockConstructionRegistry {
                 // Delayed operations can finish after another player has removed this same cable.
                 if (!(current.getBlock() instanceof SheathingBlock) || !current.getValue(property)) return;
                 if (!ctx.world().setBlock(ctx.pos(), current.setValue(property, false), 3)) return;
-                EnergyNetworkManager.queueUpdate(ctx.world(), ctx.pos());
+                CableTopologyService.queueUpdate(ctx.world(), ctx.pos());
                 ItemEntity drop = new ItemEntity(ctx.world(), ctx.pos().getX() + 0.5,
                     ctx.pos().getY() + 1.0, ctx.pos().getZ() + 0.5, new ItemStack(cable));
                 drop.setPickUpDelay(10);

@@ -4,6 +4,7 @@ package net.ssc14.content.block.airlock;
 import net.ssc14.content.particle.Ssc14ParticleTypes;
 import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
@@ -24,7 +25,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.util.RandomSource;
-import net.mcreator.ssc.Ssc14Mod;
 
 public final class AirlockDeconstructionService {
 	private AirlockDeconstructionService() {
@@ -66,7 +66,7 @@ public final class AirlockDeconstructionService {
                 livingEntity.getAttribute(Ssc14Attributes.PROGRESS_BAR_ATRB).setBaseValue(step);
 
                 if (step != 6) {
-                    Ssc14Mod.queueServerWork(serverOwner, stage.delays()[step - 1], () -> run(step + 1)).orThrow();
+                    ServerWorkScheduler.schedule(serverOwner, stage.delays()[step - 1], () -> run(step + 1));
                 } else {
                     if (world instanceof ServerLevel sLevel) {
                         executeFinal(sLevel);
