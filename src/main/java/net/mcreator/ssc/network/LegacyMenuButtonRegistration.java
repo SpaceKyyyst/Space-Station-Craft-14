@@ -76,6 +76,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
+import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 /** Transitional dispatcher for generated menus and procedures. */
@@ -112,7 +113,7 @@ public final class LegacyMenuButtonRegistration {
     private static boolean matches(Player player, AbstractContainerMenu expectedMenu, MenuButtonPayload message,
             int menuX, int menuY, int menuZ) {
         return player.containerMenu == expectedMenu
-                && MenuPacketGuard.matches(player, expectedMenu,
+                && MenuAccessGuard.matches(player, expectedMenu,
                         message.x(), message.y(), message.z(), menuX, menuY, menuZ);
     }
 

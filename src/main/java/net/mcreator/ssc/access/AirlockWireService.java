@@ -1,7 +1,7 @@
 package net.mcreator.ssc.access;
 
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.network.MenuPacketGuard;
+import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 import net.mcreator.ssc.procedures.CPlogLampPrProcedure;
 import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
 import net.minecraft.core.BlockPos;
@@ -33,7 +33,7 @@ public final class AirlockWireService {
     public static void toggle(Player player, BlockPos pos, int wire) {
         if (!(player.level() instanceof ServerLevel level) || wire < 1 || wire > WIRE_COUNT
                 || !(player.containerMenu instanceof CabelPannelAirlockMenu menu)
-                || !MenuPacketGuard.matches(player, menu, pos.getX(), pos.getY(), pos.getZ(), menu.x, menu.y, menu.z)
+                || !MenuAccessGuard.matches(player, menu, pos.getX(), pos.getY(), pos.getZ(), menu.x, menu.y, menu.z)
                 || !canUsePanel(player, pos) || !level.mayInteract(player, pos)) return;
         var blockEntity = level.getBlockEntity(pos);
         var data = blockEntity.getPersistentData();

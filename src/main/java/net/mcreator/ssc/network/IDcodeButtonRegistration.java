@@ -13,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.mcreator.ssc.procedures.*;
 import net.mcreator.ssc.world.inventory.IDcodeMenu;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
+import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 @EventBusSubscriber
@@ -31,7 +32,7 @@ public final class IDcodeButtonRegistration {
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
 		// security measure to prevent arbitrary chunk generation
-		if (!(entity.containerMenu instanceof IDcodeMenu menu) || !MenuPacketGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
+		if (!(entity.containerMenu instanceof IDcodeMenu menu) || !MenuAccessGuard.matches(entity, menu, x, y, z, menu.x, menu.y, menu.z))
             return;
 		if (buttonID == 0) {
 

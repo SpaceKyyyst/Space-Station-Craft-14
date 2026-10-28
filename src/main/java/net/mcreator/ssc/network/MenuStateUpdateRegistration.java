@@ -22,7 +22,7 @@ public final class MenuStateUpdateRegistration {
         context.enqueueWork(() -> {
             if (!(context.player().containerMenu instanceof Ssc14ModMenus.MenuAccessor menu)) return;
             if (context.flow() == PacketFlow.SERVERBOUND
-                    && (!MenuPacketGuard.canEditMenuState(context.player())
+                    && (!LegacyMenuStateGuard.canEdit(context.player())
                     || !MenuStateRules.acceptsClientField(
                             context.player().containerMenu.getClass().getSimpleName(),
                             message.elementType(), message.name()))) return;
