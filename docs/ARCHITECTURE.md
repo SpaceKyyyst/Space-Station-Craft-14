@@ -188,6 +188,10 @@ bypass, unrestricted-door semantics и bitmask permissions. Старый
 все persisted cable flags, power restoration и bolt-cut side effects. Старый
 `CPlogLampPrProcedure` оставлен compatibility facade.
 
+Инициализация состояния двери, верхней plug-части и случайной cable-схемы
+вынесена в `AirlockStateInitializer`; старый `BaseAirlockD1PutProcedure` оставлен
+facade для legacy callers.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -278,6 +282,10 @@ open/close procedures.
 Wire/lamp state synchronization now lives in `AirlockLampStateService`; all
 persisted cable flags, power restoration, and bolt-cut side effects are
 preserved. The old `CPlogLampPrProcedure` remains a compatibility facade.
+
+Door-state initialization, upper-plug handling, and randomized cable assignment
+now live in `AirlockStateInitializer`; the old `BaseAirlockD1PutProcedure`
+remains a facade for legacy callers.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains

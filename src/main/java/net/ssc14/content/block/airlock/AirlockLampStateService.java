@@ -1,6 +1,5 @@
 package net.ssc14.content.block.airlock;
 
-import net.mcreator.ssc.procedures.BaseAirlockD1PutProcedure;
 import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -67,7 +66,7 @@ public final class AirlockLampStateService {
         }
         if (!changed) return;
         be.setChanged();
-        BaseAirlockD1PutProcedure.execute(level, x, y, z, before);
+        AirlockStateInitializer.execute(level, x, y, z, before);
         if (oldPower != powered || oldBolted != nbt.getBooleanOr("bolted", false))
             BaseAirlockOpenCloseProcedure.refreshAutoClose(level, pos);
         BlockState after = level.getBlockState(pos);

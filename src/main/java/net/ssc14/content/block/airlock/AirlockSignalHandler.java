@@ -1,6 +1,5 @@
 package net.ssc14.content.block.airlock;
 
-import net.mcreator.ssc.procedures.BaseAirlockD1PutProcedure;
 import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -41,7 +40,7 @@ public final class AirlockSignalHandler {
             if (bolted || !data.getBooleanOr("_ssc14_bolt_wire_cut", false)) {
                 data.putBoolean("bolted", bolted);
                 AirlockEventLogService.append(door, bolted ? "SIGNAL_BOLTS_DOWN" : "SIGNAL_BOLTS_UP");
-                BaseAirlockD1PutProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), state);
+                AirlockStateInitializer.execute(level, pos.getX(), pos.getY(), pos.getZ(), state);
                 BaseAirlockOpenCloseProcedure.refreshAutoClose(level, pos);
             }
         }

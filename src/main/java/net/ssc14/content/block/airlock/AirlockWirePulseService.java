@@ -43,7 +43,7 @@ public final class AirlockWirePulseService {
         var level = (ServerLevel) door.getLevel();
         door.setChanged();
         AirlockLampStateService.execute(level, pos.getX(), pos.getY(), pos.getZ(), door.getBlockState());
-        net.mcreator.ssc.procedures.BaseAirlockD1PutProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), door.getBlockState());
+        AirlockStateInitializer.execute(level, pos.getX(), pos.getY(), pos.getZ(), door.getBlockState());
         net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure.refreshAutoClose(level, pos);
         level.sendBlockUpdated(pos, door.getBlockState(), door.getBlockState(), 3);
     }

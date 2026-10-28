@@ -5,7 +5,6 @@ import net.ssc14.content.block.airlock.AirlockWorkFeedback;
 import java.util.Map;
 import java.util.WeakHashMap;
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.procedures.BaseAirlockD1PutProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
@@ -81,7 +80,7 @@ public final class AirlockWeldingService {
         job.tool.set(DataComponents.CUSTOM_DATA, CustomData.of(fuel));
         job.door.getPersistentData().putBoolean("welded", !job.welded);
         job.door.setChanged();
-        BaseAirlockD1PutProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), job.door.getBlockState());
+        AirlockStateInitializer.execute(level, pos.getX(), pos.getY(), pos.getZ(), job.door.getBlockState());
         level.sendBlockUpdated(pos, job.door.getBlockState(), job.door.getBlockState(), 3);
     }
 }

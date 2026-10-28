@@ -1,7 +1,6 @@
 package net.ssc14.content.block.airlock;
 
 import net.mcreator.ssc.access.AirlockMaintenance;
-import net.mcreator.ssc.procedures.BaseAirlockD1PutProcedure;
 import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -37,7 +36,7 @@ public final class AirlockAiControlService {
         }
         AirlockEventLogService.append(door, "AI_" + action.name());
         door.setChanged();
-        BaseAirlockD1PutProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ(), door.getBlockState());
+        AirlockStateInitializer.execute(level, pos.getX(), pos.getY(), pos.getZ(), door.getBlockState());
         BaseAirlockOpenCloseProcedure.refreshAutoClose(level, pos);
         level.sendBlockUpdated(pos, door.getBlockState(), door.getBlockState(), 3);
         return true;
