@@ -1,7 +1,5 @@
 package net.mcreator.ssc.network;
 
-import net.mcreator.ssc.procedures.IDCodeALLOFFProcedure;
-import net.mcreator.ssc.procedures.IDCodeALLONProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.PacketFlow;
@@ -39,9 +37,9 @@ public final class IDcodeButtonRegistration {
         if (buttonId >= 0 && buttonId < 46) {
             IdJobAssignmentService.assign(player, new BlockPos(x, y, z), buttonId);
         } else if (buttonId == 46) {
-            IDCodeALLONProcedure.execute(player);
+            IdJobAssignmentService.setAllAllowed(player, true);
         } else if (buttonId == 47) {
-            IDCodeALLOFFProcedure.execute(player);
+            IdJobAssignmentService.setAllAllowed(player, false);
         }
     }
 

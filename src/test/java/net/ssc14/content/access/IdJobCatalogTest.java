@@ -11,6 +11,7 @@ class IdJobCatalogTest {
     void preservesButtonNamesAndAccessMasks() {
         assertEquals(46, IdJobCatalog.size());
         assertEquals(32, IdJobCatalog.accessKeys().size());
+        assertEquals(32, IdJobCatalog.accessKeys().stream().distinct().count());
         assertEquals("Капитан", IdJobCatalog.definition(0).name());
         assertEquals(0xFFFFFFFFL, IdJobCatalog.definition(0).accessMask());
         assertEquals("Пассажир", IdJobCatalog.definition(8).name());
