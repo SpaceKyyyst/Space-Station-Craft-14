@@ -113,20 +113,15 @@ sourceSets {
         java {
             srcDir 'src/main/java'
             include 'net/ssc14/common/atmosphere/**'
-            include 'net/mcreator/ssc/combat/**'
-            include 'net/mcreator/ssc/medical/MedicalStatePolicy.java'
-            include 'net/mcreator/ssc/medical/MedicalEffectsController.java'
-            include 'net/mcreator/ssc/medical/MedicalPresentationController.java'
-            include 'net/mcreator/ssc/atmosphere/**'
-            include 'net/mcreator/ssc/energy/ConnectedComponents.java'
-            include 'net/mcreator/ssc/energy/EnergyAllocation.java'
-            include 'net/mcreator/ssc/energy/EnergyTickBudget.java'
-            include 'net/mcreator/ssc/math/**'
-            include 'net/mcreator/ssc/scheduling/TickTaskQueue.java'
-            include 'net/mcreator/ssc/diagnostics/TickPhase.java'
-            include 'net/mcreator/ssc/network/validation/**'
-            include 'net/mcreator/ssc/chemistry/**'
+            include 'net/ssc14/common/airlock/AirlockMotion.java'
+            include 'net/ssc14/common/chemistry/MixturePortion.java'
+            include 'net/ssc14/common/chemistry/ReagentAmounts.java'
+            include 'net/ssc14/common/chemistry/ReagentTransferPlan.java'
+            include 'net/ssc14/common/medical/MedicalEffectsController.java'
+            include 'net/ssc14/common/medical/MedicalPresentationController.java'
+            include 'net/ssc14/common/medical/MedicalStatePolicy.java'
             include 'net/ssc14/core/**'
+            include 'net/ssc14/integration/neoforge/server/TickTaskQueue.java'
         }
     }
     domainTest {

@@ -1,9 +1,8 @@
-package net.mcreator.ssc;
+package net.ssc14.integration.neoforge.server;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
-import net.mcreator.ssc.scheduling.TickTaskQueue;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

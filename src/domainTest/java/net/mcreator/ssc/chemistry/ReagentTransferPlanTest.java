@@ -2,6 +2,7 @@ package net.mcreator.ssc.chemistry;
 
 import org.junit.jupiter.api.Test;
 import java.util.Map;
+import net.ssc14.common.chemistry.ReagentTransferPlan;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

@@ -1,6 +1,7 @@
 package net.mcreator.ssc.network.validation;
 
 import org.junit.jupiter.api.Test;
+import net.ssc14.core.network.MenuStateRules;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
