@@ -12,6 +12,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.ssc14.content.entity.Bullet35Entity;
 
 import javax.annotation.Nullable;
 
@@ -126,6 +131,41 @@ public final class FirearmInteractionService {
             ItemStack replacement = new ItemStack(noMagazine);
             copyMk58Data(stack, replacement, chamber, 0);
             entity.setItemInHand(InteractionHand.MAIN_HAND, replacement);
+        }
+    }
+
+    /** Fires a chambered MK-58 round and advances the persisted magazine state. */
+    public static void fireMk58(Level level, LivingEntity entity, ItemStack stack,
+            Item mk58, Item noMagazine, Item open, Item cartridge,
+            EntityType<? extends Bullet35Entity> projectileType) {
+        if (level.isClientSide() || entity.getMainHandItem() != stack
+                || !(entity instanceof Player player)
+                || Mk58FireStateService.isCoolingDown(player, stack)
+                || (stack.getItem() != mk58 && stack.getItem() != noMagazine)
+                || !Mk58FireStateService.hasChamberedRound(stack)) return;
+        Mk58FireStateService.startCooldown(player, stack, 10);
+        Bullet35Entity projectile = new Bullet35Entity(projectileType, level);
+        projectile.setOwner(entity);
+        projectile.setBaseDamage(16);
+        projectile.setSilent(true);
+        projectile.pickup = AbstractArrow.Pickup.DISALLOWED;
+        projectile.setPos(entity.getX(), entity.getEyeY() - 0.1, entity.getZ());
+        projectile.shoot(entity.getLookAngle().x, entity.getLookAngle().y,
+                entity.getLookAngle().z, 4, 0.1F);
+        level.addFreshEntity(projectile);
+        if (level instanceof ServerLevel server) {
+            server.addFreshEntity(new ItemEntity(server, entity.getX(),
+                    entity.getY() + entity.getBbHeight() / 3.0D, entity.getZ(),
+                    new ItemStack(cartridge)));
+        }
+        if (Mk58FireStateService.hasMagazineRound(stack)) {
+            Mk58FireStateService.consumeMagazineRound(stack);
+        } else if (stack.getItem() == mk58) {
+            ItemStack replacement = new ItemStack(open);
+            copyMk58Data(stack, replacement, 0, 0);
+            entity.setItemInHand(InteractionHand.MAIN_HAND, replacement);
+        } else {
+            Mk58FireStateService.setChamber(stack, 0);
         }
     }
 

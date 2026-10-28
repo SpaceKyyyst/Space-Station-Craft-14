@@ -1,7 +1,6 @@
 package net.mcreator.ssc.integration;
 
 import javax.annotation.Nullable;
-import net.mcreator.ssc.procedures.MK58_Fire_Procedure;
 import net.ssc14.content.firearm.MagazineDescriptionService;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -50,7 +49,12 @@ public final class LegacyFirearmInteractionAdapter implements FirearmInteraction
 
     @Override
     public void swing(Mk58State state, LivingEntity entity, ItemStack stack) {
-        MK58_Fire_Procedure.execute(entity.level(), entity, stack);
+        FirearmInteractionService.fireMk58(entity.level(), entity, stack,
+                net.mcreator.ssc.init.Ssc14ModItems.MK_58.get(),
+                net.mcreator.ssc.init.Ssc14ModItems.MK_58NOMAGZ.get(),
+                net.mcreator.ssc.init.Ssc14ModItems.MK_58OPEN.get(),
+                net.mcreator.ssc.init.Ssc14ModItems.BULLET_35_CARTRIDGE.get(),
+                net.ssc14.content.entity.Ssc14EntityTypes.BULLET_35.get());
     }
 
     @Override
