@@ -1,4 +1,4 @@
-package net.mcreator.ssc;
+package net.ssc14.content.item.construction;
 
 import net.mcreator.ssc.procedures.PlaSteelUseProcedure;
 import net.mcreator.ssc.procedures.Sheathing_Cab_InstalProcedure;
@@ -8,9 +8,9 @@ import net.ssc14.content.item.construction.ConstructionItemInteractionService;
 import net.ssc14.content.item.construction.ConstructionItemKind;
 
 /** Adapter retained until construction procedures move into the canonical namespace. */
-final class LegacyConstructionItemInteractionAdapter
+public final class LegacyConstructionItemInteractionAdapter
         implements ConstructionItemInteractionService.Adapter {
-    static final LegacyConstructionItemInteractionAdapter INSTANCE =
+    public static final LegacyConstructionItemInteractionAdapter INSTANCE =
             new LegacyConstructionItemInteractionAdapter();
 
     private LegacyConstructionItemInteractionAdapter() { }

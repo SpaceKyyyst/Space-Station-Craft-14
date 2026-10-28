@@ -34,6 +34,7 @@ import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
 import net.ssc14.content.block.access.LegacyIdConsoleIntegrationAdapter;
 import net.ssc14.content.item.tool.LegacyNetworkConfiguratorMenuAdapter;
+import net.ssc14.content.item.construction.LegacyConstructionItemInteractionAdapter;
 import net.mcreator.ssc.integration.LegacyRsuInteractionAdapter;
 import net.ssc14.content.block.airlock.LegacyShuttersIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;

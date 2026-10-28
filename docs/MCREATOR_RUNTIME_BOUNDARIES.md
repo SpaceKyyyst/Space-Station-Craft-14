@@ -117,6 +117,9 @@ only event subscribers and procedural facades that still own runtime behavior:
 - network configurator, shutters, commerce-console, and ID-console adapters
   were moved to their canonical `content` layers without changing menu,
   position-buffer, or server-authority contracts;
+- construction-item interaction adapter was moved to the canonical
+  `content/item/construction` layer; steel, plasteel, and cable procedure
+  contracts remain unchanged as explicit legacy inputs;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
@@ -132,3 +135,10 @@ Each remaining boundary requires:
 4. deleting generated source only afterward and updating architecture documentation.
 
 Deleting a subscriber solely because `rg` finds no direct calls is a regression risk.
+
+## RU — Construction adapter boundary
+
+`LegacyConstructionItemInteractionAdapter` теперь находится в
+`net.ssc14.content.item.construction`. Перенос изменяет только расположение
+границы: steel/plasteel/cable procedures и их аргументы сохранены для
+поэтапной миграции без изменения поведения предметов.
