@@ -192,6 +192,10 @@ bypass, unrestricted-door semantics и bitmask permissions. Старый
 вынесена в `AirlockStateInitializer`; старый `BaseAirlockD1PutProcedure` оставлен
 facade для legacy callers.
 
+Door lifecycle state machine (open/close, auto-close, signal requests and manual
+open) теперь принадлежит `AirlockLifecycleService`; старый
+`BaseAirlockOpenCloseProcedure` оставлен facade для generated callers.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -286,6 +290,10 @@ preserved. The old `CPlogLampPrProcedure` remains a compatibility facade.
 Door-state initialization, upper-plug handling, and randomized cable assignment
 now live in `AirlockStateInitializer`; the old `BaseAirlockD1PutProcedure`
 remains a facade for legacy callers.
+
+The door lifecycle state machine (open/close, auto-close, signal requests, and
+manual open) now belongs to `AirlockLifecycleService`; the old
+`BaseAirlockOpenCloseProcedure` remains a facade for generated callers.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains
