@@ -58,13 +58,7 @@ public class BaseAirlockD1PutProcedure {
         nbt.putBoolean("energy_cabel_2", true);
 
 		// Сначала отключаем ВСЕ доступы по умолчанию (выставляем в false)
-		String[] allAccesses = {
-			"Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio", 
-			"Security", "Ingeneer", "Command", "Detective", "PNT", "Scientist", "Supply_Deportament", 
-			"Atmos", "Kitchen", "Uridic", "Gidroponic", "Teatre", "Bar", "Cleaner", 
-			"Utilizat", "Chemistry", "Church", "CE", "Qm", "CMO", "RD", "HoP", "Capitan", "Blue_Sh"
-		};
-		for (String access : allAccesses) {
+		for (String access : AirlockAccessPolicy.accessKeys()) {
 			nbt.putBoolean(access, false);
 		}
 
