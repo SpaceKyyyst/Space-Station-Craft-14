@@ -1,4 +1,4 @@
-package net.mcreator.ssc.client.gui;
+package net.ssc14.client.menu.storage;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -10,12 +10,12 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import net.mcreator.ssc.world.inventory.BackpackGUIMenu;
-import net.mcreator.ssc.init.Ssc14ModScreens;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.content.menu.storage.BackpackGUIMenu;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-public class BackpackGUIScreen extends AbstractContainerScreen<BackpackGUIMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class BackpackGUIScreen extends AbstractContainerScreen<BackpackGUIMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
