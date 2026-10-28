@@ -7,35 +7,21 @@ import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.resources.Identifier;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.RegistryFriendlyByteBuf;
 
 import net.mcreator.ssc.procedures.*;
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.world.inventory.IDcodeMenu;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 
 @EventBusSubscriber
-public record IDcodeButtonMessage(int buttonID, int x, int y, int z) implements CustomPacketPayload {
-	public static final Type<IDcodeButtonMessage> TYPE = new Type<>(Identifier.fromNamespaceAndPath(Ssc14Mod.MODID, "i_dcode_buttons"));
-	public static final StreamCodec<RegistryFriendlyByteBuf, IDcodeButtonMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, IDcodeButtonMessage message) -> {
-		buffer.writeInt(message.buttonID);
-		buffer.writeInt(message.x);
-		buffer.writeInt(message.y);
-		buffer.writeInt(message.z);
-	}, (RegistryFriendlyByteBuf buffer) -> new IDcodeButtonMessage(buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt()));
+public final class IDcodeButtonRegistration {
+	private IDcodeButtonRegistration() { }
 
-	@Override
-	public Type<IDcodeButtonMessage> type() {
-		return TYPE;
-	}
-
-	public static void handleData(final IDcodeButtonMessage message, final IPayloadContext context) {
+	public static void handleData(final MenuButtonPayload message, final IPayloadContext context) {
 		if (context.flow() == PacketFlow.SERVERBOUND) {
-			context.enqueueWork(() -> handleButtonAction(context.player(), message.buttonID, message.x, message.y, message.z)).exceptionally(e -> {
+			context.enqueueWork(() -> handleButtonAction(context.player(), message.buttonId(), message.x(), message.y(), message.z())).exceptionally(e -> {
 				context.connection().disconnect(Component.literal(e.getMessage()));
 				return null;
 			});
@@ -243,6 +229,7 @@ public record IDcodeButtonMessage(int buttonID, int x, int y, int z) implements 
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		Ssc14Mod.addServerboundNetworkMessage(IDcodeButtonMessage.TYPE, IDcodeButtonMessage.STREAM_CODEC, IDcodeButtonMessage::handleData);
+		var channel = MenuButtonPayload.Channel.ID_CODE;
+		Ssc14Mod.addServerboundNetworkMessage(channel.type(), MenuButtonPayload.codec(channel), IDcodeButtonRegistration::handleData);
 	}
 }

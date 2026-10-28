@@ -18,7 +18,8 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.mcreator.ssc.world.inventory.IDcodeMenu;
 import net.mcreator.ssc.procedures.*;
-import net.mcreator.ssc.network.IDcodeButtonMessage;
+import net.mcreator.ssc.network.IDcodeButtonRegistration;
+import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
 import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import java.security.Security;
@@ -468,8 +469,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(0, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(0, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 0, x, y, z);
 			}
 		}) {
 			@Override
@@ -482,8 +483,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(1, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 1, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(1, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 1, x, y, z);
 			}
 		}) {
 			@Override
@@ -496,8 +497,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(2, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 2, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(2, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 2, x, y, z);
 			}
 		}) {
 			@Override
@@ -510,8 +511,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(3, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 3, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(3, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 3, x, y, z);
 			}
 		}) {
 			@Override
@@ -524,8 +525,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(4, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 4, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(4, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 4, x, y, z);
 			}
 		}) {
 			@Override
@@ -538,8 +539,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(5, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 5, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(5, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 5, x, y, z);
 			}
 		}) {
 			@Override
@@ -552,8 +553,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(6, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 6, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(6, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 6, x, y, z);
 			}
 		}) {
 			@Override
@@ -566,8 +567,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(7, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 7, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(7, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 7, x, y, z);
 			}
 		}) {
 			@Override
@@ -580,8 +581,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(8, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 8, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(8, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 8, x, y, z);
 			}
 		}) {
 			@Override
@@ -594,8 +595,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(9, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 9, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(9, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 9, x, y, z);
 			}
 		}) {
 			@Override
@@ -609,8 +610,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(10, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 10, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(10, x, y, z));
+						IDcodeButtonRegistration.handleButtonAction(entity, 10, x, y, z);
 					}
 				}) {
 			@Override
@@ -623,8 +624,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(11, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 11, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(11, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 11, x, y, z);
 			}
 		}) {
 			@Override
@@ -638,8 +639,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(12, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 12, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(12, x, y, z));
+						IDcodeButtonRegistration.handleButtonAction(entity, 12, x, y, z);
 					}
 				}) {
 			@Override
@@ -652,8 +653,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(13, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 13, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(13, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 13, x, y, z);
 			}
 		}) {
 			@Override
@@ -666,8 +667,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(14, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 14, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(14, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 14, x, y, z);
 			}
 		}) {
 			@Override
@@ -681,8 +682,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(15, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 15, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(15, x, y, z));
+						IDcodeButtonRegistration.handleButtonAction(entity, 15, x, y, z);
 					}
 				}) {
 			@Override
@@ -696,8 +697,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(16, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 16, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(16, x, y, z));
+						IDcodeButtonRegistration.handleButtonAction(entity, 16, x, y, z);
 					}
 				}) {
 			@Override
@@ -710,8 +711,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(17, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 17, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(17, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 17, x, y, z);
 			}
 		}) {
 			@Override
@@ -724,8 +725,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(18, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 18, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(18, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 18, x, y, z);
 			}
 		}) {
 			@Override
@@ -738,8 +739,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(19, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 19, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(19, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 19, x, y, z);
 			}
 		}) {
 			@Override
@@ -752,8 +753,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(20, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 20, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(20, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 20, x, y, z);
 			}
 		}) {
 			@Override
@@ -767,8 +768,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(21, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 21, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(21, x, y, z));
+						IDcodeButtonRegistration.handleButtonAction(entity, 21, x, y, z);
 					}
 				}) {
 			@Override
@@ -781,8 +782,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(22, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 22, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(22, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 22, x, y, z);
 			}
 		}) {
 			@Override
@@ -795,8 +796,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(23, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 23, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(23, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 23, x, y, z);
 			}
 		}) {
 			@Override
@@ -809,8 +810,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(24, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 24, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(24, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 24, x, y, z);
 			}
 		}) {
 			@Override
@@ -823,8 +824,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(25, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 25, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(25, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 25, x, y, z);
 			}
 		}) {
 			@Override
@@ -837,8 +838,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(26, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 26, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(26, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 26, x, y, z);
 			}
 		}) {
 			@Override
@@ -851,8 +852,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(27, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 27, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(27, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 27, x, y, z);
 			}
 		}) {
 			@Override
@@ -865,8 +866,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(28, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 28, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(28, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 28, x, y, z);
 			}
 		}) {
 			@Override
@@ -879,8 +880,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(29, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 29, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(29, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 29, x, y, z);
 			}
 		}) {
 			@Override
@@ -893,8 +894,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(30, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 30, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(30, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 30, x, y, z);
 			}
 		}) {
 			@Override
@@ -907,8 +908,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(31, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 31, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(31, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 31, x, y, z);
 			}
 		}) {
 			@Override
@@ -921,8 +922,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(32, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 32, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(32, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 32, x, y, z);
 			}
 		}) {
 			@Override
@@ -935,8 +936,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(33, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 33, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(33, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 33, x, y, z);
 			}
 		}) {
 			@Override
@@ -949,8 +950,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(34, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 34, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(34, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 34, x, y, z);
 			}
 		}) {
 			@Override
@@ -963,8 +964,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(35, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 35, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(35, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 35, x, y, z);
 			}
 		}) {
 			@Override
@@ -977,8 +978,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(36, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 36, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(36, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 36, x, y, z);
 			}
 		}) {
 			@Override
@@ -992,8 +993,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(37, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 37, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(37, x, y, z));
+						IDcodeButtonRegistration.handleButtonAction(entity, 37, x, y, z);
 					}
 				}) {
 			@Override
@@ -1006,8 +1007,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(38, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 38, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(38, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 38, x, y, z);
 			}
 		}) {
 			@Override
@@ -1020,8 +1021,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(39, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 39, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(39, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 39, x, y, z);
 			}
 		}) {
 			@Override
@@ -1034,8 +1035,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(40, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 40, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(40, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 40, x, y, z);
 			}
 		}) {
 			@Override
@@ -1048,8 +1049,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(41, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 41, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(41, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 41, x, y, z);
 			}
 		}) {
 			@Override
@@ -1062,8 +1063,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(42, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 42, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(42, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 42, x, y, z);
 			}
 		}) {
 			@Override
@@ -1076,8 +1077,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(43, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 43, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(43, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 43, x, y, z);
 			}
 		}) {
 			@Override
@@ -1090,8 +1091,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(44, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 44, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(44, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 44, x, y, z);
 			}
 		}) {
 			@Override
@@ -1104,8 +1105,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(45, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 45, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(45, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 45, x, y, z);
 			}
 		}) {
 			@Override
@@ -1118,8 +1119,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 			int x = IDcodeScreen.this.x;
 			int y = IDcodeScreen.this.y;
 			{
-				ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(46, x, y, z));
-				IDcodeButtonMessage.handleButtonAction(entity, 46, x, y, z);
+				ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(46, x, y, z));
+				IDcodeButtonRegistration.handleButtonAction(entity, 46, x, y, z);
 			}
 		}) {
 			@Override
@@ -1133,8 +1134,8 @@ public class IDcodeScreen extends AbstractContainerScreen<IDcodeMenu> implements
 					int x = IDcodeScreen.this.x;
 					int y = IDcodeScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(new IDcodeButtonMessage(47, x, y, z));
-						IDcodeButtonMessage.handleButtonAction(entity, 47, x, y, z);
+						ClientPacketDistributor.sendToServer(MenuButtonPayload.idCode(47, x, y, z));
+						IDcodeButtonRegistration.handleButtonAction(entity, 47, x, y, z);
 					}
 				}) {
 			@Override

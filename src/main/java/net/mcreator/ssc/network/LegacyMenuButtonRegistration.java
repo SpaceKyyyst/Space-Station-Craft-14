@@ -271,6 +271,8 @@ public final class LegacyMenuButtonRegistration {
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
         for (MenuButtonPayload.Channel channel : MenuButtonPayload.Channel.values()) {
+            if (channel == MenuButtonPayload.Channel.ID_CODE
+                    || channel == MenuButtonPayload.Channel.NETWORK_CONFIG) continue;
             Ssc14Mod.addServerboundNetworkMessage(channel.type(), MenuButtonPayload.codec(channel),
                     LegacyMenuButtonRegistration::handle);
         }
