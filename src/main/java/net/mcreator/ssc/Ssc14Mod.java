@@ -29,7 +29,7 @@ import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 import net.ssc14.content.menu.machinery.MacFrameGUIMenu;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
-import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
+import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.mcreator.ssc.integration.LegacyCommerceConsoleIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyIdConsoleIntegrationAdapter;

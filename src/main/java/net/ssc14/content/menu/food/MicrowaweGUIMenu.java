@@ -1,4 +1,4 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.food;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
@@ -24,16 +24,15 @@ import net.minecraft.world.Container;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
-
-import net.mcreator.ssc.procedures.MicrwGUIslotRuleProcedure;
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.menu.Ssc14MenuTypes;
+import net.ssc14.core.network.MenuStateAccess;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class MicrowaweGUIMenu extends AbstractContainerMenu implements MenuStateAccess {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
@@ -54,7 +53,7 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 	private BlockEntity boundBlockEntity = null;
 
 	public MicrowaweGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.MICROWAWE_GUI.get(), id);
+		super(Ssc14MenuTypes.MICROWAWE_GUI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(13);
@@ -101,12 +100,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		this.customSlots.put(2, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 2, 35, 14) {
@@ -116,12 +115,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		this.customSlots.put(3, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 3, 54, 14) {
@@ -131,12 +130,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		this.customSlots.put(4, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 4, 73, 14) {
@@ -146,12 +145,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		this.customSlots.put(5, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 5, 16, 33) {
@@ -161,12 +160,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		this.customSlots.put(6, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 6, 35, 33) {
@@ -176,12 +175,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		this.customSlots.put(7, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 7, 54, 33) {
@@ -191,12 +190,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		this.customSlots.put(8, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 8, 73, 33) {
@@ -206,12 +205,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		this.customSlots.put(9, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 9, 16, 52) {
@@ -221,12 +220,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		this.customSlots.put(10, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 10, 35, 52) {
@@ -236,12 +235,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		this.customSlots.put(11, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 11, 54, 52) {
@@ -251,12 +250,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		this.customSlots.put(12, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 12, 73, 52) {
@@ -266,12 +265,12 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 
 			@Override
 			public boolean mayPickup(Player entity) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 
 			@Override
 			public boolean mayPlace(ItemStack itemstack) {
-				return !MicrwGUIslotRuleProcedure.execute(world, x, y, z);
+				return !MicrowaveControlService.isActive(world, new BlockPos(x, y, z));
 			}
 		}));
 		for (int si = 0; si < 3; ++si)
@@ -469,7 +468,6 @@ public class MicrowaweGUIMenu extends AbstractContainerMenu implements Ssc14ModM
 		}
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}
