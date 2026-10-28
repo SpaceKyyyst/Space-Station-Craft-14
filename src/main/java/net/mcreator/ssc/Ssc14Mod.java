@@ -277,8 +277,6 @@ public class Ssc14Mod {
 								}
 							}, pos);
 						}
-						net.ssc14.content.sound.ConsoleMenuSoundService.play(
-								level, pos.getX(), pos.getY(), pos.getZ());
 					}
 
 					@Override
