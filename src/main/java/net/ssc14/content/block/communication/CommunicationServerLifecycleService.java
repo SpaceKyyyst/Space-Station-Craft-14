@@ -6,9 +6,15 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
 
 /** Migration boundary for generated communication-server procedures. */
 public final class CommunicationServerLifecycleService {
+    private static final int RESET_DELAY_TICKS = 20;
+
+    public interface FrequencyState {
+        void setEnabled(String stateKey, boolean enabled);
+    }
     public interface Adapter {
         void tick(ServerLevel level, BlockPos pos, BlockState state);
         void use(Level level, BlockPos pos, BlockState state, Player player);
@@ -31,5 +37,24 @@ public final class CommunicationServerLifecycleService {
 
     public static void use(Level level, BlockPos pos, BlockState state, Player player) {
         adapter.use(level, pos, state, player);
+    }
+
+    /** Enables one radio channel and clears it when the server block no longer matches. */
+    public static void activate(ServerLevel level, BlockPos pos, BlockState state,
+            FrequencyState frequencyState) {
+        if (state == null || frequencyState == null) return;
+        var property = state.getBlock().getStateDefinition().getProperty("type");
+        if (!(property instanceof net.minecraft.world.level.block.state.properties.IntegerProperty type)) return;
+        int blockType = state.getValue(type);
+        CommunicationFrequency frequency = CommunicationFrequency.fromBlockType(blockType);
+        if (frequency == null) return;
+        frequencyState.setEnabled(frequency.stateKey(), true);
+        ServerWorkScheduler.schedule(level, RESET_DELAY_TICKS, () -> {
+            BlockState current = level.getBlockState(pos);
+            boolean sameType = current.getBlock() == state.getBlock()
+                    && current.getBlock().getStateDefinition().getProperty("type") instanceof net.minecraft.world.level.block.state.properties.IntegerProperty currentType
+                    && current.getValue(currentType) == blockType;
+            if (!sameType) frequencyState.setEnabled(frequency.stateKey(), false);
+        });
     }
 }
