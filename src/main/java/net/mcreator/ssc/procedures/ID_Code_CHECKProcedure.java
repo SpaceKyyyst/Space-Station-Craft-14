@@ -35,23 +35,8 @@ public class ID_Code_CHECKProcedure {
 			if (entity instanceof Player player) {
 				IdJobAssignmentService.syncAccessField(player, "Detective");
 			}
-			if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu53 ? _menu53.getSlots().get(0).getItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
-					.copyTag().getBooleanOr("PNT", false) == true && (entity instanceof Player _entity55 && _entity55.containerMenu instanceof SlotMenuStateAccess _menu55) && _menu55.getMenuState(1, "PNT", false)) {
-				{
-					final String _tagName = "PNT";
-					final boolean _tagValue = true;
-					CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu56 ? _menu56.getSlots().get(1).getItem() : ItemStack.EMPTY),
-							tag -> tag.putBoolean(_tagName, _tagValue));
-				}
-			} else if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu58 ? _menu58.getSlots().get(0).getItem() : ItemStack.EMPTY)
-					.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getBooleanOr("PNT", false) == true
-					&& !((entity instanceof Player _entity60 && _entity60.containerMenu instanceof SlotMenuStateAccess _menu60) && _menu60.getMenuState(1, "PNT", false))) {
-				{
-					final String _tagName = "PNT";
-					final boolean _tagValue = false;
-					CustomData.update(DataComponents.CUSTOM_DATA, (entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu61 ? _menu61.getSlots().get(1).getItem() : ItemStack.EMPTY),
-							tag -> tag.putBoolean(_tagName, _tagValue));
-				}
+			if (entity instanceof Player player) {
+				IdJobAssignmentService.syncAccessField(player, "PNT");
 			}
 			if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof SlotMenuStateAccess _menu63 ? _menu63.getSlots().get(0).getItem() : ItemStack.EMPTY).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
 					.copyTag().getBooleanOr("Crio", false) == true && (entity instanceof Player _entity65 && _entity65.containerMenu instanceof SlotMenuStateAccess _menu65) && _menu65.getMenuState(1, "Crio", false)) {
