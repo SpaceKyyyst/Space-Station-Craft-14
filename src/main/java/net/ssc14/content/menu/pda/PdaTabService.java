@@ -1,4 +1,4 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.menu.pda;
 
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.ItemStack;
@@ -6,7 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.core.component.DataComponents;
 
-public class PDA2TABbuttonPRProcedure {
+public final class PdaTabService {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
