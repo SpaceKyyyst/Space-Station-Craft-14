@@ -23,7 +23,8 @@ public final class EggGenerationService {
                         .copyTag().getBooleanOr(GENERATED_KEY, false)) return;
         if (stack.getCapability(Capabilities.Item.ITEM, ItemAccess.forStack(stack))
                 instanceof ResourceHandler<ItemResource> handler) {
-            for (int slot = 0; slot < SLOT_COUNT; slot++) {
+            // Preserve the legacy generated procedure's one-based slot contract.
+            for (int slot = 1; slot <= SLOT_COUNT; slot++) {
                 replace(handler, slot, ItemResource.of(new ItemStack(Ssc14Items.EGG.get())));
             }
         }
