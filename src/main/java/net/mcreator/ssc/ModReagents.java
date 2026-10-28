@@ -7,6 +7,7 @@ import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.content.item.reagent.ReagentContentsCodec;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
 import net.ssc14.common.chemistry.ReagentAmounts;
+import net.ssc14.common.chemistry.ReagentReactionPlanner;
 import net.ssc14.common.chemistry.ReagentTransferPlan;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -619,7 +620,7 @@ public class ModReagents {
                 outputs.put(reagent.reagentId, (int) next);
             }
         }
-        return ReagentAmounts.react(getReagents(stack), getCapacity(stack), reaction.getInputs(), outputs);
+        return ReagentReactionPlanner.plan(getReagents(stack), getCapacity(stack), reaction.getInputs(), outputs);
     }
 
     private static void setReagents(ItemStack stack, Map<String, Integer> amounts) {
