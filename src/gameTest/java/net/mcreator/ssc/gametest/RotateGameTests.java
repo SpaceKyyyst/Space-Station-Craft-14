@@ -7,7 +7,6 @@ import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.ssc14.content.medical.MedicalPlayerEffects;
 import net.ssc14.content.rotation.network.RotatePayloadHandler;
 import net.ssc14.integration.neoforge.rotation.network.RotateMessage;
-import net.mcreator.ssc.procedures.Objects_Rotate_RRRProcedure;
 import net.ssc14.content.rotation.RotateCommand;
 import net.ssc14.content.rotation.RotationPolicy;
 import net.minecraft.core.BlockPos;
@@ -63,14 +62,14 @@ public final class RotateGameTests {
             registry.register(id(NAMES[3]), RotateGameTests::invalidIntent);
             registry.register(id(NAMES[4]), helper -> noTarget(helper, false));
             registry.register(id(NAMES[5]), helper -> noTarget(helper, true));
-            registry.register(id(NAMES[6]), RotateGameTests::facade);
+            registry.register(id(NAMES[6]), RotateGameTests::directCommand);
             registry.register(id(NAMES[7]), RotateGameTests::worldBorder);
             registry.register(id(NAMES[8]), RotateGameTests::unloaded);
             registry.register(id(NAMES[9]), RotateGameTests::replacedTarget);
             registry.register(id(NAMES[10]), RotateGameTests::loadedTraversal);
             registry.register(id(NAMES[11]), RotateGameTests::supportedStates);
             registry.register(id(NAMES[12]), RotateGameTests::unsupportedStates);
-            registry.register(id(NAMES[13]), RotateGameTests::nonServerFacade);
+            registry.register(id(NAMES[13]), RotateGameTests::nonServerActor);
             registry.register(id(NAMES[14]), RotateGameTests::height);
             registry.register(id(NAMES[15]), RotateGameTests::transport);
             registry.register(id(NAMES[16]), RotateGameTests::medicalThresholds);
@@ -138,18 +137,17 @@ public final class RotateGameTests {
         helper.succeed();
     }
 
-    private static void facade(GameTestHelper helper) {
+    private static void directCommand(GameTestHelper helper) {
         var fixture = fixture(helper);
         fixture.player.setGameMode(GameType.ADVENTURE);
-        Objects_Rotate_RRRProcedure.execute(helper.getLevel(), fixture.player);
-        assertUnchanged(helper, fixture);
-        // A mismatched level must not redirect a ServerPlayer command into another accessor.
-        Objects_Rotate_RRRProcedure.execute(null, fixture.player);
+        helper.assertTrue(!RotateCommand.execute(fixture.player, 0),
+                "Adventure players must not rotate blocks");
         assertUnchanged(helper, fixture);
         fixture.player.setGameMode(GameType.SURVIVAL);
-        Objects_Rotate_RRRProcedure.execute(helper.getLevel(), fixture.player);
+        helper.assertTrue(RotateCommand.execute(fixture.player, 0),
+                "A survival player must reach the canonical command");
         helper.assertTrue(helper.getLevel().getBlockState(fixture.target).getValue(HorizontalDirectionalBlock.FACING) == Direction.EAST,
-                "A legitimate direct facade must converge on the same command");
+                "A legitimate direct command must rotate exactly once");
         assertDecoy(helper, fixture);
         helper.succeed();
     }
@@ -338,7 +336,7 @@ public final class RotateGameTests {
         helper.succeed();
     }
 
-    private static void nonServerFacade(GameTestHelper helper) {
+    private static void nonServerActor(GameTestHelper helper) {
         var fixture = fixture(helper);
         var player = helper.makeMockPlayer(GameType.SURVIVAL);
         player.setPos(fixture.player.position());
@@ -346,9 +344,7 @@ public final class RotateGameTests {
         player.setYHeadRot(0);
         player.setXRot(0);
         RotatePayloadHandler.pressAction(player, 0, 0);
-        Objects_Rotate_RRRProcedure.execute(helper.getLevel(), player);
         RotatePayloadHandler.pressAction(null, 0, 0);
-        Objects_Rotate_RRRProcedure.execute(helper.getLevel(), null);
         assertUnchanged(helper, fixture);
         helper.succeed();
     }
