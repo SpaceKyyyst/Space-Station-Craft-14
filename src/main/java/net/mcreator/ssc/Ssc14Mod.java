@@ -218,22 +218,8 @@ public class Ssc14Mod {
 		NuclearWarheadInteractionService.install((level, pos) ->
 				net.ssc14.content.explosive.NuclearWarheadDetonationService.execute(
 						level, pos.getX(), pos.getY(), pos.getZ()));
-		GravityGeneratorPlugLifecycleService.install(
-				new GravityGeneratorPlugLifecycleService.Adapter() {
-					@Override
-					public void neighborChanged(net.minecraft.world.level.Level level,
-							net.minecraft.core.BlockPos pos) {
-						net.mcreator.ssc.procedures.GravGenPlugBlock_Trigger_Procedure.execute(
-								level, pos.getX(), pos.getY(), pos.getZ());
-					}
-
-					@Override
-					public void destroyed(net.minecraft.world.level.Level level,
-							net.minecraft.core.BlockPos pos) {
-						net.mcreator.ssc.procedures.GravGenPlugBlock_Destroy_Procedure.execute(
-								level, pos.getX(), pos.getY(), pos.getZ());
-					}
-				});
+		GravityGeneratorPlugLifecycleService.installGeneratorLocator((level, pos) ->
+				level.getBlockState(pos).is(net.mcreator.ssc.init.Ssc14ModBlocks.GRAVITY_GENERATOR.get()));
 		GravityGeneratorLifecycleService.install(new GravityGeneratorLifecycleService.Adapter() {
 			@Override
 			public boolean canSurvive(LevelAccessor level, net.minecraft.core.BlockPos pos) {
