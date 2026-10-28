@@ -1,6 +1,4 @@
-package net.mcreator.ssc.client.gui;
-
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+package net.ssc14.client.menu.station;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -15,14 +13,14 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
-import net.mcreator.ssc.procedures.CommConsGUITextCurrentCodeProcedure;
-import net.mcreator.ssc.network.LegacyMenuButtonRegistration;
+import net.ssc14.client.menu.MenuButtonClientActions;
+import net.ssc14.client.menu.MenuStateReceiver;
+import net.ssc14.common.station.StationCodeService;
 import net.ssc14.integration.neoforge.menu.network.MenuButtonPayload;
-import net.mcreator.ssc.init.Ssc14ModScreens;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsoleGUIMenu> implements Ssc14ModScreens.ScreenAccessor {
+public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsoleGUIMenu> implements MenuStateReceiver {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
@@ -86,7 +84,7 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.commun_console_gui.label_sootvietstvuiushchii_kod"), -98, 32, -1710619, false);
 		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.commun_console_gui.label_ughrozy"), -98, 42, -1710619, false);
 		guiGraphics.text(this.font, Component.translatable("gui.ssc_14.commun_console_gui.label_vvieditie_obiavlieniie"), 94, 12, -1710619, false);
-		guiGraphics.text(this.font, CommConsGUITextCurrentCodeProcedure.execute(world), -98, 54, -1710619, false);
+		guiGraphics.text(this.font, StationAlertCodeText.format(StationCodeService.current(world)), -98, 54, -1710619, false);
 	}
 
 	@Override
@@ -97,8 +95,7 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.communicationConsole(0, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.communicationConsole(0, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.communicationConsole(0, x, y, z));
 					}
 				}) {
 			@Override
@@ -112,8 +109,7 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.communicationConsole(1, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.communicationConsole(1, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.communicationConsole(1, x, y, z));
 					}
 				}) {
 			@Override
@@ -127,8 +123,7 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.communicationConsole(2, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.communicationConsole(2, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.communicationConsole(2, x, y, z));
 					}
 				}) {
 			@Override
@@ -142,8 +137,7 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.communicationConsole(3, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.communicationConsole(3, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.communicationConsole(3, x, y, z));
 					}
 				}) {
 			@Override
@@ -157,8 +151,7 @@ public class CommunConsoleGUIScreen extends AbstractContainerScreen<CommunConsol
 					int x = CommunConsoleGUIScreen.this.x;
 					int y = CommunConsoleGUIScreen.this.y;
 					{
-						ClientPacketDistributor.sendToServer(MenuButtonPayload.communicationConsole(4, x, y, z));
-						LegacyMenuButtonRegistration.dispatch(entity, MenuButtonPayload.communicationConsole(4, x, y, z));
+						MenuButtonClientActions.send(entity, MenuButtonPayload.communicationConsole(4, x, y, z));
 					}
 				}) {
 			@Override

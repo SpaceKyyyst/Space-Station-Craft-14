@@ -19,6 +19,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.ssc14.integration.neoforge.worldgen.Ssc14StructureFeature;
 import net.mcreator.ssc.network.Ssc14ModVariables;
+import net.ssc14.common.station.StationCodeService;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
 import net.mcreator.ssc.init.*;
 import net.ssc14.integration.neoforge.server.ServerTaskSubmission;
@@ -358,7 +359,7 @@ public class Ssc14Mod {
 						level, pos.getX(), pos.getY(), pos.getZ(), state, player));
 		ExtinguisherCabinetInteractionService.install(
 				Ssc14Items.EXTINGUISHER, Ssc14Items.EXTINGUISHER_OPEN);
-		EmergencyLightingService.install(level ->
+		StationCodeService.install(level ->
 				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
 		MachineFrameAssemblyService.install(Ssc14ModItems.LOW_VOLTAGE_CABLE,
 				Ssc14Blocks.MACHINE_FRAME_2);
