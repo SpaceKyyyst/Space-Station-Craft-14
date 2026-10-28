@@ -1,17 +1,17 @@
 # Remaining generated runtime boundaries / Оставшиеся generated boundaries
 
 > **Актуальный снимок / Current snapshot (2026-10-29):** в каталоге
-> `src/main/java/net/mcreator/ssc/procedures` осталось 2 активные процедуры:
-> `MicrwGUIbutEProcedure` и `RSU_useOnBlock_Procedure`. MK58 breech/fire,
+> `src/main/java/net/mcreator/ssc/procedures` больше не содержит активных процедур.
+> Microwave, MK58 breech/fire, spanner, construction и RSU перенесены в canonical
 > `SpannerEntUseProcedure`, `PlaSteelUseProcedure` и
 > `SteeluseProcedure` перенесены в `ConstructionAssemblyService`. Все удалённые фасады
 > и procedural wrappers из старых списков
 > ниже больше не являются частью runtime. Версия проекта остаётся `0.1.27` до
 > завершения этих переносов.
 
-> **Current snapshot (2026-10-29):** 2 active procedures remain in
-> `src/main/java/net/mcreator/ssc/procedures`:
-> `MicrwGUIbutEProcedure` and `RSU_useOnBlock_Procedure`. MK58 breech/fire,
+> **Current snapshot (2026-10-29):** no active procedures remain in
+> `src/main/java/net/mcreator/ssc/procedures`.
+> Microwave, MK58 breech/fire, spanner, construction, and RSU now live in canonical
 > `SpannerEntUseProcedure`, `PlaSteelUseProcedure`, and `SteeluseProcedure` now live
 > in canonical services. Deleted facades
 > and wrappers listed historically below are
