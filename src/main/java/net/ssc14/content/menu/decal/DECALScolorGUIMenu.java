@@ -1,4 +1,4 @@
-package net.mcreator.ssc.world.inventory;
+package net.ssc14.content.menu.decal;
 
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
@@ -21,8 +21,8 @@ import net.minecraft.world.Container;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.procedures.DECALScolorGUI_tickProcedure;
-import net.mcreator.ssc.init.Ssc14ModMenus;
+import net.ssc14.content.menu.Ssc14MenuTypes;
+import net.ssc14.core.network.MenuStateAccess;
 
 import java.util.function.Supplier;
 import java.util.Map;
@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Collections;
 
 @EventBusSubscriber
-public class DECALScolorGUIMenu extends AbstractContainerMenu implements Ssc14ModMenus.MenuAccessor {
+public class DECALScolorGUIMenu extends AbstractContainerMenu implements MenuStateAccess {
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
@@ -51,7 +51,7 @@ public class DECALScolorGUIMenu extends AbstractContainerMenu implements Ssc14Mo
 	private BlockEntity boundBlockEntity = null;
 
 	public DECALScolorGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(Ssc14ModMenus.DECAL_SCOLOR_GUI.get(), id);
+		super(Ssc14MenuTypes.DECAL_SCOLOR_GUI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
 		this.internal = new ItemStacksResourceHandler(0);
@@ -99,7 +99,6 @@ public class DECALScolorGUIMenu extends AbstractContainerMenu implements Ssc14Mo
 		return ItemStack.EMPTY;
 	}
 
-	@Override
 	public Map<Integer, Slot> getSlots() {
 		return Collections.unmodifiableMap(customSlots);
 	}
@@ -112,12 +111,8 @@ public class DECALScolorGUIMenu extends AbstractContainerMenu implements Ssc14Mo
 	@SubscribeEvent
 	public static void onPlayerTick(PlayerTickEvent.Post event) {
 		Player entity = event.getEntity();
-		if (entity.containerMenu instanceof DECALScolorGUIMenu menu) {
-			Level world = menu.world;
-			double x = menu.x;
-			double y = menu.y;
-			double z = menu.z;
-			DECALScolorGUI_tickProcedure.execute(entity);
+		if (entity.containerMenu instanceof DECALScolorGUIMenu) {
+			DecalColorMenuService.closeWhenToolIsMissing(entity);
 		}
 	}
 }

@@ -10,7 +10,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.component.DataComponents;
 
-import net.mcreator.ssc.world.inventory.DECALScolorGUIMenu;
+import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.mcreator.ssc.init.Ssc14ModItems;
 
 @EventBusSubscriber

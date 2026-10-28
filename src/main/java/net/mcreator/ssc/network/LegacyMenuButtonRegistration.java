@@ -15,7 +15,7 @@ import net.mcreator.ssc.procedures.CPcabel5buttonProcedure;
 import net.mcreator.ssc.procedures.CPcabel6buttonProcedure;
 import net.mcreator.ssc.procedures.CPcabel7buttonProcedure;
 import net.mcreator.ssc.procedures.CPcabel8buttonProcedure;
-import net.mcreator.ssc.procedures.DECALSGUIacceptProcedure;
+import net.ssc14.content.menu.decal.DecalColorMenuService;
 import net.mcreator.ssc.procedures.GravGenOFFbuttonProcedure;
 import net.mcreator.ssc.procedures.GravGenONbuttonProcedure;
 import net.mcreator.ssc.procedures.IDRemovePRProcedure;
@@ -59,7 +59,7 @@ import net.mcreator.ssc.world.inventory.MicrowaweGUIMenu;
 import net.mcreator.ssc.world.inventory.OrderGUIMenu;
 import net.mcreator.ssc.world.inventory.CabelPannelAirlockMenu;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
-import net.mcreator.ssc.world.inventory.DECALScolorGUIMenu;
+import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
 import net.mcreator.ssc.world.inventory.PDApassangerGUIMenu;
 import net.ssc14.content.menu.construction.RCDGUIMenu;
@@ -188,7 +188,7 @@ public final class LegacyMenuButtonRegistration {
     private static void handleDecalColor(Player player, MenuButtonPayload message) {
         if (!(player.containerMenu instanceof DECALScolorGUIMenu menu)
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
-        if (message.buttonId() == 0) DECALSGUIacceptProcedure.execute(player);
+        if (message.buttonId() == 0) DecalColorMenuService.apply(player, menu);
     }
 
     private static void handleGravityGenerator(Player player, MenuButtonPayload message) {

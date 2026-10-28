@@ -20,6 +20,7 @@ import net.ssc14.content.menu.food.EggCartonGUIMenu;
 import net.ssc14.content.menu.storage.BackpackGUIMenu;
 import net.ssc14.content.menu.commerce.SaleGUIMenu;
 import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
+import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
 import net.ssc14.content.menu.construction.RCDGUIMenu;
@@ -28,6 +29,7 @@ import net.ssc14.content.menu.construction.RCDGUIwindowsMenu;
 import net.ssc14.integration.neoforge.menu.network.MenuStateUpdateMessage;
 import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.content.menu.Ssc14MenuTypes;
+import net.ssc14.core.network.MenuStateAccess;
 
 import java.util.Map;
 
@@ -88,7 +90,7 @@ public class Ssc14ModMenus {
 		return (DeferredHolder) holder;
 	}
 
-	public interface MenuAccessor {
+	public interface MenuAccessor extends MenuStateAccess {
 		Map<String, Object> getMenuState();
 
 		Map<Integer, Slot> getSlots();

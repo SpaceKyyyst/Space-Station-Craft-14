@@ -1,7 +1,6 @@
 package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.Ssc14Mod;
-import net.mcreator.ssc.init.Ssc14ModMenus;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.PacketFlow;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -10,6 +9,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.ssc14.client.menu.MenuStateClientHandler;
 import net.ssc14.core.network.MenuStateRules;
+import net.ssc14.core.network.MenuStateAccess;
 import net.ssc14.integration.neoforge.menu.network.MenuStateUpdateMessage;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
@@ -20,7 +20,7 @@ public final class MenuStateUpdateRegistration {
 
     public static void handle(MenuStateUpdateMessage message, IPayloadContext context) {
         context.enqueueWork(() -> {
-            if (!(context.player().containerMenu instanceof Ssc14ModMenus.MenuAccessor menu)) return;
+            if (!(context.player().containerMenu instanceof MenuStateAccess menu)) return;
             if (context.flow() == PacketFlow.SERVERBOUND
                     && (!LegacyMenuStateGuard.canEdit(context.player())
                     || !MenuStateRules.acceptsClientField(
