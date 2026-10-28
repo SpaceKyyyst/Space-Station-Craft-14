@@ -10,7 +10,6 @@ minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModMenus.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModRenderStateModifiers.java
 minecraft-client src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java
 minecraft-client src/main/java/net/mcreator/ssc/procedures/Interaction_PRProcedure.java
-minecraft-client src/main/java/net/mcreator/ssc/procedures/SkyRenderProcedure.java
 neoforge-client src/main/java/net/mcreator/ssc/ReagentTransferHandler.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModEntityRenderers.java
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModHumanoidModels.java
@@ -21,4 +20,3 @@ neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModRenderStateModifiers
 neoforge-client src/main/java/net/mcreator/ssc/init/Ssc14ModScreens.java
 neoforge-client src/main/java/net/mcreator/ssc/procedures/HumanModelRenderProcedure.java
 neoforge-client src/main/java/net/mcreator/ssc/procedures/Interaction_PRProcedure.java
-neoforge-client src/main/java/net/mcreator/ssc/procedures/SkyRenderProcedure.java

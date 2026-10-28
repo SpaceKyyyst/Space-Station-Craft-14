@@ -1,4 +1,4 @@
-package net.mcreator.ssc.client;
+package net.ssc14.client.render;
 
 import org.joml.Vector4f;
 import org.joml.Vector3f;
