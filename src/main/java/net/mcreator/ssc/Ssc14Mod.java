@@ -40,7 +40,6 @@ import net.mcreator.ssc.integration.LegacyShuttersIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockUpperPlugIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockControllerInteractionAdapter;
-import net.mcreator.ssc.integration.LegacyVendingMachineIntegrationAdapter;
 import net.ssc14.content.gravity.ui.GravityGeneratorWindow;
 import net.ssc14.common.Ssc14Identity;
 import net.ssc14.content.attribute.Ssc14Attributes;
@@ -64,7 +63,6 @@ import net.ssc14.content.block.airlock.Ssc14AirlockBlockEntities;
 import net.ssc14.content.block.commerce.Ssc14CommerceBlockEntities;
 import net.ssc14.content.block.commerce.OrderPalletRegistryService;
 import net.ssc14.content.block.commerce.CommerceConsoleIntegrationService;
-import net.ssc14.content.block.commerce.VendingMachineIntegrationService;
 import net.ssc14.content.block.control.NetworkButtonInteractionService;
 import net.ssc14.content.block.control.Ssc14ControlBlockEntities;
 import net.ssc14.content.block.communication.CommunicationServerLifecycleService;
@@ -401,8 +399,6 @@ public class Ssc14Mod {
 				new LegacyCommerceConsoleIntegrationAdapter(
 						net.mcreator.ssc.procedures.ConsolesOpenMenuSoundProcedure::execute));
 		IdConsoleIntegrationService.install(new LegacyIdConsoleIntegrationAdapter());
-		VendingMachineIntegrationService.install(
-				new LegacyVendingMachineIntegrationAdapter());
 		NetworkButtonInteractionService.install(
 				new LegacyNetworkButtonIntegrationAdapter());
 		NetworkConfiguratorService.install(new LegacyNetworkConfiguratorMenuAdapter());
