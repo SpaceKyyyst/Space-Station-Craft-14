@@ -1,7 +1,7 @@
 
 package net.mcreator.ssc.procedures;
 
-import net.mcreator.ssc.ModReagents;
+import net.mcreator.ssc.integration.LegacyReagentCatalog;
 import net.mcreator.ssc.integration.LegacyReactionRuntime;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
 import net.ssc14.content.item.reagent.ReagentContainerItem;
@@ -45,7 +45,7 @@ public class FillReagentPRProcedure {
             return;
         }
 
-        if (ModReagents.getReagent(reagentName).isEmpty()) {
+        if (LegacyReagentCatalog.find(reagentName).isEmpty()) {
             player.sendSystemMessage(Component.literal("§cНеизвестный реагент: " + reagentName));
             return;
         }
@@ -54,7 +54,7 @@ public class FillReagentPRProcedure {
 
         if (success) {
             LegacyReactionRuntime.process(mainHand, player);
-            String displayName = ModReagents.getReagent(reagentName).get().getDisplayName().getString();
+            String displayName = LegacyReagentCatalog.find(reagentName).orElseThrow().getDisplayName().getString();
             player.sendSystemMessage(Component.literal("§aДобавлено " + amount + " мл " + displayName));
         } else {
             player.sendSystemMessage(Component.literal("§cНе удалось добавить реагент (контейнер полон?)"));
