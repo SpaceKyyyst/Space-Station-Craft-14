@@ -205,8 +205,7 @@ public class Ssc14Mod {
 			@Override
 			public void activate(net.minecraft.world.level.Level level,
 					net.minecraft.core.BlockPos pos, Player player) {
-				net.mcreator.ssc.procedures.C4_activate_PRProcedure.execute(
-						level, pos.getX(), pos.getY(), pos.getZ(), player);
+				net.ssc14.content.explosive.C4ActivationService.execute(level, pos, player);
 			}
 
 			@Override
