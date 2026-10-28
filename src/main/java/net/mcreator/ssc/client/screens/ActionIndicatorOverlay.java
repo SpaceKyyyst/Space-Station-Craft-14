@@ -49,7 +49,7 @@ public class ActionIndicatorOverlay {
 			if (ActionProgressService.isAtStep(entity, 3)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
-			if (ActGUIProcedure4Procedure.execute(entity)) {
+			if (ActionProgressService.isAtStep(entity, 4)) {
 				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
 			}
 			if (ActGUIProcedure5Procedure.execute(entity)) {
