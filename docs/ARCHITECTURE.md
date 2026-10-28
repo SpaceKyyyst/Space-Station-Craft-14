@@ -117,8 +117,8 @@ Mod ID, registry ID, NBT-ключи и порядок `GasType` являются
 генератор, гравитация, топливный бак, C4, ядерная боеголовка, реестр паллет и
 проверки доступа шлюза/шкафов. Оставшиеся классы `IntegrationService` являются
 явными переходными границами, а не новой игровой архитектурой. Они нужны там, где
-ещё сохраняются старые GUI, сетевые меню, формат сохранения или legacy energy API:
-communication console, commerce console, сетевой topology, station-code debug,
+ещё сохраняются старые GUI, сетевые меню, формат сохранения или отдельные legacy API:
+communication console, commerce console, station-code debug,
 шкафы, portable menus и несколько строительных/оружейных взаимодействий.
 Их удаление допустимо только после переноса соответствующего поведения и
 регрессионной проверки сохранений.
@@ -221,11 +221,16 @@ The primary runtime paths now use canonical NeoForge services: oxygen production
 gravity, fuel tanks, C4, nuclear warhead detonation, pallet registry and airlock/
 closet access checks. Remaining `IntegrationService` classes are explicit migration
 boundaries rather than a new gameplay architecture. They are retained where legacy
-GUIs, menu networking, save formats or the legacy energy API are still involved:
-communication and commerce consoles, cable topology, station-code debug, closets,
+GUIs, menu networking, save formats or isolated legacy APIs are still involved:
+communication and commerce consoles, station-code debug, closets,
 portable menus, and several construction/firearm interactions. Each bridge
 must be removed only after its behavior and save compatibility are migrated and
 covered by regression tests.
+
+Energy topology, device mapping, telemetry and LV batching now live under the
+canonical `net.ssc14.content.energy` package. The former
+`net.mcreator.ssc.energy.*` classes remain only as deprecated compatibility
+facades and are not part of the canonical runtime.
 
 Critical medical ticking and liquid metabolism now run through
 `MedicalCriticalTickHandler` and `LiquidMetabolismTickHandler`; their generated
@@ -387,13 +392,16 @@ canonical services; the old controller remains only as a compatibility wrapper.
 
 ## Совмещение бюджетов и жизненного цикла
 
-Топология энергии использует EnergyTopologyService с пошаговым обходом и общим
+Топология энергии использует canonical `net.ssc14.content.energy.EnergyTopologyService`
+с пошаговым обходом и общим
 бюджетом одного мира. queueUpdate и applyPendingUpdates сохраняют совместимость
 с жизненным циклом блоков основной ветки. updatePosition теперь может завершить
 обход через несколько тиков. Неготовые компоненты не поставляют энергию; лампы
 выключаются на первом энергетическом тике. EnergyTickBudget ограничивает вход
 и выход одного устройства суммарно по всем сетям. LampTickBatch исключает
 двойную оплату общих ламп и повторное чтение их состояния внутри тика.
+Старые классы `net.mcreator.ssc.energy.*` оставлены только как deprecated
+compatibility-фасады и не участвуют в canonical runtime.
 
 Атмосфера сохраняет уведомления владельца смеси, очередь загрузки чанков,
 отложенную обработку блоков и сохранение секций из основной ветки. На шаг
