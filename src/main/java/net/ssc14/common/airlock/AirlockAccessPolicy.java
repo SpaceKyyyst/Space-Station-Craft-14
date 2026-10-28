@@ -1,6 +1,7 @@
 package net.ssc14.common.airlock;
 
 import java.util.Map;
+import java.util.Set;
 
 /** Stable departmental access mapping for departmental airlock registry paths. */
 public final class AirlockAccessPolicy {
@@ -19,6 +20,15 @@ public final class AirlockAccessPolicy {
             Map.entry("virology_airlock_d_1", "Medical"));
 
     private AirlockAccessPolicy() { }
+
+    /** Returns every persisted access key that airlock initialization may reset. */
+    public static Set<String> accessKeys() {
+        return Set.of(
+                "Technical", "Service", "Out", "gun_room", "HoS", "Brig", "Medical", "Crio",
+                "Security", "Ingeneer", "Command", "Detective", "PNT", "Scientist", "Supply_Deportament",
+                "Atmos", "Kitchen", "Uridic", "Gidroponic", "Teatre", "Bar", "Cleaner",
+                "Utilizat", "Chemistry", "Church", "CE", "Qm", "CMO", "RD", "HoP", "Capitan", "Blue_Sh");
+    }
 
     public static String accessKeyFor(String registryPath) {
         return ACCESS_BY_BLOCK.get(registryPath);
