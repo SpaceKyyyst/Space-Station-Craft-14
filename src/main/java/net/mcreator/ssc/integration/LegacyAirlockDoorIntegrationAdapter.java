@@ -20,12 +20,12 @@ public final class LegacyAirlockDoorIntegrationAdapter
     }
 
     @Override public void use(Level level, BlockPos pos, BlockState state, Player player) {
-        net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure.execute(
+        net.ssc14.content.block.airlock.AirlockLifecycleService.execute(
                 level, pos.getX(), pos.getY(), pos.getZ(), state, player);
     }
 
     @Override public void tick(ServerLevel level, BlockPos pos) {
-        net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure.tick(level, pos);
+        net.ssc14.content.block.airlock.AirlockLifecycleService.tick(level, pos);
     }
 
     @Override public void neighborChanged(Level level, BlockPos pos) {

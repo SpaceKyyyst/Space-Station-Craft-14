@@ -2,7 +2,6 @@ package net.mcreator.ssc.integration;
 
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -60,7 +59,7 @@ public final class LegacyAirlockControllerInteractionAdapter
                 DataComponents.CUSTOM_DATA, CustomData.EMPTY)
                 .copyTag().getDoubleOr("mode", 0.0D);
         if (mode == 2) {
-            BaseAirlockOpenCloseProcedure.execute(
+            net.ssc14.content.block.airlock.AirlockLifecycleService.execute(
                     level, pos.getX(), pos.getY(), pos.getZ(), state, player);
             return;
         }
@@ -82,7 +81,7 @@ public final class LegacyAirlockControllerInteractionAdapter
         blockEntity.setChanged();
         net.ssc14.content.block.airlock.AirlockStateInitializer.execute(
                 level, pos.getX(), pos.getY(), pos.getZ(), state);
-        BaseAirlockOpenCloseProcedure.refreshAutoClose(level, pos);
+        net.ssc14.content.block.airlock.AirlockLifecycleService.refreshAutoClose(level, pos);
         BlockState after = level.getBlockState(pos);
         if (state == after) {
             level.sendBlockUpdated(pos, after, after, 3);
