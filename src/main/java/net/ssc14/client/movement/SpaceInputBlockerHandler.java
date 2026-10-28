@@ -1,7 +1,6 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.client.movement;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
@@ -17,7 +16,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber(modid = "ssc_14", value = Dist.CLIENT)
-public class SpaceInputBlockerProcedure {
+public final class SpaceInputBlockerHandler {
 
     private static final ResourceKey<Level> SPACE_DIM =
         ResourceKey.create(Registries.DIMENSION, Identifier.parse("ssc_14:spaced"));
