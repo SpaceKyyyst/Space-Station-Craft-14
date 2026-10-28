@@ -2,7 +2,7 @@ package net.mcreator.ssc.init;
 
 import net.ssc14.content.firearm.BulletCollisionParticleService;
 import net.ssc14.content.firearm.BulletFlightParticleService;
-import net.mcreator.ssc.procedures.C4_Crutch_Ent_TICProcedure;
+import net.ssc14.content.entity.C4CrutchLifetimeHandler;
 import net.mcreator.ssc.procedures.ChairEntity_TICProcedure;
 import net.mcreator.ssc.procedures.SpannerEntUseProcedure;
 import net.minecraft.world.entity.Entity;
@@ -28,7 +28,7 @@ public final class Ssc14LegacyEntityBehavior implements Ssc14EntityBehavior.Hook
 
     @Override
     public void c4Tick(LevelAccessor level, Entity entity) {
-        C4_Crutch_Ent_TICProcedure.execute(level, entity);
+        C4CrutchLifetimeHandler.execute(level, entity);
     }
 
     @Override
