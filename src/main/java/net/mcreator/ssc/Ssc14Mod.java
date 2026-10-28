@@ -301,11 +301,11 @@ public class Ssc14Mod {
 					}
 				});
 		UpperClosetPlugInteractionService.install((level, pos, player) ->
-				net.mcreator.ssc.procedures.Closet_OpenClose_PrProcedure.execute(
+					net.ssc14.content.block.furniture.ClosetInteractionService.execute(
 						level, pos.getX(), pos.getY() - 1, pos.getZ(),
 						level.getBlockState(pos.below()), player));
 		SecureClosetInteractionService.install((level, pos, state, player) ->
-				net.mcreator.ssc.procedures.Closet_OpenClose_PrProcedure.execute(
+					net.ssc14.content.block.furniture.ClosetInteractionService.execute(
 						level, pos.getX(), pos.getY(), pos.getZ(), state, player));
 		ExtinguisherCabinetInteractionService.install(
 				Ssc14Items.EXTINGUISHER, Ssc14Items.EXTINGUISHER_OPEN);

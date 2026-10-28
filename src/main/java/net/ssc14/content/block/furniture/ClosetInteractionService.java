@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.block.furniture;
 
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
@@ -37,11 +37,11 @@ import net.minecraft.tags.TagKey;
 
 import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 import net.ssc14.common.storage.ClosetAccessPolicy;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 
 import io.netty.buffer.Unpooled;
 
-public class Closet_OpenClose_PrProcedure {
+public final class ClosetInteractionService {
 	
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
 		if (entity == null) return;
@@ -51,7 +51,7 @@ public class Closet_OpenClose_PrProcedure {
 		BlockEntity be = world.getBlockEntity(pos);
 		
 		ItemStack mainHand = (entity instanceof LivingEntity _livEnt) ? _livEnt.getMainHandItem() : ItemStack.EMPTY;
-		if (mainHand.getItem() == Ssc14ModItems.ACCESS_CONFIG.get() && !entity.isShiftKeyDown()) {
+		if (mainHand.getItem() == Ssc14Items.ACCESS_CONFIG.get() && !entity.isShiftKeyDown()) {
 			if (entity instanceof ServerPlayer _ent) {
 				_ent.openMenu(new MenuProvider() {
 					@Override
