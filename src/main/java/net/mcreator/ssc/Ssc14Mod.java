@@ -172,9 +172,9 @@ public class Ssc14Mod {
 		});
 		OrderPalletRegistryService.install((level, pos) -> {
 			var variables = Ssc14ModVariables.WorldVariables.get(level);
-			String key = PalletRegistryCodec.encode(pos);
-			if (!PalletRegistryCodec.contains(variables.PalletRegistry, pos)) {
-				variables.PalletRegistry += key;
+			String updatedRegistry = PalletRegistryCodec.appendIfAbsent(variables.PalletRegistry, pos);
+			if (!updatedRegistry.equals(variables.PalletRegistry)) {
+				variables.PalletRegistry = updatedRegistry;
 				variables.setDirty();
 			}
 		});
