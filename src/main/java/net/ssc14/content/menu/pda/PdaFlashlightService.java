@@ -1,4 +1,4 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.menu.pda;
 
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
@@ -13,9 +13,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.Ssc14Mod;
+import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
 
-public class PDAflashlightPRProcedure {
+public final class PdaFlashlightService {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
         if (!(world instanceof net.minecraft.server.level.ServerLevel serverOwner)) return;
 		if (entity == null)
@@ -34,11 +34,11 @@ public class PDAflashlightPRProcedure {
 			}
 			if (Blocks.LIGHT == (world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).getBlock()) {
 				world.setBlock(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Blocks.AIR.defaultBlockState(), 3);
-				Ssc14Mod.queueServerWork(serverOwner, 1, () -> {
+				ServerWorkScheduler.schedule(serverOwner, 1, () -> {
 					if (Blocks.LIGHT == (world.getBlockState(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()))).getBlock()) {
 						world.setBlock(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Blocks.AIR.defaultBlockState(), 3);
 					}
-				}).orThrow();
+				});
 			}
 		}
 		if (world instanceof Level _level) {
