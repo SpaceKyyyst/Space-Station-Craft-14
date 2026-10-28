@@ -1,4 +1,4 @@
-package net.mcreator.ssc.procedures;
+package net.ssc14.content.menu.worldcheck;
 
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.BlockHitResult;
@@ -8,7 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.core.BlockPos;
 
-public class WOCtextP1Procedure {
+public final class WorldCheckLookedBlockService {
 	public static String execute(Entity entity) {
 		if (entity == null)
 			return "";
