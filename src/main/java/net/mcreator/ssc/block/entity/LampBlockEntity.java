@@ -19,7 +19,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
-import net.mcreator.ssc.EnergyNetworkManager;
+import net.ssc14.content.block.energy.CableTopologyService;
 
 import javax.annotation.Nullable;
 
@@ -35,19 +35,19 @@ public class LampBlockEntity extends RandomizableContainerBlockEntity implements
 	@Override
 	public void onLoad() {
 		super.onLoad();
-		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+		CableTopologyService.queueUpdate(this.level, this.worldPosition);
 	}
 
 	@Override
 	public void setRemoved() {
 		super.setRemoved();
-		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+		CableTopologyService.queueUpdate(this.level, this.worldPosition);
 	}
 
 	@Override
 	public void onChunkUnloaded() {
 		super.onChunkUnloaded();
-		EnergyNetworkManager.queueUpdate(this.level, this.worldPosition);
+		CableTopologyService.queueUpdate(this.level, this.worldPosition);
 	}
 
 	@Override
