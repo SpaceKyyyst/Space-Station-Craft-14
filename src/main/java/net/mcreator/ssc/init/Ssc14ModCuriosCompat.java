@@ -8,7 +8,10 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
 import net.minecraft.world.item.ItemStack;
 
-import net.mcreator.ssc.procedures.*;
+import net.mcreator.ssc.procedures.MagBootsCAPIBaubleIsEquippedProcedure;
+import net.mcreator.ssc.procedures.OuterclothingEvaCAPIBaubleIsEquippedProcedure;
+import net.mcreator.ssc.procedures.OuterclothingSalvageCAPIBaubleIsEquippedProcedure;
+import net.mcreator.ssc.procedures.OuterclothingSalvageCAPIBaubleIsUnequippedProcedure;
 import net.ssc14.content.equipment.HardsuitSalvageHelmetEquipabilityService;
 import net.ssc14.content.equipment.MagBootsUnequipService;
 import net.ssc14.content.equipment.OuterclothingEvaUnequipService;

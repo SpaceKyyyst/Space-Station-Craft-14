@@ -13,7 +13,12 @@ import net.minecraft.commands.arguments.MessageArgument;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.Commands;
 
-import net.mcreator.ssc.procedures.*;
+import net.mcreator.ssc.procedures.HelsResetCommandProcedure;
+import net.mcreator.ssc.procedures.SSC14AtmosGasTemperatureCommandProcedure;
+import net.mcreator.ssc.procedures.SSC14AtmosSetGasCommandProcedure;
+import net.mcreator.ssc.procedures.TpSSC14mineOveworldprProcedure;
+import net.mcreator.ssc.procedures.TpSSC14planetplantprProcedure;
+import net.mcreator.ssc.procedures.TpSSC14spaceprProcedure;
 import net.ssc14.content.medical.ThirstCommandService;
 import net.ssc14.content.medical.NutritionUiService;
 import net.ssc14.content.medical.DigestiveProcessesService;
