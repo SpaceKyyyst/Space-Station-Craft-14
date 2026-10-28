@@ -11,6 +11,7 @@ public final class PalletRegistryCodec {
     }
 
     public static boolean contains(String encodedRegistry, BlockPos position) {
-        return encodedRegistry != null && encodedRegistry.contains(encode(position));
+        return encodedRegistry != null
+                && (";" + encodedRegistry).contains(";" + encode(position));
     }
 }
