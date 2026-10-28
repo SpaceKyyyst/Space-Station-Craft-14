@@ -163,6 +163,10 @@ Server-authoritative wire edits теперь принадлежат canonical
 `net.ssc14.content.block.airlock.AirlockWireService`; старый класс сохранён как
 facade для network/menu callers.
 
+Синхронизация permissions конфигуратора доступа вынесена в
+`AirlockConfiguratorService`; старый `AirlockConfigurator` сохраняет API для
+menu/integration callers и прежний формат access keys.
+
 Периодический radio-frequency tick коммуникационных серверов уже выполняется через
 `CommunicationServerLifecycleService.activate`; legacy `Adapter.tick` оставлен только
 как compatibility-hook для внешних интеграций. Методы menu/use по-прежнему владеют
@@ -228,6 +232,10 @@ Door identification and network-power supply now live in `AirlockPowerService`;
 Server-authoritative wire edits now belong to canonical
 `net.ssc14.content.block.airlock.AirlockWireService`; the old class remains a
 facade for network/menu callers.
+
+Access-configurator permission synchronization now lives in
+`AirlockConfiguratorService`; the old `AirlockConfigurator` preserves the API
+for menu/integration callers and the existing access-key format.
 
 The communication-server periodic radio-frequency tick now runs through
 `CommunicationServerLifecycleService.activate`; the legacy `Adapter.tick` remains

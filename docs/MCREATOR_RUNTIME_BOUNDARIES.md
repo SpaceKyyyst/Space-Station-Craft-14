@@ -20,6 +20,8 @@ event subscribers и процедурные фасады, которые ещё 
   `AirlockPowerService`;
 - `AirlockWireService` — thin compatibility facade; server-authoritative wire
   edits moved to the canonical airlock package;
+- `AirlockConfigurator` — thin compatibility facade; access-card permission
+  synchronization moved to `AirlockConfiguratorService`;
 - client GUI key handling перенесён в `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` удалён, а key mapping оставлен compatibility alias;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
@@ -59,6 +61,8 @@ only event subscribers and procedural facades that still own runtime behavior:
   `AirlockPowerService`;
 - `AirlockWireService` — thin compatibility facade; server-authoritative wire
   edits moved to the canonical airlock package;
+- `AirlockConfigurator` — thin compatibility facade; access-card permission
+  synchronization moved to `AirlockConfiguratorService`;
 - client GUI key handling was moved to `InteractionSlotKeyHandler`; generated
   `Interaction_PRProcedure` was removed and the key mapping remains a compatibility alias;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
