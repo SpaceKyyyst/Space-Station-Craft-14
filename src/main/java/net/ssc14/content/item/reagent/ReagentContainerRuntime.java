@@ -10,6 +10,8 @@ public interface ReagentContainerRuntime {
 
     boolean add(ItemStack stack, String reagentId, int amount);
 
+    boolean remove(ItemStack stack, String reagentId, int amount);
+
     int drink(ItemStack stack, int amount, ServerPlayer player);
 
     int mixedColor(ItemStack stack);

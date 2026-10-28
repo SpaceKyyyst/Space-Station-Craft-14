@@ -23,6 +23,10 @@ public final class ReagentContainerAccess {
         return runtime().add(stack, reagentId, amount);
     }
 
+    public static boolean remove(ItemStack stack, String reagentId, int amount) {
+        return runtime().remove(stack, reagentId, amount);
+    }
+
     public static int drink(ItemStack stack, int amount, ServerPlayer player) {
         return runtime().drink(stack, amount, player);
     }
