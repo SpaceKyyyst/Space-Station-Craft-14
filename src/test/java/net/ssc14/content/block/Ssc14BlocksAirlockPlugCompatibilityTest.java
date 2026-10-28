@@ -84,27 +84,15 @@ class Ssc14BlocksAirlockPlugCompatibilityTest {
 
     @Test
     void integrationServiceRoutesLifecycleBoundaries() {
-        int[] calls = new int[3];
-        var previous = AirlockUpperPlugIntegrationService.install(
-                new AirlockUpperPlugIntegrationService.Adapter() {
-                    @Override public void update(net.minecraft.world.level.Level level,
-                            BlockPos pos) { calls[0]++; }
-                    @Override public void destroy(net.minecraft.world.level.Level level,
-                            BlockPos pos) { calls[1]++; }
-                    @Override public void use(net.minecraft.world.level.Level level,
-                            BlockPos pos, net.minecraft.world.entity.player.Player player) {
-                        calls[2]++;
-                    }
-                });
+        int[] calls = new int[1];
+        AirlockUpperPlugIntegrationService.installUseHandler(
+                (level, pos, player) -> calls[0]++);
         try {
-            AirlockUpperPlugIntegrationService.update(null, BlockPos.ZERO);
-            AirlockUpperPlugIntegrationService.destroy(null, BlockPos.ZERO);
             AirlockUpperPlugIntegrationService.use(null, BlockPos.ZERO, null);
             assertEquals(1, calls[0]);
-            assertEquals(1, calls[1]);
-            assertEquals(1, calls[2]);
         } finally {
-            AirlockUpperPlugIntegrationService.install(previous);
+            AirlockUpperPlugIntegrationService.installUseHandler(
+                    net.ssc14.content.airlock.AirlockUpperPlugInteractionService::execute);
         }
     }
 }
