@@ -6,6 +6,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.component.CustomData;
@@ -72,6 +73,76 @@ public final class FirearmInteractionService {
                 tag.putBoolean("GenEraTE", true);
                 tag.putDouble("Bullets", 10);
             });
+        }
+    }
+
+    /** Handles MK-58 breech and magazine transitions without generated procedures. */
+    public static void toggleMk58(Level level, LivingEntity entity, ItemStack stack,
+            Item mk58, Item open, Item noMagazine, Item openNoMagazine,
+            Item magazine, Item emptyMagazine, Item bullet) {
+        if (level.isClientSide() || entity.getMainHandItem() != stack) return;
+        boolean shift = entity.isShiftKeyDown();
+        Item current = stack.getItem();
+        double chamber = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
+                .copyTag().getDoubleOr("BulletChamber", 0);
+        double bullets = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
+                .copyTag().getDoubleOr("MagazBullets", 0);
+        if (shift && (current == mk58 || current == open || current == noMagazine
+                || current == openNoMagazine)) {
+            ItemStack offhand = entity.getOffhandItem();
+            boolean hasMagazine = offhand.is(magazine) || offhand.is(emptyMagazine);
+            if (current == mk58 || current == open) {
+                ItemStack removed = new ItemStack(bullets > 0 ? magazine : emptyMagazine);
+                updateBullets(removed, bullets);
+                entity.setItemInHand(InteractionHand.OFF_HAND, removed);
+                ItemStack replacement = new ItemStack(current == mk58 ? noMagazine : openNoMagazine);
+                copyMk58Data(stack, replacement, chamber, bullets);
+                entity.setItemInHand(InteractionHand.MAIN_HAND, replacement);
+            } else if (hasMagazine) {
+                double loaded = readBullets(offhand);
+                ItemStack replacement = new ItemStack(current == noMagazine ? mk58 : open);
+                copyMk58Data(stack, replacement, chamber, loaded);
+                entity.setItemInHand(InteractionHand.MAIN_HAND, replacement);
+                entity.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
+            }
+            return;
+        }
+        if (current == mk58) {
+            ItemStack replacement = new ItemStack(open);
+            copyMk58Data(stack, replacement, 0, bullets);
+            entity.setItemInHand(InteractionHand.MAIN_HAND, replacement);
+            ejectBullet(level, entity, bullet, chamber);
+        } else if (current == open) {
+            ItemStack replacement = new ItemStack(bullets > 0 ? mk58 : mk58);
+            copyMk58Data(stack, replacement, bullets > 0 ? 1 : 0,
+                    Math.max(0, bullets - (bullets > 0 ? 1 : 0)));
+            entity.setItemInHand(InteractionHand.MAIN_HAND, replacement);
+        } else if (current == noMagazine) {
+            ItemStack replacement = new ItemStack(openNoMagazine);
+            copyMk58Data(stack, replacement, 0, 0);
+            entity.setItemInHand(InteractionHand.MAIN_HAND, replacement);
+            ejectBullet(level, entity, bullet, chamber);
+        } else if (current == openNoMagazine) {
+            ItemStack replacement = new ItemStack(noMagazine);
+            copyMk58Data(stack, replacement, chamber, 0);
+            entity.setItemInHand(InteractionHand.MAIN_HAND, replacement);
+        }
+    }
+
+    private static void copyMk58Data(ItemStack source, ItemStack target,
+            double chamber, double bullets) {
+        CustomData.update(DataComponents.CUSTOM_DATA, target, tag -> {
+            tag.putBoolean("GenEraTE", true);
+            tag.putDouble("BulletChamber", chamber);
+            tag.putDouble("MagazBullets", bullets);
+        });
+    }
+
+    private static void ejectBullet(Level level, LivingEntity entity, Item bullet, double chamber) {
+        if (chamber > 0 && level instanceof ServerLevel server) {
+            server.addFreshEntity(new net.minecraft.world.entity.item.ItemEntity(server,
+                    entity.getX(), entity.getY() + entity.getBbHeight() / 3.0D,
+                    entity.getZ(), new ItemStack(bullet)));
         }
     }
 

@@ -1,7 +1,6 @@
 package net.mcreator.ssc.integration;
 
 import javax.annotation.Nullable;
-import net.mcreator.ssc.procedures.MK58_Breech_Open_Procedure;
 import net.mcreator.ssc.procedures.MK58_Fire_Procedure;
 import net.ssc14.content.firearm.MagazineDescriptionService;
 import net.minecraft.server.level.ServerLevel;
@@ -33,7 +32,14 @@ public final class LegacyFirearmInteractionAdapter implements FirearmInteraction
     @Override
     public void use(FirearmState state, Level level, Player player, ItemStack stack) {
         if (state instanceof Mk58State) {
-            MK58_Breech_Open_Procedure.execute(level, player, stack);
+            FirearmInteractionService.toggleMk58(level, player, stack,
+                    net.mcreator.ssc.init.Ssc14ModItems.MK_58.get(),
+                    net.mcreator.ssc.init.Ssc14ModItems.MK_58OPEN.get(),
+                    net.mcreator.ssc.init.Ssc14ModItems.MK_58NOMAGZ.get(),
+                    net.mcreator.ssc.init.Ssc14ModItems.MK_58OPEN_NO_MAGZ.get(),
+                    net.mcreator.ssc.init.Ssc14ModItems.MAGAZINE_PISTOL_35.get(),
+                    net.mcreator.ssc.init.Ssc14ModItems.MAGAZINE_PISTOL_35EMPTY.get(),
+                    net.mcreator.ssc.init.Ssc14ModItems.BULLET_35ITEM.get());
         } else {
             FirearmInteractionService.usePistolMagazine(level, player, stack,
                     net.mcreator.ssc.init.Ssc14ModItems.MAGAZINE_PISTOL_35.get(),
