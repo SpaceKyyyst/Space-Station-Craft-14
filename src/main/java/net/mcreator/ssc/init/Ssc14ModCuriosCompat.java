@@ -442,7 +442,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				EquipHelmetSoundPRProcedure.execute(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
+				EquipmentSoundService.playHelmet(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
 		}, Ssc14ModItems.HELMET_SECURITY.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
@@ -498,7 +498,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				EquipHelmetSoundPRProcedure.execute(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
+				EquipmentSoundService.playHelmet(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
 		}, Ssc14ModItems.HELMETS_EVA.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
@@ -659,7 +659,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				EquipHelmetSoundPRProcedure.execute(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
+				EquipmentSoundService.playHelmet(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
 		}, Ssc14ModItems.HELMET_COSMONAUT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {

@@ -18,4 +18,12 @@ public final class EquipmentSoundService {
         if (level.isClientSide()) level.playLocalSound(x, y, z, sound, SoundSource.PLAYERS, 1, 1, false);
         else level.playSound(null, pos, sound, SoundSource.PLAYERS, 1, 1);
     }
+
+    public static void playHelmet(LevelAccessor world, double x, double y, double z) {
+        if (!(world instanceof Level level)) return;
+        var sound = BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("ssc_14:equip_helmets"));
+        BlockPos pos = BlockPos.containing(x, y, z);
+        if (level.isClientSide()) level.playLocalSound(x, y, z, sound, SoundSource.PLAYERS, 1, 1, false);
+        else level.playSound(null, pos, sound, SoundSource.PLAYERS, 1, 1);
+    }
 }
