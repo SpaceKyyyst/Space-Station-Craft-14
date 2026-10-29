@@ -26,7 +26,7 @@ import net.ssc14.common.station.StationBudgetService;
 import net.ssc14.content.item.reagent.ReagentService;
 import net.ssc14.content.item.Ssc14ItemCapabilities;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
-import net.mcreator.ssc.init.Ssc14ModCuriosRenderers;
+import net.ssc14.client.Ssc14CuriosRenderers;
 import net.mcreator.ssc.init.Ssc14LegacyEntityBehavior;
 import net.ssc14.content.equipment.Ssc14CuriosCompatibility;
 import net.ssc14.integration.neoforge.server.ServerTaskSubmission;
@@ -130,7 +130,7 @@ public class Ssc14Mod {
 		modEventBus.addListener(Ssc14NetworkPayloads::register);
 		if (ModList.get().isLoaded("curios")) {
 			modEventBus.addListener(Ssc14CuriosCompatibility::registerCapabilities);
-			modEventBus.addListener(Ssc14ModCuriosRenderers::registerRenderers);
+			modEventBus.addListener(Ssc14CuriosRenderers::registerRenderers);
 		}
 		Ssc14SoundEvents.REGISTRY.register(modEventBus);
 		Ssc14Blocks.REGISTRY.register(modEventBus);

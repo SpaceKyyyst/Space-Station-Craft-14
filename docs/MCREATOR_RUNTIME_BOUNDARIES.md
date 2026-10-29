@@ -69,6 +69,8 @@ owner, not merely renaming the facade.
   duplicate client initialization;
 - `Ssc14ModEntityRenderers` — compatibility facade only; entity and block-entity
   renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
+- `Ssc14ModCuriosRenderers` — compatibility facade only; Curios renderer
+  registration now belongs exclusively to `Ssc14CuriosRenderers`;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
   `TEMPORARYGRAVITYPLUGplayerProcedure` удалены после canonical-переноса;
 - остальные subscribers должны проверяться по event annotation, а не по числу прямых вызовов.
@@ -166,6 +168,8 @@ boundary:
   duplicate client initialization;
 - `Ssc14ModEntityRenderers` — compatibility facade only; entity and block-entity
   renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
+- `Ssc14ModCuriosRenderers` — compatibility facade only; Curios renderer
+  registration now belongs exclusively to `Ssc14CuriosRenderers`;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
   `TEMPORARYGRAVITYPLUGplayerProcedure` were removed after canonical migration;
 - every remaining subscriber must be audited by event annotation, not by direct-call count.
