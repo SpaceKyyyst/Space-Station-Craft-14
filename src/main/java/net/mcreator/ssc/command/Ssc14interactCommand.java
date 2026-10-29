@@ -1,35 +1,12 @@
-
 package net.mcreator.ssc.command;
 
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
 
-import net.minecraft.commands.Commands;
-import net.minecraft.server.level.ServerPlayer;
-
-import net.ssc14.content.equipment.ItemInteractionService;
-
-@EventBusSubscriber
-public class Ssc14interactCommand {
-
-    @SubscribeEvent
+/** @deprecated Use the canonical interaction command registration. */
+@Deprecated(forRemoval = false)
+public final class Ssc14interactCommand {
+    private Ssc14interactCommand() { }
     public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(
-            Commands.literal("ssc14_interact")
-                // ✅ Теперь ждём целое число (индекс слота)
-                .then(Commands.argument("slotIndex", IntegerArgumentType.integer(0))
-                    .executes(arguments -> {
-                        int slotIndex = IntegerArgumentType.getInteger(arguments, "slotIndex");
-                        ServerPlayer player = arguments.getSource().getPlayer();
-
-                        if (player != null) {
-                            ItemInteractionService.execute(player, slotIndex);
-                        }
-                        return 1;
-                    })
-                )
-        );
+        net.ssc14.content.command.Ssc14interactCommand.registerCommand(event);
     }
 }
