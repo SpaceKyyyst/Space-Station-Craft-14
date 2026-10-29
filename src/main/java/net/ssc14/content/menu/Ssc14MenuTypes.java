@@ -12,6 +12,27 @@ import net.neoforged.neoforge.network.IContainerFactory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
+import net.ssc14.content.menu.crafting.DopCraftMenu;
+import net.ssc14.content.menu.headset.HeadsetMenu;
+import net.ssc14.content.menu.access.AccessConfigItemMenu;
+import net.ssc14.content.menu.access.AccessConfigMENUMenu;
+import net.ssc14.content.menu.access.IDcodeMenu;
+import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
+import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
+import net.ssc14.content.menu.food.EggCartonGUIMenu;
+import net.ssc14.content.menu.food.MicrowaweGUIMenu;
+import net.ssc14.content.menu.storage.BackpackGUIMenu;
+import net.ssc14.content.menu.commerce.SaleGUIMenu;
+import net.ssc14.content.menu.commerce.OrderGUIMenu;
+import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
+import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
+import net.ssc14.content.menu.network.NetConfigGUIMenu;
+import net.ssc14.content.menu.machinery.MacFrameGUIMenu;
+import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
+import net.ssc14.content.menu.station.GravGenGUIMenu;
+import net.ssc14.content.menu.construction.RCDGUIMenu;
+import net.ssc14.content.menu.construction.RCDGUIwallfloorMenu;
+import net.ssc14.content.menu.construction.RCDGUIwindowsMenu;
 
 /** Owns menu type registration independently from transitional menu implementations. */
 public final class Ssc14MenuTypes {
@@ -21,27 +42,27 @@ public final class Ssc14MenuTypes {
 
     public static final DeferredRegister<MenuType<?>> REGISTRY =
             DeferredRegister.create(Registries.MENU, Ssc14Identity.MOD_ID);
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> DOP_CRAFT_MENU = register("dop_craft_menu");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> I_DCODE = register("i_dcode");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> ACCESS_CONFIG_MENU = register("access_config_menu");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> ACCESS_CONFIG_GUI = register("access_config_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> CABEL_PANNEL_AIRLOCK = register("cabel_pannel_airlock");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> GRAV_GEN_GUI = register("grav_gen_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> MAC_FRAME_GUI = register("mac_frame_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> PD_APASSANGER_GUI = register("pd_apassanger_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> RCDGUI = register("rcdgui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> RCDGU_IWALLFLOOR = register("rcdgu_iwallfloor");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> HEADSET_GU_IKOSTIL = register("headset_gu_ikostil");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> COMMUN_CONSOLE_GUI = register("commun_console_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> VENDING_AUT_1_GUI = register("vending_aut_1_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> RCDGU_IWINDOWS = register("rcdgu_iwindows");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> NET_CONFIG_GUI = register("net_config_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> EGG_CARTON_GUI = register("egg_carton_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> MICROWAWE_GUI = register("microwawe_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> DECAL_SCOLOR_GUI = register("decal_scolor_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> BACKPACK_GUI = register("backpack_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> ORDER_GUI = register("order_gui");
-    public static final DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> SALE_GUI = register("sale_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<DopCraftMenu>> DOP_CRAFT_MENU = register("dop_craft_menu");
+    public static final DeferredHolder<MenuType<?>, MenuType<IDcodeMenu>> I_DCODE = register("i_dcode");
+    public static final DeferredHolder<MenuType<?>, MenuType<AccessConfigMENUMenu>> ACCESS_CONFIG_MENU = register("access_config_menu");
+    public static final DeferredHolder<MenuType<?>, MenuType<AccessConfigItemMenu>> ACCESS_CONFIG_GUI = register("access_config_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<CabelPannelAirlockMenu>> CABEL_PANNEL_AIRLOCK = register("cabel_pannel_airlock");
+    public static final DeferredHolder<MenuType<?>, MenuType<GravGenGUIMenu>> GRAV_GEN_GUI = register("grav_gen_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<MacFrameGUIMenu>> MAC_FRAME_GUI = register("mac_frame_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<PDApassangerGUIMenu>> PD_APASSANGER_GUI = register("pd_apassanger_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIMenu>> RCDGUI = register("rcdgui");
+    public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIwallfloorMenu>> RCDGU_IWALLFLOOR = register("rcdgu_iwallfloor");
+    public static final DeferredHolder<MenuType<?>, MenuType<HeadsetMenu>> HEADSET_GU_IKOSTIL = register("headset_gu_ikostil");
+    public static final DeferredHolder<MenuType<?>, MenuType<CommunConsoleGUIMenu>> COMMUN_CONSOLE_GUI = register("commun_console_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<VendingAut1GUIMenu>> VENDING_AUT_1_GUI = register("vending_aut_1_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<RCDGUIwindowsMenu>> RCDGU_IWINDOWS = register("rcdgu_iwindows");
+    public static final DeferredHolder<MenuType<?>, MenuType<NetConfigGUIMenu>> NET_CONFIG_GUI = register("net_config_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<EggCartonGUIMenu>> EGG_CARTON_GUI = register("egg_carton_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<MicrowaweGUIMenu>> MICROWAWE_GUI = register("microwawe_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<DECALScolorGUIMenu>> DECAL_SCOLOR_GUI = register("decal_scolor_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<BackpackGUIMenu>> BACKPACK_GUI = register("backpack_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<OrderGUIMenu>> ORDER_GUI = register("order_gui");
+    public static final DeferredHolder<MenuType<?>, MenuType<SaleGUIMenu>> SALE_GUI = register("sale_gui");
 
     private Ssc14MenuTypes() { }
 
@@ -63,12 +84,13 @@ public final class Ssc14MenuTypes {
         }
     }
 
-    private static DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>>
-            register(String id) {
+    @SuppressWarnings("unchecked")
+    private static <T extends AbstractContainerMenu>
+            DeferredHolder<MenuType<?>, MenuType<T>> register(String id) {
         if (!REGISTERED_IDS.add(id)) {
             throw new IllegalStateException("Menu type already registered: " + id);
         }
-        return REGISTRY.register(id, () -> IMenuTypeExtension.create(
+        return (DeferredHolder<MenuType<?>, MenuType<T>>) (DeferredHolder<?, ?>) REGISTRY.register(id, () -> IMenuTypeExtension.create(
                 (containerId, inventory, data) -> factory(id).create(
                         containerId, inventory, data)));
     }

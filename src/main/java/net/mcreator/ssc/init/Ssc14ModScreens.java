@@ -27,6 +27,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.ssc14.client.menu.MenuStateReceiver;
 import net.ssc14.client.menu.Ssc14ScreenBinder;
+import net.ssc14.content.menu.Ssc14MenuTypes;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.ssc14.integration.neoforge.menu.network.MenuStateNetworkActions;
 import net.ssc14.integration.neoforge.menu.network.MenuSlotNetworkActions;
@@ -38,27 +39,27 @@ public final class Ssc14ModScreens {
     static {
         MenuStateNetworkActions.installClientSender(ClientPacketDistributor::sendToServer);
         MenuSlotNetworkActions.installClientSender(ClientPacketDistributor::sendToServer);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.DOP_CRAFT_MENU, DopCraftScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.I_DCODE, IDcodeScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.ACCESS_CONFIG_MENU, AccessConfigMENUScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.ACCESS_CONFIG_GUI, AccessConfigItemScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.CABEL_PANNEL_AIRLOCK, CabelPannelAirlockScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.GRAV_GEN_GUI, GravGenGUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.MAC_FRAME_GUI, MacFrameGUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.PD_APASSANGER_GUI, PDApassangerGUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.RCDGUI, RCDGUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.RCDGU_IWALLFLOOR, RCDGUIwallfloorScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.HEADSET_GU_IKOSTIL, HeadsetScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.COMMUN_CONSOLE_GUI, CommunConsoleGUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.VENDING_AUT_1_GUI, VendingAut1GUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.RCDGU_IWINDOWS, RCDGUIwindowsScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.NET_CONFIG_GUI, NetConfigGUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.EGG_CARTON_GUI, EggCartonGUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.MICROWAWE_GUI, MicrowaweGUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.DECAL_SCOLOR_GUI, DECALScolorGUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.BACKPACK_GUI, BackpackGUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.ORDER_GUI, OrderGUIScreen::new);
-        Ssc14ScreenBinder.bind(Ssc14ModMenus.SALE_GUI, SaleGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.DOP_CRAFT_MENU, DopCraftScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.I_DCODE, IDcodeScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.ACCESS_CONFIG_MENU, AccessConfigMENUScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.ACCESS_CONFIG_GUI, AccessConfigItemScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.CABEL_PANNEL_AIRLOCK, CabelPannelAirlockScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.GRAV_GEN_GUI, GravGenGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.MAC_FRAME_GUI, MacFrameGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.PD_APASSANGER_GUI, PDApassangerGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.RCDGUI, RCDGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.RCDGU_IWALLFLOOR, RCDGUIwallfloorScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.HEADSET_GU_IKOSTIL, HeadsetScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.COMMUN_CONSOLE_GUI, CommunConsoleGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.VENDING_AUT_1_GUI, VendingAut1GUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.RCDGU_IWINDOWS, RCDGUIwindowsScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.NET_CONFIG_GUI, NetConfigGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.EGG_CARTON_GUI, EggCartonGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.MICROWAWE_GUI, MicrowaweGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.DECAL_SCOLOR_GUI, DECALScolorGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.BACKPACK_GUI, BackpackGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.ORDER_GUI, OrderGUIScreen::new);
+        Ssc14ScreenBinder.bind(Ssc14MenuTypes.SALE_GUI, SaleGUIScreen::new);
     }
 
     private Ssc14ModScreens() { }

@@ -94,7 +94,7 @@ public class Ssc14ModMenus {
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	private static <T extends AbstractContainerMenu>
 			DeferredHolder<MenuType<?>, MenuType<T>> alias(
-					DeferredHolder<MenuType<?>, MenuType<AbstractContainerMenu>> holder) {
+				DeferredHolder<MenuType<?>, MenuType<T>> holder) {
 		return (DeferredHolder) holder;
 	}
 
