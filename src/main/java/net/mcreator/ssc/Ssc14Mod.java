@@ -24,6 +24,7 @@ import net.ssc14.common.station.StationCodeService;
 import net.ssc14.common.station.StationNameService;
 import net.ssc14.common.station.StationBudgetService;
 import net.ssc14.content.item.reagent.ReagentService;
+import net.ssc14.content.item.Ssc14ItemCapabilities;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
 import net.mcreator.ssc.init.*;
 import net.ssc14.integration.neoforge.server.ServerTaskSubmission;
@@ -161,6 +162,7 @@ public class Ssc14Mod {
 		Ssc14CommunicationBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14CommunicationBlockEntities::registerCapabilities);
 		Ssc14Items.REGISTRY.register(modEventBus);
+		modEventBus.addListener(Ssc14ItemCapabilities::register);
 		LightingEnergyService.install(CableTopologyService::queueUpdate);
 		CableTopologyService.install(new CableTopologyService.Adapter() {
 			@Override

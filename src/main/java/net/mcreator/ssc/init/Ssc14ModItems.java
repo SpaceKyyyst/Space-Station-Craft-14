@@ -29,10 +29,6 @@ import net.ssc14.content.item.access.IDCardPassangerInventoryCapability;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.item.Item;
 
@@ -45,7 +41,6 @@ import net.mcreator.ssc.Ssc14Mod;
 
 import java.util.function.Function;
 
-@EventBusSubscriber
 public class Ssc14ModItems {
 	public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(Ssc14Mod.MODID);
 	public static final DeferredItem<Item> ROD_FLOOR;
@@ -1149,31 +1144,4 @@ public class Ssc14ModItems {
 		return REGISTRY.registerItem(name, supplier, Item.Properties::new);
 	}
 
-	@SubscribeEvent
-	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new AccessConfigInventoryCapability(access), ACCESS_CONFIG.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL1spawnerInventoryCapability(access), DECAL_1SPAWNER.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetBaseInventoryCapability(access), HEADSET_BASE.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new PDApassangerInventoryCapability(access), PD_APASSANGER.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new EggCartonInventoryCapability(access), EGG_CARTON.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetBrigmedicInventoryCapability(access), HEADSET_BRIGMEDIC.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetCargoInventoryCapability(access), HEADSET_CARGO.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetCentcomInventoryCapability(access), HEADSET_CENTCOM.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetCommandInventoryCapability(access), HEADSET_COMMAND.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetEngineeringInventoryCapability(access), HEADSET_ENGINEERING.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetMedicalInventoryCapability(access), HEADSET_MEDICAL.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetMedicalScienceInventoryCapability(access), HEADSET_MEDICAL_SCIENCE.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetMiningInventoryCapability(access), HEADSET_MINING.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetRoboticsInventoryCapability(access), HEADSET_ROBOTICS.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetScienceInventoryCapability(access), HEADSET_SCIENCE.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetSecurityInventoryCapability(access), HEADSET_SECURITY.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetServiceInventoryCapability(access), HEADSET_SERVICE.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new HeadsetSyndicateInventoryCapability(access), HEADSET_SYNDICATE.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL2spawnerInventoryCapability(access), DECAL_2SPAWNER.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new Backpack2InventoryCapability(access), BACKPACK_2.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL3spawnerInventoryCapability(access), DECAL_3SPAWNER.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL4spawnerInventoryCapability(access), DECAL_4SPAWNER.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL5spawnerInventoryCapability(access), DECAL_5SPAWNER.get());
-		event.registerItem(Capabilities.Item.ITEM, (stack, access) -> new DECAL6spawnerInventoryCapability(access), DECAL_6SPAWNER.get());
-	}
 }

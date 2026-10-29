@@ -122,8 +122,8 @@ boundary:
   remains a field-compatible alias only and its empty legacy registry is not
   registered;
 - all generated inventory capability implementations were moved to canonical
-  item packages; `Ssc14ModItems.registerCapabilities` remains only as the
-  compatibility registration bridge and is the next subscriber boundary;
+  item packages; `Ssc14ItemCapabilities` now owns their NeoForge registration,
+  while `Ssc14ModItems` remains a field-compatible generated alias;
 - client screen overlays now route health-analyzer and world-check visibility
   through integration adapters; `net.mcreator.ssc.client.screens` has no direct
   generated-procedure imports;
