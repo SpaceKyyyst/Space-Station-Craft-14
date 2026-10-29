@@ -121,6 +121,9 @@ boundary:
 - `Ssc14Items.REGISTRY` is the sole active item registry; `Ssc14ModItems`
   remains a field-compatible alias only and its empty legacy registry is not
   registered;
+- generated inventory capability classes behind `Ssc14ModItems.registerCapabilities`
+  remain an explicit compatibility boundary; their ownership must move to
+  canonical item services before the subscriber is deleted;
 - client screen overlays now route health-analyzer and world-check visibility
   through integration adapters; `net.mcreator.ssc.client.screens` has no direct
   generated-procedure imports;
