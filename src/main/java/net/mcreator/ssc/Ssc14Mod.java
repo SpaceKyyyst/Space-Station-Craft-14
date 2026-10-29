@@ -40,7 +40,7 @@ import net.ssc14.content.item.weapon.LegacyFirearmInteractionAdapter;
 import net.ssc14.content.item.construction.LegacyConstructionItemInteractionAdapter;
 import net.ssc14.content.block.airlock.LegacyShuttersIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
-import net.mcreator.ssc.integration.LegacyAirlockControllerInteractionAdapter;
+import net.ssc14.content.block.airlock.LegacyAirlockControllerInteractionAdapter;
 import net.ssc14.content.gravity.ui.GravityGeneratorWindow;
 import net.ssc14.content.item.decal.LegacyDecalToolInteractionAdapter;
 import net.ssc14.content.item.container.LegacyPortableMenuInteractionAdapter;
