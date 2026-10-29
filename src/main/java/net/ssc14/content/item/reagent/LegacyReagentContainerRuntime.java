@@ -2,7 +2,7 @@ package net.ssc14.content.item.reagent;
 
 import java.util.HashMap;
 import java.util.Map;
-import net.ssc14.common.chemistry.ReagentService;
+import net.ssc14.content.item.reagent.ReagentService;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.ssc14.common.chemistry.ReagentColorMixer;

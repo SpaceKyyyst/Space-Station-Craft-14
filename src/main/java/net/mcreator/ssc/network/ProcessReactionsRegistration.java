@@ -1,7 +1,7 @@
 package net.mcreator.ssc.network;
 
 import java.util.Map;
-import net.ssc14.common.chemistry.ReagentService;
+import net.ssc14.content.item.reagent.ReagentService;
 import net.mcreator.ssc.Ssc14Mod;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.server.level.ServerPlayer;

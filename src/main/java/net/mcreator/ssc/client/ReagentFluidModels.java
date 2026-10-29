@@ -1,6 +1,6 @@
 package net.mcreator.ssc.client;
 
-import net.ssc14.common.chemistry.ReagentCatalog;
+import net.ssc14.content.item.reagent.ReagentCatalog;
 import net.mcreator.ssc.Ssc14Mod;
 import net.minecraft.client.renderer.block.FluidModel;
 import net.minecraft.client.resources.model.sprite.Material;

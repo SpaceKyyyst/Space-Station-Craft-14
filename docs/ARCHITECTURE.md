@@ -32,9 +32,9 @@
 Сейчас в коде сочетаются генерируемые процедуры, игровые адаптеры и выделенные
 доменные правила. Разделение ещё не охватывает все подсистемы.
 Операции чтения, добавления и удаления реагентов проходят через
-`ReagentContainerAccess`; владелец chemistry runtime теперь `ReagentService` в
-canonical package, а `ModReagents` оставлен только как deprecated alias для
-legacy NBT/GameTest callers.
+`ReagentContainerAccess`; владелец chemistry runtime теперь
+`content/item/reagent/ReagentService`, а `ModReagents` оставлен только
+как deprecated alias для legacy NBT/GameTest callers.
 Синхронизация access-полей ID-карт полностью проходит через
 `IdJobAssignmentService`; `ID_Code_CHECKProcedure` сохраняет только совместимый
 оркестрационный фасад и отдельные исторические блоковые helpers. Следующая
@@ -242,7 +242,7 @@ canonical `net.ssc14.content.energy` package. The former
 facades and are not part of the canonical runtime.
 
 Reagent registration, reaction planning and container operations now live in
-`net.ssc14.common.chemistry.ReagentService`; `net.mcreator.ssc.ModReagents`
+`net.ssc14.content.item.reagent.ReagentService`; `net.mcreator.ssc.ModReagents`
 remains only as a deprecated compatibility alias for generated callers and
 GameTests.
 

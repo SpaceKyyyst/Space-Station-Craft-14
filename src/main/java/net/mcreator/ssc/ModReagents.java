@@ -5,7 +5,7 @@ package net.mcreator.ssc;
  * This alias remains for generated callers and existing GameTests.
  */
 @Deprecated
-public class ModReagents extends net.ssc14.common.chemistry.ReagentService {
+public class ModReagents extends net.ssc14.content.item.reagent.ReagentService {
     protected ModReagents() {
         super();
     }

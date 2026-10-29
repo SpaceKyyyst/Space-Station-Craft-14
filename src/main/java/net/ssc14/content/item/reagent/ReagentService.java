@@ -1,5 +1,5 @@
 
-package net.ssc14.common.chemistry;
+package net.ssc14.content.item.reagent;
 
 import net.ssc14.content.item.reagent.LegacyReagentContainerRuntime;
 

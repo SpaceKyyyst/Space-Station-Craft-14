@@ -1,6 +1,6 @@
 package net.ssc14.content.command;
 
-import net.ssc14.common.chemistry.ReagentCatalog;
+import net.ssc14.content.item.reagent.ReagentCatalog;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -49,7 +49,7 @@ public final class ReagentFillCommandService {
         }
 
         if (ReagentContainerAccess.add(mainHand, reagentName, amount)) {
-            net.ssc14.common.chemistry.ReagentService.processReactions(mainHand, player);
+            net.ssc14.content.item.reagent.ReagentService.processReactions(mainHand, player);
             String displayName = ReagentCatalog.find(reagentName).orElseThrow().getDisplayName().getString();
             player.sendSystemMessage(Component.literal("§aДобавлено " + amount + " мл " + displayName));
         } else {
