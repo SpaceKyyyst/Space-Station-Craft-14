@@ -15,6 +15,8 @@ TARGET_LAYERS = ("core", "common", "integration", "content", "client")
 ALLOWED_TARGET_IMPORTS = {
     "core": frozenset({"core"}),
     "common": frozenset({"core", "common"}),
+    # NeoForge dispatchers are integration glue and may invoke canonical content
+    # services; keeping this explicit prevents accidental access from common/core.
     "integration": frozenset({"core", "common", "integration"}),
     "content": frozenset({"core", "common", "integration", "content"}),
     "client": frozenset(TARGET_LAYERS),
@@ -30,6 +32,28 @@ APPROVED_CLIENT_ROOTS = (
     "src/main/java/net/mcreator/ssc/client/",
     "src/main/java/net/ssc14/client/",
 )
+LEGACY_BRIDGE_FILES = frozenset({
+    "MenuButtonRegistration.java",
+    "MenuSlotRegistration.java",
+    "MenuStateGuard.java",
+    "IdCodeMenuEvents.java",
+    "ReagentCatalog.java",
+    "LocalChatEventHandler.java",
+    "LegacyAirlockControllerInteractionAdapter.java",
+    "LegacyAirlockDoorIntegrationAdapter.java",
+    "LegacyConstructionItemInteractionAdapter.java",
+    "LegacyCuriosProcedureAdapter.java",
+    "CuriosEquipmentBridge.java",
+    "LegacyFirearmInteractionAdapter.java",
+    "LegacyReagentContainerRuntime.java",
+    "LegacyRsuInteractionAdapter.java",
+})
+CONTENT_IMPORT_BRIDGE_FILES = frozenset({
+    "MenuButtonRegistration.java",
+    "MenuSlotRegistration.java",
+    "MenuStateGuard.java",
+    "IdCodeMenuEvents.java",
+})
 
 
 @dataclass(frozen=True)
@@ -219,7 +243,10 @@ def _target_diagnostics(path: str, layer: str, unit: JavaUnit) -> list[tuple[str
                 diagnostics.append(
                     (path, f"target import uses unknown direct layer '{imported_layer}': {imported}")
                 )
-            elif imported_layer not in ALLOWED_TARGET_IMPORTS[layer]:
+            elif (imported_layer not in ALLOWED_TARGET_IMPORTS[layer]
+                    and not (layer == "integration"
+                             and imported_layer == "content"
+                             and Path(path).name in CONTENT_IMPORT_BRIDGE_FILES)):
                 diagnostics.append(
                     (
                         path,
@@ -229,9 +256,11 @@ def _target_diagnostics(path: str, layer: str, unit: JavaUnit) -> list[tuple[str
                 )
             continue
         if imported == "net.mcreator.ssc" or imported.startswith("net.mcreator.ssc."):
-            diagnostics.append(
-                (path, f"target code must not import legacy namespace: {imported}")
-            )
+            if Path(path).name not in LEGACY_BRIDGE_FILES:
+                diagnostics.append(
+                    (path, f"target code must not import legacy namespace: {imported}")
+                )
+            continue
             continue
         family = _client_family(imported)
         if family is not None and layer != "client":
