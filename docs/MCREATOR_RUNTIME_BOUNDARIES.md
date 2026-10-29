@@ -41,8 +41,6 @@ owner, not merely renaming the facade.
 - `AirlockToolInteractionHandler` — canonical right-click маршрутизатор
   инструментов шлюза; legacy access/deconstruction adapters остаются явными
   compatibility inputs;
-- `AirlockEventLog` — thin compatibility facade; persisted log ownership moved to
-  `AirlockEventLogService`;
 - `AirlockSignals` — thin compatibility facade; redstone routing ownership moved
   to `AirlockSignalHandler`;
 - `AirlockAiControl` — thin compatibility facade; server-side AI control ownership
@@ -114,8 +112,6 @@ boundary:
 - `AirlockToolInteractionHandler` — canonical right-click routing for airlock
   tools; legacy access/deconstruction adapters remain explicit compatibility
   inputs;
-- `AirlockEventLog` — thin compatibility facade; persisted log ownership moved to
-  `AirlockEventLogService`;
 - `AirlockSignals` — thin compatibility facade; redstone routing ownership moved
   to `AirlockSignalHandler`;
 - `AirlockAiControl` — thin compatibility facade; server-side AI control ownership
