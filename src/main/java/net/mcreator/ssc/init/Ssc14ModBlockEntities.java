@@ -1,15 +1,9 @@
 package net.mcreator.ssc.init;
 
 import net.neoforged.neoforge.transfer.item.WorldlyContainerWrapper;
-import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.mcreator.ssc.block.entity.*;
 import net.mcreator.ssc.Ssc14Mod;
@@ -57,9 +51,7 @@ import net.ssc14.content.block.airlock.BaseAirlockD1BlockEntity;
 import net.ssc14.content.block.airlock.ClosedAirlockUpperPlugBlockEntity;
 import net.ssc14.content.block.airlock.OpenAirlockUpperPlugBlockEntity;
 
-@EventBusSubscriber
 public class Ssc14ModBlockEntities {
-	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Ssc14Mod.MODID);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SheathingBlockEntity>> SHEATHING = Ssc14CableBlockEntities.SHEATHING;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BaseAirlockD1BlockEntity>> BASE_AIRLOCK_D_1 = Ssc14AirlockBlockEntities.BASE_AIRLOCK_D_1;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<IdConsoleBlockEntity>> CONSOLE_OF_ID = Ssc14AccessBlockEntities.CONSOLE_OF_ID;
@@ -118,7 +110,4 @@ public class Ssc14ModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SaleConsoleBlockEntity>> SALE_CONSOLE = Ssc14CommerceBlockEntities.SALE_CONSOLE;
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LightingBlockEntity>> EMERGENCY_LIGHT = Ssc14LightingBlockEntities.EMERGENCY_LIGHT;
 
-	@SubscribeEvent
-	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-	}
 }
