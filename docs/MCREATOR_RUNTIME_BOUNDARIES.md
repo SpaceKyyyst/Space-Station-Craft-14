@@ -41,8 +41,6 @@ owner, not merely renaming the facade.
 - `AirlockToolInteractionHandler` — canonical right-click маршрутизатор
   инструментов шлюза; legacy access/deconstruction adapters остаются явными
   compatibility inputs;
-- `AirlockAccessPolicy` — thin compatibility facade; permission evaluation moved
-  to `AirlockAccessPolicyService`;
 - `CPlogLampPrProcedure` — thin compatibility facade; wire/lamp state ownership
   moved to `AirlockLampStateService`;
 - `BaseAirlockD1PutProcedure` — thin compatibility facade; initialization and
@@ -92,8 +90,6 @@ boundary:
 - `AirlockToolInteractionHandler` — canonical right-click routing for airlock
   tools; legacy access/deconstruction adapters remain explicit compatibility
   inputs;
-- `AirlockAccessPolicy` — thin compatibility facade; permission evaluation moved
-  to `AirlockAccessPolicyService`;
 - `CPlogLampPrProcedure` — thin compatibility facade; wire/lamp state ownership
   moved to `AirlockLampStateService`;
 - `BaseAirlockD1PutProcedure` — thin compatibility facade; initialization and
