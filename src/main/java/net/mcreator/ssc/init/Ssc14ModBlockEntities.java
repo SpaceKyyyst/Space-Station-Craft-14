@@ -6,7 +6,6 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import net.mcreator.ssc.block.entity.*;
-import net.mcreator.ssc.Ssc14Mod;
 import net.ssc14.content.block.storage.ClosetBlockEntity;
 import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
 import net.ssc14.content.block.lighting.LightingBlockEntity;
