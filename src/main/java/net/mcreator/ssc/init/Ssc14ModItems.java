@@ -32,7 +32,6 @@ import net.neoforged.neoforge.registries.DeferredItem;
 
 import net.minecraft.world.item.Item;
 
-import net.mcreator.ssc.item.*;
 import net.mcreator.ssc.block.FencePointBlock;
 import net.mcreator.ssc.block.FencePBlock;
 import net.mcreator.ssc.block.FenceLineBlock;
