@@ -1,4 +1,4 @@
-package net.mcreator.ssc.integration;
+package net.ssc14.content.command;
 
 import net.ssc14.common.chemistry.ReagentCatalog;
 

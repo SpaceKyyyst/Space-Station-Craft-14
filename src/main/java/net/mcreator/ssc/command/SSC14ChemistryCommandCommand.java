@@ -3,7 +3,7 @@ package net.mcreator.ssc.command;
 
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.common.util.FakePlayerFactory;
-import net.mcreator.ssc.integration.ReagentFillCommandService;
+import net.ssc14.content.command.ReagentFillCommandService;
 import net.ssc14.common.chemistry.ReagentCatalog;
 
 import net.minecraft.world.level.Level;
