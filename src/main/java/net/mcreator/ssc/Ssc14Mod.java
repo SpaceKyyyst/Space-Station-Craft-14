@@ -1,6 +1,5 @@
 package net.mcreator.ssc;
 
-import net.mcreator.ssc.integration.LegacyReagentBootstrap;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -374,7 +373,7 @@ public class Ssc14Mod {
 		Ssc14ParticleTypes.REGISTRY.register(modEventBus);
 		Ssc14Attributes.REGISTRY.register(modEventBus);
 		// Start of user code block mod init
-		LegacyReagentBootstrap.register(modEventBus);
+		ModReagents.register(modEventBus);
 		// End of user code block mod init
 	}
 
