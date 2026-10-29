@@ -144,27 +144,27 @@ manual opening, tile installation и deconstruction; legacy adapters остаю�
 явными входами до отдельной миграции их контрактов.
 
 Персистентный журнал шлюза реализован в `AirlockEventLogService`; прежний
-`AirlockEventLog` сохранён как thin compatibility facade для generated callers.
+`AirlockEventLog` удалён после переноса всех runtime-вызовов.
 
 Обработка физических redstone-сигналов вынесена в `AirlockSignalHandler`; старый
-`AirlockSignals` оставлен фасадом, сохраняя ключ `HOLD` и legacy callers.
+`AirlockSignals` удалён; canonical handler сохраняет ключ `HOLD`.
 
 Server-side AI control шлюза реализован в `AirlockAiControlService`; старый
 `AirlockAiControl` сохраняет типы `Authority`/`Action` и делегирует вызов.
 
 Удаление изолированной сваренной двери реализовано в `AirlockDisassemblyService`;
-`AirlockDisassembly` оставлен compatibility facade, а canonical tool handler
+`AirlockDisassembly` удалён, а canonical tool handler
 вызывает сервис напрямую.
 
 Проверка двери и подача сетевого питания вынесены в `AirlockPowerService`;
-`AirlockPower` сохранён как фасад для energy topology и legacy callers.
+`AirlockPower` удалён; energy topology использует canonical service.
 
 Server-authoritative wire edits теперь принадлежат canonical
-`net.ssc14.content.block.airlock.AirlockWireService`; старый класс сохранён как
+`net.ssc14.content.block.airlock.AirlockWireService`; старый класс удалён после
 facade для network/menu callers.
 
 Синхронизация permissions конфигуратора доступа вынесена в
-`AirlockConfiguratorService`; старый `AirlockConfigurator` сохраняет API для
+`AirlockConfiguratorService`; старый `AirlockConfigurator` удалён после
 menu/integration callers и прежний формат access keys.
 
 Планирование wire-pulse теперь принадлежит `AirlockWirePulseService`: deadline-
@@ -173,15 +173,15 @@ menu/integration callers и прежний формат access keys.
 
 Welding jobs теперь принадлежат `AirlockWeldingService`; сохранены отмена при
 движении/смене инструмента, fuel charge только при завершении и player-tick
-семантика. Старый `AirlockWelding` оставлен фасадом.
+семантика. Старый `AirlockWelding` удалён.
 
 Manual-opening jobs теперь принадлежат `AirlockManualOpeningService`; сохранены
 проверки powered/bolted/welded, дистанции, отмена движения и player-tick
-семантика. Старый `AirlockManualOpening` оставлен compatibility facade.
+семантика. Старый `AirlockManualOpening` удалён.
 
 Оценка доступа двери вынесена в `AirlockAccessPolicyService`; сохранены emergency
 bypass, unrestricted-door semantics и bitmask permissions. Старый
-`AirlockAccessPolicy` оставлен compatibility facade для generated open/close
+`AirlockAccessPolicy` удалён после переноса generated open/close
 процедур.
 
 Оставшиеся canonical inputs из `net.mcreator.ssc.init` — registry aliases
@@ -258,27 +258,27 @@ deconstruction check order; legacy adapters remain explicit inputs until their
 contracts are migrated separately.
 
 Persistent airlock logging is implemented by `AirlockEventLogService`; the old
-`AirlockEventLog` remains as a thin compatibility facade for generated callers.
+`AirlockEventLog` was removed after all runtime calls moved to the canonical service.
 
 Physical redstone signal handling now lives in `AirlockSignalHandler`; the old
-`AirlockSignals` remains a facade preserving the `HOLD` key and legacy callers.
+`AirlockSignals` was removed; the canonical handler preserves the `HOLD` key.
 
 Server-side airlock AI control is implemented by `AirlockAiControlService`; the
 old `AirlockAiControl` preserves the `Authority`/`Action` types and delegates.
 
 Isolated welded-door removal is implemented by `AirlockDisassemblyService`;
-`AirlockDisassembly` remains a compatibility facade, while the canonical tool
+`AirlockDisassembly` was removed, while the canonical tool
 handler calls the service directly.
 
 Door identification and network-power supply now live in `AirlockPowerService`;
-`AirlockPower` remains a facade for energy topology and legacy callers.
+`AirlockPower` was removed; energy topology uses the canonical service.
 
 Server-authoritative wire edits now belong to canonical
-`net.ssc14.content.block.airlock.AirlockWireService`; the old class remains a
+`net.ssc14.content.block.airlock.AirlockWireService`; the old class was removed
 facade for network/menu callers.
 
 Access-configurator permission synchronization now lives in
-`AirlockConfiguratorService`; the old `AirlockConfigurator` preserves the API
+`AirlockConfiguratorService`; the old `AirlockConfigurator` was removed after
 for menu/integration callers and the existing access-key format.
 
 Wire-pulse scheduling now belongs to `AirlockWirePulseService`; deadline keys,
@@ -287,15 +287,15 @@ chunk loading, and level-tick semantics are preserved, while the old
 
 Welding jobs now belong to `AirlockWeldingService`; cancellation on movement or
 tool changes, completion-only fuel charging, and player-tick semantics are
-preserved. The old `AirlockWelding` remains a facade.
+preserved. The old `AirlockWelding` was removed.
 
 Manual-opening jobs now belong to `AirlockManualOpeningService`; powered,
 bolted, welded, distance, movement-cancellation, and player-tick semantics are
-preserved. The old `AirlockManualOpening` remains a compatibility facade.
+preserved. The old `AirlockManualOpening` was removed.
 
 Door access evaluation now lives in `AirlockAccessPolicyService`; emergency
 bypass, unrestricted-door semantics, and bitmask permissions are preserved. The
-old `AirlockAccessPolicy` remains a compatibility facade for generated
+old `AirlockAccessPolicy` was removed after generated
 open/close procedures.
 
 The remaining canonical inputs from `net.mcreator.ssc.init` are registry aliases
