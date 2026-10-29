@@ -1,51 +1,24 @@
 package net.mcreator.ssc.init;
 
-import net.neoforged.neoforge.client.renderstate.RegisterRenderStateModifiersEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.api.distmarker.Dist;
-
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.util.context.ContextKey;
-import net.minecraft.resources.Identifier;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.neoforged.neoforge.client.renderstate.RegisterRenderStateModifiersEvent;
 
-import com.google.common.reflect.TypeToken;
+/** @deprecated Use {@link net.ssc14.client.Ssc14RenderStateModifiers}. */
+@Deprecated(forRemoval = false)
+public final class Ssc14ModRenderStateModifiers {
+    public static final ContextKey<LivingEntity> LIVING_ENTITY =
+            net.ssc14.client.Ssc14RenderStateModifiers.LIVING_ENTITY;
 
-@Deprecated(forRemoval = true)
-public class Ssc14ModRenderStateModifiers {
-	public static final ContextKey<LivingEntity> LIVING_ENTITY = new ContextKey<>(Identifier.parse("c:living_entity_attachment"));
+    private Ssc14ModRenderStateModifiers() { }
 
-	@SubscribeEvent
-	public static void registerModifiers(RegisterRenderStateModifiersEvent event) {
-		event.registerEntityModifier(new TypeToken<LivingEntityRenderer<LivingEntity, LivingEntityRenderState, ?>>() {
-		}, (entity, state) -> state.setRenderData(LIVING_ENTITY, (LivingEntity) entity));
-	}
+    public static void registerModifiers(RegisterRenderStateModifiersEvent event) {
+        net.ssc14.client.Ssc14RenderStateModifiers.registerModifiers(event);
+    }
 
-	public static LivingEntityRenderState cloneRenderState(LivingEntityRenderState newState, LivingEntityRenderState originalState) {
-		newState.x = originalState.x;
-		newState.y = originalState.y;
-		newState.z = originalState.z;
-		newState.lightCoords = originalState.lightCoords;
-		newState.ageInTicks = originalState.ageInTicks;
-		newState.distanceToCameraSq = originalState.distanceToCameraSq;
-		newState.displayFireAnimation = originalState.displayFireAnimation;
-		newState.wornHeadAnimationPos = originalState.wornHeadAnimationPos;
-		newState.partialTick = originalState.partialTick;
-		newState.passengerOffset = originalState.passengerOffset;
-		newState.eyeHeight = originalState.eyeHeight;
-		newState.bodyRot = originalState.bodyRot;
-		newState.yRot = originalState.yRot;
-		newState.xRot = originalState.xRot;
-		newState.deathTime = originalState.deathTime;
-		newState.walkAnimationPos = originalState.walkAnimationPos;
-		newState.walkAnimationSpeed = originalState.walkAnimationSpeed;
-		newState.scale = originalState.scale;
-		newState.ageScale = originalState.ageScale;
-		newState.isBaby = originalState.isBaby;
-		newState.hasRedOverlay = originalState.hasRedOverlay;
-		newState.isInvisibleToPlayer = originalState.isInvisibleToPlayer;
-		return newState;
-	}
+    public static LivingEntityRenderState cloneRenderState(
+            LivingEntityRenderState newState, LivingEntityRenderState originalState) {
+        return net.ssc14.client.Ssc14RenderStateModifiers.cloneRenderState(newState, originalState);
+    }
 }
