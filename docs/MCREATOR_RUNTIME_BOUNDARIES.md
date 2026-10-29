@@ -22,6 +22,22 @@
 Исторически перенесённые event subscribers и процедурные фасады перечислены ниже;
 их текущие владельцы находятся в canonical-слоях или legacy integration boundary:
 
+### Текущие runtime-границы / Current runtime boundaries
+
+Эти классы ещё не удаляются автоматически: каждый из них либо реализует
+`ReagentContainerRuntime`, либо подключает внешний event/API контракт. Их замена
+требует отдельной миграции владельца, а не переименования фасада.
+
+These classes are intentionally retained: each implements `ReagentContainerRuntime`
+or connects an external event/API contract. Replacing them requires migrating the
+owner, not merely renaming the facade.
+
+- `LegacyReagentContainerRuntime` — storage/color/drink bridge for chemistry;
+- `LegacyCuriosProcedureAdapter` — Curios capability bridge;
+- `LegacyFirearmInteractionAdapter` — firearm item hook bridge;
+- `LegacyConstructionItemInteractionAdapter` — construction item hook bridge;
+- `LegacyCommunicationConsoleAdapter` — communication-console event bridge.
+
 - `AirlockToolInteractionHandler` — canonical right-click маршрутизатор
   инструментов шлюза; legacy access/deconstruction adapters остаются явными
   compatibility inputs;
