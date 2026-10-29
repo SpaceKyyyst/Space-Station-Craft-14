@@ -1,2 +1,2 @@
 # Direct execute() calls between legacy procedure classes. Keep entries sorted.
-ID_Code_CHECKProcedure -> IDCode0CellprProcedure
+# No active generated-procedure edges remain after the canonical migration.
