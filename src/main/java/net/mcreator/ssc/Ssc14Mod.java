@@ -30,6 +30,7 @@ import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 import net.ssc14.content.menu.machinery.MacFrameGUIMenu;
 import net.ssc14.content.menu.Ssc14MenuTypes;
+import net.ssc14.content.tab.Ssc14CreativeTabs;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
 import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
@@ -367,7 +368,7 @@ public class Ssc14Mod {
 		FirearmInteractionService.install(LegacyFirearmInteractionAdapter.INSTANCE);
 		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
 		Ssc14EntityTypes.REGISTRY.register(modEventBus);
-		Ssc14ModTabs.REGISTRY.register(modEventBus);
+		Ssc14CreativeTabs.REGISTRY.register(modEventBus);
 		Ssc14PlayerAttachments.register(modEventBus);
 		Ssc14StructureFeature.register(modEventBus);
 		Ssc14MenuTypes.REGISTRY.register(modEventBus);
