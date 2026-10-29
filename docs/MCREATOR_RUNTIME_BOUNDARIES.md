@@ -71,6 +71,8 @@ owner, not merely renaming the facade.
   renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
 - `Ssc14ModCuriosRenderers` — compatibility facade only; Curios renderer
   registration now belongs exclusively to `Ssc14CuriosRenderers`;
+- `Ssc14ModScreens` — compatibility facade only; screen registration and
+  menu-state client wiring now belong exclusively to `Ssc14Screens`;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
   `TEMPORARYGRAVITYPLUGplayerProcedure` удалены после canonical-переноса;
 - остальные subscribers должны проверяться по event annotation, а не по числу прямых вызовов.
@@ -170,6 +172,8 @@ boundary:
   renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
 - `Ssc14ModCuriosRenderers` — compatibility facade only; Curios renderer
   registration now belongs exclusively to `Ssc14CuriosRenderers`;
+- `Ssc14ModScreens` — compatibility facade only; screen registration and
+  menu-state client wiring now belong exclusively to `Ssc14Screens`;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
   `TEMPORARYGRAVITYPLUGplayerProcedure` were removed after canonical migration;
 - every remaining subscriber must be audited by event annotation, not by direct-call count.
