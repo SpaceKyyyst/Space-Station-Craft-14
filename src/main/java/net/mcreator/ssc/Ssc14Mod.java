@@ -26,7 +26,7 @@ import net.ssc14.common.station.StationBudgetService;
 import net.ssc14.content.item.reagent.ReagentService;
 import net.ssc14.content.item.Ssc14ItemCapabilities;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
-import net.mcreator.ssc.init.*;
+import net.mcreator.ssc.init.Ssc14ModCuriosRenderers;
 import net.ssc14.content.equipment.Ssc14CuriosCompatibility;
 import net.ssc14.integration.neoforge.server.ServerTaskSubmission;
 import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
