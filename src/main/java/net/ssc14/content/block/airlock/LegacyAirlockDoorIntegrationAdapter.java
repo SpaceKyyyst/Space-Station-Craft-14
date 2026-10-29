@@ -1,4 +1,4 @@
-package net.mcreator.ssc.integration;
+package net.ssc14.content.block.airlock;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;
