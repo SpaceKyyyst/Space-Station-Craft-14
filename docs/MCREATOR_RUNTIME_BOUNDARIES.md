@@ -73,6 +73,8 @@ owner, not merely renaming the facade.
   registration now belongs exclusively to `Ssc14CuriosRenderers`;
 - `Ssc14ModScreens` — compatibility facade only; screen registration and
   menu-state client wiring now belong exclusively to `Ssc14Screens`;
+- `Ssc14ModKeyMappings` — compatibility facade only; key registration and
+  client tick dispatch now belong exclusively to `Ssc14KeyMappings`;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
   `TEMPORARYGRAVITYPLUGplayerProcedure` удалены после canonical-переноса;
 - остальные subscribers должны проверяться по event annotation, а не по числу прямых вызовов.
@@ -174,6 +176,8 @@ boundary:
   registration now belongs exclusively to `Ssc14CuriosRenderers`;
 - `Ssc14ModScreens` — compatibility facade only; screen registration and
   menu-state client wiring now belong exclusively to `Ssc14Screens`;
+- `Ssc14ModKeyMappings` — compatibility facade only; key registration and
+  client tick dispatch now belong exclusively to `Ssc14KeyMappings`;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
   `TEMPORARYGRAVITYPLUGplayerProcedure` were removed after canonical migration;
 - every remaining subscriber must be audited by event annotation, not by direct-call count.
