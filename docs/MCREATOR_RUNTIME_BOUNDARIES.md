@@ -3,14 +3,16 @@
 > **Актуальный снимок / Current snapshot (2026-10-29):** в каталоге
 > `src/main/java/net/mcreator/ssc/procedures` больше не содержит активных процедур.
 > Microwave, MK58 breech/fire, spanner, construction и RSU перенесены в canonical
-> services. Все удалённые фасады и procedural wrappers из старых списков ниже больше
-> не являются частью runtime. Тестовая версия проекта — `0.1.28-beta`.
+> services. Удалённые procedural wrappers больше не являются частью runtime;
+> несколько thin compatibility facades сохранены для legacy/GameTest контрактов.
+> Тестовая версия проекта — `0.1.28-beta`.
 
 > **Current snapshot (2026-10-29):** no active procedures remain in
 > `src/main/java/net/mcreator/ssc/procedures`.
 > Microwave, MK58 breech/fire, spanner, construction, and RSU now live in canonical
-> services. Deleted facades and wrappers listed historically below are no longer
-> runtime sources. The project test version is `0.1.28-beta`.
+> services. Deleted procedural wrappers are no longer runtime sources; a small set
+> of thin compatibility facades remains for legacy/GameTest contracts. The project
+> test version is `0.1.28-beta`.
 
 ## RU — исторические границы и оставшиеся legacy-адаптеры
 
