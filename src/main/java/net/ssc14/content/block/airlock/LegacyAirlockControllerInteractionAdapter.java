@@ -1,7 +1,7 @@
 package net.ssc14.content.block.airlock;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.item.Ssc14Items;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -26,7 +26,7 @@ public final class LegacyAirlockControllerInteractionAdapter
             BlockState ignored, Entity entity, ItemStack controller) {
         if (!(world instanceof ServerLevel level) || !(entity instanceof Player player)
                 || player.level() != level || !player.isAlive() || player.isSpectator()
-                || !controller.is(Ssc14ModItems.AIRLOCK_CONTROLLER.get())
+                || !controller.is(Ssc14Items.AIRLOCK_CONTROLLER.get())
                 || controller != player.getMainHandItem()
                         && controller != player.getOffhandItem()) {
             return;
@@ -36,8 +36,8 @@ public final class LegacyAirlockControllerInteractionAdapter
             return;
         }
         BlockState state = level.getBlockState(pos);
-        if (state.is(Ssc14ModBlocks.AIRLOCK_UP_PLUG.get())
-                || state.is(Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get())) {
+        if (state.is(Ssc14Blocks.AIRLOCK_UP_PLUG.get())
+                || state.is(Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.get())) {
             pos = pos.below();
             state = level.getBlockState(pos);
         }
