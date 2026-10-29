@@ -1,4 +1,4 @@
-package net.mcreator.ssc.init;
+package net.ssc14.content.equipment;
 
 import top.theillusivec4.curios.api.type.capability.ICurio;
 import top.theillusivec4.curios.api.SlotContext;
@@ -8,13 +8,13 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
 import net.minecraft.world.item.ItemStack;
 
-import net.ssc14.content.equipment.CuriosEquipmentBridge;
-import net.ssc14.content.equipment.HardsuitSalvageHelmetEquipabilityService;
-import net.ssc14.content.equipment.MagBootsUnequipService;
-import net.ssc14.content.equipment.OuterclothingEvaUnequipService;
-import net.ssc14.content.equipment.EquipmentSoundService;
+import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.content.item.Ssc14Items;
 
-public class Ssc14ModCuriosCompat {
+public final class Ssc14CuriosCompatibility {
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
@@ -26,7 +26,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.RED_SCARF.get());
+		}, Ssc14Items.RED_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -37,7 +37,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BLACK_SCARF.get());
+		}, Ssc14Items.BLACK_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -48,7 +48,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BLACK_GREEN_SCARF.get());
+		}, Ssc14Items.BLACK_GREEN_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -59,7 +59,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BLUE_SCARF.get());
+		}, Ssc14Items.BLUE_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -70,7 +70,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BROWN_SCARF.get());
+		}, Ssc14Items.BROWN_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -81,7 +81,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.GREEN_SCARF.get());
+		}, Ssc14Items.GREEN_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -92,7 +92,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.LIGHT_BLUE_SCARF.get());
+		}, Ssc14Items.LIGHT_BLUE_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -103,7 +103,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.LIGHT_BLUE_WHITE_SCARF.get());
+		}, Ssc14Items.LIGHT_BLUE_WHITE_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -114,7 +114,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.ORANGE_SCARF.get());
+		}, Ssc14Items.ORANGE_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -125,7 +125,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.PURPLE_SCARF.get());
+		}, Ssc14Items.PURPLE_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -136,7 +136,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.SINDY_SCARF.get());
+		}, Ssc14Items.SINDY_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -147,7 +147,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.TRNS_SCARF.get());
+		}, Ssc14Items.TRNS_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -158,7 +158,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.YELLOW_SCARF.get());
+		}, Ssc14Items.YELLOW_SCARF.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -169,7 +169,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playGloves(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.ISOLATED_GLOVES.get());
+		}, Ssc14Items.ISOLATED_GLOVES.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -180,7 +180,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.SECURITY_JUMPSUIT.get());
+		}, Ssc14Items.SECURITY_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -191,13 +191,13 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.COMBAT_BOOTS_ITEM.get());
+		}, Ssc14Items.COMBAT_BOOTS_ITEM.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.MAGNETIC_BOOTS_ITEM.get());
+		}, Ssc14Items.MAGNETIC_BOOTS_ITEM.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -213,7 +213,7 @@ public class Ssc14ModCuriosCompat {
 			public void onUnequip(SlotContext slotContext, ItemStack newStack) {
 				MagBootsUnequipService.execute(slotContext.entity());
 			}
-		}, Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get());
+		}, Ssc14Items.MAGNETIC_BOOTS_ACTIVE_ITEM.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -224,7 +224,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.PASSANGER_JUMPSUIT.get());
+		}, Ssc14Items.PASSANGER_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -235,7 +235,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.ATMOS_JUMPSUIT.get());
+		}, Ssc14Items.ATMOS_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -246,7 +246,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BOTANIST_JUMPSUIT.get());
+		}, Ssc14Items.BOTANIST_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -257,7 +257,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CAPTAIN_JUMPSUIT.get());
+		}, Ssc14Items.CAPTAIN_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -268,7 +268,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CARGO_JUMPSUIT.get());
+		}, Ssc14Items.CARGO_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -279,7 +279,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CE_JUMPSUIT.get());
+		}, Ssc14Items.CE_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -290,7 +290,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CHEMIST_JUMPSUIT.get());
+		}, Ssc14Items.CHEMIST_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -301,7 +301,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CMO_JUMPSUIT.get());
+		}, Ssc14Items.CMO_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -312,7 +312,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.ENGENEER_JUMPSUIT.get());
+		}, Ssc14Items.ENGENEER_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -323,7 +323,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.HO_P_JUMPSUIT.get());
+		}, Ssc14Items.HO_P_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -334,7 +334,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.HO_S_JUMPSUIT.get());
+		}, Ssc14Items.HO_S_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -345,7 +345,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.MEDICAL_JUMPSUIT.get());
+		}, Ssc14Items.MEDICAL_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -356,7 +356,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.QM_JUMPSUIT.get());
+		}, Ssc14Items.QM_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -367,7 +367,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.RD_JUMPSUIT.get());
+		}, Ssc14Items.RD_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -378,7 +378,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.RND_JUMPSUIT.get());
+		}, Ssc14Items.RND_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -389,7 +389,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.WARDEN_JUMPSUIT.get());
+		}, Ssc14Items.WARDEN_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -400,7 +400,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BLACK_SOLES_ITEM.get());
+		}, Ssc14Items.BLACK_SOLES_ITEM.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -411,7 +411,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CLOAKS_CAP.get());
+		}, Ssc14Items.CLOAKS_CAP.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -422,7 +422,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.MANTLES_CAP.get());
+		}, Ssc14Items.MANTLES_CAP.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -433,7 +433,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.ARMOR_SECURITY.get());
+		}, Ssc14Items.ARMOR_SECURITY.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -444,7 +444,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playHelmet(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.HELMET_SECURITY.get());
+		}, Ssc14Items.HELMET_SECURITY.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -455,25 +455,25 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BELT_SECURITY.get());
+		}, Ssc14Items.BELT_SECURITY.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_BASE.get());
+		}, Ssc14Items.HEADSET_BASE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.ID_CARD_PASSANGER.get());
+		}, Ssc14Items.ID_CARD_PASSANGER.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.PD_APASSANGER.get());
+		}, Ssc14Items.PD_APASSANGER.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -489,7 +489,7 @@ public class Ssc14ModCuriosCompat {
 			public void onUnequip(SlotContext slotContext, ItemStack newStack) {
 				OuterclothingEvaUnequipService.execute(slotContext.entity());
 			}
-		}, Ssc14ModItems.OUTERCLOTHING_EVA.get());
+		}, Ssc14Items.OUTERCLOTHING_EVA.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -500,7 +500,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playHelmet(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.HELMETS_EVA.get());
+		}, Ssc14Items.HELMETS_EVA.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -511,24 +511,13 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.MALE_BOXERS.get());
+		}, Ssc14Items.MALE_BOXERS.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.GLASS_SECURITY.get());
-		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
-			@Override
-			public ItemStack getStack() {
-				return stack;
-			}
-
-			@Override
-			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
-			}
-		}, Ssc14ModItems.GAS_MASK.get());
+		}, Ssc14Items.GLASS_SECURITY.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -539,7 +528,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.WORK_BOOTS.get());
+		}, Ssc14Items.GAS_MASK.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -550,7 +539,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CLOAKS_HO_S.get());
+		}, Ssc14Items.WORK_BOOTS.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -561,7 +550,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.MANTLES_HO_S_SHOULDER_CAP.get());
+		}, Ssc14Items.CLOAKS_HO_S.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -572,7 +561,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.MANTLES_HO_S.get());
+		}, Ssc14Items.MANTLES_HO_S_SHOULDER_CAP.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -583,7 +572,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.COAT_ATMOS.get());
+		}, Ssc14Items.MANTLES_HO_S.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -594,7 +583,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.COAT_SECURITY.get());
+		}, Ssc14Items.COAT_ATMOS.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -605,7 +594,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.TIE_BLACK.get());
+		}, Ssc14Items.COAT_SECURITY.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -616,7 +605,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.TIE_RED.get());
+		}, Ssc14Items.TIE_BLACK.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -627,19 +616,30 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.TIE_SCIENCE.get());
+		}, Ssc14Items.TIE_RED.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.GLASS_GLASSES.get());
+
+			@Override
+			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
+				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
+			}
+		}, Ssc14Items.TIE_SCIENCE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.GLASS_DARK.get());
+		}, Ssc14Items.GLASS_GLASSES.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14Items.GLASS_DARK.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -650,7 +650,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playGloves(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BLACK_GLOVES.get());
+		}, Ssc14Items.BLACK_GLOVES.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -661,24 +661,13 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playHelmet(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.HELMET_COSMONAUT.get());
+		}, Ssc14Items.HELMET_COSMONAUT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.CONE.get());
-		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
-			@Override
-			public ItemStack getStack() {
-				return stack;
-			}
-
-			@Override
-			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
-			}
-		}, Ssc14ModItems.BELT_SECURITY_WEBBING.get());
+		}, Ssc14Items.CONE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -689,7 +678,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BELT_INSTRUMENTAL.get());
+		}, Ssc14Items.BELT_SECURITY_WEBBING.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -700,7 +689,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.MASK_GAS_SECURITY.get());
+		}, Ssc14Items.BELT_INSTRUMENTAL.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -711,7 +700,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.WHITE_KNEE.get());
+		}, Ssc14Items.MASK_GAS_SECURITY.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -722,7 +711,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BEE_THIGH.get());
+		}, Ssc14Items.WHITE_KNEE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -733,7 +722,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.STOCKINGS_BLUE.get());
+		}, Ssc14Items.BEE_THIGH.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -744,7 +733,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.STOCKINGS_CYAN.get());
+		}, Ssc14Items.STOCKINGS_BLUE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -755,7 +744,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.STOCKINGS_D_PINK.get());
+		}, Ssc14Items.STOCKINGS_CYAN.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -766,7 +755,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.STOCKINGS_GREEN.get());
+		}, Ssc14Items.STOCKINGS_D_PINK.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -777,7 +766,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.STOCKINGS_L_PINK.get());
+		}, Ssc14Items.STOCKINGS_GREEN.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -788,7 +777,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.STOCKINGS_ORANGE.get());
+		}, Ssc14Items.STOCKINGS_L_PINK.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -799,7 +788,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.STOCKINGS_PURPLE.get());
+		}, Ssc14Items.STOCKINGS_ORANGE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -810,7 +799,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.STOCKINGS_YELLOW.get());
+		}, Ssc14Items.STOCKINGS_PURPLE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -821,7 +810,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BARTENDER_JUMPSUIT.get());
+		}, Ssc14Items.STOCKINGS_YELLOW.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -832,7 +821,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BRIGMEDIC_JUMPSUIT.get());
+		}, Ssc14Items.BARTENDER_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -843,7 +832,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CAPFORMAL_JUMPSUIT.get());
+		}, Ssc14Items.BRIGMEDIC_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -854,7 +843,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CASUAL_JUMPSUIT.get());
+		}, Ssc14Items.CAPFORMAL_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -865,7 +854,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.C_ETURTLE_JUMPSUIT.get());
+		}, Ssc14Items.CASUAL_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -876,7 +865,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CENTCOM_AGENT_JUMPSUIT.get());
+		}, Ssc14Items.C_ETURTLE_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -887,7 +876,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CENTCOM_OFFICER_JUMPSUIT.get());
+		}, Ssc14Items.CENTCOM_AGENT_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -898,7 +887,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CENTCOM_OFFICIAL_JUMPSUIT.get());
+		}, Ssc14Items.CENTCOM_OFFICER_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -909,7 +898,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CHAPLAIN_JUMPSUIT.get());
+		}, Ssc14Items.CENTCOM_OFFICIAL_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -920,7 +909,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CHEF_JUMPSUIT.get());
+		}, Ssc14Items.CHAPLAIN_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -931,7 +920,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.CM_OTURTLE_JUMPSUIT.get());
+		}, Ssc14Items.CHEF_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -942,85 +931,96 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.HO_SPARADE_JUMPSUIT.get());
+		}, Ssc14Items.CM_OTURTLE_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_BRIGMEDIC.get());
+
+			@Override
+			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
+				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
+			}
+		}, Ssc14Items.HO_SPARADE_JUMPSUIT.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_CARGO.get());
+		}, Ssc14Items.HEADSET_BRIGMEDIC.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_CENTCOM.get());
+		}, Ssc14Items.HEADSET_CARGO.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_COMMAND.get());
+		}, Ssc14Items.HEADSET_CENTCOM.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_ENGINEERING.get());
+		}, Ssc14Items.HEADSET_COMMAND.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_MEDICAL.get());
+		}, Ssc14Items.HEADSET_ENGINEERING.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_MEDICAL_SCIENCE.get());
+		}, Ssc14Items.HEADSET_MEDICAL.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_MINING.get());
+		}, Ssc14Items.HEADSET_MEDICAL_SCIENCE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_ROBOTICS.get());
+		}, Ssc14Items.HEADSET_MINING.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_SCIENCE.get());
+		}, Ssc14Items.HEADSET_ROBOTICS.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_SECURITY.get());
+		}, Ssc14Items.HEADSET_SCIENCE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_SERVICE.get());
+		}, Ssc14Items.HEADSET_SECURITY.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
 				return stack;
 			}
-		}, Ssc14ModItems.HEADSET_SYNDICATE.get());
+		}, Ssc14Items.HEADSET_SERVICE.get());
+		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+			@Override
+			public ItemStack getStack() {
+				return stack;
+			}
+		}, Ssc14Items.HEADSET_SYNDICATE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -1036,7 +1036,7 @@ public class Ssc14ModCuriosCompat {
 			public void onUnequip(SlotContext slotContext, ItemStack newStack) {
 				CuriosEquipmentBridge.onSalvageUnequip(slotContext.entity());
 			}
-		}, Ssc14ModItems.HARDSUIT_SALVAGE.get());
+		}, Ssc14Items.HARDSUIT_SALVAGE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -1047,7 +1047,7 @@ public class Ssc14ModCuriosCompat {
 			public boolean canUnequip(SlotContext slotContext) {
 				return HardsuitSalvageHelmetEquipabilityService.execute();
 			}
-		}, Ssc14ModItems.HARDSUIT_SALVAGE_HELMET.get());
+		}, Ssc14Items.HARDSUIT_SALVAGE_HELMET.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -1058,7 +1058,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.BACKPACK_2.get());
+		}, Ssc14Items.BACKPACK_2.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
 			@Override
 			public ItemStack getStack() {
@@ -1069,6 +1069,7 @@ public class Ssc14ModCuriosCompat {
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
 				EquipmentSoundService.playBase(slotContext.entity().level(), slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ());
 			}
-		}, Ssc14ModItems.MAID_JUMPSUIT.get());
+		}, Ssc14Items.MAID_JUMPSUIT.get());
 	}
 }
+

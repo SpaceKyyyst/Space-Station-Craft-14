@@ -27,6 +27,7 @@ import net.ssc14.content.item.reagent.ReagentService;
 import net.ssc14.content.item.Ssc14ItemCapabilities;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
 import net.mcreator.ssc.init.*;
+import net.ssc14.content.equipment.Ssc14CuriosCompatibility;
 import net.ssc14.integration.neoforge.server.ServerTaskSubmission;
 import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
@@ -127,7 +128,7 @@ public class Ssc14Mod {
 		// End of user code block mod constructor
 		modEventBus.addListener(Ssc14NetworkPayloads::register);
 		if (ModList.get().isLoaded("curios")) {
-			modEventBus.addListener(Ssc14ModCuriosCompat::registerCapabilities);
+			modEventBus.addListener(Ssc14CuriosCompatibility::registerCapabilities);
 			modEventBus.addListener(Ssc14ModCuriosRenderers::registerRenderers);
 		}
 		Ssc14SoundEvents.REGISTRY.register(modEventBus);
@@ -441,3 +442,4 @@ public class Ssc14Mod {
 		}
 	}
 }
+
