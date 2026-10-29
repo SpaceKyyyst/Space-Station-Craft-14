@@ -13,6 +13,7 @@ import net.ssc14.content.item.weapon.FirearmInteractionService;
 import net.ssc14.content.item.weapon.FirearmState;
 import net.ssc14.content.item.weapon.Mk58State;
 import net.ssc14.content.item.weapon.PistolMagazineState;
+import net.ssc14.content.item.Ssc14Items;
 
 /** Adapter retained until the MK-58 procedures move into canonical packages. */
 public final class LegacyFirearmInteractionAdapter implements FirearmInteractionService.Adapter {
@@ -32,28 +33,28 @@ public final class LegacyFirearmInteractionAdapter implements FirearmInteraction
     public void use(FirearmState state, Level level, Player player, ItemStack stack) {
         if (state instanceof Mk58State) {
             FirearmInteractionService.toggleMk58(level, player, stack,
-                    net.mcreator.ssc.init.Ssc14ModItems.MK_58.get(),
-                    net.mcreator.ssc.init.Ssc14ModItems.MK_58OPEN.get(),
-                    net.mcreator.ssc.init.Ssc14ModItems.MK_58NOMAGZ.get(),
-                    net.mcreator.ssc.init.Ssc14ModItems.MK_58OPEN_NO_MAGZ.get(),
-                    net.mcreator.ssc.init.Ssc14ModItems.MAGAZINE_PISTOL_35.get(),
-                    net.mcreator.ssc.init.Ssc14ModItems.MAGAZINE_PISTOL_35EMPTY.get(),
-                    net.mcreator.ssc.init.Ssc14ModItems.BULLET_35ITEM.get());
+                    Ssc14Items.MK_58.get(),
+                    Ssc14Items.MK_58OPEN.get(),
+                    Ssc14Items.MK_58NOMAGZ.get(),
+                    Ssc14Items.MK_58OPEN_NO_MAGZ.get(),
+                    Ssc14Items.MAGAZINE_PISTOL_35.get(),
+                    Ssc14Items.MAGAZINE_PISTOL_35EMPTY.get(),
+                    Ssc14Items.BULLET_35ITEM.get());
         } else {
             FirearmInteractionService.usePistolMagazine(level, player, stack,
-                    net.mcreator.ssc.init.Ssc14ModItems.MAGAZINE_PISTOL_35.get(),
-                    net.mcreator.ssc.init.Ssc14ModItems.MAGAZINE_PISTOL_35EMPTY.get(),
-                    net.mcreator.ssc.init.Ssc14ModItems.BULLET_35ITEM.get());
+                    Ssc14Items.MAGAZINE_PISTOL_35.get(),
+                    Ssc14Items.MAGAZINE_PISTOL_35EMPTY.get(),
+                    Ssc14Items.BULLET_35ITEM.get());
         }
     }
 
     @Override
     public void swing(Mk58State state, LivingEntity entity, ItemStack stack) {
         FirearmInteractionService.fireMk58(entity.level(), entity, stack,
-                net.mcreator.ssc.init.Ssc14ModItems.MK_58.get(),
-                net.mcreator.ssc.init.Ssc14ModItems.MK_58NOMAGZ.get(),
-                net.mcreator.ssc.init.Ssc14ModItems.MK_58OPEN.get(),
-                net.mcreator.ssc.init.Ssc14ModItems.BULLET_35_CARTRIDGE.get(),
+                Ssc14Items.MK_58.get(),
+                Ssc14Items.MK_58NOMAGZ.get(),
+                Ssc14Items.MK_58OPEN.get(),
+                Ssc14Items.BULLET_35_CARTRIDGE.get(),
                 net.ssc14.content.entity.Ssc14EntityTypes.BULLET_35.get());
     }
 
