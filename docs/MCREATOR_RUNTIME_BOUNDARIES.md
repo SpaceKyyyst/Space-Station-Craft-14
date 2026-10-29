@@ -43,8 +43,6 @@ owner, not merely renaming the facade.
   compatibility inputs;
 - `AirlockWireService` — thin compatibility facade; server-authoritative wire
   edits moved to the canonical airlock package;
-- `AirlockConfigurator` — thin compatibility facade; access-card permission
-  synchronization moved to `AirlockConfiguratorService`;
 - `AirlockAccessPolicy` — thin compatibility facade; permission evaluation moved
   to `AirlockAccessPolicyService`;
 - `CPlogLampPrProcedure` — thin compatibility facade; wire/lamp state ownership
@@ -98,8 +96,6 @@ boundary:
   inputs;
 - `AirlockWireService` — thin compatibility facade; server-authoritative wire
   edits moved to the canonical airlock package;
-- `AirlockConfigurator` — thin compatibility facade; access-card permission
-  synchronization moved to `AirlockConfiguratorService`;
 - `AirlockAccessPolicy` — thin compatibility facade; permission evaluation moved
   to `AirlockAccessPolicyService`;
 - `CPlogLampPrProcedure` — thin compatibility facade; wire/lamp state ownership
