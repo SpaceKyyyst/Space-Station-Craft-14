@@ -1,4 +1,4 @@
-package net.mcreator.ssc.integration;
+package net.ssc14.content.item.tool;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
