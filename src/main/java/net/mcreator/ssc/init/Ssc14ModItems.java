@@ -11,6 +11,8 @@ import net.ssc14.content.item.communication.HeadsetCommandInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetEngineeringInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetMedicalInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetMedicalScienceInventoryCapability;
+import net.ssc14.content.item.communication.HeadsetMiningInventoryCapability;
+import net.ssc14.content.item.communication.HeadsetRoboticsInventoryCapability;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
