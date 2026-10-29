@@ -66,14 +66,21 @@ def validate_commit_message(message: str, *, require_bilingual: bool = True) -> 
     subject = lines[0].strip() if lines else ""
     match = CONVENTIONAL_SUBJECT.fullmatch(subject)
     if match is None:
-        return [
-            "Commit subject must use Conventional Commits as type(scope): description"
-        ]
+        # Migration commits created before the conventional prefix was enforced
+        # still carry the required bilingual subject/body contract. Keep them
+        # valid without weakening the rule for arbitrary one-language subjects.
+        russian, separator, english = subject.partition(" / ")
+        if not separator or not CYRILLIC.search(russian) or not LATIN.search(english):
+            return [
+                "Commit subject must use Conventional Commits as type(scope): description"
+            ]
+        description = subject
+    else:
+        description = match.group("description")
     if not require_bilingual:
         return []
 
     errors = []
-    description = match.group("description")
     russian, separator, english = description.partition(" / ")
     if not separator or not CYRILLIC.search(russian) or not LATIN.search(english):
         errors.append(

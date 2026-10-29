@@ -32,6 +32,13 @@ class CommitMessagePolicyTest(unittest.TestCase):
 
         self.assertTrue(any("subject" in error.lower() for error in errors))
 
+    def test_accepts_legacy_bilingual_migration_subject(self):
+        message = (
+            "Перенести compatibility bridge / Move compatibility bridge\n\n"
+            "RU:\n- Перенесён bridge.\n\nEN:\n- Moved bridge.\n"
+        )
+        self.assertEqual([], validate_commit_message(message))
+
     def test_rejects_empty_or_reversed_language_sections(self):
         message = (
             "ci(policy): Проверить метаданные / Validate metadata\n\n"
