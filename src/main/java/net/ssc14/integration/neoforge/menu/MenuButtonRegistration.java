@@ -1,7 +1,7 @@
 package net.ssc14.integration.neoforge.menu;
 
 import net.mcreator.ssc.Ssc14Mod;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 import net.minecraft.core.BlockPos;
 import net.ssc14.content.menu.decal.DecalColorMenuService;
 import net.ssc14.content.gravity.GravityGeneratorControlService;
@@ -138,12 +138,12 @@ public final class MenuButtonRegistration {
         IItemHandler handler = resourceHandler == null ? null : IItemHandler.of(resourceHandler);
         if (!(handler instanceof IItemHandlerModifiable inventory)) return;
         MicrowaveRecipeService.RecipeCatalog catalog = new MicrowaveRecipeService.RecipeCatalog(
-                Ssc14ModItems.POTATO.get(), Ssc14ModItems.SPACE_FRIES.get(), Ssc14ModItems.BUN.get(),
-                Ssc14ModItems.CHEESE.get(), Ssc14ModItems.MEAT.get(), Ssc14ModItems.CHEESEBURGER.get(),
-                Ssc14ModItems.TOFU_SLICE.get(), Ssc14ModItems.TOFU_BURGER.get(), Ssc14ModItems.DOUGH.get(),
-                Ssc14ModItems.TOFU_BREAD.get(), Ssc14ModItems.MEATLOAF.get(), Ssc14ModItems.BREAD_SLICE.get(),
-                Ssc14ModItems.FLY_AMANITA.get(), Ssc14ModItems.MOLDY_BREAD_PIECE.get(), Ssc14ModItems.BREAD.get(),
-                Ssc14ModItems.DOUGH_PIECE.get());
+                Ssc14Items.POTATO.get(), Ssc14Items.SPACE_FRIES.get(), Ssc14Items.BUN.get(),
+                Ssc14Items.CHEESE.get(), Ssc14Items.MEAT.get(), Ssc14Items.CHEESEBURGER.get(),
+                Ssc14Items.TOFU_SLICE.get(), Ssc14Items.TOFU_BURGER.get(), Ssc14Items.DOUGH.get(),
+                Ssc14Items.TOFU_BREAD.get(), Ssc14Items.MEATLOAF.get(), Ssc14Items.BREAD_SLICE.get(),
+                Ssc14Items.FLY_AMANITA.get(), Ssc14Items.MOLDY_BREAD_PIECE.get(), Ssc14Items.BREAD.get(),
+                Ssc14Items.DOUGH_PIECE.get());
         MicrowaveRecipeService.cook(world, pos, inventory, MicrowaveControlService.timerSeconds(world, pos),
                 catalog, stack -> stack.getItem() instanceof net.mcreator.ssc.item.ReagentContainerItem);
     }
