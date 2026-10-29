@@ -198,8 +198,8 @@ runtime owners of this behavior.
 - `ProcessReactionsRegistration`, `NetConfigGUIButtonRegistration`,
   `NetConfigGUISyncRegistration` и `IDcodeButtonRegistration` уже находятся в
   canonical chemistry/menu слоях; generated-классы являются только facade.
-- `MenuStateUpdateRegistration` остаётся единственным generated subscriber до
-  разделения server-side guard/update и client-only state handler.
+- `MenuStateUpdateRegistration` теперь является compatibility facade; serverbound
+  и clientbound registrations принадлежат разным canonical-классам.
 
 ## EN — Current generated-layer remainder
 
@@ -216,5 +216,5 @@ runtime owners of this behavior.
 - `ProcessReactionsRegistration`, `NetConfigGUIButtonRegistration`,
   `NetConfigGUISyncRegistration`, and `IDcodeButtonRegistration` now live in
   canonical chemistry/menu layers; their generated classes are facades only.
-- `MenuStateUpdateRegistration` remains the one generated subscriber pending a
-  split between its server-side guard/update path and client-only state handler.
+- `MenuStateUpdateRegistration` is now a compatibility facade; serverbound and
+  clientbound registrations are owned by separate canonical classes.
