@@ -186,9 +186,16 @@ Each remaining boundary requires:
 
 Deleting a subscriber solely because `rg` finds no direct calls is a regression risk.
 
-## RU — Construction adapter boundary`LegacyConstructionItemInteractionAdapter` пока остаётся в legacy-границе: он напрямую вызывает steel/plasteel/cable procedures. Перенос возможен только после выделения канонической логики этих процедур.
+## RU — Construction adapter boundary
 
-`LegacyConstructionItemInteractionAdapter` теперь находится в
-`net.ssc14.integration.construction`. Перенос изменяет только расположение
-границы: steel/plasteel/cable procedures и их аргументы сохранены для
-поэтапной миграции без изменения поведения предметов.
+`LegacyConstructionItemInteractionAdapter` остаётся тонкой legacy-границей для
+item-event wiring. Игровая логика уже принадлежит `ConstructionAssemblyService`
+и `SheathingCableService`; старые steel/plasteel/cable procedures не являются
+runtime-владельцами этой механики.
+
+## EN — Construction adapter boundary
+
+`LegacyConstructionItemInteractionAdapter` remains a thin legacy boundary for
+item-event wiring. The gameplay logic is owned by `ConstructionAssemblyService`
+and `SheathingCableService`; the old steel/plasteel/cable procedures are not
+runtime owners of this behavior.
