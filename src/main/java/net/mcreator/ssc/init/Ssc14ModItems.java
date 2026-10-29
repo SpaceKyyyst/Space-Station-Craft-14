@@ -17,6 +17,7 @@ import net.ssc14.content.item.communication.HeadsetSecurityInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetServiceInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetSyndicateInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetScienceInventoryCapability;
+import net.ssc14.content.item.container.Backpack2InventoryCapability;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
