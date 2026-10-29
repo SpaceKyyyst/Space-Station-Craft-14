@@ -13,10 +13,15 @@ import net.minecraft.commands.arguments.MessageArgument;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.Commands;
 
-import net.mcreator.ssc.integration.LegacyAdministrationCommandAdapter;
 import net.ssc14.content.medical.ThirstCommandService;
 import net.ssc14.content.medical.NutritionUiService;
 import net.ssc14.content.medical.DigestiveProcessesService;
+import net.ssc14.content.medical.MedicalResetService;
+import net.ssc14.content.atmosphere.runtime.SetGasCommandService;
+import net.ssc14.content.atmosphere.runtime.SetGasTemperatureCommandService;
+import net.ssc14.content.world.DimensionTeleportService;
+import net.ssc14.content.world.PlanetTeleportService;
+import net.ssc14.content.world.OverworldTeleportService;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
@@ -37,7 +42,7 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					LegacyAdministrationCommandAdapter.teleportSpace(arguments);
+					DimensionTeleportService.teleportToSpace(arguments);
 					return 0;
 				})).then(Commands.literal("planet").then(Commands.literal("plant").executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
@@ -51,7 +56,7 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					LegacyAdministrationCommandAdapter.teleportPlanet(arguments);
+					PlanetTeleportService.teleport(arguments);
 					return 0;
 				}))).then(Commands.literal("minecraft_overworld").executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
@@ -65,7 +70,7 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					LegacyAdministrationCommandAdapter.teleportOverworld(arguments);
+					OverworldTeleportService.teleport(arguments);
 					return 0;
 				})))).then(Commands.literal("hunger").then(Commands.literal("set").then(Commands.argument("ent", EntityArgument.entity()).then(Commands.argument("Nutrients", DoubleArgumentType.doubleArg(0, 200)).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
@@ -135,7 +140,7 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					LegacyAdministrationCommandAdapter.resetHealth(arguments);
+					MedicalResetService.execute(arguments);
 					return 0;
 				})))).then(Commands.literal("atmos").then(Commands.literal("addgas").then(Commands.argument("gas_amount", DoubleArgumentType.doubleArg(0, 1000)).then(Commands.argument("gas_name", MessageArgument.message()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
@@ -149,7 +154,7 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					LegacyAdministrationCommandAdapter.setGas(world, arguments);
+					SetGasCommandService.execute(world, arguments);
 					return 0;
 				})))).then(Commands.literal("temperature").then(Commands.argument("gas_temperature", DoubleArgumentType.doubleArg(1, 1000000)).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
@@ -163,7 +168,7 @@ public class SSC14commandsCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					LegacyAdministrationCommandAdapter.setTemperature(world, arguments);
+					SetGasTemperatureCommandService.execute(world, arguments);
 					return 0;
 				})))).then(Commands.literal("liquids").then(Commands.literal("add").then(Commands.argument("count", DoubleArgumentType.doubleArg(1, 1000)).then(Commands.argument("liquid_name", MessageArgument.message()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
