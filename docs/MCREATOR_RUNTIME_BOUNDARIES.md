@@ -200,6 +200,10 @@ runtime owners of this behavior.
   canonical chemistry/menu слоях; generated-классы являются только facade.
 - `MenuStateUpdateRegistration` теперь является compatibility facade; serverbound
   и clientbound registrations принадлежат разным canonical-классам.
+- SSC14 command registrations, cargo order menu events, reagent fluid models,
+  and the Handy mouse compatibility hook now live in canonical command,
+  commerce, and client compatibility packages; their generated classes are
+  facades only.
 
 ## EN — Current generated-layer remainder
 
@@ -218,3 +222,7 @@ runtime owners of this behavior.
   canonical chemistry/menu layers; their generated classes are facades only.
 - `MenuStateUpdateRegistration` is now a compatibility facade; serverbound and
   clientbound registrations are owned by separate canonical classes.
+- SSC14 command registrations, cargo order menu events, reagent fluid models,
+  and the Handy mouse compatibility hook now live in canonical command,
+  commerce, and client compatibility packages; their generated classes are
+  facades only.
