@@ -1,5 +1,5 @@
 
-package net.mcreator.ssc.integration;
+package net.ssc14.content.communication;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
