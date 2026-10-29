@@ -1,4 +1,4 @@
-package net.mcreator.ssc.network;
+package net.ssc14.integration.neoforge.menu;
 
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.init.Ssc14ModItems;
@@ -53,8 +53,8 @@ import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
 /** Transitional dispatcher for generated menus and procedures. */
 @EventBusSubscriber
-public final class LegacyMenuButtonRegistration {
-    private LegacyMenuButtonRegistration() { }
+public final class MenuButtonRegistration {
+    private MenuButtonRegistration() { }
 
     public static void handle(MenuButtonPayload message, IPayloadContext context) {
         if (context.flow() != PacketFlow.SERVERBOUND) return;
@@ -248,12 +248,12 @@ public final class LegacyMenuButtonRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
-        MenuButtonDispatchBridge.install(LegacyMenuButtonRegistration::dispatch);
+        MenuButtonDispatchBridge.install(MenuButtonRegistration::dispatch);
         for (MenuButtonPayload.Channel channel : MenuButtonPayload.Channel.values()) {
             if (channel == MenuButtonPayload.Channel.ID_CODE
                     || channel == MenuButtonPayload.Channel.NETWORK_CONFIG) continue;
             Ssc14NetworkPayloads.addServerbound(channel.type(), MenuButtonPayload.codec(channel),
-                    LegacyMenuButtonRegistration::handle);
+                    MenuButtonRegistration::handle);
         }
     }
 }
