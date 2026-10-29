@@ -44,10 +44,10 @@ neoForge {
     addModdingDependenciesTo sourceSets.gameTest
 
     mods {
-        mcreator {
+        ssc14 {
             sourceSet sourceSets.main
         }
-        mcreatorGameTest {
+        ssc14GameTest {
             sourceSet sourceSets.main
             sourceSet sourceSets.gameTest
         }
@@ -55,13 +55,13 @@ neoForge {
 
     unitTest {
         enable()
-        testedMod = mods.mcreator
-        loadedMods = [mods.mcreator]
+        testedMod = mods.ssc14
+        loadedMods = [mods.ssc14]
     }
 
     runs {
         configureEach {
-            loadedMods = [mods.mcreator]
+            loadedMods = [mods.ssc14]
             systemProperty 'forge.logging.markers', 'REGISTRIES'
             logLevel = org.slf4j.event.Level.DEBUG
         }
@@ -82,7 +82,7 @@ neoForge {
         gameTestServer {
             type = 'gameTestServer'
             sourceSet = sourceSets.gameTest
-            loadedMods = [mods.mcreatorGameTest]
+            loadedMods = [mods.ssc14GameTest]
             gameDirectory = layout.buildDirectory.dir('gameTest/run').get().asFile
             programArguments = [
                 '--tests', 'ssc_14:*',
