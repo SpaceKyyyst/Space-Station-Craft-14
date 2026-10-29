@@ -140,15 +140,14 @@ boundary:
 - network configurator, shutters, commerce-console, and ID-console adapters
   were moved to their canonical `content` layers without changing menu,
   position-buffer, or server-authority contracts;
-- construction-item interaction adapter remains in the legacy integration
-  boundary because steel, plasteel, and cable procedures are still direct
-  generated-runtime inputs;
+- construction-item interaction adapter remains only as an event-wiring
+  boundary; steel, plasteel, and cable behavior is owned by canonical
+  `ConstructionAssemblyService` and `SheathingCableService`;
 - firearm interaction adapter was moved to `net.mcreator.ssc.integration`;
   canonical firearm state routing and MK-58/Pistol procedure contracts remain
   unchanged;
-- `LegacyLampInteractionAdapter` now owns the remaining lamp replacement
-  procedure call for both lamp block variants; no block package class imports
-  generated procedures directly;
+- both lamp block variants call canonical `LampInteractionService` directly;
+  no block package class imports generated procedures;
 - `Ssc14Items.REGISTRY` is the sole active item registry; `Ssc14ModItems`
   remains a field-compatible alias only and its empty legacy registry is not
   registered;
