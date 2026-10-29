@@ -53,6 +53,8 @@ CONTENT_IMPORT_BRIDGE_FILES = frozenset({
     "MenuSlotRegistration.java",
     "MenuStateGuard.java",
     "IdCodeMenuEvents.java",
+    "AccessConfigMenuEvents.java",
+    "AirlockPanelMenuEvents.java",
 })
 
 
