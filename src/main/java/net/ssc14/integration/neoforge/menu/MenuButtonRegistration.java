@@ -21,7 +21,7 @@ import net.ssc14.content.commerce.cargo.CargoPurchaseService;
 import net.ssc14.content.menu.commerce.OrderGUIMenu;
 import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
 import net.ssc14.content.menu.airlock.AirlockPanelButtonIds;
-import net.mcreator.ssc.access.AirlockWireService;
+import net.ssc14.content.block.airlock.AirlockWireService;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.ssc14.content.communication.StationAlertService;
 import net.mcreator.ssc.network.Ssc14ModVariables;
