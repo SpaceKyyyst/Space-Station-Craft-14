@@ -3,6 +3,7 @@ package net.mcreator.ssc.init;
 import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.content.item.access.AccessConfigInventoryCapability;
 import net.ssc14.content.item.container.EggCartonInventoryCapability;
+import net.ssc14.content.item.communication.HeadsetBaseInventoryCapability;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
