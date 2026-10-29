@@ -344,7 +344,7 @@ public class Ssc14Mod {
 				variables.markSyncDirty();
 			}
 		});
-		MachineFrameAssemblyService.install(Ssc14ModItems.LOW_VOLTAGE_CABLE,
+		MachineFrameAssemblyService.install(Ssc14Items.LOW_VOLTAGE_CABLE,
 				Ssc14Blocks.MACHINE_FRAME_2);
 		MachineFrameMenuService.install((id, inventory, pos) -> new MacFrameGUIMenu(
 				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
