@@ -18,7 +18,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import top.theillusivec4.curios.api.CuriosApi;
 import net.ssc14.content.item.Ssc14Items;
-import net.mcreator.ssc.network.Ssc14ModVariables;
+import net.ssc14.integration.neoforge.state.Ssc14WorldVariables;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -43,7 +43,7 @@ public class LocalChatEventHandler {
         }
 
         boolean hasConnection(Level level) {
-            var vars = Ssc14ModVariables.MapVariables.get(level);
+            var vars = Ssc14WorldVariables.MapVariables.get(level);
             return switch (channelName) {
                 case "Общий" -> vars.Base_Radio_Frequency;
                 case "Командование" -> vars.Command_Radio_Frequency;

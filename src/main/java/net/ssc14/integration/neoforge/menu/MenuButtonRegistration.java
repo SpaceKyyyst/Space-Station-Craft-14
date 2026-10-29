@@ -24,7 +24,7 @@ import net.ssc14.content.menu.airlock.AirlockPanelButtonIds;
 import net.ssc14.content.block.airlock.AirlockWireService;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.ssc14.content.communication.StationAlertService;
-import net.mcreator.ssc.network.Ssc14ModVariables;
+import net.ssc14.integration.neoforge.state.Ssc14WorldVariables;
 import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
 import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
@@ -200,7 +200,7 @@ public final class MenuButtonRegistration {
             default -> -1;
         };
         if (targetCode < 0) return;
-        var state = Ssc14ModVariables.MapVariables.get(serverLevel);
+        var state = Ssc14WorldVariables.MapVariables.get(serverLevel);
         if (StationAlertService.announceCode(serverLevel, state.station_code, state.station_name, targetCode)) {
             state.station_code = targetCode;
             state.markSyncDirty();
