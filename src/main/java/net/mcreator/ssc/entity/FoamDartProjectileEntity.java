@@ -5,7 +5,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundSource;
@@ -15,7 +14,7 @@ import net.ssc14.content.entity.Ssc14EntityTypes;
 /** @deprecated Use {@link net.ssc14.content.entity.FoamDartProjectileEntity}. */
 @Deprecated(forRemoval = false)
 public class FoamDartProjectileEntity extends net.ssc14.content.entity.FoamDartProjectileEntity {
-    public static final ItemStack PROJECTILE_ITEM = new ItemStack(Ssc14ModItems.FOAM_DART.get());
+    public static final ItemStack PROJECTILE_ITEM = new ItemStack(net.ssc14.content.item.Ssc14Items.FOAM_DART.get());
 
     public FoamDartProjectileEntity(EntityType<? extends net.ssc14.content.entity.FoamDartProjectileEntity> type, Level level) {
         super(type, level);

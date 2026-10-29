@@ -4,16 +4,15 @@ import net.ssc14.content.firearm.BulletCollisionParticleService;
 import net.ssc14.content.firearm.BulletFlightParticleService;
 import net.ssc14.content.entity.C4CrutchLifetimeHandler;
 import net.ssc14.content.block.furniture.ChairInteractionService;
-import net.mcreator.ssc.init.Ssc14ModAttributes;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.attribute.Ssc14Attributes;
 import net.ssc14.content.entity.IDConsoleENTITYEntity;
 import net.ssc14.content.entity.PlassteelWallCarcaseEntitEntity;
 import net.ssc14.content.entity.WallCarcaseEntitEntity;
 import net.ssc14.content.item.tool.SpannerInteractionService;
+import net.ssc14.content.item.Ssc14Items;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
 import net.ssc14.content.entity.Ssc14EntityBehavior;
@@ -51,27 +50,27 @@ public final class Ssc14LegacyEntityBehavior implements Ssc14EntityBehavior.Hook
         if (!(sourceEntity instanceof LivingEntity living)) return;
         ItemStack tool = living.getMainHandItem();
         if (entity instanceof WallCarcaseEntitEntity) {
-            if (tool.is(Ssc14ModItems.SPANNER.get())) {
+            if (tool.is(Ssc14Items.SPANNER.get())) {
                 SpannerInteractionService.repair(level, entity, sourceEntity, tool,
-                        Ssc14ModItems.SPANNER.get(), Ssc14Blocks.WALL_CARCASE.get(),
-                        Ssc14ModAttributes.PROGRESS_BAR_ATRB);
-            } else if (tool.is(Ssc14ModItems.SCREWDRIVER.get())) {
+                        Ssc14Items.SPANNER.get(), Ssc14Blocks.WALL_CARCASE.get(),
+                        Ssc14Attributes.PROGRESS_BAR_ATRB);
+            } else if (tool.is(Ssc14Items.SCREWDRIVER.get())) {
                 SpannerInteractionService.dismantle(level, entity, sourceEntity, tool,
-                        Ssc14ModItems.SCREWDRIVER.get(), Ssc14ModItems.STEEL.get(),
-                        Ssc14ModAttributes.PROGRESS_BAR_ATRB);
+                        Ssc14Items.SCREWDRIVER.get(), Ssc14Items.STEEL.get(),
+                        Ssc14Attributes.PROGRESS_BAR_ATRB);
             }
         } else if (entity instanceof PlassteelWallCarcaseEntitEntity
-                && tool.is(Ssc14ModItems.SPANNER.get())) {
+                && tool.is(Ssc14Items.SPANNER.get())) {
             SpannerInteractionService.repair(level, entity, sourceEntity, tool,
-                    Ssc14ModItems.SPANNER.get(), Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(),
-                    Ssc14ModAttributes.PROGRESS_BAR_ATRB);
+                    Ssc14Items.SPANNER.get(), Ssc14Blocks.PLASTEEL_WALL_CARCASE.get(),
+                    Ssc14Attributes.PROGRESS_BAR_ATRB);
         } else if (entity instanceof IDConsoleENTITYEntity
-                && tool.is(Ssc14ModItems.SPANNER.get())) {
+                && tool.is(Ssc14Items.SPANNER.get())) {
             SpannerInteractionService.repair(level, entity, sourceEntity, tool,
-                    Ssc14ModItems.SPANNER.get(), Ssc14ModBlocks.CONSOLE_OF_ID.get(),
-                    Ssc14ModAttributes.PROGRESS_BAR_ATRB);
+                    Ssc14Items.SPANNER.get(), Ssc14Blocks.CONSOLE_OF_ID.get(),
+                    Ssc14Attributes.PROGRESS_BAR_ATRB);
         } else {
-            SpannerInteractionService.pull(entity, sourceEntity, Ssc14ModAttributes.ENT_PULL);
+            SpannerInteractionService.pull(entity, sourceEntity, Ssc14Attributes.ENT_PULL);
         }
     }
 }
