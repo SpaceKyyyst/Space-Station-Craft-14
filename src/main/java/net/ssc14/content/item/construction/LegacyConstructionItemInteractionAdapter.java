@@ -7,9 +7,8 @@ import net.ssc14.content.item.construction.ConstructionItemKind;
 import net.ssc14.content.item.construction.ConstructionAssemblyService;
 import net.ssc14.content.block.energy.SheathingCableService;
 import net.ssc14.content.block.Ssc14Blocks;
-import net.mcreator.ssc.init.Ssc14ModAttributes;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.attribute.Ssc14Attributes;
+import net.ssc14.content.item.Ssc14Items;
 
 /** Adapter retained until construction procedures move into the canonical namespace. */
 public final class LegacyConstructionItemInteractionAdapter
@@ -26,8 +25,8 @@ public final class LegacyConstructionItemInteractionAdapter
             case PLASTEEL_SHEET -> usePlasteel(context);
             case LOW_VOLTAGE_CABLE, MEDIUM_VOLTAGE_CABLE, HIGH_VOLTAGE_CABLE ->
                     SheathingCableService.install(context.getLevel(), context.getClickedPos(), context.getPlayer(),
-                            Ssc14ModItems.LOW_VOLTAGE_CABLE.get(), Ssc14ModItems.MEDIUM_VOLTAGE_CABLE.get(),
-                            Ssc14ModItems.HIGH_VOLTAGE_CABLE.get());
+                            Ssc14Items.LOW_VOLTAGE_CABLE.get(), Ssc14Items.MEDIUM_VOLTAGE_CABLE.get(),
+                            Ssc14Items.HIGH_VOLTAGE_CABLE.get());
         }
     }
 
@@ -36,14 +35,14 @@ public final class LegacyConstructionItemInteractionAdapter
         ItemStack held = context.getItemInHand();
         if (context.getLevel().getBlockState(context.getClickedPos()).is(Ssc14Blocks.WALL_CARCASE.get())) {
             ConstructionAssemblyService.assembleWall(context.getLevel(), context.getClickedPos(),
-                    context.getPlayer(), held, Ssc14ModItems.STEEL.get(),
+                    context.getPlayer(), held, Ssc14Items.STEEL.get(),
                     Ssc14Blocks.WALL_CARCASE.get().defaultBlockState(),
                     Ssc14Blocks.STEEL_WALL.get().defaultBlockState(),
-                    Ssc14ModAttributes.PROGRESS_BAR_ATRB);
+                    Ssc14Attributes.PROGRESS_BAR_ATRB);
         } else {
             ConstructionAssemblyService.replaceBlock(context.getLevel(), context.getClickedPos(),
-                    context.getPlayer(), held, Ssc14ModItems.STEEL.get(),
-                    Ssc14Blocks.ROD_FLOOR.get(), Ssc14ModBlocks.SHEATHING.get());
+                    context.getPlayer(), held, Ssc14Items.STEEL.get(),
+                    Ssc14Blocks.ROD_FLOOR.get(), Ssc14Blocks.SHEATHING.get());
         }
     }
 
@@ -52,17 +51,17 @@ public final class LegacyConstructionItemInteractionAdapter
         ItemStack held = context.getItemInHand();
         if (context.getLevel().getBlockState(context.getClickedPos()).is(Ssc14Blocks.WALL_CARCASE.get())) {
             ConstructionAssemblyService.assembleWall(context.getLevel(), context.getClickedPos(),
-                    context.getPlayer(), held, Ssc14ModItems.PLASTEEL.get(),
+                    context.getPlayer(), held, Ssc14Items.PLASTEEL.get(),
                     Ssc14Blocks.WALL_CARCASE.get().defaultBlockState(),
                     Ssc14Blocks.PLASTEEL_WALL_CARCASE.get().defaultBlockState(),
-                    Ssc14ModAttributes.PROGRESS_BAR_ATRB);
+                    Ssc14Attributes.PROGRESS_BAR_ATRB);
         } else if (context.getLevel().getBlockState(context.getClickedPos())
                 .is(Ssc14Blocks.PLASTEEL_WALL_CARCASE.get())) {
             ConstructionAssemblyService.assembleWall(context.getLevel(), context.getClickedPos(),
-                    context.getPlayer(), held, Ssc14ModItems.PLASTEEL.get(),
+                    context.getPlayer(), held, Ssc14Items.PLASTEEL.get(),
                     Ssc14Blocks.PLASTEEL_WALL_CARCASE.get().defaultBlockState(),
                     Ssc14Blocks.PLASTEEL_WALL.get().defaultBlockState(),
-                    Ssc14ModAttributes.PROGRESS_BAR_ATRB);
+                    Ssc14Attributes.PROGRESS_BAR_ATRB);
         }
     }
 }

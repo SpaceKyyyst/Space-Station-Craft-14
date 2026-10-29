@@ -12,7 +12,8 @@ import net.minecraft.world.level.Level;
 import net.ssc14.content.item.tool.RsuInteractionService;
 import net.ssc14.content.item.tool.RsuDeconstructionService;
 import net.ssc14.content.item.tool.RsuConstructionService;
-import net.mcreator.ssc.init.Ssc14ModAttributes;
+import net.ssc14.content.attribute.Ssc14Attributes;
+import net.ssc14.content.item.Ssc14Items;
 
 /** Connects the canonical RSU item to the generated runtime during migration. */
 public final class LegacyRsuInteractionAdapter
@@ -21,7 +22,7 @@ public final class LegacyRsuInteractionAdapter
     public void use(Level level, Player player, InteractionHand hand,
             ItemStack stack) {
         RsuInteractionService.useLegacy(level, player, stack,
-                net.mcreator.ssc.init.Ssc14ModItems.RC_DCARTRIDGE.get());
+                Ssc14Items.RC_DCARTRIDGE.get());
     }
 
     @Override
@@ -32,13 +33,13 @@ public final class LegacyRsuInteractionAdapter
                 .copyTag().getDoubleOr("Mode", 0);
         if (mode == 1 && context.getPlayer() != null
                 && RsuDeconstructionService.start(context.getLevel(), pos, context.getPlayer(),
-                stack, net.mcreator.ssc.init.Ssc14ModItems.RSU.get(),
-                Ssc14ModAttributes.PROGRESS_BAR_ATRB)) {
+                stack, Ssc14Items.RSU.get(),
+                Ssc14Attributes.PROGRESS_BAR_ATRB)) {
             return;
         }
         if (mode >= 2 && mode <= 10 && context.getPlayer() != null
                 && RsuConstructionService.start(context.getLevel(), pos, context.getClickedFace(),
-                context.getPlayer(), stack, net.mcreator.ssc.init.Ssc14ModItems.RSU.get(), (int) mode)) {
+                context.getPlayer(), stack, Ssc14Items.RSU.get(), (int) mode)) {
             return;
         }
     }
@@ -46,6 +47,6 @@ public final class LegacyRsuInteractionAdapter
     @Override
     public void inventoryTick(ServerLevel level, Entity entity, ItemStack stack) {
         net.ssc14.content.item.tool.RsuAimingParticleService.execute(level, entity.getX(), entity.getY(),
-                entity.getZ(), entity, stack, net.mcreator.ssc.init.Ssc14ModItems.RSU.get());
+                entity.getZ(), entity, stack, Ssc14Items.RSU.get());
     }
 }

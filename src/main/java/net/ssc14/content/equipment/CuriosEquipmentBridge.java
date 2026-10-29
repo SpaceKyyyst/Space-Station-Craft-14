@@ -2,7 +2,7 @@ package net.ssc14.content.equipment;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.resources.Identifier;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.content.equipment.SuitEquipmentService;
 
 /** Transitional boundary for generated Curios lifecycle procedures. */
@@ -27,7 +27,7 @@ public final class CuriosEquipmentBridge {
 
     public static void onSalvageUnequip(Entity entity) {
         if (entity instanceof net.minecraft.server.level.ServerPlayer player) {
-            SuitEquipmentService.removeSalvageSuit(player, Ssc14ModItems.HARDSUIT_SALVAGE_HELMET.get(),
+            SuitEquipmentService.removeSalvageSuit(player, Ssc14Items.HARDSUIT_SALVAGE_HELMET.get(),
                     Identifier.parse("ssc_14:salvage"));
         }
     }
