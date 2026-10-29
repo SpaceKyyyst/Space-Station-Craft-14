@@ -1,16 +1,16 @@
-package net.mcreator.ssc.access;
+package net.ssc14.integration.neoforge.menu.access;
 
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerContainerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 import net.ssc14.content.block.airlock.AirlockConfiguratorService;
+import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 
-/** Transitional event adapter until the access subsystem leaves the legacy namespace. */
+/** Canonical lifecycle adapter for access-config menu synchronization. */
 @EventBusSubscriber
-public final class LegacyAccessConfigMenuEvents {
-    private LegacyAccessConfigMenuEvents() {
+public final class AccessConfigMenuEvents {
+    private AccessConfigMenuEvents() {
     }
 
     @SubscribeEvent
