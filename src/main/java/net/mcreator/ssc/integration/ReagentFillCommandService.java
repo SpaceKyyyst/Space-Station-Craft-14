@@ -47,7 +47,7 @@ public final class ReagentFillCommandService {
         }
 
         if (ReagentContainerAccess.add(mainHand, reagentName, amount)) {
-            LegacyReactionRuntime.process(mainHand, player);
+            net.mcreator.ssc.ModReagents.processReactions(mainHand, player);
             String displayName = LegacyReagentCatalog.find(reagentName).orElseThrow().getDisplayName().getString();
             player.sendSystemMessage(Component.literal("§aДобавлено " + amount + " мл " + displayName));
         } else {
