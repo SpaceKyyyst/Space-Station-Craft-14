@@ -190,8 +190,9 @@ bypass, unrestricted-door semantics и bitmask permissions. Старый
 риск несовместимости сохранений и дублирования регистраций.
 
 Точка входа уже регистрирует canonical `Ssc14MenuTypes` и `Ssc14CreativeTabs`
-напрямую; `Ssc14ModMenus` и `Ssc14ModTabs` сохранены только как compatibility
-aliases для legacy client-кода.
+напрямую; gravity holders и machine-cable item также читаются из canonical
+registries. `Ssc14ModMenus`, `Ssc14ModTabs`, `Ssc14ModBlocks` и `Ssc14ModItems`
+сохранены только как compatibility aliases/initialization для legacy callers.
 
 Синхронизация wire/lamp state вынесена в `AirlockLampStateService`; сохранены
 все persisted cable flags, power restoration и bolt-cut side effects. Старый
@@ -303,8 +304,10 @@ only through an ID-preserving registry migration; broad textual replacement
 risks save incompatibility and duplicate registrations.
 
 The entrypoint now registers canonical `Ssc14MenuTypes` and `Ssc14CreativeTabs`
-directly; `Ssc14ModMenus` and `Ssc14ModTabs` remain only as compatibility aliases
-for legacy client code.
+directly; gravity holders and the machine-cable item are also read from canonical
+registries. `Ssc14ModMenus`, `Ssc14ModTabs`, `Ssc14ModBlocks`, and
+`Ssc14ModItems` remain only as compatibility aliases/initialization for legacy
+callers.
 
 Wire/lamp state synchronization now lives in `AirlockLampStateService`; all
 persisted cable flags, power restoration, and bolt-cut side effects are
