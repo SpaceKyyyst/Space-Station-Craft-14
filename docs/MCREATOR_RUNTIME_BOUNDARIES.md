@@ -59,8 +59,6 @@ owner, not merely renaming the facade.
   state synchronization moved to `AirlockStateInitializer`;
 - `BaseAirlockOpenCloseProcedure` — thin compatibility facade; door lifecycle
   state machine moved to `AirlockLifecycleService`;
-- `AirlockMaintenance` — thin compatibility facade; construction-job ownership
-  moved to `AirlockMaintenanceService`;
 - `UniversalDeconstructionProcedureProcedure` — thin compatibility facade;
   deconstruction ownership moved to `AirlockDeconstructionService`, while the
   construction registry remains an explicit legacy input;
@@ -122,8 +120,6 @@ boundary:
   state synchronization moved to `AirlockStateInitializer`;
 - `BaseAirlockOpenCloseProcedure` — thin compatibility facade; door lifecycle
   state machine moved to `AirlockLifecycleService`;
-- `AirlockMaintenance` — thin compatibility facade; construction-job ownership
-  moved to `AirlockMaintenanceService`;
 - `UniversalDeconstructionProcedureProcedure` — thin compatibility facade;
   deconstruction ownership moved to `AirlockDeconstructionService`, while the
   construction registry remains an explicit legacy input;
