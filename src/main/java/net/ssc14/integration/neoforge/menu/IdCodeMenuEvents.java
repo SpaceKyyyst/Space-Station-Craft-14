@@ -1,4 +1,4 @@
-package net.mcreator.ssc.integration;
+package net.ssc14.integration.neoforge.menu;
 
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -9,10 +9,10 @@ import net.ssc14.content.block.access.IdConsoleIntegrationService;
 import net.ssc14.content.access.IdCodeCheckService;
 import net.ssc14.content.menu.access.IDcodeMenu;
 
-/** Compatibility event adapter kept outside the canonical menu container. */
+/** Server event hooks for the canonical ID-code menu. */
 @EventBusSubscriber
-public final class LegacyIdCodeMenuEvents {
-    private LegacyIdCodeMenuEvents() { }
+public final class IdCodeMenuEvents {
+    private IdCodeMenuEvents() { }
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
