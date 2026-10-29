@@ -13,7 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.ssc.integration.LegacyWorldObjectCheckAdapter;
+import net.ssc14.content.player.action.WorldObjectCheckService;
 import net.ssc14.content.menu.worldcheck.WorldCheckTextService;
 import net.ssc14.content.menu.worldcheck.WorldCheckTargetTextService;
 import net.ssc14.content.menu.worldcheck.WorldCheckLookedBlockService;
@@ -37,7 +37,7 @@ public class WorldCheckUIOverlay {
 			y = entity.getY();
 			z = entity.getZ();
 		}
-		if (LegacyWorldObjectCheckAdapter.isVisible(world, entity)) {
+		if (WorldObjectCheckService.execute(world, entity)) {
 			event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w / 2 + 1, h / 2 + 0, 0, 0, 151, 100, 151, 100);
 
 			event.getGuiGraphics().text(Minecraft.getInstance().font,
