@@ -16,7 +16,7 @@ import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.Minecraft;
 
 import net.ssc14.content.medical.HealthUiService;
-import net.mcreator.ssc.integration.LegacyHealthAnalyzerDisplayAdapter;
+import net.ssc14.content.medical.HealthAnalyzerTargetService;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class HealthAnalyzerUIOverlay {
@@ -46,7 +46,7 @@ public class HealthAnalyzerUIOverlay {
 			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.health_analyzer_ui.label_niekhvatka_vozdukha"), 37, h / 2 + 53, -16777216, false);
 			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.health_analyzer_ui.label_gienietichieskiie"), 37, h / 2 + 80, -16777216, false);
 			event.getGuiGraphics().text(Minecraft.getInstance().font, Component.translatable("gui.ssc_14.health_analyzer_ui.label_proc_hau_itext_all_damage"), 27, h / 2 + -67, -16777216, false);
-			if (LegacyHealthAnalyzerDisplayAdapter.resolve(entity) instanceof LivingEntity livingEntity) {
+			if (HealthAnalyzerTargetService.execute(entity) instanceof LivingEntity livingEntity) {
 				InventoryScreen.renderEntityInInventoryFollowsAngle(event.getGuiGraphics(), -958, h / 2 + -1081, 1042, h / 2 + 919, 15, -livingEntity.getBbHeight() / (2.0f * livingEntity.getScale()), 0f, 0, livingEntity);
 			}
 		}
