@@ -43,8 +43,6 @@ owner, not merely renaming the facade.
   compatibility inputs;
 - `AirlockSignals` — thin compatibility facade; redstone routing ownership moved
   to `AirlockSignalHandler`;
-- `AirlockAiControl` — thin compatibility facade; server-side AI control ownership
-  moved to `AirlockAiControlService`;
 - `AirlockWireService` — thin compatibility facade; server-authoritative wire
   edits moved to the canonical airlock package;
 - `AirlockConfigurator` — thin compatibility facade; access-card permission
@@ -102,8 +100,6 @@ boundary:
   inputs;
 - `AirlockSignals` — thin compatibility facade; redstone routing ownership moved
   to `AirlockSignalHandler`;
-- `AirlockAiControl` — thin compatibility facade; server-side AI control ownership
-  moved to `AirlockAiControlService`;
 - `AirlockWireService` — thin compatibility facade; server-authoritative wire
   edits moved to the canonical airlock package;
 - `AirlockConfigurator` — thin compatibility facade; access-card permission
