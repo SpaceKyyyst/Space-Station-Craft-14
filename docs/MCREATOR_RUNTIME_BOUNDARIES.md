@@ -159,7 +159,7 @@ boundary:
 - construction-item interaction adapter remains only as an event-wiring
   boundary; steel, plasteel, and cable behavior is owned by canonical
   `ConstructionAssemblyService` and `SheathingCableService`;
-- firearm interaction adapter was moved to `net.mcreator.ssc.integration`;
+- firearm interaction adapter was moved to `net.ssc14.content.item.weapon`;
   canonical firearm state routing and MK-58/Pistol procedure contracts remain
   unchanged;
 - both lamp block variants call canonical `LampInteractionService` directly;
@@ -170,7 +170,7 @@ boundary:
 - client screen overlays now route health-analyzer and world-check visibility
   through integration adapters; `net.mcreator.ssc.client.screens` has no direct
   generated-procedure imports;
-- `LocalChatEventHandler` was moved to `net.mcreator.ssc.integration`; message
+- `LocalChatEventHandler` remains in `net.mcreator.ssc.integration`; message
   routing, radio prefixes, popup formatting, and server-side audience checks
   remain unchanged pending extraction of a pure chat/radio domain service;
 - `LegacyReagentContainerRuntime` now owns the integration bridge in
