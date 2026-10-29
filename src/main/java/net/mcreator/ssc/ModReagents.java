@@ -1,7 +1,7 @@
 
 package net.mcreator.ssc;
 
-import net.mcreator.ssc.integration.LegacyReagentContainerRuntime;
+import net.ssc14.content.item.reagent.LegacyReagentContainerRuntime;
 
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.content.item.reagent.ReagentContentsCodec;
