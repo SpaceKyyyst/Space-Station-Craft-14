@@ -7,6 +7,7 @@ import net.ssc14.content.item.communication.HeadsetBaseInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetBrigmedicInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetCargoInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetCentcomInventoryCapability;
+import net.ssc14.content.item.communication.HeadsetCommandInventoryCapability;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
