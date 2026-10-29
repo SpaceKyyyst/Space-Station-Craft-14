@@ -181,12 +181,12 @@ public class Ssc14Mod {
 			}
 		});
 		GravityGeneratorPlugLifecycleService.installGeneratorLocator((level, pos) ->
-				level.getBlockState(pos).is(net.mcreator.ssc.init.Ssc14ModBlocks.GRAVITY_GENERATOR.get()));
+			level.getBlockState(pos).is(Ssc14Blocks.GRAVITY_GENERATOR.get()));
 		GravityGeneratorPlugLifecycleService.installPlugBlockFactory(() ->
-				net.mcreator.ssc.init.Ssc14ModBlocks.GRAV_GEN_PLUG_BLOCK.get().defaultBlockState());
+			Ssc14Blocks.GRAV_GEN_PLUG_BLOCK.get().defaultBlockState());
 		GravityGeneratorPlugLifecycleService.installPlacementPolicy((level, pos) ->
 				level.getBlockState(pos).is(net.minecraft.tags.BlockTags.create(net.minecraft.resources.Identifier.parse("minecraft:replaceable")))
-						|| level.getBlockState(pos).is(net.mcreator.ssc.init.Ssc14ModBlocks.GRAV_GEN_PLUG_BLOCK.get()));
+						|| level.getBlockState(pos).is(Ssc14Blocks.GRAV_GEN_PLUG_BLOCK.get()));
 		GravityGeneratorLifecycleService.install(new GravityGeneratorLifecycleService.Adapter() {
 			@Override
 			public boolean canSurvive(LevelAccessor level, net.minecraft.core.BlockPos pos) {
