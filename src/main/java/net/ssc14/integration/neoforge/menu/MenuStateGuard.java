@@ -1,4 +1,4 @@
-package net.mcreator.ssc.network;
+package net.ssc14.integration.neoforge.menu;
 
 import net.ssc14.content.menu.access.AccessConfigMENUMenu;
 import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
@@ -7,8 +7,8 @@ import net.minecraft.world.entity.player.Player;
 import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 
 /** Transitional type adapter for the three generated menus with writable state. */
-public final class LegacyMenuStateGuard {
-    private LegacyMenuStateGuard() { }
+public final class MenuStateGuard {
+    private MenuStateGuard() { }
 
     public static boolean canEdit(Player player) {
         return switch (player.containerMenu) {
