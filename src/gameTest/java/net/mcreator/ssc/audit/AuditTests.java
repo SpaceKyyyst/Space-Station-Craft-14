@@ -35,7 +35,7 @@ import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.ssc14.content.block.airlock.AirlockLifecycleService;
 import net.ssc14.content.equipment.ItemInteractionService;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
-import net.mcreator.ssc.integration.LegacyUniversalInteractCommandAdapter;
+import net.ssc14.content.equipment.ItemInteractionService;
 
 @EventBusSubscriber(modid="ssc_14")
 public final class AuditTests {
@@ -911,8 +911,8 @@ public final class AuditTests {
         });
         TESTS.put("invalid_interaction_slot",h->{
             var player=net.neoforged.neoforge.common.util.FakePlayerFactory.getMinecraft(h.getLevel());
-            LegacyUniversalInteractCommandAdapter.execute(player,Integer.MAX_VALUE);
-            LegacyUniversalInteractCommandAdapter.execute(player,-1);h.succeed();
+            ItemInteractionService.execute(player, Integer.MAX_VALUE);
+            ItemInteractionService.execute(player, -1);h.succeed();
         });
         TESTS.put("magnetic_boots_toggle",h->{
             var player=h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
