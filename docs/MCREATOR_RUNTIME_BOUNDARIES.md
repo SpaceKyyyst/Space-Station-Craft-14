@@ -67,6 +67,8 @@ owner, not merely renaming the facade.
 - `Ssc14ModHumanoidModels` — compatibility facade only; model construction and
   event registration now belong exclusively to `Ssc14HumanoidModels`, preventing
   duplicate client initialization;
+- `Ssc14ModEntityRenderers` — compatibility facade only; entity and block-entity
+  renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
   `TEMPORARYGRAVITYPLUGplayerProcedure` удалены после canonical-переноса;
 - остальные subscribers должны проверяться по event annotation, а не по числу прямых вызовов.
@@ -162,6 +164,8 @@ boundary:
 - `Ssc14ModHumanoidModels` — compatibility facade only; model construction and
   event registration now belong exclusively to `Ssc14HumanoidModels`, preventing
   duplicate client initialization;
+- `Ssc14ModEntityRenderers` — compatibility facade only; entity and block-entity
+  renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
   `TEMPORARYGRAVITYPLUGplayerProcedure` were removed after canonical migration;
 - every remaining subscriber must be audited by event annotation, not by direct-call count.
