@@ -1,8 +1,8 @@
 package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.Ssc14Mod;
+import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.integration.LegacyCommunicationConsoleAdapter;
-import net.mcreator.ssc.integration.LegacyMicrowaveAdapter;
 import net.minecraft.core.BlockPos;
 import net.ssc14.content.menu.decal.DecalColorMenuService;
 import net.ssc14.content.gravity.GravityGeneratorControlService;
@@ -15,6 +15,7 @@ import net.ssc14.content.commerce.VendingMachineRuntimeService;
 import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.menu.food.MicrowaveButtonIds;
 import net.ssc14.content.menu.food.MicrowaveControlService;
+import net.ssc14.content.menu.food.MicrowaveRecipeService;
 import net.ssc14.content.commerce.cargo.CargoOrderButtonIds;
 import net.ssc14.content.commerce.cargo.CargoOrderService;
 import net.ssc14.content.commerce.cargo.CargoPurchaseService;
@@ -35,6 +36,10 @@ import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -120,10 +125,26 @@ public final class LegacyMenuButtonRegistration {
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
         BlockPos pos = new BlockPos(message.x(), message.y(), message.z());
         if (message.buttonId() == MicrowaveButtonIds.START) {
-            LegacyMicrowaveAdapter.start(player.level(), message.x(), message.y(), message.z(), player);
+            startMicrowave(player, pos);
         } else {
             MicrowaveControlService.setTimer(player.level(), pos, message.buttonId());
         }
+    }
+
+    private static void startMicrowave(Player player, BlockPos pos) {
+        if (!(player.level() instanceof Level world) || world.isClientSide()) return;
+        var resourceHandler = world.getCapability(Capabilities.Item.BLOCK, pos, null);
+        IItemHandler handler = resourceHandler == null ? null : IItemHandler.of(resourceHandler);
+        if (!(handler instanceof IItemHandlerModifiable inventory)) return;
+        MicrowaveRecipeService.RecipeCatalog catalog = new MicrowaveRecipeService.RecipeCatalog(
+                Ssc14ModItems.POTATO.get(), Ssc14ModItems.SPACE_FRIES.get(), Ssc14ModItems.BUN.get(),
+                Ssc14ModItems.CHEESE.get(), Ssc14ModItems.MEAT.get(), Ssc14ModItems.CHEESEBURGER.get(),
+                Ssc14ModItems.TOFU_SLICE.get(), Ssc14ModItems.TOFU_BURGER.get(), Ssc14ModItems.DOUGH.get(),
+                Ssc14ModItems.TOFU_BREAD.get(), Ssc14ModItems.MEATLOAF.get(), Ssc14ModItems.BREAD_SLICE.get(),
+                Ssc14ModItems.FLY_AMANITA.get(), Ssc14ModItems.MOLDY_BREAD_PIECE.get(), Ssc14ModItems.BREAD.get(),
+                Ssc14ModItems.DOUGH_PIECE.get());
+        MicrowaveRecipeService.cook(world, pos, inventory, MicrowaveControlService.timerSeconds(world, pos),
+                catalog, stack -> stack.getItem() instanceof net.mcreator.ssc.item.ReagentContainerItem);
     }
 
     private static void handleAirlockPanel(Player player, MenuButtonPayload message) {
