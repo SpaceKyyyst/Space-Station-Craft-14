@@ -8,7 +8,7 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
 import net.minecraft.world.item.ItemStack;
 
-import net.mcreator.ssc.integration.LegacyCuriosProcedureAdapter;
+import net.ssc14.content.equipment.CuriosEquipmentBridge;
 import net.ssc14.content.equipment.HardsuitSalvageHelmetEquipabilityService;
 import net.ssc14.content.equipment.MagBootsUnequipService;
 import net.ssc14.content.equipment.OuterclothingEvaUnequipService;
@@ -206,7 +206,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				LegacyCuriosProcedureAdapter.onMagBootsEquip(slotContext.entity());
+				CuriosEquipmentBridge.onMagBootsEquip(slotContext.entity());
 			}
 
 			@Override
@@ -482,7 +482,7 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				LegacyCuriosProcedureAdapter.onEvaEquip(slotContext.entity());
+				CuriosEquipmentBridge.onEvaEquip(slotContext.entity());
 			}
 
 			@Override
@@ -1029,12 +1029,12 @@ public class Ssc14ModCuriosCompat {
 
 			@Override
 			public void onEquip(SlotContext slotContext, ItemStack prevStack) {
-				LegacyCuriosProcedureAdapter.onSalvageEquip(slotContext.entity());
+				CuriosEquipmentBridge.onSalvageEquip(slotContext.entity());
 			}
 
 			@Override
 			public void onUnequip(SlotContext slotContext, ItemStack newStack) {
-				LegacyCuriosProcedureAdapter.onSalvageUnequip(slotContext.entity());
+				CuriosEquipmentBridge.onSalvageUnequip(slotContext.entity());
 			}
 		}, Ssc14ModItems.HARDSUIT_SALVAGE.get());
 		event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {

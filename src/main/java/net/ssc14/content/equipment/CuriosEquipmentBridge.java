@@ -1,4 +1,4 @@
-package net.mcreator.ssc.integration;
+package net.ssc14.content.equipment;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.resources.Identifier;
@@ -6,8 +6,8 @@ import net.mcreator.ssc.init.Ssc14ModItems;
 import net.ssc14.content.equipment.SuitEquipmentService;
 
 /** Transitional boundary for generated Curios lifecycle procedures. */
-public final class LegacyCuriosProcedureAdapter {
-    private LegacyCuriosProcedureAdapter() {
+public final class CuriosEquipmentBridge {
+    private CuriosEquipmentBridge() {
     }
 
     public static void onMagBootsEquip(Entity entity) {
