@@ -45,8 +45,6 @@ owner, not merely renaming the facade.
   to `AirlockSignalHandler`;
 - `AirlockAiControl` — thin compatibility facade; server-side AI control ownership
   moved to `AirlockAiControlService`;
-- `AirlockDisassembly` — thin compatibility facade; isolated-door removal moved
-  to `AirlockDisassemblyService`;
 - `AirlockWireService` — thin compatibility facade; server-authoritative wire
   edits moved to the canonical airlock package;
 - `AirlockConfigurator` — thin compatibility facade; access-card permission
@@ -110,8 +108,6 @@ boundary:
   to `AirlockSignalHandler`;
 - `AirlockAiControl` — thin compatibility facade; server-side AI control ownership
   moved to `AirlockAiControlService`;
-- `AirlockDisassembly` — thin compatibility facade; isolated-door removal moved
-  to `AirlockDisassemblyService`;
 - `AirlockWireService` — thin compatibility facade; server-authoritative wire
   edits moved to the canonical airlock package;
 - `AirlockConfigurator` — thin compatibility facade; access-card permission
