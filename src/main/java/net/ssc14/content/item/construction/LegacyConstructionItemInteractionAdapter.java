@@ -1,4 +1,4 @@
-package net.mcreator.ssc.integration;
+package net.ssc14.content.item.construction;
 
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.ItemStack;
