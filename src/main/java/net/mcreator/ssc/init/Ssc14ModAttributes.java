@@ -6,13 +6,10 @@ package net.mcreator.ssc.init;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 
 import net.ssc14.content.attribute.Ssc14Attributes;
 
-@EventBusSubscriber
 @Deprecated(forRemoval = false)
 public class Ssc14ModAttributes {
 	public static final DeferredRegister<Attribute> REGISTRY = Ssc14Attributes.REGISTRY;
@@ -33,7 +30,6 @@ public class Ssc14ModAttributes {
 	public Ssc14ModAttributes() {
 	}
 
-	@SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {
 		Ssc14Attributes.addAttributes(event);
 	}

@@ -6,12 +6,15 @@ import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.ssc14.content.entity.Ssc14EntityTypes;
 import java.util.List;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
 
+@EventBusSubscriber(modid = Ssc14Identity.MOD_ID)
 public final class Ssc14Attributes {
     public static final DeferredRegister<Attribute> REGISTRY =
             DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, Ssc14Identity.MOD_ID);
@@ -42,6 +45,7 @@ public final class Ssc14Attributes {
     }
 
     /** Registers all player/entity attributes while preserving the legacy IDs. */
+    @SubscribeEvent
     public static void addAttributes(EntityAttributeModificationEvent event) {
         event.add(EntityType.PLAYER, PROGRESS_BAR_ATRB);
         event.add(EntityType.PLAYER, XY_ZPLAYER);
