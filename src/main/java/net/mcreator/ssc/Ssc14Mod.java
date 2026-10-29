@@ -19,7 +19,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.ssc14.integration.neoforge.worldgen.Ssc14StructureFeature;
-import net.mcreator.ssc.network.Ssc14ModVariables;
+import net.ssc14.integration.neoforge.state.Ssc14WorldVariables;
 import net.ssc14.common.station.StationCodeService;
 import net.ssc14.common.station.StationNameService;
 import net.ssc14.common.station.StationBudgetService;
@@ -176,7 +176,7 @@ public class Ssc14Mod {
 			}
 		});
 		OrderPalletRegistryService.install((level, pos) -> {
-			var variables = Ssc14ModVariables.WorldVariables.get(level);
+			var variables = Ssc14WorldVariables.WorldVariables.get(level);
 			String updatedRegistry = PalletRegistryCodec.appendIfAbsent(variables.PalletRegistry, pos);
 			if (!updatedRegistry.equals(variables.PalletRegistry)) {
 				variables.PalletRegistry = updatedRegistry;
@@ -259,7 +259,7 @@ public class Ssc14Mod {
 					}
 				});
 		CommunicationFrequencyStateService.install((level, stateKey, enabled) -> {
-			var state = Ssc14ModVariables.MapVariables.get(level);
+			var state = Ssc14WorldVariables.MapVariables.get(level);
 			switch (stateKey) {
 				case "Base_Radio_Frequency" -> state.Base_Radio_Frequency = enabled;
 				case "Command_Radio_Frequency" -> state.Command_Radio_Frequency = enabled;
@@ -314,19 +314,19 @@ public class Ssc14Mod {
 		ExtinguisherCabinetInteractionService.install(
 				Ssc14Items.EXTINGUISHER, Ssc14Items.EXTINGUISHER_OPEN);
 		StationCodeService.install(level ->
-				(int) Ssc14ModVariables.MapVariables.get(level).station_code);
+				(int) Ssc14WorldVariables.MapVariables.get(level).station_code);
 		StationCodeService.installMutator((level, value) -> {
-			Ssc14ModVariables.MapVariables variables =
-					Ssc14ModVariables.MapVariables.get(level);
+			Ssc14WorldVariables.MapVariables variables =
+					Ssc14WorldVariables.MapVariables.get(level);
 			variables.station_code = value;
 			variables.markSyncDirty();
 		});
 		StationNameService.install(level ->
-				Ssc14ModVariables.MapVariables.get(level).station_name);
+				Ssc14WorldVariables.MapVariables.get(level).station_name);
 		StationBudgetService.install(level ->
-				Ssc14ModVariables.WorldVariables.get(level).Station_Budget);
+				Ssc14WorldVariables.WorldVariables.get(level).Station_Budget);
 		StationBudgetService.installSpender((level, amount) -> {
-			var variables = Ssc14ModVariables.WorldVariables.get(level);
+			var variables = Ssc14WorldVariables.WorldVariables.get(level);
 			if (variables.Station_Budget < amount) return false;
 			variables.Station_Budget -= amount;
 			variables.markSyncDirty();
@@ -335,14 +335,14 @@ public class Ssc14Mod {
 		StationBudgetService.installEditor(new StationBudgetService.Editor() {
 			@Override
 			public void credit(LevelAccessor level, double amount) {
-				var variables = Ssc14ModVariables.WorldVariables.get(level);
+				var variables = Ssc14WorldVariables.WorldVariables.get(level);
 				variables.Station_Budget += amount;
 				variables.markSyncDirty();
 			}
 
 			@Override
 			public void reset(LevelAccessor level) {
-				var variables = Ssc14ModVariables.WorldVariables.get(level);
+				var variables = Ssc14WorldVariables.WorldVariables.get(level);
 				variables.Station_Budget = 0;
 				variables.markSyncDirty();
 			}
