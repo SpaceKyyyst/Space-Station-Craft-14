@@ -64,6 +64,9 @@ owner, not merely renaming the facade.
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
+- `Ssc14ModHumanoidModels` — compatibility facade only; model construction and
+  event registration now belong exclusively to `Ssc14HumanoidModels`, preventing
+  duplicate client initialization;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
   `TEMPORARYGRAVITYPLUGplayerProcedure` удалены после canonical-переноса;
 - остальные subscribers должны проверяться по event annotation, а не по числу прямых вызовов.
@@ -156,6 +159,9 @@ boundary:
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
+- `Ssc14ModHumanoidModels` — compatibility facade only; model construction and
+  event registration now belong exclusively to `Ssc14HumanoidModels`, preventing
+  duplicate client initialization;
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
   `TEMPORARYGRAVITYPLUGplayerProcedure` were removed after canonical migration;
 - every remaining subscriber must be audited by event annotation, not by direct-call count.
