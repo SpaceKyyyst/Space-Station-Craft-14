@@ -2,7 +2,6 @@ package net.mcreator.ssc.network;
 
 import net.mcreator.ssc.Ssc14Mod;
 import net.mcreator.ssc.init.Ssc14ModItems;
-import net.mcreator.ssc.integration.LegacyCommunicationConsoleAdapter;
 import net.minecraft.core.BlockPos;
 import net.ssc14.content.menu.decal.DecalColorMenuService;
 import net.ssc14.content.gravity.GravityGeneratorControlService;
@@ -24,6 +23,8 @@ import net.ssc14.content.menu.airlock.CabelPannelAirlockMenu;
 import net.ssc14.content.menu.airlock.AirlockPanelButtonIds;
 import net.mcreator.ssc.access.AirlockWireService;
 import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
+import net.ssc14.content.communication.StationAlertService;
+import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
 import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
@@ -189,8 +190,20 @@ public final class LegacyMenuButtonRegistration {
     private static void handleCommunicationConsole(Player player, MenuButtonPayload message) {
         if (!(player.containerMenu instanceof CommunConsoleGUIMenu menu)
                 || !matches(player, menu, message, menu.x, menu.y, menu.z)) return;
-        switch (message.buttonId()) {
-            default -> LegacyCommunicationConsoleAdapter.trigger(player.level(), message.buttonId());
+        if (!(player.level() instanceof net.minecraft.server.level.ServerLevel serverLevel)) return;
+        int targetCode = switch (message.buttonId()) {
+            case 0 -> 4;
+            case 1 -> 3;
+            case 2 -> 5;
+            case 3 -> 2;
+            case 4 -> 1;
+            default -> -1;
+        };
+        if (targetCode < 0) return;
+        var state = Ssc14ModVariables.MapVariables.get(serverLevel);
+        if (StationAlertService.announceCode(serverLevel, state.station_code, state.station_name, targetCode)) {
+            state.station_code = targetCode;
+            state.markSyncDirty();
         }
     }
 
