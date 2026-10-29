@@ -127,6 +127,9 @@ boundary:
 - client screen overlays now route health-analyzer and world-check visibility
   through integration adapters; `net.mcreator.ssc.client.screens` has no direct
   generated-procedure imports;
+- the generated `net.mcreator.ssc.procedures` package is no longer present;
+  procedure ownership is canonical or explicitly isolated in integration
+  adapters;
 - `LocalChatEventHandler` remains in `net.mcreator.ssc.integration`; message
   routing, radio prefixes, popup formatting, and server-side audience checks
   remain unchanged pending extraction of a pure chat/radio domain service;
