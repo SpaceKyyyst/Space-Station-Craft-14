@@ -11,7 +11,7 @@
 | Регистрация | `Ssc14Mod`, `init/*` | Идентификаторы, события, типы блоков и предметов |
 | Атмосфера | `atmosphere/*`, `AtmosCell`, `AtmosRegion`, `AtmosphereManager`, `AtmosphereSavedData` | Газовые расчёты, очередь регионов, мир и сохранения |
 | Энергетика | `energy/*`, `EnergyNetworkManager`, `EnergySimulationServer` | Компоненты графа, бюджеты устройств, топология и распределение энергии |
-| Химия | `common/chemistry/*`, `content/item/reagent/*`, `ProcessReactionsMessage`, legacy `ModReagents` adapter | Расчёт количеств, атомарные реакции, контейнерный runtime и серверный перенос |
+| Химия | `common/chemistry/*`, `content/item/reagent/*`, `ReagentService`, legacy `ModReagents` alias | Расчёт количеств, атомарные реакции, контейнерный runtime и серверный перенос |
 | Сигнальные соединения | `NetworkManager`, `NetworkSavedData`, `INetworkAction` | Сохранение связей и выполнение действий |
 | Броня | `combat/ResistanceRegistry`, `ArmorResistanceHelper`, `procedures/ModArmorSetupProcedure` | Чистые правила, Curios-адаптер и настройка |
 | Интерфейс | `client/*`, `world/inventory/*`, `network/validation/*`, сетевые сообщения | Отрисовка, меню, ограничения пакетов и серверная синхронизация |
@@ -32,8 +32,9 @@
 Сейчас в коде сочетаются генерируемые процедуры, игровые адаптеры и выделенные
 доменные правила. Разделение ещё не охватывает все подсистемы.
 Операции чтения, добавления и удаления реагентов проходят через
-`ReagentContainerAccess`; `ModReagents` остаётся переходным runtime-адаптером
-для legacy NBT и реакций до завершения миграции chemistry runtime.
+`ReagentContainerAccess`; владелец chemistry runtime теперь `ReagentService` в
+canonical package, а `ModReagents` оставлен только как deprecated alias для
+legacy NBT/GameTest callers.
 Синхронизация access-полей ID-карт полностью проходит через
 `IdJobAssignmentService`; `ID_Code_CHECKProcedure` сохраняет только совместимый
 оркестрационный фасад и отдельные исторические блоковые helpers. Следующая
@@ -239,6 +240,11 @@ Energy topology, device mapping, telemetry and LV batching now live under the
 canonical `net.ssc14.content.energy` package. The former
 `net.mcreator.ssc.energy.*` classes remain only as deprecated compatibility
 facades and are not part of the canonical runtime.
+
+Reagent registration, reaction planning and container operations now live in
+`net.ssc14.common.chemistry.ReagentService`; `net.mcreator.ssc.ModReagents`
+remains only as a deprecated compatibility alias for generated callers and
+GameTests.
 
 Critical medical ticking and liquid metabolism now run through
 `MedicalCriticalTickHandler` and `LiquidMetabolismTickHandler`; their generated
