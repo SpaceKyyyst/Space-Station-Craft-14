@@ -5,6 +5,7 @@ import net.ssc14.content.item.access.AccessConfigInventoryCapability;
 import net.ssc14.content.item.container.EggCartonInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetBaseInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetBrigmedicInventoryCapability;
+import net.ssc14.content.item.communication.HeadsetCargoInventoryCapability;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
