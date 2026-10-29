@@ -189,6 +189,10 @@ bypass, unrestricted-door semantics и bitmask permissions. Старый
 только через ID-preserving registry migration: массовая текстовая замена создаёт
 риск несовместимости сохранений и дублирования регистраций.
 
+Точка входа уже регистрирует canonical `Ssc14MenuTypes` и `Ssc14CreativeTabs`
+напрямую; `Ssc14ModMenus` и `Ssc14ModTabs` сохранены только как compatibility
+aliases для legacy client-кода.
+
 Синхронизация wire/lamp state вынесена в `AirlockLampStateService`; сохранены
 все persisted cable flags, power restoration и bolt-cut side effects. Старый
 `CPlogLampPrProcedure` оставлен compatibility facade.
@@ -297,6 +301,10 @@ The remaining canonical inputs from `net.mcreator.ssc.init` are registry aliases
 (`Ssc14ModItems`, `Ssc14ModBlocks`, `Ssc14ModAttributes`). They must be replaced
 only through an ID-preserving registry migration; broad textual replacement
 risks save incompatibility and duplicate registrations.
+
+The entrypoint now registers canonical `Ssc14MenuTypes` and `Ssc14CreativeTabs`
+directly; `Ssc14ModMenus` and `Ssc14ModTabs` remain only as compatibility aliases
+for legacy client code.
 
 Wire/lamp state synchronization now lives in `AirlockLampStateService`; all
 persisted cable flags, power restoration, and bolt-cut side effects are
