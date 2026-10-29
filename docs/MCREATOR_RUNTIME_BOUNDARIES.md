@@ -12,10 +12,15 @@
 > services. Deleted facades and wrappers listed historically below are no longer
 > runtime sources. The project test version is `0.1.28-beta`.
 
-## RU
+## RU — исторические границы и оставшиеся legacy-адаптеры
 
-После текущих переносов в `src/main/java/net/mcreator/ssc/procedures` остаются только
-event subscribers и процедурные фасады, которые ещё имеют runtime-владельца:
+Списки ниже сохранены как исторический журнал миграции. Они не означают, что
+процедуры физически остаются в каталоге `procedures`: каталог пуст. Оставшиеся
+границы находятся в обычных legacy-классах, регистраторах и интеграционных
+адаптерах; их удаление требует отдельного аудита клиентских событий и сохранений.
+
+Исторически перенесённые event subscribers и процедурные фасады перечислены ниже;
+их текущие владельцы находятся в canonical-слоях или legacy integration boundary:
 
 - `AirlockToolInteractionHandler` — canonical right-click маршрутизатор
   инструментов шлюза; legacy access/deconstruction adapters остаются явными
@@ -79,10 +84,16 @@ event subscribers и процедурные фасады, которые ещё 
 Прямое удаление subscriber-класса без проверки annotation-регистрации считается
 регрессией, даже если `rg` не находит вызовов класса.
 
-## EN
+## EN — historical boundaries and remaining legacy adapters
 
-After the current migrations, `src/main/java/net/mcreator/ssc/procedures` contains
-only event subscribers and procedural facades that still own runtime behavior:
+The lists below are retained as a migration history. They do not mean that
+procedures still exist in the `procedures` directory: that directory is empty.
+Remaining boundaries are ordinary legacy classes, registries, and integration
+adapters; removing them requires a separate audit of client events and saves.
+
+The historically migrated event subscribers and procedural facades are listed
+below; their current owners are in canonical layers or the legacy integration
+boundary:
 
 - `AirlockToolInteractionHandler` — canonical right-click routing for airlock
   tools; legacy access/deconstruction adapters remain explicit compatibility
