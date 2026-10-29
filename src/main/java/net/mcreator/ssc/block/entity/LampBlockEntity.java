@@ -18,7 +18,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
+import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
+import net.ssc14.content.block.lighting.Ssc14LightingBlockEntities;
 import net.ssc14.content.block.energy.CableTopologyService;
 
 import javax.annotation.Nullable;
@@ -29,7 +30,7 @@ public class LampBlockEntity extends RandomizableContainerBlockEntity implements
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(0, ItemStack.EMPTY);
 
 	public LampBlockEntity(BlockPos position, BlockState state) {
-		super(Ssc14ModBlockEntities.LAMP.get(), position, state);
+		super(Ssc14LightingBlockEntities.LAMP.get(), position, state);
 	}
 
 	@Override
@@ -138,3 +139,5 @@ public class LampBlockEntity extends RandomizableContainerBlockEntity implements
 		return true;
 	}
 }
+
+

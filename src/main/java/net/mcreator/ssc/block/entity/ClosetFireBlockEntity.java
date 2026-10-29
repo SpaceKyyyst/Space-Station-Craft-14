@@ -18,7 +18,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
+import net.ssc14.content.block.storage.Ssc14ClosetBlockEntities;
+import net.ssc14.content.block.lighting.Ssc14LightingBlockEntities;
 
 import javax.annotation.Nullable;
 
@@ -28,7 +29,7 @@ public class ClosetFireBlockEntity extends RandomizableContainerBlockEntity impl
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(30, ItemStack.EMPTY);
 
 	public ClosetFireBlockEntity(BlockPos position, BlockState state) {
-		super(Ssc14ModBlockEntities.CLOSET_FIRE.get(), position, state);
+		super(Ssc14ClosetBlockEntities.CLOSET_FIRE.get(), position, state);
 	}
 
 	@Override
@@ -119,3 +120,4 @@ public class ClosetFireBlockEntity extends RandomizableContainerBlockEntity impl
 		return true;
 	}
 }
+
