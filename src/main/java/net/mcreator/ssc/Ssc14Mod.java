@@ -132,7 +132,6 @@ public class Ssc14Mod {
 			modEventBus.addListener(Ssc14ModCuriosRenderers::registerRenderers);
 		}
 		Ssc14SoundEvents.REGISTRY.register(modEventBus);
-		Ssc14ModBlocks.initializeLegacyEntries();
 		Ssc14Blocks.REGISTRY.register(modEventBus);
 		Ssc14AccessBlockEntities.REGISTRY.register(modEventBus);
 		modEventBus.addListener(Ssc14AccessBlockEntities::registerCapabilities);
