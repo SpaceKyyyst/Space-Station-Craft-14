@@ -1,4 +1,4 @@
-package net.mcreator.ssc.network;
+package net.ssc14.integration.neoforge.menu;
 
 import net.mcreator.ssc.Ssc14Mod;
 import net.ssc14.content.menu.access.IDcodeMenu;
@@ -18,10 +18,10 @@ import net.ssc14.integration.neoforge.menu.network.MenuSlotDispatchBridge;
 import net.ssc14.integration.neoforge.menu.network.MenuAccessGuard;
 import net.ssc14.integration.neoforge.network.Ssc14NetworkPayloads;
 
-/** Transitional dispatcher for generated slot callbacks. */
+/** Dispatcher for canonical menu slot callbacks. */
 @EventBusSubscriber
-public final class LegacyMenuSlotRegistration {
-    private LegacyMenuSlotRegistration() { }
+public final class MenuSlotRegistration {
+    private MenuSlotRegistration() { }
 
     public static void handle(MenuSlotPayload message, IPayloadContext context) {
         if (context.flow() != PacketFlow.SERVERBOUND) return;
@@ -60,10 +60,10 @@ public final class LegacyMenuSlotRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
-        MenuSlotDispatchBridge.install(LegacyMenuSlotRegistration::dispatch);
+        MenuSlotDispatchBridge.install(MenuSlotRegistration::dispatch);
         for (MenuSlotPayload.Channel channel : MenuSlotPayload.Channel.values()) {
             Ssc14NetworkPayloads.addServerbound(channel.type(), MenuSlotPayload.codec(channel),
-                    LegacyMenuSlotRegistration::handle);
+                    MenuSlotRegistration::handle);
         }
     }
 }
