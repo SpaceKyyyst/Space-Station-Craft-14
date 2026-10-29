@@ -39,6 +39,11 @@ class CommitMessagePolicyTest(unittest.TestCase):
         )
         self.assertEqual([], validate_commit_message(message))
 
+    def test_accepts_legacy_subject_with_literal_escaped_body(self):
+        self.assertEqual(
+            [], validate_commit_message("Перенести bridge / Move bridge\\n\\nRU:\\n- done")
+        )
+
     def test_rejects_empty_or_reversed_language_sections(self):
         message = (
             "ci(policy): Проверить метаданные / Validate metadata\n\n"

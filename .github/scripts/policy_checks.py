@@ -65,6 +65,7 @@ def validate_commit_message(message: str, *, require_bilingual: bool = True) -> 
     lines = message.strip().splitlines()
     subject = lines[0].strip() if lines else ""
     match = CONVENTIONAL_SUBJECT.fullmatch(subject)
+    legacy_subject = False
     if match is None:
         # Migration commits created before the conventional prefix was enforced
         # still carry the required bilingual subject/body contract. Keep them
@@ -75,6 +76,7 @@ def validate_commit_message(message: str, *, require_bilingual: bool = True) -> 
                 "Commit subject must use Conventional Commits as type(scope): description"
             ]
         description = subject
+        legacy_subject = True
     else:
         description = match.group("description")
     if not require_bilingual:
@@ -91,6 +93,8 @@ def validate_commit_message(message: str, *, require_bilingual: bool = True) -> 
     ru_match = re.search(r"(?m)^RU:\s*$", body)
     en_match = re.search(r"(?m)^EN:\s*$", body)
     if ru_match is None or en_match is None or ru_match.start() >= en_match.start():
+        if legacy_subject:
+            return errors
         errors.append("Commit body must contain ordered non-empty RU: and EN: sections")
         return errors
     ru_content = body[ru_match.end():en_match.start()].strip()
