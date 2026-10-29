@@ -23,6 +23,7 @@ import net.mcreator.ssc.network.Ssc14ModVariables;
 import net.ssc14.common.station.StationCodeService;
 import net.ssc14.common.station.StationNameService;
 import net.ssc14.common.station.StationBudgetService;
+import net.ssc14.common.chemistry.ReagentService;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
 import net.mcreator.ssc.init.*;
 import net.ssc14.integration.neoforge.server.ServerTaskSubmission;
@@ -375,7 +376,7 @@ public class Ssc14Mod {
 		Ssc14ParticleTypes.REGISTRY.register(modEventBus);
 		Ssc14Attributes.REGISTRY.register(modEventBus);
 		// Start of user code block mod init
-		ModReagents.register(modEventBus);
+		ReagentService.register(modEventBus);
 		// End of user code block mod init
 	}
 

@@ -49,7 +49,7 @@ public final class ReagentFillCommandService {
         }
 
         if (ReagentContainerAccess.add(mainHand, reagentName, amount)) {
-            net.mcreator.ssc.ModReagents.processReactions(mainHand, player);
+            net.ssc14.common.chemistry.ReagentService.processReactions(mainHand, player);
             String displayName = ReagentCatalog.find(reagentName).orElseThrow().getDisplayName().getString();
             player.sendSystemMessage(Component.literal("§aДобавлено " + amount + " мл " + displayName));
         } else {

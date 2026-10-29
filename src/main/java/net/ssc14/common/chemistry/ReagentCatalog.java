@@ -1,6 +1,5 @@
 package net.ssc14.common.chemistry;
 
-import net.mcreator.ssc.ModReagents;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,11 +9,11 @@ public final class ReagentCatalog {
     private ReagentCatalog() {
     }
 
-    public static List<ModReagents.Reagent> all() {
-        return ModReagents.CONFIG_REAGENTS;
+    public static List<ReagentService.Reagent> all() {
+        return ReagentService.CONFIG_REAGENTS;
     }
 
-    public static Optional<ModReagents.Reagent> find(String id) {
-        return ModReagents.getReagent(id);
+    public static Optional<ReagentService.Reagent> find(String id) {
+        return ReagentService.getReagent(id);
     }
 }

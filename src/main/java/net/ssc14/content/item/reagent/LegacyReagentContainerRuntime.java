@@ -2,7 +2,7 @@ package net.ssc14.content.item.reagent;
 
 import java.util.HashMap;
 import java.util.Map;
-import net.mcreator.ssc.ModReagents;
+import net.ssc14.common.chemistry.ReagentService;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.ssc14.common.chemistry.ReagentColorMixer;
@@ -34,7 +34,7 @@ public final class LegacyReagentContainerRuntime implements ReagentContainerRunt
 
     @Override
     public int drink(ItemStack stack, int amount, ServerPlayer player) {
-        return ModReagents.drinkReagents(stack, amount, player);
+        return ReagentService.drinkReagents(stack, amount, player);
     }
 
     @Override
@@ -44,7 +44,7 @@ public final class LegacyReagentContainerRuntime implements ReagentContainerRunt
         }
         Map<String, Integer> reagents = ReagentContainerStorage.contents(stack);
         Map<String, Integer> colors = new HashMap<>();
-        reagents.keySet().forEach(id -> ModReagents.getReagent(id)
+        reagents.keySet().forEach(id -> ReagentService.getReagent(id)
                 .ifPresent(reagent -> colors.put(id, reagent.getColorRgb())));
         return ReagentColorMixer.mix(reagents, colors);
     }

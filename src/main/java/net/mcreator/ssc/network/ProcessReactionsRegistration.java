@@ -1,7 +1,7 @@
 package net.mcreator.ssc.network;
 
 import java.util.Map;
-import net.mcreator.ssc.ModReagents;
+import net.ssc14.common.chemistry.ReagentService;
 import net.mcreator.ssc.Ssc14Mod;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.server.level.ServerPlayer;
@@ -58,7 +58,7 @@ public final class ProcessReactionsRegistration {
         targetSlot.set(targetStack);
         targetSlot.setChanged();
         player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, sourceStack);
-        ModReagents.processReactions(targetSlot.getItem(), player);
+        ReagentService.processReactions(targetSlot.getItem(), player);
         player.containerMenu.broadcastChanges();
     }
 
