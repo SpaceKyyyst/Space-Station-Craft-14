@@ -195,6 +195,11 @@ runtime owners of this behavior.
   event/compatibility bridges; они не владеют регистрами или доменной логикой.
 - Автоматически обнаруживаемые network registration-классы требуют отдельного
   переноса в integration namespace с сохранением event annotations и payload IDs.
+- `ProcessReactionsRegistration`, `NetConfigGUIButtonRegistration`,
+  `NetConfigGUISyncRegistration` и `IDcodeButtonRegistration` уже находятся в
+  canonical chemistry/menu слоях; generated-классы являются только facade.
+- `MenuStateUpdateRegistration` остаётся единственным generated subscriber до
+  разделения server-side guard/update и client-only state handler.
 
 ## EN — Current generated-layer remainder
 
@@ -208,3 +213,8 @@ runtime owners of this behavior.
   event/compatibility bridges and do not own registries or domain logic.
 - Auto-discovered network registration classes require a separate move into the
   integration namespace while preserving event annotations and payload IDs.
+- `ProcessReactionsRegistration`, `NetConfigGUIButtonRegistration`,
+  `NetConfigGUISyncRegistration`, and `IDcodeButtonRegistration` now live in
+  canonical chemistry/menu layers; their generated classes are facades only.
+- `MenuStateUpdateRegistration` remains the one generated subscriber pending a
+  split between its server-side guard/update path and client-only state handler.
