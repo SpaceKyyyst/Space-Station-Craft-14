@@ -31,7 +31,7 @@ public final class LegacyAirlockDoorIntegrationAdapter
     @Override public void neighborChanged(Level level, BlockPos pos) {
         net.ssc14.content.block.airlock.AirlockFloor.ensureLowerPart(level, pos);
         if (level instanceof ServerLevel server) {
-            net.mcreator.ssc.access.AirlockSignals.changed(server, pos);
+            AirlockSignalHandler.changed(server, pos);
         }
     }
 

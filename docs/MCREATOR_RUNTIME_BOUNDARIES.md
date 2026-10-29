@@ -41,8 +41,6 @@ owner, not merely renaming the facade.
 - `AirlockToolInteractionHandler` — canonical right-click маршрутизатор
   инструментов шлюза; legacy access/deconstruction adapters остаются явными
   compatibility inputs;
-- `AirlockSignals` — thin compatibility facade; redstone routing ownership moved
-  to `AirlockSignalHandler`;
 - `AirlockWireService` — thin compatibility facade; server-authoritative wire
   edits moved to the canonical airlock package;
 - `AirlockConfigurator` — thin compatibility facade; access-card permission
@@ -98,8 +96,6 @@ boundary:
 - `AirlockToolInteractionHandler` — canonical right-click routing for airlock
   tools; legacy access/deconstruction adapters remain explicit compatibility
   inputs;
-- `AirlockSignals` — thin compatibility facade; redstone routing ownership moved
-  to `AirlockSignalHandler`;
 - `AirlockWireService` — thin compatibility facade; server-authoritative wire
   edits moved to the canonical airlock package;
 - `AirlockConfigurator` — thin compatibility facade; access-card permission
