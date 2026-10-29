@@ -1,4 +1,4 @@
-package net.mcreator.ssc.item.inventory;
+package net.ssc14.content.item.decal;
 
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.item.ItemAccessItemHandler;
@@ -11,20 +11,20 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.component.DataComponents;
 
 import net.ssc14.content.menu.decal.DECALScolorGUIMenu;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 
 @EventBusSubscriber
-public class DECAL2spawnerInventoryCapability extends ItemAccessItemHandler {
+public class DECAL3spawnerInventoryCapability extends ItemAccessItemHandler {
 	@SubscribeEvent
 	public static void onItemDropped(ItemTossEvent event) {
-		if (event.getEntity().getItem().getItem() == Ssc14ModItems.DECAL_2SPAWNER.get()) {
+		if (event.getEntity().getItem().getItem() == Ssc14Items.DECAL_3SPAWNER.get()) {
 			Player player = event.getPlayer();
 			if (player.containerMenu instanceof DECALScolorGUIMenu)
 				player.closeContainer();
 		}
 	}
 
-	public DECAL2spawnerInventoryCapability(ItemAccess access) {
+	public DECAL3spawnerInventoryCapability(ItemAccess access) {
 		super(access, DataComponents.CONTAINER, 0);
 	}
 
@@ -35,6 +35,7 @@ public class DECAL2spawnerInventoryCapability extends ItemAccessItemHandler {
 
 	@Override
 	public boolean isValid(int index, ItemResource resource) {
-		return super.isValid(index, resource) && resource.getItem() != Ssc14ModItems.DECAL_2SPAWNER.get();
+		return super.isValid(index, resource) && resource.getItem() != Ssc14Items.DECAL_3SPAWNER.get();
 	}
 }
+

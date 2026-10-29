@@ -18,6 +18,12 @@ import net.ssc14.content.item.communication.HeadsetServiceInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetSyndicateInventoryCapability;
 import net.ssc14.content.item.communication.HeadsetScienceInventoryCapability;
 import net.ssc14.content.item.container.Backpack2InventoryCapability;
+import net.ssc14.content.item.decal.DECAL1spawnerInventoryCapability;
+import net.ssc14.content.item.decal.DECAL2spawnerInventoryCapability;
+import net.ssc14.content.item.decal.DECAL3spawnerInventoryCapability;
+import net.ssc14.content.item.decal.DECAL4spawnerInventoryCapability;
+import net.ssc14.content.item.decal.DECAL5spawnerInventoryCapability;
+import net.ssc14.content.item.decal.DECAL6spawnerInventoryCapability;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
