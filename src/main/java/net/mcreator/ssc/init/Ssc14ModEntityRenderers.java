@@ -1,6 +1,7 @@
 package net.mcreator.ssc.init;
 
 import net.ssc14.content.entity.Ssc14EntityTypes;
+import net.ssc14.content.block.airlock.Ssc14AirlockBlockEntities;
 
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -13,7 +14,7 @@ import net.mcreator.ssc.client.renderer.*;
 public class Ssc14ModEntityRenderers {
 	@SubscribeEvent
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(Ssc14ModBlockEntities.BASE_AIRLOCK_D_1.get(), context -> new AirlockDoorRenderer<>(net.minecraft.resources.Identifier.parse("ssc_14:textures/block/standard_airlock_basic.png")));
+        event.registerBlockEntityRenderer(Ssc14AirlockBlockEntities.BASE_AIRLOCK_D_1.get(), context -> new AirlockDoorRenderer<>(net.minecraft.resources.Identifier.parse("ssc_14:textures/block/standard_airlock_basic.png")));
         event.registerBlockEntityRenderer(Ssc14ModBlockEntities.TECH_AIRLOCK_D_1.get(), context -> new AirlockDoorRenderer<>(net.minecraft.resources.Identifier.parse("ssc_14:textures/block/standard_airlock_maint.png")));
         event.registerBlockEntityRenderer(Ssc14ModBlockEntities.ATMOSPHERICS_AIRLOCK_D_1.get(), context -> new AirlockDoorRenderer<>(net.minecraft.resources.Identifier.parse("ssc_14:textures/block/standard_airlock_atmospherics.png")));
         event.registerBlockEntityRenderer(Ssc14ModBlockEntities.CARGO_AIRLOCK_D_1.get(), context -> new AirlockDoorRenderer<>(net.minecraft.resources.Identifier.parse("ssc_14:textures/block/standard_airlock_cargo.png")));
