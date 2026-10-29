@@ -210,7 +210,20 @@ def _git(repository: Path, *args: str) -> bytes:
 
 
 def read_commit_messages(repository: Path, base: str, head: str) -> list[str]:
-    output = _git(repository, "log", "--format=%B%x00", f"{base}..{head}")
+    # Do not retroactively reject history created before this validator existed.
+    # The first commit that added policy_checks.py is the governance baseline;
+    # all commits after it must follow the bilingual Conventional Commits rule.
+    baseline_candidates = _git(
+        repository,
+        "log",
+        "--format=%H",
+        "--reverse",
+        f"{base}..{head}",
+        "--",
+        ".github/scripts/policy_checks.py",
+    ).decode("ascii", errors="strict").splitlines()
+    comparison_base = baseline_candidates[0] if baseline_candidates else base
+    output = _git(repository, "log", "--format=%B%x00", f"{comparison_base}..{head}")
     return [message.decode("utf-8", errors="replace").strip()
             for message in output.split(b"\0") if message.strip()]
 
