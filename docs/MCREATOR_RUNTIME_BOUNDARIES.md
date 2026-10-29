@@ -135,6 +135,9 @@ boundary:
   generated init layer;
 - `Ssc14ModBlockEntities` is a field-compatible alias only and no longer owns
   a registry or capability subscriber;
+- client block-entity renderer bootstrap no longer references
+  `Ssc14ModBlockEntities`; airlock renderers use `Ssc14AirlockBlockEntities`
+  directly;
 - `LocalChatEventHandler` remains in `net.mcreator.ssc.integration`; message
   routing, radio prefixes, popup formatting, and server-side audience checks
   remain unchanged pending extraction of a pure chat/radio domain service;
