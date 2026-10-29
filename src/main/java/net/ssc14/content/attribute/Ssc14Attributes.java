@@ -3,6 +3,11 @@ package net.ssc14.content.attribute;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.RangedAttribute;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
+import net.ssc14.content.entity.Ssc14EntityTypes;
+import java.util.List;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ssc14.common.Ssc14Identity;
@@ -34,6 +39,26 @@ public final class Ssc14Attributes {
             register("race", 0.0, 0.0, 2.0);
 
     private Ssc14Attributes() {
+    }
+
+    /** Registers all player/entity attributes while preserving the legacy IDs. */
+    public static void addAttributes(EntityAttributeModificationEvent event) {
+        event.add(EntityType.PLAYER, PROGRESS_BAR_ATRB);
+        event.add(EntityType.PLAYER, XY_ZPLAYER);
+        List.of(Ssc14EntityTypes.WALL_CARCASE_ENTIT.get(), Ssc14EntityTypes.ID_CONSOLE_ENTITY.get())
+                .stream()
+                .filter(net.minecraft.world.entity.ai.attributes.DefaultAttributes::hasSupplier)
+                .map(entityType -> (EntityType<? extends LivingEntity>) entityType)
+                .forEach(entity -> event.add(entity, ENT_PULL));
+        event.add(EntityType.PLAYER, ENT_PULL);
+        event.add(EntityType.PLAYER, GAS_AN_GU_IATRIB);
+        event.add(EntityType.PLAYER, OPEN_WORLD_CHECK_MENU);
+        event.add(EntityType.PLAYER, NUTRIENTS);
+        event.add(EntityType.PLAYER, DIGESTIVE_PROCESSES);
+        event.add(EntityType.PLAYER, HEALTH_U_IATTRIBUTE);
+        event.add(EntityType.PLAYER, LIQUID);
+        event.add(EntityType.PLAYER, FLUID_ABSORPTION);
+        event.add(EntityType.PLAYER, RACE);
     }
 
     private static DeferredHolder<Attribute, Attribute> register(

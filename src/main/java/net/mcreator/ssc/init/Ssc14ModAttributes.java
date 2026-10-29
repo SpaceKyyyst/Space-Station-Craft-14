@@ -8,16 +8,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
-
-import net.minecraft.world.entity.ai.attributes.DefaultAttributes;
 import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.EntityType;
-import net.ssc14.content.attribute.Ssc14Attributes;
-import net.ssc14.content.entity.Ssc14EntityTypes;
 
-import java.util.stream.Collectors;
-import java.util.List;
+import net.ssc14.content.attribute.Ssc14Attributes;
 
 @EventBusSubscriber
 @Deprecated(forRemoval = false)
@@ -42,18 +35,6 @@ public class Ssc14ModAttributes {
 
 	@SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {
-		event.add(EntityType.PLAYER, PROGRESS_BAR_ATRB);
-		event.add(EntityType.PLAYER, XY_ZPLAYER);
-		List.of(Ssc14EntityTypes.WALL_CARCASE_ENTIT.get(), Ssc14EntityTypes.ID_CONSOLE_ENTITY.get()).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList())
-				.forEach(entity -> event.add(entity, ENT_PULL));
-		event.add(EntityType.PLAYER, ENT_PULL);
-		event.add(EntityType.PLAYER, GAS_AN_GU_IATRIB);
-		event.add(EntityType.PLAYER, OPEN_WORLD_CHECK_MENU);
-		event.add(EntityType.PLAYER, NUTRIENTS);
-		event.add(EntityType.PLAYER, DIGESTIVE_PROCESSES);
-		event.add(EntityType.PLAYER, HEALTH_U_IATTRIBUTE);
-		event.add(EntityType.PLAYER, LIQUID);
-		event.add(EntityType.PLAYER, FLUID_ABSORPTION);
-		event.add(EntityType.PLAYER, RACE);
+		Ssc14Attributes.addAttributes(event);
 	}
 }
