@@ -32,7 +32,10 @@ import net.mcreator.ssc.*;
 import net.mcreator.ssc.block.*;
 import net.ssc14.content.block.energy.ApcBlockEntity;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.procedures.BaseAirlockOpenCloseProcedure;
+import net.ssc14.content.block.airlock.AirlockLifecycleService;
+import net.ssc14.content.equipment.ItemInteractionService;
+import net.ssc14.content.item.reagent.ReagentContainerAccess;
+import net.mcreator.ssc.integration.LegacyUniversalInteractCommandAdapter;
 
 @EventBusSubscriber(modid="ssc_14")
 public final class AuditTests {
@@ -76,14 +79,14 @@ public final class AuditTests {
             var door = level.getBlockEntity(pos);
             door.getPersistentData().putBoolean("safe", false);
             door.getPersistentData().putBoolean(net.mcreator.ssc.access.AirlockSignals.HOLD, true);
-            BaseAirlockOpenCloseProcedure.requestSignal(level, pos, true, false);
+            AirlockLifecycleService.requestSignal(level, pos, true, false);
             h.runAfterDelay(15, () -> {
                 var victim = h.spawn(net.minecraft.world.entity.EntityType.COW, new BlockPos(3, 3, 3));
                 victim.setNoAi(true);
                 victim.setNoGravity(true);
                 victim.setPos(pos.getX() + .5, pos.getY(), pos.getZ() + .5);
                 float health = victim.getHealth();
-                BaseAirlockOpenCloseProcedure.requestSignal(level, pos, false, false);
+                AirlockLifecycleService.requestSignal(level, pos, false, false);
                 h.runAfterDelay(15, () -> {
                     h.assertTrue(victim.getHealth() < health, "Unsafe close caused no crushing damage");
                     h.runAfterDelay(50, () -> {
@@ -152,7 +155,7 @@ public final class AuditTests {
                 level.removeBlock(pos.below(), false);
                 h.runAfterDelay(120, () -> {
                     h.assertTrue(level.getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) == 11, "Hold pulse must latch until closure");
-                    BaseAirlockOpenCloseProcedure.requestSignal(level, pos, false, false);
+                    AirlockLifecycleService.requestSignal(level, pos, false, false);
                     h.runAfterDelay(15, () -> {
                     h.assertTrue(level.getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) == 0, "Explicit close failed while held open");
                     h.assertTrue(!level.getBlockEntity(pos).getPersistentData().getBooleanOr(net.mcreator.ssc.access.AirlockSignals.HOLD, true), "Closing did not reset hold latch");
@@ -908,8 +911,8 @@ public final class AuditTests {
         });
         TESTS.put("invalid_interaction_slot",h->{
             var player=net.neoforged.neoforge.common.util.FakePlayerFactory.getMinecraft(h.getLevel());
-            net.mcreator.ssc.procedures.UniversalInteractCommandProcedure.execute(player,Integer.MAX_VALUE);
-            net.mcreator.ssc.procedures.UniversalInteractCommandProcedure.execute(player,-1);h.succeed();
+            LegacyUniversalInteractCommandAdapter.execute(player,Integer.MAX_VALUE);
+            LegacyUniversalInteractCommandAdapter.execute(player,-1);h.succeed();
         });
         TESTS.put("magnetic_boots_toggle",h->{
             var player=h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
@@ -917,9 +920,9 @@ public final class AuditTests {
             var original=new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.MAGNETIC_BOOTS_ITEM.get());
             original.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME,net.minecraft.network.chat.Component.literal("Audit Boots"));container.setItem(0,original);
             var slot=new net.minecraft.world.inventory.Slot(container,0,0,0);
-            h.assertTrue(net.mcreator.ssc.procedures.ItemInteractionHandlerProcedure.tryInteract(player,slot),"Boots not interactive");
+            h.assertTrue(ItemInteractionService.tryInteract(player,slot),"Boots not interactive");
             h.assertTrue(slot.getItem().is(net.mcreator.ssc.init.Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get()),"Boots did not activate");
-            net.mcreator.ssc.procedures.ItemInteractionHandlerProcedure.tryInteract(player,slot);
+            ItemInteractionService.tryInteract(player,slot);
             h.assertTrue(slot.getItem().is(net.mcreator.ssc.init.Ssc14ModItems.MAGNETIC_BOOTS_ITEM.get()),"Boots did not deactivate");
             h.assertTrue(slot.getItem().getHoverName().getString().equals("Audit Boots"),"Boot toggle lost custom name");h.succeed();
         });
@@ -1005,7 +1008,8 @@ public final class AuditTests {
                 h.assertTrue(flowing.getSource() == fluid && flowing.getFlowing() != null, "Invalid fluid suppliers: " + id);
                 var container = glass();
                 ModReagents.addReagent(container, reagent.getId(), 1);
-                h.assertTrue(!new ModReagents.ReagentFluidHandler(container, 100).getFluidInTank(0).isEmpty(), "Reagent fluid adapter returned empty: " + id);
+                h.assertTrue(ReagentContainerAccess.contents(container).getOrDefault(reagent.getId(), 0) > 0,
+                        "Reagent container state was not persisted: " + id);
             }
             h.succeed();
         });
@@ -1160,7 +1164,7 @@ public final class AuditTests {
         var be=h.getLevel().getBlockEntity(pos);
         if(denied)be.getPersistentData().putBoolean("Capitan",true);
         var player=h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
-        BaseAirlockOpenCloseProcedure.execute(h.getLevel(),pos.getX(),pos.getY(),pos.getZ(),h.getBlockState(local),player);
+        AirlockLifecycleService.execute(h.getLevel(),pos.getX(),pos.getY(),pos.getZ(),h.getBlockState(local),player);
         h.runAfterDelay(15,()->{
             int state=h.getBlockState(local).getValue(BaseAirlockD1Block.ARL_VARIAT);
             h.assertTrue(denied?state==0:state==11,"Unexpected door state after interaction: "+state);
