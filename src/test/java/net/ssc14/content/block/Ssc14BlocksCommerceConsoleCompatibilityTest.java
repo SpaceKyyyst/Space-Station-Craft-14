@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.integration.LegacyCommerceConsoleIntegrationAdapter;
+import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.EmptyBlockGetter;
