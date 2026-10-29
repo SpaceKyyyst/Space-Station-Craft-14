@@ -182,3 +182,29 @@ runtime-владельцами этой механики.
 item-event wiring. The gameplay logic is owned by `ConstructionAssemblyService`
 and `SheathingCableService`; the old steel/plasteel/cable procedures are not
 runtime owners of this behavior.
+
+## RU — Текущий остаток generated-слоя
+
+- `Ssc14MenuTypes` является владельцем регистрации всех меню и экспортирует
+  типизированные `MenuType<T>`; `Ssc14ModMenus` оставлен только как facade для
+  старых callers.
+- `Ssc14ModScreens` уже использует canonical menu registry напрямую.
+- `Ssc14WorldVariables` является владельцем saved-data runtime; `Ssc14ModVariables`
+  сохранён только для бинарной/исходной совместимости.
+- `Ssc14ModCuriosRenderers` и `Ssc14LegacyEntityBehavior` остаются тонкими
+  event/compatibility bridges; они не владеют регистрами или доменной логикой.
+- Автоматически обнаруживаемые network registration-классы требуют отдельного
+  переноса в integration namespace с сохранением event annotations и payload IDs.
+
+## EN — Current generated-layer remainder
+
+- `Ssc14MenuTypes` owns registration for every menu and exports typed
+  `MenuType<T>` values; `Ssc14ModMenus` remains only as a facade for legacy
+  callers.
+- `Ssc14ModScreens` now consumes the canonical menu registry directly.
+- `Ssc14WorldVariables` owns saved-data runtime; `Ssc14ModVariables` remains
+  only for source/binary compatibility.
+- `Ssc14ModCuriosRenderers` and `Ssc14LegacyEntityBehavior` are thin
+  event/compatibility bridges and do not own registries or domain logic.
+- Auto-discovered network registration classes require a separate move into the
+  integration namespace while preserving event annotations and payload IDs.
