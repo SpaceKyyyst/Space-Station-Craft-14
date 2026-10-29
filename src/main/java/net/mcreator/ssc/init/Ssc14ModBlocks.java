@@ -8,7 +8,6 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 
 import net.minecraft.world.level.block.Block;
 
-import net.mcreator.ssc.block.*;
 import net.ssc14.content.block.Ssc14Blocks;
 
 public class Ssc14ModBlocks {
