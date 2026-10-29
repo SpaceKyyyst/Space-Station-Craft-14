@@ -53,8 +53,6 @@ owner, not merely renaming the facade.
   synchronization moved to `AirlockConfiguratorService`;
 - `AirlockWirePulses` — thin compatibility facade; pulse scheduling ownership
   moved to `AirlockWirePulseService`;
-- `AirlockManualOpening` — thin compatibility facade; manual-opening jobs moved
-  to `AirlockManualOpeningService`;
 - `AirlockAccessPolicy` — thin compatibility facade; permission evaluation moved
   to `AirlockAccessPolicyService`;
 - `CPlogLampPrProcedure` — thin compatibility facade; wire/lamp state ownership
@@ -120,8 +118,6 @@ boundary:
   synchronization moved to `AirlockConfiguratorService`;
 - `AirlockWirePulses` — thin compatibility facade; pulse scheduling ownership
   moved to `AirlockWirePulseService`;
-- `AirlockManualOpening` — thin compatibility facade; manual-opening jobs moved
-  to `AirlockManualOpeningService`;
 - `AirlockAccessPolicy` — thin compatibility facade; permission evaluation moved
   to `AirlockAccessPolicyService`;
 - `CPlogLampPrProcedure` — thin compatibility facade; wire/lamp state ownership
