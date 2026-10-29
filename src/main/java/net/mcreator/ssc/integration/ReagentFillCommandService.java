@@ -1,5 +1,7 @@
 package net.mcreator.ssc.integration;
 
+import net.ssc14.common.chemistry.ReagentCatalog;
+
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -41,14 +43,14 @@ public final class ReagentFillCommandService {
             player.sendSystemMessage(Component.literal("§cВ главной руке должен быть контейнер для реагентов!"));
             return;
         }
-        if (LegacyReagentCatalog.find(reagentName).isEmpty()) {
+        if (ReagentCatalog.find(reagentName).isEmpty()) {
             player.sendSystemMessage(Component.literal("§cНеизвестный реагент: " + reagentName));
             return;
         }
 
         if (ReagentContainerAccess.add(mainHand, reagentName, amount)) {
             net.mcreator.ssc.ModReagents.processReactions(mainHand, player);
-            String displayName = LegacyReagentCatalog.find(reagentName).orElseThrow().getDisplayName().getString();
+            String displayName = ReagentCatalog.find(reagentName).orElseThrow().getDisplayName().getString();
             player.sendSystemMessage(Component.literal("§aДобавлено " + amount + " мл " + displayName));
         } else {
             player.sendSystemMessage(Component.literal("§cНе удалось добавить реагент (контейнер полон?)"));
