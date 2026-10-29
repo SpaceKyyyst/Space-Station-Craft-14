@@ -47,6 +47,10 @@ LEGACY_BRIDGE_FILES = frozenset({
     "LegacyFirearmInteractionAdapter.java",
     "LegacyReagentContainerRuntime.java",
     "LegacyRsuInteractionAdapter.java",
+    # Transitional client registration bridges: renderer implementations remain
+    # in the legacy package until their individual classes are migrated.
+    "Ssc14EntityRenderers.java",
+    "Ssc14CuriosRenderers.java",
 })
 CONTENT_IMPORT_BRIDGE_FILES = frozenset({
     "MenuButtonRegistration.java",

@@ -1,7 +1,5 @@
 # Exact legacy client API debt outside approved client packages.
 # Entries are a shrinking ceiling: remove rows when imports are removed or relocated.
-blaze3d src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java
-lwjgl src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModHumanoidModels.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModKeyMappings.java
 minecraft-client src/main/java/net/mcreator/ssc/init/Ssc14ModMenus.java
