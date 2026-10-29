@@ -1,4 +1,4 @@
-package net.mcreator.ssc.integration;
+package net.ssc14.content.item.weapon;
 
 import javax.annotation.Nullable;
 import net.ssc14.content.firearm.MagazineDescriptionService;

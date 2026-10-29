@@ -36,7 +36,7 @@ import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
 import net.ssc14.content.block.access.LegacyIdConsoleIntegrationAdapter;
 import net.ssc14.content.item.tool.LegacyNetworkConfiguratorMenuAdapter;
 import net.ssc14.content.item.tool.LegacyRsuInteractionAdapter;
-import net.mcreator.ssc.integration.LegacyFirearmInteractionAdapter;
+import net.ssc14.content.item.weapon.LegacyFirearmInteractionAdapter;
 import net.mcreator.ssc.integration.LegacyConstructionItemInteractionAdapter;
 import net.ssc14.content.block.airlock.LegacyShuttersIntegrationAdapter;
 import net.mcreator.ssc.integration.LegacyAirlockDoorIntegrationAdapter;
