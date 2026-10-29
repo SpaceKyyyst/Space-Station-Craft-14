@@ -1,6 +1,6 @@
 package net.ssc14.integration.neoforge.menu;
 
-import net.mcreator.ssc.Ssc14Mod;
+import net.ssc14.integration.neoforge.Ssc14Log;
 import net.ssc14.content.menu.access.IDcodeMenu;
 import net.ssc14.content.menu.access.IdCodeAccessStateService;
 import net.ssc14.content.menu.machinery.MacFrameGUIMenu;
@@ -26,7 +26,7 @@ public final class MenuSlotRegistration {
     public static void handle(MenuSlotPayload message, IPayloadContext context) {
         if (context.flow() != PacketFlow.SERVERBOUND) return;
         context.enqueueWork(() -> dispatch(context.player(), message)).exceptionally(error -> {
-            Ssc14Mod.LOGGER.error("Failed to handle menu slot payload", error);
+            Ssc14Log.LOGGER.error("Failed to handle menu slot payload", error);
             context.connection().disconnect(Component.literal("Invalid menu slot payload"));
             return null;
         });

@@ -1,6 +1,6 @@
 package net.ssc14.integration.neoforge.menu;
 
-import net.mcreator.ssc.Ssc14Mod;
+import net.ssc14.integration.neoforge.Ssc14Log;
 import net.ssc14.content.item.Ssc14Items;
 import net.minecraft.core.BlockPos;
 import net.ssc14.content.menu.decal.DecalColorMenuService;
@@ -59,7 +59,7 @@ public final class MenuButtonRegistration {
     public static void handle(MenuButtonPayload message, IPayloadContext context) {
         if (context.flow() != PacketFlow.SERVERBOUND) return;
         context.enqueueWork(() -> dispatch(context.player(), message)).exceptionally(error -> {
-            Ssc14Mod.LOGGER.error("Failed to handle menu button payload", error);
+            Ssc14Log.LOGGER.error("Failed to handle menu button payload", error);
             context.connection().disconnect(Component.literal("Invalid menu button payload"));
             return null;
         });
