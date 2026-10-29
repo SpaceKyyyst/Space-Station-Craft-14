@@ -2,6 +2,7 @@ package net.ssc14.integration.neoforge.menu;
 
 import net.ssc14.integration.neoforge.Ssc14Log;
 import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.minecraft.core.BlockPos;
 import net.ssc14.content.menu.decal.DecalColorMenuService;
 import net.ssc14.content.gravity.GravityGeneratorControlService;
@@ -145,7 +146,7 @@ public final class MenuButtonRegistration {
                 Ssc14Items.FLY_AMANITA.get(), Ssc14Items.MOLDY_BREAD_PIECE.get(), Ssc14Items.BREAD.get(),
                 Ssc14Items.DOUGH_PIECE.get());
         MicrowaveRecipeService.cook(world, pos, inventory, MicrowaveControlService.timerSeconds(world, pos),
-                catalog, stack -> stack.getItem() instanceof net.mcreator.ssc.item.ReagentContainerItem);
+                catalog, stack -> stack.getItem() instanceof ReagentContainerItem);
     }
 
     private static void handleAirlockPanel(Player player, MenuButtonPayload message) {
