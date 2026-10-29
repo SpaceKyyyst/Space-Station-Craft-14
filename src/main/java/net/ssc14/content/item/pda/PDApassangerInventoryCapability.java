@@ -1,4 +1,4 @@
-package net.mcreator.ssc.item.inventory;
+package net.ssc14.content.item.pda;
 
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.item.ItemAccessItemHandler;
@@ -11,14 +11,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.component.DataComponents;
 
 import net.ssc14.content.menu.pda.PDApassangerGUIMenu;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.content.item.container.PortableMenuItemKind;
 
 @EventBusSubscriber
 public class PDApassangerInventoryCapability extends ItemAccessItemHandler {
 	@SubscribeEvent
 	public static void onItemDropped(ItemTossEvent event) {
-		if (event.getEntity().getItem().getItem() == Ssc14ModItems.PD_APASSANGER.get()) {
+		if (event.getEntity().getItem().getItem() == Ssc14Items.PD_APASSANGER.get()) {
 			Player player = event.getPlayer();
 			if (player.containerMenu instanceof PDApassangerGUIMenu)
 				player.closeContainer();
@@ -37,6 +37,7 @@ public class PDApassangerInventoryCapability extends ItemAccessItemHandler {
 
 	@Override
 	public boolean isValid(int index, ItemResource resource) {
-		return super.isValid(index, resource) && resource.getItem() != Ssc14ModItems.PD_APASSANGER.get();
+		return super.isValid(index, resource) && resource.getItem() != Ssc14Items.PD_APASSANGER.get();
 	}
 }
+

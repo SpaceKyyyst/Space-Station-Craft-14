@@ -24,6 +24,8 @@ import net.ssc14.content.item.decal.DECAL3spawnerInventoryCapability;
 import net.ssc14.content.item.decal.DECAL4spawnerInventoryCapability;
 import net.ssc14.content.item.decal.DECAL5spawnerInventoryCapability;
 import net.ssc14.content.item.decal.DECAL6spawnerInventoryCapability;
+import net.ssc14.content.item.pda.PDApassangerInventoryCapability;
+import net.ssc14.content.item.access.IDCardPassangerInventoryCapability;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -34,7 +36,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.item.Item;
 
-import net.mcreator.ssc.item.inventory.*;
 import net.mcreator.ssc.item.*;
 import net.mcreator.ssc.block.FencePointBlock;
 import net.mcreator.ssc.block.FencePBlock;

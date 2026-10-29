@@ -1,4 +1,4 @@
-package net.mcreator.ssc.item.inventory;
+package net.ssc14.content.item.access;
 
 import net.neoforged.neoforge.items.ComponentItemHandler;
 import net.neoforged.neoforge.event.entity.item.ItemTossEvent;
@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.component.DataComponents;
 
 import net.ssc14.content.menu.access.IDcodeMenu;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 
 import javax.annotation.Nonnull;
 
@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 public class IDCardPassangerInventoryCapability extends ComponentItemHandler {
 	@SubscribeEvent
 	public static void onItemDropped(ItemTossEvent event) {
-		if (event.getEntity().getItem().getItem() == Ssc14ModItems.ID_CARD_PASSANGER.get()) {
+		if (event.getEntity().getItem().getItem() == Ssc14Items.ID_CARD_PASSANGER.get()) {
 			Player player = event.getPlayer();
 			if (player.containerMenu instanceof IDcodeMenu)
 				player.closeContainer();
@@ -37,7 +37,7 @@ public class IDCardPassangerInventoryCapability extends ComponentItemHandler {
 
 	@Override
 	public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-		return stack.getItem() != Ssc14ModItems.ID_CARD_PASSANGER.get();
+		return stack.getItem() != Ssc14Items.ID_CARD_PASSANGER.get();
 	}
 
 	@Override
