@@ -3,20 +3,14 @@
 > **Актуальный снимок / Current snapshot (2026-10-29):** в каталоге
 > `src/main/java/net/mcreator/ssc/procedures` больше не содержит активных процедур.
 > Microwave, MK58 breech/fire, spanner, construction и RSU перенесены в canonical
-> `SpannerEntUseProcedure`, `PlaSteelUseProcedure` и
-> `SteeluseProcedure` перенесены в `ConstructionAssemblyService`. Все удалённые фасады
-> и procedural wrappers из старых списков
-> ниже больше не являются частью runtime. Версия проекта остаётся `0.1.27` до
-> завершения этих переносов.
+> services. Все удалённые фасады и procedural wrappers из старых списков ниже больше
+> не являются частью runtime. Тестовая версия проекта — `0.1.28-beta`.
 
 > **Current snapshot (2026-10-29):** no active procedures remain in
 > `src/main/java/net/mcreator/ssc/procedures`.
 > Microwave, MK58 breech/fire, spanner, construction, and RSU now live in canonical
-> `SpannerEntUseProcedure`, `PlaSteelUseProcedure`, and `SteeluseProcedure` now live
-> in canonical services. Deleted facades
-> and wrappers listed historically below are
-> no longer runtime sources. The project version remains `0.1.27` until these
-> migrations are complete.
+> services. Deleted facades and wrappers listed historically below are no longer
+> runtime sources. The project test version is `0.1.28-beta`.
 
 ## RU
 

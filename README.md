@@ -13,7 +13,7 @@
 | Minecraft | 26.1.2 |
 | NeoForge | 26.1.2.109 |
 | Java | 25 |
-| Мод | 0.1.27 |
+| Мод | 0.1.28-beta |
 
 Версии определены в [build.gradle](build.gradle) и [метаданных мода](src/main/resources/META-INF/neoforge.mods.toml).
 
