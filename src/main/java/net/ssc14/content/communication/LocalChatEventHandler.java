@@ -17,7 +17,7 @@ import net.neoforged.neoforge.event.ServerChatEvent;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import top.theillusivec4.curios.api.CuriosApi;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 import net.mcreator.ssc.network.Ssc14ModVariables;
 import java.util.List;
 import java.util.function.Supplier;
@@ -59,14 +59,14 @@ public class LocalChatEventHandler {
     }
 
     private static final List<RadioChannel> RADIO_CHANNELS = List.of(
-        new RadioChannel(":к", "Командование", () -> Ssc14ModItems.ENCRYPTION_KEY_COMMAND.get(), 0xFCD703),
-        new RadioChannel(":и", "Инженерный", () -> Ssc14ModItems.ENCRYPTION_KEY_ENGENEER.get(), 0xFF733C),
-        new RadioChannel(":м", "Медицинский", () -> Ssc14ModItems.ENCRYPTION_KEY_MEDICAL.get(), 0x57B8F0),
-        new RadioChannel(":н", "Научный", () -> Ssc14ModItems.ENCRYPTION_KEY_RND.get(), 0xCD7CCD),
-        new RadioChannel(":о", "Безопасность", () -> Ssc14ModItems.ENCRYPTION_KEY_SECURITY.get(), 0xFF4242),
-        new RadioChannel(":с", "Сервис", () -> Ssc14ModItems.ENCRYPTION_KEY_SERVICE.get(), 0x539C00),
-        new RadioChannel(":п", "Снабжение", () -> Ssc14ModItems.ENCRYPTION_KEY_CARGO.get(), 0xB48B57),
-        new RadioChannel(";", "Общий", () -> Ssc14ModItems.ENCRYPTION_KEY_PASSANGER.get(), 0x2CDB2C)
+        new RadioChannel(":к", "Командование", () -> Ssc14Items.ENCRYPTION_KEY_COMMAND.get(), 0xFCD703),
+        new RadioChannel(":и", "Инженерный", () -> Ssc14Items.ENCRYPTION_KEY_ENGENEER.get(), 0xFF733C),
+        new RadioChannel(":м", "Медицинский", () -> Ssc14Items.ENCRYPTION_KEY_MEDICAL.get(), 0x57B8F0),
+        new RadioChannel(":н", "Научный", () -> Ssc14Items.ENCRYPTION_KEY_RND.get(), 0xCD7CCD),
+        new RadioChannel(":о", "Безопасность", () -> Ssc14Items.ENCRYPTION_KEY_SECURITY.get(), 0xFF4242),
+        new RadioChannel(":с", "Сервис", () -> Ssc14Items.ENCRYPTION_KEY_SERVICE.get(), 0x539C00),
+        new RadioChannel(":п", "Снабжение", () -> Ssc14Items.ENCRYPTION_KEY_CARGO.get(), 0xB48B57),
+        new RadioChannel(";", "Общий", () -> Ssc14Items.ENCRYPTION_KEY_PASSANGER.get(), 0x2CDB2C)
     );
 
     @SubscribeEvent
