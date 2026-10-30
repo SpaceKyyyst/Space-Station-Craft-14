@@ -8,7 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.Dist;
 
-import net.mcreator.ssc.client.renderer.*;
+import net.ssc14.client.renderer.*;
 
 /** Canonical client registration for entity and block-entity renderers. */
 @EventBusSubscriber(Dist.CLIENT)

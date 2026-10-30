@@ -4,7 +4,7 @@ import top.theillusivec4.curios.api.client.ICurioRenderer;
 
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
-import net.mcreator.ssc.client.renderer.*;
+import net.ssc14.client.renderer.*;
 import net.ssc14.content.item.Ssc14Items;
 
 /** Canonical Curios renderer registration. */
