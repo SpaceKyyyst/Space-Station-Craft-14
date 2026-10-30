@@ -9,6 +9,10 @@ public final class Ssc14ModScreens {
     private Ssc14ModScreens() {
     }
 
+    /** Legacy type alias retained for compatibility tests and integrations. */
+    public interface ScreenAccessor extends Ssc14Screens.ScreenAccessor {
+    }
+
     public static void clientLoad(RegisterMenuScreensEvent event) {
         Ssc14Screens.clientLoad(event);
     }
