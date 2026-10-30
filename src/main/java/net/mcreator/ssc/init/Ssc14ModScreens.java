@@ -6,6 +6,10 @@ import net.ssc14.client.Ssc14Screens;
 /** @deprecated Use {@link Ssc14Screens}. */
 @Deprecated(forRemoval = true)
 public final class Ssc14ModScreens {
+    static {
+        Ssc14Screens.ensureInitialized();
+    }
+
     private Ssc14ModScreens() {
     }
 

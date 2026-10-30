@@ -63,6 +63,11 @@ public final class Ssc14Screens {
 
     private Ssc14Screens() { }
 
+    /** Forces static screen bindings when a legacy integration loads its facade. */
+    public static void ensureInitialized() {
+        // Intentionally empty; class initialization performs the binding.
+    }
+
     @SubscribeEvent
     public static void clientLoad(RegisterMenuScreensEvent event) {
         Ssc14ScreenBinder.registerScreens(event);
