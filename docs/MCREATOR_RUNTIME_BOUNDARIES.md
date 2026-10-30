@@ -14,6 +14,16 @@
 > of thin compatibility facades remains for legacy/GameTest contracts. The project
 > test version is `0.1.28-beta`.
 
+## Migration checkpoint / Контрольная точка миграции
+
+The canonical source tree now has no imports from `net.mcreator.ssc`. Legacy
+items, blocks, entities, and registries remain only as compatibility facades or
+integration bridges so existing IDs and external contracts continue to work.
+
+В canonical-дереве больше нет импортов `net.mcreator.ssc`. Legacy-предметы,
+блоки, сущности и регистраторы сохранены только как compatibility facades или
+integration bridges, чтобы не ломать существующие ID и внешние контракты.
+
 ## RU — исторические границы и оставшиеся legacy-адаптеры
 
 Списки ниже сохранены как исторический журнал миграции. Они не означают, что
