@@ -75,9 +75,8 @@ owner, not merely renaming the facade.
   menu-state client wiring now belong exclusively to `Ssc14Screens`;
 - `Ssc14ModKeyMappings` — compatibility facade only; key registration and
   client tick dispatch now belong exclusively to `Ssc14KeyMappings`;
-- Renderer implementations now live in `net.ssc14.client.renderer`; only
-  `TestSunEntityRenderer` remains a documented bridge until `TestSunEntity`
-  receives a canonical entity owner.
+- Renderer implementations now live in `net.ssc14.client.renderer`; the
+  `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
   `TEMPORARYGRAVITYPLUGplayerProcedure` удалены после canonical-переноса;
 - остальные subscribers должны проверяться по event annotation, а не по числу прямых вызовов.
@@ -181,9 +180,8 @@ boundary:
   menu-state client wiring now belong exclusively to `Ssc14Screens`;
 - `Ssc14ModKeyMappings` — compatibility facade only; key registration and
   client tick dispatch now belong exclusively to `Ssc14KeyMappings`;
-- Renderer implementations now live in `net.ssc14.client.renderer`; only
-  `TestSunEntityRenderer` remains a documented bridge until `TestSunEntity`
-  receives a canonical entity owner.
+- Renderer implementations now live in `net.ssc14.client.renderer`; the
+  `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
   `TEMPORARYGRAVITYPLUGplayerProcedure` were removed after canonical migration;
 - every remaining subscriber must be audited by event annotation, not by direct-call count.

@@ -22,7 +22,7 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.multiplayer.ClientLevel;
 
-import net.mcreator.ssc.entity.TestSunEntity;
+import net.ssc14.content.entity.TestSunEntity;
 
 import org.slf4j.Logger;
 

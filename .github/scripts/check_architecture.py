@@ -51,7 +51,6 @@ LEGACY_BRIDGE_FILES = frozenset({
     # in the legacy package until their individual classes are migrated.
     "Ssc14EntityRenderers.java",
     "Ssc14CuriosRenderers.java",
-    "TestSunEntityRenderer.java",
 })
 CONTENT_IMPORT_BRIDGE_FILES = frozenset({
     "MenuButtonRegistration.java",
