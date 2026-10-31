@@ -140,6 +140,10 @@ Client slot interaction работает через `InteractionKeyMappings` и
 humanoid-моделей и race-атрибутов как явные legacy-входы; эти registry остаются
 отдельной границей миграции и не дублируются молча.
 
+Health HUD overlay зарегистрирован в canonical `net.ssc14.client.overlay`;
+`net.mcreator.ssc.client.screens.HealthUIOverlay` сохранён как тонкий
+compatibility facade с тем же static event-handler API.
+
 Маршрутизация right-click инструментов шлюза вынесена в
 `AirlockToolInteractionHandler`. Он сохраняет порядок проверки access, welding,
 manual opening, tile installation и deconstruction; legacy adapters остаются
@@ -268,6 +272,10 @@ Player rendering now registers through canonical `HumanModelRenderHandler` in th
 client layer. The handler preserves the existing render-state, humanoid-model and
 race-attribute registries as explicit legacy inputs; those registries remain a
 separate migration boundary and are not silently duplicated.
+
+The health HUD overlay is registered in canonical `net.ssc14.client.overlay`;
+`net.mcreator.ssc.client.screens.HealthUIOverlay` remains a thin compatibility
+facade with the same static event-handler API.
 
 Airlock tool right-click routing now lives in `AirlockToolInteractionHandler`.
 It preserves the access, welding, manual-opening, tile-installation, and
