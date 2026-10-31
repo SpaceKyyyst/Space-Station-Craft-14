@@ -103,6 +103,7 @@ jobs:
           tag="ssc_14-${version}-build.${GITHUB_RUN_NUMBER}-${GITHUB_SHA:0:12}"
           jar=$(find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' | head -n1)
           test -n "$jar"
+          # Build release notes from the latest published SSC14 release tag to HEAD.
           previous_tag=$(git tag --list 'ssc_14-*' --sort=-version:refname | head -n1 || true)
           if [ -n "$previous_tag" ]; then
             range="${previous_tag}..${GITHUB_SHA}"
@@ -118,7 +119,7 @@ jobs:
       - name: Notify Discord
         if: steps.version.outputs.changed == 'true' && steps.duplicate.outputs.duplicate != 'true'
         env:
-          DISCORD_RELEASE_WEBHOOK: ${{ secrets.DISCORD_RELEASE_WEBHOOK }}
+          DISCORD_RELEASE_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
           VERSION: ${{ steps.version.outputs.current }}
           RUN_NUMBER: ${{ github.run_number }}
           SHA: ${{ github.sha }}
@@ -132,7 +133,26 @@ jobs:
           jar=$(find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' | head -n1)
           url="https://github.com/${REPOSITORY}/releases/tag/ssc_14-${VERSION}-build.${RUN_NUMBER}-${SHA:0:12}"
           notes=$(head -n 100 release-notes.txt 2>/dev/null || printf '%s\n' "- Version ${VERSION}")
-          payload=$(python - "$VERSION" "$RUN_NUMBER" "$url" "$notes" <<'PY'
+          discord_notes=$(python - <<'PY'
+          from pathlib import Path
+
+          lines = Path("release-notes.txt").read_text(encoding="utf-8").splitlines()
+          max_lines = 12
+          max_chars = 1800
+          selected = []
+          used_chars = 0
+          for line in lines:
+              if len(selected) >= max_lines or used_chars + len(line) + 1 > max_chars:
+                  break
+              selected.append(line)
+              used_chars += len(line) + 1
+          remaining = len(lines) - len(selected)
+          if remaining:
+              selected.append(f"- … ещё {remaining} изменений")
+          print("\\n".join(selected))
+          PY
+          )
+          payload=$(python - "$VERSION" "$RUN_NUMBER" "$url" "$discord_notes" <<'PY'
           import json, sys
           version, build, url, notes = sys.argv[1:]
           normalized = version.lower()
