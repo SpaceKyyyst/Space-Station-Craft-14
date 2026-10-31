@@ -152,6 +152,10 @@ World-check HUD overlay зарегистрирован в canonical
 `net.ssc14.client.overlay`; generated screen class сохранён как
 compatibility facade с прежним static event-handler API.
 
+Hunger/thirst HUD overlays зарегистрированы в canonical
+`net.ssc14.client.overlay`; generated screen classes сохранены как
+compatibility facades, а thresholds и animation-frame behavior не изменены.
+
 Маршрутизация right-click инструментов шлюза вынесена в
 `AirlockToolInteractionHandler`. Он сохраняет порядок проверки access, welding,
 manual opening, tile installation и deconstruction; legacy adapters остаются
@@ -292,6 +296,10 @@ compatibility facade.
 The world-check HUD overlay is registered in canonical
 `net.ssc14.client.overlay`; its generated screen class remains a compatibility
 facade with the existing static event-handler API.
+
+The hunger/thirst HUD overlays are registered in canonical
+`net.ssc14.client.overlay`; generated screen classes remain compatibility
+facades, with thresholds and animation-frame behavior unchanged.
 
 Airlock tool right-click routing now lives in `AirlockToolInteractionHandler`.
 It preserves the access, welding, manual-opening, tile-installation, and

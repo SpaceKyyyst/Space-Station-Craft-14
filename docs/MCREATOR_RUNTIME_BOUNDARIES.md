@@ -89,6 +89,9 @@ owner, not merely renaming the facade.
 - `WorldCheckUIOverlay` теперь зарегистрирован в canonical
   `net.ssc14.client.overlay`; generated screen class сохранён как compatibility
   facade с прежним static event-handler API;
+- Hunger/thirst HUD overlays теперь зарегистрированы в canonical
+  `net.ssc14.client.overlay`; generated screen classes сохранены как facades,
+  thresholds и animation-frame behavior не изменены;
 - generated `Ssc14Mod` now only provides the NeoForge entrypoint and preserved
   static compatibility helpers; registration composition lives in canonical
   `net.ssc14.integration.Ssc14Bootstrap`;
@@ -194,6 +197,9 @@ boundary:
 - `WorldCheckUIOverlay` is now registered in canonical
   `net.ssc14.client.overlay`; the generated screen class remains a compatibility
   facade with the existing static event-handler API;
+- Hunger/thirst HUD overlays are now registered in canonical
+  `net.ssc14.client.overlay`; generated screen classes remain facades, with
+  thresholds and animation-frame behavior unchanged;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
