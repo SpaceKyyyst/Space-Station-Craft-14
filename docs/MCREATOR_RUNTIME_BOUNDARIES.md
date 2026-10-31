@@ -217,6 +217,9 @@ runtime owners of this behavior.
 - Пять generated network registration facade-классов удалены после проверки, что
   payload registration и handlers принадлежат canonical chemistry/menu слоям;
   event annotations и payload IDs не изменялись.
+- Generated command, reagent-fluid-model, Handy compatibility и cargo-order
+  event facades удалены после подтверждения canonical owners; command routes,
+  client event listeners и cargo menu behavior не менялись.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
@@ -238,6 +241,9 @@ runtime owners of this behavior.
 - Five generated network registration facade classes were removed after verifying
   that payload registration and handlers are owned by canonical chemistry/menu
   layers; event annotations and payload IDs were not changed.
+- Generated command, reagent-fluid-model, Handy compatibility, and cargo-order
+  event facades were removed after confirming canonical owners; command routes,
+  client event listeners, and cargo menu behavior were not changed.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
