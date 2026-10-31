@@ -5,6 +5,7 @@ import net.minecraft.world.entity.player.Player;
 import net.ssc14.content.block.airlock.AirlockManualOpeningService;
 
 /** Compatibility facade for canonical manual-opening jobs. */
+@Deprecated(forRemoval = false)
 public final class AirlockManualOpening {
     private AirlockManualOpening() {
     }

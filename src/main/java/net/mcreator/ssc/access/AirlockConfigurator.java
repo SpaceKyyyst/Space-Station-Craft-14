@@ -5,6 +5,7 @@ import net.minecraft.world.item.ItemStack;
 import net.ssc14.content.block.airlock.AirlockConfiguratorService;
 
 /** Compatibility facade for the canonical access configurator service. */
+@Deprecated(forRemoval = false)
 public final class AirlockConfigurator {
     private AirlockConfigurator() {
     }

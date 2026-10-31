@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.ssc14.content.block.airlock.AirlockEventLogService;
 
 /** A bounded persisted log; disabled logging erases history rather than hiding it. */
+@Deprecated(forRemoval = false)
 public final class AirlockEventLog {
     private AirlockEventLog() { }
     public static void append(BlockEntity door, String event) {

@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.ssc14.content.block.airlock.AirlockAiControlService;
 
 /** Compatibility facade for the canonical server-side AI control contract. */
+@Deprecated(forRemoval = false)
 public final class AirlockAiControl {
     private AirlockAiControl() {
     }

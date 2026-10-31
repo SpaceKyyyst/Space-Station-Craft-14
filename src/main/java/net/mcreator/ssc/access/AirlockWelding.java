@@ -5,6 +5,7 @@ import net.minecraft.world.entity.player.Player;
 import net.ssc14.content.block.airlock.AirlockWeldingService;
 
 /** Compatibility facade for canonical welding jobs. */
+@Deprecated(forRemoval = false)
 public final class AirlockWelding {
     private AirlockWelding() {
     }

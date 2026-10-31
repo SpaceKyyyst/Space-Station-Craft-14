@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 
 /** Compatibility facade for canonical server-authoritative wire handling. */
+@Deprecated(forRemoval = false)
 public final class AirlockWireService {
     private AirlockWireService() {
     }

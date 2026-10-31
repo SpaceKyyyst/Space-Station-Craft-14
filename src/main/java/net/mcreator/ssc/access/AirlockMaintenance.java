@@ -5,6 +5,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 
 /** Compatibility facade for canonical airlock maintenance jobs. */
+@Deprecated(forRemoval = false)
 public final class AirlockMaintenance {
     public static final String ARMOR = net.ssc14.content.block.airlock.AirlockMaintenanceService.ARMOR;
     public static final int BARE = net.ssc14.content.block.airlock.AirlockMaintenanceService.BARE;

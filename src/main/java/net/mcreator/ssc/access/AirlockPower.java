@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.ssc14.content.block.airlock.AirlockPowerService;
 
 /** Compatibility facade for canonical airlock power handling. */
+@Deprecated(forRemoval = false)
 public final class AirlockPower {
     private AirlockPower() {
     }
