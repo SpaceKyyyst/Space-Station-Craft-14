@@ -16,7 +16,7 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.resources.Identifier;
-import net.mcreator.ssc.network.Ssc14ModVariables;
+import net.ssc14.integration.neoforge.state.Ssc14WorldVariables;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -35,8 +35,8 @@ class CompatibilityPersistenceTest {
     void savedDataIdentifiersKeepPrimaryAndLegacyNamespaces() {
         assertEquals(Identifier.parse("ssc_14:atmosphere"), AtmosphereSavedData.DATA_ID);
         assertEquals(Identifier.parse("ssc14:network_data"), NetworkSavedData.DATA_ID);
-        assertEquals(Identifier.parse("ssc_14:worldvars"), Ssc14ModVariables.WorldVariables.DATA_ID);
-        assertEquals(Identifier.parse("ssc_14:mapvars"), Ssc14ModVariables.MapVariables.DATA_ID);
+        assertEquals(Identifier.parse("ssc_14:worldvars"), Ssc14WorldVariables.WorldVariables.DATA_ID);
+        assertEquals(Identifier.parse("ssc_14:mapvars"), Ssc14WorldVariables.MapVariables.DATA_ID);
     }
 
     @Test
@@ -62,7 +62,7 @@ class CompatibilityPersistenceTest {
 
     @Test
     void generatedWorldVariablesKeepKeysAndMissingFieldDefaults() {
-        Ssc14ModVariables.WorldVariables values = new Ssc14ModVariables.WorldVariables();
+        Ssc14WorldVariables.WorldVariables values = new Ssc14WorldVariables.WorldVariables();
         values.Station_Budget = 125.5;
         values.PalletRegistry = "legacy-pallets";
         CompoundTag encoded = values.save(new CompoundTag(), RegistryAccess.EMPTY);
@@ -72,7 +72,7 @@ class CompatibilityPersistenceTest {
         assertEquals(125.5, encoded.getDoubleOr("Station_Budget", 0));
         assertEquals("legacy-pallets", encoded.getStringOr("PalletRegistry", ""));
 
-        Ssc14ModVariables.WorldVariables roundTripped = new Ssc14ModVariables.WorldVariables();
+        Ssc14WorldVariables.WorldVariables roundTripped = new Ssc14WorldVariables.WorldVariables();
         roundTripped.read(encoded, RegistryAccess.EMPTY);
         assertEquals(125.5, roundTripped.Station_Budget);
         assertEquals("legacy-pallets", roundTripped.PalletRegistry);
@@ -80,12 +80,12 @@ class CompatibilityPersistenceTest {
         CompoundTag partial = new CompoundTag();
         partial.putDouble("Station_Budget", 7);
         partial.putString("unknownLegacyField", "ignored");
-        Ssc14ModVariables.WorldVariables restored = new Ssc14ModVariables.WorldVariables();
+        Ssc14WorldVariables.WorldVariables restored = new Ssc14WorldVariables.WorldVariables();
         restored.read(partial, RegistryAccess.EMPTY);
         assertEquals(7, restored.Station_Budget);
         assertEquals("", restored.PalletRegistry);
 
-        Ssc14ModVariables.WorldVariables missing = new Ssc14ModVariables.WorldVariables();
+        Ssc14WorldVariables.WorldVariables missing = new Ssc14WorldVariables.WorldVariables();
         missing.read(new CompoundTag(), RegistryAccess.EMPTY);
         assertEquals(0, missing.Station_Budget);
         assertEquals("", missing.PalletRegistry);
@@ -93,7 +93,7 @@ class CompatibilityPersistenceTest {
 
     @Test
     void generatedMapVariablesKeepKeysAndMissingFieldDefaults() {
-        Ssc14ModVariables.MapVariables values = new Ssc14ModVariables.MapVariables();
+        Ssc14WorldVariables.MapVariables values = new Ssc14WorldVariables.MapVariables();
         values.station_code = 14;
         values.station_name = "Station";
         values.Base_Radio_Frequency = true;
@@ -119,7 +119,7 @@ class CompatibilityPersistenceTest {
         assertEquals(14, encoded.getDoubleOr("station_code", 0));
         assertEquals("Station", encoded.getStringOr("station_name", ""));
 
-        Ssc14ModVariables.MapVariables roundTripped = new Ssc14ModVariables.MapVariables();
+        Ssc14WorldVariables.MapVariables roundTripped = new Ssc14WorldVariables.MapVariables();
         roundTripped.read(encoded, RegistryAccess.EMPTY);
         assertEquals(14, roundTripped.station_code);
         assertEquals("Station", roundTripped.station_name);
@@ -135,14 +135,14 @@ class CompatibilityPersistenceTest {
         CompoundTag partial = new CompoundTag();
         partial.putString("station_name", "Legacy");
         partial.putBoolean("unknownLegacyField", true);
-        Ssc14ModVariables.MapVariables restored = new Ssc14ModVariables.MapVariables();
+        Ssc14WorldVariables.MapVariables restored = new Ssc14WorldVariables.MapVariables();
         restored.read(partial, RegistryAccess.EMPTY);
         assertEquals("Legacy", restored.station_name);
         assertEquals(0, restored.station_code);
         assertFalse(restored.Base_Radio_Frequency);
         assertFalse(restored.Cargo_Radio_Frequency);
 
-        Ssc14ModVariables.MapVariables missing = new Ssc14ModVariables.MapVariables();
+        Ssc14WorldVariables.MapVariables missing = new Ssc14WorldVariables.MapVariables();
         missing.read(new CompoundTag(), RegistryAccess.EMPTY);
         assertEquals(0, missing.station_code);
         assertEquals("", missing.station_name);

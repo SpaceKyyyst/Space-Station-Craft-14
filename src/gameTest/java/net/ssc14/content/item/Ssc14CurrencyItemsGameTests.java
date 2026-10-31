@@ -1,7 +1,7 @@
 package net.ssc14.content.item;
 
 import java.util.List;
-import net.mcreator.ssc.network.Ssc14ModVariables;
+import net.ssc14.integration.neoforge.state.Ssc14WorldVariables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
@@ -107,7 +107,7 @@ public final class Ssc14CurrencyItemsGameTests {
         BlockPos relativePos = new BlockPos(1, 2, 1);
         BlockPos absolutePos = helper.absolutePos(relativePos);
         helper.setBlock(relativePos, Ssc14Blocks.ORDER_CONSOLE.get().defaultBlockState());
-        var worldVariables = Ssc14ModVariables.WorldVariables.get(helper.getLevel());
+        var worldVariables = Ssc14WorldVariables.WorldVariables.get(helper.getLevel());
         double previousBudget = worldVariables.Station_Budget;
         worldVariables.Station_Budget = 0;
 

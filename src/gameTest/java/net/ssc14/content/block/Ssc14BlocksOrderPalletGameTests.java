@@ -1,6 +1,6 @@
 package net.ssc14.content.block;
 
-import net.mcreator.ssc.network.Ssc14ModVariables;
+import net.ssc14.integration.neoforge.state.Ssc14WorldVariables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -65,7 +65,7 @@ public final class Ssc14BlocksOrderPalletGameTests {
                 "order pallet zero-slot capability changed");
         String key = absolutePos.getX() + "," + absolutePos.getY() + ","
                 + absolutePos.getZ() + ";";
-        helper.assertTrue(Ssc14ModVariables.WorldVariables.get(helper.getLevel())
+        helper.assertTrue(Ssc14WorldVariables.WorldVariables.get(helper.getLevel())
                         .PalletRegistry.contains(key),
                 "order pallet was not added to the persistent world registry");
         helper.succeed();

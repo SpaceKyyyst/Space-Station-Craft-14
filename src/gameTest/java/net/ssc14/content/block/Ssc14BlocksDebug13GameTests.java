@@ -1,6 +1,6 @@
 package net.ssc14.content.block;
 
-import net.mcreator.ssc.network.Ssc14ModVariables;
+import net.ssc14.integration.neoforge.state.Ssc14WorldVariables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -53,7 +53,7 @@ public final class Ssc14BlocksDebug13GameTests {
                         net.minecraft.world.phys.shapes.CollisionContext.empty()).bounds().maxY == 2.0,
                 "debug_13 tall collision shape changed");
 
-        var variables = Ssc14ModVariables.MapVariables.get(helper.getLevel());
+        var variables = Ssc14WorldVariables.MapVariables.get(helper.getLevel());
         variables.station_code = 5;
         var player = helper.makeMockPlayer(GameType.SURVIVAL);
         var hit = new BlockHitResult(Vec3.atCenterOf(absolutePos), Direction.UP,

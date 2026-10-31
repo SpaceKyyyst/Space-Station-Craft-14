@@ -222,9 +222,10 @@ Portable-menu boundary больше не вызывает generated inventory pr
 network binding.
 
 Целевые пакеты `net.ssc14` не импортируют `net.mcreator.ssc.procedures` и
-generated `Ssc14ModVariables`; saved-data/runtime state владеет
-`Ssc14WorldVariables`, а remaining generated вызовы изолированы в bootstrap и
-явных legacy adapters.
+generated `Ssc14ModVariables`; facade удалён после перевода compatibility
+callers на `Ssc14WorldVariables`. Saved-data/runtime state теперь имеет одного
+canonical owner, а remaining generated вызовы изолированы в bootstrap и явных
+legacy adapters.
 
 На текущем контрольном прогоне dedicated NeoForge GameTest все 217 обязательных
 сценариев прошли успешно; сервер также корректно сохранил все три измерения при
@@ -347,9 +348,10 @@ generation and PDA state now use canonical services, while the bridge remains fo
 legacy menu and network binding.
 
 Target `net.ssc14` packages do not import `net.mcreator.ssc.procedures` or the
-generated `Ssc14ModVariables`; `Ssc14WorldVariables` owns saved-data/runtime
-state, while remaining generated calls are isolated to bootstrap code and
-explicit legacy adapters.
+generated `Ssc14ModVariables`; the facade was removed after compatibility
+callers moved to `Ssc14WorldVariables`. Saved-data/runtime state now has one
+canonical owner, while remaining generated calls are isolated to bootstrap code
+and explicit legacy adapters.
 
 The current dedicated NeoForge GameTest run passed all 217 required scenarios, and
 the server saved all three dimensions successfully during shutdown.
