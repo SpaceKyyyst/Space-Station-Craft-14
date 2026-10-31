@@ -1,62 +1,11 @@
 package net.mcreator.ssc.client.screens;
 
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.bus.api.EventPriority;
-import net.neoforged.api.distmarker.Dist;
 
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.resources.Identifier;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.Minecraft;
-
-import net.ssc14.content.medical.ActionProgressService;
-
-@EventBusSubscriber(Dist.CLIENT)
+/** @deprecated Use {@link net.ssc14.client.overlay.ActionIndicatorOverlay}. */
+@Deprecated(forRemoval = false)
 public class ActionIndicatorOverlay {
-	private static final Identifier IMAGE_0 = Identifier.parse("ssc_14:textures/screens/progress_bar_1.png");
-	private static final Identifier IMAGE_1 = Identifier.parse("ssc_14:textures/screens/progress_bar_2.png");
-	private static final Identifier IMAGE_2 = Identifier.parse("ssc_14:textures/screens/progress_bar_3.png");
-	private static final Identifier IMAGE_3 = Identifier.parse("ssc_14:textures/screens/progress_bar_4.png");
-	private static final Identifier IMAGE_4 = Identifier.parse("ssc_14:textures/screens/progress_bar_5.png");
-	private static final Identifier IMAGE_5 = Identifier.parse("ssc_14:textures/screens/progress_bar_6.png");
-
-	@SubscribeEvent(priority = EventPriority.HIGH)
-	public static void eventHandler(RenderGuiEvent.Pre event) {
-		int w = event.getGuiGraphics().guiWidth();
-		int h = event.getGuiGraphics().guiHeight();
-		Level world = null;
-		double x = 0;
-		double y = 0;
-		double z = 0;
-		Player entity = Minecraft.getInstance().player;
-		if (entity != null) {
-			world = entity.level();
-			x = entity.getX();
-			y = entity.getY();
-			z = entity.getZ();
-		}
-		{
-			if (ActionProgressService.execute(entity)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_0, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
-			}
-			if (ActionProgressService.isAtStep(entity, 2)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_1, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
-			}
-			if (ActionProgressService.isAtStep(entity, 3)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_2, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
-			}
-			if (ActionProgressService.isAtStep(entity, 4)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_3, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
-			}
-			if (ActionProgressService.isAtStep(entity, 5)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_4, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
-			}
-			if (ActionProgressService.isAtStep(entity, 6)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, IMAGE_5, w / 2 + -8, h / 2 + -16, 0, 0, 16, 16, 16, 16);
-			}
-		}
-	}
+    public static void eventHandler(RenderGuiEvent.Pre event) {
+        net.ssc14.client.overlay.ActionIndicatorOverlay.eventHandler(event);
+    }
 }

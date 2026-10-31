@@ -156,6 +156,10 @@ Hunger/thirst HUD overlays зарегистрированы в canonical
 `net.ssc14.client.overlay`; generated screen classes сохранены как
 compatibility facades, а thresholds и animation-frame behavior не изменены.
 
+HUD overlays action-progress, firearm-ammo, multitool и health-analyzer также
+зарегистрированы в canonical `net.ssc14.client.overlay`; generated screen
+classes сохранены как compatibility facades с прежними event-handler API.
+
 Маршрутизация right-click инструментов шлюза вынесена в
 `AirlockToolInteractionHandler`. Он сохраняет порядок проверки access, welding,
 manual opening, tile installation и deconstruction; legacy adapters остаются
@@ -300,6 +304,10 @@ facade with the existing static event-handler API.
 The hunger/thirst HUD overlays are registered in canonical
 `net.ssc14.client.overlay`; generated screen classes remain compatibility
 facades, with thresholds and animation-frame behavior unchanged.
+
+Action-progress, firearm-ammo, multitool, and health-analyzer HUD overlays are
+also registered in canonical `net.ssc14.client.overlay`; generated screen
+classes remain compatibility facades with their existing event-handler APIs.
 
 Airlock tool right-click routing now lives in `AirlockToolInteractionHandler`.
 It preserves the access, welding, manual-opening, tile-installation, and
