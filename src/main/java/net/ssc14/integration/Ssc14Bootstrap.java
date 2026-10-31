@@ -39,7 +39,6 @@ import net.ssc14.content.tab.Ssc14CreativeTabs;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
 import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
-import net.ssc14.content.item.tool.LegacyNetworkConfiguratorMenuAdapter;
 import net.ssc14.content.item.weapon.LegacyFirearmInteractionAdapter;
 import net.ssc14.content.item.construction.LegacyConstructionItemInteractionAdapter;
 import net.ssc14.content.gravity.ui.GravityGeneratorWindow;
@@ -320,7 +319,6 @@ public final class Ssc14Bootstrap {
 		MenuStateTransportPort.install(MenuStateNetworkActions::send);
 		CommerceConsoleIntegrationService.install(
 					new LegacyCommerceConsoleIntegrationAdapter());
-		NetworkConfiguratorService.install(new LegacyNetworkConfiguratorMenuAdapter());
 		AirlockUpperPlugIntegrationService.installUseHandler(
 				net.ssc14.content.airlock.AirlockUpperPlugInteractionService::execute);
 		ConstructionItemInteractionService.install(
