@@ -1,67 +1,11 @@
 package net.mcreator.ssc.client.screens;
 
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.bus.api.EventPriority;
-import net.neoforged.api.distmarker.Dist;
 
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.util.Mth;
-import net.minecraft.resources.Identifier;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.Minecraft;
-
-import net.ssc14.content.medical.HealthUiService;
-
-@EventBusSubscriber(Dist.CLIENT)
+/** @deprecated Use {@link net.ssc14.client.overlay.HealthUIOverlay}. */
+@Deprecated(forRemoval = false)
 public class HealthUIOverlay {
-	private static final Identifier SPRITE_0 = Identifier.parse("ssc_14:textures/screens/dead_anim.png");
-	private static final Identifier SPRITE_1 = Identifier.parse("ssc_14:textures/screens/critical_anim.png");
-	private static final Identifier SPRITE_2 = Identifier.parse("ssc_14:textures/screens/health4_anim.png");
-	private static final Identifier SPRITE_3 = Identifier.parse("ssc_14:textures/screens/health3_anim.png");
-	private static final Identifier SPRITE_4 = Identifier.parse("ssc_14:textures/screens/health2_anim.png");
-	private static final Identifier SPRITE_5 = Identifier.parse("ssc_14:textures/screens/health1_anim.png");
-	private static final Identifier SPRITE_6 = Identifier.parse("ssc_14:textures/screens/health0_anim.png");
-
-	@SubscribeEvent(priority = EventPriority.NORMAL)
-	public static void eventHandler(RenderGuiEvent.Pre event) {
-		int w = event.getGuiGraphics().guiWidth();
-		int h = event.getGuiGraphics().guiHeight();
-		Level world = null;
-		double x = 0;
-		double y = 0;
-		double z = 0;
-		Player entity = Minecraft.getInstance().player;
-		if (entity != null) {
-			world = entity.level();
-			x = entity.getX();
-			y = entity.getY();
-			z = entity.getZ();
-		}
-		if (HealthUiService.isVisible(entity)) {
-			if (HealthUiService.isState(entity, 6)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_0, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
-			}
-			if (HealthUiService.isState(entity, 5)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_1, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
-			}
-			if (HealthUiService.isState(entity, 4)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_2, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
-			}
-			if (HealthUiService.isState(entity, 3)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_3, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
-			}
-			if (HealthUiService.isState(entity, 2)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_4, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
-			}
-			if (HealthUiService.isState(entity, 1)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_5, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
-			}
-			if (HealthUiService.isState(entity, 0)) {
-				event.getGuiGraphics().blit(RenderPipelines.GUI_TEXTURED, SPRITE_6, w - 37, h / 2 + -48, 0, Mth.clamp((int) HealthUiService.animationFrame(entity) * 32, 0, 864), 32, 32, 32, 896);
-			}
-		}
-	}
+    public static void eventHandler(RenderGuiEvent.Pre event) {
+        net.ssc14.client.overlay.HealthUIOverlay.eventHandler(event);
+    }
 }
