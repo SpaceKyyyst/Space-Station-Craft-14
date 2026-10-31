@@ -186,6 +186,15 @@ was removed; the `Adapter` port remains injectable for compatibility tests.
 `LegacyAirlockControllerInteractionAdapter` удалён; порт `Adapter` сохранён для
 совместимых тестовых замен.
 
+RSU mode routing, construction/deconstruction dispatch and aiming-particle
+updates now use the default adapter inside `RsuInteractionService`; the
+separate `LegacyRsuInteractionAdapter` was removed while the injectable port
+remains available.
+
+Маршрутизация режимов RSU, dispatch строительства/демонтажа и aiming-particle
+updates теперь выполняются default adapter внутри `RsuInteractionService`;
+отдельный `LegacyRsuInteractionAdapter` удалён, а injectable port сохранён.
+
 HUD overlays action-progress, firearm-ammo, multitool и health-analyzer также
 зарегистрированы в canonical `net.ssc14.client.overlay`; generated screen
 classes сохранены как compatibility facades с прежними event-handler API.
