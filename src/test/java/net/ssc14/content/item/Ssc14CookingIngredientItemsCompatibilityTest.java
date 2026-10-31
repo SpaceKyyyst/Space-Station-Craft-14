@@ -1,12 +1,10 @@
 package net.ssc14.content.item;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
-import net.mcreator.ssc.init.Ssc14ModItems;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.junit.jupiter.api.Test;
 
@@ -18,12 +16,10 @@ class Ssc14CookingIngredientItemsCompatibilityTest {
             "EGGSHELL", "eggshell");
 
     @Test
-    void canonicalRegistryOwnsIngredientIdsAndLegacyHoldersRemainAliases() throws Exception {
+    void canonicalRegistryOwnsIngredientIdsAndPreservesCanonicalIds() throws Exception {
         for (Map.Entry<String, String> expected : EXPECTED_HOLDERS.entrySet()) {
             Field canonicalField = Ssc14Items.class.getField(expected.getKey());
-            Field legacyField = Ssc14ModItems.class.getField(expected.getKey());
             Object canonicalHolder = canonicalField.get(null);
-            assertSame(canonicalHolder, legacyField.get(null), expected.getKey());
             assertEquals("ssc_14:" + expected.getValue(),
                     ((DeferredHolder<?, ?>) canonicalHolder).getId().toString(), expected.getKey());
         }

@@ -1,12 +1,11 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -54,13 +53,11 @@ class Ssc14BlocksFenceCompatibilityTest {
     }
 
     @Test
-    void canonicalItemRegistryOwnsFenceItemsAndLegacyHoldersRemainAliases()
+    void canonicalItemRegistryOwnsFenceItemsAndPreservesCanonicalIds()
             throws ReflectiveOperationException {
         Class<?> canonicalItems = Class.forName("net.ssc14.content.item.Ssc14Items");
         for (Map.Entry<String, String> expected : EXPECTED_HOLDERS.entrySet()) {
             Object canonicalHolder = canonicalItems.getField(expected.getKey()).get(null);
-            assertSame(canonicalHolder,
-                    Ssc14ModItems.class.getField(expected.getKey()).get(null));
             assertEquals("ssc_14:" + expected.getValue(),
                     ((DeferredHolder<?, ?>) canonicalHolder).getId().toString());
         }

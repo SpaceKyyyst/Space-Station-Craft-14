@@ -2,17 +2,14 @@ package net.ssc14.content.item;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
 import net.ssc14.content.item.tool.GasAnalyserItem;
 import org.junit.jupiter.api.Test;
 
 class Ssc14GasAnalyserItemCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsIdAndLegacyHolderRemainsAlias() {
-        assertSame(Ssc14Items.GAS_ANALYSER, Ssc14ModItems.GAS_ANALYSER);
+    void canonicalRegistryOwnsIdAndPreservesCanonicalId() {
         assertEquals("ssc_14:gas_analyser", Ssc14Items.GAS_ANALYSER.getId().toString());
     }
 

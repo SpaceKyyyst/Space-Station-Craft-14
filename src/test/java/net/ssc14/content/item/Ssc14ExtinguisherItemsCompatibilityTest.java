@@ -2,10 +2,8 @@ package net.ssc14.content.item;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
 import net.mcreator.ssc.item.ExtinguisherOpenItem;
 import net.ssc14.content.item.safety.ExtinguisherItem;
 import net.ssc14.content.item.safety.ExtinguisherState;
@@ -13,9 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14ExtinguisherItemsCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsBothIdsAndLegacyHoldersRemainAliases() {
-        assertSame(Ssc14Items.EXTINGUISHER, Ssc14ModItems.EXTINGUISHER);
-        assertSame(Ssc14Items.EXTINGUISHER_OPEN, Ssc14ModItems.EXTINGUISHER_OPEN);
+    void canonicalRegistryOwnsBothIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:extinguisher", Ssc14Items.EXTINGUISHER.getId().toString());
         assertEquals("ssc_14:extinguisher_open",
                 Ssc14Items.EXTINGUISHER_OPEN.getId().toString());

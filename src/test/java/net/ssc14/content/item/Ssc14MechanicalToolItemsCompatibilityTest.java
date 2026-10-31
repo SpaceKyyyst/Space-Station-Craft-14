@@ -1,11 +1,9 @@
 package net.ssc14.content.item;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Field;
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModItems;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.junit.jupiter.api.Test;
 
@@ -20,13 +18,11 @@ class Ssc14MechanicalToolItemsCompatibilityTest {
             item("PICK", "pick", "PickItem", "AsteroidPickItem"));
 
     @Test
-    void canonicalRegistryOwnsMechanicalToolIdsAndLegacyHoldersRemainAliases()
+    void canonicalRegistryOwnsMechanicalToolIdsAndPreservesCanonicalIds()
             throws Exception {
         for (ExpectedItem expected : ITEMS) {
             Field canonicalField = Ssc14Items.class.getField(expected.fieldName());
-            Field legacyField = Ssc14ModItems.class.getField(expected.fieldName());
             Object canonicalHolder = canonicalField.get(null);
-            assertSame(canonicalHolder, legacyField.get(null), expected.fieldName());
             assertTrue(((DeferredHolder<?, ?>) canonicalHolder).getId().toString()
                     .equals("ssc_14:" + expected.id()), expected.fieldName());
         }

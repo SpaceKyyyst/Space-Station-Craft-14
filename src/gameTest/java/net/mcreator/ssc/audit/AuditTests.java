@@ -103,14 +103,14 @@ public final class AuditTests {
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
             h.getLevel().setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
-            var configurator = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ACCESS_CONFIG.get());
-            var card = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_PASSANGER.get());
+            var configurator = new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.ACCESS_CONFIG.get());
+            var card = new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.ID_CARD_PASSANGER.get());
             net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA, card,
                     tag -> tag.putBoolean("Technical", true));
             configurator.set(net.minecraft.core.component.DataComponents.CONTAINER,
                     net.minecraft.world.item.component.ItemContainerContents.fromItems(java.util.List.of(card)));
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, configurator);
-            player.getInventory().setItem(8, new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_CAPITAN.get()));
+            player.getInventory().setItem(8, new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.ID_CARD_CAPITAN.get()));
             var buffer = new net.minecraft.network.FriendlyByteBuf(io.netty.buffer.Unpooled.buffer());
             buffer.writeBlockPos(pos);
             var menu = new net.ssc14.content.menu.access.AccessConfigMENUMenu(1, player.getInventory(), buffer);
@@ -202,7 +202,7 @@ public final class AuditTests {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             player.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 1.5);
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
-                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.CROWBAR.get()));
+                    new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.CROWBAR.get()));
             var data = h.getLevel().getBlockEntity(pos).getPersistentData();
             data.putBoolean("powered", false);
             data.putBoolean("Capitan", true);
@@ -261,7 +261,7 @@ public final class AuditTests {
             h.getLevel().setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             player.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 1.5);
-            var tool = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ACTIVE_WELDER.get());
+            var tool = new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.ACTIVE_WELDER.get());
             var fuel = new net.minecraft.nbt.CompoundTag();
             fuel.putDouble("fuel", 1000);
             tool.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(fuel));
@@ -338,7 +338,7 @@ public final class AuditTests {
             level.setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
             net.mcreator.ssc.access.AirlockPower.supply(level, pos, true);
-            var controller = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.AIRLOCK_CONTROLLER.get());
+            var controller = new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.AIRLOCK_CONTROLLER.get());
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, controller);
             var data = level.getBlockEntity(pos).getPersistentData();
             net.ssc14.content.item.tool.AirlockControllerService.interact(level,
@@ -371,7 +371,7 @@ public final class AuditTests {
             player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
             player.setShiftKeyDown(true);
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
-                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.SPANNER.get()));
+                    new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.SPANNER.get()));
             var data = h.getLevel().getBlockEntity(pos).getPersistentData();
             data.putBoolean("welded", true);
             data.putBoolean("powered", true);
@@ -421,7 +421,7 @@ public final class AuditTests {
             var open = Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState().setValue(BaseAirlockD1Block.PANEL_OPEN, true);
             h.getLevel().setBlock(pos, open, 3);
             player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
-            var stack = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.STEEL.get(), 2);
+            var stack = new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.STEEL.get(), 2);
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, stack);
             net.mcreator.ssc.access.AirlockMaintenance.interact(player, pos);
             h.getLevel().setBlock(pos, open.setValue(BaseAirlockD1Block.PANEL_OPEN, false), 3);
@@ -442,7 +442,7 @@ public final class AuditTests {
             h.getLevel().setBlock(other, door, 3);
             player.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 1.5);
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
-                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.NIPPERS.get()));
+                    new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.NIPPERS.get()));
             var buffer = new net.minecraft.network.FriendlyByteBuf(io.netty.buffer.Unpooled.buffer());
             try {
                 buffer.writeBlockPos(pos);
@@ -462,7 +462,7 @@ public final class AuditTests {
             net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, 1);
             h.assertTrue(!data.getBooleanOr("cabel_1", false), "Wire cut without nippers");
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
-                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.MULTITUL.get()));
+                    new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.MULTITOOL.get()));
             data.putInt("log_cab_1", 7);
             data.putBoolean("cabel_1", true);
             net.mcreator.ssc.access.AirlockWireService.toggle(player, pos, 1);
@@ -483,7 +483,7 @@ public final class AuditTests {
             player.getPersistentData().putBoolean("Medical", true);
             h.assertTrue(!net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
                     "Stale player permissions granted entry without an ID card");
-            var card = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_MEDIC.get());
+            var card = new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.ID_CARD_MEDIC.get());
             player.getInventory().setItem(9, card);
             h.assertTrue(net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
                     "Card in inventory must grant access immediately without a player tick");
@@ -492,7 +492,7 @@ public final class AuditTests {
             h.assertTrue(!net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
                     "Edited card permissions must take effect immediately");
             player.getInventory().setItem(9, new net.minecraft.world.item.ItemStack(
-                    net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_MEDIC.get()));
+                    net.ssc14.content.item.Ssc14Items.ID_CARD_MEDIC.get()));
             net.ssc14.content.access.PlayerAccessService.tick(player);
             player.getInventory().setItem(9, net.minecraft.world.item.ItemStack.EMPTY);
             h.assertTrue(!net.mcreator.ssc.access.AirlockAccessPolicy.permits(requirement, player, false),
@@ -668,7 +668,7 @@ public final class AuditTests {
             });
         });
         TESTS.put("id_cache_refreshes_nested_card", h -> {
-            var card = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_PASSANGER.get());
+            var card = new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.ID_CARD_PASSANGER.get());
             var container = new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.CHEST);
             container.set(net.minecraft.core.component.DataComponents.CONTAINER,
                     net.minecraft.world.item.component.ItemContainerContents.fromItems(java.util.List.of(card)));
@@ -716,7 +716,7 @@ public final class AuditTests {
         TESTS.put("id_card_grants_and_revokes_access", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             player.setItemSlot(net.minecraft.world.entity.EquipmentSlot.MAINHAND,
-                    new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_PASSANGER.get()));
+                    new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.ID_CARD_PASSANGER.get()));
             net.ssc14.content.access.PlayerAccessService.tick(player);
             h.assertTrue(player.getPersistentData().getBooleanOr("Technical", false), "ID card did not grant access");
             player.setItemSlot(net.minecraft.world.entity.EquipmentSlot.MAINHAND, net.minecraft.world.item.ItemStack.EMPTY);
@@ -919,13 +919,13 @@ public final class AuditTests {
         TESTS.put("magnetic_boots_toggle",h->{
             var player=h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var container=new net.minecraft.world.SimpleContainer(1);
-            var original=new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.MAGNETIC_BOOTS_ITEM.get());
+            var original=new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.MAGNETIC_BOOTS_ITEM.get());
             original.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME,net.minecraft.network.chat.Component.literal("Audit Boots"));container.setItem(0,original);
             var slot=new net.minecraft.world.inventory.Slot(container,0,0,0);
             h.assertTrue(ItemInteractionService.tryInteract(player,slot),"Boots not interactive");
-            h.assertTrue(slot.getItem().is(net.mcreator.ssc.init.Ssc14ModItems.MAGNETIC_BOOTS_ACTIVE_ITEM.get()),"Boots did not activate");
+            h.assertTrue(slot.getItem().is(net.ssc14.content.item.Ssc14Items.MAGNETIC_BOOTS_ACTIVE_ITEM.get()),"Boots did not activate");
             ItemInteractionService.tryInteract(player,slot);
-            h.assertTrue(slot.getItem().is(net.mcreator.ssc.init.Ssc14ModItems.MAGNETIC_BOOTS_ITEM.get()),"Boots did not deactivate");
+            h.assertTrue(slot.getItem().is(net.ssc14.content.item.Ssc14Items.MAGNETIC_BOOTS_ITEM.get()),"Boots did not deactivate");
             h.assertTrue(slot.getItem().getHoverName().getString().equals("Audit Boots"),"Boot toggle lost custom name");h.succeed();
         });
     }
@@ -949,14 +949,14 @@ public final class AuditTests {
         });
         TESTS.put("welder_preserves_name",h->{
             var p=h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);p.setShiftKeyDown(true);
-            var item=new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.WELDING.get());
+            var item=new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.WELDING.get());
             item.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME,net.minecraft.network.chat.Component.literal("Audit Welder"));
             net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA,item,t->t.putDouble("fuel",1000));
             p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,item);
             var pos=h.absolutePos(new BlockPos(3,2,3));
             net.ssc14.content.item.tool.WelderStateService.toggle(
                     h.getLevel(), pos.getX(), pos.getY(), pos.getZ(), p);
-            h.assertTrue(p.getMainHandItem().is(net.mcreator.ssc.init.Ssc14ModItems.ACTIVE_WELDER.get()),"Welder activation fixture failed");
+            h.assertTrue(p.getMainHandItem().is(net.ssc14.content.item.Ssc14Items.ACTIVE_WELDER.get()),"Welder activation fixture failed");
             h.assertTrue(p.getMainHandItem().getHoverName().getString().equals("Audit Welder"),"Activating welder destroys custom name");h.succeed();
         });
     }
@@ -991,7 +991,7 @@ public final class AuditTests {
             h.succeed();
         });
         TESTS.put("welder_fuel_keeps_hand_model", h -> {
-            var item = net.mcreator.ssc.init.Ssc14ModItems.ACTIVE_WELDER.get();
+            var item = net.ssc14.content.item.Ssc14Items.ACTIVE_WELDER.get();
             var before = new net.minecraft.world.item.ItemStack(item);
             var after = before.copy();
             net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA, after, tag -> tag.putDouble("fuel", 500));
@@ -1017,20 +1017,20 @@ public final class AuditTests {
         });
         TESTS.put("welder_empty_fuel_preserves_name", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
-            var stack = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ACTIVE_WELDER.get());
+            var stack = new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.ACTIVE_WELDER.get());
             stack.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME, net.minecraft.network.chat.Component.literal("Empty Welder"));
             net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("fuel", 150));
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, stack);
             net.ssc14.content.item.tool.WelderStateService.tick(
                     h.getLevel(), player, net.minecraft.world.InteractionHand.MAIN_HAND, stack);
-            h.assertTrue(player.getMainHandItem().is(net.mcreator.ssc.init.Ssc14ModItems.WELDING.get()), "Empty welder remained active");
+            h.assertTrue(player.getMainHandItem().is(net.ssc14.content.item.Ssc14Items.WELDING.get()), "Empty welder remained active");
             h.assertTrue(player.getMainHandItem().getHoverName().getString().equals("Empty Welder"), "Automatic shutdown lost custom name");
             h.succeed();
         });
         TESTS.put("welder_network_roundtrip", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             player.setShiftKeyDown(true);
-            var stack = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.WELDING.get());
+            var stack = new net.minecraft.world.item.ItemStack(net.ssc14.content.item.Ssc14Items.WELDING.get());
             stack.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME, net.minecraft.network.chat.Component.literal("Network Welder"));
             net.minecraft.world.item.component.CustomData.update(net.minecraft.core.component.DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("fuel", 1000));
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, stack);
@@ -1126,12 +1126,12 @@ public final class AuditTests {
             h.succeed(); return;
         }
         net.minecraft.world.item.Item item = switch (steps[index][0]) {
-            case 0 -> net.mcreator.ssc.init.Ssc14ModItems.STEEL.get();
-            case 1 -> net.mcreator.ssc.init.Ssc14ModItems.ACTIVE_WELDER.get();
-            case 2 -> net.mcreator.ssc.init.Ssc14ModItems.CROWBAR.get();
-            case 3 -> net.mcreator.ssc.init.Ssc14ModItems.PLASTEEL.get();
-            case 4 -> net.mcreator.ssc.init.Ssc14ModItems.ROOD.get();
-            default -> net.mcreator.ssc.init.Ssc14ModItems.NIPPERS.get();
+            case 0 -> net.ssc14.content.item.Ssc14Items.STEEL.get();
+            case 1 -> net.ssc14.content.item.Ssc14Items.ACTIVE_WELDER.get();
+            case 2 -> net.ssc14.content.item.Ssc14Items.CROWBAR.get();
+            case 3 -> net.ssc14.content.item.Ssc14Items.PLASTEEL.get();
+            case 4 -> net.ssc14.content.item.Ssc14Items.ROOD.get();
+            default -> net.ssc14.content.item.Ssc14Items.NIPPERS.get();
         };
         var stack = new net.minecraft.world.item.ItemStack(item, steps[index][0] == 0 || steps[index][0] == 3 || steps[index][0] == 4 ? 2 : 1);
         if (steps[index][0] == 1)
