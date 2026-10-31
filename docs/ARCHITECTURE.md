@@ -167,6 +167,16 @@ behavior, and energy lifecycle are owned by the canonical lighting layer.
 как совместимые фасады, а регистрация, сохранение, menu-поведение и energy
 lifecycle принадлежат lighting-слою.
 
+Communication-console menu construction and server-side opening now belong to
+`CommunicationConsoleIntegrationService`; the composition root no longer embeds
+an anonymous generated-menu adapter. The injectable adapter remains only as a
+compatibility/test seam.
+
+Создание меню и серверное открытие communication console теперь принадлежат
+`CommunicationConsoleIntegrationService`; composition root больше не содержит
+anonymous generated-menu adapter. Инъекционный adapter сохранён только как
+compatibility/test seam.
+
 HUD overlays action-progress, firearm-ammo, multitool и health-analyzer также
 зарегистрированы в canonical `net.ssc14.client.overlay`; generated screen
 classes сохранены как compatibility facades с прежними event-handler API.
