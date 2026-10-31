@@ -214,13 +214,9 @@ runtime owners of this behavior.
 - generated `Ssc14LegacyEntityBehavior` удалён; hook bridge перенесён в
   canonical `Ssc14EntityBehaviorHooks`, который не изменяет entity behavior
   contracts и использует canonical block/item/attribute owners.
-- Автоматически обнаруживаемые network registration-классы требуют отдельного
-  переноса в integration namespace с сохранением event annotations и payload IDs.
-- `ProcessReactionsRegistration`, `NetConfigGUIButtonRegistration`,
-  `NetConfigGUISyncRegistration` и `IDcodeButtonRegistration` уже находятся в
-  canonical chemistry/menu слоях; generated-классы являются только facade.
-- `MenuStateUpdateRegistration` теперь является compatibility facade; serverbound
-  и clientbound registrations принадлежат разным canonical-классам.
+- Пять generated network registration facade-классов удалены после проверки, что
+  payload registration и handlers принадлежат canonical chemistry/menu слоям;
+  event annotations и payload IDs не изменялись.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
@@ -239,13 +235,9 @@ runtime owners of this behavior.
 - generated `Ssc14LegacyEntityBehavior` was removed; the hook bridge now lives
   in canonical `Ssc14EntityBehaviorHooks`, preserving entity behavior contracts
   and using canonical block/item/attribute owners.
-- Auto-discovered network registration classes require a separate move into the
-  integration namespace while preserving event annotations and payload IDs.
-- `ProcessReactionsRegistration`, `NetConfigGUIButtonRegistration`,
-  `NetConfigGUISyncRegistration`, and `IDcodeButtonRegistration` now live in
-  canonical chemistry/menu layers; their generated classes are facades only.
-- `MenuStateUpdateRegistration` is now a compatibility facade; serverbound and
-  clientbound registrations are owned by separate canonical classes.
+- Five generated network registration facade classes were removed after verifying
+  that payload registration and handlers are owned by canonical chemistry/menu
+  layers; event annotations and payload IDs were not changed.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
