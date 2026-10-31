@@ -27,7 +27,7 @@ import net.ssc14.content.item.reagent.ReagentService;
 import net.ssc14.content.item.Ssc14ItemCapabilities;
 import net.ssc14.integration.neoforge.player.Ssc14PlayerAttachments;
 import net.ssc14.client.Ssc14CuriosRenderers;
-import net.mcreator.ssc.init.Ssc14LegacyEntityBehavior;
+import net.ssc14.content.entity.Ssc14EntityBehaviorHooks;
 import net.ssc14.content.equipment.Ssc14CuriosCompatibility;
 import net.ssc14.integration.neoforge.server.ServerTaskSubmission;
 import net.ssc14.integration.neoforge.server.ServerWorkScheduler;
@@ -370,7 +370,7 @@ public class Ssc14Mod {
 		DecalToolInteractionService.install(LegacyDecalToolInteractionAdapter.INSTANCE);
 		PortableMenuInteractionService.install(LegacyPortableMenuInteractionAdapter.INSTANCE);
 		FirearmInteractionService.install(LegacyFirearmInteractionAdapter.INSTANCE);
-		Ssc14EntityBehavior.install(Ssc14LegacyEntityBehavior.INSTANCE);
+		Ssc14EntityBehavior.install(Ssc14EntityBehaviorHooks.INSTANCE);
 		Ssc14EntityTypes.REGISTRY.register(modEventBus);
 		Ssc14CreativeTabs.REGISTRY.register(modEventBus);
 		Ssc14PlayerAttachments.register(modEventBus);

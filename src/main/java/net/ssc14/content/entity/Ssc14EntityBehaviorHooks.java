@@ -1,27 +1,22 @@
-package net.mcreator.ssc.init;
+package net.ssc14.content.entity;
 
-import net.ssc14.content.firearm.BulletCollisionParticleService;
-import net.ssc14.content.firearm.BulletFlightParticleService;
-import net.ssc14.content.entity.C4CrutchLifetimeHandler;
-import net.ssc14.content.block.furniture.ChairInteractionService;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.ssc14.content.block.Ssc14Blocks;
-import net.ssc14.content.attribute.Ssc14Attributes;
-import net.ssc14.content.entity.IDConsoleENTITYEntity;
-import net.ssc14.content.entity.PlassteelWallCarcaseEntitEntity;
-import net.ssc14.content.entity.WallCarcaseEntitEntity;
-import net.ssc14.content.item.tool.SpannerInteractionService;
-import net.ssc14.content.item.Ssc14Items;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
-import net.ssc14.content.entity.Ssc14EntityBehavior;
+import net.ssc14.content.attribute.Ssc14Attributes;
+import net.ssc14.content.block.Ssc14Blocks;
+import net.ssc14.content.block.furniture.ChairInteractionService;
+import net.ssc14.content.firearm.BulletCollisionParticleService;
+import net.ssc14.content.firearm.BulletFlightParticleService;
+import net.ssc14.content.item.Ssc14Items;
+import net.ssc14.content.item.tool.SpannerInteractionService;
 
-/** Bridges target-owned entities to procedures that remain in the legacy namespace. */
-public final class Ssc14LegacyEntityBehavior implements Ssc14EntityBehavior.Hooks {
-    public static final Ssc14LegacyEntityBehavior INSTANCE = new Ssc14LegacyEntityBehavior();
+/** Canonical hook bridge for entity behavior formerly wired by generated code. */
+public final class Ssc14EntityBehaviorHooks implements Ssc14EntityBehavior.Hooks {
+    public static final Ssc14EntityBehaviorHooks INSTANCE = new Ssc14EntityBehaviorHooks();
 
-    private Ssc14LegacyEntityBehavior() {
+    private Ssc14EntityBehaviorHooks() {
     }
 
     @Override
