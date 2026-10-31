@@ -165,4 +165,5 @@ jobs:
             separator='&'
           fi
           webhook_url="${DISCORD_RELEASE_WEBHOOK}${separator}wait=true&with_components=true"
+          # Components v2 messages cannot include files; the JAR is linked by the release button.
           curl --fail-with-body -X POST "$webhook_url" -F "payload_json=$payload"
