@@ -107,6 +107,9 @@ owner, not merely renaming the facade.
 - `net.ssc14.integration.neoforge.Ssc14ModEntrypoint` now owns the NeoForge
   entrypoint and registration composition; generated `Ssc14Mod` remains only as
   a deprecated static compatibility facade;
+- communication-console menu construction and server opening now live in
+  `CommunicationConsoleIntegrationService`; the bootstrap no longer owns an
+  anonymous generated-menu adapter;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
@@ -310,6 +313,9 @@ runtime owners of this behavior.
 - `Ssc14ModEntrypoint` is the canonical NeoForge entrypoint; generated `Ssc14Mod`
   remains only as a deprecated static compatibility facade;
   registration composition moved to canonical `Ssc14Bootstrap`.
+- communication-console menu construction and server opening now live in
+  `CommunicationConsoleIntegrationService`; the bootstrap no longer owns an
+  anonymous generated-menu adapter.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are

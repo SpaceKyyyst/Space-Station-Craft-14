@@ -38,7 +38,6 @@ import net.ssc14.content.menu.Ssc14MenuTypes;
 import net.ssc14.content.tab.Ssc14CreativeTabs;
 import net.ssc14.content.menu.station.GravGenGUIMenu;
 import net.ssc14.content.menu.food.MicrowaweGUIMenu;
-import net.ssc14.content.menu.station.CommunConsoleGUIMenu;
 import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
 import net.ssc14.content.block.access.LegacyIdConsoleIntegrationAdapter;
 import net.ssc14.content.item.tool.LegacyNetworkConfiguratorMenuAdapter;
@@ -78,7 +77,6 @@ import net.ssc14.content.block.control.NetworkButtonInteractionService;
 import net.ssc14.content.block.control.Ssc14ControlBlockEntities;
 import net.ssc14.content.block.communication.CommunicationServerLifecycleService;
 import net.ssc14.content.block.communication.CommunicationFrequencyStateService;
-import net.ssc14.content.block.communication.CommunicationConsoleIntegrationService;
 import net.ssc14.content.block.communication.Ssc14CommunicationBlockEntities;
 import net.ssc14.content.block.fuel.Ssc14FuelBlockEntities;
 import net.ssc14.content.block.gravity.GravityGeneratorPlugLifecycleService;
@@ -275,37 +273,6 @@ public final class Ssc14Bootstrap {
 			}
 			state.markSyncDirty();
 		});
-		CommunicationConsoleIntegrationService.install(
-				new CommunicationConsoleIntegrationService.Adapter() {
-					@Override
-					public void use(net.minecraft.world.level.Level level,
-							net.minecraft.core.BlockPos pos, Player player) {
-						if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
-							serverPlayer.openMenu(new net.minecraft.world.MenuProvider() {
-								@Override
-								public net.minecraft.network.chat.Component getDisplayName() {
-									return net.minecraft.network.chat.Component.literal("Communication console");
-								}
-
-								@Override
-								public net.minecraft.world.inventory.AbstractContainerMenu createMenu(
-										int id, net.minecraft.world.entity.player.Inventory inventory,
-										Player menuPlayer) {
-									return new CommunConsoleGUIMenu(id, inventory,
-											new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-								}
-							}, pos);
-						}
-					}
-
-					@Override
-					public net.minecraft.world.inventory.AbstractContainerMenu createMenu(
-							int id, net.minecraft.world.entity.player.Inventory inventory,
-							net.minecraft.core.BlockPos pos) {
-						return new CommunConsoleGUIMenu(id, inventory,
-								new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-					}
-				});
 		UpperClosetPlugInteractionService.install((level, pos, player) ->
 					net.ssc14.content.block.furniture.ClosetInteractionService.execute(
 						level, pos.getX(), pos.getY() - 1, pos.getZ(),
