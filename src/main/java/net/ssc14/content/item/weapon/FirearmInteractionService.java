@@ -17,10 +17,12 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.ssc14.content.entity.Bullet35Entity;
+import net.ssc14.content.firearm.MagazineDescriptionService;
+import net.ssc14.content.item.Ssc14Items;
 
 import javax.annotation.Nullable;
 
-/** Boundary for firearm behavior that still depends on legacy procedures. */
+/** Owns canonical firearm interaction wiring. */
 public final class FirearmInteractionService {
     public interface Adapter {
         String tooltip(FirearmState state, ItemStack stack);
@@ -37,26 +39,7 @@ public final class FirearmInteractionService {
                 @Nullable EquipmentSlot equipmentSlot);
     }
 
-    private static Adapter adapter = new Adapter() {
-        @Override
-        public String tooltip(FirearmState state, ItemStack stack) {
-            return null;
-        }
-
-        @Override
-        public void use(FirearmState state, Level level, Player player, ItemStack stack) { }
-
-        @Override
-        public void swing(Mk58State state, LivingEntity entity, ItemStack stack) { }
-
-        @Override
-        public void inventoryTick(
-                FirearmState state,
-                ItemStack stack,
-                ServerLevel level,
-                Entity entity,
-                @Nullable EquipmentSlot equipmentSlot) { }
-    };
+    private static Adapter adapter = new CanonicalAdapter();
 
     private FirearmInteractionService() { }
 
@@ -254,5 +237,49 @@ public final class FirearmInteractionService {
             Entity entity,
             @Nullable EquipmentSlot equipmentSlot) {
         adapter.inventoryTick(state, stack, level, entity, equipmentSlot);
+    }
+
+    private static final class CanonicalAdapter implements Adapter {
+        @Override
+        public String tooltip(FirearmState state, ItemStack stack) {
+            return state instanceof Mk58State
+                    ? MagazineDescriptionService.mk58(stack)
+                    : MagazineDescriptionService.execute(stack);
+        }
+
+        @Override
+        public void use(FirearmState state, Level level, Player player, ItemStack stack) {
+            if (state instanceof Mk58State) {
+                toggleMk58(level, player, stack,
+                        Ssc14Items.MK_58.get(), Ssc14Items.MK_58OPEN.get(),
+                        Ssc14Items.MK_58NOMAGZ.get(), Ssc14Items.MK_58OPEN_NO_MAGZ.get(),
+                        Ssc14Items.MAGAZINE_PISTOL_35.get(),
+                        Ssc14Items.MAGAZINE_PISTOL_35EMPTY.get(),
+                        Ssc14Items.BULLET_35ITEM.get());
+            } else {
+                usePistolMagazine(level, player, stack,
+                        Ssc14Items.MAGAZINE_PISTOL_35.get(),
+                        Ssc14Items.MAGAZINE_PISTOL_35EMPTY.get(),
+                        Ssc14Items.BULLET_35ITEM.get());
+            }
+        }
+
+        @Override
+        public void swing(Mk58State state, LivingEntity entity, ItemStack stack) {
+            fireMk58(entity.level(), entity, stack,
+                    Ssc14Items.MK_58.get(), Ssc14Items.MK_58NOMAGZ.get(),
+                    Ssc14Items.MK_58OPEN.get(), Ssc14Items.BULLET_35_CARTRIDGE.get(),
+                    net.ssc14.content.entity.Ssc14EntityTypes.BULLET_35.get());
+        }
+
+        @Override
+        public void inventoryTick(FirearmState state, ItemStack stack, ServerLevel level,
+                Entity entity, @Nullable EquipmentSlot equipmentSlot) {
+            if (state == Mk58State.CLOSED_WITH_MAGAZINE) {
+                initializeMk58(stack);
+            } else if (state == PistolMagazineState.LOADED) {
+                initializePistolMagazine(stack);
+            }
+        }
     }
 }

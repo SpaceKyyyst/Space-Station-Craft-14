@@ -52,8 +52,15 @@ owner, not merely renaming the facade.
 
 - `LegacyReagentContainerRuntime` — storage/color/drink bridge for chemistry;
 - `LegacyCuriosProcedureAdapter` — Curios capability bridge;
-- `LegacyFirearmInteractionAdapter` — firearm item hook bridge;
 - `LegacyCommunicationConsoleAdapter` — communication-console event bridge.
+
+Firearm tooltip, use, swing and inventory-tick actions now execute through the
+canonical default adapter in `FirearmInteractionService`; the separate
+`LegacyFirearmInteractionAdapter` was removed while the adapter port remains injectable.
+
+Firearm tooltip, use, swing и inventory-tick actions теперь выполняются через
+canonical default adapter в `FirearmInteractionService`; отдельный
+`LegacyFirearmInteractionAdapter` удалён, а adapter port остаётся injectable.
 
 Decal tool GUI and world actions now execute through the canonical default adapter
 in `DecalToolInteractionService`; `LegacyDecalToolInteractionAdapter` was removed
