@@ -95,9 +95,9 @@ Integration, блоки/предметы/меню — в Content, экраны/r
 не изменены и защищены манифестом совместимости Stage 4.
 
 Реестр звуков продолжает этот подход: всеми 81 регистрациями владеет
-`net.ssc14.content.sound.Ssc14SoundEvents`, а `Ssc14ModSounds` временно сохраняет
-предыдущий Java API как deprecated-фасад. Sound ID и `sounds.json` не изменены;
-строковые runtime-потребители продолжают использовать стабильные resource ID.
+`net.ssc14.content.sound.Ssc14SoundEvents`, который является единственным
+владельцем sound registry. Sound ID и `sounds.json` не изменены; строковые
+runtime-потребители продолжают использовать стабильные resource ID.
 
 Реестром 11 атрибутов владеет `net.ssc14.content.attribute.Ssc14Attributes`.
 `Ssc14Attributes` также владеет NeoForge event-адаптером привязки атрибутов к
@@ -264,9 +264,9 @@ temporarily remain behind the deprecated `Ssc14ModParticleTypes` facade. Registr
 IDs are unchanged and protected by the Stage 4 compatibility manifest.
 
 The sound registry follows the same approach: all 81 registrations are owned by
-`net.ssc14.content.sound.Ssc14SoundEvents`, while `Ssc14ModSounds` temporarily
-preserves the previous Java API as a deprecated facade. Sound IDs and `sounds.json`
-are unchanged; string-based runtime consumers keep using stable resource IDs.
+`net.ssc14.content.sound.Ssc14SoundEvents`, which is the sole sound-registry owner.
+Sound IDs and `sounds.json` are unchanged; string-based runtime consumers keep
+using stable resource IDs.
 
 The 11-attribute registry is owned by
 `net.ssc14.content.attribute.Ssc14Attributes`, including the NeoForge event adapter
