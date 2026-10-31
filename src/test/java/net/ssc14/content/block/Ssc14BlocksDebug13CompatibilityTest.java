@@ -1,19 +1,16 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.debug.StationCodeDebugBlock;
 import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksDebug13CompatibilityTest {
     @Test
-    void canonicalRegistryOwnsDebug13IdAndLegacyFacadeAliasesHolder() {
+    void canonicalRegistryOwnsDebug13IdAndPreservesCanonicalId() {
         assertEquals("ssc_14:debug_13", Ssc14Blocks.DEBUG_13.getId().toString());
-        assertSame(Ssc14Blocks.DEBUG_13, Ssc14ModBlocks.DEBUG_13);
     }
 
     @Test

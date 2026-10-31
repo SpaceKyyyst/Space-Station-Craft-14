@@ -1,14 +1,12 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.junit.jupiter.api.Test;
@@ -67,18 +65,13 @@ class Ssc14BlocksGeologyCompatibilityTest {
                     net.ssc14.content.block.geology.CaveFloor7Block.class));
 
     @Test
-    void canonicalRegistryOwnsExactGeologyIdsAndLegacyFacadeAliasesHolders()
+    void canonicalRegistryOwnsExactGeologyIdsAndPreservesCanonicalIds()
             throws ReflectiveOperationException {
         Set<Field> targetHolders = expectedHolders(Ssc14Blocks.class);
         assertEquals(EXPECTED_HOLDERS.keySet(), names(targetHolders));
         assertEquals(EXPECTED_HOLDERS.values().stream()
                 .map(path -> "ssc_14:" + path)
                 .collect(Collectors.toUnmodifiableSet()), ids(targetHolders));
-        assertSame(Ssc14Blocks.REGISTRY, Ssc14ModBlocks.REGISTRY);
-        for (Field targetField : targetHolders) {
-            assertSame(targetField.get(null), Ssc14ModBlocks.class.getField(targetField.getName()).get(null),
-                    targetField.getName());
-        }
     }
 
     @Test

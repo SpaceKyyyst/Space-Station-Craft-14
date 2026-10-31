@@ -1,10 +1,8 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.atmosphere.AtmosphericBlock;
 import net.ssc14.content.block.atmosphere.GasProducerO2Block;
@@ -12,10 +10,9 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksGasProducerO2CompatibilityTest {
     @Test
-    void canonicalRegistryOwnsGasProducerIdAndLegacyFacadeAliasesHolder() {
+    void canonicalRegistryOwnsGasProducerIdAndPreservesCanonicalId() {
         assertEquals("ssc_14:gas_producer_o_2",
                 Ssc14Blocks.GAS_PRODUCER_O_2.getId().toString());
-        assertSame(Ssc14Blocks.GAS_PRODUCER_O_2, Ssc14ModBlocks.GAS_PRODUCER_O_2);
     }
 
     @Test

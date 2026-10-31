@@ -1,11 +1,9 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.EmptyBlockGetter;
@@ -24,10 +22,9 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksShuttersCompatibilityTest {
     @Test
-    void canonicalRegistriesOwnIdsAndLegacyHoldersAliasThem() {
+    void canonicalRegistriesOwnIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:shutters", Ssc14Blocks.SHUTTERS.getId().toString());
         assertEquals("ssc_14:shutters", Ssc14AirlockBlockEntities.SHUTTERS.getId().toString());
-        assertSame(Ssc14Blocks.SHUTTERS, Ssc14ModBlocks.SHUTTERS);
     }
 
     @Test

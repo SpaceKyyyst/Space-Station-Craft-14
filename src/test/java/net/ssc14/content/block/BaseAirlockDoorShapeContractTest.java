@@ -1,14 +1,12 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HexFormat;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.EmptyBlockGetter;
@@ -21,13 +19,10 @@ import org.junit.jupiter.api.Test;
 
 class BaseAirlockDoorShapeContractTest {
     @Test
-    void canonicalRegistriesOwnBaseDoorAndLegacyHoldersAliasThem() {
+    void canonicalRegistriesOwnBaseDoorAndPreservesCanonicalIds() {
         assertEquals("ssc_14:base_airlock_d_1", Ssc14Blocks.BASE_AIRLOCK_D_1.getId().toString());
         assertEquals("ssc_14:base_airlock_d_1",
                 Ssc14AirlockBlockEntities.BASE_AIRLOCK_D_1.getId().toString());
-        assertSame(Ssc14Blocks.BASE_AIRLOCK_D_1, Ssc14ModBlocks.BASE_AIRLOCK_D_1);
-        assertSame(Ssc14AirlockBlockEntities.BASE_AIRLOCK_D_1,
-                Ssc14AirlockBlockEntities.BASE_AIRLOCK_D_1);
     }
 
     @Test
@@ -81,7 +76,7 @@ class BaseAirlockDoorShapeContractTest {
     @Test
     void everyDirectionalDoorStateMatchesTheFrozenShapeDigest()
             throws NoSuchAlgorithmException {
-        BaseAirlockD1Block block = (BaseAirlockD1Block) Ssc14ModBlocks.BASE_AIRLOCK_D_1.get();
+        BaseAirlockD1Block block = (BaseAirlockD1Block) Ssc14Blocks.BASE_AIRLOCK_D_1.get();
         StringBuilder signature = new StringBuilder();
         for (Direction facing : Direction.Plane.HORIZONTAL) {
             for (boolean panelOpen : new boolean[] {false, true}) {

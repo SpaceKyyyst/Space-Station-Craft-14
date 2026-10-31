@@ -2,11 +2,9 @@ package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.ssc14.content.block.storage.StationClosetBlock;
@@ -27,13 +25,12 @@ class Ssc14BlocksClosetCompatibilityTest {
             expected("CLOSET_PINK", "closet_pink", "ClosetPinkBlock"));
 
     @Test
-    void canonicalRegistryOwnsClosetIdsAndLegacyFacadeAliasesHolders() throws Exception {
+    void canonicalRegistryOwnsClosetIdsAndPreservesCanonicalIds() throws Exception {
         for (Expected expected : EXPECTED) {
             Object canonical = Ssc14Blocks.class.getField(expected.field()).get(null);
             assertTrue(canonical instanceof DeferredHolder<?, ?>, expected.field());
             assertEquals("ssc_14:" + expected.path(),
                     ((DeferredHolder<?, ?>) canonical).getId().toString());
-            assertSame(canonical, Ssc14ModBlocks.class.getField(expected.field()).get(null));
         }
     }
 

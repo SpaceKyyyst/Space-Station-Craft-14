@@ -1,10 +1,8 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.storage.UpperClosetPlugBlock;
@@ -12,10 +10,9 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksUpperClosetPlugCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsUpperPlugIdAndLegacyFacadeAliasesHolder() {
+    void canonicalRegistryOwnsUpperPlugIdAndPreservesCanonicalId() {
         assertEquals("ssc_14:up_closet_plug",
                 Ssc14Blocks.UP_CLOSET_PLUG.getId().toString());
-        assertSame(Ssc14Blocks.UP_CLOSET_PLUG, Ssc14ModBlocks.UP_CLOSET_PLUG);
     }
 
     @Test

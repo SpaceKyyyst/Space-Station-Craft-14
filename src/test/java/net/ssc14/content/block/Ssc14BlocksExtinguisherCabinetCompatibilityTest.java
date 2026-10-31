@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.storage.ExtinguisherCabinetBlock;
@@ -13,11 +12,11 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksExtinguisherCabinetCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsCabinetIdAndLegacyFacadeAliasesHolder() {
+    void canonicalRegistryOwnsCabinetIdAndPreservesCanonicalId() {
         assertEquals("ssc_14:extinguisher_cabinet",
                 Ssc14Blocks.EXTINGUISHER_CABINET.getId().toString());
         assertSame(Ssc14Blocks.EXTINGUISHER_CABINET,
-                Ssc14ModBlocks.EXTINGUISHER_CABINET);
+                Ssc14Blocks.EXTINGUISHER_CABINET);
     }
 
     @Test

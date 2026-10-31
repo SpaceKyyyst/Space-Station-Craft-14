@@ -1,12 +1,10 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Proxy;
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -21,13 +19,12 @@ class Ssc14BlocksCeilingTileCompatibilityTest {
             new Expected("UP_TITLE_DARK", "up_title_dark", "UpTitleDarkBlock"));
 
     @Test
-    void canonicalRegistryOwnsIdsAndLegacyFacadeAliasesHolders() throws Exception {
+    void canonicalRegistryOwnsIdsAndPreservesCanonicalIds() throws Exception {
         for (Expected expected : EXPECTED) {
             Object holder = Ssc14Blocks.class.getField(expected.field()).get(null);
             assertTrue(holder instanceof DeferredHolder<?, ?>, expected.field());
             assertEquals("ssc_14:" + expected.path(),
                     ((DeferredHolder<?, ?>) holder).getId().toString());
-            assertSame(holder, Ssc14ModBlocks.class.getField(expected.field()).get(null));
         }
     }
 

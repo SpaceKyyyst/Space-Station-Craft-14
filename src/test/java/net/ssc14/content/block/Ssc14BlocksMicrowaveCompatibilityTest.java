@@ -1,10 +1,8 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -16,11 +14,10 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksMicrowaveCompatibilityTest {
     @Test
-    void canonicalRegistriesOwnMicrowaveIdsAndLegacyFacadesAliasHolders() {
+    void canonicalRegistriesOwnMicrowaveIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:microwawe", Ssc14Blocks.MICROWAWE.getId().toString());
         assertEquals("ssc_14:microwawe",
                 Ssc14MachineBlockEntities.MICROWAWE.getId().toString());
-        assertSame(Ssc14Blocks.MICROWAWE, Ssc14ModBlocks.MICROWAWE);
     }
 
     @Test

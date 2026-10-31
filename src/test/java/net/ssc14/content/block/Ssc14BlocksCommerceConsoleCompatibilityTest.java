@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,15 +23,13 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksCommerceConsoleCompatibilityTest {
     @Test
-    void canonicalRegistriesOwnConsoleIdsAndLegacyHoldersAliasThem() {
+    void canonicalRegistriesOwnConsoleIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:order_console", Ssc14Blocks.ORDER_CONSOLE.getId().toString());
         assertEquals("ssc_14:sale_console", Ssc14Blocks.SALE_CONSOLE.getId().toString());
         assertEquals("ssc_14:order_console",
                 Ssc14CommerceBlockEntities.ORDER_CONSOLE.getId().toString());
         assertEquals("ssc_14:sale_console",
                 Ssc14CommerceBlockEntities.SALE_CONSOLE.getId().toString());
-        assertSame(Ssc14Blocks.ORDER_CONSOLE, Ssc14ModBlocks.ORDER_CONSOLE);
-        assertSame(Ssc14Blocks.SALE_CONSOLE, Ssc14ModBlocks.SALE_CONSOLE);
         assertSame(Ssc14CommerceBlockEntities.ORDER_CONSOLE,
                 Ssc14CommerceBlockEntities.ORDER_CONSOLE);
         assertSame(Ssc14CommerceBlockEntities.SALE_CONSOLE,

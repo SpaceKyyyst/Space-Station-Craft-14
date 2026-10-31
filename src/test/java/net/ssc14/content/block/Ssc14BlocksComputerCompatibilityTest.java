@@ -1,10 +1,8 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.machinery.ComputerBlock;
@@ -12,9 +10,8 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksComputerCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsComputerIdAndLegacyFacadeAliasesHolder() {
+    void canonicalRegistryOwnsComputerIdAndPreservesCanonicalId() {
         assertEquals("ssc_14:computer", Ssc14Blocks.COMPUTER.getId().toString());
-        assertSame(Ssc14Blocks.COMPUTER, Ssc14ModBlocks.COMPUTER);
     }
 
     @Test

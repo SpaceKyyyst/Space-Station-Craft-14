@@ -2,7 +2,6 @@ package net.ssc14.content.block;
 
 import java.util.List;
 import net.mcreator.ssc.block.BaseAirlockD1Block;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
@@ -230,7 +229,7 @@ public final class Ssc14BlocksFloorTileGameTests {
             net.minecraft.world.level.block.state.BlockState tileState, VoxelShape tile,
             Direction direction) {
         var level = helper.getLevel();
-        var door = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
+        var door = Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
                 .setValue(BaseAirlockD1Block.FACING, direction);
         boolean alongX = direction.getAxis() == Direction.Axis.Z;
         VoxelShape closedSeal = alongX

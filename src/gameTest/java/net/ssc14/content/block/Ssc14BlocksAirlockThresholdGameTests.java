@@ -1,6 +1,5 @@
 package net.ssc14.content.block;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -48,7 +47,7 @@ public final class Ssc14BlocksAirlockThresholdGameTests {
         BlockPos root = helper.absolutePos(new BlockPos(2, 3, 2));
         BlockPos floor = root.below();
         helper.getLevel().setBlock(root,
-                Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), Block.UPDATE_ALL);
+                Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), Block.UPDATE_ALL);
         var floorState = helper.getLevel().getBlockState(floor);
         helper.assertTrue(floorState.is(Ssc14Blocks.AIRLOCK_THRESHOLD.get()),
                 "airlock did not install its canonical lower-part seal");

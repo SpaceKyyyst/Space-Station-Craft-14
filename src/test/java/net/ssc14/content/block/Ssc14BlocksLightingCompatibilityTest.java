@@ -2,11 +2,9 @@ package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -28,13 +26,12 @@ class Ssc14BlocksLightingCompatibilityTest {
                     EmergencyLightBlock.class));
 
     @Test
-    void canonicalRegistryOwnsLightingIdsAndLegacyFacadeAliasesHolders() throws Exception {
+    void canonicalRegistryOwnsLightingIdsAndPreservesCanonicalIds() throws Exception {
         for (Expected expected : EXPECTED) {
             Object canonical = Ssc14Blocks.class.getField(expected.field()).get(null);
             assertTrue(canonical instanceof DeferredHolder<?, ?>, expected.field());
             assertEquals("ssc_14:" + expected.path(),
                     ((DeferredHolder<?, ?>) canonical).getId().toString());
-            assertSame(canonical, Ssc14ModBlocks.class.getField(expected.field()).get(null));
         }
     }
 

@@ -2,7 +2,7 @@ package net.mcreator.ssc.gametest;
 
 import net.ssc14.content.atmosphere.runtime.AtmosBlockRegistry;
 import net.mcreator.ssc.block.BaseAirlockD1Block;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
@@ -45,7 +45,7 @@ public final class AirlockAtmosphereGameTests {
         BlockPos pos = helper.absolutePos(new BlockPos(2, 2, 2));
         var level = helper.getLevel();
         for (int frame : BaseAirlockD1Block.ARL_VARIAT.getPossibleValues()) {
-            var state = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
+            var state = Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
                     .setValue(BaseAirlockD1Block.ARL_VARIAT, frame);
             level.setBlock(pos, state, 3);
             boolean expectedOpen = frame == 11 || frame == 13 || frame == 14;

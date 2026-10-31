@@ -188,17 +188,18 @@ bypass, unrestricted-door semantics и bitmask permissions. Старый
 `AirlockAccessPolicy` сохранён как compatibility facade после переноса generated
 open/close процедур.
 
-Оставшиеся canonical inputs из `net.mcreator.ssc.init` — registry aliases
-(`Ssc14ModItems`, `Ssc14ModBlocks`). Их замена допустима
-только через ID-preserving registry migration: массовая текстовая замена создаёт
-риск несовместимости сохранений и дублирования регистраций.
+Оставшийся canonical input из `net.mcreator.ssc.init` — registry alias
+`Ssc14ModItems`. `Ssc14ModBlocks` удалён после перевода всех потребителей на
+`Ssc14Blocks`; миграция сохранила существующие registry IDs и не добавила
+дублирующих регистраций.
 
 Точка входа уже регистрирует canonical `Ssc14MenuTypes` и `Ssc14CreativeTabs`
-напрямую; gravity holders и machine-cable item также читаются из canonical
-registries. `Ssc14ModMenus`, `Ssc14ModBlocks` и `Ssc14ModItems` сохранены только
-как compatibility aliases/initialization для legacy callers; factory bindings
-меню принадлежат `Ssc14MenuTypes`, а `Ssc14ModTabs` удалён после проверки
-отсутствия production consumers.
+напрямую; gravity holders, machine-cable item и blocks также читаются из
+canonical registries. `Ssc14ModMenus` и `Ssc14ModItems` сохранены только как
+compatibility aliases/initialization для legacy callers; `Ssc14ModBlocks` удалён
+после проверки отсутствия production consumers. Factory bindings меню принадлежат
+`Ssc14MenuTypes`, а `Ssc14ModTabs` удалён после проверки отсутствия production
+consumers.
 
 Синхронизация wire/lamp state вынесена в `AirlockLampStateService`; сохранены
 все persisted cable flags, power restoration и bolt-cut side effects. Старый
@@ -314,17 +315,18 @@ bypass, unrestricted-door semantics, and bitmask permissions are preserved. The
 old `AirlockAccessPolicy` remains a compatibility facade after generated
 open/close procedures moved to canonical services.
 
-The remaining canonical inputs from `net.mcreator.ssc.init` are registry aliases
-(`Ssc14ModItems`, `Ssc14ModBlocks`). They must be replaced
-only through an ID-preserving registry migration; broad textual replacement
-risks save incompatibility and duplicate registrations.
+The remaining canonical input from `net.mcreator.ssc.init` is the registry alias
+`Ssc14ModItems`. `Ssc14ModBlocks` was removed after all consumers moved to
+`Ssc14Blocks`; the migration preserves existing registry IDs and does not add
+duplicate registrations.
 
 The entrypoint now registers canonical `Ssc14MenuTypes` and `Ssc14CreativeTabs`
-directly; gravity holders and the machine-cable item are also read from canonical
-registries. `Ssc14ModMenus`, `Ssc14ModBlocks`, and `Ssc14ModItems` remain only as
-compatibility aliases/initialization for legacy callers; menu factory bindings
-also belong to `Ssc14MenuTypes`, and `Ssc14ModTabs` was removed after verifying
-that no production consumers remained.
+directly; gravity holders, the machine-cable item, and blocks are also read from
+canonical registries. `Ssc14ModMenus` and `Ssc14ModItems` remain only as
+compatibility aliases/initialization for legacy callers; `Ssc14ModBlocks` was
+removed after verifying that no production consumers remained. Menu factory
+bindings also belong to `Ssc14MenuTypes`, and `Ssc14ModTabs` was removed after
+verifying that no production consumers remained.
 
 Wire/lamp state synchronization now lives in `AirlockLampStateService`; all
 persisted cable flags, power restoration, and bolt-cut side effects are

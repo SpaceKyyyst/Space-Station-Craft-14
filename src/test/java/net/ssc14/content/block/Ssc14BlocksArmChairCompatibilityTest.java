@@ -1,12 +1,10 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.ssc14.content.block.furniture.ArmChairBlock;
@@ -25,7 +23,7 @@ class Ssc14BlocksArmChairCompatibilityTest {
     };
 
     @Test
-    void canonicalRegistryOwnsExactArmChairIdsAndLegacyFacadeAliasesHolders()
+    void canonicalRegistryOwnsExactArmChairIdsAndPreservesCanonicalIds()
             throws ReflectiveOperationException {
         for (Map.Entry<String, String> expected : EXPECTED_HOLDERS.entrySet()) {
             Field canonicalField = Ssc14Blocks.class.getField(expected.getKey());
@@ -33,7 +31,6 @@ class Ssc14BlocksArmChairCompatibilityTest {
             assertTrue(canonicalHolder instanceof DeferredHolder<?, ?>, expected.getKey());
             assertEquals("ssc_14:" + expected.getValue(),
                     ((DeferredHolder<?, ?>) canonicalHolder).getId().toString());
-            assertSame(canonicalHolder, Ssc14ModBlocks.class.getField(expected.getKey()).get(null));
         }
     }
 

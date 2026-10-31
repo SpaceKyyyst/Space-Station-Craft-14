@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,9 +16,8 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksSecureClosetCompatibilityTest {
     @Test
-    void canonicalRegistriesOwnSecureClosetIdsAndLegacyFacadesAliasHolders() {
+    void canonicalRegistriesOwnSecureClosetIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:closet_secure", Ssc14Blocks.CLOSET_SECURE.getId().toString());
-        assertSame(Ssc14Blocks.CLOSET_SECURE, Ssc14ModBlocks.CLOSET_SECURE);
         assertEquals("ssc_14:closet_secure",
                 Ssc14ClosetBlockEntities.CLOSET_SECURE.getId().toString());
         assertSame(Ssc14ClosetBlockEntities.CLOSET_SECURE,

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -17,11 +16,9 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksEnergyDeviceCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsEnergyDeviceIdsAndLegacyFacadesAliasHolders() {
+    void canonicalRegistryOwnsEnergyDeviceIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:debu_ggenerator", Ssc14Blocks.DEBU_GGENERATOR.getId().toString());
         assertEquals("ssc_14:smes", Ssc14Blocks.SMES.getId().toString());
-        assertSame(Ssc14Blocks.DEBU_GGENERATOR, Ssc14ModBlocks.DEBU_GGENERATOR);
-        assertSame(Ssc14Blocks.SMES, Ssc14ModBlocks.SMES);
         assertSame(Ssc14EnergyMachineBlockEntities.DEBU_GGENERATOR,
                 Ssc14EnergyMachineBlockEntities.DEBU_GGENERATOR);
     }
