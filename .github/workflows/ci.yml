@@ -133,7 +133,26 @@ jobs:
           jar=$(find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' | head -n1)
           url="https://github.com/${REPOSITORY}/releases/tag/ssc_14-${VERSION}-build.${RUN_NUMBER}-${SHA:0:12}"
           notes=$(head -n 100 release-notes.txt 2>/dev/null || printf '%s\n' "- Version ${VERSION}")
-          payload=$(python - "$VERSION" "$RUN_NUMBER" "$url" "$notes" <<'PY'
+          discord_notes=$(python - <<'PY'
+          from pathlib import Path
+
+          lines = Path("release-notes.txt").read_text(encoding="utf-8").splitlines()
+          max_lines = 12
+          max_chars = 1800
+          selected = []
+          used_chars = 0
+          for line in lines:
+              if len(selected) >= max_lines or used_chars + len(line) + 1 > max_chars:
+                  break
+              selected.append(line)
+              used_chars += len(line) + 1
+          remaining = len(lines) - len(selected)
+          if remaining:
+              selected.append(f"- … ещё {remaining} изменений")
+          print("\\n".join(selected))
+          PY
+          )
+          payload=$(python - "$VERSION" "$RUN_NUMBER" "$url" "$discord_notes" <<'PY'
           import json, sys
           version, build, url, notes = sys.argv[1:]
           normalized = version.lower()
