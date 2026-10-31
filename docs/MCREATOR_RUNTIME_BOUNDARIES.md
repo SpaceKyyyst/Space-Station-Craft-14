@@ -8,28 +8,29 @@
 > compatibility entry points.
 
 > **Актуальный снимок / Current snapshot (2026-11-01):** в каталоге
-> `src/main/java/net/mcreator/ssc/procedures` больше не содержит активных процедур.
+> `src/main/java/net/mcreator/ssc/procedures` больше не существует в текущем
+> source tree и не содержит активных процедур.
 > Microwave, MK58 breech/fire, spanner, construction и RSU перенесены в canonical
 > services. Удалённые procedural wrappers больше не являются частью runtime;
-> несколько thin compatibility facades сохранены для legacy/GameTest контрактов.
+> thin compatibility facades для legacy/GameTest контрактов удалены.
 > Тестовая версия проекта — `0.1.28-beta`.
 
 > **Current snapshot (2026-10-29):** no active procedures remain in
 > `src/main/java/net/mcreator/ssc/procedures`.
 > Microwave, MK58 breech/fire, spanner, construction, and RSU now live in canonical
-> services. Deleted procedural wrappers are no longer runtime sources; a small set
-> of thin compatibility facades remains for legacy/GameTest contracts. The project
+> services. Deleted procedural wrappers are no longer runtime sources; thin
+> compatibility facades are no longer present in the source tree. The project
 > test version is `0.1.28-beta`.
 
 ## Migration checkpoint / Контрольная точка миграции
 
 The canonical source tree now has no imports from `net.mcreator.ssc`. Legacy
-items, blocks, entities, and registries remain only as compatibility facades or
-integration bridges so existing IDs and external contracts continue to work.
+items, blocks, entities, and registries were migrated or removed; this document
+records their former compatibility boundaries for audit purposes only.
 
 В canonical-дереве больше нет импортов `net.mcreator.ssc`. Legacy-предметы,
-блоки, сущности и регистраторы сохранены только как compatibility facades или
-integration bridges, чтобы не ломать существующие ID и внешние контракты.
+блоки, сущности и регистраторы перенесены или удалены; прежние compatibility
+границы сохранены в этом документе только как audit trail.
 
 This checkpoint is intentionally documentation-only and does not change runtime
 registration or compatibility behavior.

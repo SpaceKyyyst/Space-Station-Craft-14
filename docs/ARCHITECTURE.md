@@ -2,9 +2,9 @@
 
 Проект — мод Minecraft 26.1.2 на NeoForge 26.1.2.109, Java 25, Gradle 9.8.2.
 Точка входа: `net.ssc14.integration.neoforge.Ssc14ModEntrypoint`, чья регистрационная композиция
-делегируется canonical `net.ssc14.integration.Ssc14Bootstrap`. Поддерживаемый исходный
-код находится в `src/main/java/net/ssc14`, legacy compatibility facades — в
-`src/main/java/net/mcreator/ssc`, ресурсы — в `src/main/resources`.
+делегируется canonical `net.ssc14.integration.Ssc14Bootstrap`. Весь поддерживаемый
+исходный код находится в `src/main/java/net/ssc14`; исторический пакет
+`src/main/java/net/mcreator/ssc` удалён, ресурсы — в `src/main/resources`.
 
 ## Текущее устройство
 
@@ -28,11 +28,12 @@
 1. **Домен**: вычисления и правила без Minecraft, NeoForge и Curios.
    Новые правила группируются по подсистемам, например `combat`.
 2. **Адаптеры**: чтение игрового состояния, события, сеть, NBT и вызовы домена.
-   Существующие публичные фасады сохраняются для совместимости с процедурами.
+   Публичные фасады исторического генератора удалены; внешние consumers переходят
+   на canonical API.
 3. **Композиция и контент**: регистрация объектов, настройка правил, ресурсы.
 
-Сейчас в коде сочетаются генерируемые процедуры, игровые адаптеры и выделенные
-доменные правила. Разделение ещё не охватывает все подсистемы.
+Исторические generated procedures и compatibility facades описаны ниже только как
+аудит миграции; в текущем runtime остаются canonical services и adapters.
 Операции чтения, добавления и удаления реагентов проходят через
 `ReagentContainerAccess`; владелец chemistry runtime теперь
 `content/item/reagent/ReagentService`; legacy NBT/GameTest callers переведены на
@@ -347,8 +348,7 @@ covered by regression tests.
 
 Energy topology, device mapping, telemetry and LV batching now live under the
 canonical `net.ssc14.content.energy` package. The former
-`net.mcreator.ssc.energy.*` classes remain only as deprecated compatibility
-facades and are not part of the canonical runtime.
+`net.mcreator.ssc.energy.*` classes were removed with the historical source tree.
 
 Reagent registration, reaction planning and container operations now live in
 `net.ssc14.content.item.reagent.ReagentService`; the `net.mcreator.ssc.ModReagents`
@@ -369,25 +369,21 @@ client layer. The handler preserves the existing render-state, humanoid-model an
 race-attribute registries as explicit legacy inputs; those registries remain a
 separate migration boundary and are not silently duplicated.
 
-The health HUD overlay is registered in canonical `net.ssc14.client.overlay`;
-`net.mcreator.ssc.client.screens.HealthUIOverlay` remains a thin compatibility
-facade with the same static event-handler API.
+The health HUD overlay is registered and implemented only in canonical
+`net.ssc14.client.overlay`; the historical generated screen facade was removed.
 
-The gas analyser HUD overlay is also registered in canonical
-`net.ssc14.client.overlay`; its generated screen class remains only as a
-compatibility facade.
+The gas analyser HUD overlay is also registered and implemented only in canonical
+`net.ssc14.client.overlay`; its historical generated screen facade was removed.
 
-The world-check HUD overlay is registered in canonical
-`net.ssc14.client.overlay`; its generated screen class remains a compatibility
-facade with the existing static event-handler API.
+The world-check HUD overlay is registered and implemented only in canonical
+`net.ssc14.client.overlay`; its historical generated screen facade was removed.
 
-The hunger/thirst HUD overlays are registered in canonical
-`net.ssc14.client.overlay`; generated screen classes remain compatibility
-facades, with thresholds and animation-frame behavior unchanged.
+The hunger/thirst HUD overlays are registered and implemented only in canonical
+`net.ssc14.client.overlay`; historical generated screen facades were removed.
 
 Action-progress, firearm-ammo, multitool, and health-analyzer HUD overlays are
-also registered in canonical `net.ssc14.client.overlay`; generated screen
-classes remain compatibility facades with their existing event-handler APIs.
+also registered and implemented only in canonical `net.ssc14.client.overlay`;
+historical generated screen facades were removed.
 
 Standard closet block entities use the canonical shared
 `net.ssc14.content.block.storage.ClosetBlockEntity`; generated entity names

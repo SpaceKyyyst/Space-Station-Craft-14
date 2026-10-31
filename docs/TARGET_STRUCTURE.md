@@ -121,9 +121,9 @@ Client-only семейства определены точными префик�
 - `com.mojang.blaze3d`;
 - `org.lwjgl`.
 
-Они разрешены в `net.ssc14.client` и существующем
-`net.mcreator.ssc.client`. В остальных legacy-файлах допустим только точный
-набор `(family, path)` из `config/architecture/legacy-client-imports.txt`.
+Они разрешены в `net.ssc14.client`. Упоминание `net.mcreator.ssc.client` ниже
+относится только к историческому baseline; текущий source tree не содержит
+legacy-файлов и проверяется актуальной архитектурной матрицей.
 Новая пара нарушает CI, удалённый импорт делает строку baseline устаревшей, поэтому
 baseline может только сокращаться. Это ограничивает долг, но не доказывает
 безопасность dedicated server само по себе.
@@ -181,12 +181,15 @@ Windows native-encoding CI и ручной обзор diff.
 
 ## English contract
 
+The migration-stage text below is retained as historical audit material. It does
+not describe the current source tree: the historical `net.mcreator.ssc` package,
+its facades, and its generated GUI classes have been removed.
+
 ### Intent, goals, and constraints
 
-New maintainable code moves incrementally into `net.ssc14`. The existing
-`net.mcreator.ssc` tree remains a legacy adapter and migration source: dependencies
-temporarily flow from legacy code into target code, while target layers never import
-the legacy namespace.
+All maintainable code now lives in `net.ssc14`. The historical
+`net.mcreator.ssc` tree was the migration source, but it has been removed; target
+layers contain no imports from the legacy namespace.
 
 Goals:
 
@@ -196,7 +199,7 @@ Goals:
 - migrate one subsystem per PR while preserving public contracts;
 - enforce structure statically and behavior with unit, domain, and GameTests.
 
-This stage does not authorize a bulk move of `net.mcreator.ssc`, changes to mod ID
+The historical stage did not authorize a bulk move of `net.mcreator.ssc`, changes to mod ID
 `ssc_14`, registry IDs, resources, SavedData/NBT, payloads, gameplay, dependencies,
 or speculative abstractions. Empty packages and classes are forbidden: a layer is
 created on disk only when real code and its test need it.
@@ -250,8 +253,8 @@ Minecraft adapters, and orchestration. During migration, pure values and algorit
 go to Core, server workflows to Common, SavedData/payload/event glue to Integration,
 blocks/items/menus to Content, and screens/render/input to Client. This is a
 destination map, not a promise to move every remaining package in one change.
-The energy runtime is already owned by `net.ssc14.content.energy`; the old
-`net.mcreator.ssc.energy` classes remain compatibility facades only.
+The energy runtime is owned by `net.ssc14.content.energy`; the old
+`net.mcreator.ssc.energy` classes were removed with the historical source tree.
 
 The first real example moves `ProportionalAllocation` to `net.ssc14.core.math` with
 a delegating legacy facade. The composition root belongs under
