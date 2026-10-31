@@ -1,14 +1,15 @@
 # Архитектура проекта
 
 Проект — мод Minecraft 26.1.2 на NeoForge 26.1.2.71, Java 25, Gradle 9.3.0.
-Точка входа: `net.mcreator.ssc.Ssc14Mod`. Исходный код находится в
+Точка входа: `net.mcreator.ssc.Ssc14Mod`, чья регистрационная композиция
+делегируется canonical `net.ssc14.integration.Ssc14Bootstrap`. Исходный код находится в
 `src/main/java/net/mcreator/ssc`, ресурсы — в `src/main/resources`.
 
 ## Текущее устройство
 
 | Подсистема | Основные классы | Ответственность |
 | --- | --- | --- |
-| Регистрация | `Ssc14Mod`, `init/*` | Идентификаторы, события, типы блоков и предметов |
+| Регистрация | `Ssc14Mod`, `integration/Ssc14Bootstrap`, `init/*` | Mod entrypoint compatibility, регистрационная композиция, идентификаторы и события |
 | Атмосфера | `atmosphere/*`, `AtmosCell`, `AtmosRegion`, `AtmosphereManager`, `AtmosphereSavedData` | Газовые расчёты, очередь регионов, мир и сохранения |
 | Энергетика | `energy/*`, `EnergyNetworkManager`, `EnergySimulationServer` | Компоненты графа, бюджеты устройств, топология и распределение энергии |
 | Химия | `common/chemistry/*`, `content/item/reagent/*`, `ReagentService` | Расчёт количеств, атомарные реакции, контейнерный runtime и серверный перенос |
@@ -193,7 +194,9 @@ open/close процедур.
 потребителей на `Ssc14Blocks` и `Ssc14Items`; миграции сохранили существующие
 registry IDs и не добавили дублирующих регистраций.
 
-Точка входа уже регистрирует canonical `Ssc14MenuTypes` и `Ssc14CreativeTabs`
+`Ssc14Mod` теперь является тонким NeoForge entrypoint/compatibility facade, а
+регистрационная композиция принадлежит `Ssc14Bootstrap`. Bootstrap напрямую
+регистрирует canonical `Ssc14MenuTypes` и `Ssc14CreativeTabs`
 напрямую; gravity holders, machine-cable item и blocks также читаются из
 canonical registries. `Ssc14ModMenus` сохранён только как compatibility
 alias/initialization для legacy callers; `Ssc14ModBlocks` и `Ssc14ModItems`
@@ -319,7 +322,11 @@ No block or item registry aliases remain in `net.mcreator.ssc.init`.
 `Ssc14Blocks` and `Ssc14Items`; both migrations preserve existing registry IDs
 and do not add duplicate registrations.
 
-The entrypoint now registers canonical `Ssc14MenuTypes` and `Ssc14CreativeTabs`
+The generated entrypoint `Ssc14Mod` is now a thin NeoForge entrypoint and
+compatibility facade; registration composition belongs to canonical
+`net.ssc14.integration.Ssc14Bootstrap`, which directly wires the canonical
+registries and integration services. The entrypoint registers canonical
+`Ssc14MenuTypes` and `Ssc14CreativeTabs`
 directly; gravity holders, the machine-cable item, and blocks are also read from
 canonical registries. `Ssc14ModMenus` remains only as a compatibility
 alias/initialization for legacy callers; `Ssc14ModBlocks` and `Ssc14ModItems`

@@ -79,6 +79,19 @@ class ArchitectureMatrixTest(unittest.TestCase):
 
         self.assertEqual([], analyze_architecture(self.root))
 
+    def test_accepts_composition_root_edges_from_integration(self):
+        self.write_java(
+            "net/ssc14/integration/Ssc14Bootstrap.java",
+            """
+            package net.ssc14.integration;
+            import net.ssc14.client.api.Dependency;
+            import net.ssc14.content.api.Dependency;
+            final class Ssc14Bootstrap {}
+            """,
+        )
+
+        self.assertEqual([], analyze_architecture(self.root))
+
     def test_rejects_every_forbidden_target_edge(self):
         allowed = {
             "core": {"core"},

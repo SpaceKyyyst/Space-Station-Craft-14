@@ -1,6 +1,7 @@
 package net.mcreator.ssc;
 
 
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -119,269 +120,18 @@ import java.lang.invoke.MethodHandle;
 import io.netty.buffer.Unpooled;
 
 
+
+import net.ssc14.integration.Ssc14Bootstrap;
+
 @Mod("ssc_14")
 public class Ssc14Mod {
 	public static final Logger LOGGER = LogManager.getLogger(Ssc14Mod.class);
 	public static final String MODID = Ssc14Identity.MOD_ID;
 
 	public Ssc14Mod(IEventBus modEventBus) {
-		// Start of user code block mod constructor
-		// End of user code block mod constructor
-		modEventBus.addListener(Ssc14NetworkPayloads::register);
-		if (ModList.get().isLoaded("curios")) {
-			modEventBus.addListener(Ssc14CuriosCompatibility::registerCapabilities);
-			modEventBus.addListener(Ssc14CuriosRenderers::registerRenderers);
-		}
-		Ssc14SoundEvents.REGISTRY.register(modEventBus);
-		Ssc14Blocks.REGISTRY.register(modEventBus);
-		Ssc14AccessBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14AccessBlockEntities::registerCapabilities);
-		Ssc14AirlockBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14AirlockBlockEntities::registerCapabilities);
-		Ssc14LightingBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14LightingBlockEntities::registerCapabilities);
-		Ssc14ClosetBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14ClosetBlockEntities::registerCapabilities);
-		Ssc14MachineBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14MachineBlockEntities::registerCapabilities);
-		Ssc14DebugBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14DebugBlockEntities::registerCapabilities);
-		Ssc14GravityBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14GravityBlockEntities::registerCapabilities);
-		Ssc14ExplosiveBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14ExplosiveBlockEntities::registerCapabilities);
-		Ssc14CableBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14CableBlockEntities::registerCapabilities);
-		Ssc14EnergyMachineBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14EnergyMachineBlockEntities::registerCapabilities);
-		Ssc14CommerceBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14CommerceBlockEntities::registerCapabilities);
-		Ssc14ControlBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14ControlBlockEntities::registerCapabilities);
-		Ssc14FuelBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14FuelBlockEntities::registerCapabilities);
-		Ssc14CommunicationBlockEntities.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14CommunicationBlockEntities::registerCapabilities);
-		Ssc14Items.REGISTRY.register(modEventBus);
-		modEventBus.addListener(Ssc14ItemCapabilities::register);
-		LightingEnergyService.install(CableTopologyService::queueUpdate);
-		CableTopologyService.install(new CableTopologyService.Adapter() {
-			@Override
-			public void queueUpdate(LevelAccessor level, net.minecraft.core.BlockPos pos) {
-				EnergyNetworkService.queueUpdate(level, pos);
-			}
-
-			@Override
-			public void invalidate(LevelAccessor level, net.minecraft.core.BlockPos pos) {
-				EnergyNetworkService.invalidate(level, pos);
-			}
-		});
-		OrderPalletRegistryService.install((level, pos) -> {
-			var variables = Ssc14WorldVariables.WorldVariables.get(level);
-			String updatedRegistry = PalletRegistryCodec.appendIfAbsent(variables.PalletRegistry, pos);
-			if (!updatedRegistry.equals(variables.PalletRegistry)) {
-				variables.PalletRegistry = updatedRegistry;
-				variables.setDirty();
-			}
-		});
-		GravityGeneratorPlugLifecycleService.installGeneratorLocator((level, pos) ->
-			level.getBlockState(pos).is(Ssc14Blocks.GRAVITY_GENERATOR.get()));
-		GravityGeneratorPlugLifecycleService.installPlugBlockFactory(() ->
-			Ssc14Blocks.GRAV_GEN_PLUG_BLOCK.get().defaultBlockState());
-		GravityGeneratorPlugLifecycleService.installPlacementPolicy((level, pos) ->
-				level.getBlockState(pos).is(net.minecraft.tags.BlockTags.create(net.minecraft.resources.Identifier.parse("minecraft:replaceable")))
-						|| level.getBlockState(pos).is(Ssc14Blocks.GRAV_GEN_PLUG_BLOCK.get()));
-		GravityGeneratorLifecycleService.install(new GravityGeneratorLifecycleService.Adapter() {
-			@Override
-			public boolean canSurvive(LevelAccessor level, net.minecraft.core.BlockPos pos) {
-				return net.ssc14.content.block.gravity.GravityGeneratorPlugLifecycleService.canPlace(
-						(net.minecraft.world.level.Level) level, pos);
-			}
-
-			@Override
-			public void placed(net.minecraft.world.level.Level level,
-					net.minecraft.core.BlockPos pos,
-					net.minecraft.world.level.block.state.BlockState state) {
-				net.ssc14.content.block.gravity.GravityGeneratorPlugLifecycleService.generate(level, pos, state);
-			}
-
-			@Override
-			public void tick(ServerLevel level, net.minecraft.core.BlockPos pos,
-					net.minecraft.world.level.block.state.BlockState state) {
-				net.ssc14.content.block.gravity.GravityGeneratorService.tick(level, pos);
-			}
-
-			@Override
-			public void destroyed() {
-				net.ssc14.content.gravity.GravityGeneratorDestroyHandler.execute();
-			}
-		});
-		GravityGeneratorUiService.install(new GravityGeneratorUiService.Adapter() {
-			@Override
-			public boolean canAccess(
-					net.ssc14.content.block.gravity.GravityGeneratorBlockEntity generator,
-					Player player, net.minecraft.core.GlobalPos source) {
-				return GravityGeneratorWindow.canAccess(generator, player, source);
-			}
-
-			@Override
-			public com.lowdragmc.lowdraglib2.gui.ui.ModularUI create(
-					net.ssc14.content.block.gravity.GravityGeneratorBlockEntity generator,
-					net.minecraft.core.GlobalPos source, Player player) {
-				return GravityGeneratorWindow.create(generator, source, player);
-			}
-
-			@Override
-			public com.ssc14.handy.window.WindowProperties windowProperties() {
-				return new com.ssc14.handy.window.WindowProperties()
-						.width(GravityGeneratorWindow.WIDTH).height(GravityGeneratorWindow.HEIGHT)
-						.minWidth(GravityGeneratorWindow.WIDTH)
-						.minHeight(GravityGeneratorWindow.HEIGHT);
-			}
-
-			@Override
-			public net.minecraft.world.inventory.AbstractContainerMenu createMenu(
-					net.ssc14.content.block.gravity.GravityGeneratorBlockEntity generator,
-					int id, net.minecraft.world.entity.player.Inventory inventory) {
-				return new GravGenGUIMenu(id, inventory,
-						new FriendlyByteBuf(Unpooled.buffer())
-								.writeBlockPos(generator.getBlockPos()));
-			}
-		});
-		CommunicationServerLifecycleService.install(
-				new CommunicationServerLifecycleService.Adapter() {
-					@Override
-					public void use(net.minecraft.world.level.Level level,
-							net.minecraft.core.BlockPos pos,
-							net.minecraft.world.level.block.state.BlockState state,
-							Player player) {
-						net.ssc14.content.block.communication.CommunicationServerInteractionService.execute(
-								level, pos.getX(), pos.getY(), pos.getZ(), state, player);
-					}
-				});
-		CommunicationFrequencyStateService.install((level, stateKey, enabled) -> {
-			var state = Ssc14WorldVariables.MapVariables.get(level);
-			switch (stateKey) {
-				case "Base_Radio_Frequency" -> state.Base_Radio_Frequency = enabled;
-				case "Command_Radio_Frequency" -> state.Command_Radio_Frequency = enabled;
-				case "Engeneer_Radio_Frequency" -> state.Engeneer_Radio_Frequency = enabled;
-				case "Medical_Radio_Frequency" -> state.Medical_Radio_Frequency = enabled;
-				case "RND_Radio_Frequency" -> state.RND_Radio_Frequency = enabled;
-				case "Sec_Radio_Frequency" -> state.Sec_Radio_Frequency = enabled;
-				case "Serv_Radio_Frequency" -> state.Serv_Radio_Frequency = enabled;
-				case "Cargo_Radio_Frequency" -> state.Cargo_Radio_Frequency = enabled;
-				default -> { return; }
-			}
-			state.markSyncDirty();
-		});
-		CommunicationConsoleIntegrationService.install(
-				new CommunicationConsoleIntegrationService.Adapter() {
-					@Override
-					public void use(net.minecraft.world.level.Level level,
-							net.minecraft.core.BlockPos pos, Player player) {
-						if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
-							serverPlayer.openMenu(new net.minecraft.world.MenuProvider() {
-								@Override
-								public net.minecraft.network.chat.Component getDisplayName() {
-									return net.minecraft.network.chat.Component.literal("Communication console");
-								}
-
-								@Override
-								public net.minecraft.world.inventory.AbstractContainerMenu createMenu(
-										int id, net.minecraft.world.entity.player.Inventory inventory,
-										Player menuPlayer) {
-									return new CommunConsoleGUIMenu(id, inventory,
-											new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-								}
-							}, pos);
-						}
-					}
-
-					@Override
-					public net.minecraft.world.inventory.AbstractContainerMenu createMenu(
-							int id, net.minecraft.world.entity.player.Inventory inventory,
-							net.minecraft.core.BlockPos pos) {
-						return new CommunConsoleGUIMenu(id, inventory,
-								new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-					}
-				});
-		UpperClosetPlugInteractionService.install((level, pos, player) ->
-					net.ssc14.content.block.furniture.ClosetInteractionService.execute(
-						level, pos.getX(), pos.getY() - 1, pos.getZ(),
-						level.getBlockState(pos.below()), player));
-		SecureClosetInteractionService.install((level, pos, state, player) ->
-					net.ssc14.content.block.furniture.ClosetInteractionService.execute(
-						level, pos.getX(), pos.getY(), pos.getZ(), state, player));
-		ExtinguisherCabinetInteractionService.install(
-				Ssc14Items.EXTINGUISHER, Ssc14Items.EXTINGUISHER_OPEN);
-		StationCodeService.install(level ->
-				(int) Ssc14WorldVariables.MapVariables.get(level).station_code);
-		StationCodeService.installMutator((level, value) -> {
-			Ssc14WorldVariables.MapVariables variables =
-					Ssc14WorldVariables.MapVariables.get(level);
-			variables.station_code = value;
-			variables.markSyncDirty();
-		});
-		StationNameService.install(level ->
-				Ssc14WorldVariables.MapVariables.get(level).station_name);
-		StationBudgetService.install(level ->
-				Ssc14WorldVariables.WorldVariables.get(level).Station_Budget);
-		StationBudgetService.installSpender((level, amount) -> {
-			var variables = Ssc14WorldVariables.WorldVariables.get(level);
-			if (variables.Station_Budget < amount) return false;
-			variables.Station_Budget -= amount;
-			variables.markSyncDirty();
-			return true;
-		});
-		StationBudgetService.installEditor(new StationBudgetService.Editor() {
-			@Override
-			public void credit(LevelAccessor level, double amount) {
-				var variables = Ssc14WorldVariables.WorldVariables.get(level);
-				variables.Station_Budget += amount;
-				variables.markSyncDirty();
-			}
-
-			@Override
-			public void reset(LevelAccessor level) {
-				var variables = Ssc14WorldVariables.WorldVariables.get(level);
-				variables.Station_Budget = 0;
-				variables.markSyncDirty();
-			}
-		});
-		MachineFrameAssemblyService.install(Ssc14Items.LOW_VOLTAGE_CABLE,
-				Ssc14Blocks.MACHINE_FRAME_2);
-		MachineFrameMenuService.install((id, inventory, pos) -> new MacFrameGUIMenu(
-				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
-		MicrowaveMenuService.install((id, inventory, pos) -> new MicrowaweGUIMenu(
-				id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos)));
-		MenuStateTransportPort.install(MenuStateNetworkActions::send);
-		CommerceConsoleIntegrationService.install(
-					new LegacyCommerceConsoleIntegrationAdapter());
-		IdConsoleIntegrationService.install(new LegacyIdConsoleIntegrationAdapter());
-		NetworkConfiguratorService.install(new LegacyNetworkConfiguratorMenuAdapter());
-		RsuInteractionService.install(new LegacyRsuInteractionAdapter());
-		ShuttersIntegrationService.install(new LegacyShuttersIntegrationAdapter());
-		AirlockUpperPlugIntegrationService.installUseHandler(
-				net.ssc14.content.airlock.AirlockUpperPlugInteractionService::execute);
-		AirlockDoorIntegrationService.install(new LegacyAirlockDoorIntegrationAdapter());
-		AirlockControllerService.install(new LegacyAirlockControllerInteractionAdapter());
-		ConstructionItemInteractionService.install(
-				LegacyConstructionItemInteractionAdapter.INSTANCE);
-		DecalToolInteractionService.install(LegacyDecalToolInteractionAdapter.INSTANCE);
-		PortableMenuInteractionService.install(LegacyPortableMenuInteractionAdapter.INSTANCE);
-		FirearmInteractionService.install(LegacyFirearmInteractionAdapter.INSTANCE);
-		Ssc14EntityBehavior.install(Ssc14EntityBehaviorHooks.INSTANCE);
-		Ssc14EntityTypes.REGISTRY.register(modEventBus);
-		Ssc14CreativeTabs.REGISTRY.register(modEventBus);
-		Ssc14PlayerAttachments.register(modEventBus);
-		Ssc14StructureFeature.register(modEventBus);
-		Ssc14MenuTypes.REGISTRY.register(modEventBus);
-		Ssc14ParticleTypes.REGISTRY.register(modEventBus);
-		Ssc14Attributes.REGISTRY.register(modEventBus);
-		// Start of user code block mod init
-		ReagentService.register(modEventBus);
-		// End of user code block mod init
+		Ssc14Bootstrap.initialize(modEventBus);
 	}
+
 
 	// Start of user code block mod methods
 	// End of user code block mod methods
@@ -441,5 +191,6 @@ public class Ssc14Mod {
 			return BuiltInRegistries.ITEM.getTags().filter(named -> named.key().location().getNamespace().equals("curios")).anyMatch(named -> itemstack.is(named.key()));
 		}
 	}
+
 }
 
