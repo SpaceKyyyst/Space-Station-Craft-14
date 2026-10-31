@@ -220,6 +220,9 @@ runtime owners of this behavior.
 - Generated command, reagent-fluid-model, Handy compatibility и cargo-order
   event facades удалены после подтверждения canonical owners; command routes,
   client event listeners и cargo menu behavior не менялись.
+- Три wrapper-класса с явным `forRemoval=true` удалены после перевода entity и
+  portable-menu registry ownership в canonical classes; registry IDs и renderer
+  contracts сохранены.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
@@ -244,6 +247,9 @@ runtime owners of this behavior.
 - Generated command, reagent-fluid-model, Handy compatibility, and cargo-order
   event facades were removed after confirming canonical owners; command routes,
   client event listeners, and cargo menu behavior were not changed.
+- Three wrappers explicitly marked `forRemoval=true` were removed after entity
+  and portable-menu registry ownership moved to canonical classes; registry IDs
+  and renderer contracts were preserved.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are

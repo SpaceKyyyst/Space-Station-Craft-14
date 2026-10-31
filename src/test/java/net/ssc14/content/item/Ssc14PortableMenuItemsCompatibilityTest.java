@@ -31,7 +31,7 @@ class Ssc14PortableMenuItemsCompatibilityTest {
     void legacyTypesDelegateToCanonicalPortableMenuRole() throws Exception {
         Class<?> canonicalType = Class.forName(
                 "net.ssc14.content.item.container.PortableMenuItem");
-        for (ExpectedItem expected : ITEMS) {
+        for (ExpectedItem expected : ITEMS.subList(2, ITEMS.size())) {
             Class<?> legacyType = Class.forName(
                     "net.mcreator.ssc.item." + expected.legacyClassName());
             assertTrue(canonicalType.isAssignableFrom(legacyType),
