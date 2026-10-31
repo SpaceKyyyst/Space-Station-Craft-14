@@ -98,6 +98,9 @@ owner, not merely renaming the facade.
 - Standard closet block entities теперь используют canonical shared
   `net.ssc14.content.block.storage.ClosetBlockEntity`; generated entity names
   сохранены как facades с прежними registry paths и display names;
+- Lamp and emergency-light block entities now use the canonical shared
+  `net.ssc14.content.block.lighting.LightingBlockEntity`; generated entity names
+  remain facades with the historical constructor and registry paths;
 - generated `Ssc14Mod` now only provides the NeoForge entrypoint and preserved
   static compatibility helpers; registration composition lives in canonical
   `net.ssc14.integration.Ssc14Bootstrap`;
@@ -152,6 +155,9 @@ boundary:
 - construction-item interaction adapter remains only as an event-wiring
   boundary; steel, plasteel, and cable behavior is owned by canonical
   `ConstructionAssemblyService` and `SheathingCableService`;
+- lamp and emergency-light block entities now delegate to the canonical shared
+  `net.ssc14.content.block.lighting.LightingBlockEntity`; legacy names preserve
+  their constructor and registry-path contracts;
 - firearm interaction adapter was moved to `net.ssc14.content.item.weapon`;
   canonical firearm state routing and MK-58/Pistol procedure contracts remain
   unchanged;
