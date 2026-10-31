@@ -48,8 +48,10 @@ java -version
 
 Зависимости мода объявлены в `build.gradle`, `Dependency.gradle` и `neoforge.mods.toml`. При их изменении проверяйте development runtime и готовый JAR в обычном профиле игры.
 
-MCreator workspace artifacts удалены из репозитория. Runtime-код и ресурсы
-поддерживаются вручную в NeoForge target-layer и проходят архитектурные проверки.
+MCreator workspace artifacts и исторический Java package удалены из репозитория.
+Переход завершён с намеренным breaking change для старых Java consumers:
+runtime-код и ресурсы поддерживаются вручную в NeoForge target-layer и проходят
+архитектурные проверки.
 
 ### Процесс вклада
 
@@ -103,8 +105,9 @@ Blocks, items, and entities are registered through `init/*`. Their identifiers a
 
 Mod dependencies are declared in `build.gradle`, `Dependency.gradle`, and `neoforge.mods.toml`. When changing them, verify both the development runtime and the built JAR in a regular game profile.
 
-MCreator workspace artifacts are no longer tracked. Runtime code and resources are maintained
-manually in the NeoForge target layer and must pass architecture checks.
+MCreator workspace artifacts and the historical Java package are no longer tracked.
+The migration intentionally breaks old Java consumers. Runtime code and resources
+are maintained manually in the NeoForge target layer and must pass architecture checks.
 
 ### Contribution workflow
 

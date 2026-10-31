@@ -6,7 +6,19 @@
 This document freezes SSC14 compatibility at the migration baseline commit.
 It describes contracts that ordinary refactoring must not change.
 
+The historical source-package compatibility layer has now been removed. This is
+an intentional source and binary breaking change: consumers must migrate to
+`net.ssc14`. Registry IDs, saved-data keys, payload contracts, and world-save
+formats remain covered by the compatibility baseline below.
+
 ## RU
+
+### Завершение перехода
+
+Совместимость с историческим Java package удалена намеренно. Это breaking
+change для исходных и бинарных consumers: новый код должен использовать
+`net.ssc14`. Registry ID, SavedData/NBT-ключи, payload-контракты и форматы миров
+сохранены и по-прежнему проверяются baseline-тестами ниже.
 
 ### Назначение
 

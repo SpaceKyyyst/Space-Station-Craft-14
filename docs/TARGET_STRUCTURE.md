@@ -1,35 +1,38 @@
 # Целевая архитектура / Target architecture
 
-Этот документ задаёт проверяемое направление постепенной миграции. Он не описывает
-текущий `net.mcreator.ssc` как уже завершённую архитектуру и не разрешает массовое
-переименование пакетов.
+Этот документ фиксирует целевую архитектуру после завершения миграции. Исторический
+`net.mcreator.ssc` удалён; поддерживаемым runtime- и test-package является только
+`net.ssc14`.
 
-This document defines an enforceable direction for incremental migration. It does
-not present the current `net.mcreator.ssc` tree as the finished architecture and it
-does not authorize a bulk package rename.
+This document records the target architecture after migration completion. The
+historical `net.mcreator.ssc` tree has been removed; `net.ssc14` is the only
+supported runtime and test package.
 
 <!-- architecture-contract:ru -->
+
+> **Финальный статус / Final status:** разделы ниже сохраняют историческую карту
+> migration stages. Их compatibility facade references describe completed work;
+> no such facade remains in the current source tree.
 
 ## Русский контракт
 
 ### Назначение, цели и ограничения
 
-Новый поддерживаемый код постепенно размещается в `net.ssc14`. Существующий
-`net.mcreator.ssc` остаётся legacy-адаптером и источником миграции: зависимости
-временно направлены из legacy-кода в целевой код, но целевые слои не импортируют
-legacy namespace.
+Весь поддерживаемый код размещён в `net.ssc14`. Исторический Java package и его
+адаптеры удалены; целевые слои не имеют совместимостных импортов.
 
 Цели:
 
 - отделить чистые правила от Minecraft и NeoForge;
 - сделать серверные сценарии единственными владельцами игрового состояния;
 - изолировать client-only API и уменьшать зафиксированный долг;
-- переносить по одной подсистеме на PR с сохранением публичных контрактов;
+- переносить подсистемы на атомарных PR с сохранением игровых registry и save
+  контрактов;
 - проверять границы статически, а поведение — unit-, domain- и GameTest-тестами.
 
-Не являются целями этого этапа массовый перенос `net.mcreator.ssc`, изменение mod
-ID `ssc_14`, registry ID, ресурсов, SavedData/NBT, payload, геймплея, зависимостей
-или создание абстракций «на будущее». Пустые пакеты и классы запрещены: слой
+Удаление исторического package является завершённым breaking change для исходных
+и бинарных consumers; mod ID `ssc_14`, registry ID, ресурсы, SavedData/NBT,
+payload и геймплей сохранены. Пустые пакеты и классы запрещены: слой
 появляется на диске только вместе с реальным кодом и тестом.
 
 ### Пять слоёв и ответственности
@@ -80,21 +83,18 @@ flowchart LR
 Minecraft-адаптеров и orchestration. При переносе чистые значения и алгоритмы
 идут в Core, серверные операции — в Common, SavedData/payload/event glue — в
 Integration, блоки/предметы/меню — в Content, экраны/render/input — в Client.
-Энергетический runtime уже находится в `net.ssc14.content.energy`; старые
-`net.mcreator.ssc.energy` классы оставлены только compatibility-фасадами.
-Это карта назначения, а не обещание перенести все остальные пакеты одним изменением.
+Энергетический runtime находится в `net.ssc14.content.energy`; compatibility-фасады
+удалены после перевода consumers на canonical API.
 
-Первый реальный пример — перенос `ProportionalAllocation` в
-`net.ssc14.core.math` с делегирующим legacy-фасадом. Composition root должен
+`ProportionalAllocation` находится в `net.ssc14.core.math`. Composition root должен
 находиться под `net.ssc14.integration.neoforge`, но создаётся только тогда,
 когда есть реальная сборка зависимостей; placeholder и marker-классы запрещены.
 
-Реестр типов частиц — первая миграция в Content. Новым реестром владеет
-`net.ssc14.content.particle.Ssc14ParticleTypes`, а сгенерированные потребители
-временно работают через deprecated-фасад `Ssc14ModParticleTypes`. Registry ID
+Реестром типов частиц владеет
+`net.ssc14.content.particle.Ssc14ParticleTypes`. Registry ID
 не изменены и защищены манифестом совместимости Stage 4.
 
-Реестр звуков продолжает этот подход: всеми 81 регистрациями владеет
+Реестр звуков: всеми 81 регистрациями владеет
 `net.ssc14.content.sound.Ssc14SoundEvents`, который является единственным
 владельцем sound registry. Sound ID и `sounds.json` не изменены; строковые
 runtime-потребители продолжают использовать стабильные resource ID.
@@ -121,9 +121,9 @@ Client-only семейства определены точными префик�
 - `com.mojang.blaze3d`;
 - `org.lwjgl`.
 
-Они разрешены в `net.ssc14.client` и существующем
-`net.mcreator.ssc.client`. В остальных legacy-файлах допустим только точный
-набор `(family, path)` из `config/architecture/legacy-client-imports.txt`.
+Они разрешены в `net.ssc14.client`. Упоминание `net.mcreator.ssc.client` ниже
+относится только к историческому baseline; текущий source tree не содержит
+legacy-файлов и проверяется актуальной архитектурной матрицей.
 Новая пара нарушает CI, удалённый импорт делает строку baseline устаревшей, поэтому
 baseline может только сокращаться. Это ограничивает долг, но не доказывает
 безопасность dedicated server само по себе.
@@ -181,12 +181,15 @@ Windows native-encoding CI и ручной обзор diff.
 
 ## English contract
 
+The migration-stage text below is retained as historical audit material. It does
+not describe the current source tree: the historical `net.mcreator.ssc` package,
+its facades, and its generated GUI classes have been removed.
+
 ### Intent, goals, and constraints
 
-New maintainable code moves incrementally into `net.ssc14`. The existing
-`net.mcreator.ssc` tree remains a legacy adapter and migration source: dependencies
-temporarily flow from legacy code into target code, while target layers never import
-the legacy namespace.
+All maintainable code now lives in `net.ssc14`. The historical
+`net.mcreator.ssc` tree was the migration source, but it has been removed; target
+layers contain no imports from the legacy namespace.
 
 Goals:
 
@@ -196,7 +199,7 @@ Goals:
 - migrate one subsystem per PR while preserving public contracts;
 - enforce structure statically and behavior with unit, domain, and GameTests.
 
-This stage does not authorize a bulk move of `net.mcreator.ssc`, changes to mod ID
+The historical stage did not authorize a bulk move of `net.mcreator.ssc`, changes to mod ID
 `ssc_14`, registry IDs, resources, SavedData/NBT, payloads, gameplay, dependencies,
 or speculative abstractions. Empty packages and classes are forbidden: a layer is
 created on disk only when real code and its test need it.
@@ -250,8 +253,8 @@ Minecraft adapters, and orchestration. During migration, pure values and algorit
 go to Core, server workflows to Common, SavedData/payload/event glue to Integration,
 blocks/items/menus to Content, and screens/render/input to Client. This is a
 destination map, not a promise to move every remaining package in one change.
-The energy runtime is already owned by `net.ssc14.content.energy`; the old
-`net.mcreator.ssc.energy` classes remain compatibility facades only.
+The energy runtime is owned by `net.ssc14.content.energy`; the old
+`net.mcreator.ssc.energy` classes were removed with the historical source tree.
 
 The first real example moves `ProportionalAllocation` to `net.ssc14.core.math` with
 a delegating legacy facade. The composition root belongs under

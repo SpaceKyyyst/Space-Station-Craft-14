@@ -212,7 +212,7 @@ public final class HumanModelRenderHandler {
 		if (entity == null || entityModel == null || playerRenderEvent == null || poseStack == null)
 			return;
 			
-		// Вычисляем точные динамические коэффициенты из ванильных атрибутов MCreator
+		// Вычисляем точные динамические коэффициенты из ванильных атрибутов игры.
 		double model_scale = entity instanceof LivingEntity _livingEntity0 && _livingEntity0.getAttributes().hasAttribute(Attributes.SCALE) ? _livingEntity0.getAttribute(Attributes.SCALE).getValue() : 1.0;
 		double clothes_scale = 1.0 / (entity instanceof LivingEntity _livingEntity1 && _livingEntity1.getAttributes().hasAttribute(Attributes.SCALE) ? _livingEntity1.getAttribute(Attributes.SCALE).getValue() : 1.0);
 		

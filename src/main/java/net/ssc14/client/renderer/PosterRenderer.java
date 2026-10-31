@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-// ИСПРАВЛЕНО: Импортируем RenderTypes, который понимает MCreator 1.21.4
+// RenderTypes is the NeoForge client rendering API used by this renderer.
 import net.minecraft.client.renderer.rendertype.RenderTypes; 
 import net.minecraft.resources.Identifier; 
 import net.minecraft.core.Direction;
@@ -38,8 +38,7 @@ public class PosterRenderer extends EntityRenderer<PosterEntity, PosterRenderer.
 		state.facing = entity.getFacingDirection();
 	}
 
-	// ИСПРАВЛЕНО: Убран @Override, так как MCreator не видит этот метод в супертипе EntityRenderer,
-	// но движок вызовет его вручную, либо мы используем его для кастомного рендера.
+	// The render entry point is invoked by the client renderer integration.
 	public void render(PosterRenderState state, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		poseStack.pushPose();
 		

@@ -29,7 +29,6 @@ CLIENT_FAMILIES = {
 }
 BASELINE_PATH = Path("config/architecture/legacy-client-imports.txt")
 APPROVED_CLIENT_ROOTS = (
-    "src/main/java/net/mcreator/ssc/client/",
     "src/main/java/net/ssc14/client/",
 )
 LEGACY_BRIDGE_FILES = frozenset({
@@ -262,13 +261,6 @@ def _target_diagnostics(path: str, layer: str, unit: JavaUnit) -> list[tuple[str
                         f"'{imported_layer}': {imported}",
                     )
                 )
-            continue
-        if imported == "net.mcreator.ssc" or imported.startswith("net.mcreator.ssc."):
-            if Path(path).name not in LEGACY_BRIDGE_FILES:
-                diagnostics.append(
-                    (path, f"target code must not import legacy namespace: {imported}")
-                )
-            continue
             continue
         family = _client_family(imported)
         if family is not None and layer != "client":

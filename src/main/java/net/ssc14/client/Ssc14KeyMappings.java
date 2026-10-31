@@ -1,5 +1,5 @@
 /*
- *	MCreator note: This file will be REGENERATED on each build.
+ *	Canonical source: this file is maintained manually and is not generated.
  */
 package net.ssc14.client;
 

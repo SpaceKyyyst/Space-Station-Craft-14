@@ -44,7 +44,7 @@ class MenuSecurityTest(unittest.TestCase):
         )
 
     def test_detects_matrix_drift(self) -> None:
-        legacy_menu_dir = self.root / JAVA_SOURCE_DIR / "net/mcreator/ssc/world/inventory"
+        legacy_menu_dir = self.root / JAVA_SOURCE_DIR / "legacy/example/world/inventory"
         legacy_menu_dir.mkdir(parents=True)
         (legacy_menu_dir / "ExampleMenu.java").write_text(
             "class ExampleMenu extends AbstractContainerMenu { boolean x(){ if (this.bound) return false; return true; } }",
