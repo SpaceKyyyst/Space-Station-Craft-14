@@ -211,8 +211,9 @@ runtime owners of this behavior.
 - `Ssc14WorldVariables` является единственным владельцем saved-data runtime;
   `Ssc14ModVariables` удалён после перевода compatibility callers на canonical
   state service и сохранения `worldvars`/`mapvars` контрактов.
-- `Ssc14LegacyEntityBehavior` остаётся тонким compatibility bridge; он не
-  владеет регистрами или доменной логикой.
+- generated `Ssc14LegacyEntityBehavior` удалён; hook bridge перенесён в
+  canonical `Ssc14EntityBehaviorHooks`, который не изменяет entity behavior
+  contracts и использует canonical block/item/attribute owners.
 - Автоматически обнаруживаемые network registration-классы требуют отдельного
   переноса в integration namespace с сохранением event annotations и payload IDs.
 - `ProcessReactionsRegistration`, `NetConfigGUIButtonRegistration`,
@@ -235,8 +236,9 @@ runtime owners of this behavior.
 - `Ssc14WorldVariables` is the sole saved-data runtime owner;
   `Ssc14ModVariables` was removed after compatibility callers moved to the
   canonical state service and the `worldvars`/`mapvars` contracts were retained.
-- `Ssc14LegacyEntityBehavior` is a thin compatibility bridge and does not own
-  registries or domain logic.
+- generated `Ssc14LegacyEntityBehavior` was removed; the hook bridge now lives
+  in canonical `Ssc14EntityBehaviorHooks`, preserving entity behavior contracts
+  and using canonical block/item/attribute owners.
 - Auto-discovered network registration classes require a separate move into the
   integration namespace while preserving event annotations and payload IDs.
 - `ProcessReactionsRegistration`, `NetConfigGUIButtonRegistration`,
