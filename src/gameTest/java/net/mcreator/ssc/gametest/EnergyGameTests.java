@@ -2,7 +2,8 @@ package net.mcreator.ssc.gametest;
 
 import net.ssc14.content.energy.CableType;
 import net.ssc14.content.energy.EnergyNetwork;
-import net.mcreator.ssc.EnergyNetworkManager;
+import net.ssc14.content.energy.EnergyNetworkService;
+import net.ssc14.content.energy.EnergyTopologyService;
 import net.mcreator.ssc.block.LampBlock;
 import net.ssc14.content.block.energy.SheathingBlock;
 import net.ssc14.content.block.energy.ApcBlockEntity;
@@ -22,7 +23,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.server.level.TicketType;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.mcreator.ssc.energy.EnergyTopologyService;
 import java.util.function.BooleanSupplier;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -184,7 +184,7 @@ public final class EnergyGameTests {
 
     private static void awaitEnergy(GameTestHelper helper, Runnable action) {
         helper.runAfterDelay(1, () -> {
-            if (net.mcreator.ssc.energy.EnergyTopologyService.rebuilding(helper.getLevel())) awaitEnergy(helper, action);
+            if (EnergyTopologyService.rebuilding(helper.getLevel())) awaitEnergy(helper, action);
             else helper.runAfterDelay(2, action);
         });
     }
@@ -308,7 +308,7 @@ public final class EnergyGameTests {
             helper.assertTrue(owner != null && owner.getCableCount() == cableCount,
                     type + " must recover exactly " + cableCount + " cables after real chunk loading");
             for (BlockPos member : owner.getCables()) {
-                long owners = EnergyNetworkManager.getNetworks(helper.getLevel(), type).stream()
+                long owners = EnergyNetworkService.networks(helper.getLevel(), type).stream()
                         .filter(network -> network.getCables().contains(member)).count();
                 helper.assertTrue(owners == 1 && EnergyTopologyService.networkAt(helper.getLevel(), type, member) == owner,
                         type + " cable must have exactly one published owner after repeated reloads");
@@ -320,7 +320,7 @@ public final class EnergyGameTests {
         for (CableType type : CableType.values()) {
             helper.assertTrue(EnergyTopologyService.networkAt(helper.getLevel(), type, cable) == null,
                     type + " unloaded cable must lose its live owner");
-            helper.assertTrue(EnergyNetworkManager.getNetworks(helper.getLevel(), type).stream()
+            helper.assertTrue(EnergyNetworkService.networks(helper.getLevel(), type).stream()
                             .noneMatch(network -> network.getCables().contains(cable)),
                     type + " unloaded cable must not remain in a retired published network");
         }
@@ -373,7 +373,7 @@ public final class EnergyGameTests {
 
     private static EnergyNetwork network(GameTestHelper helper, CableType type, BlockPos relativeCable) {
         BlockPos absoluteCable = helper.absolutePos(relativeCable);
-        EnergyNetwork found = EnergyNetworkManager.getNetworks(helper.getLevel(), type).stream()
+        EnergyNetwork found = EnergyNetworkService.networks(helper.getLevel(), type).stream()
                 .filter(network -> network.isTopologyReady() && network.getCables().contains(absoluteCable)).findFirst().orElse(null);
         helper.assertTrue(found != null, "Cable lifecycle must register the " + type + " network at " + relativeCable);
         return found;
