@@ -160,6 +160,11 @@ HUD overlays action-progress, firearm-ammo, multitool и health-analyzer так�
 зарегистрированы в canonical `net.ssc14.client.overlay`; generated screen
 classes сохранены как compatibility facades с прежними event-handler API.
 
+Standard closet block entities используют canonical shared
+`net.ssc14.content.block.storage.ClosetBlockEntity`; generated entity names
+сохранены как thin compatibility facades с прежними registry paths и display
+names.
+
 Маршрутизация right-click инструментов шлюза вынесена в
 `AirlockToolInteractionHandler`. Он сохраняет порядок проверки access, welding,
 manual opening, tile installation и deconstruction; legacy adapters остаются
@@ -308,6 +313,11 @@ facades, with thresholds and animation-frame behavior unchanged.
 Action-progress, firearm-ammo, multitool, and health-analyzer HUD overlays are
 also registered in canonical `net.ssc14.client.overlay`; generated screen
 classes remain compatibility facades with their existing event-handler APIs.
+
+Standard closet block entities use the canonical shared
+`net.ssc14.content.block.storage.ClosetBlockEntity`; generated entity names
+remain thin compatibility facades with their existing registry paths and
+display names.
 
 Airlock tool right-click routing now lives in `AirlockToolInteractionHandler`.
 It preserves the access, welding, manual-opening, tile-installation, and

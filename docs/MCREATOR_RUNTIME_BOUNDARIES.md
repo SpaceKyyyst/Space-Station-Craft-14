@@ -95,6 +95,9 @@ owner, not merely renaming the facade.
 - Action-progress, firearm-ammo, multitool и health-analyzer overlays теперь
   зарегистрированы в canonical `net.ssc14.client.overlay`; generated screen
   classes сохранены как compatibility facades с прежними event-handler API;
+- Standard closet block entities теперь используют canonical shared
+  `net.ssc14.content.block.storage.ClosetBlockEntity`; generated entity names
+  сохранены как facades с прежними registry paths и display names;
 - generated `Ssc14Mod` now only provides the NeoForge entrypoint and preserved
   static compatibility helpers; registration composition lives in canonical
   `net.ssc14.integration.Ssc14Bootstrap`;
@@ -206,6 +209,9 @@ boundary:
 - Action-progress, firearm-ammo, multitool, and health-analyzer overlays are now
   registered in canonical `net.ssc14.client.overlay`; generated screen classes
   remain compatibility facades with their existing event-handler APIs;
+- Standard closet block entities now use the canonical shared
+  `net.ssc14.content.block.storage.ClosetBlockEntity`; generated entity names
+  remain facades with their existing registry paths and display names;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
