@@ -53,8 +53,15 @@ owner, not merely renaming the facade.
 - `LegacyReagentContainerRuntime` — storage/color/drink bridge for chemistry;
 - `LegacyCuriosProcedureAdapter` — Curios capability bridge;
 - `LegacyFirearmInteractionAdapter` — firearm item hook bridge;
-- `LegacyConstructionItemInteractionAdapter` — construction item hook bridge;
 - `LegacyCommunicationConsoleAdapter` — communication-console event bridge.
+
+Decal tool GUI and world actions now execute through the canonical default adapter
+in `DecalToolInteractionService`; `LegacyDecalToolInteractionAdapter` was removed
+while the adapter port remains injectable.
+
+Интеракции decal tool GUI и мира теперь выполняются через canonical default adapter
+в `DecalToolInteractionService`; `LegacyDecalToolInteractionAdapter` удалён,
+а adapter port остаётся injectable.
 
 - `AirlockToolInteractionHandler` — canonical right-click маршрутизатор
   инструментов шлюза; legacy access/deconstruction adapters остаются явными
