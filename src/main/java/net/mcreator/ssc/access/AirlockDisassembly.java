@@ -5,6 +5,7 @@ import net.minecraft.world.entity.player.Player;
 import net.ssc14.content.block.airlock.AirlockDisassemblyService;
 
 /** Compatibility facade for airlock disassembly. */
+@Deprecated(forRemoval = false)
 public final class AirlockDisassembly {
     private AirlockDisassembly() {
     }

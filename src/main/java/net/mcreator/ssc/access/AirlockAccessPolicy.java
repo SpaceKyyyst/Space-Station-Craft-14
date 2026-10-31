@@ -5,6 +5,7 @@ import net.minecraft.world.entity.Entity;
 import net.ssc14.content.block.airlock.AirlockAccessPolicyService;
 
 /** Compatibility facade for canonical airlock access policy evaluation. */
+@Deprecated(forRemoval = false)
 public final class AirlockAccessPolicy {
     private AirlockAccessPolicy() {
     }

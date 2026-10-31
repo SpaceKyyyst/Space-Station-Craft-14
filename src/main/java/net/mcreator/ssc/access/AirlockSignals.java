@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.ssc14.content.block.airlock.AirlockSignalHandler;
 
 /** Compatibility facade for generated and legacy integration callers. */
+@Deprecated(forRemoval = false)
 public final class AirlockSignals {
     public static final String HOLD = AirlockSignalHandler.HOLD;
 

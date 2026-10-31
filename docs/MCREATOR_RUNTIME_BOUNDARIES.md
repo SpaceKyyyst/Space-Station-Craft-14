@@ -101,6 +101,9 @@ owner, not merely renaming the facade.
 - Lamp and emergency-light block entities now use the canonical shared
   `net.ssc14.content.block.lighting.LightingBlockEntity`; generated entity names
   remain facades with the historical constructor and registry paths;
+- The twelve `net.mcreator.ssc.access` airlock entry points are explicit
+  deprecated compatibility facades over canonical airlock services; their
+  public names remain until external callers migrate;
 - generated `Ssc14Mod` now only provides the NeoForge entrypoint and preserved
   static compatibility helpers; registration composition lives in canonical
   `net.ssc14.integration.Ssc14Bootstrap`;
@@ -158,6 +161,9 @@ boundary:
 - lamp and emergency-light block entities now delegate to the canonical shared
   `net.ssc14.content.block.lighting.LightingBlockEntity`; legacy names preserve
   their constructor and registry-path contracts;
+- The twelve `net.mcreator.ssc.access` airlock entry points are explicitly
+  deprecated compatibility facades over canonical airlock services; their
+  public names remain for external callers during migration;
 - firearm interaction adapter was moved to `net.ssc14.content.item.weapon`;
   canonical firearm state routing and MK-58/Pistol procedure contracts remain
   unchanged;

@@ -5,6 +5,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.ssc14.content.block.airlock.AirlockWirePulseService;
 
 /** Compatibility facade for canonical wire pulse scheduling. */
+@Deprecated(forRemoval = false)
 public final class AirlockWirePulses {
     public static final int DURATION_TICKS = AirlockWirePulseService.DURATION_TICKS;
 
