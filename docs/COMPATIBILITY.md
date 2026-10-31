@@ -86,9 +86,9 @@ Dedicated-server GameTest наблюдает payload только после у�
 
 | Направление и версия | Количество |
 | --- | ---: |
-| Serverbound, version `ssc_14` | 24 |
-| Clientbound, version `ssc_14` | 7 |
-| Bidirectional, version `ssc_14` | 1 |
+| Serverbound, version `ssc_14` | 25 |
+| Clientbound, version `ssc_14` | 8 |
+| Bidirectional, version `ssc_14` | 0 |
 | Clientbound, version `1` | 1 |
 
 Manifest фиксирует для каждого payload его ID, направление и channel version.
@@ -209,9 +209,9 @@ The baseline contains 33 contracts:
 
 | Direction and version | Count |
 | --- | ---: |
-| Serverbound, version `ssc_14` | 24 |
-| Clientbound, version `ssc_14` | 7 |
-| Bidirectional, version `ssc_14` | 1 |
+| Serverbound, version `ssc_14` | 25 |
+| Clientbound, version `ssc_14` | 8 |
+| Bidirectional, version `ssc_14` | 0 |
 | Clientbound, version `1` | 1 |
 
 For every payload, the manifest freezes its ID, direction, and channel version.
