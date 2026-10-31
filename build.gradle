@@ -6,7 +6,8 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.148'
 }
 
-version = '0.1.28.1-beta'
+// Versioned pushes to main trigger artifact, release notes, and Discord publication.
+version = '0.1.28.2-beta'
 base.archivesName = "ssc_14"
 
 repositories {
