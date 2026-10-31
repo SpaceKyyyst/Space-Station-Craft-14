@@ -103,6 +103,7 @@ jobs:
           tag="ssc_14-${version}-build.${GITHUB_RUN_NUMBER}-${GITHUB_SHA:0:12}"
           jar=$(find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' | head -n1)
           test -n "$jar"
+          # Build release notes from the latest published SSC14 release tag to HEAD.
           previous_tag=$(git tag --list 'ssc_14-*' --sort=-version:refname | head -n1 || true)
           if [ -n "$previous_tag" ]; then
             range="${previous_tag}..${GITHUB_SHA}"
