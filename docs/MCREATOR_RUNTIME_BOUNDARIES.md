@@ -122,6 +122,8 @@ owner, not merely renaming the facade.
   neighbor and access-menu wiring moved into `AirlockDoorIntegrationService`;
 - `LegacyIdConsoleIntegrationAdapter` was removed after ID-console menu opening
   and factory wiring moved into `IdConsoleIntegrationService`;
+- `LegacyNetworkConfiguratorMenuAdapter` was removed after menu opening and
+  `NetConfigGUIMenu` factory wiring moved into `NetworkConfiguratorService`;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
@@ -340,6 +342,8 @@ runtime owners of this behavior.
   neighbor and access-menu wiring moved into `AirlockDoorIntegrationService`.
 - `LegacyIdConsoleIntegrationAdapter` was removed after ID-console menu opening
   and factory wiring moved into `IdConsoleIntegrationService`.
+- `LegacyNetworkConfiguratorMenuAdapter` was removed after menu opening and
+  `NetConfigGUIMenu` factory wiring moved into `NetworkConfiguratorService`.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
