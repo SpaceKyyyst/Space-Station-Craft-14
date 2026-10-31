@@ -87,8 +87,6 @@ owner, not merely renaming the facade.
   renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
 - `Ssc14ModCuriosRenderers` — compatibility facade only; Curios renderer
   registration now belongs exclusively to `Ssc14CuriosRenderers`;
-- `Ssc14ModKeyMappings` — compatibility facade only; key registration and
-  client tick dispatch now belong exclusively to `Ssc14KeyMappings`;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
@@ -190,8 +188,6 @@ boundary:
   renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
 - `Ssc14ModCuriosRenderers` — compatibility facade only; Curios renderer
   registration now belongs exclusively to `Ssc14CuriosRenderers`;
-- `Ssc14ModKeyMappings` — compatibility facade only; key registration and
-  client tick dispatch now belong exclusively to `Ssc14KeyMappings`;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
