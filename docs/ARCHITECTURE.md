@@ -211,6 +211,14 @@ the default adapter inside `AirlockDoorIntegrationService`; the separate
 используют default adapter внутри `AirlockDoorIntegrationService`; отдельный
 `LegacyAirlockDoorIntegrationAdapter` удалён, а adapter port сохранён.
 
+ID-console menu opening and factory wiring now use the default adapter inside
+`IdConsoleIntegrationService`; the separate `LegacyIdConsoleIntegrationAdapter`
+was removed while the adapter port remains injectable.
+
+Открытие меню ID-console и menu-factory wiring теперь используют default adapter
+внутри `IdConsoleIntegrationService`; отдельный
+`LegacyIdConsoleIntegrationAdapter` удалён, а adapter port остаётся injectable.
+
 HUD overlays action-progress, firearm-ammo, multitool и health-analyzer также
 зарегистрированы в canonical `net.ssc14.client.overlay`; generated screen
 classes сохранены как compatibility facades с прежними event-handler API.
