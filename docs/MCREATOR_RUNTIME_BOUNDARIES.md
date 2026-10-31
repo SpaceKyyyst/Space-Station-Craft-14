@@ -24,6 +24,12 @@ integration bridges so existing IDs and external contracts continue to work.
 блоки, сущности и регистраторы сохранены только как compatibility facades или
 integration bridges, чтобы не ломать существующие ID и внешние контракты.
 
+This checkpoint is intentionally documentation-only and does not change runtime
+registration or compatibility behavior.
+
+Эта контрольная точка изменяет только документацию и не меняет runtime-регистрацию
+или поведение compatibility-слоя.
+
 ## RU — исторические границы и оставшиеся legacy-адаптеры
 
 Списки ниже сохранены как исторический журнал миграции. Они не означают, что
