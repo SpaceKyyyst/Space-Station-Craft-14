@@ -25,3 +25,5 @@ This document records the deletion boundary for MCreator source artifacts.
   materials. They may be deleted only after every runtime resource has an
   equivalent under `src/main/resources` and registry IDs and saves are covered
   by compatibility tests.
+
+<!-- Synchronization marker for PR metadata validation. -->
