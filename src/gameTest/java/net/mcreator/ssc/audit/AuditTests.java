@@ -902,12 +902,12 @@ public final class AuditTests {
                 for(int value:new int[]{0,200,125}) {
                     h.getLevel().getServer().getCommands().getDispatcher().execute("ssc14 hunger set @s "+value,source);
                     h.getLevel().getServer().getCommands().getDispatcher().execute("ssc14 thirsty set @s "+value,source);
-                    h.assertTrue(player.getAttributeValue(net.mcreator.ssc.init.Ssc14ModAttributes.NUTRIENTS)==value,"Hunger command did not set attribute");
-                    h.assertTrue(player.getAttributeValue(net.mcreator.ssc.init.Ssc14ModAttributes.LIQUID)==value,"Thirst command did not set attribute");
+                    h.assertTrue(player.getAttributeValue(net.ssc14.content.attribute.Ssc14Attributes.NUTRIENTS)==value,"Hunger command did not set attribute");
+                    h.assertTrue(player.getAttributeValue(net.ssc14.content.attribute.Ssc14Attributes.LIQUID)==value,"Thirst command did not set attribute");
                 }
-                player.getAttribute(net.mcreator.ssc.init.Ssc14ModAttributes.DIGESTIVE_PROCESSES).setBaseValue(8);
+                player.getAttribute(net.ssc14.content.attribute.Ssc14Attributes.DIGESTIVE_PROCESSES).setBaseValue(8);
                 h.getLevel().getServer().getCommands().getDispatcher().execute("ssc14 hunger digestive clear @s",source);
-                h.assertTrue(player.getAttributeValue(net.mcreator.ssc.init.Ssc14ModAttributes.DIGESTIVE_PROCESSES)==0,"Digestive clear failed");
+                h.assertTrue(player.getAttributeValue(net.ssc14.content.attribute.Ssc14Attributes.DIGESTIVE_PROCESSES)==0,"Digestive clear failed");
                 h.succeed();
             }catch(com.mojang.brigadier.exceptions.CommandSyntaxException e){h.fail(e.getMessage());}
         });
