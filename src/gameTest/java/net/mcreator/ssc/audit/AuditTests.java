@@ -31,6 +31,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.mcreator.ssc.*;
+import net.ssc14.content.item.reagent.ReagentService;
 import net.mcreator.ssc.block.*;
 import net.ssc14.content.block.energy.ApcBlockEntity;
 import net.ssc14.content.block.Ssc14Blocks;
@@ -844,21 +845,21 @@ public final class AuditTests {
             var item=net.minecraft.core.registries.BuiltInRegistries.ITEM.getValue(itemId);
             h.assertTrue(item instanceof net.ssc14.content.item.reagent.ReagentContainerItem,"Configured container is not registered as ReagentContainerItem: "+itemId);
             var stack=new net.minecraft.world.item.ItemStack(item);
-            h.assertTrue(ModReagents.getAvailableSpace(stack)==capacity,"Capacity mismatch for "+itemId);
-            h.assertTrue(ModReagents.addReagent(stack,"water",capacity),"Cannot fill empty container");
-            h.assertTrue(!ModReagents.addReagent(stack,"water",1),"Overfilled container");
-            h.assertTrue(ModReagents.removeReagent(stack,"water",capacity),"Cannot drain full container");
-            h.assertTrue(ModReagents.getAvailableSpace(stack)==capacity,"Drain lost capacity");h.succeed();
+            h.assertTrue(ReagentService.getAvailableSpace(stack)==capacity,"Capacity mismatch for "+itemId);
+            h.assertTrue(ReagentService.addReagent(stack,"water",capacity),"Cannot fill empty container");
+            h.assertTrue(!ReagentService.addReagent(stack,"water",1),"Overfilled container");
+            h.assertTrue(ReagentService.removeReagent(stack,"water",capacity),"Cannot drain full container");
+            h.assertTrue(ReagentService.getAvailableSpace(stack)==capacity,"Drain lost capacity");h.succeed();
         }));
         TESTS.put("chem_negative_remove",h->{
-            var s=glass();ModReagents.addReagent(s,"water",10);
-            boolean accepted=ModReagents.removeReagent(s,"water",-5);
-            h.assertTrue(!accepted && ModReagents.getReagents(s).get("water")==10,"Removing -5 creates reagent: "+ModReagents.getReagents(s));h.succeed();
+            var s=glass();ReagentService.addReagent(s,"water",10);
+            boolean accepted=ReagentService.removeReagent(s,"water",-5);
+            h.assertTrue(!accepted && ReagentService.getReagents(s).get("water")==10,"Removing -5 creates reagent: "+ReagentService.getReagents(s));h.succeed();
         });
         TESTS.put("drink_mixture_conserves_volume",h->{
-            var s=glass();ModReagents.addReagent(s,"water",10);ModReagents.addReagent(s,"sugar",11);
-            int reported=ModReagents.drinkReagents(s,10,null);
-            int remaining=ModReagents.getReagents(s).values().stream().mapToInt(Integer::intValue).sum();
+            var s=glass();ReagentService.addReagent(s,"water",10);ReagentService.addReagent(s,"sugar",11);
+            int reported=ReagentService.drinkReagents(s,10,null);
+            int remaining=ReagentService.getReagents(s).values().stream().mapToInt(Integer::intValue).sum();
             h.assertTrue(21-remaining==reported,"Drink reports "+reported+" but removed "+(21-remaining)+" units");h.succeed();
         });
         TESTS.put("network_saved_data_roundtrip",h->{
@@ -1001,7 +1002,7 @@ public final class AuditTests {
             h.succeed();
         });
         TESTS.put("reagent_fluids_registered", h -> {
-            for (var reagent : ModReagents.CONFIG_REAGENTS) {
+            for (var reagent : ReagentService.CONFIG_REAGENTS) {
                 if (reagent.getId().equals("water")) continue;
                 var id = Identifier.fromNamespaceAndPath("ssc_14", reagent.getId());
                 var fluid = net.minecraft.core.registries.BuiltInRegistries.FLUID.getValue(id);
@@ -1009,7 +1010,7 @@ public final class AuditTests {
                 var flowing = (net.neoforged.neoforge.fluids.BaseFlowingFluid) fluid;
                 h.assertTrue(flowing.getSource() == fluid && flowing.getFlowing() != null, "Invalid fluid suppliers: " + id);
                 var container = glass();
-                ModReagents.addReagent(container, reagent.getId(), 1);
+                ReagentService.addReagent(container, reagent.getId(), 1);
                 h.assertTrue(ReagentContainerAccess.contents(container).getOrDefault(reagent.getId(), 0) > 0,
                         "Reagent container state was not persisted: " + id);
             }

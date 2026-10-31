@@ -11,7 +11,7 @@
 | Регистрация | `Ssc14Mod`, `init/*` | Идентификаторы, события, типы блоков и предметов |
 | Атмосфера | `atmosphere/*`, `AtmosCell`, `AtmosRegion`, `AtmosphereManager`, `AtmosphereSavedData` | Газовые расчёты, очередь регионов, мир и сохранения |
 | Энергетика | `energy/*`, `EnergyNetworkManager`, `EnergySimulationServer` | Компоненты графа, бюджеты устройств, топология и распределение энергии |
-| Химия | `common/chemistry/*`, `content/item/reagent/*`, `ReagentService`, legacy `ModReagents` alias | Расчёт количеств, атомарные реакции, контейнерный runtime и серверный перенос |
+| Химия | `common/chemistry/*`, `content/item/reagent/*`, `ReagentService` | Расчёт количеств, атомарные реакции, контейнерный runtime и серверный перенос |
 | Сигнальные соединения | `NetworkManager`, `NetworkSavedData`, `INetworkAction` | Сохранение связей и выполнение действий |
 | Броня | `combat/ResistanceRegistry`, `ArmorResistanceHelper`, `procedures/ModArmorSetupProcedure` | Чистые правила, Curios-адаптер и настройка |
 | Интерфейс | `client/*`, `world/inventory/*`, `network/validation/*`, сетевые сообщения | Отрисовка, меню, ограничения пакетов и серверная синхронизация |
@@ -33,8 +33,8 @@
 доменные правила. Разделение ещё не охватывает все подсистемы.
 Операции чтения, добавления и удаления реагентов проходят через
 `ReagentContainerAccess`; владелец chemistry runtime теперь
-`content/item/reagent/ReagentService`, а `ModReagents` оставлен только
-как deprecated alias для legacy NBT/GameTest callers.
+`content/item/reagent/ReagentService`; legacy NBT/GameTest callers переведены на
+canonical owner, а `ModReagents` alias удалён.
 Синхронизация access-полей ID-карт полностью проходит через
 `IdJobAssignmentService`; `ID_Code_CHECKProcedure` сохраняет только совместимый
 оркестрационный фасад и отдельные исторические блоковые helpers. Следующая
@@ -248,9 +248,8 @@ canonical `net.ssc14.content.energy` package. The former
 facades and are not part of the canonical runtime.
 
 Reagent registration, reaction planning and container operations now live in
-`net.ssc14.content.item.reagent.ReagentService`; `net.mcreator.ssc.ModReagents`
-remains only as a deprecated compatibility alias for generated callers and
-GameTests.
+`net.ssc14.content.item.reagent.ReagentService`; the `net.mcreator.ssc.ModReagents`
+alias was removed after generated callers and GameTests moved to the canonical owner.
 
 Critical medical ticking and liquid metabolism now run through
 `MedicalCriticalTickHandler` and `LiquidMetabolismTickHandler`; their generated
