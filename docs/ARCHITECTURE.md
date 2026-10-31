@@ -1,6 +1,6 @@
 # Архитектура проекта
 
-Проект — мод Minecraft 26.1.2 на NeoForge 26.1.2.71, Java 25, Gradle 9.3.0.
+Проект — мод Minecraft 26.1.2 на NeoForge 26.1.2.109, Java 25, Gradle 9.8.2.
 Точка входа: `net.ssc14.integration.neoforge.Ssc14ModEntrypoint`, чья регистрационная композиция
 делегируется canonical `net.ssc14.integration.Ssc14Bootstrap`. Поддерживаемый исходный
 код находится в `src/main/java/net/ssc14`, legacy compatibility facades — в
