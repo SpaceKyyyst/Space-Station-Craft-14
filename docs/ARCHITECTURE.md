@@ -148,6 +148,10 @@ Overlay газоанализатора зарегистрирован в canonic
 `net.ssc14.client.overlay`; generated screen class сохранён только как
 compatibility facade.
 
+World-check HUD overlay зарегистрирован в canonical
+`net.ssc14.client.overlay`; generated screen class сохранён как
+compatibility facade с прежним static event-handler API.
+
 Маршрутизация right-click инструментов шлюза вынесена в
 `AirlockToolInteractionHandler`. Он сохраняет порядок проверки access, welding,
 manual opening, tile installation и deconstruction; legacy adapters остаются
@@ -284,6 +288,10 @@ facade with the same static event-handler API.
 The gas analyser HUD overlay is also registered in canonical
 `net.ssc14.client.overlay`; its generated screen class remains only as a
 compatibility facade.
+
+The world-check HUD overlay is registered in canonical
+`net.ssc14.client.overlay`; its generated screen class remains a compatibility
+facade with the existing static event-handler API.
 
 Airlock tool right-click routing now lives in `AirlockToolInteractionHandler`.
 It preserves the access, welding, manual-opening, tile-installation, and
