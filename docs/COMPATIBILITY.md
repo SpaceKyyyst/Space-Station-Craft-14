@@ -252,12 +252,11 @@ verification; until then they remain explicit compatibility inputs.
 
 ### Chemistry migration invariants
 
-Before moving `ModReagents` into the canonical chemistry layer, the migration
-must preserve these observable contracts:
+The completed `ModReagents` migration must preserve these observable contracts:
 
-The first extraction step is complete: `ReagentContentsCodec` now owns the
-canonical `ssc_14_reagents` read/write format while `ModReagents` remains the
-runtime compatibility facade.
+`ReagentService` and `ReagentContentsCodec` now own the canonical
+`ssc_14_reagents` read/write format; the generated `ModReagents` alias was
+removed after all repository callers moved to the canonical service.
 
 | Contract | Required characterization |
 | --- | --- |

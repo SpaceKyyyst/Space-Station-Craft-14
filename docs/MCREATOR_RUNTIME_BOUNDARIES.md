@@ -169,7 +169,7 @@ boundary:
   the canonical container contract;
 - `LegacyReactionRuntime` is the compatibility entry point for server-side
   reaction execution; generated procedures and network handlers no longer call
-  `ModReagents.processReactions` directly;
+  the removed `ModReagents` alias directly;
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
@@ -223,6 +223,8 @@ runtime owners of this behavior.
 - Три wrapper-класса с явным `forRemoval=true` удалены после перевода entity и
   portable-menu registry ownership в canonical classes; registry IDs и renderer
   contracts сохранены.
+- `ModReagents` alias удалён после перевода audit GameTests и unit tests на
+  `ReagentService`; `ssc_14_reagents` NBT format и reagent behavior сохранены.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
@@ -250,6 +252,8 @@ runtime owners of this behavior.
 - Three wrappers explicitly marked `forRemoval=true` were removed after entity
   and portable-menu registry ownership moved to canonical classes; registry IDs
   and renderer contracts were preserved.
+- The `ModReagents` alias was removed after audit GameTests and unit tests moved
+  to `ReagentService`; the `ssc_14_reagents` NBT format and reagent behavior were preserved.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
