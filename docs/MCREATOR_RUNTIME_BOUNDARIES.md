@@ -6,7 +6,7 @@
 > канонические слои `net.ssc14`; следующие разделы сохраняются как audit trail и
 > не являются инвентарём текущего source tree.
 
-> **Актуальный снимок / Current snapshot (2026-10-29):** в каталоге
+> **Актуальный снимок / Current snapshot (2026-11-01):** в каталоге
 > `src/main/java/net/mcreator/ssc/procedures` больше не содержит активных процедур.
 > Microwave, MK58 breech/fire, spanner, construction и RSU перенесены в canonical
 > services. Удалённые procedural wrappers больше не являются частью runtime;
