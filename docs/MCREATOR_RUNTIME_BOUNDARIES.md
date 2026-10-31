@@ -80,13 +80,6 @@ owner, not merely renaming the facade.
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
-- `Ssc14ModHumanoidModels` — compatibility facade only; model construction and
-  event registration now belong exclusively to `Ssc14HumanoidModels`, preventing
-  duplicate client initialization;
-- `Ssc14ModEntityRenderers` — compatibility facade only; entity and block-entity
-  renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
-- `Ssc14ModCuriosRenderers` — compatibility facade only; Curios renderer
-  registration now belongs exclusively to `Ssc14CuriosRenderers`;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
@@ -181,13 +174,6 @@ boundary:
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
-- `Ssc14ModHumanoidModels` — compatibility facade only; model construction and
-  event registration now belong exclusively to `Ssc14HumanoidModels`, preventing
-  duplicate client initialization;
-- `Ssc14ModEntityRenderers` — compatibility facade only; entity and block-entity
-  renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
-- `Ssc14ModCuriosRenderers` — compatibility facade only; Curios renderer
-  registration now belongs exclusively to `Ssc14CuriosRenderers`;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
@@ -226,8 +212,8 @@ runtime owners of this behavior.
 - `Ssc14WorldVariables` является единственным владельцем saved-data runtime;
   `Ssc14ModVariables` удалён после перевода compatibility callers на canonical
   state service и сохранения `worldvars`/`mapvars` контрактов.
-- `Ssc14ModCuriosRenderers` и `Ssc14LegacyEntityBehavior` остаются тонкими
-  event/compatibility bridges; они не владеют регистрами или доменной логикой.
+- `Ssc14LegacyEntityBehavior` остаётся тонким compatibility bridge; он не
+  владеет регистрами или доменной логикой.
 - Автоматически обнаруживаемые network registration-классы требуют отдельного
   переноса в integration namespace с сохранением event annotations и payload IDs.
 - `ProcessReactionsRegistration`, `NetConfigGUIButtonRegistration`,
@@ -250,8 +236,8 @@ runtime owners of this behavior.
 - `Ssc14WorldVariables` is the sole saved-data runtime owner;
   `Ssc14ModVariables` was removed after compatibility callers moved to the
   canonical state service and the `worldvars`/`mapvars` contracts were retained.
-- `Ssc14ModCuriosRenderers` and `Ssc14LegacyEntityBehavior` are thin
-  event/compatibility bridges and do not own registries or domain logic.
+- `Ssc14LegacyEntityBehavior` is a thin compatibility bridge and does not own
+  registries or domain logic.
 - Auto-discovered network registration classes require a separate move into the
   integration namespace while preserving event annotations and payload IDs.
 - `ProcessReactionsRegistration`, `NetConfigGUIButtonRegistration`,
