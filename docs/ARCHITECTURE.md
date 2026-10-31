@@ -156,6 +156,16 @@ Hunger/thirst HUD overlays зарегистрированы в canonical
 `net.ssc14.client.overlay`; generated screen classes сохранены как
 compatibility facades, а thresholds и animation-frame behavior не изменены.
 
+Lamp and emergency-light block entities now share the canonical
+`net.ssc14.content.block.lighting.LightingBlockEntity`. The generated entity
+names remain constructor-compatible facades; registration, persistence, menu
+behavior, and energy lifecycle are owned by the canonical lighting layer.
+
+Сущности лампы и аварийного светильника теперь используют общий canonical
+`net.ssc14.content.block.lighting.LightingBlockEntity`. Generated-имена сохранены
+как совместимые фасады, а регистрация, сохранение, menu-поведение и energy
+lifecycle принадлежат lighting-слою.
+
 HUD overlays action-progress, firearm-ammo, multitool и health-analyzer также
 зарегистрированы в canonical `net.ssc14.client.overlay`; generated screen
 classes сохранены как compatibility facades с прежними event-handler API.
