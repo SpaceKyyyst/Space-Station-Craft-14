@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.explosives.NuclearWarheadBlock;
 import net.ssc14.content.block.explosives.NuclearWarheadBlockEntity;
@@ -13,12 +12,11 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksNuclearWarheadCompatibilityTest {
     @Test
-    void canonicalRegistriesOwnWarheadIdsAndLegacyFacadesAliasHolders() {
+    void canonicalRegistriesOwnWarheadIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:nuclear_warhead",
                 Ssc14Blocks.NUCLEAR_WARHEAD.getId().toString());
         assertEquals("ssc_14:nuclear_warhead",
                 Ssc14ExplosiveBlockEntities.NUCLEAR_WARHEAD.getId().toString());
-        assertSame(Ssc14Blocks.NUCLEAR_WARHEAD, Ssc14ModBlocks.NUCLEAR_WARHEAD);
         assertSame(Ssc14ExplosiveBlockEntities.NUCLEAR_WARHEAD,
                 Ssc14ExplosiveBlockEntities.NUCLEAR_WARHEAD);
     }

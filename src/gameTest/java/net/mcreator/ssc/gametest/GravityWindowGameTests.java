@@ -1,7 +1,7 @@
 package net.mcreator.ssc.gametest;
 
 import net.ssc14.content.block.gravity.GravityGeneratorBlockEntity;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.gravity.EntityGravityController;
 import net.ssc14.common.gravity.GravityPolicy;
 import net.minecraft.core.BlockPos;
@@ -118,7 +118,7 @@ public final class GravityWindowGameTests {
         var level = helper.getLevel();
         var pos = helper.absolutePos(new BlockPos(3, 3, 3));
         // No neighbour updates: this fixture tests access, not multiblock placement rules.
-        level.setBlock(pos, Ssc14ModBlocks.GRAVITY_GENERATOR.get().defaultBlockState(), 2);
+        level.setBlock(pos, Ssc14Blocks.GRAVITY_GENERATOR.get().defaultBlockState(), 2);
         var generator = (GravityGeneratorBlockEntity) level.getBlockEntity(pos);
         var player = helper.makeMockPlayer(GameType.SURVIVAL);
         helper.assertTrue(!com.lowdragmc.lowdraglib2.gui.factory.PlayerUIMenuType.openUI(player,

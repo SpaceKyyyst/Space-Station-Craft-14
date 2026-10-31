@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.EmptyBlockGetter;
@@ -19,7 +18,7 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksAirlockPlugCompatibilityTest {
     @Test
-    void canonicalRegistriesOwnBothIdsAndLegacyHoldersAliasThem() {
+    void canonicalRegistriesOwnBothIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:airlock_up_plug", Ssc14Blocks.AIRLOCK_UP_PLUG.getId().toString());
         assertEquals("ssc_14:airlock_up_plug_open",
                 Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.getId().toString());
@@ -27,8 +26,6 @@ class Ssc14BlocksAirlockPlugCompatibilityTest {
                 Ssc14AirlockBlockEntities.AIRLOCK_UP_PLUG.getId().toString());
         assertEquals("ssc_14:airlock_up_plug_open",
                 Ssc14AirlockBlockEntities.AIRLOCK_UP_PLUG_OPEN.getId().toString());
-        assertSame(Ssc14Blocks.AIRLOCK_UP_PLUG, Ssc14ModBlocks.AIRLOCK_UP_PLUG);
-        assertSame(Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN, Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN);
         assertSame(Ssc14AirlockBlockEntities.AIRLOCK_UP_PLUG,
                 Ssc14AirlockBlockEntities.AIRLOCK_UP_PLUG);
         assertSame(Ssc14AirlockBlockEntities.AIRLOCK_UP_PLUG_OPEN,

@@ -2,10 +2,8 @@ package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.energy.SheathingBlock;
@@ -15,11 +13,10 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksSheathingCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsSheathingIdsAndLegacyFacadesAliasHolders() {
+    void canonicalRegistryOwnsSheathingIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:sheathing", Ssc14Blocks.SHEATHING.getId().toString());
         assertEquals("ssc_14:sheathing",
                 Ssc14CableBlockEntities.SHEATHING.getId().toString());
-        assertSame(Ssc14Blocks.SHEATHING, Ssc14ModBlocks.SHEATHING);
     }
 
     @Test

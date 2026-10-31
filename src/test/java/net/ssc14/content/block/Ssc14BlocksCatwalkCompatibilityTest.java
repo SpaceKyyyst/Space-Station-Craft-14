@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Proxy;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
@@ -17,12 +16,12 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksCatwalkCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsExactIdAndLegacyFacadeAliasesHolder() throws Exception {
+    void canonicalRegistryOwnsExactIdAndPreservesCanonicalId() throws Exception {
         Object holder = Ssc14Blocks.class.getField("CATWALK_FLOOR").get(null);
 
         assertTrue(holder instanceof DeferredHolder<?, ?>);
         assertEquals("ssc_14:catwalk_floor", ((DeferredHolder<?, ?>) holder).getId().toString());
-        assertSame(holder, Ssc14ModBlocks.CATWALK_FLOOR);
+        assertSame(holder, Ssc14Blocks.CATWALK_FLOOR);
     }
 
     @Test

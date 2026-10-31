@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.debug.DebugGravityGeneratorBlock;
@@ -14,11 +13,10 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksDebugGravityCompatibilityTest {
     @Test
-    void canonicalRegistriesOwnDebugGravityIdsAndLegacyFacadesAliasHolders() {
+    void canonicalRegistriesOwnDebugGravityIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:debug_grav_gen", Ssc14Blocks.DEBUG_GRAV_GEN.getId().toString());
         assertEquals("ssc_14:debug_grav_gen",
                 Ssc14DebugBlockEntities.DEBUG_GRAV_GEN.getId().toString());
-        assertSame(Ssc14Blocks.DEBUG_GRAV_GEN, Ssc14ModBlocks.DEBUG_GRAV_GEN);
         assertSame(Ssc14DebugBlockEntities.DEBUG_GRAV_GEN,
                 Ssc14DebugBlockEntities.DEBUG_GRAV_GEN);
     }

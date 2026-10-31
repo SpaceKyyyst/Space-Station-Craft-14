@@ -1,6 +1,5 @@
 package net.ssc14.content.block;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -56,7 +55,7 @@ public final class Ssc14BlocksVendingPlugGameTests {
         BlockPos vendingRelativePos = new BlockPos(2, 2, 2);
         BlockPos vendingAbsolutePos = helper.absolutePos(vendingRelativePos);
         BlockPos plugAbsolutePos = vendingAbsolutePos.above();
-        helper.setBlock(vendingRelativePos, Ssc14ModBlocks.VENDING_AUT_1.get());
+        helper.setBlock(vendingRelativePos, Ssc14Blocks.VENDING_AUT_1.get());
         helper.assertTrue(helper.getLevel().getBlockState(plugAbsolutePos).is(plug),
                 "vending machine did not create its canonical upper plug");
 

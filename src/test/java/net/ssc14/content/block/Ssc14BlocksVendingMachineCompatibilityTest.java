@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.EmptyBlockGetter;
@@ -19,11 +18,10 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksVendingMachineCompatibilityTest {
     @Test
-    void canonicalRegistriesOwnVendingMachineIdsAndLegacyHoldersAliasThem() {
+    void canonicalRegistriesOwnVendingMachineIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:vending_aut_1", Ssc14Blocks.VENDING_AUT_1.getId().toString());
         assertEquals("ssc_14:vending_aut_1",
                 Ssc14CommerceBlockEntities.VENDING_AUT_1.getId().toString());
-        assertSame(Ssc14Blocks.VENDING_AUT_1, Ssc14ModBlocks.VENDING_AUT_1);
         assertSame(Ssc14CommerceBlockEntities.VENDING_AUT_1,
                 Ssc14CommerceBlockEntities.VENDING_AUT_1);
     }

@@ -1,10 +1,8 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.gravity.GravityGeneratorPlugBlock;
@@ -13,10 +11,9 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksGravityGeneratorPlugCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsPlugIdAndLegacyFacadeAliasesHolder() {
+    void canonicalRegistryOwnsPlugIdAndPreservesCanonicalId() {
         assertEquals("ssc_14:grav_gen_plug_block",
                 Ssc14Blocks.GRAV_GEN_PLUG_BLOCK.getId().toString());
-        assertSame(Ssc14Blocks.GRAV_GEN_PLUG_BLOCK, Ssc14ModBlocks.GRAV_GEN_PLUG_BLOCK);
     }
 
     @Test

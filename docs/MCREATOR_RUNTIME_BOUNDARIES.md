@@ -153,6 +153,8 @@ boundary:
   generated init layer;
 - `Ssc14ModBlockEntities` was removed after all compatibility callers moved to
   the canonical block-entity registries;
+- `Ssc14ModBlocks` was removed after all compatibility and GameTest callers moved
+  to the canonical `Ssc14Blocks` registry;
 - client block-entity renderer bootstrap uses canonical block-entity registries;
 - `LocalChatEventHandler` remains in `net.mcreator.ssc.integration`; message
   routing, radio prefixes, popup formatting, and server-side audience checks

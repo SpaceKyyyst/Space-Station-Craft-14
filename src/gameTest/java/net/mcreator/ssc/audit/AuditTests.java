@@ -33,7 +33,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 import net.mcreator.ssc.*;
 import net.mcreator.ssc.block.*;
 import net.ssc14.content.block.energy.ApcBlockEntity;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.block.airlock.AirlockLifecycleService;
 import net.ssc14.content.equipment.ItemInteractionService;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
@@ -46,7 +46,7 @@ public final class AuditTests {
         TESTS.put("airlock_ai_authority_wire_and_interlocks", h -> {
             var level = h.getLevel();
             var pos = h.absolutePos(new BlockPos(3, 3, 3));
-            level.setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            level.setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             var data = level.getBlockEntity(pos).getPersistentData();
             var open = net.mcreator.ssc.access.AirlockAiControl.Action.OPEN;
             net.mcreator.ssc.access.AirlockAiControl.Authority allowed = (world, target) -> target.equals(pos);
@@ -76,7 +76,7 @@ public final class AuditTests {
         TESTS.put("airlock_unsafe_crush_and_release", h -> {
             var level = h.getLevel();
             var pos = h.absolutePos(new BlockPos(3, 3, 3));
-            level.setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            level.setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             net.mcreator.ssc.access.AirlockPower.supply(level, pos, true);
             var door = level.getBlockEntity(pos);
             door.getPersistentData().putBoolean("safe", false);
@@ -101,7 +101,7 @@ public final class AuditTests {
         TESTS.put("airlock_configurator_inserted_card_only", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
-            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            h.getLevel().setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
             var configurator = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ACCESS_CONFIG.get());
             var card = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ID_CARD_PASSANGER.get());
@@ -132,7 +132,7 @@ public final class AuditTests {
         });
         TESTS.put("airlock_logs_bounded_and_erased_by_wire", h -> {
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
-            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            h.getLevel().setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             var door = h.getLevel().getBlockEntity(pos);
             for (int i = 0; i < 40; i++) net.mcreator.ssc.access.AirlockEventLog.append(door, "EVENT_" + i);
             var data = door.getPersistentData();
@@ -146,7 +146,7 @@ public final class AuditTests {
         TESTS.put("airlock_redstone_open_hold_and_bolts", h -> {
             var level = h.getLevel();
             var pos = h.absolutePos(new BlockPos(3, 3, 3));
-            level.setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            level.setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             net.mcreator.ssc.access.AirlockPower.supply(level, pos, true);
             var facing = level.getBlockState(pos).getValue(net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING);
             level.setBlock(pos.below(), net.minecraft.world.level.block.Blocks.REDSTONE_BLOCK.defaultBlockState(), 3);
@@ -174,10 +174,10 @@ public final class AuditTests {
         });
         TESTS.put("airlock_apc_twenty_watts_and_cable_break", h -> {
             for (int x = 1; x <= 7; x++) h.setBlock(x, 1, 1,
-                    Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
-            h.setBlock(1, 2, 1, Ssc14ModBlocks.APC.get());
+                    Ssc14Blocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
+            h.setBlock(1, 2, 1, Ssc14Blocks.APC.get());
             var pos = h.absolutePos(new BlockPos(7, 3, 1));
-            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            h.getLevel().setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             var door = h.getLevel().getBlockEntity(pos);
             h.assertTrue(!door.getPersistentData().getBooleanOr("powered", true), "New isolated door has free power");
             var apc = (ApcBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
@@ -198,7 +198,7 @@ public final class AuditTests {
         });
         TESTS.put("airlock_crowbar_respects_bolts_and_opens_without_access", h -> {
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
-            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            h.getLevel().setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             player.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 1.5);
             player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,
@@ -217,7 +217,7 @@ public final class AuditTests {
                     net.mcreator.ssc.access.AirlockManualOpening.advance(player);
                     h.runAfterDelay(14, () -> {
                         h.assertTrue(h.getLevel().getBlockState(pos).getValue(BaseAirlockD1Block.ARL_VARIAT) == 11, "Crowbar failed to open unpowered door without ID");
-                        h.assertTrue(h.getLevel().getBlockState(pos.above()).is(Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN.get()), "Upper collision did not open");
+                        h.assertTrue(h.getLevel().getBlockState(pos.above()).is(Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN.get()), "Upper collision did not open");
                         net.mcreator.ssc.access.AirlockManualOpening.interact(player, pos);
                         h.runAfterDelay(41, () -> {
                             net.mcreator.ssc.access.AirlockManualOpening.advance(player);
@@ -232,7 +232,7 @@ public final class AuditTests {
         });
         TESTS.put("airlock_multitool_pulse_restores_without_mending", h -> {
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
-            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            h.getLevel().setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             var door = h.getLevel().getBlockEntity(pos);
             var data = door.getPersistentData();
             net.mcreator.ssc.access.AirlockPower.supply(h.getLevel(), pos, true);
@@ -258,7 +258,7 @@ public final class AuditTests {
         });
         TESTS.put("airlock_welding_completion_and_movement_cancel", h -> {
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
-            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            h.getLevel().setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             player.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 1.5);
             var tool = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.ACTIVE_WELDER.get());
@@ -288,14 +288,14 @@ public final class AuditTests {
             var level = h.getLevel();
             var root = h.absolutePos(new BlockPos(2, 3, 2));
             var floor = root.below();
-            level.setBlock(root, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
-            h.assertTrue(level.getBlockState(floor).is(Ssc14ModBlocks.AIRLOCK_THRESHOLD.get()), "Missing below-floor seal");
+            level.setBlock(root, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            h.assertTrue(level.getBlockState(floor).is(Ssc14Blocks.AIRLOCK_THRESHOLD.get()), "Missing below-floor seal");
             var crawl = Block.box(2, 0, 2, 14, 10, 14);
             h.assertTrue(net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(
                     level.getBlockState(floor).getCollisionShape(level, floor), crawl, net.minecraft.world.phys.shapes.BooleanOp.AND),
                     "Closed door permits crawling underneath");
-            level.setBlock(floor.below(), Ssc14ModBlocks.SHEATHING.get().defaultBlockState(), 3);
-            level.setBlock(floor, Ssc14ModBlocks.TITLE_STEEL.get().defaultBlockState(), 3);
+            level.setBlock(floor.below(), Ssc14Blocks.SHEATHING.get().defaultBlockState(), 3);
+            level.setBlock(floor, Ssc14Blocks.TITLE_STEEL.get().defaultBlockState(), 3);
             var closed = level.getBlockState(floor).getCollisionShape(level, floor);
             h.assertTrue(net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(closed, crawl, net.minecraft.world.phys.shapes.BooleanOp.AND),
                     "Installing a tile removed the door seal");
@@ -306,7 +306,7 @@ public final class AuditTests {
             h.assertTrue(net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(open, Block.box(2, 13, 2, 14, 16, 14),
                     net.minecraft.world.phys.shapes.BooleanOp.AND), "Opening door removed tile collision");
             level.setBlock(root, Blocks.AIR.defaultBlockState(), 3);
-            h.assertTrue(level.getBlockState(floor).is(Ssc14ModBlocks.TITLE_STEEL.get()), "Removing door destroyed tile");
+            h.assertTrue(level.getBlockState(floor).is(Ssc14Blocks.TITLE_STEEL.get()), "Removing door destroyed tile");
             h.succeed();
         });
         TESTS.put("airlock_seven_panel_indicators", h -> {
@@ -335,7 +335,7 @@ public final class AuditTests {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
             var level = h.getLevel();
-            level.setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
+            level.setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState(), 3);
             player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
             net.mcreator.ssc.access.AirlockPower.supply(level, pos, true);
             var controller = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.AIRLOCK_CONTROLLER.get());
@@ -365,7 +365,7 @@ public final class AuditTests {
         TESTS.put("airlock_disassembly_requires_isolation", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
-            var door = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get();
+            var door = Ssc14Blocks.BASE_AIRLOCK_D_1.get();
             h.getLevel().setBlock(pos, door.defaultBlockState()
                     .setValue(net.mcreator.ssc.block.BaseAirlockD1Block.PANEL_OPEN, true), 3);
             player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
@@ -399,7 +399,7 @@ public final class AuditTests {
         TESTS.put("airlock_reinforcement_materials_and_fuel", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
-            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
+            h.getLevel().setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
                     .setValue(BaseAirlockD1Block.PANEL_OPEN, true), 3);
             player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
             protectionSteps(h, player, pos, new int[][]{{0,1,40},{1,2,60},{1,1,200},{2,0,80}}, 0);
@@ -407,7 +407,7 @@ public final class AuditTests {
         TESTS.put("airlock_plasteel_grille_outer_layer", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
-            h.getLevel().setBlock(pos, Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
+            h.getLevel().setBlock(pos, Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
                     .setValue(BaseAirlockD1Block.PANEL_OPEN, true), 3);
             h.getLevel().getBlockEntity(pos).getPersistentData().putBoolean("powered", false);
             player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
@@ -418,7 +418,7 @@ public final class AuditTests {
         TESTS.put("airlock_protection_cancels_when_panel_closes", h -> {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
-            var open = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState().setValue(BaseAirlockD1Block.PANEL_OPEN, true);
+            var open = Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState().setValue(BaseAirlockD1Block.PANEL_OPEN, true);
             h.getLevel().setBlock(pos, open, 3);
             player.setPos(pos.getX(), pos.getY(), pos.getZ() + 1);
             var stack = new net.minecraft.world.item.ItemStack(net.mcreator.ssc.init.Ssc14ModItems.STEEL.get(), 2);
@@ -436,7 +436,7 @@ public final class AuditTests {
             var player = h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             var pos = h.absolutePos(new BlockPos(2, 2, 2));
             var other = pos.offset(2, 0, 0);
-            var door = Ssc14ModBlocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
+            var door = Ssc14Blocks.BASE_AIRLOCK_D_1.get().defaultBlockState()
                     .setValue(net.mcreator.ssc.block.BaseAirlockD1Block.PANEL_OPEN, true);
             h.getLevel().setBlock(pos, door, 3);
             h.getLevel().setBlock(other, door, 3);
@@ -507,10 +507,10 @@ public final class AuditTests {
             var world = h.getLevel();
             var origin = h.absolutePos(new BlockPos(0, 35, 0));
             for (int x = 0; x < 8; x++) for (int z = 0; z < 8; z++) {
-                world.setBlockAndUpdate(origin.offset(x, 0, z), Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
-                world.setBlockAndUpdate(origin.offset(x, 3, z), Ssc14ModBlocks.LAMP.get().defaultBlockState());
+                world.setBlockAndUpdate(origin.offset(x, 0, z), Ssc14Blocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
+                world.setBlockAndUpdate(origin.offset(x, 3, z), Ssc14Blocks.LAMP.get().defaultBlockState());
             }
-            world.setBlockAndUpdate(origin.above(), Ssc14ModBlocks.APC.get().defaultBlockState());
+            world.setBlockAndUpdate(origin.above(), Ssc14Blocks.APC.get().defaultBlockState());
             var apc = (ApcBlockEntity) world.getBlockEntity(origin.above());
             apc.setStoredEnergySimulation(100000);
             EnergyNetworkService.updatePosition(world, origin);
@@ -548,13 +548,13 @@ public final class AuditTests {
         TESTS.put("energy_shared_lamp_single_debit", h -> {
             var world = h.getLevel();
             for (int z : new int[]{1, 5}) {
-                h.setBlock(1, 1, z, Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
-                h.setBlock(1, 2, z, Ssc14ModBlocks.APC.get());
+                h.setBlock(1, 1, z, Ssc14Blocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
+                h.setBlock(1, 2, z, Ssc14Blocks.APC.get());
                 ((ApcBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, z)))).setStoredEnergySimulation(1000);
                 EnergyNetworkService.updatePosition(world, h.absolutePos(new BlockPos(1, 1, z)));
             }
             var lamp = new BlockPos(1, 3, 3);
-            h.setBlock(lamp, Ssc14ModBlocks.LAMP.get());
+            h.setBlock(lamp, Ssc14Blocks.LAMP.get());
             EnergyNetworkService.invalidate(world, h.absolutePos(lamp));
             awaitEnergy(h, () -> {
                 var first = (ApcBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
@@ -569,10 +569,10 @@ public final class AuditTests {
         });
         TESTS.put("energy_lamp_changes_and_depletion", h -> {
             var world = h.getLevel();
-            h.setBlock(1, 1, 1, Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
-            h.setBlock(1, 2, 1, Ssc14ModBlocks.APC.get());
+            h.setBlock(1, 1, 1, Ssc14Blocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
+            h.setBlock(1, 2, 1, Ssc14Blocks.APC.get());
             var lamp = new BlockPos(1, 3, 1);
-            h.setBlock(lamp, Ssc14ModBlocks.LAMP.get());
+            h.setBlock(lamp, Ssc14Blocks.LAMP.get());
             var apc = (ApcBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
             apc.setStoredEnergySimulation(1000);
             EnergyNetworkService.updatePosition(world, h.absolutePos(new BlockPos(1, 1, 1)));
@@ -603,14 +603,14 @@ public final class AuditTests {
         TESTS.put("energy_large_rebuild_budget_and_restart", h -> {
             var world = h.getLevel();
             var origin = h.absolutePos(new BlockPos(0, 50, 0));
-            var cableState = Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true);
+            var cableState = Ssc14Blocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true);
             for (int x = 0; x < 33; x++) for (int z = 0; z < 16; z++) {
                 if (x != 16 || z == 0) world.setBlockAndUpdate(origin.offset(x, 0, z), cableState);
             }
             var bridge = origin.offset(16, 0, 0);
             var lamp = origin.offset(32, 2, 15);
-            world.setBlockAndUpdate(origin.above(), Ssc14ModBlocks.APC.get().defaultBlockState());
-            world.setBlockAndUpdate(lamp, Ssc14ModBlocks.LAMP.get().defaultBlockState());
+            world.setBlockAndUpdate(origin.above(), Ssc14Blocks.APC.get().defaultBlockState());
+            world.setBlockAndUpdate(lamp, Ssc14Blocks.LAMP.get().defaultBlockState());
             var apc = (ApcBlockEntity) world.getBlockEntity(origin.above());
             apc.setStoredEnergySimulation(1000000);
             EnergyNetworkService.updatePosition(world, bridge);
@@ -651,9 +651,9 @@ public final class AuditTests {
             var lamp = cable.offset(1, 2, 0);
             h.assertTrue(world.hasChunkAt(lamp), "Fixture requires neighboring loaded chunk");
             world.setBlockAndUpdate(lamp, Blocks.AIR.defaultBlockState());
-            world.setBlockAndUpdate(cable, Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
+            world.setBlockAndUpdate(cable, Ssc14Blocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
             EnergyNetworkService.updatePosition(world, cable);
-            world.setBlockAndUpdate(lamp, Ssc14ModBlocks.LAMP.get().defaultBlockState());
+            world.setBlockAndUpdate(lamp, Ssc14Blocks.LAMP.get().defaultBlockState());
             EnergyTopologyService.chunkAvailabilityChanged(world,
                     new net.minecraft.world.level.ChunkPos(lamp.getX() >> 4, lamp.getZ() >> 4));
             EnergyNetworkService.applyPendingUpdates(world);
@@ -685,7 +685,7 @@ public final class AuditTests {
         TESTS.put("energy_rebuild_preserves_unrelated_network", h -> {
             var world = h.getLevel();
             for (int x = 1; x <= 5; x++) for (int z : new int[]{1, 6}) {
-                h.setBlock(x, 1, z, Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
+                h.setBlock(x, 1, z, Ssc14Blocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
             }
             var first = h.absolutePos(new BlockPos(1, 1, 1));
             var unrelated = h.absolutePos(new BlockPos(1, 1, 6));
@@ -703,7 +703,7 @@ public final class AuditTests {
                     .filter(n -> n.getCables().contains(first)).findFirst().orElseThrow();
             var right = h.absolutePos(new BlockPos(5, 1, 1));
             h.assertTrue(!left.getCables().contains(right), "Broken cable did not split component");
-            h.setBlock(3, 1, 1, Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
+            h.setBlock(3, 1, 1, Ssc14Blocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
             EnergyNetworkService.updatePosition(world, h.absolutePos(new BlockPos(3, 1, 1)));
             awaitEnergy(h, () -> {
             h.assertTrue(EnergyNetworkService.networks(world, CableType.LV).stream()
@@ -883,7 +883,7 @@ public final class AuditTests {
             h.assertTrue(ArmorResistanceService.applyArmorResistance(p,"blunt",10)==10,"Empty armor changed damage");h.succeed();
         });
         TESTS.put("gravity_charge_discharge",h->{
-            var local=new BlockPos(3,2,3);var pos=h.absolutePos(local);h.setBlock(local,Ssc14ModBlocks.GRAVITY_GENERATOR.get());
+            var local=new BlockPos(3,2,3);var pos=h.absolutePos(local);h.setBlock(local,Ssc14Blocks.GRAVITY_GENERATOR.get());
             net.mcreator.ssc.access.AirlockPower.supply(h.getLevel(), pos, true);
         var be=h.getLevel().getBlockEntity(pos);be.getPersistentData().putBoolean("active",true);
             for(int i=0;i<402;i++)net.ssc14.content.block.gravity.GravityGeneratorService.tick(h.getLevel(),pos);
@@ -932,13 +932,13 @@ public final class AuditTests {
     static {
         TESTS.put("shutter_signal_without_player",h->{
             var local=new BlockPos(3,2,3);var target=h.absolutePos(local);var source=h.absolutePos(new BlockPos(1,2,1));
-            h.setBlock(local,Ssc14ModBlocks.SHUTTERS.get());
+            h.setBlock(local,Ssc14Blocks.SHUTTERS.get());
             NetworkSavedData.get(h.getLevel()).addConnection(source,"audit",target,"open");
             NetworkManager.trigger(h.getLevel(),source,"audit");
             h.runAfterDelay(12,()->{h.assertTrue(h.getBlockState(local).getValue(ShuttersBlock.OPEN),"Signal does not open shutter without nearby player");h.succeed();});
         });
         TESTS.put("shutter_direct_control",h->{
-            var local=new BlockPos(3,2,3);var pos=h.absolutePos(local);h.setBlock(local,Ssc14ModBlocks.SHUTTERS.get());
+            var local=new BlockPos(3,2,3);var pos=h.absolutePos(local);h.setBlock(local,Ssc14Blocks.SHUTTERS.get());
             var player=h.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
             net.ssc14.content.block.airlock.ShuttersIntegrationService.setOpen(h.getLevel(),pos,h.getBlockState(local),true);
             h.runAfterDelay(12,()->{
@@ -1083,8 +1083,8 @@ public final class AuditTests {
         });
     }
     private static void energy(GameTestHelper h,boolean cut){
-        for(int x=1;x<=5;x++) h.setBlock(x,1,1,Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV,true));
-        h.setBlock(1,2,1,Ssc14ModBlocks.APC.get());h.setBlock(5,3,1,Ssc14ModBlocks.LAMP.get());
+        for(int x=1;x<=5;x++) h.setBlock(x,1,1,Ssc14Blocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV,true));
+        h.setBlock(1,2,1,Ssc14Blocks.APC.get());h.setBlock(5,3,1,Ssc14Blocks.LAMP.get());
         ApcBlockEntity apc=(ApcBlockEntity)h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1,2,1)));
         apc.setStoredEnergySimulation(1000000);
         EnergyNetworkService.updatePosition(h.getLevel(),h.absolutePos(new BlockPos(3,1,1)));
@@ -1101,11 +1101,11 @@ public final class AuditTests {
     }
     private static void energyBudget(GameTestHelper h, boolean lamp) {
         for (int x = 1; x <= 5; x++) {
-            h.setBlock(x, 1, 1, Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
+            h.setBlock(x, 1, 1, Ssc14Blocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
         }
-        h.setBlock(1, 2, 1, Ssc14ModBlocks.APC.get());
-        h.setBlock(2, 2, 1, Ssc14ModBlocks.APC.get());
-        if (lamp) h.setBlock(5, 3, 1, Ssc14ModBlocks.LAMP.get());
+        h.setBlock(1, 2, 1, Ssc14Blocks.APC.get());
+        h.setBlock(2, 2, 1, Ssc14Blocks.APC.get());
+        if (lamp) h.setBlock(5, 3, 1, Ssc14Blocks.LAMP.get());
         var first = (ApcBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
         var second = (ApcBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(2, 2, 1)));
         first.setStoredEnergySimulation(1000);
@@ -1161,7 +1161,7 @@ public final class AuditTests {
     }
     private static void door(GameTestHelper h,boolean denied){
         BlockPos local=new BlockPos(3,2,3), pos=h.absolutePos(local);
-        h.setBlock(local,Ssc14ModBlocks.BASE_AIRLOCK_D_1.get());
+        h.setBlock(local,Ssc14Blocks.BASE_AIRLOCK_D_1.get());
         net.mcreator.ssc.access.AirlockPower.supply(h.getLevel(), pos, true);
         var be=h.getLevel().getBlockEntity(pos);
         if(denied)be.getPersistentData().putBoolean("Capitan",true);

@@ -2,7 +2,7 @@ package net.mcreator.ssc.gametest;
 
 import net.ssc14.content.atmosphere.runtime.AtmosphereManager;
 import net.ssc14.common.atmosphere.model.GasType;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
@@ -42,7 +42,7 @@ public final class AtmosphereGameTests {
 
     private static void producerAndWall(GameTestHelper helper) {
         fillCorridor(helper, 4, 9);
-        helper.setBlock(new BlockPos(5, 2, 2), Ssc14ModBlocks.GAS_PRODUCER_O_2.get());
+        helper.setBlock(new BlockPos(5, 2, 2), Ssc14Blocks.GAS_PRODUCER_O_2.get());
         helper.setBlock(new BlockPos(6, 2, 2), Blocks.AIR);
         helper.setBlock(new BlockPos(8, 2, 2), Blocks.AIR);
         helper.runAfterDelay(20, () -> {

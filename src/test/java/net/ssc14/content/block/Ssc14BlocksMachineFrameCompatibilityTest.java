@@ -2,10 +2,8 @@ package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -16,11 +14,9 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksMachineFrameCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsMachineFrameIdsAndLegacyFacadeAliasesHolders() {
+    void canonicalRegistryOwnsMachineFrameIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:machine_frame", Ssc14Blocks.MACHINE_FRAME.getId().toString());
         assertEquals("ssc_14:machine_frame_2", Ssc14Blocks.MACHINE_FRAME_2.getId().toString());
-        assertSame(Ssc14Blocks.MACHINE_FRAME, Ssc14ModBlocks.MACHINE_FRAME);
-        assertSame(Ssc14Blocks.MACHINE_FRAME_2, Ssc14ModBlocks.MACHINE_FRAME_2);
     }
 
     @Test

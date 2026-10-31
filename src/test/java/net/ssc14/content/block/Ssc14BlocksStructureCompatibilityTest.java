@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.ssc14.content.block.structure.PlasteelWallCarcaseBlock;
@@ -23,13 +22,12 @@ class Ssc14BlocksStructureCompatibilityTest {
             "PLASTEEL_WALL_CARCASE", "plasteel_wall_carcase");
 
     @Test
-    void canonicalRegistryOwnsExactIdsAndLegacyFacadeAliasesHolders() throws Exception {
+    void canonicalRegistryOwnsExactIdsAndPreservesCanonicalIds() throws Exception {
         for (var entry : EXPECTED.entrySet()) {
             Field field = Ssc14Blocks.class.getField(entry.getKey());
             Object holder = field.get(null);
             assertTrue(holder instanceof DeferredHolder<?, ?>);
             assertEquals("ssc_14:" + entry.getValue(), ((DeferredHolder<?, ?>) holder).getId().toString());
-            assertSame(holder, Ssc14ModBlocks.class.getField(entry.getKey()).get(null));
         }
     }
 

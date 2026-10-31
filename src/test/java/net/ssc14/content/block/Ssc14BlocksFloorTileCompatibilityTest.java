@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Proxy;
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -107,13 +106,12 @@ class Ssc14BlocksFloorTileCompatibilityTest {
             expected("TITLE_WHITE_PLASTIC", "title_white_plastic", "TitleWhitePlasticBlock", false));
 
     @Test
-    void canonicalRegistryOwnsAllIdsAndLegacyFacadeAliasesHolders() throws Exception {
+    void canonicalRegistryOwnsAllIdsAndPreservesCanonicalIds() throws Exception {
         for (Expected expected : EXPECTED) {
             Object holder = Ssc14Blocks.class.getField(expected.field()).get(null);
             assertTrue(holder instanceof DeferredHolder<?, ?>, expected.field());
             assertEquals("ssc_14:" + expected.path(),
                     ((DeferredHolder<?, ?>) holder).getId().toString());
-            assertSame(holder, Ssc14ModBlocks.class.getField(expected.field()).get(null));
         }
     }
 
@@ -149,8 +147,6 @@ class Ssc14BlocksFloorTileCompatibilityTest {
         assertEquals(maximumState,
                 ((net.minecraft.world.level.block.state.properties.IntegerProperty) property)
                         .getPossibleValues().stream().mapToInt(Integer::intValue).max().orElseThrow());
-        assertSame(Ssc14Blocks.class.getField(field).get(null),
-                Ssc14ModBlocks.class.getField(field).get(null));
     }
 
     @Test

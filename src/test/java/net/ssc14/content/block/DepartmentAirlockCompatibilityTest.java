@@ -1,11 +1,9 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.airlock.Ssc14AirlockBlockEntities;
 import org.junit.jupiter.api.Test;
@@ -49,8 +47,6 @@ class DepartmentAirlockCompatibilityTest {
                     type + " block entity facade");
 
             Object canonicalBlockHolder = Ssc14Blocks.class.getField(contract.field()).get(null);
-            assertSame(canonicalBlockHolder,
-                    Ssc14ModBlocks.class.getField(contract.field()).get(null));
             assertEquals("ssc_14:" + contract.id(), canonicalBlockHolder.getClass()
                     .getMethod("getId").invoke(canonicalBlockHolder).toString());
             Object canonicalEntityHolder = Ssc14AirlockBlockEntities.class

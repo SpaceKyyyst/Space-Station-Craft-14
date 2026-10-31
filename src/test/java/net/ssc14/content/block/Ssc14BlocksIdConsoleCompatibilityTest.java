@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
@@ -26,11 +25,10 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksIdConsoleCompatibilityTest {
     @Test
-    void canonicalRegistriesOwnIdsAndLegacyHoldersAliasThem() {
+    void canonicalRegistriesOwnIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:console_of_id", Ssc14Blocks.CONSOLE_OF_ID.getId().toString());
         assertEquals("ssc_14:console_of_id",
                 Ssc14AccessBlockEntities.CONSOLE_OF_ID.getId().toString());
-        assertSame(Ssc14Blocks.CONSOLE_OF_ID, Ssc14ModBlocks.CONSOLE_OF_ID);
         assertSame(Ssc14AccessBlockEntities.CONSOLE_OF_ID,
                 Ssc14AccessBlockEntities.CONSOLE_OF_ID);
     }

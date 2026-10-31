@@ -1,10 +1,8 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -17,11 +15,9 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksEnergyMachineCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsEnergyMachineIdsAndLegacyFacadesAliasHolders() {
+    void canonicalRegistryOwnsEnergyMachineIdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:apc", Ssc14Blocks.APC.getId().toString());
         assertEquals("ssc_14:podstation", Ssc14Blocks.PODSTATION.getId().toString());
-        assertSame(Ssc14Blocks.APC, Ssc14ModBlocks.APC);
-        assertSame(Ssc14Blocks.PODSTATION, Ssc14ModBlocks.PODSTATION);
     }
 
     @Test

@@ -8,7 +8,7 @@ import net.mcreator.ssc.block.LampBlock;
 import net.ssc14.content.block.energy.SheathingBlock;
 import net.ssc14.content.block.energy.ApcBlockEntity;
 import net.ssc14.content.block.energy.PodstationBlockEntity;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
@@ -73,8 +73,8 @@ public final class EnergyGameTests {
     private static void bridgeRemoval(GameTestHelper helper) {
         BlockState cable = cableState(false, false, true);
         for (int x = 2; x <= 6; x++) helper.setBlock(x, 1, 2, cable);
-        helper.setBlock(2, 2, 2, Ssc14ModBlocks.APC.get());
-        helper.setBlock(8, 3, 2, Ssc14ModBlocks.LAMP.get());
+        helper.setBlock(2, 2, 2, Ssc14Blocks.APC.get());
+        helper.setBlock(8, 3, 2, Ssc14Blocks.LAMP.get());
         ApcBlockEntity apc = apc(helper, new BlockPos(2, 2, 2));
         apc.setStoredEnergy(INITIAL_CHARGE);
 
@@ -107,10 +107,10 @@ public final class EnergyGameTests {
 
     private static void supplyChain(GameTestHelper helper) {
         for (int x = 2; x <= 8; x++) helper.setBlock(x, 1, 2, cableState(true, true, true));
-        helper.setBlock(2, 2, 2, Ssc14ModBlocks.DEBU_GGENERATOR.get());
-        helper.setBlock(5, 2, 2, Ssc14ModBlocks.PODSTATION.get());
-        helper.setBlock(8, 2, 2, Ssc14ModBlocks.APC.get());
-        helper.setBlock(9, 3, 2, Ssc14ModBlocks.LAMP.get());
+        helper.setBlock(2, 2, 2, Ssc14Blocks.DEBU_GGENERATOR.get());
+        helper.setBlock(5, 2, 2, Ssc14Blocks.PODSTATION.get());
+        helper.setBlock(8, 2, 2, Ssc14Blocks.APC.get());
+        helper.setBlock(9, 3, 2, Ssc14Blocks.LAMP.get());
         Circuit circuit = new Circuit(podstation(helper, new BlockPos(5, 2, 2)),
                 apc(helper, new BlockPos(8, 2, 2)));
         awaitEnergy(helper, () -> {
@@ -161,9 +161,9 @@ public final class EnergyGameTests {
 
     private static void idleStorage(GameTestHelper helper) {
         helper.setBlock(2, 1, 2, cableState(false, true, false));
-        helper.setBlock(2, 2, 2, Ssc14ModBlocks.PODSTATION.get());
+        helper.setBlock(2, 2, 2, Ssc14Blocks.PODSTATION.get());
         helper.setBlock(12, 1, 2, cableState(false, false, true));
-        helper.setBlock(12, 2, 2, Ssc14ModBlocks.APC.get());
+        helper.setBlock(12, 2, 2, Ssc14Blocks.APC.get());
         PodstationBlockEntity substation = podstation(helper, new BlockPos(2, 2, 2));
         ApcBlockEntity apc = apc(helper, new BlockPos(12, 2, 2));
         substation.setStoredEnergy(INITIAL_CHARGE);
@@ -396,7 +396,7 @@ public final class EnergyGameTests {
     }
 
     private static BlockState cableState(boolean hv, boolean mv, boolean lv) {
-        return Ssc14ModBlocks.SHEATHING.get().defaultBlockState()
+        return Ssc14Blocks.SHEATHING.get().defaultBlockState()
                 .setValue(SheathingBlock.HV, hv).setValue(SheathingBlock.MV, mv).setValue(SheathingBlock.LV, lv);
     }
 

@@ -1,10 +1,8 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.explosives.C4ChargeBlock;
@@ -14,10 +12,9 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksC4CompatibilityTest {
     @Test
-    void canonicalRegistriesOwnC4IdsAndLegacyFacadesAliasHolders() {
+    void canonicalRegistriesOwnC4IdsAndPreservesCanonicalIds() {
         assertEquals("ssc_14:c_4", Ssc14Blocks.C_4.getId().toString());
         assertEquals("ssc_14:c_4", Ssc14ExplosiveBlockEntities.C_4.getId().toString());
-        assertSame(Ssc14Blocks.C_4, Ssc14ModBlocks.C_4);
     }
 
     @Test

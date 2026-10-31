@@ -3,7 +3,7 @@ package net.mcreator.ssc.gametest;
 import com.mojang.authlib.GameProfile;
 import java.lang.reflect.Proxy;
 import java.util.UUID;
-import net.mcreator.ssc.init.Ssc14ModBlocks;
+import net.ssc14.content.block.Ssc14Blocks;
 import net.ssc14.content.medical.MedicalPlayerEffects;
 import net.ssc14.content.rotation.network.RotatePayloadHandler;
 import net.ssc14.integration.neoforge.rotation.network.RotateMessage;
@@ -192,7 +192,7 @@ public final class RotateGameTests {
         int chunkZ = 3000;
         level.getChunk(chunkX, chunkZ);
         var target = new BlockPos(chunkX * 16 + 15, 80, chunkZ * 16 + 8);
-        var original = Ssc14ModBlocks.MACHINE_FRAME.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
+        var original = Ssc14Blocks.MACHINE_FRAME.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
         // Fixture installation must not itself request the unavailable east chunk.
         level.setBlock(target, original, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
         var player = new FakePlayer(level, new GameProfile(UUID.randomUUID(), "rotate-boundary"));
@@ -214,12 +214,12 @@ public final class RotateGameTests {
     private static void multipartRejected(GameTestHelper helper) {
         var fixture = fixture(helper);
         var level = helper.getLevel();
-        for (var block : new Block[] {Ssc14ModBlocks.CLOSET.get(), Ssc14ModBlocks.CLOSET_SECURE.get()}) {
+        for (var block : new Block[] {Ssc14Blocks.CLOSET.get(), Ssc14Blocks.CLOSET_SECURE.get()}) {
             var original = block.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
             level.setBlock(fixture.target.above(), Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
             level.setBlock(fixture.target, original, Block.UPDATE_ALL);
             var upper = level.getBlockState(fixture.target.above());
-            helper.assertTrue(upper.is(Ssc14ModBlocks.UP_CLOSET_PLUG.get()), "Normal closet placement must install its real upper plug");
+            helper.assertTrue(upper.is(Ssc14Blocks.UP_CLOSET_PLUG.get()), "Normal closet placement must install its real upper plug");
             RotatePayloadHandler.pressAction(fixture.player, 0, 0);
             helper.assertTrue(level.getBlockState(fixture.target) == original, "Multipart base must be rejected before its facing changes");
             helper.assertTrue(level.getBlockState(fixture.target.above()) == upper, "Rejected rotation must not replay placement or change the paired plug");
@@ -235,7 +235,7 @@ public final class RotateGameTests {
         var target = helper.absolutePos(new BlockPos(1, 50, 1));
         var chunk = level.getChunkAt(target);
         helper.assertTrue(chunk.getFullStatus().isOrAfter(FullChunkStatus.BLOCK_TICKING), "Sync fixture must be in a ticking chunk");
-        var original = Ssc14ModBlocks.MACHINE_FRAME.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
+        var original = Ssc14Blocks.MACHINE_FRAME.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
         level.setBlock(target, original, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
         var player = new FakePlayer(level, new GameProfile(UUID.randomUUID(), "rotate-sync"));
         player.setGameMode(GameType.SURVIVAL);
@@ -276,10 +276,10 @@ public final class RotateGameTests {
         helper.assertTrue(RotateCommand.execute(fixture.player, 0), "Creative must retain supported rotation");
         helper.assertTrue(helper.getLevel().getBlockState(fixture.target).getValue(HorizontalDirectionalBlock.FACING) == Direction.EAST,
                 "Creative rotation must also advance once");
-        for (var block : new Block[] {Ssc14ModBlocks.MACHINE_FRAME.get(), Ssc14ModBlocks.COMPUTER.get(),
-                Ssc14ModBlocks.OFICE_BLACK_CHAIR.get(), Ssc14ModBlocks.OFICE_WHITE_CHAIR.get(), Ssc14ModBlocks.WOOD_CHAIR.get(),
-                Ssc14ModBlocks.STEEL_CHAIR.get(), Ssc14ModBlocks.BAR_CHAIR.get(), Ssc14ModBlocks.CONSOLE_OF_ID.get(),
-                Ssc14ModBlocks.PODSTATION.get(), Ssc14ModBlocks.SMES.get(), Ssc14ModBlocks.PORTABLE_SHEATER.get()}) {
+        for (var block : new Block[] {Ssc14Blocks.MACHINE_FRAME.get(), Ssc14Blocks.COMPUTER.get(),
+                Ssc14Blocks.OFICE_BLACK_CHAIR.get(), Ssc14Blocks.OFICE_WHITE_CHAIR.get(), Ssc14Blocks.WOOD_CHAIR.get(),
+                Ssc14Blocks.STEEL_CHAIR.get(), Ssc14Blocks.BAR_CHAIR.get(), Ssc14Blocks.CONSOLE_OF_ID.get(),
+                Ssc14Blocks.PODSTATION.get(), Ssc14Blocks.SMES.get(), Ssc14Blocks.PORTABLE_SHEATER.get()}) {
             var original = block.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
             helper.getLevel().setBlock(fixture.target, original, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE | Block.UPDATE_SKIP_ON_PLACE);
             // Use a broad component inside the owning voxel, rather than a thin
@@ -387,7 +387,7 @@ public final class RotateGameTests {
     private static void medicalThresholds(GameTestHelper helper) {
         var fixture = fixture(helper);
         for (int damage : new int[] {99, 100, 200, 201}) {
-            var original = Ssc14ModBlocks.MACHINE_FRAME.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
+            var original = Ssc14Blocks.MACHINE_FRAME.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
             helper.getLevel().setBlock(fixture.target, original, Block.UPDATE_ALL);
             fixture.player.getPersistentData().putDouble(MedicalPlayerEffects.TOTAL_DAMAGE, damage);
             boolean rotated = RotateCommand.execute(fixture.player, 0);
@@ -437,7 +437,7 @@ public final class RotateGameTests {
         for (int dz = -8; dz <= 1; dz++) {
             helper.getLevel().setBlock(target.offset(0, 0, dz), Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
         }
-        var state = Ssc14ModBlocks.MACHINE_FRAME.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
+        var state = Ssc14Blocks.MACHINE_FRAME.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH);
         helper.getLevel().setBlock(target, state, Block.UPDATE_ALL);
         helper.getLevel().setBlock(decoy, state, Block.UPDATE_ALL);
         helper.assertTrue(helper.getLevel().getBlockState(target) == state && helper.getLevel().getBlockState(decoy) == state,

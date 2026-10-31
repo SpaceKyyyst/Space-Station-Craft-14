@@ -1,10 +1,8 @@
 package net.ssc14.content.block;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.airlock.AirlockThresholdBlock;
@@ -12,10 +10,9 @@ import org.junit.jupiter.api.Test;
 
 class Ssc14BlocksAirlockThresholdCompatibilityTest {
     @Test
-    void canonicalRegistryOwnsThresholdIdAndLegacyFacadeAliasesHolder() {
+    void canonicalRegistryOwnsThresholdIdAndPreservesCanonicalId() {
         assertEquals("ssc_14:airlock_threshold",
                 Ssc14Blocks.AIRLOCK_THRESHOLD.getId().toString());
-        assertSame(Ssc14Blocks.AIRLOCK_THRESHOLD, Ssc14ModBlocks.AIRLOCK_THRESHOLD);
     }
 
     @Test
