@@ -83,6 +83,9 @@ owner, not merely renaming the facade.
 - `HealthUIOverlay` теперь зарегистрирован в canonical
   `net.ssc14.client.overlay`; `net.mcreator.ssc.client.screens.HealthUIOverlay`
   сохранён как compatibility facade с тем же static event-handler API;
+- `GasAnalyserGUIOverlay` теперь зарегистрирован в canonical
+  `net.ssc14.client.overlay`; generated screen class сохранён как thin
+  compatibility facade;
 - generated `Ssc14Mod` now only provides the NeoForge entrypoint and preserved
   static compatibility helpers; registration composition lives in canonical
   `net.ssc14.integration.Ssc14Bootstrap`;
@@ -182,6 +185,9 @@ boundary:
 - `HealthUIOverlay` is now registered in canonical
   `net.ssc14.client.overlay`; `net.mcreator.ssc.client.screens.HealthUIOverlay`
   remains as a compatibility facade with the same static event-handler API;
+- `GasAnalyserGUIOverlay` is now registered in canonical
+  `net.ssc14.client.overlay`; the generated screen class remains a thin
+  compatibility facade;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and

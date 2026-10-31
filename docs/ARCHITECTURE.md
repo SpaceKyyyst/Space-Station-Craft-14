@@ -144,6 +144,10 @@ Health HUD overlay зарегистрирован в canonical `net.ssc14.client
 `net.mcreator.ssc.client.screens.HealthUIOverlay` сохранён как тонкий
 compatibility facade с тем же static event-handler API.
 
+Overlay газоанализатора зарегистрирован в canonical
+`net.ssc14.client.overlay`; generated screen class сохранён только как
+compatibility facade.
+
 Маршрутизация right-click инструментов шлюза вынесена в
 `AirlockToolInteractionHandler`. Он сохраняет порядок проверки access, welding,
 manual opening, tile installation и deconstruction; legacy adapters остаются
@@ -276,6 +280,10 @@ separate migration boundary and are not silently duplicated.
 The health HUD overlay is registered in canonical `net.ssc14.client.overlay`;
 `net.mcreator.ssc.client.screens.HealthUIOverlay` remains a thin compatibility
 facade with the same static event-handler API.
+
+The gas analyser HUD overlay is also registered in canonical
+`net.ssc14.client.overlay`; its generated screen class remains only as a
+compatibility facade.
 
 Airlock tool right-click routing now lives in `AirlockToolInteractionHandler`.
 It preserves the access, welding, manual-opening, tile-installation, and
