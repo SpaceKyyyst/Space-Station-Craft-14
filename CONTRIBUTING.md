@@ -34,24 +34,22 @@ java -version
 
 | Путь | Назначение |
 |---|---|
-| `src/main/java/net/mcreator/ssc/` | Код мода, адаптеры и игровые подсистемы |
+| `src/main/java/net/ssc14/` | Код мода, адаптеры и игровые подсистемы |
 | `src/main/resources/` | Ресурсы, data и метаданные мода |
 | `src/domainTest/java/` | Тесты правил без Minecraft runtime |
 | `src/gameTest/java/` | Серверные NeoForge/Minecraft GameTests |
-| `elements/`, `models/`, `ssc_14.mcreator` | Исходные данные MCreator на переходный период |
 | `config/checkstyle/` | Правила статического анализа |
 | `.github/` | CI, metadata checks и release automation |
 | `docs/` | Публичная техническая документация |
 
-### Изменение контента и исторические MCreator-исходники
+### Изменение контента
 
 Блоки, предметы и сущности зарегистрированы через `init/*`. Их идентификаторы связаны с resources и сохранениями мира. Переименование registry ID, NBT-ключей, SavedData ID или изменение порядка `GasType` требует согласованной миграции. Изменение network payload требует согласованного обновления клиента и сервера.
 
 Зависимости мода объявлены в `build.gradle`, `Dependency.gradle` и `neoforge.mods.toml`. При их изменении проверяйте development runtime и готовый JAR в обычном профиле игры.
 
-MCreator больше не используется для генерации runtime-кода. `elements/`, `models/` и `ssc_14.mcreator`
-сохраняются только как исторический источник ресурсов и compatibility baseline; изменения Java
-вносятся вручную в NeoForge target-layer и проходят архитектурные проверки.
+MCreator workspace artifacts удалены из репозитория. Runtime-код и ресурсы
+поддерживаются вручную в NeoForge target-layer и проходят архитектурные проверки.
 
 ### Процесс вклада
 
@@ -91,24 +89,22 @@ Run commands from the project root. On Linux or macOS, replace `.\gradlew.bat` w
 
 | Path | Purpose |
 |---|---|
-| `src/main/java/net/mcreator/ssc/` | Mod code, adapters, and game subsystems |
+| `src/main/java/net/ssc14/` | Mod code, adapters, and game subsystems |
 | `src/main/resources/` | Mod assets, data, and metadata |
 | `src/domainTest/java/` | Rule tests without the Minecraft runtime |
 | `src/gameTest/java/` | Server-side NeoForge/Minecraft GameTests |
-| `elements/`, `models/`, `ssc_14.mcreator` | MCreator source data during the transition |
 | `config/checkstyle/` | Static-analysis rules |
 | `.github/` | CI, metadata checks, and release automation |
 | `docs/` | Public technical documentation |
 
-### Content changes and historical MCreator sources
+### Content changes
 
 Blocks, items, and entities are registered through `init/*`. Their identifiers are tied to assets and world saves. Renaming a registry ID, NBT key, or SavedData ID, or changing the `GasType` order requires an agreed migration. Changing a network payload requires a coordinated client and server update.
 
 Mod dependencies are declared in `build.gradle`, `Dependency.gradle`, and `neoforge.mods.toml`. When changing them, verify both the development runtime and the built JAR in a regular game profile.
 
-MCreator is no longer used to generate runtime code. `elements/`, `models/`, and `ssc_14.mcreator`
-remain only as historical resource and compatibility sources; Java changes are maintained manually
-in the NeoForge target layer and must pass architecture checks.
+MCreator workspace artifacts are no longer tracked. Runtime code and resources are maintained
+manually in the NeoForge target layer and must pass architecture checks.
 
 ### Contribution workflow
 
