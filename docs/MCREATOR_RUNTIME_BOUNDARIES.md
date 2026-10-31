@@ -230,8 +230,9 @@ runtime owners of this behavior.
 - `Ssc14MenuTypes` является владельцем регистрации всех меню, factory bindings и
   типизированных `MenuType<T>`; `Ssc14ModMenus` удалён после переноса wiring.
 - `Ssc14ModScreens` уже использует canonical menu registry напрямую.
-- `Ssc14WorldVariables` является владельцем saved-data runtime; `Ssc14ModVariables`
-  сохранён только для бинарной/исходной совместимости.
+- `Ssc14WorldVariables` является единственным владельцем saved-data runtime;
+  `Ssc14ModVariables` удалён после перевода compatibility callers на canonical
+  state service и сохранения `worldvars`/`mapvars` контрактов.
 - `Ssc14ModCuriosRenderers` и `Ssc14LegacyEntityBehavior` остаются тонкими
   event/compatibility bridges; они не владеют регистрами или доменной логикой.
 - Автоматически обнаруживаемые network registration-классы требуют отдельного
@@ -252,8 +253,9 @@ runtime owners of this behavior.
   values for every menu; `Ssc14ModMenus` was removed after its wiring moved to
   the canonical owner.
 - `Ssc14ModScreens` now consumes the canonical menu registry directly.
-- `Ssc14WorldVariables` owns saved-data runtime; `Ssc14ModVariables` remains
-  only for source/binary compatibility.
+- `Ssc14WorldVariables` is the sole saved-data runtime owner;
+  `Ssc14ModVariables` was removed after compatibility callers moved to the
+  canonical state service and the `worldvars`/`mapvars` contracts were retained.
 - `Ssc14ModCuriosRenderers` and `Ssc14LegacyEntityBehavior` are thin
   event/compatibility bridges and do not own registries or domain logic.
 - Auto-discovered network registration classes require a separate move into the
