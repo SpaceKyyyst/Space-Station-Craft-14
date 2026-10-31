@@ -122,8 +122,8 @@ old-world load/save/reopen остаётся обязательным перед 
 
 ### Оставшаяся клиентская граница
 
-`HumanModelRenderHandler` временно читает `Ssc14ModRenderStateModifiers` и
-`Ssc14ModHumanoidModels`. Эти registry не участвуют в server-side logic,
+`HumanModelRenderHandler` использует canonical `Ssc14RenderStateModifiers` и
+`Ssc14HumanoidModels`. Эти registry не участвуют в server-side logic,
 SavedData, network payloads или registry ID baseline. Их перенос допускается только
 одним клиентским PR после проверки render-state registration и dedicated-client
 запуска; до этого они считаются явными compatibility inputs.
@@ -244,8 +244,8 @@ decision; user saves must not be published.
 
 ### Remaining client boundary
 
-`HumanModelRenderHandler` temporarily reads `Ssc14ModRenderStateModifiers` and
-`Ssc14ModHumanoidModels`. These registries do not participate in server-side logic,
+`HumanModelRenderHandler` uses the canonical `Ssc14RenderStateModifiers` and
+`Ssc14HumanoidModels`. These registries do not participate in server-side logic,
 SavedData, network payloads, or the registry-ID baseline. They may be moved only in
 one client-focused PR after render-state registration and dedicated-client startup
 verification; until then they remain explicit compatibility inputs.
