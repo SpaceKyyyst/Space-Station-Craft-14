@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,7 +26,6 @@ class Ssc14BlocksNetworkButtonCompatibilityTest {
         assertEquals("ssc_14:button", Ssc14Blocks.BUTTON.getId().toString());
         assertEquals("ssc_14:button", Ssc14ControlBlockEntities.BUTTON.getId().toString());
         assertSame(Ssc14Blocks.BUTTON, Ssc14ModBlocks.BUTTON);
-        assertSame(Ssc14ControlBlockEntities.BUTTON, Ssc14ModBlockEntities.BUTTON);
     }
 
     @Test

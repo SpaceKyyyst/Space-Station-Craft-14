@@ -151,11 +151,9 @@ boundary:
 - Curios item capability registration is owned by
   `Ssc14CuriosCompatibility`; `Ssc14ModCuriosCompat` is no longer part of the
   generated init layer;
-- `Ssc14ModBlockEntities` is a field-compatible alias only and no longer owns
-  a registry or capability subscriber;
-- client block-entity renderer bootstrap no longer references
-  `Ssc14ModBlockEntities`; airlock renderers use `Ssc14AirlockBlockEntities`
-  directly;
+- `Ssc14ModBlockEntities` was removed after all compatibility callers moved to
+  the canonical block-entity registries;
+- client block-entity renderer bootstrap uses canonical block-entity registries;
 - `LocalChatEventHandler` remains in `net.mcreator.ssc.integration`; message
   routing, radio prefixes, popup formatting, and server-side audience checks
   remain unchanged pending extraction of a pure chat/radio domain service;

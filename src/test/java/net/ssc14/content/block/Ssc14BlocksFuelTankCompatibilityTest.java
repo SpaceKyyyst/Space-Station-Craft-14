@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -18,7 +17,6 @@ class Ssc14BlocksFuelTankCompatibilityTest {
     void canonicalRegistryOwnsFuelTankIdsAndLegacyFacadesAliasHolders() {
         assertEquals("ssc_14:fuel_tank", Ssc14Blocks.FUEL_TANK.getId().toString());
         assertSame(Ssc14Blocks.FUEL_TANK, Ssc14ModBlocks.FUEL_TANK);
-        assertSame(Ssc14FuelBlockEntities.FUEL_TANK, Ssc14ModBlockEntities.FUEL_TANK);
     }
 
     @Test

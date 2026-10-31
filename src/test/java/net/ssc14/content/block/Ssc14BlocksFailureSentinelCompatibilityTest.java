@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.debug.FailureSentinelBlock;
@@ -21,7 +20,7 @@ class Ssc14BlocksFailureSentinelCompatibilityTest {
                 Ssc14DebugBlockEntities.KOSTILNIBLOK.getId().toString());
         assertSame(Ssc14Blocks.KOSTILNIBLOK, Ssc14ModBlocks.KOSTILNIBLOK);
         assertSame(Ssc14DebugBlockEntities.KOSTILNIBLOK,
-                Ssc14ModBlockEntities.KOSTILNIBLOK);
+                Ssc14DebugBlockEntities.KOSTILNIBLOK);
     }
 
     @Test

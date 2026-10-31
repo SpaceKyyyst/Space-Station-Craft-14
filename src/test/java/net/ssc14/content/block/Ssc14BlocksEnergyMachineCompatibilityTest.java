@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
@@ -23,9 +22,6 @@ class Ssc14BlocksEnergyMachineCompatibilityTest {
         assertEquals("ssc_14:podstation", Ssc14Blocks.PODSTATION.getId().toString());
         assertSame(Ssc14Blocks.APC, Ssc14ModBlocks.APC);
         assertSame(Ssc14Blocks.PODSTATION, Ssc14ModBlocks.PODSTATION);
-        assertSame(Ssc14EnergyMachineBlockEntities.APC, Ssc14ModBlockEntities.APC);
-        assertSame(Ssc14EnergyMachineBlockEntities.PODSTATION,
-                Ssc14ModBlockEntities.PODSTATION);
     }
 
     @Test

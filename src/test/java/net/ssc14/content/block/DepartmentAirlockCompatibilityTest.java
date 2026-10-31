@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.ssc14.content.block.airlock.Ssc14AirlockBlockEntities;
@@ -31,7 +30,7 @@ class DepartmentAirlockCompatibilityTest {
             contract("BaseGlass", "BASE_GLASS_AIRLOCK_D_1", "base_glass_airlock_d_1"));
 
     @Test
-    void everyDepartmentAirlockHasCanonicalBlockAndBlockEntityWithLegacyFacades()
+    void everyDepartmentAirlockHasCanonicalBlockAndBlockEntity()
             throws Exception {
         for (AirlockContract contract : TYPES) {
             String type = contract.type();
@@ -56,8 +55,6 @@ class DepartmentAirlockCompatibilityTest {
                     .getMethod("getId").invoke(canonicalBlockHolder).toString());
             Object canonicalEntityHolder = Ssc14AirlockBlockEntities.class
                     .getField(contract.field()).get(null);
-            assertSame(canonicalEntityHolder,
-                    Ssc14ModBlockEntities.class.getField(contract.field()).get(null));
             assertEquals("ssc_14:" + contract.id(), canonicalEntityHolder.getClass()
                     .getMethod("getId").invoke(canonicalEntityHolder).toString());
         }

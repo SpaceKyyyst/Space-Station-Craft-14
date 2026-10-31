@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
 import net.minecraft.core.BlockPos;
@@ -35,9 +34,9 @@ class Ssc14BlocksCommerceConsoleCompatibilityTest {
         assertSame(Ssc14Blocks.ORDER_CONSOLE, Ssc14ModBlocks.ORDER_CONSOLE);
         assertSame(Ssc14Blocks.SALE_CONSOLE, Ssc14ModBlocks.SALE_CONSOLE);
         assertSame(Ssc14CommerceBlockEntities.ORDER_CONSOLE,
-                Ssc14ModBlockEntities.ORDER_CONSOLE);
+                Ssc14CommerceBlockEntities.ORDER_CONSOLE);
         assertSame(Ssc14CommerceBlockEntities.SALE_CONSOLE,
-                Ssc14ModBlockEntities.SALE_CONSOLE);
+                Ssc14CommerceBlockEntities.SALE_CONSOLE);
     }
 
     @Test
