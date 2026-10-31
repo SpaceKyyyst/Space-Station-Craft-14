@@ -118,6 +118,8 @@ owner, not merely renaming the facade.
   the default adapter of `RsuInteractionService`;
 - `LegacyShuttersIntegrationAdapter` was removed after shutters state,
   interaction and animation delegation moved into `ShuttersIntegrationService`;
+- `LegacyAirlockDoorIntegrationAdapter` was removed after door lifecycle,
+  neighbor and access-menu wiring moved into `AirlockDoorIntegrationService`;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
@@ -332,6 +334,8 @@ runtime owners of this behavior.
   the default adapter of `RsuInteractionService`.
 - `LegacyShuttersIntegrationAdapter` was removed after shutters state,
   interaction and animation delegation moved into `ShuttersIntegrationService`.
+- `LegacyAirlockDoorIntegrationAdapter` was removed after door lifecycle,
+  neighbor and access-menu wiring moved into `AirlockDoorIntegrationService`.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are

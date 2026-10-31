@@ -43,7 +43,6 @@ import net.ssc14.content.block.access.LegacyIdConsoleIntegrationAdapter;
 import net.ssc14.content.item.tool.LegacyNetworkConfiguratorMenuAdapter;
 import net.ssc14.content.item.weapon.LegacyFirearmInteractionAdapter;
 import net.ssc14.content.item.construction.LegacyConstructionItemInteractionAdapter;
-import net.ssc14.content.block.airlock.LegacyAirlockDoorIntegrationAdapter;
 import net.ssc14.content.gravity.ui.GravityGeneratorWindow;
 import net.ssc14.content.item.decal.LegacyDecalToolInteractionAdapter;
 import net.ssc14.content.item.container.LegacyPortableMenuInteractionAdapter;
@@ -326,7 +325,6 @@ public final class Ssc14Bootstrap {
 		NetworkConfiguratorService.install(new LegacyNetworkConfiguratorMenuAdapter());
 		AirlockUpperPlugIntegrationService.installUseHandler(
 				net.ssc14.content.airlock.AirlockUpperPlugInteractionService::execute);
-		AirlockDoorIntegrationService.install(new LegacyAirlockDoorIntegrationAdapter());
 		ConstructionItemInteractionService.install(
 				LegacyConstructionItemInteractionAdapter.INSTANCE);
 		DecalToolInteractionService.install(LegacyDecalToolInteractionAdapter.INSTANCE);
