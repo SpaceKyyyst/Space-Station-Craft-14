@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import net.mcreator.ssc.init.Ssc14ModEntities;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -16,7 +15,6 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Ssc14EntityTypesCompatibilityTest {
@@ -49,18 +47,13 @@ class Ssc14EntityTypesCompatibilityTest {
             Map.entry(net.mcreator.ssc.entity.CarpEntity.class, CarpEntity.class));
 
     @Test
-    void targetRegistryOwnsExactIdsAndLegacyFacadeAliasesEveryHolder() throws ReflectiveOperationException {
+    void canonicalRegistryOwnsExactIds() throws ReflectiveOperationException {
         Set<Field> targetHolders = publicHolders(Ssc14EntityTypes.class);
 
         assertEquals(EXPECTED_HOLDERS.keySet(), names(targetHolders));
         assertEquals(EXPECTED_HOLDERS.values().stream()
                 .map(path -> "ssc_14:" + path)
                 .collect(Collectors.toUnmodifiableSet()), ids(targetHolders));
-        assertSame(Ssc14EntityTypes.REGISTRY, Ssc14ModEntities.REGISTRY);
-        for (Field targetField : targetHolders) {
-            assertSame(targetField.get(null), Ssc14ModEntities.class.getField(targetField.getName()).get(null),
-                    targetField.getName());
-        }
     }
 
     @Test
@@ -78,11 +71,6 @@ class Ssc14EntityTypesCompatibilityTest {
             throws ReflectiveOperationException {
         assertLegacyProjectileApi(net.mcreator.ssc.entity.Bullet35Entity.class);
         assertLegacyProjectileApi(net.mcreator.ssc.entity.FoamDartProjectileEntity.class);
-    }
-
-    @Test
-    void legacyRegistryKeepsItsPublicNoArgumentConstructor() throws ReflectiveOperationException {
-        Ssc14ModEntities.class.getConstructor();
     }
 
     private static Set<Field> publicHolders(Class<?> owner) {

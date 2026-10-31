@@ -1,7 +1,7 @@
 package net.ssc14.content.attribute;
 
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModEntities;
+import net.ssc14.content.entity.Ssc14EntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -81,8 +81,8 @@ public final class Ssc14AttributesGameTests {
                     "Player is missing " + expected.path());
         }
 
-        var wallCarcase = helper.spawn(Ssc14ModEntities.WALL_CARCASE_ENTIT.get(), new BlockPos(1, 2, 1));
-        var idConsole = helper.spawn(Ssc14ModEntities.ID_CONSOLE_ENTITY.get(), new BlockPos(2, 2, 1));
+        var wallCarcase = helper.spawn(Ssc14EntityTypes.WALL_CARCASE_ENTIT.get(), new BlockPos(1, 2, 1));
+        var idConsole = helper.spawn(Ssc14EntityTypes.ID_CONSOLE_ENTITY.get(), new BlockPos(2, 2, 1));
         assertLegacyEntityBindings(helper, wallCarcase, "wall_carcase_entit");
         assertLegacyEntityBindings(helper, idConsole, "id_console_entity");
         helper.succeed();
