@@ -195,6 +195,14 @@ remains available.
 updates теперь выполняются default adapter внутри `RsuInteractionService`;
 отдельный `LegacyRsuInteractionAdapter` удалён, а injectable port сохранён.
 
+Shutters state updates, interaction routing and animation now use the default
+adapter inside `ShuttersIntegrationService`; the delegating
+`LegacyShuttersIntegrationAdapter` was removed while the adapter port remains.
+
+Обновления состояния shutters, маршрутизация interaction и animation теперь
+используют default adapter внутри `ShuttersIntegrationService`; делегирующий
+`LegacyShuttersIntegrationAdapter` удалён, а adapter port сохранён.
+
 HUD overlays action-progress, firearm-ammo, multitool и health-analyzer также
 зарегистрированы в canonical `net.ssc14.client.overlay`; generated screen
 classes сохранены как compatibility facades с прежними event-handler API.
