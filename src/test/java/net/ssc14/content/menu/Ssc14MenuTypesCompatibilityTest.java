@@ -1,11 +1,9 @@
 package net.ssc14.content.menu;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.lang.reflect.Field;
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModMenus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.junit.jupiter.api.Test;
 
@@ -34,18 +32,16 @@ class Ssc14MenuTypesCompatibilityTest {
             expected("SALE_GUI", "sale_gui"));
 
     @Test
-    void canonicalRegistryOwnsAllMenuTypesAndLegacyHoldersRemainAliases()
+    void canonicalRegistryOwnsAllMenuTypesAndFactoryBindings()
             throws ReflectiveOperationException {
-        assertSame(Ssc14MenuTypes.REGISTRY, Ssc14ModMenus.REGISTRY);
         assertEquals(21, EXPECTED.size());
         for (Expected expected : EXPECTED) {
             Field canonicalField = Ssc14MenuTypes.class.getField(expected.field());
             Object canonical = canonicalField.get(null);
-            assertSame(canonical,
-                    Ssc14ModMenus.class.getField(expected.field()).get(null));
             assertEquals("ssc_14:" + expected.path(),
                     ((DeferredHolder<?, ?>) canonical).getId().toString());
         }
+        Ssc14MenuTypes.validateFactoryBindings();
     }
 
     private static Expected expected(String field, String path) {

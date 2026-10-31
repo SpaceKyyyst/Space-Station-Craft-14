@@ -227,9 +227,8 @@ runtime owners of this behavior.
 
 ## RU — Текущий остаток generated-слоя
 
-- `Ssc14MenuTypes` является владельцем регистрации всех меню и экспортирует
-  типизированные `MenuType<T>`; `Ssc14ModMenus` оставлен только как facade для
-  старых callers.
+- `Ssc14MenuTypes` является владельцем регистрации всех меню, factory bindings и
+  типизированных `MenuType<T>`; `Ssc14ModMenus` удалён после переноса wiring.
 - `Ssc14ModScreens` уже использует canonical menu registry напрямую.
 - `Ssc14WorldVariables` является владельцем saved-data runtime; `Ssc14ModVariables`
   сохранён только для бинарной/исходной совместимости.
@@ -249,9 +248,9 @@ runtime owners of this behavior.
 
 ## EN — Current generated-layer remainder
 
-- `Ssc14MenuTypes` owns registration for every menu and exports typed
-  `MenuType<T>` values; `Ssc14ModMenus` remains only as a facade for legacy
-  callers.
+- `Ssc14MenuTypes` owns registration, factory bindings, and typed `MenuType<T>`
+  values for every menu; `Ssc14ModMenus` was removed after its wiring moved to
+  the canonical owner.
 - `Ssc14ModScreens` now consumes the canonical menu registry directly.
 - `Ssc14WorldVariables` owns saved-data runtime; `Ssc14ModVariables` remains
   only for source/binary compatibility.
