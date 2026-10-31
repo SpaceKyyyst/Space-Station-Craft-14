@@ -1,11 +1,9 @@
 package net.ssc14.content.item;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.lang.reflect.Field;
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModItems;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.junit.jupiter.api.Test;
 
@@ -98,12 +96,11 @@ class Ssc14TileBlockItemsCompatibilityTest {
             new Expected("TITLE_WOODTILE", "title_woodtile"));
 
     @Test
-    void canonicalRegistryOwnsTileItemsAndLegacyHoldersRemainAliases()
+    void canonicalRegistryOwnsTileItemsAndPreservesCanonicalIds()
             throws ReflectiveOperationException {
         for (Expected expected : EXPECTED) {
             Field field = Ssc14Items.class.getField(expected.field());
             Object canonical = field.get(null);
-            assertSame(canonical, Ssc14ModItems.class.getField(expected.field()).get(null));
             assertEquals("ssc_14:" + expected.path(),
                     ((DeferredHolder<?, ?>) canonical).getId().toString());
         }

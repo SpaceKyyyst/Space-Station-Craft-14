@@ -2,7 +2,7 @@ package net.ssc14.content.block;
 
 import java.util.EnumMap;
 import java.util.Map;
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -75,7 +75,7 @@ public final class Ssc14BlocksExtinguisherCabinetGameTests {
         interact(helper, absolutePos, player);
         helper.assertTrue(helper.getLevel().getBlockState(absolutePos)
                         .getValue(ExtinguisherCabinetBlock.EMPTY)
-                        && player.getMainHandItem().is(Ssc14ModItems.EXTINGUISHER.get()),
+                        && player.getMainHandItem().is(Ssc14Items.EXTINGUISHER.get()),
                 "cabinet did not issue its stored extinguisher");
         interact(helper, absolutePos, player);
         helper.assertTrue(!helper.getLevel().getBlockState(absolutePos)
@@ -86,7 +86,7 @@ public final class Ssc14BlocksExtinguisherCabinetGameTests {
         helper.getLevel().setBlock(absolutePos, helper.getLevel().getBlockState(absolutePos)
                 .setValue(ExtinguisherCabinetBlock.EMPTY, true), Block.UPDATE_ALL);
         player.setItemInHand(InteractionHand.MAIN_HAND,
-                new ItemStack(Ssc14ModItems.EXTINGUISHER_OPEN.get()));
+                new ItemStack(Ssc14Items.EXTINGUISHER_OPEN.get()));
         interact(helper, absolutePos, player);
         helper.assertTrue(!helper.getLevel().getBlockState(absolutePos)
                         .getValue(ExtinguisherCabinetBlock.EMPTY)

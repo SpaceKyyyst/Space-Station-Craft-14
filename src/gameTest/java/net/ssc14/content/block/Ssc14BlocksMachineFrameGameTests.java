@@ -1,6 +1,6 @@
 package net.ssc14.content.block;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -73,7 +73,7 @@ public final class Ssc14BlocksMachineFrameGameTests {
                         .is(Ssc14Blocks.MACHINE_FRAME.get()),
                 "failed assembly changed the frame stage");
 
-        ItemStack cables = new ItemStack(Ssc14ModItems.LOW_VOLTAGE_CABLE.get(), 2);
+        ItemStack cables = new ItemStack(Ssc14Items.LOW_VOLTAGE_CABLE.get(), 2);
         player.setItemInHand(InteractionHand.MAIN_HAND, cables);
         helper.assertTrue(MachineFrameAssemblyService.assemble(
                         helper.getLevel(), absolute, player),

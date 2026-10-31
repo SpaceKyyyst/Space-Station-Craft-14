@@ -1,6 +1,6 @@
 package net.ssc14.content.block;
 
-import net.mcreator.ssc.init.Ssc14ModItems;
+import net.ssc14.content.item.Ssc14Items;
 import net.ssc14.content.menu.commerce.VendingAut1GUIMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -74,15 +74,15 @@ public final class Ssc14BlocksVendingMachineGameTests {
                         && "Vending Automate (Snaks blue)".equals(
                                 vending.getDisplayName().getString()),
                 "vending machine names changed");
-        helper.assertTrue(vending.getItem(1).is(Ssc14ModItems.CHEESE_HONKERS.get())
+        helper.assertTrue(vending.getItem(1).is(Ssc14Items.CHEESE_HONKERS.get())
                         && vending.getItem(1).getCount() == 1
-                        && vending.getItem(2).is(Ssc14ModItems.CHIPS.get())
+                        && vending.getItem(2).is(Ssc14Items.CHIPS.get())
                         && vending.getItem(2).getCount() == 1
-                        && vending.getItem(3).is(Ssc14ModItems.BORITOS.get())
+                        && vending.getItem(3).is(Ssc14Items.BORITOS.get())
                         && vending.getItem(3).getCount() == 1
-                        && vending.getItem(5).is(Ssc14ModItems.POPCORN.get())
+                        && vending.getItem(5).is(Ssc14Items.POPCORN.get())
                         && vending.getItem(5).getCount() == 1
-                        && vending.getItem(6).is(Ssc14ModItems.ENERGY_BAR.get())
+                        && vending.getItem(6).is(Ssc14Items.ENERGY_BAR.get())
                         && vending.getItem(6).getCount() == 1,
                 "vending machine initial products changed");
         helper.assertTrue(vending.getPersistentData().getDoubleOr("slot_1", 0) == 4

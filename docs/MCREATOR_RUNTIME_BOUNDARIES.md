@@ -136,12 +136,11 @@ boundary:
   unchanged;
 - both lamp block variants call canonical `LampInteractionService` directly;
   no block package class imports generated procedures;
-- `Ssc14Items.REGISTRY` is the sole active item registry; `Ssc14ModItems`
-  remains a field-compatible alias only and its empty legacy registry is not
-  registered;
+- `Ssc14Items.REGISTRY` is the sole active item registry; `Ssc14ModItems` was
+  removed after all compatibility and GameTest callers moved to `Ssc14Items`;
 - all generated inventory capability implementations were moved to canonical
   item packages; `Ssc14ItemCapabilities` now owns their NeoForge registration,
-  while `Ssc14ModItems` remains a field-compatible generated alias;
+  while the generated item registry facade is no longer part of the runtime;
 - client screen overlays now route health-analyzer and world-check visibility
   through integration adapters; `net.mcreator.ssc.client.screens` has no direct
   generated-procedure imports;

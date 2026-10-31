@@ -188,16 +188,16 @@ bypass, unrestricted-door semantics и bitmask permissions. Старый
 `AirlockAccessPolicy` сохранён как compatibility facade после переноса generated
 open/close процедур.
 
-Оставшийся canonical input из `net.mcreator.ssc.init` — registry alias
-`Ssc14ModItems`. `Ssc14ModBlocks` удалён после перевода всех потребителей на
-`Ssc14Blocks`; миграция сохранила существующие registry IDs и не добавила
-дублирующих регистраций.
+В `net.mcreator.ssc.init` больше не осталось registry aliases для блоков и
+предметов. `Ssc14ModBlocks` и `Ssc14ModItems` удалены после перевода всех
+потребителей на `Ssc14Blocks` и `Ssc14Items`; миграции сохранили существующие
+registry IDs и не добавили дублирующих регистраций.
 
 Точка входа уже регистрирует canonical `Ssc14MenuTypes` и `Ssc14CreativeTabs`
 напрямую; gravity holders, machine-cable item и blocks также читаются из
-canonical registries. `Ssc14ModMenus` и `Ssc14ModItems` сохранены только как
-compatibility aliases/initialization для legacy callers; `Ssc14ModBlocks` удалён
-после проверки отсутствия production consumers. Factory bindings меню принадлежат
+canonical registries. `Ssc14ModMenus` сохранён только как compatibility
+alias/initialization для legacy callers; `Ssc14ModBlocks` и `Ssc14ModItems`
+удалены после проверки отсутствия production consumers. Factory bindings меню принадлежат
 `Ssc14MenuTypes`, а `Ssc14ModTabs` удалён после проверки отсутствия production
 consumers.
 
@@ -315,16 +315,16 @@ bypass, unrestricted-door semantics, and bitmask permissions are preserved. The
 old `AirlockAccessPolicy` remains a compatibility facade after generated
 open/close procedures moved to canonical services.
 
-The remaining canonical input from `net.mcreator.ssc.init` is the registry alias
-`Ssc14ModItems`. `Ssc14ModBlocks` was removed after all consumers moved to
-`Ssc14Blocks`; the migration preserves existing registry IDs and does not add
-duplicate registrations.
+No block or item registry aliases remain in `net.mcreator.ssc.init`.
+`Ssc14ModBlocks` and `Ssc14ModItems` were removed after all consumers moved to
+`Ssc14Blocks` and `Ssc14Items`; both migrations preserve existing registry IDs
+and do not add duplicate registrations.
 
 The entrypoint now registers canonical `Ssc14MenuTypes` and `Ssc14CreativeTabs`
 directly; gravity holders, the machine-cable item, and blocks are also read from
-canonical registries. `Ssc14ModMenus` and `Ssc14ModItems` remain only as
-compatibility aliases/initialization for legacy callers; `Ssc14ModBlocks` was
-removed after verifying that no production consumers remained. Menu factory
+canonical registries. `Ssc14ModMenus` remains only as a compatibility
+alias/initialization for legacy callers; `Ssc14ModBlocks` and `Ssc14ModItems`
+were removed after verifying that no production consumers remained. Menu factory
 bindings also belong to `Ssc14MenuTypes`, and `Ssc14ModTabs` was removed after
 verifying that no production consumers remained.
 

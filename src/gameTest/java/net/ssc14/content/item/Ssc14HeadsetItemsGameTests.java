@@ -3,7 +3,6 @@ package net.ssc14.content.item;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
-import net.mcreator.ssc.init.Ssc14ModItems;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -151,7 +150,7 @@ public final class Ssc14HeadsetItemsGameTests {
                 "duplicate encryption key was consumed");
 
         player.setItemInHand(InteractionHand.OFF_HAND,
-                new ItemStack(Ssc14ModItems.SCREWDRIVER.get()));
+                new ItemStack(Ssc14Items.SCREWDRIVER.get()));
         headset.getItem().use(helper.getLevel(), player, InteractionHand.MAIN_HAND);
         for (int slot = 1; slot <= 15; slot++) {
             helper.assertTrue(ItemUtil.getStack(handler, slot).isEmpty(),
