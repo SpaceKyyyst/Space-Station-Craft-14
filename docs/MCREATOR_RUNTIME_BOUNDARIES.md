@@ -104,9 +104,9 @@ owner, not merely renaming the facade.
 - The twelve `net.mcreator.ssc.access` airlock entry points are explicit
   deprecated compatibility facades over canonical airlock services; their
   public names remain until external callers migrate;
-- generated `Ssc14Mod` now only provides the NeoForge entrypoint and preserved
-  static compatibility helpers; registration composition lives in canonical
-  `net.ssc14.integration.Ssc14Bootstrap`;
+- `net.ssc14.integration.neoforge.Ssc14ModEntrypoint` now owns the NeoForge
+  entrypoint and registration composition; generated `Ssc14Mod` remains only as
+  a deprecated static compatibility facade;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
@@ -307,7 +307,8 @@ runtime owners of this behavior.
   and renderer contracts were preserved.
 - The `ModReagents` alias was removed after audit GameTests and unit tests moved
   to `ReagentService`; the `ssc_14_reagents` NBT format and reagent behavior were preserved.
-- `Ssc14Mod` remains only as a thin NeoForge entrypoint and compatibility facade;
+- `Ssc14ModEntrypoint` is the canonical NeoForge entrypoint; generated `Ssc14Mod`
+  remains only as a deprecated static compatibility facade;
   registration composition moved to canonical `Ssc14Bootstrap`.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,

@@ -1,15 +1,16 @@
 # Архитектура проекта
 
 Проект — мод Minecraft 26.1.2 на NeoForge 26.1.2.71, Java 25, Gradle 9.3.0.
-Точка входа: `net.mcreator.ssc.Ssc14Mod`, чья регистрационная композиция
-делегируется canonical `net.ssc14.integration.Ssc14Bootstrap`. Исходный код находится в
+Точка входа: `net.ssc14.integration.neoforge.Ssc14ModEntrypoint`, чья регистрационная композиция
+делегируется canonical `net.ssc14.integration.Ssc14Bootstrap`. Поддерживаемый исходный
+код находится в `src/main/java/net/ssc14`, legacy compatibility facades — в
 `src/main/java/net/mcreator/ssc`, ресурсы — в `src/main/resources`.
 
 ## Текущее устройство
 
 | Подсистема | Основные классы | Ответственность |
 | --- | --- | --- |
-| Регистрация | `Ssc14Mod`, `integration/Ssc14Bootstrap`, `init/*` | Mod entrypoint compatibility, регистрационная композиция, идентификаторы и события |
+| Регистрация | `integration/neoforge/Ssc14ModEntrypoint`, `integration/Ssc14Bootstrap`, `init/*` | NeoForge entrypoint, регистрационная композиция, идентификаторы и события |
 | Атмосфера | `atmosphere/*`, `AtmosCell`, `AtmosRegion`, `AtmosphereManager`, `AtmosphereSavedData` | Газовые расчёты, очередь регионов, мир и сохранения |
 | Энергетика | `energy/*`, `EnergyNetworkManager`, `EnergySimulationServer` | Компоненты графа, бюджеты устройств, топология и распределение энергии |
 | Химия | `common/chemistry/*`, `content/item/reagent/*`, `ReagentService` | Расчёт количеств, атомарные реакции, контейнерный runtime и серверный перенос |
