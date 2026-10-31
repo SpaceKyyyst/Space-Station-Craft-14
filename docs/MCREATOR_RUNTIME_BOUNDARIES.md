@@ -80,6 +80,9 @@ owner, not merely renaming the facade.
 - `HumanModelRenderHandler` — canonical client render hooks; it still consumes
   legacy render-state/model registries until those registries receive canonical
   owners;
+- generated `Ssc14Mod` now only provides the NeoForge entrypoint and preserved
+  static compatibility helpers; registration composition lives in canonical
+  `net.ssc14.integration.Ssc14Bootstrap`;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
@@ -225,6 +228,8 @@ runtime owners of this behavior.
   contracts сохранены.
 - `ModReagents` alias удалён после перевода audit GameTests и unit tests на
   `ReagentService`; `ssc_14_reagents` NBT format и reagent behavior сохранены.
+- `Ssc14Mod` оставлен только как тонкий NeoForge entrypoint и compatibility facade;
+  регистрационная композиция перенесена в canonical `Ssc14Bootstrap`.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
@@ -254,6 +259,8 @@ runtime owners of this behavior.
   and renderer contracts were preserved.
 - The `ModReagents` alias was removed after audit GameTests and unit tests moved
   to `ReagentService`; the `ssc_14_reagents` NBT format and reagent behavior were preserved.
+- `Ssc14Mod` remains only as a thin NeoForge entrypoint and compatibility facade;
+  registration composition moved to canonical `Ssc14Bootstrap`.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are

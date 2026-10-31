@@ -60,6 +60,7 @@ CONTENT_IMPORT_BRIDGE_FILES = frozenset({
     "AccessConfigMenuEvents.java",
     "AirlockPanelMenuEvents.java",
 })
+COMPOSITION_ROOT_FILES = frozenset({"Ssc14Bootstrap.java"})
 
 
 @dataclass(frozen=True)
@@ -242,6 +243,7 @@ def collect_legacy_client_debt(
 
 def _target_diagnostics(path: str, layer: str, unit: JavaUnit) -> list[tuple[str, str]]:
     diagnostics: list[tuple[str, str]] = []
+    is_composition_root = Path(path).name in COMPOSITION_ROOT_FILES
     for imported in unit.imports:
         imported_layer = _target_layer(imported)
         if imported_layer is not None:
@@ -249,7 +251,7 @@ def _target_diagnostics(path: str, layer: str, unit: JavaUnit) -> list[tuple[str
                 diagnostics.append(
                     (path, f"target import uses unknown direct layer '{imported_layer}': {imported}")
                 )
-            elif (imported_layer not in ALLOWED_TARGET_IMPORTS[layer]
+            elif (not is_composition_root and imported_layer not in ALLOWED_TARGET_IMPORTS[layer]
                     and not (layer == "integration"
                              and imported_layer == "content"
                              and Path(path).name in CONTENT_IMPORT_BRIDGE_FILES)):
