@@ -194,11 +194,11 @@ open/close процедур.
 риск несовместимости сохранений и дублирования регистраций.
 
 Точка входа уже регистрирует canonical `Ssc14MenuTypes` и `Ssc14CreativeTabs`
-напрямую; factory bindings меню также принадлежат `Ssc14MenuTypes`. Gravity
-holders и machine-cable item читаются из canonical registries. `Ssc14ModTabs`,
-`Ssc14ModBlocks` и `Ssc14ModItems` пока сохранены как compatibility
-aliases/initialization для legacy callers; `Ssc14ModMenus` удалён после переноса
-factory wiring.
+напрямую; gravity holders и machine-cable item также читаются из canonical
+registries. `Ssc14ModMenus`, `Ssc14ModBlocks` и `Ssc14ModItems` сохранены только
+как compatibility aliases/initialization для legacy callers; factory bindings
+меню принадлежат `Ssc14MenuTypes`, а `Ssc14ModTabs` удалён после проверки
+отсутствия production consumers.
 
 Синхронизация wire/lamp state вынесена в `AirlockLampStateService`; сохранены
 все persisted cable flags, power restoration и bolt-cut side effects. Старый
@@ -319,11 +319,11 @@ only through an ID-preserving registry migration; broad textual replacement
 risks save incompatibility and duplicate registrations.
 
 The entrypoint now registers canonical `Ssc14MenuTypes` and `Ssc14CreativeTabs`
-directly; menu factory bindings also belong to `Ssc14MenuTypes`. Gravity holders
-and the machine-cable item are read from canonical registries. `Ssc14ModTabs`,
-`Ssc14ModBlocks`, and `Ssc14ModItems` remain as compatibility
-aliases/initialization for legacy callers; `Ssc14ModMenus` was removed after its
-factory wiring moved to the canonical registry.
+directly; gravity holders and the machine-cable item are also read from canonical
+registries. `Ssc14ModMenus`, `Ssc14ModBlocks`, and `Ssc14ModItems` remain only as
+compatibility aliases/initialization for legacy callers; menu factory bindings
+also belong to `Ssc14MenuTypes`, and `Ssc14ModTabs` was removed after verifying
+that no production consumers remained.
 
 Wire/lamp state synchronization now lives in `AirlockLampStateService`; all
 persisted cable flags, power restoration, and bolt-cut side effects are
