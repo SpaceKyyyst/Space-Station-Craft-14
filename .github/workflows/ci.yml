@@ -160,4 +160,9 @@ jobs:
           print(json.dumps({"flags": 32768, "username": "SSC14 • Система оповещения", "allowed_mentions": {"parse": []}, "components": [{"type": 10, "content": "||@Ждун обновлений||"}, {"type": 17, "components": [{"type": 10, "content": f"# 🚀 SSC14 | Release {version}\\n**Сборка:** `{build}` • **Статус:** {status}"}, {"type": 14, "spacing": 2, "divider": True}, {"type": 9, "components": [{"type": 10, "content": f"### 📋 Изменения\\n\\n{notes}"}], "accessory": {"type": 2, "style": 5, "label": "GitHub", "url": url, "emoji": {"name": "⭐"}}}, {"type": 14, "spacing": 1, "divider": True}, {"type": 10, "content": "-# Space Station Craft 14 • GitHub Release Notifications"}]}]}))
           PY
           )
-          curl --fail-with-body -X POST "$DISCORD_RELEASE_WEBHOOK" -F "payload_json=$payload" -F "files[0]=@$jar"
+          separator='?'
+          if [[ "$DISCORD_RELEASE_WEBHOOK" == *\?* ]]; then
+            separator='&'
+          fi
+          webhook_url="${DISCORD_RELEASE_WEBHOOK}${separator}wait=true&with_components=true"
+          curl --fail-with-body -X POST "$webhook_url" -F "payload_json=$payload"
