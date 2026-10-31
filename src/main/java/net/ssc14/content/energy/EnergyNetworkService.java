@@ -21,6 +21,12 @@ public final class EnergyNetworkService {
         EnergyTopologyService.invalidate(level, pos);
     }
 
+    /** Invalidates the affected topology and advances the shared rebuild budget once. */
+    public static void updatePosition(LevelAccessor level, BlockPos pos) {
+        invalidate(level, pos);
+        applyPendingUpdates(level);
+    }
+
     public static List<EnergyNetwork> networks(LevelAccessor level, CableType type) {
         return EnergyTopologyService.networks(level, type);
     }

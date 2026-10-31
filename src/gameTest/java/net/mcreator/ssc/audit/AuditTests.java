@@ -7,6 +7,8 @@ import net.ssc14.content.network.NetworkManager;
 
 import net.ssc14.content.energy.CableType;
 import net.ssc14.content.energy.EnergyNetwork;
+import net.ssc14.content.energy.EnergyNetworkService;
+import net.ssc14.content.energy.EnergyTopologyService;
 
 import net.ssc14.common.atmosphere.model.GasType;
 import net.ssc14.common.atmosphere.reaction.GasReaction;
@@ -180,7 +182,7 @@ public final class AuditTests {
             h.assertTrue(!door.getPersistentData().getBooleanOr("powered", true), "New isolated door has free power");
             var apc = (ApcBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
             apc.setStoredEnergySimulation(100000);
-            EnergyNetworkManager.updatePosition(h.getLevel(), h.absolutePos(new BlockPos(3, 1, 1)));
+            EnergyNetworkService.updatePosition(h.getLevel(), h.absolutePos(new BlockPos(3, 1, 1)));
             awaitEnergy(h, () -> {
                 h.assertTrue(door.getPersistentData().getBooleanOr("powered", false), "Connected airlock has no power");
                 long before = apc.getStoredEnergy();
@@ -511,7 +513,7 @@ public final class AuditTests {
             world.setBlockAndUpdate(origin.above(), Ssc14ModBlocks.APC.get().defaultBlockState());
             var apc = (ApcBlockEntity) world.getBlockEntity(origin.above());
             apc.setStoredEnergySimulation(100000);
-            EnergyNetworkManager.updatePosition(world, origin);
+            EnergyNetworkService.updatePosition(world, origin);
             awaitEnergy(h, () -> {
                 long before = apc.getStoredEnergy();
                 h.runAfterDelay(20, () -> {
@@ -520,7 +522,7 @@ public final class AuditTests {
                         h.assertTrue(world.getBlockState(origin.offset(x, 3, z)).getValue(LampBlock.ACTIVE), "Lamp missing from batch");
                     }
                     world.destroyBlock(origin.above(), false);
-                    EnergyNetworkManager.invalidate(world, origin.above());
+                    EnergyNetworkService.invalidate(world, origin.above());
                     h.runAfterDelay(1, () -> {
                         for (int x = 0; x < 8; x++) for (int z = 0; z < 8; z++) {
                             var lamp = origin.offset(x, 3, z);
@@ -549,11 +551,11 @@ public final class AuditTests {
                 h.setBlock(1, 1, z, Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
                 h.setBlock(1, 2, z, Ssc14ModBlocks.APC.get());
                 ((ApcBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, z)))).setStoredEnergySimulation(1000);
-                EnergyNetworkManager.updatePosition(world, h.absolutePos(new BlockPos(1, 1, z)));
+                EnergyNetworkService.updatePosition(world, h.absolutePos(new BlockPos(1, 1, z)));
             }
             var lamp = new BlockPos(1, 3, 3);
             h.setBlock(lamp, Ssc14ModBlocks.LAMP.get());
-            EnergyNetworkManager.invalidate(world, h.absolutePos(lamp));
+            EnergyNetworkService.invalidate(world, h.absolutePos(lamp));
             awaitEnergy(h, () -> {
                 var first = (ApcBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
                 var second = (ApcBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, 5)));
@@ -573,7 +575,7 @@ public final class AuditTests {
             h.setBlock(lamp, Ssc14ModBlocks.LAMP.get());
             var apc = (ApcBlockEntity) world.getBlockEntity(h.absolutePos(new BlockPos(1, 2, 1)));
             apc.setStoredEnergySimulation(1000);
-            EnergyNetworkManager.updatePosition(world, h.absolutePos(new BlockPos(1, 1, 1)));
+            EnergyNetworkService.updatePosition(world, h.absolutePos(new BlockPos(1, 1, 1)));
             awaitEnergy(h, () -> {
                 h.assertTrue(h.getBlockState(lamp).getValue(LampBlock.ACTIVE), "Connected lamp is off");
                 h.setBlock(lamp, h.getBlockState(lamp).setValue(LampBlock.BROKEN, true));
@@ -611,10 +613,10 @@ public final class AuditTests {
             world.setBlockAndUpdate(lamp, Ssc14ModBlocks.LAMP.get().defaultBlockState());
             var apc = (ApcBlockEntity) world.getBlockEntity(origin.above());
             apc.setStoredEnergySimulation(1000000);
-            EnergyNetworkManager.updatePosition(world, bridge);
-            for (int n = 0; n < 10; n++) EnergyNetworkManager.refreshPending(world);
-            h.assertTrue(net.mcreator.ssc.energy.EnergyTopologyService.rebuilding(world), "Large graph rebuilt synchronously");
-            h.assertTrue(net.mcreator.ssc.energy.EnergyTopologyService.workUnitsThisTick(world) <= 128, "Repeated calls exceeded shared tick budget");
+            EnergyNetworkService.updatePosition(world, bridge);
+            for (int n = 0; n < 10; n++) EnergyNetworkService.applyPendingUpdates(world);
+            h.assertTrue(EnergyTopologyService.rebuilding(world), "Large graph rebuilt synchronously");
+            h.assertTrue(EnergyTopologyService.workUnitsThisTick(world) <= 128, "Repeated calls exceeded shared tick budget");
             awaitEnergy(h, () -> {
                 h.assertTrue(world.getBlockState(lamp).getValue(LampBlock.ACTIVE), "Large connected circuit did not power lamp");
                 world.destroyBlock(bridge, false);
@@ -623,12 +625,12 @@ public final class AuditTests {
                     h.assertTrue(!world.getBlockState(lamp).getValue(LampBlock.ACTIVE), "Cable cut did not switch lamp off on next tick");
                     h.assertTrue(apc.getStoredEnergy() == charge, "Invalid circuit debited battery");
                     world.setBlockAndUpdate(bridge, cableState);
-                    EnergyNetworkManager.updatePosition(world, bridge);
+                    EnergyNetworkService.updatePosition(world, bridge);
                     world.destroyBlock(bridge, false);
                     awaitEnergy(h, () -> {
                         h.assertTrue(!world.getBlockState(lamp).getValue(LampBlock.ACTIVE), "Restart committed stale connected graph");
                         world.setBlockAndUpdate(bridge, cableState);
-                        EnergyNetworkManager.updatePosition(world, bridge);
+                        EnergyNetworkService.updatePosition(world, bridge);
                         awaitEnergy(h, () -> {
                             h.assertTrue(world.getBlockState(lamp).getValue(LampBlock.ACTIVE), "Reconnection failed");
                             for (int x = 0; x < 33; x++) for (int z = 0; z < 16; z++) {
@@ -650,18 +652,18 @@ public final class AuditTests {
             h.assertTrue(world.hasChunkAt(lamp), "Fixture requires neighboring loaded chunk");
             world.setBlockAndUpdate(lamp, Blocks.AIR.defaultBlockState());
             world.setBlockAndUpdate(cable, Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
-            EnergyNetworkManager.updatePosition(world, cable);
+            EnergyNetworkService.updatePosition(world, cable);
             world.setBlockAndUpdate(lamp, Ssc14ModBlocks.LAMP.get().defaultBlockState());
-            net.mcreator.ssc.energy.EnergyTopologyService.chunkAvailabilityChanged(world,
+            EnergyTopologyService.chunkAvailabilityChanged(world,
                     new net.minecraft.world.level.ChunkPos(lamp.getX() >> 4, lamp.getZ() >> 4));
-            EnergyNetworkManager.refreshPending(world);
+            EnergyNetworkService.applyPendingUpdates(world);
             awaitEnergy(h, () -> {
-            h.assertTrue(EnergyNetworkManager.getNetworks(world, CableType.LV).stream()
+            h.assertTrue(EnergyNetworkService.networks(world, CableType.LV).stream()
                     .anyMatch(n -> n.getCables().contains(cable) && n.getConsumers().contains(lamp)),
                     "Neighbor chunk availability did not refresh device attachments");
             world.setBlockAndUpdate(cable, Blocks.AIR.defaultBlockState());
             world.setBlockAndUpdate(lamp, Blocks.AIR.defaultBlockState());
-            EnergyNetworkManager.updatePosition(world, cable);
+            EnergyNetworkService.updatePosition(world, cable);
             h.succeed();
             });
         });
@@ -687,24 +689,24 @@ public final class AuditTests {
             }
             var first = h.absolutePos(new BlockPos(1, 1, 1));
             var unrelated = h.absolutePos(new BlockPos(1, 1, 6));
-            EnergyNetworkManager.updatePosition(world, first);
-            EnergyNetworkManager.updatePosition(world, unrelated);
+            EnergyNetworkService.updatePosition(world, first);
+            EnergyNetworkService.updatePosition(world, unrelated);
             awaitEnergy(h, () -> {
-            var kept = EnergyNetworkManager.getNetworks(world, CableType.LV).stream()
+            var kept = EnergyNetworkService.networks(world, CableType.LV).stream()
                     .filter(n -> n.getCables().contains(unrelated)).findFirst().orElseThrow();
             h.setBlock(3, 1, 1, Blocks.AIR);
-            EnergyNetworkManager.updatePosition(world, h.absolutePos(new BlockPos(3, 1, 1)));
-            h.assertTrue(EnergyNetworkManager.getNetworks(world, CableType.LV).contains(kept), "Unrelated network was rebuilt");
+            EnergyNetworkService.updatePosition(world, h.absolutePos(new BlockPos(3, 1, 1)));
+            h.assertTrue(EnergyNetworkService.networks(world, CableType.LV).contains(kept), "Unrelated network was rebuilt");
             h.assertTrue(kept.isTopologyReady(), "Unrelated circuit lost power");
             awaitEnergy(h, () -> {
-            var left = EnergyNetworkManager.getNetworks(world, CableType.LV).stream()
+            var left = EnergyNetworkService.networks(world, CableType.LV).stream()
                     .filter(n -> n.getCables().contains(first)).findFirst().orElseThrow();
             var right = h.absolutePos(new BlockPos(5, 1, 1));
             h.assertTrue(!left.getCables().contains(right), "Broken cable did not split component");
             h.setBlock(3, 1, 1, Ssc14ModBlocks.SHEATHING.get().defaultBlockState().setValue(SheathingBlock.LV, true));
-            EnergyNetworkManager.updatePosition(world, h.absolutePos(new BlockPos(3, 1, 1)));
+            EnergyNetworkService.updatePosition(world, h.absolutePos(new BlockPos(3, 1, 1)));
             awaitEnergy(h, () -> {
-            h.assertTrue(EnergyNetworkManager.getNetworks(world, CableType.LV).stream()
+            h.assertTrue(EnergyNetworkService.networks(world, CableType.LV).stream()
                     .anyMatch(n -> n.getCables().contains(first) && n.getCables().contains(right)), "Reconnected cable did not merge components");
             h.succeed();
             });
@@ -1076,7 +1078,7 @@ public final class AuditTests {
     }
     private static void awaitEnergy(GameTestHelper h, Runnable action) {
         h.runAfterDelay(1, () -> {
-            if (net.mcreator.ssc.energy.EnergyTopologyService.rebuilding(h.getLevel())) awaitEnergy(h, action);
+            if (EnergyTopologyService.rebuilding(h.getLevel())) awaitEnergy(h, action);
             else action.run();
         });
     }
@@ -1085,7 +1087,7 @@ public final class AuditTests {
         h.setBlock(1,2,1,Ssc14ModBlocks.APC.get());h.setBlock(5,3,1,Ssc14ModBlocks.LAMP.get());
         ApcBlockEntity apc=(ApcBlockEntity)h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(1,2,1)));
         apc.setStoredEnergySimulation(1000000);
-        EnergyNetworkManager.updatePosition(h.getLevel(),h.absolutePos(new BlockPos(3,1,1)));
+        EnergyNetworkService.updatePosition(h.getLevel(),h.absolutePos(new BlockPos(3,1,1)));
         awaitEnergy(h,()->{
             h.assertTrue(h.getBlockState(new BlockPos(5,3,1)).getValue(LampBlock.ACTIVE),"Fixture: connected lamp did not turn on");
             long before=apc.getStoredEnergy();
@@ -1108,7 +1110,7 @@ public final class AuditTests {
         var second = (ApcBlockEntity) h.getLevel().getBlockEntity(h.absolutePos(new BlockPos(2, 2, 1)));
         first.setStoredEnergySimulation(1000);
         second.setStoredEnergySimulation(1000);
-        EnergyNetworkManager.updatePosition(h.getLevel(), h.absolutePos(new BlockPos(3, 1, 1)));
+        EnergyNetworkService.updatePosition(h.getLevel(), h.absolutePos(new BlockPos(3, 1, 1)));
         awaitEnergy(h, () -> {
             long before = first.getStoredEnergy() + second.getStoredEnergy();
             h.runAfterDelay(20, () -> {

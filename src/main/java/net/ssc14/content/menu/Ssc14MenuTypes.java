@@ -64,6 +64,31 @@ public final class Ssc14MenuTypes {
     public static final DeferredHolder<MenuType<?>, MenuType<OrderGUIMenu>> ORDER_GUI = register("order_gui");
     public static final DeferredHolder<MenuType<?>, MenuType<SaleGUIMenu>> SALE_GUI = register("sale_gui");
 
+    static {
+        bindFactory("dop_craft_menu", DopCraftMenu::new);
+        bindFactory("i_dcode", IDcodeMenu::new);
+        bindFactory("access_config_menu", AccessConfigMENUMenu::new);
+        bindFactory("access_config_gui", AccessConfigItemMenu::new);
+        bindFactory("cabel_pannel_airlock", CabelPannelAirlockMenu::new);
+        bindFactory("grav_gen_gui", GravGenGUIMenu::new);
+        bindFactory("mac_frame_gui", MacFrameGUIMenu::new);
+        bindFactory("pd_apassanger_gui", PDApassangerGUIMenu::new);
+        bindFactory("rcdgui", RCDGUIMenu::new);
+        bindFactory("rcdgu_iwallfloor", RCDGUIwallfloorMenu::new);
+        bindFactory("headset_gu_ikostil", HeadsetMenu::new);
+        bindFactory("commun_console_gui", CommunConsoleGUIMenu::new);
+        bindFactory("vending_aut_1_gui", VendingAut1GUIMenu::new);
+        bindFactory("rcdgu_iwindows", RCDGUIwindowsMenu::new);
+        bindFactory("net_config_gui", NetConfigGUIMenu::new);
+        bindFactory("egg_carton_gui", EggCartonGUIMenu::new);
+        bindFactory("microwawe_gui", MicrowaweGUIMenu::new);
+        bindFactory("decal_scolor_gui", DECALScolorGUIMenu::new);
+        bindFactory("backpack_gui", BackpackGUIMenu::new);
+        bindFactory("order_gui", OrderGUIMenu::new);
+        bindFactory("sale_gui", SaleGUIMenu::new);
+        validateFactoryBindings();
+    }
+
     private Ssc14MenuTypes() { }
 
     public static <T extends AbstractContainerMenu> void bindFactory(
