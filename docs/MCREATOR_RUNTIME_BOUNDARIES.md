@@ -268,3 +268,5 @@ runtime owners of this behavior.
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
   facades only.
+
+<!-- Governance checkpoint synchronized after label assignment. -->
