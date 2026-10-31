@@ -110,6 +110,9 @@ owner, not merely renaming the facade.
 - communication-console menu construction and server opening now live in
   `CommunicationConsoleIntegrationService`; the bootstrap no longer owns an
   anonymous generated-menu adapter;
+- `LegacyAirlockControllerInteractionAdapter` was removed after its
+  server-authority logic moved into `AirlockControllerService`; only the
+  injectable `Adapter` port remains;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
@@ -316,6 +319,9 @@ runtime owners of this behavior.
 - communication-console menu construction and server opening now live in
   `CommunicationConsoleIntegrationService`; the bootstrap no longer owns an
   anonymous generated-menu adapter.
+- `LegacyAirlockControllerInteractionAdapter` was removed after its
+  server-authority logic moved into `AirlockControllerService`; only the
+  injectable `Adapter` port remains.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
