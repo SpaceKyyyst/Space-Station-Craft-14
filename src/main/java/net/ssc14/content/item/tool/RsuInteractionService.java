@@ -1,12 +1,14 @@
 package net.ssc14.content.item.tool;
 
 import java.util.Objects;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,10 +21,12 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 import io.netty.buffer.Unpooled;
 import net.ssc14.content.menu.construction.RCDGUIMenu;
+import net.ssc14.content.attribute.Ssc14Attributes;
+import net.ssc14.content.item.Ssc14Items;
 
-/** Boundary for the RSU runtime retained during incremental migration. */
+/** Owns RSU interaction routing and its server-authoritative runtime adapter. */
 public final class RsuInteractionService {
-    private static Adapter adapter = Adapter.NO_OP;
+    private static Adapter adapter = new CanonicalAdapter();
 
     private RsuInteractionService() { }
 
@@ -88,5 +92,38 @@ public final class RsuInteractionService {
 
         default void inventoryTick(ServerLevel level, Entity entity,
                 ItemStack stack) { }
+    }
+
+    private static final class CanonicalAdapter implements Adapter {
+        @Override
+        public void use(Level level, Player player, InteractionHand hand, ItemStack stack) {
+            useLegacy(level, player, stack, Ssc14Items.RC_DCARTRIDGE.get());
+        }
+
+        @Override
+        public void useOn(UseOnContext context) {
+            var pos = context.getClickedPos();
+            ItemStack stack = context.getItemInHand();
+            double mode = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
+                    .copyTag().getDoubleOr("Mode", 0);
+            if (mode == 1 && context.getPlayer() != null
+                    && RsuDeconstructionService.start(context.getLevel(), pos,
+                    context.getPlayer(), stack, Ssc14Items.RSU.get(),
+                    Ssc14Attributes.PROGRESS_BAR_ATRB)) {
+                return;
+            }
+            if (mode >= 2 && mode <= 10 && context.getPlayer() != null
+                    && RsuConstructionService.start(context.getLevel(), pos,
+                    context.getClickedFace(), context.getPlayer(), stack,
+                    Ssc14Items.RSU.get(), (int) mode)) {
+                return;
+            }
+        }
+
+        @Override
+        public void inventoryTick(ServerLevel level, Entity entity, ItemStack stack) {
+            RsuAimingParticleService.execute(level, entity.getX(), entity.getY(),
+                    entity.getZ(), entity, stack, Ssc14Items.RSU.get());
+        }
     }
 }

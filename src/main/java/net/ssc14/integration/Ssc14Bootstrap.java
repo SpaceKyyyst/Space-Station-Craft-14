@@ -41,7 +41,6 @@ import net.ssc14.content.menu.food.MicrowaweGUIMenu;
 import net.ssc14.content.block.commerce.LegacyCommerceConsoleIntegrationAdapter;
 import net.ssc14.content.block.access.LegacyIdConsoleIntegrationAdapter;
 import net.ssc14.content.item.tool.LegacyNetworkConfiguratorMenuAdapter;
-import net.ssc14.content.item.tool.LegacyRsuInteractionAdapter;
 import net.ssc14.content.item.weapon.LegacyFirearmInteractionAdapter;
 import net.ssc14.content.item.construction.LegacyConstructionItemInteractionAdapter;
 import net.ssc14.content.block.airlock.LegacyShuttersIntegrationAdapter;
@@ -326,7 +325,6 @@ public final class Ssc14Bootstrap {
 					new LegacyCommerceConsoleIntegrationAdapter());
 		IdConsoleIntegrationService.install(new LegacyIdConsoleIntegrationAdapter());
 		NetworkConfiguratorService.install(new LegacyNetworkConfiguratorMenuAdapter());
-		RsuInteractionService.install(new LegacyRsuInteractionAdapter());
 		ShuttersIntegrationService.install(new LegacyShuttersIntegrationAdapter());
 		AirlockUpperPlugIntegrationService.installUseHandler(
 				net.ssc14.content.airlock.AirlockUpperPlugInteractionService::execute);
