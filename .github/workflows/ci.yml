@@ -118,7 +118,7 @@ jobs:
       - name: Notify Discord
         if: steps.version.outputs.changed == 'true' && steps.duplicate.outputs.duplicate != 'true'
         env:
-          DISCORD_RELEASE_WEBHOOK: ${{ secrets.DISCORD_RELEASE_WEBHOOK }}
+          DISCORD_RELEASE_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
           VERSION: ${{ steps.version.outputs.current }}
           RUN_NUMBER: ${{ github.run_number }}
           SHA: ${{ github.sha }}
