@@ -1,7 +1,7 @@
 package net.ssc14.content.block;
 
 import java.util.List;
-import net.mcreator.ssc.block.BaseAirlockD1Block;
+import net.ssc14.content.block.airlock.BaseAirlockD1Block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;

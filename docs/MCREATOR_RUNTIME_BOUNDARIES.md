@@ -1,5 +1,11 @@
 # Remaining generated runtime boundaries / Оставшиеся generated boundaries
 
+> **Current status / Текущий статус:** этот документ содержит исторические
+> контрольные точки миграции. Миграция завершена: исторический Java package,
+> generated runtime facades и generated GUI facades удалены. Поддерживаются только
+> канонические слои `net.ssc14`; следующие разделы сохраняются как audit trail и
+> не являются инвентарём текущего source tree.
+
 > **Актуальный снимок / Current snapshot (2026-10-29):** в каталоге
 > `src/main/java/net/mcreator/ssc/procedures` больше не содержит активных процедур.
 > Microwave, MK58 breech/fire, spanner, construction и RSU перенесены в canonical

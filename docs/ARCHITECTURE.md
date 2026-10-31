@@ -66,12 +66,13 @@ Mod ID, registry ID, NBT-ключи и порядок `GasType` являются
 Исполняемый baseline этих контрактов и правила migration описаны в
 [документе совместимости](COMPATIBILITY.md).
 
-## Завершение MCreator workspace
+## Завершение ухода от MCreator
 
-`ssc_14.mcreator`, `elements/` и корневой `models/` удалены после resource- и
-compatibility-проверок. Runtime-код и ресурсы теперь поддерживаются вручную в
-target-layer и NeoForge bootstrap; оставшиеся `net.mcreator.ssc` классы являются
-только deprecated compatibility facades до миграции их consumers.
+`ssc_14.mcreator`, `elements/`, корневой `models/` и весь пакет
+`net.mcreator.ssc` удалены после resource-, compatibility- и build-проверок.
+Runtime-код и ресурсы поддерживаются вручную в target-layer и NeoForge bootstrap.
+Удаление package facade является намеренным breaking change для исходной и
+бинарной совместимости: consumers должны использовать `net.ssc14`.
 
 ## Симуляция и хранение
 
@@ -112,15 +113,10 @@ target-layer и NeoForge bootstrap; оставшиеся `net.mcreator.ssc` кл
 
 ## Статус миграции MCreator / MCreator migration status
 
-Основные runtime-пути уже работают через канонические NeoForge-сервисы: кислородный
-генератор, гравитация, топливный бак, C4, ядерная боеголовка, реестр паллет и
-проверки доступа шлюза/шкафов. Оставшиеся классы `IntegrationService` являются
-явными переходными границами, а не новой игровой архитектурой. Они нужны там, где
-ещё сохраняются старые GUI, сетевые меню, формат сохранения или отдельные legacy API:
-communication console, commerce console, station-code debug,
-шкафы, portable menus и несколько строительных/оружейных взаимодействий.
-Их удаление допустимо только после переноса соответствующего поведения и
-регрессионной проверки сохранений.
+Все runtime-пути работают через канонические NeoForge-сервисы: кислородный
+генератор, гравитация, топливный бак, C4, ядерная боеголовка, реестр паллет,
+GUI, сеть и проверки доступа шлюзов/шкафов. Переходные фасады удалены; новый код
+не должен возвращать зависимости от исторического генератора.
 
 Критический медицинский tick и расход жидкости работают через
 `MedicalCriticalTickHandler` и `LiquidMetabolismTickHandler`; generated wrappers
@@ -133,21 +129,17 @@ Client slot interaction работает через `InteractionKeyMappings` и
 `InteractionSlotKeyHandler`; старое поле key mapping сохранено только как alias.
 
 Рендер игрока регистрируется через канонический клиентский
-`HumanModelRenderHandler`. Он сохраняет существующие registry render-state,
-humanoid-моделей и race-атрибутов как явные legacy-входы; эти registry остаются
-отдельной границей миграции и не дублируются молча.
+`HumanModelRenderHandler`; registry render-state, humanoid-модели и race-атрибуты
+принадлежат только canonical client layer.
 
-Health HUD overlay зарегистрирован в canonical `net.ssc14.client.overlay`;
-`net.mcreator.ssc.client.screens.HealthUIOverlay` сохранён как тонкий
-compatibility facade с тем же static event-handler API.
+Health HUD overlay зарегистрирован и реализован только в canonical
+`net.ssc14.client.overlay`.
 
-Overlay газоанализатора зарегистрирован в canonical
-`net.ssc14.client.overlay`; generated screen class сохранён только как
-compatibility facade.
+Overlay газоанализатора зарегистрирован и реализован только в canonical
+`net.ssc14.client.overlay`.
 
-World-check HUD overlay зарегистрирован в canonical
-`net.ssc14.client.overlay`; generated screen class сохранён как
-compatibility facade с прежним static event-handler API.
+World-check HUD overlay зарегистрирован и реализован только в canonical
+`net.ssc14.client.overlay`.
 
 Hunger/thirst HUD overlays зарегистрированы в canonical
 `net.ssc14.client.overlay`; generated screen classes сохранены как

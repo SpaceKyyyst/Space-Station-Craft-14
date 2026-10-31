@@ -1,35 +1,38 @@
 # Целевая архитектура / Target architecture
 
-Этот документ задаёт проверяемое направление постепенной миграции. Он не описывает
-текущий `net.mcreator.ssc` как уже завершённую архитектуру и не разрешает массовое
-переименование пакетов.
+Этот документ фиксирует целевую архитектуру после завершения миграции. Исторический
+`net.mcreator.ssc` удалён; поддерживаемым runtime- и test-package является только
+`net.ssc14`.
 
-This document defines an enforceable direction for incremental migration. It does
-not present the current `net.mcreator.ssc` tree as the finished architecture and it
-does not authorize a bulk package rename.
+This document records the target architecture after migration completion. The
+historical `net.mcreator.ssc` tree has been removed; `net.ssc14` is the only
+supported runtime and test package.
 
 <!-- architecture-contract:ru -->
+
+> **Финальный статус / Final status:** разделы ниже сохраняют историческую карту
+> migration stages. Их compatibility facade references describe completed work;
+> no such facade remains in the current source tree.
 
 ## Русский контракт
 
 ### Назначение, цели и ограничения
 
-Новый поддерживаемый код постепенно размещается в `net.ssc14`. Существующий
-`net.mcreator.ssc` остаётся legacy-адаптером и источником миграции: зависимости
-временно направлены из legacy-кода в целевой код, но целевые слои не импортируют
-legacy namespace.
+Весь поддерживаемый код размещён в `net.ssc14`. Исторический Java package и его
+адаптеры удалены; целевые слои не имеют совместимостных импортов.
 
 Цели:
 
 - отделить чистые правила от Minecraft и NeoForge;
 - сделать серверные сценарии единственными владельцами игрового состояния;
 - изолировать client-only API и уменьшать зафиксированный долг;
-- переносить по одной подсистеме на PR с сохранением публичных контрактов;
+- переносить подсистемы на атомарных PR с сохранением игровых registry и save
+  контрактов;
 - проверять границы статически, а поведение — unit-, domain- и GameTest-тестами.
 
-Не являются целями этого этапа массовый перенос `net.mcreator.ssc`, изменение mod
-ID `ssc_14`, registry ID, ресурсов, SavedData/NBT, payload, геймплея, зависимостей
-или создание абстракций «на будущее». Пустые пакеты и классы запрещены: слой
+Удаление исторического package является завершённым breaking change для исходных
+и бинарных consumers; mod ID `ssc_14`, registry ID, ресурсы, SavedData/NBT,
+payload и геймплей сохранены. Пустые пакеты и классы запрещены: слой
 появляется на диске только вместе с реальным кодом и тестом.
 
 ### Пять слоёв и ответственности
@@ -80,21 +83,18 @@ flowchart LR
 Minecraft-адаптеров и orchestration. При переносе чистые значения и алгоритмы
 идут в Core, серверные операции — в Common, SavedData/payload/event glue — в
 Integration, блоки/предметы/меню — в Content, экраны/render/input — в Client.
-Энергетический runtime уже находится в `net.ssc14.content.energy`; старые
-`net.mcreator.ssc.energy` классы оставлены только compatibility-фасадами.
-Это карта назначения, а не обещание перенести все остальные пакеты одним изменением.
+Энергетический runtime находится в `net.ssc14.content.energy`; compatibility-фасады
+удалены после перевода consumers на canonical API.
 
-Первый реальный пример — перенос `ProportionalAllocation` в
-`net.ssc14.core.math` с делегирующим legacy-фасадом. Composition root должен
+`ProportionalAllocation` находится в `net.ssc14.core.math`. Composition root должен
 находиться под `net.ssc14.integration.neoforge`, но создаётся только тогда,
 когда есть реальная сборка зависимостей; placeholder и marker-классы запрещены.
 
-Реестр типов частиц — первая миграция в Content. Новым реестром владеет
-`net.ssc14.content.particle.Ssc14ParticleTypes`, а сгенерированные потребители
-временно работают через deprecated-фасад `Ssc14ModParticleTypes`. Registry ID
+Реестром типов частиц владеет
+`net.ssc14.content.particle.Ssc14ParticleTypes`. Registry ID
 не изменены и защищены манифестом совместимости Stage 4.
 
-Реестр звуков продолжает этот подход: всеми 81 регистрациями владеет
+Реестр звуков: всеми 81 регистрациями владеет
 `net.ssc14.content.sound.Ssc14SoundEvents`, который является единственным
 владельцем sound registry. Sound ID и `sounds.json` не изменены; строковые
 runtime-потребители продолжают использовать стабильные resource ID.

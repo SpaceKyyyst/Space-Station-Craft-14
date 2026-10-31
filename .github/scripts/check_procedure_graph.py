@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-PROCEDURE_DIR = Path("src/main/java/net/mcreator/ssc/procedures")
+PROCEDURE_DIR = Path("src/main/java/net/ssc14/content/procedure")
 MANIFEST = Path("config/compatibility/procedure-call-graph.txt")
 CALL_PATTERN = re.compile(r"\b([A-Za-z_$][\w$]*Procedure)\.execute\s*\(")
 
