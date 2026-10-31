@@ -6,13 +6,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-/** Integration boundary between canonical shutters and legacy procedures. */
+/** Owns canonical shutters state, interaction and animation integration. */
 public final class ShuttersIntegrationService {
-    private static Adapter adapter = new Adapter() {
-        @Override public void update(Level level, BlockPos pos, BlockState state) { }
-        @Override public void use(Level level, BlockPos pos, BlockState state, Player player) { }
-        @Override public void setOpen(Level level, BlockPos pos, BlockState state, boolean open) { }
-    };
+    private static Adapter adapter = new CanonicalAdapter();
 
     private ShuttersIntegrationService() { }
 
@@ -38,5 +34,22 @@ public final class ShuttersIntegrationService {
         void update(Level level, BlockPos pos, BlockState state);
         void use(Level level, BlockPos pos, BlockState state, Player player);
         void setOpen(Level level, BlockPos pos, BlockState state, boolean open);
+    }
+
+    private static final class CanonicalAdapter implements Adapter {
+        @Override
+        public void update(Level level, BlockPos pos, BlockState state) {
+            ShuttersStateService.update(level, pos, state);
+        }
+
+        @Override
+        public void use(Level level, BlockPos pos, BlockState state, Player player) {
+            ShuttersInteractionService.use(level, pos, state, player);
+        }
+
+        @Override
+        public void setOpen(Level level, BlockPos pos, BlockState state, boolean open) {
+            ShuttersAnimationService.setOpen(level, pos, open);
+        }
     }
 }

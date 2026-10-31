@@ -116,6 +116,8 @@ owner, not merely renaming the facade.
 - `LegacyRsuInteractionAdapter` was removed after RSU mode routing,
   construction/deconstruction dispatch, and aiming-particle updates moved into
   the default adapter of `RsuInteractionService`;
+- `LegacyShuttersIntegrationAdapter` was removed after shutters state,
+  interaction and animation delegation moved into `ShuttersIntegrationService`;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure` и
@@ -328,6 +330,8 @@ runtime owners of this behavior.
 - `LegacyRsuInteractionAdapter` was removed after RSU mode routing,
   construction/deconstruction dispatch, and aiming-particle updates moved into
   the default adapter of `RsuInteractionService`.
+- `LegacyShuttersIntegrationAdapter` was removed after shutters state,
+  interaction and animation delegation moved into `ShuttersIntegrationService`.
 - SSC14 command registrations, cargo order menu events, reagent fluid models,
   and the Handy mouse compatibility hook now live in canonical command,
   commerce, and client compatibility packages; their generated classes are
