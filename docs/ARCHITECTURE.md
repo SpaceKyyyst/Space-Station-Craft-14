@@ -227,12 +227,12 @@ the default adapter inside `NetworkConfiguratorService`; the separate
 default adapter внутри `NetworkConfiguratorService`; отдельный
 `LegacyNetworkConfiguratorMenuAdapter` удалён, а adapter port сохранён.
 
-Commerce order/sale console opening and menu factories now use the default
-adapter inside `CommerceConsoleIntegrationService`; the separate
+Commerce order/sale console opening and menu factories now use the canonical
+default adapter inside `CommerceConsoleIntegrationService`; the separate
 `LegacyCommerceConsoleIntegrationAdapter` was removed while the adapter port remains.
 
-Открытие order/sale commerce console и menu factories теперь используют default
-adapter внутри `CommerceConsoleIntegrationService`; отдельный
+Открытие order/sale commerce console и menu factories теперь используют canonical
+default adapter внутри `CommerceConsoleIntegrationService`; отдельный
 `LegacyCommerceConsoleIntegrationAdapter` удалён, а adapter port сохранён.
 
 HUD overlays action-progress, firearm-ammo, multitool и health-analyzer также
