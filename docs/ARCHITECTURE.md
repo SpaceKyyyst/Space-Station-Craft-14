@@ -227,6 +227,14 @@ the default adapter inside `NetworkConfiguratorService`; the separate
 default adapter внутри `NetworkConfiguratorService`; отдельный
 `LegacyNetworkConfiguratorMenuAdapter` удалён, а adapter port сохранён.
 
+Commerce order/sale console opening and menu factories now use the default
+adapter inside `CommerceConsoleIntegrationService`; the separate
+`LegacyCommerceConsoleIntegrationAdapter` was removed while the adapter port remains.
+
+Открытие order/sale commerce console и menu factories теперь используют default
+adapter внутри `CommerceConsoleIntegrationService`; отдельный
+`LegacyCommerceConsoleIntegrationAdapter` удалён, а adapter port сохранён.
+
 HUD overlays action-progress, firearm-ammo, multitool и health-analyzer также
 зарегистрированы в canonical `net.ssc14.client.overlay`; generated screen
 classes сохранены как compatibility facades с прежними event-handler API.
