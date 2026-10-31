@@ -92,6 +92,9 @@ owner, not merely renaming the facade.
 - Hunger/thirst HUD overlays теперь зарегистрированы в canonical
   `net.ssc14.client.overlay`; generated screen classes сохранены как facades,
   thresholds и animation-frame behavior не изменены;
+- Action-progress, firearm-ammo, multitool и health-analyzer overlays теперь
+  зарегистрированы в canonical `net.ssc14.client.overlay`; generated screen
+  classes сохранены как compatibility facades с прежними event-handler API;
 - generated `Ssc14Mod` now only provides the NeoForge entrypoint and preserved
   static compatibility helpers; registration composition lives in canonical
   `net.ssc14.integration.Ssc14Bootstrap`;
@@ -200,6 +203,9 @@ boundary:
 - Hunger/thirst HUD overlays are now registered in canonical
   `net.ssc14.client.overlay`; generated screen classes remain facades, with
   thresholds and animation-frame behavior unchanged;
+- Action-progress, firearm-ammo, multitool, and health-analyzer overlays are now
+  registered in canonical `net.ssc14.client.overlay`; generated screen classes
+  remain compatibility facades with their existing event-handler APIs;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
   `TestSunEntity` owner and renderer are canonical as well.
 - `LiquidMetabolismTICProcedure`, `SSC14CriticalTickProcedure`, and
