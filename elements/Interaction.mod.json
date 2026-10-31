@@ -1,9 +1,0 @@
-{
-  "_fv": 89,
-  "_type": "keybind",
-  "definition": {
-    "triggerKey": "E",
-    "keyBindingName": "Interaction",
-    "keyBindingCategoryKey": "inventory"
-  }
-}

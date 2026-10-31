@@ -66,16 +66,12 @@ Mod ID, registry ID, NBT-ключи и порядок `GasType` являются
 Исполняемый baseline этих контрактов и правила migration описаны в
 [документе совместимости](COMPATIBILITY.md).
 
-## Исторические исходники MCreator
+## Завершение MCreator workspace
 
-`ssc_14.mcreator`, `elements/` и `models/` сохранены только как исторический источник ресурсов
-и compatibility baseline. Runtime-код больше не генерируется и не поддерживается через MCreator;
-новые подсистемы реализуются в target-layer и NeoForge bootstrap.
-Перед регенерацией нужно зафиксировать изменения, проверить блокировку
-редактируемых элементов в MCreator и затем просмотреть весь Git diff.
-Не считать Java-файл защищённым от перезаписи только из-за ручных правок.
-Новая доменная логика выносится из генерируемых процедур; после генерации
-необходимо повторить сборку и тесты.
+`ssc_14.mcreator`, `elements/` и корневой `models/` удалены после resource- и
+compatibility-проверок. Runtime-код и ресурсы теперь поддерживаются вручную в
+target-layer и NeoForge bootstrap; оставшиеся `net.mcreator.ssc` классы являются
+только deprecated compatibility facades до миграции их consumers.
 
 ## Симуляция и хранение
 
