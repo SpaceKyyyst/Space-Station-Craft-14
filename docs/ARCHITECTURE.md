@@ -177,6 +177,15 @@ compatibility/test seam.
 anonymous generated-menu adapter. Инъекционный adapter сохранён только как
 compatibility/test seam.
 
+Airlock controller mode handling and server-authority checks now live in
+`AirlockControllerService` itself. The separate `LegacyAirlockControllerInteractionAdapter`
+was removed; the `Adapter` port remains injectable for compatibility tests.
+
+Обработка режимов airlock controller и server-authority checks теперь находятся
+в самом `AirlockControllerService`. Отдельный
+`LegacyAirlockControllerInteractionAdapter` удалён; порт `Adapter` сохранён для
+совместимых тестовых замен.
+
 HUD overlays action-progress, firearm-ammo, multitool и health-analyzer также
 зарегистрированы в canonical `net.ssc14.client.overlay`; generated screen
 classes сохранены как compatibility facades с прежними event-handler API.
