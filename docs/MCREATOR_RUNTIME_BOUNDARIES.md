@@ -42,17 +42,11 @@ registration or compatibility behavior.
 
 ### Текущие runtime-границы / Current runtime boundaries
 
-Эти классы ещё не удаляются автоматически: каждый из них либо реализует
-`ReagentContainerRuntime`, либо подключает внешний event/API контракт. Их замена
-требует отдельной миграции владельца, а не переименования фасада.
+Оставшиеся границы перечислены явно; их удаление требует отдельной миграции
+владельца, а не простого переименования фасада.
 
-These classes are intentionally retained: each implements `ReagentContainerRuntime`
-or connects an external event/API contract. Replacing them requires migrating the
-owner, not merely renaming the facade.
-
-- `LegacyReagentContainerRuntime` — storage/color/drink bridge for chemistry;
-- `LegacyCuriosProcedureAdapter` — Curios capability bridge;
-- `LegacyCommunicationConsoleAdapter` — communication-console event bridge.
+The remaining boundaries are listed explicitly; removing them requires migrating
+their owner, not merely renaming a facade.
 
 Firearm tooltip, use, swing and inventory-tick actions now execute through the
 canonical default adapter in `FirearmInteractionService`; the separate
@@ -224,12 +218,12 @@ boundary:
 - `LocalChatEventHandler` remains in `net.mcreator.ssc.integration`; message
   routing, radio prefixes, popup formatting, and server-side audience checks
   remain unchanged pending extraction of a pure chat/radio domain service;
-- `LegacyReagentContainerRuntime` now owns the integration bridge in
-  `net.mcreator.ssc.integration`; the redundant `ReagentColorHelper` facade
-  was removed while color mixing remains owned by canonical `ReagentColorMixer`;
-- canonical `ReagentContainerStorage` now owns codec-backed container
-  reads/additions/removals; the legacy bridge retains only drinking and
-  catalog/effect integration;
+- canonical `ReagentService` now owns the reagent container runtime adapter;
+  `LegacyReagentContainerRuntime` was removed while color mixing remains owned
+  by canonical `ReagentColorMixer`;
+- canonical `ReagentContainerStorage` owns codec-backed container
+  reads/additions/removals, and `ReagentService` owns drinking and catalog/effect
+  integration;
 - the unused generated `ReagentFluidHandler` nested class was removed after
   repository-wide reference verification; fluid storage remains covered by
   the canonical container contract;
