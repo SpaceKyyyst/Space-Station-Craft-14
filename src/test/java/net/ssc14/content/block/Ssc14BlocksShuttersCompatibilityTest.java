@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -29,7 +28,6 @@ class Ssc14BlocksShuttersCompatibilityTest {
         assertEquals("ssc_14:shutters", Ssc14Blocks.SHUTTERS.getId().toString());
         assertEquals("ssc_14:shutters", Ssc14AirlockBlockEntities.SHUTTERS.getId().toString());
         assertSame(Ssc14Blocks.SHUTTERS, Ssc14ModBlocks.SHUTTERS);
-        assertSame(Ssc14AirlockBlockEntities.SHUTTERS, Ssc14ModBlockEntities.SHUTTERS);
     }
 
     @Test

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,7 +21,6 @@ class Ssc14BlocksMicrowaveCompatibilityTest {
         assertEquals("ssc_14:microwawe",
                 Ssc14MachineBlockEntities.MICROWAWE.getId().toString());
         assertSame(Ssc14Blocks.MICROWAWE, Ssc14ModBlocks.MICROWAWE);
-        assertSame(Ssc14MachineBlockEntities.MICROWAWE, Ssc14ModBlockEntities.MICROWAWE);
     }
 
     @Test

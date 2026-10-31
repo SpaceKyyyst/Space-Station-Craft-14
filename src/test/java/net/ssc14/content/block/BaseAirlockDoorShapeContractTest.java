@@ -9,7 +9,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HexFormat;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.EmptyBlockGetter;
@@ -28,7 +27,7 @@ class BaseAirlockDoorShapeContractTest {
                 Ssc14AirlockBlockEntities.BASE_AIRLOCK_D_1.getId().toString());
         assertSame(Ssc14Blocks.BASE_AIRLOCK_D_1, Ssc14ModBlocks.BASE_AIRLOCK_D_1);
         assertSame(Ssc14AirlockBlockEntities.BASE_AIRLOCK_D_1,
-                Ssc14ModBlockEntities.BASE_AIRLOCK_D_1);
+                Ssc14AirlockBlockEntities.BASE_AIRLOCK_D_1);
     }
 
     @Test

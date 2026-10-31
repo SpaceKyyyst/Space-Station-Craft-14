@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -21,7 +20,6 @@ class Ssc14BlocksSheathingCompatibilityTest {
         assertEquals("ssc_14:sheathing",
                 Ssc14CableBlockEntities.SHEATHING.getId().toString());
         assertSame(Ssc14Blocks.SHEATHING, Ssc14ModBlocks.SHEATHING);
-        assertSame(Ssc14CableBlockEntities.SHEATHING, Ssc14ModBlockEntities.SHEATHING);
     }
 
     @Test

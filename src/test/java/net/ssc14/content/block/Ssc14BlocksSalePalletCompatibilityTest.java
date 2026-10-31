@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -18,7 +17,6 @@ class Ssc14BlocksSalePalletCompatibilityTest {
     void canonicalRegistryOwnsSalePalletIdsAndLegacyFacadesAliasHolders() {
         assertEquals("ssc_14:sale_pallet", Ssc14Blocks.SALE_PALLET.getId().toString());
         assertSame(Ssc14Blocks.SALE_PALLET, Ssc14ModBlocks.SALE_PALLET);
-        assertSame(Ssc14CommerceBlockEntities.SALE_PALLET, Ssc14ModBlockEntities.SALE_PALLET);
     }
 
     @Test

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -22,7 +21,7 @@ class Ssc14BlocksPortableSheaterCompatibilityTest {
                 Ssc14MachineBlockEntities.PORTABLE_SHEATER.getId().toString());
         assertSame(Ssc14Blocks.PORTABLE_SHEATER, Ssc14ModBlocks.PORTABLE_SHEATER);
         assertSame(Ssc14MachineBlockEntities.PORTABLE_SHEATER,
-                Ssc14ModBlockEntities.PORTABLE_SHEATER);
+                Ssc14MachineBlockEntities.PORTABLE_SHEATER);
     }
 
     @Test

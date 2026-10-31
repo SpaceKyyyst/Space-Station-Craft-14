@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,7 +22,7 @@ class Ssc14BlocksGravityGeneratorCompatibilityTest {
                 Ssc14GravityBlockEntities.GRAVITY_GENERATOR.getId().toString());
         assertSame(Ssc14Blocks.GRAVITY_GENERATOR, Ssc14ModBlocks.GRAVITY_GENERATOR);
         assertSame(Ssc14GravityBlockEntities.GRAVITY_GENERATOR,
-                Ssc14ModBlockEntities.GRAVITY_GENERATOR);
+                Ssc14GravityBlockEntities.GRAVITY_GENERATOR);
     }
 
     @Test

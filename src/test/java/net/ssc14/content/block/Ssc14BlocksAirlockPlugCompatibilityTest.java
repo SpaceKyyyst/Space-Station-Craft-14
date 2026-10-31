@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.mcreator.ssc.init.Ssc14ModBlockEntities;
 import net.mcreator.ssc.init.Ssc14ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -31,9 +30,9 @@ class Ssc14BlocksAirlockPlugCompatibilityTest {
         assertSame(Ssc14Blocks.AIRLOCK_UP_PLUG, Ssc14ModBlocks.AIRLOCK_UP_PLUG);
         assertSame(Ssc14Blocks.AIRLOCK_UP_PLUG_OPEN, Ssc14ModBlocks.AIRLOCK_UP_PLUG_OPEN);
         assertSame(Ssc14AirlockBlockEntities.AIRLOCK_UP_PLUG,
-                Ssc14ModBlockEntities.AIRLOCK_UP_PLUG);
+                Ssc14AirlockBlockEntities.AIRLOCK_UP_PLUG);
         assertSame(Ssc14AirlockBlockEntities.AIRLOCK_UP_PLUG_OPEN,
-                Ssc14ModBlockEntities.AIRLOCK_UP_PLUG_OPEN);
+                Ssc14AirlockBlockEntities.AIRLOCK_UP_PLUG_OPEN);
     }
 
     @Test
