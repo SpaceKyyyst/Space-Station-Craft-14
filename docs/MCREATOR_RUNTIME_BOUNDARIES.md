@@ -87,8 +87,6 @@ owner, not merely renaming the facade.
   renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
 - `Ssc14ModCuriosRenderers` — compatibility facade only; Curios renderer
   registration now belongs exclusively to `Ssc14CuriosRenderers`;
-- `Ssc14ModScreens` — compatibility facade only; screen registration and
-  menu-state client wiring now belong exclusively to `Ssc14Screens`;
 - `Ssc14ModKeyMappings` — compatibility facade only; key registration and
   client tick dispatch now belong exclusively to `Ssc14KeyMappings`;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
@@ -192,8 +190,6 @@ boundary:
   renderer registration now belongs exclusively to `Ssc14EntityRenderers`;
 - `Ssc14ModCuriosRenderers` — compatibility facade only; Curios renderer
   registration now belongs exclusively to `Ssc14CuriosRenderers`;
-- `Ssc14ModScreens` — compatibility facade only; screen registration and
-  menu-state client wiring now belong exclusively to `Ssc14Screens`;
 - `Ssc14ModKeyMappings` — compatibility facade only; key registration and
   client tick dispatch now belong exclusively to `Ssc14KeyMappings`;
 - Renderer implementations now live in `net.ssc14.client.renderer`; the
@@ -229,7 +225,8 @@ runtime owners of this behavior.
 
 - `Ssc14MenuTypes` является владельцем регистрации всех меню, factory bindings и
   типизированных `MenuType<T>`; `Ssc14ModMenus` удалён после переноса wiring.
-- `Ssc14ModScreens` уже использует canonical menu registry напрямую.
+- `Ssc14ModScreens` удалён после переноса screen registration и menu-state
+  client wiring в `Ssc14Screens`.
 - `Ssc14WorldVariables` является единственным владельцем saved-data runtime;
   `Ssc14ModVariables` удалён после перевода compatibility callers на canonical
   state service и сохранения `worldvars`/`mapvars` контрактов.
@@ -252,7 +249,8 @@ runtime owners of this behavior.
 - `Ssc14MenuTypes` owns registration, factory bindings, and typed `MenuType<T>`
   values for every menu; `Ssc14ModMenus` was removed after its wiring moved to
   the canonical owner.
-- `Ssc14ModScreens` now consumes the canonical menu registry directly.
+- `Ssc14ModScreens` was removed after screen registration and menu-state client
+  wiring moved to `Ssc14Screens`.
 - `Ssc14WorldVariables` is the sole saved-data runtime owner;
   `Ssc14ModVariables` was removed after compatibility callers moved to the
   canonical state service and the `worldvars`/`mapvars` contracts were retained.
