@@ -100,10 +100,9 @@ Integration, блоки/предметы/меню — в Content, экраны/r
 строковые runtime-потребители продолжают использовать стабильные resource ID.
 
 Реестром 11 атрибутов владеет `net.ssc14.content.attribute.Ssc14Attributes`.
-`Ssc14ModAttributes` временно сохраняет прежние поля как deprecated-алиасы и
-остаётся NeoForge event-адаптером привязки атрибутов к игроку и legacy-сущностям.
-ID, параметры атрибутов и состав привязок не изменены; потребители и сущности
-переносятся отдельными вертикальными срезами.
+`Ssc14Attributes` также владеет NeoForge event-адаптером привязки атрибутов к
+игроку и legacy-сущностям. ID, параметры атрибутов и состав привязок не
+изменены; runtime-потребители переведены на canonical registry.
 
 ### Серверный авторитет и UI
 
@@ -270,10 +269,9 @@ preserves the previous Java API as a deprecated facade. Sound IDs and `sounds.js
 are unchanged; string-based runtime consumers keep using stable resource IDs.
 
 The 11-attribute registry is owned by
-`net.ssc14.content.attribute.Ssc14Attributes`. `Ssc14ModAttributes` temporarily
-keeps the former fields as deprecated aliases and remains the NeoForge event adapter
+`net.ssc14.content.attribute.Ssc14Attributes`, including the NeoForge event adapter
 that binds attributes to the player and legacy entities. IDs, attribute parameters,
-and binding membership are unchanged; consumers and entities move in separate
+and binding membership are unchanged; runtime consumers now use the canonical
 vertical slices.
 
 ### Server authority and UI

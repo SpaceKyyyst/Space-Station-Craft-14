@@ -189,7 +189,7 @@ bypass, unrestricted-door semantics и bitmask permissions. Старый
 open/close процедур.
 
 Оставшиеся canonical inputs из `net.mcreator.ssc.init` — registry aliases
-(`Ssc14ModItems`, `Ssc14ModBlocks`, `Ssc14ModAttributes`). Их замена допустима
+(`Ssc14ModItems`, `Ssc14ModBlocks`). Их замена допустима
 только через ID-preserving registry migration: массовая текстовая замена создаёт
 риск несовместимости сохранений и дублирования регистраций.
 
@@ -315,7 +315,7 @@ old `AirlockAccessPolicy` remains a compatibility facade after generated
 open/close procedures moved to canonical services.
 
 The remaining canonical inputs from `net.mcreator.ssc.init` are registry aliases
-(`Ssc14ModItems`, `Ssc14ModBlocks`, `Ssc14ModAttributes`). They must be replaced
+(`Ssc14ModItems`, `Ssc14ModBlocks`). They must be replaced
 only through an ID-preserving registry migration; broad textual replacement
 risks save incompatibility and duplicate registrations.
 
