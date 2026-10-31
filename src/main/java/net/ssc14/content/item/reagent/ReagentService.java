@@ -1,14 +1,13 @@
 
 package net.ssc14.content.item.reagent;
 
-import net.ssc14.content.item.reagent.LegacyReagentContainerRuntime;
-
 import net.ssc14.content.item.reagent.ReagentContainerItem;
 import net.ssc14.content.item.reagent.ReagentContentsCodec;
 import net.ssc14.content.item.reagent.ReagentContainerAccess;
 import net.ssc14.common.chemistry.ReagentAmounts;
 import net.ssc14.common.chemistry.ReagentReactionPlanner;
 import net.ssc14.common.chemistry.ReagentTransferPlan;
+import net.ssc14.common.chemistry.ReagentColorMixer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -465,7 +464,7 @@ public class ReagentService {
     }
 
     public static void register(IEventBus bus) {
-        ReagentContainerAccess.install(LegacyReagentContainerRuntime.INSTANCE);
+        ReagentContainerAccess.install(new CanonicalContainerRuntime());
         FLUID_TYPES.register(bus);
         FLUIDS.register(bus);
     }
@@ -653,6 +652,40 @@ public class ReagentService {
         setReagents(stack, remaining);
         if (alcohol > 0) AlcoholSystem.giveAlcohol(player, (int) Math.min(Integer.MAX_VALUE, alcohol));
         return drinkAmount;
+    }
+
+    private static final class CanonicalContainerRuntime implements ReagentContainerRuntime {
+        @Override
+        public Map<String, Integer> contents(ItemStack stack) {
+            return ReagentContainerStorage.contents(stack);
+        }
+
+        @Override
+        public boolean add(ItemStack stack, String reagentId, int amount) {
+            return ReagentContainerStorage.add(stack, reagentId, amount);
+        }
+
+        @Override
+        public boolean remove(ItemStack stack, String reagentId, int amount) {
+            return ReagentContainerStorage.remove(stack, reagentId, amount);
+        }
+
+        @Override
+        public int drink(ItemStack stack, int amount, ServerPlayer player) {
+            return drinkReagents(stack, amount, player);
+        }
+
+        @Override
+        public int mixedColor(ItemStack stack) {
+            if (!(stack.getItem() instanceof ReagentContainerItem)) {
+                return 0xFFFFFF;
+            }
+            Map<String, Integer> reagents = ReagentContainerStorage.contents(stack);
+            Map<String, Integer> colors = new HashMap<>();
+            reagents.keySet().forEach(id -> getReagent(id)
+                    .ifPresent(reagent -> colors.put(id, reagent.getColorRgb())));
+            return ReagentColorMixer.mix(reagents, colors);
+        }
     }
 
 @SubscribeEvent
