@@ -260,17 +260,17 @@ Deleting a subscriber solely because `rg` finds no direct calls is a regression 
 
 ## RU — Construction adapter boundary
 
-`LegacyConstructionItemInteractionAdapter` остаётся тонкой legacy-границей для
-item-event wiring. Игровая логика уже принадлежит `ConstructionAssemblyService`
-и `SheathingCableService`; старые steel/plasteel/cable procedures не являются
-runtime-владельцами этой механики.
+Конструкционные item actions теперь выполняются через canonical default adapter
+в `ConstructionItemInteractionService`; `LegacyConstructionItemInteractionAdapter`
+удалён, а adapter port остаётся injectable. Игровая логика принадлежит
+`ConstructionAssemblyService` и `SheathingCableService`.
 
 ## EN — Construction adapter boundary
 
-`LegacyConstructionItemInteractionAdapter` remains a thin legacy boundary for
-item-event wiring. The gameplay logic is owned by `ConstructionAssemblyService`
-and `SheathingCableService`; the old steel/plasteel/cable procedures are not
-runtime owners of this behavior.
+Construction item actions now execute through the canonical default adapter in
+`ConstructionItemInteractionService`; `LegacyConstructionItemInteractionAdapter`
+was removed while the adapter port remains injectable. Gameplay logic is owned by
+`ConstructionAssemblyService` and `SheathingCableService`.
 
 ## RU — Текущий остаток generated-слоя
 
