@@ -32,7 +32,8 @@ public final class MenuStateServerRegistration {
 
     @SubscribeEvent
     public static void register(FMLCommonSetupEvent event) {
-        Ssc14NetworkPayloads.addServerbound(MenuStateUpdateMessage.TYPE,
-                MenuStateUpdateMessage.STREAM_CODEC, MenuStateServerRegistration::handle);
+        // The client handler is attached by the client-only payload-handler event.
+        Ssc14NetworkPayloads.addBidirectional(MenuStateUpdateMessage.TYPE,
+                MenuStateUpdateMessage.STREAM_CODEC, MenuStateServerRegistration::handle, null);
     }
 }

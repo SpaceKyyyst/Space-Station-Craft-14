@@ -1,6 +1,6 @@
-# Generated from the dedicated-server runtime payload registrations after the
-# server/client menu-state registration split at 17f558c3.
-serverbound ssc_14 ssc_14:menustate_update
+# Dedicated-server payload baseline from 17f558c3, with menu state declared
+# bidirectional in 0.1.28.2-fix to match its existing two-way transport.
+bidirectional ssc_14 ssc_14:menustate_update
 clientbound 1 ssc_14:chunk_decals
 clientbound ssc_14 ssc_14:gas_analyser
 clientbound ssc_14 ssc_14:gas_analyzer_snapshot

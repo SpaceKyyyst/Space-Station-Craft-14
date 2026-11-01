@@ -7,7 +7,7 @@ plugins {
 }
 
 // Versioned pushes to main trigger artifact, release notes, and Discord publication.
-version = '0.1.28.2-beta'
+version = '0.1.28.2-fix'
 base.archivesName = "ssc_14"
 
 repositories {
