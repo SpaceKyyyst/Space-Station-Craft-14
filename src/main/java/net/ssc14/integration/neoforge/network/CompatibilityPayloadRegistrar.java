@@ -8,6 +8,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.handling.IPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import org.jspecify.annotations.Nullable;
 
 /** Records a contract only after NeoForge accepts the corresponding registration. */
 public final class CompatibilityPayloadRegistrar {
@@ -34,9 +35,10 @@ public final class CompatibilityPayloadRegistrar {
     }
 
     public <T extends CustomPacketPayload> void playBidirectional(CustomPacketPayload.Type<T> type,
-            StreamCodec<? super RegistryFriendlyByteBuf, T> codec, IPayloadHandler<T> clientHandler,
+            StreamCodec<? super RegistryFriendlyByteBuf, T> codec, @Nullable IPayloadHandler<T> clientHandler,
             IPayloadHandler<T> serverHandler) {
-        delegate.playBidirectional(type, codec, clientHandler, serverHandler);
+        // Preserve this wrapper's client-first API; NeoForge 26.1 expects the server handler first.
+        delegate.playBidirectional(type, codec, serverHandler, clientHandler);
         record("bidirectional", type);
     }
 

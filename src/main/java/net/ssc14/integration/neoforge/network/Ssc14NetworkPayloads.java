@@ -6,6 +6,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.handling.IPayloadHandler;
 import net.ssc14.common.Ssc14Identity;
+import org.jspecify.annotations.Nullable;
 
 /** Canonical owner of the mod payload-registration lifecycle. */
 public final class Ssc14NetworkPayloads {
@@ -29,6 +30,13 @@ public final class Ssc14NetworkPayloads {
         QUEUE.addBidirectional(type, codec, handler);
     }
 
+    /** A null client handler is registered separately on the physical client. */
+    public static <T extends CustomPacketPayload> void addBidirectional(CustomPacketPayload.Type<T> type,
+            StreamCodec<? super RegistryFriendlyByteBuf, T> codec, IPayloadHandler<T> serverHandler,
+            @Nullable IPayloadHandler<T> clientHandler) {
+        QUEUE.addBidirectional(type, codec, serverHandler, clientHandler);
+    }
+
     public static void register(RegisterPayloadHandlersEvent event) {
         var registrar = new CompatibilityPayloadRegistrar(event.registrar(NETWORK_VERSION), NETWORK_VERSION);
         QUEUE.registerAll(new CompatibilityTarget(registrar));
@@ -50,8 +58,9 @@ public final class Ssc14NetworkPayloads {
 
         @Override
         public <T extends CustomPacketPayload> void bidirectional(CustomPacketPayload.Type<T> type,
-                StreamCodec<? super RegistryFriendlyByteBuf, T> codec, IPayloadHandler<T> handler) {
-            registrar.playBidirectional(type, codec, handler, handler);
+                StreamCodec<? super RegistryFriendlyByteBuf, T> codec, IPayloadHandler<T> serverHandler,
+                @Nullable IPayloadHandler<T> clientHandler) {
+            registrar.playBidirectional(type, codec, clientHandler, serverHandler);
         }
     }
 }
