@@ -1,0 +1,199 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "ssc_14:item/weapon/firearm/sniper_rifle/kardashev_mosin/sniper_rifle_kardashev_mosin",
+		"particle": "ssc_14:item/weapon/firearm/sniper_rifle/kardashev_mosin/sniper_rifle_kardashev_mosin"
+	},
+	"elements": [
+		{
+			"from": [8, 6, -12],
+			"to": [8, 11, -5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8.5, -8.5]},
+			"faces": {
+				"east": {"uv": [0, 1.5, 3.5, 4], "texture": "#0"},
+				"west": {"uv": [3.5, 1.5, 0, 4], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 9, -9],
+			"to": [8.5, 10, -6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9.5, -7.5]},
+			"faces": {
+				"north": {"uv": [3, 4, 3.5, 4.5], "texture": "#0"},
+				"east": {"uv": [6.5, 2, 8, 2.5], "texture": "#0"},
+				"west": {"uv": [8, 2, 6.5, 2.5], "texture": "#0"},
+				"up": {"uv": [7, 5.5, 7.5, 7], "texture": "#0"},
+				"down": {"uv": [7, 7, 7.5, 5.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 7, -7],
+			"to": [8.5, 8, -4],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.5, -5.5]},
+			"faces": {
+				"north": {"uv": [7.5, 3, 8, 3.5], "texture": "#0"},
+				"east": {"uv": [6.5, 2.5, 8, 3], "texture": "#0"},
+				"south": {"uv": [8, 2, 8.5, 2.5], "texture": "#0"},
+				"west": {"uv": [8, 2.5, 6.5, 3], "texture": "#0"},
+				"up": {"uv": [7, 7, 7.5, 8.5], "texture": "#0"},
+				"down": {"uv": [7, 8.5, 7.5, 7], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 8, -6],
+			"to": [8.5, 10, 5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9, -0.5]},
+			"faces": {
+				"north": {"uv": [7.5, 5.5, 8, 6.5], "texture": "#0"},
+				"east": {"uv": [3.5, 3.5, 9, 4.5], "texture": "#0"},
+				"south": {"uv": [6.5, 7.5, 7, 8.5], "texture": "#0"},
+				"west": {"uv": [9, 3.5, 3.5, 4.5], "texture": "#0"},
+				"up": {"uv": [4, 5.5, 4.5, 11], "texture": "#0"},
+				"down": {"uv": [4.5, 5.5, 5, 11], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.375, 6.875, -6.125],
+			"to": [8.625, 10.125, 11.125],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8.5, 2.5]},
+			"faces": {
+				"east": {"uv": [0, 0, 8.5, 1.5], "texture": "#0"},
+				"west": {"uv": [8.5, 0, 0, 1.5], "texture": "#0"},
+				"up": {"uv": [0, 4, 0.5, 12.5], "texture": "#0"},
+				"down": {"uv": [0.5, 4, 1, 12.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.525, 7, 2],
+			"to": [8.475, 8, 6],
+			"rotation": {"angle": 15, "axis": "x", "origin": [8, 7, 6]},
+			"faces": {
+				"east": {"uv": [1, 4, 3, 4.5], "texture": "#0"},
+				"west": {"uv": [3, 4, 1, 4.5], "texture": "#0"},
+				"down": {"uv": [3.5, 6.5, 4, 8.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 10.125, 3],
+			"to": [8.5, 10.125, 5],
+			"rotation": {"angle": -10, "axis": "x", "origin": [8, 10.125, 3]},
+			"faces": {
+				"up": {"uv": [7.5, 6.5, 8, 7.5], "texture": "#0"},
+				"down": {"uv": [7.5, 7.5, 8, 6.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 7, 5],
+			"to": [8.5, 9, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"east": {"uv": [5, 4.5, 8, 5.5], "texture": "#0"},
+				"south": {"uv": [7.5, 7.5, 8, 8.5], "texture": "#0"},
+				"west": {"uv": [8, 4.5, 5, 5.5], "texture": "#0"},
+				"up": {"uv": [6, 5.5, 6.5, 8.5], "texture": "#0"},
+				"down": {"uv": [1, 6.5, 1.5, 9.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 5, 7],
+			"to": [8, 7, 13],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 9, 11]},
+			"faces": {
+				"east": {"uv": [1, 5.5, 4, 6.5], "texture": "#0"},
+				"west": {"uv": [4, 5.5, 1, 6.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.525, 5.54539, 10.31283],
+			"to": [8.475, 7.54539, 18.31283],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 6.54539, 14.31283]},
+			"faces": {
+				"east": {"uv": [1, 4.5, 5, 5.5], "texture": "#0"},
+				"west": {"uv": [5, 4.5, 1, 5.5], "texture": "#0"},
+				"up": {"uv": [5, 5.5, 5.5, 9.5], "texture": "#0"},
+				"down": {"uv": [5.5, 5.5, 6, 9.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 4.17611, 12.71481],
+			"to": [8.5, 8.17611, 18.71481],
+			"rotation": {"angle": 2.5, "axis": "x", "origin": [8, 6.17611, 15.71481]},
+			"faces": {
+				"east": {"uv": [3.5, 1.5, 6.5, 3.5], "texture": "#0"},
+				"south": {"uv": [6.5, 5.5, 7, 7.5], "texture": "#0"},
+				"west": {"uv": [6.5, 1.5, 3.5, 3.5], "texture": "#0"},
+				"up": {"uv": [1.5, 6.5, 2, 9.5], "texture": "#0"},
+				"down": {"uv": [2, 6.5, 2.5, 9.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 9, 8],
+			"to": [8.5, 10, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9.5, 11]},
+			"faces": {
+				"north": {"uv": [8, 2.5, 8.5, 3], "texture": "#0"},
+				"east": {"uv": [6.5, 1.5, 9.5, 2], "texture": "#0"},
+				"south": {"uv": [8, 3, 8.5, 3.5], "texture": "#0"},
+				"west": {"uv": [9.5, 1.5, 6.5, 2], "texture": "#0"},
+				"up": {"uv": [2.5, 6.5, 3, 9.5], "texture": "#0"},
+				"down": {"uv": [3, 6.5, 3.5, 9.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.5, 10, 10],
+			"to": [7.5, 12, 11],
+			"rotation": {"angle": -45, "axis": "z", "origin": [7.5, 10, 10.5]},
+			"faces": {
+				"east": {"uv": [6.5, 3, 7.5, 3.5], "rotation": 270, "texture": "#0"},
+				"west": {"uv": [6.5, 3, 7.5, 3.5], "rotation": 270, "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_lefthand": {
+			"scale": [-1, 1, 1]
+		},
+		"firstperson_righthand": {
+			"rotation": [45, -22.5, 0]
+		},
+		"firstperson_lefthand": {
+			"rotation": [45, -22.5, 0],
+			"scale": [-1, 1, 1]
+		},
+		"gui": {
+			"rotation": [-150, -40, -180],
+			"translation": [-2, 1.5, 0],
+			"scale": [0.75, 0.75, 0.75]
+		}
+	},
+	"groups": [
+		{
+			"name": "sniper_rifle_kardashev_mosin_bolt",
+			"origin": [8, 8, 8],
+			"scope": 0,
+			"color": 0,
+			"children": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				{
+					"name": "bolt",
+					"origin": [10, 9.5, 8],
+					"scope": 0,
+					"color": 1,
+					"children": [11, 12]
+				}
+			]
+		}
+	]
+}
