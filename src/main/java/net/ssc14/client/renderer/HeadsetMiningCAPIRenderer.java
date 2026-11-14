@@ -25,7 +25,7 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class HeadsetMiningCAPIRenderer<S extends LivingEntityRenderState, M extends EntityModel<? super S>> implements ICurioRenderer.HumanoidRender {
-	private static final Identifier TEXTURE = Identifier.parse("ssc_14:textures/entities/headset_mining_equipped_texture.png");
+	private static final Identifier TEXTURE = Identifier.parse("ssc_14:textures/clothing/ears/headset/mining/headset_mining_equipped.png");
 	private final HumanoidModel humanoidModel;
 
 	public HeadsetMiningCAPIRenderer() {

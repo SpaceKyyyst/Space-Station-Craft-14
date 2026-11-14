@@ -9,7 +9,7 @@ import net.ssc14.content.entity.MouseGrayEntity;
 import net.ssc14.client.model.Modelmouses;
 
 public class MouseGrayRenderer extends MobRenderer<MouseGrayEntity, LivingEntityRenderState, Modelmouses> {
-	private final Identifier entityTexture = Identifier.parse("ssc_14:textures/entities/mouse_gray_texture.png");
+	private final Identifier entityTexture = Identifier.parse("ssc_14:textures/entities/mouse_gray.png");
 
 	public MouseGrayRenderer(EntityRendererProvider.Context context) {
 		super(context, new Modelmouses(context.bakeLayer(Modelmouses.LAYER_LOCATION)), 0.1f);

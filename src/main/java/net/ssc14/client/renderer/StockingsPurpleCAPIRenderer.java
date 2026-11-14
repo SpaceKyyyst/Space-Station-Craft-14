@@ -25,7 +25,7 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class StockingsPurpleCAPIRenderer<S extends LivingEntityRenderState, M extends EntityModel<? super S>> implements ICurioRenderer.HumanoidRender {
-	private static final Identifier TEXTURE = Identifier.parse("ssc_14:textures/entities/stockings_purple_equipped_texture.png");
+	private static final Identifier TEXTURE = Identifier.parse("ssc_14:textures/entities/stockings_purple_equipped.png");
 	private final HumanoidModel humanoidModel;
 
 	public StockingsPurpleCAPIRenderer() {

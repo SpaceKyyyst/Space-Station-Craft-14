@@ -25,7 +25,7 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class HelmetsEvaCAPIRenderer<S extends LivingEntityRenderState, M extends EntityModel<? super S>> implements ICurioRenderer.HumanoidRender {
-	private static final Identifier TEXTURE = Identifier.parse("ssc_14:textures/entities/helmets_eva_equipped_texture.png");
+	private static final Identifier TEXTURE = Identifier.parse("ssc_14:textures/clothing/outerwear/suit/eva/suit_eva_equipped.png");
 	private final HumanoidModel humanoidModel;
 
 	public HelmetsEvaCAPIRenderer() {

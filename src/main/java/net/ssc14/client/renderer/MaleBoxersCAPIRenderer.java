@@ -25,7 +25,7 @@ import java.util.Collections;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class MaleBoxersCAPIRenderer<S extends LivingEntityRenderState, M extends EntityModel<? super S>> implements ICurioRenderer.HumanoidRender {
-	private static final Identifier TEXTURE = Identifier.parse("ssc_14:textures/entities/male_boxers_texture.png");
+	private static final Identifier TEXTURE = Identifier.parse("ssc_14:textures/entities/male_boxers.png");
 	private final HumanoidModel humanoidModel;
 
 	public MaleBoxersCAPIRenderer() {

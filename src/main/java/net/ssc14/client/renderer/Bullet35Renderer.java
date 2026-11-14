@@ -15,7 +15,7 @@ import com.mojang.math.Axis;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class Bullet35Renderer extends EntityRenderer<Bullet35Entity, LivingEntityRenderState> {
-	private static final Identifier texture = Identifier.parse("ssc_14:textures/entities/bullets_texture.png");
+	private static final Identifier texture = Identifier.parse("ssc_14:textures/entities/bullets.png");
 	private final Modelbullet model;
 
 	public Bullet35Renderer(EntityRendererProvider.Context context) {
