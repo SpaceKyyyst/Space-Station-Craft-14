@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Space-Station-Craft-14.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Space-Station-Craft-14.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SSC14_git.iml" filepath="$PROJECT_DIR$/.idea/SSC14_git.iml" />
     </modules>
   </component>
 </project>

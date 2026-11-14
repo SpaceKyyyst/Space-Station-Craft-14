@@ -81,10 +81,10 @@ public final class HumanModelRenderHandler {
 		};
 		
 		Identifier texture = switch (raceId) {
-			case 1 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/unath_m_texture.png");
-			case 2 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/felinid_m_texture.png");
-			case 3 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/slimeman_m_texture.png");
-			default -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png");
+			case 1 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entity/race/reptilian/male/reptilian_male.png");
+			case 2 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entity/race/felinid_m_texture.png");
+			case 3 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entity/race/slime/male/slime_male.png");
+			default -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entity/race/human/male/human_male.png");
 		};
 
 		boolean isLeft = event.getArm() == HumanoidArm.LEFT;
@@ -228,10 +228,10 @@ public final class HumanModelRenderHandler {
 		};
 		
 		Identifier texture = switch (raceId) {
-			case 1 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/unath_m_texture.png");
-			case 2 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/felinid_m_texture.png");
-			case 3 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/slimeman_m_texture.png");
-			default -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entities/human_m_texture.png");
+			case 1 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entity/race/reptilian/male/reptilian_male.png");
+			case 2 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entity/race/felinid_m_texture.png");
+			case 3 -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entity/race/slime/male/slime_male.png");
+			default -> Identifier.fromNamespaceAndPath("ssc_14", "textures/entity/race/human/male/human_male.png");
 		};
 
 		// 🔥 ПАТТЕРН МСРЕАТОР СИНХРОННЫЙ: Ужимаем по оси Y, опираясь строго на динамический model_scale

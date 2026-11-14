@@ -9,7 +9,7 @@ import net.ssc14.content.entity.PlassteelWallCarcaseEntitEntity;
 import net.ssc14.client.model.Modelframe_of_plasstal_wall_JAVA;
 
 public class PlassteelWallCarcaseEntitRenderer extends MobRenderer<PlassteelWallCarcaseEntitEntity, LivingEntityRenderState, Modelframe_of_plasstal_wall_JAVA> {
-	private final Identifier entityTexture = Identifier.parse("ssc_14:textures/entities/frame_of_plasstal_wall_java_texture.png");
+	private final Identifier entityTexture = Identifier.parse("ssc_14:textures/entities/frame_of_plasstal_wall_java.png");
 
 	public PlassteelWallCarcaseEntitRenderer(EntityRendererProvider.Context context) {
 		super(context, new Modelframe_of_plasstal_wall_JAVA(context.bakeLayer(Modelframe_of_plasstal_wall_JAVA.LAYER_LOCATION)), 0.5f);

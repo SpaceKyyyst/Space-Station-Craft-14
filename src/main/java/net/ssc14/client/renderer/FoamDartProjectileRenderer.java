@@ -15,7 +15,7 @@ import com.mojang.math.Axis;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class FoamDartProjectileRenderer extends EntityRenderer<FoamDartProjectileEntity, LivingEntityRenderState> {
-	private static final Identifier texture = Identifier.parse("ssc_14:textures/entities/foam_dart_texture.png");
+	private static final Identifier texture = Identifier.parse("ssc_14:textures/item/foam_dart.png");
 	private final Modelfoam_dart model;
 
 	public FoamDartProjectileRenderer(EntityRendererProvider.Context context) {
