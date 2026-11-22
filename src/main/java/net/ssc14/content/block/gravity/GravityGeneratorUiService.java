@@ -1,7 +1,7 @@
 package net.ssc14.content.block.gravity;
 
 import com.lowdragmc.lowdraglib2.gui.ui.ModularUI;
-import com.ssc14.handy.window.WindowProperties;
+import com.ssc14.handy.window_manager.window.WindowProperties;
 import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;

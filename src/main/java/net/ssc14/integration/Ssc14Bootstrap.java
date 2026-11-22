@@ -220,8 +220,8 @@ public final class Ssc14Bootstrap {
 			}
 
 			@Override
-			public com.ssc14.handy.window.WindowProperties windowProperties() {
-				return new com.ssc14.handy.window.WindowProperties()
+			public com.ssc14.handy.window_manager.window.WindowProperties windowProperties() {
+				return new com.ssc14.handy.window_manager.window.WindowProperties()
 						.width(GravityGeneratorWindow.WIDTH).height(GravityGeneratorWindow.HEIGHT)
 						.minWidth(GravityGeneratorWindow.WIDTH)
 						.minHeight(GravityGeneratorWindow.HEIGHT);
