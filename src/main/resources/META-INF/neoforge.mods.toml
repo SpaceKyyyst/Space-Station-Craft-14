@@ -52,16 +52,16 @@ description="\u041F\u043E\u0432\u0442\u043E\u0440\u0451\u043D\u043D\u0430\u044F 
 
 # Start of user code block dependencies configuration
 [[dependencies.ssc_14]]
-    modId="handy"
+    modId="handy_wm"
     type="required"
-    versionRange="[0.1.0,0.2)"
+    versionRange="[1.2.1,2)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.ssc_14]]
     modId="ldlib2"
     type="required"
-    versionRange="[26.1.2.39,)"
+    versionRange="[26.1.2.43,)"
     ordering="AFTER"
     side="BOTH"
 # End of user code block dependencies configuration
