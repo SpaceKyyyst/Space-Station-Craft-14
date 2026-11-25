@@ -1,8 +1,0 @@
-{
-  "parent": "ssc_14:custom/fuel_tank",
-  "textures": {
-    "all": "ssc_14:block/fuil_tank_item",
-    "particle": "ssc_14:block/fuil_tank_item",
-    "3": "ssc_14:block/fuel_tank_t"
-  }
-}

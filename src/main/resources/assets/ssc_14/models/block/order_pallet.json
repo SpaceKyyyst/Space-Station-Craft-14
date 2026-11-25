@@ -1,8 +1,0 @@
-{
-  "parent": "ssc_14:custom/sale_order_pallet",
-  "textures": {
-    "all": "ssc_14:block/order_pallet_item",
-    "particle": "ssc_14:block/order_pallet_item",
-    "1": "ssc_14:block/order_pallet_texture"
-  }
-}

@@ -96,15 +96,6 @@
 			}
 		},
 		{
-			"from": [6.975, 8, 7],
-			"to": [9.025, 9, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8.5, 8.5]},
-			"faces": {
-				"east": {"uv": [10.5, 1, 12, 1.5], "texture": "#0"},
-				"west": {"uv": [12, 1, 10.5, 1.5], "texture": "#0"}
-			}
-		},
-		{
 			"from": [8, 5, 7],
 			"to": [8, 7, 10],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6, 8.5]},
@@ -167,6 +158,15 @@
 				"west": {"uv": [5.5, 7.5, 4, 9.5], "texture": "#0"},
 				"down": {"uv": [6.5, 10, 7, 11.5], "texture": "#0"}
 			}
+		},
+		{
+			"from": [6.975, 8, 7],
+			"to": [9.025, 9, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8.5, 8.5]},
+			"faces": {
+				"east": {"uv": [10.5, 1, 12, 1.5], "texture": "#0"},
+				"west": {"uv": [12, 1, 10.5, 1.5], "texture": "#0"}
+			}
 		}
 	],
 	"display": {
@@ -177,9 +177,8 @@
 			"scale": [-1, 1, 1]
 		},
 		"gui": {
-			"rotation": [30, -135, 0],
-			"translation": [-0.75, 0.5, 0],
-			"scale": [0.75, 0.75, 0.75]
+			"rotation": [30, -150, 0],
+			"translation": [-0.5, 0.5, 0]
 		}
 	},
 	"groups": [
@@ -201,20 +200,19 @@
 				9,
 				10,
 				11,
-				12,
 				{
 					"name": "bolt",
 					"origin": [8, 8.5, 4],
 					"scope": 0,
 					"color": 1,
-					"children": [13]
+					"children": [12]
 				},
 				{
 					"name": "magazine",
 					"origin": [8, 5, 6],
 					"scope": 0,
 					"color": 2,
-					"children": [14]
+					"children": [13, 14]
 				}
 			]
 		}
