@@ -1,8 +1,0 @@
-{
-  "parent": "ssc_14:custom/emergency_light",
-  "textures": {
-    "all": "ssc_14:block/emerg_light_blue_texture",
-    "particle": "ssc_14:block/emerg_light_green_texture",
-    "0": "ssc_14:block/emerg_light_blue_texture"
-  }
-}

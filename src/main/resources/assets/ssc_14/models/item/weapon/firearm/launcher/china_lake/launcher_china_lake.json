@@ -155,7 +155,7 @@
 		},
 		"gui": {
 			"rotation": [30, -150, 0],
-			"translation": [-1.25, 0.75, 0]
+			"translation": [-1.5, 1, 0]
 		}
 	},
 	"groups": [

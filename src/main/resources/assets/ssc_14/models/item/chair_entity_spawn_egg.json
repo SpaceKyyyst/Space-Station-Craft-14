@@ -1,4 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": { "layer0": "ssc_14:item/chair_entity_spawn_egg_generated" }
-}

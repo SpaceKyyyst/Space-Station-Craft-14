@@ -184,9 +184,8 @@
 			"scale": [-1, 1, 1]
 		},
 		"gui": {
-			"rotation": [30, -135, 0],
-			"translation": [-1.5, 1, 0],
-			"scale": [0.75, 0.75, 0.75]
+			"rotation": [30, -150, 0],
+			"translation": [-1, 1, 0]
 		}
 	},
 	"groups": [
